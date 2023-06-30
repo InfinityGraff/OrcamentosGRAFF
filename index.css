@@ -1,0 +1,464 @@
+.none{display: none;}
+.MiniSenha{position: absolute;width:200px}
+.error {border: 2px solid red}
+.error::placeholder {color: red}
+
+
+#Fundo-Info{background-color: #e6e6e6;}
+
+
+#Bandeija {
+  position: absolute;
+  z-index: 999;
+}
+#Bandeija > div {padding: 4px;cursor: pointer;background:#e4e4e4;}
+#Bandeija > div:hover {background:#ff6600;}
+#Bandeija > div > div:nth-child(2) {font-size: 13px;}
+
+
+input[type="number"]::-webkit-inner-spin-button,/*remover Spinner*/
+input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin: 0}
+
+*{  margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+    color: var(--Branco);
+    font-family: 'Lexend Deca','Arial'}
+:root{
+  --Laranja: #fa7d09;
+  --Branco: #ffffff;
+  --Cor-Final: #FF5900;
+  --Degrade: linear-gradient(to right,#434343,#73008A,#FF5900);
+  --MargemImput: 5px 15px 15px 15px;
+  --DegradeFundo:linear-gradient(#1f1f1f,#101010) center center no-repeat fixed;
+  --degradeFonte:linear-gradient(to bottom,#E312DF, #FA077D, #ff6f00);
+  --CorInput:#303030;
+  --Lex:'Lexend Deca','Arial'}
+
+.Ct{display: flex;flex-wrap: wrap;justify-content: center;align-items: center;}
+.Start{display: flex;justify-content: flex-start;align-items: center;}
+.End{display: flex;justify-content: flex-end;align-items: center;}
+.Cl{display: flex;flex-direction: column;}
+.Rw{display: flex;flex-direction: row;}
+.Bt{width: 100%;display: flex;justify-content: space-between;align-items: center;}
+.Ev{display: flex;justify-content: space-evenly;align-items: center;}
+.Ct-Txt{text-align: center;}
+.Fx{position: fixed;top:0;left: 0;}
+.Hr{border-bottom: 1px solid rgb(96, 96, 96);}
+.Rd{border-radius: 20px;}
+.RD{border-radius: 255px;}
+.w100{width: 100%;}
+.w50{width: 50%;}
+.cem{width:100%;}
+.B{font-weight: bold;}
+.Br{word-wrap: break-word;}
+.Grn{background: green;}
+.Red{background: red;}
+.Pddn-X{padding: 0% 5%;}
+.Pddn-Y{padding: 3% 0%;}
+.Pddn-XY{padding: 3% 5%;}
+.tc{text-align:center;}
+
+button {background: #73008A; border-radius: 255px;}
+button,.Login,.X,.ppt{cursor: pointer;}
+.X{opacity: 0.7;}.X:hover{opacity: 1;color:red;}
+
+@keyframes Transicao{0%{background-position-x: 0%;}100%{background-position-x: 90%;}}
+
+.FontDGD{
+  background:var(--degradeFonte);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent}
+
+body{background: var(--DegradeFundo)}
+h1{font-size: 40px; margin: 0 150 15 150;}
+h2{color: var(--Laranja);}
+#Aba-Relatorio, #Aba-Orcamento, #Aba-Home{margin-top:100px}
+
+.FundoModal{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0px;
+  backdrop-filter: blur(10px);
+  z-index: 999999999;
+  background: rgba(0,0,0,0.5);
+  animation: FndoModal 0.5s}
+@keyframes FndoModal {from {opacity: 0;} to {opacity: 1;}}
+
+.Cabecalho{background: #1b1b1b ; width: 100vw ; height: 55px ; padding: 0px 10px}
+.Pesquisa{ background: #444444 ; width: 50%   ; height: 25px ; text-align: center}
+.Pesquisa:hover{background:#696969;}
+nav{background:#444444;width: 100vw; height: 35px;}
+
+  nav a{height: 100%; padding: 0px 10px;}
+    nav a:hover{color: var(--Laranja); background: #2b2b2b;}
+      nav a:active{background: #0c0c0c;}
+      .ativo{background: #353535;}
+
+form{width: 60%; height: 550px; padding: 50px 15px;}
+
+form div[id*=Inpt]{
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  margin: 4px}
+
+#Grupo-Cliente,#Grupo-Servicos,#Grupo-Medidas,#Grupo-Entrega,#Grupo-Tipos{
+  display: flex; width: 100%; padding: 0px 8vw }
+
+#Grupo-Medidas{padding: 0px 5vw;}
+
+input,select,.baby,#Div-Inpt-Mais div{
+width: 100%; height: 40px;
+font-size: 19px;
+border-radius: 255px;
+background: var(--CorInput);
+margin: 3px;
+text-align: center;}
+
+input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
+
+#Div-Inpt-Mais{width:140px;}
+
+#Div-Inpt-Mais label {color:#FFFFFF00;}
+#Div-Inpt-Mais div *{opacity: 0.5;}
+
+#Div-Inpt-Mais > Div > img {width: 20px;}
+
+#DivResult{height: 550px; width: 40%;}
+
+  .foto{
+      width: 45%;
+      border-radius: 10px;
+      margin: 5px;
+      margin-bottom: 8px;}
+      
+  .botaum{
+      width: 100%;
+      margin-top: 8px;
+      align-items: center;}
+
+.baby{
+  width: 200px; height: 50px;
+  background:var(--Degrade);
+  background-size: 500%;
+  transition: 0.1s ease-in-out;}
+      .baby:hover{
+          width: 210px;
+          height: 55px;
+          animation-name: Transicao;
+          animation-duration: 0.5s;
+          animation-timing-function: ease-in-fas;
+          animation-fill-mode: forwards; /*pra congelar no fim*/}
+      .baby:active{
+          width: 205px;
+          height: 52px;}
+
+.modalloginn{height: 400px;}            
+
+.Modalzinho{
+  background: rgb(27, 27, 27);
+  width: 300px;
+  border-radius: 20px;
+  padding: 15px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  box-shadow: 10px 10px 20px black;
+  animation: modal 0.5s;}
+          @keyframes modal {
+              from { opacity: 0;transform: translate3d(0, -80px, 0)}
+              to { opacity: 1;transform: translate3d(0, 0, 0);}}
+
+  .Botaozin{
+      color:black; 
+      width: 40%;
+      height: 30px;
+      border-radius: 20px}
+  .Botaozin:hover{background:#606060}
+  .Loginn{font-size: 40px}
+
+.Tabela{
+  width: 95%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #0b0b0b;
+  border-radius: 20px;}
+
+table{text-align: center;width: 100%;}
+  th{height: 30px;}
+  tr{background: #373738; padding: 10px;}
+  td{background: #0b0b0b; padding: 10px;}
+  table td:nth-child(4){font-size: 13px; color:#777777}
+  table td:nth-child(9){font-size: 13px}
+  table td:nth-child(10){background:#2f5000; font-size: 15px; border-radius:255px}
+  table td:nth-child(11){width: 50px;}
+  table td:nth-child(12){width: 50px;}
+
+#dataTable table th:first-child,#dataTable table td:first-child{display: none}
+
+#dataTable input{font-size:13px}
+
+.circle{
+  background-image: linear-gradient(#550047,#f15900);
+  width: 40px; height: 40px;
+  border-radius: 255px;}
+.bloco{
+  height: 200px;
+  width: 300px ;
+  margin: 5px;
+  background: #262626;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;}
+  .BlocoTitulo{
+      width: 100%;
+      height: 35px;
+      background: rgb(19, 19, 19);
+      padding: 4px 10px;}
+
+  .BlocoTNome{font-size: 16px}
+  .BlocBtn{background: #1c1c1c; height: 40px; padding: 4px;}
+  .BtnBloc{height:25px; width:100px;}
+  .BtnBloc:hover{height:30px; width:110px;}
+  .BlocoLista{height: 100%;}
+
+  .Lista{
+      margin-left: 40px;
+      color: #ffffff;
+      font-size: 19px;
+      line-height: 40px;
+      height: 50px;}
+
+  .none{display: none;}
+
+  .btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+  }
+
+#BodyRelatorio{display:none;}
+#Resumo{width:100%}
+#resultfilter1{
+  background: #00000000;
+  overflow-y: scroll;
+  height: 380px;
+  width: 90%;
+  border-radius: 20px;}
+
+#resultfilter1::-webkit-scrollbar {width: 10px;}
+#resultfilter1::-webkit-scrollbar-track {background: #0000006a;}
+#resultfilter1::-webkit-scrollbar-thumb {background: #5d5d5da5;border-radius: 5px;}
+#resultfilter1::-webkit-scrollbar-thumb:hover {background: #555;}
+
+.itemfilter{background: #ffffff13;
+  border-radius: 20px;
+  margin: 10px 0px;
+  overflow: hidden;}
+
+.itemfilter:hover{background: #ffffff25}
+
+  hr {border: 0.1px solid #ffffff2e; margin: 4px 0px;}
+.RstTitle {background: #0000004a; padding: 6px 3px;}
+.Descricao > div > strong { font-size: 15px;}
+.RstServ{margin-left: 4px;font-size: 20px;}
+.RstGram{margin-right: 8px;font-size: 12px;}
+.RstValrM2{color: #ffffff51;padding-right: 8px;font-size: 15px;}
+.RstValrDesc{color: red;padding-right: 8px;font-weight: bold;font-size: 17px;}
+.RstValrFinal{color: #00e61f;font-size: 27px;font-weight: bold}
+.RstValrFinal > div{color: #00e61f;font-size: 14px;margin-right:4px;}
+#FotoFilter img{width:150px;height:120px;}
+.BtnAdd{width:50px; height:20px;}
+#resultfilter1 button {width: 100px;}
+
+
+#DivMissoes{
+  width: 90%;
+  background: #0c0c0cd8;
+  border-radius: 15px;
+  margin-top: 80px;
+}
+
+#Missoes{width: 90%}
+
+#Missoes > div{
+  align-items: center;
+  width: 100%;
+  background: #ffffff1e;
+  margin: 8px;
+  padding: 7px;
+  border-radius: 255px
+}
+
+.Bolinha{
+  background: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 255px}
+
+.BL{
+  width: 11px;
+  height: 11px;}
+
+.MissClnt{ width: 70%;}
+
+.Missaum{
+  background: #ffffff1f;
+  font-size: 15px;
+  border-radius: 20px;
+  height: 25px;
+  padding: 0px 20px}
+
+.MissBtn{
+  background: #135f0079;
+  border-radius: 100px;
+  padding: 0px 9px;
+  height: 20px}
+
+.R{background: #a34f00c0}
+
+.MiniSenha{position: absolute; width:200px}
+
+.background {
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;height: 100%;
+  background: #00000080;
+  z-index: 999}
+
+  #ModalNota * {color: black;}
+  #ModalNota button {color: white;}
+  #ModalNota h1{font-size:15px;}
+  #ModalNota{padding: 20px; background: white;}
+  #ModalNota > div{padding: 5px 0px;}
+  #Nota-Clnt > div > p{flex-direction: row;font-size: 15px;}
+
+.media30{width: 30%;}
+.media80{width: 80%;}
+
+.F1x1{
+  position: relative;
+  width: 100px;
+  border-radius: 255px;
+  margin: 0px 5px;
+  background-image: url("https://drive.google.com/uc?export=download&id=1el6-9MQXwSvRRB7nogE20nfFljYWVVZl");
+  background-size: 100%;}
+.F-1x1 {padding-top: 100%;}
+
+.BTNota{height: 30px; padding: 0px 50px; margin: 0px 1.5px; background: #5F009E}
+.magem{margin:5px 0px}
+
+button > img{margin: 0px 5px}
+input > img{margin: 0px 5px}
+select > img{margin: 0px 5px}
+
+#imgnotta{
+background-image: url("https://drive.google.com/uc?export=download&amp;id=1Rm9mZD3DFqcaL48XWT-83sIxo8icVIIk")}
+
+#TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
+#TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}
+#TabelaNotinha td{background: #ffffff;color: black; padding: 3px;font-size: 13px;}
+#TabelaNotinha tfoot > tr > th {background: #575757}
+#TabelaNotinha td:nth-child(5){font-size: 13px;color:#4f4f4f;}
+#TabelaNotinha td:nth-child(6){font-weight: bold}
+
+#divpaginfo, #divdesigner{flex-direction:column}
+#Title-Info{font-size:24px}
+
+.ModalPgmnt{
+  background: rgb(31, 31, 31);
+  border-radius: 20px;
+  width: 400px;
+  padding: 30px;
+}
+
+.ckecs{margin: 8px 0px}
+.padins{padding-bottom: 15px; margin-bottom: 15px;}
+
+.Ct.ckecs label{
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+input[type="checkbox"],input[type="radio"]{
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.horas{
+  margin: 10px;
+  padding: 5px;
+  background: #262626;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.horario{font-size: 17px}
+.horabola{width: 20px; height: 20px; margin-right: 10px}
+.gato{margin-top:100px}
+
+@media (max-width: 500px) {
+  h1{
+    font-size:25px;
+    width:100%;
+    text-align:center;
+    margin:0; margin-top:5px;
+  }
+  .Pesquisa{width: 90%;}
+  .Cabecalho{height: 100px;}
+  nav{
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  nav::-webkit-scrollbar {display: none;}
+
+  #Aba-Orcamento{width:100%;}
+  form{width:100%; ;height: 370px; padding: 20px 15px;}
+  #DivResult{width: 100%; height: 500px;}
+  #resultfilter1{width: 90%}
+  #Resumo{width: 100%}
+  #resultfilter1 button {width: 70%; margin: 5px auto;}
+}
+
+#dataTable img{width: 20px; height: 20px; cursor:pointer}
+
+.Mg{margin-top:10px;margin-bottom:10px;}
+
+.error {border: 2px solid red}
+.error::placeholder {color: red}
+
+#optionsListClnt {
+position: absolute;
+top: 100px;
+right: 100px;
+width: 100px;
+background-color: #fff;
+z-index: 999;
+}
+#optionsListClnt > div {padding: 4px;cursor: pointer;background:#424242;}
+#optionsListClnt > div:hover {background:#47083d;}
+
+
+.Redi{
+  height: 100vh;
+}

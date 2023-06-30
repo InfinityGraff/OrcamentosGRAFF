@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <header class="Cabecalho Ct Ft Bt">
+      <h1 id="Home">INFINITY GRAFF</h1>
+      <input id="Pesquisa" class="Pesquisa Rd" placeholder="Salve Qualque Informação...">
+      <div id="Login-Top" class="Login" onclick="AbrirLogin()">Login</div>
+      <div id="Login-Cod" style="Display:None"></div>
+    </header>
+
+    <nav class="Ct Ft">
+      <a id="Orcamento" class="Ct ppt">ORÇAMENTO</a>
+      <a id="Relatorio" class="Ct ppt">RELATÓRIO</a>
+      <a id="Agenda" class="Ct ppt">AGENDA</a>
+      <a id="Clientes" class="Ct ppt">CLIENTES</a>
+    </nav>
+
+    <div id="Bandeija"></div>
+
+    <div class="Ct Redi">
+      <button id="NewOrcamento" onclick="NewOrcamento(this)" class="baby">Novo Orçamento
+      </button>
+    </div>
+
+    <div id="FormOrcamento" class="none Cl">
+
+      <div id="DivResult" class="Ct Cl">
+        <div id="Resumo" class="tc">Escolha seu Pedido...</div>
+        <div id="resultfilter1"></div>
+        <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+      </div>
+
+      <form>
+        <div id="Grupo-Servicos">
+          <!-- Serviços, Tipos e Acabamento-->
+          <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
+              <option value="" disabled="" selected="">Escolha um Serviços</option>
+            </select>
+          </div>
+          <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
+              <option value="" disabled="" selected="">Escolha um Tipo</option>
+            </select>
+          </div>
+          <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
+              <option value="" disabled="" selected="">Escolha um Acabamento</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="Grupo-Tipos" class="Grupinput3" style="display: none">
+          <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
+              <option value="" disabled="" selected="">Gramatura</option>
+            </select></div>
+          <div id="Div-Inpt-QFix"><label>Qnt</label><select>
+              <option value="" disabled="" selected="">Qnt</option>
+            </select></div>
+        </div>
+
+        <div id="Grupo-Medidas" class="Grupinput3" style="display: none">
+          <div id="Div-Inpt-Mais"><label>.</label>
+            <div id="Mais-Input" class="Ct" onclick="AddMedidas()"></div><input class="none">
+          </div>
+          <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
+          <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
+          <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND"></div>
+        </div>
+
+        <div id="GrupoClntSave" class="none"></div>
+        <div id="Grupo-Cliente">
+          <!-- Nome e Contato-->
+          <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
+            <input placeholder="Nome do Cliente" id="lbClnt_1">
+          </div>
+          <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
+            <input placeholder="Contato do Cliente" id="lbCntt_2">
+          </div>
+          <button id="cadastrar" class="none" onclick="modalCadastro()">cadastrar</button>
+        </div>
+
+        <div id="Grupo-Entrega" class="none">
+          <!-- Entrega -->
+          <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
+            <input placeholder="insira Local da Entrega">
+          </div>
+
+          <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
+            <input placeholder="Deixe Algum Comentário">
+          </div>
+        </div>
+
+      </form>
+
+      <div class="Ct Bt">
+        <div>
+          <div id="Inner-Clnt">Nome</div>
+        </div>
+        <div>
+          <div id="Inner-Cntt">Contato</div>
+        </div>
+        <div>
+          <div id="Inner-Lcal">Local</div>
+        </div>
+        <div>
+          <div id="Inner-Etc">Descrição</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Fundo-Info" class="FundoModal Ct none">
+      <div id="Modal-Info1" class="ModalPgmnt Modalzinho">
+        <div id="Title-Info" class="Hr padins Ct"></div>
+
+        <div id="RestaNome">
+          <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
+            <input id="ClntInfo">
+          </div>
+          <div id="InfoInnerClnt"></div>
+          <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
+            <input id="CnttInfo">
+          </div>
+          <div id="InfoInnerCntt"></div>
+          <button class="none">Editar</button>
+        </div>
+
+        <label for="ArteInfo">Tipo Arte</label>
+        <select id="ArteInfo">
+          <option disabled="" selected="" value="_Nada">_Escolha o Tipo da Arte</option>
+          <option value="Criar">Criação</option>
+          <option value="Recria">Recriação</option>
+          <option value="Reparo">Reparo</option>
+          <option value="Vetor">Vetorização</option>
+          <option value="_Clnte">Arte do Cliente</option>
+          <option value="_temos">Já temos a Arte</option>
+          <option value="_Nada">Sem Arte</option>
+        </select>
+        <div id="divdesigner" class="none">
+          <label>Designer</label>
+          <div class="Ct ckecs">
+            <label for="Lisa"><input type="radio" id="Lisa" name="Desig" value="Lisa">Lisa</label>
+            <label for="Allan"><input type="radio" id="Allan" name="Desig" value="Allan">Allan</label>
+            <label for="Baby"><input type="radio" id="Baby" name="Desig" value="Baby">Baby</label>
+          </div>
+        </div>
+
+        <div>
+          <label for="Aplic">
+            <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
+            Aplicação</label>
+          <label for="install">
+            <input type="checkbox" id="install" name="Aplic" value="install">
+            Instalação</label>
+        </div>
+
+        <div id="DivFrete">
+          <label for="Graff"><input type="radio" id="Graff" name="Frete" value="Graff">Retirada</label>
+          <label for="Entrega"><input type="radio" id="Entrega" name="Frete" value="Entrega">Entrega</label>
+
+          <div id="DivEndereco" class="none"> <label for="Endereco">Endereço</label> <input id="Endereco"> </div>
+          <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
+          </div>
+
+        </div>
+
+        <div class="Ct"><button id="btnINFO1" class="baby none">Próximo</button></div>
+      </div>
+      <div id="Modal-Info2" class="ModalPgmnt Modalzinho none">
+        <div id="titleinfo2">titulo</div>
+        <div class="Hr padins"> <label>Forma de Pagamento</label>
+          <div class="Ct ckecs">
+            <label for="Pix"><input type="radio" id="Pix" name="pag" value="Pix">Pix</label>
+            <label for="Av"> <input type="radio" id="Av" name="pag" value="Av">Av</label>
+            <label for="NPag"> <input type="radio" id="NPag" name="pag" value="NPag">Não Pago</label>
+          </div>
+
+          <div id="divpaginfo" class="none">
+            <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
+            <div>
+              <label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
+              <button onclick="hojeInfo()">Hoje</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>Prazo: </div><input type="date" id="Prazo">
+        </div>
+        <div id="innerdesc">Desconto: </div>
+        <div class="Ct"><button id="btnINFO2" class="baby none">Entrada</button></div>
+      </div>
+    </div>
+
+    <div id="ModalLogin" class="FundoModal Ct none">
+      <div class="Modalzinho Ct Ft modalloginn">
+        <label id="X" class="X" onclick="SairModal(this.parentNode.parentNode)">X</label>
+        <div class="Bt Loginn">Login</div>
+        <div class="Ct Start">
+          <label for="Senha">Senha</label>
+          <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="KeyEnterInpt(event,this,this.parentNode.parentNode.parentNode,'Senha')">
+        </div>
+        <div class="Bt">
+          <button class="Botaozin Ct" onclick="TesteLogin()">Logar</button>
+          <button class="Botaozin Ct" onclick="SairModal(this.parentNode.parentNode.parentNode)">Sair</button>
+        </div>
+        <span id="Span-Login"></span>
+      </div>
+    </div>
+
+    <br>
+    <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
+    <div id="Fundo-Item" class="FundoModal Ct none"></div>
+    <div id="Fundo-Tarefas" class="FundoModal Ct none"></div>
+    <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
+    <br>
+
+    <div id="ModalCadastro" class="none">
+      <div>Cadastro do Clietne</div>
+      <input type="text" placeholder="Nome do Cliente">
+      <input type="text" placeholder="Nome Completo">
+      <input type="text" placeholder="Contato do Cliente">
+      <input type="text" placeholder="Nome da Empresa">
+      <input type="text" placeholder="Cntato da Empresa">
+      <input type="text" name="" placeholder="Catégoria">
+      <button>Salvar</button>
+    </div>
+  </body>
+
+</html>
