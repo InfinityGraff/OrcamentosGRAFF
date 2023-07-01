@@ -206,8 +206,8 @@
     // Cria Novo ID
     Show(FormOrcamento)
     None(btn.parentNode)
-
   }
+
   function SemLogin(){
     return LgTop.innerHTML === 'Login'}
 
