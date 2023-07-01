@@ -202,7 +202,7 @@
 // Funções Gerais
   
 
-  function NewOrcamento(btn){
+  function NewOrcamentos(btn){
     // Cria Novo ID
     Show(FormOrcamento)
     None(btn.parentNode)
