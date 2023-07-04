@@ -2,41 +2,61 @@
 <html>
 
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ORÇAMENTO</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+    <!-- Plugin Masked Input (81) 9999-9999 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    
+    <!-- GeraGeraPDF 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.plugin.html2canvas.min.js"></script>
+    -->
+
     <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
     <link rel="stylesheet" href="./index.css">
   </head>
 
   <body>
 
-    <header class="Cabecalho Ct Ft Bt">
+    <header class="Cabecalho Ct Bt">
       <h1 id="Home">INFINITY GRAFF</h1>
       <input id="Pesquisa" class="Pesquisa Rd" placeholder="Salve Qualque Informação...">
       <div id="Login-Top" class="Login" onclick="AbrirLogin()">Login</div>
       <div id="Login-Cod" style="Display:None"></div>
     </header>
 
-    <nav class="Ct Ft">
+    <nav class="Ct">
       <a id="Orcamento" class="Ct ppt">ORÇAMENTO</a>
       <a id="Relatorio" class="Ct ppt">RELATÓRIO</a>
       <a id="Agenda" class="Ct ppt">AGENDA</a>
       <a id="Clientes" class="Ct ppt">CLIENTES</a>
     </nav>
 
+    <div id="Aba-Home" class="Ct none">
+      <h1>Escolha Alguma Aba<h1>
+      
+    </div>
+
     <div id="Bandeija"></div>
 
     <div class="Ct Redi">
       <button id="NewOrcamento" onclick="NewOrcamentos(this)" class="baby">Novo Orçamento</button>
+      <div id="image-preloader" style="display: none"> nada</div>
     </div>
 
-    <div id="FormOrcamento" class="none Cl">
-
+    <button onclick="TesteTeste()">TesteTeste</button>
+    <div id="FormOrcamento" class="none Ct">
+      
       <div id="DivResult" class="Ct Cl">
         <div id="Resumo" class="tc">Escolha seu Pedido...</div>
         <div id="resultfilter1"></div>
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
       </div>
 
-      <form>
+      <form id="FormOrc">
         <div id="Grupo-Servicos">
           <!-- Serviços, Tipos e Acabamento-->
           <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
@@ -96,20 +116,26 @@
 
       </form>
 
-      <div class="Ct Bt">
-        <div>
-          <div id="Inner-Clnt">Nome</div>
+      <div class="Tabela Ct">
+
+        <div class="Ct Bt">
+          <div><div id="Inner-Clnt">Nome</div></div>
+          <div><div id="Inner-Cntt">Contato</div></div>
+          <div><div id="Inner-Lcal">Local</div></div>
+          <div><div id="Inner-Etc">Descrição</div></div>
         </div>
-        <div>
-          <div id="Inner-Cntt">Contato</div>
+
+        <div id="dataTable" class="Tabela Ct w100"></div>
+        
+        <div class="Ct">
+          <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
+          <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button>
+          <button class="baby" onclick="clearStore()">Limpar Lista</button>
+          <h2 id="TotalList"><h2>
         </div>
-        <div>
-          <div id="Inner-Lcal">Local</div>
-        </div>
-        <div>
-          <div id="Inner-Etc">Descrição</div>
-        </div>
+
       </div>
+
     </div>
 
     <div id="Fundo-Info" class="FundoModal Ct none">
@@ -211,10 +237,10 @@
     </div>
 
     <br>
-    <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
-    <div id="Fundo-Item" class="FundoModal Ct none"></div>
-    <div id="Fundo-Tarefas" class="FundoModal Ct none"></div>
-    <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
+      <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
+      <div id="Fundo-Item" class="FundoModal Ct none"></div>
+      <div id="Fundo-Tarefas" class="FundoModal Ct none"></div>
+      <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
     <br>
 
     <div id="ModalCadastro" class="none">
@@ -228,7 +254,6 @@
       <button>Salvar</button>
     </div>
   </body>
-
+    <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
     <script type="text/javascript" src="./Scripts.js" defer=""></script>
-
 </html>

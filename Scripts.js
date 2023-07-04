@@ -1,108 +1,3 @@
-// Biblioteca
-  // Básicas
-    function QrySlt(e){
-      return document.querySelector(e)}
-    function QrySltAll(e){
-      return document.querySelectorAll(e)}
-    function CreateTag(e){
-      return document.createElement(e)}
-    function Reais(e){
-      return e.toFixed(2).replace('.',',')}
-    function None(e){
-      const ee = Array.isArray(e) ? e : [e]
-        ee.forEach(E => {E.style.display = 'none'})}
-
-    function Show(e){
-      const ee = Array.isArray(e) ? e : [e]
-        ee.forEach(E => {E.style.display = 'flex'})}
-
-    function Trogl(a,b){
-      const aa = Array.isArray(a) ? a : [a]
-      const bb = Array.isArray(b) ? b : [b]
-        aa.forEach(E => {E.style.display = 'block'})
-        bb.forEach(E => {E.style.display = 'none'})}
-    const Rad0=(e)=>{
-      e.style.borderRadius = '0px 0px 0px 0px'}
-    const RadB=(e)=>{
-      e.style.borderRadius = '25px 25px 0px 0px'}
-
-    function delay(ms){
-      return new Promise(resolve => setTimeout(resolve, ms))}
-
-    function MouseXY(event){
-      return [event.clientX, event.clientY]}
-    function KeyEnter(e){
-      return (e.code === 'Enter' || e.keyCode === 13)}
-
-    function IptsDIV(String){
-      return Array.from(document.querySelectorAll(String))}
-    const GerarID=()=>
-      `ID-${Math.floor(Math.random()*900)+100}`
-    const GerarIT=()=>
-      `IT-${Math.floor(Math.random()*900)+100}`
-
-    var NewDate = new Date().toISOString().split('T')[0]
-  // Avançadas
-    function SairModal(Fundo){
-      Fundo.addEventListener('keyup',e=>e.key === 'Escape' && None(Fundo))
-      Fundo.addEventListener('click',e=>e.target === Fundo && None(Fundo))}
-
-    function PrmssInnr(Tag) {
-      return new Promise(resolve => {
-      const observer = new MutationObserver((m, observer) => {
-        if (Tag.innerHTML !== '') {observer.disconnect();resolve()}})
-      observer.observe(Tag,{childList: true, subtree: true})})}
-    
-    function CrypPass(senha) {
-      const Cryp = senha.split('').map((c,idx)=>{
-        if(/[0-9]/.test(c)){let N=parseInt(c)
-          N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
-        else if(/[A-Za-z]/.test(c)){
-          let L=c.charCodeAt(0)+(idx%2===1?5:1)
-          if(L>90&&L<97)L-=26
-          else if(L>122)L-=26
-          return String.fromCharCode(L)}else{return c}})
-      var par = [] ; var imp = []
-      Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
-      const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
-      const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
-      return Par.concat(Imp).join('')}
-    
-    function MaskNum(input) {
-      var Vlr = input.value.replace(/\D/g, '').replace(/^0+(?=[1-9])/, '')
-      var Mask = '' ; const VLR = Vlr.length
-
-      var Mask = VLR === 1 ? '0.0'+Vlr :
-                VLR === 2 ? '0.'+Vlr :
-                VLR === 3 ? Vlr.charAt(0)+'.'+Vlr.substring(1) :
-                VLR === 4 ? Vlr.substring(0, 2)+'.'+Vlr.substring(2) :
-                VLR > 4 ? Vlr.substring(0, 2)+'.'+Vlr.substring(2, 4) : ''
-        if (VLR > 5) {Mask = Mask.substring(0, 5)}
-        input.value = Mask}
-    function TagSVG(Icon,Cls,Alt,On){
-      return `<img class="${Cls}" src="data:image/svg+xml;base64,${btoa(Icon)}" alt="${Alt}" onclick="${On}">`}
-
-  // Testando
-    function Red(e){
-      e.style.color = 'red'}
-    function Bak(e){
-      e.style.color = 'black'}
-    
-    var W400 = window.matchMedia("(max-width: 500px)")
-    MediaQuere(W400)
-    W400.addListener(MediaQuere)
-
-    function MediaQuere(W400){
-      var C = document.querySelector('.Cabecalho')
-      var R = document.querySelector('#DivResult')
-      
-      if(W400.matches){
-      C.classList.remove("Bt")
-      R.classList.remove("Cl")
-      }else{
-      C.classList.add("Bt")
-      R.classList.add("Cl")}
-    }
 // Declarações
   // Const's Fundos
     const FundoInfo = QrySlt('#Fundo-Info')
@@ -187,6 +82,8 @@
     const titleinfo2 = QrySlt('#titleinfo2')
     const Prazo = QrySlt('#Prazo')
 
+//_________________________________________________________________________________________________________
+
 // Declarações dos Arrays
   let IDPdd = 'ID-001'
   let ITitem = 'ID-001'
@@ -196,30 +93,59 @@
   let ArryPag = ['','',''] // //Form,Vlr,Data
   let ArryPDD = {
     IDPdd:{'Clnt':ArryClnt,ITitem:ArryItem,'UNI':ArryUni,'Pag':ArryPag}}
+
 // OnLoad's
   document.querySelector('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','')
 
+  var W400 = window.matchMedia("(max-width: 500px)")
+  MediaQuere(W400)
+  W400.addListener(MediaQuere)
+
+//_________________________________________________________________________________________________________
+
 // Funções Gerais
-  
+
+
+
+  function MediaQuere(W400){
+    var C = QrySlt('.Cabecalho')
+    var R = QrySlt('#DivResult')
+    const FormOrc = QrySlt('#FormOrc')
+    const DivResult = QrySlt('#DivResult')
+
+    if(W400.matches){
+    C.classList.remove("Bt")
+    R.classList.remove("Cl")
+    trocarPosicao(DivResult,FormOrc)
+    }else{
+    C.classList.add("Bt")
+    R.classList.add("Cl")
+    trocarPosicao(FormOrc,DivResult)
+    }
+  }
+
+  function trocarPosicao(e1,e2){
+    e1.parentNode.insertBefore(e1,e2)
+  }
 
   function NewOrcamentos(btn){
     // Cria Novo ID
     Show(FormOrcamento)
     None(btn.parentNode)
   }
-
   function SemLogin(){
-    return LgTop.innerHTML === 'Login'}
-
+    return LgTop.innerHTML === 'Login'
+  }
   function AbrirLogin(){
-    Show(LoginAba) ; LoginSpn.innerHTML='' ; I_Senha.focus() ; SairModal(fundo)}
-
+    Show(LoginAba) ; LoginSpn.innerHTML='' ; I_Senha.focus() ; SairModal(fundo)
+  }
   function TesteLogin(input,fundo){
     const Spn = 'Senha Inválida'
     const Cryp = CrypPass(input.value) ; if(User[Cryp]){None(fundo)
     LgTop.innerHTML=User[Cryp][1];Login.innerHTML=User[Cryp][0]}//*Reload()*/}
     else{LoginSpn.innerHTML=Spn ; input.placeholder=Spn}
-    input.value='' ; input.focus() ; SairModal(fundo)}
+    input.value='' ; input.focus() ; SairModal(fundo)
+  }
   function MiniInput(tipo,btn){
     let palce = tipo === 'Senha' ? 'Insira a Senha' :
                 tipo === 'Clnt' ? 'Nome do Cliente' : '' 
@@ -231,14 +157,14 @@
     inpt.style.left = `${MouseXY(event)}px`
     inpt.style.top = `${MouseXY(event)}px`
 
-    Show(FundoModais);SairModal(FundoModais);inpt.focus()}
-  
+    Show(FundoModais);SairModal(FundoModais);inpt.focus()
+  }
   function KyEntrMiniInpt(e,input,fundo,tipo){
     if(KeyEnter(e)){
       if(tipo==='Senha'){console.log(TesteLogin(input,fundo))}
       if(tipo==='Clnt'){InnClnt.innerHTML = input.value
-      None(fundo)}}}
-
+      None(fundo)}}
+  }
   function BandejaFit(inpt,indx){
     Rad0(inpt); Bandeja.innerHTML = ""
     let value = inpt.value.toLowerCase()
@@ -259,8 +185,9 @@
           Rad0(inpt) ; ReadArray()
           Bandeja.innerHTML = ""
           console.log(ArryClnt)
-        });Bandeja.appendChild(li)})}
-//
+        });Bandeja.appendChild(li)})
+  }
+
 // os EventListEner
   // Eventos Cliente
     I_Clnt.addEventListener('input',()=>{
@@ -462,8 +389,25 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
 window.onload = Reload
   
 function Reload(){
+  preloadImages()
     //LoadBlocos()
 }
+
+        function preloadImages(){
+          const imageUrls = tabela.filter(e=>tabela[8]!==''||tabela[8]!==null)
+          
+          imageUrls.forEach(url => {
+            const img = document.createElement('img')
+            img.src = LinkDrive+url[8]
+            document.getElementById('image-preloader').appendChild(img)
+          })
+        }
+
+        const exibirImagem = ()=>{
+          const img = document.createElement('img')
+          img.src = LinkDrive+'14WG3395GvBw-iv-xYvJvClwHMCwFj0vU'
+          document.getElementById('testeAA').appendChild(img)
+        }
 
 QrySltAll('form input').forEach(input => {
   input.addEventListener('input',()=>{
