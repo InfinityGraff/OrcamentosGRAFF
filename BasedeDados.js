@@ -269,4 +269,7 @@
     </svg>
     `
 
- 
+const CopyPresset = {
+  'Pix':`Chave: 81987265401
+Nome: Alan Ferreira da Silva`
+}

@@ -48,7 +48,7 @@
 
 // Avançadas
   function SairModal(Fundo){
-    Fundo.addEventListener('keyup',e=>e.key === 'Escape' && None(Fundo))
+    document.addEventListener('keyup',e=>e.key === 'Escape' && None(Fundo))
     Fundo.addEventListener('click',e=>e.target === Fundo && None(Fundo))}
 
   function PrmssInnr(Tag) {
@@ -92,3 +92,22 @@
     e.style.color = 'red'}
   function Bak(e){
     e.style.color = 'black'}
+
+  function SemLogin(){
+      return QrySlt('#Login-Top').innerHTML === 'Login'
+    }
+  
+  function AbrirModalHTML(Fundo,Modal){
+    Array.from(Fundo.children).forEach(e=>{None(e)}) // oculta todos os Filhos
+    Show([Fundo,Modal]) ; SairModal(Fundo)
+  }
+
+  function Copy(e,btn){
+    var temp = document.createElement('textarea')
+    temp.value = CopyPresset[e] ?? e.split('/').join('\n') // (Primeiro aceita o obj, segundo se for array)
+    document.body.appendChild(temp)
+    temp.select()
+    document.execCommand('copy')
+    document.body.removeChild(temp)
+    btn.innerText = 'Texto copiado!'
+  }

@@ -24,8 +24,8 @@
 
     <header class="Cabecalho Ct Bt">
       <h1 id="Home">INFINITY GRAFF</h1>
-      <input id="Pesquisa" class="Pesquisa Rd" placeholder="Salve Qualque Informação...">
-      <div id="Login-Top" class="Login" onclick="AbrirLogin()">Login</div>
+      <input id="Pesquisa" class="Pesquisa Rd" onkeyup="SaveSync(event,this)" placeholder="Salve Qualque Informação...">
+      <div id="Login-Top" class="Login" onclick="AbreLogin()">Login</div>
       <div id="Login-Cod" style="Display:None"></div>
     </header>
 
@@ -48,7 +48,6 @@
       <div id="image-preloader" style="display: none"> nada</div>
     </div>
 
-    <button onclick="TesteTeste()">TesteTeste</button>
     <div id="FormOrcamento" class="none Ct">
       
       <div id="DivResult" class="Ct Cl">
@@ -57,7 +56,10 @@
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
       </div>
 
-      <form id="FormOrc">
+      <form id="FormOrc" class="Ct">
+
+        <h2 class="FontDGD">Orçamento</h2>
+
         <div id="Grupo-Servicos">
           <!-- Serviços, Tipos e Acabamento-->
           <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
@@ -101,7 +103,7 @@
           <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
             <input placeholder="Contato do Cliente" id="lbCntt_2">
           </div>
-          <button id="cadastrar" class="none" onclick="modalCadastro()">cadastrar</button>
+          <div id="cadastrar" class="baby Ct none" onclick="AbreCadastro()">cadastrar</div>
         </div>
 
         <div id="Grupo-Entrega" class="none">
@@ -139,121 +141,126 @@
 
     </div>
 
-    <div id="Fundo-Info" class="FundoModal Ct none">
-      <div id="Modal-Info1" class="ModalPgmnt Modalzinho">
-        <div id="Title-Info" class="Hr padins Ct"></div>
 
-        <div id="RestaNome">
-          <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
-            <input id="ClntInfo">
+    <div id="Fundo-Modal" class="FundoModal Ct none">
+
+      <div id="ModalInfo" class="none">
+        <div id="Modal-Info1" class="ModalPgmnt Modalzinho">
+          <div id="Title-Info" class="Hr padins Ct"></div>
+  
+          <div id="RestaNome">
+            <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
+              <input id="ClntInfo">
+            </div>
+            <div id="InfoInnerClnt"></div>
+            <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
+              <input id="CnttInfo">
+            </div>
+            <div id="InfoInnerCntt"></div>
+            <button class="none">Editar</button>
           </div>
-          <div id="InfoInnerClnt"></div>
-          <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
-            <input id="CnttInfo">
-          </div>
-          <div id="InfoInnerCntt"></div>
-          <button class="none">Editar</button>
-        </div>
-
-        <label for="ArteInfo">Tipo Arte</label>
-        <select id="ArteInfo">
-          <option disabled="" selected="" value="_Nada">_Escolha o Tipo da Arte</option>
-          <option value="Criar">Criação</option>
-          <option value="Recria">Recriação</option>
-          <option value="Reparo">Reparo</option>
-          <option value="Vetor">Vetorização</option>
-          <option value="_Clnte">Arte do Cliente</option>
-          <option value="_temos">Já temos a Arte</option>
-          <option value="_Nada">Sem Arte</option>
-        </select>
-        <div id="divdesigner" class="none">
-          <label>Designer</label>
-          <div class="Ct ckecs">
-            <label for="Lisa"><input type="radio" id="Lisa" name="Desig" value="Lisa">Lisa</label>
-            <label for="Allan"><input type="radio" id="Allan" name="Desig" value="Allan">Allan</label>
-            <label for="Baby"><input type="radio" id="Baby" name="Desig" value="Baby">Baby</label>
-          </div>
-        </div>
-
-        <div>
-          <label for="Aplic">
-            <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
-            Aplicação</label>
-          <label for="install">
-            <input type="checkbox" id="install" name="Aplic" value="install">
-            Instalação</label>
-        </div>
-
-        <div id="DivFrete">
-          <label for="Graff"><input type="radio" id="Graff" name="Frete" value="Graff">Retirada</label>
-          <label for="Entrega"><input type="radio" id="Entrega" name="Frete" value="Entrega">Entrega</label>
-
-          <div id="DivEndereco" class="none"> <label for="Endereco">Endereço</label> <input id="Endereco"> </div>
-          <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
-          </div>
-
-        </div>
-
-        <div class="Ct"><button id="btnINFO1" class="baby none">Próximo</button></div>
-      </div>
-      <div id="Modal-Info2" class="ModalPgmnt Modalzinho none">
-        <div id="titleinfo2">titulo</div>
-        <div class="Hr padins"> <label>Forma de Pagamento</label>
-          <div class="Ct ckecs">
-            <label for="Pix"><input type="radio" id="Pix" name="pag" value="Pix">Pix</label>
-            <label for="Av"> <input type="radio" id="Av" name="pag" value="Av">Av</label>
-            <label for="NPag"> <input type="radio" id="NPag" name="pag" value="NPag">Não Pago</label>
-          </div>
-
-          <div id="divpaginfo" class="none">
-            <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
-            <div>
-              <label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
-              <button onclick="hojeInfo()">Hoje</button>
+  
+          <label for="ArteInfo">Tipo Arte</label>
+          <select id="ArteInfo">
+            <option disabled="" selected="" value="_Nada">_Escolha o Tipo da Arte</option>
+            <option value="Criar">Criação</option>
+            <option value="Recria">Recriação</option>
+            <option value="Reparo">Reparo</option>
+            <option value="Vetor">Vetorização</option>
+            <option value="_Clnte">Arte do Cliente</option>
+            <option value="_temos">Já temos a Arte</option>
+            <option value="_Nada">Sem Arte</option>
+          </select>
+          <div id="divdesigner" class="none">
+            <label>Designer</label>
+            <div class="Ct ckecs">
+              <label for="Lisa"><input type="radio" id="Lisa" name="Desig" value="Lisa">Lisa</label>
+              <label for="Allan"><input type="radio" id="Allan" name="Desig" value="Allan">Allan</label>
+              <label for="Baby"><input type="radio" id="Baby" name="Desig" value="Baby">Baby</label>
             </div>
           </div>
+  
+          <div>
+            <label for="Aplic">
+              <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
+              Aplicação</label>
+            <label for="install">
+              <input type="checkbox" id="install" name="Aplic" value="install">
+              Instalação</label>
+          </div>
+  
+          <div id="DivFrete">
+            <label for="Graff"><input type="radio" id="Graff" name="Frete" value="Graff">Retirada</label>
+            <label for="Entrega"><input type="radio" id="Entrega" name="Frete" value="Entrega">Entrega</label>
+  
+            <div id="DivEndereco" class="none"> <label for="Endereco">Endereço</label> <input id="Endereco"> </div>
+            <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
+            </div>
+  
+          </div>
+  
+          <div class="Ct"><button id="btnINFO1" class="baby none">Próximo</button></div>
         </div>
-        <div>
-          <div>Prazo: </div><input type="date" id="Prazo">
+        <div id="Modal-Info2" class="ModalPgmnt Modalzinho none">
+          <div id="titleinfo2">titulo</div>
+          <div class="Hr padins"> <label>Forma de Pagamento</label>
+            <div class="Ct ckecs">
+              <label for="Pix"><input type="radio" id="Pix" name="pag" value="Pix">Pix</label>
+              <label for="Av"> <input type="radio" id="Av" name="pag" value="Av">Av</label>
+              <label for="NPag"> <input type="radio" id="NPag" name="pag" value="NPag">Não Pago</label>
+            </div>
+  
+            <div id="divpaginfo" class="none">
+              <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
+              <div>
+                <label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
+                <button onclick="hojeInfo()">Hoje</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>Prazo: </div><input type="date" id="Prazo">
+          </div>
+          <div id="innerdesc">Desconto: </div>
+          <div class="Ct"><button id="btnINFO2" class="baby none">Entrada</button></div>
         </div>
-        <div id="innerdesc">Desconto: </div>
-        <div class="Ct"><button id="btnINFO2" class="baby none">Entrada</button></div>
       </div>
-    </div>
 
-    <div id="ModalLogin" class="FundoModal Ct none">
-      <div class="Modalzinho Ct Ft modalloginn">
-        <label id="X" class="X" onclick="SairModal(this.parentNode.parentNode)">X</label>
-        <div class="Bt Loginn">Login</div>
-        <div class="Ct Start">
-          <label for="Senha">Senha</label>
-          <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="KeyEnterInpt(event,this,this.parentNode.parentNode.parentNode,'Senha')">
+      <div id="ModalLogin" class="Ct none">
+        <div class="Modalzinho Ct Ft modalloginn">
+          <label id="X" class="X" onclick="None(this.parentNode.parentNode.parentNode)">X</label>
+          <div class="Bt Loginn">Login</div>
+          <div class="Ct Start">
+            <label for="Senha">Senha</label>
+            <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'Senha',this)">
+          </div>
+          <div class="Bt">
+            <button class="Botaozin Ct" onclick="TestSenha('','Senha','#Inpt-Senha')">Logar</button>
+            <button class="Botaozin Ct" onclick="None(this.parentNode.parentNode.parentNode.parentNode)">Sair</button>
+          </div>
+          <span id="Span-Login"></span>
         </div>
-        <div class="Bt">
-          <button class="Botaozin Ct" onclick="TesteLogin()">Logar</button>
-          <button class="Botaozin Ct" onclick="SairModal(this.parentNode.parentNode.parentNode)">Sair</button>
-        </div>
-        <span id="Span-Login"></span>
       </div>
+
+      <div id="ModalCadastro" class="Modalzinho Ct Ft none">
+          <div>Cadastro do Clietne</div>
+          <input type="text" placeholder="Nome do Cliente">
+          <input type="text" placeholder="Nome Completo">
+          <input type="text" placeholder="Contato do Cliente">
+          <input type="text" placeholder="Nome da Empresa">
+          <input type="text" placeholder="Cntato da Empresa">
+          <input type="text" name="" placeholder="Catégoria">
+          <button>Salvar</button>
+      </div>
+
+      <div id="InnerVazio" class="none Ct"></div>
+
     </div>
 
-    <br>
-      <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
-      <div id="Fundo-Item" class="FundoModal Ct none"></div>
-      <div id="Fundo-Tarefas" class="FundoModal Ct none"></div>
-      <div id="Fundo-Minisenha" class="FundoModal Ct none"></div>
-    <br>
+    
+    <button onclick="Copy('Pix',this)">Copiar Pix</button>
 
-    <div id="ModalCadastro" class="none">
-      <div>Cadastro do Clietne</div>
-      <input type="text" placeholder="Nome do Cliente">
-      <input type="text" placeholder="Nome Completo">
-      <input type="text" placeholder="Contato do Cliente">
-      <input type="text" placeholder="Nome da Empresa">
-      <input type="text" placeholder="Cntato da Empresa">
-      <input type="text" name="" placeholder="Catégoria">
-      <button>Salvar</button>
-    </div>
+
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
     <script type="text/javascript" src="./Scripts.js" defer=""></script>
