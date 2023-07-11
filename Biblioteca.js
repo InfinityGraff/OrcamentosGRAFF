@@ -1,15 +1,21 @@
 // Biblioteca
   // Básicas
-  function QrySlt(e){
-    return document.querySelector(e)}
-  function QrySltAll(e){
-    return document.querySelectorAll(e)}
-  function CreateTag(e){
-    return document.createElement(e)}
-  function Reais(e){
-    return e.toFixed(2).replace('.',',')}
-  function None(e){
-    const ee = Array.isArray(e) ? e : [e]
+  function QrySlt(e){return document.querySelector(e)}
+  function QrySltAll(e){return document.querySelectorAll(e)}
+  function CreateTag(e){return document.createElement(e)}
+  function Reais(e){return e.toFixed(2).replace('.',',')}
+  function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
+  function EscRequired(e){e.forEach(e=>{QrySlt(e).required = false})}
+  function Rad0(e){e.style.borderRadius = '100px 100px 100px 100px'}
+  function RadB(e){e.style.borderRadius = '25px 25px 0px 0px'}
+  function MouseXY(event){return [event.clientX, event.clientY]}
+  function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
+  function IptsDIV(String){return Array.from(document.querySelectorAll(String))}
+  function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
+  function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
+  var NewDate = new Date().toISOString().split('T')[0]
+
+  function None(e){const ee = Array.isArray(e) ? e : [e]
       ee.forEach(E => {E.style.display = 'none'})}
 
   function Show(e){
@@ -27,38 +33,20 @@
     else{e.style.display = 'none'}
   }
 
-  function AddRequired(inpt){
-    inpt.forEach(e=>{QrySlt(e).required = true})}
-  function EscRequired(inpt){
-    inpt.forEach(e=>{QrySlt(e).required = false})}
+
 
   function QryArryAll(e,string){
     return Array.from(e.querySelectorAll(string))
     }
   
 
-  const Rad0=(e)=>{
-    e.style.borderRadius = '100px 100px 100px 100px'}
-  const RadB=(e)=>{
-    e.style.borderRadius = '25px 25px 0px 0px'}
+
 
   function delay(ms){
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
-  function MouseXY(event){
-    return [event.clientX, event.clientY]}
-  function KeyEnter(e){
-    return (e.code === 'Enter' || e.keyCode === 13)}
 
-  function IptsDIV(String){
-    return Array.from(document.querySelectorAll(String))}
-  const GerarID=()=>
-    `ID-${Math.floor(Math.random()*900)+100}`
-  const GerarIT=()=>
-    `IT-${Math.floor(Math.random()*900)+100}`
-
-  var NewDate = new Date().toISOString().split('T')[0]
 
 
 
@@ -104,14 +92,9 @@
 
 
 // Testando
-  function Red(e){
-    e.style.color = 'red'}
-  function Bak(e){
-    e.style.color = 'black'}
-
-  function SemLogin(){
-      return QrySlt('#Login-Top').innerHTML === 'Login'
-    }
+  function Red(e){e.style.color = 'red'}
+  function Bak(e){e.style.color = 'black'}
+  function SemLogin(){return QrySlt('#Login-Top').innerHTML === 'Login'}
   
   function AbrirModalHTML(Fundo,Modal){
     Array.from(Fundo.children).forEach(e=>{None(e)}) // oculta todos os Filhos

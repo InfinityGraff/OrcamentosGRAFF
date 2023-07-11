@@ -166,15 +166,18 @@
     // Chama os EventListener
     const formInfo1 = QrySlt('#Modal-Info1') ; const SbmtInfo1 = QrySlt('#btnINFO1')
     const formInfo2 = QrySlt('#Modal-Info2') ; const SbmtInfo2 = QrySlt('#btnINFO2')
+    const SbmtInfo3 = QrySlt('#btnINFO3')
   
-    formInfo1.addEventListener('input', ()=>{Ouvinte(formInfo1,SbmtInfo1)})
-    formInfo1.addEventListener('change',()=>{Ouvinte(formInfo1,SbmtInfo1)})
+    formInfo1.addEventListener('input',()=>{Ouvinte(formInfo1,SbmtInfo1)})
+    QrySltAll('#Modal-Info1 select').forEach(e=>{e.addEventListener('change',()=>{Ouvinte(formInfo1,SbmtInfo1)})})
   
-    formInfo2.addEventListener('input', ()=>{Ouvinte(formInfo2,SbmtInfo2)})
-    formInfo2.addEventListener('change',()=>{Ouvinte(formInfo2,SbmtInfo2)})
+    formInfo2.addEventListener('input',()=>{Ouvinte(formInfo2,SbmtInfo2)})
+    QrySltAll('#Modal-Info2 select').forEach(e=>{e.addEventListener('change',()=>{Ouvinte(formInfo2,SbmtInfo2)})})
   
-    SbmtInfo1.addEventListener('click',()=>{Trogl(QrySlt('#Modal-Info2'),QrySlt('#Modal-Info1'))})
+    SbmtInfo1.addEventListener('click',()=>{Show(QrySlt('#Modal-Info2'));None(QrySlt('#Modal-Info1'))})
+    SbmtInfo3.addEventListener('click',()=>{Show(QrySlt('#Modal-Info1'));None(QrySlt('#Modal-Info2'))})
     SbmtInfo2.addEventListener('click',()=>{None(FundoModal);SavePdd('','','Info','','')})
+    
   }
   function AbreCadastro(){ // 1-HTML
     const ModalCadastro = QrySlt('#ModalCadastro')
@@ -182,9 +185,10 @@
     Show(ModalCadastro)
   }
   function MiniInput(tipo){ // 2-JS
-    let palce = tipo === 'Senha' ? 'Insira a Senha' : tipo === 'Clnt' ? 'Nome do Cliente' : '' 
+    let palce = tipo === 'Senha' ? 'Insira a Senha' : tipo === 'Clnt' ? 'Nome do Cliente' : ''
+    let type = tipo === 'Senha' ? 'password' : 'text'
     InnerVazio.innerHTML = 
-    `<input class="MiniSenha" placeholder="${palce}" onkeyup="TestSenha(event,'${tipo}',this,this.parentNode)">`
+    `<input class="MiniSenha" type="${type}" placeholder="${palce}" onkeyup="TestSenha(event,'${tipo}',this,this.parentNode)">`
     AbrirModalHTML(FundoModal,InnerVazio) ; InnerVazio.children[0].focus()
   }
   function AbreItem(Arry,Mdd,IMG){ // 1-JS
@@ -202,9 +206,9 @@
 
 // Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
 
-  document.addEventListener('input',()=>{handle();Clientes()}) // to chamando assim pq posso querer chamar mais...
+  document.addEventListener('input',()=>{handle();Clientes();FilTable()}) // to chamando assim pq posso querer chamar mais...
 
-  function handle(){
+  function handle(){ // essa função Geral Mantem o Handdle a Cada inpuit do Documento inteiro
     QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
   }
   function Clientes(){ // Funções que São Atreladas ao onInput Clnt, e Cntt
@@ -248,7 +252,6 @@
          QrySltAll('.btn_edtcl').forEach(e=>Show(e))}
     else{QrySltAll('.btn_edtcl').forEach(e=>None(e))}
   }
-
   function ShowClntSalvo(){
     Trogl([GrupClntSv,GrupClntInfSv],[GrupClnt,RestaNome])
     const grupos = [GrupClntSv,GrupClntInfSv]
@@ -258,7 +261,6 @@
          <div class="baby Ct" onclick="EditaClntSave('${ArryClnt[0]}','${ArryClnt[1]}')">Editar</div>`
     })
   }
-
   function EditaClntSave(Clnt,Cntt){
     Trogl([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv])
     ArryClnt.fill('')
@@ -384,9 +386,8 @@ function OptFilter(Stng,Coll){ // cria as listas Options
   .map(e=>{return `<option value='${e}'>${e}</option>`}).join("")
 }
 
-// Chamar igual com a nova q criei
-Array.from(Selects).concat(Array.from(QrySltAll("form input"))).forEach(E=>{
-E.addEventListener("change",FilTable) ; E.addEventListener("input",FilTable)})
+// Chamar igual com a nova q criei_____________________________________________________________________________
+Array.from(Selects).forEach(E=>{E.addEventListener("change",FilTable)})
 
 function FilTable(){
   ResultFilTable.innerHTML = ''
@@ -513,8 +514,10 @@ function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os
   const Txt = QryArryAll(ModalInfo,'input').filter(i=>(i.type!=='radio'&&i.type!=='checkbox')&&i.Value!=='').map(i=>`${i.id}:${i.value}`)
   let obj = {};[...Rad,...Txt].forEach(i=>{let [k,v]=i.split(':');obj[k]=v})
   ObjInfo = obj
+  console.log(obj)
 }
 
+/*
 async function SavePdd(arry,Stts,orig,Ttal,btn){
 
     const semClnt = I_Clnt.value === ''
@@ -546,6 +549,7 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
 
   console.log(ObjInfo)
 }
+*/
 
 //__________________________________________________________________________________
   // Salvar de Onde Parou, fica uma notificação, avizando que o antigo modal ta ali
@@ -554,3 +558,9 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
   // Opções para indivudualizar (Entrega,Aplicação,Arte)
   // Aolicação Baixo ou Alto? Superficie: Plana ou Irregular
   // Aplicar Onde? (IA Responde se dá ou não.)
+
+
+
+  // Melhorar a Chamada do Filter Tabela
+  // a Porcentagem de Desconto não ta Funcionando
+  // o Desconto só aparece no Input, (não no Click pra escolher Funcionário Cadastrado)

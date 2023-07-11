@@ -268,6 +268,48 @@
     </g>
     </svg>
     `
+  const IconSetair = `<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <!-- Creator: CorelDRAW 2020 (64 Bit) -->
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="60.0848mm" height="78.3532mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+    viewBox="0 0 6007.42 7833.94"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+    <defs>
+      <style type="text/css">
+      <![CDATA[
+        .fil0 {fill:white}
+      ]]>
+      </style>
+    </defs>
+    <g id="Camada_x0020_1">
+      <metadata id="CorelCorpID_0Corel-Layer"/>
+      <path class="fil0" d="M4323.23 3916.97c-1352.66,-933.69 -2705.32,-1867.38 -4057.97,-2801.08 -656.9,-453.41 33.84,-1454.12 690.75,-1000.68 1563.15,1079.01 3124.27,2160.99 4689.75,3236.64 399.92,274.8 519.93,772.11 93.07,1065.46 -1594.27,1100.48 -3188.56,2200.94 -4782.84,3301.42 -656.9,453.44 -1347.64,-547.28 -690.74,-1000.68 1352.65,-933.7 2705.31,-1867.39 4057.97,-2801.08z"/>
+    </g>
+    </svg>
+  `
+  const IconSetaVolt = `
+      <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <!-- Creator: CorelDRAW 2020 (64 Bit) -->
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="60.0848mm" height="78.3532mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+    viewBox="0 0 6007.42 7833.94"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+    <defs>
+      <style type="text/css">
+      <![CDATA[
+        .fil0 {fill:white}
+      ]]>
+      </style>
+    </defs>
+    <g id="Camada_x0020_1">
+      <metadata id="CorelCorpID_0Corel-Layer"/>
+      <path class="fil0" d="M1684.19 3916.97c1352.66,-933.69 2705.32,-1867.38 4057.97,-2801.08 656.9,-453.41 -33.84,-1454.12 -690.75,-1000.68 -1563.15,1079.01 -3124.27,2160.99 -4689.75,3236.64 -399.92,274.8 -519.93,772.11 -93.07,1065.46 1594.27,1100.48 3188.56,2200.94 4782.84,3301.42 656.9,453.44 1347.64,-547.28 690.74,-1000.68 -1352.65,-933.7 -2705.31,-1867.39 -4057.97,-2801.08z"/>
+    </g>
+    </svg>
+  `
+
 
 const CopyPresset = {
   'Pix':`Chave: 81987265401
