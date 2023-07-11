@@ -86,9 +86,14 @@ button,.Login,.X,.ppt{cursor: pointer;}
   -webkit-text-fill-color: transparent}
 
 body{background: var(--DegradeFundo)}
-h1{font-size: 40px; font-family: var(--Bold) ; margin: 0 150 15 150;}
+.Titlee{margin: 0 150 15 150;}
+h1{font-size: 40px; font-family: var(--Bold)}
 h2{color: var(--Laranja);}
 #Aba-Relatorio, #Aba-Orcamento, #Aba-Home{margin-top:100px}
+.Logo{
+  width:50px;
+  margin: 4px 4px;
+}
 
 .FundoModal{
   position: fixed;
@@ -431,10 +436,15 @@ input[type="checkbox"],input[type="radio"]{
 @media (max-width: 500px) {
   h1{
     font-size:25px;
-    width:100%;
+    
     text-align:center;
-    margin:0; margin-top:5px;
+    
   }
+
+  .Titlee{
+    width:100%;margin:0; margin-top:5px;
+  }
+
   .Pesquisa{width: 90%;}
   .Cabecalho{height: 100px;}
   nav{
