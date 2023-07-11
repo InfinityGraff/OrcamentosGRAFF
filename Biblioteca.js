@@ -19,10 +19,26 @@
   function Trogl(a,b){
     const aa = Array.isArray(a) ? a : [a]
     const bb = Array.isArray(b) ? b : [b]
-      aa.forEach(E => {E.style.display = 'block'})
+      aa.forEach(E => {E.style.display = 'flex'})
       bb.forEach(E => {E.style.display = 'none'})}
+  
+  function ToggleShowNone(e,valid){
+    if(valid){e.style.display = 'flex'}
+    else{e.style.display = 'none'}
+  }
+
+  function AddRequired(inpt){
+    inpt.forEach(e=>{QrySlt(e).required = true})}
+  function EscRequired(inpt){
+    inpt.forEach(e=>{QrySlt(e).required = false})}
+
+  function QryArryAll(e,string){
+    return Array.from(e.querySelectorAll(string))
+    }
+  
+
   const Rad0=(e)=>{
-    e.style.borderRadius = '0px 0px 0px 0px'}
+    e.style.borderRadius = '100px 100px 100px 100px'}
   const RadB=(e)=>{
     e.style.borderRadius = '25px 25px 0px 0px'}
 

@@ -9,7 +9,7 @@
 
 #Bandeija {
   position: absolute;
-  z-index: 999;
+  z-index: 9999999999;
 }
 #Bandeija > div {padding: 4px;cursor: pointer;background:#e4e4e4;}
 #Bandeija > div:hover {background:#ff6600;}

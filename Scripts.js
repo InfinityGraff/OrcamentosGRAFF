@@ -2,10 +2,11 @@
   // Const's Fundos
     const FundoModal = QrySlt('#Fundo-Modal')
     const InnerVazio = QrySlt('#InnerVazio')
-
     const ResultFilTable = QrySlt('#resultfilter1')
-
     const FormOrcamento = QrySlt('#FormOrcamento')
+    const BtnInfo2 = QrySlt('#btnINFO2')
+    const ModalInfo = QrySlt('#ModalInfo')
+    const Prazo = QrySlt('#Prazo')
 
   // Const's Login
     const LgTop = QrySlt('#Login-Top')
@@ -17,23 +18,11 @@
     const Bandeja = QrySlt("#Bandeija")
     const GrupClnt = QrySlt('#Grupo-Cliente')
     const GrupClntSv = QrySlt('#GrupoClntSave')
-
-    const DivClntForm = QrySlt('#Div-Inpt-Clnt')
-    const I_Clnt = QrySlt('#Div-Inpt-Clnt input')
-      const DivClntInfo = QrySlt("#DivClntInfo")
-      const ClntInfo = QrySlt("#ClntInfo")
-      const IInnClnt = QrySlt('#InfoInnerClnt')
-        const InnClnt = QrySlt('#Inner-Clnt')
-
+    const GrupClntInfSv = QrySlt('#GrupoClntSaveInfo')
+    const RestaNome = QrySlt('#RestaNome')
     const DivCnttForm = QrySlt('#Div-Inpt-Cntt')
-    const I_Cntt =  QrySlt('#Div-Inpt-Cntt input')
-      const DivCnttInfo = QrySlt("#DivCnttInfo")
-      const CnttInfo = QrySlt("#CnttInfo")
-      const IInnCntt = QrySlt('#InfoInnerCntt')
-        const InnCntt = QrySlt('#Inner-Cntt')
-
-    const btncadastro = QrySlt('#cadastrar')
-    
+    const I_Clnt = QrySlt('#Div-Inpt-Clnt input')
+    const InnClnt = QrySlt('#Inner-Clnt')
 
   // Const's Form
     const I_Serv = QrySlt("#Div-Inpt-Serv select")
@@ -43,14 +32,10 @@
     const I_QFix = QrySlt('#Div-Inpt-QFix select')
     const I_Etc = QrySlt("#Div-Inpt-Etc input")
     const I_Lcal = QrySlt("#Div-Inpt-Lcal input")
-    const I_Larg = QrySlt('#Div-Inpt-Larg input')
-    const I_Alt = QrySlt('#Div-Inpt-Alt input')
     const I_Qnt = QrySlt('#Div-Inpt-Qnt input')
     const DivEtc = QrySlt("#Div-Inpt-Etc")
 
-    const InptForm = QrySltAll('form input')
     const Selects = QrySltAll('select')
-    const DivServ = QrySlt('#Div-Inpt-Serv')
     const DivTipo = QrySlt('#Div-Inpt-Tipo')
     const DivCbmt = QrySlt('#Div-Inpt-Cbmt')
     const DivLarg = QrySlt('#Div-Inpt-Larg')
@@ -61,64 +46,39 @@
     const Grupo_Medidas = QrySlt('#Grupo-Medidas')
     let ArryMdds=['#Div-Inpt-Larg input','#Div-Inpt-Alt input','#Div-Inpt-Qnt input']
 
-  // Const's Info
-    const EditNoneInfo = QrySlt('#RestaNome button')
-    const BtnInfo1 = QrySlt('#btnINFO1')
-    const BtnInfo2 = QrySlt('#btnINFO2')
-
-    const FormPg = QrySltAll('input[type="radio"][name="pag"]')
-      const divpag = QrySlt('#divpaginfo')
-        const In_ValrPag = QrySlt('#vlrPagInfo')
-        const In_DataPag = QrySlt('#dataPagInfo')
-    const I_Arte = QrySlt('#ArteInfo')
-      const divdesig = QrySlt('#divdesigner')
-        const I_Desig = QrySltAll('input[type="radio"][name="Desig"]')
-    const I_Frete = QrySltAll('input[type="radio"][name="Frete"]')
-      const divEndrc = QrySlt('#DivEndereco')
-    const Endereco = QrySlt('#Endereco')
-      const RsutFrete = QrySlt('#RsutFrete')
-        const InnLcal = QrySlt('#Inner-Lcal')
-
-    const titleinfo2 = QrySlt('#titleinfo2')
-    const Prazo = QrySlt('#Prazo')
-
-    const Abas = { // conferir se as div tem esses Mesmos Nomes
-      'Home': QrySlt('#Aba-Home'),
-      'Orcamento': QrySlt('#Aba-Orcamento'),
-      'Relatorio': QrySlt('#Aba-Relatorio'),
-      'Agenda': QrySlt('#Aba-Agenda'),
-      'Clientes': QrySlt('#Aba-Clientes'),
-    }
-
 //_________________________________________________________________________________________________________
 
 // Declarações dos Arrays
   let IDPdd = 'ID-001'
   let ITitem = 'ID-001'
-  let ArryUni = ['','','',''] // Art,Dsgn,Fret,VlrFret
+  let ArryUni = ['','','','',''] // Art,Dsgn,Fret,Lcal,VlrFret
   let ArryClnt = ['','','','','','','',''] // Clnt,Cntt
   let ArryItem = []
   let ArryPag = ['','',''] // //Form,Vlr,Data
-  let ArryPDD = {
-    IDPdd:{'Clnt':ArryClnt,ITitem:ArryItem,'UNI':ArryUni,'Pag':ArryPag}}
+  let ArryPDD = {IDPdd:{'Clnt':ArryClnt,ITitem:ArryItem,'UNI':ArryUni,'Pag':ArryPag}}
+  var IDs = ['0001','0002','0003']
+  let ObjInfo = {}
 
 // OnLoad's
   QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','')
 
-  $(document).ready(() =>{$('#Div-Inpt-Cntt input').mask('(99) 99999-9999')})
-
-  var W400 = window.matchMedia("(max-width: 500px)")
-  MediaQuere(W400)
-  W400.addListener(MediaQuere)
-
-  window.onload = Reload
-
-  function Reload(){
-    preloadImages()
-      //LoadBlocos()
-  }
-
-  function preloadImages(){ // fica aqui em cima pois ela é uma função pra ser chamada na tora
+  document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
+    if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
+    (conteudo=>{QrySltAll('input[type="text"]').forEach(inpt=>Rad0(inpt))})(Bandeja.innerHTML)}
+  })
+  document.addEventListener('DOMContentLoaded',()=>{ // $(document).ready(()=>{$('input[name="Cntt"]').mask('(99) 99999-9999')})
+    var inputs = document.querySelectorAll('input[name="Cntt"]')
+    inputs.forEach((I)=>{I.addEventListener('input',(e)=>{var Mask = ''
+        var Val = e.target.value.replace(/\D/g, '')
+  
+        if(Val.length>0){Mask='('+Val.substring(0,2)+ ') '
+        if(Val.length>2){Mask+=Val.substring(2,7)
+        if(Val.length>7){Mask+='-'+Val.substring(7,11)
+       }}}e.target.value=Mask
+      })
+    })
+  })
+  document.addEventListener('DOMContentLoaded',()=>{ // PreloadImagens
     const imageUrls = tabela.filter(e=>tabela[8]!==''||tabela[8]!==null)
     
     imageUrls.forEach(url => {
@@ -126,7 +86,11 @@
       img.src = LinkDrive+url[8]
       document.getElementById('image-preloader').appendChild(img)
     })
-  }
+  })
+
+  var W400 = window.matchMedia("(max-width: 500px)")
+  MediaQuere(W400)
+  W400.addListener(MediaQuere)
 
 //_________________________________________________________________________________________________________
 
@@ -152,12 +116,19 @@
   function trocarPosicao(e1,e2){ // fazer esta função receber mais, e mandar pra biblioteca
     e1.parentNode.insertBefore(e1,e2)
   }
+  QrySltAll('nav a, #Home').forEach(e=>{e.addEventListener('click',()=>{ // esse tbm tem uns Errinhos
+    
+    const Abas = { // conferir se as div tem esses Mesmos Nomes
+      'Home': QrySlt('#Aba-Home'),
+      'Orcamento': QrySlt('#Aba-Orcamento'),
+      'Relatorio': QrySlt('#Aba-Relatorio'),
+      'Agenda': QrySlt('#Aba-Agenda'),
+      'Clientes': QrySlt('#Aba-Clientes'),
+    }
 
-  // esse tbm tem uns Errinhos
-  const Paginas = QrySltAll('nav a, #Home') 
-  Paginas.forEach(e=>{e.addEventListener('click',()=>{for(const [key,value] of Object.entries(Abas)){
-          value.style.display = (key === e.id) ? 'flex' : 'none'}})})
-  
+    for(const [key,value] of Object.entries(Abas)){
+          value.style.display = (key === e.id) ? 'flex' : 'none'}})
+  })
   function SaveSync(e,inpt){
     if(KeyEnter(e)){
       if(SemLogin()){MiniInput('Senha');return}
@@ -175,24 +146,40 @@
         inpt.value='' ; inpt.focus()}
     } //Reload()
   }
+  function proxinpt(e){
+    if(KeyEnter(e)){
+    var idx = parseInt(e.getAttribute('tabindex'))
+    var next = QrySlt('[tabindex="'+(idx+1)+'"]')
+    if (next){next.focus()}}
+  }
 
-// Funções pra Abrir Modais
+// Funções pra Abrir Modais ______________________________________________________________________________________________________________
 
   function AbreLogin(){ // 1-HTML
     AbrirModalHTML(FundoModal,QrySlt('#ModalLogin')) ; LoginSpn.innerHTML='' ; I_Senha.focus()
   }
-  function AbreInfo(id,Total){ // 2-JS
+  async function AbreInfo(Arry,id,nada,Total,btn){ // 2-JS
+    if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}
     AbrirModalHTML(FundoModal,QrySlt('#ModalInfo'))
     QrySlt('#Title-Info').innerHTML=`${id}: ${'Nome'}, Total: ${Total}`
-    BtnInfo1.addEventListener('click',()=>{Trogl(QrySlt('#Modal-Info2'),QrySlt('#Modal-Info1'))})
-    BtnInfo2.addEventListener('click',()=>{None(FundoModal);BtnInfo2.innerHTML = 'entrada'})
+
+    // Chama os EventListener
+    const formInfo1 = QrySlt('#Modal-Info1') ; const SbmtInfo1 = QrySlt('#btnINFO1')
+    const formInfo2 = QrySlt('#Modal-Info2') ; const SbmtInfo2 = QrySlt('#btnINFO2')
+  
+    formInfo1.addEventListener('input', ()=>{Ouvinte(formInfo1,SbmtInfo1)})
+    formInfo1.addEventListener('change',()=>{Ouvinte(formInfo1,SbmtInfo1)})
+  
+    formInfo2.addEventListener('input', ()=>{Ouvinte(formInfo2,SbmtInfo2)})
+    formInfo2.addEventListener('change',()=>{Ouvinte(formInfo2,SbmtInfo2)})
+  
+    SbmtInfo1.addEventListener('click',()=>{Trogl(QrySlt('#Modal-Info2'),QrySlt('#Modal-Info1'))})
+    SbmtInfo2.addEventListener('click',()=>{None(FundoModal);SavePdd('','','Info','','')})
   }
   function AbreCadastro(){ // 1-HTML
     const ModalCadastro = QrySlt('#ModalCadastro')
     AbrirModalHTML(FundoModal,ModalCadastro)
     Show(ModalCadastro)
-    ModalCadastro.children[1].value = I_Clnt.value
-    ModalCadastro.children[2].value = I_Cntt.value
   }
   function MiniInput(tipo){ // 2-JS
     let palce = tipo === 'Senha' ? 'Insira a Senha' : tipo === 'Clnt' ? 'Nome do Cliente' : '' 
@@ -213,22 +200,89 @@
       </div>`
   }
 
-//_________________________________________________________________________________________________________
+// Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
 
-// inicio das Funções do Form (as Funções q Vão Controlar os Arrays Principais)
+  document.addEventListener('input',()=>{handle();Clientes()}) // to chamando assim pq posso querer chamar mais...
+
+  function handle(){
+    QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
+  }
+  function Clientes(){ // Funções que São Atreladas ao onInput Clnt, e Cntt
+    const e = event.target
+    if(e.name === 'Clnt'){BandejaFit(e,0);ShowCntt(DivCnttForm);ShowBtnCadastro();InnClnt.innerHTML = e.value}
+    if(e.name === 'Cntt'){BandejaFit(e,1);QrySlt('#Inner-Cntt').innerHTML = e.value}
+    if(e.name === 'Local'){QrySlt('#Inner-Lcal').innerHTML = e.value}
+
+    function ShowCntt(DivCnttForm){if(I_Clnt.value===''){None(DivCnttForm)}else{Show(DivCnttForm)}}
+
+    function ShowBtnCadastro(){
+      if(ArryClnt[7]===''){
+           QrySltAll('.btn_cdstr').forEach(e=>Show(e))}
+      else{QrySltAll('.btn_cdstr').forEach(e=>None(e))}
+    }
+
+    function BandejaFit(inpt,indx){
+      Rad0(inpt); Bandeja.innerHTML = ""
+      let value = inpt.value.toLowerCase()
+      if (!value)return
+  
+      Bandeja.style.top = `${inpt.getBoundingClientRect().bottom}px`
+      Bandeja.style.left = `${inpt.getBoundingClientRect().left}px`
+      Bandeja.style.width = `${inpt.offsetWidth}px`
+  
+      Cttlist.map((e,idx) => [e[indx],idx])
+      .filter(([opt])=>opt.toLowerCase().includes(value))
+      .forEach(([opt,Idex])=>{RadB(inpt)
+        const li = CreateTag('div')
+        li.innerHTML=`<div>${opt}</div>`
+        if (indx===1){li.innerHTML+=`<div>${Cttlist[Idex][0]}</div>`}
+          li.addEventListener("click",()=>{
+            ArryClnt = [...Cttlist[Idex]]
+            Rad0(inpt) ; ShowClntSalvo()
+            Bandeja.innerHTML = ""
+          });Bandeja.appendChild(li)})
+    }
+  }
+  function ShowEditClnt(){
+    if(ArryClnt[7]===''){
+         QrySltAll('.btn_edtcl').forEach(e=>Show(e))}
+    else{QrySltAll('.btn_edtcl').forEach(e=>None(e))}
+  }
+
+  function ShowClntSalvo(){
+    Trogl([GrupClntSv,GrupClntInfSv],[GrupClnt,RestaNome])
+    const grupos = [GrupClntSv,GrupClntInfSv]
+    
+    grupos.forEach(e=>{
+       e.innerHTML = `<div>${ArryClnt[0]}</div><div>${ArryClnt[1]}</div>
+         <div class="baby Ct" onclick="EditaClntSave('${ArryClnt[0]}','${ArryClnt[1]}')">Editar</div>`
+    })
+  }
+
+  function EditaClntSave(Clnt,Cntt){
+    Trogl([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv])
+    ArryClnt.fill('')
+  }
+
+// inicio das Funções do Form (as Funções q Vão Controlar os Arrays Principais)________________________________________________
 
   function NewOrcamentos(btn){
-    // Cria Novo ID
+    QrySlt('#FormOrc > h2').innerHTML = 'Orçamento: '+('0000'+(Math.max(...IDs)+1)).slice(-3) // Cria ID
     Show(FormOrcamento)
     None(btn.parentNode)
-  }
 
+    for(const grupo in grupos){ // Carrega Lista Serv
+      const options = grupos[grupo].map(Serv =>
+      `<option value='${Serv}'>${Serv}</option>`).join("")
+      I_Serv.insertAdjacentHTML('beforeend',
+      `<optgroup label='${grupo}'>${options}</optgroup>`)
+    }
 
-  function hojeInfo(){ // tentar jogar isso pra a Biblioteca
-    ArryPag[2] = In_DataPag.value = NewDate;RequedInfo('2')
+    QrySltAll('select').forEach(e=>{e.addEventListener('change',ShowTipo)})
+
   }
-  function cadastrar(){ // tratar esta função pra ver se ela é nessesária agora...
-    if(ArryClnt[7]===''){Show(btncadastro)}else{None(btncadastro)}
+  function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
+    ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
   }
   function AddMedidas() { // Trabalhar nessa da uma Diminuida e Botar o Botão q Sumiu
     ["#Div-Inpt-Mais","#Div-Inpt-Larg","#Div-Inpt-Alt","#Div-Inpt-Qnt"].forEach(Inpt => {
@@ -252,36 +306,6 @@
     parentDiv.parentNode.removeChild(parentDiv)
     FilTable()
   }
-  QrySltAll('form input').forEach(input => { // Passar isso pro AddEventListener Individual
-    input.addEventListener('input',()=>{
-      InnClnt.innerHTML = I_Clnt.value;
-      InnCntt.innerHTML = I_Cntt.value;
-      InnLcal.innerHTML = I_Lcal.value;})}
-  )
-
-
-  function BandejaFit(inpt,indx){
-    Rad0(inpt); Bandeja.innerHTML = ""
-    let value = inpt.value.toLowerCase()
-    if (!value)return
-
-    Bandeja.style.top = `${inpt.getBoundingClientRect().bottom}px`
-    Bandeja.style.left = `${inpt.getBoundingClientRect().left}px`
-    Bandeja.style.width = `${inpt.offsetWidth}px`
-
-    Cttlist.map((e,idx) => [e[indx],idx])
-    .filter(([opt])=>opt.toLowerCase().includes(value))
-    .forEach(([opt,Idex])=>{RadB(inpt)
-      const li = CreateTag('div')
-      li.innerHTML = `<div>${opt}</div>`
-      if (indx === 1) {li.innerHTML += `<div>${Cttlist[Idex][0]}</div>`}
-        li.addEventListener("click",()=>{
-          ArryClnt = [...Cttlist[Idex]]
-          Rad0(inpt) ; ReadArray()
-          Bandeja.innerHTML = ""
-          console.log(ArryClnt)
-        });Bandeja.appendChild(li)})
-  }
   let unddback=""; function ShowTipo(){
     let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
     if (undd !== unddback){
@@ -294,94 +318,9 @@
         None([DivAlt,DivLarg,Grupo_Tipos])}}
     unddback = undd
   }
-  function ReadArray(){
-    Trogl(GrupClntSv,GrupClnt);GrupClntSv.innerHTML = 
-    `<div>${ArryClnt[0]}</div><div>${ArryClnt[1]}</div>
-    <button onclick="EditaClienteForm(
-      '${ArryClnt[0]}','${ArryClnt[1]}')">Editar</button>`
-    Trogl([IInnCntt,IInnClnt],[ClntInfo,CnttInfo])
-      IInnClnt.innerHTML = ArryClnt[0]
-      IInnCntt.innerHTML = ArryClnt[1]
-      InnClnt.innerHTML = ArryClnt[0]
-      InnCntt.innerHTML = ArryClnt[1]
-      I_Clnt.value = ArryClnt[0]
-      I_Cntt.value = ArryClnt[1]
-  }
-  function EditaClienteForm(nome,cntt){
-    Trogl(GrupClnt,GrupClntSv)
-    ArryClnt.fill('')
-    console.log(ArryClnt)
-  }
-  function handleInput(type,inpt,inptIf,DivInpt,Btn,Inner){
-    inptIf.value = inpt.value
-    if(inpt.value!==''){
-      Trogl([Btn,Inner],DivInpt) ; Inner.innerHTML = inpt.value
-    }else{Trogl(DivInpt,[Btn,Inner])}
-    if(type=='Clnt'){ArryClnt[0]=I_Clnt.value}else{ArryClnt[1]=I_Cntt.value}
-      Btn.addEventListener('click',()=>{
-        Trogl([DivClntInfo,DivCnttInfo],[Btn,IInnCntt,IInnClnt])})
-        RequedInfo()
-  }
-  function RequedInfo(etapa) {
-    None(BtnInfo1,BtnInfo2)
-    if(etapa==='1'){
-      if((ArryClnt[0] !== '') && (ArryUni[0] !== '_Nada') && (
-        (ArryUni[2] === 'Graff' || 
-        (ArryUni[2] !== 'Graff' && RsutFrete.innerHTML !== '...'))))
-        {Show(BtnInfo1)}}
-    if(etapa==='2'){
-      if(ArryPag[0] === 'NPag' ||(ArryPag[0] !== 'NPag' &&
-        (ArryPag[1] !== '' && ArryPag[2] !== '')))
-        {Show(BtnInfo2)}
-    }
-        if(ArryClnt[0]===''){Red(DivClntInfo)}else{Bak(DivClntInfo)}
-      if(ArryPag[1]===''){Red(In_ValrPag.parentNode)}else{Bak(In_ValrPag.parentNode)}
-      if(ArryPag[2]===''){Red(In_DataPag.parentNode)
-        }else{Bak(In_DataPag.parentNode)}
-      if(ArryUni[0]===''){Red(I_Arte)}else{Bak(I_Arte)}
-      if(ArryUni[2]===''){Red(QrySlt('#DivFrete'))}else{Bak(QrySlt('#DivFrete'))}
-      if(ArryUni[3]===''){
-        Red(Endereco.parentNode)}else{Bak(Endereco.parentNode)}
-    
-    //console.log(ArryClnt)
-    //console.log(ArryUni)
-    //console.log(ArryPag)
-    //console.log(ArryItem)
-    //console.log(Cttlist)
-  }
 
-
-// Eventos Cliente
-  I_Clnt.addEventListener('input',()=>{
-    BandejaFit(I_Clnt,0)
-    handleInput('Clnt',I_Clnt,ClntInfo,DivClntInfo,EditNoneInfo,IInnClnt)
-    cadastrar()
-    console.log(ArryClnt)
-  })
-  I_Cntt.addEventListener('input',()=>{BandejaFit(I_Cntt,1)
-    handleInput('Cntt',I_Cntt,CnttInfo,DivCnttInfo,EditNoneInfo,IInnCntt)
-  })
-  ClntInfo.addEventListener('input',()=>{BandejaFit(ClntInfo,0)
-      ClntInfo.addEventListener('keyup',e=>{
-          if (KeyEnter(e)){CnttInfo.focus()}})
-      ArryClnt[0] = ClntInfo.value;RequedInfo('1')
-  })
-  CnttInfo.addEventListener('input',()=>{BandejaFit(CnttInfo,1)
-      ArryClnt[1] = CnttInfo.value;RequedInfo('1')
-  })
-// Eventos Info 1
-  I_Arte.addEventListener('change',()=>{
-        I_Arte.value.match(/^_/) ? None(divdesig):Show(divdesig)
-        ArryUni[0] = I_Arte.value ; RequedInfo('1')
-  })
-  I_Desig.forEach(R=>{R.addEventListener('change',()=>{
-        ArryUni[1] = R.value ; RequedInfo('1')})
-  })
-  I_Frete.forEach(R=>{R.addEventListener('click',()=>{
-    if(R.value==='Graff'){None([divEndrc,RsutFrete,RsutFrete.parentNode])
-    }else{Show(divEndrc)}
-    Endereco.focus();ArryUni[2] = R.value;RequedInfo('1')})
-  })
+  const Endereco = QrySlt('#Endereco')
+  const RsutFrete = QrySlt('#RsutFrete')
   Endereco.addEventListener('keyup',async(e)=>{
     if(KeyEnter(e)){
       PesquisaKM(Endereco.value)
@@ -390,33 +329,8 @@
       ArryUni[2]=Endereco.value ; ArryUni[3]=RsutFrete.innerHTML
       RequedInfo('1')}
   })
-// Eventos Info 2
-  FormPg.forEach(R=>{R.addEventListener('click',()=>{
-    if(R.value === 'NPag'){None(divpag);ArryPag[0]='NPag'}
-    else{Show(divpag);ArryPag[0]=R.value}
-    In_ValrPag.focus() ; RequedInfo('2')})
-  })
-  In_ValrPag.addEventListener('input',()=>{
-    ArryPag[1] = In_ValrPag.value ; RequedInfo('2')
-  })
-  In_DataPag.addEventListener('input',()=>{
-    ArryPag[2] = In_DataPag.value ; RequedInfo('2')
-  })
-  Prazo.addEventListener('input',()=>{
-    DescPrazo()
-  })
-  Selects.forEach(e=>{e.addEventListener('change',ShowTipo)})
+  Prazo.addEventListener('input',()=>{DescPrazo()})
 
-  for(const grupo in grupos){
-      const options = grupos[grupo].map(Serv =>
-      `<option value='${Serv}'>${Serv}</option>`).join("")
-      I_Serv.insertAdjacentHTML('beforeend',
-      `<optgroup label='${grupo}'>${options}</optgroup>`)
-  }
-
-
-// Funções Grandes____________________________________________________________________________________________
-// Funções Grandes____________________________________________________________________________________________
 // Funções Grandes____________________________________________________________________________________________
 
 function DescPrazo(){
@@ -432,7 +346,6 @@ function DescPrazo(){
 
   QrySlt('#innerdesc').innerHTML = 'Desconto: '+valorFinal
 }
-
 function InnerOptions(e){
   if(e==='Serv'){
     I_Tipo.innerHTML = OptFilter('Tipo',1)
@@ -447,7 +360,6 @@ function InnerOptions(e){
   I_Gram.innerHTML = OptFilter('Gram',3)
   I_QFix.innerHTML = OptFilter('QFix',4)
 }
-
 function OptFilter(Stng,Coll){ // cria as listas Options
 
   function Fill(R){
@@ -472,6 +384,7 @@ function OptFilter(Stng,Coll){ // cria as listas Options
   .map(e=>{return `<option value='${e}'>${e}</option>`}).join("")
 }
 
+// Chamar igual com a nova q criei
 Array.from(Selects).concat(Array.from(QrySltAll("form input"))).forEach(E=>{
 E.addEventListener("change",FilTable) ; E.addEventListener("input",FilTable)})
 
@@ -504,8 +417,8 @@ function FilTable(){
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
       let FuncAdd = `AddLista('${NewItem.join('/')}','Lista')`
       let FuncSav = `SavePdd( '${NewItem.join('/')}','Bloco'  ,'Filter','${TotalDesc}','this')`
-      let FuncEnt = `SavePdd( '${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
-    
+      let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
+
     const item = CreateTag('div')
     item.innerHTML =
       `<div class="itemfilter Ct Cl w100 Rdd">
@@ -579,10 +492,31 @@ async function PesquisaKM(inpt){
   RsutFrete.innerHTML = listaLugares[inpt]
   }else{RsutFrete.innerHTML = 'Lugar não Encontrado'}
 }
+
+function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os Arrays
+  const date = event.target.getAttribute('data')
+  const Value = event.target.value
   
+// na verdade todo Show que Acontecer aqui, deve acontecer em todos lugares, tipo (Show Endereço Info, tem q dar Show no Form tbm)
+  if(date){const val = Value==='NPag' ? ['#Endereco'] : ['#vlrPagInfo','#dataPagInfo']
+    if(Value==='NPag'||Value==='Graff'){None(QrySlt(date)) ; EscRequired(val)}
+    else{Show(QrySlt(date)) ; AddRequired(val)}
+  if(Value.match(/^_/) || Value===''){None([QrySlt('#divdesigner')])
+  }else{Show(QrySlt('#divdesigner'))}
+  }
+  const valid = QryArryAll(form,'input[required]').concat(QryArryAll(form,'select[required]'))
+    .every(e=>e.value) && QryArryAll(form,'input[type="radio"][required]:checked').length>0
+  ToggleShowNone(btn,valid)
+
+  // Criar o Obj deve servir pra Todos, ele só ta só pra o Modal-Info, mas será pra (Form do Orçamento, inuts do CRUD, e para o Modal-Info)
+  const Rad = QryArryAll(ModalInfo,'input[type="radio"]:checked, select,input[type="checkbox"]:checked').map(i=>`${i.name}:${i.value}`)
+  const Txt = QryArryAll(ModalInfo,'input').filter(i=>(i.type!=='radio'&&i.type!=='checkbox')&&i.Value!=='').map(i=>`${i.id}:${i.value}`)
+  let obj = {};[...Rad,...Txt].forEach(i=>{let [k,v]=i.split(':');obj[k]=v})
+  ObjInfo = obj
+}
+
 async function SavePdd(arry,Stts,orig,Ttal,btn){
-  //consts
-    const semNome=(InnClnt.innerHTML===''||InnClnt.innerHTML==='Nome')
+
     const semClnt = I_Clnt.value === ''
     const oCRUD = orig === 'CRUD'
     const oFILT = orig === 'Filter'
@@ -593,7 +527,7 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
   if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}
 
   if(ArryClnt[7]!==''){ArryPDD.IDPdd.Clnt = ArryClnt}
-  if(Bloco&&((oCRUD&&semNome)||(oFILT&&semClnt))){
+  if(Bloco&&((oCRUD&&semClnt)||(oFILT&&semClnt))){
     MiniInput('Clnt') ; await PrmssInnr(InnClnt)
     ArryClnt[0]=InnClnt.innerHTML}
   if(Entra&&oFILT){
@@ -601,33 +535,22 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
       ArryMdds.forEach(e=>IptsDIV(e).forEach(E=>{
       E.classList.toggle('error',E.value==='')})) ; return
     }else{
-      AbreInfo('ID',Ttal);await PrmssInnr(BtnInfo2)}}
-  if(Entra&&oCRUD){AbreInfo('ID',Ttal) ; await PrmssInnr(BtnInfo2)}
+      AbreInfo('','ID',Ttal);await PrmssInnr(BtnInfo2)}}
+  if(Entra&&oCRUD){AbreInfo('','ID',Ttal) ; await PrmssInnr(BtnInfo2)}
   
   const ARRAY = arry.split('/')
   ARRAY[6] = ARRAY[6].split(',').map(e => e.split('|'))
   ARRAY[1] = Stts
   ArryItem.push(ARRAY)
-  console.log(ArryPDD)
+
+
+  console.log(ObjInfo)
 }
 
-//
-  // $(document).ready(() =>{$('#Div-Inpt-Cntt input').mask('(99) 99999-9999')})
-
-  // ao fechar ModalInfo, salvar de onde Parou
-  // fica uma notificação, avizando que o antigo modal ta ali
-
+//__________________________________________________________________________________
+  // Salvar de Onde Parou, fica uma notificação, avizando que o antigo modal ta ali
   // Data Máxima, o q seria equivalente ao Valor Mínimo
-  // Data não pode andar de ré
-
-  // tipo arte não ta mais obrigatório
   // Opção para editar todos os Modais antes de concluir
   // Opções para indivudualizar (Entrega,Aplicação,Arte)
-
   // Aolicação Baixo ou Alto? Superficie: Plana ou Irregular
   // Aplicar Onde? (IA Responde se dá ou não.)
-  // a unica coisa que preciso da biblioteca antiga, é só o mediaquere
-
-  // persistir o que já ta selecionado
-  // Selecionar quando só tiver 1
-//
