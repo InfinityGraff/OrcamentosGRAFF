@@ -1,13 +1,13 @@
 // PreScript
   const User={
-    '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia'],
-    '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin'],
-    '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo'],
-    '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie']
+    '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
+    '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
+    '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
+    '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
   }
 
   const Cttlist = [
-    ['Marcelo Max','(81) 98824-3496','NomeCompleto','Loja','CnttLoja','Categoria',0.2,'ID-001'],
+    ['Marcelo Max','(81) 98824-3496','NomeCompleto','Loja','CnttLoja','Categoria',0.3,'ID-001'],
     ['Edilson Skyllus','(88) 88888-8888','NomeCompleto','Loja','CnttLoja','Categoria',0.2,'ID-002']
   ]
 
@@ -288,8 +288,7 @@
     </g>
     </svg>
   `
-  const IconSetaVolt = `
-      <?xml version="1.0" encoding="UTF-8"?>
+  const IconSetaVolt = `<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
     <!-- Creator: CorelDRAW 2020 (64 Bit) -->
     <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="60.0848mm" height="78.3532mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
@@ -308,6 +307,28 @@
       <path class="fil0" d="M1684.19 3916.97c1352.66,-933.69 2705.32,-1867.38 4057.97,-2801.08 656.9,-453.41 -33.84,-1454.12 -690.75,-1000.68 -1563.15,1079.01 -3124.27,2160.99 -4689.75,3236.64 -399.92,274.8 -519.93,772.11 -93.07,1065.46 1594.27,1100.48 3188.56,2200.94 4782.84,3301.42 656.9,453.44 1347.64,-547.28 690.74,-1000.68 -1352.65,-933.7 -2705.31,-1867.39 -4057.97,-2801.08z"/>
     </g>
     </svg>
+  `
+
+  const IconXDesc = `<?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <!-- Creator: CorelDRAW 2020 (64 Bit) -->
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="124.796mm" height="19.3558mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+    viewBox="0 0 12465.36 1933.37"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+    <defs>
+      <style type="text/css">
+      <![CDATA[
+        .fil0 {fill:red;fill-rule:nonzero}
+      ]]>
+      </style>
+    </defs>
+    <g id="Camada_x0020_1">
+      <metadata id="CorelCorpID_0Corel-Layer"/>
+      <polygon class="fil0" points="-0,1786.28 5709.84,966.68 -0,147.09 20.93,0 6232.67,891.63 12444.43,0 12465.36,147.09 6755.52,966.68 12465.36,1786.28 12444.43,1933.37 6232.68,1041.74 20.93,1933.37 "/>
+    </g>
+    </svg>
+  
   `
 
 

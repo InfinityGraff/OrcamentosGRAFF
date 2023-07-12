@@ -13,6 +13,7 @@
     const Login = QrySlt('#Login-Cod')
     const LoginSpn = QrySlt('#Span-Login')
     const I_Senha = QrySlt('#Inpt-Senha')
+    const ImgPerfil = QrySlt('#Img-Perfil')
 
   // Const's Clientes
     const Bandeja = QrySlt("#Bandeija")
@@ -60,7 +61,7 @@
   let ObjInfo = {}
 
 // OnLoad's
-  QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','')
+  QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','','')
 
   document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
     if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
@@ -141,7 +142,7 @@
       if(tipo==='Clnt'){InnClnt.innerHTML = inpt.value ; None(FundoModal)}
       if(tipo==='Senha'){
         const Spn = 'Senha Inválida' ; const Cryp = CrypPass(inpt.value)
-          if(User[Cryp]){None([FundoModal]) ; LgTop.innerHTML=User[Cryp][1] ; Login.innerHTML=User[Cryp][0]}
+          if(User[Cryp]){None([FundoModal]) ; LgTop.innerHTML=User[Cryp][1] ; Login.innerHTML=User[Cryp][0] ; ImgPerfil.src=User[Cryp][2]}
           else{LoginSpn.innerHTML=Spn ; inpt.placeholder=Spn}
         inpt.value='' ; inpt.focus()}
     } //Reload()
@@ -242,7 +243,7 @@
         if (indx===1){li.innerHTML+=`<div>${Cttlist[Idex][0]}</div>`}
           li.addEventListener("click",()=>{
             ArryClnt = [...Cttlist[Idex]]
-            Rad0(inpt) ; ShowClntSalvo()
+            Rad0(inpt) ; ShowClntSalvo() ; FilTable()
             Bandeja.innerHTML = ""
           });Bandeja.appendChild(li)})
     }
@@ -269,7 +270,10 @@
 // inicio das Funções do Form (as Funções q Vão Controlar os Arrays Principais)________________________________________________
 
   function NewOrcamentos(btn){
-    QrySlt('#FormOrc > h2').innerHTML = 'Orçamento: '+('0000'+(Math.max(...IDs)+1)).slice(-3) // Cria ID
+    QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+('0000'+(Math.max(...IDs)+1)).slice(-3)}) // Cria ID
+    
+    if(W400.matches){ScrolRoll(135); console.log('Chamou')}
+
     Show(FormOrcamento)
     None(btn.parentNode)
 
@@ -291,7 +295,7 @@
       var clone
         if(Inpt === "Div-Inpt-Mais"){
           clone = CreateTag('div') ; clone.classList.add('Ct')
-          clone.innerHTML = TagSVG(IconEscList,'','','EscMedidas(this)')}
+          clone.innerHTML = TagSVG(IconEscList,'','','EscMedidas(this)','')}
         else{clone = QrySlt(Inpt).querySelector("input").cloneNode(true) ; clone.value = ""}
       QrySlt(Inpt).appendChild(clone)})
 
@@ -403,16 +407,14 @@ function FilTable(){
     const VlrFinal = Reais(Totais[1])
     const VlrM2 = Reais(Vlr)
     const Desc = (i=Cttlist.findIndex(I=>I.includes(ArryClnt[0])))=>i+1?Cttlist[i][6]:0
+    const ShowNone = Desc() === 0 ? 'none' : ''
     const TotalDesc = Reais(Totais[1]*(1-Desc()))
     const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
     const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
     const IMG = `${LinkDrive}${Foto}`
     const Etc = I_Etc.value
     const Mdds  =Totais[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
-    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`)
-    .concat(`*Total: R$ ${TotalDesc}*`).join('/')
-
-    
+    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
 
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
@@ -422,19 +424,22 @@ function FilTable(){
 
     const item = CreateTag('div')
     item.innerHTML =
+
       `<div class="itemfilter Ct Cl w100 Rdd">
         <div class="RstTitle w100 Pddn-XY Ct Bt">
           <div class="RstServ">${Serv} ${Tipo}</div>
-          <div class="RstGram">${Gram}</div></div>
+          <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
+        </div>
         <div class="Ct Bt Pddn-XY">
           <div id="FotoFilter"><img src="${IMG}" onclick="${FuncIMG}"></div>
           <div class="Ct Cl"><div class="Descricao">
-                <div class="RstCbmt"><strong>Acbmnt: </strong>${Cbmt}</div>
-                <div class="RstQnt"><strong>Qnt: </strong>${QFix} Und</div>
-              </div><hr><div class="valores Ct Cl w100">
-                <div class="RstValrM2">R$ ${VlrM2} m²</div>
-                <div class="RstValrDesc">R$ ${VlrFinal} m²</div>
-                <div class="RstValrFinal Ct"><div>R$</div> ${TotalDesc}</div>
+                <div><strong>Acbmnt: </strong>${Cbmt}</div>
+                <div><strong>Qnt: </strong>${QFix} Und</div>
+                <div><strong>Grama: </strong>${Gram}</div>
+              </div><hr class="w100"><div class="valores Ct Cl w100">
+                
+                <div class="RstValrDesc ${ShowNone}">R$ ${VlrFinal}</div>
+                <div class="RstValrFinal Ct FtMd"><div class="FtMd">R$</div> ${TotalDesc}</div>
             </div></div>
           <div class="Ct Cl">
             <button class"RD Mg" onclick="${FuncAdd}">Adicionar</button>
@@ -445,7 +450,23 @@ function FilTable(){
     return item
   })
   items.forEach(I=>ResultFilTable.appendChild(I))
+
+  AddXdesc()
 }
+
+function AddXdesc() {
+  const elements = document.querySelectorAll('.RstValrDesc')
+
+  elements.forEach(e => {
+    const spn = document.createElement('span')
+    spn.innerHTML = TagSVG(IconXDesc,'','','','height: 20px; width: 57px;position: absolute;top: -3px;left: -57px;')
+    spn.style.position = 'relative'
+    spn.style.zIndex = '1'
+    e.appendChild(spn)
+  })
+}
+
+
 
 function Orcamento(arrays){
   const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
@@ -517,7 +538,7 @@ function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os
   console.log(obj)
 }
 
-/*
+
 async function SavePdd(arry,Stts,orig,Ttal,btn){
 
     const semClnt = I_Clnt.value === ''
@@ -549,7 +570,7 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
 
   console.log(ObjInfo)
 }
-*/
+
 
 //__________________________________________________________________________________
   // Salvar de Onde Parou, fica uma notificação, avizando que o antigo modal ta ali

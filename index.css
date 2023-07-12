@@ -7,6 +7,8 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   src: url('Font/MADE TOMMY Thin_PERSONAL USE.otf') format('opentype');}
 @font-face {font-family: 'Tommy_Bold';
   src: url('Font/MADE TOMMY Bold_PERSONAL USE.otf') format('opentype');}
+@font-face {font-family: 'Tommy_Medium';
+  src: url('Font/MADE TOMMY Medium_PERSONAL USE.otf') format('opentype');}
 
 :root{
   --Laranja: #fa7d09;
@@ -20,6 +22,8 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   --Lite:'Tommy_Ligth','Lexend Deca','Arial';
   --Rglr:'Tommy_Regular','Lexend Deca','Arial';
   --Bold:'Tommy_Bold','Lexend Deca','Arial';
+  --Medi:'Tommy_Medium','Lexend Deca','Arial';
+  
 }
 
 *{margin: 0px;
@@ -51,12 +55,17 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .cem{width:100%;}
 .B{font-weight: bold;}
 .Br{word-wrap: break-word;}
-.Grn{background: green;}
+.Grn{background: green;}.CrCnz{color: #ffffff2f;}
 .Red{background: red;}
 .Pddn-X{padding: 0% 5%;}
 .Pddn-Y{padding: 3% 0%;}
-.Pddn-XY{padding: 3% 5%;}
+.Pddn-XY{padding: 2% 4%;}
+.Mgrn-PX{margin: 20px 0px;}
 .tc{text-align:center;}
+.FtLt{font-family: var(--Lite)}
+.FtRg{font-family: var(--Rglr)}
+.FtBd{font-family: var(--Bold)}
+.FtMd{font-family: var(--Medi)}
 
 button {background: #73008A; border-radius: 255px;}
 button,.Login,.X,.ppt{cursor: pointer;}
@@ -88,10 +97,14 @@ button,.Login,.X,.ppt{cursor: pointer;}
 body{background: var(--DegradeFundo)}
 .Titlee{margin: 0 150 15 150;}
 h1{font-size: 40px; font-family: var(--Bold)}
-h2{color: var(--Laranja);}
+h2{font-size: 18px; color: var(--Laranja);}
 #Aba-Relatorio, #Aba-Orcamento, #Aba-Home{margin-top:100px}
 .Logo{
   width:50px;
+  margin: 4px 4px;
+}
+.ImgPerfil{
+  width: 35px;
   margin: 4px 4px;
 }
 
@@ -119,7 +132,8 @@ nav{background:#444444;width: 100%; height: 35px;}
       nav a:active{background: #0c0c0c;}
       .ativo{background: #353535;}
 
-form{width: 60%; height: 550px; padding: 50px 15px;}
+#FormOrc  {width:60%; height: 350px; padding:50px 15px;}
+#DivResult{width:40%; height: 350px; }
 
 form div[id*=Inpt]{
   width: 100%;
@@ -134,7 +148,7 @@ form div[id*=Inpt]{
 #Grupo-Medidas{padding: 0px 5vw;}
 
 input,select,.baby,#Div-Inpt-Mais div{
-width: 100%; height: 40px;
+width: 100%; height: 30px;
 font-size: 14px;
 border-radius: 255px;
 background: var(--CorInput);
@@ -150,7 +164,7 @@ input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
 
 #Div-Inpt-Mais > Div > img {width: 20px;}
 
-#DivResult{height: 550px; width: 40%;}
+
 
   .foto{
       width: 45%;
@@ -270,7 +284,7 @@ table{text-align: center;width: 100%;}
 #resultfilter1{
   background: #00000000;
   overflow-y: scroll;
-  height: 380px;
+  height: 75%;
   width: 90%;
   border-radius: 20px;}
 
@@ -281,21 +295,21 @@ table{text-align: center;width: 100%;}
 
 .itemfilter{background: #ffffff13;
   border-radius: 20px;
-  margin: 10px 0px;
+  margin: 8px 0px;
   overflow: hidden;}
 
 .itemfilter:hover{background: #ffffff25}
 
   hr {border: 0.1px solid #ffffff2e; margin: 4px 0px;}
 .RstTitle {background: #0000004a; padding: 6px 3px;}
-.Descricao > div > strong { font-size: 15px;}
-.RstServ{margin-left: 4px;font-size: 20px;}
-.RstGram{margin-right: 8px;font-size: 12px;}
-.RstValrM2{color: #ffffff51;padding-right: 8px;font-size: 15px;}
-.RstValrDesc{color: red;padding-right: 8px;font-weight: bold;font-size: 17px;}
-.RstValrFinal{color: #00e61f;font-size: 27px;font-weight: bold}
-.RstValrFinal > div{color: #00e61f;font-size: 14px;margin-right:4px;}
-#FotoFilter img{width:150px;height:120px;}
+.Descricao > div > strong { font-size: 12px;}
+.RstServ{margin-left: 6px}
+.RstValrM2{padding-right: 8px;font-size: 12px;}
+.RstValrM2 div{font-size: 9px;margin: 0px 4px;}
+.RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;}
+.RstValrFinal{color: #00e61f;font-size: 20px}
+.RstValrFinal > div{color: #00e61f;font-size: 12px;margin-right:4px;}
+#FotoFilter img{width:110px;height:90px;}
 .BtnAdd{width:50px; height:20px;}
 #resultfilter1 button {width: 100px;}
 
@@ -436,9 +450,7 @@ input[type="checkbox"],input[type="radio"]{
 @media (max-width: 500px) {
   h1{
     font-size:25px;
-    
     text-align:center;
-    
   }
 
   .Titlee{
@@ -452,13 +464,17 @@ input[type="checkbox"],input[type="radio"]{
     overflow-y: hidden;
   }
   nav::-webkit-scrollbar {display: none;}
+  #FormOrc > h2{display: none;}
+  #DivResult > h2{display: flex;}
 
   #Aba-Orcamento{width:100%;}
-  form{width:100%; ;height: 370px; padding: 20px 15px;}
-  #DivResult{width: 100%; height: 500px;}
+  #FormOrc{width:100%; ;height: auto; padding: 5px 15px;}
+  #DivResult{width: 100%; height: 350px;}
   #resultfilter1{width: 90%}
   #Resumo{width: 100%}
   #resultfilter1 button {width: 70%; margin: 5px auto;}
+
+  
 }
 
 
@@ -485,3 +501,4 @@ z-index: 999;
 .Redi{
   height: 100vh;
 }
+

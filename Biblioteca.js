@@ -87,8 +87,8 @@
               VLR > 4 ? Vlr.substring(0, 2)+'.'+Vlr.substring(2, 4) : ''
       if (VLR > 5) {Mask = Mask.substring(0, 5)}
       input.value = Mask}
-  function TagSVG(Icon,Cls,Alt,On){
-    return `<img class="${Cls}" src="data:image/svg+xml;base64,${btoa(Icon)}" alt="${Alt}" onclick="${On}">`}
+  function TagSVG(Icon,Cls,Alt,On,Stl){
+    return `<img class="${Cls}" style="${Stl}" src="data:image/svg+xml;base64,${btoa(Icon)}" alt="${Alt}" onclick="${On}">`}
 
 
 // Testando
@@ -110,3 +110,25 @@
     document.body.removeChild(temp)
     btn.innerText = 'Texto copiado!'
   }
+
+
+  function ScrolRoll(px) {
+    let posicaoAtual = window.pageYOffset
+    const destino = posicaoAtual + px
+  
+    function animarScroll() {
+      if (posicaoAtual < destino) {
+        window.scrollBy(0, 5)
+        posicaoAtual += 5
+        if (posicaoAtual >= destino) {
+          window.scrollTo(0, destino)
+          return;
+        }
+        requestAnimationFrame(animarScroll)
+      }
+    }
+  
+    animarScroll()
+  }
+  
+  

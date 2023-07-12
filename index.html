@@ -29,8 +29,12 @@
       </div>
       
       <input id="Pesquisa" class="Pesquisa Rd" onkeyup="SaveSync(event,this)" placeholder="Salve Qualque Informação...">
-      <div id="Login-Top" class="Login" onclick="AbreLogin()">Login</div>
-      <div id="Login-Cod" style="Display:None"></div>
+    
+      <div class="Ct">
+        <img id="Img-Perfil" class="ImgPerfil">
+        <div id="Login-Top" class="Login" onclick="AbreLogin()">Login</div>
+        <div id="Login-Cod" style="Display:None"></div>
+      </div>  
     </header>
 
     <nav class="Ct">
@@ -55,6 +59,7 @@
     <div id="FormOrcamento" class="none Ct">
 
       <div id="DivResult" class="Ct Cl">
+        <h2 class="FontDGD none">Orçamento</h2>
         <div id="Resumo" class="tc">Escolha seu Pedido...</div>
         <div id="resultfilter1"></div>
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
@@ -97,6 +102,8 @@
           <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
           <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND"></div>
         </div>
+
+        <hr class="w100 Mgrn-PX">
 
         <div id="GrupoClntSave" class="Ct Cl none"></div>
         <div id="Grupo-Cliente">
