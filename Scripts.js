@@ -271,8 +271,6 @@
 
   function NewOrcamentos(btn){
     QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+('0000'+(Math.max(...IDs)+1)).slice(-3)}) // Cria ID
-    
-    if(W400.matches){ScrolRoll(135); console.log('Chamou')}
 
     Show(FormOrcamento)
     None(btn.parentNode)
@@ -465,6 +463,15 @@ function AddXdesc() {
     e.appendChild(spn)
   })
 }
+
+function scrollToDiv() {
+  if(W400.matches){
+    FormOrcamento.scrollIntoView({ block: 'start', behavior: 'smooth' })
+  }
+}
+
+
+
 
 
 

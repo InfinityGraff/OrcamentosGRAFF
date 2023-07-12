@@ -52,14 +52,14 @@
     <div id="Bandeija"></div>
 
     <div class="Ct Redi">
-      <button id="NewOrcamento" onclick="NewOrcamentos(this)" class="baby">Novo Orçamento</button>
+      <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
       <div id="image-preloader" style="display: none"> nada</div>
     </div>
 
     <div id="FormOrcamento" class="none Ct">
 
       <div id="DivResult" class="Ct Cl">
-        <h2 class="FontDGD none">Orçamento</h2>
+        <h2 class="FontDGD none" onclick="scrollToDiv()">Orçamento</h2>
         <div id="Resumo" class="tc">Escolha seu Pedido...</div>
         <div id="resultfilter1"></div>
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
@@ -67,7 +67,7 @@
 
       <form id="FormOrc" class="Ct">
 
-        <h2 class="FontDGD">Orçamento</h2>
+        <h2 class="FontDGD" onclick="scrollToDiv()">Orçamento</h2>
 
         <div id="Grupo-Servicos">
           <!-- Serviços, Tipos e Acabamento-->
@@ -282,7 +282,8 @@
     </div>
 
     
-    <button onclick="Copy('Pix',this)">Copiar Pix</button>
+    <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
+    <button class="baby" onclick="scrollToDiv()">Subir pro Topo</button>
 
 
   </body>
