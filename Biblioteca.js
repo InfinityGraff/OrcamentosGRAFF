@@ -15,12 +15,23 @@
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
   var NewDate = new Date().toISOString().split('T')[0]
 
-  function None(e){const ee = Array.isArray(e) ? e : [e]
-      ee.forEach(E => {E.style.display = 'none'})}
+  function None(e) {
+    const ee = Array.isArray(e) ? e : [e]
+    ee.forEach(E=>{if(typeof E==='string'){
+      const EE = QrySlt(E)
+      EE.style.display = 'none'}
+      else {E.style.display = 'none'}
+    })
+  }
 
   function Show(e){
     const ee = Array.isArray(e) ? e : [e]
-      ee.forEach(E => {E.style.display = 'flex'})}
+    ee.forEach(E=>{if(typeof E==='string'){
+      const EE = QrySlt(E)
+      EE.style.display = 'flex'}
+      else {E.style.display = 'flex'}
+    })
+  }
 
   function Trogl(a,b){
     const aa = Array.isArray(a) ? a : [a]

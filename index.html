@@ -59,7 +59,7 @@
     <div id="FormOrcamento" class="none Ct">
 
       <div id="DivResult" class="Ct Cl">
-        <h2 class="FontDGD none" onclick="scrollToDiv()">Orçamento</h2>
+        <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
         <div id="Resumo" class="tc">Escolha seu Pedido...</div>
         <div id="resultfilter1"></div>
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
@@ -67,7 +67,7 @@
 
       <form id="FormOrc" class="Ct">
 
-        <h2 class="FontDGD" onclick="scrollToDiv()">Orçamento</h2>
+        <h2 class="FontDGD ppt" onclick="scrollToDiv()">Orçamento</h2>
 
         <div id="Grupo-Servicos">
           <!-- Serviços, Tipos e Acabamento-->
@@ -133,10 +133,10 @@
       <div class="Tabela Ct">
 
         <div class="Ct Bt">
-          <div><div id="Inner-Clnt">Nome</div></div>
-          <div><div id="Inner-Cntt">Contato</div></div>
-          <div><div id="Inner-Lcal">Local</div></div>
-          <div><div id="Inner-Etc">Descrição</div></div>
+          <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
+          <div><div data="Cntt">Contato</div></div>
+          <div><div data="Local">Local</div></div>
+          <div><div data="Etc">Descrição</div></div>
         </div>
 
         <div id="dataTable" class="Tabela Ct w100"></div>
@@ -252,7 +252,7 @@
 
       <div id="ModalLogin" class="Ct none">
         <div class="Modalzinho Ct Ft modalloginn">
-          <label id="X" class="X" onclick="None(this.parentNode.parentNode.parentNode)">X</label>
+          <div class="X" onclick="None('#Fundo-Modal')">X</div>
           <div class="Bt Loginn">Login</div>
           <div class="Ct Start">
             <label for="Senha">Senha</label>
@@ -260,7 +260,7 @@
           </div>
           <div class="Bt">
             <button class="Botaozin Ct" onclick="TestSenha('','Senha','#Inpt-Senha')">Logar</button>
-            <button class="Botaozin Ct" onclick="None(this.parentNode.parentNode.parentNode.parentNode)">Sair</button>
+            <button class="Botaozin Ct" onclick="None('#Fundo-Modal')">Sair</button>
           </div>
           <span id="Span-Login"></span>
         </div>
@@ -271,10 +271,54 @@
           <input type="text" name="Clnt" placeholder="Nome do Cliente">
           <input type="text" name="Cplt" placeholder="Nome Completo">
           <input type="text" name="Cntt" placeholder="Contato do Cliente">
+          <input type="text" name="Local" placeholder="Endereço do Cliente">
           <input type="text" name="Loja" placeholder="Nome da Empresa">
           <input type="text" name="LjCt" placeholder="Cntato da Empresa">
           <input type="text" name="Catg" placeholder="Catégoria">
           <button>Salvar</button>
+      </div>
+
+      <div id="ModalNota" class="Modalzinho Cl Rd media30 none">
+        <div class="X End" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+            <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
+              <div class="Centro Rw">
+                <div class="LogoNota"><img src="Img/Logo2.png"></div>
+                <div>
+                  <h2>INFINITY GRÁFICA - <span>IMPRESSÃO DIGITAL</span></h2>
+                  <p>Estrada do Tip, N° 54A - SÃO LOURENÇO DA MATA - PE</p>
+                  <p>infinitygraff@outlook.com</p>
+                </div>
+              </div>
+              <div>
+                <p class="B">(81) 98726.5401</p>
+                <p>CNPJ: ../-</p>
+              </div>
+            </div>
+
+            <div class="Rw Hr Ev w100 B"><p>ORDEM DE SERVIÇO: ${id}</p> <p>Data: 00/00/2023</p></div>
+
+            <div id="Nota-Clnt" class="Rw w100 Ev">
+              <div>
+                <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
+                <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
+              </div>
+              <div>
+                <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
+                <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
+              </div>
+              <div>
+                <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
+              </div>
+            </div>
+
+            <div id="conteudo-nota" class="w100"></div>
+
+          <div class="w100 Ct">
+            <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
+            <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
+            <button class="BTNota Ct RD magem">Imprimir<img id="imgnotta" height="60%" onclick="gerarPDF()"></button>
+          </div>
       </div>
 
       <div id="InnerVazio" class="none Ct"></div>
@@ -284,6 +328,7 @@
     
     <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
     <button class="baby" onclick="scrollToDiv()">Subir pro Topo</button>
+    <button class="baby" onclick="AbreNota()">Trigger</button>
 
 
   </body>

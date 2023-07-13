@@ -57,6 +57,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Br{word-wrap: break-word;}
 .Grn{background: green;}.CrCnz{color: #ffffff2f;}
 .Red{background: red;}
+.Wht{color: white;}
 .Pddn-X{padding: 0% 5%;}
 .Pddn-Y{padding: 3% 0%;}
 .Pddn-XY{padding: 2% 4%;}
@@ -373,29 +374,19 @@ table{text-align: center;width: 100%;}
   #ModalNota h1{font-size:15px;}
   #ModalNota{padding: 20px; background: white;}
   #ModalNota > div{padding: 5px 0px;}
-  #Nota-Clnt > div > p{flex-direction: row;font-size: 15px;}
+  #Nota-Clnt > div > div >div{margin: 0px 5px;}
 
 .media30{width: 30%;}
 .media80{width: 80%;}
 
-.F1x1{
-  position: relative;
-  width: 100px;
-  border-radius: 255px;
-  margin: 0px 5px;
-  background-image: url("https://drive.google.com/uc?export=download&id=1el6-9MQXwSvRRB7nogE20nfFljYWVVZl");
-  background-size: 100%;}
-.F-1x1 {padding-top: 100%;}
+.LogoNota > img{width: 50px; height: 50px;}
 
-.BTNota{height: 30px; padding: 0px 50px; margin: 0px 1.5px; background: #5F009E}
+.BTNota{height: 20px; padding: 0px 10px; margin: 0px 1.5px; background: #5F009E}
 .magem{margin:5px 0px}
 
 button > img{margin: 0px 5px}
 input > img{margin: 0px 5px}
 select > img{margin: 0px 5px}
-
-#imgnotta{
-background-image: url("https://drive.google.com/uc?export=download&amp;id=1Rm9mZD3DFqcaL48XWT-83sIxo8icVIIk")}
 
 #TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
 #TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}

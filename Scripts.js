@@ -7,6 +7,7 @@
     const BtnInfo2 = QrySlt('#btnINFO2')
     const ModalInfo = QrySlt('#ModalInfo')
     const Prazo = QrySlt('#Prazo')
+    const ModAlnotta = document.getElementById("ModalNota")
 
   // Const's Login
     const LgTop = QrySlt('#Login-Top')
@@ -88,6 +89,11 @@
       document.getElementById('image-preloader').appendChild(img)
     })
   })
+  window.addEventListener('DOMContentLoaded',()=>{ // não sei pq n ta funcionando, é pra bloquear data antes do dia de hoje
+    QrySltAll('#Prazo, #dataPagInfo').forEach(i=>{i.min = new Date().toISOString().split('T')[0]})
+  })
+
+  
 
   var W400 = window.matchMedia("(max-width: 500px)")
   MediaQuere(W400)
@@ -105,14 +111,20 @@
     const DivResult = QrySlt('#DivResult')
 
     if(max.matches){
-    C.classList.remove("Bt")
-    R.classList.remove("Cl")
-    trocarPosicao(DivResult,FormOrc)
+      ModAlnotta.classList.add("media80")
+      None('#trocatroca')
+      C.classList.remove("Bt")
+      R.classList.remove("Cl")
+      trocarPosicao(DivResult,FormOrc)
     }else{
-    C.classList.add("Bt")
-    R.classList.add("Cl")
-    trocarPosicao(FormOrc,DivResult)
+      Show('#trocatroca')
+      ModAlnotta.classList.add("media80")
+      C.classList.add("Bt")
+      R.classList.add("Cl")
+      trocarPosicao(FormOrc,DivResult)
     }
+
+    
   }
   function trocarPosicao(e1,e2){ // fazer esta função receber mais, e mandar pra biblioteca
     e1.parentNode.insertBefore(e1,e2)
@@ -139,7 +151,7 @@
   function TestSenha(e,tipo,input){ // o e Siguinifica 'event' a tecla clicada
     let inpt = e==='' ? QrySlt(input) : input
     if(KeyEnter(e)||e===''){
-      if(tipo==='Clnt'){InnClnt.innerHTML = inpt.value ; None(FundoModal)}
+      if(tipo==='Clnt'){QrySlt('#Inner-Clnt').innerHTML = inpt.value ; None(FundoModal)}
       if(tipo==='Senha'){
         const Spn = 'Senha Inválida' ; const Cryp = CrypPass(inpt.value)
           if(User[Cryp]){None([FundoModal]) ; LgTop.innerHTML=User[Cryp][1] ; Login.innerHTML=User[Cryp][0] ; ImgPerfil.src=User[Cryp][2]}
@@ -162,7 +174,7 @@
   async function AbreInfo(Arry,id,nada,Total,btn){ // 2-JS
     if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}
     AbrirModalHTML(FundoModal,QrySlt('#ModalInfo'))
-    QrySlt('#Title-Info').innerHTML=`${id}: ${'Nome'}, Total: ${Total}`
+    QrySlt('#Title-Info').innerHTML=`${IDPdd}: ${'Nome'}, Total: ${Total}`
 
     // Chama os EventListener
     const formInfo1 = QrySlt('#Modal-Info1') ; const SbmtInfo1 = QrySlt('#btnINFO1')
@@ -204,6 +216,23 @@
         <button onclick="Copy('${Mdd}',this)">Copy Itens</button>
       </div>`
   }
+  function AbreNota(Mdd,VlrFinall,VlrDescs){
+
+    const CSS = 'style="color: white"'
+
+    const ModalNota = QrySlt('#ModalNota')
+    AbrirModalHTML(FundoModal,ModalNota)
+    QrySlt('#Titulo-Nota').innerHTML = `<h1>${IDPdd}: ${InnClnt.innerHTML}</h1>`
+    QrySlt('#conteudo-nota').innerHTML = `
+    <table id="TabelaNotinha" class="w100"><thead><tr><th ${CSS}>Serviços</th></tr></thead></table>
+
+      <div class="Ct Cl">${Mdd.split('/').map(i=>`<div class="magem">${i.replace(/\./g,',')}</div>`).join("").replace(/\*.*\*/,'').replace("*",'')}</div>
+
+    <table class="w100"><tfoot><tr><th colspan="5" ${CSS}>Total</th><th ${CSS}>R$ ${VlrDescs.replace(/\./g,',')}</th></tr></tfoot></table>`
+  }
+
+
+
 
 // Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
 
@@ -211,12 +240,12 @@
 
   function handle(){ // essa função Geral Mantem o Handdle a Cada inpuit do Documento inteiro
     QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
+    QrySltAll('div[data="'+event.target.name+'"]').forEach(i=>{i.innerHTML = event.target.value})
   }
   function Clientes(){ // Funções que São Atreladas ao onInput Clnt, e Cntt
     const e = event.target
-    if(e.name === 'Clnt'){BandejaFit(e,0);ShowCntt(DivCnttForm);ShowBtnCadastro();InnClnt.innerHTML = e.value}
-    if(e.name === 'Cntt'){BandejaFit(e,1);QrySlt('#Inner-Cntt').innerHTML = e.value}
-    if(e.name === 'Local'){QrySlt('#Inner-Lcal').innerHTML = e.value}
+    if(e.name === 'Clnt') {QrySlt('#Inner-Clnt').innerHTML = e.value;BandejaFit(e,0);ShowCntt(DivCnttForm);ShowBtnCadastro()}
+    if(e.name === 'Cntt') {BandejaFit(e,1)}
 
     function ShowCntt(DivCnttForm){if(I_Clnt.value===''){None(DivCnttForm)}else{Show(DivCnttForm)}}
 
@@ -335,6 +364,19 @@
   })
   Prazo.addEventListener('input',()=>{DescPrazo()})
 
+  function troctroc(){
+    ModAlnotta.classList.toggle("media80")
+
+    const ModalH1 = ModAlnotta.querySelector("#ModalNota h1")
+    
+    if(ModAlnotta.classList.contains("media80")){ModalH1.style.fontSize = "30px"}
+    else{ModalH1.style.fontSize = "15px"}
+  }
+
+  function gerarPDF() {const doc = new jsPDF();const arquivo = 'nome'
+    doc.html(ModAlnotta,{callback:Doc=>{Doc.save(`${arquivo}.pdf`)}})
+  }
+
 // Funções Grandes____________________________________________________________________________________________
 
 function DescPrazo(){
@@ -412,7 +454,7 @@ function FilTable(){
     const IMG = `${LinkDrive}${Foto}`
     const Etc = I_Etc.value
     const Mdds  =Totais[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
-    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
+    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
 
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
@@ -425,7 +467,7 @@ function FilTable(){
 
       `<div class="itemfilter Ct Cl w100 Rdd">
         <div class="RstTitle w100 Pddn-XY Ct Bt">
-          <div class="RstServ">${Serv} ${Tipo}</div>
+          <div class="RstServ ppt" onclick="AbreNota('${Mdds2}','${VlrFinal}','${TotalDesc}')">${Serv} ${Tipo}</div>
           <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
         </div>
         <div class="Ct Bt Pddn-XY">
@@ -586,9 +628,3 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
   // Opções para indivudualizar (Entrega,Aplicação,Arte)
   // Aolicação Baixo ou Alto? Superficie: Plana ou Irregular
   // Aplicar Onde? (IA Responde se dá ou não.)
-
-
-
-  // Melhorar a Chamada do Filter Tabela
-  // a Porcentagem de Desconto não ta Funcionando
-  // o Desconto só aparece no Input, (não no Click pra escolher Funcionário Cadastrado)
