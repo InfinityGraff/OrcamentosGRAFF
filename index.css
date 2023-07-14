@@ -26,7 +26,8 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   
 }
 
-*{margin: 0px;
+*{
+  margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   border: none;
@@ -35,7 +36,6 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   font-family: var(--Rglr);
   font-size: 12px;
   letter-spacing: 0.7px;
-  
 }
 
 .Ct{display: flex;flex-wrap: wrap;justify-content: center;align-items: center;}
@@ -47,7 +47,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Ev{display: flex;justify-content: space-evenly;align-items: center;}
 .Ct-Txt{text-align: center;}
 .Fx{position: fixed;top:0;left: 0;}
-.Hr{border-bottom: 1px solid rgb(96, 96, 96);}
+.Hr{border-bottom: 1px solid #606060;}
 .Rd{border-radius: 20px;}
 .RD{border-radius: 255px;}
 .w100{width: 100%;}
@@ -55,9 +55,9 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .cem{width:100%;}
 .B{font-weight: bold;}
 .Br{word-wrap: break-word;}
-.Grn{background: green;}.CrCnz{color: #ffffff2f;}
-.Red{background: red;}
-.Wht{color: white;}
+.Grn{background: #008000;}.CrCnz{color: #ffffff2f;}
+.Red{background: #ff0000;}
+.Wht{color: #ffffff;}
 .Pddn-X{padding: 0% 5%;}
 .Pddn-Y{padding: 3% 0%;}
 .Pddn-XY{padding: 2% 4%;}
@@ -95,9 +95,9 @@ button,.Login,.X,.ppt{cursor: pointer;}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent}
 
-body{background: var(--DegradeFundo)}
+body{background: var(--DegradeFundo);}
 .Titlee{margin: 0 150 15 150;}
-h1{font-size: 40px; font-family: var(--Bold)}
+h1{font-size: 40px;font-family: var(--Bold)}
 h2{font-size: 18px; color: var(--Laranja);}
 #Aba-Relatorio, #Aba-Orcamento, #Aba-Home{margin-top:100px}
 .Logo{
@@ -148,13 +148,7 @@ form div[id*=Inpt]{
 
 #Grupo-Medidas{padding: 0px 5vw;}
 
-input,select,.baby,#Div-Inpt-Mais div{
-width: 100%; height: 30px;
-font-size: 14px;
-border-radius: 255px;
-background: var(--CorInput);
-margin: 3px;
-text-align: center;}
+input,select,.baby,#Div-Inpt-Mais div{width: 100%;height: 30px;font-size: 14px;border-radius: 255px;background: var(--CorInput);margin: 3px;text-align: center;}
 
 input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
 
@@ -179,20 +173,20 @@ input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
       align-items: center;}
 
 .baby{
-  width: 200px; height: 50px;
+  width: 150px; height: 30px;
   background:var(--Degrade);
   background-size: 500%;
   transition: 0.1s ease-in-out;}
       .baby:hover{
-          width: 210px;
-          height: 55px;
+          width: 160px;
+          height: 35px;
           animation-name: Transicao;
           animation-duration: 0.5s;
           animation-timing-function: ease-in-fas;
           animation-fill-mode: forwards; /*pra congelar no fim*/}
       .baby:active{
-          width: 205px;
-          height: 52px;}
+          width: 155px;
+          height: 32px;}
 
 .modalloginn{height: 400px;}            
 
@@ -224,19 +218,24 @@ input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
   background: #0b0b0b;
   border-radius: 20px;}
 
-table{text-align: center;width: 100%;}
-  th{height: 30px;}
-  tr{background: #373738; padding: 10px;}
-  td{background: #0b0b0b; padding: 10px;}
-  table td:nth-child(4){font-size: 13px; color:#777777}
-  table td:nth-child(9){font-size: 13px}
-  table td:nth-child(10){background:#2f5000; font-size: 15px; border-radius:255px}
-  table td:nth-child(11){width: 50px;}
-  table td:nth-child(12){width: 50px;}
+#CRUD svg{width: 20px;height: 20px;cursor:pointer;}
+/* #CRUD svg:hover{width: 23px; height: 23px; cursor:pointer} */
+#CRUD table th:first-child,#CRUD table td:first-child{display: none}
+td > div{display: flex;align-items: center;justify-content: center;}
+#CRUD input{font-size:12px;height: 25px;margin: 0}
 
-#dataTable table th:first-child,#dataTable table td:first-child{display: none}
 
-#dataTable input{font-size:13px}
+table{text-align: center;width: 100%;border-spacing: 2px 8px;}
+  th{height: 25px;}
+  tr{background: #373738;}
+  td{background: #0b0b0b;}
+  table td:nth-child(4){font-size: 10px; color:#777777}
+  table td:nth-child(8){background:#2f5000; font-size: 13px; border-radius:255px}
+  table td:nth-child(8) > div > div > div:first-child{font-size: 8px ;margin-right: 2px;}
+  table td:nth-child(9) svg{fill: #ffae00;}
+    table td:nth-child(9) svg:hover{fill: #ff6139;filter: drop-shadow(0 0 5px #ff5100a2);}
+  table td:nth-child(10) svg{fill: #ffae00;}
+    table td:nth-child(10) svg:hover{fill: #ff5100;filter: drop-shadow(0 0 5px #ff5100a2);}
 
 .circle{
   background-image: linear-gradient(#550047,#f15900);
@@ -470,7 +469,7 @@ input[type="checkbox"],input[type="radio"]{
 
 
 
-#dataTable img{width: 20px; height: 20px; cursor:pointer}
+
 
 .Mg{margin-top:10px;margin-bottom:10px;}
 

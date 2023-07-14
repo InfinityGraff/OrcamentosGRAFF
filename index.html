@@ -139,7 +139,47 @@
           <div><div data="Etc">Descrição</div></div>
         </div>
 
-        <div id="dataTable" class="Tabela Ct w100"></div>
+        <div id="CRUD" class="Tabela Ct w100">
+
+          <table>
+            <tbody>
+              <tr>
+
+                <th>id</th>
+                <th>QNT</th>
+                <th>Serv</th>
+                <th>Tipo</th>
+                <th>CBMT</th>
+                <th>Largura</th>
+                <th>Altura</th>
+                <th>Total</th>
+                <th></th>
+                <th></th>
+              </tr>
+  
+              <tr id="CrudDefaut" class="none">
+                <td><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                <td>
+                  <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)">Editar</div>
+                  <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="none">Salvar</div>
+                </td> 
+                <td>
+                  <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)">Deletar</div>
+                  <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="none">Cancelar</div>
+                </td> 
+                
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
         
         <div class="Ct">
           <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
@@ -328,7 +368,7 @@
     
     <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
     <button class="baby" onclick="scrollToDiv()">Subir pro Topo</button>
-    <button class="baby" onclick="AbreNota()">Trigger</button>
+    <button class="baby" onclick="addyCRUD()">Trigger</button>
 
 
   </body>

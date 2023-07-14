@@ -457,8 +457,9 @@ function FilTable(){
     const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
 
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
+    let NewItemaDD=[GerarIT(),QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
-      let FuncAdd = `AddLista('${NewItem.join('/')}','Lista')`
+      let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}')`
       let FuncSav = `SavePdd( '${NewItem.join('/')}','Bloco'  ,'Filter','${TotalDesc}','this')`
       let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
 
@@ -618,6 +619,60 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
 
 
   console.log(ObjInfo)
+}
+
+//___________________________________________________________
+
+function addyCRUD(Arry) {
+  const Arr = Arry.split('/')
+  const Mdd = Arr[5].split(',')
+  const Defaut = QrySlt('#CrudDefaut')
+
+  Mdd.forEach(e=>{const E = e.split('|')
+    Arr[1] = E[0]
+    Arr[5] = Cm(parseFloat(E[1]))
+    Arr[6] = Cm(parseFloat(E[2]))
+    Arr[7] = RS_HTML(parseFloat(E[3]))
+    Arr[8] = IconLaps
+    Arr[9] = IconSavList
+    Arr[10] = IconLixo
+    Arr[11] = IconEscList
+    const Clonado = Defaut.cloneNode(true)
+    Clonado.removeAttribute('id')
+    Clonado.classList.remove('none')
+    Clonado.querySelectorAll('td input').forEach((e,i)=>{e.value = Arr[i]})
+    Clonado.querySelectorAll('td div').forEach((e,i)=>{e.innerHTML = Arr[i]})
+    
+    
+    Defaut.parentNode.appendChild(Clonado)
+  })
+}
+
+function DeletCRUD(e){
+  console.log(IconLixo)
+  if (confirm(`Tem certeza que deseja deletar?`)){e.remove()}
+}
+
+function EditaCRUD(e) {
+  e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{if(i===7){return};Show(E)})
+  e.querySelectorAll('[data="CrudA"]').forEach((E,i)=>{if(i===7){return};None(E)})
+}
+
+function CancelEditCRUD(e){
+  e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{if(i===7){return};None(E)})
+  e.querySelectorAll('[data="CrudA"]').forEach((E,i)=>{if(i===7){return};Show(E)})
+}
+
+function SaveEditCRUD(e) {
+  const ListUp = []
+  e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{
+    if(i===7){return};None(E)
+    ListUp.push(E.value)
+  })
+  e.querySelectorAll('[data="CrudA"]').forEach((E,i)=>{
+    if(i===7){return};Show(E)
+    if (i < 7) {E.innerHTML = ListUp[i]}
+  })
 }
 
 

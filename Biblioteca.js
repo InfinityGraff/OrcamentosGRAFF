@@ -14,6 +14,9 @@
   function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
   var NewDate = new Date().toISOString().split('T')[0]
+  function RS(e){return `R$ ${e.toFixed(2).replace('.',',')}`}
+  function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${e.toFixed(2).replace('.',',')}</div></div>`}
+  function Cm(e){return `${e.toFixed(2).replace('.',',')}`}
 
   function None(e) {
     const ee = Array.isArray(e) ? e : [e]
@@ -98,9 +101,9 @@
               VLR > 4 ? Vlr.substring(0, 2)+'.'+Vlr.substring(2, 4) : ''
       if (VLR > 5) {Mask = Mask.substring(0, 5)}
       input.value = Mask}
+      
   function TagSVG(Icon,Cls,Alt,On,Stl){
     return `<img class="${Cls}" style="${Stl}" src="data:image/svg+xml;base64,${btoa(Icon)}" alt="${Alt}" onclick="${On}">`}
-
 
 // Testando
   function Red(e){e.style.color = 'red'}
