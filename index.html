@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./index.css">
   </head>
 
-  <body>
+  <body class="Ct BackG">
 
     <header class="Cabecalho Ct Bt">
       <div class="Ct Titlee">
@@ -34,7 +34,7 @@
         <img id="Img-Perfil" class="ImgPerfil">
         <div id="Login-Top" class="Login" onclick="AbreLogin()">Login</div>
         <div id="Login-Cod" style="Display:None"></div>
-      </div>  
+      </div>
     </header>
 
     <nav class="Ct">
@@ -51,16 +51,17 @@
 
     <div id="Bandeija"></div>
 
-    <div class="Ct Redi">
+    <div class="Ct Redi w100">
       <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
       <div id="image-preloader" style="display: none"> nada</div>
     </div>
 
-    <div id="FormOrcamento" class="none Ct">
+    <div id="FormOrcamento" class="none Ct Rd">
+
+      <div class="Close Ct">X</div>
 
       <div id="DivResult" class="Ct Cl">
         <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
-        <div id="Resumo" class="tc">Escolha seu Pedido...</div>
         <div id="resultfilter1"></div>
         <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
       </div>
@@ -368,7 +369,7 @@
     
     <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
     <button class="baby" onclick="scrollToDiv()">Subir pro Topo</button>
-    <button class="baby" onclick="addyCRUD()">Trigger</button>
+    <button class="baby" onclick="fecharModalforne()">Trigger</button>
 
 
   </body>

@@ -93,8 +93,22 @@
     QrySltAll('#Prazo, #dataPagInfo').forEach(i=>{i.min = new Date().toISOString().split('T')[0]})
   })
 
-  
+  QrySltAll('.Close').forEach(e=>{ // não estou sentindo o x Rodando
+    e.innerHTML = IconEscList
+    e.addEventListener('click',()=>{
+      e.classList.add('clicked')
+      FormOrcamento.classList.add("CloseForm")
 
+      setTimeout(()=>{
+        Show(QrySlt('#NewOrcamento').parentNode)
+      },100)
+      setTimeout(()=>{
+        e.classList.remove('clicked')
+        FormOrcamento.classList.remove("CloseForm")
+        None(FormOrcamento)
+      },500)})
+  })
+  
   var W400 = window.matchMedia("(max-width: 500px)")
   MediaQuere(W400)
   W400.addListener(MediaQuere)
@@ -128,6 +142,13 @@
   }
   function trocarPosicao(e1,e2){ // fazer esta função receber mais, e mandar pra biblioteca
     e1.parentNode.insertBefore(e1,e2)
+  }
+  function scrollToDiv() {
+    if(W400.matches){
+      const posits = window.pageYOffset + QrySlt('nav').getBoundingClientRect().bottom
+      window.scrollTo({top:posits,behavior:'smooth'}) // pra grudar na base, tem q ser assim mesmo
+      // QrySlt('nav').scrollIntoView({block:'start',behavior:'smooth'}) // caso eu queira no inico posso usar este
+    }
   }
   QrySltAll('nav a, #Home').forEach(e=>{e.addEventListener('click',()=>{ // esse tbm tem uns Errinhos
     
@@ -507,11 +528,7 @@ function AddXdesc() {
   })
 }
 
-function scrollToDiv() {
-  if(W400.matches){
-    FormOrcamento.scrollIntoView({ block: 'start', behavior: 'smooth' })
-  }
-}
+
 
 
 

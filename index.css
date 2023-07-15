@@ -57,6 +57,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Br{word-wrap: break-word;}
 .Grn{background: #008000;}.CrCnz{color: #ffffff2f;}
 .Red{background: #ff0000;}
+.BackG{background: var(--DegradeFundo)}
 .Wht{color: #ffffff;}
 .Pddn-X{padding: 0% 5%;}
 .Pddn-Y{padding: 3% 0%;}
@@ -68,17 +69,47 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .FtBd{font-family: var(--Bold)}
 .FtMd{font-family: var(--Medi)}
 
+
 button {background: #73008A; border-radius: 255px;}
-button,.Login,.X,.ppt{cursor: pointer;}
+button,.Login,.X,.ppt,.Close{cursor: pointer;}
 .X{opacity: 0.7;}.X:hover{opacity: 1;color:red;}
 
-.none{display: none;}
+.Close svg{
+  position: absolute;top: 15px;right: 15px;
+  width: 10px;height: 10px;fill: #ffffff50;
+  transition: all 0.3s ease;}
+  .Close svg:hover{
+    transform: scale(1.2) ;fill: #ff3c00;}
+  .Close.clicked svg{
+    transform: scale(0.8) rotate(360deg)}
+
+#FormOrcamento{
+  background: #202020;
+  margin:15px;padding:5px;position: relative;
+  height: auto;
+  overflow: hidden;
+  animation: ShowForm 0.5s;
+}@keyframes ShowForm {
+  from {opacity: 0;transform: scale(0.5)}
+    to {opacity: 1;transform: scale(1.0)}}
+#FormOrcamento.CloseForm{
+  animation: NoneForm 0.5s forwards;
+}@keyframes NoneForm {
+  from {opacity: 1;transform: scale(1.0)}
+    to {opacity: 0;transform: scale(0.5)}}
+
+#NewOrcamento{
+  animation: ButtonShow 0.3s;
+}
+@keyframes ButtonShow {
+  from {opacity: 0;transform: scale(1.8)}
+    to {opacity: 1;transform: scale(1.0)}}
+
+
 .MiniSenha{position: absolute;width:200px}
 .error {border: 2px solid red}
 .error::placeholder {color: red}
 
-
-#Fundo-Info{background-color: #e6e6e6;}
 
 
 #Bandeija {position: absolute;z-index: 9999999999;}
@@ -95,7 +126,7 @@ button,.Login,.X,.ppt{cursor: pointer;}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent}
 
-body{background: var(--DegradeFundo);}
+
 .Titlee{margin: 0 150 15 150;}
 h1{font-size: 40px;font-family: var(--Bold)}
 h2{font-size: 18px; color: var(--Laranja);}
@@ -270,7 +301,7 @@ table{text-align: center;width: 100%;border-spacing: 2px 8px;}
       line-height: 40px;
       height: 50px;}
 
-  .none{display: none;}
+  
 
   .btn-group-xs > .btn, .btn-xs {
     padding: .25rem .4rem;
@@ -286,7 +317,8 @@ table{text-align: center;width: 100%;border-spacing: 2px 8px;}
   overflow-y: scroll;
   height: 75%;
   width: 90%;
-  border-radius: 20px;}
+  border-radius: 20px;
+  }
 
 #resultfilter1::-webkit-scrollbar {width: 10px;}
 #resultfilter1::-webkit-scrollbar-track {background: #0000006a;}
@@ -460,7 +492,7 @@ input[type="checkbox"],input[type="radio"]{
   #Aba-Orcamento{width:100%;}
   #FormOrc{width:100%; ;height: auto; padding: 5px 15px;}
   #DivResult{width: 100%; height: 350px;}
-  #resultfilter1{width: 90%}
+  #resultfilter1{width: 90%;}
   #Resumo{width: 100%}
   #resultfilter1 button {width: 70%; margin: 5px auto;}
 
@@ -492,3 +524,4 @@ z-index: 999;
   height: 100vh;
 }
 
+.none{display: none;}
