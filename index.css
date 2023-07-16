@@ -52,6 +52,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .RD{border-radius: 255px;}
 .w100{width: 100%;}
 .w50{width: 50%;}
+.w80{width: 80%;}
 .cem{width:100%;}
 .B{font-weight: bold;}
 .Br{word-wrap: break-word;}
@@ -100,11 +101,38 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 
 #NewOrcamento{
   animation: ButtonShow 0.3s;
-}
-@keyframes ButtonShow {
+}@keyframes ButtonShow {
   from {opacity: 0;transform: scale(1.8)}
     to {opacity: 1;transform: scale(1.0)}}
 
+.RoloTop{
+  position: fixed;
+  transform: scale(0.25);
+  right: -80px;
+  bottom: -80px;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  border-radius: 50%;
+  animation: RoloTopp 0.4s;
+}@keyframes RoloTopp {
+  from {opacity:0; transform: scale(0.25) translate3d(0, 200px, 0) }
+    to {opacity:1; transform: scale(0.25) translate3d(0, 0, 0)}}
+
+#Div-CRUD{
+  animation: modal 0.7s;
+}
+
+.Seta svg{
+  fill: rgba(255, 255, 255, 0.3);
+  width: 15px;
+  height: 15px;
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
+#Grupo-Cliente,#Grupo-Entrega{
+  animation: modal 0.8s;
+}
 
 .MiniSenha{position: absolute;width:200px}
 .error {border: 2px solid red}
@@ -130,7 +158,7 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 .Titlee{margin: 0 150 15 150;}
 h1{font-size: 40px;font-family: var(--Bold)}
 h2{font-size: 18px; color: var(--Laranja);}
-#Aba-Relatorio, #Aba-Orcamento, #Aba-Home{margin-top:100px}
+#Aba-Relatorio, #Aba-Home{margin-top:100px}
 .Logo{
   width:50px;
   margin: 4px 4px;
@@ -174,7 +202,7 @@ form div[id*=Inpt]{
   align-items: flex-start;
   margin: 4px}
 
-#Grupo-Cliente,#Grupo-Servicos,#Grupo-Medidas,#Grupo-Entrega,#Grupo-Tipos{
+.inptFormOrc{
   display: flex; width: 100%; padding: 0px 8vw }
 
 #Grupo-Medidas{padding: 0px 5vw;}

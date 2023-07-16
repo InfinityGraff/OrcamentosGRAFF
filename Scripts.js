@@ -2,7 +2,7 @@
   // Const's Fundos
     const FundoModal = QrySlt('#Fundo-Modal')
     const InnerVazio = QrySlt('#InnerVazio')
-    const ResultFilTable = QrySlt('#resultfilter1')
+    
     const FormOrcamento = QrySlt('#FormOrcamento')
     const BtnInfo2 = QrySlt('#btnINFO2')
     const ModalInfo = QrySlt('#ModalInfo')
@@ -63,6 +63,7 @@
 
 // OnLoad's
   QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','','')
+  QrySlt('#RoloTop').innerHTML = IconRoloTop
 
   document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
     if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
@@ -93,6 +94,11 @@
     QrySltAll('#Prazo, #dataPagInfo').forEach(i=>{i.min = new Date().toISOString().split('T')[0]})
   })
 
+  // campo Numerico
+  QrySltAll('#Grupo-Medidas input').forEach(e=>{
+    e.setAttribute('inputmode', 'numeric')
+  })
+
   QrySltAll('.Close').forEach(e=>{ // não estou sentindo o x Rodando
     e.innerHTML = IconEscList
     e.addEventListener('click',()=>{
@@ -108,6 +114,8 @@
         None(FormOrcamento)
       },500)})
   })
+
+  QrySltAll('.Seta').forEach(e=>{e.innerHTML = IconSetair})
   
   var W400 = window.matchMedia("(max-width: 500px)")
   MediaQuere(W400)
@@ -148,6 +156,11 @@
       const posits = window.pageYOffset + QrySlt('nav').getBoundingClientRect().bottom
       window.scrollTo({top:posits,behavior:'smooth'}) // pra grudar na base, tem q ser assim mesmo
       // QrySlt('nav').scrollIntoView({block:'start',behavior:'smooth'}) // caso eu queira no inico posso usar este
+    }
+  }
+  function ScrollFinal() {
+    if (W400.matches) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
   }
   QrySltAll('nav a, #Home').forEach(e=>{e.addEventListener('click',()=>{ // esse tbm tem uns Errinhos
@@ -455,6 +468,7 @@ function OptFilter(Stng,Coll){ // cria as listas Options
 Array.from(Selects).forEach(E=>{E.addEventListener("change",FilTable)})
 
 function FilTable(){
+  const ResultFilTable = QrySlt('#resultfilter1')
   ResultFilTable.innerHTML = ''
   const Arry = tabela.filter(T=>{
     return (I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
@@ -480,7 +494,7 @@ function FilTable(){
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
     let NewItemaDD=[GerarIT(),QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
-      let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}')`
+      let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show('#Div-CRUD');ScrollFinal();ocultaButtonfilt()`
       let FuncSav = `SavePdd( '${NewItem.join('/')}','Bloco'  ,'Filter','${TotalDesc}','this')`
       let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
 
@@ -514,6 +528,11 @@ function FilTable(){
   items.forEach(I=>ResultFilTable.appendChild(I))
 
   AddXdesc()
+}
+
+function ocultaButtonfilt() {
+  QrySltAll('#resultfilter1 button').forEach(e=>{
+    if(e.textContent.includes('Salvar') || e.textContent.includes('Entrada')){None(e)}})
 }
 
 function AddXdesc() {
@@ -691,6 +710,7 @@ function SaveEditCRUD(e) {
     if (i < 7) {E.innerHTML = ListUp[i]}
   })
 }
+
 
 
 //__________________________________________________________________________________

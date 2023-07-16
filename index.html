@@ -45,148 +45,154 @@
     </nav>
 
     <div id="Aba-Home" class="Ct none">
-      <h1>Escolha Alguma Aba<h1>
+      <h1>Escolha Alguma Aba</h1>
+
+        <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
+        <button class="baby" onclick="fecharModalforne()">Trigger</button>
       
     </div>
 
-    <div id="Bandeija"></div>
+    <div id="Aba-Orcamento">
 
-    <div class="Ct Redi w100">
-      <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
-      <div id="image-preloader" style="display: none"> nada</div>
-    </div>
+      <div id="Bandeija"></div>
+      <div id="RoloTop" class="RoloTop" onclick="scrollToDiv()"></div>
 
-    <div id="FormOrcamento" class="none Ct Rd">
-
-      <div class="Close Ct">X</div>
-
-      <div id="DivResult" class="Ct Cl">
-        <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
-        <div id="resultfilter1"></div>
-        <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+      <div class="Ct Redi w100">
+        <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
+        <div id="image-preloader" style="display: none"> nada</div>
       </div>
 
-      <form id="FormOrc" class="Ct">
+      <div id="FormOrcamento" class="none Ct Rd">
 
-        <h2 class="FontDGD ppt" onclick="scrollToDiv()">Orçamento</h2>
+        <div class="Close Ct">X</div>
 
-        <div id="Grupo-Servicos">
-          <!-- Serviços, Tipos e Acabamento-->
-          <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
-              <option value="" disabled="" selected="">Escolha um Serviços</option>
-            </select>
+        <div id="DivResult" class="Ct Cl">
+          <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
+          <div id="resultfilter1"></div>
+          <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+        </div>
+
+        <form id="FormOrc" class="Ct">
+
+          <h2 class="FontDGD ppt" onclick="scrollToDiv()">Orçamento</h2>
+
+          <div id="Grupo-Servicos" class="inptFormOrc">
+            <!-- Serviços, Tipos e Acabamento-->
+            <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
+                <option value="" disabled="" selected="">Escolha um Serviços</option>
+              </select>
+            </div>
+            <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
+                <option value="" disabled="" selected="">Escolha um Tipo</option>
+              </select>
+            </div>
+            <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
+                <option value="" disabled="" selected="">Escolha um Acabamento</option>
+              </select>
+            </div>
           </div>
-          <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
-              <option value="" disabled="" selected="">Escolha um Tipo</option>
-            </select>
+
+          <div id="Grupo-Tipos" class="inptFormOrc Grupinput3" style="display: none">
+            <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
+                <option value="" disabled="" selected="">Gramatura</option>
+              </select></div>
+            <div id="Div-Inpt-QFix"><label>Qnt</label><select>
+                <option value="" disabled="" selected="">Qnt</option>
+              </select></div>
           </div>
-          <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
-              <option value="" disabled="" selected="">Escolha um Acabamento</option>
-            </select>
+
+          <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
+            <div id="Div-Inpt-Mais"><label>.</label>
+              <div id="Mais-Input" class="Ct" onclick="AddMedidas()"></div><input class="none">
+            </div>
+            <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
+            <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
+            <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND"></div>
+          </div>
+
+          <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega'])">^</div></div>
+
+          <div id="GrupoClntSave" class="Ct Cl none"></div>
+          <div id="Grupo-Cliente" class="inptFormOrc none">
+            <!-- Nome e Contato-->
+            <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
+              <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
+            </div>
+            <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
+              <input placeholder="Contato do Cliente" id="lbCntt_2" name="Cntt" type="text">
+            </div>
+            <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
+          </div>
+
+          <div id="Grupo-Entrega" class="inptFormOrc none">
+            <!-- Entrega -->
+            <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
+              <input placeholder="insira Local da Entrega" name="Local" type="text">
+            </div>
+
+            <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
+              <input placeholder="Deixe Algum Comentário" name="Etc" type="text">
+            </div>
+          </div>
+
+        </form>
+
+        <div id="Div-CRUD" class="Tabela Ct none">
+
+          <div class="Ct Bt">
+            <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
+            <div><div data="Cntt">Contato</div></div>
+            <div><div data="Local">Local</div></div>
+            <div><div data="Etc">Descrição</div></div>
+          </div>
+
+          <div id="CRUD" class="Tabela Ct w100">
+
+            <table>
+              <tbody>
+                <tr>
+
+                  <th>id</th>
+                  <th>QNT</th>
+                  <th>Serv</th>
+                  <th>Tipo</th>
+                  <th>CBMT</th>
+                  <th>Largura</th>
+                  <th>Altura</th>
+                  <th>Total</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+    
+                <tr id="CrudDefaut" class="none">
+                  <td><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                  <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                  <td>
+                    <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)">Editar</div>
+                    <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="none">Salvar</div>
+                  </td> 
+                  <td>
+                    <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)">Deletar</div>
+                    <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="none">Cancelar</div>
+                  </td> 
+                  
+                </tr>
+              </tbody>
+            </table>
+            <button class="baby" onclick="clearStore()">Limpar Lista</button>
           </div>
         </div>
 
-        <div id="Grupo-Tipos" class="Grupinput3" style="display: none">
-          <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
-              <option value="" disabled="" selected="">Gramatura</option>
-            </select></div>
-          <div id="Div-Inpt-QFix"><label>Qnt</label><select>
-              <option value="" disabled="" selected="">Qnt</option>
-            </select></div>
-        </div>
-
-        <div id="Grupo-Medidas" class="Grupinput3" style="display: none">
-          <div id="Div-Inpt-Mais"><label>.</label>
-            <div id="Mais-Input" class="Ct" onclick="AddMedidas()"></div><input class="none">
-          </div>
-          <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
-          <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
-          <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND"></div>
-        </div>
-
-        <hr class="w100 Mgrn-PX">
-
-        <div id="GrupoClntSave" class="Ct Cl none"></div>
-        <div id="Grupo-Cliente">
-          <!-- Nome e Contato-->
-          <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
-            <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
-          </div>
-          <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
-            <input placeholder="Contato do Cliente" id="lbCntt_2" name="Cntt" type="text">
-          </div>
-          <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
-        </div>
-
-        <div id="Grupo-Entrega" class="none">
-          <!-- Entrega -->
-          <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
-            <input placeholder="insira Local da Entrega" name="Local" type="text">
-          </div>
-
-          <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
-            <input placeholder="Deixe Algum Comentário" name="Etc" type="text">
-          </div>
-        </div>
-
-      </form>
-
-      <div class="Tabela Ct">
-
-        <div class="Ct Bt">
-          <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
-          <div><div data="Cntt">Contato</div></div>
-          <div><div data="Local">Local</div></div>
-          <div><div data="Etc">Descrição</div></div>
-        </div>
-
-        <div id="CRUD" class="Tabela Ct w100">
-
-          <table>
-            <tbody>
-              <tr>
-
-                <th>id</th>
-                <th>QNT</th>
-                <th>Serv</th>
-                <th>Tipo</th>
-                <th>CBMT</th>
-                <th>Largura</th>
-                <th>Altura</th>
-                <th>Total</th>
-                <th></th>
-                <th></th>
-              </tr>
-  
-              <tr id="CrudDefaut" class="none">
-                <td><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                <td>
-                  <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)">Editar</div>
-                  <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="none">Salvar</div>
-                </td> 
-                <td>
-                  <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)">Deletar</div>
-                  <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="none">Cancelar</div>
-                </td> 
-                
-              </tr>
-            </tbody>
-          </table>
-          
-        </div>
-        
         <div class="Ct">
+          <button class="baby">Adicionar</button>
           <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
           <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button>
-          <button class="baby" onclick="clearStore()">Limpar Lista</button>
-          <h2 id="TotalList"><h2>
         </div>
 
       </div>
@@ -367,9 +373,7 @@
     </div>
 
     
-    <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
-    <button class="baby" onclick="scrollToDiv()">Subir pro Topo</button>
-    <button class="baby" onclick="fecharModalforne()">Trigger</button>
+
 
 
   </body>
