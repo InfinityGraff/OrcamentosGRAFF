@@ -17,6 +17,7 @@
   function RS(e){return `R$ ${e.toFixed(2).replace('.',',')}`}
   function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${e.toFixed(2).replace('.',',')}</div></div>`}
   function Cm(e){return `${e.toFixed(2).replace('.',',')}`}
+  function CmStng(e){return `${parseFloat(e).toFixed(2).replace('.',',')}`}
 
   function None(e) {
     const ee = Array.isArray(e) ? e : [e]

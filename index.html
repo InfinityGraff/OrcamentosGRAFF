@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ORÇAMENTO</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
@@ -62,7 +62,7 @@
         <div id="image-preloader" style="display: none"> nada</div>
       </div>
 
-      <div id="FormOrcamento" class="none Ct Rd">
+      <div id="FormOrcamento" class="none Ct Rd Rltv">
 
         <div class="Close Ct">X</div>
 
@@ -202,7 +202,8 @@
 
     <div id="Fundo-Modal" class="FundoModal Ct none">
 
-      <div id="ModalInfo" class="Ct none">
+      <div id="ModalInfo" class="Ct Rltv none">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div id="Modal-Info1" class="ModalPgmnt Modalzinho Ct Cl ">
           <div id="Title-Info" class="Hr padins Ct"></div>
   
@@ -297,9 +298,9 @@
         </div>
       </div>
 
-      <div id="ModalLogin" class="Ct none">
+      <div id="ModalLogin" class="Ct Rltv none">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div class="Modalzinho Ct Ft modalloginn">
-          <div class="X" onclick="None('#Fundo-Modal')">X</div>
           <div class="Bt Loginn">Login</div>
           <div class="Ct Start">
             <label for="Senha">Senha</label>
@@ -313,8 +314,9 @@
         </div>
       </div>
 
-      <div id="ModalCadastro" class="Modalzinho Ct Ft none">
-          <div>Cadastro do Clietne</div>
+      <div id="ModalCadastro" class="Modalzinho Rltv Ct Ft none">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div>Cadastro do Clietne</div>
           <input type="text" name="Clnt" placeholder="Nome do Cliente">
           <input type="text" name="Cplt" placeholder="Nome Completo">
           <input type="text" name="Cntt" placeholder="Contato do Cliente">
@@ -325,8 +327,8 @@
           <button>Salvar</button>
       </div>
 
-      <div id="ModalNota" class="Modalzinho Cl Rd media30 none">
-        <div class="X End" onclick="None('#Fundo-Modal')">X</div>
+      <div id="ModalNota" class="Modalzinho Rltv Cl Rd media30 none">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div id="Titulo-Nota" class="w100 Bt Hr"></div>
             <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
               <div class="Centro Rw">

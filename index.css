@@ -69,7 +69,14 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .FtRg{font-family: var(--Rglr)}
 .FtBd{font-family: var(--Bold)}
 .FtMd{font-family: var(--Medi)}
+.Rltv{position: relative}
 
+
+html, body {
+  touch-action: pan-x pan-y;
+}
+
+body{cursor: default;}
 
 button {background: #73008A; border-radius: 255px;}
 button,.Login,.X,.ppt,.Close{cursor: pointer;}
@@ -86,7 +93,7 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 
 #FormOrcamento{
   background: #202020;
-  margin:15px;padding:5px;position: relative;
+  margin:15px;padding:5px;
   height: auto;
   overflow: hidden;
   animation: ShowForm 0.5s;

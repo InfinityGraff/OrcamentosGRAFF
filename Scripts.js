@@ -265,9 +265,6 @@
     <table class="w100"><tfoot><tr><th colspan="5" ${CSS}>Total</th><th ${CSS}>R$ ${VlrDescs.replace(/\./g,',')}</th></tr></tfoot></table>`
   }
 
-
-
-
 // Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
 
   document.addEventListener('input',()=>{handle();Clientes();FilTable()}) // to chamando assim pq posso querer chamar mais...
@@ -497,6 +494,7 @@ function FilTable(){
       let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show('#Div-CRUD');ScrollFinal();ocultaButtonfilt()`
       let FuncSav = `SavePdd( '${NewItem.join('/')}','Bloco'  ,'Filter','${TotalDesc}','this')`
       let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
+      let Comment = Serv==='Placa' ? Totais[2].map(c=>`<div>${c}</div>`).join('') : ""
 
     const item = CreateTag('div')
     item.innerHTML =
@@ -522,6 +520,7 @@ function FilTable(){
             <button class"RD Mg" onclick="${FuncSav}">Salvar</button>
             <button class"RD Mg" onclick="${FuncEnt}">Entrada</button></div>
         </div>
+        <div class="Ct Cl">${Comment}</div>
       </div>`
     return item
   })
@@ -547,13 +546,6 @@ function AddXdesc() {
   })
 }
 
-
-
-
-
-
-
-
 function Orcamento(arrays){
   const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
 
@@ -562,6 +554,7 @@ function Orcamento(arrays){
   const ArryQnt = IptsDIV('#Div-Inpt-Qnt input').map(I=>I.value)
 
   let MedidasList = []
+  let Coment = []
   
   ArryQnt.forEach((e,x)=>{
 
@@ -570,13 +563,13 @@ function Orcamento(arrays){
       const Qnt_ = Tipo.match(/[2]/) ? ArryQnt[x] * 2 : ArryQnt[x] * 1
       const desc = I_Ferr.match(/..$/)/1000*2
       const PE   = Serv.match(/Cav/) ? 0.15*2 : 0
-      const CkCstl = Tipo.match(/Lumi|Back/)
+      const CkCstl = Tipo.match(/Lumi/)
       const CkLarg = Larg_ > Alt_
 
       const F_L = CkLarg ? Larg_+PE : Larg_-desc
       const F_A = CkLarg ? Alt_-desc : Alt_+PE
-      const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Larg_+1) // Costelas
-      const C_A = CkCstl ? 2 : CkLarg ? Math.round(Alt_+1) : 2  // Costelas
+      const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Alt_)+1 // Costelas
+      const C_A = CkCstl ? 2 : CkLarg ? Math.round(Larg_)+1 : 2  // Costelas
 
       const FM1 = Calc.match(/\sF/)  ? Qnt_ * Ferro * (F_L*C_L + F_A*C_A) : 0
       const AM1 = Calc.match(/A/)    ? Qnt_ * Alumn * 2 * (F_L+F_A) : 0
@@ -586,11 +579,16 @@ function Orcamento(arrays){
 
     const Total = Math.round(MM2*(Vlr+Vlr*Crecent(MM2))) + FM1 + AM1 + QNT + OFS
 
+    Coment.push(`${C_L} Varas de ${CmStng(F_L)} | ${(C_A)} Costelas ${CmStng(F_A)}`)
+
     MedidasList.push([ArryQnt[x],ArryLag[x],ArryAlt[x],Total])
+
   })
   let Totall = 0 ; MedidasList.forEach(I => {Totall += I[3]})
+
   
-  return [MedidasList,Totall]
+  
+  return [MedidasList,Totall,Coment]
 }
 
 async function PesquisaKM(inpt){
@@ -623,7 +621,6 @@ function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os
   ObjInfo = obj
   console.log(obj)
 }
-
 
 async function SavePdd(arry,Stts,orig,Ttal,btn){
 
