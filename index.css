@@ -70,15 +70,15 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .FtBd{font-family: var(--Bold)}
 .FtMd{font-family: var(--Medi)}
 .Rltv{position: relative}
-
+.icon svg{width: 20px;height: 20px;}
+.Hddn{overflow: hidden;}
 
 html, body {
   touch-action: pan-x pan-y;
+  cursor: default;
 }
 
-body{cursor: default;}
-
-button {background: #73008A; border-radius: 255px;}
+button {background: #73008A; border-radius: 255px}
 button,.Login,.X,.ppt,.Close{cursor: pointer;}
 .X{opacity: 0.7;}.X:hover{opacity: 1;color:red;}
 
@@ -112,6 +112,7 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
   from {opacity: 0;transform: scale(1.8)}
     to {opacity: 1;transform: scale(1.0)}}
 
+
 .RoloTop{
   position: fixed;
   transform: scale(0.25);
@@ -124,9 +125,22 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 }@keyframes RoloTopp {
   from {opacity:0; transform: scale(0.25) translate3d(0, 200px, 0) }
     to {opacity:1; transform: scale(0.25) translate3d(0, 0, 0)}}
-
+#RoloTop.roloTopOut{
+  animation: RoloTopp2 0.4s;
+}@keyframes RoloTopp2 {
+    from {opacity:1; transform: scale(0.25) translate3d(0, 0, 0)}
+      to {opacity:0; transform: scale(0.25) translate3d(0, 200px, 0)} }
 #Div-CRUD{
+  width: 95%;
+  margin: 10px 0px;
+  padding: 8px;
   animation: modal 0.7s;
+}
+
+#ClearCRUD svg{
+  width: 20px;
+  height: 20px;
+  fill: #ffa600;
 }
 
 .Seta svg{
@@ -135,6 +149,19 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
   height: 15px;
   transform: rotate(90deg);
   cursor: pointer;
+}
+
+.Tabela{
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #0b0b0b79;
+}
+
+#ClearForm{
+  position: absolute;
+  top: 9px;
+  right: 30px;
+  transform: scale(0.9);
 }
 
 #Grupo-Cliente,#Grupo-Entrega{
@@ -147,10 +174,59 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 
 
 
-#Bandeija {position: absolute;z-index: 9999999999;}
-#Bandeija > div {padding: 4px;cursor: pointer;background:#e4e4e4;}
-#Bandeija > div:hover {background:#ff6600;}
-#Bandeija > div > div:nth-child(2) {font-size: 12px;}
+#Bandeija {
+  position: absolute;z-index: 9999999999;}
+#Bandeija > div {
+  padding: 4px;cursor: pointer;background:#e4e4e4;}
+#Bandeija > div:hover {
+  background:#ff6600;}
+#Bandeija > div > div:nth-child(2) {
+  font-size: 12px;}
+
+table{
+  text-align: center;width: 100%;border-spacing: 2px 8px;}
+  th{
+    height: 25px;background: #373738;}
+  table td:nth-child(4){
+    font-size: 10px; color:#777777}
+  table td:nth-child(8){
+    background:#2f5000; font-size: 13px; border-radius:255px}
+  table td:nth-child(8) > div > div > div:first-child{
+    font-size: 8px ;margin-right: 2px;}
+  
+.HvrSVG *{
+  fill: orange; color: orange; cursor: pointer;
+  transform: scale(0.9);
+}.HvrSVG:hover *{
+  fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);
+  color: #ff5100;
+  transform: scale(1.0);}
+
+#Rodape {
+  border-top: 1px solid #ffffff3b;
+  padding-top: 4px;
+}#Rodape .HvrSVG div:nth-child(1){
+  font-size: 9px;
+  margin: 0px 3px 0px 5px;
+}#Rodape .HvrSVG div:nth-child(2){
+  font-size: 15px;}
+
+#Contagem{
+  position: absolute;
+  top: 26px;
+  left: 27px;
+  margin: 0px 3px;}
+
+td > div{display: flex;align-items: center;justify-content: center;}
+#CRUD input{font-size:12px;height: 25px;margin: 0}
+
+.Slideheight-Out {
+  animation: slideIn 0.4s ease reverse;}
+.Slideheight-In {
+  animation: slideIn 0.4s ease;
+}@keyframes slideIn{
+  from{height: 150px}
+    to{height: 304.19px}}
 
 
 @keyframes Transicao{0%{background-position-x: 0%;}100%{background-position-x: 90%;}}
@@ -200,7 +276,7 @@ nav{background:#444444;width: 100%; height: 35px;}
       .ativo{background: #353535;}
 
 #FormOrc  {width:60%; height: 350px; padding:50px 15px;}
-#DivResult{width:40%; height: 350px; }
+#DivResult{width:40%;}
 
 form div[id*=Inpt]{
   width: 100%;
@@ -239,10 +315,12 @@ input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
       align-items: center;}
 
 .baby{
-  width: 150px; height: 30px;
+  width: 150px;
+  height: 30px;
   background:var(--Degrade);
   background-size: 500%;
-  transition: 0.1s ease-in-out;}
+  transition: 0.1s ease-in-out;
+  }
       .baby:hover{
           width: 160px;
           height: 35px;
@@ -275,33 +353,12 @@ input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
   .Botaozin:hover{background:#606060}
   .Loginn{font-size: 40px}
 
-.Tabela{
-  width: 95%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: #0b0b0b;
-  border-radius: 20px;}
-
-#CRUD svg{width: 20px;height: 20px;cursor:pointer;}
-/* #CRUD svg:hover{width: 23px; height: 23px; cursor:pointer} */
-#CRUD table th:first-child,#CRUD table td:first-child{display: none}
-td > div{display: flex;align-items: center;justify-content: center;}
-#CRUD input{font-size:12px;height: 25px;margin: 0}
 
 
-table{text-align: center;width: 100%;border-spacing: 2px 8px;}
-  th{height: 25px;}
-  tr{background: #373738;}
-  td{background: #0b0b0b;}
-  table td:nth-child(4){font-size: 10px; color:#777777}
-  table td:nth-child(8){background:#2f5000; font-size: 13px; border-radius:255px}
-  table td:nth-child(8) > div > div > div:first-child{font-size: 8px ;margin-right: 2px;}
-  table td:nth-child(9) svg{fill: #ffae00;}
-    table td:nth-child(9) svg:hover{fill: #ff6139;filter: drop-shadow(0 0 5px #ff5100a2);}
-  table td:nth-child(10) svg{fill: #ffae00;}
-    table td:nth-child(10) svg:hover{fill: #ff5100;filter: drop-shadow(0 0 5px #ff5100a2);}
+
+
+
+
 
 .circle{
   background-image: linear-gradient(#550047,#f15900);
@@ -522,12 +579,12 @@ input[type="checkbox"],input[type="radio"]{
   }
   nav::-webkit-scrollbar {display: none;}
   #FormOrc > h2{display: none;}
-  #DivResult > h2{display: flex;}
+  #DivResult > h2{display: flex; margin: 8px 0px;}
 
   #Aba-Orcamento{width:100%;}
   #FormOrc{width:100%; ;height: auto; padding: 5px 15px;}
-  #DivResult{width: 100%; height: 350px;}
-  #resultfilter1{width: 90%;}
+  #DivResult{width: 100%;}
+  #resultfilter1{width: 90%; margin-bottom: 8px;}
   #Resumo{width: 100%}
   #resultfilter1 button {width: 70%; margin: 5px auto;}
 

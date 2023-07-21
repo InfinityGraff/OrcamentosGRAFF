@@ -2,6 +2,7 @@
   // Básicas
   function QrySlt(e){return document.querySelector(e)}
   function QrySltAll(e){return document.querySelectorAll(e)}
+  function QryArryAll(e,string){return Array.from(e.querySelectorAll(string))}
   function CreateTag(e){return document.createElement(e)}
   function Reais(e){return e.toFixed(2).replace('.',',')}
   function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
@@ -41,18 +42,28 @@
     const aa = Array.isArray(a) ? a : [a]
     const bb = Array.isArray(b) ? b : [b]
       aa.forEach(E => {E.style.display = 'flex'})
-      bb.forEach(E => {E.style.display = 'none'})}
+      bb.forEach(E => {E.style.display = 'none'})
+  }
   
   function ToggleShowNone(e,valid){
     if(valid){e.style.display = 'flex'}
     else{e.style.display = 'none'}
   }
 
+  function ENone(e){let ee = null
+    if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
+    return window.getComputedStyle(ee).display === 'none'
+  }
+
+  function EShow(e){let ee = null
+    if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
+    return window.getComputedStyle(ee).display !== 'none'
+  }
 
 
-  function QryArryAll(e,string){
-    return Array.from(e.querySelectorAll(string))
-    }
+
+    
+  
   
 
 

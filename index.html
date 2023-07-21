@@ -55,7 +55,7 @@
     <div id="Aba-Orcamento">
 
       <div id="Bandeija"></div>
-      <div id="RoloTop" class="RoloTop" onclick="scrollToDiv()"></div>
+      <div id="RoloTop" class="RoloTop none" onclick="scrollToDiv()"></div>
 
       <div class="Ct Redi w100">
         <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
@@ -63,10 +63,13 @@
       </div>
 
       <div id="FormOrcamento" class="none Ct Rd Rltv">
+        <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm()">Clear</div>
+        <div class="Close Ct" onclick="CloseForm(this)">X</div>
+        
+        <div id="Contagem"></div>
+        
 
-        <div class="Close Ct">X</div>
-
-        <div id="DivResult" class="Ct Cl">
+        <div id="DivResult" class="Ct Cl Hddn">
           <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
           <div id="resultfilter1"></div>
           <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
@@ -137,35 +140,39 @@
 
         </form>
 
-        <div id="Div-CRUD" class="Tabela Ct none">
+        <div class="Ct">
+          <button id="AddAdd" class="baby Ct none" onclick="AddAdd()">Adicionar</button>
+        </div>
 
-          <div class="Ct Bt">
+        <div id="Div-CRUD" class="Tabela Rd Ct Cl none">
+
+          <div id="TitleCRUD" class="Ct Bt">
             <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
             <div><div data="Cntt">Contato</div></div>
             <div><div data="Local">Local</div></div>
             <div><div data="Etc">Descrição</div></div>
+            <div id="ClearCRUD" class="HvrSVG Ct none" onclick="clearCRUD()">Clear</div>
           </div>
 
-          <div id="CRUD" class="Tabela Ct w100">
+          <div id="CRUD" class="Rd Ct Cl w100">
 
             <table>
               <tbody>
                 <tr>
-
-                  <th>id</th>
-                  <th>QNT</th>
+                  <th class="none">id</th>
+                  <th>Qnt</th>
                   <th>Serv</th>
                   <th>Tipo</th>
-                  <th>CBMT</th>
-                  <th>Largura</th>
-                  <th>Altura</th>
+                  <th>Cbmt</th>
+                  <th>Larg</th>
+                  <th>Alt</th>
                   <th>Total</th>
                   <th></th>
                   <th></th>
                 </tr>
     
                 <tr id="CrudDefaut" class="none">
-                  <td><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
+                  <td class="none"><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
                   <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
                   <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
                   <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
@@ -174,23 +181,25 @@
                   <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
                   <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
                   <td>
-                    <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)">Editar</div>
-                    <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="none">Salvar</div>
+                    <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Editar</div>
+                    <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Salvar</div>
                   </td> 
                   <td>
-                    <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)">Deletar</div>
-                    <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="none">Cancelar</div>
-                  </td> 
-                  
+                    <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Deletar</div>
+                    <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Cancelar</div>
+                  </td>
                 </tr>
+
               </tbody>
             </table>
-            <button class="baby" onclick="clearStore()">Limpar Lista</button>
+
+            <div id="Rodape" class="Ct w100">
+              <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div class="Total">00,00</div></div>
+            </div>
           </div>
         </div>
 
-        <div class="Ct">
-          <button class="baby">Adicionar</button>
+        <div id="SavSav" class="Ct none">
           <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
           <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button>
         </div>
@@ -370,6 +379,10 @@
           </div>
       </div>
 
+      <div id="Modal-Item" class="ModalItem Rltv Modalzinho Ct Cl">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Conteudo-Item"></div>
+      </div>
       <div id="InnerVazio" class="none Ct"></div>
 
     </div>

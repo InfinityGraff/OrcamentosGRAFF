@@ -64,6 +64,8 @@
 // OnLoad's
   QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','','')
   QrySlt('#RoloTop').innerHTML = IconRoloTop
+  QrySlt('#ClearCRUD').innerHTML = IconClean
+  QrySlt('#ClearForm').innerHTML = IconClean
 
   document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
     if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
@@ -93,6 +95,16 @@
   window.addEventListener('DOMContentLoaded',()=>{ // não sei pq n ta funcionando, é pra bloquear data antes do dia de hoje
     QrySltAll('#Prazo, #dataPagInfo').forEach(i=>{i.min = new Date().toISOString().split('T')[0]})
   })
+  window.addEventListener('scroll',()=>{
+    const Btn = QrySlt('#RoloTop')
+    if ((window.scrollY || window.pageYOffset) >= 250) {
+      Show(Btn)
+    }else{
+      setTimeout(()=>{
+        None(Btn)},100)
+    }
+  })
+
 
   // campo Numerico
   QrySltAll('#Grupo-Medidas input').forEach(e=>{
@@ -101,19 +113,8 @@
 
   QrySltAll('.Close').forEach(e=>{ // não estou sentindo o x Rodando
     e.innerHTML = IconEscList
-    e.addEventListener('click',()=>{
-      e.classList.add('clicked')
-      FormOrcamento.classList.add("CloseForm")
-
-      setTimeout(()=>{
-        Show(QrySlt('#NewOrcamento').parentNode)
-      },100)
-      setTimeout(()=>{
-        e.classList.remove('clicked')
-        FormOrcamento.classList.remove("CloseForm")
-        None(FormOrcamento)
-      },500)})
   })
+
 
   QrySltAll('.Seta').forEach(e=>{e.innerHTML = IconSetair})
   
@@ -239,16 +240,14 @@
     AbrirModalHTML(FundoModal,InnerVazio) ; InnerVazio.children[0].focus()
   }
   function AbreItem(Arry,Mdd,IMG){ // 1-JS
-    AbrirModalHTML(FundoModal,InnerVazio) ; const NwArry = Arry.split('/')
-    InnerVazio.innerHTML = 
-      `<div id="Modal-Item" class="ModalItem Modalzinho Ct Cl">
+    AbrirModalHTML(FundoModal,QrySlt('#Modal-Item')) ; const NwArry = Arry.split('/')
+    QrySlt('#Conteudo-Item').innerHTML = `
         <div class="itemfilter Ct Cl w100 Rdd">
           <div class="RstServ">${NwArry[2]} ${NwArry[3]}</div>
           <div id="FotoFilter"><img src="${IMG}"></div>
           <div>${Mdd.split('/').map(i=>`<div>${i}</div>`).join("").replace('*','')}</div>
         </div>
-        <button onclick="Copy('${Mdd}',this)">Copy Itens</button>
-      </div>`
+        <button onclick="Copy('${Mdd}',this)">Copy Itens</button>`
   }
   function AbreNota(Mdd,VlrFinall,VlrDescs){
 
@@ -345,6 +344,28 @@
     QrySltAll('select').forEach(e=>{e.addEventListener('change',ShowTipo)})
 
   }
+  function CloseForm(e){   
+      e.addEventListener('click',()=>{
+        e.classList.add('clicked')
+        FormOrcamento.classList.add("CloseForm")
+  
+        setTimeout(()=>{
+          Show(QrySlt('#NewOrcamento').parentNode)
+        },100)
+        setTimeout(()=>{
+          e.classList.remove('clicked')
+          FormOrcamento.classList.remove("CloseForm")
+          None(FormOrcamento)
+        },500)})
+  }
+
+  function clearForm(){
+    FormOrcamento.querySelectorAll('input, select').forEach((e) => (e.value = ''))
+    FilTable()
+    clearCRUD()
+  }
+
+
   function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
     ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
   }
@@ -463,9 +484,9 @@ function OptFilter(Stng,Coll){ // cria as listas Options
 
 // Chamar igual com a nova q criei_____________________________________________________________________________
 Array.from(Selects).forEach(E=>{E.addEventListener("change",FilTable)})
+const ResultFilTable = QrySlt('#resultfilter1')
 
-function FilTable(){
-  const ResultFilTable = QrySlt('#resultfilter1')
+function FilTable(){  
   ResultFilTable.innerHTML = ''
   const Arry = tabela.filter(T=>{
     return (I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
@@ -491,7 +512,7 @@ function FilTable(){
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
     let NewItemaDD=[GerarIT(),QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
       let FuncIMG = `AbreItem('${NewItem.join('/')}','${Mdds2}','${IMG}')`
-      let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show('#Div-CRUD');ScrollFinal();ocultaButtonfilt()`
+      let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show(['#Div-CRUD','#SavSav']);ScrollFinal();OcultaCoisas('${ResultFilTable}')`
       let FuncSav = `SavePdd( '${NewItem.join('/')}','Bloco'  ,'Filter','${TotalDesc}','this')`
       let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
       let Comment = Serv==='Placa' ? Totais[2].map(c=>`<div>${c}</div>`).join('') : ""
@@ -526,12 +547,34 @@ function FilTable(){
   })
   items.forEach(I=>ResultFilTable.appendChild(I))
 
+  QrySlt('#Contagem').innerHTML = ResultFilTable.children.length + ' Itens'
+
   AddXdesc()
+  OcultaCoisas(ResultFilTable) 
 }
 
-function ocultaButtonfilt() {
-  QrySltAll('#resultfilter1 button').forEach(e=>{
-    if(e.textContent.includes('Salvar') || e.textContent.includes('Entrada')){None(e)}})
+function OcultaCoisas(e){
+
+  if(EShow('#Div-CRUD')){
+    Show('#SavSav')
+    // oculta os BTN do filter
+    QrySltAll('#resultfilter1 button').forEach(e=>{if(!e.textContent.includes('Adicionar')){None(e)}})
+  }else{
+    None('#SavSav')
+  }
+
+  if(e.children.length===1){Show(QrySlt('#AddAdd'))
+    if(e.style.height === '150px'){return}
+      e.style.height = '150px'
+      e.classList.add('Slideheight-Out')
+      setTimeout(()=>{e.classList.remove('Slideheight-Out')},500)
+
+  }else{None(QrySlt('#AddAdd'))
+    if(e.style.height === '304.19px'){return}
+      e.style.height = '304.19px'
+      e.classList.add('Slideheight-In')
+      setTimeout(()=>{e.classList.remove('Slideheight-In')},500)
+  }
 }
 
 function AddXdesc() {
@@ -679,6 +722,11 @@ function addyCRUD(Arry) {
     
     Defaut.parentNode.appendChild(Clonado)
   })
+  Show('#ClearCRUD')
+}
+
+function AddAdd(){
+  QryArryAll(ResultFilTable,'button')[0].click()
 }
 
 function DeletCRUD(e){
@@ -708,12 +756,12 @@ function SaveEditCRUD(e) {
   })
 }
 
+function clearCRUD(){
+  confirm('tem Certeza q quer Limpar?')
+  QrySltAll('#CRUD tr').forEach((e,idx)=>{
+    if(idx>=2){e.remove()}})
+  None('#ClearCRUD')
+}
 
 
 //__________________________________________________________________________________
-  // Salvar de Onde Parou, fica uma notificação, avizando que o antigo modal ta ali
-  // Data Máxima, o q seria equivalente ao Valor Mínimo
-  // Opção para editar todos os Modais antes de concluir
-  // Opções para indivudualizar (Entrega,Aplicação,Arte)
-  // Aolicação Baixo ou Alto? Superficie: Plana ou Irregular
-  // Aplicar Onde? (IA Responde se dá ou não.)
