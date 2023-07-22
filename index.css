@@ -40,6 +40,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 
 .Ct{display: flex;flex-wrap: wrap;justify-content: center;align-items: center;}
 .Start{display: flex;justify-content: flex-start;align-items: center;}
+.Start2{display: flex;align-items: flex-start;flex-direction: column;}
 .End{display: flex;justify-content: flex-end;align-items: center;}
 .Cl{display: flex;flex-direction: column;}
 .Rw{display: flex;flex-direction: row;}
@@ -502,9 +503,21 @@ form div[id*=Inpt]{
   #Nota-Clnt > div > div >div{margin: 0px 5px;}
 
 .media30{width: 30%;}
-.media80{width: 80%;}
+.media80{width: 60%;}
 
 .LogoNota > img{width: 50px; height: 50px;}
+
+.Start2 p{
+  margin: 1px 5px;
+}
+
+#DescrNOTTApdd div{
+  font-size: 15px;
+}
+
+#LugarFotoNotta{
+  margin-right: 3px;
+}
 
 .BTNota{height: 20px; padding: 0px 10px; margin: 0px 1.5px; background: #5F009E}
 .magem{margin:5px 0px}
@@ -590,7 +603,6 @@ input[type="checkbox"],input[type="radio"]{
   #Resumo{width: 100%}
   #resultfilter1 button {width: 70%; margin: 5px auto;}
 
-  
 }
 
 
@@ -619,5 +631,9 @@ z-index: 999;
 .Redi{
   height: 100vh;
 }
+
+
+
+
 
 .none{display: none;}

@@ -255,16 +255,18 @@
   function AbreNota(Mdd,VlrFinall,VlrDescs){
 
     const CSS = 'style="color: white"'
-
+    QrySlt('#DataNota').innerHTML = NewDate
     const ModalNota = QrySlt('#ModalNota')
     AbrirModalHTML(FundoModal,ModalNota)
     QrySlt('#Titulo-Nota').innerHTML = `<h1>${IDPdd}: ${InnClnt.innerHTML}</h1>`
     QrySlt('#conteudo-nota').innerHTML = `
     <table id="TabelaNotinha" class="w100"><thead><tr><th ${CSS}>Serviços</th></tr></thead></table>
 
-      <div class="Ct Cl">${Mdd.split('/').map(i=>`<div class="magem">${i.replace(/\./g,',')}</div>`).join("").replace(/\*.*\*/,'').replace("*",'')}</div>
+      <div id="DescrNOTTApdd" class="Ct Cl">${Mdd.split('/').map(i=>`<div class="magem">${i.replace(/\./g,',')}</div>`).join("").replace(/\*.*\*/,'').replace("*",'')}</div>
+    
+      <h2 class="Hr Ct">Total R$ ${VlrDescs.replace(/\./g,',')}</h2>
 
-    <table class="w100"><tfoot><tr><th colspan="5" ${CSS}>Total</th><th ${CSS}>R$ ${VlrDescs.replace(/\./g,',')}</th></tr></tfoot></table>`
+      `
   }
 
 // Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
