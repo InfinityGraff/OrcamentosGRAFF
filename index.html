@@ -59,7 +59,7 @@
       </div>
 
       <div id="FormOrcamento" class="none Ct Rd Rltv">
-        <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm()">Clear</div>
+        <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm();clearCRUD()">Clear</div>
         <div class="Close Ct" onclick="CloseForm(this)">X</div>
         
         <div id="Contagem"></div>
@@ -190,7 +190,7 @@
             </table>
 
             <div id="Rodape" class="Ct w100">
-              <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div class="Total">00,00</div></div>
+              <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div id="TotalCrud" class="Total">00,00</div></div>
             </div>
           </div>
         </div>
@@ -198,6 +198,8 @@
         <div id="SavSav" class="Ct none">
           <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
           <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button>
+          <button class="BTNota Ct RD magem" onclick="AbreNota('','','')">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
+          
         </div>
 
       </div>
@@ -381,7 +383,7 @@
           <div class="w100 Ct">
             <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
             <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
-            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<img id="imgnotta" height="60%"></button>
+            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
           </div>
       </div>
 

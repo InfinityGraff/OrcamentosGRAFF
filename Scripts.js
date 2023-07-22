@@ -66,6 +66,8 @@
   QrySlt('#RoloTop').innerHTML = IconRoloTop
   QrySlt('#ClearCRUD').innerHTML = IconClean
   QrySlt('#ClearForm').innerHTML = IconClean
+  QrySlt('#imgnotta').innerHTML = IconNota
+  QrySlt('#imgnotta2').innerHTML = IconNota
 
   document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
     if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
@@ -108,6 +110,9 @@
     ReloadTab()
   })
 
+  // Chamar igual com a nova q criei_____________________________________________________________________________
+Array.from(Selects).forEach(E=>{E.addEventListener("change",FilTable)})
+const ResultFilTable = QrySlt('#resultfilter1')
 
   // campo Numerico
   QrySltAll('#Grupo-Medidas input').forEach(e=>{
@@ -204,6 +209,7 @@
     if (next){next.focus()}}
   }
 
+
 // Funções pra Abrir Modais ______________________________________________________________________________________________________________
 
   function AbreLogin(){ // 1-HTML
@@ -269,9 +275,11 @@
       `
   }
 
-// Funções que são Chamadas a nos OnInputs__________________________________________________________________________________________
+
+// OnInputs__________________________________________________________________________________________
 
   document.addEventListener('input',()=>{handle();Clientes();FilTable()}) // to chamando assim pq posso querer chamar mais...
+  
 
   function handle(){ // essa função Geral Mantem o Handdle a Cada inpuit do Documento inteiro
     QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
@@ -330,8 +338,42 @@
     Trogl([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv])
     ArryClnt.fill('')
   }
+  let unddback=""; function ShowTipo(){
+    let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
+    if (undd !== unddback){
+      if (undd.match(/M2/)){None(Grupo_Tipos)
+        Show([DivTipo,DivCbmt,Grupo_Medidas,DivAlt,DivLarg])}
+      if (undd.match(/OFS/)){None(Grupo_Medidas)
+        Show([DivTipo,DivCbmt,Grupo_Tipos])}
+      if (undd.match(/QNT/)){
+        Show([DivTipo,DivCbmt,Grupo_Medidas])
+        None([DivAlt,DivLarg,Grupo_Tipos])}}
+    unddback = undd
 
-// inicio das Funções do Form (as Funções q Vão Controlar os Arrays Principais)________________________________________________
+    if(I_Cbmt.options[1].value.trim() === ''
+    || I_Cbmt.options[1].value === '-'){
+      None(DivCbmt)}else{Show(DivCbmt)}
+  }
+
+  document.addEventListener('keyup',(e)=>{ClonaMddKey(e); /*EnterTab(e)*/})
+  function EnterTab(e){ // só chamar quando for fora dos Input Medidas
+    if(KeyEnter(e)){
+      const inptAtivo = document.activeElement
+      if (inptAtivo.tagName === "INPUT"){
+        const prox = inptAtivo.nextElementSibling
+        if (prox && prox.tagName === "INPUT") {
+          prox.focus();
+        }
+      }
+    }
+  }
+  function ClonaMddKey(e){ // tem uns erros nesse aqui
+    // quando não tem Input pra ele dar o tab, ele acaba digitando o '+' no input, então tem q esperar sei lá
+    if(e.key==='+'){console.log(e.key);ClonaMdd()}
+  }
+
+
+// FORM ________________________________________________
 
   function NewOrcamentos(btn){
     QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+('0000'+(Math.max(...IDs)+1)).slice(-3)}) // Cria ID
@@ -363,18 +405,10 @@
           None(FormOrcamento)
         },500)})
   }
-
   function clearForm(){
     FormOrcamento.querySelectorAll('input, select').forEach((e) => (e.value = ''))
     FilTable()
-    clearCRUD()
   }
-
-
-  function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
-    ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
-  }
-
   function ClonaMdd() {
     QryArryAll(document,'#Grupo-Medidas > div')
     .forEach(div=>{
@@ -392,6 +426,7 @@
       
       if (NewInpt.hasAttribute("data-Tab")){
         NewInpt.setAttribute("data-Tab",`${TabIndx(NewInpt,3)}`)
+        NewInpt.value=''
       }
       
       div.appendChild(NewInpt)
@@ -399,13 +434,13 @@
     ReloadTab()
     FilTable()
   }
-
-  function EscMdds(e) {
-     e.parentNode
-
+  function EscMdds(btn) {
+    const idx = IndiceDe(btn)
+    Array.from(btn.parentNode.parentNode.children).forEach(e=>{
+      e.removeChild(Array.from(e.children)[idx])
+    })
     FilTable()
   }
-
   function ReloadTab(){
 
     var inputs = document.querySelectorAll('input[data-Tab]')
@@ -416,7 +451,7 @@
     var inputses = inpt.parentNode.querySelectorAll('input[placeholder="0 UND"]')
     var ultimo = inputses[inputses.length - 1]
     if(inpt===ultimo){return}
-    if(e.key === "Tab"){
+    if(e.key === "Tab" || KeyEnter(e) || e.key === "+"){
     e.preventDefault()
     var nextInput = getNextInput(inpt,inpt.parentNode.parentNode)
     if (nextInput){nextInput.focus()}}
@@ -426,19 +461,15 @@
     var nextInput = DivInpt.querySelector(`input[data-Tab="${TabIndx(inpt,1)}"]`)
     return nextInput
     }
-    }
+  }
 
-  let unddback=""; function ShowTipo(){
-    let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
-    if (undd !== unddback){
-      if (undd.match(/M2/)){None(Grupo_Tipos)
-        Show([DivTipo,DivCbmt,Grupo_Medidas,DivAlt,DivLarg])}
-      if (undd.match(/OFS/)){None(Grupo_Medidas)
-        Show([DivTipo,DivCbmt,Grupo_Tipos])}
-      if (undd.match(/QNT/)){
-        Show([DivTipo,DivCbmt,Grupo_Medidas])
-        None([DivAlt,DivLarg,Grupo_Tipos])}}
-    unddback = undd
+
+// Viagens ________________________________________________
+
+
+
+  function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
+    ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
   }
 
   const Endereco = QrySlt('#Endereco')
@@ -474,6 +505,7 @@
   
     html2pdf().set(options).from(QrySlt("#ModalNota")).save();
   }
+
 
 // Funções Grandes____________________________________________________________________________________________
 
@@ -527,11 +559,6 @@ function OptFilter(Stng,Coll){ // cria as listas Options
   return ['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))]
   .map(e=>{return `<option value='${e}'>${e}</option>`}).join("")
 }
-
-// Chamar igual com a nova q criei_____________________________________________________________________________
-Array.from(Selects).forEach(E=>{E.addEventListener("change",FilTable)})
-const ResultFilTable = QrySlt('#resultfilter1')
-
 function FilTable(){  
   ResultFilTable.innerHTML = ''
   const Arry = tabela.filter(T=>{
@@ -598,7 +625,6 @@ function FilTable(){
   AddXdesc()
   OcultaCoisas(ResultFilTable) 
 }
-
 function OcultaCoisas(e){
 
   if(EShow('#Div-CRUD')){
@@ -622,7 +648,6 @@ function OcultaCoisas(e){
       setTimeout(()=>{e.classList.remove('Slideheight-In')},500)
   }
 }
-
 function AddXdesc() {
   const elements = document.querySelectorAll('.RstValrDesc')
 
@@ -634,7 +659,6 @@ function AddXdesc() {
     e.appendChild(spn)
   })
 }
-
 function Orcamento(arrays){
   const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
 
@@ -679,7 +703,6 @@ function Orcamento(arrays){
   
   return [MedidasList,Totall,Coment]
 }
-
 async function PesquisaKM(inpt){
   const listaLugares = {'Camaragibe':20,'São Lourenço':10,'Recife':40}
   Show([RsutFrete,RsutFrete.parentNode])
@@ -687,7 +710,6 @@ async function PesquisaKM(inpt){
   RsutFrete.innerHTML = listaLugares[inpt]
   }else{RsutFrete.innerHTML = 'Lugar não Encontrado'}
 }
-
 function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os Arrays
   const date = event.target.getAttribute('data')
   const Value = event.target.value
@@ -710,7 +732,6 @@ function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os
   ObjInfo = obj
   console.log(obj)
 }
-
 async function SavePdd(arry,Stts,orig,Ttal,btn){
 
     const semClnt = I_Clnt.value === ''
@@ -743,7 +764,8 @@ async function SavePdd(arry,Stts,orig,Ttal,btn){
   console.log(ObjInfo)
 }
 
-//___________________________________________________________
+
+// CRUD___________________________________________________________
 
 function addyCRUD(Arry) {
   const Arr = Arry.split('/')
@@ -769,27 +791,32 @@ function addyCRUD(Arry) {
     Defaut.parentNode.appendChild(Clonado)
   })
   Show('#ClearCRUD')
+  TotalCrud()
+  clearForm()
 }
-
+function TotalCrud(){
+  let Soma = 0
+  QrySltAll('#CRUD td:nth-child(8) > div > div > div:nth-child(2)')
+  .forEach(e=>{
+    Soma+=Num(e.innerHTML)
+  })
+  QrySlt('#TotalCrud').innerHTML = Cm(Soma)
+}
 function AddAdd(){
   QryArryAll(ResultFilTable,'button')[0].click()
 }
-
 function DeletCRUD(e){
   console.log(IconLixo)
   if (confirm(`Tem certeza que deseja deletar?`)){e.remove()}
 }
-
 function EditaCRUD(e) {
   e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{if(i===7){return};Show(E)})
   e.querySelectorAll('[data="CrudA"]').forEach((E,i)=>{if(i===7){return};None(E)})
 }
-
 function CancelEditCRUD(e){
   e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{if(i===7){return};None(E)})
   e.querySelectorAll('[data="CrudA"]').forEach((E,i)=>{if(i===7){return};Show(E)})
 }
-
 function SaveEditCRUD(e) {
   const ListUp = []
   e.querySelectorAll('[data="CrudB"]').forEach((E,i)=>{
@@ -801,7 +828,6 @@ function SaveEditCRUD(e) {
     if (i < 7) {E.innerHTML = ListUp[i]}
   })
 }
-
 function clearCRUD(){
   confirm('tem Certeza q quer Limpar?')
   QrySltAll('#CRUD tr').forEach((e,idx)=>{

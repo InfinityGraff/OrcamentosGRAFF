@@ -3,6 +3,7 @@
   function QrySlt(e){return document.querySelector(e)}
   function QrySltAll(e){return document.querySelectorAll(e)}
   function QryArryAll(e,string){return Array.from(e.querySelectorAll(string))}
+  function QryArryAlll(e){return Array.from(document.querySelectorAll(e))}
   function CreateTag(e){return document.createElement(e)}
   function Reais(e){return e.toFixed(2).replace('.',',')}
   function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
@@ -19,7 +20,7 @@
   function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${e.toFixed(2).replace('.',',')}</div></div>`}
   function Cm(e){return `${e.toFixed(2).replace('.',',')}`}
   function CmStng(e){return `${parseFloat(e).toFixed(2).replace('.',',')}`}
-
+  function IndiceDe(e){return Array.from(e.parentNode.children).indexOf(e)}
   function None(e) {
     const ee = Array.isArray(e) ? e : [e]
     ee.forEach(E=>{if(typeof E==='string'){
@@ -61,7 +62,9 @@
   }
 
 
-
+  function Num(e){
+    return parseFloat(e.replace(',', '.'))
+  }
     
   function TabIndx(e,next){
     return parseInt(e.getAttribute("data-Tab"))+next

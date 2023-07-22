@@ -170,6 +170,13 @@ button{
   animation: modal 0.8s;
 }
 
+#imgnotta svg,#imgnotta2 svg{
+  fill: white;
+  height: 15px;
+  width: auto;
+  margin-left: 5px;
+}
+
 .MiniSenha{position: absolute;width:200px}
 .error {border: 2px solid red}
 .error::placeholder {color: red}
@@ -195,7 +202,8 @@ table{
     background:#2f5000; font-size: 13px; border-radius:255px}
   table td:nth-child(8) > div > div > div:first-child{
     font-size: 8px ;margin-right: 2px;}
-  
+
+
 .HvrSVG *{
   fill: orange; color: orange; cursor: pointer;
   transform: scale(0.9);
