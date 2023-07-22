@@ -7,14 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ORÇAMENTO</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <!-- Plugin Masked Input (81) 9999-9999 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-    
-    <!-- GeraGeraPDF 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.plugin.html2canvas.min.js"></script>
-    -->
+    <!-- jQuery --> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Mask-->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <!-- GeraPDF--> <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
     <link rel="stylesheet" href="./index.css">
@@ -105,12 +101,12 @@
           </div>
 
           <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
-            <div id="Div-Inpt-Mais"><label>.</label>
-              <div id="Mais-Input" class="Ct" onclick="AddMedidas()"></div><input class="none">
+            <div id="Div-Inpt-Mais"><label class="Opacy">.</label>
+              <div id="Mais" class="Ct icon" onclick="ClonaMdd()"></div>
             </div>
-            <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
-            <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)"></div>
-            <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND"></div>
+            <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
+            <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
+            <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
           </div>
 
           <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega'])">^</div></div>
@@ -341,7 +337,7 @@
         <div id="Titulo-Nota" class="w100 Bt Hr"></div>
             <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
               <div class="Centro Rw">
-                <div class="LogoNota"><img src="Img/Logo2.png"></div>
+                <div id="LugarFotoNotta" class="LogoNota icon2"><img src="Img/Logo2.png"></div>
                 <div>
                   <h2>INFINITY GRÁFICA - <span>IMPRESSÃO DIGITAL</span></h2>
                   <p>Estrada do Tip, N° 54A - SÃO LOURENÇO DA MATA - PE</p>
@@ -375,7 +371,7 @@
           <div class="w100 Ct">
             <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
             <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
-            <button class="BTNota Ct RD magem">Imprimir<img id="imgnotta" height="60%" onclick="gerarPDF()"></button>
+            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<img id="imgnotta" height="60%"></button>
           </div>
       </div>
 

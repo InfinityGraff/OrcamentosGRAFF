@@ -63,7 +63,9 @@
 
 
     
-  
+  function TabIndx(e,next){
+    return parseInt(e.getAttribute("data-Tab"))+next
+  }
   
 
 

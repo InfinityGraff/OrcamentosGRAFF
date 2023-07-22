@@ -62,7 +62,7 @@
   let ObjInfo = {}
 
 // OnLoad's
-  QrySlt('#Mais-Input').innerHTML = TagSVG(IconMais,'w50','Mais','','')
+  QrySlt('#Div-Inpt-Mais div').innerHTML = IconMais
   QrySlt('#RoloTop').innerHTML = IconRoloTop
   QrySlt('#ClearCRUD').innerHTML = IconClean
   QrySlt('#ClearForm').innerHTML = IconClean
@@ -103,6 +103,9 @@
       setTimeout(()=>{
         None(Btn)},100)
     }
+  })
+  document.addEventListener("DOMContentLoaded",()=>{
+    ReloadTab()
   })
 
 
@@ -369,28 +372,60 @@
   function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
     ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
   }
-  function AddMedidas() { // Trabalhar nessa da uma Diminuida e Botar o Botão q Sumiu
-    ["#Div-Inpt-Mais","#Div-Inpt-Larg","#Div-Inpt-Alt","#Div-Inpt-Qnt"].forEach(Inpt => {
-      var clone
-        if(Inpt === "Div-Inpt-Mais"){
-          clone = CreateTag('div') ; clone.classList.add('Ct')
-          clone.innerHTML = TagSVG(IconEscList,'','','EscMedidas(this)','')}
-        else{clone = QrySlt(Inpt).querySelector("input").cloneNode(true) ; clone.value = ""}
-      QrySlt(Inpt).appendChild(clone)})
 
-    Array.from(Selects).concat(Array.from(QrySltAll("form input"))).forEach(E=>{
-    E.addEventListener("change",FilTable) ; E.addEventListener("input",FilTable)})
-  }
-  function EscMedidas(Btn) { // Trabalhar nessa da uma Diminuida e Botar o Botão q Sumiu
-    var parentDiv = Btn.parentNode
-    const index = parseInt(Array.from(parentDiv.parentNode.children).indexOf(parentDiv))
-    
-    ["#Div-Inpt-Larg","#Div-Inpt-Alt","#Div-Inpt-Qnt"].forEach(DivId=>{
-      var inputs = QrySlt(DivId).getElementsByTagName('input')
-      if (inputs.length >= index){QrySlt(DivId).removeChild(inputs[index - 2])}})
-    parentDiv.parentNode.removeChild(parentDiv)
+  function ClonaMdd() {
+    QryArryAll(document,'#Grupo-Medidas > div')
+    .forEach(div=>{
+      var inpt = div.querySelectorAll("#Mais, input")
+      var Utm = inpt[inpt.length-1]
+      
+      var NewInpt = Utm.cloneNode(true)
+
+      if(Utm.id === 'Mais'){
+        Utm.innerHTML = IconEscList
+        Utm.removeAttribute('id')
+        Utm.classList.add('HvrSVG')
+        Utm.onclick = ()=>{EscMdds(Utm)}
+      }
+      
+      if (NewInpt.hasAttribute("data-Tab")){
+        NewInpt.setAttribute("data-Tab",`${TabIndx(NewInpt,3)}`)
+      }
+      
+      div.appendChild(NewInpt)
+    })
+    ReloadTab()
     FilTable()
   }
+
+  function EscMdds(e) {
+     e.parentNode
+
+    FilTable()
+  }
+
+  function ReloadTab(){
+
+    var inputs = document.querySelectorAll('input[data-Tab]')
+    
+    inputs.forEach(inpt=>{
+    
+    inpt.addEventListener("keydown",(e)=>{
+    var inputses = inpt.parentNode.querySelectorAll('input[placeholder="0 UND"]')
+    var ultimo = inputses[inputses.length - 1]
+    if(inpt===ultimo){return}
+    if(e.key === "Tab"){
+    e.preventDefault()
+    var nextInput = getNextInput(inpt,inpt.parentNode.parentNode)
+    if (nextInput){nextInput.focus()}}
+    })})
+    
+    function getNextInput(inpt,DivInpt){
+    var nextInput = DivInpt.querySelector(`input[data-Tab="${TabIndx(inpt,1)}"]`)
+    return nextInput
+    }
+    }
+
   let unddback=""; function ShowTipo(){
     let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
     if (undd !== unddback){
@@ -425,8 +460,17 @@
     else{ModalH1.style.fontSize = "15px"}
   }
 
-  function gerarPDF() {const doc = new jsPDF();const arquivo = 'nome'
-    doc.html(ModAlnotta,{callback:Doc=>{Doc.save(`${arquivo}.pdf`)}})
+  function NewPDF(){
+    QrySlt("#LugarFotoNotta").innerHTML = IconLogo;
+  
+    const options = {
+      margin: [0, 0, 0, 0],
+      filename: "arquivo.pdf",
+      html2canvas: { scale: 1 }, // Set scale to 1
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', height: 'auto'}, // Set height to 'auto'
+    };
+  
+    html2pdf().set(options).from(QrySlt("#ModalNota")).save();
   }
 
 // Funções Grandes____________________________________________________________________________________________

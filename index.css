@@ -71,16 +71,18 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .FtMd{font-family: var(--Medi)}
 .Rltv{position: relative}
 .icon svg{width: 20px;height: 20px;}
+.icon2 svg{width: 50px;height: 50px;}
 .Hddn{overflow: hidden;}
+.Opacy{opacity: 0}
 
 html, body {
   touch-action: pan-x pan-y;
-  cursor: default;
-}
+  cursor: default;}
+button,.Login,.ppt,.Close{
+  cursor: pointer;}
+button{
+  background: #73008A; border-radius: 255px}
 
-button {background: #73008A; border-radius: 255px}
-button,.Login,.X,.ppt,.Close{cursor: pointer;}
-.X{opacity: 0.7;}.X:hover{opacity: 1;color:red;}
 
 .Close svg{
   position: absolute;top: 15px;right: 15px;
@@ -111,7 +113,6 @@ button,.Login,.X,.ppt,.Close{cursor: pointer;}
 }@keyframes ButtonShow {
   from {opacity: 0;transform: scale(1.8)}
     to {opacity: 1;transform: scale(1.0)}}
-
 
 .RoloTop{
   position: fixed;
@@ -217,9 +218,6 @@ table{
   left: 27px;
   margin: 0px 3px;}
 
-td > div{display: flex;align-items: center;justify-content: center;}
-#CRUD input{font-size:12px;height: 25px;margin: 0}
-
 .Slideheight-Out {
   animation: slideIn 0.4s ease reverse;}
 .Slideheight-In {
@@ -228,6 +226,23 @@ td > div{display: flex;align-items: center;justify-content: center;}
   from{height: 150px}
     to{height: 304.19px}}
 
+input,select,.baby,#Div-Inpt-Mais div{
+  width: 100%;height: 30px;
+  font-size: 14px;border-radius: 255px;
+  background: var(--CorInput);margin: 3px;
+  text-align: center;
+}input:hover, select:hover, #Div-Inpt-Mais div:hover{
+  background: #4d4d4d;}
+#Div-Inpt-Mais{
+  width:140px;}
+
+#Mais svg{
+  fill: black;
+  opacity: 0.5;
+}
+
+td > div{display: flex;align-items: center;justify-content: center;}
+#CRUD input{font-size:12px;height: 25px;margin: 0}
 
 @keyframes Transicao{0%{background-position-x: 0%;}100%{background-position-x: 90%;}}
 
@@ -290,29 +305,16 @@ form div[id*=Inpt]{
 
 #Grupo-Medidas{padding: 0px 5vw;}
 
-input,select,.baby,#Div-Inpt-Mais div{width: 100%;height: 30px;font-size: 14px;border-radius: 255px;background: var(--CorInput);margin: 3px;text-align: center;}
-
-input:hover, select:hover, #Div-Inpt-Mais div:hover {background: #4d4d4d;}
-
-#Div-Inpt-Mais{width:140px;}
-
-#Div-Inpt-Mais label {color:#FFFFFF00;}
-#Div-Inpt-Mais div *{opacity: 0.5;}
-
-#Div-Inpt-Mais > Div > img {width: 20px;}
-
-
-
-  .foto{
-      width: 45%;
-      border-radius: 10px;
-      margin: 5px;
-      margin-bottom: 8px;}
-      
-  .botaum{
-      width: 100%;
-      margin-top: 8px;
-      align-items: center;}
+.foto{
+    width: 45%;
+    border-radius: 10px;
+    margin: 5px;
+    margin-bottom: 8px;}
+    
+.botaum{
+    width: 100%;
+    margin-top: 8px;
+    align-items: center;}
 
 .baby{
   width: 150px;
@@ -590,6 +592,8 @@ input[type="checkbox"],input[type="radio"]{
 
   
 }
+
+
 
 
 
