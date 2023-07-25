@@ -1096,3 +1096,5 @@ function Gera3d(div){
     Render.render(scene,Cam)
   }animate();UpCam()
 }
+
+
