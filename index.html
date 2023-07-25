@@ -12,7 +12,10 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <!-- GeraPDF--> <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://threejs.org/build/three.js"></script>
+
     <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
+    <link rel="icon" type="image/x-icon" href="/Img/Favcon.ico">
     <link rel="stylesheet" href="./index.css">
   </head>
 
@@ -107,6 +110,11 @@
             <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
             <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
             <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
+          </div>
+
+          <div id="Grupo-Medida2" class="">
+            <input id="Compmnt" type="text" placeholder="Comprimento" value="0">
+            <input id="BackCub" type="text" placeholder="Fundo" value="0">
           </div>
 
           <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega'])">^</div></div>
@@ -395,7 +403,9 @@
 
     </div>
 
-   
+    
+
+
 
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>

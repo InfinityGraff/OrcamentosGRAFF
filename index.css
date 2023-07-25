@@ -444,7 +444,7 @@ form div[id*=Inpt]{
 .RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;}
 .RstValrFinal{color: #00e61f;font-size: 20px}
 .RstValrFinal > div{color: #00e61f;font-size: 12px;margin-right:4px;}
-#FotoFilter img{width:110px;height:90px;}
+#FotoFilter img,.canvas{width:110px;height:90px;background-color: #d8d8d8;}
 .BtnAdd{width:50px; height:20px;}
 #resultfilter1 button {width: 100px;}
 
@@ -639,5 +639,14 @@ z-index: 999;
 .Redi{
   height: 100vh;
 }
+
+
+
+#canvas{
+  background-color: #d8d8d8;
+  width: 200px;
+  height: 200px;
+}
+
 
 .none{display: none;}
