@@ -275,7 +275,7 @@ h2{font-size: 18px; color: var(--Laranja);}
   margin: 4px 4px;
 }
 
-.FundoModal{
+.FundoModal1{
   position: fixed;
   top: 0px;
   left: 0px;
@@ -288,6 +288,18 @@ h2{font-size: 18px; color: var(--Laranja);}
   background: rgba(0,0,0,0.5);
   animation: FndoModal 0.5s}
 @keyframes FndoModal {from {opacity: 0;} to {opacity: 1;}}
+
+.FundoModal{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0px;
+  z-index: 999999999;
+  background: rgba(0, 0, 0, 0);
+}
 
 .Cabecalho{background: #1b1b1b ; width: 100% ; height: 55px ; padding: 0px 10px}
 .Pesquisa{ background: #444444 ; width: 50%   ; height: 25px ; text-align: center}
@@ -650,3 +662,35 @@ z-index: 999;
 
 
 .none{display: none;}
+
+
+
+
+#Modal-Teclado{
+  width: 95%;
+  top: 210px;
+}
+
+#Modal-Teclado > div{
+  display: flex;
+  width: 100%;
+}
+
+#Modal-Teclado div div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  border-radius: 20px;
+  background: #ffffff23;
+  padding: 2px;
+  margin: 2px;
+  width: 100%;
+  height: 35px;
+}#Modal-Teclado div div:hover{
+  background: #ffffff73;
+}
+
+#Grupo-Medidas input{
+  touch-action: none;
+}

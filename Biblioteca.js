@@ -78,13 +78,36 @@
   }
 
 
+  function pressKey(keyCode, data) {
+    const RecuperaDOM = document.querySelector(`#Grupo-Medidas input[data-tab="${data}"]`);
+      RecuperaDOM.focus()
+
+      const keydownEvent = new KeyboardEvent('keydown', { 'keyCode': keyCode });
+      RecuperaDOM.dispatchEvent(keydownEvent);
+      const keyupEvent = new KeyboardEvent('keyup', { 'keyCode': keyCode });
+      RecuperaDOM.dispatchEvent(keyupEvent);
+
+      RecuperaDOM.value += String.fromCharCode(keyCode)
+      RecuperaDOM.dispatchEvent(new Event('input',{bubbles:true}))
+  }
+  
 
 
 
 // Avançadas
-  function SairModal(Fundo){
-    document.addEventListener('keyup',e=>e.key === 'Escape' && None(Fundo))
-    Fundo.addEventListener('click',e=>e.target === Fundo && None(Fundo))}
+function SairModal(Fundo) {
+  document.addEventListener('keyup', e => {
+    if (e.key === 'Escape') {
+      None(Fundo); SairModalOutrasFunc()
+    }
+  });
+
+  Fundo.addEventListener('click', e => {
+    if (e.target === Fundo) {
+      None(Fundo);SairModalOutrasFunc()
+    }
+  });
+}
 
   function PrmssInnr(Tag) {
     return new Promise(resolve => {
