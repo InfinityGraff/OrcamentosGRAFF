@@ -725,6 +725,12 @@ function Orcamento(arrays){
   const ArryAlt = IptsDIV('#Div-Inpt-Alt input').map(I=>I.value)
   const ArryQnt = IptsDIV('#Div-Inpt-Qnt input').map(I=>I.value)
 
+  let SomaM2 = 0
+
+  ArryQnt.forEach((e,x)=>{
+    SomaM2 += ArryLag[x] * ArryAlt[x] * ArryQnt[x]
+  })
+
   let MedidasList = []
   let Coment = []
   
@@ -745,22 +751,31 @@ function Orcamento(arrays){
 
       const FM1 = Calc.match(/\sF/)  ? Qnt_ * Ferro * (F_L*C_L + F_A*C_A) : 0
       const AM1 = Calc.match(/A/)    ? Qnt_ * Alumn * 2 * (F_L+F_A) : 0
-      const MM2 = Calc.match(/M2|C/) ? Qnt_ * Larg_ * Alt_ : 0
+      const MM2 = Calc.match(/M2|C/) ? (Qnt_ * Larg_ * Alt_) : 0
       const QNT = Calc.match(/QNT/)  ? Qnt_ * Vlr: 0
       const OFS = Calc.match(/OFS/)  ? Vlr : 0
 
     const Total = Math.round(MM2*(Vlr+Vlr*Crecent(MM2))) + FM1 + AM1 + QNT + OFS
+    const TotalTotal = Math.round(SomaM2*(Vlr+Vlr*Crecent(SomaM2)))
 
     Coment.push(`${C_L} Varas de ${CmStng(F_L)} | ${(C_A)} Costelas ${CmStng(F_A)}`)
 
-    MedidasList.push([ArryQnt[x],ArryLag[x],ArryAlt[x],Total])
+    MedidasList.push([ArryQnt[x],ArryLag[x],ArryAlt[x],Total,TotalTotal])
 
   })
-  let Totall = 0 ; MedidasList.forEach(I => {Totall += I[3]})
 
+  let Totall = 0
+  let TotalTotal2 = 0
+  MedidasList.forEach(I => {
+    TotalTotal2 = I[4]
+    Totall += I[3]
+  })
+
+  let NewMedidasList = MedidasList.map(I=>{I.splice(4,1)
+    return I})
   
   
-  return [MedidasList,Totall,Coment]
+  return [NewMedidasList,TotalTotal2,Coment]
 }
 async function PesquisaKM(inpt){
   const listaLugares = {'Camaragibe':20,'São Lourenço':10,'Recife':40}
