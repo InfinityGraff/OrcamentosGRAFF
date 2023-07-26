@@ -417,6 +417,9 @@ const ResultFilTable = QrySlt('#resultfilter1')
   function ProcuraFocus(){
     Grupo_Medidas.querySelectorAll('input').forEach(inpt=>{
       inpt.addEventListener('focus',()=>{
+
+        scrollToDiv()
+
         //AbrirMiniTeclado(inpt)
       })
     })
