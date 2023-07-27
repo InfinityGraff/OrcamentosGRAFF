@@ -69,9 +69,17 @@
   QrySlt('#imgnotta').innerHTML = IconNota
   QrySlt('#imgnotta2').innerHTML = IconNota
 
-  document.addEventListener('click',e=>{ // remover a Bandeija se clicar fora (apresenta um erro no foreach de 'Rad0')
+  document.addEventListener('click',e=>{ // remover Coisas com Click Fora
     if(!Bandeja.contains(e.target)){Bandeja.innerHTML = ""; 
     (conteudo=>{QrySltAll('input[type="text"]').forEach(inpt=>Rad0(inpt))})(Bandeja.innerHTML)}
+
+    const listaCorLi = QrySlt('#ListaCor').querySelectorAll('li')
+    const target = e.target
+
+    if (target !== QrySlt('#InputdeCor') && !Array.from(listaCorLi).includes(target)) {
+      None(QrySlt('#ListaCor'))
+    }
+
   })
   document.addEventListener('DOMContentLoaded',()=>{ // $(document).ready(()=>{$('input[name="Cntt"]').mask('(99) 99999-9999')})
     var inputs = document.querySelectorAll('input[name="Cntt"]')
@@ -253,7 +261,7 @@ const ResultFilTable = QrySlt('#resultfilter1')
     QrySlt('#Conteudo-Item').innerHTML = `
         <div class="itemfilter Ct Cl w100 Rdd">
           <div class="RstServ">${NwArry[2]} ${NwArry[3]}</div>
-          <div id="FotoFilter"><img src="${IMG}"></div>
+          <div id="FotoItem"><img src="${IMG}"></div>
           <div>${Mdd.split('/').map(i=>`<div>${i}</div>`).join("").replace('*','')}</div>
         </div>
         <button onclick="Copy('${Mdd}',this)">Copy Itens</button>`
@@ -442,9 +450,15 @@ const ResultFilTable = QrySlt('#resultfilter1')
       `<optgroup label='${grupo}'>${options}</optgroup>`)
     }
 
-    QrySltAll('select').forEach(e=>{e.addEventListener('change',ShowTipo)})
+    QrySltAll('select').forEach(e=>{e.addEventListener('change',e=>{ShowTipo();LoadCor()})})
 
   }
+
+  function LoadCor(){
+    // se o serviço tiver opção de cor, então MostraMostra
+    QrySlt('#InputdeCor')
+  }
+
   function CloseForm(e){   
       e.addEventListener('click',()=>{
         e.classList.add('clicked')
@@ -520,7 +534,6 @@ const ResultFilTable = QrySlt('#resultfilter1')
     ProcuraFocus()
   }
 
-
 // Viagens ________________________________________________
 
 
@@ -564,7 +577,7 @@ const ResultFilTable = QrySlt('#resultfilter1')
   }
 
 
-// Funções Grandes____________________________________________________________________________________________
+// Funções Grandes_______________________________________________________________
 
 function DescPrazo(){
   let valor = 40.00
@@ -631,10 +644,10 @@ function FilTable(){
     const VlrM2 = Reais(Vlr)
     const Desc = (i=Cttlist.findIndex(I=>I.includes(ArryClnt[0])))=>i+1?Cttlist[i][6]:0
     const ShowNone = Desc() === 0 ? 'none' : ''
-    const TotalDesc = Reais(Totais[1]*(1-Desc()))
+    const TotalDesc = Calc.match(/OFS/) ? Reais(Vlr) : Reais(Totais[1]*(1-Desc()))
     const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
     const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
-    const IMG = `${LinkDrive}${Foto}`
+    const IMG = Foto ? Foto.match('.jpg') ? Foto : `${LinkDrive}${Foto}` : ''
     const Etc = I_Etc.value
     const Mdds  =Totais[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
     const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
@@ -657,7 +670,14 @@ function FilTable(){
           <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
         </div>
         <div class="Ct Bt Pddn-XY">
-          <div id="FotoFilter"> ${Serv==='Placa'? `<div id="Canvs${indx}" class="canvas"></div>` :`<img src="${IMG}" onclick="${FuncIMG}">`}</div>
+          <div id="FotoFilter">
+            ${
+              Foto ?
+              Serv==='Placa'? 
+              `<div id="Canvs${indx}" class="canvas"></div>` :
+              `<img src="${IMG}" onclick="${FuncIMG}">` :
+              `<div class="SVGFilt Ct">${IconSemFoto}</div>`}</div>
+
           <div class="Ct Cl"><div class="Descricao">
                 <div><strong>Acbmnt: </strong>${Cbmt}</div>
                 <div><strong>Qnt: </strong>${QFix} Und</div>
@@ -753,9 +773,8 @@ function Orcamento(arrays){
       const AM1 = Calc.match(/A/)    ? Qnt_ * Alumn * 2 * (F_L+F_A) : 0
       const MM2 = Calc.match(/M2|C/) ? (Qnt_ * Larg_ * Alt_) : 0
       const QNT = Calc.match(/QNT/)  ? Qnt_ * Vlr: 0
-      const OFS = Calc.match(/OFS/)  ? Vlr : 0
 
-    const Total = Math.round(MM2*(Vlr+Vlr*Crecent(MM2))) + FM1 + AM1 + QNT + OFS
+    const Total = Math.round(MM2*(Vlr+Vlr*Crecent(MM2))) + FM1 + AM1 + QNT
     const TotalTotal = Math.round(SomaM2*(Vlr+Vlr*Crecent(SomaM2)))
 
     Coment.push(`${C_L} Varas de ${CmStng(F_L)} | ${(C_A)} Costelas ${CmStng(F_A)}`)
@@ -1168,5 +1187,23 @@ function Gera3d(div){
     Render.render(scene,Cam)
   }animate();UpCam()
 }
+
+
+
+
+function CarregaCoresStock() {
+  Show(QrySlt('#ListaCor'))
+  QrySlt('#ListaCor').innerHTML = ''
+  StockjVinil.forEach(cor =>{
+    QrySlt('#ListaCor').innerHTML += 
+    `<li style="background:${cor}" onclick="mudarCor('${cor}')"></li>`
+  })
+}
+
+function mudarCor(cor) {
+  QrySlt('#InputdeCor').style.backgroundColor = cor
+}
+
+
 
 

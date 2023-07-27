@@ -456,9 +456,16 @@ form div[id*=Inpt]{
 .RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;}
 .RstValrFinal{color: #00e61f;font-size: 20px}
 .RstValrFinal > div{color: #00e61f;font-size: 12px;margin-right:4px;}
-#FotoFilter img,.canvas{width:110px;height:90px;background-color: #d8d8d8;}
+#FotoFilter img,.canvas, .SVGFilt{width:110px;height:90px;background-color: #d8d8d8;border-radius: 10px;}
+#FotoItem img{width:95%;background-color: #d8d8d8;}
 .BtnAdd{width:50px; height:20px;}
 #resultfilter1 button {width: 100px;}
+
+.SVGFilt svg{
+  width: 40px;
+  height: 40px;
+  fill: #00000065;
+}
 
 
 #DivMissoes{
@@ -693,4 +700,25 @@ z-index: 999;
 
 #Grupo-Medidas input{
   touch-action: none;
+}
+
+
+
+
+#InputdeCor {
+  width: 80%;
+  height: 30px;
+  border: 2px solid #ffffff2f;
+  
+}
+
+#ListaCor {
+  list-style: none;
+}
+
+#ListaCor li {
+  width: 30px;
+  height: 30px;
+  margin: 2px;
+  cursor: pointer;
 }
