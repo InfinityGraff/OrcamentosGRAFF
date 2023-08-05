@@ -78,12 +78,12 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 
 html, body {
   touch-action: pan-x pan-y;
-  cursor: default;}
+  /* cursor: default; */
+  }
 button,.Login,.ppt,.Close{
   cursor: pointer;}
 button{
   background: #73008A; border-radius: 255px}
-
 
 .Close svg{
   position: absolute;top: 15px;right: 15px;
@@ -181,15 +181,16 @@ button{
 .error {border: 2px solid red}
 .error::placeholder {color: red}
 
-
-
-#Bandeija {
+.Bandeija {
   position: absolute;z-index: 9999999999;}
-#Bandeija > div {
-  padding: 4px;cursor: pointer;background:#e4e4e4;}
-#Bandeija > div:hover {
+.Bandeija > div {
+  padding: 4px;
+  cursor: pointer;
+  background:#e4e4e4;
+  }
+.Bandeija > div:hover {
   background:#ff6600;}
-#Bandeija > div > div:nth-child(2) {
+.Bandeija > div > div:nth-child(2) {
   font-size: 12px;}
 
 table{
@@ -202,7 +203,6 @@ table{
     background:#2f5000; font-size: 13px; border-radius:255px}
   table td:nth-child(8) > div > div > div:first-child{
     font-size: 8px ;margin-right: 2px;}
-
 
 .HvrSVG *{
   fill: orange; color: orange; cursor: pointer;
@@ -240,14 +240,17 @@ input,select,.baby,#Div-Inpt-Mais div{
   font-size: 14px;border-radius: 255px;
   background: var(--CorInput);margin: 3px;
   text-align: center;
-}input:hover, select:hover, #Div-Inpt-Mais div:hover{
-  background: #4d4d4d;}
+}input:hover, select:hover{
+  background: #4d4d4d;
+}
+  
 #Div-Inpt-Mais{
-  width:140px;}
+  width:170px;
+}
 
-#Mais svg{
-  fill: black;
-  opacity: 0.5;
+#Div-Inpt-Mais > div .btnMais{
+  width: 10px;
+  height: 10px;
 }
 
 td > div{display: flex;align-items: center;justify-content: center;}
@@ -265,7 +268,7 @@ td > div{display: flex;align-items: center;justify-content: center;}
 .Titlee{margin: 0 150 15 150;}
 h1{font-size: 40px;font-family: var(--Bold)}
 h2{font-size: 18px; color: var(--Laranja);}
-#Aba-Relatorio, #Aba-Home{margin-top:100px}
+
 .Logo{
   width:50px;
   margin: 4px 4px;
@@ -453,7 +456,8 @@ form div[id*=Inpt]{
 .RstServ{margin-left: 6px}
 .RstValrM2{padding-right: 8px;font-size: 12px;}
 .RstValrM2 div{font-size: 9px;margin: 0px 4px;}
-.RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;}
+.RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;position: relative;}
+.RstValrDesc svg{fill: red;height: 20px;width: 57px;z-index: 1;position: absolute;top: 0px;left: 0px;}
 .RstValrFinal{color: #00e61f;font-size: 20px}
 .RstValrFinal > div{color: #00e61f;font-size: 12px;margin-right:4px;}
 #FotoFilter img,.canvas, .SVGFilt{width:110px;height:90px;background-color: #d8d8d8;border-radius: 10px;}

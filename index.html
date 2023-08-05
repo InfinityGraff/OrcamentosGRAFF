@@ -43,7 +43,7 @@
       <a id="Clientes" class="Ct ppt">CLIENTES</a>
     </nav>
 
-    <div id="Aba-Home" class="Ct none">
+    <div id="Aba-Home" class="Ct Cl none">
       <h1>Escolha Alguma Aba</h1>
 
         <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
@@ -51,13 +51,13 @@
       
     </div>
 
-    <div id="Aba-Orcamento">
+    <div id="Aba-Orcamento" class="Ct Cl">
 
-      <div id="Bandeija"></div>
-      <div id="RoloTop" class="RoloTop none" onclick="scrollToDiv()"></div>
+      <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
 
       <div class="Ct Redi w100">
-        <button id="NewOrcamento" onclick="NewOrcamentos(this);scrollToDiv()" class="baby">Novo Orçamento</button>
+        <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');clearForm();clearCRUD();Show('#PrevOrcamento')" class="baby">Novo Orçamento</button>
+        <button id="PrevOrcamento" onclick="NewOrcamentos(this);Scroll('nav')" class="baby none">Orçamento Pendente</button>
         <div id="image-preloader" style="display: none"> nada</div>
       </div>
 
@@ -69,14 +69,16 @@
         
 
         <div id="DivResult" class="Ct Cl Hddn">
-          <h2 class="FontDGD ppt none" onclick="scrollToDiv()">Orçamento</h2>
+          <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
           <div id="resultfilter1"></div>
           <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+          <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
+          <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
         </div>
 
         <form id="FormOrc" class="Ct">
 
-          <h2 class="FontDGD ppt" onclick="scrollToDiv()">Orçamento</h2>
+          <h2 class="FontDGD ppt" onclick="Scroll('nav')">Orçamento</h2>
 
           <div id="Grupo-Servicos" class="inptFormOrc">
             <!-- Serviços, Tipos e Acabamento-->
@@ -110,7 +112,10 @@
 
           <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
             <div id="Div-Inpt-Mais"><label class="Opacy">.</label>
-              <div id="Mais" class="Ct icon" onclick="ClonaMdd()"></div>
+              <div class="Ct icon Maisss">
+                <div class="btnMais Ct HvrSVG" onclick="EscMdds(this)">B</div>
+                <div class="btnMais Ct HvrSVG" onclick="ClonaMdd(this)">A</div>
+              </div>
             </div>
             <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
             <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
@@ -126,6 +131,9 @@
 
           <div id="GrupoClntSave" class="Ct Cl none"></div>
           <div id="Grupo-Cliente" class="inptFormOrc none">
+
+            <div class="Bandeija" name="BndjForm"></div>
+
             <!-- Nome e Contato-->
             <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
               <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
@@ -217,8 +225,47 @@
 
       </div>
 
+      <table id="TabelaPlan"></table>
+
+      <button onclick="AchatotdasBandeijas()">Trigger</button>
+      <button onclick="ReajustaTabindex()">RELOADTABIDX</button>
+  
+      <form id="SavePddPlan" class="none">
+        <input name="Login">
+        <input name="Stts">
+        <input name="ID">
+        <input name="IT">
+        <input name="Serv">
+        <input name="Tipo">
+        <input name="Cbmt">
+        <input name="Cbmt2">
+        <input name="Medidas">
+        <input name="Valor">
+        <input name="Custo">
+        <input name="Calc">
+        <input name="Descr">
+        <button>Trigger</button>
+      </form>
+      <form id="SaveClntPlan">
+        <input name="Cliente">
+        <input name="Contato">
+        <button>Trigger</button>
+      </form>
+
     </div>
 
+    <div id="Aba-Relatorio" class="Ct Cl none">
+      <h1>Aba Relatorio</h1>
+    </div>
+
+    <div id="Aba-Agenda" class="Ct Cl none">
+      <h1>Aba Agenda</h1>
+    </div>
+
+    <div id="Aba-Clientes" class="Ct Cl none">
+      <h1>AbaClientens</h1>
+      <table id="TableCliente"></table>
+    </div>
 
     <div id="Fundo-Modal" class="FundoModal Ct none">
 
@@ -230,6 +277,8 @@
           <div id="GrupoClntSaveInfo" class="Ct Cl none"></div>
 
           <div id="RestaNome">
+
+            <div class="Bandeija" name="BndjInfo"></div>
     
             <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
               <input id="ClntInfo" name="Clnt" tabindex="1" type="text" onkeyup="proxinpt(event)" required="">
@@ -337,13 +386,17 @@
       <div id="ModalCadastro" class="Modalzinho Rltv Ct Ft none">
         <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div>Cadastro do Clietne</div>
-          <input type="text" name="Clnt" placeholder="Nome do Cliente">
-          <input type="text" name="Cplt" placeholder="Nome Completo">
-          <input type="text" name="Cntt" placeholder="Contato do Cliente">
-          <input type="text" name="Local" placeholder="Endereço do Cliente">
-          <input type="text" name="Loja" placeholder="Nome da Empresa">
-          <input type="text" name="LjCt" placeholder="Cntato da Empresa">
-          <input type="text" name="Catg" placeholder="Catégoria">
+          <div class="Bandeija" name="BndjCadastro"></div>
+          <div>
+            <input type="text" name="Clnt" placeholder="Nome do Cliente">
+            <input type="text" name="Cplt" placeholder="Nome Completo">
+            <input type="text" name="Cntt" placeholder="Contato do Cliente">
+            <input type="text" name="Local" placeholder="Endereço do Cliente">
+            <input type="text" name="Loja" placeholder="Nome da Empresa">
+            <input type="text" name="LjCt" placeholder="Cntato da Empresa">
+            <input type="text" name="Catg" placeholder="Catégoria">
+          </div>
+
           <button>Salvar</button>
       </div>
 
@@ -436,10 +489,6 @@
       <div id="InnerVazio" class="none Ct"></div>
 
     </div>
-
-    
-
-
 
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>

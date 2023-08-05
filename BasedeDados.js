@@ -1,4 +1,8 @@
 // PreScript
+
+  //const APIPlan = "https://sheetdb.io/api/v1/9gxmya22ewzog"
+  //const APIPlanClnt = 'https://sheetdb.io/api/v1/pk0yb9wxwaesy'
+
   const User={
     '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
     '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
@@ -6,10 +10,18 @@
     '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
   }
 
-  const Cttlist = [
-    ['Marcelo Max','(81) 98824-3496','NomeCompleto','Loja','CnttLoja','Categoria',0.3,'ID-001'],
-    ['Edilson Skyllus','(88) 88888-8888','NomeCompleto','Loja','CnttLoja','Categoria',0.2,'ID-002']
+  const Ferro = 20, Alumn = 5, Chapa = 0, I_Ferr = "20x20"
+
+  let Cttlist = [
+    ['CT-006','G','Marcelo Max','','','(81) 98824-3496','','Sorvete Max','','Fábrica de Sorvete','','','',0.0],
+['CT-007','G','Edilson Skyllus','','','(81) 98716-2359','','Skyllus Sorvete','','Fábrica de Sorvete','','','',0.0]
   ]
+
+  const CttList2 = [ // esse 2 é o Teste
+    ['CT-006','G','Marcelo Max','','','(81) 98824-3496','','Sorvete Max','','Fábrica de Sorvete','','','',0.3],
+['CT-007','G','Edilson Skyllus','','','(81) 98716-2359','','Skyllus Sorvete','','Fábrica de Sorvete','','','',0.2]
+  ]
+  
 
   const cores = [
     "#FF0000","#FF0000","#FF4000","#FF8000","#FFBF00","#FFFF00","#BFFF00","#80FF00","#40FF00","#00FF00"
@@ -77,10 +89,10 @@
 
     ["Placa", "Lona", "ilhós", "Frente", "-", 70, 0, "M2 F"],
     ["Placa", "Lona", "ilhós", "Frente Verso", "-", 140, 0, "M2 F"],
-    ["Placa", "Lona", "Ribite", "Frente", "-", 70, 0, "M2 F"],
-    ["Placa", "Lona", "Ribite", "Frente Verso", "-", 140, 0, "M2 F"],
-    ["Placa", "Luminosa", "Retangular", "Frente", "-", 80, 0, "M2 F"],
-    ["Placa", "Luminosa", "Circular", "Frente Verso", "-", 160, 0, "M2 F"],
+    ["Placa", "Lona", "Ribite", "Frente", "-", 70, 0, "M2 F A"],
+    ["Placa", "Lona", "Ribite", "Frente Verso", "-", 140, 0, "M2 F A"],
+    ["Placa", "Luminosa", "Retangular", "Frente", "-", 80, 0, "M2 F A"],
+    ["Placa", "Luminosa", "Circular", "Frente Verso", "-", 160, 0, "M2 F A"],
     ["Placa", "ACM",  "", "-", "-", 70, 0, "M2 F"],
     ["Placa", "Obra", "", "-", "-", 70, 0, "M2 F"],
 
