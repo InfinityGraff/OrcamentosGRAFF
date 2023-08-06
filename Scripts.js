@@ -1242,4 +1242,3 @@ function receberMensagem(event) {
     console.log('Mensagem recebida do iframe:', event.data)
 }
 
-
