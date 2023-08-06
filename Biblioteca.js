@@ -7,19 +7,16 @@
   function PushArry(Push,Stg){QrySltAll(Stg).forEach(e=>{Push.push(e.innerText)})}
   function insetBefor(e,Stg){QrySlt(e).insertAdjacentHTML('beforeend',Stg)}
 
-// Funções Mask -- Clean
-  function InnerSVG(Stg,e){QrySltAll(Stg).forEach(E=>E.innerHTML = e)}
-  function Reais(e){return e.toFixed(2).replace('.',',')}
-  function RS(e){return `R$ ${e.toFixed(2).replace('.',',')}`}
-  function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${e.toFixed(2).replace('.',',')}</div></div>`}
-  function Cm(e){return `${e.toFixed(2).replace('.',',')}`}
-  function CmStng(e){return `${parseFloat(e).toFixed(2).replace('.',',')}`}
-  function Num(e){return parseFloat(e.replace(',', '.'))}
-
 // Funções Templates
+  function InnerSVG(Stg,e){QrySltAll(Stg).forEach(E=>E.innerHTML = e)}
   function TableHTMLall(e,on=''){return e.map(R=>`<tr>${R.map(C=>`<td ${on}>${C}</td>`).join('')}</tr>`).join('')}
-  function TableHTMLfil(e,Cols,on=''){return e.map(R=>`<tr>${Cols.map(C=>`<td ${on}>${R[C]}</td>`).join('')}</tr>`).join('')}
-
+  function TableHTMLfil(e,c,on=''){return e.map(R=>`<tr>${c.map(C=>`<td ${on}>${R[C]}</td>`).join('')}</tr>`).join('')}
+  function Options(e){return e.map(E=>`<option value='${E}'>${E}</option>`).join("")}
+  function Num(e){return parseFloat(e.replace(',', '.'))}
+  function Cm(e){return parseFloat(e).toFixed(2).replace('.',',')}
+  function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${Cm(e)}</div></div>`}
+  function RS(e){return `R$ ${Cm(e)}`}
+  
 // Funções Validações
   function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
   function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
@@ -32,15 +29,12 @@
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
   var NewDate = new Date().toISOString().split('T')[0]
 
-// Funções de Simulações
-  const EventClick = new MouseEvent('click',{bubbles: true,cancelable: true,view: window})
-
-// Função de Ações
+// Função de Ações e Simulações
   function FocoIn(e){e.focus()}
   function FocoOut(e){e.focus();e.setSelectionRange(e.value.length,e.value.length)}
+  const EventClick = new MouseEvent('click',{bubbles: true,cancelable: true,view: window})
 
 // Funções Convert
-
   function TAble_to_Array(Stg){
     const ArryTable = []
     QrySltAll('tr',QrySlt(Stg)).forEach(R=>{

@@ -73,6 +73,7 @@
     BloqueaData('#Prazo, #dataPagInfo')
     ReloadTab()
     MenuNav('nav a, #Home')
+    LoadListServ()
     W400.addListener(MediaQuere)
     
     QrySltAll('input[name="Cntt"]').forEach(I=>{I.addEventListener('input',e=>{MaskkCntt(e)})})
@@ -212,6 +213,11 @@
         const posits = window.pageYOffset + QrySlt(Stg).getBoundingClientRect().bottom
         window.scrollTo({top:posits,behavior:'smooth'})
       }
+    }
+  }
+  function LoadListServ(){
+    for(const Grup in grupos){
+      I_Serv.insertAdjacentHTML('beforeend',`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)
     }
   }
 
@@ -375,6 +381,8 @@
 
 // FORM ________________________________________________
 
+
+
 function NewOrcamentos(btn){
   PushArry(IDs,"#TabelaPlan tr td:nth-child(3)")
   IDPdd = ('0000'+(Math.max(...IDs)+1)).slice(-3)
@@ -382,12 +390,6 @@ function NewOrcamentos(btn){
 
   Show(FormOrcamento)
   None(btn.parentNode)
-
-  for(const grupo in grupos){ // Carrega Lista Serv
-    const options = grupos[grupo].map(Serv =>
-    `<option value='${Serv}'>${Serv}</option>`).join("")
-    I_Serv.insertAdjacentHTML('beforeend',`<optgroup label='${grupo}'>${options}</optgroup>`)
-  }
 
   QrySltAll('select').forEach(e=>{e.addEventListener('change',e=>{ShowTipo();LoadCor()})})
 
@@ -549,8 +551,7 @@ function OptFilter(Stng,Coll){ // cria as listas Options
     }else{       return Serv1(R) && (Tipo2()||Tipo1(R)) && Cbmt1(R)&&Gram1(R)}
   }
 
-  return ['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))]
-  .map(e=>{return `<option value='${e}'>${e}</option>`}).join("")
+  return Options(['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))])
 }
 function FilTable(){  
   ResultFilTable.innerHTML = ''
@@ -563,19 +564,19 @@ function FilTable(){
   //
   const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto],indx)=>{
     const Totais = Orcamento(Arry[indx])
-    const VlrFinal = Reais(Totais[1])
-    const VlrM2 = Reais(Vlr)
+    const VlrFinal = Cm(Totais[1])
+    const VlrM2 = Cm(Vlr)
     const Desc = (i=Cttlist.findIndex(I=>I.includes(ArryClnt[0])))=>i+1?Cttlist[i][13]:0
     const DescMDD = Totais[3]>=4 && onOff==='on' ? Totais[3]/(120+Totais[3]*10) : 0
     const ShowNone = Desc() === 0 ? '' : '' // no true é 'none'
     const ShowNone2 = onOff === 'off' ? 'none' : ''
-    const TotalDesc = Calc.match(/OFS/) ? Reais(Vlr) : Reais(Totais[1]*(1-Desc()-DescMDD))
+    const TotalDesc = Calc.match(/OFS/) ? Cm(Vlr) : Cm(Totais[1]*(1-Desc()-DescMDD))
     const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
     const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
     const IMG = Foto ? Foto.match('.jpg') ? Foto : `${LinkDrive}${Foto}` : ''
     const Etc = I_Etc.value
     const Mdds  =Totais[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
-    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) R$ ${Reais(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
+    const Mdds2 =Totais[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) R$ ${Cm(I[3])}`).concat(`*Total: R$ ${TotalDesc}*`).join('/')
 
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc(),TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
     
@@ -693,7 +694,7 @@ function Orcamento(arrays){
     const FM1 = Qnt * (F_L*C_L + F_A*C_A)
     const AM1 = Qnt * F_L*2
 
-    FERRO.push(`${C_L} Varas de ${CmStng(F_L)} | ${(C_A)} Costelas ${CmStng(F_A)}`)
+    FERRO.push(`${C_L} Varas de ${Cm(F_L)} | ${(C_A)} Costelas ${Cm(F_A)}`)
     TOTALLFERRO.push(`M¹ Ferro: ${FM1}`)
     TOTALLFERRO.push(`M¹ Alumn: ${AM1}`)
   })
@@ -1216,4 +1217,29 @@ function proxinpt(e){
   let next = QrySlt('[tabindex="'+(idx+1)+'"]')
   if (next){next.focus()}}
 }
+
+function ColaArry(){
+  const el = document.createElement('textarea')
+  document.body.appendChild(el)
+  el.focus()
+  document.execCommand('paste')
+  CnttLIST3 = el.value
+  console.log(el.value)
+  //document.body.removeChild(el)
+}
+
+function TesteCntt(){
+  console.log(CnttLIST3)
+}
+
+
+window.addEventListener('message',receberMensagem,false)
+
+var iframe = document.getElementById('Xoco')
+
+function receberMensagem(event) {
+    if (event.origin !== 'https://script.google.com'){return}
+    console.log('Mensagem recebida do iframe:', event.data)
+}
+
 

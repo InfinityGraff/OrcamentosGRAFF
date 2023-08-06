@@ -278,6 +278,11 @@ h2{font-size: 18px; color: var(--Laranja);}
   margin: 4px 4px;
 }
 
+optgroup{
+  color: #ffffff6b;
+  font-size: 15px;
+}
+
 .FundoModal1{
   position: fixed;
   top: 0px;
@@ -727,3 +732,6 @@ z-index: 999;
   cursor: pointer;
 }
 
+#pastTxt, #GS-caixaText{
+  color: black;
+}
