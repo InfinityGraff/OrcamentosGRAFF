@@ -16,6 +16,41 @@
   function CmStng(e){return `${parseFloat(e).toFixed(2).replace('.',',')}`}
   function Num(e){return parseFloat(e.replace(',', '.'))}
 
+// Funções Templates
+  function TableHTMLall(e,on=''){return e.map(R=>`<tr>${R.map(C=>`<td ${on}>${C}</td>`).join('')}</tr>`).join('')}
+  function TableHTMLfil(e,Cols,on=''){return e.map(R=>`<tr>${Cols.map(C=>`<td ${on}>${R[C]}</td>`).join('')}</tr>`).join('')}
+
+// Funções Validações
+  function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
+  function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
+  function EscRequired(e){e.forEach(e=>{QrySlt(e).required = false})}
+  function SemLogin(){return QrySlt('#Login-Top').innerHTML === 'Login'}
+  function temClass(e,Stg){e.classList.contains(Stg)}
+
+// Funções Geradores
+  function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
+  function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
+  var NewDate = new Date().toISOString().split('T')[0]
+
+// Funções de Simulações
+  const EventClick = new MouseEvent('click',{bubbles: true,cancelable: true,view: window})
+
+// Função de Ações
+  function FocoIn(e){e.focus()}
+  function FocoOut(e){e.focus();e.setSelectionRange(e.value.length,e.value.length)}
+
+// Funções Convert
+
+  function TAble_to_Array(Stg){
+    const ArryTable = []
+    QrySltAll('tr',QrySlt(Stg)).forEach(R=>{
+      const Linha = []
+      QrySltAll("td",R).forEach(C=>{Linha.push(C.innerText)})
+      ArryTable.push(Linha)})
+    return ArryTable
+  }
+
+  // Mask Grandes
   function MaskNum(input) {
     var Vlr = input.value.replace(/\D/g, '').replace(/^0+(?=[1-9])/, '')
     var Mask = '' ; const VLR = Vlr.length
@@ -38,31 +73,8 @@
     if(Val.length>7){Mask+='-'+Val.substring(7,11)}}}
    e.target.value=Mask
   }
-
-  // Funções Validações
-  function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
-  function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
-  function EscRequired(e){e.forEach(e=>{QrySlt(e).required = false})}
-  function SemLogin(){return QrySlt('#Login-Top').innerHTML === 'Login'}
-  function temClass(e,Stg){e.classList.contains(Stg)}
-
-// Funções Geradores
-  function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
-  function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
-  var NewDate = new Date().toISOString().split('T')[0]
-
-// Funções Convert
-
-  function TAble_to_Array(Stg){
-    const ArryTable = []
-    QrySltAll('tr',QrySlt(Stg)).forEach(R=>{
-      const Linha = []
-      QrySltAll("td",R).forEach(C=>{Linha.push(C.innerText)})
-      ArryTable.push(Linha)})
-    return ArryTable
-  }
   
-
+//
 // Funções CSS (Talvez Fazer assim, se no Segundo Argumento Tiver Argumento, ele receberá o CSS oposto no caso se tiver no Show, o segundo vira None e Visse Verse)
   function None(e,b) {
     if(b){Show(b)}
@@ -208,4 +220,3 @@
     else{pai.insertBefore(e,Filhos[Idx])}
   }
 
-  
