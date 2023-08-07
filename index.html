@@ -56,7 +56,7 @@
       <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
 
       <div class="Ct Redi w100">
-        <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');clearForm();clearCRUD();Show('#PrevOrcamento')" class="baby">Novo Orçamento</button>
+        <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');Show('#PrevOrcamento')" class="baby">Novo Orçamento</button>
         <button id="PrevOrcamento" onclick="NewOrcamentos(this);Scroll('nav')" class="baby none">Orçamento Pendente</button>
         <div id="image-preloader" style="display: none"> nada</div>
       </div>
@@ -72,8 +72,11 @@
           <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
           <div id="resultfilter1"></div>
           <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
-          <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
-          <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
+          <div id="DivBtnDesc" class="none">
+            <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
+            <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
+          </div>
+          
         </div>
 
         <form id="FormOrc" class="Ct">
@@ -127,12 +130,12 @@
             <input id="BackCub" type="text" placeholder="Fundo" value="0">
           </div>
 
-          <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega'])">^</div></div>
+          <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega']);ReloadPlanClnt()">^</div></div>
 
           <div id="GrupoClntSave" class="Ct Cl none"></div>
           <div id="Grupo-Cliente" class="inptFormOrc none">
 
-            <div class="Bandeija" name="BndjForm"></div>
+            <div class="Bandeija Cl" name="BndjForm"></div>
 
             <!-- Nome e Contato-->
             <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
@@ -264,10 +267,7 @@
 
     <div id="Aba-Clientes" class="Ct Cl none">
       <h1>AbaClientens</h1>
-      <button onclick="ColaArry()">Colar</button>
-      <button onclick="TesteCntt()">Trigger</button>
       <iframe id="Xoco" src="https://script.google.com/macros/s/AKfycbxM24UL_Wehv0ysNCO7oPXtFuYW3lHGQwadGhgSwubduPDm4lt9-h5JjaQwwOTSOgXl/exec" frameborder="0" width="300px" height="500px"></iframe>
-
     </div>
 
     <div id="Fundo-Modal" class="FundoModal Ct none">
@@ -281,7 +281,7 @@
 
           <div id="RestaNome">
 
-            <div class="Bandeija" name="BndjInfo"></div>
+            <div class="Bandeija Cl" name="BndjInfo"></div>
     
             <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
               <input id="ClntInfo" name="Clnt" tabindex="1" type="text" onkeyup="proxinpt(event)" required="">
@@ -389,7 +389,7 @@
       <div id="ModalCadastro" class="Modalzinho Rltv Ct Ft none">
         <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div>Cadastro do Clietne</div>
-          <div class="Bandeija" name="BndjCadastro"></div>
+          <div class="Bandeija Cl" name="BndjCadastro"></div>
           <div>
             <input type="text" name="Clnt" placeholder="Nome do Cliente">
             <input type="text" name="Cplt" placeholder="Nome Completo">

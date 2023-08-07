@@ -12,7 +12,9 @@
   function TableHTMLall(e,on=''){return e.map(R=>`<tr>${R.map(C=>`<td ${on}>${C}</td>`).join('')}</tr>`).join('')}
   function TableHTMLfil(e,c,on=''){return e.map(R=>`<tr>${c.map(C=>`<td ${on}>${R[C]}</td>`).join('')}</tr>`).join('')}
   function Options(e){return e.map(E=>`<option value='${E}'>${E}</option>`).join("")}
-  function Num(e){return parseFloat(e.replace(',', '.'))}
+  function ArryStg(e){return e.map(E=>`['${E.join("','")}']`).join('\n')}
+  function Num(e){return typeof e === 'number' ? e : parseFloat(e.replace(',', '.'))}
+  function Pct(e){return `${(e*100).toFixed(2)}%`}
   function Cm(e){return parseFloat(e).toFixed(2).replace('.',',')}
   function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${Cm(e)}</div></div>`}
   function RS(e){return `R$ ${Cm(e)}`}
@@ -89,10 +91,8 @@
     })
   }
 
-  function ToggleShowNone(e,valid){
-    if(valid){e.style.display = 'flex'}
-    else{e.style.display = 'none'}
-  }
+  function ShowTrue(e,Valid){if(Valid){Show(e)}else{None(e)}}
+
   function ENone(e){let ee = null
     if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
     return window.getComputedStyle(ee).display === 'none'
@@ -101,6 +101,7 @@
     if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
     return window.getComputedStyle(ee).display !== 'none'
   }
+
   function Rad0(e){e.style.borderRadius = '100px 100px 100px 100px'}
   function RadB(e){e.style.borderRadius = '25px 25px 0px 0px'}
   function Red(e){e.style.color = 'red'}

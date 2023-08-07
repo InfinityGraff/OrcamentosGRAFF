@@ -1,7 +1,9 @@
 // PreScript
 
-  //const APIPlan = "https://sheetdb.io/api/v1/9gxmya22ewzog"
-  //const APIPlanClnt = 'https://sheetdb.io/api/v1/pk0yb9wxwaesy'
+  const APIPlan = ''// "https://sheetdb.io/api/v1/9gxmya22ewzog"
+  const APIPlanClnt = 'https://sheetdb.io/api/v1/pk0yb9wxwaesy'
+
+
 
   const User={
     '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
@@ -13,17 +15,11 @@
   const Ferro = 20, Alumn = 5, Chapa = 0, I_Ferr = "20x20"
 
   let Cttlist = [
-    ['CT-006','G','Marcelo Max','','','(81) 98824-3496','','Sorvete Max','','Fábrica de Sorvete','','','',0.0],
-    ['CT-007','G','Edilson Skyllus','','','(81) 98716-2359','','Skyllus Sorvete','','Fábrica de Sorvete','','','',0.0]
-  ]
-
-  let CnttLIST3 = ''
-
-  const CttList2 = [ // esse 2 é o Teste
     ['CT-006','G','Marcelo Max','','','(81) 98824-3496','','Sorvete Max','','Fábrica de Sorvete','','','',0.3],
-['CT-007','G','Edilson Skyllus','','','(81) 98716-2359','','Skyllus Sorvete','','Fábrica de Sorvete','','','',0.2]
+    ['CT-007','G','Edilson Skyllus','','','(81) 98716-2359','','Skyllus Sorvete','','Fábrica de Sorvete','','','',0.2]
   ]
-    const cores = [
+
+  const cores = [
     "#FF0000","#FF0000","#FF4000","#FF8000","#FFBF00","#FFFF00","#BFFF00","#80FF00","#40FF00","#00FF00"
   ]
 
@@ -66,12 +62,12 @@
     ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2"],
     ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1"],
 
-    ["Recorte", "Outros","","","", 180, 0, "M2"],
-    ["Recorte", "Nomes","","","", 2.50,0, "QNT"],
-    ["Recorte", "KitBug_Principal","","","",13,0, "QNT"],
-    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT"],
-    ["Recorte", "2 Cores","","","",180,0, "M2"],
-    ["Recorte", "3 Cores","","","",180,0, "M2"],
+    ["Recorte", "Outros","","","", 180, 0, "M2 W"], // W quer dizer Cor
+    ["Recorte", "Nomes","","","", 2.50,0, "QNT W"],
+    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W"],
+    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W"],
+    ["Recorte", "2 Cores","","","",180,0, "M2 W"],
+    ["Recorte", "3 Cores","","","",180,0, "M2 W"],
 
     ["Lona", "Banner","","","", Cal(Bane)+4, Bane, "M2"],
     ["Lona", "Faixa", "Só Madeira","","", Cal(Bane)+4, Bane, "M2"],
@@ -93,7 +89,7 @@
     ["Placa", "Lona", "Ribite", "Frente Verso", "-", 140, 0, "M2 F A"],
     ["Placa", "Luminosa", "Retangular", "Frente", "-", 80, 0, "M2 F A"],
     ["Placa", "Luminosa", "Circular", "Frente Verso", "-", 160, 0, "M2 F A"],
-    ["Placa", "ACM",  "", "-", "-", 70, 0, "M2 F"],
+    ["Placa", "ACM",  "", "-", "-", 70, 0, "M2 F W"],
     ["Placa", "Obra", "", "-", "-", 70, 0, "M2 F"],
 
     ["Cavalete","1 Ferragem","-","ilhós", "-",70,0,"M2 F",'1AKBM4I76hrO-ik0JQalLqAzRRcAV2Xl7'],
