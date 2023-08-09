@@ -1,50 +1,45 @@
-// Declarações
-  // Const's Fundos
-    const FundoModal = QrySlt('#Fundo-Modal')
-    const InnerVazio = QrySlt('#InnerVazio')
-    
-    const FormOrcamento = QrySlt('#FormOrcamento')
-    const BtnInfo2 = QrySlt('#btnINFO2')
-    const ModalInfo = QrySlt('#ModalInfo')
-    const Prazo = QrySlt('#Prazo')
-    const ModAlnotta = QrySlt("#ModalNota")
-    const ResultFilTable = QrySlt('#resultfilter1')
+  
+  const //Fundos
+    FundoModal = QrySlt('#Fundo-Modal'),
+    InnerVazio = QrySlt('#InnerVazio'),
+    FormOrcamento = QrySlt('#FormOrcamento'),
+    BtnInfo2 = QrySlt('#btnINFO2'),
+    ModalInfo = QrySlt('#ModalInfo'),
+    Prazo = QrySlt('#Prazo'),
+    ModAlnotta = QrySlt("#ModalNota"),
+    ResultFilTable = QrySlt('#resultfilter1'),
+  // Login
+    LgTop = QrySlt('#Login-Top'),
+    Login = QrySlt('#Login-Cod'),
+    LoginSpn = QrySlt('#Span-Login'),
+    I_Senha = QrySlt('#Inpt-Senha'),
+    ImgPerfil = QrySlt('#Img-Perfil'),
+  // Clientes
+    GrupClnt = QrySlt('#Grupo-Cliente'),
+    GrupClntSv = QrySlt('#GrupoClntSave'),
+    GrupClntInfSv = QrySlt('#GrupoClntSaveInfo'),
+    RestaNome = QrySlt('#RestaNome'),
+    DivCnttForm = QrySlt('#Div-Inpt-Cntt'),
+    I_Clnt = QrySlt('#Div-Inpt-Clnt input'),
+    InnClnt = QrySlt('#Inner-Clnt'),
+  // Form
+    I_Serv = QrySlt("#Div-Inpt-Serv select"),
+    I_Tipo = QrySlt("#Div-Inpt-Tipo select"),
+    I_Cbmt = QrySlt("#Div-Inpt-Cbmt select"),
+    I_Gram = QrySlt('#Div-Inpt-Gram select'),
+    I_QFix = QrySlt('#Div-Inpt-QFix select'),
+    I_Etc = QrySlt("#Div-Inpt-Etc input"),
+    I_Lcal = QrySlt("#Div-Inpt-Lcal input"),
+    I_Qnt = QrySlt('#Div-Inpt-Qnt input'),
+  // Divs do Form
+    DivEtc = QrySlt("#Div-Inpt-Etc"),
+    DivTipo = QrySlt('#Div-Inpt-Tipo'),
+    DivCbmt = QrySlt('#Div-Inpt-Cbmt'),
+    DivLarg = QrySlt('#Div-Inpt-Larg'),
+    DivAlt = QrySlt('#Div-Inpt-Alt'),
+    Grupo_Tipos = QrySlt('#Grupo-Tipos'),
+    Grupo_Medidas = QrySlt('#Grupo-Medidas')
 
-  // Const's Login
-    const LgTop = QrySlt('#Login-Top')
-    const Login = QrySlt('#Login-Cod')
-    const LoginSpn = QrySlt('#Span-Login')
-    const I_Senha = QrySlt('#Inpt-Senha')
-    const ImgPerfil = QrySlt('#Img-Perfil')
-
-  // Const's Clientes
-    
-    const GrupClnt = QrySlt('#Grupo-Cliente')
-    const GrupClntSv = QrySlt('#GrupoClntSave')
-    const GrupClntInfSv = QrySlt('#GrupoClntSaveInfo')
-    const RestaNome = QrySlt('#RestaNome')
-    const DivCnttForm = QrySlt('#Div-Inpt-Cntt')
-    const I_Clnt = QrySlt('#Div-Inpt-Clnt input')
-    const InnClnt = QrySlt('#Inner-Clnt')
-
-  // Const's Form
-    const I_Serv = QrySlt("#Div-Inpt-Serv select")
-    const I_Tipo = QrySlt("#Div-Inpt-Tipo select")
-    const I_Cbmt = QrySlt("#Div-Inpt-Cbmt select")
-    const I_Gram = QrySlt('#Div-Inpt-Gram select')
-    const I_QFix = QrySlt('#Div-Inpt-QFix select')
-    const I_Etc = QrySlt("#Div-Inpt-Etc input")
-    const I_Lcal = QrySlt("#Div-Inpt-Lcal input")
-    const I_Qnt = QrySlt('#Div-Inpt-Qnt input')
-
-    const DivEtc = QrySlt("#Div-Inpt-Etc")
-    const DivTipo = QrySlt('#Div-Inpt-Tipo')
-    const DivCbmt = QrySlt('#Div-Inpt-Cbmt')
-    const DivLarg = QrySlt('#Div-Inpt-Larg')
-    const DivAlt = QrySlt('#Div-Inpt-Alt')
-
-    const Grupo_Tipos = QrySlt('#Grupo-Tipos')
-    const Grupo_Medidas = QrySlt('#Grupo-Medidas')
     let ArryMdds=['#Div-Inpt-Larg input','#Div-Inpt-Alt input','#Div-Inpt-Qnt input']
 
     const Iccon = '.Maisss > div:first-child'
@@ -1167,3 +1162,48 @@ function BdjUP(items){
     else{i.style.background = '#4d4d4d'}})
 }
 
+
+let startX
+let startTranslateX
+let currentIndex = 1
+let isDragging = false
+let currentX = 0
+
+
+const pageContainer = QrySlt('#page-container')
+
+  currentX = -currentIndex * (window.innerWidth)
+  pageContainer.style.transform = `translateX(${currentX}px)`
+
+document.addEventListener('touchstart',(e)=>{
+    startX = e.touches[0].clientX
+    startTranslateX = currentX
+    isDragging = true
+})
+
+document.addEventListener('touchmove',(e)=>{
+    if (!isDragging) return
+
+    const currentTouchX = e.touches[0].clientX
+    const deltaX = currentTouchX - startX
+
+    currentX = startTranslateX + deltaX
+    pageContainer.style.transform = `translateX(${currentX}px)`
+})
+
+document.addEventListener('touchend',(e)=>{
+    if (!isDragging) return
+
+    isDragging = false
+
+    const endX = e.changedTouches[0].clientX
+    const deltaX = endX - startX
+
+    if (Math.abs(deltaX) > 50){
+        if(deltaX > 0){if(currentIndex>0){currentIndex--}}
+        else{if(currentIndex<4){currentIndex++}}
+    }
+
+    currentX = -currentIndex * (window.innerWidth)
+    pageContainer.style.transform = `translateX(${currentX}px)`
+})
