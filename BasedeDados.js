@@ -53,21 +53,22 @@
   function Cal(Vlr){return Vlr * (1 + (200 / 100))}
 
   const tabela = [
-    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU"],
-    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU"],
-    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","1BE7X8FTvHZ-Xxk3woPnLZ4FNqsE9MMOp"],
-    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","1AOgX7ikLCnnzLdIl2woi8UAO-w__7QwK"],
-    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-14, Perf ,"M2","15CcXpHNnGL03y6h5KT7QKZhfCTg30pE3"],
-    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-1, Trns+VnlB ,"M2","1f7bztRLLafmQNbV2C-vPrbB6oiluzNOs"],
-    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2"],
-    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1"],
+    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm1'],
+    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm2'],
+    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","1BE7X8FTvHZ-Xxk3woPnLZ4FNqsE9MMOp",'Itm3'],
+    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","1AOgX7ikLCnnzLdIl2woi8UAO-w__7QwK",'Itm4'],
+    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-14, Perf ,"M2","15CcXpHNnGL03y6h5KT7QKZhfCTg30pE3",'Itm5'],
+    ["Adesivo" ,"Laminado",  "","","", Cal(Trns)-14, Trns ,"M2","Link",'Itm6'],
+    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-1, Trns+VnlB ,"M2","1f7bztRLLafmQNbV2C-vPrbB6oiluzNOs",'Itm7'],
+    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2",'Link','Itm8'],
+    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1",'Itm9'],
 
-    ["Recorte", "Outros","","","", 180, 0, "M2 W"], // W quer dizer Cor
-    ["Recorte", "Nomes","","","", 2.50,0, "QNT W"],
-    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W"],
-    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W"],
-    ["Recorte", "2 Cores","","","",180,0, "M2 W"],
-    ["Recorte", "3 Cores","","","",180,0, "M2 W"],
+    ["Recorte", "Outros","","","", 180, 0, "M2 W",'Link','Itm10'], // W quer dizer Cor
+    ["Recorte", "Nomes","","","", 2.50,0, "QNT W",'Link','Itm11'],
+    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W",'Link','Itm12'],
+    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W",'Link','Itm13'],
+    ["Recorte", "2 Cores","","","",180,0, "M2 W",'Link','Itm14'],
+    ["Recorte", "3 Cores","","","",180,0, "M2 W",'Link','Itm15'],
 
     ["Lona", "Banner","","","", Cal(Bane)+4, Bane, "M2"],
     ["Lona", "Faixa", "Só Madeira","","", Cal(Bane)+4, Bane, "M2"],
@@ -518,4 +519,7 @@ viewBox="0 0 421.93 421.91">
 const IconSearch = `<svg xmlns="http://www.w3.org/2000/svg" width="35.7996mm" height="35.8254mm"
 viewBox="0 0 3565.76 3568.33">
   <path class="fill:black" d="M375.95 1428.36c0,-264.33 133.18,-568.05 319.61,-742.26 86.5,-80.8 190.33,-160.92 316.39,-214.77 420.61,-179.74 856.9,-94.1 1181.86,212.68 79.88,75.42 167.13,191.04 219.74,307.2 78.38,173.05 101.76,285.56 101.76,495.3 0,270.56 -139.26,544.22 -314.91,719.9 -656.39,656.54 -1824.46,218.75 -1824.46,-778.04zm918.41 -842.27c-106.11,19.74 -340.06,35.34 -366.87,176.85 -20.86,110.05 79.51,217.94 213.65,163.26 29.96,-12.21 69.5,-25.57 103.43,-32.17 348.34,-67.93 608.18,128.67 712.96,343.99 27.62,56.77 52.21,120.1 147.02,124.38 97.16,4.37 198.55,-91.51 132.38,-229.19l-46.44 -89.31c-139.88,-232.77 -362.08,-394.27 -638.57,-446.56 -61.53,-11.62 -193.51,-23.16 -257.57,-11.25zm-1294.32 958.64c14.48,28.87 -2.05,523.79 460.14,962.05 423.39,401.47 1070.5,506.46 1599.64,241.29 85.62,-42.91 135.04,-93.29 182.28,-50.47 221.45,221.46 445.97,440.65 664.33,665 76.09,78.21 148.96,152.63 257.35,188.24 119.33,39.22 222.25,11.96 311.68,-77.16 84.31,-84.02 111.01,-189.68 74.02,-304.57 -19.55,-60.7 -56.01,-124.11 -99.16,-168.27 -231.99,-237.32 -480.29,-474.31 -711.12,-711.25 -76.48,-78.5 -82.13,-72.41 -28.63,-166.09 206.82,-362.04 236.15,-829.11 75.24,-1225.11 -255.74,-629.4 -932.73,-996.38 -1594.62,-875.47 -604.79,110.48 -1061.61,573.19 -1171.31,1177.21 -21.67,119.43 -19.84,224.4 -19.84,344.6z"/>
+</svg>`
+const IconPrevProx = `<svg xmlns="http://www.w3.org/2000/svg" width="98.5895mm" height="91.6908mm" viewBox="0 0 9844.72 9155.85">
+  <path class="fill:#010103" d="M-0 1471.18l0 2575.75c100.25,537.14 430.11,631.27 903.91,630.92 512.85,-0.37 1025.71,-0.01 1538.56,-0.01 541.08,0 979.11,66.1 1224.02,-318.03 206.09,-323.26 110.05,-756.04 -190.61,-950.59 -204,-131.98 -351.85,-109.97 -628.86,-123.55 -562.17,-27.58 522.93,-1457.38 2019.09,-1670.36 915.77,-130.35 1972.14,249.74 2532.04,872.57 396.63,441.21 705.19,906.37 809.65,1574.5 213.05,1362.71 -446.64,2637.96 -1662.83,3214.08 -1027.7,486.83 -1512.83,85.69 -1893.28,587.96 -365.53,482.58 -214.15,1338.41 848.45,1289.4 2118.93,-97.74 3919.28,-1709.22 4273.66,-3764.8 225.06,-1305.31 -83.3,-2612.76 -957.96,-3703.68 -1235.84,-1541.4 -3420.14,-2127.21 -5325.43,-1329.17 -1419.8,594.7 -1840.86,1559.22 -2060.39,1597.52 -71.7,-79.1 -4.82,-452.21 -107.85,-659.78 -192.08,-386.97 -643.84,-503.34 -1013.63,-273.33 -234.63,145.95 -238.19,331.49 -308.53,450.59z"/>
 </svg>`

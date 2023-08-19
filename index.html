@@ -24,7 +24,7 @@
     <header class="Cabecalho Ct Bt">
       <div class="Ct Titlee">
         <img src="Img/Logo.png" class="Logo">
-        <h1 id="Home">INFINITY GRAFF</h1>
+        <h1 id="Home" onclick="DefinePag(0)">INFINITY GRAFF</h1>
       </div>
       
       <input id="Pesquisa" class="Pesquisa Rd" onkeyup="SaveSync(event,this)" placeholder="Salve Qualque Informação...">
@@ -37,10 +37,10 @@
     </header>
 
     <nav class="Ct">
-      <a id="Orcamento" class="Ct ppt">ORÇAMENTO</a>
-      <a id="Relatorio" class="Ct ppt">RELATÓRIO</a>
-      <a id="Agenda" class="Ct ppt">AGENDA</a>
-      <a id="Clientes" class="Ct ppt">CLIENTES</a>
+      <a id="Orcamento" class="Ct ppt" onclick="DefinePag(1)">ORÇAMENTO</a>
+      <a id="Relatorio" class="Ct ppt" onclick="DefinePag(2)">RELATÓRIO</a>
+      <a id="Agenda" class="Ct ppt" onclick="DefinePag(3)">AGENDA</a>
+      <a id="Clientes" class="Ct ppt" onclick="DefinePag(4)">CLIENTES</a>
     </nav>
 
     <div id="PAIpage-container">
@@ -54,7 +54,7 @@
         
       </div>
 
-      <div id="Aba-Orcamento" class="Ct Cl">
+      <div id="Aba-Orcamento" class="Cl">
 
         <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
 
@@ -111,7 +111,7 @@
                 </select></div>
             </div>
 
-            <div id="GrupoCores" class="Ct w100">
+            <div id="GrupoCores" class="Ct w100 none">
               <div id="InputdeCor" class="Ct Rd ppt" onclick="CarregaCoresStock()">Escolha uma Cor</div>
               <ul id="ListaCor" class="none"></ul>
             </div>
@@ -260,8 +260,34 @@
 
       </div>
 
-      <div id="Aba-Relatorio" class="Ct Cl">
+      <div id="Aba-Relatorio" class="Cl">
         <h1>Aba Relatorio</h1>
+
+        <div id="Div-Blocks">
+          <div class="DefautBlock Ct Rd">
+            <div class="BlockStts RD"></div>
+            
+            <div>ID</div>
+            <div class="Ct">
+              <div>00/00</div>
+              <div>Marcelo Max</div>
+            </div>
+            
+            
+  
+            <div>IT</div>
+            <div>Serv</div>
+            <div>Tipo</div>
+            <div>Cbmt</div>
+            <div>Cbmt2</div>
+            <div>Medidas</div>	
+            <div>Valor</div>
+            <div>Login</div>
+            <button>Seta</button>
+          </div>
+        </div>
+        
+
       </div>
 
       <div id="Aba-Agenda" class="Ct Cl">
@@ -341,7 +367,7 @@
             </div>
             
             
-            <div class="Ct"><button id="btnINFO1" class="Ct none">Próximo</button></div>
+            <div class="Ct"><button id="btnINFO1" class="Ct none" onclick="Show('#Modal-Info2','#Modal-Info1')">Próximo</button></div>
 
           </div>
 
@@ -367,7 +393,7 @@
             </div>
             <div id="innerdesc">Desconto: </div>
             <div class="Bt">
-              <button id="btnINFO3" class="Ct">Voltar</button>
+              <button id="btnINFO3" class="Ct" onclick="Show('#Modal-Info1','#Modal-Info2')">Voltar</button>
               <button id="btnINFO2" class="Ct none">Entrada</button>
             </div>
           </div>

@@ -54,6 +54,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .w100{width: 100%;}
 .w50{width: 50%;}
 .w80{width: 80%;}
+.w90{width: 90%;}
 .cem{width:100%;}
 .B{font-weight: bold;}
 .Br{word-wrap: break-word;}
@@ -768,3 +769,4 @@ z-index: 999;
   justify-content: center;
   font-size: 24px;
 }
+

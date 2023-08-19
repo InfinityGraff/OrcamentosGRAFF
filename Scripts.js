@@ -8,6 +8,7 @@
     Prazo = QrySlt('#Prazo'),
     ModAlnotta = QrySlt("#ModalNota"),
     ResultFilTable = QrySlt('#resultfilter1'),
+    Paginas = QrySlt('#page-container'),
   // Login
     LgTop = QrySlt('#Login-Top'),
     Login = QrySlt('#Login-Cod'),
@@ -30,19 +31,12 @@
     I_QFix = QrySlt('#Div-Inpt-QFix select'),
     I_Etc = QrySlt("#Div-Inpt-Etc input"),
     I_Lcal = QrySlt("#Div-Inpt-Lcal input"),
-    I_Qnt = QrySlt('#Div-Inpt-Qnt input'),
-  // Divs do Form
-    DivEtc = QrySlt("#Div-Inpt-Etc"),
-    DivTipo = QrySlt('#Div-Inpt-Tipo'),
-    DivCbmt = QrySlt('#Div-Inpt-Cbmt'),
-    DivLarg = QrySlt('#Div-Inpt-Larg'),
-    DivAlt = QrySlt('#Div-Inpt-Alt'),
-    Grupo_Tipos = QrySlt('#Grupo-Tipos'),
-    Grupo_Medidas = QrySlt('#Grupo-Medidas')
+    I_Qnt = QrySlt('#Div-Inpt-Qnt input')
+  
 
     let ArryMdds=['#Div-Inpt-Larg input','#Div-Inpt-Alt input','#Div-Inpt-Qnt input']
 
-    const Iccon = '.Maisss > div:first-child'
+    
 //_________________________________________________________________________________________________________
 
 // Declarações dos Arrays
@@ -59,6 +53,7 @@
   let NewArryItem = ['Gato']
   let IDs = []
   let W400 = window.matchMedia("(max-width: 500px)")
+  let PagAtual = 1
 
 // OnLoad's_________________________________________________________________________________________________________
 
@@ -67,25 +62,21 @@
     PreLoadIMG()
     BloqueaData('#Prazo, #dataPagInfo')
     ReloadTab()
-    MenuNav('nav a, #Home')
     LoadListServ()
+    DefinePag(1)
     W400.addListener(MediaQuere)
     
     QrySltAll('input[name="Cntt"]').forEach(I=>{I.addEventListener('input',e=>{MaskkCntt(e)})})
     QrySltAll('#Grupo-Medidas input').forEach(e=>{e.setAttribute('inputmode','numeric')}) // campo Numerico
     document.addEventListener('click',e=>{ClickFora(e)}) // remover Coisas com Click Fora
+    window.addEventListener('resize', handleResize)
     window.addEventListener('scroll',()=>{ // Mostrar ou não Btn RoloTop
-      const Btn = QrySlt('#RoloTop')
-      if ((window.scrollY || window.pageYOffset) >= 250) {
-        Show(Btn)
-      }else{
-        setTimeout(()=>{
-          None(Btn)},100)
-      }
+      if((window.scrollY || window.pageYOffset) >= 250){Show('#RoloTop')}else{setTimeout(()=>{None('#RoloTop')},100)}
     })
     document.addEventListener('input',()=>{handle();InptClnts();FilTable()})
     QrySltAll('select').forEach(e=>{e.addEventListener('change',e=>{ShowTipo();LoadCor();FilTable()})})
   })
+  
   function AddInnSVG(){
     InnerSVG('.Maisss > div:first-child',IconEscList)
     InnerSVG('.Maisss > div:last-child',IconMais)
@@ -96,6 +87,8 @@
     InnerSVG('#imgnotta2', IconNota)
     InnerSVG('.Close', IconEscList)
     InnerSVG('.Seta', IconSetair)
+    InnerSVG('.Prev',IconPrevProx)
+    InnerSVG('.Prox',IconPrevProx)
   }
   function PreLoadIMG(){
     tabela.filter(e=>e[8]!==''||e[8]!==null).forEach(e=>{
@@ -104,7 +97,7 @@
   function ClickFora(e){
     const E = e.target
       if(!ArySltAll('.Bandeija, #InputdeCor, #ListaCor li').includes(E)){
-        QrySltAll('.Bandeija').forEach(e=>None(e))
+        None('.Bandeija') // Todas Bandeijas
         QrySltAll('input[type="text"]').forEach(inpt=>Rad0(inpt))
         None('#ListaCor')
       }
@@ -118,21 +111,6 @@
   }
   function BloqueaData(Stg){
     QrySltAll(Stg).forEach(i=>{i.min = new Date().toISOString().split('T')[0]})
-  }
-  function MenuNav(Stg){
-    QrySltAll(Stg).forEach(e=>{e.addEventListener('click',()=>{
-    
-      const Abas = {
-        'Home': QrySlt('#Aba-Home'),
-        'Orcamento': QrySlt('#Aba-Orcamento'),
-        'Relatorio': QrySlt('#Aba-Relatorio'),
-        'Agenda': QrySlt('#Aba-Agenda'),
-        'Clientes': QrySlt('#Aba-Clientes'),
-      }
-  
-      for(const [key,aba] of Object.entries(Abas)){
-        aba.style.display = (key === e.getAttribute('id')) ? 'flex' : 'none'}})
-    })
   }
   function MediaQuere(max){
     let C = QrySlt('.Cabecalho')
@@ -167,6 +145,13 @@
       I_Serv.insertAdjacentHTML('beforeend',`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)
     }
   }
+  function DefinePag(aba){ // ainda ta desalinhado
+    PagAtual = aba
+    handleResize()
+  }
+  function handleResize() {
+    Paginas.style.transform = `translateX(${(-PagAtual*(window.innerWidth))+15}px)`
+  }
 
 // Funções pra Abrir Modais ______________________________________________________________________________________________________________
 
@@ -178,21 +163,10 @@
     AbrirModalHTML(FundoModal,QrySlt('#ModalInfo'))
     QrySlt('#Title-Info').innerHTML=`${IDPdd}: ${'Nome'}, Total: ${Total}`
 
-    // Chama os EventListener
-    const formInfo1 = QrySlt('#Modal-Info1') ; const SbmtInfo1 = QrySlt('#btnINFO1')
-    const formInfo2 = QrySlt('#Modal-Info2') ; const SbmtInfo2 = QrySlt('#btnINFO2')
-    const SbmtInfo3 = QrySlt('#btnINFO3')
-  
-    formInfo1.addEventListener('input',()=>{Ouvinte(formInfo1,SbmtInfo1)})
-    QrySltAll('#Modal-Info1 select').forEach(e=>{e.addEventListener('change',()=>{Ouvinte(formInfo1,SbmtInfo1)})})
-  
-    formInfo2.addEventListener('input',()=>{Ouvinte(formInfo2,SbmtInfo2)})
-    QrySltAll('#Modal-Info2 select').forEach(e=>{e.addEventListener('change',()=>{Ouvinte(formInfo2,SbmtInfo2)})})
-  
-    SbmtInfo1.addEventListener('click',()=>{Show('#Modal-Info2');None('#Modal-Info1')})
-    SbmtInfo3.addEventListener('click',()=>{Show('#Modal-Info1');None('#Modal-Info2')})
-    SbmtInfo2.addEventListener('click',()=>{None(FundoModal);SavePdd('','','Info','','')})
-    
+    EvtInpt('#Modal-Info1',()=>{Ouvinte(QrySlt('#Modal-Info1'),QrySlt('#btnINFO1'))})
+    EvtInpt('#Modal-Info2',()=>{Ouvinte(QrySlt('#Modal-Info2'),QrySlt('#btnINFO2'))})
+
+    EvtClik('#btnINFO2',()=>{None(FundoModal)/*;SavePdd('','','Info','','')*/})
   }
   function AbreCadastro(){ // 1-HTML
     const ModalCadastro = QrySlt('#ModalCadastro')
@@ -246,21 +220,16 @@
   }
   function InptClnts(){
     const e = event.target
-    if(e.name === 'Clnt') {QrySlt('#Inner-Clnt').innerHTML = e.value;BandejaFit(e,2);ShowCntt(DivCnttForm);ShowBtnCadastro()}
     if(e.name === 'Cntt') {BandejaFit(e,5)}
+    if(e.name === 'Clnt') {BandejaFit(e,2);QrySlt('#Inner-Clnt').innerHTML = e.value;
+      ShowTrue('#Div-Inpt-Cntt',I_Clnt.value!=='') // Mostra e Oculta InptCntt
+      ShowTrue('.btn_cdstr',ArryClnt[7]==='' && I_Clnt.value!=='') // Mostra e Oculta Btn Cadastro
+    }
 
-    function ShowCntt(DivCnttForm){
-      if(I_Clnt.value===''){None(DivCnttForm)}else{Show(DivCnttForm)}
-    }
-    function ShowBtnCadastro(){
-      if(ArryClnt[7]===''){
-           QrySltAll('.btn_cdstr').forEach(e=>Show(e))}
-      else{QrySltAll('.btn_cdstr').forEach(e=>None(e))}
-    }
     function BandejaFit(inpt,indx){ // preciso só ocultaar os outros
 
       QrySltAll('.Bandeija').forEach(e=>{
-        if(e.parentNode===inpt.parentNode.parentNode){Show(e)}else{None(e)}
+        ShowTrue(e,e.parentNode===inpt.parentNode.parentNode)
 
         Rad0(inpt); e.innerHTML = ""
         let value = inpt.value.toLowerCase()
@@ -295,26 +264,15 @@
     ArryClnt.fill('')
     FilTable()
   }
-  let unddback=""; function ShowTipo(){
+  function ShowTipo(){
     let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
-    if (undd !== unddback){
-      if (undd.match(/M2/)){None(Grupo_Tipos)
-        Show([DivTipo,DivCbmt,Grupo_Medidas,DivAlt,DivLarg])}
-      if (undd.match(/OFS/)){None(Grupo_Medidas)
-        Show([DivTipo,DivCbmt,Grupo_Tipos])}
-      if (undd.match(/QNT/)){
-        Show([DivTipo,DivCbmt,Grupo_Medidas])
-        None([DivAlt,DivLarg,Grupo_Tipos])}
-      ShowTrue('#GrupoCores',undd.match(/W/))
-      }
-      
-    unddback = undd
-
-    if(I_Cbmt.options[1].value.trim() === ''
-    || I_Cbmt.options[1].value === '-'){
-      None(DivCbmt)}else{Show(DivCbmt)}
+      ShowTrue('#Grupo-Tipos',undd.match(/OFS/),'#Grupo-Medidas')      // Troca de OFS pra M2
+      NoneTrue(['#Div-Inpt-Larg','#Div-Inpt-Alt'],undd.match(/QNT/))   // Remove Larg e Alt se n precisar
+      ShowTrue('#Div-Inpt-Tipo',I_Serv.value!=='')                     // Temove Tipo quando n tem Serv
+      ShowTrue('#GrupoCores',undd.match(/W/))                          // Add Cor Quando nesesário
+      NoneTrue('#Div-Inpt-Cbmt',['','-'].includes(I_Cbmt.options[1].value.trim())) // Remove acabamento se n Tiver
   }
-  function CarregaCoresStock() {
+  function CarregaCoresStock(){
     Show('#ListaCor')
     QrySlt('#ListaCor').innerHTML = ''
     StockjVinil.forEach(cor =>{
@@ -335,8 +293,7 @@
     IDPdd = ('0000'+(Math.max(...IDs)+1)).slice(-3)
     QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+ IDPdd}) // Cria ID
 
-    Show(FormOrcamento)
-    None(btn.parentNode)
+    Show(FormOrcamento,btn.parentNode)
   }
   function LoadCor(){
     // se o serviço tiver opção de cor, então MostraMostra
@@ -347,29 +304,21 @@
         e.classList.add('clicked')
         FormOrcamento.classList.add("CloseForm")
 
-        setTimeout(()=>{
-          Show(QrySlt('#NewOrcamento').parentNode)
-        },100)
+        setTimeout(()=>{Show(QrySlt('#NewOrcamento').parentNode)},100)
+
         setTimeout(()=>{
           e.classList.remove('clicked')
           FormOrcamento.classList.remove("CloseForm")
-          None(FormOrcamento)
-        },500)})
+          None(FormOrcamento)},500)})
   }
   function clearForm(){
     QrySltAll('input, select',FormOrcamento).forEach((e) => (e.value = ''))
     FilTable()
     EscMdds('All')
   }
-  function ReloadForm(){
-    ReloadTab()
-    FilTable()
-    const Mais = QrySlt('#Div-Inpt-Mais').children
-    if(Mais.length===2){None(Iccon)}else{Show(Iccon)}
-  }
   function ClonaMdd(btn){
     const INDX = isNaN(btn) ? IndiceDe(btn.parentNode) : btn
-    Show(Iccon)
+    Show('.Maisss > div:first-child')
     ArySltAll('#Grupo-Medidas > div').forEach(div=>{
       const inpt = QrySltAll(".Maisss, input",div)
       const Utm = inpt[inpt.length-1]
@@ -379,11 +328,12 @@
 
       div.insertBefore(NewInpt,div.children[INDX+1])
     })
-    ReloadForm()
-    ReajustaTabindex()
+    ReloadTab()
+    RstTabIndx("#Div-Inpt-Larg input",1)
+    RstTabIndx("#Div-Inpt-Alt input" ,2)
+    RstTabIndx("#Div-Inpt-Qnt input" ,3) //Escapar no Ultimo
   }
   function EscMdds(btn) {
-
     if (btn === 'All'){
       const idx = 2
       QrySltAll("#Grupo-Medidas > div").forEach(e => {
@@ -399,52 +349,27 @@
         e.removeChild(Array.from(e.children)[idxBtn])
       })
     }
+    ReloadTab()
+  }
+  function ReloadTab(){
+    NoneTrue('.Maisss > div:first-child',QrySlt('#Div-Inpt-Mais').children.length===2)
+    FilTable()
+    QrySltAll('input[data-Tab]').forEach((inpt)=>{
+      inpt.removeEventListener("keyup",keyupHandler)
+      inpt.addEventListener('keyup',keyupHandler)})
 
-    ReloadForm()
-  }
-  document.addEventListener('keydown',(e)=>{ClonaMddKey(e)})
-  function ClonaMddKey(e) {
-    if (e.key === '+') {
-      e.target.value = e.target.value.replace('+', '')
-      ClonaMdd(IndiceDe(e.target))
-      console.log(IndiceDe(e.target))
-    }
-    ReloadForm()
-  }
-  function ReloadTab(){ // Ajeitar essa função q nem precisa mais!
-    
-    QrySltAll('input[data-Tab]').forEach(inpt=>{
-    
-    inpt.addEventListener("keyup",(e)=>{
-      let inputses = QrySltAll('input[placeholder="0 UND"]',inpt.parentNode)
-      let ultimo = inputses[inputses.length - 1]
-      if(inpt===ultimo){return}
-      if(e.key === "Tab" || KeyEnter(e) || e.key === "+"){
+    function keyupHandler(e){
+      function NextyTab(inpt,e){
+        inpt.value =  inpt.value.replace('+', '')
         e.preventDefault()
-        let nextInput = getNextInput(inpt,inpt.parentNode.parentNode)
-        if (nextInput){nextInput.focus()}
-      }
-    })})
-    
-    function getNextInput(inpt,DivInpt){
-      return QrySlt(`input[data-Tab="${TabIndx(inpt,1)}"]`,DivInpt)
+        if(e.key==="Tab"||KeyEnter(e)||e.key==="+"){
+          if(Pai(inpt).id === 'Div-Inpt-Qnt' && e.key==="+"){ClonaMdd(IndiceDe(e.target))}
+          let nextInput = QrySlt(`input[data-Tab="${TabIndx(inpt,1)}"]`,Avo(inpt))
+          if(nextInput){nextInput.focus()}}
+      };NextyTab(this,e)
     }
   }
-  function reajustarInputs(Div,Idx) {
-    const inpt = QrySltAll(`${Div} input`)
-    let IDX = Idx
 
-    inpt.forEach((e,idx)=>{
-      e.value = e.value.replace('+', '')
-      e.setAttribute("data-Tab", `${idx === 0 ? Idx : (IDX += 3)}`)
-    
-    })
-  }
-  function ReajustaTabindex() {
-    reajustarInputs("#Div-Inpt-Larg",1)
-    reajustarInputs("#Div-Inpt-Alt", 2)
-    reajustarInputs("#Div-Inpt-Qnt", 3)
-  }
 // Funções Grandes_______________________________________________________________
 
 function DescPrazo(){
@@ -599,9 +524,7 @@ function OcultaCoisas(e){
     Show('#SavSav')
     // oculta os BTN do filter
     QrySltAll('#resultfilter1 button').forEach(e=>{if(!e.textContent.includes('Adicionar')){None(e)}})
-  }else{
-    None('#SavSav')
-  }
+  }else{None('#SavSav')}
 
   if(e.children.length===1){Show('#AddAdd')
     if(e.style.height === '150px'){return}
@@ -663,7 +586,7 @@ async function PesquisaKM(inpt){
   RsutFrete.innerHTML = listaLugares[inpt]
   }else{RsutFrete.innerHTML = 'Lugar não Encontrado'}
 }
-function Ouvinte(form,btn){ // a função que livera os Botões Submit e Cria os Arrays
+function Ouvinte(form,btn){ // Libera os Botões do Info e Cria os Arrays
   const date = event.target.getAttribute('data')
   const Value = event.target.value
   
@@ -1169,18 +1092,11 @@ let currentIndex = 1
 let isDragging = false
 let currentX = 0
 
-
-const pageContainer = QrySlt('#page-container')
-
-  currentX = -currentIndex * (window.innerWidth)
-  pageContainer.style.transform = `translateX(${currentX}px)`
-
 document.addEventListener('touchstart',(e)=>{
     startX = e.touches[0].clientX
     startTranslateX = currentX
     isDragging = true
 })
-
 document.addEventListener('touchmove',(e)=>{
     if (!isDragging) return
 
@@ -1188,9 +1104,8 @@ document.addEventListener('touchmove',(e)=>{
     const deltaX = currentTouchX - startX
 
     currentX = startTranslateX + deltaX
-    pageContainer.style.transform = `translateX(${currentX}px)`
+    Paginas.style.transform = `translateX(${currentX}px)`
 })
-
 document.addEventListener('touchend',(e)=>{
     if (!isDragging) return
 
@@ -1205,5 +1120,5 @@ document.addEventListener('touchend',(e)=>{
     }
 
     currentX = -currentIndex * (window.innerWidth)
-    pageContainer.style.transform = `translateX(${currentX}px)`
+    Paginas.style.transform = `translateX(${currentX}px)`
 })
