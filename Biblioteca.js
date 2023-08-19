@@ -254,3 +254,18 @@ function Parent2(e){return e.parentNode.parentNode}
 function Parent3(e){return e.parentNode.parentNode.parentNode}
 function Parent4(e){return e.parentNode.parentNode.parentNode.parentNode}
 function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
+
+function AnimaHeight(e,TargHeit,time,inOut){
+  const StrtH = e.clientHeight
+  const StrtT = performance.now()
+  const update = timestamp=>{
+    const elaps = timestamp-StrtT
+    if (elaps<time) {
+        let Value = 0
+        if(inOut==='out'){Value = StrtH-(StrtH*(elaps/time))}
+        else{Value = TargHeit*(elaps/time)}
+      e.style.height = Value + 'px'
+      requestAnimationFrame(update)
+    } else {e.style.height = (inOut==='out'?0:TargHeit)+'px'}
+  };requestAnimationFrame(update)
+}
