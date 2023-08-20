@@ -79,7 +79,6 @@
               <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
               <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
             </div>
-            
           </div>
 
           <form id="FormOrc" class="Ct">
@@ -223,8 +222,8 @@
           </div>
 
           <div id="SavSav" class="Ct none">
-            <button class="baby" onclick="SavePdd('','Bloco','CRUD','','')">Salvar</button>
-            <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button>
+            <button class="baby" onclick="SaveCRUDI('#CRUD')">Salvar</button>
+            <!-- <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button> -->
             <button class="BTNota Ct RD magem" onclick="AbreNota('','','')">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
             
           </div>
@@ -232,32 +231,27 @@
         </div>
 
         <table id="TabelaPlan"></table>
-
-        <button onclick="AchatotdasBandeijas()">Trigger</button>
-        <button onclick="ReajustaTabindex()">RELOADTABIDX</button>
     
         <form id="SavePddPlan" class="none">
           <input name="Login">
           <input name="Stts">
           <input name="ID">
-          <input name="IT">
-          <input name="Serv">
-          <input name="Tipo">
-          <input name="Cbmt">
-          <input name="Cbmt2">
+          <input name="CT">
+          <input name="Data">
+          <input name="Item">
           <input name="Medidas">
-          <input name="Valor">
+          <input name="Total">
           <input name="Custo">
-          <input name="Calc">
           <input name="Descr">
+          <input name="Form">
+          <input name="Barr">
           <button>Trigger</button>
         </form>
-        <form id="SaveClntPlan">
+        <form id="SaveClntPlan" class="none">
           <input name="Cliente">
           <input name="Contato">
           <button>Trigger</button>
         </form>
-
       </div>
 
       <div id="Aba-Relatorio" class="Cl">

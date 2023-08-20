@@ -98,6 +98,7 @@ button{
 
 #FormOrcamento{
   background: #202020;
+  margin-top: 150px;
   margin:15px;padding:5px;
   height: auto;
   /* overflow: hidden; */
@@ -757,16 +758,21 @@ z-index: 999;
 #page-container {
   display: flex;
   width: 500%;
-  height: 100vh;
+  /* height: 100vh; */
   transition: transform 0.3s ease-in-out;
 }
 
 #page-container > div {
   width: 100vw;
-  height: 100vh;
+ /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
 }
 
+/*
+#page-container{
+  margin-top: 250px; 
+}
+*/

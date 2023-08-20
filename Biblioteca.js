@@ -36,7 +36,8 @@
 // Funções Geradores
   function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
-  var NewDate = new Date().toISOString().split('T')[0]
+  let NewDate = new Date().toISOString().split('T')[0]
+  let NewHora = new Date().toISOString().replace(/T/,' ').replace(/\..+/,'')
 
 // Função de Ações e Simulações
   function FocoIn(e){e.focus()}
@@ -269,3 +270,4 @@ function AnimaHeight(e,TargHeit,time,inOut){
     } else {e.style.height = (inOut==='out'?0:TargHeit)+'px'}
   };requestAnimationFrame(update)
 }
+

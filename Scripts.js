@@ -289,11 +289,14 @@
   function NewOrcamentos(btn){
     if(!NewOrcamentos.First){NewOrcamentos.First = true}else{clearForm();clearCRUD()}
 
-    PushArry(IDs,"#TabelaPlan tr td:nth-child(3)")
-    IDPdd = ('0000'+(Math.max(...IDs)+1)).slice(-3)
+    loadIDPdd()
+    IDPdd = 'ID-'+(('0000'+(Math.max(...IDs)+1)).slice(-3))
     QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+ IDPdd}) // Cria ID
 
     Show(FormOrcamento,btn.parentNode)
+  }
+  function loadIDPdd(){
+    fetch(APIPlan).then(Resp=>Resp.json()).then(Plan=>{IDs = Plan.map(e=>Num(e.ID.replace('ID-','')))})
   }
   function LoadCor(){
     // se o serviço tiver opção de cor, então MostraMostra
@@ -431,7 +434,7 @@ function FilTable(){
            (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
            (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
 
-  const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto],indx)=>{
+  const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm],indx)=>{
     const Orc = Orcamento(Arry[indx])
     const SubTotal = Cm(Orc[1])
     const VlrM2 = Cm(Vlr)
@@ -447,6 +450,7 @@ function FilTable(){
     const IMG = Foto ? Foto.match('.jpg') ? Foto : `${LinkDrive}${Foto}` : ''
     const Etc = I_Etc.value
     const Mdds  =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
+    const Mdds3 =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join('/').replace('.',',')
     const Mdds1 =Orc[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
     const Mdds2 =Mdds1.join('/')
     const ItemHTML = `<div class="itemfilter Ct Cl w100 Rdd">
@@ -465,11 +469,11 @@ function FilTable(){
                       <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
                       `
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc,TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
-    let SAVENewItem=['Login','Stts',IDPdd,GerarIT(),Serv,Tipo,CBMT,QNT,Mdds,TotalDesc,Cust,Calc,Etc]
-    let NewItemaDD=[GerarIT(),QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
-
+    let SAVENewItem=['Login','Stts',IDPdd,ArryClnt[0],NewHora,Itm,Mdds3,TotalDesc,Cust,Etc]
+    let NewItemaDD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
+    
     let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show(['#Div-CRUD','#SavSav']);Scroll('Fim');OcultaCoisas('${ResultFilTable}')`
-    let FuncSav = `SavePDDD('${SAVENewItem.join('/')}','Saver','Filter','${TotalDesc}')`
+    let FuncSav = `SavePDDD('${SAVENewItem.join('+')}','Saver','Filter','${TotalDesc}')`
     let FuncEnt = `AbreInfo('${NewItem.join('/')}','Entrada','Filter','${TotalDesc}','this')`
     let Comment = Serv==='Placa' ? Orc[2].map(c=>`<div>${c}</div>`).join('') : ""
     let Ferro = Serv==='Placa' ? Orc[4].map(c=>`<div>${c}</div>`).join('') : ""
@@ -708,6 +712,7 @@ function clearCRUD(){
     if(idx>=2){e.remove()}})
   None('#ClearCRUD')
 }
+
 
 
 //Funções do Modelo 3D CGI__________________________________________________________________________________
@@ -1013,23 +1018,31 @@ function SaveSync(e,inpt){
   }
 }
 
+
+
+function SaveCRUDI(Stg){
+  const ArryNovo = ArySltAll(Stg+' table tr').slice(2).map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{
+    return Cell.textContent.replace('R$','')}).filter((_,idx)=>[0,1,5,6,7].includes(idx)) })
+  const Itens = ArryNovo.map(e=>e[0]).join(',')
+  const Mdds = ArryNovo.map(e=>e.slice(1).join('|')).join('/')
+  const total = ArryNovo.reduce((sum, [, , , , value]) => sum + parseFloat(value), 0).toFixed(2).replace('.',',')
+  const novoArry = ['Login','red',IDPdd,ArryClnt[0],NewHora,Itens,Mdds,total,'Cust','Etc']
+  SavePDDD(novoArry.join('+'),'Stts','','')
+}
+
 async function SavePDDD(ArryItem,Stts,Orign,Total){
-  if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}
-  
-  const NewArry = ArryItem.split('/')
+  if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}  
+  const NewArry = ArryItem.split('+')
   NewArry[0] = Login.innerHTML
   NewArry[1] = Stts
   NewArry[9] = RS(Num(NewArry[9]))
-
   QrySltAll('#SavePddPlan input').forEach((e,idx)=>{e.value = NewArry[idx]})
   QrySlt("#SavePddPlan button").click()
-  
 }
 
+
+
 // Viagens ________________________________________________
-
-
-
 
 function hojeInfo(inpt){ // tentar jogar isso pra a Biblioteca
   ArryPag[2] = QrySlt(inpt).value = NewDate ; RequedInfo('2')
