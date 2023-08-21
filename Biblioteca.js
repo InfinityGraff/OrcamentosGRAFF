@@ -211,7 +211,11 @@
   function AtivaDescM2(on,off){Show(off) ; None(on) ; onOff = 'on' ; FilTable()}
   function DstivDescM2(off,on){Show(on) ; None(off) ; onOff = 'off' ; FilTable()}
 
-  function TotalCress(Vlr,e){return Math.round(e*(Vlr+Vlr*Crecent(e)))}
+  function TotalCress(Vlr,e,type){
+    if(type==='Recorte'){return Math.round(e*(Vlr+Vlr*Crecent2(e)))}
+    else{return Math.round(e*(Vlr+Vlr*Crecent(e)))}
+    
+  }
 
 
   function TrocaPose(Div,Idx){

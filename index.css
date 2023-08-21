@@ -312,7 +312,7 @@ optgroup{
 .FundoModal{
   position: fixed;
   top: 0px;
-  left: 0px;
+  left: 100vw;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -550,8 +550,8 @@ form div[id*=Inpt]{
   #ModalNota > div{padding: 5px 0px;}
   #Nota-Clnt > div > div >div{margin: 0px 5px;}
 
-.media30{width: 30%;}
-.media80{width: 60%;}
+.media30{width: 70%;}
+.media80{width: 70%;}
 
 .LogoNota > img{width: 50px; height: 50px;}
 
