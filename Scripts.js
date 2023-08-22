@@ -472,7 +472,7 @@ function FilTable(){
                       <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
                       `
     let NewItem=[GerarIT(),'Stts',Serv,Tipo,CBMT,QNT,Mdds,Desc,TotalDesc,VlrM2,Cust,Calc,Foto,Etc]
-    let SAVENewItem=['Login','Stts',IDPdd,ArryClnt[0],NewHora,Itm,Mdds3,TotalDesc,Cust,Etc]
+    let SAVENewItem=['Login','Stts',IDPdd,ArryClnt[0],'NewHora',Itm,Mdds3,TotalDesc,Cust,Etc]
     let NewItemaDD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc]
     
     let FuncAdd = `addyCRUD('${NewItemaDD.join('/')}');Show(['#Div-CRUD','#SavSav']);Scroll('Fim');OcultaCoisas('${ResultFilTable}')`
@@ -1029,7 +1029,7 @@ function SaveCRUDI(Stg){
   const Itens = ArryNovo.map(e=>e[0]).join(',')
   const Mdds = ArryNovo.map(e=>e.slice(1).join('|')).join('/')
   const total = ArryNovo.reduce((sum, [, , , , value]) => sum + parseFloat(value), 0).toFixed(2).replace('.',',')
-  const novoArry = ['Login','red',IDPdd,ArryClnt[0],NewHora,Itens,Mdds,total,'Cust','Etc']
+  const novoArry = ['Login','red',IDPdd,ArryClnt[0],'NewHora',Itens,Mdds,total,'Cust','Etc']
   SavePDDD(novoArry.join('+'),'Stts','','')
 }
 
@@ -1039,6 +1039,7 @@ async function SavePDDD(ArryItem,Stts,Orign,Total){
   NewArry[0] = Login.innerHTML
   NewArry[1] = Stts
   NewArry[9] = RS(Num(NewArry[9]))
+  NewArry[4] = NewHora
   QrySltAll('#SavePddPlan input').forEach((e,idx)=>{e.value = NewArry[idx]})
   QrySlt("#SavePddPlan button").click()
 }

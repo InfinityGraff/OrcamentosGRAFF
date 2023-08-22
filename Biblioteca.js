@@ -37,7 +37,7 @@
   function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
   let NewDate = new Date().toISOString().split('T')[0]
-  let NewHora = new Date().toISOString().replace(/T/,' ').replace(/\..+/,'')
+  const NewHora = new Date(Date.now() + -3 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
 
 // Função de Ações e Simulações
   function FocoIn(e){e.focus()}

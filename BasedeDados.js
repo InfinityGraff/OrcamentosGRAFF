@@ -64,25 +64,25 @@
   function Cal(Vlr){return Vlr * (1 + (200 / 100))}
 
   const tabela = [
-    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm1'],
-    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm2'],
-    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","1BE7X8FTvHZ-Xxk3woPnLZ4FNqsE9MMOp",'Itm3'],
-    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","1AOgX7ikLCnnzLdIl2woi8UAO-w__7QwK",'Itm4'],
-    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-13, Perf ,"M2","15CcXpHNnGL03y6h5KT7QKZhfCTg30pE3",'Itm5'],
-    ["Adesivo" ,"Laminado",  "","","", Cal(Trns)+10, Trns ,"M2",'','Itm6'],
-    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-15, Trns+VnlB ,"M2","1f7bztRLLafmQNbV2C-vPrbB6oiluzNOs",'Itm7'],
+    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm1','A I U C L T'],
+    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm2','A I U C L T'],
+    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","1BE7X8FTvHZ-Xxk3woPnLZ4FNqsE9MMOp",'Itm3','A I U C L T'],
+    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","1AOgX7ikLCnnzLdIl2woi8UAO-w__7QwK",'Itm4','A I U C L T'],
+    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-13, Perf ,"M2","15CcXpHNnGL03y6h5KT7QKZhfCTg30pE3",'Itm5','A I U C L T'],
+    ["Adesivo" ,"Laminado",  "","","", Cal(Trns)+10, Trns ,"M2",'','Itm6','A I U C L T'],
+    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-15, Trns+VnlB ,"M2","1f7bztRLLafmQNbV2C-vPrbB6oiluzNOs",'Itm7','A I U C L T'],
   
-    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2",'','Itm8'],
-    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1",'Itm9'],
+    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2",'','Itm8','A I U C M'],
+    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1",'Itm9','A I U C M'],
   
-    ["Recorte", "Normal","Simples","","", 70, 0, "M2 W",'','Itm10'], // W quer dizer Cor
-    ["Recorte", "Normal","Complexo","","", 100, 0, "M2 W",'','Itm10a'], // W quer dizer Cor
-    ["Recorte", "Contorno","Simples","","",110,0, "M2 W",'','Itm11'],
-    ["Recorte", "Contorno","Complexo","","",140,0, "M2 W",'','Itm11a'],
-  //  ["Recorte", "Nomes","","","", 2.50,0, "QNT W",'','Itm12'],
-    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W",'','Itm13'],
-    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W",'','Itm14'],
-  //  ["Recorte", "3 Cores","","","",180,0, "M2 W",'','Itm15'],
+    ["Recorte", "Normal","Simples","","", 70, 0, "M2 W",'','Itm10','A O U C L'], // W quer dizer Cor
+    ["Recorte", "Normal","Complexo","","", 100, 0, "M2 W",'','Itm10a','A O U C L'], // W quer dizer Cor
+    ["Recorte", "Contorno","Simples","","",110,0, "M2 W",'','Itm11','A O U C L'],
+    ["Recorte", "Contorno","Complexo","","",140,0, "M2 W",'','Itm11a','A O U C L'],
+  //  ["Recorte", "Nomes","","","", 2.50,0, "QNT W",'','Itm12','A O U C L'],
+    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W",'','Itm13','A O U C L'],
+    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W",'','Itm14','A O U C L'],
+    ["Figurinha","","","","",1,0,"QNT",'','Itm15','A I U C'],
   
     ["Lona", "Banner","","","", Cal(Bane)+4, Bane, "M2",'','Itm16'],
     ["Lona", "Faixa", "Só Madeira","","", Cal(Bane)+4, Bane, "M2",'','Itm17'],
@@ -229,15 +229,59 @@
     ["Envelopamento", "Geladeira", "1 Porta", "-", "-", 150, 0, "QNT","TabelaProdutos/Geladeira 1 Porta.jpg",'Itm100'],
   
     ["Arte","","","","",50,0,"QNT",'','Itm100'],
-    ["Figurinha","","","","",1,0,"QNT",'','Itm100'],
+    
   ]
 
   const grupos = {
-    Impressao: ['Adesivo','Etiqueta','Recorte','Lona','Quadro','ímã'],
+    Impressao: ['Adesivo','Etiqueta','Recorte','Figurinha','Lona','Quadro','ímã'],
     Placas: ['Placa','Cavalete','Toldo','Quebra Sol'],
     Offset: ['Cartão','Tag','Panfleto','Talão','A4','Cardápio'],
-    Outros: ['Envelopamento','Camisa','Arte','Figurinha'],
+    Outros: ['Envelopamento','Camisa','Arte'],
   }
+
+  const MateriaPrima = {
+    'Recorte':'Adesivo Vinil',
+    'Envelopamento':'Adesivo Vinil',
+    'Quadro':'PVC',
+    'Ímã':'Ímã',
+    'Placa':'Ferro',
+    'Cavalete':'Ferro',
+    'Camisa':'Camisa',
+  }
+
+  const ArryTarefasList = {
+    'Lona':'A I U C M T',
+    'Quadro':'A O I U C L M T',
+    'ímã':'A O I U C L M',
+
+    'Cartão':'A I U',
+    'Tag':'A I U',
+    'Panfleto':'A I U',
+    'A4':'A I C',
+    'Cardápio':'A I C P',
+    
+    'Placa':'A O I U S M T',
+    'Cavalhete':'A O I U S M T',
+
+    'Camisa':'A O R U E',
+    'Arte':'A',
+    'Envelopamento':'O I U C L',
+  }
+
+  const AbrevTaref = {
+    'A':'Arte',
+    'O':'Compra',
+    'I':'Impressão',
+    'R':'Revelação',
+    'E':'Estampa',
+    'U':'Uber',
+    'C':'Corte',
+    'S':'Soldagem',
+    'M':'Acabamento',
+    'L':'Aplicação',
+    'T':'Instalação',
+  }
+
   const CopyPresset = {
     'Pix':`Chave: 81987265401
   Nome: Alan Ferreira da Silva`
