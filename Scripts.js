@@ -715,6 +715,16 @@ function clearCRUD(){
     if(idx>=2){e.remove()}})
   None('#ClearCRUD')
 }
+function SaveCRUDI(Stg){
+  const ArryNovo = ArySltAll(Stg+' table tr').slice(2).map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{
+    return Cell.textContent.replace('R$','')}).filter((_,idx)=>[0,1,5,6,7].includes(idx)) })
+  const Itens = ArryNovo.map(e=>e[0]).join(',')
+  const Mdds = ArryNovo.map(e=>e.slice(1).join('|')).join('/')
+  //const total = ArryNovo.reduce((sum, [, , , , value]) => sum + parseFloat(value), 0).toFixed(2).replace('.',',')
+  const total = QrySlt('#TotalCrud').innerHTML
+  const novoArry = ['Login','red',IDPdd,ArryClnt[0]?ArryClnt[0]:I_Clnt.value,'NewHora',Itens,Mdds,total,'Cust','Etc']
+  SavePDDD(novoArry.join('+'),'Stts','','')
+}
 
 
 
@@ -1023,15 +1033,7 @@ function SaveSync(e,inpt){
 
 
 
-function SaveCRUDI(Stg){
-  const ArryNovo = ArySltAll(Stg+' table tr').slice(2).map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{
-    return Cell.textContent.replace('R$','')}).filter((_,idx)=>[0,1,5,6,7].includes(idx)) })
-  const Itens = ArryNovo.map(e=>e[0]).join(',')
-  const Mdds = ArryNovo.map(e=>e.slice(1).join('|')).join('/')
-  const total = ArryNovo.reduce((sum, [, , , , value]) => sum + parseFloat(value), 0).toFixed(2).replace('.',',')
-  const novoArry = ['Login','red',IDPdd,ArryClnt[0],'NewHora',Itens,Mdds,total,'Cust','Etc']
-  SavePDDD(novoArry.join('+'),'Stts','','')
-}
+
 
 async function SavePDDD(ArryItem,Stts,Orign,Total){
   if(SemLogin()){MiniInput('Senha') ; await PrmssInnr(Login)}  
@@ -1042,6 +1044,7 @@ async function SavePDDD(ArryItem,Stts,Orign,Total){
   NewArry[4] = NewHora
   QrySltAll('#SavePddPlan input').forEach((e,idx)=>{e.value = NewArry[idx]})
   QrySlt("#SavePddPlan button").click()
+  ArryClnt=[]
 }
 
 
@@ -1111,39 +1114,40 @@ let currentX = 0
 
 /*
 
-document.addEventListener('touchstart',(e)=>{
-    startX = e.touches[0].clientX
-    startTranslateX = currentX
-    isDragging = true
-})
-document.addEventListener('touchmove',(e)=>{
-    if (!isDragging) return
+  document.addEventListener('touchstart',(e)=>{
+      startX = e.touches[0].clientX
+      startTranslateX = currentX
+      isDragging = true
+  })
+  document.addEventListener('touchmove',(e)=>{
+      if (!isDragging) return
 
-    const currentTouchX = e.touches[0].clientX
-    const deltaX = currentTouchX - startX
+      const currentTouchX = e.touches[0].clientX
+      const deltaX = currentTouchX - startX
 
-    currentX = startTranslateX + deltaX
-    Paginas.style.transform = `translateX(${currentX}px)`
-})
-document.addEventListener('touchend',(e)=>{
-    if (!isDragging) return
+      currentX = startTranslateX + deltaX
+      Paginas.style.transform = `translateX(${currentX}px)`
+  })
+  document.addEventListener('touchend',(e)=>{
+      if (!isDragging) return
 
-    isDragging = false
+      isDragging = false
 
-    const endX = e.changedTouches[0].clientX
-    const deltaX = endX - startX
+      const endX = e.changedTouches[0].clientX
+      const deltaX = endX - startX
 
-    if (Math.abs(deltaX) > 50){
-        if(deltaX > 0){if(currentIndex>0){currentIndex--}}
-        else{if(currentIndex<4){currentIndex++}}
-    }
+      if (Math.abs(deltaX) > 50){
+          if(deltaX > 0){if(currentIndex>0){currentIndex--}}
+          else{if(currentIndex<4){currentIndex++}}
+      }
 
-    currentX = -currentIndex * (window.innerWidth)
-    Paginas.style.transform = `translateX(${currentX}px)`
-})
+      currentX = -currentIndex * (window.innerWidth)
+      Paginas.style.transform = `translateX(${currentX}px)`
+  })
 
 
 */
+//
 
 
 document.addEventListener('touchstart', (e) => {
@@ -1172,30 +1176,30 @@ document.addEventListener('touchmove', (e) => {
   Paginas.style.transform = `translateX(${currentX}px)`;
 });
 
-document.addEventListener('touchend', (e) => {
-  if (!isDragging) return;
+document.addEventListener('touchend',(e)=>{
+  if (!isDragging) return
 
-  isDragging = false;
-  isVerticalMove = false; // Reset isVerticalMove após o toque.
+  isDragging = false
+  isVerticalMove = false // Reset isVerticalMove após o toque.
 
-  const endX = e.changedTouches[0].clientX;
-  const deltaX = endX - startX;
+  const endX = e.changedTouches[0].clientX
+  const deltaX = endX - startX
 
   // Verifique se o movimento foi bloqueado.
   if (Math.abs(deltaX) > 50 && !isVerticalMove) {
       if (deltaX > 0) {
           if (currentIndex > 0) {
-              currentIndex--;
+              currentIndex--
           }
       } else {
           if (currentIndex < 4) {
-              currentIndex++;
+              currentIndex++
           }
       }
   }
 
-  currentX = -currentIndex * window.innerWidth;
-  Paginas.style.transform = `translateX(${currentX}px)`;
+  currentX = -currentIndex * window.innerWidth
+  Paginas.style.transform = `translateX(${currentX}px)`
 });
 
 
@@ -1280,3 +1284,22 @@ function PrevProx(btn,type) {
       Show(Filhos[IdxAtual+1])
   }
 }
+
+
+
+
+function Reajuste(){
+  const vazio = QrySlt('#InnerVazio')
+  const VlrAntes = QrySlt('#TotalCrud')
+  AbrirModalHTML(FundoModal,vazio)
+  vazio.innerHTML = `<input type="text" placeholder="${VlrAntes.innerHTML}">`
+    const inputElement = vazio.querySelector('input')
+    inputElement.addEventListener('keyup',(e)=>{
+      if(KeyEnter(e)){
+        VlrAntes.innerHTML = e.target.value
+        None(FundoModal)
+      }
+    })
+}
+
+
