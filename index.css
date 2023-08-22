@@ -776,3 +776,57 @@ z-index: 999;
   margin-top: 250px; 
 }
 */
+
+
+.DefautBlock{
+  margin: 10px 0px;
+  transition: transform 0.2s;
+}.DefautBlock:hover{
+  transform: scale(1.05); 
+}.DefautBlock:active{
+  transform: scale(1.08);
+}
+.BlockCbclho{
+  padding: 5px 15px;
+  background: #5c5c5c79;
+}.BlockCbclho:hover{
+  background: #5e5e5e98;
+}.BlockCbclho:active{
+  background: #7c7c7c98;
+}
+.BlockStts{
+  width: 25px; height: 25px;
+  background:#777777;
+}
+.BlockTitle > div > div{
+  margin: 3px 0px;
+  margin-right: 9px;
+}
+.BlockConteudo{
+  width: 60%;
+}
+.BlockBarra > div{
+  background: #e000c2;
+  height: 4px;
+  width: 100%;
+  margin: 0px 2px;
+  border-radius: 255px;
+}
+.BBndj{
+  background: #0000009a;
+  border-radius: 0px 0px 20px 20px;
+  overflow: hidden;
+}.BBndj tr:hover{
+  background: #2c0026;
+}
+.BBndjClnt > div > div :first-child{
+  color: #777777;
+  margin: 1px 10px;
+}
+#Div-Blocks table input,#Div-Blocks table select{width:100px}
+
+
+
+.Prev > svg,.Prox > svg{width:20px;height:20px;fill:#ffffff64;margin:2px}
+.Prox svg{transform: scaleX(-1)}
+

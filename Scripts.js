@@ -288,15 +288,18 @@
 
   function NewOrcamentos(btn){
     if(!NewOrcamentos.First){NewOrcamentos.First = true}else{clearForm();clearCRUD()}
-
     loadIDPdd()
-    IDPdd = 'ID-'+(('0000'+(Math.max(...IDs)+1)).slice(-3))
-    QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+ IDPdd}) // Cria ID
-
     Show(FormOrcamento,btn.parentNode)
   }
   function loadIDPdd(){
-    fetch(APIPlan).then(Resp=>Resp.json()).then(Plan=>{IDs = Plan.map(e=>Num(e.ID.replace('ID-','')))})
+    fetch(APIPlan).then(Resp=>Resp.json()).then(Plan=>{
+      Historico(Plan)
+      IDs = Plan.map(e=>Num(e.ID.replace('ID-','')))
+      IDPdd = 'ID-'+(('0000'+(Math.max(...IDs)+1)).slice(-3))
+      const IDnew = 'ID-'+(('0000'+(Math.max(...IDs)+1)).slice(-3))
+      QrySltAll('#FormOrc > h2,#DivResult > h2').forEach(e=>{e.innerHTML = 'Orçamento: '+ IDnew}) // Cria ID
+    
+    })
   }
   function LoadCor(){
     // se o serviço tiver opção de cor, então MostraMostra
@@ -1105,6 +1108,8 @@ let currentIndex = 1
 let isDragging = false
 let currentX = 0
 
+/*
+
 document.addEventListener('touchstart',(e)=>{
     startX = e.touches[0].clientX
     startTranslateX = currentX
@@ -1135,3 +1140,142 @@ document.addEventListener('touchend',(e)=>{
     currentX = -currentIndex * (window.innerWidth)
     Paginas.style.transform = `translateX(${currentX}px)`
 })
+
+
+*/
+
+
+document.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+  startTranslateX = currentX;
+  isDragging = true;
+  isVerticalMove = false; // Adicione esta linha para rastrear se o movimento é vertical ou horizontal.
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+
+  const currentTouchX = e.touches[0].clientX;
+  const currentTouchY = e.touches[0].clientY; // Adicione esta linha para obter a posição Y do toque.
+  const deltaX = currentTouchX - startX;
+  const deltaY = currentTouchY - startY; // Calcule a diferença em Y.
+
+  // Verifique se o movimento é predominantemente vertical ou horizontal.
+  if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      isVerticalMove = true;
+  } else {
+      isVerticalMove = false;
+  }
+
+  currentX = startTranslateX + deltaX;
+  Paginas.style.transform = `translateX(${currentX}px)`;
+});
+
+document.addEventListener('touchend', (e) => {
+  if (!isDragging) return;
+
+  isDragging = false;
+  isVerticalMove = false; // Reset isVerticalMove após o toque.
+
+  const endX = e.changedTouches[0].clientX;
+  const deltaX = endX - startX;
+
+  // Verifique se o movimento foi bloqueado.
+  if (Math.abs(deltaX) > 50 && !isVerticalMove) {
+      if (deltaX > 0) {
+          if (currentIndex > 0) {
+              currentIndex--;
+          }
+      } else {
+          if (currentIndex < 4) {
+              currentIndex++;
+          }
+      }
+  }
+
+  currentX = -currentIndex * window.innerWidth;
+  Paginas.style.transform = `translateX(${currentX}px)`;
+});
+
+
+
+
+function Historico(ArryOBJ){
+  Unique(ArryOBJ,'ID').forEach(id=>{
+    const itemsWithID = ArryOBJ.filter(i=>i.ID===id)
+    itemsWithID.sort((a,b) => new Date(b.Data) - new Date(a.Data))
+    const latestItem = itemsWithID[0]
+    const NewDiv = CreateTag('div')
+    QrySlt('#BlockHistry').appendChild(NewDiv)
+    itemsWithID.forEach(e=>{
+      
+      const clone = QrySlt('#Div-Blocks > div').cloneNode(true)
+      Show(clone)
+      const [BarOn,BarOff] = e.Descr.split('/').map(Number)
+      const Itens = e.Item.split(',')
+      const Medds = e.Medidas.split('/').map(i=>i.split('|'))
+      const Tb = tabela.filter(e=>Itens.includes(e[9]))
+      const Clientes = e.Cliente.split('|')
+      const ItemFilt = Itens.map((e,x)=>{
+        const Lin = Tb.find(r=>r[9]===e)
+        return [Medds[x][0],Lin[0],Lin[1],Lin[2],Lin[3],Lin[4],Medds[x][1],Medds[x][2],`R$ ${Medds[x][3]}`]
+        })
+      function Qry(e){return QrySlt(e,clone)}
+      function Inn(e,Inner){QrySlt(e,clone).innerHTML = Inner}
+      //
+      Array.from({length:BarOff}).forEach((_,j)=>{
+      Qry('.BlockBarra').innerHTML += `<div style="background:${j<BarOn?'#e000c2':'gray'}"></div>`})
+      Qry('.BlockStts').style.background = e.Stts
+      Inn('.BlockDate',e.Data)
+      Inn('.BlockID',e.ID)
+      Inn('.BlockName',Clientes[2])
+      Inn('.BlockValr',e.Total)
+      Inn('.BlockTable',TableHTMLall(ItemFilt))
+      QrySltAll('.BBndjClnt > div > div',clone).forEach((e,idx)=>{
+        insetBefor2(e,`<div>${Clientes[idx]?Clientes[idx]:'-'}</div>`)})
+      NewDiv.appendChild(clone)
+        Qry('.BBndjItem span').innerHTML = Qry('.BBndjItem').clientHeight
+        Qry('.BBndjPgmt span').innerHTML = Qry('.BBndjPgmt').clientHeight
+        Qry('.BBndjStts span').innerHTML = Qry('.BBndjStts').clientHeight
+        Qry('.BBndjClnt span').innerHTML = Qry('.BBndjClnt').clientHeight
+      QrySltAll('.BBndj',clone).forEach(e=>e.style.height = '0px')
+
+      
+      e === latestItem ? Show(clone) : None(clone)
+      if(itemsWithID.length===1 || e===itemsWithID[0]){
+        None(Qry('.Prox'))}
+      if(itemsWithID.length===1 || e===itemsWithID[itemsWithID.length-1]){
+        None(Qry('.Prev'))}
+    })
+  })
+}
+function ShowBBndj(btn,bndj){
+  const Parent = bndj==='.BBndjStts'? Parent2(btn) : bndj==='.BBndjPgmt'? Parent3(btn) : Parent5(btn)
+  const bdj = QrySlt(bndj,Parent)
+  const heit = Num(QrySlt(bndj+' span',Parent).innerHTML)
+
+  if(bdj.clientHeight === 0){AnimaHeight(bdj,heit,200,'in')}
+  else{AnimaHeight(bdj,0,200,'out')}
+}
+function AddPgmnt(Btn){
+  const Lin = ArySltAll('input, select',Btn.parentNode.parentNode).map(e=>e.value)
+  const clone = Btn.parentNode.parentNode.cloneNode(true)
+  QrySlt('tbody',Parent4(Btn)).appendChild(clone)
+  
+  Parent5(Btn).style.height = Parent5(Btn).clientHeight + 20 +'px'
+  QrySltAll('td',clone).forEach((e,idx)=>{
+      if(idx<3){e.innerHTML=Lin[idx]}else{e.innerHTML=''}})
+}
+function PrevProx(btn,type) {
+  const Filhos = Parent4(btn).children
+  const ElemtAtual = Parent3(btn)
+  const IdxAtual = IndiceDe(Parent3(btn))
+
+  if (type === 'Prox' && IdxAtual>0){
+    None(ElemtAtual)
+    Show(Filhos[IdxAtual-1])
+  } else if(type === 'Prev' && IdxAtual<Filhos.length-1){
+      None(ElemtAtual)
+      Show(Filhos[IdxAtual+1])
+  }
+}

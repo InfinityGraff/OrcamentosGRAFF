@@ -257,29 +257,92 @@
       <div id="Aba-Relatorio" class="Cl">
         <h1>Aba Relatorio</h1>
 
-        <div id="Div-Blocks">
-          <div class="DefautBlock Ct Rd">
-            <div class="BlockStts RD"></div>
-            
-            <div>ID</div>
-            <div class="Ct">
-              <div>00/00</div>
-              <div>Marcelo Max</div>
+        <div id="Div-Blocks" class="w90">
+          <div class="DefautBlock Cl Ct none">
+    
+            <div class="BlockCbclho Bt RD">
+              <div class="BlockStts RD ppt" onclick="ShowBBndj(this,'.BBndjStts')"></div>
+              <div class="BlockPrevProx Ct">
+                <div class="Prev" onclick="PrevProx(this,'Prev')">Prev</div>
+                <div class="Prox" onclick="PrevProx(this,'Prox')">Prox</div>
+              </div>
+              
+              <div class="BlockConteudo Cl Start2">
+                <div class="BlockDate">25/08</div>
+    
+                <div class="BlockTitle Ct">
+                  <div class="Ct">
+                    <div class="BlockID ppt" style="font-size: 15px;" onclick="ShowBBndj(this,'.BBndjItem')">ID-002</div>
+                    <div class="BlockName ppt" style="font-size: 22px;" onclick="ShowBBndj(this,'.BBndjClnt')">Marcelo Max</div>
+                  </div>
+                </div>
+    
+                <div class="BlockBarra Bt w100"></div>
+              </div> <!-- BlockConteudo -->
+    
+              <div class="BlockVlr Cl">
+                <div class="Ct">
+                  <div>R$</div>
+                  <div class="BlockValr" style="font-size: 22px;">150,00</div>
+                </div>
+                <button onclick="ShowBBndj(this,'.BBndjPgmt')">Add Pagamento</button>
+              </div> <!-- BlockVlr -->
             </div>
-            
-            
-  
-            <div>IT</div>
-            <div>Serv</div>
-            <div>Tipo</div>
-            <div>Cbmt</div>
-            <div>Cbmt2</div>
-            <div>Medidas</div>	
-            <div>Valor</div>
-            <div>Login</div>
-            <button>Seta</button>
-          </div>
-        </div>
+            <div class="BBndj BBndjItem w90 Ct">
+              <table class="BlockTable w100">
+                  <tr class="Ct Ev w100">
+                    <td>Adesivo</td>
+                    <td>Brilho</td>
+                    <td>Recorte</td>
+                    <td>Aplicação</td>
+                  </tr>
+              </table>
+              <span class="none"></span>
+            </div>
+            <div class="BBndj BBndjPgmt w90 Ct">
+              <table class="BlockTable2 w100"> 
+                  <tr class="Ct Ev w100">
+                    <td class="Cl"><input oninput="MaskRS(this)"></td>
+                    <td class="Cl"><input type="date"></td>
+                    <td class="Cl"><select>
+                      <option value="" disabled selected>Forma Pag</option>
+                      <option value="Pix">Pix</option>
+                      <option value="Av">Av</option>
+                      <option value="Card">Cartão</option>
+                      </select></td>
+                    <td class="Cl"><button onclick="AddPgmnt(this)">Salvar</button></td>
+                  </tr>    
+              </table>
+              <span class="none"></span>
+            </div>
+            <div class="BBndj BBndjClnt w90 Ct">
+              <div class="Cl">
+                <div class="Ct"><div>IDClnt:</div></div>
+                <div class="Ct"><div>Tag:</div></div>
+                <div class="Ct"><div>Cliente:</div></div>
+                <div class="Ct"><div>NomeCompleto:</div></div>
+                <div class="Ct"><div>Contato:</div></div>
+                <div class="Ct"><div>Endereço:</div></div>
+                <div class="Ct"><div>Loja:</div></div>
+                <div class="Ct"><div>CnttLoja:</div></div>
+                <div class="Ct"><div>Categoria:</div></div>
+                <div class="Ct"><div>Veiculo:</div></div>
+                <div class="Ct"><div>Stts:</div></div>
+                <div class="Ct"><div>LinksPdds:</div></div>
+                <div class="Ct"><div>Desc:</div></div>
+              </div>
+    
+                                        
+              <span class="none"></span>
+            </div>
+            <div class="BBndj BBndjStts w90 Ct">
+              <div>Stts</div>
+              <span class="none"></span>
+            </div>
+    
+          </div> <!-- DefautBlock -->
+          <div id="BlockHistry"></div>
+        </div> <!-- Div-Blocks -->
         
 
       </div>
