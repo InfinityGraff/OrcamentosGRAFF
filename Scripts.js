@@ -1146,8 +1146,7 @@ let currentX = 0
   })
 
 
-*/
-//
+
 
 
 document.addEventListener('touchstart', (e) => {
@@ -1202,7 +1201,8 @@ document.addEventListener('touchend',(e)=>{
   Paginas.style.transform = `translateX(${currentX}px)`
 });
 
-
+*/
+//
 
 
 function Historico(ArryOBJ){
@@ -1216,7 +1216,6 @@ function Historico(ArryOBJ){
       
       const clone = QrySlt('#Div-Blocks > div').cloneNode(true)
       Show(clone)
-      const [BarOn,BarOff] = e.Descr.split('/').map(Number)
       const Itens = e.Item.split(',')
       const Medds = e.Medidas.split('/').map(i=>i.split('|'))
       const Tb = tabela.filter(e=>Itens.includes(e[9]))
@@ -1224,14 +1223,20 @@ function Historico(ArryOBJ){
       const ItemFilt = Itens.map((e,x)=>{
         const Lin = Tb.find(r=>r[9]===e)
         return [Medds[x][0],Lin[0],Lin[1],Lin[2],Lin[3],Lin[4],Medds[x][1],Medds[x][2],`R$ ${Medds[x][3]}`]
-        })
+      })
+
+      const Barra = e.Barr.split('')
+      const BarrUpp = UppCase(Barra)
+      const BarrLow = LowCase(Barra)
+        
       function Qry(e){return QrySlt(e,clone)}
       function Inn(e,Inner){QrySlt(e,clone).innerHTML = Inner}
       //
-      Array.from({length:BarOff}).forEach((_,j)=>{
-      Qry('.BlockBarra').innerHTML += `<div style="background:${j<BarOn?'#e000c2':'gray'}"></div>`})
+      Barra.forEach((b,idx)=>{Qry('.BlockBarra').innerHTML += `<div style="background:${idx<BarrUpp.length?'#e000c2':'gray'}"></div>`})
+      Barra.forEach((b,idx)=>{Qry('.BBndjStts').innerHTML += `<div style="fill:${idx<BarrUpp.length?'#e000c2':'gray'}">${AbrevTaref[b.toUpperCase()][1]}</div>`})
       Qry('.BlockStts').style.background = e.Stts
-      Inn('.BlockDate',e.Data)
+      Inn('.BlockStts',AbrevTaref[BarrLow[0]?BarrLow[0].toUpperCase():'K'][1])
+      Inn('.BlockDate',ConvertData(e.Data))
       Inn('.BlockID',e.ID)
       Inn('.BlockName',Clientes[2])
       Inn('.BlockValr',e.Total)

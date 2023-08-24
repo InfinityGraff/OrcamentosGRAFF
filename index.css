@@ -798,6 +798,9 @@ z-index: 999;
   width: 25px; height: 25px;
   background:#777777;
 }
+.BlockStts svg{
+  width: 17px; height: 17px;
+}
 .BlockTitle > div > div{
   margin: 3px 0px;
   margin-right: 9px;
@@ -825,6 +828,11 @@ z-index: 999;
 }
 #Div-Blocks table input,#Div-Blocks table select{width:100px}
 
+.BBndjStts svg{
+  width: 35px;
+  height: 35px;
+  margin: 4px;
+}
 
 
 .Prev > svg,.Prox > svg{width:20px;height:20px;fill:#ffffff64;margin:2px}
