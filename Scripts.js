@@ -492,8 +492,8 @@ function FilTable(){
         <div class="Ct Bt Pddn-XY">
           <div class="none">${ItemHTML}</div>
           <div id="FotoFilter" onclick="AbreItem(this.parentNode.firstElementChild)">
-            ${ Foto ? Serv==='Placa'? 
-              `<div id="Canvs${indx}" class="canvas"></div>` :
+            ${ Serv==='Placa'? `<div id="Canvs${indx}" class="canvas"></div>` :
+            Foto ?            
               `<img src="${IMG}">` :
               `<div class="SVGFilt Ct">${IconSemFoto}</div>`}
           </div>
@@ -1240,22 +1240,26 @@ function Historico(ArryOBJ){
       Inn('.BlockID',e.ID)
       Inn('.BlockName',Clientes[2])
       Inn('.BlockValr',e.Total)
+      Qry('.BlockValr').style.color = e.IDMpag ? '#00b118' : 'red'
+
+      const PorcentPag = (Num(e.JaPag)/Num(e.Total))*100
+
+      Qry('.ProgressPag').style.width = `${PorcentPag}%`
+      Qry('.ProgressPag').style.background = InterCor(PorcentPag)
+      Inn('.ProgressPag',RS(e.JaPag))
+      
       Inn('.BlockTable',TableHTMLall(ItemFilt))
-      QrySltAll('.BBndjClnt > div > div',clone).forEach((e,idx)=>{
-        insetBefor2(e,`<div>${Clientes[idx]?Clientes[idx]:'-'}</div>`)})
+      QrySltAll('.BBndjClnt > div > div',clone).forEach((e,idx)=>{insetBefor2(e,`<div>${Clientes[idx]?Clientes[idx]:'-'}</div>`)})
       NewDiv.appendChild(clone)
         Qry('.BBndjItem span').innerHTML = Qry('.BBndjItem').clientHeight
         Qry('.BBndjPgmt span').innerHTML = Qry('.BBndjPgmt').clientHeight
         Qry('.BBndjStts span').innerHTML = Qry('.BBndjStts').clientHeight
         Qry('.BBndjClnt span').innerHTML = Qry('.BBndjClnt').clientHeight
       QrySltAll('.BBndj',clone).forEach(e=>e.style.height = '0px')
-
       
       e === latestItem ? Show(clone) : None(clone)
-      if(itemsWithID.length===1 || e===itemsWithID[0]){
-        None(Qry('.Prox'))}
-      if(itemsWithID.length===1 || e===itemsWithID[itemsWithID.length-1]){
-        None(Qry('.Prev'))}
+      if(itemsWithID.length===1 || e===itemsWithID[0]){None(Qry('.Prox'))}
+      if(itemsWithID.length===1 || e===itemsWithID[itemsWithID.length-1]){None(Qry('.Prev'))}
     })
   })
 }
@@ -1306,5 +1310,6 @@ function Reajuste(){
       }
     })
 }
+
 
 

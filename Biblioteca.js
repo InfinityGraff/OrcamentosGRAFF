@@ -11,6 +11,14 @@
   function EvtClik(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('click',Calback)})}
   function Pai(e){return e.parentNode}
   function Avo(e){return e.parentNode.parentNode}
+
+  function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
+  function Unique(Arry,Key){return [...new Set(Arry.map(i=>i[Key]))]}
+  function Parent1(e){return e.parentNode}
+  function Parent2(e){return e.parentNode.parentNode}
+  function Parent3(e){return e.parentNode.parentNode.parentNode}
+  function Parent4(e){return e.parentNode.parentNode.parentNode.parentNode}
+  function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
   
 
 // Funções Templates
@@ -134,6 +142,9 @@
     const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
     return Par.concat(Imp).join('')
   }
+
+
+  
   function pressKey(keyCode, data) {
     const RecuperaDOM = document.querySelector(`#Grupo-Medidas input[data-tab="${data}"]`);
       RecuperaDOM.focus()
@@ -252,13 +263,7 @@ function MaskRS(input) {
   input.value = 'R$ ' + Vlr;
 }
 
-function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
-function Unique(Arry,Key){return [...new Set(Arry.map(i=>i[Key]))]}
-function Parent1(e){return e.parentNode}
-function Parent2(e){return e.parentNode.parentNode}
-function Parent3(e){return e.parentNode.parentNode.parentNode}
-function Parent4(e){return e.parentNode.parentNode.parentNode.parentNode}
-function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
+
 
 function AnimaHeight(e,TargHeit,time,inOut){
   const StrtH = e.clientHeight
@@ -290,3 +295,14 @@ function ConvertData(dataString) {
 
 function LowCase(Arry){return Arry.filter(e=>e===e.toLowerCase())}
 function UppCase(Arry){return Arry.filter(e=>e===e.toUpperCase())}
+
+
+function InterCor(value) {
+  value = Math.min(100, Math.max(0, value))
+
+  const r = Math.floor((100 - value) * 255 / 100)
+  const g = Math.floor((value) * 255 / 100)
+  const b = 0
+
+  return `rgb(${r}, ${g}, ${b})`
+}
