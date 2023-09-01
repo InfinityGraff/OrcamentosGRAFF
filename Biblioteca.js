@@ -5,21 +5,25 @@
   function IndiceDe(e){return Array.from(e.parentNode.children).indexOf(e)}
   function CreateTag(e){return document.createElement(e)}
   function PushArry(Push,Stg){QrySltAll(Stg).forEach(e=>{Push.push(e.innerText)})}
-  function insetBefor(e,Stg){QrySlt(e).insertAdjacentHTML('beforeend',Stg)}
+  function insetBefor(e,Stg){(typeof e==='string'?QrySlt(e):e).insertAdjacentHTML('beforeend',Stg)}
+  function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
   function EvtChng(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('change',Calback)})}
   function EvtInpt(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('input',Calback)})}
   function EvtClik(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('click',Calback)})}
+  function InnQry(e,Stg){QrySlt(e).innerHTML = Stg}
+
   function Pai(e){return e.parentNode}
   function Avo(e){return e.parentNode.parentNode}
-
-  function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
   function Unique(Arry,Key){return [...new Set(Arry.map(i=>i[Key]))]}
   function Parent1(e){return e.parentNode}
   function Parent2(e){return e.parentNode.parentNode}
   function Parent3(e){return e.parentNode.parentNode.parentNode}
   function Parent4(e){return e.parentNode.parentNode.parentNode.parentNode}
   function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
+
   
+  
+
 
 // Funções Templates
   function InnerSVG(Stg,e){QrySltAll(Stg).forEach(E=>E.innerHTML = e)}
@@ -33,12 +37,15 @@
   function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${Cm(e)}</div></div>`}
   function RS(e){return `R$ ${Cm(e)}`}
   function RstTabIndx(Div,Idx){let IDX = Idx ; QrySltAll(Div).forEach((e,idx)=>{e.setAttribute("data-Tab",`${idx===0?Idx:(IDX+=3)}`)})}
-  
+  function SplitNum(Num){return Array.from({length:Num},(_,idx)=>idx+1)}
+  function Zero(Num){return String(Num).padStart(3,'0')}
+  function InptTxt(e){return `<input type="text" placeholder="Nome do Cliente" onkeyup="TestSenha(event,'${e}',this)">`}
+  function InptPss(e){return `<input type="password" placeholder="Insira a Senha" onkeyup="TestSenha(event,'${e}',this)">`}
+
 // Funções Validações
   function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
   function AddRequired(e){e.forEach(e=>{QrySlt(e).required = true})}
   function EscRequired(e){e.forEach(e=>{QrySlt(e).required = false})}
-  function SemLogin(){return QrySlt('#Login-Top').innerHTML === 'Login'}
   function temClass(e,Stg){e.classList.contains(Stg)}
 
 // Funções Geradores
@@ -48,6 +55,8 @@
   const NewHora = new Date(Date.now() + -3 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
 
 // Função de Ações e Simulações
+  function Foco(e){QrySlt(e).focus()}
+  function FocoCh0(e){QrySlt(e).children[0].focus()}
   function FocoIn(e){e.focus()}
   function FocoOut(e){e.focus();e.setSelectionRange(e.value.length,e.value.length)}
   const EventClick = new MouseEvent('click',{bubbles: true,cancelable: true,view: window})
@@ -87,24 +96,15 @@
   }
   
 //
-// Funções CSS (Talvez Fazer assim, se no Segundo Argumento Tiver Argumento, ele receberá o CSS oposto no caso se tiver no Show, o segundo vira None e Visse Verse)
+// Funções CSS
+  function FocoFilho(Pai,Filho){Array.from(Pai.children).forEach(e=>{None(e)});Show([Pai,Filho]);SairModal(Pai)}
+  function FazerArry(e){return Array.isArray(e)?e:e instanceof HTMLCollection||e instanceof NodeList?Array.from(e):/^\./.test(e)?ArySltAll(e):[e]}
+
   function None(e,b){
-    if(b){Show(b)}
-    const ee = Array.isArray(e) ? e : e instanceof HTMLCollection || e instanceof NodeList ? Array.from(e) : /^\./.test(e) ? ArySltAll(e) : [e]
-    ee.forEach(E=>{if(typeof E==='string'){
-      const EE = QrySlt(E)
-      EE.style.display = 'none'}
-      else {E.style.display = 'none'}
-    })
+    if(b){Show(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='none'}else{E.style.display='none'}})
   }
   function Show(e,b){
-    if(b){None(b)}
-    const ee = Array.isArray(e) ? e : e instanceof HTMLCollection || e instanceof NodeList ? Array.from(e) : /^\./.test(e) ? ArySltAll(e) : [e]
-    ee.forEach(E=>{if(typeof E==='string'){
-      const EE = QrySlt(E)
-      EE.style.display = 'flex'}
-      else {E.style.display = 'flex'}
-    })
+    if(b){None(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='flex'}else{E.style.display='flex'}})
   }
 
   function ShowTrue(e,Valid,b=null){if(Valid){Show(e);if(b!==null){None(b)}}else{None(e);if(b!==null){Show(b)}}}
@@ -117,6 +117,12 @@
   function EShow(e){let ee = null
     if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
     return window.getComputedStyle(ee).display !== 'none'
+  }
+
+  function TrocaClass(Clas1,Clas2){
+    const Add = QrySltAll('.'+Clas1).length===0?Clas1:Clas2
+    const Rmv = QrySltAll('.'+Clas1).length!==0?Clas1:Clas2
+    QrySltAll('.'+Rmv).forEach((e)=>{e.classList.remove(Rmv);e.classList.add(Add)})
   }
 
   function Rad0(e){e.style.borderRadius = '100px 100px 100px 100px'}
@@ -170,10 +176,9 @@
       }
     })
   }
-  function AbrirModalHTML(Fundo,Modal){
-    Array.from(Fundo.children).forEach(e=>{None(e)}) // oculta todos os Filhos
-    Show([Fundo,Modal]) ; SairModal(Fundo)
-  }
+
+  
+
   function Copy(e,btn){
     var temp = document.createElement('textarea')
     temp.value = CopyPresset[e] ?? e.split('/').join('\n') // (Primeiro aceita o obj, segundo se for array)
@@ -207,6 +212,7 @@
       if (Tag.innerHTML !== '') {observer.disconnect();resolve()}})
     observer.observe(Tag,{childList: true, subtree: true})})
   }
+  
   function TabIndx(e,next){return parseInt(e.getAttribute("data-Tab"))+next}
   function delay(ms){return new Promise(resolve => setTimeout(resolve, ms))}
 

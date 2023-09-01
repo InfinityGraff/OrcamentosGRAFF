@@ -1,6 +1,11 @@
+@keyframes BtnBaby{0%{background-position-x: 0%;}100%{background-position-x: 90%;}}
+@keyframes FndoModal {from {opacity: 0;} to {opacity: 1;}}
+@keyframes modal{
+  from { opacity: 0;transform: translate3d(0,-80px,0)}
+  to { opacity: 1;transform: translate3d(0,0,0)}}
+
 input[type="number"]::-webkit-inner-spin-button,/*remover Spinner*/
 input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin: 0}
-
 @font-face {font-family: 'Tommy_Regular';
     src: url('Font/MADE TOMMY Regular_PERSONAL USE.otf') format('opentype');}
 @font-face {font-family: 'Tommy_Ligth';
@@ -9,7 +14,6 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   src: url('Font/MADE TOMMY Bold_PERSONAL USE.otf') format('opentype');}
 @font-face {font-family: 'Tommy_Medium';
   src: url('Font/MADE TOMMY Medium_PERSONAL USE.otf') format('opentype');}
-
 :root{
   --Laranja: #fa7d09;
   --Branco: #ffffff;
@@ -24,18 +28,17 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   --Bold:'Tommy_Bold','Lexend Deca','Arial';
   --Medi:'Tommy_Medium','Lexend Deca','Arial';
   
-}
-
-*{
+}*{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   border: none;
   text-decoration: none;
-  color: var(--Branco);
   font-family: var(--Rglr);
   font-size: 12px;
   letter-spacing: 0.7px;
+  text-align: center;
+  outline:none;
 }
 
 .Ct{display: flex;flex-wrap: wrap;justify-content: center;align-items: center;}
@@ -43,80 +46,173 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Start2{display: flex;align-items: flex-start;flex-direction: column;}
 .End{display: flex;justify-content: flex-end;align-items: center;}
 .Cl{display: flex;flex-direction: column;}
-.Rw{display: flex;flex-direction: row;}
+.Rw{display: flex;flex-direction: row;flex-wrap:nowrap}
 .Bt{width: 100%;display: flex;justify-content: space-between;align-items: center;}
 .Ev{display: flex;justify-content: space-evenly;align-items: center;}
-.Ct-Txt{text-align: center;}
 .Fx{position: fixed;top:0;left: 0;}
 .Hr{border-bottom: 1px solid #606060;}
-.Rd{border-radius: 20px;}
-.RD{border-radius: 255px;}
-.w100{width: 100%;}
-.w50{width: 50%;}
-.w80{width: 80%;}
-.w90{width: 90%;}
-.cem{width:100%;}
+.Rd{border-radius: 20px;}.RD{border-radius: 255px;}
+.w100{width:100%;}.w90{width:90%;}.w80{width:80%;}.w50{width:50%;}.w40{width:40%;}
+.WH30{width:30px;height:30px;}.WH15{width:15px;height:15px;}.WH40{width:40px;height:40px;}
+.h100{height: 100%;}
 .B{font-weight: bold;}
 .Br{word-wrap: break-word;}
 .Grn{background: #008000;}.CrCnz{color: #ffffff2f;}
 .Red{background: #ff0000;}
-.BackG{background: var(--DegradeFundo)}
+.Dark{background: var(--DegradeFundo);color: white;}
 .Wht{color: #ffffff;}
 .Pddn-X{padding: 0% 5%;}
 .Pddn-Y{padding: 3% 0%;}
 .Pddn-XY{padding: 2% 4%;}
 .Mgrn-PX{margin: 20px 0px;}
 .Mgrn-PX2{margin: 3px 3px;}
+.Mg{margin-top:10px;margin-bottom:10px;}
 .tc{text-align:center;}
 .FtLt{font-family: var(--Lite)}
 .FtRg{font-family: var(--Rglr)}
 .FtBd{font-family: var(--Bold)}
 .FtMd{font-family: var(--Medi)}
 .Rltv{position: relative}
+.Abslt{position: absolute;}
 .icon svg{width: 20px;height: 20px;}
 .icon2 svg{width: 50px;height: 50px;}
 .Hddn{overflow: hidden;}
 .Opacy{opacity: 0}
+.Feed{width: 170px;height: 170px;}
+.Stry{width: 170px;height: 300px;}
+.erro{color:red;}
+.error{border: 2px solid red;}
+.error::placeholder {color: red}
 
-html, body {
-  touch-action: pan-x pan-y;
-  /* cursor: default; */
-  }
-button,.Login,.ppt,.Close{
-  cursor: pointer;}
-button{
-  background: #73008A; border-radius: 255px}
+html,body{touch-action: pan-x pan-y; background: #ffffff;color: black;}
+header{height:55px;padding:0px 10px}
+header.Lite{background: purple; color: white; fill: white;}
+h1{font-size:40px;font-family:var(--Bold)}
+h2{font-size:18px; color:var(--Laranja)}
+.ppt,button,.Close{cursor: pointer}
+
+input,select,button,.baby{height:30px;margin:3px;border-radius:255px;font-size:14px;transition:all 0.2s ease;color: white;}
+
+  .Dark input,.Dark select{background:#ffffff21;}
+  .Dark input:hover,.Dark select:hover{background:#ffffff33;transform:scale(1.02)}
+  .Dark input:focus{background: #ffffff42;border:1px solid #ff00ff79;box-shadow:0 0 10px #ff00ff7c}
+  .Lite input,.Lite select{background:#ffffffb2;color: black;}
+  .Lite input:hover,.Lite select:hover{background:white;transform:scale(1.02)}
+  .Lite input:focus{border:1px solid #ff00ff;box-shadow: 0 0 10px #ff00ff}
+
+  button,.baby{background:var(--Degrade);background-size:500%;padding: 3px 6px}
+  button:hover,.baby:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+  button:active,.baby:active{transform:scale(0.95)}
+
+nav{height:35px;transition:all 0.2s ease-in-out}nav a{height:100%;padding:0px 10px;transition:all 0.2s ease-in-out}
+  nav.Dark{background:#ffffff38}
+  nav.Lite{background:#ff6600;color:white}
+  nav.Dark a:hover{color:#ff6600;background:#2b2b2b}
+  nav.Dark a:active{background:#0c0c0c}
+  nav.Lite a:hover{background:purple}
+  nav.Lite a:active{background:#470047}
+  nav a:hover{transform: scale(1.08)}
+
+svg{width:30px;height:30px;}.Dark svg{fill:#ffffff93;}
+svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale(1.1);transition: all 0.2s ease-in-out}
+
+#Home{transition: all 0.2s ease-in-out}#Home:hover{color:#ff6600;transform: scale(1.02)}
+#Fundo-Modal.Dark>div{background:#1b1b1b;}
+#Fundo-Modal.Lite>div{background:#ffffff}
+
+#PaiPages{overflow:hidden}
+#Pages{display:flex;transition:transform 0.3s ease-in-out}
+#Pages>div{width:100vw;height:100vh;padding:10px;overflow:scroll;}
+
+.RolodeImg{background:#ffffff1c;overflow:hidden;flex-wrap:nowrap}
+  .RolodeImg > div > div{margin: 20px 8px;transition: all 0.2s ease-in-out}
+  .RolodeImg > div > div:hover{transform: scale(1.08) rotate(2deg);}
+  .RolodeImg img:hover{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
+  .RolodeImg .Fad{z-index: 9999;width: 50px;}
+    .Dark .RolodeImg .Fad{background:linear-gradient(to left,#131313e7,transparent)}
+    .Lite .RolodeImg .Fad{background:linear-gradient(to left,#777777af,transparent)}
+  .RolodeImg .Fad.flip{right:0px;transform:rotate(0deg)}
+  .RolodeImg .Fad.Flip{left: 0px;transform:rotate(180deg)}
+  .RolodeImg .Seta{background:#ccccccad;transition: all 0.2s ease-in-out}
+  .RolodeImg .Seta svg{transform:translate(3px);fill:#000000b9;}
+  .RolodeImg .Seta svg:hover{fill:#ff5100;}
+  .RolodeImg .Seta:hover{transform: scale(1.2)}
+  .RolodeImg .Seta:hover{transform: scale(1.2)}
+  .RoloGrupImg{overflow-x: scroll}
+
+#Fundo-Modal{position:fixed;top:0px;z-index:999999999;background:#0000001a;backdrop-filter:blur(10px);animation:FndoModal 0.5s}
+#Fundo-Modal > div{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
+/* Largura dos Modais */
+  #ModalLogin{width:300px;height:400px;}
+  #ModalCadastro{width:70%;}
+  #Modal-Item .Feed{width:400px;height:400px;}
+  #Modal-Item .Stry{width:250px;height:440px;}
+
+  #Modal-Info1,#Modal-Info2{padding: 30px}
+
+  #InnerVazio input{position: absolute;width:200px}
+
+  
+
 
 .Close svg{
   position: absolute;top: 15px;right: 15px;
   width: 10px;height: 10px;fill: #ffffff50;
-  transition: all 0.3s ease;}
+  transition: all 0.3s ease-in-out;}
   .Close svg:hover{
     transform: scale(1.2) ;fill: #ff3c00;}
   .Close.clicked svg{
     transform: scale(0.8) rotate(360deg)}
 
-#FormOrcamento{
-  background: #202020;
-  margin-top: 150px;
-  margin:15px;padding:5px;
-  height: auto;
-  /* overflow: hidden; */
-  animation: ShowForm 0.5s;
-}@keyframes ShowForm {
+#FormOrcamento{height: auto;padding:5px;animation: ShowForm 0.5s}
+@keyframes ShowForm {
   from {opacity: 0;transform: scale(0.5)}
     to {opacity: 1;transform: scale(1.0)}}
-#FormOrcamento.CloseForm{
-  animation: NoneForm 0.5s forwards;
-}@keyframes NoneForm {
+#FormOrcamento.CloseForm{animation: NoneForm 0.5s forwards}
+@keyframes NoneForm {
   from {opacity: 1;transform: scale(1.0)}
     to {opacity: 0;transform: scale(0.5)}}
+
+.Dark #FormOrcamento{background:#ffffff11}
+.Lite #FormOrcamento{background:#00000036}
+#FormOrcamento input,#FormOrcamento select{width: 100%}
 
 #NewOrcamento{
   animation: ButtonShow 0.3s;
 }@keyframes ButtonShow {
   from {opacity: 0;transform: scale(1.8)}
     to {opacity: 1;transform: scale(1.0)}}
+
+
+
+
+
+
+
+
+
+
+#GrupLogin1,#GrupLogin2{margin-left:40px;}
+.ImgPerfil{width:35px;margin:4px 4px}
+#RodapeOrc{height: 10%}
+.ImgRodape{width: 400px}
+.Loginn{font-size: 40px}
+#Div-Inpt-Mais div{height:30px;margin:3px;border-radius:255px;font-size:14px;transition:all 0.2s ease}
+
+
+
+
+
+
+
+
+
+
+
+form .Seta svg{fill: #ffffff4d;width: 15px;height: 15px;transform: rotate(90deg)}
+
+
+
 
 .RoloTop{
   position: fixed;
@@ -148,13 +244,7 @@ button{
   fill: #ffa600;
 }
 
-.Seta svg{
-  fill: rgba(255, 255, 255, 0.3);
-  width: 15px;
-  height: 15px;
-  transform: rotate(90deg);
-  cursor: pointer;
-}
+
 
 .Tabela{
   overflow-y: auto;
@@ -169,9 +259,7 @@ button{
   transform: scale(0.9);
 }
 
-#Grupo-Cliente,#Grupo-Entrega{
-  animation: modal 0.8s;
-}
+#Grupo-Cliente,#Grupo-Entrega{animation: modal 0.8s}
 
 #imgnotta svg,#imgnotta2 svg{
   fill: white;
@@ -180,9 +268,7 @@ button{
   margin-left: 5px;
 }
 
-.MiniSenha{position: absolute;width:200px}
-.error {border: 2px solid red}
-.error::placeholder {color: red}
+
 
 .Bandeija{
   position: absolute;z-index: 9999999999;
@@ -247,28 +333,15 @@ table{
   from{height: 150px}
     to{height: 304.19px}}
 
-input,select,.baby,#Div-Inpt-Mais div{
-  width: 100%;height: 30px;
-  font-size: 14px;border-radius: 255px;
-  background: var(--CorInput);margin: 3px;
-  text-align: center;
-}input:hover, select:hover{
-  background: #4d4d4d;
-}
-  
-#Div-Inpt-Mais{
-  width:170px;
-}
 
-#Div-Inpt-Mais > div .btnMais{
-  width: 10px;
-  height: 10px;
-}
+  
+#Div-Inpt-Mais{width:170px;}
+#Div-Inpt-Mais > div .btnMais{width: 10px;height: 10px;}
 
 td > div{display: flex;align-items: center;justify-content: center;}
 #CRUD input{font-size:12px;height: 25px;margin: 0}
 
-@keyframes Transicao{0%{background-position-x: 0%;}100%{background-position-x: 90%;}}
+
 
 .FontDGD{
   background:var(--degradeFonte);
@@ -278,61 +351,26 @@ td > div{display: flex;align-items: center;justify-content: center;}
 
 
 .Titlee{margin: 0 150 15 150;}
-h1{font-size: 40px;font-family: var(--Bold)}
-h2{font-size: 18px; color: var(--Laranja);}
+
 
 .Logo{
   width:50px;
   margin: 4px 4px;
 }
-.ImgPerfil{
-  width: 35px;
-  margin: 4px 4px;
-}
+
 
 optgroup{
   color: #ffffff6b;
   font-size: 15px;
 }
 
-.FundoModal1{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding-top: 0px;
-  backdrop-filter: blur(10px);
-  z-index: 999999999;
-  background: rgba(0,0,0,0.5);
-  animation: FndoModal 0.5s}
-@keyframes FndoModal {from {opacity: 0;} to {opacity: 1;}}
 
-.FundoModal{
-  position: fixed;
-  top: 0px;
-  left: 100vw;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding-top: 0px;
-  z-index: 999999999;
-  background: rgba(0, 0, 0, 0);
-}
 
-.Cabecalho{background: #1b1b1b ; width: 100% ; height: 55px ; padding: 0px 10px}
-.Pesquisa{ background: #444444 ; width: 50%   ; height: 25px ; text-align: center}
-.Pesquisa:hover{background:#696969;}
-nav{background:#444444;width: 100%; height: 35px;}
 
-  nav a{height: 100%; padding: 0px 10px;}
-    nav a:hover{color: var(--Laranja); background: #2b2b2b;}
-      nav a:active{background: #0c0c0c;}
-      .ativo{background: #353535;}
 
-#FormOrc  {width:60%; height: 350px; padding:50px 15px;}
-#DivResult{width:40%;}
+
+#FormOrc  {width:60%; height: auto; padding:50px 15px;}
+#DivResult{width:40%; height: auto;}
 
 form div[id*=Inpt]{
   width: 100%;
@@ -352,49 +390,12 @@ form div[id*=Inpt]{
     margin: 5px;
     margin-bottom: 8px;}
     
-.botaum{
-    width: 100%;
-    margin-top: 8px;
-    align-items: center;}
 
-.baby{
-  width: 150px;
-  height: 30px;
-  background:var(--Degrade);
-  background-size: 500%;
-  transition: 0.1s ease-in-out;
-  }
-      .baby:hover{
-          width: 160px;
-          height: 35px;
-          animation-name: Transicao;
-          animation-duration: 0.5s;
-          animation-timing-function: ease-in-fas;
-          animation-fill-mode: forwards; /*pra congelar no fim*/}
-      .baby:active{
-          width: 155px;
-          height: 32px;}
 
-.modalloginn{height: 400px;}            
 
-.Modalzinho{
-  background: rgb(27, 27, 27);
-  width: 300px;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 10px 10px 20px black;
-  animation: modal 0.5s;}
-          @keyframes modal {
-              from { opacity: 0;transform: translate3d(0, -80px, 0)}
-              to { opacity: 1;transform: translate3d(0, 0, 0);}}
 
-  .Botaozin{
-      color:black; 
-      width: 40%;
-      height: 30px;
-      border-radius: 20px}
-  .Botaozin:hover{background:#606060}
-  .Loginn{font-size: 40px}
+
+
 
 
 
@@ -450,7 +451,7 @@ form div[id*=Inpt]{
 #resultfilter1{
   background: #00000000;
   overflow-y: scroll;
-  height: 75%;
+  height: 100%;
   width: 90%;
   border-radius: 20px;
   }
@@ -534,7 +535,7 @@ form div[id*=Inpt]{
 
 .R{background: #a34f00c0}
 
-.MiniSenha{position: absolute; width:200px}
+
 
 .background {
   position: fixed;
@@ -584,12 +585,7 @@ select > img{margin: 0px 5px}
 #divpaginfo, #divdesigner{flex-direction:column}
 #Title-Info{font-size:24px}
 
-.ModalPgmnt{
-  background: rgb(31, 31, 31);
-  border-radius: 20px;
-  width: 400px;
-  padding: 30px;
-}
+
 
 .ckecs{margin: 8px 0px}
 .padins{padding-bottom: 15px; margin-bottom: 15px;}
@@ -630,12 +626,11 @@ input[type="checkbox"],input[type="radio"]{
     text-align:center;
   }
 
-  .Titlee{
-    width:100%;margin:0; margin-top:5px;
-  }
+  .Titlee{width:100%;margin:0; margin-top:5px}
 
-  .Pesquisa{width: 90%;}
-  .Cabecalho{height: 100px;}
+  #Pesquisa{width: 90%;}
+  header{height: 100px;}
+
   nav{
     overflow-x: scroll;
     overflow-y: hidden;
@@ -644,7 +639,7 @@ input[type="checkbox"],input[type="radio"]{
   #FormOrc > h2{display: none;}
   #DivResult > h2{display: flex; margin: 8px 0px;}
 
-  #Aba-Orcamento{width:100%;}
+  
   #FormOrc{width:100%; ;height: auto; padding: 5px 15px;}
   #DivResult{width: 100%;}
   #resultfilter1{width: 90%; margin-bottom: 8px;}
@@ -659,10 +654,7 @@ input[type="checkbox"],input[type="radio"]{
 
 
 
-.Mg{margin-top:10px;margin-bottom:10px;}
 
-.error {border: 2px solid red}
-.error::placeholder {color: red}
 
 #optionsListClnt {
 position: absolute;
@@ -749,33 +741,8 @@ z-index: 999;
 }
 
 
-#PAIpage-container {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
 
-#page-container {
-  display: flex;
-  width: 500%;
-  /* height: 100vh; */
-  transition: transform 0.3s ease-in-out;
-}
 
-#page-container > div {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
-/*
-#page-container{
-  margin-top: 250px; 
-}
-*/
 
 
 .DefautBlock{

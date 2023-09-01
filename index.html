@@ -1,591 +1,427 @@
 <!DOCTYPE html>
-<html>
+<html class="Dark">
 
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ORÇAMENTO</title>
-
-    <!-- jQuery --> <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Mask-->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <!-- GeraPDF--> <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://threejs.org/build/three.js"></script>
-
-    <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
-    <link rel="icon" type="image/x-icon" href="/Img/Favcon.ico">
+    <title>INFINITY APP</title>
+    <link rel="icon" type="image/x-icon" href="Img/Fav_32.png">
     <link rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
   </head>
 
-  <body class="Ct BackG">
+  <body class="Ct h100 Dark">
 
-    <header class="Cabecalho Ct Bt">
-      <div class="Ct Titlee">
-        <img src="Img/Logo.png" class="Logo">
-        <h1 id="Home" onclick="DefinePag(0)">INFINITY GRAFF</h1>
+    <header class="Cabecalho Ct Bt w100 Dark">
+      <div id="Titlle" class="Ct Titlee">
+        <img src="Img/Logo.png" class="Logo ppt" onclick="TrocaClass('Dark','Lite')">
+        <h1 id="Home" class="ppt" onclick="DefinePag(0)">INFINITY GRAFF</h1>
+
+        <div id="GrupLogin1" class="Ct">
+          <img id="Img-Perfil" class="ImgPerfil ppt none" onclick="AbreLogin()">
+          <div id="Login-Top" class="Ct ppt LgTp" onclick="AbreLogin()"></div>
+        </div>
       </div>
       
-      <input id="Pesquisa" class="Pesquisa Rd" onkeyup="SaveSync(event,this)" placeholder="Salve Qualque Informação...">
-    
-      <div class="Ct">
-        <img id="Img-Perfil" class="ImgPerfil">
-        <div id="Login-Top" class="Login" onclick="AbreLogin()">Login</div>
-        <div id="Login-Cod" style="Display:None"></div>
+      <input id="Pesquisa" class="Rd" onkeyup="SaveSync(event,this)" placeholder="Pesquisar...">
+      
+      <div id="GrupLogin2" class="Ct">
+        <img id="Img-Perfil" class="ImgPerfil ImgPerfil2 ppt none" onclick="AbreLogin()">
+        <div id="Login-Top" class="Ct ppt LgTp2" onclick="AbreLogin()"></div>
       </div>
+
+      <div id="Login-Cod" style="Display:None"></div>
+
     </header>
 
-    <nav class="Ct">
+    <nav class="Ct w100 Dark">
       <a id="Orcamento" class="Ct ppt" onclick="DefinePag(1)">ORÇAMENTO</a>
       <a id="Relatorio" class="Ct ppt" onclick="DefinePag(2)">RELATÓRIO</a>
-      <a id="Agenda" class="Ct ppt" onclick="DefinePag(3)">AGENDA</a>
-      <a id="Clientes" class="Ct ppt" onclick="DefinePag(4)">CLIENTES</a>
+      <a id="Agenda"    class="Ct ppt" onclick="DefinePag(3)">AGENDA</a>
+      <a id="Clientes"  class="Ct ppt" onclick="DefinePag(4)">CLIENTES</a>
     </nav>
 
-    <div id="PAIpage-container">
-    <div id="page-container">
+    <div id="PaiPages"><div id="Pages">
 
-      <div id="Aba-Home" class="Ct Cl">
-        <h1>Escolha Alguma Aba</h1>
-
-          <button class="baby" onclick="Copy('Pix',this)">Copiar Pix</button>
-          <button class="baby" onclick="fecharModalforne()">Trigger</button>
+      <div id="Aba-Home" class="">
+        <h2>Home</h2>
+          <button onclick="Copy('Pix',this)">Copiar Pix</button>
+          <button onclick="fecharModalforne()">Trigger</button>
+          
+        <div id="RoloTopHome"></div>
 
       </div>
 
-      <div id="Aba-Orcamento" class="Cl Start2">
-
-        <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
-
-        <div class="Ct Redi w100">
-          <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');Show('#PrevOrcamento')" class="baby">Novo Orçamento</button>
-          <button id="PrevOrcamento" onclick="NewOrcamentos(this);Scroll('nav')" class="baby none">Orçamento Pendente</button>
-          <div id="image-preloader" style="display: none"> nada</div>
-        </div>
-
-        <div id="FormOrcamento" class="none Ct Rd Rltv">
-          <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm();clearCRUD()">Clear</div>
-          <div class="Close Ct" onclick="CloseForm(this)">X</div>
-          
-          <div id="Contagem"></div>
-          
-
-          <div id="DivResult" class="Ct Cl Hddn">
-            <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
-            <div id="resultfilter1"></div>
-            <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
-            <div id="DivBtnDesc" class="none">
-              <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
-              <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
-            </div>
+      <div id="Aba-Orcamento" class="">
+          <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
+  
+          <div class="Ct Redi w100">
+            <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');Show('#PrevOrcamento')">Novo Orçamento</button>
+            <button id="PrevOrcamento" onclick="NewOrcamentos(this);Scroll('nav')" class="none">Orçamento Pendente</button>
+            <div id="image-preloader" style="display: none"> nada</div>
           </div>
-
-          <form id="FormOrc" class="Ct">
-
-            <h2 class="FontDGD ppt" onclick="Scroll('nav')">Orçamento</h2>
-
-            <div id="Grupo-Servicos" class="inptFormOrc">
-              <!-- Serviços, Tipos e Acabamento-->
-              <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
-                  <option value="" disabled="" selected="">Escolha um Serviços</option>
-                </select>
-              </div>
-              <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
-                  <option value="" disabled="" selected="">Escolha um Tipo</option>
-                </select>
-              </div>
-              <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
-                  <option value="" disabled="" selected="">Escolha um Acabamento</option>
-                </select>
+  
+          <div id="FormOrcamento" class="none Ct Rd Rltv">
+            <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm();clearCRUD()">Clear</div>
+            <div class="Close Ct" onclick="CloseForm(this)">X</div>
+            
+            <div id="Contagem"></div>
+            
+  
+            <div id="DivResult" class="Ct Cl Hddn">
+              <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
+              <div id="resultfilter1"></div>
+              <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+              <div id="DivBtnDesc" class="none">
+                <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
+                <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
               </div>
             </div>
-
-            <div id="Grupo-Tipos" class="inptFormOrc Grupinput3" style="display: none">
-              <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
-                  <option value="" disabled="" selected="">Gramatura</option>
-                </select></div>
-              <div id="Div-Inpt-QFix"><label>Qnt</label><select>
-                  <option value="" disabled="" selected="">Qnt</option>
-                </select></div>
-            </div>
-
-            <div id="GrupoCores" class="Ct w100 none">
-              <div id="InputdeCor" class="Ct Rd ppt" onclick="CarregaCoresStock()">Escolha uma Cor</div>
-              <ul id="ListaCor" class="none"></ul>
-            </div>
-
-            <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
-              <div id="Div-Inpt-Mais"><label class="Opacy">.</label>
-                <div class="Ct icon Maisss">
-                  <div class="btnMais Ct HvrSVG" onclick="EscMdds(this)">B</div>
-                  <div class="btnMais Ct HvrSVG" onclick="ClonaMdd(this)">A</div>
+  
+            <form id="FormOrc" class="Ct">
+  
+              <h2 class="FontDGD ppt" onclick="Scroll('nav')">Orçamento</h2>
+  
+              <div id="Grupo-Servicos" class="inptFormOrc">
+                <!-- Serviços, Tipos e Acabamento-->
+                <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
+                    <option value="" disabled="" selected="">Escolha um Serviços</option>
+                  </select>
+                </div>
+                <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
+                    <option value="" disabled="" selected="">Escolha um Tipo</option>
+                  </select>
+                </div>
+                <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
+                    <option value="" disabled="" selected="">Escolha um Acabamento</option>
+                  </select>
                 </div>
               </div>
-              <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
-              <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
-              <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
-            </div>
-
-            <div id="Grupo-Medida2" class="">
-              <input id="Compmnt" type="text" placeholder="Comprimento" value="0">
-              <input id="BackCub" type="text" placeholder="Fundo" value="0">
-            </div>
-
-            <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega']);ReloadPlanClnt()">^</div></div>
-
-            <div id="GrupoClntSave" class="Ct Cl none"></div>
-            <div id="Grupo-Cliente" class="inptFormOrc none">
-
-              <div class="Bandeija Cl" name="BndjForm"></div>
-
-              <!-- Nome e Contato-->
-              <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
-                <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
+  
+              <div id="Grupo-Tipos" class="inptFormOrc Grupinput3" style="display: none">
+                <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
+                    <option value="" disabled="" selected="">Gramatura</option>
+                  </select></div>
+                <div id="Div-Inpt-QFix"><label>Qnt</label><select>
+                    <option value="" disabled="" selected="">Qnt</option>
+                  </select></div>
               </div>
-              <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
-                <input placeholder="Contato do Cliente" id="lbCntt_2" name="Cntt" type="text">
+  
+              <div id="GrupoCores" class="Ct w100 none">
+                <div id="InputdeCor" class="Ct Rd ppt" onclick="CarregaCoresStock()">Escolha uma Cor</div>
+                <ul id="ListaCor" class="none"></ul>
               </div>
-              <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
+  
+              <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
+                <div id="Div-Inpt-Mais"><label class="Opacy">.</label>
+                  <div class="Ct icon Maisss">
+                    <div class="btnMais Ct HvrSVG" onclick="EscMdds(this)">B</div>
+                    <div class="btnMais Ct HvrSVG" onclick="ClonaMdd(this)">A</div>
+                  </div>
+                </div>
+                <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
+                <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
+                <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
+              </div>
+  
+              <div id="Grupo-Medida2" class="">
+                <input id="Compmnt" type="text" placeholder="Comprimento" value="0">
+                <input id="BackCub" type="text" placeholder="Fundo" value="0">
+              </div>
+  
+              <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta ppt" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega']);ReloadPlanClnt()">^</div></div>
+  
+              <div id="GrupoClntSave" class="Ct Cl none"></div>
+              <div id="Grupo-Cliente" class="inptFormOrc none">
+  
+                <div class="Bandeija Cl" name="BndjForm"></div>
+  
+                <!-- Nome e Contato-->
+                <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
+                  <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
+                </div>
+                <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
+                  <input placeholder="Contato do Cliente" id="lbCntt_2" name="Cntt" type="text">
+                </div>
+                <div class="btn_cdstr baby Ct none" onclick="AbreCdstr()">cadastrar</div>
+              </div>
+  
+              <div id="Grupo-Entrega" class="inptFormOrc none">
+                <!-- Entrega -->
+                <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
+                  <input placeholder="insira Local da Entrega" name="Local" type="text">
+                </div>
+  
+                <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
+                  <input placeholder="Deixe Algum Comentário" name="Etc" type="text">
+                </div>
+              </div>
+  
+            </form>
+  
+            <div class="Ct">
+              <button id="AddAdd" class="Ct none" onclick="AddAdd()">Adicionar</button>
             </div>
-
-            <div id="Grupo-Entrega" class="inptFormOrc none">
-              <!-- Entrega -->
-              <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
-                <input placeholder="insira Local da Entrega" name="Local" type="text">
+  
+            <div id="Div-CRUD" class="Tabela Rd Ct Cl none">
+  
+              <div id="TitleCRUD" class="Ct Bt">
+                <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
+                <div><div data="Cntt">Contato</div></div>
+                <div><div data="Local">Local</div></div>
+                <div><div data="Etc">Descrição</div></div>
+                <div id="ClearCRUD" class="HvrSVG Ct none" onclick="clearCRUD()">Clear</div>
               </div>
-
-              <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
-                <input placeholder="Deixe Algum Comentário" name="Etc" type="text">
+  
+              <div id="CRUD" class="Rd Ct Cl w100">
+  
+                <table>
+                  <tbody>
+                    <tr>
+                      <th class="none">id</th>
+                      <th>Qnt</th>
+                      <th>Serv</th>
+                      <th>Tipo</th>
+                      <th>Cbmt</th>
+                      <th>Larg</th>
+                      <th>Alt</th>
+                      <th>Total</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+        
+                    <tr id="CrudDefaut" class="none">
+                      <td class="none"><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
+                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td>
+                        <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Editar</div>
+                        <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Salvar</div>
+                      </td> 
+                      <td>
+                        <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Deletar</div>
+                        <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Cancelar</div>
+                      </td>
+                    </tr>
+  
+                  </tbody>
+                </table>
+  
+                <div id="Rodape" class="Ct w100">
+                  <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div id="TotalCrud" class="Total" onclick="Reajuste()">00,00</div></div>
+                </div>
               </div>
             </div>
-
+  
+            <div id="SavSav" class="Ct none">
+              <button onclick="SaveCRUDI('#CRUD')">Salvar</button>
+              <!-- <button onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button> -->
+              <button class="BTNota Ct RD magem" onclick="AbreNota('','','')">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
+              
+            </div>
+  
+          </div>
+  
+          <table id="TabelaPlan"></table>
+      
+          <form id="SavePddPlan" class="none">
+            <input name="Login">
+            <input name="Stts">
+            <input name="ID">
+            <input name="CT">
+            <input name="Data">
+            <input name="Item">
+            <input name="Medidas">
+            <input name="Total">
+            <input name="Custo">
+            <input name="Descr">
+            <input name="Form">
+            <input name="Barr">
+            <button>Trigger</button>
+          </form>
+          <form id="SaveClntPlan" class="none">
+            <input name="Cliente">
+            <input name="Contato">
+            <button>Trigger</button>
           </form>
 
-          <div class="Ct">
-            <button id="AddAdd" class="baby Ct none" onclick="AddAdd()">Adicionar</button>
-          </div>
-
-          <div id="Div-CRUD" class="Tabela Rd Ct Cl none">
-
-            <div id="TitleCRUD" class="Ct Bt">
-              <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
-              <div><div data="Cntt">Contato</div></div>
-              <div><div data="Local">Local</div></div>
-              <div><div data="Etc">Descrição</div></div>
-              <div id="ClearCRUD" class="HvrSVG Ct none" onclick="clearCRUD()">Clear</div>
+          <div id="RodapeOrc" class="Bt">
+            <div class="Cl Start2">
+              <p>Uma gráfica é uma entidade prestadora de serviços cuja função passa pela impressão de produtos.</p>
+            <p>Este processo consiste, maioritariamente, em transferir ...</p>  
             </div>
 
-            <div id="CRUD" class="Rd Ct Cl w100">
-
-              <table>
-                <tbody>
-                  <tr>
-                    <th class="none">id</th>
-                    <th>Qnt</th>
-                    <th>Serv</th>
-                    <th>Tipo</th>
-                    <th>Cbmt</th>
-                    <th>Larg</th>
-                    <th>Alt</th>
-                    <th>Total</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-      
-                  <tr id="CrudDefaut" class="none">
-                    <td class="none"><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                    <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                    <td>
-                      <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Editar</div>
-                      <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Salvar</div>
-                    </td> 
-                    <td>
-                      <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Deletar</div>
-                      <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Cancelar</div>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-
-              <div id="Rodape" class="Ct w100">
-                <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div id="TotalCrud" class="Total" onclick="Reajuste()">00,00</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div id="SavSav" class="Ct none">
-            <button class="baby" onclick="SaveCRUDI('#CRUD')">Salvar</button>
-            <!-- <button class="baby" onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button> -->
-            <button class="BTNota Ct RD magem" onclick="AbreNota('','','')">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
+            <img src="Img/Rodappe.png" class="ImgRodape">
             
           </div>
-
-        </div>
-
-        <table id="TabelaPlan"></table>
-    
-        <form id="SavePddPlan" class="none">
-          <input name="Login">
-          <input name="Stts">
-          <input name="ID">
-          <input name="CT">
-          <input name="Data">
-          <input name="Item">
-          <input name="Medidas">
-          <input name="Total">
-          <input name="Custo">
-          <input name="Descr">
-          <input name="Form">
-          <input name="Barr">
-          <button>Trigger</button>
-        </form>
-        <form id="SaveClntPlan" class="none">
-          <input name="Cliente">
-          <input name="Contato">
-          <button>Trigger</button>
-        </form>
-      </div>
-
-      <div id="Aba-Relatorio" class="Cl">
-        <h1>Aba Relatorio</h1>
-
-        <div id="Div-Blocks" class="w90">
-          <div class="DefautBlock Cl Ct none">
-    
-            <div class="BlockCbclho Bt RD">
-              <div class="BlockStts Ct RD ppt" onclick="ShowBBndj(this,'.BBndjStts')"></div>
-              <div class="BlockPrevProx Ct">
-                <div class="Prev" onclick="PrevProx(this,'Prev')">Prev</div>
-                <div class="Prox" onclick="PrevProx(this,'Prox')">Prox</div>
-              </div>
-              
-              <div class="BlockConteudo Cl Start2">
-                <div class="BlockDate">25/08</div>
-    
-                <div class="BlockTitle Ct">
-                  <div class="Ct">
-                    <div class="BlockID ppt" style="font-size: 15px;" onclick="ShowBBndj(this,'.BBndjItem')">ID-002</div>
-                    <div class="BlockName ppt" style="font-size: 22px;" onclick="ShowBBndj(this,'.BBndjClnt')">Marcelo Max</div>
-                  </div>
-                </div>
-    
-                <div class="BlockBarra Bt w100"></div>
-              </div> <!-- BlockConteudo -->
-    
-              <div class="BlockVlr Cl">
-                <div class="Ct">
-                  <div>R$</div>
-                  <div class="BlockValr" style="font-size: 22px;">150,00</div>
-                  <div class="BarraPag RD"><div class="ProgressPag RD"></div></div>
-                </div>
-                <button onclick="ShowBBndj(this,'.BBndjPgmt')">Add Pagamento</button>
-              </div> <!-- BlockVlr -->
-            </div>
-            <div class="BBndj BBndjItem w90 Ct">
-              <table class="BlockTable w100">
-                  <tr class="Ct Ev w100">
-                    <td>Adesivo</td>
-                    <td>Brilho</td>
-                    <td>Recorte</td>
-                    <td>Aplicação</td>
-                  </tr>
-              </table>
-              <span class="none"></span>
-            </div>
-            <div class="BBndj BBndjPgmt w90 Ct">
-              <table class="BlockTable2 w100"> 
-                  <tr class="Ct Ev w100">
-                    <td class="Cl"><input oninput="MaskRS(this)"></td>
-                    <td class="Cl"><input type="date"></td>
-                    <td class="Cl"><select>
-                      <option value="" disabled selected>Forma Pag</option>
-                      <option value="Pix">Pix</option>
-                      <option value="Av">Av</option>
-                      <option value="Card">Cartão</option>
-                      </select></td>
-                    <td class="Cl"><button onclick="AddPgmnt(this)">Salvar</button></td>
-                  </tr>    
-              </table>
-              <span class="none"></span>
-            </div>
-            <div class="BBndj BBndjClnt w90 Ct">
-              <div class="Cl">
-                <div class="Ct"><div>IDClnt:</div></div>
-                <div class="Ct"><div>Tag:</div></div>
-                <div class="Ct"><div>Cliente:</div></div>
-                <div class="Ct"><div>NomeCompleto:</div></div>
-                <div class="Ct"><div>Contato:</div></div>
-                <div class="Ct"><div>Endereço:</div></div>
-                <div class="Ct"><div>Loja:</div></div>
-                <div class="Ct"><div>CnttLoja:</div></div>
-                <div class="Ct"><div>Categoria:</div></div>
-                <div class="Ct"><div>Veiculo:</div></div>
-                <div class="Ct"><div>Stts:</div></div>
-                <div class="Ct"><div>LinksPdds:</div></div>
-                <div class="Ct"><div>Desc:</div></div>
-              </div>
-    
-                                        
-              <span class="none"></span>
-            </div>
-            <div class="BBndj BBndjStts w90 Ct">
-              
-              <span class="none"></span>
-            </div>
-    
-          </div> <!-- DefautBlock -->
-          <div id="BlockHistry"></div>
-        </div> <!-- Div-Blocks -->
         
-
       </div>
 
-      <div id="Aba-Agenda" class="Ct Cl">
-        <h1>Aba Agenda</h1>
+      <div id="Aba-Relatorio" class="">
+        <h2>Relatório</h2>
       </div>
 
-      <div id="Aba-Clientes" class="Ct Cl">
-        <h1>AbaClientens</h1>
-        <iframe id="Xoco" src="https://script.google.com/macros/s/AKfycbxM24UL_Wehv0ysNCO7oPXtFuYW3lHGQwadGhgSwubduPDm4lt9-h5JjaQwwOTSOgXl/exec" frameborder="0" width="300px" height="500px"></iframe>
+      <div id="Aba-Agenda" class="">
+        <h2>Agenda</h2>
       </div>
 
-      <div id="Fundo-Modal" class="FundoModal Ct">
-
-        <div id="ModalInfo" class="Ct Rltv none">
-          <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-          <div id="Modal-Info1" class="ModalPgmnt Modalzinho Ct Cl ">
-            <div id="Title-Info" class="Hr padins Ct"></div>
+      <div id="Aba-Clientes" class="">
+        <h2>Clientes</h2>
+      </div>
     
-            <div id="GrupoClntSaveInfo" class="Ct Cl none"></div>
+    </div></div>
 
-            <div id="RestaNome">
+    <div id="Fundo-Modal" class="Ct Dark w100 h100 none">
 
-              <div class="Bandeija Cl" name="BndjInfo"></div>
-      
-              <div id="DivClntInfo"><label for="ClntInfo">Cliente</label>
-                <input id="ClntInfo" name="Clnt" tabindex="1" type="text" onkeyup="proxinpt(event)" required="">
-              </div>
-      
-              <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
-                <input id="CnttInfo" name="Cntt" tabindex="2" type="text">
-              </div>
-
-              <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
-      
-            </div>
-    
-            <label for="ArteInfo">Tipo Arte</label>
-            <select id="ArteInfo" required="" data="#divdesigner" name="Arte">
-              <option disabled="" selected="" value="">_Escolha o Tipo da Arte</option>
-              <option value="Criar">Criação</option>
-              <option value="Recria">Recriação</option>
-              <option value="Reparo">Reparo</option>
-              <option value="Vetor">Vetorização</option>
-              <option value="_Clnte">Arte do Cliente</option>
-              <option value="_temos">Já temos a Arte</option>
-              <option value="_Nada">Sem Arte</option>
-            </select>
-            
-            <div id="divdesigner" class="none">
-              <label>Designer</label>
-              <div class="Ct ckecs">
-                <label for="Desig1"><input type="radio" id="Desig1" name="Desig" value="Lisa">Lisa</label>
-                <label for="Desig2"><input type="radio" id="Desig2" name="Desig" value="Allan">Allan</label>
-                <label for="Desig3"><input type="radio" id="Desig3" name="Desig" value="Baby">Baby</label>
-              </div>
-            </div>
-    
-            <div>
-              <label for="Aplic">
-                <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
-                Aplicação</label>
-              <label for="install">
-                <input type="checkbox" id="install" name="Aplic" value="install">
-                Instalação</label>
-            </div>
-    
-            <div id="DivFrete">
-              <label for="Fret1"><input type="radio" id="Fret1" name="Frete" value="Graff" data="#DivEndereco" required="">Retirada</label>
-              <label for="Fret2"><input type="radio" id="Fret2" name="Frete" value="Entrega" data="#DivEndereco" required="">Entrega</label>
-      
-              <div id="DivEndereco" class="none">
-                <label for="Endereco">Endereço</label> <input id="Endereco" name="Local" type="text">
-                <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
-                </div>
-              </div>
-      
-            </div>
-            
-            
-            <div class="Ct"><button id="btnINFO1" class="Ct none" onclick="Show('#Modal-Info2','#Modal-Info1')">Próximo</button></div>
-
+      <div id="ModalLogin" class="Ct Rltv Rd">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div class="Bt Loginn">Login</div>
+          <div class="Ct Start">
+            <label for="Senha">Senha</label>
+            <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'S',this)">
           </div>
-
-          <div id="Modal-Info2" class="ModalPgmnt Modalzinho Ct Cl none">
-            <div id="titleinfo2">titulo</div>
-            <div class="Hr padins"> <label>Forma de Pagamento</label>
-              <div class="Ct ckecs">
-            <label for="form1"><input type="radio" id="form1" name="pag" value="Pix" data="#divpaginfo" required="">Pix</label>
-            <label for="form2"><input type="radio" id="form2" name="pag" value="Av" data="#divpaginfo" required="">Av</label>
-            <label for="form3"><input type="radio" id="form3" name="pag" value="NPag" data="#divpaginfo" required="">Não Pago</label>
-              </div>
-    
-              <div id="divpaginfo" class="none">
-                <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
-                <div><label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
-                  <button onclick="hojeInfo('#dataPagInfo')">Hoje</button>
-                </div>
-              </div>
-              
-            </div>
-            <div>
-              <div>Prazo: </div><input type="date" id="Prazo">
-            </div>
-            <div id="innerdesc">Desconto: </div>
-            <div class="Bt">
-              <button id="btnINFO3" class="Ct" onclick="Show('#Modal-Info1','#Modal-Info2')">Voltar</button>
-              <button id="btnINFO2" class="Ct none">Entrada</button>
-            </div>
-          </div>
-        </div>
-
-        <div id="ModalLogin" class="Ct Rltv none">
-          <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-          <div class="Modalzinho Ct Ft modalloginn">
-            <div class="Bt Loginn">Login</div>
-            <div class="Ct Start">
-              <label for="Senha">Senha</label>
-              <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'Senha',this)">
-            </div>
-            <div class="Bt">
-              <button class="Botaozin Ct" onclick="TestSenha('','Senha','#Inpt-Senha')">Logar</button>
-              <button class="Botaozin Ct" onclick="None('#Fundo-Modal')">Sair</button>
-            </div>
-            <span id="Span-Login"></span>
-          </div>
-        </div>
-
-        <div id="ModalCadastro" class="Modalzinho Rltv Ct Ft none">
-          <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-          <div>Cadastro do Clietne</div>
-            <div class="Bandeija Cl" name="BndjCadastro"></div>
-            <div>
-              <input type="text" name="Clnt" placeholder="Nome do Cliente">
-              <input type="text" name="Cplt" placeholder="Nome Completo">
-              <input type="text" name="Cntt" placeholder="Contato do Cliente">
-              <input type="text" name="Local" placeholder="Endereço do Cliente">
-              <input type="text" name="Loja" placeholder="Nome da Empresa">
-              <input type="text" name="LjCt" placeholder="Cntato da Empresa">
-              <input type="text" name="Catg" placeholder="Catégoria">
-            </div>
-
-            <button>Salvar</button>
-        </div>
-
-        <div id="ModalNota" class="Modalzinho Rltv Cl Rd media30 none">
-          <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-          <div id="Titulo-Nota" class="w100 Bt Hr"></div>
-              <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
-                <div class="Ct">
-                  <div id="LugarFotoNotta" class="LogoNota icon2"><img src="Img/Logo2.png"></div>
-                  <div>
-                    <h2>INFINITY GRAFF</h2>
-                    <h2>IMPRESSÃO DIGITAL</h2>
-                  </div>
-                </div>
-
-                  <div class="Start2">
-                    <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A</p></div>
-                    <div class="FtBd Ct">Cidade: <p>SÃO LOURENÇO DA MATA</p></div>
-                    <div class="FtBd Ct">Email: <p>infinitygraff@outlook.com</p></div>
-                    <div class="FtBd Ct">Contato: <p class="B">(81) 98726.5401</p></div>
-                  </div>
-              </div>
-
-              <div class="Ct Cl Hr">
-                <h2>CUPOM FISCAL</h2>
-                <div id="DataNota"></div>
-              </div>
-
-              <div class="Start2 Hr">
-                <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>${id}</p></div>
-                <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
-              </div>
-
-              <div id="Nota-Clnt" class="Rw w100 Ev">
-                <div>
-                  <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
-                  <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
-                </div>
-                <div>
-                  <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
-                  <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
-                </div>
-                <div>
-                  <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
-                </div>
-              </div>
-
-              <div id="conteudo-nota" class="w100"></div>
-
-            <div class="w100 Ct">
-              <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
-              <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
-              <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
-            </div>
-        </div>
-
-        <div id="Modal-Item" class="ModalItem Rltv Modalzinho Ct Cl">
-          <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-          <div id="Conteudo-Item"></div>
-        </div>
-
-        <div id="Modal-Teclado" class="ModalItem Rltv Modalzinho Ct Cl none">
-
-          <div class="">
-            <div onclick="pressKey(49)">1</div>
-            <div onclick="pressKey(50)">2</div>
-            <div onclick="pressKey(51)">3</div>
+          <span id="Span-Login" class="erro"></span>
+          <div class="Bt">
+            <button class="Ct w40" onclick="TestSenha('','S','#Inpt-Senha')">Logar</button>
+            <button class="Ct w40" onclick="None('#Fundo-Modal')">Sair</button>
           </div>
           
-          <div class="">
-            <div onclick="pressKey(52)">4</div>
-            <div onclick="pressKey(53)">5</div>
-            <div onclick="pressKey(54)">6</div>
-          </div>
-          
-          <div class="">
-            <div onclick="pressKey(55)">7</div>
-            <div onclick="pressKey(56)">8</div>
-            <div onclick="pressKey(57)">9</div>
+      </div>
+
+      <div id="ModalCadastro" class="Ct Rltv Ft Rd">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div>Cadastro do Clietne</div>
+          <div class="Bandeija Cl" name="BndjCadastro"></div>
+          <div>
+            <input type="text" name="Clnt" placeholder="Nome do Cliente">
+            <input type="text" name="Cplt" placeholder="Nome Completo">
+            <input type="text" name="Cntt" placeholder="Contato do Cliente">
+            <input type="text" name="Local" placeholder="Endereço do Cliente">
+            <input type="text" name="Loja" placeholder="Nome da Empresa">
+            <input type="text" name="LjCt" placeholder="Cntato da Empresa">
+            <input type="text" name="Catg" placeholder="Catégoria">
           </div>
 
-          <div class="">
-            <div style="background: #ff7700;">Voltar</div>
-            <div onclick="pressKey(48)">0</div>
-            <div style="background: #ff7700;" onclick="pressKey(13)">Prox</div>
+          <button onclick="SaveCadastro()">Salvar</button>
+      </div>
+
+      <div id="Modal-Item" class="Ct Rltv Rd">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Conteudo-Item"></div>
+      </div>
+
+      <div id="ModalInfo" class="Ct Rltv Rd">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Modal-Info1" class="Ct Cl ">
+          <div id="Title-Info" class="Hr padins Ct"></div>
+  
+          <div id="GrupoClntSaveInfo" class="Ct Cl none"></div>
+
+          <div id="RestaNome" class="w100">
+
+            <div class="Bandeija Cl" name="BndjInfo"></div>
+    
+            <div id="DivClntInfo" ><label for="ClntInfo">Cliente</label>
+              <input id="ClntInfo" class="w90" name="Clnt" tabindex="1" type="text" onkeyup="proxinpt(event)" required="">
+            </div>
+    
+            <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
+              <input id="CnttInfo" class="w90" name="Cntt" tabindex="2" type="text">
+            </div>
+
+            <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
+    
           </div>
+  
+          <label for="ArteInfo">Tipo Arte</label>
+          <select id="ArteInfo" class="w100" required="" data="#divdesigner" name="Arte">
+            <option disabled="" selected="" value="">_Escolha o Tipo da Arte</option>
+            <option value="Criar">Criação</option>
+            <option value="Recria">Recriação</option>
+            <option value="Reparo">Reparo</option>
+            <option value="Vetor">Vetorização</option>
+            <option value="_Clnte">Arte do Cliente</option>
+            <option value="_temos">Já temos a Arte</option>
+            <option value="_Nada">Sem Arte</option>
+          </select>
+          
+          <div id="divdesigner" class="none">
+            <label>Designer</label>
+            <div class="Ct ckecs">
+              <label for="Desig1"><input type="radio" id="Desig1" name="Desig" value="Lisa">Lisa</label>
+              <label for="Desig2"><input type="radio" id="Desig2" name="Desig" value="Allan">Allan</label>
+              <label for="Desig3"><input type="radio" id="Desig3" name="Desig" value="Baby">Baby</label>
+            </div>
+          </div>
+  
+          <div>
+            <label for="Aplic">
+              <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
+              Aplicação</label>
+            <label for="install">
+              <input type="checkbox" id="install" name="Aplic" value="install">
+              Instalação</label>
+          </div>
+  
+          <div id="DivFrete">
+            <label for="Fret1"><input type="radio" id="Fret1" name="Frete" value="Graff" data="#DivEndereco" required="">Retirada</label>
+            <label for="Fret2"><input type="radio" id="Fret2" name="Frete" value="Entrega" data="#DivEndereco" required="">Entrega</label>
+    
+            <div id="DivEndereco" class="none">
+              <label for="Endereco">Endereço</label> <input id="Endereco" name="Local" type="text">
+              <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
+              </div>
+            </div>
+    
+          </div>
+          
+          
+          <div class="Ct"><button id="btnINFO1" class="Ct none" onclick="Show('#Modal-Info2','#Modal-Info1')">Próximo</button></div>
 
         </div>
 
-        <div id="InnerVazio" class="none Ct"></div>
-
+        <div id="Modal-Info2" class="Ct Cl none">
+          <div id="titleinfo2">titulo</div>
+          <div class="Hr padins"> <label>Forma de Pagamento</label>
+            <div class="Ct ckecs">
+          <label for="form1"><input type="radio" id="form1" name="pag" value="Pix" data="#divpaginfo" required="">Pix</label>
+          <label for="form2"><input type="radio" id="form2" name="pag" value="Av" data="#divpaginfo" required="">Av</label>
+          <label for="form3"><input type="radio" id="form3" name="pag" value="NPag" data="#divpaginfo" required="">Não Pago</label>
+            </div>
+  
+            <div id="divpaginfo" class="none">
+              <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
+              <div><label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
+                <button onclick="hojeInfo('#dataPagInfo')">Hoje</button>
+              </div>
+            </div>
+            
+          </div>
+          <div>
+            <div>Prazo: </div><input type="date" id="Prazo">
+          </div>
+          <div id="innerdesc">Desconto: </div>
+          <div class="Bt">
+            <button id="btnINFO3" class="Ct" onclick="Show('#Modal-Info1','#Modal-Info2')">Voltar</button>
+            <button id="btnINFO2" class="Ct none">Entrada</button>
+          </div>
+        </div>
       </div>
 
-     </div>
-     </div>
+      <div id="InnerVazio" class="Ct"></div>
+
+    </div>
 
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
     <script type="text/javascript" src="./Scripts.js" defer=""></script>
+    <!--<script src="https://threejs.org/build/three.js"></script> -->
 </html>
 
 

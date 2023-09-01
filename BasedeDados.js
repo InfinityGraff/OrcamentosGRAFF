@@ -1,7 +1,7 @@
 // PreScript
 
-  const APIPlan = 'https://sheetdb.io/api/v1/9sxm9x8s8wvbv'
-  const APIPlanClnt = 'https://sheetdb.io/api/v1/pk0yb9wxwaesy'
+  const APIPlan = ''//'https://sheetdb.io/api/v1/9sxm9x8s8wvbv'
+  const APIPlanClnt = ''//'https://sheetdb.io/api/v1/pk0yb9wxwaesy'
 
   const User={
     '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
@@ -20,6 +20,8 @@
   const cores = [
     "#FF0000","#FF0000","#FF4000","#FF8000","#FFBF00","#FFFF00","#BFFF00","#80FF00","#40FF00","#00FF00"
   ]
+
+  const Topic = [{'+TampaTanque':8},{'@Status':3}]
 
   const StockjVinil = ["#ff0000","#6b6b6b","#ffa6ed","#000000","#ffffff"]
 
@@ -62,16 +64,16 @@
   function Cal(Vlr){return Vlr * (1 + (200 / 100))}
 
   const tabela = [
-    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm1','A I U C L T'],
-    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","14WG3395GvBw-iv-xYvJvClwHMCwFj0vU",'Itm2','A I U C L T'],
-    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","1BE7X8FTvHZ-Xxk3woPnLZ4FNqsE9MMOp",'Itm3','A I U C L T'],
-    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","1AOgX7ikLCnnzLdIl2woi8UAO-w__7QwK",'Itm4','A I U C L T'],
-    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-13, Perf ,"M2","15CcXpHNnGL03y6h5KT7QKZhfCTg30pE3",'Itm5','A I U C L T'],
+    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","TabelaProdutos/Adesivo.png",'Itm1','A I U C L T'],
+    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","TabelaProdutos/Adesivo.png",'Itm2','A I U C L T'],
+    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","TabelaProdutos/Blackout.png",'Itm3','A I U C L T'],
+    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","TabelaProdutos/Transparente.png",'Itm4','A I U C L T'],
+    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-13, Perf ,"M2","TabelaProdutos/Perfurado.png",'Itm5','A I U C L T'],
     ["Adesivo" ,"Laminado",  "","","", Cal(Trns)+10, Trns ,"M2",'','Itm6','A I U C L T'],
-    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-15, Trns+VnlB ,"M2","1f7bztRLLafmQNbV2C-vPrbB6oiluzNOs",'Itm7','A I U C L T'],
+    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-15, Trns+VnlB ,"M2","TabelaProdutos/Espelhado.png",'Itm7','A I U C L T'],
   
     ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2",'','Itm8','A I U C M'],
-    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","1NhZ62dg1T7LbY4YZskSKBCuG6UhLyUm1",'Itm9','A I U C M'],
+    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","TabelaProdutos/Etiqueta.png",'Itm9','A I U C M'],
   
     ["Recorte", "Normal","Simples","","", 70, 0, "M2 W",'','Itm10','A O U C L'], // W quer dizer Cor
     ["Recorte", "Normal","Complexo","","", 100, 0, "M2 W",'','Itm10a','A O U C L'], // W quer dizer Cor
@@ -104,10 +106,10 @@
     ["Placa", "Luminosa", "Circular", "Frente Verso", "-", 160, 0, "M2 F A",'','Itm33'],
     ["Placa", "ACM",  "", "-", "-", 70, 0, "M2 F W",'','Itm34'],
     ["Placa", "Obra", "", "-", "-", 70, 0, "M2 F",'','Itm35'],
-    ["Cavalete","1 Ferragem","-","ilhós", "-",70,0,"M2 F",'1AKBM4I76hrO-ik0JQalLqAzRRcAV2Xl7','Itm36'],//
-    ["Cavalete","1 Ferragem","-","Ribite","-",70,0,"M2 F",'1lBiTY82pAUgkB5G3yoyAR8TuHMpEJCif','Itm37'],
-    ["Cavalete","2 Ferragem","-","ílhós", "-",70,0,"M2 F",'16EsmOiUmzlgXeolYB0FNNNS7IY8RQFzC','Itm38'],
-    ["Cavalete","2 Ferragem","-","Ribite","-",70,0,"M2 F",'1hh0m_XGStCPM-QVK9Idka6sbJME97Yry','Itm39'],
+    ["Cavalete","1 Ferragem","-","ilhós", "-",70,0,"M2 F",'TabelaProdutos/Cav1ihs.png','Itm36'],//
+    ["Cavalete","1 Ferragem","-","Ribite","-",70,0,"M2 F",'TabelaProdutos/Cav1Rib.png','Itm37'],
+    ["Cavalete","2 Ferragem","-","ílhós", "-",70,0,"M2 F",'TabelaProdutos/Cav2ihs.png','Itm38'],
+    ["Cavalete","2 Ferragem","-","Ribite","-",70,0,"M2 F",'TabelaProdutos/Cav2Rib.png','Itm39'],
     ["Toldo", "Polly Carbonato","-","-","-",170,0,"M2 F",'','Itm40'],
     ["Toldo", "Lona ", "-", "-", "-", 70, 0, "M2 F",'','Itm41'],
     ["Quebra Sol", "Manual", "-", "-", "-", 70, 0, "M2 F",'','Itm42'],
@@ -475,6 +477,9 @@
   ]
 
 //SVG
+
+
+
   const IconEscList = `<svg xmlns="http://www.w3.org/2000/svg" width="135.189" height="135.189" viewBox="0 0 13504.66 13504.66">
       <path class="fill:#FFA725" d="M335.23 335.23c446.95,-446.96 1178.33,-446.96 1625.29,0l4791.82 4791.82 4791.82 -4791.82c446.96,-446.96 1178.34,-446.96 1625.29,0 446.96,446.95 446.96,1178.33 0,1625.29l-4791.82 4791.82 4791.82 4791.82c446.96,446.96 446.96,1178.34 0,1625.29 -446.95,446.96 -1178.33,446.96 -1625.29,0l-4791.82 -4791.82 -4791.82 4791.82c-446.96,446.96 -1178.34,446.96 -1625.29,0 -446.96,-446.95 -446.96,-1178.33 0,-1625.29l4791.82 -4791.82 -4791.82 -4791.82c-446.96,-446.96 -446.96,-1178.34 0,-1625.29z"/>
     </svg>
@@ -604,7 +609,27 @@ const iconAplic = `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" 
 const IconInstal = `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="35.7209mm" height="29.9999mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 128.68 108.07">
   <path class="fill:black" d="M46.24 24.13l-20.86 0c-2.71,0 -2.6,4.02 0,4.02l20.61 0c2.83,0 2.16,-4.02 0.25,-4.02zm9.3 23.37c0,2.47 -5.62,7.29 -11.06,7.29 -2.47,0 0.53,-5.84 1.07,-6.97 0.41,-0.86 0.48,-1.33 1.69,-1.33l7.29 0c0.59,0 1.01,0.42 1.01,1.01zm73.14 -27.65c0,1.35 -0.59,2.26 -2.01,2.26l-27.65 0c-1.49,0 -2.16,-4.27 0.5,-4.27l27.14 0c1.22,0 2.01,0.79 2.01,2.01zm-47.25 11.56c-1.46,0 -5.78,0.39 -5.78,-1.76l0 -19.35c0,-2.07 3.95,-1.76 5.28,-1.76 4.57,0 5.67,1.52 7.98,3.83 1.96,1.96 4.51,3.62 4.67,7.33 0.16,3.78 -2.23,5.44 -4.29,7.5 -2.17,2.17 -3.58,4.21 -7.85,4.21zm-44.74 42.98l-26.89 0c-3.12,0 -1.67,-4.54 -1.43,-6.21 1.2,-8.33 1.18,-12.9 1.18,-21.44 0,-1.75 -0.74,-3.31 0.33,-4.44 1.53,-1.63 6.41,0.35 7.82,1.32 3.01,2.05 4.18,6.55 5.11,9.97 1.75,6.39 4.77,9.78 11.68,11.19 3.2,0.66 3.23,0.61 3.48,4.06 0.06,0.86 0.43,2.58 0.45,3.33 0.02,0.96 -0.93,2.22 -1.73,2.22zm30.66 33.68l-56.55 0c-6.79,0 -10.34,-5.12 -10.81,-8.62l0 -1.44c0.17,-1.06 0.76,-1.76 1.76,-1.76l74.14 0c4.62,0 0.79,11.81 -8.55,11.81zm10.56 -18.85c0,1.21 0.1,3.02 -2.01,3.02l-74.14 0c-1.26,0 -1.65,-0.64 -1.76,-1.64l0 -2.63c0,-4.76 4.76,-9.3 9.55,-9.3l58.81 0c2.57,0 5.67,1.78 6.83,3.22 1.51,1.88 2.72,4.02 2.72,7.33zm-24.13 -76.15c0,-0.92 -0.69,-2.01 -1.51,-2.01l-33.18 0c-1.88,0 -2.35,4.02 0.5,4.02l32.17 0c1.22,0 2.01,-0.79 2.01,-2.01zm17.59 -6.03l0 27.9c0,3.76 -3.07,7.03 -6.54,7.28 -4.58,0.33 -17.63,-0.55 -20.03,0.58 -3.95,1.86 -5.72,10.46 -6.42,14.69 -0.36,2.19 -0.66,3.68 -3.26,3.17 -11.93,-2.32 -5.54,-13.19 -14.72,-19.98 -7.83,-5.8 -16.6,-1.65 -18.54,-3.33 -1,-0.86 -1.86,-3.77 -1.86,-5.68l0 -21.11c0,-5.45 5.18,-10.56 12.06,-10.56l51.27 0c4.55,0 8.04,3.35 8.04,7.04z"/>
 </svg>`
+const IconConfig = `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5.2916mm" height="25.4mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 515.27 2473.35">
+  <path class="fil0" d="M257.64 0c142.29,0 257.64,115.35 257.64,257.64 0,142.29 -115.35,257.64 -257.64,257.64 -142.29,0 -257.64,-115.35 -257.64,-257.64 0,-142.29 115.35,-257.64 257.64,-257.64zm0 1958.07c142.29,0 257.64,115.35 257.64,257.64 0,142.29 -115.35,257.64 -257.64,257.64 -142.29,0 -257.64,-115.35 -257.64,-257.64 0,-142.29 115.35,-257.64 257.64,-257.64zm0 -979.04c142.29,0 257.64,115.35 257.64,257.64 0,142.29 -115.35,257.64 -257.64,257.64 -142.29,0 -257.64,-115.35 -257.64,-257.64 0,-142.29 115.35,-257.64 257.64,-257.64z"/>
+</svg>
+` 
 
+const IconLogin = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="70.7319mm" height="70.7319mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 7055.58 7055.58"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+ </defs>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fill:black" d="M3527.79 0c1948.35,0 3527.8,1579.45 3527.8,3527.79 0,1948.35 -1579.45,3527.8 -3527.8,3527.8 -1948.34,0 -3527.79,-1579.45 -3527.79,-3527.8 0,-1948.34 1579.45,-3527.79 3527.79,-3527.79zm-9.64 4103.28c1030.45,0 1930.07,559.8 2411.56,1391.84 439.2,-535.58 702.86,-1220.64 702.86,-1967.33 0,-1714.71 -1390.06,-3104.77 -3104.78,-3104.77 -1714.71,0 -3104.77,1390.06 -3104.77,3104.77 0,740.3 259.26,1419.97 691.72,1953.51 483.42,-824.37 1378.7,-1378.01 2403.41,-1378.01zm0.14 -2781.66c724.31,0 1311.48,587.16 1311.48,1311.48 0,724.31 -587.16,1311.48 -1311.48,1311.48 -724.31,0 -1311.48,-587.16 -1311.48,-1311.48 0,-724.31 587.16,-1311.48 1311.48,-1311.48z"/>
+ </g>
+</svg>
+`
 
 const AbrevTaref = {
   'A':['Arte',IconArt],
