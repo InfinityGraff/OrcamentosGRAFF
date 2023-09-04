@@ -39,7 +39,10 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   letter-spacing: 0.7px;
   text-align: center;
   outline:none;
-}
+}*::-webkit-scrollbar {width: 10px;}
+*::-webkit-scrollbar-track {background: #0000006a;}
+*::-webkit-scrollbar-thumb {background: #5d5d5da5;border-radius: 5px;}
+*::-webkit-scrollbar-thumb:hover {background: #555;}
 
 .Ct{display: flex;flex-wrap: wrap;justify-content: center;align-items: center;}
 .Start{display: flex;justify-content: flex-start;align-items: center;}
@@ -89,14 +92,17 @@ header{height:55px;padding:0px 10px}
 header.Lite{background: purple; color: white; fill: white;}
 h1{font-size:40px;font-family:var(--Bold)}
 h2{font-size:18px; color:var(--Laranja)}
+.Dark hr{border: 1px solid #ffffff2e;margin:4px 0px;}
+.Lite hr{border: 1px solid #00000070;margin:4px 0px;}
 .ppt,button,.Close{cursor: pointer}
 
 input,select,button,.baby{height:30px;margin:3px;border-radius:255px;font-size:14px;transition:all 0.2s ease;color: white;}
+button>img, input>img, select>img{margin:0px 5px}
 
   .Dark input,.Dark select{background:#ffffff21;}
   .Dark input:hover,.Dark select:hover{background:#ffffff33;transform:scale(1.02)}
   .Dark input:focus{background: #ffffff42;border:1px solid #ff00ff79;box-shadow:0 0 10px #ff00ff7c}
-  .Lite input,.Lite select{background:#ffffffb2;color: black;}
+  .Lite input,.Lite select{background:#ffffffb2;color: black;border:1px solid #b4b4b4}
   .Lite input:hover,.Lite select:hover{background:white;transform:scale(1.02)}
   .Lite input:focus{border:1px solid #ff00ff;box-shadow: 0 0 10px #ff00ff}
 
@@ -117,8 +123,6 @@ svg{width:30px;height:30px;}.Dark svg{fill:#ffffff93;}
 svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale(1.1);transition: all 0.2s ease-in-out}
 
 #Home{transition: all 0.2s ease-in-out}#Home:hover{color:#ff6600;transform: scale(1.02)}
-#Fundo-Modal.Dark>div{background:#1b1b1b;}
-#Fundo-Modal.Lite>div{background:#ffffff}
 
 #PaiPages{overflow:hidden}
 #Pages{display:flex;transition:transform 0.3s ease-in-out}
@@ -141,18 +145,78 @@ svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale
   .RoloGrupImg{overflow-x: scroll}
 
 #Fundo-Modal{position:fixed;top:0px;z-index:999999999;background:#0000001a;backdrop-filter:blur(10px);animation:FndoModal 0.5s}
-#Fundo-Modal > div{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
-/* Largura dos Modais */
-  #ModalLogin{width:300px;height:400px;}
-  #ModalCadastro{width:70%;}
-  #Modal-Item .Feed{width:400px;height:400px;}
-  #Modal-Item .Stry{width:250px;height:440px;}
+#Fundo-Modal > div,#Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
+#Fundo-Modal.Dark>div,.Dark #Alert{background:#1b1b1b}
+#Fundo-Modal.Lite>div,.Lite #Alert{background:#ffffff}
+#Fundo-Modal.Dark>#ModalNota{background:#ffffff;color:black}
+#Fundo-Modal h1{font-size:25px}
 
-  #Modal-Info1,#Modal-Info2{padding: 30px}
+  #ModalLogin{width:300px;height:400px}
+  #ModalCadastro{width:70%}
+  #Modal-Item .Feed{width:400px;height:400px}
+  #Modal-Item .Stry{width:250px;height:440px}
+  #Modal-Info1,#Modal-Info2{padding:30px}
+  #InnerVazio input{position:absolute;width:200px}
 
-  #InnerVazio input{position: absolute;width:200px}
 
-  
+  #ModalNota>div{padding:5px 0px}
+  #Nota-Clnt>div>div>div{margin:0px 5px}
+  #ModalNota img{width:50px;height:50px}
+  .Start2 p{margin:1px 5px}
+  #LugarFotoNotta{margin-right:3px}
+
+  #TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
+  #TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}
+  #TabelaNotinha td{background: #ffffff;color: black; padding: 3px;font-size: 13px;}
+  #TabelaNotinha tfoot > tr > th {background: #575757}
+  #TabelaNotinha td:nth-child(5){font-size: 13px;color:#4f4f4f;}
+  #TabelaNotinha td:nth-child(6){font-weight: bold}
+
+  #DescrNota div{font-size:15px}
+
+#divpaginfo,#divdesigner{flex-direction:column}
+
+.media30{width:70%}.media80{width:70%}
+
+.BTNota{height:20px;padding:0px 10px;margin:0px 1.5px;background:#5F009E}
+#DescrNota > div{margin:5px 0px}
+
+
+.Dark .Ct.ckecs label{margin-right:10px;font-size:16px;color:#ffffff;}
+.Lite .Ct.ckecs label{margin-right:10px;font-size:16px;color:#000000;}
+input[type="checkbox"],input[type="radio"]{width:16px;height:16px;margin-right: 5px;vertical-align: middle;}
+
+#ConfirmPlan img{width:110px;height:155px;margin:5px}
+#ConfirmPlan > div > div{font-size: 25px;}
+#Alert{bottom:10px; right: 10px;position: fixed; width: 200px; height: 100px;border:1px solid #2bff00}
+.IMGOkay{width: 30px;height: 30px;}
+.IMGPlan{width: 30px;height: 40px;}
+
+#resultfilter1{height:100%;width:90%;overflow-y:scroll}
+  .itemfilter{margin:8px 0px;overflow: hidden;}
+  .Dark .itemfilter{background: #ffffff13}
+  .Lite .itemfilter{background: #ffffff}
+  .Dark .itemfilter:hover{background:#ffffff25}
+  .Lite .itemfilter:hover{background:#e0e0e0}
+  .Dark .RstTitle{background:#00000086;padding:6px 3px;}
+  .Lite .RstTitle{background:purple;padding:6px 3px;color:white}
+  .Dark .RstValrFinal{color:#00e61f;font-size: 20px}
+  .Lite .RstValrFinal{color:#0b8000;font-size: 20px}
+  .RstValrFinal>div{font-size:12px;margin-right:4px}
+  .RstServ{margin-left: 6px}
+  #FotoItem img{width:95%;background: #d8d8d8}
+  .SVGFilt svg{width:40px;height:40px;fill:#00000065}
+.RstValrM2{padding-right:8px;font-size:12px;}
+.RstValrM2 div{font-size: 9px;margin: 0px 4px;}
+.RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;position: relative;}
+.RstValrDesc svg{fill: red;height: 20px;width: 57px;z-index: 1;position: absolute;top: 0px;left: 0px;}
+#FotoFilter img,.canvas,.SVGFilt{width:110px;height:90px;background-color: #d8d8d8;border-radius: 10px;}
+
+
+
+
+
+
 
 
 .Close svg{
@@ -446,48 +510,7 @@ form div[id*=Inpt]{
     border-radius: .2rem;
   }
 
-#BodyRelatorio{display:none;}
-#Resumo{width:100%}
-#resultfilter1{
-  background: #00000000;
-  overflow-y: scroll;
-  height: 100%;
-  width: 90%;
-  border-radius: 20px;
-  }
 
-#resultfilter1::-webkit-scrollbar {width: 10px;}
-#resultfilter1::-webkit-scrollbar-track {background: #0000006a;}
-#resultfilter1::-webkit-scrollbar-thumb {background: #5d5d5da5;border-radius: 5px;}
-#resultfilter1::-webkit-scrollbar-thumb:hover {background: #555;}
-
-.itemfilter{background: #ffffff13;
-  border-radius: 20px;
-  margin: 8px 0px;
-  overflow: hidden;}
-
-.itemfilter:hover{background: #ffffff25}
-
-  hr {border: 0.1px solid #ffffff2e; margin: 4px 0px;}
-.RstTitle {background: #0000004a; padding: 6px 3px;}
-.Descricao > div > strong { font-size: 12px;}
-.RstServ{margin-left: 6px}
-.RstValrM2{padding-right: 8px;font-size: 12px;}
-.RstValrM2 div{font-size: 9px;margin: 0px 4px;}
-.RstValrDesc{color: #ffffff51;padding-right: 8px;font-size: 14px;position: relative;}
-.RstValrDesc svg{fill: red;height: 20px;width: 57px;z-index: 1;position: absolute;top: 0px;left: 0px;}
-.RstValrFinal{color: #00e61f;font-size: 20px}
-.RstValrFinal > div{color: #00e61f;font-size: 12px;margin-right:4px;}
-#FotoFilter img,.canvas, .SVGFilt{width:110px;height:90px;background-color: #d8d8d8;border-radius: 10px;}
-#FotoItem img{width:95%;background-color: #d8d8d8;}
-.BtnAdd{width:50px; height:20px;}
-#resultfilter1 button {width: 100px;}
-
-.SVGFilt svg{
-  width: 40px;
-  height: 40px;
-  fill: #00000065;
-}
 
 
 #DivMissoes{
@@ -544,66 +567,16 @@ form div[id*=Inpt]{
   background: #00000080;
   z-index: 999}
 
-  #ModalNota * {color: black;}
-  #ModalNota button {color: white;}
-  #ModalNota h1{font-size:15px;}
-  #ModalNota{padding: 20px; background: white;}
-  #ModalNota > div{padding: 5px 0px;}
-  #Nota-Clnt > div > div >div{margin: 0px 5px;}
 
-.media30{width: 70%;}
-.media80{width: 70%;}
-
-.LogoNota > img{width: 50px; height: 50px;}
-
-.Start2 p{
-  margin: 1px 5px;
-}
-
-#DescrNOTTApdd div{
-  font-size: 15px;
-}
-
-#LugarFotoNotta{
-  margin-right: 3px;
-}
-
-.BTNota{height: 20px; padding: 0px 10px; margin: 0px 1.5px; background: #5F009E}
-.magem{margin:5px 0px}
-
-button > img{margin: 0px 5px}
-input > img{margin: 0px 5px}
-select > img{margin: 0px 5px}
-
-#TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
-#TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}
-#TabelaNotinha td{background: #ffffff;color: black; padding: 3px;font-size: 13px;}
-#TabelaNotinha tfoot > tr > th {background: #575757}
-#TabelaNotinha td:nth-child(5){font-size: 13px;color:#4f4f4f;}
-#TabelaNotinha td:nth-child(6){font-weight: bold}
-
-#divpaginfo, #divdesigner{flex-direction:column}
-#Title-Info{font-size:24px}
 
 
 
 .ckecs{margin: 8px 0px}
 .padins{padding-bottom: 15px; margin-bottom: 15px;}
 
-.Ct.ckecs label{
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 16px;
-  color: white;
-}
 
-input[type="checkbox"],input[type="radio"]{
-  width: 16px;
-  height: 16px;
-  margin-right: 5px;
-  border-radius: 3px;
-  vertical-align: middle;
-}
+
+
 
 .horas{
   margin: 10px;

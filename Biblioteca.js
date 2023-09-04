@@ -2,14 +2,16 @@
   function QrySlt(Stg,e=document){return e.querySelector(Stg)}
   function QrySltAll(Stg,e=document){return e.querySelectorAll(Stg)}
   function ArySltAll(Stg,e=document){return Array.from(e.querySelectorAll(Stg))}  
+  function Stg(e){return typeof e==='string'? QrySlt(e) : e}
   function IndiceDe(e){return Array.from(e.parentNode.children).indexOf(e)}
   function CreateTag(e){return document.createElement(e)}
   function PushArry(Push,Stg){QrySltAll(Stg).forEach(e=>{Push.push(e.innerText)})}
-  function insetBefor(e,Stg){(typeof e==='string'?QrySlt(e):e).insertAdjacentHTML('beforeend',Stg)}
+  function insetBefor(e,Stgs){Stg(e).insertAdjacentHTML('beforeend',Stgs)}
   function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
   function EvtChng(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('change',Calback)})}
   function EvtInpt(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('input',Calback)})}
   function EvtClik(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('click',Calback)})}
+  function Inn(e){return Stg(e).innerHTML}
   function InnQry(e,Stg){QrySlt(e).innerHTML = Stg}
 
   function Pai(e){return e.parentNode}
@@ -21,10 +23,6 @@
   function Parent4(e){return e.parentNode.parentNode.parentNode.parentNode}
   function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
 
-  
-  
-
-
 // Funções Templates
   function InnerSVG(Stg,e){QrySltAll(Stg).forEach(E=>E.innerHTML = e)}
   function TableHTMLall(e,on=''){return e.map(R=>`<tr>${R.map(C=>`<td ${on}>${C}</td>`).join('')}</tr>`).join('')}
@@ -33,6 +31,7 @@
   function ArryStg(e){return e.map(E=>`['${E.join("','")}']`).join('\n')}
   function Num(e){return typeof e === 'number' ? e : parseFloat(e.replace(',', '.'))}
   function Pct(e){return `${(e*100).toFixed(2)}%`}
+  function Virg(e){return e.replace('.',',')}
   function Cm(e){return parseFloat(e).toFixed(2).replace('.',',')}
   function RS_HTML(e){return `<div class="Ct"><div>R$</div><div>${Cm(e)}</div></div>`}
   function RS(e){return `R$ ${Cm(e)}`}
@@ -41,6 +40,8 @@
   function Zero(Num){return String(Num).padStart(3,'0')}
   function InptTxt(e){return `<input type="text" placeholder="Nome do Cliente" onkeyup="TestSenha(event,'${e}',this)">`}
   function InptPss(e){return `<input type="password" placeholder="Insira a Senha" onkeyup="TestSenha(event,'${e}',this)">`}
+  function Div(e,Class=''){return `<div class="${Class}">${e}</div>`}
+  function CleaAsps(e){return e.replace(/\*.*\*/,'').replace("*",'')}
 
 // Funções Validações
   function KeyEnter(e){return (e.code === 'Enter' || e.keyCode === 13)}
@@ -52,7 +53,8 @@
   function GerarID(){`ID-${Math.floor(Math.random()*900)+100}`}
   function GerarIT(){`IT-${Math.floor(Math.random()*900)+100}`}
   let NewDate = new Date().toISOString().split('T')[0]
-  const NewHora = new Date(Date.now() + -3 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
+  function RG(){return ConvertData(new Date(Date.now() + -3 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, ''))}
+  const NewHora =  new Date(Date.now() + -3 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')
 
 // Função de Ações e Simulações
   function Foco(e){QrySlt(e).focus()}
@@ -291,12 +293,19 @@ function ConvertData(dataString) {
   const data = new Date(dataString);
   const dia = data.getDate().toString().padStart(2, '0');
   const mes = (data.getMonth() + 1).toString().padStart(2, '0');
-  const ano = data.getFullYear().toString().slice(-2);
+  const ano = data.getFullYear().toString();
   const hora = data.getHours().toString().padStart(2, '0');
   const minutos = data.getMinutes().toString().padStart(2, '0');
   const segundos = data.getSeconds().toString().padStart(2, '0');
-
   return `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
+}
+
+function cvData(dataString) {
+  const data = new Date(dataString);
+  const dia = data.getDate().toString().padStart(2, '0');
+  const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+  const ano = data.getFullYear().toString();
+  return `${dia}/${mes}/${ano}`;
 }
 
 function LowCase(Arry){return Arry.filter(e=>e===e.toLowerCase())}

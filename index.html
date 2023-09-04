@@ -71,7 +71,7 @@
   
             <div id="DivResult" class="Ct Cl Hddn">
               <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
-              <div id="resultfilter1"></div>
+              <div id="resultfilter1" class="Rd"></div>
               <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
               <div id="DivBtnDesc" class="none">
                 <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
@@ -109,7 +109,7 @@
               </div>
   
               <div id="GrupoCores" class="Ct w100 none">
-                <div id="InputdeCor" class="Ct Rd ppt" onclick="CarregaCoresStock()">Escolha uma Cor</div>
+                <div id="InputdeCor" class="Ct Rd ppt" onclick="LoadCores()">Escolha uma Cor</div>
                 <ul id="ListaCor" class="none"></ul>
               </div>
   
@@ -187,6 +187,7 @@
                       <th>Larg</th>
                       <th>Alt</th>
                       <th>Total</th>
+                      <th class="none">Etc</th>
                       <th></th>
                       <th></th>
                     </tr>
@@ -200,6 +201,7 @@
                       <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
                       <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
                       <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
+                      <td class="none"><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
                       <td>
                         <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Editar</div>
                         <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Salvar</div>
@@ -220,34 +222,23 @@
             </div>
   
             <div id="SavSav" class="Ct none">
-              <button onclick="SaveCRUDI('#CRUD')">Salvar</button>
+              <button onclick="SaveCRUDI()">Salvar</button>
               <!-- <button onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button> -->
-              <button class="BTNota Ct RD magem" onclick="AbreNota('','','')">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
+              <button class="BTNota Ct RD magem" onclick="AbreNota()">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
+              <div id="ContentNotaCRUD"></div>
               
             </div>
   
           </div>
-  
-          <table id="TabelaPlan"></table>
+          
+          <!-- <button onclick="Acumulador()">Acumulador</button> -->
+
       
           <form id="SavePddPlan" class="none">
-            <input name="Login">
-            <input name="Stts">
-            <input name="ID">
-            <input name="CT">
-            <input name="Data">
-            <input name="Item">
-            <input name="Medidas">
-            <input name="Total">
-            <input name="Custo">
-            <input name="Descr">
-            <input name="Form">
-            <input name="Barr">
-            <button>Trigger</button>
-          </form>
-          <form id="SaveClntPlan" class="none">
-            <input name="Cliente">
-            <input name="Contato">
+            <input name="RG">
+            <input name="ArryClnt">
+            <input name="ObjInfo">
+            <input name="ArryItens">
             <button>Trigger</button>
           </form>
 
@@ -289,12 +280,12 @@
           <span id="Span-Login" class="erro"></span>
           <div class="Bt">
             <button class="Ct w40" onclick="TestSenha('','S','#Inpt-Senha')">Logar</button>
-            <button class="Ct w40" onclick="None('#Fundo-Modal')">Sair</button>
+            <button class="Ct w40" onclick="Deslogar();None('#Fundo-Modal')">Sair</button>
           </div>
           
       </div>
 
-      <div id="ModalCadastro" class="Ct Rltv Ft Rd">
+      <div id="ModalCadastro" class="Ct Rltv Rd">
         <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div>Cadastro do Clietne</div>
           <div class="Bandeija Cl" name="BndjCadastro"></div>
@@ -409,14 +400,89 @@
           <div id="innerdesc">Desconto: </div>
           <div class="Bt">
             <button id="btnINFO3" class="Ct" onclick="Show('#Modal-Info1','#Modal-Info2')">Voltar</button>
-            <button id="btnINFO2" class="Ct none">Entrada</button>
+            <button id="btnINFO2" class="Ct none" onclick="None('#Fundo-Modal');SaveInfo('','','Info','','')">Entrada</button>
           </div>
+        </div>
+      </div>
+
+      <div id="ModalNota" class="Cl Rltv Rd media30">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+            <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
+              <div class="Ct">
+                <div id="LugarFotoNotta"><img src="Img/Logo2.png"></div>
+                <div>
+                  <h2>INFINITY GRAFF</h2>
+                  <h2>IMPRESSÃO DIGITAL</h2>
+                </div>
+              </div>
+
+                <div class="Start2">
+                  <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A</p></div>
+                  <div class="FtBd Ct">Cidade: <p>SÃO LOURENÇO DA MATA</p></div>
+                  <div class="FtBd Ct">Email: <p>infinitygraff@outlook.com</p></div>
+                  <div class="FtBd Ct">Contato: <p class="B">(81) 98726.5401</p></div>
+                </div>
+            </div>
+
+            <div class="Ct Cl Hr">
+              <h2>CUPOM FISCAL</h2>
+              <div id="DataNota"></div>
+            </div>
+
+            <div class="Start2 Hr">
+              <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>${id}</p></div>
+              <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
+            </div>
+
+            <div id="Nota-Clnt" class="Rw w100 Ev">
+              <div>
+                <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
+                <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
+              </div>
+              <div>
+                <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
+                <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
+              </div>
+              <div>
+                <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
+              </div>
+            </div>
+
+            <div id="ConteudoNota" class="w100">
+              <table id="TabelaNotinha" class="w100"><thead><tr><th style="color: white">Serviços</th></tr></thead></table>
+              <div id="DescrNota" class="Ct Cl"></div>
+              <h2 id="TotalNotta" class="Hr Ct"></h2>
+            </div>
+
+          <div class="w100 Ct">
+            <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
+            <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
+            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
+          </div>
+      </div>
+
+      <div id="ConfirmPlan" class="Ct Rltv Rd">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <img src="Img/Plan.png">
+        <div>
+          <div>Confira tudinho</div><br>
+          <div>pra Salvar na Planilha!</div>
+          <button onclick="Acumulador();None('#Fundo-Modal')">Tudo Certo!</button>
+          <button>Salvar no Cache</button>
+          <button onclick="None('#Fundo-Modal')">Cancelar</button>
         </div>
       </div>
 
       <div id="InnerVazio" class="Ct"></div>
 
     </div>
+
+    <div class="Dark"><div id="Alert" class="Ct Rd none">
+     <!--<img class="IMGPlan" src="Img/Plan.png">-->
+      <img class="IMGOkay" src="Img/Yes.png">
+      <div>Salvo na Planilha com Sucesso!</div>
+    </div></div>
 
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
