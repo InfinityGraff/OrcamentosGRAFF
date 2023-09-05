@@ -21,7 +21,7 @@
     "#FF0000","#FF0000","#FF4000","#FF8000","#FFBF00","#FFFF00","#BFFF00","#80FF00","#40FF00","#00FF00"
   ]
 
-  const Topic = [{'+TampaTanque':8},{'@Status':3}]
+  const Topic = [{'+TampaTanque':8},{'@Status':3},{'&Gravata':4}]
 
   const StockjVinil = ["#ff0000","#6b6b6b","#ffa6ed","#000000","#ffffff"]
 

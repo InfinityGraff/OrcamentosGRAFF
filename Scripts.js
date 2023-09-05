@@ -36,16 +36,17 @@ let ArryInfo = []
 let CorItem = ''
 let ItemsPdd = []
 let ArryClnt = ['','','','','','','','','','','','','','']
+let ClntOK = ()=>ArryClnt[0]?ArryClnt[0]:Cadstr[0]
 
 // Save Informações ___________________________________________________________________________
 function SaveCadastro(){Cadstr = ArySltAll('#ModalCadastro input').map(e=>e.value)}
 function SaveInfo(){ConfirmPlan()}
-function SaveCRUDI(){SaveCadastro();const It=ResumeCRUD();ItemsPdd=[IDPdd,ArryClnt[0]?ArryClnt[0]:Cadstr[0],It[0],It[1],It[3],It[4]];ConfirmPlan()}
+function SaveCRUDI(){SaveCadastro();const It=ResumeCRUD();ItemsPdd=[IDPdd,ClntOK(),It[0],It[1],It[3],It[4]];ConfirmPlan()}
 
-async function SaveDireto(Itens,Mdds,Total,Etc){SaveCadastro()
+async function SaveDireto(Itens,Mdds,Total,Etc,Tarefs){SaveCadastro()
   if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))}
   if(I_Clnt.value===""){MiniInput('C');await PrmssInnr(QrySlt('#Inner-Clnt'))}
-  ItemsPdd = [IDPdd,ArryClnt[0]?ArryClnt[0]:Cadstr[0],Itens,Mdds,Total,Etc]
+  ItemsPdd = [IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs]
   ConfirmPlan()
 }
 
@@ -53,7 +54,7 @@ function Acumulador(){SaveCadastro(); QrySlt('#ContentNotaCRUD').innerHTML ? Sav
   QrySlt('input[name="RG"]').value = [LgTp.Cod,RG()].join(',')
   QrySlt('input[name="ArryClnt"]').value = ArryClnt[0] ? ArryClnt[0] : Cadstr.join(',')
   QrySlt('input[name="ObjInfo"]').value = ArryInfo
-  QrySlt('input[name="ArryItens"]').value = ItemsPdd.join('+')
+  QrySlt('input[name="ArryItens"]').value = ItemsPdd.map(e=>e===''||e===' '?"-":e).join('+')
   QrySlt("#SavePddPlan button").click()
 }
 
@@ -173,12 +174,12 @@ function AbreNota(Mdd=ResumeCRUD()[2],Valor,Desc){FocoFilho(FMdal,'#ModalNota')
   InnQry('#DescrNota',CleaAsps(Mdd.split('/').map(e=>Div(Virg(e))).join("")))
   InnQry('#TotalNotta',`Total: ${RS(Desc ? Desc : Inn('#TotalCrud'))}`)
 }
-async function AbreInfo(Itens,Mdds,Total,Etc){
+async function AbreInfo(Itens,Mdds,Total,Etc,Tarefs){
   if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))};FocoFilho(FMdal,'#ModalInfo')
   EvtInpt('#Modal-Info1',()=>{Ouvinte('#Modal-Info1','#btnINFO1')})
   EvtInpt('#Modal-Info2',()=>{Ouvinte('#Modal-Info2','#btnINFO2')})
   EvtInpt('#ModalInfo',()=>{ColetaDados(QrySlt('#ModalInfo'))})
-  EvtClik('#btnINFO2',()=>{SaveCadastro();None('#Fundo-Modal');ItemsPdd=[IDPdd,ArryClnt[0]?ArryClnt[0]:Cadstr[0],Itens,Mdds,Total,Etc];ConfirmPlan()})
+  EvtClik('#btnINFO2',()=>{SaveCadastro();None('#Fundo-Modal');ItemsPdd=[IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs];ConfirmPlan()})
 }
 function ReadModal(){
   ArySltAll('#Titulo-Nota,#Title-Info').forEach(e=>{e.innerHTML=`<h1>${IDPdd}: ${ArryClnt[2]}</h1>`})
@@ -426,7 +427,7 @@ const Arry = tabela.filter(T=>{
          (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
          (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
 
-const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm],indx)=>{
+const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm,Tarefs],indx)=>{
   const Orc = Orcamento(Arry[indx])
   const SubTotal = Cm(Orc[1])
   const VlrM2 = Cm(Vlr)
@@ -445,6 +446,7 @@ const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm],indx)=
   const Mdds1 = Orc[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
   const Mdds2 =Mdds1.join('/')
   const Ittens = Orc[0].map(e=>Itm).join(',')
+  const Taref = Tarefs.toLowerCase().replace(/\s+/g, '')
   const ItemHTML = `<div class="Ct Cl w100 Rdd">
                       <div class="RstServ">${Serv} ${Tipo}</div>
                       <div id="FotoItem"><img src="${IMG}"></div>
@@ -493,8 +495,8 @@ const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm],indx)=
           </div></div>
           <div class="Ct Cl">
             <button onclick="addyCRUD('${ItemCRUD.join('/')}')">Adicionar</button>
-            <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}')">Salvar</button>
-            <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}')">Entrada</button>
+            <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Taref}')">Salvar</button>
+            <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Taref}')">Entrada</button>
           </div>
       </div>
       <div class="Ct Cl">${Comment}</div><div>${Ferro}</div><div>${Alumn}</div>
@@ -627,22 +629,42 @@ function LoadRoloTop(){
 
     const Template = `
     <div class="Ct"><div>${Top}</div><div class="RolodeImg Ct w100 Rltv Rd">
-    <span class="Abslt flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
-    <span class="Abslt Flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
-    <div class="RoloGrupImg Ct Rw w100">
+      <span class="Abslt flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
+      <span class="Abslt Flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
+    <div class="RoloGrupImg Rw w100">
     ${SplitNum(Qnt).map(e=> `<div><div class="Cl ppt">
-        <img src="Portifolio/${Top.slice(1)}_${Zero(e)}.png" class="${Top.match(/^@/)?'Stry':'Feed'} Rd" 
+        <div class="Rltv Rd ppt">
+          <img src="Portifolio/${Top.slice(1)}_${Zero(e)}.png" 
+          class="${Top.match(/^@/)?'Stry Rd':Top.match(/^&/)?"Wind FotoGravata":'Feed Rd'}" 
           onclick="AbreItem(this.parentNode.parentNode)">
+        </div>
         <a>Adesivo</a>
         <div>R$ 00,00</div>
       </div></div>`).join('')}</div></div></div>`
     insetBefor('#RoloTopHome',Template)
   })
+  gata()
 }
 function LoadCores(){Show('#ListaCor');InnQry('#ListaCor','')
   StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}')"></li>`)})
 }
 function LoadListServ(){for(const Grup in grupos){insetBefor(I_Serv,`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)}}
+
+function gata(){
+  const Gatte = QrySltAll('.FotoGravata')
+  Gatte.forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})
+}
+
+function exibirImagem(){
+  const Resute = QrySlt('.FotoGravata')
+  const Inpt = QrySlt('#InptIMG')
+  if(Inpt.files&&Inpt.files[0]){
+    const reader = new FileReader()
+    reader.onload = (e) => Resute.src=e.target.result
+    reader.readAsDataURL(Inpt.files[0])
+}}
+
+QrySlt('#InptIMG').addEventListener('change',exibirImagem)
 
 
 // Doidera ___________________________________________________________________________

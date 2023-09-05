@@ -7,6 +7,7 @@
   function CreateTag(e){return document.createElement(e)}
   function PushArry(Push,Stg){QrySltAll(Stg).forEach(e=>{Push.push(e.innerText)})}
   function insetBefor(e,Stgs){Stg(e).insertAdjacentHTML('beforeend',Stgs)}
+  function insetAntes(e,Stgs){Stg(e).insertAdjacentHTML('afterbegin',Stgs)}
   function insetBefor2(e,Stg){e.insertAdjacentHTML('beforeend',Stg)}
   function EvtChng(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('change',Calback)})}
   function EvtInpt(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('input',Calback)})}

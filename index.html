@@ -48,9 +48,10 @@
         <h2>Home</h2>
           <button onclick="Copy('Pix',this)">Copiar Pix</button>
           <button onclick="fecharModalforne()">Trigger</button>
-          
+
         <div id="RoloTopHome"></div>
 
+        <input type="file" id="InptIMG" accept="image/*">
       </div>
 
       <div id="Aba-Orcamento" class="">
@@ -408,7 +409,7 @@
       <div id="ModalNota" class="Cl Rltv Rd media30">
         <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
         <div id="Titulo-Nota" class="w100 Bt Hr"></div>
-            <div id="Nota-Empresa" class="Ct Rw Hr Bt w100">
+            <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
               <div class="Ct">
                 <div id="LugarFotoNotta"><img src="Img/Logo2.png"></div>
                 <div>
@@ -435,7 +436,7 @@
               <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
             </div>
 
-            <div id="Nota-Clnt" class="Rw w100 Ev">
+            <div id="Nota-Clnt" class="Row w100 Ev">
               <div>
                 <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
                 <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
