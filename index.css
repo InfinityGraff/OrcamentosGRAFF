@@ -81,9 +81,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .icon2 svg{width: 50px;height: 50px}
 .Hddn{overflow: hidden;}
 .Opacy{opacity: 0}
-.Feed{width: 170px;height: 170px;}
-.Stry{width: 170px;height: 300px;}
-.Wind{width:100px;height: 240px;}
+
 .erro{color:red;}
 .error{border: 2px solid red;}
 .error::placeholder {color: red}
@@ -787,11 +785,27 @@ z-index: 999;
 }
 .ProgressPag {height: 100%}
 
-
-
-
+.Feed{width: 170px;height: 170px;}
+.Stry{width: 170px;height: 300px;}
+.Wind{width:100px;height: 240px;}
+.Flag{width:170px;height: 357px;}
 
 .FotoGravata{transform:scale(0.75)}
 .Molde{z-index:99;width:100px;height:240px}
+.MoldeStry{z-index:99;width:170px;height:300px}
+.MoldeFlag{z-index:99;width:170px;height:357px}
+
+.ScalaFlag{transform: translateY(-35px)  scale(0.70) scaleX(0.80)}
+
+.perspectiva{
+  perspective: 500px;
+  transform: translateX(6px) translateY(-25px) scale(0.66) perspective(500px) rotateY(18deg) rotateZ(-5deg) rotateX(10deg);;
+  transform-style: preserve-3d;
+}
 
 #Modal-Item .Wind,#Modal-Item .Molde{width:200px;height: 500px}
+#Modal-Item .Stry,#Modal-Item .MoldeStry{width:280px;height: 500px}
+#Modal-Item .perspectiva{transform: translateX(10px) translateY(-55px) scale(0.66) perspective(500px) rotateY(18deg) rotateZ(-5deg) rotateX(10deg);;}
+#Modal-Item .ScalaFlag{transform: translateY(-55px) translateX(5px)  scale(0.7) scaleX(0.70)}
+
+#Modal-Item .Flag,#Modal-Item .MoldeFlag{width:280px;height: 588px}

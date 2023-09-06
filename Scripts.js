@@ -635,7 +635,13 @@ function LoadRoloTop(){
     ${SplitNum(Qnt).map(e=> `<div><div class="Cl ppt">
         <div class="Rltv Rd ppt">
           <img src="Portifolio/${Top.slice(1)}_${Zero(e)}.png" 
-          class="${Top.match(/^@/)?'Stry Rd':Top.match(/^&/)?"Wind FotoGravata":'Feed Rd'}" 
+          class="${
+            Top.match(/^@/)?'Stry perspectiva':
+            Top.match(/^&/)?"Wind FotoGravata":
+            Top.match(/^9/)?"Flag ScalaFlag":
+            
+            'Feed Rd'
+          }" 
           onclick="AbreItem(this.parentNode.parentNode)">
         </div>
         <a>Adesivo</a>
@@ -643,17 +649,15 @@ function LoadRoloTop(){
       </div></div>`).join('')}</div></div></div>`
     insetBefor('#RoloTopHome',Template)
   })
-  gata()
+  gata();gata2();gata3()
 }
 function LoadCores(){Show('#ListaCor');InnQry('#ListaCor','')
   StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}')"></li>`)})
 }
 function LoadListServ(){for(const Grup in grupos){insetBefor(I_Serv,`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)}}
-
-function gata(){
-  const Gatte = QrySltAll('.FotoGravata')
-  Gatte.forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})
-}
+function gata(){QrySltAll('.FotoGravata').forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata2(){QrySltAll('.perspectiva').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Insta_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata3(){QrySltAll('.ScalaFlag').forEach((e,idx)=>{insetAntes(e.parentNode,`<img class="MoldeFlag Abslt Rd" src="Moldes/Molde_Wind_00${(idx+1)>4?4:idx+1}.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 
 function exibirImagem(){
   const Resute = QrySlt('.FotoGravata')
@@ -664,7 +668,18 @@ function exibirImagem(){
     reader.readAsDataURL(Inpt.files[0])
 }}
 
+function exibirStry(){
+  const Resute = QrySlt('.perspectiva')
+  const Inpt = QrySlt('#InptStry')
+  if(Inpt.files&&Inpt.files[0]){
+    const reader = new FileReader()
+    reader.onload = (e) => Resute.src=e.target.result
+    reader.readAsDataURL(Inpt.files[0])
+}}
+
 QrySlt('#InptIMG').addEventListener('change',exibirImagem)
+QrySlt('#InptStry').addEventListener('change',exibirStry)
+
 
 
 // Doidera ___________________________________________________________________________
