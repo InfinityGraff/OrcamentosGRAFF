@@ -46,13 +46,21 @@
 
       <div id="Aba-Home" class="">
         <h2>Home</h2>
-          <button onclick="Copy('Pix',this)">Copiar Pix</button>
-          <button onclick="fecharModalforne()">Trigger</button>
+          
+        <div><img class="w100 Rd" src="Portifolio/Propaganda1.png" onclick="AbrirModalPropaganda()"></div>
 
         <div id="RoloTopHome"></div>
 
         <input type="file" id="InptStry" accept="image/*">
         <input type="file" id="InptIMG" accept="image/*">
+
+        <div id="DivFigs" class="Ct Rd W100"></div>
+        <div class="Ct w100">
+          <button onclick="FilterFigs()">Filtrar</button>
+          <button onclick="LimparFigs()">Limpar</button>
+          <button id="BTNSVG1" class="Ct none" onclick="RecuperaFigs()">Recuperar</button>
+          <button id="BTNSVG2" class="Ct none" onclick="BaixarFigs()">Downlaod</button>
+        </div>
       </div>
 
       <div id="Aba-Orcamento" class="">
@@ -236,13 +244,7 @@
           <!-- <button onclick="Acumulador()">Acumulador</button> -->
 
       
-          <form id="SavePddPlan" class="none">
-            <input name="RG">
-            <input name="ArryClnt">
-            <input name="ObjInfo">
-            <input name="ArryItens">
-            <button>Trigger</button>
-          </form>
+
 
           <div id="RodapeOrc" class="Bt">
             <div class="Cl Start2">
@@ -262,10 +264,36 @@
 
       <div id="Aba-Agenda" class="">
         <h2>Agenda</h2>
+
+        <button onclick="ReloadPlanOS()">Carregar OS</button>
+
+        <div id="RelatorioOS">
+          <h3 id="OSPG" onclick="ClasTog2('#ContentOSPag','none');ClasTog2('#OKPag','none')">Pra Pagar</h3>
+          <h3 id="OSPT" onclick="ClasTog2('#ContentOSPrint','none');ClasTog2('#OKPrint','none')">Para Imprimir</h3>
+          <h3 id="OSFT" onclick="ClasTog2('#ContentOSUber','none');ClasTog2('#OKUber','none')">Para Entrega</h3>
+
+          <div id="ContentOSPag" class="Ct none"></div>
+          <div id="ContentOSPrint" class="Ct none"></div>
+          <div id="ContentOSUber" class="Ct none"><input id="QualUber" class="w100" type="text" placeholder="qual foi o Uber?"></div>
+
+          <button id="OKPag" class="none" onclick="ConfirmOS('#ContentOSPag > div')">Confirmar Pagamento</button>
+          <button id="OKPrint" class="none" onclick="ConfirmOS('#ContentOSPrint > div')">Confirmar Impressão</button>
+          <button id="OKUber" class="none" onclick="ConfirmOS('#ContentOSUber > div')">Confirmar Uber</button>
+        </div>
+
+        
       </div>
 
       <div id="Aba-Clientes" class="">
         <h2>Clientes</h2>
+        <button onclick="Copy('Pix',this)">Copiar Pix</button>
+        <div id="divTabelaIMGProduto" class="Ct">
+          <div class="Rltv">
+            <div class="ConteudoTabela"></div>
+            <div id="dadosTabelaimg" class="ConteudoTabela Abslt Ct">Texto</div>
+            <img src="img/FundoTabela.png" class="Abslt">
+          </div>
+        </div>
       </div>
     
     </div></div>
@@ -470,6 +498,7 @@
         <div>
           <div>Confira tudinho</div><br>
           <div>pra Salvar na Planilha!</div>
+          <button onclick="Acumulador2();None('#Fundo-Modal')">SalvarOS</button>
           <button onclick="Acumulador();None('#Fundo-Modal')">Tudo Certo!</button>
           <button>Salvar no Cache</button>
           <button onclick="None('#Fundo-Modal')">Cancelar</button>
@@ -485,6 +514,28 @@
       <img class="IMGOkay" src="Img/Yes.png">
       <div>Salvo na Planilha com Sucesso!</div>
     </div></div>
+
+    <div id="PostMensseger">
+      <form id="SavePddPlan" class="none">
+        <input name="RG">
+        <input name="ArryClnt">
+        <input name="ObjInfo">
+        <input name="ArryItens">
+        <button>Trigger</button>
+      </form>
+
+      <form id="SaveOSPlan" class="none">
+        <input name="RG">
+        <input name="ID">
+        <input name="Pag">
+        <input name="Print">
+        <input name="Uber">
+        <input name="QualUbb">
+        <button>Trigger</button>
+      </form>
+
+
+    </div>
 
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>

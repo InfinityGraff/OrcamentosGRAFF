@@ -9,9 +9,7 @@ const //Fundos
   GrupClntSv = QrySlt('#GrupoClntSave'),
   GrupClntInfSv = QrySlt('#GrupoClntSaveInfo'),
   RestaNome = QrySlt('#RestaNome'),
-    //DivCnttForm = QrySlt('#Div-Inpt-Cntt'),
   I_Clnt = QrySlt('#Div-Inpt-Clnt input'),
-    //InnClnt = QrySlt('#Inner-Clnt'),
 // Form
   I_Serv = QrySlt("#Div-Inpt-Serv select"),
   I_Tipo = QrySlt("#Div-Inpt-Tipo select"),
@@ -19,7 +17,6 @@ const //Fundos
   I_Gram = QrySlt('#Div-Inpt-Gram select'),
   I_QFix = QrySlt('#Div-Inpt-QFix select'),
   I_Etc = QrySlt("#Div-Inpt-Etc input"),
-    //I_Lcal = QrySlt("#Div-Inpt-Lcal input"),
   I_Qnt = QrySlt('#Div-Inpt-Qnt input')
 
   let ArryMdds=['#Div-Inpt-Larg input','#Div-Inpt-Alt input','#Div-Inpt-Qnt input']
@@ -27,621 +24,693 @@ const //Fundos
 //_________________________________________________________________________________________________________
 
 // Declarações dos Arrays
-let IDs = []
-let IDPdd = 'ID-001'
-let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
-let Cadstr = ['']
-let ObjInfo = {}
-let ArryInfo = []
-let CorItem = ''
-let ItemsPdd = []
-let ArryClnt = ['','','','','','','','','','','','','','']
-let ClntOK = ()=>ArryClnt[0]?ArryClnt[0]:Cadstr[0]
+  let IDs = []
+  let IDPdd = 'ID-001'
+  let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
+  let Cadstr = ['']
+  let ObjInfo = {}
+  let ArryInfo = []
+  let CorItem = ''
+  let ItemsPdd = []
+  let ArryClnt = ['','','','','','','','','','','','','','']
+  let ClntOK = ()=>ArryClnt[0]?ArryClnt[0]:Cadstr[0]
+  let ListOS = []
+
+// OnLoad's_________________________________________________________________________________________________________
+  document.addEventListener('DOMContentLoaded',()=>{
+    AddInnSVG()
+    LoginStorage()
+    LargPaiAbas()
+    BloqueaData('#Prazo, #dataPagInfo')
+    ReloadTab()
+    LoadListServ()
+    DefinePag(1)
+    MediaQuere(W400)
+    W400.addListener(MediaQuere)
+    LoadRoloTop() // Template String
+    
+    
+    QrySltAll('input[name="Cntt"]').forEach(I=>{I.addEventListener('input',e=>{MaskCntt(e)})})
+    QrySltAll('#Grupo-Medidas input').forEach(e=>{e.setAttribute('inputmode','numeric')}) // campo Numerico
+    document.addEventListener('click',e=>{ClickFora(e)}) // remover Coisas com Click Fora
+    //window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll',()=>{ // Mostrar ou não Btn RoloTop
+      if((window.scrollY || window.pageYOffset) >= 250){Show('#RoloTop')}else{setTimeout(()=>{None('#RoloTop')},100)}
+    })
+    document.addEventListener('input',()=>{handle();InptClnts();FilTable();ReadModal()})
+    QrySltAll('select').forEach(e=>{e.addEventListener('change',e=>{ShowTipo();FilTable();ReadModal()})})
+  })
+  function BloqueaData(Stg){QrySltAll(Stg).forEach(i=>{i.min = new Date().toISOString().split('T')[0]})}
+  function LargPaiAbas(){QrySlt("#Pages").style.width = `${QrySlt('header').offsetWidth*5}px`}
+  function DefinePag(aba){QrySlt('#Pages').style.transform = `translateX(${(-aba*(QrySlt('header').offsetWidth))}px)`}
+
+  function ClickFora(e){
+    const E = e.target
+      if(!ArySltAll('.Bandeija, #InputdeCor, #ListaCor li').includes(E)){
+        None('.Bandeija') // Todas Bandeijas
+        QrySltAll('input[type="text"]').forEach(inpt=>Rad0(inpt))
+        None('#ListaCor')
+      }
+  }
+  function AddInnSVG(){
+    InnerSVG('.Maisss > div:first-child',IconEscList)
+    InnerSVG('.Maisss > div:last-child',IconMais)
+    InnerSVG('#RoloTop', IconRoloTop)
+    InnerSVG('#ClearCRUD', IconClean)
+    InnerSVG('#ClearForm', IconClean)
+    InnerSVG('#imgnotta', IconNota)
+    InnerSVG('#imgnotta2', IconNota)
+    InnerSVG('.Close', IconEscList)
+    InnerSVG('.Seta', IconSetair)
+    InnerSVG('.Prev',IconPrevProx)
+    InnerSVG('.Prox',IconPrevProx)
+    InnerSVG('.LgTp',IconLogin)
+    InnerSVG('.LgTp2',IconLogin)
+    InnerSVG('#OSPG',IconCompra)
+    InnerSVG('#OSPT',IconPrint)
+    InnerSVG('#OSFT',IconFret)
+
+    
+  }
+  function MediaQuere(max){
+    if(max.matches){
+      QrySlt('header').classList.remove("Bt")
+        QrySlt('#GrupLogin1').classList.remove('none')
+        QrySlt('#GrupLogin2').classList.add('none')
+      //ModAlnotta.classList.add("media80")
+      //None('#trocatroca')
+      QrySlt('#DivResult').classList.remove("Cl")
+      TrocaPose('#DivResult',0)
+    }else{
+      QrySlt('header').classList.add("Bt")
+        QrySlt('#GrupLogin1').classList.add('none')
+        QrySlt('#GrupLogin2').classList.remove('none')
+      //Show('#trocatroca')
+      //ModAlnotta.classList.add("media80")
+      QrySlt('#DivResult').classList.add("Cl")
+      TrocaPose('#FormOrc',0)
+    }
+  }
+  function Scroll(Stg) {
+    if(W400.matches){
+      if(Stg === 'Fim'){
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth'})
+      }else{
+        const posits = window.pageYOffset + QrySlt(Stg).getBoundingClientRect().bottom
+        window.scrollTo({top:posits,behavior:'smooth'})
+      }
+    }
+  }
+
+// Funções pra Abrir Modais ______________________________________________________________________________________________________________
+  const FMdal = QrySlt('#Fundo-Modal')
+  function AbreLogin(){FocoFilho(FMdal,'#ModalLogin');InnQry('#Span-Login','');Foco('#Inpt-Senha')}
+  function AbreCdstr(){FocoFilho(FMdal,'#ModalCadastro')}
+  function AbreItem(html){FocoFilho(FMdal,'#Modal-Item');InnQry('#Conteudo-Item',html.innerHTML)}
+  function MiniInput(e){FocoFilho(FMdal,'#InnerVazio');InnQry('#InnerVazio',e==='S'?InptPss(e):InptTxt(e));FocoCh0('#InnerVazio')}
+  function ConfirmPlan(){FocoFilho(FMdal,'#ConfirmPlan')}
+  async function AlertPlanOK(){Show('#Alert');await delay(8000);None('#Alert')}
+
+  function AbrirModalPropaganda(){FocoFilho(FMdal,'#InnerVazio');InnQry('#InnerVazio',`<img id="imgPropgnd" src="Portifolio/Propaganda2.png">`)}
+
+  function AbreNota(Mdd=ResumeCRUD()[2],Valor,Desc){FocoFilho(FMdal,'#ModalNota')
+    InnQry('#DescrNota',CleaAsps(Mdd.split('/').map(e=>Div(Virg(e))).join("")))
+    InnQry('#TotalNotta',`Total: ${RS(Desc ? Desc : Inn('#TotalCrud'))}`)
+  }
+  async function AbreInfo(Itens,Mdds,Total,Etc,Tarefs){
+    if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))};FocoFilho(FMdal,'#ModalInfo')
+    EvtInpt('#Modal-Info1',()=>{Ouvinte('#Modal-Info1','#btnINFO1')})
+    EvtInpt('#Modal-Info2',()=>{Ouvinte('#Modal-Info2','#btnINFO2')})
+    EvtInpt('#ModalInfo',()=>{ColetaDados(QrySlt('#ModalInfo'))})
+    EvtClik('#btnINFO2',()=>{SaveCadastro();None('#Fundo-Modal');ItemsPdd=[IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs];ConfirmPlan()})
+  }
+  function ReadModal(){
+    ArySltAll('#Titulo-Nota,#Title-Info').forEach(e=>{e.innerHTML=`<h1>${IDPdd}: ${ArryClnt[2]}</h1>`})
+    ArySltAll('#DataNota').forEach(e=>{e.innerHTML=RG()})
+  }
+  function TestSenha(e,tipo,input){
+    if(e==='Deslog'){
+      LgTp.Cod = ''
+      LgTp.Nome = ''
+      LgTp.Img = ''
+      InnQry('#Login-Cod','')
+      InnQry('.LgTp2',IconLogin)
+      Show('.LgTp')
+      None('.ImgPerfil')
+      None('.ImgPerfil2')
+      QrySltAll('.ImgPerfil').forEach(e=>{e.src=''})
+    }
+    else if(e==='Storage'){
+      if(User[input] === undefined || User[input] === null){return}
+      else{
+        LgTp.Cod = User[input][0]
+        LgTp.Nome = User[input][1]
+        LgTp.Img = User[input][2]
+        localStorage.removeItem('SenhaCryp')
+        localStorage.setItem('SenhaCryp',input)
+        InnQry('#Login-Cod','Logado')
+        InnQry('.LgTp2',User[input][1])
+        None('.LgTp')
+        Show('.ImgPerfil')
+        Show('.ImgPerfil2')
+        QrySltAll('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
+      }
+    }
+    else{
+      let inpt = e==='' ? QrySlt(input) : input
+      if(KeyEnter(e)||e===''){
+        if(tipo==='C'){InnQry('#Inner-Clnt',inpt.value) ; ArryClnt[0] = inpt.value ;  I_Clnt.value = inpt.value ; None(FMdal)}
+        if(tipo==='S'){
+          const Cryp = CrypPass(inpt.value)
+            if(User[Cryp]){
+              None([FMdal])
+              LgTp.Cod = User[Cryp][0]
+              LgTp.Nome = User[Cryp][1]
+              LgTp.Img = User[Cryp][2]
+              localStorage.removeItem('SenhaCryp')
+              localStorage.setItem('SenhaCryp',Cryp)
+              InnQry('#Login-Cod',"Logado")
+              InnQry('.LgTp2',User[Cryp][1])
+              None('.LgTp')
+              Show('.ImgPerfil')
+              Show('.ImgPerfil2')
+              QrySltAll('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
+            }
+            else{InnQry('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
+          inpt.value='';inpt.focus()}
+      }
+    }
+  }
+  function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage','',Pass)}
+  function Deslogar(){localStorage.removeItem('SenhaCryp');TestSenha('Deslog','','')}
+
+// FORM ________________________________________________
+  function NewOrcamentos(btn){if(!NewOrcamentos.First){NewOrcamentos.First=true}else{clearForm();clearCRUD()};Show(FormOrc,btn.parentNode)}
+  function clearForm(){QrySltAll('input, select',FormOrc).forEach((e)=>e.value='');FilTable();EscMdds('All')}
+
+  function CloseForm(e){   
+      e.addEventListener('click',()=>{
+        e.classList.add('clicked')
+        FormOrc.classList.add("CloseForm")
+
+        setTimeout(()=>{Show(QrySlt('#NewOrcamento').parentNode)},100)
+
+        setTimeout(()=>{
+          e.classList.remove('clicked')
+          FormOrc.classList.remove("CloseForm")
+          None(FormOrc)},500)})
+  }
+  function ClonaMdd(btn){
+    const INDX = isNaN(btn) ? IndiceDe(btn.parentNode) : btn
+    Show('.Maisss > div:first-child')
+    ArySltAll('#Grupo-Medidas > div').forEach(div=>{
+      const inpt = QrySltAll(".Maisss, input",div)
+      const Utm = inpt[inpt.length-1]
+      const NewInpt = Utm.cloneNode(true)
+
+      if(NewInpt.hasAttribute("data-Tab")){NewInpt.value=''}
+
+      div.insertBefore(NewInpt,div.children[INDX+1])
+    })
+    ReloadTab()
+    RstTabIndx("#Div-Inpt-Larg input",1)
+    RstTabIndx("#Div-Inpt-Alt input" ,2)
+    RstTabIndx("#Div-Inpt-Qnt input" ,3) //Escapar no Ultimo
+  }
+  function EscMdds(btn) {
+    if (btn === 'All'){
+      const idx = 2
+      QrySltAll("#Grupo-Medidas > div").forEach(e => {
+        const children = Array.from(e.children)
+        for (let i = idx; i < children.length; i++) {
+          e.removeChild(children[i])
+        }
+      })
+    }else{
+      const idxBtn = IndiceDe(btn.parentNode)
+
+      QrySltAll("#Grupo-Medidas > div").forEach(e => {
+        e.removeChild(Array.from(e.children)[idxBtn])
+      })
+    }
+    ReloadTab()
+  }
+  function ReloadTab(){
+    NoneTrue('.Maisss > div:first-child',QrySlt('#Div-Inpt-Mais').children.length===2)
+    FilTable()
+    QrySltAll('input[data-Tab]').forEach((inpt)=>{
+      inpt.removeEventListener("keyup",keyupHandler)
+      inpt.addEventListener('keyup',keyupHandler)})
+
+    function keyupHandler(e){
+      function NextyTab(inpt,e){
+        inpt.value =  inpt.value.replace('+', '')
+        e.preventDefault()
+        if(e.key==="Tab"||KeyEnter(e)||e.key==="+"){
+          if(Pai(inpt).id === 'Div-Inpt-Qnt' && e.key==="+"){ClonaMdd(IndiceDe(e.target))}
+          let nextInput = QrySlt(`input[data-Tab="${TabIndx(inpt,1)}"]`,Avo(inpt))
+          if(nextInput){nextInput.focus()}}
+      };NextyTab(this,e)
+    }
+  }
+
+// OnInputs__________________________________________________________________________________________
+  function EditaClntSave(Clnt,Cntt){Show([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv]);ArryClnt.fill('');FilTable()}
+  function mudarCor(cor){QrySlt('#InputdeCor').style.backgroundColor=cor;CorItem=cor}
+
+  function handle(){
+    QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
+    QrySltAll('div[data="'+event.target.name+'"]').forEach(i=>{i.innerHTML = event.target.value})
+  }
+  function InptClnts(){
+    const e = event.target
+    if(e.name === 'Cntt') {BandejaFit(e,5)}
+    if(e.name === 'Clnt') {BandejaFit(e,2);QrySlt('#Inner-Clnt').innerHTML = e.value;
+      ShowTrue('#Div-Inpt-Cntt',I_Clnt.value!=='') // Mostra e Oculta InptCntt
+      ShowTrue('.btn_cdstr',ArryClnt[7]==='' && I_Clnt.value!=='') // Mostra e Oculta Btn Cadastro
+    }
+
+    function BandejaFit(inpt,indx){ // preciso só ocultaar os outros
+
+      QrySltAll('.Bandeija').forEach(e=>{
+        ShowTrue(e,e.parentNode===inpt.parentNode.parentNode)
+
+        Rad0(inpt); e.innerHTML = ""
+        let value = inpt.value.toLowerCase()
+        if (!value)return
+
+        Cttlist.map((e,idx)=>[e[indx],idx])
+        .filter(([opt])=>opt.toLowerCase().includes(value))
+        .forEach(([opt,Idex])=>{
+          RadB(inpt)
+          const li = CreateTag('div')
+          li.innerHTML=`<div>${opt}</div> ${indx === 5 ? `<div>${Cttlist[Idex][2]}</div>` : ''}`
+          li.addEventListener('click',()=>{ArryClnt = [...Cttlist[Idex]]
+            Rad0(inpt) ; ShowClntSalvo() ; onOff = 'on' ; FilTable() ; None(e)
+          })
+          e.appendChild(li)
+          })
+          Snap(e,inpt)
+      })
+    }
+  }
+  function ShowClntSalvo(){
+    Show([GrupClntSv,GrupClntInfSv],[GrupClnt,RestaNome])
+    const grupos = [GrupClntSv,GrupClntInfSv]
+    
+    grupos.forEach(e=>{e.innerHTML = `<div>${ArryClnt[2]}</div><div>${ArryClnt[5]}</div>
+        <div class="baby Ct" onclick="EditaClntSave('${ArryClnt[2]}','${ArryClnt[5]}')">Editar</div>`})
+  }
+  function ShowTipo(){
+    let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
+      ShowTrue('#Grupo-Tipos',undd.match(/OFS/),'#Grupo-Medidas')      // Troca de OFS pra M2
+      NoneTrue(['#Div-Inpt-Larg','#Div-Inpt-Alt'],undd.match(/QNT/))   // Remove Larg e Alt se n precisar
+      ShowTrue('#Div-Inpt-Tipo',I_Serv.value!=='')                     // Temove Tipo quando n tem Serv
+      ShowTrue('#GrupoCores',undd.match(/W/))                          // Add Cor Quando nesesário
+      NoneTrue('#Div-Inpt-Cbmt',['','-'].includes(I_Cbmt.options[1].value.trim())) // Remove acabamento se n Tiver
+  }
+  function Ouvinte(formInfo,btnInfo){
+    const [form,btn] = [QrySlt(formInfo),QrySlt(btnInfo)]
+    const date = event.target.getAttribute('data')
+    const Value = event.target.value
+
+    if(date){const val = Value==='NPag' ? ['#Endereco'] : ['#vlrPagInfo','#dataPagInfo']
+      if(Value==='NPag'||Value==='Graff'){None(QrySlt(date)) ; EscRequired(val)}
+      else{Show(QrySlt(date)) ; AddRequired(val)}
+      NoneTrue('#divdesigner',(Value.match(/^_/) || Value===''))
+    }
+    const valid = ArySltAll('input[required]',form).concat(ArySltAll('select[required]',form))
+      .every(e=>e.value) && ArySltAll('input[type="radio"][required]:checked',form).length>0
+    ShowTrue(btn,valid)
+  }
+  function ColetaDados(MdalInfo){
+    const Rad = ArySltAll('input[type="radio"]:checked, select,input[type="checkbox"]:checked',MdalInfo).map(i=>`${i.name}:${i.value}`)
+    const Txt = ArySltAll('input',MdalInfo).filter(i=>(i.type!=='radio'&&i.type!=='checkbox')&&i.Value!=='').map(i=>`${i.id}:${i.value}`)
+    let obj = {};[...Rad,...Txt].forEach(i=>{let [k,v]=i.split(':');obj[k]=v})
+    ObjInfo = obj
+    ArryInfo = [obj.Arte,obj.Desig,obj.Aplic,obj.Frete,obj.Endereco,obj.vlrPagInfo,cvData(obj.dataPagInfo),cvData(obj.Prazo)] //.map(e=>e===undefined?'':e)
+  }
+
+// Funções do Filter__________________________________________________________________________________
+  function InnerOptions(e){
+    if(e==='Serv'){I_Tipo.innerHTML = OptFilter('Tipo',1);I_Cbmt.innerHTML = OptFilter('CBMT',2)}
+    if(e==='Tipo'){I_Cbmt.innerHTML = OptFilter('Cbmt',2)}
+    if(e==='Cbmt'){if(I_Tipo.value!=='Todos'){return};I_Tipo.innerHTML = OptFilter('TipoUP',1)}
+    I_Gram.innerHTML = OptFilter('Gram',3);I_QFix.innerHTML = OptFilter('QFix',4)
+  }
+  function OptFilter(Stng,Coll){ // cria as listas Options
+
+    function Fill(R){
+        const Serv1 = (R)=> {return R[0]===I_Serv.value}
+        const Tipo1 = (R)=> {return R[1]===I_Tipo.value}
+          const Tipo2 = ()=> {return I_Tipo.value === 'Todos'}
+        const Cbmt1 = (R)=> {return R[2]===I_Cbmt.value}
+          const Cbmt2 = ()=> {return I_Cbmt.value === 'Todos'}
+        const Gram1 = (R)=> {return R[3]===I_Gram.value}
+          const Gram2 = ()=> {return I_Gram.value === 'Todos'}
+
+      if(Stng==='Tipo'||Stng==='CBMT'||(Stng==='Cbmt'&&Tipo2())){return Serv1(R)}
+      if(Stng==='Cbmt'){return Serv1(R)&&Tipo1(R)}
+      if(Stng==='TipoUP'){return Serv1(R)&&Cbmt1(R)}
+
+      if(Gram2()){ return Serv1(R) && (Tipo2()||Tipo1(R)) && (Cbmt2()||Cbmt1(R))
+      }else{       return Serv1(R) && (Tipo2()||Tipo1(R)) && Cbmt1(R)&&Gram1(R)}
+    }
+
+    return Options(['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))])
+  }
+  function FilTable(){
+  let MddTotalM2 = 0
+  ResultFilTable.innerHTML = ''
+  const Arry = tabela.filter(T=>{
+    return (I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
+          (I_Tipo.value === "Todos" || T[1] === I_Tipo.value) &&
+          (I_Cbmt.value === "Todos" || T[2] === I_Cbmt.value) &&
+          (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
+          (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
+
+  const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm,Tarefs],indx)=>{
+    const Orc = Orcamento(Arry[indx])
+    const SubTotal = Cm(Orc[1])
+    const VlrM2 = Cm(Vlr)
+    const DescClnt = ArryClnt[13]!==''? ArryClnt[13] : 0
+    const DescMdds = Orc[3] >= 4 ? Orc[3]/(120+Orc[3]*10) : 0
+    const Desc = Num(DescClnt)+Num(DescMdds)
+    MddTotalM2 = Desc===0 ? 0 : 1
+    if(onOff === 'on' && Desc===0){onOff='off'}
+    const ClassNone = onOff === 'off' ? 'none' : ''
+    const TotalDesc = Calc.match(/OFS/) ? Cm(Vlr*(1-DescClnt)) : Cm(Orc[1]*(1-Desc))
+    const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
+    const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
+    const IMG = Foto ? Foto.match('.jpg|.png') ? Foto : `${LinkDrive}${Foto}` : ''
+    const Mdds  =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
+    const Mdds3 =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join('/').replace('.',',')
+    const Mdds1 = Orc[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
+    const Mdds2 =Mdds1.join('/')
+    const Ittens = Orc[0].map(e=>Itm).join(',')
+    const ItemHTML = `<div class="Ct Cl w100 Rdd">
+                        <div class="RstServ">${Serv} ${Tipo}</div>
+                        <div id="FotoItem"><img src="${IMG}"></div>
+                        <div>${Mdds1.map(i=>Div(i)).join("").replace('*','')}</div>
+                      </div>
+                      <div class="Cl Mgrn-PX2 ${ClassNone}">
+                        <div class="Ct Mgrn-PX2">
+                          <div>Cliente: ${Pct(DescClnt)}</div>
+                          <div>Medidas: ${Pct(DescMdds)}</div>
+                        </div>
+                        <div>Total Desc: ${Pct(Desc)}</div>
+                        <div>ValorM2: ${RS(Num(TotalDesc)/Orc[3])}</div>
+                      </div>
+                      <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
+                      `
+    const Etc = `${I_Etc.value} ${CorItem}`
+
+    let ItemCRUD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc,Etc]
+    
+    let Comment = Serv==='Placa' ? Orc[2].map(c=>`<div>${c}</div>`).join('') : ""
+    let Ferro =   Serv==='Placa' ? Orc[4].map(c=>`<div>${c}</div>`).join('') : ""
+    let Alumn =   Serv==='Placa' ? Orc[5].map(c=>`<div>${c}</div>`).join('') : ""
+
+    const item = CreateTag('div')
+    item.innerHTML =
+      `<div class="itemfilter Ct Cl w100 Rd">
+        <div class="RstTitle w100 Pddn-XY Ct Bt">
+          <div class="RstServ ppt" onclick="AbreNota('${Mdds2}','${SubTotal}','${TotalDesc}')">${Serv} ${Tipo}</div>
+          <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
+        </div>
+        <div class="Ct Bt Pddn-XY">
+          <div class="none">${ItemHTML}</div>
+          <div id="FotoFilter" onclick="AbreItem(this.parentNode.firstElementChild)">
+            ${ Serv==='Placa'? `<div id="Canvs${indx}" class="canvas"></div>` :
+            Foto ? `<img src="${IMG}">` : `<div class="SVGFilt Ct">${IconSemFoto}</div>`}
+          </div>
+
+          <div class="Ct Cl"><div class="Descricao">
+                <div><strong>Acbmnt: </strong>${Cbmt}</div>
+                <div><strong>Qnt: </strong>${QFix} Und</div>
+                <div><strong>Grama: </strong>${Gram}</div>
+              </div><hr class="w100"><div class="valores Ct Cl w100">
+                
+                <div class="RstValrDesc ${ClassNone}">${RS(SubTotal)}<div>${IconXDesc}</div></div>
+                <div class="RstValrFinal Ct FtMd"><div class="FtMd">R$</div> ${TotalDesc}</div>
+            </div></div>
+            <div class="Ct Cl">
+              <button onclick="addyCRUD('${ItemCRUD.join('/')}')">Adicionar</button>
+              <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Salvar</button>
+              <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Entrada</button>
+            </div>
+        </div>
+        <div class="Ct Cl">${Comment}</div><div>${Ferro}</div><div>${Alumn}</div>
+      </div>`
+    return item
+  })
+  items.forEach(I=>ResultFilTable.appendChild(I))
+
+  QrySlt('#Contagem').innerHTML = ResultFilTable.children.length + ' Itens'
+  ShowTrue('#DivBtnDesc',MddTotalM2===1)
+  QrySltAll('.canvas').forEach(e=>{Gera3d(e)})
+  OcultaCoisas(ResultFilTable)
+  }
+  function Orcamento(arrays){
+
+  const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
+
+  const LAG = ArySltAll('#Div-Inpt-Larg input').map(I=>I.value)
+  const ALT = ArySltAll('#Div-Inpt-Alt input').map(I=>I.value)
+  const QNT = ArySltAll('#Div-Inpt-Qnt input').map(I=>I.value) //* Tipo.match(/FV/) ? 2 : 1
+
+  // 'SOMA' Calculo Total, 'LIST' Calculo Unidade
+  const SOMA = TotalCress(Vlr,QNT.reduce((acc,Qnt,x)=>acc+Qnt*LAG[x]*ALT[x],0),Serv)
+  const LIST = QNT.map((Qnt,x)=>[Qnt,LAG[x],ALT[x],TotalCress(Vlr,Qnt*LAG[x]*ALT[x],Serv)])
+
+  let FERRO = []
+  let TOTALLFERRO = []
+  let TOTALLALUMN = []
+
+  QNT.forEach((Qnt,x)=>{ // Para Calcular Ferro
+
+    const Lag_ = LAG[x] ; const Alt_ = ALT[x]
+
+    const desc   = I_Ferr.match(/..$/)/1000 * 2
+    const PE     = Serv.match(/Cav/) ? 0.15*2 : 0
+    const CkCstl = Tipo.match(/Lumi/)
+    const CkLarg = Lag_ > Alt_
+
+    const F_L = CkLarg ? Lag_+PE : Lag_-desc
+    const F_A = CkLarg ? Alt_-desc : Alt_+PE
+    const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Alt_)+1 // Costelas
+    const C_A = CkCstl ? 2 : CkLarg ? Math.round(Lag_)+1 : 2 // Costelas
+
+    const FM1 = Qnt * (F_L*C_L + F_A*C_A)
+    const AM1 = Qnt * F_L*2
+
+    FERRO.push(`${C_L} Varas de ${Cm(F_L)} | ${(C_A)} Costelas ${Cm(F_A)}`)
+    TOTALLFERRO.push(`M¹ Ferro: ${FM1}`)
+    TOTALLFERRO.push(`M¹ Alumn: ${AM1}`)
+  })
+
+  return [LIST,SOMA,FERRO,SOMA/Vlr,TOTALLFERRO,TOTALLALUMN]
+  }
+
+// CRUD___________________________________________________________
+  function addyCRUD(Arry) {
+
+    Show(['#Div-CRUD','#SavSav']) ; Scroll('Fim') ; OcultaCoisas(ResultFilTable)
+
+    const Arr = Arry.split('/')
+    const Mdd = Arr[5].split(',')
+    const Defaut = QrySlt('#CrudDefaut')
+
+    Mdd.forEach(e=>{const E = e.split('|')
+      Arr[1] = E[0]
+      Arr[5] = Cm(parseFloat(E[1]))
+      Arr[6] = Cm(parseFloat(E[2]))
+      Arr[7] = RS_HTML(parseFloat(E[3]))
+      Arr[8] = Arr[8]
+      Arr[9] = IconLaps
+      Arr[10] = IconSavList
+      Arr[11] = IconLixo
+      Arr[12] = IconEscList
+      const Clone = Defaut.cloneNode(true)
+      Clone.removeAttribute('id')
+      Clone.classList.remove('none')
+      QrySltAll('td input',Clone).forEach((e,i)=>{e.value = Arr[i]})
+      QrySltAll('td div',Clone).forEach((e,i)=>{e.innerHTML = Arr[i]})
+      Pai(Defaut).appendChild(Clone)
+    })
+    Show('#ClearCRUD')
+    TotalCrud()
+    clearForm()
+    
+  }
+  function TotalCrud(){
+    let Soma = 0
+    QrySltAll('#CRUD td:nth-child(8) > div > div > div:nth-child(2)').forEach(e=>{Soma+=Num(e.innerHTML)})
+    QrySlt('#TotalCrud').innerHTML = Cm(Soma)
+  }
+  function AddAdd(){ArySltAll('button',ResultFilTable)[0].click()}
+  function DeletCRUD(e){if(confirm(`Tem certeza que deseja deletar?`)){e.remove()}}
+  function EditaCRUD(e){
+    QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{if(i===7){return};Show(E)})
+    QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{if(i===7){return};None(E)})
+  }
+  function CancelEditCRUD(e){
+    QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{if(i===7){return};None(E)})
+    QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{if(i===7){return};Show(E)})
+  }
+  function SaveEditCRUD(e){
+    const ListUp = []
+    QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{
+      if(i===7){return};None(E)
+      ListUp.push(E.value)
+    })
+    QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{
+      if(i===7){return};Show(E)
+      if (i < 7) {E.innerHTML = ListUp[i]}
+    })
+  }
+  function clearCRUD(){QrySltAll('#CRUD tr').forEach((e,idx)=>{if(idx>=2){e.remove()}});None('#ClearCRUD')}
+  function ResumeCRUD(){
+    const TabelaCrud = ArySltAll('#CRUD table tr').slice(2) 
+    const ArryNovo = TabelaCrud.map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{return Cell.textContent.replace('R$','')}).filter((_,idx)=>[0,1,5,6,7,8].includes(idx))})
+    const AryResum = TabelaCrud.map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{return Cell.textContent.replace('R$','')}).filter((_,idx)=>[1,2,3,4,5,6,7].includes(idx))})
+    const Itens = ArryNovo.map(e=>e[0]).join(',')
+    const Mdds = ArryNovo.map(e=>e.slice(1).slice(0,-1).join('|')).join('/')
+    const total = QrySlt('#TotalCrud').innerHTML
+    const Formate = AryResum.map(I=>`${I[0]} - ${I[1]} ${I[2]} ${I[3]} (${I[4]} x ${I[5]}) ${RS(I[6])}`).concat(`*Total: ${RS(total)}*`).join('/')
+    const Etc = ArryNovo.map(e=>e[5])
+    return [Itens,Mdds,Formate,total,Etc]
+  }
+
+
 
 // Save Informações ___________________________________________________________________________
-function SaveCadastro(){Cadstr = ArySltAll('#ModalCadastro input').map(e=>e.value)}
-function SaveInfo(){ConfirmPlan()}
-function SaveCRUDI(){SaveCadastro();const It=ResumeCRUD();ItemsPdd=[IDPdd,ClntOK(),It[0],It[1],It[3],It[4]];ConfirmPlan()}
+  function SaveCadastro(){Cadstr = ArySltAll('#ModalCadastro input').map(e=>e.value)}
+  function SaveInfo(){ConfirmPlan()}
+  function SaveCRUDI(){SaveCadastro();const It=ResumeCRUD();ItemsPdd=[IDPdd,ClntOK(),It[0],It[1],It[3],It[4]];ConfirmPlan()}
 
-async function SaveDireto(Itens,Mdds,Total,Etc,Tarefs){SaveCadastro()
-  if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))}
-  if(I_Clnt.value===""){MiniInput('C');await PrmssInnr(QrySlt('#Inner-Clnt'))}
-  ItemsPdd = [IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs]
+  async function SaveDireto(Itens,Mdds,Total,Etc,Tarefs){SaveCadastro()
+    if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))}
+    if(I_Clnt.value===""){MiniInput('C');await PrmssInnr(QrySlt('#Inner-Clnt'))}
+    ItemsPdd = [IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs]
+    ConfirmPlan()
+  }
+
+  function Acumulador(){SaveCadastro(); QrySlt('#ContentNotaCRUD').innerHTML ? SaveCRUDI() : null
+    QrySlt('#SavePddPlan input[name="RG"]').value = [LgTp.Cod,RG()].join(',')
+    QrySlt('#SavePddPlan input[name="ArryClnt"]').value = ArryClnt[0] ? ArryClnt[0] : Cadstr.join(',')
+    QrySlt('#SavePddPlan input[name="ObjInfo"]').value = ArryInfo
+    QrySlt('#SavePddPlan input[name="ArryItens"]').value = ItemsPdd.map(e=>e===''||e===' '?"-":e).join('+')
+    QrySlt("#SavePddPlan button").click()
+  }
+
+  let [AccOSRG,AccOSID,AccOSPG,AccOSPT,AccOSUB,AccUber] = ['','','','','']
+  function Acumulador2(){
+    QrySlt('#SaveOSPlan input[name="RG"]').value = AccOSRG
+    QrySlt('#SaveOSPlan input[name="ID"]').value = AccOSID
+    QrySlt('#SaveOSPlan input[name="Pag"]').value = AccOSPG
+    QrySlt('#SaveOSPlan input[name="Print"]').value = AccOSPT
+    QrySlt('#SaveOSPlan input[name="Uber"]').value = AccOSUB
+    QrySlt('#SaveOSPlan input[name="QualUbb"]').value = AccUber
+    QrySlt("#SaveOSPlan button").click()
+  }
+
+// API Chamada________________________________________________________________________________
+  function ReloadPlanOS(){fetch(APIPlanOS).then((r)=>r.json()).then((e)=>{ListOS=e;LoadOS()})}
+  function ReloadPlanClnt(){fetch(APIPlanClnt).then((response)=>response.json()).then((data)=>{Cttlist=[] ; data.forEach((i)=>{Cttlist.push([
+          i.IDClnt,i.Tag,i.Cliente,i.NomeCompleto,i.Apelido,i.Contato,i.Endereço,
+          i.Loja,i.CnttLoja,i.Categoria,i.Veiculo,i.Stts,i.LinksPdds,i.Desc])})})
+  }
+
+// Funções Planilha________________________________________________________________
+  QrySlt("#SavePddPlan").addEventListener("submit",(e)=>{SavePlan(e,"API")})
+  QrySlt("#SaveOSPlan").addEventListener("submit",(e)=>{SavePlan(e,"APIos")})
+  function SavePlan(e,Aba){e.preventDefault()
+    const formData = new FormData(e.target) ; const jsonData = {}
+    formData.forEach((value,key)=>{jsonData[key]=value})
+    jsonData["sheet"] = Aba
+
+    fetch(APIPlan,{method:"POST",headers:{"Content-Type":"application/json",},body:JSON.stringify(jsonData),})
+      .then((response)=>response.json())
+      .then((data)=>{console.log("Dados enviados com sucesso!",data);AlertPlanOK();clearForm();clearCRUD()})
+      .catch((error)=>{console.error("Erro ao enviar os dados:",error)})
+  }
+
+// Aba de OS___________________________________________________________________________
+function LoadOS(){
+  ListOS.forEach(e=>{
+    if(e.Pag==="-"){insetBefor('#ContentOSPag',`<div class="Bd0" onclick="ClasTog(this,'OSPagSelect')"><img src="${LinkDrive+e.ID}"/><span>${e.Nome}</span><a class="none">${e.ID}</a></div>`)}
+    if(e.Print==='-'){insetBefor('#ContentOSPrint',`<div class="Bd0" onclick="ClasTog(this,'OSPrintSelect')"><img src="${LinkDrive+e.ID}"/><span>${e.Nome}</span><a class="none">${e.ID}</a></div>`)}
+    if(e.Uber==='-'){insetBefor('#ContentOSUber',`<div class="Bd0" onclick="ClasTog(this,'OSUberSelect')"><img src="${LinkDrive+e.ID}"/><span>${e.Nome}</span><a class="none">${e.ID}</a></div>`)}
+  })
+}
+
+function ConfirmOS(Stg){
+  if(Stg==='#ContentOSUber > div' && QrySlt('#QualUber').value===''){alert('Nome do Uber Obrigatório!') ; return}
+  const Dados = ArySltAll(Stg).filter(e=>['OSPagSelect','OSPrintSelect','OSUberSelect'].some(I=>e.classList.contains(I))).map(e=>QrySlt('a',e).innerHTML)
+  
+  function MapJoin(e,Stg){return e.map(e=>Stg).join(',')}
+  AccOSID = '' ; AccOSID = Dados.join(',')
+  AccOSPG = '' ; AccOSPG = Stg==='#ContentOSPag > div'   ? MapJoin(Dados,'Pg') : MapJoin(Dados,'-')
+  AccOSPT = '' ; AccOSPT = Stg==='#ContentOSPrint > div' ? MapJoin(Dados,'P')  : MapJoin(Dados,'-')
+  AccOSUB = '' ; AccOSUB = Stg==='#ContentOSUber > div'  ? MapJoin(Dados,'U')  : MapJoin(Dados,'-')
+  AccUber = '' ; AccUber = QrySlt('#QualUber').value===''? MapJoin(Dados,'-')  : MapJoin(Dados,QrySlt('#QualUber').value)
+  AccOSRG = '' ; AccOSRG = MapJoin(Dados,[LgTp.Cod,RG()].join(' '))
   ConfirmPlan()
 }
 
-function Acumulador(){SaveCadastro(); QrySlt('#ContentNotaCRUD').innerHTML ? SaveCRUDI() : null
-  QrySlt('input[name="RG"]').value = [LgTp.Cod,RG()].join(',')
-  QrySlt('input[name="ArryClnt"]').value = ArryClnt[0] ? ArryClnt[0] : Cadstr.join(',')
-  QrySlt('input[name="ObjInfo"]').value = ArryInfo
-  QrySlt('input[name="ArryItens"]').value = ItemsPdd.map(e=>e===''||e===' '?"-":e).join('+')
-  QrySlt("#SavePddPlan button").click()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Figurinhas_________________________________________________________________________________
+function LoadFigs(){for(let i=1;i<=30;i++){InnQryM('#DivFigs',`<img class="Bd0" src="Figurinhas/Fig_${Zero(i)}.svg" onclick="ClasTog(this,'FigSelect')"/>`)}}LoadFigs()
+function FilterFigs(){None(QrySltAll('#DivFigs img')) ; Show(QrySltAll('#DivFigs .FigSelect')) ; ClasTroc('#DivFigs .FigSelect','FigSlt','FigSelect') ; Show(['#BTNSVG1','#BTNSVG2'])}
+function RecuperaFigs(){Show(QrySltAll('#DivFigs img'));ClasTroc('#DivFigs .FigSlt','FigSelect','FigSlt');None(['#BTNSVG1','#BTNSVG2'])}
+function LimparFigs(){ClasTroc('#DivFigs .FigSelect','Null','FigSelect')}
+function BaixarFigs(){
+  const List = []
+  QrySltAll('.FigSlt').forEach((e)=>{List.push(e.getAttribute('src'))})
+  const Destin = window.open("GuardaGuarda.html")
+  setTimeout(()=>{Destin.postMessage({dados:List},"*")},2000)
 }
-
-// Funções Planilha________________________________________________________________
-QrySlt("#SavePddPlan").addEventListener("submit",(e)=>{SavePlan(e,"API")})
-function SavePlan(e,Aba){e.preventDefault()
-  const formData = new FormData(e.target) ; const jsonData = {}
-  formData.forEach((value,key)=>{jsonData[key]=value})
-  jsonData["sheet"] = Aba
-
-  fetch(APIPlan,{method:"POST",headers:{"Content-Type":"application/json",},body:JSON.stringify(jsonData),})
-    .then((response)=>response.json())
-    .then((data)=>{console.log("Dados enviados com sucesso!",data);AlertPlanOK();clearForm();clearCRUD()})
-    .catch((error)=>{console.error("Erro ao enviar os dados:",error)})
-}
-
-// OnLoad's_________________________________________________________________________________________________________
-document.addEventListener('DOMContentLoaded',()=>{
-  AddInnSVG()
-  LoginStorage()
-  LargPaiAbas()
-  BloqueaData('#Prazo, #dataPagInfo')
-  ReloadTab()
-  LoadListServ()
-  DefinePag(1)
-  MediaQuere(W400)
-  W400.addListener(MediaQuere)
-  LoadRoloTop() // Template String
-  
-  
-  QrySltAll('input[name="Cntt"]').forEach(I=>{I.addEventListener('input',e=>{MaskCntt(e)})})
-  QrySltAll('#Grupo-Medidas input').forEach(e=>{e.setAttribute('inputmode','numeric')}) // campo Numerico
-  document.addEventListener('click',e=>{ClickFora(e)}) // remover Coisas com Click Fora
-  //window.addEventListener('resize', handleResize)
-  window.addEventListener('scroll',()=>{ // Mostrar ou não Btn RoloTop
-    if((window.scrollY || window.pageYOffset) >= 250){Show('#RoloTop')}else{setTimeout(()=>{None('#RoloTop')},100)}
-  })
-  document.addEventListener('input',()=>{handle();InptClnts();FilTable();ReadModal()})
-  QrySltAll('select').forEach(e=>{e.addEventListener('change',e=>{ShowTipo();FilTable();ReadModal()})})
-})
-
-function BloqueaData(Stg){QrySltAll(Stg).forEach(i=>{i.min = new Date().toISOString().split('T')[0]})}
-function LargPaiAbas(){QrySlt("#Pages").style.width = `${QrySlt('header').offsetWidth*5}px`}
-function DefinePag(aba){QrySlt('#Pages').style.transform = `translateX(${(-aba*(QrySlt('header').offsetWidth))}px)`}
-
-function ClickFora(e){
-  const E = e.target
-    if(!ArySltAll('.Bandeija, #InputdeCor, #ListaCor li').includes(E)){
-      None('.Bandeija') // Todas Bandeijas
-      QrySltAll('input[type="text"]').forEach(inpt=>Rad0(inpt))
-      None('#ListaCor')
-    }
-}
-function ReloadPlanClnt(){
-  fetch(APIPlanClnt).then((response) => response.json())
-    .then((data)=>{Cttlist=[] ; data.forEach((i)=>{Cttlist.push([
-        i.IDClnt,i.Tag,i.Cliente,i.NomeCompleto,i.Apelido,i.Contato,i.Endereço,
-        i.Loja,i.CnttLoja,i.Categoria,i.Veiculo,i.Stts,i.LinksPdds,i.Desc])})     
-    }).catch((error)=>{console.error("Erro ao recuperar dados:",error)})
-}
-function AddInnSVG(){
-  InnerSVG('.Maisss > div:first-child',IconEscList)
-  InnerSVG('.Maisss > div:last-child',IconMais)
-  InnerSVG('#RoloTop', IconRoloTop)
-  InnerSVG('#ClearCRUD', IconClean)
-  InnerSVG('#ClearForm', IconClean)
-  InnerSVG('#imgnotta', IconNota)
-  InnerSVG('#imgnotta2', IconNota)
-  InnerSVG('.Close', IconEscList)
-  InnerSVG('.Seta', IconSetair)
-  InnerSVG('.Prev',IconPrevProx)
-  InnerSVG('.Prox',IconPrevProx)
-  InnerSVG('.LgTp',IconLogin)
-  InnerSVG('.LgTp2',IconLogin)
-  
-}
-function MediaQuere(max){
-  if(max.matches){
-    QrySlt('header').classList.remove("Bt")
-      QrySlt('#GrupLogin1').classList.remove('none')
-      QrySlt('#GrupLogin2').classList.add('none')
-    //ModAlnotta.classList.add("media80")
-    //None('#trocatroca')
-    QrySlt('#DivResult').classList.remove("Cl")
-    TrocaPose('#DivResult',0)
-  }else{
-    QrySlt('header').classList.add("Bt")
-      QrySlt('#GrupLogin1').classList.add('none')
-      QrySlt('#GrupLogin2').classList.remove('none')
-    //Show('#trocatroca')
-    //ModAlnotta.classList.add("media80")
-    QrySlt('#DivResult').classList.add("Cl")
-    TrocaPose('#FormOrc',0)
-  }
-}
-function Scroll(Stg) {
-  if(W400.matches){
-    if(Stg === 'Fim'){
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth'})
-    }else{
-      const posits = window.pageYOffset + QrySlt(Stg).getBoundingClientRect().bottom
-      window.scrollTo({top:posits,behavior:'smooth'})
-    }
-  }
-}
-
-// Funções pra Abrir Modais ______________________________________________________________________________________________________________
-const FMdal = QrySlt('#Fundo-Modal')
-function AbreLogin(){FocoFilho(FMdal,'#ModalLogin');InnQry('#Span-Login','');Foco('#Inpt-Senha')}
-function AbreCdstr(){FocoFilho(FMdal,'#ModalCadastro')}
-function AbreItem(html){FocoFilho(FMdal,'#Modal-Item');InnQry('#Conteudo-Item',html.innerHTML)}
-function MiniInput(e){FocoFilho(FMdal,'#InnerVazio');InnQry('#InnerVazio',e==='S'?InptPss(e):InptTxt(e));FocoCh0('#InnerVazio')}
-function ConfirmPlan(){FocoFilho(FMdal,'#ConfirmPlan')}
-async function AlertPlanOK(){Show('#Alert');await delay(8000);None('#Alert')}
-
-function AbreNota(Mdd=ResumeCRUD()[2],Valor,Desc){FocoFilho(FMdal,'#ModalNota')
-  InnQry('#DescrNota',CleaAsps(Mdd.split('/').map(e=>Div(Virg(e))).join("")))
-  InnQry('#TotalNotta',`Total: ${RS(Desc ? Desc : Inn('#TotalCrud'))}`)
-}
-async function AbreInfo(Itens,Mdds,Total,Etc,Tarefs){
-  if(SemLogin()){MiniInput('S');await PrmssInnr(QrySlt('#Login-Cod'))};FocoFilho(FMdal,'#ModalInfo')
-  EvtInpt('#Modal-Info1',()=>{Ouvinte('#Modal-Info1','#btnINFO1')})
-  EvtInpt('#Modal-Info2',()=>{Ouvinte('#Modal-Info2','#btnINFO2')})
-  EvtInpt('#ModalInfo',()=>{ColetaDados(QrySlt('#ModalInfo'))})
-  EvtClik('#btnINFO2',()=>{SaveCadastro();None('#Fundo-Modal');ItemsPdd=[IDPdd,ClntOK(),Itens,Mdds,Total,Etc,Tarefs];ConfirmPlan()})
-}
-function ReadModal(){
-  ArySltAll('#Titulo-Nota,#Title-Info').forEach(e=>{e.innerHTML=`<h1>${IDPdd}: ${ArryClnt[2]}</h1>`})
-  ArySltAll('#DataNota').forEach(e=>{e.innerHTML=RG()})
-}
-function TestSenha(e,tipo,input){
-  if(e==='Deslog'){
-    LgTp.Cod = ''
-    LgTp.Nome = ''
-    LgTp.Img = ''
-    InnQry('#Login-Cod','')
-    InnQry('.LgTp2',IconLogin)
-    Show('.LgTp')
-    None('.ImgPerfil')
-    None('.ImgPerfil2')
-    QrySltAll('.ImgPerfil').forEach(e=>{e.src=''})
-  }
-  else if(e==='Storage'){
-    if(User[input] === undefined || User[input] === null){return}
-    else{
-      LgTp.Cod = User[input][0]
-      LgTp.Nome = User[input][1]
-      LgTp.Img = User[input][2]
-      localStorage.removeItem('SenhaCryp')
-      localStorage.setItem('SenhaCryp',input)
-      InnQry('#Login-Cod','Logado')
-      InnQry('.LgTp2',User[input][1])
-      None('.LgTp')
-      Show('.ImgPerfil')
-      Show('.ImgPerfil2')
-      QrySltAll('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
-    }
-  }
-  else{
-    let inpt = e==='' ? QrySlt(input) : input
-    if(KeyEnter(e)||e===''){
-      if(tipo==='C'){InnQry('#Inner-Clnt',inpt.value) ; ArryClnt[0] = inpt.value ;  I_Clnt.value = inpt.value ; None(FMdal)}
-      if(tipo==='S'){
-        const Cryp = CrypPass(inpt.value)
-          if(User[Cryp]){
-            None([FMdal])
-            LgTp.Cod = User[Cryp][0]
-            LgTp.Nome = User[Cryp][1]
-            LgTp.Img = User[Cryp][2]
-            localStorage.removeItem('SenhaCryp')
-            localStorage.setItem('SenhaCryp',Cryp)
-            InnQry('#Login-Cod',"Logado")
-            InnQry('.LgTp2',User[Cryp][1])
-            None('.LgTp')
-            Show('.ImgPerfil')
-            Show('.ImgPerfil2')
-            QrySltAll('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
-          }
-          else{InnQry('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
-        inpt.value='';inpt.focus()}
-    }
-  }
-}
-function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage','',Pass)}
-function Deslogar(){localStorage.removeItem('SenhaCryp');TestSenha('Deslog','','')}
-
-// FORM ________________________________________________
-
-function NewOrcamentos(btn){if(!NewOrcamentos.First){NewOrcamentos.First=true}else{clearForm();clearCRUD()};Show(FormOrc,btn.parentNode)}
-function clearForm(){QrySltAll('input, select',FormOrc).forEach((e)=>e.value='');FilTable();EscMdds('All')}
-
-function CloseForm(e){   
-    e.addEventListener('click',()=>{
-      e.classList.add('clicked')
-      FormOrc.classList.add("CloseForm")
-
-      setTimeout(()=>{Show(QrySlt('#NewOrcamento').parentNode)},100)
-
-      setTimeout(()=>{
-        e.classList.remove('clicked')
-        FormOrc.classList.remove("CloseForm")
-        None(FormOrc)},500)})
-}
-function ClonaMdd(btn){
-  const INDX = isNaN(btn) ? IndiceDe(btn.parentNode) : btn
-  Show('.Maisss > div:first-child')
-  ArySltAll('#Grupo-Medidas > div').forEach(div=>{
-    const inpt = QrySltAll(".Maisss, input",div)
-    const Utm = inpt[inpt.length-1]
-    const NewInpt = Utm.cloneNode(true)
-
-    if(NewInpt.hasAttribute("data-Tab")){NewInpt.value=''}
-
-    div.insertBefore(NewInpt,div.children[INDX+1])
-  })
-  ReloadTab()
-  RstTabIndx("#Div-Inpt-Larg input",1)
-  RstTabIndx("#Div-Inpt-Alt input" ,2)
-  RstTabIndx("#Div-Inpt-Qnt input" ,3) //Escapar no Ultimo
-}
-function EscMdds(btn) {
-  if (btn === 'All'){
-    const idx = 2
-    QrySltAll("#Grupo-Medidas > div").forEach(e => {
-      const children = Array.from(e.children)
-      for (let i = idx; i < children.length; i++) {
-        e.removeChild(children[i])
-      }
-    })
-  }else{
-    const idxBtn = IndiceDe(btn.parentNode)
-
-    QrySltAll("#Grupo-Medidas > div").forEach(e => {
-      e.removeChild(Array.from(e.children)[idxBtn])
-    })
-  }
-  ReloadTab()
-}
-function ReloadTab(){
-  NoneTrue('.Maisss > div:first-child',QrySlt('#Div-Inpt-Mais').children.length===2)
-  FilTable()
-  QrySltAll('input[data-Tab]').forEach((inpt)=>{
-    inpt.removeEventListener("keyup",keyupHandler)
-    inpt.addEventListener('keyup',keyupHandler)})
-
-  function keyupHandler(e){
-    function NextyTab(inpt,e){
-      inpt.value =  inpt.value.replace('+', '')
-      e.preventDefault()
-      if(e.key==="Tab"||KeyEnter(e)||e.key==="+"){
-        if(Pai(inpt).id === 'Div-Inpt-Qnt' && e.key==="+"){ClonaMdd(IndiceDe(e.target))}
-        let nextInput = QrySlt(`input[data-Tab="${TabIndx(inpt,1)}"]`,Avo(inpt))
-        if(nextInput){nextInput.focus()}}
-    };NextyTab(this,e)
-  }
-}
-
-// OnInputs__________________________________________________________________________________________
-function EditaClntSave(Clnt,Cntt){Show([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv]);ArryClnt.fill('');FilTable()}
-function mudarCor(cor){QrySlt('#InputdeCor').style.backgroundColor=cor;CorItem=cor}
-
-function handle(){
-  QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
-  QrySltAll('div[data="'+event.target.name+'"]').forEach(i=>{i.innerHTML = event.target.value})
-}
-function InptClnts(){
-  const e = event.target
-  if(e.name === 'Cntt') {BandejaFit(e,5)}
-  if(e.name === 'Clnt') {BandejaFit(e,2);QrySlt('#Inner-Clnt').innerHTML = e.value;
-    ShowTrue('#Div-Inpt-Cntt',I_Clnt.value!=='') // Mostra e Oculta InptCntt
-    ShowTrue('.btn_cdstr',ArryClnt[7]==='' && I_Clnt.value!=='') // Mostra e Oculta Btn Cadastro
-  }
-
-  function BandejaFit(inpt,indx){ // preciso só ocultaar os outros
-
-    QrySltAll('.Bandeija').forEach(e=>{
-      ShowTrue(e,e.parentNode===inpt.parentNode.parentNode)
-
-      Rad0(inpt); e.innerHTML = ""
-      let value = inpt.value.toLowerCase()
-      if (!value)return
-
-      Cttlist.map((e,idx)=>[e[indx],idx])
-      .filter(([opt])=>opt.toLowerCase().includes(value))
-      .forEach(([opt,Idex])=>{
-        RadB(inpt)
-        const li = CreateTag('div')
-        li.innerHTML=`<div>${opt}</div> ${indx === 5 ? `<div>${Cttlist[Idex][2]}</div>` : ''}`
-        li.addEventListener('click',()=>{ArryClnt = [...Cttlist[Idex]]
-          Rad0(inpt) ; ShowClntSalvo() ; onOff = 'on' ; FilTable() ; None(e)
-        })
-        e.appendChild(li)
-        })
-        Snap(e,inpt)
-    })
-  }
-}
-function ShowClntSalvo(){
-  Show([GrupClntSv,GrupClntInfSv],[GrupClnt,RestaNome])
-  const grupos = [GrupClntSv,GrupClntInfSv]
-  
-  grupos.forEach(e=>{e.innerHTML = `<div>${ArryClnt[2]}</div><div>${ArryClnt[5]}</div>
-       <div class="baby Ct" onclick="EditaClntSave('${ArryClnt[2]}','${ArryClnt[5]}')">Editar</div>`})
-}
-function ShowTipo(){
-  let undd = tabela.find(e=>e.includes(I_Serv.value))?.[7] ?? null
-    ShowTrue('#Grupo-Tipos',undd.match(/OFS/),'#Grupo-Medidas')      // Troca de OFS pra M2
-    NoneTrue(['#Div-Inpt-Larg','#Div-Inpt-Alt'],undd.match(/QNT/))   // Remove Larg e Alt se n precisar
-    ShowTrue('#Div-Inpt-Tipo',I_Serv.value!=='')                     // Temove Tipo quando n tem Serv
-    ShowTrue('#GrupoCores',undd.match(/W/))                          // Add Cor Quando nesesário
-    NoneTrue('#Div-Inpt-Cbmt',['','-'].includes(I_Cbmt.options[1].value.trim())) // Remove acabamento se n Tiver
-}
-function Ouvinte(formInfo,btnInfo){
-  const [form,btn] = [QrySlt(formInfo),QrySlt(btnInfo)]
-  const date = event.target.getAttribute('data')
-  const Value = event.target.value
-
-  if(date){const val = Value==='NPag' ? ['#Endereco'] : ['#vlrPagInfo','#dataPagInfo']
-    if(Value==='NPag'||Value==='Graff'){None(QrySlt(date)) ; EscRequired(val)}
-    else{Show(QrySlt(date)) ; AddRequired(val)}
-    NoneTrue('#divdesigner',(Value.match(/^_/) || Value===''))
-  }
-  const valid = ArySltAll('input[required]',form).concat(ArySltAll('select[required]',form))
-    .every(e=>e.value) && ArySltAll('input[type="radio"][required]:checked',form).length>0
-  ShowTrue(btn,valid)
-}
-function ColetaDados(MdalInfo){
-  const Rad = ArySltAll('input[type="radio"]:checked, select,input[type="checkbox"]:checked',MdalInfo).map(i=>`${i.name}:${i.value}`)
-  const Txt = ArySltAll('input',MdalInfo).filter(i=>(i.type!=='radio'&&i.type!=='checkbox')&&i.Value!=='').map(i=>`${i.id}:${i.value}`)
-  let obj = {};[...Rad,...Txt].forEach(i=>{let [k,v]=i.split(':');obj[k]=v})
-  ObjInfo = obj
-  ArryInfo = [obj.Arte,obj.Desig,obj.Aplic,obj.Frete,obj.Endereco,obj.vlrPagInfo,cvData(obj.dataPagInfo),cvData(obj.Prazo)] //.map(e=>e===undefined?'':e)
-}
-
-// Funções do Filter__________________________________________________________________________________
-function InnerOptions(e){
-  if(e==='Serv'){I_Tipo.innerHTML = OptFilter('Tipo',1);I_Cbmt.innerHTML = OptFilter('CBMT',2)}
-  if(e==='Tipo'){I_Cbmt.innerHTML = OptFilter('Cbmt',2)}
-  if(e==='Cbmt'){if(I_Tipo.value!=='Todos'){return};I_Tipo.innerHTML = OptFilter('TipoUP',1)}
-  I_Gram.innerHTML = OptFilter('Gram',3);I_QFix.innerHTML = OptFilter('QFix',4)
-}
-function OptFilter(Stng,Coll){ // cria as listas Options
-
-  function Fill(R){
-      const Serv1 = (R)=> {return R[0]===I_Serv.value}
-      const Tipo1 = (R)=> {return R[1]===I_Tipo.value}
-        const Tipo2 = ()=> {return I_Tipo.value === 'Todos'}
-      const Cbmt1 = (R)=> {return R[2]===I_Cbmt.value}
-        const Cbmt2 = ()=> {return I_Cbmt.value === 'Todos'}
-      const Gram1 = (R)=> {return R[3]===I_Gram.value}
-        const Gram2 = ()=> {return I_Gram.value === 'Todos'}
-
-    if(Stng==='Tipo'||Stng==='CBMT'||(Stng==='Cbmt'&&Tipo2())){return Serv1(R)}
-    if(Stng==='Cbmt'){return Serv1(R)&&Tipo1(R)}
-    if(Stng==='TipoUP'){return Serv1(R)&&Cbmt1(R)}
-
-    if(Gram2()){ return Serv1(R) && (Tipo2()||Tipo1(R)) && (Cbmt2()||Cbmt1(R))
-    }else{       return Serv1(R) && (Tipo2()||Tipo1(R)) && Cbmt1(R)&&Gram1(R)}
-  }
-
-  return Options(['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))])
-}
-function FilTable(){
-let MddTotalM2 = 0
-ResultFilTable.innerHTML = ''
-const Arry = tabela.filter(T=>{
-  return (I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
-         (I_Tipo.value === "Todos" || T[1] === I_Tipo.value) &&
-         (I_Cbmt.value === "Todos" || T[2] === I_Cbmt.value) &&
-         (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
-         (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
-
-const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm,Tarefs],indx)=>{
-  const Orc = Orcamento(Arry[indx])
-  const SubTotal = Cm(Orc[1])
-  const VlrM2 = Cm(Vlr)
-  const DescClnt = ArryClnt[13]!==''? ArryClnt[13] : 0
-  const DescMdds = Orc[3] >= 4 ? Orc[3]/(120+Orc[3]*10) : 0
-  const Desc = Num(DescClnt)+Num(DescMdds)
-  MddTotalM2 = Desc===0 ? 0 : 1
-  if(onOff === 'on' && Desc===0){onOff='off'}
-  const ClassNone = onOff === 'off' ? 'none' : ''
-  const TotalDesc = Calc.match(/OFS/) ? Cm(Vlr*(1-DescClnt)) : Cm(Orc[1]*(1-Desc))
-  const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
-  const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
-  const IMG = Foto ? Foto.match('.jpg|.png') ? Foto : `${LinkDrive}${Foto}` : ''
-  const Mdds  =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
-  const Mdds3 =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join('/').replace('.',',')
-  const Mdds1 = Orc[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
-  const Mdds2 =Mdds1.join('/')
-  const Ittens = Orc[0].map(e=>Itm).join(',')
-  const Taref = Tarefs.toLowerCase().replace(/\s+/g, '')
-  const ItemHTML = `<div class="Ct Cl w100 Rdd">
-                      <div class="RstServ">${Serv} ${Tipo}</div>
-                      <div id="FotoItem"><img src="${IMG}"></div>
-                      <div>${Mdds1.map(i=>Div(i)).join("").replace('*','')}</div>
-                    </div>
-                    <div class="Cl Mgrn-PX2 ${ClassNone}">
-                      <div class="Ct Mgrn-PX2">
-                        <div>Cliente: ${Pct(DescClnt)}</div>
-                        <div>Medidas: ${Pct(DescMdds)}</div>
-                      </div>
-                      <div>Total Desc: ${Pct(Desc)}</div>
-                      <div>ValorM2: ${RS(Num(TotalDesc)/Orc[3])}</div>
-                    </div>
-                    <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
-                    `
-  const Etc = `${I_Etc.value} ${CorItem}`
-
-  let ItemCRUD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc,Etc]
-  
-  let Comment = Serv==='Placa' ? Orc[2].map(c=>`<div>${c}</div>`).join('') : ""
-  let Ferro =   Serv==='Placa' ? Orc[4].map(c=>`<div>${c}</div>`).join('') : ""
-  let Alumn =   Serv==='Placa' ? Orc[5].map(c=>`<div>${c}</div>`).join('') : ""
-
-  const item = CreateTag('div')
-  item.innerHTML =
-    `<div class="itemfilter Ct Cl w100 Rd">
-      <div class="RstTitle w100 Pddn-XY Ct Bt">
-        <div class="RstServ ppt" onclick="AbreNota('${Mdds2}','${SubTotal}','${TotalDesc}')">${Serv} ${Tipo}</div>
-        <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
-      </div>
-      <div class="Ct Bt Pddn-XY">
-        <div class="none">${ItemHTML}</div>
-        <div id="FotoFilter" onclick="AbreItem(this.parentNode.firstElementChild)">
-          ${ Serv==='Placa'? `<div id="Canvs${indx}" class="canvas"></div>` :
-          Foto ? `<img src="${IMG}">` : `<div class="SVGFilt Ct">${IconSemFoto}</div>`}
-        </div>
-
-        <div class="Ct Cl"><div class="Descricao">
-              <div><strong>Acbmnt: </strong>${Cbmt}</div>
-              <div><strong>Qnt: </strong>${QFix} Und</div>
-              <div><strong>Grama: </strong>${Gram}</div>
-            </div><hr class="w100"><div class="valores Ct Cl w100">
-              
-              <div class="RstValrDesc ${ClassNone}">${RS(SubTotal)}<div>${IconXDesc}</div></div>
-              <div class="RstValrFinal Ct FtMd"><div class="FtMd">R$</div> ${TotalDesc}</div>
-          </div></div>
-          <div class="Ct Cl">
-            <button onclick="addyCRUD('${ItemCRUD.join('/')}')">Adicionar</button>
-            <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Taref}')">Salvar</button>
-            <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Taref}')">Entrada</button>
-          </div>
-      </div>
-      <div class="Ct Cl">${Comment}</div><div>${Ferro}</div><div>${Alumn}</div>
-    </div>`
-  return item
-})
-items.forEach(I=>ResultFilTable.appendChild(I))
-
-QrySlt('#Contagem').innerHTML = ResultFilTable.children.length + ' Itens'
-ShowTrue('#DivBtnDesc',MddTotalM2===1)
-QrySltAll('.canvas').forEach(e=>{Gera3d(e)})
-OcultaCoisas(ResultFilTable)
-}
-function Orcamento(arrays){
-
-const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
-
-const LAG = ArySltAll('#Div-Inpt-Larg input').map(I=>I.value)
-const ALT = ArySltAll('#Div-Inpt-Alt input').map(I=>I.value)
-const QNT = ArySltAll('#Div-Inpt-Qnt input').map(I=>I.value) //* Tipo.match(/FV/) ? 2 : 1
-
-// 'SOMA' Calculo Total, 'LIST' Calculo Unidade
-const SOMA = TotalCress(Vlr,QNT.reduce((acc,Qnt,x)=>acc+Qnt*LAG[x]*ALT[x],0),Serv)
-const LIST = QNT.map((Qnt,x)=>[Qnt,LAG[x],ALT[x],TotalCress(Vlr,Qnt*LAG[x]*ALT[x],Serv)])
-
-let FERRO = []
-let TOTALLFERRO = []
-let TOTALLALUMN = []
-
-QNT.forEach((Qnt,x)=>{ // Para Calcular Ferro
-
-  const Lag_ = LAG[x] ; const Alt_ = ALT[x]
-
-  const desc   = I_Ferr.match(/..$/)/1000 * 2
-  const PE     = Serv.match(/Cav/) ? 0.15*2 : 0
-  const CkCstl = Tipo.match(/Lumi/)
-  const CkLarg = Lag_ > Alt_
-
-  const F_L = CkLarg ? Lag_+PE : Lag_-desc
-  const F_A = CkLarg ? Alt_-desc : Alt_+PE
-  const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Alt_)+1 // Costelas
-  const C_A = CkCstl ? 2 : CkLarg ? Math.round(Lag_)+1 : 2 // Costelas
-
-  const FM1 = Qnt * (F_L*C_L + F_A*C_A)
-  const AM1 = Qnt * F_L*2
-
-  FERRO.push(`${C_L} Varas de ${Cm(F_L)} | ${(C_A)} Costelas ${Cm(F_A)}`)
-  TOTALLFERRO.push(`M¹ Ferro: ${FM1}`)
-  TOTALLFERRO.push(`M¹ Alumn: ${AM1}`)
-})
-
-return [LIST,SOMA,FERRO,SOMA/Vlr,TOTALLFERRO,TOTALLALUMN]
-}
-
-// CRUD___________________________________________________________
-
-function addyCRUD(Arry) {
-
-  Show(['#Div-CRUD','#SavSav']) ; Scroll('Fim') ; OcultaCoisas(ResultFilTable)
-
-  const Arr = Arry.split('/')
-  const Mdd = Arr[5].split(',')
-  const Defaut = QrySlt('#CrudDefaut')
-
-  Mdd.forEach(e=>{const E = e.split('|')
-    Arr[1] = E[0]
-    Arr[5] = Cm(parseFloat(E[1]))
-    Arr[6] = Cm(parseFloat(E[2]))
-    Arr[7] = RS_HTML(parseFloat(E[3]))
-    Arr[8] = Arr[8]
-    Arr[9] = IconLaps
-    Arr[10] = IconSavList
-    Arr[11] = IconLixo
-    Arr[12] = IconEscList
-    const Clone = Defaut.cloneNode(true)
-    Clone.removeAttribute('id')
-    Clone.classList.remove('none')
-    QrySltAll('td input',Clone).forEach((e,i)=>{e.value = Arr[i]})
-    QrySltAll('td div',Clone).forEach((e,i)=>{e.innerHTML = Arr[i]})
-    Pai(Defaut).appendChild(Clone)
-  })
-  Show('#ClearCRUD')
-  TotalCrud()
-  clearForm()
-  
-}
-function TotalCrud(){
-  let Soma = 0
-  QrySltAll('#CRUD td:nth-child(8) > div > div > div:nth-child(2)').forEach(e=>{Soma+=Num(e.innerHTML)})
-  QrySlt('#TotalCrud').innerHTML = Cm(Soma)
-}
-function AddAdd(){ArySltAll('button',ResultFilTable)[0].click()}
-function DeletCRUD(e){if(confirm(`Tem certeza que deseja deletar?`)){e.remove()}}
-function EditaCRUD(e){
-  QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{if(i===7){return};Show(E)})
-  QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{if(i===7){return};None(E)})
-}
-function CancelEditCRUD(e){
-  QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{if(i===7){return};None(E)})
-  QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{if(i===7){return};Show(E)})
-}
-function SaveEditCRUD(e){
-  const ListUp = []
-  QrySltAll('[data="CrudB"]',e).forEach((E,i)=>{
-    if(i===7){return};None(E)
-    ListUp.push(E.value)
-  })
-  QrySltAll('[data="CrudA"]',e).forEach((E,i)=>{
-    if(i===7){return};Show(E)
-    if (i < 7) {E.innerHTML = ListUp[i]}
-  })
-}
-function clearCRUD(){QrySltAll('#CRUD tr').forEach((e,idx)=>{if(idx>=2){e.remove()}});None('#ClearCRUD')}
-function ResumeCRUD(){
-  const TabelaCrud = ArySltAll('#CRUD table tr').slice(2) 
-  const ArryNovo = TabelaCrud.map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{return Cell.textContent.replace('R$','')}).filter((_,idx)=>[0,1,5,6,7,8].includes(idx))})
-  const AryResum = TabelaCrud.map(Lin=>{return ArySltAll('td',Lin).map((Cell,Idx)=>{return Cell.textContent.replace('R$','')}).filter((_,idx)=>[1,2,3,4,5,6,7].includes(idx))})
-  const Itens = ArryNovo.map(e=>e[0]).join(',')
-  const Mdds = ArryNovo.map(e=>e.slice(1).slice(0,-1).join('|')).join('/')
-  const total = QrySlt('#TotalCrud').innerHTML
-  const Formate = AryResum.map(I=>`${I[0]} - ${I[1]} ${I[2]} ${I[3]} (${I[4]} x ${I[5]}) ${RS(I[6])}`).concat(`*Total: ${RS(total)}*`).join('/')
-  const Etc = ArryNovo.map(e=>e[5])
-  return [Itens,Mdds,Formate,total,Etc]
-}
-
-// Template Strings ___________________________________________________________________________
-
 function LoadRoloTop(){
   Topic.forEach(e=>{const [Top,Qnt] = Object.entries(e)[0]
 
     const Template = `
-    <div class="Ct"><div>${Top}</div><div class="RolodeImg Ct w100 Rltv Rd">
+    <div class="RoloTopFundo Ct Rd">
+    <div class="RoloTitle w100">${Top}</div>
+    <div class="RolodeImg Ct w100 Rltv">
       <span class="Abslt flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
       <span class="Abslt Flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
     <div class="RoloGrupImg Rw w100">
     ${SplitNum(Qnt).map(e=> `<div><div class="Cl ppt">
-        <div class="Rltv Rd ppt">
+        <div class="Rltv Rd ppt Hddn">
           <img src="Portifolio/${Top.slice(1)}_${Zero(e)}.png" 
           class="${
             Top.match(/^@/)?'Stry perspectiva':
             Top.match(/^&/)?"Wind FotoGravata":
             Top.match(/^9/)?"Flag ScalaFlag":
-            
+            Top==='+ParalamaP'?"Feed ParalamaP":
+            Top==='0ParalamaP'?"Feed TampaTanque":
+            Top==='1GeladeiraP'?"Flag Geladeira":
+            Top==='+TampaTanque'?'Feed TampaTanque2':
             'Feed Rd'
-          }" 
+          }"
           onclick="AbreItem(this.parentNode.parentNode)">
         </div>
         <a>Adesivo</a>
@@ -649,7 +718,7 @@ function LoadRoloTop(){
       </div></div>`).join('')}</div></div></div>`
     insetBefor('#RoloTopHome',Template)
   })
-  gata();gata2();gata3()
+  gata();gata2();gata3();gata4();gata5();gata6();gata7();gata8();gata9()
 }
 function LoadCores(){Show('#ListaCor');InnQry('#ListaCor','')
   StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}')"></li>`)})
@@ -658,6 +727,12 @@ function LoadListServ(){for(const Grup in grupos){insetBefor(I_Serv,`<optgroup l
 function gata(){QrySltAll('.FotoGravata').forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 function gata2(){QrySltAll('.perspectiva').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Insta_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 function gata3(){QrySltAll('.ScalaFlag').forEach((e,idx)=>{insetAntes(e.parentNode,`<img class="MoldeFlag Abslt Rd" src="Moldes/Molde_Wind_00${(idx+1)>4?4:idx+1}.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata4(){QrySltAll('.ParalamaP').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_Paralama_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata5(){QrySltAll('.ParalamaP').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="ParalamaP2 Abslt" src="Portifolio/ParalamaP_${Zero(idx+1)}.png">`)})}
+function gata6(){QrySltAll('.TampaTanque').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata7(){QrySltAll('.Geladeira').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Geladeira_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata8(){QrySltAll('.Geladeira').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="Geladeira2 Abslt" src="Portifolio/GeladeiraP_${Zero(idx+1)}.png">`)})}
+function gata9(){QrySltAll('.TampaTanque2').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 
 function exibirImagem(){
   const Resute = QrySlt('.FotoGravata')
@@ -679,6 +754,43 @@ function exibirStry(){
 
 QrySlt('#InptIMG').addEventListener('change',exibirImagem)
 QrySlt('#InptStry').addEventListener('change',exibirStry)
+
+
+
+
+
+function LoadTabelaimg(Serv){
+  const Dados = tabela.filter(e=>e[0]===Serv)
+  console.log(Dados)
+  const Inner = `
+    <div>${Serv}</div>
+    <div><div>500 UND - Brilho</div>
+      ${
+        Dados.map(e=>e[1]).join("")
+      }
+    </div>
+        <div><div>1.000 UND - Brilho</div>
+      ${
+        Dados.map(e=>e[1]).join("")
+      }
+    </div>
+  `
+  InnQry('#dadosTabelaimg',Inner)
+}LoadTabelaimg('Cartão')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

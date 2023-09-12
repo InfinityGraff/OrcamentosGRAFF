@@ -23,11 +23,14 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
   --DegradeFundo:linear-gradient(#1f1f1f,#101010) center center no-repeat fixed;
   --degradeFonte:linear-gradient(to bottom,#E312DF, #FA077D, #ff6f00);
   --CorInput:#303030;
-  --Lite:'Tommy_Ligth','Lexend Deca','Arial';
-  --Rglr:'Tommy_Regular','Lexend Deca','Arial';
-  --Bold:'Tommy_Bold','Lexend Deca','Arial';
-  --Medi:'Tommy_Medium','Lexend Deca','Arial';
-  
+  --Lite:
+  'Tommy_Ligth','Lexend Deca','Arial';
+  --Rglr:
+  'Tommy_Regular','Lexend Deca','Arial';
+  --Bold:
+  'Tommy_Bold','Lexend Deca','Arial';
+  --Medi:
+  'Tommy_Medium','Lexend Deca','Arial';
 }*{
   margin: 0px;
   padding: 0px;
@@ -81,12 +84,13 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .icon2 svg{width: 50px;height: 50px}
 .Hddn{overflow: hidden;}
 .Opacy{opacity: 0}
+.Bd0{border:1px solid #ff000000}
 
 .erro{color:red;}
 .error{border: 2px solid red;}
 .error::placeholder {color: red}
 
-html,body{touch-action: pan-x pan-y; background: #ffffff;color: black;}
+html,body{touch-action: pan-x pan-y;background: #ffffff;/* color: black; */}
 header{height:55px;padding:0px 10px}
 header.Lite{background: purple; color: white; fill: white;}
 h1{font-size:40px;font-family:var(--Bold)}
@@ -109,6 +113,12 @@ button>img, input>img, select>img{margin:0px 5px}
   button:hover,.baby:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
   button:active,.baby:active{transform:scale(0.95)}
 
+.Dark option{color:white;background:#3d3d3d}
+.Lite option{color:black;background:white}
+
+.Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 20px;}
+.Lite optgroup{color:#00000038;background:white;font-size: 20px;}
+
 nav{height:35px;transition:all 0.2s ease-in-out}nav a{height:100%;padding:0px 10px;transition:all 0.2s ease-in-out}
   nav.Dark{background:#ffffff38}
   nav.Lite{background:#ff6600;color:white}
@@ -118,7 +128,7 @@ nav{height:35px;transition:all 0.2s ease-in-out}nav a{height:100%;padding:0px 10
   nav.Lite a:active{background:#470047}
   nav a:hover{transform: scale(1.08)}
 
-svg{width:30px;height:30px;}.Dark svg{fill:#ffffff93;}
+svg:not(#DivFigs svg){width:30px;height:30px;}.Dark svg:not(#DivFigs svg){fill:#ffffff93;}
 svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale(1.1);transition: all 0.2s ease-in-out}
 
 #Home{transition: all 0.2s ease-in-out}#Home:hover{color:#ff6600;transform: scale(1.02)}
@@ -127,7 +137,9 @@ svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale
 #Pages{display:flex;transition:transform 0.3s ease-in-out}
 #Pages>div{width:100vw;height:100vh;padding:10px;overflow:scroll;}
 
-.RolodeImg{background:#ffffff1c;overflow:hidden;flex-wrap:nowrap}
+.RoloTopFundo{background:#ffffff1c}
+.RolodeImg{overflow:hidden;flex-wrap:nowrap}
+.RoloTitle{font-size: 20px;}
   .RolodeImg > div > div{margin: 20px 8px;transition: all 0.2s ease-in-out}
   .RolodeImg > div > div:hover{transform: scale(1.08) rotate(2deg);}
   .RolodeImg img:hover{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
@@ -142,6 +154,11 @@ svg:hover{fill: #ff5100; filter: drop-shadow(0 0 5px #ff5100a2);transform: scale
   .RolodeImg .Seta:hover{transform: scale(1.2)}
   .RolodeImg .Seta:hover{transform: scale(1.2)}
   .RoloGrupImg{overflow-x: scroll}
+
+#DivFigs{background:#ffffff}
+#DivFigs img{transform: scale(0.98);transition:all 0.2s ease-in-out}
+.FigSelect{border:1px solid #48ff00;background: #1eff00ad;}
+#DivFigs img:hover{transform: scale(1.05)}
 
 #Fundo-Modal{position:fixed;top:0px;z-index:999999999;background:#0000001a;backdrop-filter:blur(10px);animation:FndoModal 0.5s}
 #Fundo-Modal > div,#Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
@@ -638,6 +655,7 @@ z-index: 999;
 #optionsListClnt > div:hover {background:#47083d;}
 
 
+
 .Redi{
   height: 100vh;
 }
@@ -792,8 +810,9 @@ z-index: 999;
 
 .FotoGravata{transform:scale(0.75)}
 .Molde{z-index:99;width:100px;height:240px}
-.MoldeStry{z-index:99;width:170px;height:300px}
+.MoldeStry{z-index:99;width:170px;height:303px}
 .MoldeFlag{z-index:99;width:170px;height:357px}
+.moldeFeed{z-index:99;width:170px;height:173px}
 
 .ScalaFlag{transform: translateY(-35px)  scale(0.70) scaleX(0.80)}
 
@@ -802,10 +821,66 @@ z-index: 999;
   transform: translateX(6px) translateY(-25px) scale(0.66) perspective(500px) rotateY(18deg) rotateZ(-5deg) rotateX(10deg);;
   transform-style: preserve-3d;
 }
+.ParalamaP{
+  transform: rotateZ(-29deg) scaleX(0.58) translateX(28px) translateY(5px);
+}
+.ParalamaP2{z-index: -1;
+  transform: rotateZ(-29deg) scaleY(0.58) scaleX(0.58) translateX(-250px) translateY(-320px);
+}
+.TampaTanque{transform: scaleY(2) translateY(-25%);}
 
-#Modal-Item .Wind,#Modal-Item .Molde{width:200px;height: 500px}
-#Modal-Item .Stry,#Modal-Item .MoldeStry{width:280px;height: 500px}
+#Modal-Item .Wind,#Modal-Item .Molde{width:200px;height: 503px}
+#Modal-Item .Stry,#Modal-Item .MoldeStry{width:280px;height: 503px}
 #Modal-Item .perspectiva{transform: translateX(10px) translateY(-55px) scale(0.66) perspective(500px) rotateY(18deg) rotateZ(-5deg) rotateX(10deg);;}
 #Modal-Item .ScalaFlag{transform: translateY(-55px) translateX(5px)  scale(0.7) scaleX(0.70)}
+#Modal-Item .ParalamaP{
+  transform: rotateZ(-29deg) scaleX(0.58) translateX(78px) translateY(13px);
+}
+#Modal-Item .ParalamaP2{z-index: 0;
+  transform: rotateZ(-29deg) scaleY(0.78) scaleX(0.78) translateX(-550px) translateY(-250px);
+}
+
+.Geladeira{
+  width:170px;height: 300px;
+  perspective: 500px;
+  transform: scaleX(0.60) scaleY(0.95) translateX(26px) perspective(500px) rotateY(20deg);
+  transform-style: preserve-3d;
+
+}
+
+.Geladeira2{
+  width:170px;height: 300px;
+  perspective: 500px;
+  transform: scaleX(0.60) scaleY(0.85) translateX(-380px) perspective(500px) rotateY(-70deg);
+  transform-style: preserve-3d;
+
+}
 
 #Modal-Item .Flag,#Modal-Item .MoldeFlag{width:280px;height: 588px}
+#Modal-Item .moldeFeed {width:400px;height:403px}
+
+
+
+#imgPropgnd{height: 100vh}
+
+#divTabelaIMGProduto img{top:0px;right:0px}
+
+.ConteudoTabela{z-index: 1;
+  top:0px;right:0px;
+  width:500px;height:500px;
+  color: #61136b;
+
+}
+
+
+
+
+
+
+
+
+#RelatorioOS > div > div{width:250px}
+#RelatorioOS img{width: 100%;}
+.OSPagSelect{border:1px solid #48ff00;background: #1eff0075}
+.OSPrintSelect{border:1px solid #ff00b3;background: #ff00dd73}
+.OSUberSelect{border:1px solid #00ccff;background: #006eff69}

@@ -14,6 +14,7 @@
   function EvtClik(Stg,Calback){QrySltAll(Stg).forEach(e=>{e.addEventListener('click',Calback)})}
   function Inn(e){return Stg(e).innerHTML}
   function InnQry(e,Stg){QrySlt(e).innerHTML = Stg}
+  function InnQryM(e,Stg){QrySlt(e).innerHTML += Stg}
 
   function Pai(e){return e.parentNode}
   function Avo(e){return e.parentNode.parentNode}
@@ -64,6 +65,19 @@
   function FocoOut(e){e.focus();e.setSelectionRange(e.value.length,e.value.length)}
   const EventClick = new MouseEvent('click',{bubbles: true,cancelable: true,view: window})
 
+// Funções de CSS
+function ClasTog(e,Stg){e.classList.toggle(Stg)}
+function ClasTog2(e,Stg){QrySlt(e).classList.toggle(Stg)}
+function ClasTroc(e,Add,Rmv){QrySltAll(e).forEach(i=>{i.classList.add(Add) ; i.classList.remove(Rmv)})}
+function FocoFilho(Pai,Filho){Array.from(Pai.children).forEach(e=>{None(e)});Show([Pai,Filho]);SairModal(Pai)}
+function FazerArry(e){return Array.isArray(e)?e:e instanceof HTMLCollection||e instanceof NodeList?Array.from(e):/^\./.test(e)?ArySltAll(e):[e]}
+function None(e,b){if(b){Show(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='none'}else{E.style.display='none'}})}
+function Show(e,b){if(b){None(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='flex'}else{E.style.display='flex'}})}
+function ShowTrue(e,Valid,b=null){if(Valid){Show(e);if(b!==null){None(b)}}else{None(e);if(b!==null){Show(b)}}}
+function NoneTrue(e,Valid,b=null){if(Valid){None(e);if(b!==null){Show(b)}}else{Show(e);if(b!==null){None(b)}}}
+
+
+
 // Funções Convert
   function TAble_to_Array(Stg){
     const ArryTable = []
@@ -100,18 +114,8 @@
   
 //
 // Funções CSS
-  function FocoFilho(Pai,Filho){Array.from(Pai.children).forEach(e=>{None(e)});Show([Pai,Filho]);SairModal(Pai)}
-  function FazerArry(e){return Array.isArray(e)?e:e instanceof HTMLCollection||e instanceof NodeList?Array.from(e):/^\./.test(e)?ArySltAll(e):[e]}
 
-  function None(e,b){
-    if(b){Show(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='none'}else{E.style.display='none'}})
-  }
-  function Show(e,b){
-    if(b){None(b)};FazerArry(e).forEach(E=>{if(typeof E==='string'){const EE=QrySlt(E);EE.style.display='flex'}else{E.style.display='flex'}})
-  }
 
-  function ShowTrue(e,Valid,b=null){if(Valid){Show(e);if(b!==null){None(b)}}else{None(e);if(b!==null){Show(b)}}}
-  function NoneTrue(e,Valid,b=null){if(Valid){None(e);if(b!==null){Show(b)}}else{Show(e);if(b!==null){None(b)}}}
 
   function ENone(e){let ee = null
     if(typeof e==='string'){ee=QrySlt(e)}else{ee=e}
