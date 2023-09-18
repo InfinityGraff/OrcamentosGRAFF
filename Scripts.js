@@ -131,7 +131,7 @@ const //Fundos
   function ConfirmPlan(){FocoFilho(FMdal,'#ConfirmPlan')}
   async function AlertPlanOK(){Show('#Alert');await delay(8000);None('#Alert')}
 
-  function AbrirModalPropaganda(){FocoFilho(FMdal,'#InnerVazio');InnQry('#InnerVazio',`<img id="imgPropgnd" src="Portifolio/Propaganda2.png">`)}
+  function AbrirModalPropaganda(){FocoFilho(FMdal,'#InnerVazio');InnQry('#InnerVazio',`<img id="imgPropgnd" src="Portifolio/Propaganda2-min.png">`)}
 
   function AbreNota(Mdd=ResumeCRUD()[2],Valor,Desc){FocoFilho(FMdal,'#ModalNota')
     InnQry('#DescrNota',CleaAsps(Mdd.split('/').map(e=>Div(Virg(e))).join("")))
@@ -624,7 +624,7 @@ const //Fundos
 
 // Funções Planilha________________________________________________________________
   QrySlt("#SavePddPlan").addEventListener("submit",(e)=>{SavePlan(e,"API")})
-  QrySlt("#SaveOSPlan").addEventListener("submit",(e)=>{SavePlan(e,"APIos")})
+  QrySlt("#SaveOSPlan").addEventListener("submit",(e)=>{SavePlan(e,"APISync")})
   function SavePlan(e,Aba){e.preventDefault()
     const formData = new FormData(e.target) ; const jsonData = {}
     formData.forEach((value,key)=>{jsonData[key]=value})
@@ -678,7 +678,7 @@ function ConfirmOS(Stg){
 
 
 // Figurinhas_________________________________________________________________________________
-function LoadFigs(){for(let i=1;i<=30;i++){InnQryM('#DivFigs',`<img class="Bd0" src="Figurinhas/Fig_${Zero(i)}.svg" onclick="ClasTog(this,'FigSelect')"/>`)}}LoadFigs()
+function LoadFigs(){for(let i=1;i<=73;i++){InnQryM('#DivFigs',`<img class="Bd0" src="Figurinhas/Fig_${Zero(i)}.svg" onclick="ClasTog(this,'FigSelect')"/>`)}}LoadFigs()
 function FilterFigs(){None(QrySltAll('#DivFigs img')) ; Show(QrySltAll('#DivFigs .FigSelect')) ; ClasTroc('#DivFigs .FigSelect','FigSlt','FigSelect') ; Show(['#BTNSVG1','#BTNSVG2'])}
 function RecuperaFigs(){Show(QrySltAll('#DivFigs img'));ClasTroc('#DivFigs .FigSlt','FigSelect','FigSlt');None(['#BTNSVG1','#BTNSVG2'])}
 function LimparFigs(){ClasTroc('#DivFigs .FigSelect','Null','FigSelect')}
@@ -700,7 +700,7 @@ function LoadRoloTop(){
     <div class="RoloGrupImg Rw w100">
     ${SplitNum(Qnt).map(e=> `<div><div class="Cl ppt">
         <div class="Rltv Rd ppt Hddn">
-          <img src="Portifolio/${Top.slice(1)}_${Zero(e)}.png" 
+          <img src="Portifolio/${Top.slice(1)}_${Zero(e)}-min.png" 
           class="${
             Top.match(/^@/)?'Stry perspectiva':
             Top.match(/^&/)?"Wind FotoGravata":
@@ -724,15 +724,15 @@ function LoadCores(){Show('#ListaCor');InnQry('#ListaCor','')
   StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}')"></li>`)})
 }
 function LoadListServ(){for(const Grup in grupos){insetBefor(I_Serv,`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)}}
-function gata(){QrySltAll('.FotoGravata').forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata2(){QrySltAll('.perspectiva').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Insta_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata3(){QrySltAll('.ScalaFlag').forEach((e,idx)=>{insetAntes(e.parentNode,`<img class="MoldeFlag Abslt Rd" src="Moldes/Molde_Wind_00${(idx+1)>4?4:idx+1}.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata4(){QrySltAll('.ParalamaP').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_Paralama_2.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata5(){QrySltAll('.ParalamaP').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="ParalamaP2 Abslt" src="Portifolio/ParalamaP_${Zero(idx+1)}.png">`)})}
-function gata6(){QrySltAll('.TampaTanque').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata7(){QrySltAll('.Geladeira').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Geladeira_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata8(){QrySltAll('.Geladeira').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="Geladeira2 Abslt" src="Portifolio/GeladeiraP_${Zero(idx+1)}.png">`)})}
-function gata9(){QrySltAll('.TampaTanque2').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata(){QrySltAll('.FotoGravata').forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata2(){QrySltAll('.perspectiva').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Insta_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata3(){QrySltAll('.ScalaFlag').forEach((e,idx)=>{insetAntes(e.parentNode,`<img class="MoldeFlag Abslt Rd" src="Moldes/Molde_Wind_00${(idx+1)>4?4:idx+1}-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata4(){QrySltAll('.ParalamaP').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_Paralama_2-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata5(){QrySltAll('.ParalamaP').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="ParalamaP2 Abslt" src="Portifolio/ParalamaP_${Zero(idx+1)}-min.png">`)})}
+function gata6(){QrySltAll('.TampaTanque').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata7(){QrySltAll('.Geladeira').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Geladeira_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
+function gata8(){QrySltAll('.Geladeira').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="Geladeira2 Abslt" src="Portifolio/GeladeiraP_${Zero(idx+1)}-min.png">`)})}
+function gata9(){QrySltAll('.TampaTanque2').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 
 function exibirImagem(){
   const Resute = QrySlt('.FotoGravata')

@@ -73,3 +73,63 @@ console.log(ObjInfo)
 
 
 
+function AbrirMiniTeclado(DOM){
+  None('#Grupo-Servicos')
+  const Teclado = QrySlt('#Modal-Teclado')
+  const inpt = DOM.dataset.tab
+  
+  Teclado.innerHTML = `
+    <div class="">
+    <div onclick="pressKey(49,'${inpt}')">1</div>
+    <div onclick="pressKey(50,'${inpt}')">2</div>
+    <div onclick="pressKey(51,'${inpt}')">3</div>
+    </div>
+    
+    <div class="">
+      <div onclick="pressKey(52,'${inpt}')">4</div>
+      <div onclick="pressKey(53,'${inpt}')">5</div>
+      <div onclick="pressKey(54,'${inpt}')">6</div>
+    </div>
+    
+    <div class="">
+      <div onclick="pressKey(55,'${inpt}')">7</div>
+      <div onclick="pressKey(56,'${inpt}')">8</div>
+      <div onclick="pressKey(57,'${inpt}')">9</div>
+    </div>
+
+    <div class="">
+      <div style="background: #ff7700;">Voltar</div>
+      <div onclick="pressKey(48,'${inpt}')">0</div>
+      <div style="background: #ff7700;" onclick="pressKey(13,'${inpt}')">Prox</div>
+    </div>
+    `
+
+
+
+
+  AbrirModalHTML(FundoModal,Teclado)
+  
+
+//  inpt.value = ''
+}
+
+
+//outra forma de fazer o menu de navegação_____________________________________________________
+
+MenuNav('nav a, #Home')  
+
+function MenuNav(Stg){
+    QrySltAll(Stg).forEach(e=>{e.addEventListener('click',()=>{
+    
+      const Abas = {
+        'Home': QrySlt('#Aba-Home'),
+        'Orcamento': QrySlt('#Aba-Orcamento'),
+        'Relatorio': QrySlt('#Aba-Relatorio'),
+        'Agenda': QrySlt('#Aba-Agenda'),
+        'Clientes': QrySlt('#Aba-Clientes'),
+      }
+  
+      for(const [key,aba] of Object.entries(Abas)){
+        aba.style.display = (key === e.getAttribute('id')) ? 'flex' : 'none'}})
+    })
+  }
