@@ -30,7 +30,7 @@ const //Fundos
   let Cadstr = ['']
   let ObjInfo = {}
   let ArryInfo = []
-  let CorItem = ''
+  let CorItem = ['']
   let ItemsPdd = []
   let ArryClnt = ['','','','','','','','','','','','','','']
   let ClntOK = ()=>ArryClnt[0]?ArryClnt[0]:Cadstr[0]
@@ -47,8 +47,8 @@ const //Fundos
     DefinePag(1)
     MediaQuere(W400)
     W400.addListener(MediaQuere)
-    LoadRoloTop() // Template String
-    
+    //LoadRoloTop() // Template String
+    LoadRoloTop2()
     
     QrySltAll('input[name="Cntt"]').forEach(I=>{I.addEventListener('input',e=>{MaskCntt(e)})})
     QrySltAll('#Grupo-Medidas input').forEach(e=>{e.setAttribute('inputmode','numeric')}) // campo Numerico
@@ -266,6 +266,7 @@ const //Fundos
       function NextyTab(inpt,e){
         inpt.value =  inpt.value.replace('+', '')
         e.preventDefault()
+        if(e.key==='-'){inpt.value='';return}
         if(e.key==="Tab"||KeyEnter(e)||e.key==="+"){
           if(Pai(inpt).id === 'Div-Inpt-Qnt' && e.key==="+"){ClonaMdd(IndiceDe(e.target))}
           let nextInput = QrySlt(`input[data-Tab="${TabIndx(inpt,1)}"]`,Avo(inpt))
@@ -277,6 +278,7 @@ const //Fundos
 // OnInputs__________________________________________________________________________________________
   function EditaClntSave(Clnt,Cntt){Show([GrupClnt,RestaNome],[GrupClntSv,GrupClntInfSv]);ArryClnt.fill('');FilTable()}
   function mudarCor(cor){QrySlt('#InputdeCor').style.backgroundColor=cor;CorItem=cor}
+  function VariasCor(Cor){Cor.innerHTML = Cor.innerHTML==='1'?'':'1';Cor.classList.toggle('CorStkSelects')}
 
   function handle(){
     QrySltAll('input[type="text"][name="'+event.target.name+'"]').forEach(i=>{i.value = event.target.value})
@@ -328,6 +330,7 @@ const //Fundos
       ShowTrue('#Div-Inpt-Tipo',I_Serv.value!=='')                     // Temove Tipo quando n tem Serv
       ShowTrue('#GrupoCores',undd.match(/W/))                          // Add Cor Quando nesesário
       NoneTrue('#Div-Inpt-Cbmt',['','-'].includes(I_Cbmt.options[1].value.trim())) // Remove acabamento se n Tiver
+      ShowTrue('#MediasExtraPlaca',I_Serv.value==='Placa')
   }
   function Ouvinte(formInfo,btnInfo){
     const [form,btn] = [QrySlt(formInfo),QrySlt(btnInfo)]
@@ -379,99 +382,7 @@ const //Fundos
 
     return Options(['Todos',...new Set(tabela.filter(R=>Fill(R)).map(R=>R[Coll]))])
   }
-  function FilTable(){
-  let MddTotalM2 = 0
-  ResultFilTable.innerHTML = ''
-  const Arry = tabela.filter(T=>{
-    return (I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
-          (I_Tipo.value === "Todos" || T[1] === I_Tipo.value) &&
-          (I_Cbmt.value === "Todos" || T[2] === I_Cbmt.value) &&
-          (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
-          (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
-
-  const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto,Itm,Tarefs],indx)=>{
-    const Orc = Orcamento(Arry[indx])
-    const SubTotal = Cm(Orc[1])
-    const VlrM2 = Cm(Vlr)
-    const DescClnt = ArryClnt[13]!==''? ArryClnt[13] : 0
-    const DescMdds = Orc[3] >= 4 ? Orc[3]/(120+Orc[3]*10) : 0
-    const Desc = Num(DescClnt)+Num(DescMdds)
-    MddTotalM2 = Desc===0 ? 0 : 1
-    if(onOff === 'on' && Desc===0){onOff='off'}
-    const ClassNone = onOff === 'off' ? 'none' : ''
-    const TotalDesc = Calc.match(/OFS/) ? Cm(Vlr*(1-DescClnt)) : Cm(Orc[1]*(1-Desc))
-    const CBMT = `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
-    const QNT = QFix !== 'Todos' ? QFix : I_Qnt.value
-    const IMG = Foto ? Foto.match('.jpg|.png') ? Foto : `${LinkDrive}${Foto}` : ''
-    const Mdds  =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
-    const Mdds3 =Orc[0].map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join('/').replace('.',',')
-    const Mdds1 = Orc[0].map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
-    const Mdds2 =Mdds1.join('/')
-    const Ittens = Orc[0].map(e=>Itm).join(',')
-    const ItemHTML = `<div class="Ct Cl w100 Rdd">
-                        <div class="RstServ">${Serv} ${Tipo}</div>
-                        <div id="FotoItem"><img src="${IMG}"></div>
-                        <div>${Mdds1.map(i=>Div(i)).join("").replace('*','')}</div>
-                      </div>
-                      <div class="Cl Mgrn-PX2 ${ClassNone}">
-                        <div class="Ct Mgrn-PX2">
-                          <div>Cliente: ${Pct(DescClnt)}</div>
-                          <div>Medidas: ${Pct(DescMdds)}</div>
-                        </div>
-                        <div>Total Desc: ${Pct(Desc)}</div>
-                        <div>ValorM2: ${RS(Num(TotalDesc)/Orc[3])}</div>
-                      </div>
-                      <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
-                      `
-    const Etc = `${I_Etc.value} ${CorItem}`
-
-    let ItemCRUD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc,Etc]
-    
-    let Comment = Serv==='Placa' ? Orc[2].map(c=>`<div>${c}</div>`).join('') : ""
-    let Ferro =   Serv==='Placa' ? Orc[4].map(c=>`<div>${c}</div>`).join('') : ""
-    let Alumn =   Serv==='Placa' ? Orc[5].map(c=>`<div>${c}</div>`).join('') : ""
-
-    const item = CreateTag('div')
-    item.innerHTML =
-      `<div class="itemfilter Ct Cl w100 Rd">
-        <div class="RstTitle w100 Pddn-XY Ct Bt">
-          <div class="RstServ ppt" onclick="AbreNota('${Mdds2}','${SubTotal}','${TotalDesc}')">${Serv} ${Tipo}</div>
-          <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${VlrM2} m²</div>
-        </div>
-        <div class="Ct Bt Pddn-XY">
-          <div class="none">${ItemHTML}</div>
-          <div id="FotoFilter" onclick="AbreItem(this.parentNode.firstElementChild)">
-            ${ Serv==='Placa'? `<div id="Canvs${indx}" class="canvas"></div>` :
-            Foto ? `<img src="${IMG}">` : `<div class="SVGFilt Ct">${IconSemFoto}</div>`}
-          </div>
-
-          <div class="Ct Cl"><div class="Descricao">
-                <div><strong>Acbmnt: </strong>${Cbmt}</div>
-                <div><strong>Qnt: </strong>${QFix} Und</div>
-                <div><strong>Grama: </strong>${Gram}</div>
-              </div><hr class="w100"><div class="valores Ct Cl w100">
-                
-                <div class="RstValrDesc ${ClassNone}">${RS(SubTotal)}<div>${IconXDesc}</div></div>
-                <div class="RstValrFinal Ct FtMd"><div class="FtMd">R$</div> ${TotalDesc}</div>
-            </div></div>
-            <div class="Ct Cl">
-              <button onclick="addyCRUD('${ItemCRUD.join('/')}')">Adicionar</button>
-              <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Salvar</button>
-              <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Entrada</button>
-            </div>
-        </div>
-        <div class="Ct Cl">${Comment}</div><div>${Ferro}</div><div>${Alumn}</div>
-      </div>`
-    return item
-  })
-  items.forEach(I=>ResultFilTable.appendChild(I))
-
-  QrySlt('#Contagem').innerHTML = ResultFilTable.children.length + ' Itens'
-  ShowTrue('#DivBtnDesc',MddTotalM2===1)
-  QrySltAll('.canvas').forEach(e=>{Gera3d(e)})
-  OcultaCoisas(ResultFilTable)
-  }
-  function Orcamento(arrays){
+  function Orcamento(arrays,Remov){
 
   const [Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Foto] = arrays
 
@@ -480,36 +391,189 @@ const //Fundos
   const QNT = ArySltAll('#Div-Inpt-Qnt input').map(I=>I.value) //* Tipo.match(/FV/) ? 2 : 1
 
   // 'SOMA' Calculo Total, 'LIST' Calculo Unidade
-  const SOMA = TotalCress(Vlr,QNT.reduce((acc,Qnt,x)=>acc+Qnt*LAG[x]*ALT[x],0),Serv)
-  const LIST = QNT.map((Qnt,x)=>[Qnt,LAG[x],ALT[x],TotalCress(Vlr,Qnt*LAG[x]*ALT[x],Serv)])
 
-  let FERRO = []
-  let TOTALLFERRO = []
-  let TOTALLALUMN = []
+  const SOMA = Remov==="RemvAcres"?
+    TotalCress(Vlr,QNT.reduce((acc,Qnt,x)=>acc+Qnt*LAG[x]*ALT[x],0),Serv) : 
+    Vlr*(QNT.reduce((acc,Qnt,x)=>acc+Qnt*LAG[x]*ALT[x],0))
+      
+    const LIST = Remov==="RemvAcres"?
+    QNT.map((Qnt,x)=>[Qnt,LAG[x],ALT[x],TotalCress(Vlr,Qnt*LAG[x]*ALT[x],Serv)]) : 
+    QNT.map((Qnt,x)=>[Qnt,LAG[x],ALT[x],Vlr*Qnt*LAG[x]*ALT[x]])
+    
+  let Coment = [] ; let VlrExtra = 0
+  
+  if(Calc.match(/\sF\s/)){
+    QNT.forEach((Qnt,x)=>{ // Para Calcular Ferro
+      const Lag_ = Num(LAG[x]) ; const Alt_ = Num(ALT[x])
+      const desc   = I_Ferr.match(/..$/)/1000 * 2
+      const PE     = Serv.match(/Cav/) ? 0.15:0
+      const CkCstl = Tipo.match(/Lumi/)
+      const FFVV = Tipo.match(/2/) ? 2 : 1
+      const CkLarg = Lag_ > Alt_
 
-  QNT.forEach((Qnt,x)=>{ // Para Calcular Ferro
+      const F_L = CkLarg ? Lag_+PE : Lag_-desc
+      const F_A = CkLarg ? Alt_-desc : Alt_+PE
+      const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Alt_)+1 // Costelas
+      const C_A = CkCstl ? 2 : CkLarg ? Math.round(Lag_)+1 : 2 // Costelas
+      const Solda = C_A > C_L ? C_A*2*Sold : C_L*2*Sold //Pontos de Solda
+  
+      const FM1 = Qnt * (F_L*C_L + F_A*C_A)
+      const AM1 = Calc.match(/A/)? Num(Qnt?Qnt:0) * (Lag_+Alt_)*2 : 0
+  
+      Coment.push(`${C_L} Varas de ${Cm(F_L)} | ${(C_A)} Costelas de ${Cm(F_A)} | ${Cm(FM1)}M¹ | ${RS(FM1*Ferro)}
+      ${Calc.match(/A/)?`(Almn: ${Cm(AM1)}M¹ ${RS(AM1*Alumn)})`:''}`)
+      VlrExtra+= (FM1*Ferro+AM1*Alumn+Solda)*FFVV
+    })
+  }
+  return [LIST,SOMA,SOMA/Vlr,Coment,VlrExtra]
+  }
+  function FilTable(){
+    let MddTotalM2=0 ; ResultFilTable.innerHTML=''
 
-    const Lag_ = LAG[x] ; const Alt_ = ALT[x]
+    const Arry = tabela.filter(T=>{
+      return(I_Serv.value==="Todos"||T[0]===I_Serv.value)&&
+            (I_Tipo.value==="Todos"||T[1]===I_Tipo.value)&&
+            (I_Cbmt.value==="Todos"||T[2]===I_Cbmt.value)&&
+            (I_Gram.value==="Todos"||T[3]===I_Gram.value)&&
+            (I_QFix.value==="Todos"||T[4]===I_QFix.value)
+    })
 
-    const desc   = I_Ferr.match(/..$/)/1000 * 2
-    const PE     = Serv.match(/Cav/) ? 0.15*2 : 0
-    const CkCstl = Tipo.match(/Lumi/)
-    const CkLarg = Lag_ > Alt_
+    const items = Arry.map(([Serv,Tipo,Cbmt,Gram,QFix,Vlr,Cust,Calc,Itm,Tarefs],Idx)=>{
+      const IMG = `TabelaProdutos/${Itm}.png`
+      const CBMT= `${Cbmt} (${Gram})`.replace(/\s\(\)/,'')
+      const QNT = Calc.match(/OFS/)?QFix:I_Qnt.value
 
-    const F_L = CkLarg ? Lag_+PE : Lag_-desc
-    const F_A = CkLarg ? Alt_-desc : Alt_+PE
-    const C_L = CkCstl ? 2 : CkLarg ? 2 : Math.round(Alt_)+1 // Costelas
-    const C_A = CkCstl ? 2 : CkLarg ? Math.round(Lag_)+1 : 2 // Costelas
+      const [List,Soma,VlrM2,Coment,VlrExtra] = Orcamento(Arry[Idx],Inn('#RmvDescc'))
+      const DescClnt = ArryClnt[13]!==''?ArryClnt[13]:0
+      const DescMdds = VlrM2>=4?VlrM2/(120+VlrM2*10):0
+      const Desc = Num(DescClnt)+Num(DescMdds)
+      MddTotalM2 = Desc===0?0:1
+      if(onOff==='on'&&Desc===0){onOff='off'}
+      const ClassNone = onOff==='off'?'none':''
+      const TotalDesc = Calc.match(/QNT/)? Cm(Vlr*I_Qnt.value) : Calc.match(/OFS/) ? Cm(Vlr*(1-DescClnt)) : Cm(Soma*(1-Desc))
+      
+      if(Calc.match(/OFS/)){console.log(Cm(Vlr*(1-DescClnt)))}
 
-    const FM1 = Qnt * (F_L*C_L + F_A*C_A)
-    const AM1 = Qnt * F_L*2
+      const Mdds  =List.map(I=>`${I[0]}|${I[1]}|${I[2]}|${I[3]}`).join(',')
+      const Mdds1 =List.map(I=>`${I[0]} - ${Serv} ${Tipo} (${I[1]} x ${I[2]}) ${RS(I[3])}`).concat(`*Total: ${RS(TotalDesc)}*`)
+      const Mdds2 =Mdds1.join('/')
+      const Ittens=List.map(e=>Itm).join(',')
+      const Etc=`${I_Etc.value},${ArySltAll('.CorStkSelects').map(e=>RgbToHex(e.style.backgroundColor)).join('|')}`
+      let ItemCRUD=[Itm,QNT,Serv,Tipo,CBMT,Mdds,' Mdd2',TotalDesc,Etc]
+      const ItemHTML = `<div class="Ct Cl w100 Rdd">
+                          <div class="RstServ">${Serv} ${Tipo}</div>
+                          <div id="FotoItem"><img src="${IMG}"></div>
+                          <div>${Mdds1.map(i=>Div(i)).join("").replace('*','')}</div>
+                        </div>
+                        <div class="Cl Mgrn-PX2 ${ClassNone}">
+                          <div class="Ct Mgrn-PX2">
+                            <div>Cliente: ${Pct(DescClnt)}</div>
+                            <div>Medidas: ${Pct(DescMdds)}</div>
+                          </div>
+                          <div>Total Desc: ${Pct(Desc)}</div>
+                          <div>ValorM2: ${RS(Num(TotalDesc)/VlrM2)}</div>
+                        </div>
+                        <button onclick="Copy('${Mdds2}',this)">Copy Itens</button>
+                        `
 
-    FERRO.push(`${C_L} Varas de ${Cm(F_L)} | ${(C_A)} Costelas ${Cm(F_A)}`)
-    TOTALLFERRO.push(`M¹ Ferro: ${FM1}`)
-    TOTALLFERRO.push(`M¹ Alumn: ${AM1}`)
-  })
+      const item = CreateTag('div')
+      item.innerHTML =
+        `<div class="itemfilter Ct Cl w100 Rd">
+          <div class="RstTitle w100 Pddn-XY Ct Bt">
+            <div class="RstServ ppt" onclick="AbreNota('${Mdds2}','${Cm(Soma)}','${TotalDesc}')">${Serv} ${Tipo}</div>
+            <div class="RstValrM2 Ct"> <div class="FtLt CrCnz">(Valor por Metro)</div>R$ ${Cm(Vlr)} m²</div>
+          </div>
+          <div class="Ct Bt Pddn-XY">
+            <div class="none">${ItemHTML}</div>
+            <div id="FotoFilter" onclick="AbreItem(this.parentNode.firstElementChild)"><img src="${IMG}"></div>
 
-  return [LIST,SOMA,FERRO,SOMA/Vlr,TOTALLFERRO,TOTALLALUMN]
+            <div class="Ct Cl"><div class="Descricao">
+                  <div><strong>Acbmnt: </strong>${Cbmt}</div>
+                  <div><strong>Qnt: </strong>${QFix} Und</div>
+                  <div><strong>Grama: </strong>${Gram}</div>
+                </div><hr class="w100"><div class="valores Ct Cl w100">
+                  
+                  <div class="RstValrDesc ${ClassNone}">${RS(Cm(Soma))}<div>${IconXDesc}</div></div>
+                  <div class="RstValrFinal Ct FtMd"><div class="FtMd">R$</div> ${Cm(Num(TotalDesc)+VlrExtra)}</div>
+              </div></div>
+              <div class="Ct Cl">
+                <button onclick="addyCRUD('${ItemCRUD.join('/')}')">Adicionar</button>
+                <button onclick="SaveDireto('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Salvar</button>
+                <button onclick="AbreInfo('${Ittens}','${Mdds}','${TotalDesc}','${Etc}','${Tarefs}')">Entrada</button>
+              </div>
+          </div>
+          <div class="Ct Cl">${Calc.match(/\sF\s/)?Coment.map(c=>`<div>${c}</div>`).join(''):""}</div>
+        </div>`
+      return item
+    })
+    items.forEach(I=>ResultFilTable.appendChild(I))
+
+    QrySlt('#Contagem').innerHTML = ResultFilTable.children.length + ' Itens'
+    ShowTrue('#DivBtnDesc',MddTotalM2===1)
+    if(I_Serv.value==="Placa"){Gera3d(QrySlt('#NewCanvas'))}
+    OcultaCoisas(ResultFilTable)
+  }
+
+//Canvas pra achar Medidas_____________________________________________
+
+  function EscolheCalc(){
+    const Qnt = QrySlt('#Div-Inpt-Qnt input')
+    const Alt = ParsMil('#Div-Inpt-Alt input')
+    const Lag = ParsMil('#Div-Inpt-Larg input')
+    const [A_Lag,A_Alt] = [ParsMil('#I_AreaX'),ParsMil('#I_AreaY')]
+
+    if(QrySlt('#BtnMddArea').innerHTML==='Achar Qnt'){return}
+    if(Alt===0||Lag===0){return}
+
+    const C1 = CalcAreaQnt(Lag,Alt,A_Lag,A_Alt)
+    const C2 = CalcAreaQnt(Alt,Lag,A_Lag,A_Alt)
+
+    Qnt.value = C1===0?'':C1>C2?C1:C2
+    QrySlt('#LoadCanvaaas').innerHTML =`<button id="LoadCanvaaas" onclick="
+    CriaCanvas(${C1>C2?`${Lag},${Alt}`:`${Alt},${Lag}`},${A_Lag},${A_Alt})">Load Canvas</button>`
+  }
+  function CalcAreaQnt(Lag,Alt,A_Lag,A_Alt){
+    const QntLag = Ared(A_Lag/Lag)
+    const QntAlt = Ared(A_Alt/Alt)
+      const SobraV = A_Lag-QntLag*Lag
+      const SobraH = A_Alt-QntAlt*Alt
+
+    const Origen = [] ; const Invert = []
+
+    for(let i=0;i<QntLag;i++){for(let j=0;j<QntAlt;j++){Origen.push(1)}}
+    if(SobraH>SobraV && SobraH>Lag){for(let i=0;i<Ared(A_Lag/Alt);i++){for(let j=0;j<Ared(SobraH/Lag);j++){Invert.push(1)}}}
+    else if(SobraV>Alt){for(let i=0;i<Ared(A_Alt/Lag);i++){for(let j=0;j<Ared(SobraV/Alt);j++){Invert.push(1)}}}
+    
+    return Origen.length+Invert.length
+  }
+  function CriaCanvas(Lag,Alt,A_Lag,A_Alt){
+    const QntLag = Ared(A_Lag/Lag)
+    const QntAlt = Ared(A_Alt/Alt)
+      const SobraV = A_Lag-QntLag*Lag
+      const SobraH = A_Alt-QntAlt*Alt
+    const StrX = QntLag*Lag
+    const StrY = QntAlt*Alt
+
+    const Cnvs = QrySlt('#CanvasMedidas')
+    Cnvs.width = A_Lag ; Cnvs.height = A_Alt
+    Cnvs.style.width = A_Lag/3 ; Cnvs.style.height = A_Alt/3
+  
+    const ctx = Cnvs.getContext('2d')
+    ctx.strokeStyle = 'white'
+    ctx.fillStyle = 'purple'
+    ctx.lineWidth = 3
+    
+    for(let i=0;i<QntLag;i++){for(let j=0;j<QntAlt;j++){
+      const[x,y]=[i*Lag,j*Alt] ; ctx.fillRect(x,y,Lag,Alt) ; ctx.strokeRect(x,y,Lag,Alt)}}
+  
+    if(SobraH>SobraV && SobraH>Lag){
+      for(let i=0;i<Ared(A_Lag/Alt);i++){for(let j=0;j<Ared(SobraH/Lag);j++){const[Xv,Yv]=[i*Alt,j*Lag]
+        ctx.fillRect(Xv,Yv+StrY,Alt,Lag);ctx.strokeRect(Xv,Yv+StrY,Alt,Lag)}}
+    }else if(SobraV>Alt){
+      for(let i=0;i<Ared(A_Alt/Lag);i++){for(let j=0;j<Ared(SobraV/Alt);j++){const[Xv,Yv]=[j*Alt,i*Lag]
+        ctx.fillRect(Xv+StrX,Yv,Alt,Lag);ctx.strokeRect(Xv+StrX,Yv,Alt,Lag)}}
+    }
+    
   }
 
 // CRUD___________________________________________________________
@@ -678,61 +742,22 @@ function ConfirmOS(Stg){
 
 
 // Figurinhas_________________________________________________________________________________
-function LoadFigs(){for(let i=1;i<=73;i++){InnQryM('#DivFigs',`<img class="Bd0" src="Figurinhas/Fig_${Zero(i)}.svg" onclick="ClasTog(this,'FigSelect')"/>`)}}LoadFigs()
+const QntFigs = 30
+function LoadFigs(){for(let i=1;i<=QntFigs;i++){InnQryM('#DivFigs',`<img class="Bd0" src="Figurinhas/FigP_${Zero(i)}.png" onclick="ClasTog(this,'FigSelect')"/>`)}}LoadFigs()
 function FilterFigs(){None(QrySltAll('#DivFigs img')) ; Show(QrySltAll('#DivFigs .FigSelect')) ; ClasTroc('#DivFigs .FigSelect','FigSlt','FigSelect') ; Show(['#BTNSVG1','#BTNSVG2'])}
 function RecuperaFigs(){Show(QrySltAll('#DivFigs img'));ClasTroc('#DivFigs .FigSlt','FigSelect','FigSlt');None(['#BTNSVG1','#BTNSVG2'])}
 function LimparFigs(){ClasTroc('#DivFigs .FigSelect','Null','FigSelect')}
 function BaixarFigs(){
-  const List = []
-  QrySltAll('.FigSlt').forEach((e)=>{List.push(e.getAttribute('src'))})
+  const List=[]
+  QrySltAll('.FigSlt').forEach((e)=>{List.push(e.getAttribute('src').replace('P_','_').replace('.png','.svg'))})
   const Destin = window.open("GuardaGuarda.html")
   setTimeout(()=>{Destin.postMessage({dados:List},"*")},2000)
 }
-function LoadRoloTop(){
-  Topic.forEach(e=>{const [Top,Qnt] = Object.entries(e)[0]
 
-    const Template = `
-    <div class="RoloTopFundo Ct Rd">
-    <div class="RoloTitle w100">${Top}</div>
-    <div class="RolodeImg Ct w100 Rltv">
-      <span class="Abslt flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
-      <span class="Abslt Flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
-    <div class="RoloGrupImg Rw w100">
-    ${SplitNum(Qnt).map(e=> `<div><div class="Cl ppt">
-        <div class="Rltv Rd ppt Hddn">
-          <img src="Portifolio/${Top.slice(1)}_${Zero(e)}-min.png" 
-          class="${
-            Top.match(/^@/)?'Stry perspectiva':
-            Top.match(/^&/)?"Wind FotoGravata":
-            Top.match(/^9/)?"Flag ScalaFlag":
-            Top==='+ParalamaP'?"Feed ParalamaP":
-            Top==='0ParalamaP'?"Feed TampaTanque":
-            Top==='1GeladeiraP'?"Flag Geladeira":
-            Top==='+TampaTanque'?'Feed TampaTanque2':
-            'Feed Rd'
-          }"
-          onclick="AbreItem(this.parentNode.parentNode)">
-        </div>
-        <a>Adesivo</a>
-        <div>R$ 00,00</div>
-      </div></div>`).join('')}</div></div></div>`
-    insetBefor('#RoloTopHome',Template)
-  })
-  gata();gata2();gata3();gata4();gata5();gata6();gata7();gata8();gata9()
-}
 function LoadCores(){Show('#ListaCor');InnQry('#ListaCor','')
-  StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}')"></li>`)})
+  StockjVinil.forEach(e=>{insetBefor('#ListaCor',`<li style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></li>`)})
 }
 function LoadListServ(){for(const Grup in grupos){insetBefor(I_Serv,`<optgroup label='${Grup}'>${Options(grupos[Grup])}</optgroup>`)}}
-function gata(){QrySltAll('.FotoGravata').forEach(e=>{insetAntes(e.parentNode,`<img class="Molde Abslt Rd" src="Moldes/Molde_Gravata_2-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata2(){QrySltAll('.perspectiva').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Insta_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata3(){QrySltAll('.ScalaFlag').forEach((e,idx)=>{insetAntes(e.parentNode,`<img class="MoldeFlag Abslt Rd" src="Moldes/Molde_Wind_00${(idx+1)>4?4:idx+1}-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata4(){QrySltAll('.ParalamaP').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_Paralama_2-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata5(){QrySltAll('.ParalamaP').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="ParalamaP2 Abslt" src="Portifolio/ParalamaP_${Zero(idx+1)}-min.png">`)})}
-function gata6(){QrySltAll('.TampaTanque').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata7(){QrySltAll('.Geladeira').forEach(e=>{insetAntes(e.parentNode,`<img class="MoldeStry Abslt Rd" src="Moldes/Molde_Geladeira_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
-function gata8(){QrySltAll('.Geladeira').forEach((e,idx)=>{insetBefor(e.parentNode,`<img class="Geladeira2 Abslt" src="Portifolio/GeladeiraP_${Zero(idx+1)}-min.png">`)})}
-function gata9(){QrySltAll('.TampaTanque2').forEach(e=>{insetAntes(e.parentNode,`<img class="moldeFeed Abslt Rd" src="Moldes/Molde_TampaTanque_1-min.png" onclick="AbreItem(this.parentNode.parentNode)">`)})}
 
 function exibirImagem(){
   const Resute = QrySlt('.FotoGravata')
@@ -742,7 +767,6 @@ function exibirImagem(){
     reader.onload = (e) => Resute.src=e.target.result
     reader.readAsDataURL(Inpt.files[0])
 }}
-
 function exibirStry(){
   const Resute = QrySlt('.perspectiva')
   const Inpt = QrySlt('#InptStry')
@@ -757,7 +781,7 @@ QrySlt('#InptStry').addEventListener('change',exibirStry)
 
 
 
-
+/*
 
 function LoadTabelaimg(Serv){
   const Dados = tabela.filter(e=>e[0]===Serv)
@@ -777,6 +801,70 @@ function LoadTabelaimg(Serv){
   `
   InnQry('#dadosTabelaimg',Inner)
 }LoadTabelaimg('Cartão')
+
+*/
+
+
+
+// Canvaas_________________________________________________________________________
+
+function LoadRoloTop2(){
+  Topic.forEach(e=>{const [Top,Dt] = Object.entries(e)[0]
+
+    const Template = `
+    <div class="RoloTopFundo Ct Rd">
+    <div class="RoloTitle w100">${Top}</div>
+    <div class="RolodeImg Ct w100 Rltv">
+      <span class="Abslt flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
+      <span class="Abslt Flip Fad h100 Ct"><div class="Seta RD WH40 Ct ppt"></div></span>
+    <div class="RoloGrupImg Rw w100">
+    ${SplitNum(Dt.Qnt).map(e=>`<div><div class="Cl ppt">
+        <canvas id="Canv_${Top}_${Zero(e)}" class="Rd ppt Cnvs"></canvas>
+        <a>Adesivo</a>
+        <div>R$ 10,00</div>
+      </div></div>`).join('')}</div></div></div>`
+    insetBefor('#RoloTopHome',Template)
+
+    SplitNum(Dt.Qnt).map(e=>{ 
+      const canvas = QrySlt(`#Canv_${Top}_${Zero(e)}`)
+      const imagem1 = new Image()
+      const imagem2 = new Image()
+      
+      const Toop = Top.replace('_G','').replace('_T','') // LimpaCopias
+
+      imagem1.src = `Moldes/Molde_${Top}_1-min.png`
+      imagem2.src = `Portifolio/${Toop}_${Zero(e)}-min.png`
+
+      imagem1.onload = ()=>{
+        canvas.width = Dt.Lag; canvas.height = Dt.Alt
+        const ctx = canvas.getContext('2d')
+        ctx.drawImage(imagem2,0,0,Dt.Lag,Dt.Alt)
+        ctx.drawImage(imagem1,0,0,Dt.Lag,Dt.Alt)
+      }
+     })
+  })
+}
+
+
+//${Top==='+TampaTanque'?
+//onclick="AbreItem(this.parentNode.parentNode)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -881,7 +969,7 @@ function Gera3d(div){
    //scene.add(axesHelper)
   
   //Render.setSize(canvas.clientWidth,canvas.clientHeight)
-  Render.setSize(110,90)
+  Render.setSize(500,500)
   Cam.position.set(0,0,90)
   div.innerHTML = ''
   div.appendChild(Render.domElement)
@@ -900,8 +988,7 @@ function Gera3d(div){
 
   // Cria Empt
   const empt = new THREE.Mesh(GtyBox,Trprt)
-  if(LastCUB){empt.rotation.copy(LastCUB)
-  }else{empt.position.copy(Ct)}
+  if(LastCUB){empt.rotation.copy(LastCUB)}else{empt.position.copy(Ct)}
   CriaPlaca(empt)
   scene.add(empt)
 

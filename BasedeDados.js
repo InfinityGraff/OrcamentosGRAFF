@@ -11,7 +11,7 @@
     '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
   }
 
-  const Ferro = 20, Alumn = 5, Chapa = 0, I_Ferr = "20x20"
+  const Ferro = 20, Alumn = 5+2, Chapa = 0, I_Ferr = "20x20", Sold = 1
 
   let Cttlist = [
     ['CT-006','G','Marcelo Max','','','(81) 98824-3496','','Sorvete Max','','Fábrica de Sorvete','','','',0.3],
@@ -22,12 +22,21 @@
     "#FF0000","#FF0000","#FF4000","#FF8000","#FFBF00","#FFFF00","#BFFF00","#80FF00","#40FF00","#00FF00"
   ]
 
-  const Topic = [{'+ParalamaP':46},{'0ParalamaP':46},{'+TampaTanque':8},{'&ParalamaP':46},{'@Status':13},{'9WindBanner':6},{'+PersonagemP':3},{'1GeladeiraP':6}]
+  const Topic = [
+    {'ParalamaP':{'Qnt':46,'Lag':170,'Alt':170}},
+    {'ParalamaP_T':{'Qnt':46,'Lag':170,'Alt':170}}, // Repete TampaTanque
+    {'TampaTanque':{'Qnt':8,'Lag':170,'Alt':170}},
+    {'ParalamaP_G':{'Qnt':46,'Lag':123,'Alt':300}}, // Repete Gravatas
+    {'Status':{'Qnt':13,'Lag':170,'Alt':300}},
+    {'Wind':{'Qnt':6,'Lag':143,'Alt':300}},
+    {'PersonagemP':{'Qnt':3,'Lag':170,'Alt':170}},
+    {'GeladeiraP':{'Qnt':6,'Lag':170,'Alt':300}},
+    {'Camisa':{'Qnt':6,'Lag':280,'Alt':170}},
+  ]
 
-  const StockjVinil = ["#ff0000","#6b6b6b","#ffa6ed","#000000","#ffffff"]
+  const StockjVinil = ["#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#A52A2A","#800080","#000000","#FFFFFF","#808080"]
 
   var LinkDrive = 'https://drive.google.com/uc?export=download&id='  
-
 
   function Crecent(MM2){
     /*Crescente:*/ var M = MM2
@@ -66,157 +75,116 @@
   function Cal(Vlr){return Vlr * (1 + (200 / 100))}
 
   const tabela = [
-    ["Adesivo" ,"Brilho",     "","","", Cal(Adsv), Adsv ,"M2","TabelaProdutos/Adesivo.png",'Itm1','aiuclt'],
-    ["Adesivo" ,"Fosco",      "","","", Cal(Adsv), Adsv ,"M2","TabelaProdutos/Adesivo.png",'Itm2','aiuclt'],
-    ["Adesivo" ,"Blackout",   "","","", Cal(Blck)+1, Blck ,"M2","TabelaProdutos/Blackout.png",'Itm3','aiuclt'],
-    ["Adesivo" ,"Transparente","","","", Cal(Trns)+1, Trns ,"M2","TabelaProdutos/Transparente.png",'Itm4','aiuclt'],
-    ["Adesivo" ,"Perfurado",  "","","", Cal(Perf)-13, Perf ,"M2","TabelaProdutos/Perfurado.png",'Itm5','aiuclt'],
-    ["Adesivo" ,"Laminado",  "","","", Cal(Trns)+10, Trns ,"M2",'','Itm6','aiuclt'],
-    ["Adesivo" ,"Espelhado",  "","","", Cal(Trns+VnlB+Aplc)-15, Trns+VnlB ,"M2","TabelaProdutos/Espelhado.png",'Itm7','aiuclt'],
+    ["Adesivo","Brilho",      "","","", Cal(Adsv),    Adsv,"M2",'Itm1','aiuclt'],
+    ["Adesivo","Fosco",       "","","", Cal(Adsv),    Adsv,"M2",'Itm2','aiuclt'],
+    ["Adesivo","Blackout",    "","","", Cal(Blck)+1,  Blck,"M2",'Itm3','aiuclt'],
+    ["Adesivo","Transparente","","","", Cal(Trns)+1,  Trns,"M2",'Itm4','aiuclt'],
+    ["Adesivo","Perfurado",   "","","", Cal(Perf)-13, Perf,"M2",'Itm5','aiuclt'],
+    ["Adesivo","Laminado",    "","","", Cal(Trns)+10, Trns,"M2",'Itm6','aiuclt'],
+    ["Adesivo","Espelhado",   "","","", Cal(Trns+VnlB+Aplc)-15,Trns+VnlB,"M2",'Itm7','aiuclt'],
   
-    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort), Adsv, "M2",'','Itm8','aiucm'],
-    ["Etiqueta","Pesonalizada","","","",Cal(Rcut), Rcut, "M2","TabelaProdutos/Etiqueta.png",'Itm9','aiucm'],
+    ["Etiqueta","Refilada"   ,"","","", Cal(Adsv+Cort),Adsv,"M2",'Itm8','aiucm'],
+    ["Etiqueta","Pesonalizada","","","",Cal(Rcut-5)   ,Rcut,"M2",'Itm9','aiucm'],
   
-    ["Recorte", "Normal","Simples","","", 70, 0, "M2 W",'','Itm10','aoucl'], // W quer dizer Cor
-    ["Recorte", "Normal","Complexo","","", 100, 0, "M2 W",'','Itm10a','aoucl'], // W quer dizer Cor
-    ["Recorte", "Contorno","Simples","","",110,0, "M2 W",'','Itm11','aoucl'],
-    ["Recorte", "Contorno","Complexo","","",140,0, "M2 W",'','Itm11a','aoucl'],
-  //  ["Recorte", "Nomes","","","", 2.50,0, "QNT W",'','Itm12','aoucl'],
-    ["Recorte", "KitBug_Principal","","","",13,0, "QNT W",'','Itm13','aoucl'],
-    ["Recorte", "KitBug_Detalhe","","","", 7,0, "QNT W",'','Itm14','aoucl'],
-    ["Figurinha","","","","",1,0,"QNT",'','Itm15','aiuc'],
+    ["Recorte","Normal","Simples","","",     70,0,"M2 W",'Itm10', 'aoucl'],    //W é Cor
+    ["Recorte","Normal","Complexo","","",   100,0,"M2 W",'Itm10a','aoucl'], //W é Cor
+    ["Recorte","Contorno","Simples","","",  110,0,"M2 W",'Itm11', 'aoucl'],
+    ["Recorte","Contorno","Complexo","","", 140,0,"M2 W",'Itm11a','aoucl'],
+    ["Figurinha","","","","",1,0,"QNT",'Itm15','aiuc'],
   
-    ["Lona", "Banner","","","", Cal(Bane)+4, Bane, "M2",'','Itm16','aiucmt'],
-    ["Lona", "Faixa", "Só Madeira","","", Cal(Bane)+4, Bane, "M2",'','Itm17','aiucmt'],
-    ["Lona", "Faixa", "Madeira e ilhós","","", Cal(Bane)+4, Bane, "M2",'','Itm18',,'aiucmt'],
-    ["Lona", "Lona com ilhós", "ilhós Completo","","", Cal(Bane)+4, Bane, "M2",'','Itm19','aiucmt'],
-    ["Lona", "Lona com ilhós", "ilhós nas Pontas","","", Cal(Bane)+4, Bane, "M2",'','Itm20','aiucmt'],
-    ["Lona", "Sem acabamento","","","", Cal(Lona), Lona, "M2",'','Itm21','aiucmt'],
+    ["Lona","Banner","","","",              Cal(Bane)+4, Bane,"M2",'Itm16','aiucmt'],
+    ["Lona","Faixa","Só Madeira","","",     Cal(Bane)+4, Bane,"M2",'Itm17','aiucmt'],
+    ["Lona","Faixa","Madeira e ilhós","","",Cal(Bane)+4, Bane,"M2",'Itm18','aiucmt'],
+    ["Lona","com ilhós","Completo","","",   Cal(Bane)+4, Bane,"M2",'Itm19','aiucmt'],
+    ["Lona","com ilhós","nas Pontas","","", Cal(Bane)+4, Bane,"M2",'Itm20','aiucmt'],
+    ["Lona","Sem acabamento","","","",      Cal(Lona)+0, Lona,"M2",'Itm21','aiucmt'],
   
-    ["Quadro", "PVC", "Refilado","","", 150, 0, "M2 C",'','Itm22',''],
-    ["Quadro", "PS", "Acabamento","","", 200, 0, "M2 C",'','Itm23',''],
-    ["ímã", "Geladeira", "Completo","","", 140, 0, "M2 C",'','Itm24',''],
-    //["ímã", "Geladeira", "Taquinho de ímã","","", 120, 0, "M2 C",'','Itm25',''],
-    //["ímã", "Geladeira", "ímã + Calendário","","", 250, 0, "M2 C",'','Itm26',''],
-    ["ímã", "Carro","","","", 170, 0, "M2 C",'','Itm27',''],
+    ["Quadro","PVC","Refilado","","",    150,0,"M2 C",'Itm22',''],
+    ["Quadro","PS","Acabamento","","",   200,0,"M2 C",'Itm23',''],
+    ["ímã","Geladeira","Completo","","", 140,0,"M2 C",'Itm24',''],
+    ["ímã","Carro","","","",             170,0,"M2 C",'Itm27',''],
+    //["ímã","Geladeira","Taquinho de ímã","","", 120,0,"M2 C",'Itm25',''],
+    //["ímã","Geladeira","ímã+Calendário","","",250,0,"M2 C",'Itm26',''],
+      
+    ["Placa","Lona","ilhós",          "","",70, 0,"M2 F"   ,'Itm28',''],
+    ["Placa","Lona","Ribite",         "","",70, 0,"M2 F A" ,'Itm30',''],
+    ["Placa","Luminosa","Retangular", "","",80, 0,"M2 F A" ,'Itm32',''],
+    //["Placa","Luminosa","Circular",   "","",160,0,"M2 F A" ,'Itm33',''],
+    //["Placa","ACM","",                "","",70, 0, "M2 F W",'Itm34',''],
+    //["Placa","Obra","",               "","",60, 0, "M2 F"  ,'Itm35',''],
+    ["Cavalete","1 Ferragem","ilhós",  "","",70,0,"M2 F",'Itm36',''],
+    ["Cavalete","1 Ferragem","Ribite", "","",70,0,"M2 F A",'Itm37',''],
+    ["Cavalete","2 Ferragem","ílhós",  "","",130,0,"M2 F",'Itm38',''],
+    ["Cavalete","2 Ferragem","Ribite", "","",130,0,"M2 F A",'Itm39',''],
+    //["Toldo", "Polly Carbonato","-","-","-",170,0,"M2 F",'Itm40',''],
+    //["Toldo", "Lona ", "-", "-", "-", 70, 0, "M2 F",'Itm41',''],
+    //["Quebra Sol", "Manual", "-", "-", "-", 70, 0, "M2 F",'Itm42',''],
+    //["Quebra Sol", "Automatico", "-", "-", "-", 70, 0, "M2 F",'Itm43',''],
   
-    ["Placa", "Lona", "ilhós", "Frente", "-", 70, 0, "M2 F",'','Itm28',''],
-    ["Placa", "Lona", "ilhós", "Frente Verso", "-", 140, 0, "M2 F",'','Itm29',''],
-    ["Placa", "Lona", "Ribite", "Frente", "-", 70, 0, "M2 F A",'','Itm30',''],
-    ["Placa", "Lona", "Ribite", "Frente Verso", "-", 140, 0, "M2 F A",'','Itm31',''],
-    ["Placa", "Luminosa", "Retangular", "Frente", "-", 80, 0, "M2 F A",'','Itm32',''],
-    ["Placa", "Luminosa", "Circular", "Frente Verso", "-", 160, 0, "M2 F A",'','Itm33',''],
-    ["Placa", "ACM",  "", "-", "-", 70, 0, "M2 F W",'','Itm34',''],
-    ["Placa", "Obra", "", "-", "-", 70, 0, "M2 F",'','Itm35',''],
-    ["Cavalete","1 Ferragem","-","ilhós", "-",70,0,"M2 F",'TabelaProdutos/Cav1ihs.png','Itm36',''],
-    ["Cavalete","1 Ferragem","-","Ribite","-",70,0,"M2 F",'TabelaProdutos/Cav1Rib.png','Itm37',''],
-    ["Cavalete","2 Ferragem","-","ílhós", "-",70,0,"M2 F",'TabelaProdutos/Cav2ihs.png','Itm38',''],
-    ["Cavalete","2 Ferragem","-","Ribite","-",70,0,"M2 F",'TabelaProdutos/Cav2Rib.png','Itm39',''],
-    ["Toldo", "Polly Carbonato","-","-","-",170,0,"M2 F",'','Itm40',''],
-    ["Toldo", "Lona ", "-", "-", "-", 70, 0, "M2 F",'','Itm41',''],
-    ["Quebra Sol", "Manual", "-", "-", "-", 70, 0, "M2 F",'','Itm42',''],
-    ["Quebra Sol", "Automatico", "-", "-", "-", 70, 0, "M2 F",'','Itm43',''],
+    ["Cartão", "Frente", "Brilho", "250g", '500', 90, 31, "OFS",'Itm44',''],
+    ["Cartão", "Frente", "Brilho", "250g", '1.000', 135, 54, "OFS",'Itm45',''],
+    ["Cartão", "Frente Verso", "Brilho", "250g", '500', 115, 42, "OFS",'Itm46',''],
+    ["Cartão", "Frente Verso", "Brilho", "250g", '1.000', 145, 56, "OFS",'Itm47',''],
+    ["Cartão", "Frente", "Brilho", "300g", '500', 130, 49, "OFS",'Itm48',''],
+    ["Cartão", "Frente", "Brilho", "300g", '1.000', 145, 56, "OFS",'Itm49',''],
+    ["Cartão", "Frente Verso", "Brilho", "300g", '500', 150, 58, "OFS",'Itm50',''],
+    ["Cartão", "Frente Verso", "Brilho", "300g", '1.000', 165, 65, "OFS",'Itm51',''],
+    ["Cartão", "Frente", "Brilho Local", "300g", '500', 155, 62, "OFS",'Itm52',''],
+    ["Cartão", "Frente", "Brilho Local", "300g", '1.000', 190, 80, "OFS",'Itm53',''],
+    ["Cartão", "Frente Verso", "Brilho Local", "300g", '500', 190, 78, "OFS",'Itm54',''],
+    ["Cartão", "Frente Verso", "Brilho Local", "300g", '1.000', 230, 99, "OFS",'Itm55',''],
   
-    ["Cartão", "Frente", "Brilho", "250g", '500', 90, 31, "OFS",'','Itm44',''],
-    ["Cartão", "Frente", "Brilho", "250g", '1.000', 135, 54, "OFS",'','Itm45',''],
-    ["Cartão", "Frente Verso", "Brilho", "250g", '500', 115, 42, "OFS",'','Itm46',''],
-    ["Cartão", "Frente Verso", "Brilho", "250g", '1.000', 145, 56, "OFS",'','Itm47',''],
-    ["Cartão", "Frente", "Brilho", "300g", '500', 130, 49, "OFS",'','Itm48',''],
-    ["Cartão", "Frente", "Brilho", "300g", '1.000', 145, 56, "OFS",'','Itm49',''],
-    ["Cartão", "Frente Verso", "Brilho", "300g", '500', 150, 58, "OFS",'','Itm50',''],
-    ["Cartão", "Frente Verso", "Brilho", "300g", '1.000', 165, 65, "OFS",'','Itm51',''],
-    ["Cartão", "Frente", "Brilho Local", "300g", '500', 155, 62, "OFS",'','Itm52',''],
-    ["Cartão", "Frente", "Brilho Local", "300g", '1.000', 190, 80, "OFS",'','Itm53',''],
-    ["Cartão", "Frente Verso", "Brilho Local", "300g", '500', 190, 78, "OFS",'','Itm54',''],
-    ["Cartão", "Frente Verso", "Brilho Local", "300g", '1.000', 230, 99, "OFS",'','Itm55',''],
+    ["Tag", "Frente Verso", "Brilho + Arredondado", "-", '500', 165, 70, "OFS",'Itm56',''],
+    ["Tag", "Frente Verso", "Brilho + Arredondado", "-", '1.000', 185, 80, "OFS",'Itm57',''],
+    ["Tag", "Frente Verso", "Brilho Local + Arred.", "-", '500', 263, 119, "OFS",'Itm58',''],
+    ["Tag", "Frente Verso", "Brilho Local + Arred.", "-", '1.000', 303, 139, "OFS",'Itm59',''],
   
-    ["Tag", "Frente Verso", "Brilho + Arredondado", "-", '500', 165, 70, "OFS",'','Itm56',''],
-    ["Tag", "Frente Verso", "Brilho + Arredondado", "-", '1.000', 185, 80, "OFS",'','Itm57',''],
-    ["Tag", "Frente Verso", "Brilho Local + Arred.", "-", '500', 263, 119, "OFS",'','Itm58',''],
-    ["Tag", "Frente Verso", "Brilho Local + Arred.", "-", '1.000', 303, 139, "OFS",'','Itm59',''],
+    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '1.000', 140, 70, "OFS",'Itm60',''],
+    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '2.500', 180, 90, "OFS",'Itm61',''],
+    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '5.000', 330, 165, "OFS",'Itm62',''],
+    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '10.000', 500, 250, "OFS",'Itm63',''],
+    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 2500, 250, 125, "OFS",'Itm64',''],
+    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 5000, 480, 240, "OFS",'Itm65',''],
+    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 10000, 720, 360, "OFS",'Itm66',''],
+    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '1.000', 280, 140, "OFS",'Itm67',''],
+    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '2500', 360, 180, "OFS",'Itm68',''],
+    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '5.000', 660, 330, "OFS",'Itm69',''],
+    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '10.000', 990, 495, "OFS",'Itm70',''],
+    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '2.500', 500, 250, "OFS",'Itm71',''],
+    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '5.000', 880, 440, "OFS",'Itm72',''],
+    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '10.000', 1320, 660, "OFS",'Itm73',''],
   
-    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '1.000', 140, 70, "OFS",'','Itm60',''],
-    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '2.500', 180, 90, "OFS",'','Itm61',''],
-    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '5.000', 330, 165, "OFS",'','Itm62',''],
-    ["Panfleto", "Frente", "0,10 x 0,15", "90g", '10.000', 500, 250, "OFS",'','Itm63',''],
-    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 2500, 250, 125, "OFS",'','Itm64',''],
-    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 5000, 480, 240, "OFS",'','Itm65',''],
-    ["Panfleto", "Frente Verso", "0,10 x 0,15", "90g", 10000, 720, 360, "OFS",'','Itm66',''],
-    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '1.000', 280, 140, "OFS",'','Itm67',''],
-    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '2500', 360, 180, "OFS",'','Itm68',''],
-    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '5.000', 660, 330, "OFS",'','Itm69',''],
-    ["Panfleto", "Frente", "0,15 x 0,20", "90g", '10.000', 990, 495, "OFS",'','Itm70',''],
-    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '2.500', 500, 250, "OFS",'','Itm71',''],
-    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '5.000', 880, 440, "OFS",'','Itm72',''],
-    ["Panfleto", "Frente Verso", "0,15 x 0,20", "90g", '10.000', 1320, 660, "OFS",'','Itm73',''],
-  
-    ['Talão','1 Via','10 x 14','Preto e Branco','4',35,20,'OFS','','Itm74',''],
-    ['Talão','1 Via','10 x 14','Preto e Branco','8',60,35,'OFS','','Itm75',''],
-    ['Talão','1 Via','10 x 14','Preto e Branco','12',85,50,'OFS','','Itm76',''],
-    ['Talão','1 Via','10 x 14','Preto e Branco','20',120,70,'OFS','','Itm77',''],
-    ['Talão','2 Via','10 x 14','Preto e Branco','4',45,25,'OFS','','Itm78',''],
-    ['Talão','2 Via','10 x 14','Preto e Branco','8',75,45,'OFS','','Itm79',''],
-    ['Talão','2 Via','10 x 14','Preto e Branco','12',100,60,'OFS','','Itm80',''],
-    ['Talão','2 Via','10 x 14','Preto e Branco','20',135,80,'OFS','','Itm81',''],
-    ['Talão','1 Via','10 x 14','Colorido','4',60,35,'OFS','','Itm82',''],
-    ['Talão','1 Via','10 x 14','Colorido','8',85,50,'OFS','','Itm83',''],
-    ['Talão','1 Via','10 x 14','Colorido','12',120,70,'OFS','','Itm84',''],
-    ['Talão','1 Via','10 x 14','Colorido','20',145,85,'OFS','','Itm85',''],
-    ['Talão','2 Via','10 x 14','Colorido','4',70,40,'OFS','','Itm86',''],
-    ['Talão','2 Via','10 x 14','Colorido','8',100,60,'OFS','','Itm87',''],
-    ['Talão','2 Via','10 x 14','Colorido','12',135,80,'OFS','','Itm88',''],
-    ['Talão','2 Via','10 x 14','Colorido','20',170,100,'OFS','','Itm89'],
-    ['Talão','1 Via','14 x 20','Preto e Branco','2',35,20,'OFS','','Itm90'],//
-    ['Talão','1 Via','14 x 20','Preto e Branco','4',60,35,'OFS','','Itm91'],
-    ['Talão','1 Via','14 x 20','Preto e Branco','10',120,70,'OFS','','Itm92'],
-    ['Talão','1 Via','14 x 20','Preto e Branco','20',220,130,'OFS','','Itm93'],
-    ['Talão','2 Via','14 x 20','Preto e Branco','2',45,25,'OFS','','Itm94'],
-    ['Talão','2 Via','14 x 20','Preto e Branco','4',75,45,'OFS','','Itm95'],
-    ['Talão','2 Via','14 x 20','Preto e Branco','10',135,80,'OFS','','Itm96'],
-    ['Talão','2 Via','14 x 20','Preto e Branco','20',245,145,'OFS','','Itm97'],
-    ['Talão','1 Via','14 x 20','Colorido','2',60,35,'OFS','','Itm98'],
-    ['Talão','1 Via','14 x 20','Colorido','4',85,50,'OFS','','Itm99'],
-    ['Talão','1 Via','14 x 20','Colorido','10',145,85,'OFS','','Itm100'],
-    ['Talão','1 Via','14 x 20','Colorido','20',270,160,'OFS','','Itm101'],
-    ['Talão','2 Via','14 x 20','Colorido','2',70,40,'OFS','','Itm102'],
-    ['Talão','2 Via','14 x 20','Colorido','4',100,60,'OFS','','Itm103'],
-    ['Talão','2 Via','14 x 20','Colorido','10',170,100,'OFS','','Itm104'],
-    ['Talão','2 Via','14 x 20','Colorido','20',300,175,'OFS','','Itm105'],
-    ['Talão','1 Via','9 x 21','Preto e Branco','3',35,20,'OFS','','Itm106'],
-    ['Talão','1 Via','9 x 21','Preto e Branco','6',60,35,'OFS','','Itm107'],
-    ['Talão','1 Via','9 x 21','Preto e Branco','9',85,50,'OFS','','Itm108'],
-    ['Talão','1 Via','9 x 21','Preto e Branco','12',100,60,'OFS','','Itm109'],
-    ['Talão','2 Via','9 x 21','Preto e Branco','3',40,25,'OFS','','Itm110'],
-    ['Talão','2 Via','9 x 21','Preto e Branco','6',75,45,'OFS','','Itm111'],
-    ['Talão','2 Via','9 x 21','Preto e Branco','9',100,60,'OFS','','Itm112'],
-    ['Talão','2 Via','9 x 21','Preto e Branco','12',120,70,'OFS','','Itm113'],
-    ['Talão','1 Via','9 x 21','Colorido','3',60,35,'OFS','','Itm114'],
-    ['Talão','1 Via','9 x 21','Colorido','6',85,50,'OFS','','Itm115'],
-    ['Talão','1 Via','9 x 21','Colorido','9',120,70,'OFS','','Itm116'],
-    ['Talão','1 Via','9 x 21','Colorido','12',135,80,'OFS','','Itm117'],
-    ['Talão','2 Via','9 x 21','Colorido','3',70,40,'OFS','','Itm118'],
-    ['Talão','2 Via','9 x 21','Colorido','6',110,65,'OFS','','Itm119'],
-    ['Talão','2 Via','9 x 21','Colorido','9',135,80,'OFS','','Itm120'],
-    ['Talão','2 Via','9 x 21','Colorido','12',155,90,'OFS','','Itm121'],
-  
-    ["A4", "Papel Adesivo", "Folha Completa", "-", "-", 0, 6, "QNT",'','Itm122'],//
-    ["A4", "Papel Adesivo", "Corte Quadrado", "-", "-", 0, 6, "QNT",'','Itm123'],
-    ["A4", "Papel Adesivo", "Corte Desenhado", "-", "-", 0, 6, "QNT",'','Itm124'],
-    ["A4", "Couchê", "-", "-", "-", 0, 6, "QNT",'','Itm125'],
-    ["A4", "Officil", "-", "-", "-", 0, 2, "QNT",'','Itm126'],
-    ["Cardápio", "Frente", "-", "-", "-", 20, 0, "QNT",'','Itm127'],
-    ["Cardápio", "Frente e Verso", "-", "-", "-", 25, 0, "QNT",'','Itm128'],
+    ['Talão','1 Via','10 x 14','Preto e Branco','4',35,20,'OFS','Itm74',''],   // 4=20, 8=35, 12=50, 20=70 
+    ['Talão','2 Via','10 x 14','Preto e Branco','4',45,25,'OFS','Itm78',''],   // 4=25, 8=45, 12=60, 20=80
+    ['Talão','1 Via','10 x 14','Colorido'      ,'4',60,35,'OFS','Itm82',''],   // 4=35, 8=50, 12=70, 20=,85
+    ['Talão','2 Via','10 x 14','Colorido'      ,'4',70,40,'OFS','Itm86',''],   // 4=40, 8=60, 12=80, 20=,100
+    ['Talão','1 Via','9 x 21','Preto e Branco' ,'3',35,20,'OFS','Itm106',''],  // 3=20, 6=35, 9=50, 12=60,
+    ['Talão','2 Via','9 x 21','Preto e Branco' ,'3',40,25,'OFS','Itm110',''],  // 3=25, 6=45, 9=60, 12=70,
+    ['Talão','1 Via','9 x 21','Colorido'       ,'3',60,35,'OFS','Itm114',''],  // 3=35, 6=50, 9=70, 12=80,
+    ['Talão','2 Via','9 x 21','Colorido'       ,'3',70,40,'OFS','Itm118',''],  // 3=40, 6=65, 9=80, 12=90,
+    ['Talão','1 Via','14 x 20','Preto e Branco','2',35,20,'OFS','Itm90',''],   // 2=20, 4=35, 10=70, 20=130,
+    ['Talão','2 Via','14 x 20','Preto e Branco','2',45,25,'OFS','Itm94',''],   // 2=25, 4=45, 10=80, 20=145,
+    ['Talão','1 Via','14 x 20','Colorido'      ,'2',60,35,'OFS','Itm98',''],   // 2=35, 4=50, 10=85, 20=160,
+    ['Talão','2 Via','14 x 20','Colorido'      ,'2',70,40,'OFS','Itm102',''],  // 2=40, 4=60, 10=100, 20=175,
+
+    ["A4","Papel Adesivo", "Folha Completa", "-", "-", 0, 6, "QNT",'Itm122'],//
+    ["A4","Papel Adesivo", "Corte Quadrado", "-", "-", 0, 6, "QNT",'Itm123'],
+    ["A4","Papel Adesivo", "Corte Desenhado", "-", "-", 0, 6, "QNT",'Itm124'],
+    ["A4","Couchê", "","", "-", 0, 6, "QNT",'Itm125'],
+    ["A4","Officil","","", "-", 0, 2, "QNT",'Itm126'],
+    ["Cardápio", "Frente", "-", "-", "-", 20, 0, "QNT",'Itm127'],
+    ["Cardápio", "Frente e Verso", "-", "-", "-", 25, 0, "QNT",'Itm128'],
   
     /*
-    ["Camisa", "Serigrafia", "-","-","-",0,0,"QNT",'','Itm100'],//
-    ["Camisa", "Serigrafia", "Frente", "1 Cor", "-", 25, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente e Costas", "1 Cor", "-", 30, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente", "2 Cores", "-", 0, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente e Costas", "2 Cores", "-", 0, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente", "3 Cores", "-", 0, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente e Costas", "3 Cores", "-", 0, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente", "Mais de 3 Cores", "-", 0, 0, "QNT",'','Itm100'],
-    ["Camisa", "Serigrafia", "Frente e Costas", "Mais de 3 Cores", "-", 0, 0, "QNT",'','Itm100'],
+    ["Camisa", "Serigrafia", "-","-","-",0,0,"QNT",'Itm100'],//
+    ["Camisa", "Serigrafia", "Frente", "1 Cor", "-", 25, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente e Costas", "1 Cor", "-", 30, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente", "2 Cores", "-", 0, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente e Costas", "2 Cores", "-", 0, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente", "3 Cores", "-", 0, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente e Costas", "3 Cores", "-", 0, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente", "Mais de 3 Cores", "-", 0, 0, "QNT",'Itm100'],
+    ["Camisa", "Serigrafia", "Frente e Costas", "Mais de 3 Cores", "-", 0, 0, "QNT",'Itm100'],
   
     ["Camisa", "Transfere", "-", "-", "-", 0, 0, "QNT"],
     ["Camisa", "Sublimação", "Frente", "-", "-", 0, 0, "QNT"],
@@ -230,13 +198,13 @@
     ["Envelopamento", "Geladeira", "2 Portas", "-", "-", 220, 0, "QNT","TabelaProdutos/Geladeira 2 Portas.jpg",'Itm100'],
     ["Envelopamento", "Geladeira", "1 Porta", "-", "-", 150, 0, "QNT","TabelaProdutos/Geladeira 1 Porta.jpg",'Itm100'],
   
-    ["Arte","","","","",50,0,"QNT",'','Itm100'],
+    ["Arte","","","","",50,0,"QNT",'Itm100'],
     
   ]
 
   const grupos = {
     Impressao: ['Adesivo','Etiqueta','Recorte','Figurinha','Lona','Quadro','ímã'],
-    Placas: ['Placa','Cavalete','Toldo','Quebra Sol'],
+    Placas: ['Placa','Cavalete'/*,'Toldo','Quebra Sol'*/],
     Offset: ['Cartão','Tag','Panfleto','Talão','A4','Cardápio'],
     Outros: ['Envelopamento','Camisa','Arte'],
   }

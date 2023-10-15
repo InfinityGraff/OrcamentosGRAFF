@@ -812,7 +812,7 @@ z-index: 999;
 .Molde{z-index:99;width:100px;height:240px}
 .MoldeStry{z-index:99;width:170px;height:303px}
 .MoldeFlag{z-index:99;width:170px;height:357px}
-.moldeFeed{z-index:99;width:170px;height:173px}
+.moldeFeed{z-index:99;width:170px;height:170px}
 
 .ScalaFlag{transform: translateY(-35px)  scale(0.70) scaleX(0.80)}
 
@@ -857,7 +857,7 @@ z-index: 999;
 }
 
 #Modal-Item .Flag,#Modal-Item .MoldeFlag{width:280px;height: 588px}
-#Modal-Item .moldeFeed {width:400px;height:403px}
+#Modal-Item .moldeFeed {width:400px;height:400px}
 
 
 
@@ -884,3 +884,6 @@ z-index: 999;
 .OSPagSelect{border:1px solid #48ff00;background: #1eff0075}
 .OSPrintSelect{border:1px solid #ff00b3;background: #ff00dd73}
 .OSUberSelect{border:1px solid #00ccff;background: #006eff69}
+
+
+.Cnvs{background:#a8a8a8}

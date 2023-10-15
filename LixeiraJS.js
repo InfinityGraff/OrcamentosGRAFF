@@ -133,3 +133,24 @@ function MenuNav(Stg){
         aba.style.display = (key === e.getAttribute('id')) ? 'flex' : 'none'}})
     })
   }
+
+
+  // se a imagem não carregar exibir isso
+  `<div class="SVGFilt Ct">${IconSemFoto}</div>`
+
+
+  // provavelmente vou conseguir resumir isso abaixo
+
+  const Arry = tabela.filter(T=>{
+    return(I_Serv.value === "Todos" || T[0] === I_Serv.value) &&
+          (I_Tipo.value === "Todos" || T[1] === I_Tipo.value) &&
+          (I_Cbmt.value === "Todos" || T[2] === I_Cbmt.value) &&
+          (I_Gram.value === "Todos" || T[3] === I_Gram.value) &&
+          (I_QFix.value === "Todos" || T[4] === I_QFix.value)})
+
+// para isso!
+
+const Arryy = tabela.filter(T=>
+  ["I_Serv","I_Tipo","I_Cbmt","I_Gram","I_QFix"].every((key,idx)=>
+    key==="Todos"||T[idx]=== document.querySelector(`#${key}`).value
+))

@@ -8,6 +8,7 @@
     <title>INFINITY APP</title>
     <link rel="icon" type="image/x-icon" href="Img/Fav_32.png">
     <link rel="stylesheet" href="./index.css">
+    <script src="https://threejs.org/build/three.js"></script>
     <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
   </head>
 
@@ -46,7 +47,7 @@
 
       <div id="Aba-Home" class="">
         <h2>Home</h2>
-          
+         
         <div><img class="w100 Rd" src="Portifolio/Propaganda1-min.png" onclick="AbrirModalPropaganda()"></div>
 
         <div id="RoloTopHome"></div>
@@ -61,6 +62,8 @@
           <button id="BTNSVG1" class="Ct none" onclick="RecuperaFigs()">Recuperar</button>
           <button id="BTNSVG2" class="Ct none" onclick="BaixarFigs()">Downlaod</button>
         </div>
+
+
       </div>
 
       <div id="Aba-Orcamento" class="">
@@ -83,6 +86,8 @@
               <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
               <div id="resultfilter1" class="Rd"></div>
               <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
+              <button id="RmvDescc" onclick="InnTogg('#RmvDescc','AddAcres','RemvAcres');FilTable()">RemvAcres</button>
+
               <div id="DivBtnDesc" class="none">
                 <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
                 <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
@@ -95,25 +100,25 @@
   
               <div id="Grupo-Servicos" class="inptFormOrc">
                 <!-- Serviços, Tipos e Acabamento-->
-                <div id="Div-Inpt-Serv"><label>Serviço</label><select onchange="InnerOptions('Serv')">
+                <div id="Div-Inpt-Serv"><label>Serviço</label><select id="I_Serv" onchange="InnerOptions('Serv')">
                     <option value="" disabled="" selected="">Escolha um Serviços</option>
                   </select>
                 </div>
-                <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select onchange="InnerOptions('Tipo')">
+                <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select id="I_Tipo" onchange="InnerOptions('Tipo')">
                     <option value="" disabled="" selected="">Escolha um Tipo</option>
                   </select>
                 </div>
-                <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select onchange="InnerOptions('Cbmt')">
+                <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select id="I_Cbmt" onchange="InnerOptions('Cbmt')">
                     <option value="" disabled="" selected="">Escolha um Acabamento</option>
                   </select>
                 </div>
               </div>
   
               <div id="Grupo-Tipos" class="inptFormOrc Grupinput3" style="display: none">
-                <div id="Div-Inpt-Gram"><label>Gramatura</label><select>
+                <div id="Div-Inpt-Gram"><label>Gramatura</label><select id="I_Gram">
                     <option value="" disabled="" selected="">Gramatura</option>
                   </select></div>
-                <div id="Div-Inpt-QFix"><label>Qnt</label><select>
+                <div id="Div-Inpt-QFix"><label>Qnt</label><select id="I_QFix">
                     <option value="" disabled="" selected="">Qnt</option>
                   </select></div>
               </div>
@@ -130,14 +135,22 @@
                     <div class="btnMais Ct HvrSVG" onclick="ClonaMdd(this)">A</div>
                   </div>
                 </div>
-                <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="1"></div>
-                <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this)" data-Tab="2"></div>
+                <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this);EscolheCalc()" data-Tab="1"></div>
+                <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this);EscolheCalc()" data-Tab="2"></div>
                 <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
               </div>
   
-              <div id="Grupo-Medida2" class="">
-                <input id="Compmnt" type="text" placeholder="Comprimento" value="0">
-                <input id="BackCub" type="text" placeholder="Fundo" value="0">
+              <div id="Grupo-Medida2">
+                <div class="Ct w100">
+                  <div id="BtnMddArea" class="baby Ct" onclick="InnTogg('#BtnMddArea','Achou','Achar Qnt');ClasTog2('#AreaX','none');ClasTog2('#AreaY','none')">Achar Qnt</div>
+                  <div id="AreaX" class="none"><input id="I_AreaX" type="number" placeholder="Largura Area" oninput="MaskNum(this);EscolheCalc()"></div>
+                  <div id="AreaY" class="none"><input id="I_AreaY" type="number" placeholder="Altura Area" oninput="MaskNum(this);EscolheCalc()"></div>
+                </div>
+                <div id="MediasExtraPlaca" class="none">
+                  <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
+                  <div class="Cl"><label>.</label><div class="baby" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
+                </div>
+                
               </div>
   
               <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta ppt" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega']);ReloadPlanClnt()">^</div></div>
@@ -242,8 +255,13 @@
           </div>
           
           <!-- <button onclick="Acumulador()">Acumulador</button> -->
-
-      
+          <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
+          <div>
+            <div id="NewCanvas" class="Ct Cnvs"></div>
+            <canvas id="CanvasMedidas" class="Cnvs"></canvas>
+            <div id="ResutArea"></div>
+          </div>
+          
 
 
           <div id="RodapeOrc" class="Bt">
@@ -540,7 +558,6 @@
   </body>
     <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
     <script type="text/javascript" src="./Scripts.js" defer=""></script>
-    <!--<script src="https://threejs.org/build/three.js"></script> -->
 </html>
 
 

@@ -15,6 +15,8 @@
   function Inn(e){return Stg(e).innerHTML}
   function InnQry(e,Stg){QrySlt(e).innerHTML = Stg}
   function InnQryM(e,Stg){QrySlt(e).innerHTML += Stg}
+  function InnTogg(e,Stg,Stg2){QrySlt(e).innerHTML = QrySlt(e).innerHTML===Stg?Stg2:Stg}
+  function ValTogg(e,Stg,Stg2){QrySlt(e).value = QrySlt(e).value===Stg?Stg2:Stg}
 
   function Pai(e){return e.parentNode}
   function Avo(e){return e.parentNode.parentNode}
@@ -26,6 +28,8 @@
   function Parent5(e){return e.parentNode.parentNode.parentNode.parentNode.parentNode}
 
 // Funções Templates
+  function Ared(e){return Math.floor(e)}
+  function ParsMil(e){return parseFloat(QrySlt(e).value)*500}
   function InnerSVG(Stg,e){QrySltAll(Stg).forEach(E=>E.innerHTML = e)}
   function TableHTMLall(e,on=''){return e.map(R=>`<tr>${R.map(C=>`<td ${on}>${C}</td>`).join('')}</tr>`).join('')}
   function TableHTMLfil(e,c,on=''){return e.map(R=>`<tr>${c.map(C=>`<td ${on}>${R[C]}</td>`).join('')}</tr>`).join('')}
@@ -238,7 +242,6 @@ function NoneTrue(e,Valid,b=null){if(Valid){None(e);if(b!==null){Show(b)}}else{S
   function TotalCress(Vlr,e,type){
     if(type==='Recorte'){return Math.round(e*(Vlr+Vlr*Crecent2(e)))}
     else{return Math.round(e*(Vlr+Vlr*Crecent(e)))}
-    
   }
 
 
@@ -326,3 +329,5 @@ function InterCor(value) {
 
   return `rgb(${r}, ${g}, ${b})`
 }
+
+function RgbToHex(rgb){return`#${rgb.replace(/^rgb\(|\s+|\)$/g,'').split(',').map(x=>parseInt(x).toString(16).padStart(2,'0')).join('')}`}
