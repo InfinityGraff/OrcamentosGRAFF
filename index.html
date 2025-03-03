@@ -1,563 +1,347 @@
 <!DOCTYPE html>
-<html class="Dark">
-
-  <head>
+<html lang='en'>
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>INFINITY APP</title>
-    <link rel="icon" type="image/x-icon" href="Img/Fav_32.png">
-    <link rel="stylesheet" href="./index.css">
-    <script src="https://threejs.org/build/three.js"></script>
-    <script type="text/javascript" src="./BasedeDados.js" defer=""></script>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orcamento</title>
+    <link rel="stylesheet" href="../000_Bibliotecas/CSS Biblioteca.css">
+    <link rel="stylesheet" href="../000_Bibliotecas/cssInfinity.css">
+    <script src="../000_Bibliotecas/PreScript.js"></script>
+    <script src="../000_Bibliotecas/Base.js"     ></script>
+    <script src="../000_Bibliotecas/Templates.js"></script>
+</head>
 
-  <body class="Ct h100 Dark">
+<script> // Base de Dados
+    const Abrev = {'Serv':'Serviço','Tipo':'Tipo','Cbmt':'Acabamento','Gram':'Gramatura','Otro':'Outros',}
+    const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
+    function tmplt_Img(){return ''}
 
-    <header class="Cabecalho Ct Bt w100 Dark">
-      <div id="Titlle" class="Ct Titlee">
-        <img src="Img/Logo.png" class="Logo ppt" onclick="TrocaClass('Dark','Lite')">
-        <h1 id="Home" class="ppt" onclick="DefinePag(0)">INFINITY GRAFF MODE</h1>
+    // Valores dos Vinil WMSilkSing
+        // Vinil Super Brilho 1,22  : R$ 24,50
+        // Mascara 1m               : R$ 12,90
+        // Transparente 1,22        : R$ 16,00
 
-        <div id="GrupLogin1" class="Ct">
-          <img id="Img-Perfil" class="ImgPerfil ppt none" onclick="AbreLogin()">
-          <div id="Login-Top" class="Ct ppt LgTp" onclick="AbreLogin()"></div>
-        </div>
-      </div>
-      
-      <input id="Pesquisa" class="Rd" onkeyup="SaveSync(event,this)" placeholder="Pesquisar...">
-      
-      <div id="GrupLogin2" class="Ct">
-        <img id="Img-Perfil" class="ImgPerfil ImgPerfil2 ppt none" onclick="AbreLogin()">
-        <div id="Login-Top" class="Ct ppt LgTp2" onclick="AbreLogin()"></div>
-      </div>
+    const Prod = {
+        Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'   ,Extra:{'Aplicação':10},Variantes:{
+                Brilho        :{item:'1',Tipo:'',Valr:60 ,Cust:20},
+                Fosco         :{item:'2',Tipo:'',Valr:60 ,Cust:20},
+                Blackout      :{item:'3',Tipo:'',Valr:70 ,Cust:25},
+                Transparente  :{item:'4',Tipo:'',Valr:70 ,Cust:25},
+                Laminado      :{item:'6',Tipo:'',Valr:70 ,Cust:20},
+                Espelhado     :{item:'7',Tipo:'',Valr:80 ,Cust:20},
+                Perfurado     :{item:'5',Tipo:'',Valr:100,Cust:35},
+            }},
+        Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte',Variantes:{
+                Refilada      :{item:'6',Tipo:'',Valr:70,Cust:20},
+                Pesonalizada  :{item:'7',Tipo:'',Valr:75,Cust:30},
+            }},
+        Lona     :{Calc:'M2', Stts:'Disp', Prvw:''       , Desc:'Lona com Acamabento',Variantes:{
+                Banner          :{item:'8' ,Tipo:''               ,Valr:70,Cust:22},
+                Faixa           :{item:'9' ,Tipo:'Madeira e ilhós',Valr:70,Cust:22},
+                Faixa           :{item:'10',Tipo:'Só Madeira'     ,Valr:70,Cust:22},
+                'com ilhós'     :{item:'11',Tipo:'Completo'       ,Valr:70,Cust:22},
+                'com ilhós'     :{item:'12',Tipo:'nas Pontas'     ,Valr:70,Cust:22},
+                'Sem Acabamento':{item:'13',Tipo:''               ,Valr:60,Cust:20},
+        }},
+        Quadro   :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Quadro sem Moldura' ,Variantes:{
+                'PVC 2mm'           :{item:'14',Tipo:'',Valr:' ',Cust:'        '},
+                'PVC 3mm'           :{item:'15',Tipo:'',Valr:150,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
+                'PVC 5mm'           :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
+                'PS 1mm'            :{item:'17',Tipo:'',Valr:200,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                'PS 2mm'            :{item:'18',Tipo:'',Valr:' ',Cust:'        '},
+            }},
+        'ímã'    :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Geladeira ou Carro' ,Variantes:{
+                Calendário    :{item:'19',Tipo:'',Valr:0,Cust:0},
+                Geladeira     :{item:'20',Tipo:'',Valr:0,Cust:0},
+                Carro         :{item:'21',Tipo:'',Valr:0,Cust:0},
+            }},
+        Recorte  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
+            Simples   :{Calc:'M2',Tipo:'',Valr:[''],Valor:70 },
+            Complexo  :{Calc:'M2',Tipo:'',Valr:[''],Valor:100}
+        }},
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        'Cartão' :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Medida: 9cm x 5cn'  ,Variantes:{
+                'Brilho'      :{Table:[
+                    ['Frente' ,'250g',[['500', 90,31],['1.000',135,54]]],
+                    ['F.Verso','250g',[['500',115,42],['1.000',145,56]]], 
+                    ['Frente' ,'300g',[['500',130,49],['1.000',145,56]]], 
+                    ['F.Verso','300g',[['500',150,58],['1.000',165,65]]], ]},
+                'Brilho Local':{Table:[
+                    ['Frente' ,'300g',[['500',155,62],['1.000',190,80]]],
+                    ['F.Verso','300g',[['500',190,78],['1.000',230,99]]], ]},
+            }},
+        Panfleto :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                '10 x 15':{Table:[
+                    ['Frente' ,'90g',[['1.000',140, 70],['2.500',180, 90],['5.000' , 330,165]]],
+                    ['F.Verso','90g',[['2.500',250,125],['5.000',480,240],['10.000', 720,360]]], ]},
+                '15 x 20':{Table:[
+                    ['Frente' ,'90g',[['1.000',280,140],['2.500',360,180],['5.000' , 660,330]]],
+                    ['F.Verso','90g',[['2.500',500,250],['5.000',880,440],['10.000',1320,660]]], ]},
+            }},
+        Camisa   :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
+            Normal    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            Regata    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            Polo      :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            MangaLong :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+        }},
+        WindFlag :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+                P         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
+                M         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
+                G         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
+            }},
+        BigBall  :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+                P         :{Tipo:[''],Valr:0,Cust:0},
+                M         :{Tipo:[''],Valr:0,Cust:0},
+                G         :{Tipo:[''],Valr:0,Cust:0},
+            }},
+    }
 
-      <div id="Login-Cod" style="Display:None"></div>
+    const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
+    const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
 
-    </header>
+</script>
 
-    <nav class="Ct w100 Dark">
-      <a id="Orcamento" class="Ct ppt" onclick="DefinePag(1)">ORÇAMENTO</a>
-      <a id="Relatorio" class="Ct ppt" onclick="DefinePag(2)">RELATÓRIO</a>
-      <a id="Agenda"    class="Ct ppt" onclick="DefinePag(3)">AGENDA</a>
-      <a id="Clientes"  class="Ct ppt" onclick="DefinePag(4)">CLIENTES</a>
-    </nav>
+<script> // Templates
+    const tmplt_OptDisable=e=>`<option value="" disabled selected>Escolha um ${e}</option>`
+    const tmplt_InptsClnt =e=>`<div class="Ct"><input placeholder="Nome"><input placeholder="Contato"></div>`
+    const tmplt_Orcs      =(e,idx,form)=>`<div class="Ct"><h1>${idx}</h1><a class="Bt RD">${tmplt_InptsClnt(e)}<button onclick="TogClss($('.EspacoForm',Avo(this)),'none')">Editar</button></a><div class="EspacoForm none">${form}</div></div>`
+    const tmplt_FormSlct  =arry=>arry.map(e=>`<div class="Div-Inpt"><label>${Abrev[e]}</label><select class="I_${e}" onchange="InnerOptions('${e}',this.value,Bzv(this));ShowTipo(Ttv(this))"></select></div>`).join('') // Função Muito específica, q só Funciona aqui, não da pra ir pra biblioteca
+    const tmplt_Cores     =e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
+    const tmplt_table     =arry=>arry.map(e=>`<th class="${e.match('-')?'none':''}">${e.replace('-','')}</th>`).join('')
+    const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
+</script>
 
-    <div id="PaiPages"><div id="Pages">
-
-      <div id="Aba-Home" class="">
-        <h2>Home</h2>
-         
-        <div><img class="w100 Rd" src="Portifolio/Propaganda1-min.png" onclick="AbrirModalPropaganda()"></div>
-
-        <div id="RoloTopHome"></div>
-
-        <input type="file" id="InptStry" accept="image/*">
-        <input type="file" id="InptIMG" accept="image/*">
-
-        <div id="DivFigs" class="Ct Rd W100"></div>
-        <div class="Ct w100">
-          <button onclick="FilterFigs()">Filtrar</button>
-          <button onclick="LimparFigs()">Limpar</button>
-          <button id="BTNSVG1" class="Ct none" onclick="RecuperaFigs()">Recuperar</button>
-          <button id="BTNSVG2" class="Ct none" onclick="BaixarFigs()">Downlaod</button>
-        </div>
-
-
-      </div>
-
-      <div id="Aba-Orcamento" class="">
-          <div id="RoloTop" class="RoloTop none" onclick="Scroll('nav')"></div>
-  
-          <div class="Ct Redi w100">
-            <button id="NewOrcamento" onclick="NewOrcamentos(this);Scroll('nav');Show('#PrevOrcamento')">Novo Orçamento</button>
-            <button id="PrevOrcamento" onclick="NewOrcamentos(this);Scroll('nav')" class="none">Orçamento Pendente</button>
-            <div id="image-preloader" style="display: none"> nada</div>
-          </div>
-  
-          <div id="FormOrcamento" class="none Ct Rd Rltv">
-            <div id="ClearForm" class="HvrSVG Ct icon" onclick="clearForm();clearCRUD()">Clear</div>
-            <div class="Close Ct" onclick="CloseForm(this)">X</div>
-            
-            <div id="Contagem"></div>
-            
-  
-            <div id="DivResult" class="Ct Cl Hddn">
-              <h2 class="FontDGD ppt none" onclick="Scroll('nav')">Orçamento</h2>
-              <div id="resultfilter1" class="Rd"></div>
-              <h3 id="Frete" class="tc">Frete: R$ 00,00</h3>
-              <button id="RmvDescc" onclick="InnTogg('#RmvDescc','AddAcres','RemvAcres');FilTable()">RemvAcres</button>
-
-              <div id="DivBtnDesc" class="none">
-                <button id="AtivaDesc" onclick="AtivaDescM2(this,'#DstvDesc')">Ativa Desconto</button>
-                <button id="DstvDesc" onclick="DstivDescM2(this,'#AtivaDesc')" class="none">Desativa Desconto</button>
-              </div>
-            </div>
-  
-            <form id="FormOrc" class="Ct">
-  
-              <h2 class="FontDGD ppt" onclick="Scroll('nav')">Orçamento</h2>
-  
-              <div id="Grupo-Servicos" class="inptFormOrc">
-                <!-- Serviços, Tipos e Acabamento-->
-                <div id="Div-Inpt-Serv"><label>Serviço</label><select id="I_Serv" onchange="InnerOptions('Serv')">
-                    <option value="" disabled="" selected="">Escolha um Serviços</option>
-                  </select>
-                </div>
-                <div id="Div-Inpt-Tipo" style="display: none"><label>Tipo</label><select id="I_Tipo" onchange="InnerOptions('Tipo')">
-                    <option value="" disabled="" selected="">Escolha um Tipo</option>
-                  </select>
-                </div>
-                <div id="Div-Inpt-Cbmt" style="display: none"><label>Acabamento</label><select id="I_Cbmt" onchange="InnerOptions('Cbmt')">
-                    <option value="" disabled="" selected="">Escolha um Acabamento</option>
-                  </select>
-                </div>
-              </div>
-  
-              <div id="Grupo-Tipos" class="inptFormOrc Grupinput3" style="display: none">
-                <div id="Div-Inpt-Gram"><label>Gramatura</label><select id="I_Gram">
-                    <option value="" disabled="" selected="">Gramatura</option>
-                  </select></div>
-                <div id="Div-Inpt-QFix"><label>Qnt</label><select id="I_QFix">
-                    <option value="" disabled="" selected="">Qnt</option>
-                  </select></div>
-              </div>
-  
-              <div id="GrupoCores" class="Ct w100 none">
-                <div id="InputdeCor" class="Ct Rd ppt" onclick="LoadCores()">Escolha uma Cor</div>
-                <ul id="ListaCor" class="none"></ul>
-              </div>
-  
-              <div id="Grupo-Medidas" class="inptFormOrc Grupinput3" style="display: none">
-                <div id="Div-Inpt-Mais"><label class="Opacy">.</label>
-                  <div class="Ct icon Maisss">
-                    <div class="btnMais Ct HvrSVG" onclick="EscMdds(this)">B</div>
-                    <div class="btnMais Ct HvrSVG" onclick="ClonaMdd(this)">A</div>
-                  </div>
-                </div>
-                <div id="Div-Inpt-Larg"><label>Largura</label><input placeholder="0.00cm" oninput="MaskNum(this);EscolheCalc()" data-Tab="1"></div>
-                <div id="Div-Inpt-Alt"><label>Altura</label><input placeholder="0.00cm" oninput="MaskNum(this);EscolheCalc()" data-Tab="2"></div>
-                <div id="Div-Inpt-Qnt"><label>Qnt</label><input placeholder="0 UND" data-Tab="3"></div>
-              </div>
-  
-              <div id="Grupo-Medida2">
-                <div class="Ct w100">
-                  <div id="BtnMddArea" class="baby Ct" onclick="InnTogg('#BtnMddArea','Achou','Achar Qnt');ClasTog2('#AreaX','none');ClasTog2('#AreaY','none')">Achar Qnt</div>
-                  <div id="AreaX" class="none"><input id="I_AreaX" type="number" placeholder="Largura Area" oninput="MaskNum(this);EscolheCalc()"></div>
-                  <div id="AreaY" class="none"><input id="I_AreaY" type="number" placeholder="Altura Area" oninput="MaskNum(this);EscolheCalc()"></div>
-                </div>
-                <div id="MediasExtraPlaca" class="none">
-                  <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
-                  <div class="Cl"><label>.</label><div class="baby" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
-                </div>
-                
-              </div>
-  
-              <div class="w100 Ct Mgrn-PX"><hr class="w80"><div class="Seta ppt" onclick="Show(['#Grupo-Cliente','#Grupo-Entrega']);ReloadPlanClnt()">^</div></div>
-  
-              <div id="GrupoClntSave" class="Ct Cl none"></div>
-              <div id="Grupo-Cliente" class="inptFormOrc none">
-  
-                <div class="Bandeija Cl" name="BndjForm"></div>
-  
-                <!-- Nome e Contato-->
-                <div id="Div-Inpt-Clnt"><label for="lbClnt_1">Cliente</label>
-                  <input placeholder="Nome do Cliente" id="lbClnt_1" name="Clnt" type="text">
-                </div>
-                <div id="Div-Inpt-Cntt" style="display: none"><label for="lbCntt_2">Contato</label>
-                  <input placeholder="Contato do Cliente" id="lbCntt_2" name="Cntt" type="text">
-                </div>
-                <div class="btn_cdstr baby Ct none" onclick="AbreCdstr()">cadastrar</div>
-              </div>
-  
-              <div id="Grupo-Entrega" class="inptFormOrc none">
-                <!-- Entrega -->
-                <div id="Div-Inpt-Lcal" style="display: flex"><label>Endereço</label>
-                  <input placeholder="insira Local da Entrega" name="Local" type="text">
-                </div>
-  
-                <div id="Div-Inpt-Etc" style="display: flex"><label>Comentário</label>
-                  <input placeholder="Deixe Algum Comentário" name="Etc" type="text">
-                </div>
-              </div>
-  
-            </form>
-  
-            <div class="Ct">
-              <button id="AddAdd" class="Ct none" onclick="AddAdd()">Adicionar</button>
-            </div>
-  
-            <div id="Div-CRUD" class="Tabela Rd Ct Cl none">
-  
-              <div id="TitleCRUD" class="Ct Bt">
-                <div><div id="Inner-Clnt" data="Clnt">Nome</div></div>
-                <div><div data="Cntt">Contato</div></div>
-                <div><div data="Local">Local</div></div>
-                <div><div data="Etc">Descrição</div></div>
-                <div id="ClearCRUD" class="HvrSVG Ct none" onclick="clearCRUD()">Clear</div>
-              </div>
-  
-              <div id="CRUD" class="Rd Ct Cl w100">
-  
-                <table>
-                  <tbody>
-                    <tr>
-                      <th class="none">id</th>
-                      <th>Qnt</th>
-                      <th>Serv</th>
-                      <th>Tipo</th>
-                      <th>Cbmt</th>
-                      <th>Larg</th>
-                      <th>Alt</th>
-                      <th>Total</th>
-                      <th class="none">Etc</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-        
-                    <tr id="CrudDefaut" class="none">
-                      <td class="none"><div data="CrudA">id</div><input class="none" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" oninput="MaskNum(this)" type="text" data="CrudB"></td>
-                      <td><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td class="none"><div data="CrudA">Defaut</div><input class="none" type="text" data="CrudB"></td>
-                      <td>
-                        <div data="CrudA" onclick="EditaCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Editar</div>
-                        <div data="CrudB" onclick="SaveEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Salvar</div>
-                      </td> 
-                      <td>
-                        <div data="CrudA" onclick="DeletCRUD(this.parentNode.parentNode)" class="HvrSVG icon">Deletar</div>
-                        <div data="CrudB" onclick="CancelEditCRUD(this.parentNode.parentNode)" class="HvrSVG icon none">Cancelar</div>
-                      </td>
-                    </tr>
-  
-                  </tbody>
-                </table>
-  
-                <div id="Rodape" class="Ct w100">
-                  <div>Total:</div><div class="HvrSVG Ct"><div>R$</div><div id="TotalCrud" class="Total" onclick="Reajuste()">00,00</div></div>
-                </div>
-              </div>
-            </div>
-  
-            <div id="SavSav" class="Ct none">
-              <button onclick="SaveCRUDI()">Salvar</button>
-              <!-- <button onclick="SavePdd('','Entrada','CRUD','','')">Dar Entrada</button> -->
-              <button class="BTNota Ct RD magem" onclick="AbreNota()">Ver Nota<div id="imgnotta2" class="Ct"></div></button>
-              <div id="ContentNotaCRUD"></div>
-              
-            </div>
-  
-          </div>
-          
-          <!-- <button onclick="Acumulador()">Acumulador</button> -->
-          <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
-          <div>
-            <div id="NewCanvas" class="Ct Cnvs"></div>
-            <canvas id="CanvasMedidas" class="Cnvs"></canvas>
-            <div id="ResutArea"></div>
-          </div>
-          
-
-
-          <div id="RodapeOrc" class="Bt">
-            <div class="Cl Start2">
-              <p>Uma gráfica é uma entidade prestadora de serviços cuja função passa pela impressão de produtos.</p>
-            <p>Este processo consiste, maioritariamente, em transferir ...</p>  
-            </div>
-
-            <img src="Img/Rodappe.png" class="ImgRodape">
-            
-          </div>
-        
-      </div>
-
-      <div id="Aba-Relatorio" class="">
-        <h2>Relatório</h2>
-      </div>
-
-      <div id="Aba-Agenda" class="">
-        <h2>Agenda</h2>
-
-        <button onclick="ReloadPlanOS()">Carregar OS</button>
-
-        <div id="RelatorioOS">
-          <h3 id="OSPG" onclick="ClasTog2('#ContentOSPag','none');ClasTog2('#OKPag','none')">Pra Pagar</h3>
-          <h3 id="OSPT" onclick="ClasTog2('#ContentOSPrint','none');ClasTog2('#OKPrint','none')">Para Imprimir</h3>
-          <h3 id="OSFT" onclick="ClasTog2('#ContentOSUber','none');ClasTog2('#OKUber','none')">Para Entrega</h3>
-
-          <div id="ContentOSPag" class="Ct none"></div>
-          <div id="ContentOSPrint" class="Ct none"></div>
-          <div id="ContentOSUber" class="Ct none"><input id="QualUber" class="w100" type="text" placeholder="qual foi o Uber?"></div>
-
-          <button id="OKPag" class="none" onclick="ConfirmOS('#ContentOSPag > div')">Confirmar Pagamento</button>
-          <button id="OKPrint" class="none" onclick="ConfirmOS('#ContentOSPrint > div')">Confirmar Impressão</button>
-          <button id="OKUber" class="none" onclick="ConfirmOS('#ContentOSUber > div')">Confirmar Uber</button>
-        </div>
-
-        
-      </div>
-
-      <div id="Aba-Clientes" class="">
-        <h2>Clientes</h2>
-        <button onclick="Copy('Pix',this)">Copiar Pix</button>
-        <div id="divTabelaIMGProduto" class="Ct">
-          <div class="Rltv">
-            <div class="ConteudoTabela"></div>
-            <div id="dadosTabelaimg" class="ConteudoTabela Abslt Ct">Texto</div>
-            <img src="img/FundoTabela.png" class="Abslt">
-          </div>
-        </div>
-      </div>
+<body class="Dark">
+    <div>Orcamentos</div>
+    <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
+    <div class="Ct"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
     
-    </div></div>
+    <div id="NovoForm" class="Cl">
+        <script> // Funções o Orçamento
+            const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
+            const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="0,00cm" oninput="MaskNum(this)">`
+            const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="0 UND">`
+            const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
+            const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
+            const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
+            const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
+            const RmvRow=tr=>tr.remove()
+            function RecolorVlr(){$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})}
 
-    <div id="Fundo-Modal" class="Ct Dark w100 h100 none">
+            function EditMdds(tr){
+                const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
+                const Alt = Num($('.ORC_INPT_Alt',tr).value)
+                const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
+                const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
+                const V_Vund = $('.ORC_RSUT_Vund',tr)
+                const V_SbTt = $('.ORC_RSUT_SbTt',tr)
+                const C_Vund = $('.ORC_CUST_Vund',tr)
+                const C_SbTt = $('.ORC_CUST_SbTt',tr)
 
-      <div id="ModalLogin" class="Ct Rltv Rd">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <div class="Bt Loginn">Login</div>
-          <div class="Ct Start">
-            <label for="Senha">Senha</label>
-            <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'S',this)">
-          </div>
-          <span id="Span-Login" class="erro"></span>
-          <div class="Bt">
-            <button class="Ct w40" onclick="TestSenha('','S','#Inpt-Senha')">Logar</button>
-            <button class="Ct w40" onclick="Deslogar();None('#Fundo-Modal')">Sair</button>
-          </div>
-          
-      </div>
+                const Serv = $('.OrcServ',tr).value
+                const Tipo = $('.OrcTipo',tr).value // apresenta um erro quando isto ta vazio
+                const M2 = Prod[Serv]['Variantes'][Tipo]
+                const Valr = M2.Valr||0
+                const Cust = M2.Cust||0
+                const RsutValr = Valr*Lrg*Alt
+                const RsutCust = Cust*Lrg*Alt
 
-      <div id="ModalCadastro" class="Ct Rltv Rd">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <div>Cadastro do Clietne</div>
-          <div class="Bandeija Cl" name="BndjCadastro"></div>
-          <div>
-            <input type="text" name="Clnt" placeholder="Nome do Cliente">
-            <input type="text" name="Cplt" placeholder="Nome Completo">
-            <input type="text" name="Cntt" placeholder="Contato do Cliente">
-            <input type="text" name="Local" placeholder="Endereço do Cliente">
-            <input type="text" name="Loja" placeholder="Nome da Empresa">
-            <input type="text" name="LjCt" placeholder="Cntato da Empresa">
-            <input type="text" name="Catg" placeholder="Catégoria">
-          </div>
+                Inn(V_Vund , Tm_RS(RsutValr*1  )) ; $Name(V_Vund, RsutValr*1   )
+                Inn(V_SbTt , Tm_RS(RsutValr*Qnt)) ; $Name(V_SbTt, RsutValr*Qnt )
+                Inn(C_Vund , Tm_RS(RsutCust*1  )) ; $Name(C_Vund, RsutCust*1   )
+                Inn(C_SbTt , Tm_RS(RsutCust*Qnt)) ; $Name(C_SbTt, RsutCust*Qnt )
 
-          <button onclick="SaveCadastro()">Salvar</button>
-      </div>
+                ReloadTotal()
+            }
 
-      <div id="Modal-Item" class="Ct Rltv Rd">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <div id="Conteudo-Item"></div>
-      </div>
+            // Mostrar o Valor por M2 ao Lado do Option
+            // se não tiver valor Atualizado fica Vermelho, ou Inativo
+            // Separar Por Medidas e OffSet
+            // Permitir Drag nas as Linhas
+            // imitar Bureal no Futuro
+            // Método de Pesquisa
+            // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
+            // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
+            // se eu quiser Pular e ir Direto pra a aba de Tipos, Carregará todos, adesivo lona e tudo, e ai ao selecionar o Serv muda automatico
+        </script>
+        <style>
+           /* #ORC_M2 .TrRow{height:30px} */
+           td{padding: 1px;}
+           #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
+           #ORC_M2 .RS{font-size:7px}
+           .Branc{color: #ffffff5d !important}
+           .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
+           [class^="ORC_CUST_"]{color:#ff6565}
+           [class^="ORC_RSUT_"]{color:#48ff00}
+           .Final a{font-size:20px ; font-family:var(--Medi)}
+           .Final .RS{margin-right:3px}
+       </style>
 
-      <div id="ModalInfo" class="Ct Rltv Rd">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <div id="Modal-Info1" class="Ct Cl ">
-          <div id="Title-Info" class="Hr padins Ct"></div>
-  
-          <div id="GrupoClntSaveInfo" class="Ct Cl none"></div>
+        <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
+            <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Cmp','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
+            <script>// Funções do Thead
+                function UppThead(){
+                    $$(`#ORC_M2 thead th`).forEach((e,x)=>{
+                        if(x===0) {Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1 )">❌</div>`)}
+                        if(x===10){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',11)">🧹</div>`)}
+                    })
+                }
+                function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
+                function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
+            </script>
+            <tbody>
+                <!-- draggable="true" -->
+                <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()"> 
+                    <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                    <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2]))"></select></td>
+                    <td            ><select class="OrcTipo" onchange="               " onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
+                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Lrg'))"></td>
+                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Alt'))"></td>
+                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>
+                    <td width="10%"  onload="Inn(this,Tm_InptQnt('Qnt'))"></td>
+                    <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
+                    <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
+                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                </tr>
+            </tbody>
+            <script> // Funções do Tbody
+                function SERVChang(e){
+                    const Lista = ObjKey(Prod[e.value].Variantes)
+                    Inn($('.OrcTipo',_tr(e)),Tm_Opts(['Tipo',...Lista]))
+                }
+                function TIPOChang(e){
+                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                    Inn($('.OrcCbmt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))
+                }
+                function CBMTChang(e){
+                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                    Inn($('.OrcGram',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))
+                }
+                function GRAMChang(e){
+                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                    Inn($('.OrcQntt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))
+                }
+                function QNTTChang(e){
+                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                    const Cbmt = $('.OrcCbmt',_tr(e)).value
+                    const Gram = $('.OrcGram',_tr(e)).value
+                    const Qntt = $('.OrcQntt',_tr(e)).value
+                    const filt = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
+                    const filt2= filt[0][2].filter(e=>e[0]===Qntt)
+                    
+                    const F_Cust = filt2[0][2]
+                    const F_Valr = filt2[0][1]
 
-          <div id="RestaNome" class="w100">
+                    const tr = _tr(e)
 
-            <div class="Bandeija Cl" name="BndjInfo"></div>
-    
-            <div id="DivClntInfo" ><label for="ClntInfo">Cliente</label>
-              <input id="ClntInfo" class="w90" name="Clnt" tabindex="1" type="text" onkeyup="proxinpt(event)" required="">
-            </div>
-    
-            <div id="DivCnttInfo"><label for="CnttInfo">Contato</label>
-              <input id="CnttInfo" class="w90" name="Cntt" tabindex="2" type="text">
-            </div>
+                    const V_Vund = $('.ORC_RSUT_Vund',tr)
+                    const V_SbTt = $('.ORC_RSUT_SbTt',tr)
+                    const C_Vund = $('.ORC_CUST_Vund',tr)
+                    const C_SbTt = $('.ORC_CUST_SbTt',tr)
 
-            <div class="btn_cdstr baby Ct none" onclick="AbreCadastro()">cadastrar</div>
-    
-          </div>
-  
-          <label for="ArteInfo">Tipo Arte</label>
-          <select id="ArteInfo" class="w100" required="" data="#divdesigner" name="Arte">
-            <option disabled="" selected="" value="">_Escolha o Tipo da Arte</option>
-            <option value="Criar">Criação</option>
-            <option value="Recria">Recriação</option>
-            <option value="Reparo">Reparo</option>
-            <option value="Vetor">Vetorização</option>
-            <option value="_Clnte">Arte do Cliente</option>
-            <option value="_temos">Já temos a Arte</option>
-            <option value="_Nada">Sem Arte</option>
-          </select>
-          
-          <div id="divdesigner" class="none">
-            <label>Designer</label>
-            <div class="Ct ckecs">
-              <label for="Desig1"><input type="radio" id="Desig1" name="Desig" value="Lisa">Lisa</label>
-              <label for="Desig2"><input type="radio" id="Desig2" name="Desig" value="Allan">Allan</label>
-              <label for="Desig3"><input type="radio" id="Desig3" name="Desig" value="Baby">Baby</label>
-            </div>
-          </div>
-  
-          <div>
-            <label for="Aplic">
-              <input type="checkbox" id="Aplic" name="Aplic" value="Aplic">
-              Aplicação</label>
-            <label for="install">
-              <input type="checkbox" id="install" name="Aplic" value="install">
-              Instalação</label>
-          </div>
-  
-          <div id="DivFrete">
-            <label for="Fret1"><input type="radio" id="Fret1" name="Frete" value="Graff" data="#DivEndereco" required="">Retirada</label>
-            <label for="Fret2"><input type="radio" id="Fret2" name="Frete" value="Entrega" data="#DivEndereco" required="">Entrega</label>
-    
-            <div id="DivEndereco" class="none">
-              <label for="Endereco">Endereço</label> <input id="Endereco" name="Local" type="text">
-              <div class="none">Frete:<div id="RsutFrete" class="none">...</div>
-              </div>
-            </div>
-    
-          </div>
-          
-          
-          <div class="Ct"><button id="btnINFO1" class="Ct none" onclick="Show('#Modal-Info2','#Modal-Info1')">Próximo</button></div>
+                    const QNT = Num(Qntt.replace('.',''))
 
-        </div>
+                    Inn(V_Vund , Tm_RS(F_Valr/QNT)) ; $Name(V_Vund,F_Valr/QNT)
+                    Inn(V_SbTt , Tm_RS(F_Valr    )) ; $Name(V_SbTt,F_Valr    )
+                    Inn(C_Vund , Tm_RS(F_Cust/QNT)) ; $Name(C_Vund,F_Cust/QNT)
+                    Inn(C_SbTt , Tm_RS(F_Cust    )) ; $Name(C_SbTt,F_Cust    )
 
-        <div id="Modal-Info2" class="Ct Cl none">
-          <div id="titleinfo2">titulo</div>
-          <div class="Hr padins"> <label>Forma de Pagamento</label>
-            <div class="Ct ckecs">
-          <label for="form1"><input type="radio" id="form1" name="pag" value="Pix" data="#divpaginfo" required="">Pix</label>
-          <label for="form2"><input type="radio" id="form2" name="pag" value="Av" data="#divpaginfo" required="">Av</label>
-          <label for="form3"><input type="radio" id="form3" name="pag" value="NPag" data="#divpaginfo" required="">Não Pago</label>
-            </div>
-  
-            <div id="divpaginfo" class="none">
-              <div><label for="vlrPagInfo">Valor</label><input type="number" id="vlrPagInfo"></div>
-              <div><label for="dataPagInfo">Data</label><input type="date" id="dataPagInfo">
-                <button onclick="hojeInfo('#dataPagInfo')">Hoje</button>
-              </div>
-            </div>
-            
-          </div>
-          <div>
-            <div>Prazo: </div><input type="date" id="Prazo">
-          </div>
-          <div id="innerdesc">Desconto: </div>
-          <div class="Bt">
-            <button id="btnINFO3" class="Ct" onclick="Show('#Modal-Info1','#Modal-Info2')">Voltar</button>
-            <button id="btnINFO2" class="Ct none" onclick="None('#Fundo-Modal');SaveInfo('','','Info','','')">Entrada</button>
-          </div>
-        </div>
-      </div>
+                    ReloadTotal()
+                    
+                }
+            </script>
+        </table>
 
-      <div id="ModalNota" class="Cl Rltv Rd media30">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <div id="Titulo-Nota" class="w100 Bt Hr"></div>
-            <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
-              <div class="Ct">
-                <div id="LugarFotoNotta"><img src="Img/Logo2.png"></div>
-                <div>
-                  <h2>INFINITY GRAFF</h2>
-                  <h2>IMPRESSÃO DIGITAL</h2>
-                </div>
-              </div>
+        <table id="ORC_OFS" class="w80">
+            <thead><tr onload="Inn(this,Tm_ORC_Th(['','','','','','','','','','','']));UppThead()"></tr></thead>
+            <tbody>
+                <tr class="TrRow">
+                    <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                    <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServOFS]))"></select></td>
+                    <td            ><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))">      </select></td>
+                    <td width="10%"><select class="OrcCbmt" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select></td>
+                    <td width="10%"><select class="OrcGram" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"> </select></td>
+                    <td width="10%"><select class="OrcQntt" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))">       </select></td>
+                    <td width="10%" onload="Inn(this,Tm_Total('Vund'))" class="imita"></td>
+                    <td width="10%" onload="Inn(this,Tm_Total('SbTt'))" class="imita"></td>
+                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                </tr>
+            </tbody>
+        </table>
 
-                <div class="Start2">
-                  <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A</p></div>
-                  <div class="FtBd Ct">Cidade: <p>SÃO LOURENÇO DA MATA</p></div>
-                  <div class="FtBd Ct">Email: <p>infinitygraff@outlook.com</p></div>
-                  <div class="FtBd Ct">Contato: <p class="B">(81) 98726.5401</p></div>
-                </div>
-            </div>
-
-            <div class="Ct Cl Hr">
-              <h2>CUPOM FISCAL</h2>
-              <div id="DataNota"></div>
-            </div>
-
-            <div class="Start2 Hr">
-              <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>${id}</p></div>
-              <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
-            </div>
-
-            <div id="Nota-Clnt" class="Row w100 Ev">
-              <div>
-                <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
-                <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
-              </div>
-              <div>
-                <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
-                <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
-              </div>
-              <div>
-                <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
-              </div>
-            </div>
-
-            <div id="ConteudoNota" class="w100">
-              <table id="TabelaNotinha" class="w100"><thead><tr><th style="color: white">Serviços</th></tr></thead></table>
-              <div id="DescrNota" class="Ct Cl"></div>
-              <h2 id="TotalNotta" class="Hr Ct"></h2>
-            </div>
-
-          <div class="w100 Ct">
-            <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
-            <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
-            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
-          </div>
-      </div>
-
-      <div id="ConfirmPlan" class="Ct Rltv Rd">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
-        <img src="Img/Plan.png">
         <div>
-          <div>Confira tudinho</div><br>
-          <div>pra Salvar na Planilha!</div>
-          <button onclick="Acumulador2();None('#Fundo-Modal')">SalvarOS</button>
-          <button onclick="Acumulador();None('#Fundo-Modal')">Tudo Certo!</button>
-          <button>Salvar no Cache</button>
-          <button onclick="None('#Fundo-Modal')">Cancelar</button>
+            <p>Total</p>
+            <div class="ORC_CUST_FINAL Final none"></div>
+            <div class="ORC_RSUT_FINAL Final"     ></div>
         </div>
-      </div>
+        <script>
+            function ReloadTotal(){
+                const Rsut = $$('.ORC_RSUT_SbTt').map(e=>$Name(e))
+                const Cust = $$('.ORC_CUST_SbTt').map(e=>$Name(e))
+                Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA(Cust)))
+                Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA(Rsut)))
+            }
+        </script>
 
-      <div id="InnerVazio" class="Ct"></div>
-
+        <div class="w100 Ct">
+            <div class="inptFormOrc Cl"><label>Comentário</label><input placeholder="Comentário"></div>
+        </div>
+        </form>
     </div>
+</body>
 
-    <div class="Dark"><div id="Alert" class="Ct Rd none">
-     <!--<img class="IMGPlan" src="Img/Plan.png">-->
-      <img class="IMGOkay" src="Img/Yes.png">
-      <div>Salvo na Planilha com Sucesso!</div>
-    </div></div>
+<script>
+    Onloads('body')
 
-    <div id="PostMensseger">
-      <form id="SavePddPlan" class="none">
-        <input name="RG">
-        <input name="ArryClnt">
-        <input name="ObjInfo">
-        <input name="ArryItens">
-        <button>Trigger</button>
-      </form>
+    function Check_W_Pag(){
+        if(window.innerWidth<=650){
+            $$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[0]))
+        }
+        if(window.innerWidth>650){
+            $$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[1]))
+        }
+    }
 
-      <form id="SaveOSPlan" class="none">
-        <input name="RG">
-        <input name="ID">
-        <input name="Pag">
-        <input name="Print">
-        <input name="Uber">
-        <input name="QualUbb">
-        <button>Trigger</button>
-      </form>
+    window.addEventListener("resize",Check_W_Pag)
+    Check_W_Pag()
+</script>
 
+<script> // Funções Dedicadas a Tabelas
+    function Upp_Tabela(Tbl){
+        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
+        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcAll')) : Show($$('.OrcAll'))
+        // aqui pode ter mais coisas pra Atualizar a Tabela
+    }
+    function Upp_RowCol(Tbl){
+        const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
+        $$(`${Tbl} input`).forEach((I,x)=>{
+            I.dataset.row = Math.floor(x/Lmt)
+            I.dataset.col = x % Lmt
+        })
+    }
+    function HandArrow(Tbl,e){
+        if (e.key === "Enter"){
+            const Inpts = $$(`input`,Tbl)
+            const Elemt = $(':focus')
+            const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
+            if(Next){Next.focus()}
+        }
+        let act = document.activeElement
+        if (act.tagName !== "INPUT") return
+        let r = +act.dataset.row, c = +act.dataset.col, nxt
+        if (e.key === "ArrowRight") nxt = `[data-row='${ r }'][data-col='${c+1}']`
+        if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
+        if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
+        if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
+        if (nxt) $(nxt)?.focus()
+    }
 
-    </div>
+    function Rload_Tbl(Tbl){
+        Upp_Tabela(Tbl) ; Upp_RowCol(Tbl) ; RecolorVlr(Tbl) ; RecolorVlr()
+    }
+    Rload_Tbl('#ORC_M2')
+</script>
 
-  </body>
-    <script type="text/javascript" src="./Biblioteca.js" defer=""></script>
-    <script type="text/javascript" src="./Scripts.js" defer=""></script>
 </html>
-
-
