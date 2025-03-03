@@ -128,7 +128,7 @@
 <script> // Base de Dados 2
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_PDDS'}
+    const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['PDDS','SERV','LIN','PGMT','GRAD','MPAG','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -695,7 +695,7 @@
 <body class="Dark">
 
     <style> 
-        header{background:url(./000_Bibliotecas/IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
+        header{background:url(./IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
         #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
         #DarkLite{right:0px;top:0px}
         html{height:3000px}
@@ -730,28 +730,28 @@
     <div id="PAGES">
         <style> /*Styles das Tabelas Principais*/
             table{text-align:center;border-collapse:collapse}
-                .Dark table{background: #222222}
-                .Lite table{background: white}
-            th{padding:4px 6px}
-                .Dark th,.Dark td{border:1px solid #cccccc27}
-                .Lite th,.Lite td{border:1px solid #00000041}
-                .Dark th{background: #161616;color:white}
-                .Lite th{background: #8b0085;color:white}
-                    .Lite td.Foco{background:#c300ff2a}
-                    .Dark td.Foco{background:#ffffff18}
-                .Dark tfoot{background:#111111;color:white}
-                .Lite tfoot{background:#8b0085;color:white}
+                .Dark .TBLAA table{background: #222222}
+                .Lite .TBLAA table{background: white}
+            .TBLAA th{padding:4px 6px}
+                .Dark .TBLAA th,.Dark .TBLAA td{border:1px solid #cccccc27}
+                .Lite .TBLAA th,.Lite .TBLAA td{border:1px solid #00000041}
+                .Dark .TBLAA th{background: #161616;color:white}
+                .Lite .TBLAA th{background: #8b0085;color:white}
+                    .Lite .TBLAA td.Foco{background:#c300ff2a}
+                    .Dark .TBLAA td.Foco{background:#ffffff18}
+                .Dark .TBLAA tfoot{background:#111111;color:white}
+                .Lite .TBLAA tfoot{background:#8b0085;color:white}
 
-            .Dark tbody tr td:nth-child(1){color: #ffffff3b;background: #00000034}
-            .Lite tbody tr td:nth-child(1){color: #0000008c}
+            .Dark .TBLAA tbody tr td:nth-child(1){color: #ffffff3b;background: #00000034}
+            .Lite .TBLAA tbody tr td:nth-child(1){color: #0000008c}
             
-            td p{width: 100%; height: 100%; padding: 2px 6px; text-align: center}
+            .TBLAA td p{width: 100%; height: 100%; padding: 2px 6px; text-align: center}
 
-            .hMin td{height:10px}
-            .hMin td select,.hMin td input{height: 17px !important}
-                .hMin td .svg-Lixo{height:17px}
-                .hMin td img{height:17px; width: auto;}
-            .hMin tfoot td{padding:8px 6px}
+            .TBLAA .hMin td{height:10px}
+            .TBLAA .hMin td select,.hMin td input{height: 17px !important}
+                .TBLAA .hMin td .svg-Lixo{height:17px}
+                .TBLAA .hMin td img{height:17px; width: auto;}
+            .TBLAA .hMin tfoot td{padding:8px 6px}
 
             .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 50}
                 .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
@@ -768,12 +768,12 @@
                 .Lite .Bandj{background:#bb0092}
 
 
-            th a{font-size:9px;right:0px;top:50%;transform:translate(-0%,-50%)}
+            .TBLAA th a{font-size:9px;right:0px;top:50%;transform:translate(-0%,-50%)}
             .TableMORE thead{background:#0000007c}
             .More{margin:5px; padding:5px 10px; height:20px}
 
-            tfoot a{color: #00df00;}
-            tfoot .RS{color: #00df00; font-size: 7px;}
+            .TBLAA tfoot a{color: #00df00;}
+            .TBLAA tfoot .RS{color: #00df00; font-size: 7px;}
 
             .teste{color: #79ff79;}
 
@@ -782,9 +782,10 @@
             .ColorFix{background: #a7a7a78e !important;}
         </style>
 
-        <div id="Pag_ORC" class="none Cl">
+        <div id="Pag_ORC" class="none Cl" style="margin-top:150px">
             <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
-            <div class="Ct"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
+            <style>#RlvCusst{margin-top: 100px;}</style>
+            <div id="RlvCusst" class="Ct Fx"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
             
             <div id="NovoForm" class="Cl">
                 <script> // Funções o Orçamento
@@ -801,7 +802,7 @@
                     function EditMdds(tr){
                         const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
                         const Alt = Num($('.ORC_INPT_Alt',tr).value)
-                        const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
+                        //const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
                         const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
                         const V_Vund = $('.ORC_RSUT_Vund',tr)
                         const V_SbTt = $('.ORC_RSUT_SbTt',tr)
@@ -835,44 +836,41 @@
                     // se eu quiser Pular e ir Direto pra a aba de Tipos, Carregará todos, adesivo lona e tudo, e ai ao selecionar o Serv muda automatico
                 </script>
                 <style>
-                /* #ORC_M2 .TrRow{height:30px} */
-                td{padding: 1px;}
-                #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
-                #ORC_M2 .RS{font-size:7px}
-                .Branc{color: #ffffff5d !important}
-                .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
-                [class^="ORC_CUST_"]{color:#ff6565}
-                [class^="ORC_RSUT_"]{color:#48ff00}
-                .Final a{font-size:20px ; font-family:var(--Medi)}
-                .Final .RS{margin-right:3px}
-            </style>
+                    /* #ORC_M2 .TrRow{height:30px} */
+                    td{padding: 1px;}
+                    #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
+                    #ORC_M2 .RS{font-size:7px}
+                    .Branc{color: #ffffff5d !important}
+                    .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
+                    [class^="ORC_CUST_"]{color:#ff6565}
+                    [class^="ORC_RSUT_"]{color:#48ff00}
+                    .Final a{font-size:20px ; font-family:var(--Medi)}
+                    .Final .RS{margin-right:3px}
+                </style>
 
                 <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
-                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Cmp','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
+                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
                     <script>// Funções do Thead
-                        function UppThead(){
-                            $$(`#ORC_M2 thead th`).forEach((e,x)=>{
-                                if(x===0) {Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1 )">❌</div>`)}
-                                if(x===10){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',11)">🧹</div>`)}
-                            })
-                        }
-                        function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
+                        function UppThead(){$$(`#ORC_M2 thead th`).forEach((e,x)=>{
+                                if(x===0){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1);ReloadTotal()">❌</div>`)}
+                                if(x===9){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',10);ReloadTotal()">🧹</div>`)}})}
                         function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
+                        function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
                     </script>
                     <tbody>
                         <!-- draggable="true" -->
                         <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()"> 
-                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                             <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2]))"></select></td>
                             <td            ><select class="OrcTipo" onchange="               " onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%"  onload="Inn(this,Tm_InptMdd('Lrg'))"></td>
                             <td width="10%"  onload="Inn(this,Tm_InptMdd('Alt'))"></td>
-                            <td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>
+                            <!--<td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>-->
                             <td width="10%"  onload="Inn(this,Tm_InptQnt('Qnt'))"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
                         </tr>
                     </tbody>
                     <script> // Funções do Tbody
@@ -948,6 +946,7 @@
                 </div>
                 <script>
                     function ReloadTotal(){
+                        console.log('Entrou na BUXA')
                         const Rsut = $$('.ORC_RSUT_SbTt').map(e=>$Name(e))
                         const Cust = $$('.ORC_CUST_SbTt').map(e=>$Name(e))
                         Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA(Cust)))
@@ -962,7 +961,7 @@
             </div>
         </div>
 
-        <div id="Pag_PDDS" class="none Cl">
+        <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <script>
@@ -982,7 +981,7 @@
             </table>
         </div>
 
-        <div id="Pag_SERV" class="none Cl">
+        <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <input id="SERV_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
@@ -995,7 +994,7 @@
             </table>
         </div>
 
-        <div id="Pag_PGMT" class="none Cl">
+        <div id="Pag_PGMT" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="AddROW('PGMT')">Nova Linha +</button>
                 <input id="PGMT_TrocaCor" type="checkbox" onchange="Condicional()">
@@ -1009,7 +1008,7 @@
             </table>
         </div>
 
-        <div id="Pag_GRAD" class="none Cl">
+        <div id="Pag_GRAD" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="AddROW('GRAD')">Grad +</button>
                 <button onclick="AddROW('OOSS')">OS +</button>
@@ -1036,7 +1035,7 @@
             </table>
         </div>
 
-        <div id="Pag_MPAG" class="none Cl">
+        <div id="Pag_MPAG" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
@@ -1048,7 +1047,7 @@
             </table>
         </div>
 
-        <div id="Pag_CLNT" class="none Cl">
+        <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="AddROW('CLNT')">Nova Linha +</button>
                 <button onclick="LimparFiltro('CLNT')">Limpar Filtro</button>
@@ -1274,8 +1273,4 @@
     }
     Rload_Tbl('#ORC_M2')
 </script>
-
-
-
-
 </html>
