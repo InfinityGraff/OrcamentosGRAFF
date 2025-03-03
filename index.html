@@ -694,7 +694,7 @@
 
 <body class="Dark">
 
-    <style>
+    <style> 
         header{background:url(./000_Bibliotecas/IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
         #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
         #DarkLite{right:0px;top:0px}
@@ -709,21 +709,21 @@
     </style>
     <header class="Bt Fx">
         <div class="Ct" style="margin-left: 15px;">
-            <img src="./000_Bibliotecas/IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;">MyPlan 2.0</h1>
+            <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
+            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">MyPlan 2.0</h1>
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
-            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./000_Bibliotecas/IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
-            <img src="./000_Bibliotecas/IconPlan/LOGO.png" height="60px">
+            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
+            <img src="./IconPlan/LOGO.png" height="60px">
         </div>
 
         <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
         <div id="Sommma" class="none">Soma: 00,00</div>
         
         <div id="ALERT" class="Abslt rd none">
-            <div class="Ct"><img src="./000_Bibliotecas/IconPlan/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
-            <span class="w100 Ct" style="height: 30px">Buraco</span>
+            <div class="Ct"><img src="./IconPlan/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
+            <span class="w100 Ct" style="height: 30px"></span>
         </div>
     </header>
 
@@ -781,6 +781,186 @@
 
             .ColorFix{background: #a7a7a78e !important;}
         </style>
+
+        <div id="Pag_ORC" class="none Cl">
+            <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
+            <div class="Ct"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
+            
+            <div id="NovoForm" class="Cl">
+                <script> // Funções o Orçamento
+                    const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
+                    const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="0,00cm" oninput="MaskNum(this)">`
+                    const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="0 UND">`
+                    const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
+                    const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
+                    const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
+                    const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
+                    const RmvRow=tr=>tr.remove()
+                    function RecolorVlr(){$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})}
+
+                    function EditMdds(tr){
+                        const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
+                        const Alt = Num($('.ORC_INPT_Alt',tr).value)
+                        const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
+                        const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
+                        const V_Vund = $('.ORC_RSUT_Vund',tr)
+                        const V_SbTt = $('.ORC_RSUT_SbTt',tr)
+                        const C_Vund = $('.ORC_CUST_Vund',tr)
+                        const C_SbTt = $('.ORC_CUST_SbTt',tr)
+
+                        const Serv = $('.OrcServ',tr).value
+                        const Tipo = $('.OrcTipo',tr).value // apresenta um erro quando isto ta vazio
+                        const M2 = Prod[Serv]['Variantes'][Tipo]
+                        const Valr = M2.Valr||0
+                        const Cust = M2.Cust||0
+                        const RsutValr = Valr*Lrg*Alt
+                        const RsutCust = Cust*Lrg*Alt
+
+                        Inn(V_Vund , Tm_RS(RsutValr*1  )) ; $Name(V_Vund, RsutValr*1   )
+                        Inn(V_SbTt , Tm_RS(RsutValr*Qnt)) ; $Name(V_SbTt, RsutValr*Qnt )
+                        Inn(C_Vund , Tm_RS(RsutCust*1  )) ; $Name(C_Vund, RsutCust*1   )
+                        Inn(C_SbTt , Tm_RS(RsutCust*Qnt)) ; $Name(C_SbTt, RsutCust*Qnt )
+
+                        ReloadTotal()
+                    }
+
+                    // Mostrar o Valor por M2 ao Lado do Option
+                    // se não tiver valor Atualizado fica Vermelho, ou Inativo
+                    // Separar Por Medidas e OffSet
+                    // Permitir Drag nas as Linhas
+                    // imitar Bureal no Futuro
+                    // Método de Pesquisa
+                    // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
+                    // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
+                    // se eu quiser Pular e ir Direto pra a aba de Tipos, Carregará todos, adesivo lona e tudo, e ai ao selecionar o Serv muda automatico
+                </script>
+                <style>
+                /* #ORC_M2 .TrRow{height:30px} */
+                td{padding: 1px;}
+                #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
+                #ORC_M2 .RS{font-size:7px}
+                .Branc{color: #ffffff5d !important}
+                .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
+                [class^="ORC_CUST_"]{color:#ff6565}
+                [class^="ORC_RSUT_"]{color:#48ff00}
+                .Final a{font-size:20px ; font-family:var(--Medi)}
+                .Final .RS{margin-right:3px}
+            </style>
+
+                <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
+                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Cmp','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
+                    <script>// Funções do Thead
+                        function UppThead(){
+                            $$(`#ORC_M2 thead th`).forEach((e,x)=>{
+                                if(x===0) {Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1 )">❌</div>`)}
+                                if(x===10){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',11)">🧹</div>`)}
+                            })
+                        }
+                        function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
+                        function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
+                    </script>
+                    <tbody>
+                        <!-- draggable="true" -->
+                        <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()"> 
+                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                            <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2]))"></select></td>
+                            <td            ><select class="OrcTipo" onchange="               " onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
+                            <td width="10%"  onload="Inn(this,Tm_InptMdd('Lrg'))"></td>
+                            <td width="10%"  onload="Inn(this,Tm_InptMdd('Alt'))"></td>
+                            <td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>
+                            <td width="10%"  onload="Inn(this,Tm_InptQnt('Qnt'))"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                        </tr>
+                    </tbody>
+                    <script> // Funções do Tbody
+                        function SERVChang(e){
+                            const Lista = ObjKey(Prod[e.value].Variantes)
+                            Inn($('.OrcTipo',_tr(e)),Tm_Opts(['Tipo',...Lista]))
+                        }
+                        function TIPOChang(e){
+                            const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                            Inn($('.OrcCbmt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))
+                        }
+                        function CBMTChang(e){
+                            const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                            Inn($('.OrcGram',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))
+                        }
+                        function GRAMChang(e){
+                            const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                            Inn($('.OrcQntt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))
+                        }
+                        function QNTTChang(e){
+                            const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
+                            const Cbmt = $('.OrcCbmt',_tr(e)).value
+                            const Gram = $('.OrcGram',_tr(e)).value
+                            const Qntt = $('.OrcQntt',_tr(e)).value
+                            const filt = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
+                            const filt2= filt[0][2].filter(e=>e[0]===Qntt)
+                            
+                            const F_Cust = filt2[0][2]
+                            const F_Valr = filt2[0][1]
+
+                            const tr = _tr(e)
+
+                            const V_Vund = $('.ORC_RSUT_Vund',tr)
+                            const V_SbTt = $('.ORC_RSUT_SbTt',tr)
+                            const C_Vund = $('.ORC_CUST_Vund',tr)
+                            const C_SbTt = $('.ORC_CUST_SbTt',tr)
+
+                            const QNT = Num(Qntt.replace('.',''))
+
+                            Inn(V_Vund , Tm_RS(F_Valr/QNT)) ; $Name(V_Vund,F_Valr/QNT)
+                            Inn(V_SbTt , Tm_RS(F_Valr    )) ; $Name(V_SbTt,F_Valr    )
+                            Inn(C_Vund , Tm_RS(F_Cust/QNT)) ; $Name(C_Vund,F_Cust/QNT)
+                            Inn(C_SbTt , Tm_RS(F_Cust    )) ; $Name(C_SbTt,F_Cust    )
+
+                            ReloadTotal()
+                            
+                        }
+                    </script>
+                </table>
+
+                <table id="ORC_OFS" class="w80">
+                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','','','','','','','','','']));UppThead()"></tr></thead>
+                    <tbody>
+                        <tr class="TrRow">
+                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                            <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServOFS]))"></select></td>
+                            <td            ><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))">      </select></td>
+                            <td width="10%"><select class="OrcCbmt" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select></td>
+                            <td width="10%"><select class="OrcGram" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"> </select></td>
+                            <td width="10%"><select class="OrcQntt" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))">       </select></td>
+                            <td width="10%" onload="Inn(this,Tm_Total('Vund'))" class="imita"></td>
+                            <td width="10%" onload="Inn(this,Tm_Total('SbTt'))" class="imita"></td>
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <p>Total</p>
+                    <div class="ORC_CUST_FINAL Final none"></div>
+                    <div class="ORC_RSUT_FINAL Final"     ></div>
+                </div>
+                <script>
+                    function ReloadTotal(){
+                        const Rsut = $$('.ORC_RSUT_SbTt').map(e=>$Name(e))
+                        const Cust = $$('.ORC_CUST_SbTt').map(e=>$Name(e))
+                        Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA(Cust)))
+                        Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA(Rsut)))
+                    }
+                </script>
+
+                <div class="w100 Ct">
+                    <div class="inptFormOrc Cl"><label>Comentário</label><input placeholder="Comentário"></div>
+                </div>
+                </form>
+            </div>
+        </div>
 
         <div id="Pag_PDDS" class="none Cl">
             <div class="Ct Bt">
@@ -901,184 +1081,6 @@
             </div>
     </div>
 
-    <div>Orcamentos</div>
-    <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
-    <div class="Ct"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
-    
-    <div id="NovoForm" class="Cl">
-        <script> // Funções o Orçamento
-            const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
-            const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="0,00cm" oninput="MaskNum(this)">`
-            const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="0 UND">`
-            const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
-            const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
-            const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
-            const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
-            const RmvRow=tr=>tr.remove()
-            function RecolorVlr(){$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})}
-
-            function EditMdds(tr){
-                const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
-                const Alt = Num($('.ORC_INPT_Alt',tr).value)
-                const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
-                const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
-                const V_Vund = $('.ORC_RSUT_Vund',tr)
-                const V_SbTt = $('.ORC_RSUT_SbTt',tr)
-                const C_Vund = $('.ORC_CUST_Vund',tr)
-                const C_SbTt = $('.ORC_CUST_SbTt',tr)
-
-                const Serv = $('.OrcServ',tr).value
-                const Tipo = $('.OrcTipo',tr).value // apresenta um erro quando isto ta vazio
-                const M2 = Prod[Serv]['Variantes'][Tipo]
-                const Valr = M2.Valr||0
-                const Cust = M2.Cust||0
-                const RsutValr = Valr*Lrg*Alt
-                const RsutCust = Cust*Lrg*Alt
-
-                Inn(V_Vund , Tm_RS(RsutValr*1  )) ; $Name(V_Vund, RsutValr*1   )
-                Inn(V_SbTt , Tm_RS(RsutValr*Qnt)) ; $Name(V_SbTt, RsutValr*Qnt )
-                Inn(C_Vund , Tm_RS(RsutCust*1  )) ; $Name(C_Vund, RsutCust*1   )
-                Inn(C_SbTt , Tm_RS(RsutCust*Qnt)) ; $Name(C_SbTt, RsutCust*Qnt )
-
-                ReloadTotal()
-            }
-
-            // Mostrar o Valor por M2 ao Lado do Option
-            // se não tiver valor Atualizado fica Vermelho, ou Inativo
-            // Separar Por Medidas e OffSet
-            // Permitir Drag nas as Linhas
-            // imitar Bureal no Futuro
-            // Método de Pesquisa
-            // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
-            // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
-            // se eu quiser Pular e ir Direto pra a aba de Tipos, Carregará todos, adesivo lona e tudo, e ai ao selecionar o Serv muda automatico
-        </script>
-        <style>
-           /* #ORC_M2 .TrRow{height:30px} */
-           td{padding: 1px;}
-           #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
-           #ORC_M2 .RS{font-size:7px}
-           .Branc{color: #ffffff5d !important}
-           .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
-           [class^="ORC_CUST_"]{color:#ff6565}
-           [class^="ORC_RSUT_"]{color:#48ff00}
-           .Final a{font-size:20px ; font-family:var(--Medi)}
-           .Final .RS{margin-right:3px}
-       </style>
-
-        <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
-            <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Cmp','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
-            <script>// Funções do Thead
-                function UppThead(){
-                    $$(`#ORC_M2 thead th`).forEach((e,x)=>{
-                        if(x===0) {Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1 )">❌</div>`)}
-                        if(x===10){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',11)">🧹</div>`)}
-                    })
-                }
-                function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
-                function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
-            </script>
-            <tbody>
-                <!-- draggable="true" -->
-                <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()"> 
-                    <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                    <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2]))"></select></td>
-                    <td            ><select class="OrcTipo" onchange="               " onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
-                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Lrg'))"></td>
-                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Alt'))"></td>
-                    <td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>
-                    <td width="10%"  onload="Inn(this,Tm_InptQnt('Qnt'))"></td>
-                    <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
-                    <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
-                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
-                </tr>
-            </tbody>
-            <script> // Funções do Tbody
-                function SERVChang(e){
-                    const Lista = ObjKey(Prod[e.value].Variantes)
-                    Inn($('.OrcTipo',_tr(e)),Tm_Opts(['Tipo',...Lista]))
-                }
-                function TIPOChang(e){
-                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
-                    Inn($('.OrcCbmt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))
-                }
-                function CBMTChang(e){
-                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
-                    Inn($('.OrcGram',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))
-                }
-                function GRAMChang(e){
-                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
-                    Inn($('.OrcQntt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))
-                }
-                function QNTTChang(e){
-                    const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
-                    const Cbmt = $('.OrcCbmt',_tr(e)).value
-                    const Gram = $('.OrcGram',_tr(e)).value
-                    const Qntt = $('.OrcQntt',_tr(e)).value
-                    const filt = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
-                    const filt2= filt[0][2].filter(e=>e[0]===Qntt)
-                    
-                    const F_Cust = filt2[0][2]
-                    const F_Valr = filt2[0][1]
-
-                    const tr = _tr(e)
-
-                    const V_Vund = $('.ORC_RSUT_Vund',tr)
-                    const V_SbTt = $('.ORC_RSUT_SbTt',tr)
-                    const C_Vund = $('.ORC_CUST_Vund',tr)
-                    const C_SbTt = $('.ORC_CUST_SbTt',tr)
-
-                    const QNT = Num(Qntt.replace('.',''))
-
-                    Inn(V_Vund , Tm_RS(F_Valr/QNT)) ; $Name(V_Vund,F_Valr/QNT)
-                    Inn(V_SbTt , Tm_RS(F_Valr    )) ; $Name(V_SbTt,F_Valr    )
-                    Inn(C_Vund , Tm_RS(F_Cust/QNT)) ; $Name(C_Vund,F_Cust/QNT)
-                    Inn(C_SbTt , Tm_RS(F_Cust    )) ; $Name(C_SbTt,F_Cust    )
-
-                    ReloadTotal()
-                    
-                }
-            </script>
-        </table>
-
-        <table id="ORC_OFS" class="w80">
-            <thead><tr onload="Inn(this,Tm_ORC_Th(['','','','','','','','','','','']));UppThead()"></tr></thead>
-            <tbody>
-                <tr class="TrRow">
-                    <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                    <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServOFS]))"></select></td>
-                    <td            ><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))">      </select></td>
-                    <td width="10%"><select class="OrcCbmt" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select></td>
-                    <td width="10%"><select class="OrcGram" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"> </select></td>
-                    <td width="10%"><select class="OrcQntt" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))">       </select></td>
-                    <td width="10%" onload="Inn(this,Tm_Total('Vund'))" class="imita"></td>
-                    <td width="10%" onload="Inn(this,Tm_Total('SbTt'))" class="imita"></td>
-                    <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
-                </tr>
-            </tbody>
-        </table>
-
-        <div>
-            <p>Total</p>
-            <div class="ORC_CUST_FINAL Final none"></div>
-            <div class="ORC_RSUT_FINAL Final"     ></div>
-        </div>
-        <script>
-            function ReloadTotal(){
-                const Rsut = $$('.ORC_RSUT_SbTt').map(e=>$Name(e))
-                const Cust = $$('.ORC_CUST_SbTt').map(e=>$Name(e))
-                Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA(Cust)))
-                Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA(Rsut)))
-            }
-        </script>
-
-        <div class="w100 Ct">
-            <div class="inptFormOrc Cl"><label>Comentário</label><input placeholder="Comentário"></div>
-        </div>
-        </form>
-    </div>
 </body>
 
 <script>
