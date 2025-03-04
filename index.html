@@ -30,7 +30,6 @@
     .SuggSelects   {background:#f357d1}
     .RecolorSelects{background:#f357d1}
     .THSugg p:hover{background:#f357d1}
-
     .Formt_Verd{background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
     .Formt_Azul{background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
     .Formt_Redd{background:rgb(224, 104, 104);color:#910000;font-weight:bold}
@@ -45,7 +44,6 @@
         // Vinil Super Brilho 1,22  : R$ 24,50
         // Mascara 1m               : R$ 12,90
         // Transparente 1,22        : R$ 16,00
-
     const Prod = {
         Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'   ,Extra:{'Aplicação':10},Variantes:{
                 Brilho        :{item:'1',Tipo:'',Valr:60 ,Cust:20},
@@ -120,10 +118,8 @@
                 G         :{Tipo:[''],Valr:0,Cust:0},
             }},
     }
-
     const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
     const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
-
 </script>
 
 <script> // Base de Dados 2
@@ -898,43 +894,14 @@
             <div id="NovoForm" class="Cl w90">
                 <script> // Funções o Orçamento
                     const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
-                    const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="${e}" oninput="MaskNum(this)">`
-                    const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="Qnt">`
                     const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
                     const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
                     const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                     const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
                     const RmvRow=tr=>tr.remove()
                     function RecolorVlr(){$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})}
-
-                    function EditMdds(tr){
-                        const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
-                        const Alt = Num($('.ORC_INPT_Alt',tr).value)
-                        const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
-                        const V_Vund = $('.ORC_RSUT_Vund',tr)
-                        const V_SbTt = $('.ORC_RSUT_SbTt',tr)
-                        const C_Vund = $('.ORC_CUST_Vund',tr)
-                        const C_SbTt = $('.ORC_CUST_SbTt',tr)
-
-                        const Serv = $('.OrcServ',tr).value
-                        const Tipo = $('.OrcTipo',tr).value
-                        const M2 = Prod[Serv]['Variantes'][Tipo]
-                        
-                        const Valr = M2?.Valr ?? 0
-                        const Cust = M2?.Cust ?? 0
-                        const RsutValr = Valr*Lrg*Alt
-                        const RsutCust = Cust*Lrg*Alt
-
-                        Inn(V_Vund , Tm_RS(RsutValr*1  )) ; $Name(V_Vund, RsutValr*1   )
-                        Inn(V_SbTt , Tm_RS(RsutValr*Qnt)) ; $Name(V_SbTt, RsutValr*Qnt )
-                        Inn(C_Vund , Tm_RS(RsutCust*1  )) ; $Name(C_Vund, RsutCust*1   )
-                        Inn(C_SbTt , Tm_RS(RsutCust*Qnt)) ; $Name(C_SbTt, RsutCust*Qnt )
-
-                        ReloadTotal()
-                    }
                 </script>
                 <style>
-                    /* #ORC_M2 .TrRow{height:30px} */
                     td{padding: 1px;}
                     #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
                     #ORC_M2 .RS{font-size:7px}
@@ -951,7 +918,6 @@
 
                     .sOFF{opacity:0.3}
                 </style>
-
                 <table id="ORC_M2" class="w90" onkeydown="HandArrow(this,event)">
                     <thead class=""><tr onload="Inn(this,Tm_ORC_Th(['','','','','','','','','','']));UppThead()"></tr></thead> <!--'','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt',''-->
                     <script>// Funções do Thead
@@ -962,7 +928,7 @@
                         function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
                     </script>
                     <tbody>
-                        <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()" onchange="ValidOpts()">
+                        <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                             <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
@@ -991,30 +957,44 @@
                     function TIPOChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcCbmt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
                     function CBMTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcGram',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
                     function GRAMChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcQntt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
-                    function QNTTChang(e){
-                        const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table
-                        const Cbmt = $('.OrcCbmt',_tr(e)).value
-                        const Gram = $('.OrcGram',_tr(e)).value
-                        const Qntt = $('.OrcQntt',_tr(e)).value
-                        const filt = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
-                        const filt2= filt[0][2].filter(e=>e[0]===Qntt)
-                        
-                        const F_Cust = filt2[0][2]
-                        const F_Valr = filt2[0][1]
+                    function QNTTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}
 
-                        const tr = _tr(e)
+                    function ORC_Calc(tr,Lista=null){
+                        const InName=(e,val)=>{Inn(e,Tm_RS(val)) ; $Name(e,val)}
+                        const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
 
-                        const V_Vund = $('.ORC_RSUT_Vund',tr)
-                        const V_SbTt = $('.ORC_RSUT_SbTt',tr)
-                        const C_Vund = $('.ORC_CUST_Vund',tr)
-                        const C_SbTt = $('.ORC_CUST_SbTt',tr)
+                        const Serv = $('.OrcServ',tr).value
+                        const Tipo = $('.OrcTipo',tr).value
+                        const Cbmt = $('.OrcCbmt',tr).value
+                        const Gram = $('.OrcGram',tr).value
+                        const Qntt = $('.OrcQntt',tr).value
+                        const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
+                        const Alt = Num($('.ORC_INPT_Alt',tr).value)
+                        const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
 
+                        const Calc = Prod[Serv].Calc
+                        const M2 = Prod[Serv]['Variantes'][Tipo]
                         const QNT = Num(Qntt.replace('.',''))
 
-                        Inn(V_Vund , Tm_RS(F_Valr/QNT)) ; $Name(V_Vund,F_Valr/QNT)
-                        Inn(V_SbTt , Tm_RS(F_Valr    )) ; $Name(V_SbTt,F_Valr    )
-                        Inn(C_Vund , Tm_RS(F_Cust/QNT)) ; $Name(C_Vund,F_Cust/QNT)
-                        Inn(C_SbTt , Tm_RS(F_Cust    )) ; $Name(C_SbTt,F_Cust    )
+                        let F_Cust = 0
+                        let F_Valr = 0
+                        // Só pra OFS
+                        if(Calc=='OFS'){
+                            const filt   = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
+                            const filt2  = filt [0][2].filter(e=>e[0]===Qntt)
+                            F_Cust = filt2[0][2]
+                            F_Valr = filt2[0][1]
+                        }
+
+                        const Valr = M2?.Valr ?? 0
+                        const Cust = M2?.Cust ?? 0
+                        const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt) : F_Valr
+                        const CUSTO = Calc=='M2' ? TotalCress(Cust,Lrg*Alt*Qnt) : F_Cust
+                         
+                        InName($('.ORC_RSUT_Vund',tr),VALOR/Qnt)
+                        InName($('.ORC_RSUT_SbTt',tr),VALOR)
+                        InName($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
+                        InName($('.ORC_CUST_SbTt',tr),CUSTO)
 
                         ReloadTotal()
                     }
@@ -1262,6 +1242,10 @@
     // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
     // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
     // Dominuir a Opacidade e Bloquear, caso não tenha Nada
+
+    // ao transitar entre as medidas já tem q trocar selecioanndo
+
+    // Mostrar Custo e Mostrar Crescente
 
 </script>
 
