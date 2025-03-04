@@ -879,15 +879,22 @@
             </table>
         </div>
 
-        <div id="Pag_ORC" class="none Cl" style="margin-top:150px">
+        <div id="Pag_ORC" class="none Cl" style="margin-top:100px">
             <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
             <style>
-                #RlvCusst{margin-top: 100px;}
-                #NovoForm{background:#ffffff0a;border-radius: 20px; padding: 10px;}
+                #RlvCusst{margin-top: 60px}
+                #NovoForm{background:#ffffff0a;border-radius: 20px; padding: 10px}
+                #LocalIMG{overflow-x: scroll; flex-wrap: nowrap}
+                #LocalIMG img{height: 250px}
             </style>
             <div id="RlvCusst" class="Ct Fx"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
-            
-            <div id="NovoForm" class="Cl">
+
+            <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
+                <div id="LocalIMG" class="Start"></div>
+                <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`)</script>
+            </div>
+
+            <div id="NovoForm" class="Cl w90">
                 <script> // Funções o Orçamento
                     const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
                     const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="${e}" oninput="MaskNum(this)">`
@@ -909,7 +916,7 @@
                         const C_SbTt = $('.ORC_CUST_SbTt',tr)
 
                         const Serv = $('.OrcServ',tr).value
-                        const Tipo = $('.OrcTipo',tr).value // apresenta um erro quando isto ta vazio
+                        const Tipo = $('.OrcTipo',tr).value
                         const M2 = Prod[Serv]['Variantes'][Tipo]
                         
                         const Valr = M2?.Valr ?? 0
@@ -944,7 +951,7 @@
                     .sOFF{opacity:0.3}
                 </style>
 
-                <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
+                <table id="ORC_M2" class="w90" onkeydown="HandArrow(this,event)">
                     <thead class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
                     <script>// Funções do Thead
                         function UppThead(){$$(`#ORC_M2 thead th`).forEach((e,x)=>{
@@ -1013,7 +1020,6 @@
 
                         ReloadTotal()
                     }
-                    function CalcOFS(){}
                     function ValidOpts(){$$('#ORC_M2 select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
                 </script>
 
