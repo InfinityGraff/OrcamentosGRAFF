@@ -890,8 +890,8 @@
             <div id="NovoForm" class="Cl">
                 <script> // Funções o Orçamento
                     const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
-                    const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="0,00cm" oninput="MaskNum(this)">`
-                    const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="0 UND">`
+                    const Tm_InptMdd=e=>`<input class="ORC_INPT_${e}" placeholder="${e}" oninput="MaskNum(this)">`
+                    const Tm_InptQnt=e=>`<input class="ORC_INPT_${e}" placeholder="Qnt">`
                     const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
                     const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
                     const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
@@ -902,7 +902,6 @@
                     function EditMdds(tr){
                         const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
                         const Alt = Num($('.ORC_INPT_Alt',tr).value)
-                        //const Cmp = Num($('.ORC_INPT_Cmp',tr).value)
                         const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
                         const V_Vund = $('.ORC_RSUT_Vund',tr)
                         const V_SbTt = $('.ORC_RSUT_SbTt',tr)
@@ -912,8 +911,9 @@
                         const Serv = $('.OrcServ',tr).value
                         const Tipo = $('.OrcTipo',tr).value // apresenta um erro quando isto ta vazio
                         const M2 = Prod[Serv]['Variantes'][Tipo]
-                        const Valr = M2.Valr||0
-                        const Cust = M2.Cust||0
+                        
+                        const Valr = M2?.Valr ?? 0
+                        const Cust = M2?.Cust ?? 0
                         const RsutValr = Valr*Lrg*Alt
                         const RsutCust = Cust*Lrg*Alt
 
@@ -924,32 +924,28 @@
 
                         ReloadTotal()
                     }
-
-                    // Mostrar o Valor por M2 ao Lado do Option
-                    // se não tiver valor Atualizado fica Vermelho, ou Inativo
-                    // Separar Por Medidas e OffSet
-                    // Permitir Drag nas as Linhas
-                    // imitar Bureal no Futuro
-                    // Método de Pesquisa
-                    // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
-                    // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
-                    // se eu quiser Pular e ir Direto pra a aba de Tipos, Carregará todos, adesivo lona e tudo, e ai ao selecionar o Serv muda automatico
                 </script>
                 <style>
                     /* #ORC_M2 .TrRow{height:30px} */
                     td{padding: 1px;}
                     #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
                     #ORC_M2 .RS{font-size:7px}
+
+                    #ORC_OFS input,#ORC_OFS select{width:100% !important ; margin:0}
+                    #ORC_OFS .RS{font-size:7px}
+
                     .Branc{color: #ffffff5d !important}
                     .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
                     [class^="ORC_CUST_"]{color:#ff6565}
                     [class^="ORC_RSUT_"]{color:#48ff00}
                     .Final a{font-size:20px ; font-family:var(--Medi)}
                     .Final .RS{margin-right:3px}
+
+                    .sOFF{opacity:0.3}
                 </style>
 
                 <table id="ORC_M2" class="w80" onkeydown="HandArrow(this,event)">
-                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
+                    <thead class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
                     <script>// Funções do Thead
                         function UppThead(){$$(`#ORC_M2 thead th`).forEach((e,x)=>{
                                 if(x===0){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1);ReloadTotal()">❌</div>`)}
@@ -957,39 +953,30 @@
                         function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
                         function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
                     </script>
-                    <tbody> <!--draggable="true"-->
-                        <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()">
+                    <tbody>
+                        <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                             <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2]))"></select></td>
                             <td            ><select class="OrcTipo" onchange="               " onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%"  onload="Inn(this,Tm_InptMdd('Lrg'))"></td>
                             <td width="10%"  onload="Inn(this,Tm_InptMdd('Alt'))"></td>
-                            <!--<td width="10%"  onload="Inn(this,Tm_InptMdd('Cmp'))"></td>-->
                             <td width="10%"  onload="Inn(this,Tm_InptQnt('Qnt'))"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
                         </tr>
-                    </tbody>
-                </table>
-
-
-
-                <table id="ORC_OFS" class="w80" style="margin-top: 30px;">
-                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Cbmt','Gram','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
-                    <tbody>
-                        <tr class="TrRow">
-                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                            <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServOFS]))"></select></td>
+                        <tr class="TrRow" oninput="EditMdds(this);RecolorVlr()" onchange="ValidOpts()">
+                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                            <td            ><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
                             <td            ><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))">      </select></td>
                             <td width="10%"><select class="OrcCbmt" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select></td>
                             <td width="10%"><select class="OrcGram" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"> </select></td>
                             <td width="10%"><select class="OrcQntt" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))">       </select></td>
-                            <td width="10%" onload="Inn(this,Tm_Total('Vund'))" class="imita"></td>
-                            <td width="10%" onload="Inn(this,Tm_Total('SbTt'))" class="imita"></td>
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2')" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                            <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
                         </tr>
                     </tbody>
                 </table>
@@ -1026,11 +1013,8 @@
 
                         ReloadTotal()
                     }
-
-                    function CalcOFS(){
-
-                    }
-
+                    function CalcOFS(){}
+                    function ValidOpts(){$$('#ORC_M2 select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
                 </script>
 
                 <div> <!--Valores TOTAL-->
@@ -1050,7 +1034,7 @@
                     <div class="Cl"><label>Endereço</label><input placeholder="Endereço"></div>
                     <div class="Cl"><label>Comentário</label><input placeholder="Comentário"></div>
                 </div>
-                <button>Salvar Pedido</button>  
+                <button>Salvar Pedido</button>
                 </form>
             </div>
         </div>
@@ -1237,6 +1221,7 @@
         if(window.innerWidth>650){$$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[1]))}}
     window.addEventListener("resize",Check_W_Pag)
     Check_W_Pag()
+    ValidOpts()
 </script>
 
 <script> // comentários
@@ -1246,6 +1231,17 @@
     // Permitir Remover o Fx do <Header>
 
     // tenho q fazer uma Fila de Fetcher, pra não dar conflito caso faça varios d euma só vez
+
+
+    // Mostrar o Valor por M2 ao Lado do Option
+    // se não tiver valor Atualizado fica Vermelho, ou Inativo
+    // Separar Por Medidas e OffSet
+    // Permitir Drag nas as Linhas
+    // imitar Bureal no Futuro
+    // Método de Pesquisa
+    // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
+    // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
+    // Dominuir a Opacidade e Bloquear, caso não tenha Nada
 
 </script>
 
