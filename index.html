@@ -877,21 +877,40 @@
         </div>
 
         <div id="Pag_ORC" class="none Cl" style="margin-top:100px">
-            <script>function MostraCusto(){Tog($$(`[class^="ORC_CUST_"]`),'none')}</script>
-            <style>
-                #RlvCusst{margin-top: 60px}
-                #NovoForm{background:#ffffff0a;border-radius: 20px; padding: 10px}
-                #LocalIMG{overflow-x: scroll; flex-wrap: nowrap}
-                #LocalIMG img{height: 250px; margin: 5px;}
-            </style>
-            <div id="RlvCusst" class="Ct Fx"><input name="RmvCust" type="checkbox" onchange="MostraCusto()"><label for="RmvCust">Mostrar Custo</label></div>
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
+                <style>
+                    #LocalIMG{overflow-x: scroll; flex-wrap: nowrap}
+                    #LocalIMG img{height: 250px; margin: 5px;}
+                </style>
                 <div id="LocalIMG" class="Start"></div>
                 <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`).join('')</script>
             </div>
 
-            <div id="NovoForm" class="Cl w90">
+            <style>
+                #NovoForm{background:#ffffff0a;border-radius: 20px; padding: 10px}
+                #CONFIG{right: 10px; top: 10px;}
+                #CONFIG img{width: 20px;}
+                #CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px;}
+            </style>
+            <div id="NovoForm" class="Cl w90 Rltv">
+
+                <div id="CONFIG" class="Abslt"> <!--CONFIGURAÇÕES-->
+                    <img src="./IconPlan/CONFIG.svg" onclick="Tog($('#CONFIG_Bdj'),'none')">
+                    <script>
+                        function Hdd_Cblh(){Tog($$(`#Cabecalho`),'none')}
+                        function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
+                        function Hdd_Crct(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
+                        
+                        document.addEventListener("keydown",function(e){if(e.key==="'"){e.preventDefault();Hdd_Cust()}})
+                    </script>
+                    <div id="CONFIG_Bdj" class="Abslt none Start2">
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cblh()"><label>Exibir Cabeçalho</label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"><label>Exibir Crescente</label></div>
+                    </div>
+                </div>
+
                 <script> // Funções o Orçamento
                     const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
                     const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
@@ -919,8 +938,7 @@
                     .sOFF{opacity:0.3}
                 </style>
                 <table id="ORC_M2" class="w90" onkeydown="HandArrow(this,event)">
-                    <thead class=""><tr onload="Inn(this,Tm_ORC_Th(['','','','','','','','','','']));UppThead()"></tr></thead> <!--'','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt',''-->
-                    <script>// Funções do Thead
+                    <thead id="Cabecalho" class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
                         function UppThead(){$$(`#ORC_M2 thead th`).forEach((e,x)=>{
                                 if(x===0){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1);ReloadTotal()">❌</div>`)}
                                 if(x===9){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',10);ReloadTotal()">🧹</div>`)}})}
@@ -1056,9 +1074,7 @@
                 <select onload="Inn(this,Tm_Opts(O.Forn))"></select>
                 <button onclick="add_PDDS($$Vl('#FormPDDS input, #FormPDDS select'),$('#FormPDDS .DivSugg input'))">Adicionar Pedido</button>
             </div>
-            <div id="FormIMG">
-
-            </div>
+            <div id="FormIMG"></div>
     </div>
 </body>
 
@@ -1206,7 +1222,7 @@
             const Inpts = $$(`input`,Tbl)
             const Elemt = $(':focus')
             const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
-            if(Next){Next.focus()}}
+            if(Next){Next.focus() ; Next.select() }}
         let act = document.activeElement
         if (act.tagName !== "INPUT") return
         let r = +act.dataset.row, c = +act.dataset.col, nxt
@@ -1214,7 +1230,7 @@
         if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
         if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
         if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
-        if (nxt) $(nxt)?.focus()
+        if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
     }
     function Check_W_Pag(){
         if(window.innerWidth<=650){$$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[0]))}
@@ -1225,28 +1241,23 @@
 </script>
 
 <script> // comentários
-
     // SaveConfig para DarkLite
     // SaveConfig para MenuNav
     // Permitir Remover o Fx do <Header>
-
     // tenho q fazer uma Fila de Fetcher, pra não dar conflito caso faça varios d euma só vez
-
-
+    // Método de Pesquisa
     // Mostrar o Valor por M2 ao Lado do Option
     // se não tiver valor Atualizado fica Vermelho, ou Inativo
-    // Separar Por Medidas e OffSet
     // Permitir Drag nas as Linhas
-    // imitar Bureal no Futuro
-    // Método de Pesquisa
+    // imitar Bureal no Futuro (deixando todas bandeijas aberta)
     // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
     // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
-    // Dominuir a Opacidade e Bloquear, caso não tenha Nada
+    
 
-    // ao transitar entre as medidas já tem q trocar selecioanndo
-
+    // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
+    // selecionar option automaticamente caso tenha apeans 1
     // Mostrar Custo e Mostrar Crescente
-
+    // quando Limpar, também limpa os Selects
 </script>
 
 </html>
