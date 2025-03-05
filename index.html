@@ -384,7 +384,7 @@
 
     const Tm_SuSg=()=>`<span class="Sugg Shdw rd Abslt Cl none"></span>`
     const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
-    const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');$Name(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
+    const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');$N(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
     
 
     const Tm_Bndj=()=>{
@@ -517,7 +517,7 @@
 
         function ReStts(){
             ObjKey(CC).forEach(Typ=>{
-                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>$Name(tr,'')) // Limpar o Name de todas Linhas da Tabela
+                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>$N(tr,'')) // Limpar o Name de todas Linhas da Tabela
                 $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
                     let id = VAL($(`:scope > ${Coll(1)}`,tr))
                     let Acc = []
@@ -641,7 +641,7 @@
     function CtrlSoma(Eu){
         // Conferir se tem Tecla Cntrl
         Tog(Eu,'SelectSoma')
-        Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>$Name(e))))}`)
+        Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>$N(e))))}`)
     }
 
     function Format_Bndj_Clnt(){
@@ -691,23 +691,25 @@
 
 <body class="Dark">
 
-    <style> 
-        header{background:url(./IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
-        #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
-        #DarkLite{right:0px;top:0px}
-        html{height:3000px}
-        #H_Nav{margin-right:15px}
-        #H_Nav, #H_Nav img{height:45px}
-        #H_Nav img,h1{filter: drop-shadow(0px 0px 8px #3a002b)}
-        #H_Nav img:hover{filter: drop-shadow(0px 0px 5px #f030c0)}
-        #PAGES{margin-top: 60px}
-        #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
-        #InptHeader{width: 30%}
-    </style>
-    <header class="Bt Fx">
+    <header class="Bt Fx"> <!--HEADER-->
+        <style> /*CSS do Header*/
+            header{background:url(./IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
+            #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
+            #DarkLite{right:0px;top:0px}
+            #H_Nav{margin-right:15px}
+            #H_Nav, #H_Nav img{height:45px}
+            #H_Nav img,h1{filter: drop-shadow(0px 0px 8px #3a002b)}
+            #H_Nav img:hover{filter: drop-shadow(0px 0px 5px #f030c0)}
+            #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
+            #InptHeader{width: 30%}
+        </style>
+        <script> // Funções do Header
+    
+        </script>
+
         <div class="Ct" style="margin-left: 15px;">
             <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">INFINITY GRAFF 2.0</h1>
+            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
@@ -724,7 +726,7 @@
         </div>
     </header>
 
-    <div id="PAGES">
+    <div id="PAGES" style="margin-top: 60px">
         <style> /*Styles das Tabelas Principais*/
             table{text-align:center;border-collapse:collapse}
                 .Dark .TBLAA table{background: #222222}
@@ -909,7 +911,7 @@
                     // Biblioteca
                         const cla = `[class^="ORC_CUST_"],[class^="ORC_CRCT_"],[class^="ORC_RSUT_"]`
                         const AddTrue=(e,Clss,True)=>$$(cla).forEach(e=>{if(True(e)){Add(e,Clss)}else{Rmv(e,Clss)}})
-                        const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; $Name(e,val)}
+                        const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; $N(e,val)}
                     // Templates
                         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
                         const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
@@ -920,7 +922,7 @@
                             if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
                             if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
                         }
-                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>$Name(e)==0)
+                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>$N(e)==0)
                         const Zerar=tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
                         const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                     // Clean e Remove
@@ -1046,9 +1048,9 @@
                     <div class="ORC_RSUT_FINAL Final"     ></div>
                     <script>
                         function ReloadTotal(){
-                            Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>$Name(e)))))
-                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>$Name(e)))))
-                            Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>$Name(e)))))}
+                            Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>$N(e)))))
+                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>$N(e)))))
+                            Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>$N(e)))))}
                     </script>
                 </div>
 
@@ -1096,6 +1098,7 @@
                 </form>
             </div>
         </div>
+
     </div>
 
     <div id="FModal" class="Ct">
@@ -1104,7 +1107,7 @@
                 <p onload="Inn(this,`ID-${Zero(D['PDDS'])}`)"></p>
                 <input type="date">
                 <div class="DivSugg Rltv">
-                    <input oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg');$Name(this,'')" placeholder="Cliente" onkeydown="KeyEntr(()=>TesteClnt(this,this))">
+                    <input oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg');$N(this,'')" placeholder="Cliente" onkeydown="KeyEntr(()=>TesteClnt(this,this))">
                     <span class="Sugg Shdw rd Abslt Cl none"></span>
                 </div>
                 <select id="Slct_Serv" onload="Inn(this,Tm_Opts(O.Serv))"></select>
@@ -1145,9 +1148,9 @@
     async function EditCell(e,vall=null){
         const R = D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        if(Val===$Name(e)){return}
+        if(Val===$N(e)){return}
         const arrays = [R[0],R[1],R[2],vall===""?"":vall?vall:Val] // [Tabela,Linha,Coluna,NovoValor]
-        $Name(e,e.textContent.trim())
+        $N(e,e.textContent.trim())
         console.log('arrayFinal',arrays)
         if(R[2]==='Data' && R[3]==='Inpt' || R[3]==='Sugg'){EditJSON(arrays)}else{EditJSON(arrays)}
         RRecolor()
@@ -1159,7 +1162,7 @@
     }///////////////////////////////////////////////////////////////
 
     function EditCellFake(eu){ 
-        const val = $Name($('input',Pai(eu)))
+        const val = $N($('input',Pai(eu)))
         const R = D_Rastr(Avo(eu.closest('.Bandj')))
         const arrays = (['PDDS',R[1],'Clnt',val]) // [Tabela,Linha,Coluna,NovoValor]
         console.log(arrays)
@@ -1177,7 +1180,7 @@
     const TesteClnt=(e,td=null)=>{
         if($('#ConfirCliente').checked){console.log('Perguntar')}
             if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
-                if($Name(e)){return $Name(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
+                if($N(e)){return $N(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
     }
 
     function add_PDDS(e,nome){
@@ -1245,7 +1248,6 @@
 </script>
 
 <script> // comentários
-
     // Abrir um Menu na Logo, e lá terá o DarkLite e o Login do Usuário
 
     // SaveConfig para DarkLite
@@ -1269,7 +1271,6 @@
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
     // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
     // Sair ao Clicar Fora da MiniBandeijinha
-
 </script>
 
 </html>
