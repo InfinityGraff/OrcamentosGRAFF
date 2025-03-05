@@ -1007,16 +1007,13 @@
                         const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt : F_Cust
                         const CRCT  = Calc=='M2' ? Valr*Lrg*Alt*Qnt : F_Cust
                         const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt) : F_Valr
-                        
 
-                         
                         InNa_RS($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
                         InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
                         InNa_RS($('.ORC_CRCT_Vund',tr),CRCT/Qnt)
                         InNa_RS($('.ORC_CRCT_SbTt',tr),CRCT)
                         InNa_RS($('.ORC_RSUT_Vund',tr),VALOR/Qnt)
                         InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR)
-
 
                         ReloadTotal()
                     }
@@ -1042,10 +1039,12 @@
                 <div> <!--Valores TOTAL-->
                     <p>Total</p>
                     <div class="ORC_CUST_FINAL Final none"></div>
+                    <div class="ORC_CRCT_FINAL Final none"></div>
                     <div class="ORC_RSUT_FINAL Final"     ></div>
                     <script>
                         function ReloadTotal(){
                             Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>$Name(e)))))
+                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>$Name(e)))))
                             Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>$Name(e)))))}
                     </script>
                 </div>
