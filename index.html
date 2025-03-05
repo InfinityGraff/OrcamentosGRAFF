@@ -887,23 +887,17 @@
                 <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`).join('')</script>
             </div>
 
-            <style>
-                #NovoForm{background:#ffffff0a;border-radius: 20px; padding: 10px}
-                #CONFIG{right: 10px; top: 10px;}
-                #CONFIG img{width: 20px;}
-                #CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px;}
-            </style>
-            <div id="NovoForm" class="Cl w90 Rltv">
+            <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
-                <div id="CONFIG" class="Abslt"> <!--CONFIGURAÇÕES-->
-                    <img src="./IconPlan/CONFIG.svg" onclick="Tog($('#CONFIG_Bdj'),'none')">
+                <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
+                    <img src="./IconPlan/CONFIG.svg" width="20" style="width:20px;opacity:0.2" onclick="Tog($('#CONFIG_Bdj'),'none')">
                     <script>
-                        function Hdd_Cblh(){Tog($$(`#Cabecalho`),'none')}
+                        function Hdd_Cblh(){Tog($$(`#ORC thead`),'none')}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
-                        function Hdd_Crct(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
-                        
+                        function Hdd_Crct(){Tog($$(`[class^="ORC_CRCT_"]`),'none')}
                         document.addEventListener("keydown",function(e){if(e.key==="'"){e.preventDefault();Hdd_Cust()}})
                     </script>
+                    <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
                     <div id="CONFIG_Bdj" class="Abslt none Start2">
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cblh()"><label>Exibir Cabeçalho</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
@@ -911,44 +905,49 @@
                     </div>
                 </div>
 
-                <script> // Funções o Orçamento
-                    const Tm_ORC_Th=ary=>ary.map(e=>`<th name="${e}|${D_brev[e]}" class="${e==''?'th_Svg':'th_Txt'}">${e==''?'':D_brev[e]}</th>`).join('')
-                    const Tm_Total  =e=>`<div class="ORC_CUST_${e} none" name="0">${Tm_RS(0)}</div> <div class="ORC_RSUT_${e}" name="0">${Tm_RS(0)}</div>`
-                    const Zerar =tr=>$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`,tr).forEach(e=>{$Name(e,0) ; Inn(e,Tm_RS(0))})
-                    const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
-                    const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
-                    const RmvRow=tr=>tr.remove()
-                    function RecolorVlr(){$$(`[class^="ORC_CUST_"],[class^="ORC_RSUT_"]`).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})}
+                <script> // Templates para Tabela de Orçamento
+                    // Biblioteca
+                        const cla = `[class^="ORC_CUST_"],[class^="ORC_CRCT_"],[class^="ORC_RSUT_"]`
+                        const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; $Name(e,val)}
+                    // Templates
+                        const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
+                        const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
+                        const Tm_ClrAll=()=>Inn($('#ORC thead th:nth-child(10)'),`<div class="ppt HOV O_All" onclick="ClrAll()">🧹</div>`)
+                        const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
+                    // Ações
+                        function Check_W_Pag(){
+                            if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
+                            if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
+                        }
+                        const RecolorVlr=()=>$$(cla).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})
+                        const Zerar=tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
+                        const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
+                    // Clean e Remove
+                        const RmvAll=()=>{$$(`#ORC tbody td:nth-child(1 ) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
+                        const ClrAll=()=>{$$(`#ORC tbody td:nth-child(10) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
+                        const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
+                        const RmvRow=tr=>tr.remove()
                 </script>
-                <style>
-                    td{padding: 1px;}
-                    #ORC_M2 input,#ORC_M2 select{width:100% !important ; margin:0}
-                    #ORC_M2 .RS{font-size:7px}
-
-                    #ORC_OFS input,#ORC_OFS select{width:100% !important ; margin:0}
-                    #ORC_OFS .RS{font-size:7px}
-
+                <style>  /*CSS da Tabela de Orçamento*/
+                    #ORC input,#ORC select{width:100% !important ; margin:0}
+                    #ORC .RS{font-size:7px}
+                    #ORC td{padding: 1px}
+                    #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center;}
                     .Branc{color: #ffffff5d !important}
-                    .imita{height: 30px !important; border-radius: 255px; background: #ffffff11}
-                    [class^="ORC_CUST_"]{color:#ff6565}
-                    [class^="ORC_RSUT_"]{color:#48ff00}
+                    .imita{height: 30px !important; background: #ffffff11}
                     .Final a{font-size:20px ; font-family:var(--Medi)}
                     .Final .RS{margin-right:3px}
-
                     .sOFF{opacity:0.3}
+                    [class^="ORC_CUST_"]{color:#ff6565}
+                    [class^="ORC_CRCT_"]{color:#65b5ff}
+                    [class^="ORC_RSUT_"]{color:#48ff00}
                 </style>
-                <table id="ORC_M2" class="w90" onkeydown="HandArrow(this,event)">
-                    <thead id="Cabecalho" class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));UppThead()"></tr></thead>
-                        function UppThead(){$$(`#ORC_M2 thead th`).forEach((e,x)=>{
-                                if(x===0){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllRmove('#ORC_M2',1);ReloadTotal()">❌</div>`)}
-                                if(x===9){Inn(e,`<div class="OrcAll ppt HOV" onclick="AllClean('#ORC_M2',10);ReloadTotal()">🧹</div>`)}})}
-                        function AllRmove(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}})}
-                        function AllClean(e,x){$$(`${e} tbody td:nth-child(${x}) > div`).forEach(E=>DispClick(E))}
-                    </script>
+                <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
+                    <thead class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));Tm_RmvAll();Tm_ClrAll()"></tr></thead>
                     <tbody>
                         <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
-                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                            <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                             <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
                             <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%">
@@ -963,9 +962,9 @@
                                 <select class="OrcQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))"></select>
                                 <input class="ORC_INPT_Qnt" placeholder="Qnt">
                             </td>
-                            <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita"></td>
-                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita"></td>
-                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC_M2');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                            <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita RD"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita RD"></td>
+                            <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
                         </tr>
                     </tbody>
                 </table>
@@ -978,7 +977,6 @@
                     function QNTTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}
 
                     function ORC_Calc(tr,Lista=null){
-                        const InName=(e,val)=>{Inn(e,Tm_RS(val)) ; $Name(e,val)}
                         const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
 
                         const Serv = $('.OrcServ',tr).value
@@ -1004,15 +1002,21 @@
                             F_Valr = filt2[0][1]
                         }
 
-                        const Valr = M2?.Valr ?? 0
                         const Cust = M2?.Cust ?? 0
+                        const Valr = M2?.Valr ?? 0
+                        const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt : F_Cust
+                        const CRCT  = Calc=='M2' ? Valr*Lrg*Alt*Qnt : F_Cust
                         const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt) : F_Valr
-                        const CUSTO = Calc=='M2' ? TotalCress(Cust,Lrg*Alt*Qnt) : F_Cust
+                        
+
                          
-                        InName($('.ORC_RSUT_Vund',tr),VALOR/Qnt)
-                        InName($('.ORC_RSUT_SbTt',tr),VALOR)
-                        InName($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
-                        InName($('.ORC_CUST_SbTt',tr),CUSTO)
+                        InNa_RS($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
+                        InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
+                        InNa_RS($('.ORC_CRCT_Vund',tr),CRCT/Qnt)
+                        InNa_RS($('.ORC_CRCT_SbTt',tr),CRCT)
+                        InNa_RS($('.ORC_RSUT_Vund',tr),VALOR/Qnt)
+                        InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR)
+
 
                         ReloadTotal()
                     }
@@ -1032,7 +1036,7 @@
                         }
                     }
 
-                    function ValidOpts(){$$('#ORC_M2 select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
+                    function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
                 </script>
 
                 <div> <!--Valores TOTAL-->
@@ -1045,6 +1049,40 @@
                             Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>$Name(e)))))}
                     </script>
                 </div>
+
+                <script> // Funções Dedicadas a Tabelas de ORÇAMENTO
+                    function Rload_Tbl(Tbl){Upp_Tabela(Tbl) ; Upp_RowCol(Tbl) ; RecolorVlr(Tbl) ; RecolorVlr()} ; Rload_Tbl('#ORC')
+                    function Upp_Tabela(Tbl){
+                        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
+                        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.O_All')) : Show($$('.O_All'))
+                        // aqui pode ter mais coisas pra Atualizar a Tabela
+                    }
+                    function Upp_RowCol(Tbl){
+                        const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
+                        $$(`${Tbl} input`).forEach((I,x)=>{
+                            I.dataset.row = Math.floor(x/Lmt)
+                            I.dataset.col = x % Lmt})
+                    }
+                    function HandArrow(Tbl,e){
+                        if (e.key === "Enter"){
+                            const Inpts = $$(`input`,Tbl)
+                            const Elemt = $(':focus')
+                            const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
+                            if(Next){Next.focus() ; Next.select() }}
+                        let act = document.activeElement
+                        if (act.tagName !== "INPUT") return
+                        let r = +act.dataset.row, c = +act.dataset.col, nxt
+                        if (e.key === "ArrowRight") nxt = `[data-row='${ r }'][data-col='${c+1}']`
+                        if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
+                        if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
+                        if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
+                        if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
+                    }
+
+                    window.addEventListener("resize",Check_W_Pag)
+                    Check_W_Pag()
+                    ValidOpts()
+                </script>
 
                 <div class="w100 Ct" style="margin-top: 80px"> <!--Informações Extras-->
                     <div class="Cl"><label>Nome</label><input placeholder="Nome"></div>
@@ -1204,42 +1242,6 @@
     PosGet()
 </script>
 
-<script> // Funções Dedicadas a Tabelas de ORÇAMENTO
-    function Rload_Tbl(Tbl){Upp_Tabela(Tbl) ; Upp_RowCol(Tbl) ; RecolorVlr(Tbl) ; RecolorVlr()} ; Rload_Tbl('#ORC_M2')
-    function Upp_Tabela(Tbl){
-        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
-        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcAll')) : Show($$('.OrcAll'))
-        // aqui pode ter mais coisas pra Atualizar a Tabela
-    }
-    function Upp_RowCol(Tbl){
-        const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
-        $$(`${Tbl} input`).forEach((I,x)=>{
-            I.dataset.row = Math.floor(x/Lmt)
-            I.dataset.col = x % Lmt})
-    }
-    function HandArrow(Tbl,e){
-        if (e.key === "Enter"){
-            const Inpts = $$(`input`,Tbl)
-            const Elemt = $(':focus')
-            const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
-            if(Next){Next.focus() ; Next.select() }}
-        let act = document.activeElement
-        if (act.tagName !== "INPUT") return
-        let r = +act.dataset.row, c = +act.dataset.col, nxt
-        if (e.key === "ArrowRight") nxt = `[data-row='${ r }'][data-col='${c+1}']`
-        if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
-        if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
-        if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
-        if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
-    }
-    function Check_W_Pag(){
-        if(window.innerWidth<=650){$$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[0]))}
-        if(window.innerWidth>650){$$('#ORC_M2 .th_Txt').forEach(e=>Inn(e,$Name(e).split('|')[1]))}}
-    window.addEventListener("resize",Check_W_Pag)
-    Check_W_Pag()
-    ValidOpts()
-</script>
-
 <script> // comentários
     // SaveConfig para DarkLite
     // SaveConfig para MenuNav
@@ -1258,6 +1260,9 @@
     // selecionar option automaticamente caso tenha apeans 1
     // Mostrar Custo e Mostrar Crescente
     // quando Limpar, também limpa os Selects
+    // Proibir Drag em Imagens
+    // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
+    
 </script>
 
 </html>
