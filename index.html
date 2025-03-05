@@ -707,7 +707,7 @@
     <header class="Bt Fx">
         <div class="Ct" style="margin-left: 15px;">
             <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">MyPlan 2.0</h1>
+            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">INFINITY GRAFF 2.0</h1>
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
@@ -905,9 +905,10 @@
                     </div>
                 </div>
 
-                <script> // Templates para Tabela de Orçamento
+                <script> // Templates e Ações para Tabela de Orçamento
                     // Biblioteca
                         const cla = `[class^="ORC_CUST_"],[class^="ORC_CRCT_"],[class^="ORC_RSUT_"]`
+                        const AddTrue=(e,Clss,True)=>$$(cla).forEach(e=>{if(True(e)){Add(e,Clss)}else{Rmv(e,Clss)}})
                         const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; $Name(e,val)}
                     // Templates
                         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
@@ -919,7 +920,7 @@
                             if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
                             if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
                         }
-                        const RecolorVlr=()=>$$(cla).forEach(e=>{if($Name(e)==0){Add(e,'Branc')}else{Rmv(e,'Branc')}})
+                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>$Name(e)==0)
                         const Zerar=tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
                         const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                     // Clean e Remove
@@ -927,6 +928,8 @@
                         const ClrAll=()=>{$$(`#ORC tbody td:nth-child(10) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
                         const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
                         const RmvRow=tr=>tr.remove()
+                    
+                    // Objetivo aqui é remover o Tamanho dessas Strings (Principalmente os Querys)
                 </script>
                 <style>  /*CSS da Tabela de Orçamento*/
                     #ORC input,#ORC select{width:100% !important ; margin:0}
@@ -1242,6 +1245,9 @@
 </script>
 
 <script> // comentários
+
+    // Abrir um Menu na Logo, e lá terá o DarkLite e o Login do Usuário
+
     // SaveConfig para DarkLite
     // SaveConfig para MenuNav
     // Permitir Remover o Fx do <Header>
@@ -1261,7 +1267,9 @@
     // quando Limpar, também limpa os Selects
     // Proibir Drag em Imagens
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
-    
+    // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
+    // Sair ao Clicar Fora da MiniBandeijinha
+
 </script>
 
 </html>
