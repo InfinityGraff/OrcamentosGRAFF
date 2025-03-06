@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSS%20Biblioteca.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/cssInfinity.css">
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/cssGRAFF.css">
+    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
+    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
+    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
+    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -384,7 +384,7 @@
 
     const Tm_SuSg=()=>`<span class="Sugg Shdw rd Abslt Cl none"></span>`
     const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
-    const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');$N(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
+    const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
     
 
     const Tm_Bndj=()=>{
@@ -517,7 +517,7 @@
 
         function ReStts(){
             ObjKey(CC).forEach(Typ=>{
-                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>$N(tr,'')) // Limpar o Name de todas Linhas da Tabela
+                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
                 $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
                     let id = VAL($(`:scope > ${Coll(1)}`,tr))
                     let Acc = []
@@ -641,7 +641,7 @@
     function CtrlSoma(Eu){
         // Conferir se tem Tecla Cntrl
         Tog(Eu,'SelectSoma')
-        Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>$N(e))))}`)
+        Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
     }
 
     function Format_Bndj_Clnt(){
@@ -911,7 +911,7 @@
                     // Biblioteca
                         const cla = `[class^="ORC_CUST_"],[class^="ORC_CRCT_"],[class^="ORC_RSUT_"]`
                         const AddTrue=(e,Clss,True)=>$$(cla).forEach(e=>{if(True(e)){Add(e,Clss)}else{Rmv(e,Clss)}})
-                        const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; $N(e,val)}
+                        const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; Nm(e,val)}
                     // Templates
                         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
                         const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
@@ -922,7 +922,7 @@
                             if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
                             if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
                         }
-                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>$N(e)==0)
+                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>Nm(e)==0)
                         const Zerar=tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
                         const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                     // Clean e Remove
@@ -1048,9 +1048,9 @@
                     <div class="ORC_RSUT_FINAL Final"     ></div>
                     <script>
                         function ReloadTotal(){
-                            Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>$N(e)))))
-                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>$N(e)))))
-                            Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>$N(e)))))}
+                            Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>Nm(e)))))
+                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>Nm(e)))))
+                            Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>Nm(e)))))}
                     </script>
                 </div>
 
@@ -1107,7 +1107,7 @@
                 <p onload="Inn(this,`ID-${Zero(D['PDDS'])}`)"></p>
                 <input type="date">
                 <div class="DivSugg Rltv">
-                    <input oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg');$N(this,'')" placeholder="Cliente" onkeydown="KeyEntr(()=>TesteClnt(this,this))">
+                    <input oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg');Nm(this,'')" placeholder="Cliente" onkeydown="KeyEntr(()=>TesteClnt(this,this))">
                     <span class="Sugg Shdw rd Abslt Cl none"></span>
                 </div>
                 <select id="Slct_Serv" onload="Inn(this,Tm_Opts(O.Serv))"></select>
@@ -1148,9 +1148,9 @@
     async function EditCell(e,vall=null){
         const R = D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        if(Val===$N(e)){return}
+        if(Val===Nm(e)){return}
         const arrays = [R[0],R[1],R[2],vall===""?"":vall?vall:Val] // [Tabela,Linha,Coluna,NovoValor]
-        $N(e,e.textContent.trim())
+        Nm(e,e.textContent.trim())
         console.log('arrayFinal',arrays)
         if(R[2]==='Data' && R[3]==='Inpt' || R[3]==='Sugg'){EditJSON(arrays)}else{EditJSON(arrays)}
         RRecolor()
@@ -1162,7 +1162,7 @@
     }///////////////////////////////////////////////////////////////
 
     function EditCellFake(eu){ 
-        const val = $N($('input',Pai(eu)))
+        const val = Nm($('input',Pai(eu)))
         const R = D_Rastr(Avo(eu.closest('.Bandj')))
         const arrays = (['PDDS',R[1],'Clnt',val]) // [Tabela,Linha,Coluna,NovoValor]
         console.log(arrays)
@@ -1180,7 +1180,7 @@
     const TesteClnt=(e,td=null)=>{
         if($('#ConfirCliente').checked){console.log('Perguntar')}
             if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
-                if($N(e)){return $N(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
+                if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
     }
 
     function add_PDDS(e,nome){
