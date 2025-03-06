@@ -330,6 +330,9 @@
 </script>
 
 <script> // Bibliotecas
+
+    const    Nm = (e,stg=null)=> stg===null ? e.getAttribute('name') : e.setAttribute('name',stg)
+
     const Dat=e=>new Date(e)
     const Rx2=arry=>Rx(['Rastr',...arry])
     const OjKy=Typ=>ObjKey(BS[Typ])
@@ -912,6 +915,8 @@
                         const cla = `[class^="ORC_CUST_"],[class^="ORC_CRCT_"],[class^="ORC_RSUT_"]`
                         const AddTrue=(e,Clss,True)=>$$(cla).forEach(e=>{if(True(e)){Add(e,Clss)}else{Rmv(e,Clss)}})
                         const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; Nm(e,val)}
+                        const ClrSlct=(arry)=>arry.forEach(e=>e.selectedIndex=0) // Deixar Junto com o Clear e Levar pra Biblioteca const Clear = e=>[e].flat().forEach(el=>$(el).value='')
+                        
                     // Templates
                         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
                         const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
@@ -928,7 +933,7 @@
                     // Clean e Remove
                         const RmvAll=()=>{$$(`#ORC tbody td:nth-child(1 ) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
                         const ClrAll=()=>{$$(`#ORC tbody td:nth-child(10) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
-                        const ClrRow=tr=>{$$('input',tr).forEach(e=>e.value='') ; Zerar(tr)}
+                        const ClrRow=tr=>{Clear($$('input',tr)) ; ClrSlct($$('select',tr)) ; Zerar(tr)}
                         const RmvRow=tr=>tr.remove()
                     
                     // Objetivo aqui é remover o Tamanho dessas Strings (Principalmente os Querys)
@@ -1265,7 +1270,6 @@
 
     // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
     // selecionar option automaticamente caso tenha apeans 1
-    // Mostrar Custo e Mostrar Crescente
     // quando Limpar, também limpa os Selects
     // Proibir Drag em Imagens
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
