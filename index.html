@@ -67,11 +67,11 @@
                 'Sem Acabamento':{item:'13',Tipo:''               ,Valr:60,Cust:20},
         }},
         Quadro   :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Quadro sem Moldura' ,Variantes:{
-                'PVC 2mm'           :{item:'14',Tipo:'',Valr:' ',Cust:'        '},
-                'PVC 3mm'           :{item:'15',Tipo:'',Valr:150,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
+                'PVC 2mm'           :{item:'14',Tipo:'',Valr:150,Cust:'        '},
+                'PVC 3mm'           :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                 'PVC 5mm'           :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
-                'PS 1mm'            :{item:'17',Tipo:'',Valr:200,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                'PS 2mm'            :{item:'18',Tipo:'',Valr:' ',Cust:'        '},
+                'PS 1mm'            :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                'PS 2mm'            :{item:'18',Tipo:'',Valr:130,Cust:'        '},
             }},
         'ímã'    :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Geladeira ou Carro' ,Variantes:{
                 Calendário    :{item:'19',Tipo:'',Valr:0,Cust:0},
@@ -83,24 +83,47 @@
             Complexo  :{Calc:'M2',Tipo:'',Valr:[''],Valor:100}
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        'Cartão' :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Medida: 9cm x 5cn'  ,Variantes:{
+        'Cartão'   :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Medida: 9cm x 5cn'  ,Variantes:{
                 'Brilho'      :{Table:[
-                    ['Frente' ,'250g',[['500', 90,31],['1.000',135,54]]],
-                    ['F.Verso','250g',[['500',115,42],['1.000',145,56]]], 
+                    ['Frente' ,'250g',[['500', 90,31],['1.000',135,45]]],
+                    ['F.Verso','250g',[['500',115,42],['1.000',150,54]]], 
                     ['Frente' ,'300g',[['500',130,49],['1.000',145,56]]], 
                     ['F.Verso','300g',[['500',150,58],['1.000',165,65]]], ]},
                 'Brilho Local':{Table:[
-                    ['Frente' ,'300g',[['500',155,62],['1.000',190,80]]],
-                    ['F.Verso','300g',[['500',190,78],['1.000',230,99]]], ]},
+                    ['Frente' ,'300g',[['500',155,62],['1.000',190,78]]],
+                    ['F.Verso','300g',[['500',190,80],['1.000',230,99]]], ]},
             }},
-        Panfleto :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+        'Panfleto' :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
                 '10 x 15':{Table:[
-                    ['Frente' ,'90g',[['1.000',140, 70],['2.500',180, 90],['5.000' , 330,165]]],
-                    ['F.Verso','90g',[['2.500',250,125],['5.000',480,240],['10.000', 720,360]]], ]},
+                    ['Frente' ,'90g',[['1.000',130, 67],['2.500',180, 85],['5.000' , 270,170],['10.000',650,340]]],
+                    ['F.Verso','90g',[['2.500',280,135],['5.000',320,220],['10.000', 720,392]]], ]},
                 '15 x 20':{Table:[
-                    ['Frente' ,'90g',[['1.000',280,140],['2.500',360,180],['5.000' , 660,330]]],
-                    ['F.Verso','90g',[['2.500',500,250],['5.000',880,440],['10.000',1320,660]]], ]},
+                    ['Frente' ,'90g',[['1.000',270,127],['2.500',340,170],['5.000' , 650,340],['10.000',900,600]]],
+                    ['F.Verso','90g',[['2.500',500,270],['5.000',700,440],['10.000',1200,800]]], ]},
             }},
+        'Talão'    :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                '10 x 15':{Table:[
+                    ['Preto e Branco','1 Via',[['4',60,30],['8', 90,45],['12',130,65],['20',170, 85]]],
+                    ['Colorido'      ,'1 Via',[['4',80,40],['8',110,55],['12',150,75],['20',200,100]]],
+                    ['Preto e Branco','2 Via',[['4',75,35],['8',105,55],['12',145,70],['20',185, 80]]],
+                    ['Colorido'      ,'2 Via',[['4',95,45],['8',125,65],['12',165,85],['20',215,110]]],
+                ]},
+                '15 x 20':{Table:[
+                    ['Preto e Branco','1 Via',[['2',60,30],['4', 90,45],['10',170, 85],['20',300,150]]],
+                    ['Colorido'      ,'1 Via',[['2',80,40],['4',110,55],['10',200,100],['20',350,175]]],
+                    ['Preto e Branco','2 Via',[['2',75,35],['4',105,55],['10',185, 90],['20',315,165]]],
+                    ['Colorido'      ,'2 Via',[['2',95,45],['4',125,65],['10',215,110],['20',365,195]]],
+                ]},
+                ' 9 x 21':{Table:[
+                    ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150,75]]],
+                    ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190,95]]],
+                    ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
+                    ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
+                ]},
+        }},
+        'Cardápio' :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                
+        }},
         Camisa   :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
             Normal    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
             Regata    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
@@ -331,7 +354,7 @@
 
 <script> // Bibliotecas
 
-    const    Nm = (e,stg=null)=> stg===null ? e.getAttribute('name') : e.setAttribute('name',stg)
+    //const    Nm = (e,stg=null)=> stg===null ? e.getAttribute('name') : e.setAttribute('name',stg)
 
     const Dat=e=>new Date(e)
     const Rx2=arry=>Rx(['Rastr',...arry])
