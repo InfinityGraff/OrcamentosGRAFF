@@ -10,6 +10,7 @@
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
+    <script src="./Dados.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -23,13 +24,13 @@
     .SelectSoma{background: red}
     .Ubuiaxik{width: 800px; height: 500px;}
     .Nuevoevo{color: white;background-color: #53004873;padding: 2px;}
-    .THSugg{background: white;color: black;}
     .R_Cor{background:#ff0000}.Tr-R_Cor{background:#ff000086}
     .G_Cor{background:#008000}.Tr-G_Cor{background:#1c9e1c85}
     .B_Cor{background:#0000ff}.Tr-B_Cor{background:#0000ff81}
     .SuggSelects   {background:#f357d1}
     .RecolorSelects{background:#f357d1}
     .THSugg p:hover{background:#f357d1}
+    .THSugg{z-index: 500;}
     .Formt_Verd{background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
     .Formt_Azul{background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
     .Formt_Redd{background:rgb(224, 104, 104);color:#910000;font-weight:bold}
@@ -148,173 +149,10 @@
 <script> // Base de Dados 2
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_ORC'}
+    const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['PDDS','SERV','LIN','PGMT','GRAD','MPAG','LIN','CLNT']
     let scrollPosition = [0,0]
-    const J = {
-        PDDS:[{
-        "ID": 1,
-        "RG": "02/12/2024 21:50:23",
-        "Data": "2024-12-02",
-        "Clnt": 1,
-        "Serv": 1,
-        "Valr": "",
-        "Pgmt": "",
-        "Lcro": "",
-        "Stts": "001",
-        "OFF": 1
-    },
-    {
-        "ID": 3,
-        "RG": "04/12/2024 00:56:56",
-        "Data": "2024-12-03",
-        "Clnt": 2,
-        "Serv": 1,
-        "Valr": "",
-        "Pgmt": "",
-        "Lcro": "",
-        "Stts": "004",
-        "OFF": 1
-    },
-    {
-        "ID": 4,
-        "RG": "04/12/2024 01:34:35",
-        "Data": "2024-12-03",
-        "Clnt": 3,
-        "Serv": 1,
-        "Valr": "",
-        "Pgmt": 1,
-        "Lcro": "",
-        "Stts": "006",
-        "OFF": 1
-    },],SERV:[{
-        "ID": "1|1",
-        "Serv": "Quadro",
-        "Desc": "",
-        "Calc": {
-            "Typ": "M2",
-            "Lag": 0.2,
-            "Alt": 0.3,
-            "Qnt": 1,
-            "Val": ""
-        },
-        "Arte": "Baby",
-        "Valr": "20",
-        "Forn": "BPrint",
-        "OK": true,
-        "Entregue": true,
-        "DataEntg": "",
-        "Coment": "",
-        "SVG": "",
-        "Grad": 8,
-        "Clnt": 1449,
-        "Data": "2024-12-02"
-    },
-    {
-        "ID": "2|1",
-        "Serv": "Banner",
-        "Desc": "",
-        "Calc": {
-            "Typ": "M2",
-            "Lag": 2,
-            "Alt": 0.6,
-            "Qnt": 1,
-            "Val": ""
-        },
-        "Arte": "",
-        "Valr": "80",
-        "Forn": "-",
-        "OK": false,
-        "Entregue": false,
-        "DataEntg": "",
-        "Coment": "",
-        "SVG": "",
-        "Grad": "",
-        "Clnt": 1450,
-        "Data": ""
-    },
-    {
-        "ID": "3|1",
-        "Serv": "Adesivo",
-        "Desc": "2 - A4",
-        "Calc": {
-            "Typ": "",
-            "Lag": "",
-            "Alt": "",
-            "Qnt": "",
-            "Val": ""
-        },
-        "Arte": "Baby",
-        "Valr": "16",
-        "Forn": "BPrint",
-        "OK": true,
-        "Entregue": true,
-        "DataEntg": "",
-        "Coment": "",
-        "SVG": "",
-        "Grad": 8,
-        "Clnt": 1451,
-        "Data": "2024-12-03"
-    },
-    {
-        "ID": "4|1",
-        "Serv": "Arte",
-        "Desc": "Rifa",
-        "Calc": {
-            "Typ": "",
-            "Lag": "",
-            "Alt": "",
-            "Qnt": "",
-            "Val": ""
-        },
-        "Arte": "Baby",
-        "Valr": "10",
-        "Forn": "Arte",
-        "OK": true,
-        "Entregue": true,
-        "DataEntg": "",
-        "Coment": "",
-        "SVG": "",
-        "Grad": "",
-        "Clnt": 125,
-        "Data": "2024-12-03"
-    },],CLNT:[    {
-        "ID": 1,
-        "Clnt": "Manu trailer",
-        "Cmpt": "",
-        "Cntt": "(81) 98430-3095",
-        "Lcal": "Centro",
-        "Loja": "",
-        "CtLj": "",
-        "Cat": "Maquiagem",
-        "Stts": "",
-        "Link": ""
-    },
-    {
-        "ID": 2,
-        "Clnt": "Coloral",
-        "Cmpt": "",
-        "Cntt": "(81) 99624-5098",
-        "Lcal": "Estrada do Tip",
-        "Loja": "",
-        "CtLj": "",
-        "Cat": "",
-        "Stts": "",
-        "Link": ""
-    },
-    {
-        "ID": 3,
-        "Clnt": "Elizangela Nails",
-        "Cmpt": "",
-        "Cntt": "(81) 99624-5098",
-        "Lcal": "Estrada do Tip",
-        "Loja": "",
-        "CtLj": "",
-        "Cat": "Salão",
-        "Stts": "",
-        "Link": ""
-    },],PGMT:[],GRAD:[],OOSS:[],UBER:[],MPAG:[]}
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
          Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
@@ -349,14 +187,9 @@
          // UBER:{},
          // MPAG:{}
      }
- 
 </script>
 
 <script> // Bibliotecas
-
-    //const    Nm = (e,stg=null)=> stg===null ? e.getAttribute('name') : e.setAttribute('name',stg)
-    // bb
-
     const Dat=e=>new Date(e)
     const Rx2=arry=>Rx(['Rastr',...arry])
     const OjKy=Typ=>ObjKey(BS[Typ])
@@ -388,7 +221,7 @@
                   : R[3]==='Sugg' ? $('p',td).textContent.trim()
                   : R[3]==='Auto' ? $('p',td).textContent.trim()
                   : R[3]==='SVG'  ? $('p',td).textContent.trim()
-                  : R[3]==='Bndj' ? $('div > p',td).textContent.trim()
+                  : R[3]==='Bndj' ? $('p',td).textContent.trim()
                   : R[3]==='Slct' ? $('select',td).value
                   : R[3]==='Inpt' ? $('input' ,td).value
                   : R[3]==='Chek' ? $('input' ,td).checked
@@ -399,10 +232,15 @@
     }
 </script>
 
+<script> // Template Tabelas
+    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
+
+</script>
+
 <script> // Template String
+    
     const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
-    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p><a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p');SaveConfig('${x}')">▼</a> <div class="Abslt none THSugg Cl"></div> </th>`).join('')
     const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
     const Tm_tdFoot=(arr,typ)=>arr.map((e,x)=>`<td class="Rastr-Foot-${e}-${OjKy(typ)[x]}-${typ}"><p>${e}</p></td>`).join('')
 
@@ -431,7 +269,8 @@
             const NewPg = Typ==='PGMT' && Title==='' ? '-' : ''
             const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ):'').join('')
             const Zindx = R[0]==='PDDS' ? `style="z-index:${R[1]}"` : ''
-            e.innerHTML = `<div class="Ct"><p ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div></td>`
+            e.innerHTML = `<p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
+            //e.innerHTML = `<div class="Ct"><p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
         }
 
         const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
@@ -460,10 +299,11 @@
     }
 
     function Format(){
-        const Fixo=e=>`<p class="Ct ColorFix" name="${YMD(ConvertDATA(Inn(e)))}">${ConvertDATA(Inn(e))}</p>` // Botei o Convert Caso seja Data
-        const Edit=e=>`<p class="Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
-        const Chek=e=>`<input onchange="EditCell(this)" type="checkbox" ${Inn(e)==='true'?'checked':''}>`
-        const Slct=e=>`<select class="w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr(e)[2]],Inn(e))}</select>`
+        const Fixo=e=>`<p class="P-P Ct ColorFix" name="${YMD(ConvertDATA(Inn(e)))}">${ConvertDATA(Inn(e))}</p>` // Botei o Convert Caso seja Data
+        const Edit=e=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
+        const Slct=e=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr(e)[2]],Inn(e))}</select>`
+        const Chek=e=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Inn(e)==='true'?'checked':''}>`
+        
         const Imgs=e=>`<img onclick="AbrirImg(this)" src="./Base/Grads/${Inn(e)}.webp">`
         const Svvg=e=>`<img onclick="AbrirSVG(this,'${Inn(e)}')" src="./Base/Recorte/${Inn(e)}">`
         const Data=e=>`<p class="Ct" name="${YMD(Inn(e))}" onclick="TrcFih(this)">${BrevData(DMY(Inn(e)))}</p><input type="date" class="none" value="${YMD(Inn(e))}" onchange="EditCell(this)" onblur="TrcFih(this)">`
@@ -494,7 +334,8 @@
         // Independente do q foi passado Genérioco, este aqui reescreve por cima!
         $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`))
 
-        $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS);e.innerHTML = `<p class="Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`})
+        $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS);e.innerHTML = `<p class="P-P Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`})
+
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
 
@@ -508,16 +349,20 @@
 
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
-        function Filtrar(e,Clik){event.preventDefault()
+        function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
             const Sugg = $('.THSugg',_th(e))  ;  TogShow(Sugg)
-            const qry = `tbody tr td:nth-child(${IdxDe(_th(e))+1})`
-            const blx = $$(qry,_table(e))
-            const ArrVAL = Clik==1 ? Uniq(blx.map(e=>VAL(e))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(e)}}))
-            Inn(Sugg,ArrVAL.map(e=>`<p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p>`).join(''))
+            const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > .P-P`
+            const blx = $$(qry)
+            const ArrVAL = Clik==1 ? Uniq(blx.map(e=>VAL(_td(e)))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(_td(e))}}))
+            const arrayLimpo = ArrVAL.filter(e => e !== undefined)
+            Inn(Sugg,arrayLimpo.map(e=>`<p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p>`).join(''))
         }
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
-            None($$('.THSugg'))
-            $$(Qry,_table(Eu)).forEach(e=>{if(VAL(e)==Inn(Eu)){if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
+            if(event.ctrlKey){}else{None($$('.THSugg'))}
+            $$(Qry).forEach(e=>{
+                if(VAL(_td(e))==Inn(Eu)){ // aqui eu tenho q usar contem
+
+                    if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
         }
         function Pesquisa(Val,Typ){ // incluir conteudo da bandeija, e sem conteudo da bandeija
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
@@ -528,8 +373,6 @@
         }
         function LimparFiltro(Typ){
             Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))}
-        
-        // Quero Poder Escolher 2 Critérios do Mesmo Filtro se apertar Cntrl
     //FILTROS
 
     //RECOLOR
@@ -716,7 +559,7 @@
     const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
 </script>
 
-<body class="Dark">
+<body class="Lite">
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
@@ -779,7 +622,7 @@
                 .TBLAA .hMin td img{height:17px; width: auto;}
             .TBLAA .hMin tfoot td{padding:8px 6px}
 
-            .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 50}
+            .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500}
                 .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
                 .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
                 .Sugg a p {padding: 3px}
@@ -809,15 +652,11 @@
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
-            <div class="Ct Bt">
+            <div class="Ct Bt Red">
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
-
-                    function NovoPedido(){
-                        AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`})
-                        // AddROW('SERV',{ID:`${D.PDDS}|1`})
-                    }
+                    function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
                 </script>
                 <button onclick="LimparFiltro('PDDS')">Limpar Filtro</button>
             </div>
@@ -1127,7 +966,17 @@
                 </form>
             </div>
         </div>
+    </div>
 
+    <div style="margin-top:100px"><!--comentários-->
+        <ul>
+            <li>se eu Clicar com Direito no th eu mostrarei apenas os que estão visiveis, com esquerdo mostra todos</li>
+            <li>Como usar o Filter, Clicando com Esquerdo Sobrepõe o Filtro, Clicando com Esquerdo Soma os Filtros</li>
+            <br>
+            <li>1 - Ordem de Data não ta Funcionando</li>
+            <li>2 - Pressioanndo Ctrl: Quero Poder Escolher 2 Critérios do Mesmo Filtro</li>
+            <li>3 - Limpar os THSugg apertando Enter</li>
+        </ul>
     </div>
 
     <div id="FModal" class="Ct">
