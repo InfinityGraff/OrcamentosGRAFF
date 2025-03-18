@@ -578,7 +578,7 @@
             const OFF =()=> 'OFF'
             const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
             
-            function ExieMais2(E,Off){if(Off){MdalShow('#ModalLogin')}else{Show('#H_Mais');/*Animar(E,$('#H_Lgin'))*/}}
+            function ExieMais2(E,Off){if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais');/*Animar(E,$('#H_Lgin'))*/}}
 
             function Tm_HMais(e,Array){
                 const ObjKey = {
@@ -591,11 +591,13 @@
                 }
                 $(e).innerHTML = Array.map(e=>ObjKey[e]).join('')
             }
+
+            function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
         </script>
 
         <div class="Ct" style="margin-left: 15px;">
             <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
+            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0 b</h1>
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
@@ -1123,6 +1125,12 @@
     <script>function SairMdal(){None('#FModal')} </script>
     <div id="FModal" class="Ct">
 
+        <script>
+            function TestSenha2(e,i){
+                console.log(e,i)
+            }
+        </script>
+
         <div id="ModalLogin" class="Ct Rltv Rd">
             <div class="Close Ct" onclick="SairMdal()">X</div>
             <div class="Bt Loginn">Login</div>
@@ -1135,7 +1143,6 @@
                 <button class="Ct w40" onclick="TestSenha('','#Inpt-Senha')">Logar</button>
                 <button class="Ct w40" onclick="Deslogar();SairMdal()">Sair</button>
               </div>
-            
         </div>
 
         <div id="FormIMG"></div>
@@ -1199,6 +1206,78 @@
 
     </div>
 </body>
+
+<script> // Funções de Login
+    let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
+    function TestSenha(e,input){
+
+        function CrypPass(senha){
+            const Cryp = senha.split('').map((c,idx)=>{
+                if(/[0-9]/.test(c)){let N=parseInt(c)
+                N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
+                else if(/[A-Za-z]/.test(c)){
+                let L=c.charCodeAt(0)+(idx%2===1?5:1)
+                if(L>90&&L<97)L-=26
+                else if(L>122)L-=26
+                return String.fromCharCode(L)}else{return c}})
+            var par = [] ; var imp = []
+            Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
+            const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
+            const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
+            return Par.concat(Imp).join('')
+        }
+
+        const User={
+            '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
+            '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
+            '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
+            '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
+        }
+
+        if(e==='Deslog'){LgTp.Cod = '';LgTp.Nome = '';LgTp.Img = ''
+            Nm($('#Login-Top'),'');Inn('.LgTp2',IconLogin);Show('.LgTp')
+            None('.ImgPerfil');$$('.ImgPerfil').forEach(e=>{e.src=''})}
+
+        else if(e==='Storage'){
+            if(User[input] === undefined || User[input] === null){return}
+            else{LgTp.Cod = User[input][0] ; LgTp.Nome = User[input][1]
+                LgTp.Img = User[input][2]
+                // localStorage.removeItem('SenhaCryp')
+                // localStorage.setItem('SenhaCryp',input)
+                Nm($('#Login-Top'),'Logado')
+                Inn('.LgTp2',User[input][1])
+                Show('.ImgPerfil')
+                $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
+            }
+        }
+        else{
+            let inpt = e==='' ? $(input) : input
+            if(KeyEnter(e)||e===''){
+
+                const Cryp = CrypPass(inpt.value)
+                    if(User[Cryp]){
+                    SairMdal()
+                    LgTp.Cod = User[Cryp][0]
+                    LgTp.Nome = User[Cryp][1]
+                    LgTp.Img = User[Cryp][2]
+                    // localStorage.removeItem('SenhaCryp')
+                    // localStorage.setItem('SenhaCryp',Cryp)
+                    Nm($('#Login-Top'),"Logado")
+                    Inn('.LgTp2',User[Cryp][1])
+                    Show('.ImgPerfil')
+                    Show('.ImgPerfil2')
+                    $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
+                    }
+                    else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
+                inpt.value='';inpt.focus()
+                console.log('Logou')
+            }
+        }
+    }
+    
+    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
+    function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
+</script>
 
 <script> // Coisas da NOTA
     function VerNota(){
@@ -1334,78 +1413,7 @@
     PosGet()
 </script>
 
-<script> // Funções de Login
 
-    let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
-    const User={
-    '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
-    '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
-    '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
-    '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
-    }
-
-    function CrypPass(senha){
-    const Cryp = senha.split('').map((c,idx)=>{
-        if(/[0-9]/.test(c)){let N=parseInt(c)
-        N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
-        else if(/[A-Za-z]/.test(c)){
-        let L=c.charCodeAt(0)+(idx%2===1?5:1)
-        if(L>90&&L<97)L-=26
-        else if(L>122)L-=26
-        return String.fromCharCode(L)}else{return c}})
-    var par = [] ; var imp = []
-    Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
-    const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
-    const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
-    return Par.concat(Imp).join('')
-    }
-
-    function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
-
-    function TestSenha(e,input){
-        if(e==='Deslog'){LgTp.Cod = '';LgTp.Nome = '';LgTp.Img = ''
-            Nm($('#Login-Top'),'');Inn('.LgTp2',IconLogin);Show('.LgTp')
-            None('.ImgPerfil');$$('.ImgPerfil').forEach(e=>{e.src=''})}
-
-        else if(e==='Storage'){
-            if(User[input] === undefined || User[input] === null){return}
-            else{LgTp.Cod = User[input][0] ; LgTp.Nome = User[input][1]
-                LgTp.Img = User[input][2]
-                localStorage.removeItem('SenhaCryp')
-                localStorage.setItem('SenhaCryp',input)
-                Nm($('#Login-Top'),'Logado')
-                Inn('.LgTp2',User[input][1])
-                Show('.ImgPerfil')
-                $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
-            }
-        }
-        else{
-            let inpt = e==='' ? $(input) : input
-            if(KeyEnter(e)||e===''){
-                    console.log('else do keyenter')
-                const Cryp = CrypPass(inpt.value)
-                    if(User[Cryp]){
-                    SairMdal()
-                    LgTp.Cod = User[Cryp][0]
-                    LgTp.Nome = User[Cryp][1]
-                    LgTp.Img = User[Cryp][2]
-                    localStorage.removeItem('SenhaCryp')
-                    localStorage.setItem('SenhaCryp',Cryp)
-                    Nm($('#Login-Top'),"Logado")
-                    Inn('.LgTp2',User[Cryp][1])
-                    Show('.ImgPerfil')
-                    Show('.ImgPerfil2')
-                    $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
-                    }
-                    else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
-                inpt.value='';inpt.focus()
-            }
-        }
-    }
-    
-    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
-    function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
-</script>
 
 <script> // comentários
     // Abrir um Menu na Logo, e lá terá o DarkLite e o Login do Usuário
