@@ -348,8 +348,6 @@
     }
 </script>
 
-
-
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
         function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
@@ -577,7 +575,22 @@
             #InptHeader{width: 30%}
         </style>
         <script> // Funções do Header
-    
+            const OFF =()=> 'OFF'
+            const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
+            
+            function ExieMais2(E,Off){if(Off){MdalShow('#ModalLogin')}else{Show('#H_Mais');/*Animar(E,$('#H_Lgin'))*/}}
+
+            function Tm_HMais(e,Array){
+                const ObjKey = {
+                    'Troc':`<div class="Start" onclick="MdalShow('#ModalLogin')">     <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>`,
+                    'Edit':`<div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>`,
+                    'Cnfg':`<div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>`,
+                    'Help':`<div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>`,
+                    'LOff':`<div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>`,
+                    'Term':`<div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade       </a></p></div>`,
+                }
+                $(e).innerHTML = Array.map(e=>ObjKey[e]).join('')
+            }
         </script>
 
         <div class="Ct" style="margin-left: 15px;">
@@ -589,7 +602,7 @@
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             <img src="./IconPlan/LOGO.png" class="ppt" onclick="AbreLogin()" height="60px">
             <div id="BdjLogin" class="Cl">
-                <img id="Img-Perfil" class="ImgPerfil" onclick="AbreLogin()">
+                <img id="Img-Perfil" class="ImgPerfil" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2"  onclick="AbreLogin()"> Login </div>
             </div>
 
@@ -601,26 +614,11 @@
                 #MAIS div:last-child{padding: 10px}
                 #MAIS img{height:25px;margin-right:10px}
                 #MAIS p,#MAIS p a{font-size: 10px}
+
+                #H_Mais{margin-top: 150px;}
             </style>
 
-            <script>
-                const OFF =()=> 'OFF'
-                const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term']
-                
-                function Tm_HMais(e,Array){
-                    const ObjKey = {
-                        'Troc':`<div class="Start" onclick="MdalShow('#MdalLgin')">     <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>`,
-                        'Edit':`<div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>`,
-                        'Cnfg':`<div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>`,
-                        'Help':`<div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>`,
-                        'LOff':`<div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>`,
-                        'Term':`<div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade       </a></p></div>`,
-                    }
-                    $(e).innerHTML = Array.map(e=>ObjKey[e]).join('')
-                }
-            </script>
-
-            <div id="H_Mais" class="Abslt"><div id="MAIS" class="Ct Pose" onload="Tm_HMais('#MAIS',ArryMais())"></div></div>
+            <div id="H_Mais" class="Abslt none"><div id="MAIS" class="Ct Pose" onload="Tm_HMais('#MAIS',ArryMais())"></div></div>
         </div>
 
         <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
