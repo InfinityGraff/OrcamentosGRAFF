@@ -150,7 +150,7 @@
 <script> // Base de Dados 2
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_PDDS'}
+    const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['PDDS','SERV','LIN','PGMT','GRAD','MPAG','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -560,7 +560,7 @@
     const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
 </script>
 
-<body class="Lite">
+<body class="Dark">
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
@@ -585,7 +585,7 @@
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
-            <img src="./IconPlan/LOGO.png" height="60px">
+            <img src="./IconPlan/LOGO.png" onclick="AbreLogin()" height="60px">
         </div>
 
         <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
@@ -837,15 +837,15 @@
                             <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%">
                                 <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select>
-                                <input class="ORC_INPT_Lrg" placeholder="Lrg" oninput="MaskNum(this)">
+                                <input class="ORC_INPT_Lrg" placeholder="Largura" oninput="MaskNum(this)">
                             </td>
                             <td width="10%">
                                 <select class="OrcGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"></select>
-                                <input class="ORC_INPT_Alt" placeholder="Alt" oninput="MaskNum(this)">
+                                <input class="ORC_INPT_Alt" placeholder="Altura" oninput="MaskNum(this)">
                             </td>
                             <td width="10%">
                                 <select class="OrcQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))"></select>
-                                <input class="ORC_INPT_Qnt" placeholder="Qnt">
+                                <input class="ORC_INPT_Qnt" placeholder="Quantidade">
                             </td>
                             <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita RD"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita RD"></td>
@@ -974,7 +974,7 @@
                     <div class="Cl"><label>Endereço</label><input placeholder="Endereço"></div>
                     <div class="Cl"><label>Comentário</label><input placeholder="Comentário"></div>
                 </div>
-                <button>Salvar Pedido</button>
+                <button onclick="VerNota()">Ver Nota</button>
                 </form>
             </div>
 
@@ -1061,24 +1061,93 @@
 
 
     <div id="FModal" class="Ct">
-            <style>#FormPDDS{height: 300px; width: 300px; background:#2e2e2e}</style>
-            <div id="FormPDDS" class="input-form Cl Rd">
-                <p onload="Inn(this,`ID-${Zero(D['PDDS'])}`)"></p>
-                <input type="date">
-                <div class="DivSugg Rltv">
-                    <input oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg');Nm(this,'')" placeholder="Cliente" onkeydown="KeyEntr(()=>TesteClnt(this,this))">
-                    <span class="Sugg Shdw rd Abslt Cl none"></span>
+
+        <div id="ModalLogin" class="Ct Rltv Rd">
+            <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+            <div class="Bt Loginn">Login</div>
+              <div class="Ct Start">
+                <label for="Senha">Senha</label>
+                <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'S',this)">
+              </div>
+              <span id="Span-Login" class="erro"></span>
+              <div class="Bt">
+                <button class="Ct w40" onclick="TestSenha('','S','#Inpt-Senha')">Logar</button>
+                <button class="Ct w40" onclick="Deslogar();None('#Fundo-Modal')">Sair</button>
+              </div>
+            
+        </div>
+
+        <div id="FormIMG"></div>
+    
+        <div id="ModalNota" class="Cl Rltv Rd media30">
+        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+            <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
+                <div class="Ct">
+                <div id="LugarFotoNotta"><img src="Img/Logo2.png"></div>
+                <div>
+                    <h2>INFINITY GRAFF</h2>
+                    <h2>IMPRESSÃO DIGITAL</h2>
                 </div>
-                <select id="Slct_Serv" onload="Inn(this,Tm_Opts(O.Serv))"></select>
-                <input type="text" placeholder="Descrição do Pedido">
-                <input  placeholder="R$ 0,00" oninput="Mask.rs(this)">
-                <input  placeholder="0Pix | 0Av">
-                <select onload="Inn(this,Tm_Opts(O.Forn))"></select>
-                <button onclick="add_PDDS($$Vl('#FormPDDS input, #FormPDDS select'),$('#FormPDDS .DivSugg input'))">Adicionar Pedido</button>
+                </div>
+        
+                <div class="Start2">
+                    <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A</p></div>
+                    <div class="FtBd Ct">Cidade: <p>SÃO LOURENÇO DA MATA</p></div>
+                    <div class="FtBd Ct">Email: <p>infinitygraff@outlook.com</p></div>
+                    <div class="FtBd Ct">Contato: <p class="B">(81) 98726.5401</p></div>
+                </div>
             </div>
-            <div id="FormIMG"></div>
+        
+            <div class="Ct Cl Hr">
+                <h2>CUPOM FISCAL</h2>
+                <div id="DataNota"></div>
+            </div>
+        
+            <div class="Start2 Hr">
+                <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>${id}</p></div>
+                <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
+            </div>
+        
+            <div id="Nota-Clnt" class="Row w100 Ev">
+                <div>
+                <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
+                <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
+                </div>
+                <div>
+                <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
+                <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
+                </div>
+                <div>
+                <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
+                </div>
+            </div>
+        
+            <div id="ConteudoNota" class="w100">
+                <table id="TabelaNotinha" class="w100"><thead><tr><th style="color: white">Serviços</th></tr></thead></table>
+                <div id="DescrNota" class="Ct Cl"></div>
+                <h2 id="TotalNotta" class="Hr Ct"></h2>
+            </div>
+        
+            <div class="w100 Ct">
+            <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
+            <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
+            <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
+            </div>
+        </div>
+
     </div>
 </body>
+
+<script> // Coisas da NOTA
+    function VerNota(){
+        MdalShow('#ModalNota')
+        // Aqui em Baixo coletar tudo q ta no orçamento e Jogar pra cá!
+        // deixar uma Opção pra Copiar o Texto
+    }
+    
+
+</script>
 
 <script> // Veio da Tabela MyPlan
     function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
@@ -1204,6 +1273,65 @@
 
     AtivaEventos()
     PosGet()
+</script>
+
+<script> // Funções de Login
+    function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
+    function TestSenha(e,tipo,input){
+        if(e==='Deslog'){
+        LgTp.Cod = ''
+        LgTp.Nome = ''
+        LgTp.Img = ''
+        Inn('#Login-Cod','')
+        Inn('.LgTp2',IconLogin)
+        Show('.LgTp')
+        None('.ImgPerfil')
+        None('.ImgPerfil2')
+        $$('.ImgPerfil').forEach(e=>{e.src=''})
+        }
+        else if(e==='Storage'){
+        if(User[input] === undefined || User[input] === null){return}
+        else{
+            LgTp.Cod = User[input][0]
+            LgTp.Nome = User[input][1]
+            LgTp.Img = User[input][2]
+            localStorage.removeItem('SenhaCryp')
+            localStorage.setItem('SenhaCryp',input)
+            Inn('#Login-Cod','Logado')
+            Inn('.LgTp2',User[input][1])
+            None('.LgTp')
+            Show('.ImgPerfil')
+            Show('.ImgPerfil2')
+            $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
+        }
+        }
+        else{
+        let inpt = e==='' ? $(input) : input
+        if(KeyEnter(e)||e===''){
+            if(tipo==='C'){Inn('#Inner-Clnt',inpt.value) ; ArryClnt[0] = inpt.value ;  I_Clnt.value = inpt.value ; None(FMdal)}
+            if(tipo==='S'){
+            const Cryp = CrypPass(inpt.value)
+                if(User[Cryp]){
+                None([FMdal])
+                LgTp.Cod = User[Cryp][0]
+                LgTp.Nome = User[Cryp][1]
+                LgTp.Img = User[Cryp][2]
+                localStorage.removeItem('SenhaCryp')
+                localStorage.setItem('SenhaCryp',Cryp)
+                Inn('#Login-Cod',"Logado")
+                Inn('.LgTp2',User[Cryp][1])
+                None('.LgTp')
+                Show('.ImgPerfil')
+                Show('.ImgPerfil2')
+                $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
+                }
+                else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
+            inpt.value='';inpt.focus()}
+        }
+        }
+    }
+    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage','',Pass)}
+    function Deslogar(){localStorage.removeItem('SenhaCryp');TestSenha('Deslog','','')}
 </script>
 
 <script> // comentários
