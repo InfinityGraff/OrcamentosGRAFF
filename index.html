@@ -348,6 +348,8 @@
     }
 </script>
 
+
+
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
         function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
@@ -585,7 +587,40 @@
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
-            <img src="./IconPlan/LOGO.png" onclick="AbreLogin()" height="60px">
+            <img src="./IconPlan/LOGO.png" class="ppt" onclick="AbreLogin()" height="60px">
+            <div id="BdjLogin" class="Cl">
+                <img id="Img-Perfil" class="ImgPerfil" onclick="AbreLogin()">
+                <div id="Login-Top"  class="Ct LgTp2"  onclick="AbreLogin()"> Login </div>
+            </div>
+
+            <style>
+                #MAIS{background:#4e4e4e; z-index:50; transition: transform 0.5s, opacity 0.5s}
+                #MAIS.Animar{transform: translate(0,0);opacity:1}/*Estado Final*/
+                #MAIS div{padding:10px;cursor:pointer;font-size:15px;width: 100%;}
+                #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
+                #MAIS div:last-child{padding: 10px}
+                #MAIS img{height:25px;margin-right:10px}
+                #MAIS p,#MAIS p a{font-size: 10px}
+            </style>
+
+            <script>
+                const OFF =()=> 'OFF'
+                const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term']
+                
+                function Tm_HMais(e,Array){
+                    const ObjKey = {
+                        'Troc':`<div class="Start" onclick="MdalShow('#MdalLgin')">     <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>`,
+                        'Edit':`<div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>`,
+                        'Cnfg':`<div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>`,
+                        'Help':`<div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>`,
+                        'LOff':`<div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>`,
+                        'Term':`<div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade       </a></p></div>`,
+                    }
+                    $(e).innerHTML = Array.map(e=>ObjKey[e]).join('')
+                }
+            </script>
+
+            <div id="H_Mais" class="Abslt"><div id="MAIS" class="Ct Pose" onload="Tm_HMais('#MAIS',ArryMais())"></div></div>
         </div>
 
         <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
@@ -1059,20 +1094,48 @@
     </div>
 
 
+    <style> /*CSS dos Modais*/
+        .Dark #FModal>div{background:#1b1b1b}
+        .Lite #FModal>div{background:#ffffff}
+        .Dark #FModal > #ModalNota{background:#ffffff;color:black}
+              #FModal h1{font-size:25px}
 
+        #ModalLogin{width:300px;height:400px}
+        #ModalCadastro{width:70%}
+        #Modal-Item .Feed{width:400px;height:400px}
+        #Modal-Item .Stry{width:250px;height:440px}
+        #Modal-Info1,#Modal-Info2{padding:30px}
+        #InnerVazio input{position:absolute;width:200px}
+
+        #ModalNota>div{padding:5px 0px}
+        #Nota-Clnt>div>div>div{margin:0px 5px}
+        #ModalNota img{width:50px;height:50px}
+        .Start2 p{margin:1px 5px}
+        #LugarFotoNotta{margin-right:3px}
+
+        #TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
+        #TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}
+        #TabelaNotinha td{background: #ffffff;color: black; padding: 3px;font-size: 13px;}
+        #TabelaNotinha tfoot > tr > th {background: #575757}
+        #TabelaNotinha td:nth-child(5){font-size: 13px;color:#4f4f4f;}
+        #TabelaNotinha td:nth-child(6){font-weight: bold}
+    </style>
+
+
+    <script>function SairMdal(){None('#FModal')} </script>
     <div id="FModal" class="Ct">
 
         <div id="ModalLogin" class="Ct Rltv Rd">
-            <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+            <div class="Close Ct" onclick="SairMdal()">X</div>
             <div class="Bt Loginn">Login</div>
               <div class="Ct Start">
                 <label for="Senha">Senha</label>
-                <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,'S',this)">
+                <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,this)">
               </div>
               <span id="Span-Login" class="erro"></span>
               <div class="Bt">
-                <button class="Ct w40" onclick="TestSenha('','S','#Inpt-Senha')">Logar</button>
-                <button class="Ct w40" onclick="Deslogar();None('#Fundo-Modal')">Sair</button>
+                <button class="Ct w40" onclick="TestSenha('','#Inpt-Senha')">Logar</button>
+                <button class="Ct w40" onclick="Deslogar();SairMdal()">Sair</button>
               </div>
             
         </div>
@@ -1080,7 +1143,7 @@
         <div id="FormIMG"></div>
     
         <div id="ModalNota" class="Cl Rltv Rd media30">
-        <div class="Close Ct" onclick="None('#Fundo-Modal')">X</div>
+        <div class="Close Ct" onclick="SairMdal()">X</div>
         <div id="Titulo-Nota" class="w100 Bt Hr"></div>
             <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
                 <div class="Ct">
@@ -1131,7 +1194,7 @@
         
             <div class="w100 Ct">
             <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
-            <button class="BTNota Ct RD magem" onclick="None('#Fundo-Modal')">Cancelar</button>
+            <button class="BTNota Ct RD magem" onclick="SairMdal()">Cancelar</button>
             <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
             </div>
         </div>
@@ -1145,8 +1208,6 @@
         // Aqui em Baixo coletar tudo q ta no orçamento e Jogar pra cá!
         // deixar uma Opção pra Copiar o Texto
     }
-    
-
 </script>
 
 <script> // Veio da Tabela MyPlan
@@ -1276,62 +1337,76 @@
 </script>
 
 <script> // Funções de Login
+
+    let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
+    const User={
+    '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
+    '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
+    '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
+    '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
+    }
+
+    function CrypPass(senha){
+    const Cryp = senha.split('').map((c,idx)=>{
+        if(/[0-9]/.test(c)){let N=parseInt(c)
+        N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
+        else if(/[A-Za-z]/.test(c)){
+        let L=c.charCodeAt(0)+(idx%2===1?5:1)
+        if(L>90&&L<97)L-=26
+        else if(L>122)L-=26
+        return String.fromCharCode(L)}else{return c}})
+    var par = [] ; var imp = []
+    Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
+    const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
+    const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
+    return Par.concat(Imp).join('')
+    }
+
     function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
-    function TestSenha(e,tipo,input){
-        if(e==='Deslog'){
-        LgTp.Cod = ''
-        LgTp.Nome = ''
-        LgTp.Img = ''
-        Inn('#Login-Cod','')
-        Inn('.LgTp2',IconLogin)
-        Show('.LgTp')
-        None('.ImgPerfil')
-        None('.ImgPerfil2')
-        $$('.ImgPerfil').forEach(e=>{e.src=''})
-        }
+
+    function TestSenha(e,input){
+        if(e==='Deslog'){LgTp.Cod = '';LgTp.Nome = '';LgTp.Img = ''
+            Nm($('#Login-Top'),'');Inn('.LgTp2',IconLogin);Show('.LgTp')
+            None('.ImgPerfil');$$('.ImgPerfil').forEach(e=>{e.src=''})}
+
         else if(e==='Storage'){
-        if(User[input] === undefined || User[input] === null){return}
-        else{
-            LgTp.Cod = User[input][0]
-            LgTp.Nome = User[input][1]
-            LgTp.Img = User[input][2]
-            localStorage.removeItem('SenhaCryp')
-            localStorage.setItem('SenhaCryp',input)
-            Inn('#Login-Cod','Logado')
-            Inn('.LgTp2',User[input][1])
-            None('.LgTp')
-            Show('.ImgPerfil')
-            Show('.ImgPerfil2')
-            $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
-        }
-        }
-        else{
-        let inpt = e==='' ? $(input) : input
-        if(KeyEnter(e)||e===''){
-            if(tipo==='C'){Inn('#Inner-Clnt',inpt.value) ; ArryClnt[0] = inpt.value ;  I_Clnt.value = inpt.value ; None(FMdal)}
-            if(tipo==='S'){
-            const Cryp = CrypPass(inpt.value)
-                if(User[Cryp]){
-                None([FMdal])
-                LgTp.Cod = User[Cryp][0]
-                LgTp.Nome = User[Cryp][1]
-                LgTp.Img = User[Cryp][2]
+            if(User[input] === undefined || User[input] === null){return}
+            else{LgTp.Cod = User[input][0] ; LgTp.Nome = User[input][1]
+                LgTp.Img = User[input][2]
                 localStorage.removeItem('SenhaCryp')
-                localStorage.setItem('SenhaCryp',Cryp)
-                Inn('#Login-Cod',"Logado")
-                Inn('.LgTp2',User[Cryp][1])
-                None('.LgTp')
+                localStorage.setItem('SenhaCryp',input)
+                Nm($('#Login-Top'),'Logado')
+                Inn('.LgTp2',User[input][1])
                 Show('.ImgPerfil')
-                Show('.ImgPerfil2')
-                $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
-                }
-                else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
-            inpt.value='';inpt.focus()}
+                $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
+            }
         }
+        else{
+            let inpt = e==='' ? $(input) : input
+            if(KeyEnter(e)||e===''){
+                    console.log('else do keyenter')
+                const Cryp = CrypPass(inpt.value)
+                    if(User[Cryp]){
+                    SairMdal()
+                    LgTp.Cod = User[Cryp][0]
+                    LgTp.Nome = User[Cryp][1]
+                    LgTp.Img = User[Cryp][2]
+                    localStorage.removeItem('SenhaCryp')
+                    localStorage.setItem('SenhaCryp',Cryp)
+                    Nm($('#Login-Top'),"Logado")
+                    Inn('.LgTp2',User[Cryp][1])
+                    Show('.ImgPerfil')
+                    Show('.ImgPerfil2')
+                    $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
+                    }
+                    else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
+                inpt.value='';inpt.focus()
+            }
         }
     }
-    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage','',Pass)}
-    function Deslogar(){localStorage.removeItem('SenhaCryp');TestSenha('Deslog','','')}
+    
+    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
+    function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
 </script>
 
 <script> // comentários
