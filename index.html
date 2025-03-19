@@ -594,7 +594,7 @@
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
-            <button onclick="NavPag('#Pag_ORC',this)">FOTOS</button>
+            <button onclick="NavPag('#Pag_FOTO',this)">FOTOS</button>
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             <img src="./IconPlan/LOGO.png" class="ppt" onclick="AbreLogin()" height="60px">
             <div id="BdjLogin" class="Cl">
@@ -795,7 +795,7 @@
             </table>
         </div>
 
-        <div id="Pag_PRCO" class=" none Cl">
+        <div id="Pag_FOTO" class=" none Cl">
             <img src="./Fotos/001_Camisa.webp">
             <img src="./Fotos/002_Calão.jpg">
             <img src="./Fotos/003_WindFlag.jpg">
