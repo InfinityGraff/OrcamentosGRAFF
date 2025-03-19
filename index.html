@@ -231,6 +231,11 @@
                   : null
         return val
     }
+
+    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for 
+    function NoneBndj(){
+        console.log('Event Close')
+        if(event.target.closest('.bndj')){return}else{None($$('.bndj'))}} //event.target.classList.contains('bndj')
 </script>
 
 <script> // Template Tabelas
@@ -560,7 +565,7 @@
     const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
 </script>
 
-<body class="Dark">
+<body class="Dark" onclick="NoneBndj()">
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
@@ -580,33 +585,23 @@
             
             function ExieMais2(E,Off){if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais');/*Animar(E,$('#H_Lgin'))*/}}
 
-            function Tm_HMais(e,Array){
-                const ObjKey = {
-                    'Troc':`<div class="Start" onclick="MdalShow('#ModalLogin')">     <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>`,
-                    'Edit':`<div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>`,
-                    'Cnfg':`<div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>`,
-                    'Help':`<div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>`,
-                    'LOff':`<div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>`,
-                    'Term':`<div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade       </a></p></div>`,
-                }
-                $(e).innerHTML = Array.map(e=>ObjKey[e]).join('')
-            }
-
             function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
         </script>
 
         <div class="Ct" style="margin-left: 15px;">
             <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0 b</h1>
+            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
         </div>
         <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
+            <button onclick="NavPag('#Pag_ORC',this)">FOTOS</button>
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             <img src="./IconPlan/LOGO.png" class="ppt" onclick="AbreLogin()" height="60px">
             <div id="BdjLogin" class="Cl">
                 <img id="Img-Perfil" class="ImgPerfil" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2"  onclick="AbreLogin()"> Login </div>
             </div>
+            
 
             <style>
                 #MAIS{background:#4e4e4e; z-index:50; transition: transform 0.5s, opacity 0.5s}
@@ -620,7 +615,16 @@
                 #H_Mais{margin-top: 150px;}
             </style>
 
-            <div id="H_Mais" class="Abslt none"><div id="MAIS" class="Ct Pose" onload="Tm_HMais('#MAIS',ArryMais())"></div></div>
+            <div id="H_Mais" class="Abslt  bndj">
+                <div id="MAIS" class="Ct Pose">
+                    <div class="Start" onclick="MdalShow('#ModalLogin')">   <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>
+                    <div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                </div>
+            </div>
         </div>
 
         <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
@@ -789,6 +793,16 @@
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('CLNT',J['CLNT']))"></tbody>
             </table>
+        </div>
+
+        <div id="Pag_PRCO" class=" none Cl">
+            <img src="./Fotos/001_Camisa.webp">
+            <img src="./Fotos/002_Calão.jpg">
+            <img src="./Fotos/003_WindFlag.jpg">
+            <img src="./Fotos/004_Cartão.jpg">
+            <img src="./Fotos/005_Panfleto.jpg">
+            <img src="./Fotos/005_Panfleto.jpg">
+            <img src="./Fotos/006_Talão 2.jpg">
         </div>
 
         <div id="Pag_ORC" class="none Cl" style="margin-top:100px">
@@ -1092,6 +1106,8 @@
             </div>
         </div>
     </div>
+
+    <div>o click fora do minimodal q é a bandeija não funciona se eu clicar numa área q não é uma div, no caso se clicar na tag HTML, ele entende q não tem nada ali, então não conta click</div>
 
 
     <style> /*CSS dos Modais*/
@@ -1411,6 +1427,9 @@
 
     AtivaEventos()
     PosGet()
+
+    
+    
 </script>
 
 
