@@ -231,11 +231,8 @@
                   : null
         return val
     }
-
-    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for 
-    function NoneBndj(){
-        console.log('Event Close')
-        if(event.target.closest('.bndj')){return}else{None($$('.bndj'))}} //event.target.classList.contains('bndj')
+    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
 </script>
 
 <script> // Template Tabelas
@@ -577,50 +574,45 @@
             #H_Nav img,h1{filter: drop-shadow(0px 0px 8px #3a002b)}
             #H_Nav img:hover{filter: drop-shadow(0px 0px 5px #f030c0)}
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
-            #InptHeader{width: 30%}
         </style>
         <script> // Funções do Header
             const OFF =()=> 'OFF'
             const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
-            
-            function ExieMais2(E,Off){if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais');/*Animar(E,$('#H_Lgin'))*/}}
-
+            function ExieMais2(E,Off){ event.preventDefault() ;if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais')}}
             function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
         </script>
 
-        <div class="Ct" style="margin-left: 15px;">
-            <img src="./IconPlan/Plan.png" height="30px" style="margin:5px">
-            <h1 style="color: white;" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
+        <div class="Ct" style="margin-left: 15px"> <!--Titulo-->
+            <img src="./Img/Logo.png" height="30px" style="margin:5px">
+            <h1 style="color: white" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
         </div>
-        <input id="InptHeader" type="text" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
+        <input id="H_Pesq" style="width: 30%" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
             <button onclick="NavPag('#Pag_FOTO',this)">FOTOS</button>
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
-            <img src="./IconPlan/LOGO.png" class="ppt" onclick="AbreLogin()" height="60px">
-            <div id="BdjLogin" class="Cl">
-                <img id="Img-Perfil" class="ImgPerfil" onclick="ExieMais2($('#MAIS'),true)">
-                <div id="Login-Top"  class="Ct LgTp2"  onclick="AbreLogin()"> Login </div>
-            </div>
             
+            <div id="BdjLogin" class="Cl">
+                <img id="LoginVazio" src="./IconPlan/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="Img-Perfil" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+                <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
+            </div>
 
             <style>
-                #MAIS{background:#4e4e4e; z-index:50; transition: transform 0.5s, opacity 0.5s}
-                #MAIS.Animar{transform: translate(0,0);opacity:1}/*Estado Final*/
+                #MAIS{background:#4e4e4e; z-index:50}
                 #MAIS div{padding:10px;cursor:pointer;font-size:15px;width: 100%;}
                 #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
                 #MAIS div:last-child{padding: 10px}
                 #MAIS img{height:25px;margin-right:10px}
                 #MAIS p,#MAIS p a{font-size: 10px}
-
-                #H_Mais{margin-top: 150px;}
+                #H_Mais{top: 60px;}
             </style>
 
-            <div id="H_Mais" class="Abslt  bndj">
+            <div id="H_Mais" class="Abslt none bndj">
                 <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="MdalShow('#ModalLogin')">   <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="AbreLogin()">               <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
                     <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>
                     <div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="NavPag('#PagSUPORTE')">     <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="MdalShow('#PagSUPORTE')">   <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>
                     <div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>
                     <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
                 </div>
@@ -809,7 +801,7 @@
             <img src="./Fotos/006_Talão 2.jpg">
         </div>
 
-        <div id="Pag_ORC" class="none Cl" style="margin-top:100px">
+        <div id="Pag_ORC" class="none Cl" style="margin-top:60px;padding-top: 40px;">
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
@@ -823,7 +815,7 @@
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
-                    <img src="./IconPlan/CONFIG.svg" width="20" style="width:20px;opacity:0.2" onclick="Tog($('#CONFIG_Bdj'),'none')">
+                    <img src="./IconPlan/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
                         function Hdd_Cblh(){Tog($$(`#ORC thead`),'none')}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
@@ -831,7 +823,7 @@
                         document.addEventListener("keydown",function(e){if(e.key==="'"){e.preventDefault();Hdd_Cust()}})
                     </script>
                     <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
-                    <div id="CONFIG_Bdj" class="Abslt none Start2">
+                    <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cblh()"><label>Exibir Cabeçalho</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"><label>Exibir Crescente</label></div>
@@ -1042,7 +1034,6 @@
                         box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
                     }
                     .tootal, .tootal span {
-                        
                         font-size: 18px;
                         font-weight: bold;
                         color: #00df00;
@@ -1111,9 +1102,6 @@
         </div>
     </div>
 
-    <div>o click fora do minimodal q é a bandeija não funciona se eu clicar numa área q não é uma div, no caso se clicar na tag HTML, ele entende q não tem nada ali, então não conta click</div>
-
-
     <style> /*CSS dos Modais*/
         .Dark #FModal>div{background:#1b1b1b}
         .Lite #FModal>div{background:#ffffff}
@@ -1141,15 +1129,8 @@
         #TabelaNotinha td:nth-child(6){font-weight: bold}
     </style>
 
-
     <script>function SairMdal(){None('#FModal')} </script>
     <div id="FModal" class="Ct">
-
-        <script>
-            function TestSenha2(e,i){
-                console.log(e,i)
-            }
-        </script>
 
         <div id="ModalLogin" class="Ct Rltv Rd">
             <div class="Close Ct" onclick="SairMdal()">X</div>
@@ -1224,12 +1205,38 @@
             </div>
         </div>
 
+        <div id="EditarPerfil" class="Cl Rltv Rd">
+            <div class="Close Ct" onclick="SairMdal()">X</div>
+            <div>Foto</div>
+            <img src="./Img/Perfil_Allan.png" width="100">
+            <div>Nome do Usuário</div>
+            <input type="text" placeholder="Senha Atual">
+            <input type="text" placeholder="Nova Senha">
+            <input type="text" placeholder="Repetir Senha">
+        </div>
+
+        <div id="ConfigPag" class="Cl Rltv Rd">
+            <div class="Close Ct" onclick="SairMdal()">X</div>
+            <div>
+                Modo Escuro
+                
+            </div>
+            <div>
+                Tamanho de Fonte
+            </div>
+        </div>
+
+        <div id="PagSUPORTE" class="Cl Rltv Rd">
+            <div class="Close Ct" onclick="SairMdal()">X</div>
+            <div>informações de Suporte</div>
+            <div>dicas de como usar o APP, principalmente pra mim</div>
+        </div>
     </div>
 </body>
 
 <script> // Funções de Login
     let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
-    function TestSenha(e,input){
+    function TestSenha(e,ipt=null){
 
         function CrypPass(senha){
             const Cryp = senha.split('').map((c,idx)=>{
@@ -1254,39 +1261,37 @@
             '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
         }
 
-        if(e==='Deslog'){LgTp.Cod = '';LgTp.Nome = '';LgTp.Img = ''
-            Nm($('#Login-Top'),'');Inn('.LgTp2',IconLogin);Show('.LgTp')
-            None('.ImgPerfil');$$('.ImgPerfil').forEach(e=>{e.src=''})}
-
-        else if(e==='Storage'){
-            if(User[input] === undefined || User[input] === null){return}
-            else{LgTp.Cod = User[input][0] ; LgTp.Nome = User[input][1]
-                LgTp.Img = User[input][2]
+        if(e==='Deslog'){
+            Nm($('#Login-Top'),'')
+            Inn('.LgTp2',IconLogin)
+            Show('.LgTp')
+            None('.ImgPerfil')
+            $('.ImgPerfil').src=''
+        
+        }else if(e==='Storage'){ if(User[ipt] === undefined || User[ipt] === null){return}
+            else{
                 // localStorage.removeItem('SenhaCryp')
                 // localStorage.setItem('SenhaCryp',input)
                 Nm($('#Login-Top'),'Logado')
-                Inn('.LgTp2',User[input][1])
+                Inn('.LgTp2',User[ipt][1])
                 Show('.ImgPerfil')
-                $$('.ImgPerfil').forEach(e=>{e.src=User[input][2]})
+                $('.ImgPerfil').src=User[ipt][2]
             }
         }
         else{
-            let inpt = e==='' ? $(input) : input
+            let inpt=e==='' ? $(ipt) : ipt
             if(KeyEnter(e)||e===''){
 
                 const Cryp = CrypPass(inpt.value)
                     if(User[Cryp]){
                     SairMdal()
-                    LgTp.Cod = User[Cryp][0]
-                    LgTp.Nome = User[Cryp][1]
-                    LgTp.Img = User[Cryp][2]
                     // localStorage.removeItem('SenhaCryp')
                     // localStorage.setItem('SenhaCryp',Cryp)
                     Nm($('#Login-Top'),"Logado")
                     Inn('.LgTp2',User[Cryp][1])
                     Show('.ImgPerfil')
                     Show('.ImgPerfil2')
-                    $$('.ImgPerfil').forEach(e=>{e.src=User[Cryp][2]})
+                    $('.ImgPerfil').src=User[Cryp][2]
                     }
                     else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
                 inpt.value='';inpt.focus()
@@ -1297,6 +1302,15 @@
     
     function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
     function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
+
+    /*
+    idéias pra o Login
+        Login com LocalStorage
+        deixar o CryPass() na BaseDados da Biblioteca
+        criar um Objeto no inicio com Nome User q vai passar todos os Dados do Usuário
+        e é atravéz desses dados que toda a interface vai carregar de acordo com o usuário
+        suas configurações e personalziações, suas informações e suas Listas de Pedidos
+    */
 </script>
 
 <script> // Coisas da NOTA
