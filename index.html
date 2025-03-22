@@ -215,6 +215,8 @@
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
 
+    const Vll=e=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked : e.value) : e.innerText.trim()
+
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
         const val = R[3]==='Edit' ? $('p',td).textContent.trim()
@@ -567,7 +569,6 @@
         <style> /*CSS do Header*/
             header{background:url(./IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
             #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
-            #DarkLite{right:0px;top:0px}
             #H_Nav{margin-right:15px}
             #H_Nav, #H_Nav img{height:45px}
             #H_Nav img,h1{filter: drop-shadow(0px 0px 8px #3a002b)}
@@ -618,7 +619,7 @@
             </div>
         </div>
 
-        <input id="DarkLite" type="checkbox" class="Abslt" onchange="DarkLite('body');SaveConfig(this.id)">
+        
         <div id="Sommma" class="none">Soma: 00,00</div>
         
         <div id="ALERT" class="Abslt rd none">
@@ -1215,14 +1216,9 @@
         </div>
 
         <div id="ConfigPag" class="Cl Rltv Rd">
-            <div class="Close Ct" onclick="SairMdal()">X</div>
-            <div>
-                Modo Escuro
-                
-            </div>
-            <div>
-                Tamanho de Fonte
-            </div>
+            <div class="Ct Close" onclick="SairMdal()">X</div>
+            <div><input id="DarkLite" type="checkbox" onchange="DarkLite('body');SaveConfig(this)"> <label>Modo Escuro</label></div>
+            <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
         </div>
 
         <div id="PagSUPORTE" class="Cl Rltv Rd">
@@ -1430,16 +1426,7 @@
             PosGet()
         }
 
-    // Storage
-    function SaveConfig(x){StogeSet('Orden',x) ; StogeSet('Config',[$('#DarkLite').checked,$('#ConfirCliente').checked,...$$('.Configs input').map(e=>e.checked)])}
-    function GetConfig(){
-        //console.log('Buxa...!!!')
-        const Store = StogeGet('Config') ? StogeGet('Config').split(',') : null
 
-        const Fluxo = [$('#DarkLite'),$('#ConfirCliente'),...$$('.Configs input').map(e=>e)]
-        Fluxo.forEach((e,x)=>{if(Store[x]==='true'){e.click();e.checked=true}})
-    }
-    function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     
 
     AtivaEventos()
@@ -1449,12 +1436,29 @@
     
 </script>
 
+<script> // SaveConfig
+    // Storage
+    function SaveConfig(e){
+        console.log('SaveConfig',e.id,Vll(e))
+        
 
+        // StogeSet('Config',[$('#DarkLite').checked,$('#ConfirCliente').checked,...$$('.Configs input').map(e=>e.checked)])
+
+        
+
+    }
+    function savecoifigTABLE(){
+        //StogeSet('Orden',x)
+    }
+    function GetConfig(){
+        const Store = StogeGet('Config') ? StogeGet('Config').split(',') : null
+        const Fluxo = [$('#DarkLite'),$('#ConfirCliente'),...$$('.Configs input').map(e=>e)]
+        Fluxo.forEach((e,x)=>{if(Store[x]==='true'){e.click();e.checked=true}})
+    }
+    function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
+</script>
 
 <script> // comentários
-    // Abrir um Menu na Logo, e lá terá o DarkLite e o Login do Usuário
-
-    // SaveConfig para DarkLite
     // SaveConfig para MenuNav
     // Permitir Remover o Fx do <Header>
     // tenho q fazer uma Fila de Fetcher, pra não dar conflito caso faça varios d euma só vez
