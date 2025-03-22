@@ -216,7 +216,10 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
 
     const Vll=e=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked : e.value) : e.innerText.trim()
-    const llv=(e,v)=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked = !!v : e.value = v) : e.innerText = v
+    //const llv=(e,v)=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked = !!v : e.value = v) : e.innerText = v
+
+    const llv = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
+
 
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
@@ -236,6 +239,8 @@
     }
     //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+    const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
+    const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 </script>
 
 <script> // Template Tabelas
@@ -309,8 +314,8 @@
         const Slct=e=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr(e)[2]],Inn(e))}</select>`
         const Chek=e=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Inn(e)==='true'?'checked':''}>`
         
-        const Imgs=e=>`<img onclick="AbrirImg(this)" src="./Base/Grads/${Inn(e)}.webp">`
-        const Svvg=e=>`<img onclick="AbrirSVG(this,'${Inn(e)}')" src="./Base/Recorte/${Inn(e)}">`
+        const Imgs=e=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/Grads/${Inn(e)}.webp">`
+        const Svvg=e=>`<img onclick="AbrirSVG(this,'${Inn(e)}')" draggable="false" src="./Base/Recorte/${Inn(e)}">`
         const Data=e=>`<p class="Ct" name="${YMD(Inn(e))}" onclick="TrcFih(this)">${BrevData(DMY(Inn(e)))}</p><input type="date" class="none" value="${YMD(Inn(e))}" onchange="EditCell(this)" onblur="TrcFih(this)">`
         const Valr=e=>`<p class="Ct" onclick="TrcFih(this)">${RS(Inn(e))}</p><input class="none" value="${Inn(e)}" onkeydown="KeyEntr(()=>{TrcFih(this)})" onblur="EditCell(this);EditVlr(this,'blur');TrcFih(this)">`
         
@@ -584,7 +589,7 @@
         </script>
 
         <div class="Ct" style="margin-left: 15px"> <!--Titulo-->
-            <img src="./Img/Logo.png" height="30px" style="margin:5px">
+            <img src="./Img/Logo.png" height="30px" draggable="false" style="margin:5px">
             <h1 style="color: white" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
         </div>
         <input id="H_Pesq" style="width: 30%" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
@@ -593,8 +598,8 @@
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             
             <div id="BdjLogin" class="Cl">
-                <img id="LoginVazio" src="./IconPlan/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                <img id="Img-Perfil" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+                <img id="LoginVazio" draggable="false" src="./IconPlan/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="Img-Perfil" draggable="false" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
 
@@ -818,14 +823,14 @@
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
                     <img src="./IconPlan/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
-                        function Hdd_Cblh(){Tog($$(`#ORC thead`),'none')}
+                        function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
                         function Hdd_Crct(){Tog($$(`[class^="ORC_CRCT_"]`),'none')}
                         document.addEventListener("keydown",function(e){if(e.key==="'"){e.preventDefault();Hdd_Cust()}})
                     </script>
                     <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
                     <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
-                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cblh()"><label>Exibir Cabeçalho</label></div>
+                        <div class="Ct"><input id="Hdd-Cbclh" class="GETConfig" type="checkbox" onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"><label>Exibir Crescente</label></div>
                     </div>
@@ -1024,8 +1029,6 @@
                 </form>
             </div>
 
-            <button onclick="GetConfig()">Atualzia Configurações</button>
-
             <div><!--Arte-->
                 <style>
                     .container {
@@ -1220,7 +1223,7 @@
 
         <div id="ConfigPag" class="Cl Rltv Rd">
             <div class="Ct Close" onclick="SairMdal()">X</div>
-            <div><input id="DarkLite" type="checkbox" class="GETConfig" onchange="DarkLite('body');SaveConfig(this)"> <label>Modo Escuro</label></div>
+            <div><input id="DarkLite" type="checkbox" class="GETConfig" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
             <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
         </div>
 
@@ -1439,17 +1442,34 @@
     
 </script>
 
-<script> // SaveConfig
-    function SaveConfig(e){ console.log('Conteudo Salvo') ; StogeSet(e.id,Vll(e))}
-    function GetConfig(){ console.log('Conteudo Resgatado') ; $$('.GETConfig').forEach(e=>{const Valor = StogeGet(e.id) ; if(Valor){llv(e,Valor)}})}
+<div id="relatoio"></div>
 
+<button onclick="GetConfig()"> Salve </button>
+
+<script> // Storage Salva Configurações
+
+    function Disparos(e){console.log('Dispoaro >') ; e.dispatchEvent(new Event('change')); console.log('< Dispoaro')}
+
+    function SaveConfig(e){StogeSet(e.id,Vll(e)) ; console.log('Save',e.id,Vll(e))}
+
+    function GetConfig(){$$('.GETConfig').forEach(e=>{
+        const Valor = StogeGet(e.id)
+        if(Valor){
+
+            llv(e,Valor);Disparos(e)
+
+        }})}
+    
+
+    window.onload = () => {GetConfig()}
 
     // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     // function savecoifigTABLE(){StogeSet('Orden',x)}
+    // Save para MenuNav
 </script>
 
 <script> // comentários
-    // SaveConfig para MenuNav
+    
     // Permitir Remover o Fx do <Header>
     // tenho q fazer uma Fila de Fetcher, pra não dar conflito caso faça varios d euma só vez
     // Método de Pesquisa
@@ -1465,9 +1485,10 @@
     // selecionar option automaticamente caso tenha apeans 1
     // quando Limpar, também limpa os Selects
     // Proibir Drag em Imagens
+
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
     // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-    // Sair ao Clicar Fora da MiniBandeijinha
+    
 </script>
 
 </html>
