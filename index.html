@@ -573,7 +573,7 @@
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
-            header{background:url(./IconPlan/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
+            header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
             #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
             #H_Nav{margin-right:15px}
             #H_Nav, #H_Nav img{height:45px}
@@ -595,10 +595,10 @@
         <input id="H_Pesq" style="width: 30%" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
         <div class="Ct">
             <button onclick="NavPag('#Pag_FOTO',this)">FOTOS</button>
-            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./IconPlan/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
+            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             
             <div id="BdjLogin" class="Cl">
-                <img id="LoginVazio" draggable="false" src="./IconPlan/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="LoginVazio" draggable="false" src="./SVG/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
                 <img id="Img-Perfil" draggable="false" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
@@ -615,11 +615,11 @@
 
             <div id="H_Mais" class="Abslt none bndj">
                 <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="AbreLogin()">               <img src="./IconPlan/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-                    <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./IconPlan/Mais_Edit.svg"><a> Editar Perfil    </a></div>
-                    <div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./IconPlan/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="MdalShow('#PagSUPORTE')">   <img src="./IconPlan/Mais_Help.svg"><a> Central de Ajuda </a></div>
-                    <div class="Start" onclick="LogOff()">                  <img src="./IconPlan/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div class="Start" onclick="AbreLogin()">               <img src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./SVG/Mais_Edit.svg"><a> Editar Perfil    </a></div>
+                    <div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="MdalShow('#PagSUPORTE')">   <img src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="LogOff()">                  <img src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
                     <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
                 </div>
             </div>
@@ -629,7 +629,7 @@
         <div id="Sommma" class="none">Soma: 00,00</div>
         
         <div id="ALERT" class="Abslt rd none">
-            <div class="Ct"><img src="./IconPlan/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
+            <div class="Ct"><img src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
             <span class="w100 Ct" style="height: 30px"></span>
         </div>
     </header>
@@ -799,12 +799,12 @@
 
         <div id="Pag_FOTO" class=" none Cl">
             <img src="./Fotos/001_Camisa.webp">
-            <img src="./Fotos/002_Calão.jpg">
-            <img src="./Fotos/003_WindFlag.jpg">
-            <img src="./Fotos/004_Cartão.jpg">
-            <img src="./Fotos/005_Panfleto.jpg">
-            <img src="./Fotos/005_Panfleto.jpg">
-            <img src="./Fotos/006_Talão 2.jpg">
+            <img src="./Fotos/002_Calão.webp">
+            <img src="./Fotos/003_WindFlag.webp">
+            <img src="./Fotos/004_Cartão.webp">
+            <img src="./Fotos/005_Panfleto.webp">
+            <img src="./Fotos/005_Panfleto.webp">
+            <img src="./Fotos/006_Talão 2.webp">
         </div>
 
         <div id="Pag_ORC" class="none Cl" style="margin-top:60px;padding-top: 40px;">
@@ -821,7 +821,7 @@
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
-                    <img src="./IconPlan/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
+                    <img src="./SVG/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
                         function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
