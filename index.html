@@ -216,6 +216,7 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
 
     const Vll=e=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked : e.value) : e.innerText.trim()
+    const llv=(e,v)=>e.tagName === 'INPUT' ? (e.type === 'checkbox' ? e.checked = !!v : e.value = v) : e.innerText = v
 
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
@@ -1023,6 +1024,8 @@
                 </form>
             </div>
 
+            <button onclick="GetConfig()">Atualzia Configurações</button>
+
             <div><!--Arte-->
                 <style>
                     .container {
@@ -1217,7 +1220,7 @@
 
         <div id="ConfigPag" class="Cl Rltv Rd">
             <div class="Ct Close" onclick="SairMdal()">X</div>
-            <div><input id="DarkLite" type="checkbox" onchange="DarkLite('body');SaveConfig(this)"> <label>Modo Escuro</label></div>
+            <div><input id="DarkLite" type="checkbox" class="GETConfig" onchange="DarkLite('body');SaveConfig(this)"> <label>Modo Escuro</label></div>
             <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
         </div>
 
@@ -1437,25 +1440,12 @@
 </script>
 
 <script> // SaveConfig
-    // Storage
-    function SaveConfig(e){
-        console.log('SaveConfig',e.id,Vll(e))
-        
+    function SaveConfig(e){ console.log('Conteudo Salvo') ; StogeSet(e.id,Vll(e))}
+    function GetConfig(){ console.log('Conteudo Resgatado') ; $$('.GETConfig').forEach(e=>{const Valor = StogeGet(e.id) ; if(Valor){llv(e,Valor)}})}
 
-        // StogeSet('Config',[$('#DarkLite').checked,$('#ConfirCliente').checked,...$$('.Configs input').map(e=>e.checked)])
 
-        
-
-    }
-    function savecoifigTABLE(){
-        //StogeSet('Orden',x)
-    }
-    function GetConfig(){
-        const Store = StogeGet('Config') ? StogeGet('Config').split(',') : null
-        const Fluxo = [$('#DarkLite'),$('#ConfirCliente'),...$$('.Configs input').map(e=>e)]
-        Fluxo.forEach((e,x)=>{if(Store[x]==='true'){e.click();e.checked=true}})
-    }
-    function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
+    // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
+    // function savecoifigTABLE(){StogeSet('Orden',x)}
 </script>
 
 <script> // comentários
