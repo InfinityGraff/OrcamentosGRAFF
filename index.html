@@ -152,7 +152,7 @@
     const Link  = 'http://localhost:3000'
     const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
-    const NavImg= ['PDDS','SERV','LIN','PGMT','GRAD','MPAG','LIN','CLNT']
+    const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     let scrollPosition = [0,0]
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
@@ -588,17 +588,52 @@
             function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
         </script>
 
-        <div class="Ct" style="margin-left: 15px"> <!--Titulo-->
-            <img src="./Img/Logo.png" height="30px" draggable="false" style="margin:5px">
-            <h1 style="color: white" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
+        <div id="Div-Titulo"> <!--Titulo-->
+            <style> /*Titulo PC e Cell*/
+                #Div-Titulo div{margin-left:15px}
+                #Div-Titulo img{margin:5px; height:30px}
+                #Div-Titulo h1{color: white !important}
+                #Title1 h1{font-size:12px}
+                #Title2 h1{font-size:40px}
+                @media (max-width:1250px){#Title2 h1{font-size:29px}}
+                @media (max-width:1100px){#Title2 h1{font-size:25px}}
+            </style>
+
+            <div id="Title1" class="Cl" onclick="console.log('Exibir Bandeijinha de MenuNav')"> <!--Titulo Mobile-->
+                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.0</h1>
+            </div>
+            <div id="Title2" class="Ct" onclick="NavPag('#Pag_ORC',this)"> <!--Titulo PC-->
+                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.0</h1>
+            </div>
+
+            <script> // Titulo CSS
+                function TrocarTitle(){if(window.innerWidth<=500){
+                          Show($('#Title1'),$('#Title2'))}
+                    else {Show($('#Title2'),$('#Title1'))}
+                }
+                window.addEventListener('resize',()=>TrocarTitle())
+                TrocarTitle()
+            </script>
         </div>
-        <input id="H_Pesq" style="width: 30%" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
+
+        <div id="Div-Pesq" class="Rltv hov"> <!--Pesquisa-->
+            <style> /*Input de Pesquisa*/
+                #Div-Pesq{width: 30%}
+                #H_Pesq{background:#00000018; color:#ffffff;border: 1px solid #ef3aff}
+                #H_Pesq::placeholder{color: #ffffff;opacity: 0.5}
+                #Lupa{top: 8px; right: 6px; width: 17px; opacity: 0.5;}
+                #Lupa:hover{opacity: 1;}
+            </style>
+            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
+            <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
+        </div>
+        
+
         <div class="Ct">
-            <button onclick="NavPag('#Pag_FOTO',this)">FOTOS</button>
             <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
             
             <div id="BdjLogin" class="Cl">
-                <img id="LoginVazio" draggable="false" src="./SVG/LOGO.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
                 <img id="Img-Perfil" draggable="false" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
@@ -615,22 +650,35 @@
 
             <div id="H_Mais" class="Abslt none bndj">
                 <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="AbreLogin()">               <img src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-                    <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img src="./SVG/Mais_Edit.svg"><a> Editar Perfil    </a></div>
-                    <div class="Start" onclick="MdalShow('#ConfigPag')">    <img src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="MdalShow('#PagSUPORTE')">   <img src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-                    <div class="Start" onclick="LogOff()">                  <img src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div class="Start" onclick="AbreLogin()">               <img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="MdalShow('#EditarPerfil')"> <img draggable="false" src="./SVG/Mais_Edit.svg"><a> Editar Perfil    </a></div>
+                    <div class="Start" onclick="MdalShow('#ConfigPag')">    <img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="MdalShow('#PagSUPORTE')">   <img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="LogOff()">                  <img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
                     <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
                 </div>
             </div>
         </div>
 
-        
         <div id="Sommma" class="none">Soma: 00,00</div>
         
         <div id="ALERT" class="Abslt rd none">
-            <div class="Ct"><img src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
+            <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
             <span class="w100 Ct" style="height: 30px"></span>
+        </div>
+
+        <div id="BarraLateral" class="Abslt">
+            <style>
+                #BarraLateral{
+                    background: #ff4160;
+                    height: 100vh;
+                    top: 60px;
+                    width: 250px;
+                    z-index: 5;
+                }
+
+            </style>
+            marionete
         </div>
     </header>
 
@@ -741,6 +789,16 @@
                 <tbody onload="Inn(this,Tm_Table('PGMT',J['PGMT']))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
+
+            <div class="Ct Bt">
+                <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
+                <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
+                <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
+            </div>
+            <table id="H_MPAG" class="w100 hMax">
+                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
+                <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
+            </table>
         </div>
 
         <div id="Pag_GRAD" class="TBLAA none Cl">
@@ -770,18 +828,6 @@
             </table>
         </div>
 
-        <div id="Pag_MPAG" class="TBLAA none Cl">
-            <div class="Ct Bt">
-                <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
-                <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
-                <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
-            </div>
-            <table id="H_MPAG" class="w100 hMax">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
-            </table>
-        </div>
-
         <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="AddROW('CLNT')">Nova Linha +</button>
@@ -793,11 +839,10 @@
             </table>
         </div>
 
-        <style>
-            #Pag_FOTO img {width: 50%;margin: 15px}
-        </style>
-
-        <div id="Pag_FOTO" class=" none Cl">
+        <div id="Pag_LOJA" class=" none Cl">
+            <style>
+                #Pag_LOJA img {width: 50%;margin: 15px}
+            </style>
             <img src="./Fotos/001_Camisa.webp">
             <img src="./Fotos/002_Calão.webp">
             <img src="./Fotos/003_WindFlag.webp">
@@ -817,11 +862,13 @@
                 <div id="LocalIMG" class="Start"></div>
                 <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`).join('')</script>
             </div>
-
+            <style>
+                #NovoForm{z-index: 0 !important;}
+            </style>
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
-                    <img src="./SVG/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
+                    <img draggable="false" src="./SVG/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
                         function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
