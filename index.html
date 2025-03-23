@@ -573,7 +573,7 @@
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
-            header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px} /*linear-gradient(to left,#530048,#83007b)*/
+            header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px;z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
             #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
             #H_Nav{margin-right:15px}
             #H_Nav, #H_Nav img{height:45px}
@@ -599,21 +599,12 @@
                 @media (max-width:1100px){#Title2 h1{font-size:25px}}
             </style>
 
-            <div id="Title1" class="Cl" onclick="console.log('Exibir Bandeijinha de MenuNav')"> <!--Titulo Mobile-->
+            <div id="Title1" class="Cl" onclick="Tog($('#BarraLateral'),'none')"> <!--Titulo Mobile-->
                 <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.0</h1>
             </div>
-            <div id="Title2" class="Ct" onclick="NavPag('#Pag_ORC',this)"> <!--Titulo PC-->
-                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.0</h1>
+            <div id="Title2" class="Ct"> <!--Titulo PC-->
+                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.0</h1>
             </div>
-
-            <script> // Titulo CSS
-                function TrocarTitle(){if(window.innerWidth<=500){
-                          Show($('#Title1'),$('#Title2'))}
-                    else {Show($('#Title2'),$('#Title1'))}
-                }
-                window.addEventListener('resize',()=>TrocarTitle())
-                TrocarTitle()
-            </script>
         </div>
 
         <div id="Div-Pesq" class="Rltv hov"> <!--Pesquisa-->
@@ -623,29 +614,35 @@
                 #H_Pesq::placeholder{color: #ffffff;opacity: 0.5}
                 #Lupa{top: 8px; right: 6px; width: 17px; opacity: 0.5;}
                 #Lupa:hover{opacity: 1;}
+                @media (max-width:500px){ #Div-Pesq{width: 50%} }
             </style>
             <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
             <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
         </div>
-        
 
-        <div class="Ct">
-            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>        
+        <div class="Ct"> <!--Nav e Perfil-->
+            <style>
+                #Img-Perfil{width:45px;height:45px;margin:5px 5px;top: 2px}
+                #IMG-PerfiL{width:45px;height:45px;margin:5px 5px;top: 2px}
+            </style>
+            <nav id="H_Nav" class="Ct"></nav>
+            <script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>
             
             <div id="BdjLogin" class="Cl">
-                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px" onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                <img id="Img-Perfil" draggable="false" class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px" onclick="AbreLogin()">
+                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png" class="          Abslt NObj"      onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="Img-Perfil" draggable="false"                        class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
 
             <style>
-                #MAIS{background:#4e4e4e; z-index:50}
+                #MAIS{background:#4e4e4e; width: 250px;}
                 #MAIS div{padding:10px;cursor:pointer;font-size:15px;width: 100%;}
                 #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
                 #MAIS div:last-child{padding: 10px}
                 #MAIS img{height:25px;margin-right:10px}
                 #MAIS p,#MAIS p a{font-size: 10px}
-                #H_Mais{top: 60px;}
+                #H_Mais{top: 60px;right: 0px;}
             </style>
 
             <div id="H_Mais" class="Abslt none bndj">
@@ -667,7 +664,7 @@
             <span class="w100 Ct" style="height: 30px"></span>
         </div>
 
-        <div id="BarraLateral" class="Abslt">
+        <div id="BarraLateral" class="Abslt none">
             <style>
                 #BarraLateral{
                     background: #ff4160;
@@ -680,6 +677,18 @@
             </style>
             marionete
         </div>
+
+        <script> // Titulo CSS
+            function TrocarTitle(){if(window.innerWidth<=500){
+                        Show($('#Title1'),$('#Title2'))
+                        None($('#H_Nav')) }
+                else {  Show($('#Title2'),$('#Title1'))
+                        Show($('#H_Nav'))
+                }
+            }
+            window.addEventListener('resize',()=>TrocarTitle())
+            TrocarTitle()
+        </script>
     </header>
 
     <div id="PAGES" style="margin-top: 60px">
@@ -862,9 +871,6 @@
                 <div id="LocalIMG" class="Start"></div>
                 <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`).join('')</script>
             </div>
-            <style>
-                #NovoForm{z-index: 0 !important;}
-            </style>
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
@@ -1182,8 +1188,8 @@
         #TabelaNotinha td:nth-child(6){font-weight: bold}
     </style>
 
-    <script>function SairMdal(){None('#FModal')} </script>
     <div id="FModal" class="Ct">
+        <script>function SairMdal(){None('#FModal')} </script>
 
         <div id="ModalLogin" class="Ct Rltv Rd">
             <div class="Close Ct" onclick="SairMdal()">X</div>
@@ -1329,19 +1335,20 @@
         else{
             let inpt=e==='' ? $(ipt) : ipt
             if(KeyEnter(e)||e===''){
-
                 const Cryp = CrypPass(inpt.value)
-                    if(User[Cryp]){
+                if(User[Cryp]){
+
+                    None($('#IMG-PerfiL'))
                     SairMdal()
-                    // localStorage.removeItem('SenhaCryp')
-                    // localStorage.setItem('SenhaCryp',Cryp)
+                    localStorage.removeItem('SenhaCryp')
+                    localStorage.setItem('SenhaCryp',Cryp)
                     Nm($('#Login-Top'),"Logado")
                     Inn('.LgTp2',User[Cryp][1])
                     Show('.ImgPerfil')
                     Show('.ImgPerfil2')
                     $('.ImgPerfil').src=User[Cryp][2]
-                    }
-                    else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
+
+                }else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
                 inpt.value='';inpt.focus()
                 console.log('Logou')
             }
@@ -1350,7 +1357,7 @@
     
     function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
     function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
-
+    LoginStorage()
     /*
     idéias pra o Login
         Login com LocalStorage
