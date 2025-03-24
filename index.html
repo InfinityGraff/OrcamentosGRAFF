@@ -216,7 +216,7 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
 
 
-    const llv = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
+    const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
 
     function VAL(td){ // e deve ser um 'td'
@@ -1508,7 +1508,7 @@
         const Valor = StogeGet(e.id)
         if(Valor){
 
-            llv(e,Valor);Disparos(e)
+            llv2(e,Valor);Disparos(e)
 
         }})}
     
