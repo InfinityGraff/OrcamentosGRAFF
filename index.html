@@ -37,7 +37,7 @@
 </style>
 
 <script> // Base de Dados
-    const Abrev = {'Serv':'Serviço','Tipo':'Tipo','Cbmt':'Acabamento','Gram':'Gramatura','Otro':'Outros',}
+    // const Abrev = {'Serv':'Serviço','Tipo':'Tipo','Cbmt':'Acabamento','Gram':'Gramatura','Otro':'Outros'} // OBSOLETO
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     function tmplt_Img(){return ''}
 
@@ -46,7 +46,7 @@
         // Mascara 1m               : R$ 12,90
         // Transparente 1,22        : R$ 16,00
     const Prod = {
-        Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'   ,Extra:{'Aplicação':10},Variantes:{
+        Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'    ,Extra:{'Aplicação':10},Variantes:{
                 Brilho        :{item:'1',Tipo:'',Valr:60 ,Cust:20},
                 Fosco         :{item:'2',Tipo:'',Valr:60 ,Cust:20},
                 Blackout      :{item:'3',Tipo:'',Valr:70 ,Cust:25},
@@ -55,29 +55,28 @@
                 Espelhado     :{item:'7',Tipo:'',Valr:80 ,Cust:20},
                 Perfurado     :{item:'5',Tipo:'',Valr:100,Cust:35},
             }},
-        Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte',Variantes:{
+        Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte' ,Variantes:{
                 Refilada      :{item:'6',Tipo:'',Valr:70,Cust:20},
                 Pesonalizada  :{item:'7',Tipo:'',Valr:75,Cust:30},
             }},
-        Lona     :{Calc:'M2', Stts:'Disp', Prvw:''       , Desc:'Lona com Acamabento',Variantes:{
-                Banner          :{item:'8' ,Tipo:''               ,Valr:70,Cust:22},
-                Faixa           :{item:'9' ,Tipo:'Madeira e ilhós',Valr:70,Cust:22},
-                Faixa           :{item:'10',Tipo:'Só Madeira'     ,Valr:70,Cust:22},
+        Lona     :{Calc:'M2', Stts:'Disp', Prvw:''       , Desc:'Banner, Faixa, ilhós',Variantes:{
+                Banner          :{item:'8' ,Tipo:''               ,Valr:70,Cust:22}, // Adicionar dentro do option um botão pra medida padrão
+                Faixa           :{item:'9' ,Tipo:'Madeira e ilhós',Valr:70,Cust:22}, // dar Limite pra Altura
+                Faixa           :{item:'10',Tipo:'Só Madeira'     ,Valr:70,Cust:22}, // dar Limite pra Altura
                 'com ilhós'     :{item:'11',Tipo:'Completo'       ,Valr:70,Cust:22},
                 'com ilhós'     :{item:'12',Tipo:'nas Pontas'     ,Valr:70,Cust:22},
                 'Sem Acabamento':{item:'13',Tipo:''               ,Valr:60,Cust:20},
         }},
-        Quadro   :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Quadro sem Moldura' ,Variantes:{
-                'PVC 2mm'           :{item:'14',Tipo:'',Valr:150,Cust:'        '},
+        Quadro   :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Quadro sem Moldura' ,Variantes:{ // dar Limite pra largura de todos
+                'PVC 2mm'           :{item:'14',Tipo:'',Valr:150,Cust:'        '}, 
                 'PVC 3mm'           :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                 'PVC 5mm'           :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
                 'PS 1mm'            :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
                 'PS 2mm'            :{item:'18',Tipo:'',Valr:130,Cust:'        '},
             }},
         'ímã'    :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Geladeira ou Carro' ,Variantes:{
-                Calendário    :{item:'19',Tipo:'',Valr:0,Cust:0},
-                Geladeira     :{item:'20',Tipo:'',Valr:0,Cust:0},
-                Carro         :{item:'21',Tipo:'',Valr:0,Cust:0},
+                '0.4 - Geladeira'     :{item:'19',Tipo:'',Valr:0,Cust:0}, // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão
+                '0.8 - Carro'         :{item:'20',Tipo:'',Valr:0,Cust:0},
             }},
         Recorte  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
             Vinil        :{Calc:'M2',Tipo:'',Valr:150,Valor:70 },
@@ -355,6 +354,16 @@
     }
 </script>
 
+<script> // Templates OBSOLETOS
+    // const tmplt_OptDisable=e=>`<option value="" disabled selected>Escolha um ${e}</option>`
+    // const tmplt_InptsClnt =e=>`<div class="Ct"><input placeholder="Nome"><input placeholder="Contato"></div>`
+    // const tmplt_Orcs      =(e,idx,form)=>`<div class="Ct"><h1>${idx}</h1><a class="Bt RD">${tmplt_InptsClnt(e)}<button onclick="TogClss($('.EspacoForm',Avo(this)),'none')">Editar</button></a><div class="EspacoForm none">${form}</div></div>`
+    // const tmplt_FormSlct  =arry=>arry.map(e=>`<div class="Div-Inpt"><label>${Abrev[e]}</label><select class="I_${e}" onchange="InnerOptions('${e}',this.value,Bzv(this));ShowTipo(Ttv(this))"></select></div>`).join('') // Função Muito específica, q só Funciona aqui, não da pra ir pra biblioteca
+    // const tmplt_Cores     =e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
+    // const tmplt_table     =arry=>arry.map(e=>`<th class="${e.match('-')?'none':''}">${e.replace('-','')}</th>`).join('')
+    // const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
+</script>
+
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
         function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
@@ -555,16 +564,6 @@
         EditCell(td,'')
     }
 
-</script>
-
-<script> // Templates
-    const tmplt_OptDisable=e=>`<option value="" disabled selected>Escolha um ${e}</option>`
-    const tmplt_InptsClnt =e=>`<div class="Ct"><input placeholder="Nome"><input placeholder="Contato"></div>`
-    const tmplt_Orcs      =(e,idx,form)=>`<div class="Ct"><h1>${idx}</h1><a class="Bt RD">${tmplt_InptsClnt(e)}<button onclick="TogClss($('.EspacoForm',Avo(this)),'none')">Editar</button></a><div class="EspacoForm none">${form}</div></div>`
-    const tmplt_FormSlct  =arry=>arry.map(e=>`<div class="Div-Inpt"><label>${Abrev[e]}</label><select class="I_${e}" onchange="InnerOptions('${e}',this.value,Bzv(this));ShowTipo(Ttv(this))"></select></div>`).join('') // Função Muito específica, q só Funciona aqui, não da pra ir pra biblioteca
-    const tmplt_Cores     =e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
-    const tmplt_table     =arry=>arry.map(e=>`<th class="${e.match('-')?'none':''}">${e.replace('-','')}</th>`).join('')
-    const tmplt_CrudDefaut=arry=>arry.map(e=>`<td class="${e.match('-')?'none':''}"><div data="CrudA"></div><input class="none" data="CrudB" ${e.match(/\+/)?`oninput="MaskNum(this)"`:''}></td>`).join('')
 </script>
 
 <body class="Dark" onclick="NoneBndj()">
