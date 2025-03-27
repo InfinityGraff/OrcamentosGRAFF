@@ -79,14 +79,10 @@
                 '0.3 - Geladeira'     :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
                 '0.4 - Geladeira'     :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                 '0.8 - Carro    '     :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
-                
-
-
-
             }},
         Recorte  :{Calc:'M2', Stts:'Offf', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
             Vinil        :{Calc:'M2',Tipo:'',Valr:150,Valor:70 },
-            //Complexo  :{Calc:'M2',Tipo:'',Valr:250,Valor:100},
+          //Complexo     :{Calc:'M2',Tipo:'',Valr:250,Valor:100},
             Holografico  :{Calc:'M2',Tipo:'',Valr:200,Valor:100}
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -940,7 +936,7 @@
                         <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                            <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
+                            <td><select class="OrcServ" onclick="MudaCorSelect()" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
                             <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%">
                                 <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select>
@@ -1028,8 +1024,15 @@
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
                     function MudaCorSelect(){
-                        ObjKey(Prod).forEach(e=> Prod[e].Stts)
+                        $$('#ORC .OrcServ option').forEach((e,x)=>{
+                            if(x===0){return}
+                            if(Prod[e.value].Stts === 'Offf'){
+                                e.style.color = 'Red'
+                            }
+                        })
                     }
+                    MudaCorSelect()
+                    console.log('Buxa')
                 </script>
 
                 <div> <!--Valores TOTAL-->
@@ -1506,6 +1509,7 @@
 <div id="relatoio"></div>
 
 <button onclick="GetConfig()"> Salve </button>
+<button onclick="console.log('trigger Livre')">trigger</button>
 
 <script> // Storage Salva Configurações
 
