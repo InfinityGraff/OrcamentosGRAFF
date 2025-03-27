@@ -45,6 +45,7 @@
         // Vinil Super Brilho 1,22  : R$ 24,50
         // Mascara 1m               : R$ 12,90
         // Transparente 1,22        : R$ 16,00
+
     const Prod = {
         Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'    ,Extra:{'Aplicação':10},Variantes:{
                 Brilho        :{item:'1',Tipo:'',Valr:60 ,Cust:20},
@@ -71,14 +72,19 @@
                 'PVC 2mm'           :{item:'14',Tipo:'',Valr:150,Cust:'        '}, 
                 'PVC 3mm'           :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                 'PVC 5mm'           :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
-                'PS 1mm'            :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                'PS 2mm'            :{item:'18',Tipo:'',Valr:130,Cust:'        '},
+                'PS 1mm '           :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                'PS 2mm '           :{item:'18',Tipo:'',Valr:130,Cust:'        '},
             }},
-        'ímã'    :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Geladeira ou Carro' ,Variantes:{
-                '0.4 - Geladeira'     :{item:'19',Tipo:'',Valr:0,Cust:0}, // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão
-                '0.8 - Carro'         :{item:'20',Tipo:'',Valr:0,Cust:0},
+        'ímã'    :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Geladeira ou Carro' ,Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
+                '0.3 - Geladeira'     :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
+                '0.4 - Geladeira'     :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
+                '0.8 - Carro    '     :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+                
+
+
+
             }},
-        Recorte  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
+        Recorte  :{Calc:'M2', Stts:'Offf', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
             Vinil        :{Calc:'M2',Tipo:'',Valr:150,Valor:70 },
             //Complexo  :{Calc:'M2',Tipo:'',Valr:250,Valor:100},
             Holografico  :{Calc:'M2',Tipo:'',Valr:200,Valor:100}
@@ -122,21 +128,21 @@
                     ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
                 ]},
         }},
-        'Cardápio' :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+        'Cardápio' :{Calc:'OFS',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
                 
         }},
-        Camisa   :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
+        Camisa   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
             Normal    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
             Regata    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
             Polo      :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
             MangaLong :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
         }},
-        WindFlag :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+        WindFlag :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
                 P         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
                 M         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
                 G         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
             }},
-        BigBall  :{Calc:'QNT',Stts:'Disp', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+        BigBall  :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
                 P         :{Tipo:[''],Valr:0,Cust:0},
                 M         :{Tipo:[''],Valr:0,Cust:0},
                 G         :{Tipo:[''],Valr:0,Cust:0},
@@ -1020,6 +1026,10 @@
                     }
 
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
+
+                    function MudaCorSelect(){
+                        ObjKey(Prod).forEach(e=> Prod[e].Stts)
+                    }
                 </script>
 
                 <div> <!--Valores TOTAL-->
