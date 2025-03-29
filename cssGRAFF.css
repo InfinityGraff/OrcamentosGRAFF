@@ -31,26 +31,6 @@ button,.baby{background:var(--Degrade);background-size:500%;padding: 3px 6px}
 button:hover,.baby:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
 button:active,.baby:active{transform:scale(0.95)}
 
-
-/*Subistituir: tive q autlaizar e usei por um tempo ele no HTML, agora é só esperar pra mudar*/
-                                                                      .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
-                                                                      .Dark option{color:white;background:#3d3d3d}
-                                                                      .Lite optgroup{color:#00000038;background:white;  font-size: 10px; text-align: left;padding-left: 80px}
-                                                                      .Lite option{color:black;background:white}
-
-
-
-/* coisa pra Ficar Dentro do HTML não da pra ser Fixo
-  table{text-align:center;width:100%;border-spacing:2px 8px}
-  th{height:25px;background:#373738}
-  table td:nth-child(4){font-size:10px;color:#777777}
-  table td:nth-child(8){background:#2f5000;font-size:13px;border-radius:255px}
-  table td:nth-child(8)>div>div>div:first-child{font-size:8px;margin-right:2px;}
-  td>div{display:flex;align-items:center;justify-content:center;}
-
-*/
-
-
 /* .ImgPerfil{width:35px;height:35px;margin:4px 4px}  // OBSOLETO */
 
 /*SVG's______________________________________________________________*/
@@ -236,56 +216,6 @@ svg{width:100%;height:100%}
 .RolodeImg .Seta:hover{transform: scale(1.2)}
 .RolodeImg .Seta:hover{transform: scale(1.2)}
 .RoloGrupImg{overflow-x: scroll}
-
-
-
-
-
-
-
-/*Outros...*/
-
-
-
-
-/* mais uma que foi movida pra dentro do HTML
-
-                                                                        .Dark #Div-Prod{background:#303030;}
-                                                                        #Div-Prod > div{margin: 9px 4px ; display: flex; flex-direction: column;}
-                                                                        #Div-Prod > div > .Titleee{margin-left: 15px;}
-                                                                        #Div-Prod > div > div > p{font-size: 9px ; margin: 0px;}
-                                                                        #Div-Prod h3{font-size: 19px}
-                                                                        #Div-Prod .Conteudo,.emBreve{
-                                                                        height:350px ; width:200px;
-                                                                        margin:4px ; padding-bottom:15px;
-                                                                        border-radius:20px;
-                                                                        background:linear-gradient(to top,#b3b3b3,#ffffff);
-                                                                        color:#575757;
-                                                                        }
-                                                                        .emBreve{
-                                                                        top: 35px;
-                                                                        background: #808080d7;
-                                                                        color: #ffffff;
-                                                                        font-size: 20px;
-                                                                        }
-                                                                        #Div-Prod .Conteudo img{height:160px}
-                                                                        #Div-Prod .Opts img{width:25px;height:25px;}
-
-                                                                        .RsutProduto > div > div{color:#440067;font-size:13px}
-                                                                        .RsutProduto > div > div > div:first-child{color:#ff006a;font-size:11px}
-                                                                        .RsutProduto > div > div > div:last-child{color:#ff006a;font-size:16px}
-
-                                                                        #Div-Prod input{border:solid 1px #ff006a;width:95%;font-size:12px;color: black;}
-
-                                                                        .inptProduto{display:flex;width:100%;padding:0px 2vw}
-
-                                                                        #Div-Prod .Opts div{
-                                                                        background:#ff006a;margin:3px;padding:0px 3px;color:white;
-                                                                        transition:transform 0.1s ease-in-out;cursor:pointer;
-                                                                        }
-                                                                        #Div-Prod .Opts div:hover{transform: scale(1.1);background:#a0005d}
-                                                                        #Div-Prod button{background: #ff006a}
-*/
 
 
 .tec{z-index:999;top:375px;left:25%;}
