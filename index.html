@@ -124,8 +124,14 @@
                     ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
                 ]},
         }},
+        'Tag'      :{Calc:'OFS',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }},
+
         'Cardápio' :{Calc:'OFS',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
-                
+                    '1Pag':{},
+                    '2pag':{},
         }},
         Camisa   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
             Normal    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
@@ -133,6 +139,10 @@
             Polo      :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
             MangaLong :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
         }},
+        'Calção'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                'Reto' :{},
+                'Curva':{},
+        }},  
         WindFlag :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
                 P         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
                 M         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
@@ -143,10 +153,16 @@
                 M         :{Tipo:[''],Valr:0,Cust:0},
                 G         :{Tipo:[''],Valr:0,Cust:0},
             }},
-    }
+    
+        'Bandeira'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+                'Reto' :{},
+                'Curva':{},
+        }},    
+        }
     const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
     const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
     const AllProd = [...AllServM2,...AllServOFS]
+    const Vari=e=>ObjKey(Prod[e].Variantes)
 </script>
 
 <script> // Base de Dados 2
@@ -216,7 +232,6 @@
     const Tog_N=e=>Tog(e,'none')
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
-
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -573,7 +588,7 @@
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
-            header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px;z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
+            body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px;z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
             #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
             #H_Nav{margin-right:15px}
             #H_Nav, #H_Nav img{height:45px}
@@ -861,70 +876,103 @@
             <img src="./Fotos/006_Talão 2.webp">
         </div>
 
-        <div id="Pag_ORC" class="none Cl" style="margin-top:60px;padding-top: 40px;">
+        <div id="Pag_ORC" class="none Cl" style="margin-top:60px;padding-top:20px">
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
-                    #Div-Prods{background:#30303000 ; margin-bottom: 50px;}
-                    #LocalIMG{overflow-x: scroll; flex-wrap: nowrap}
-                    #Div-Prods > div{margin: 9px 4px ; display: flex; flex-direction: column}
-                    #Div-Prods > div > .Titleee{margin-left: 15px;}
-                    #Div-Prods > div > div > p{font-size: 9px ; margin: 0px;}
-                    #Div-Prods h3{font-size: 19px}
-                    #Div-Prods .Conteudo,.emBreve{height:350px ; width:200px; margin:4px ; padding-bottom:15px; border-radius:20px;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;                    }
-                    .emBreve{ top: 35px;background: #808080d7; color: #ffffff;font-size: 20px;}
-                    #Div-Prods .Conteudo img{height:160px}
-                    #Div-Prods .Opts img{width:25px;height:25px;}
+                    #Div-Prod{margin-bottom:30px ; overflow-x: scroll; flex-wrap: nowrap}
+                    #Div-Prod > div {margin:9px 4px;display:flex;flex-direction:column}
+                    #Div-Prod span    {margin-left:10px}
+                    
+                    #Div-Prod span h3 {font-size:19px}
+                    #Div-Prod span p  {font-size:9px;margin:0px}
+                    #Div-Prod span img{height: 30px;width:30px;margin:5px}
+
+                    #Div-Prod .Opts{
+                        width: 100%;
+                        height: 30px;
+                    }
+                    #Div-Prod .Opts div{
+                        position: absolute;
+                        bottom: 0;
+                        height: 30px;
+                        width: 50%;
+                        border-radius: 20px 20px 0 0;
+                        
+                        background:linear-gradient(to right,#d8d0da,#ffffff);
+                        
+                        transition:height 0.1s ease-in-out;cursor:pointer;
+                    }
+
+                    #Div-Prod .Opts div.Select{background:white}
+                    
+                    #Div-Prod .Opts div:hover{height: 35px}
+
+                    #Div-Prod .Opts img{height: 23px; width: 23px;}
+
+
+                    #Div-Prod .Conteudo,.offf{height:280px ; width:200px; margin:4px ; padding-bottom:15px; border-radius:20px;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
+                    .offf{ top: 40px; background: #808080d7; color: #ffffff;font-size: 20px;}
+                    
+                    #Div-Prod .Conteudo .fotO{height:160px;width: 150px; background:gray}
 
                     .RsutProduto > div > div{color:#440067;font-size:13px}
                     .RsutProduto > div > div > div:first-child{color:#ff006a;font-size:11px}
                     .RsutProduto > div > div > div:last-child{color:#ff006a;font-size:16px}
 
-                    #Div-Prods input{border:solid 1px #ff006a;width:95%;font-size:12px;color: black;}
+                    #Div-Prod input{border:solid 1px #ff006a;width:95%;font-size:12px;color: black;}
 
                     .inptProduto{display:flex;width:100%;padding:0px 2vw}
 
-                    #Div-Prods .Opts div{
-                        background:#ff006a;margin:3px;padding:0px 3px;color:white;
-                        transition:transform 0.1s ease-in-out;cursor:pointer;
-                    }
-                    #Div-Prods .Opts div:hover{transform: scale(1.1);background:#a0005d}
-                    #Div-Prods button{background: #ff006a}
+
+
+                    #Div-Prod button{background: #ff006a}
                 </style>
-                <div id="Div-Prods" class="Start"></div>
+                <div id="Div-Prod" class="Start"></div>
                 <script>
+                    function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
+                        console.log(e)
+                        $$('div',Pai(e)).forEach(B=>Rmv(B,'Select'))
+                        Add(e,'Select')
+                        if(x===IdxDe(e)){Show(E)}else{None(E)}
+                    })}
 
                     function tmplt_Prod(e){ //GRANDE
-                            return `
-                            <div class="Rltv">
-                                <div class="Start2 Titleee"><h3>${e}</h3><p>${Prod[e].Desc}</p></div>
-                                <div class="KeyInn none">...</div>
-                                <div id="DivVrnts" class="Ct">
-                                ${ObjKey(Prod[e].Variantes).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
-                                    console.log(e,V,OBJ)
-                                    return `
-                                    <div class="Conteudo Ct ${x===0?'':'none'}">
-                                    ${Prod[e].Stts==="Offf"?`<div class="Ct emBreve Abslt">Indisponível...</div>`:''}
-                                    <div class="KeyVariants">${V}</div>
-                                    <div class="Ct w100 Opts">${/* MapDiv(OBJ.Icon?OBJ.Icon:ObjKey(Prod[e].Variantes),"ShowVrnts(this)") */''}</div>
-                                    ${
-                                        OBJ.Calc==='OFS' ? `<div class="Ct w100 Opts">${/*OBJ.Table[1]*/''}</div>`
-                                        :`<div class="Ct w100 Opts">${OBJ.Tipo ? MapDiv(OBJ.Tipo, '') : ''}</div><div class="Ct w100 Opts">${OBJ.Tamn ? MapDiv(OBJ.Tamn, '') : ''}</div>`
-                                    }
-                                    
-                                    <img src="./TabelaProdutos/${e}_${V}.png" onclick="ModalProd(this)">
-                                    <div class="Ct w100 ${OBJ.Calc==="QNT"||OBJ.Calc==="OFS"?'none':''}">${'tmplt_mdd'}</div>
-                                    <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
-                                    <button class="Abslt tec" onclick="Show('#Rodape-List');CarregaRodape($('img',Pai(this)))">Carrinho</button>
+                        return `<div class="Rltv">
+                            <span class="Start"><img src="./Prod/IconProd/${e}.svg"><div class="Start2"><h3>${e}</h3><p>${Prod[e].Desc}</p></div></span>
+                            <div class="KeyInn none">...</div>
+                                <div class="Ct w100 Opts Rltv">${
+                                    Vari(e).map((vv,x,l)=>{
+                                        const pose = `left:${(x*(200/l.length))-(x===0?0:10)}px;`
+                                        const Larg = `width:${(200/l.length)+10}px;`
+                                        const Zidx = `z-index:${(l.length-x)+10};`
+                                        //console.log(pose+Larg+Zidx,l.length)
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct"><a class="none">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
+                                }).join('')}</div>
+                            <div class="Ct DivVrnts">
+                                ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
+                                    // console.log(e,V,OBJ)
+                                    return `<div class="Conteudo Cl ${x===0?'':'none'}">
+                                                ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
+                                                
+                                                <div class="KeyVariants">${V}</div>
+                                                
+                                                <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
+                                                
+                                                <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${'tmplt_mdd'}</div>
+                                                <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
+                                                <button class="Abslt tec" onclick="Show('#Rodape-List');CarregaRodape($('img',Pai(this)))">Carrinho</button>
                                     </div>`
                                 }).join('')}
-                                </div>
-                            </div>`
+                            </div>
+                        </div>`
                     }
 
+                    
+
                     function ReOrdenar(){ //  GRANDE
-                        $('#Div-Prods').innerHTML = ''
-                        AllProd.forEach(e=>{$('#Div-Prods').innerHTML+=tmplt_Prod(e)})
+                        $('#Div-Prod').innerHTML = ''
+                        AllProd.forEach(e=>{$('#Div-Prod').innerHTML+=tmplt_Prod(e)})
                     }
 
                     ReOrdenar()
@@ -1277,6 +1325,10 @@
         </div>
 
         <div id="FormIMG"></div>
+
+        <div id="Mdal-Prod">
+            fotrinhas
+        </div>
     
         <div id="ModalNota" class="Cl Rltv Rd media30">
         <div class="Close Ct" onclick="SairMdal()">X</div>
