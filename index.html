@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/cssGRAFF.css">
+    <link rel="stylesheet" href="./cssGRAFF.css">
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
@@ -37,34 +37,20 @@
 </style>
 
 <style>/*CSS q fica no cssGRAFF q deixo aqui até atualizar lá*/
-    .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px;}
+    .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
     .Dark option{color:white;background:#3d3d3d}
-    .Lite optgroup{color:#00000038;background:white;font-size: 10px;}
+    .Lite optgroup{color:#00000038;background:white;  font-size: 10px; text-align: left;padding-left: 80px}
     .Lite option{color:black;background:white}
+</style>
+
+<style>
+
 </style>
 
 <script> // Base de Dados
     // const Abrev = {'Serv':'Serviço','Tipo':'Tipo','Cbmt':'Acabamento','Gram':'Gramatura','Otro':'Outros'} // OBSOLETO
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     function tmplt_Img(){return ''}
-
-    // Valores dos Vinil WMSilkSing
-        // Vinil Super Brilho 1,22  : R$ 24,50
-        // Mascara 1m               : R$ 12,90
-        // Transparente 1,22        : R$ 16,00
-
-        /*
-        'M2':['Adesivo','Etiqueta','Lona','Quadro','ímã','Recorte']
-        'OFS':['Cartão','Panfleto','Talão','Cardápio']
-        'QNT':['Camisa',WindFlag,]
-
-        Prod = {
-        Adesivo  :{Calc:'M2',Stts:'Disp'},
-        Etiqueta :{Calc:'M2',Stts:'Disp'},
-        Lona     :{Calc:'M2',Stts:'Disp'},
-        ....
-        }
-        */
 
     const Prod = {
         Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'    ,Extra:{'Aplicação':10},Variantes:{
@@ -101,9 +87,8 @@
                 '0.8 - Carro    '     :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
         Recorte  :{Calc:'M2', Stts:'Offf', Prvw:'CanvMdd', Desc:'Adesivo Recortado'  ,Variantes:{
-            Vinil        :{Calc:'M2',Tipo:'',Valr:150,Valor:70 },
-          //Complexo     :{Calc:'M2',Tipo:'',Valr:250,Valor:100},
-            Holografico  :{Calc:'M2',Tipo:'',Valr:200,Valor:100}
+            Vinil        :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
+            Holografico  :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Cartão'   :{Calc:'OFS',Stts:'Disp', Prvw:''       , Desc:'Medida: 9cm x 5cn'  ,Variantes:{
@@ -166,6 +151,7 @@
     }
     const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
     const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
+    const AllProd = [...AllServM2,...AllServOFS]
 </script>
 
 <script> // Base de Dados 2
@@ -884,12 +870,73 @@
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
+                    #Div-Prods{background:#30303000 ; margin-bottom: 50px;}
                     #LocalIMG{overflow-x: scroll; flex-wrap: nowrap}
-                    #LocalIMG img{height: 250px; margin: 5px;}
+                    #Div-Prods > div{margin: 9px 4px ; display: flex; flex-direction: column}
+                    #Div-Prods > div > .Titleee{margin-left: 15px;}
+                    #Div-Prods > div > div > p{font-size: 9px ; margin: 0px;}
+                    #Div-Prods h3{font-size: 19px}
+                    #Div-Prods .Conteudo,.emBreve{height:350px ; width:200px; margin:4px ; padding-bottom:15px; border-radius:20px;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;                    }
+                    .emBreve{ top: 35px;background: #808080d7; color: #ffffff;font-size: 20px;}
+                    #Div-Prods .Conteudo img{height:160px}
+                    #Div-Prods .Opts img{width:25px;height:25px;}
+
+                    .RsutProduto > div > div{color:#440067;font-size:13px}
+                    .RsutProduto > div > div > div:first-child{color:#ff006a;font-size:11px}
+                    .RsutProduto > div > div > div:last-child{color:#ff006a;font-size:16px}
+
+                    #Div-Prods input{border:solid 1px #ff006a;width:95%;font-size:12px;color: black;}
+
+                    .inptProduto{display:flex;width:100%;padding:0px 2vw}
+
+                    #Div-Prods .Opts div{
+                        background:#ff006a;margin:3px;padding:0px 3px;color:white;
+                        transition:transform 0.1s ease-in-out;cursor:pointer;
+                    }
+                    #Div-Prods .Opts div:hover{transform: scale(1.1);background:#a0005d}
+                    #Div-Prods button{background: #ff006a}
                 </style>
-                <div id="LocalIMG" class="Start"></div>
-                <script>$('#LocalIMG').innerHTML = For(12).map(e=>`<img src="./Fotos/Fotos (${e+1}).webp">`).join('')</script>
+                <div id="Div-Prods" class="Start"></div>
+                <script>
+
+                    function tmplt_Prod(e){ //GRANDE
+                            return `
+                            <div class="Rltv">
+                                <div class="Start2 Titleee"><h3>${e}</h3><p>${Prod[e].Desc}</p></div>
+                                <div class="KeyInn none">...</div>
+                                <div id="DivVrnts" class="Ct">
+                                ${ObjKey(Prod[e].Variantes).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
+                                    console.log(e,V,OBJ)
+                                    return `
+                                    <div class="Conteudo Ct ${x===0?'':'none'}">
+                                    ${Prod[e].Stts==="Offf"?`<div class="Ct emBreve Abslt">Indisponível...</div>`:''}
+                                    <div class="KeyVariants">${V}</div>
+                                    <div class="Ct w100 Opts">${/* MapDiv(OBJ.Icon?OBJ.Icon:ObjKey(Prod[e].Variantes),"ShowVrnts(this)") */''}</div>
+                                    ${
+                                        OBJ.Calc==='OFS' ? `<div class="Ct w100 Opts">${/*OBJ.Table[1]*/''}</div>`
+                                        :`<div class="Ct w100 Opts">${OBJ.Tipo ? MapDiv(OBJ.Tipo, '') : ''}</div><div class="Ct w100 Opts">${OBJ.Tamn ? MapDiv(OBJ.Tamn, '') : ''}</div>`
+                                    }
+                                    
+                                    <img src="./TabelaProdutos/${e}_${V}.png" onclick="ModalProd(this)">
+                                    <div class="Ct w100 ${OBJ.Calc==="QNT"||OBJ.Calc==="OFS"?'none':''}">${'tmplt_mdd'}</div>
+                                    <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
+                                    <button class="Abslt tec" onclick="Show('#Rodape-List');CarregaRodape($('img',Pai(this)))">Carrinho</button>
+                                    </div>`
+                                }).join('')}
+                                </div>
+                            </div>`
+                    }
+
+                    function ReOrdenar(){ //  GRANDE
+                        $('#Div-Prods').innerHTML = ''
+                        AllProd.forEach(e=>{$('#Div-Prods').innerHTML+=tmplt_Prod(e)})
+                    }
+
+                    ReOrdenar()
+                                    
+                </script>
             </div>
+
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
@@ -1043,7 +1090,7 @@
 
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
-                    function Tm_OptsGraff(Ary,Stg=null){
+                    function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentro dos Grupos
                         const GpIt={}, GpOF={}
                         ObjEtr(Prod).forEach(([k,v])=>{GpIt[k] = v.Calc ; GpOF[k] = v.Stts})
 
@@ -1529,6 +1576,8 @@
 
 <button onclick="GetConfig()"> Salve </button>
 <button onclick="console.log('trigger Livre')">trigger</button>
+
+
 
 <script> // Storage Salva Configurações
 
