@@ -36,6 +36,13 @@
     .Formt_Redd{background:rgb(224, 104, 104);color:#910000;font-weight:bold}
 </style>
 
+<style>/*CSS q fica no cssGRAFF q deixo aqui até atualizar lá*/
+    .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px;}
+    .Dark option{color:white;background:#3d3d3d}
+    .Lite optgroup{color:#00000038;background:white;font-size: 10px;}
+    .Lite option{color:black;background:white}
+</style>
+
 <script> // Base de Dados
     // const Abrev = {'Serv':'Serviço','Tipo':'Tipo','Cbmt':'Acabamento','Gram':'Gramatura','Otro':'Outros'} // OBSOLETO
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
@@ -45,6 +52,19 @@
         // Vinil Super Brilho 1,22  : R$ 24,50
         // Mascara 1m               : R$ 12,90
         // Transparente 1,22        : R$ 16,00
+
+        /*
+        'M2':['Adesivo','Etiqueta','Lona','Quadro','ímã','Recorte']
+        'OFS':['Cartão','Panfleto','Talão','Cardápio']
+        'QNT':['Camisa',WindFlag,]
+
+        Prod = {
+        Adesivo  :{Calc:'M2',Stts:'Disp'},
+        Etiqueta :{Calc:'M2',Stts:'Disp'},
+        Lona     :{Calc:'M2',Stts:'Disp'},
+        ....
+        }
+        */
 
     const Prod = {
         Adesivo  :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Adesivo Impresso'    ,Extra:{'Aplicação':10},Variantes:{
@@ -599,10 +619,10 @@
             </style>
 
             <div id="Title1" class="Cl" onclick="Tog($('#BarraLateral'),'none')"> <!--Titulo Mobile-->
-                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.1</h1>
+                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.2</h1>
             </div>
             <div id="Title2" class="Ct"> <!--Titulo PC-->
-                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.1</h1>
+                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.2</h1>
             </div>
         </div>
 
@@ -936,7 +956,7 @@
                         <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                            <td><select class="OrcServ" onclick="MudaCorSelect()" onchange="SERVChang(this)" onload="Inn(this,Tm_Opts(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
+                            <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
                             <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%">
                                 <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select>
@@ -1023,16 +1043,15 @@
 
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
-                    function MudaCorSelect(){
-                        $$('#ORC .OrcServ option').forEach((e,x)=>{
-                            if(x===0){return}
-                            if(Prod[e.value].Stts === 'Offf'){
-                                e.style.color = 'Red'
-                            }
-                        })
-                    }
-                    MudaCorSelect()
-                    console.log('Buxa')
+                    function Tm_OptsGraff(Ary,Stg=null){
+                        const GpIt={}, GpOF={}
+                        ObjEtr(Prod).forEach(([k,v])=>{GpIt[k] = v.Calc ; GpOF[k] = v.Stts})
+
+                        return `<option value="" disabled selected>${Ary[0]}</option>
+                            ${Object.entries(Ary.slice(1).reduce((a,e)=>{
+                                (a[GpIt[e]]||=[]).push(`<option value=\"${e}\" ${Stg === e ? 'selected' : ''} ${GpOF[e] === 'Offf' ? 'style=\"color:red;\"' : ''}>${e}</option>`);return a
+                            },{})).map(([g,o]) => `<optgroup label=\"${g}\">${o.join('')}</optgroup>`).join('')}
+                        `}
                 </script>
 
                 <div> <!--Valores TOTAL-->
@@ -1554,6 +1573,7 @@
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
     // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
     
+    // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
 </script>
 
 </html>
