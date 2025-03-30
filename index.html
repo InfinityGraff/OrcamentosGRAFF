@@ -58,16 +58,15 @@
                 Perfurado     :{item:'5',Tipo:'',Valr:100,Cust:35},
             }},
         Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte' ,Variantes:{
-                Refilada      :{item:'6',Tipo:'',Valr:70,Cust:20},
-                Pesonalizada  :{item:'7',Tipo:'',Valr:75,Cust:30},
+                'Refilada'        :{item:'6',Tipo:'',Valr:70,Cust:20},
+                'Redonda'         :{item:'7',Tipo:'',Valr:75,Cust:30},
+                'Personalizada'    :{item:'7',Tipo:'',Valr:80,Cust:30},
             }},
         Lona     :{Calc:'M2', Stts:'Disp', Prvw:''       , Desc:'Banner, Faixa, ilhós',Variantes:{
-                Banner          :{item:'8' ,Tipo:''               ,Valr:70,Cust:22}, // Adicionar dentro do option um botão pra medida padrão
-                Faixa           :{item:'9' ,Tipo:'Madeira e ilhós',Valr:70,Cust:22}, // dar Limite pra Altura
-                Faixa           :{item:'10',Tipo:'Só Madeira'     ,Valr:70,Cust:22}, // dar Limite pra Altura
-                'com ilhós'     :{item:'11',Tipo:'Completo'       ,Valr:70,Cust:22},
-                'com ilhós'     :{item:'12',Tipo:'nas Pontas'     ,Valr:70,Cust:22},
-                'Sem Acabamento':{item:'13',Tipo:''               ,Valr:60,Cust:20},
+                'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22}, // Adicionar dentro do option um botão pra medida padrão
+                'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22}, // dar Limite pra Altura
+                'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22},
+                'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20},
         }},
         Quadro   :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Quadro sem Moldura' ,Variantes:{ // dar Limite pra largura de todos
                 'PVC 2mm'           :{item:'14',Tipo:'',Valr:150,Cust:'        '}, 
@@ -134,19 +133,20 @@
                     '2pag':{},
         }},
         Camisa   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
-            Normal    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
-            Regata    :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
-            Polo      :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
-            MangaLong :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            'M.Curta'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            Regata     :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            Polo       :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
+            'M.Longa'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,Icon:tmplt_Img(['Cam1','Cam2','Cam3','Cam4'])},
         }},
         'Calção'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
-                'Reto' :{},
-                'Curva':{},
+                'Bermuda' :{},
+                'Short'   :{},
         }},  
         WindFlag :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
-                P         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
-                M         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
-                G         :{Tipo:['Faca','Vela','Pena','Gota'],Valr:0,Cust:0},
+            Faca         :{Tipo:['P','M','G'],Valr:0,Cust:0},
+            Vela         :{Tipo:['P','M','G'],Valr:0,Cust:0},
+            Pena         :{Tipo:['P','M','G'],Valr:0,Cust:0},
+            Gota         :{Tipo:['P','M','G'],Valr:0,Cust:0},
             }},
         BigBall  :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
                 P         :{Tipo:[''],Valr:0,Cust:0},
@@ -155,8 +155,8 @@
             }},
     
         'Bandeira'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
-                'Reto' :{},
-                'Curva':{},
+                'Oxford' :{},
+                'Cettin' :{},
         }},    
         }
     const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
@@ -880,60 +880,52 @@
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
-                    #Div-Prod{margin-bottom:30px ; overflow-x: scroll; flex-wrap: nowrap}
-                    #Div-Prod > div {margin:9px 4px;display:flex;flex-direction:column}
-                    #Div-Prod span    {margin-left:10px}
+                    #Div-Prod          {margin-bottom:30px; overflow-x:scroll; flex-wrap:nowrap}
+                    #Div-Prod > div    {margin:9px 4px; display:flex; flex-direction:column}
+                    #Div-Prod span     {margin-left:10px; margin-bottom:10px}
+                    #Div-Prod span p   {margin:0px; font-size:9px}
+                    #Div-Prod span img {margin:5px; height:30px; width:30px}
+                    #Div-Prod span h3  {font-size:19px}
+                    #Div-Prod .DivVrnts{margin-top:20px}
+
+                    #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
+                    #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
+                    #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:all 0.1s ease-in-out; color: #000000;}
+                        #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
+                        #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
+                        #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
+                        #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; box-shadow: -5px 0 10px #3c363f59, 5px 0 10px #3c363f59 ;  background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
+
                     
-                    #Div-Prod span h3 {font-size:19px}
-                    #Div-Prod span p  {font-size:9px;margin:0px}
-                    #Div-Prod span img{height: 30px;width:30px;margin:5px}
-
-                    #Div-Prod .Opts{
-                        width: 100%;
-                        height: 30px;
-                    }
-                    #Div-Prod .Opts div{
-                        position: absolute;
-                        bottom: 0;
-                        height: 30px;
-                        width: 50%;
-                        border-radius: 20px 20px 0 0;
-                        
-                        background:linear-gradient(to right,#d8d0da,#ffffff);
-                        
-                        transition:height 0.1s ease-in-out;cursor:pointer;
-                    }
-
-                    #Div-Prod .Opts div.Select{background:white}
-                    
-                    #Div-Prod .Opts div:hover{height: 35px}
-
-                    #Div-Prod .Opts img{height: 23px; width: 23px;}
 
 
-                    #Div-Prod .Conteudo,.offf{height:280px ; width:200px; margin:4px ; padding-bottom:15px; border-radius:20px;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
+                    #Div-Prod .Conteudo{padding-top:10px; z-index:999}
+
+                    #Div-Prod .Conteudo,.offf{height:250px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
                     .offf{ top: 40px; background: #808080d7; color: #ffffff;font-size: 20px;}
                     
-                    #Div-Prod .Conteudo .fotO{height:160px;width: 150px; background:gray}
-
-                    .RsutProduto > div > div{color:#440067;font-size:13px}
-                    .RsutProduto > div > div > div:first-child{color:#ff006a;font-size:11px}
-                    .RsutProduto > div > div > div:last-child{color:#ff006a;font-size:16px}
-
-                    #Div-Prod input{border:solid 1px #ff006a;width:95%;font-size:12px;color: black;}
-
-                    .inptProduto{display:flex;width:100%;padding:0px 2vw}
-
-
+                    #Div-Prod .Conteudo .fotO{height:160px; width:150px}
 
                     #Div-Prod button{background: #ff006a}
                 </style>
                 <div id="Div-Prod" class="Start"></div>
                 <script>
+
+
                     function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
-                        console.log(e)
-                        $$('div',Pai(e)).forEach(B=>Rmv(B,'Select'))
-                        Add(e,'Select')
+                        $$('div',Pai(e)).forEach((B,x,l)=>{
+                            Rmv(B,'Atv')
+
+                            if(x < IdxDe(e)){
+                                Add(B,'Pre');Rmv(B,'Pos')
+                                B.style.zIndex = (l.length+x) - IdxDe(e)+10
+                            }else{
+                                Add(B,'Pos');Rmv(B,'Pre')
+                                B.style.zIndex = (l.length-x) + IdxDe(e)+10
+                            }
+
+                        })
+                        Add(e,'Atv')
                         if(x===IdxDe(e)){Show(E)}else{None(E)}
                     })}
 
@@ -941,29 +933,26 @@
                         return `<div class="Rltv">
                             <span class="Start"><img src="./Prod/IconProd/${e}.svg"><div class="Start2"><h3>${e}</h3><p>${Prod[e].Desc}</p></div></span>
                             <div class="KeyInn none">...</div>
-                                <div class="Ct w100 Opts Rltv">${
+
+                                <div class="Ct w100 Opts Abslt">${
                                     Vari(e).map((vv,x,l)=>{
-                                        const pose = `left:${(x*(200/l.length))-(x===0?0:10)}px;`
-                                        const Larg = `width:${(200/l.length)+10}px;`
+                                        const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
+                                        const Larg = `width:${(200/l.length)+15}px;`
                                         const Zidx = `z-index:${(l.length-x)+10};`
-                                        //console.log(pose+Larg+Zidx,l.length)
-                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct"><a class="none">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
                                 }).join('')}</div>
+
                             <div class="Ct DivVrnts">
-                                ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
-                                    // console.log(e,V,OBJ)
-                                    return `<div class="Conteudo Cl ${x===0?'':'none'}">
-                                                ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
-                                                
-                                                <div class="KeyVariants">${V}</div>
-                                                
-                                                <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
-                                                
-                                                <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${'tmplt_mdd'}</div>
-                                                <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
-                                                <button class="Abslt tec" onclick="Show('#Rodape-List');CarregaRodape($('img',Pai(this)))">Carrinho</button>
-                                    </div>`
-                                }).join('')}
+                            ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
+                                return `<div class="Conteudo Cl ${x===0?'':'none'}">
+                                            ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
+                                            <div class="KeyVariants">${V}</div>
+                                            <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
+                                            <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${'tmplt_mdd'}</div>
+                                            <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
+                                            <button class="Abslt tec" onclick="Show('#Rodape-List');CarregaRodape($('img',Pai(this)))">Carrinho</button>
+                                </div>`
+                            }).join('')}
                             </div>
                         </div>`
                     }
