@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='pt-BR'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,25 +165,26 @@
     const Vari=e=>ObjKey(Prod[e].Variantes)
 
     const PalavrasRelacionadas = {
-        "Adesivo": ["colar", "adesivar", "autocolante", "sticker", "decoração", "personalizado"],
-        "Etiqueta": ["rótulo", "marca", "identificação", "label", "tag", "codigo de barras"],
-        "Lona": ["tela", "painel", "cobertura", "banner", "banner de lona", "material resistente"],
-        "Quadro": ["moldura", "pôster", "decoração", "imagem", "arte", "foto", "cartaz"],
-        "ímã": ["imã", "imã de geladeira", "magneto", "imagem magnética", "adesivo magnético"],
-        "Recorte": ["corte", "corte personalizado", "design recortado", "corte a laser", "estilo recortado"],
-        "Envelopamento": ["adesivo de carro", "filmagem", "pintura", "design de veículo", "decoração automotiva"],
+        "Adesivo": ["colar", "adesivar", "autocolante"],
+        "Etiqueta": ["rótulo", "identificação", "label", "tag"],
+        "Lona": ["painel", "banner", "banner de lona", "material resistente"],
+        "Quadro": ["moldura", "pôster", "imagem", "arte", "foto", "cartaz"],
+        "ímã": ["imã", "imã de geladeira", "magneto", "imagem magnética", "adesivo magnético", 'manta magnética'],
+        "Recorte": ["corte", "design recortado"],
+        "Envelopamento": ["adesivo de carro", " automotiva"],
         "Placa": ["placa de sinalização", "placa de identificação", "placa publicitária", "painel"],
-        "Cavalhete": ["suporte de quadro", "quadro de ferro", "expositor", "suporte de propaganda"],
-        "Toldo": ["cobertura", "tenda", "sombra", "proteção", "estrutura de toldo"],
-        "Quebra Sol": ["toldo automotivo", "proteção solar", "para-sol", "cobertura para vidro", "proteção de carro"],
-        "Cartão": ["cartão de visita", "business card", "papel cartão", "cartão de agradecimento", "cartão personalizado"],
+
+        "Cartão": ["cartão de visita", "business card", "papel cartão", "cartão de agradecimento"],
         "Tag": ["etiqueta", "rótulo", "identificador", "marcador", "tag personalizada"],
         "Panfleto": ["folheto", "brochura", "informativo", "material promocional", "cartão informativo"],
-        "Camisa": ["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário"],
-        "A4": ["papel", "tamanho A4", "formato A4", "papelaria", "impressão"],
+        "Camisa": ["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"],
         "Cardápio": ["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"]
     }
 
+    // palavras genéricas
+    /*
+        decoração personalizado 
+    */
 </script>
 
 <script> // Base de Dados 2
@@ -609,7 +610,7 @@
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
-            body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px;z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
+            body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px; z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
             #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
             #H_Nav{margin-right:15px}
             #H_Nav, #H_Nav img{height:45px}
@@ -917,19 +918,11 @@
                         #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
                         #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; box-shadow: -5px 0 10px #3c363f59, 5px 0 10px #3c363f59 ;  background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
 
-                    
-
-
                     #Div-Prod .Conteudo{padding-top:10px; z-index:999}
-
                     #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
                     .offf{ top: 40px; background: #808080d7; color: #ffffff;font-size: 20px;}
-                    
                     #Div-Prod .Conteudo .fotO{height:160px; width:150px}
-
-                    #Div-Prod button{background: #ff006a}
-                    .tec2 { z-index: 999; top: 310px; left: 20%; width: 60%;; }
-
+                    .tec2 { z-index: 999; top: 310px; left: 20%; width: 60%; }
                 </style>
                 <div id="Div-Prod" class="Start"></div>
                 <script>
@@ -944,7 +937,6 @@
                                 Add(B,'Pos');Rmv(B,'Pre')
                                 B.style.zIndex = (l.length-x) + IdxDe(e)+10
                             }
-
                         })
                         Add(e,'Atv')
                         if(x===IdxDe(e)){Show(E)}else{None(E)}
@@ -952,7 +944,7 @@
 
                     function tmplt_Prod(e){ //GRANDE
                         return `<div class="Rltv Start2">
-                            <span class="Start"><img src="./Prod/IconProd/${e}.svg"><div class="Start2"><h3>${e}</h3><p>${Prod[e].Desc}</p></div></span>
+                            <span class="Start"><img src="./Prod/IconProd/${e}.svg"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
                             <div class="KeyInn none">...</div>
 
                                 <div class="Ct w100 Opts Abslt">${
@@ -960,37 +952,32 @@
                                         const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
                                         const Larg = `width:${(200/l.length)+15}px;`
                                         const Zidx = `z-index:${(l.length-x)+10};`
-                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
                                 }).join('')}</div>
 
                             <div class="Ct DivVrnts">
                             ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
                                 return `<div class="Conteudo Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
-                                            <div class="KeyVariants">${V}</div>
+                                            <div class="KeyVariants rgx">${V}</div>
                                             <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
                                             <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
-                                            <div class="none">${PalavrasRelacionadas[e].map(e=>e).join(',')}</div>
+                                            <div class="rgx">${(PalavrasRelacionadas[e] || []).map(e => e).join(',')}</div>
                                             <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
                                             <img class="Abslt tec2 HOV" onclick="Carrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
-                                            
                                 </div>`
                             }).join('')}
                             </div>
                         </div>`
-                    }
+                    }   
 
                     
 
                     function ReOrdenar(){ //  GRANDE
                         $('#Div-Prod').innerHTML = ''
                         AllProd.forEach(e=>{$('#Div-Prod').innerHTML+=tmplt_Prod(e)})
-                    }
-
-
-
-                    ReOrdenar()
+                    }ReOrdenar()
 
                     function Carrinho(serv,tipo){
                         const ult = $$('#ORC .OrcAdd').slice(-1)[0]
@@ -1011,15 +998,25 @@
                 <input id="PesqPROD" type="text" oninput="pesquisaProd(this)" placeholder="Pesquisar Produto...">
                 
                 <script>
-                    function pesquisaProd(ipt) {
-                        const f = RxClear(ipt.value)
-                            const r = NewRegex(f)
-                            $$('#Div-Prod > div').forEach(e => {
-                                const t = RxClear(e.textContent);
-                                e.style.display = r.test(t) ? '' : 'none'
-                            })
-                        }
+                    function pesquisaProd(ipt){
+                        const f = RxClear(ipt.value) // Limpeza do texto de entrada
+                        const r = NewRegex(f) // Criação da expressão regular com o valor de entrada
+                        
+                        // Iterar sobre cada produto dentro de 'Div-Prod'
+                        $$('#Div-Prod > div').forEach(e=>{
+                            // Iterar sobre as divs com a classe 'rgx' dentro de cada 'e'
+                            $$(".rgx", e).forEach(Rx=>{
+                                // Limpeza do conteúdo e pesquisa na div 'Rx'
+                                const ori = Rx.textContent
+                                const mdi = ori.replace(r,match=>`<a style="background:orange">${match}</a>`)
 
+                                // Atualizar o conteúdo de 'Rx' com as palavras grifadas
+                                Rx.innerHTML = mdi
+                            })
+                            const t = RxClear(e.textContent)
+                            e.style.display = r.test(t) ? '' : 'none'
+                        })
+                    }
                 </script>
             </div>
 
