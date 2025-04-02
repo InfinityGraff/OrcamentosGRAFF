@@ -176,15 +176,12 @@
 
         "Cartão": ["cartão de visita", "business card", "papel cartão", "cartão de agradecimento"],
         "Tag": ["etiqueta", "rótulo", "identificador", "marcador", "tag personalizada"],
-        "Panfleto": ["folheto", "brochura", "informativo", "material promocional", "cartão informativo"],
+        "Panfleto": ["folheto", "brochura", "informativo"],
         "Camisa": ["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"],
-        "Cardápio": ["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"]
+        "Cardápio": ["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"],
+        "WindFlag":['Tecido'],
+        "Bandeira":['Tecido']
     }
-
-    // palavras genéricas
-    /*
-        decoração personalizado 
-    */
 </script>
 
 <script> // Base de Dados 2
@@ -906,8 +903,9 @@
                     #Div-Prod > div    {margin:9px 4px; display:flex; flex-direction:column}
                     #Div-Prod span     {margin-left:10px; margin-bottom:10px}
                     #Div-Prod span p   {margin:0px; font-size:9px}
+                    #Div-Prod span p strong  {font-size:9px}
                     #Div-Prod span img {margin:5px; height:30px; width:30px}
-                    #Div-Prod span h3  {font-size:19px}
+                    #Div-Prod span h3, #Div-Prod span h3 strong  {font-size:19px}
                     #Div-Prod .DivVrnts{margin-top:20px}
 
                     #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
@@ -963,7 +961,7 @@
                                             <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
                                             <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
-                                            <div class="rgx">${(PalavrasRelacionadas[e] || []).map(e => e).join(',')}</div>
+                                            <div class="rgx none">${(PalavrasRelacionadas[e] || []).map(e => e).join(',')}</div>
                                             <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
                                             <img class="Abslt tec2 HOV" onclick="Carrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
                                 </div>`
@@ -971,8 +969,6 @@
                             </div>
                         </div>`
                     }   
-
-                    
 
                     function ReOrdenar(){ //  GRANDE
                         $('#Div-Prod').innerHTML = ''
@@ -999,19 +995,14 @@
                 
                 <script>
                     function pesquisaProd(ipt){
-                        const f = RxClear(ipt.value) // Limpeza do texto de entrada
-                        const r = NewRegex(f) // Criação da expressão regular com o valor de entrada
+                        // const NewRegex = e=>new RegExp(e.split('').map(e=>e+'.{0,1}').join(''),'i')
+                        // const r = NewRegex(RxClear(ipt.value))
+                        const r = new RegExp(RxClear(ipt.value),'i')
                         
-                        // Iterar sobre cada produto dentro de 'Div-Prod'
                         $$('#Div-Prod > div').forEach(e=>{
-                            // Iterar sobre as divs com a classe 'rgx' dentro de cada 'e'
-                            $$(".rgx", e).forEach(Rx=>{
-                                // Limpeza do conteúdo e pesquisa na div 'Rx'
+                            $$(".rgx",e).forEach(Rx=>{
                                 const ori = Rx.textContent
-                                const mdi = ori.replace(r,match=>`<a style="background:orange">${match}</a>`)
-
-                                // Atualizar o conteúdo de 'Rx' com as palavras grifadas
-                                Rx.innerHTML = mdi
+                                Rx.innerHTML = ori.replace(r,match=>`<strong style="background:orange" name="">${match}</strong>`)
                             })
                             const t = RxClear(e.textContent)
                             e.style.display = r.test(t) ? '' : 'none'
@@ -1535,10 +1526,15 @@
 </script>
 
 <script> // Coisas da NOTA
+
+    function estaOculta(e) {return getComputedStyle(e).display === "none"}
+
     function VerNota(){
         MdalShow('#ModalNota')
         // Aqui em Baixo coletar tudo q ta no orçamento e Jogar pra cá!
         // deixar uma Opção pra Copiar o Texto
+        const dados = $$('#ORC tbody tr').map(tr=>$$('td input, td select',tr).map(e=>{if(estaOculta(e)){return}else{return e.value}}))
+        console.log(dados)
     }
 </script>
 
