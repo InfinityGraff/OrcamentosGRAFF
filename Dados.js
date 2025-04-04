@@ -61,7 +61,7 @@ const J = {
     "DataEntg": "",
     "Coment": "",
     "SVG": "",
-    "Grad": 8,
+    "Grad": "",
     "Clnt": 1449,
     "Data": "2024-12-02"
 },
@@ -107,7 +107,7 @@ const J = {
     "DataEntg": "",
     "Coment": "",
     "SVG": "",
-    "Grad": 8,
+    "Grad": "",
     "Clnt": 1451,
     "Data": "2024-12-03"
 },
@@ -237,6 +237,7 @@ const NovoJson = [
         "Finc": "Pago",
         "Forn": "Fornecedor X",
         "Ok": true,
+        "Imgs":"./Prod/Adesivo_Brilho.webp",
       },
       {
         "Id": 2,
@@ -301,6 +302,7 @@ const NovoJson = [
         "Finc": "Pago",
         "Forn": "Fornecedor X",
         "Ok": true,
+        "Imgs":"",
       }
       
 ]
