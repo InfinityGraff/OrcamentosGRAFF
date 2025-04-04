@@ -171,6 +171,8 @@ const J = {
 },],PGMT:[],GRAD:[],OOSS:[],UBER:[],MPAG:[]}
 
 
+
+
 const NovoJson = [
     {
         "Id": 1,
@@ -231,7 +233,74 @@ const NovoJson = [
             "Mpag": true
           }
         ],
-        "Finc": "Pago"
+        "Cust": ["s","s"],
+        "Finc": "Pago",
+        "Forn": "Fornecedor X",
+        "Ok": true,
+      },
+      {
+        "Id": 2,
+        "Rg": "2025-03-12 14:30:00",
+        "Data": "2025-03-12",
+        "Clnt": 123,  
+        "Serv": [
+          {
+            "Id": 1,
+            "Serv": "Impressão de adesivos",
+            "Desc": "Adesivos personalizados para vitrines",
+            "Calc": [
+              "30|40|10",
+              "50|60|5"
+            ],
+            "Arte": true,
+            "Valr": 150.00,
+            "Forn": "Fornecedor X",
+            "Ok": true,
+            "Entregue": false,
+            "Data_entregue": null,
+            "Coment": "Cliente pediu bordas arredondadas",
+            "Svg": "<svg>...</svg>"
+          },
+          {
+            "Id": 2,
+            "Serv": "Corte de adesivos",
+            "Desc": "Corte especial em adesivos personalizados",
+            "Calc": [
+              "20|30|15"
+            ],
+            "Arte": false,
+            "Valr": 80.00,
+            "Forn": "Fornecedor Y",
+            "Ok": true,
+            "Entregue": true,
+            "Data_entregue": "2025-03-11",
+            "Coment": "Corte ajustado conforme solicitado",
+            "Svg": "<svg>...</svg>"
+          }
+        ],
+        "Valr": 230.00,
+        "Pgmt": [
+          {
+            "Id": 1,
+            "Data": "2025-03-12 15:00:00",
+            "Valor": 100.00,
+            "Forma": "Pix",
+            "Desc": "Pagamento inicial",
+            "Mpag": true
+          },
+          {
+            "Id": 2,
+            "Data": "2025-03-13 10:30:00",
+            "Valor": 130.00,
+            "Forma": "Dinheiro",
+            "Desc": "Pagamento final",
+            "Mpag": true
+          }
+        ],
+        "Cust": ["a","a"],
+        "Finc": "Pago",
+        "Forn": "Fornecedor X",
+        "Ok": true,
       }
       
 ]

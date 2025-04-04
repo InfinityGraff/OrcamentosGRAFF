@@ -187,7 +187,7 @@
 <script> // Base de Dados 2
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_ORC'}
+    const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -198,10 +198,10 @@
          Arte:['','Allan','Baby','Fexta','Ja Tinha','n tem',''],
          Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
  
-     const CRYPP = {F:'Fx',I:'Inpt',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Img',E:'Edit',D:'Grds',V:'SVG'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
+     const CRYPP = {F:'Fixo',I:'Inpt',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Img',E:'Edit',D:'Grds',V:'Svg'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
-         PDDS:{ID:['F','w0',''],Data:['E','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['A','','Total'],Pgmt:['B','','Total'],Lcro:['E','',''],Stts:    ['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
+         PDDS:{Id:['F','w0',''],Data:['I','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['A','','Total'],Pgmt:['B','','Total'],Cust:['E','',''],Finc:    ['E','',''],Forn:['S','','']     ,Ok:['C','',''] ,'-'     :['F','w0','']},  // Removi 'RG'
          SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['E','','']     ,Forn:['S','','']     ,OK:  ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['V','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
          PGMT:{ID:['F','w0',''],Data:['I','', ''],Clnt:['F','','' ],Valr:['E','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
          CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
@@ -277,10 +277,6 @@
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 </script>
 
-<script> // Template Tabelas
-    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
-</script>
-
 <script> // Template String
     
     const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
@@ -343,14 +339,13 @@
     }
 
     function Format(){
-        const Fixo=e=>`<p class="P-P Ct ColorFix" name="${YMD(ConvertDATA(Inn(e)))}">${ConvertDATA(Inn(e))}</p>` // Botei o Convert Caso seja Data
-        const Edit=e=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
-        const Slct=e=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr(e)[2]],Inn(e))}</select>`
-        const Chek=e=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Inn(e)==='true'?'checked':''}>`
-        
-        const Imgs=e=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/Grads/${Inn(e)}.webp">`
-        const Svvg=e=>`<img onclick="AbrirSVG(this,'${Inn(e)}')" draggable="false" src="./Base/Recorte/${Inn(e)}">`
-        const Data=e=>`<p class="Ct" name="${YMD(Inn(e))}" onclick="TrcFih(this)">${BrevData(DMY(Inn(e)))}</p><input type="date" class="none" value="${YMD(Inn(e))}" onchange="EditCell(this)" onblur="TrcFih(this)">`
+      //  const Fixo=e=>`<p class="P-P Ct ColorFix" name="${YMD(ConvertDATA(Inn(e)))}">${ConvertDATA(Inn(e))}</p>` // Botei o Convert Caso seja Data
+      //  const Edit=e=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
+      //  const Slct=e=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr(e)[2]],Inn(e))}</select>`
+      //  const Chek=e=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Inn(e)==='true'?'checked':''}>`    
+      //  const Imgs=e=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/Grads/${Inn(e)}.webp">`
+      //  const Svvg=e=>`<img onclick="AbrirSVG(this,'${Inn(e)}')" draggable="false" src="./Base/Recorte/${Inn(e)}">`
+      //  const Data=e=>`<p class="Ct" name="${YMD(Inn(e))}" onclick="TrcFih(this)">${BrevData(DMY(Inn(e)))}</p><input type="date" class="none" value="${YMD(Inn(e))}" onchange="EditCell(this)" onblur="TrcFih(this)">`
         const Valr=e=>`<p class="Ct" onclick="TrcFih(this)">${RS(Inn(e))}</p><input class="none" value="${Inn(e)}" onkeydown="KeyEntr(()=>{TrcFih(this)})" onblur="EditCell(this);EditVlr(this,'blur');TrcFih(this)">`
         
         const Sugg=(e,Typ)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${Typ}')">${Inn(e)}</p>${Tm_Sugg()}</div>`
@@ -359,10 +354,10 @@
         const Valr2=e=>`<p class="Ct" ${Edi} oninput="MaskNum2(this)">${RS(Inn(e))}</p>`
 
 
-        $$(Rx2(['Fx'         ])).forEach(e=>Inn(e,Fixo(e)))
-        $$(Rx2(['Edit'       ])).forEach(e=>Inn(e,Edit(e)))
-        $$(Rx2(['Chek'       ])).forEach(e=>Inn(e,Chek(e)))
-        $$(Rx2(['Slct'       ])).forEach(e=>Inn(e,Slct(e)))
+      //  $$(Rx2(['Fx'         ])).forEach(e=>Inn(e,Fixo(e)))
+      //  $$(Rx2(['Edit'       ])).forEach(e=>Inn(e,Edit(e)))
+      //  $$(Rx2(['Chek'       ])).forEach(e=>Inn(e,Chek(e)))
+      //  $$(Rx2(['Slct'       ])).forEach(e=>Inn(e,Slct(e)))
         $$(Rx2(['Img'        ])).forEach(e=>Inn(e,Imgs(e)))
         $$(Rx2(['SVG'        ])).forEach(e=>Inn(e,Inn(e)==""?Edit(e):Svvg(e)))
         $$(Rx2(['GRAD','Sugg'])).forEach(e=>Inn(e,Sugg(e,'SERV')))
@@ -382,13 +377,61 @@
 
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
+        $$(Rx2(['Foot','C'])).forEach(e=>{Inn(e,`<div class="Ct">${RGB()}</div>`);$$('.Rltv',e).forEach(EE=>RecolorFil(EE))})
+
 
         $$(Rx2(['SERV','Clnt'])).forEach(e=>{$('p',e).innerHTML = J['CLNT'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>E.Clnt)})
         $$(Rx2(['PGMT','Clnt'])).forEach(e=>{$('p',e).innerHTML = J['CLNT'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>E.Clnt)})
         $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
-
-        $$(Rx2(['Foot','C'])).forEach(e=>{Inn(e,`<div class="Ct">${RGB()}</div>`);$$('.Rltv',e).forEach(EE=>RecolorFil(EE))})
     }
+</script>
+
+<script>// Template Tabelas
+    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
+    const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
+    
+    const Tm_TablePDDS=(typ,arry)=>{
+
+        const Tm_Tm = {
+            Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // Botei o Convert Caso seja Data
+            Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
+            Slct:(e,f)=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[f],e)}</select>`,
+            Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
+            Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+             Img:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="./Base/Grads/${e}.webp">`,
+             Svg:e=>    `<img onclick="AbrirSVG(this,'${e}')" draggable="false" src="./Base/Recorte/${e}">`,
+
+            Valr:e=>`<p class="Ct" onclick="TrcFih(this)">${RS(e)}</p><input class="none" value="${e}" onkeydown="KeyEntr(()=>{TrcFih(this)})" onblur="EditCell(this);EditVlr(this,'blur');TrcFih(this)">`,
+
+            Inpt:e=>`${e}`,
+            Bndj:e=>`${e}`,
+            Auto:e=>`${e}`,
+            Sugg:e=>`${e}`,
+            Grds:e=>`${e}`,
+
+        }
+        console.log(arry)
+        return arry.map(e=>{
+                console.log(ObjOrdn(e,OjKy(typ)))
+        return `<tr class="tr-${e.Id}">
+            ${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'Id')}">${
+
+                    Tm_Tm[CRYPP[BSBS(typ,x,0)]](c,OjKy(typ)[x]) // oq ta aqui dentro retorna a chave para o obj acima dos tmtm
+
+
+                // se for Bndj(c) aqui é pra array imbutidos dentro do json
+                // se for Link(c) aqui no caso é id do cliente
+                // 
+                
+                }</td>`).join('')}
+            ${Tm_Lixo(typ,e)}
+            </tr>`
+        
+        }).join('')
+
+
+    }
+    
 </script>
 
 <script> // Templates OBSOLETOS
@@ -789,9 +832,12 @@
                 </script>
                 <button onclick="LimparFiltro('PDDS')">Limpar Filtro</button>
             </div>
+            <style>
+                #H_PDDS > tbody > tr > td:nth-child(1){width: 10px; color: red;} 
+            </style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('PDDS',J.PDDS.filter(e=>e.OFF===1)))"></tbody>
+                <tbody onload="Inn(this,Tm_TablePDDS('PDDS',NovoJson))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
 
@@ -1553,7 +1599,10 @@
     let PrimeiraVez = true
     function PosGet(){
         // if(PrimeiraVez){GetConfig();PrimeiraVez=false} // tem um erro no GetConfig() no index 0
-        Onloads('body');Tm_Bndj();Format();Format_Bndj_Clnt()
+        Onloads('body');
+        //Tm_Bndj();
+        //Format();
+        Format_Bndj_Clnt()
         NavPag(Atual['Pag'])
         // GetConfigOrdem()
         // Condicional()
@@ -1709,6 +1758,10 @@
     // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
     
     // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
+
+
+    // pra eu ver a soma de qualquer coisa vai ser pelo rodape
+        // então terei uma abasinha pra selecionar as linhas, e ai a soma do q foi selecionado aparecerá no rodapé, incluindo a soma de todas as colunas
 </script>
 
 </html>
