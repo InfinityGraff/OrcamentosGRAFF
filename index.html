@@ -183,7 +183,7 @@
 <script> // Base de Peiddos
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_ORC'}
+    const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -300,8 +300,6 @@
     // Strings Extras
     const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
 
-
-
     const Tm_Bndj=()=>{
         const MORE =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                       <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['ID']}">${LL.map((v,x)=>`<td class="${Tm_Rastr(LL,x,Typ,0)}">${v}</td>`).join('')}</tr>`).join('')}</tbody>
@@ -330,7 +328,6 @@
                                         }</tr>`).join('')
                                     }</tbody>
                                  </table>`
-
         function Process2(e,R){
             e.onclick = ()=>{ShowBndj(e,SVG.Ponta)}
             const Typ   = R[2]
@@ -345,7 +342,7 @@
         }
         
         $$(Rx2(['PDDS','Bndj'])).forEach(e=>{Process (e,D_Rastr(e))})
-        $$(Rx2(['SERV','Bndj'])).forEach(e=>{Process2(e,D_Rastr(e))})
+      //  $$(Rx2(['SERV','Bndj'])).forEach(e=>{Process2(e,D_Rastr(e))})
     }
 
     function Format(){
@@ -357,8 +354,6 @@
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
 
-        
-    
         $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
     }
 </script>
@@ -374,22 +369,42 @@
     
     const Tm_TablePDDS=(typ,arry)=>{
 
+        const D_Rastr2=e=>e.split('-')
+
+        const MORE =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                                      <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['ID']}">${LL.map((v,x)=>`<td class="${Tm_Rastr(LL,x,Typ,0)}">${v}</td>`).join('')}</tr>`).join('')}</tbody>
+                                  </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
+
+        function Process(arry,R){ // esse R é o D_Raster
+            // e.onclick = ()=>{ShowBndj(e,SVG.Ponta)}
+            const Typ   = R[2].toUpperCase() // Typ da planilha q vou carregar
+            const Find  = Typ==='SERV' ? J[Typ].filter(E=>(E.ID).split('|')[0]==R[1]) :
+                          Typ==='PGMT' ? J[Typ].filter(E=>(E.Link)==R[1]) : 
+                          J[Typ].filter(E=>E.ID==Inn(e))
+                          
+            const Title = Typ==='PGMT' ? Find.map(e=>`${e['Valr']}${e['Form']}`).join(' | ') :
+                          Typ==='SERV' ? Find.map(e=>`${e[R[2]]} ${e['Desc']}` ).join(' | ') :
+                          Find.map(e=>e[R[2]]).join(' | ')
+            const NewPg = Typ==='PGMT' && Title==='' ? '-' : ''
+            const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ):'').join('')
+            const Zindx = R[0]==='PDDS' ? `style="z-index:${R[1]}"` : ''
+            return `<p class="P-P" onclick="ShowBndj(e,SVG.Ponta)" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
+            //e.innerHTML = `<div class="Ct"><p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
+        }
+
         const Tm_Tm = {
-            Fixo:e=>      `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`,
-            Auto:e=>      `<p class="P-P Ct         " name="${e}">${e}</p>`,
-            Edit:e=>      `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
-            Slct:(e,f)=>  `<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[f],e)}</select>`,
-            Chek:e=>      `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
-            Data:e=>      `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-            Imgs:e=>      `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
-            Valr:e=>      `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`,
-            Sugg:(e,Tbl)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
+            Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`,
+            Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
+            Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
+            Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
+            Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
+            Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+            Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
+            Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`,
+            Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
 
-            Bndj:e=>`${e}`,
-            Grds:e=>`${e}`,
-
-            
-
+            Bndj:(e,R)=>`${e}`, // Process(e,R)
+            Grds:(e,R)=>`${e}`,
         }
 
     //    $$(Rx2(['SERV','Clnt'])).forEach(e=>{$('p',e).innerHTML = J['CLNT'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>E.Clnt)})
@@ -397,7 +412,7 @@
         return arry.map(e=>{
             return `<tr class="tr-${e.Id}">
                 ${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'Id')}">${
-                        Tm_Tm[CRYPP[BSBS(typ,x,0)]](c,OjKy(typ)[x]) // oq ta aqui dentro retorna a chave para o obj acima dos tmtm
+                        Tm_Tm[CRYPP[BSBS(typ,x,0)]](c,Tm_Rastr(e,x,typ,'Id')) // oq ta aqui dentro retorna a chave para o obj acima dos tmtm || OjKy(typ)[x]
                             // se for Bndj(c) aqui é pra array imbutidos dentro do json
                             // se for Link(c) aqui no caso é id do cliente
                     }</td>`).join('')}
@@ -1479,9 +1494,9 @@
         }
 
         const User={
-            '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
-            '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
-            '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
+            '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia'   ,'Img/Perfil_Baby.png'   ],
+            '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'  ],
+            '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo' ,'Img/Perfil_Lisa.png'   ],
             '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
         }
 
