@@ -146,7 +146,7 @@ const J = {
     "Link": ""
 },
 {
-    "ID": 2,
+    "ID": 123,
     "Clnt": "Coloral",
     "Cmpt": "",
     "Cntt": "(81) 99624-5098",
@@ -182,8 +182,8 @@ const NovoJson = [
         "Serv": [
           {
             "Id": 1,
-            "Serv": "Impressão de adesivos",
-            "Desc": "Adesivos personalizados para vitrines",
+            "Serv": "Adesivo",
+            "Desc": "Bandeira",
             "Calc": [
               "30|40|10",
               "50|60|5"
@@ -199,8 +199,8 @@ const NovoJson = [
           },
           {
             "Id": 2,
-            "Serv": "Corte de adesivos",
-            "Desc": "Corte especial em adesivos personalizados",
+            "Serv": "Recorte",
+            "Desc": "244",
             "Calc": [
               "20|30|15"
             ],
@@ -219,16 +219,16 @@ const NovoJson = [
           {
             "Id": 1,
             "Data": "2025-03-12 15:00:00",
-            "Valor": 100.00,
-            "Forma": "Pix",
+            "Valr": 100.00,
+            "Form": "Pix",
             "Desc": "Pagamento inicial",
             "Mpag": true
           },
           {
             "Id": 2,
             "Data": "2025-03-13 10:30:00",
-            "Valor": 130.00,
-            "Forma": "Dinheiro",
+            "Valr": 130.00,
+            "Form": "Av",
             "Desc": "Pagamento final",
             "Mpag": true
           }
@@ -247,8 +247,8 @@ const NovoJson = [
         "Serv": [
           {
             "Id": 1,
-            "Serv": "Impressão de adesivos",
-            "Desc": "Adesivos personalizados para vitrines",
+            "Serv": "Banner",
+            "Desc": "25x20",
             "Calc": [
               "30|40|10",
               "50|60|5"
@@ -264,8 +264,8 @@ const NovoJson = [
           },
           {
             "Id": 2,
-            "Serv": "Corte de adesivos",
-            "Desc": "Corte especial em adesivos personalizados",
+            "Serv": "WindFlag",
+            "Desc": "Vela",
             "Calc": [
               "20|30|15"
             ],
@@ -284,16 +284,16 @@ const NovoJson = [
           {
             "Id": 1,
             "Data": "2025-03-12 15:00:00",
-            "Valor": 100.00,
-            "Forma": "Pix",
+            "Valr": 100.00,
+            "Form": "Pix",
             "Desc": "Pagamento inicial",
             "Mpag": true
           },
           {
             "Id": 2,
             "Data": "2025-03-13 10:30:00",
-            "Valor": 130.00,
-            "Forma": "Dinheiro",
+            "Valr": 130.00,
+            "Form": "Av",
             "Desc": "Pagamento final",
             "Mpag": true
           }

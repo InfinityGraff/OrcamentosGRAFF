@@ -369,26 +369,28 @@
     
     const Tm_TablePDDS=(typ,arry)=>{
 
-        const D_Rastr2=e=>e.split('-')
+        const D_Rastr2=R=>R.split('-')
 
         const MORE =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                      <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['ID']}">${LL.map((v,x)=>`<td class="${Tm_Rastr(LL,x,Typ,0)}">${v}</td>`).join('')}</tr>`).join('')}</tbody>
+                                      <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>`<td class="${'Tm_Rastr(LL,x,Typ,0)'}">${v}</td>`).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
 
-        function Process(arry,R){ // esse R é o D_Raster
+        function Process(arry,r){ // esse R é o D_Raster
             // e.onclick = ()=>{ShowBndj(e,SVG.Ponta)}
-            const Typ   = R[2].toUpperCase() // Typ da planilha q vou carregar
-            const Find  = Typ==='SERV' ? J[Typ].filter(E=>(E.ID).split('|')[0]==R[1]) :
-                          Typ==='PGMT' ? J[Typ].filter(E=>(E.Link)==R[1]) : 
-                          J[Typ].filter(E=>E.ID==Inn(e))
-                          
-            const Title = Typ==='PGMT' ? Find.map(e=>`${e['Valr']}${e['Form']}`).join(' | ') :
-                          Typ==='SERV' ? Find.map(e=>`${e[R[2]]} ${e['Desc']}` ).join(' | ') :
-                          Find.map(e=>e[R[2]]).join(' | ')
-            const NewPg = Typ==='PGMT' && Title==='' ? '-' : ''
-            const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ):'').join('')
-            const Zindx = R[0]==='PDDS' ? `style="z-index:${R[1]}"` : ''
-            return `<p class="P-P" onclick="ShowBndj(e,SVG.Ponta)" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
+            const R = D_Rastr2(r)
+            const Typ   = R[3]
+
+            const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : arry
+
+            const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
+                          Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                                         Find.map(e=>e[R[3]]).join(' | ')
+            
+            const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
+            const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ) : '').join('')
+            const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
+
+            return `<p class="P-P"  ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
             //e.innerHTML = `<div class="Ct"><p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
         }
 
@@ -403,7 +405,7 @@
             Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`,
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
 
-            Bndj:(e,R)=>`${e}`, // Process(e,R)
+            Bndj:(e,R)=>`----${e}`,
             Grds:(e,R)=>`${e}`,
         }
 
@@ -411,11 +413,17 @@
 
         return arry.map(e=>{
             return `<tr class="tr-${e.Id}">
-                ${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'Id')}">${
-                        Tm_Tm[CRYPP[BSBS(typ,x,0)]](c,Tm_Rastr(e,x,typ,'Id')) // oq ta aqui dentro retorna a chave para o obj acima dos tmtm || OjKy(typ)[x]
+                ${ObjOrdn(e,OjKy(typ)).map((c,x)=>{
+                    const R = Tm_Rastr(e,x,typ,'Id') ; const dR = D_Rastr2(R)
+                    return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${
+                        
+                    dR[4] === 'Bndj'? 
+                     Process(c,R)
+                    :  
+                    Tm_Tm[dR[4]](c,R)
                             // se for Bndj(c) aqui é pra array imbutidos dentro do json
                             // se for Link(c) aqui no caso é id do cliente
-                    }</td>`).join('')}
+                    }</td>`}).join('')}
                 ${Tm_Lixo(typ,e)}
             </tr>`
         }).join('')
