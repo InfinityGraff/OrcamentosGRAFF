@@ -338,6 +338,8 @@
             Grds:(e,R)=>`${e}`,
         }
 
+        // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
+        // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
         function Tm_Bndj(arr,Typ){return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                         <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
 
@@ -380,13 +382,13 @@
         return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
     }
 
-    function Format_Bndj_Clnt(){
+    function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
         $$(`.FikaFika`).forEach(e=>{
             const R = D_Rastr(_td(e))
             if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`} // no caso o Lance de quando estiver vazio, (provavelmente se tiver vazio nem roda a Bandeja, pula direto pra isso!)
             if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`} // aqui a mesma coisa do de cima
         })
-        $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{
+        $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
             Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
                         <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
