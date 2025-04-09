@@ -195,7 +195,7 @@ const NovoJson = [
             "Entregue": false,
             "Data_entregue": null,
             "Coment": "Cliente pediu bordas arredondadas",
-            "Svg": "<svg>...</svg>"
+            "imgs": "./Prod/Adesivo_Brilho.webp"
           },
           {
             "Id": 2,
@@ -211,14 +211,15 @@ const NovoJson = [
             "Entregue": true,
             "Data_entregue": "2025-03-11",
             "Coment": "Corte ajustado conforme solicitado",
-            "Svg": "<svg>...</svg>"
+            "imgs": "./Prod/Adesivo_Brilho.webp"
           }
         ],
         "Valr": 230.00,
         "Pgmt": [
           {
             "Id": 1,
-            "Data": "2025-03-12 15:00:00",
+            "Data": "2025-03-12",
+            "Clnt": 123,
             "Valr": 100.00,
             "Form": "Pix",
             "Desc": "Pagamento inicial",
@@ -226,7 +227,8 @@ const NovoJson = [
           },
           {
             "Id": 2,
-            "Data": "2025-03-13 10:30:00",
+            "Data": "2025-03-13",
+            "Clnt": 123,
             "Valr": 130.00,
             "Form": "Av",
             "Desc": "Pagamento final",
@@ -235,9 +237,6 @@ const NovoJson = [
         ],
         "Cust": ["s","s"],
         "Finc": "Pago",
-        "Forn": "Fornecedor X",
-        "Ok": true,
-        "Imgs":"./Prod/Adesivo_Brilho.webp",
       },
       {
         "Id": 2,
@@ -260,7 +259,7 @@ const NovoJson = [
             "Entregue": false,
             "Data_entregue": null,
             "Coment": "Cliente pediu bordas arredondadas",
-            "Svg": "<svg>...</svg>"
+            "imgs": "./Prod/Adesivo_Brilho.webp"
           },
           {
             "Id": 2,
@@ -276,14 +275,15 @@ const NovoJson = [
             "Entregue": true,
             "Data_entregue": "2025-03-11",
             "Coment": "Corte ajustado conforme solicitado",
-            "Svg": "<svg>...</svg>"
+            "imgs": "./Prod/Adesivo_Brilho.webp"
           }
         ],
         "Valr": 230.00,
         "Pgmt": [
           {
             "Id": 1,
-            "Data": "2025-03-12 15:00:00",
+            "Data": "2025-03-12",
+            "Clnt": 123,
             "Valr": 100.00,
             "Form": "Pix",
             "Desc": "Pagamento inicial",
@@ -291,7 +291,8 @@ const NovoJson = [
           },
           {
             "Id": 2,
-            "Data": "2025-03-13 10:30:00",
+            "Data": "2025-03-13",
+            "Clnt": 123,
             "Valr": 130.00,
             "Form": "Av",
             "Desc": "Pagamento final",
@@ -300,9 +301,6 @@ const NovoJson = [
         ],
         "Cust": ["a","a"],
         "Finc": "Pago",
-        "Forn": "Fornecedor X",
-        "Ok": true,
-        "Imgs":"",
       }
       
 ]

@@ -197,15 +197,16 @@
      const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
-         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],Forn    :['S','','']     ,Ok:['C','',''],Imgs:['M','','']  ,'-'     :['F','w0','']},  // Removi 'RG'
-         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
-         PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['F','','' ],Valr:['E','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
+         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
+         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['E','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
+         PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
          CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
          GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
          OOSS:{ID:['F','w0',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
          UBER:{ID:['F','w0',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
-         MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']} // Removi 'Cpvt'
-     }
+         MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
+         CALC:{}
+    }
  
      const CC = {
          // PDDS:{},
@@ -301,26 +302,6 @@
     const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
 
     const _Tm_Bndj=()=>{
-        const MORE =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                      <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['ID']}">${LL.map((v,x)=>`<td class="${Tm_Rastr(LL,x,Typ,0)}">${v}</td>`).join('')}</tr>`).join('')}</tbody>
-                                  </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
-        function Process(e,R){
-            e.onclick = ()=>{ShowBndj(e,SVG.Ponta)}
-            const Typ   = R[2].toUpperCase()
-            const Find  = Typ==='SERV' ? J[Typ].filter(E=>(E.ID).split('|')[0]==R[1]) :
-                          Typ==='PGMT' ? J[Typ].filter(E=>(E.Link)==R[1]) : 
-                          J[Typ].filter(E=>E.ID==Inn(e))
-                          
-            const Title = Typ==='PGMT' ? Find.map(e=>`${e['Valr']}${e['Form']}`).join(' | ') :
-                          Typ==='SERV' ? Find.map(e=>`${e[R[2]]} ${e['Desc']}` ).join(' | ') :
-                          Find.map(e=>e[R[2]]).join(' | ')
-            const NewPg = Typ==='PGMT' && Title==='' ? '-' : ''
-            const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ):'').join('')
-            const Zindx = R[0]==='PDDS' ? `style="z-index:${R[1]}"` : ''
-            e.innerHTML = `<p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
-            //e.innerHTML = `<div class="Ct"><p class="P-P" ${Typ==='PGMT'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
-        }
-
         const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                     <tbody>${
                                         arr.slice(1).map(LL=>`<tr class="tr-Mdds">${
@@ -341,8 +322,8 @@
             e.innerHTML = `<div class="Ct"><p name="${Title}">${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div></td>`
         }
         
-        $$(Rx2(['PDDS','Bndj'])).forEach(e=>{Process (e,D_Rastr(e))})
-      //  $$(Rx2(['SERV','Bndj'])).forEach(e=>{Process2(e,D_Rastr(e))})
+    //    $$(Rx2(['PDDS','Bndj'])).forEach(e=>{Process (e,D_Rastr(e))})
+        $$(Rx2(['SERV','Bndj'])).forEach(e=>{Process2(e,D_Rastr(e))})
     }
 
     function Format(){
@@ -377,31 +358,21 @@
             Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
             Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
-            Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`,
+            Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
 
             Grds:(e,R)=>`${e}`,
-            Bndj:(e,R)=>`${e}`,
         }
 
-        const Tm_Td=(v,e,x,Typ,dado)=>{
-            console.log(dado)
-            const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-            console.log(R)
-            return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${  dado==='vemBndj'  ? Tm_Tm[dR[4]](v,R) : dR[4] === 'Bndj'? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
-        }
-
-        const Tm_Bndj =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+        function Tm_Bndj(arr,Typ){return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                         <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
 
-                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')  // `<td class="${Tm_Rastr(LL,x,Typ,'Id')}">${v}</td>`
+                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')  
 
                                         }).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
-
+        }
         function _Tm_Bndj(arry,r){ // esse R é o D_Raster
-                // se for Bndj(c) aqui é pra array imbutidos dentro do json
-                // se for Link(c) aqui no caso é id do cliente  
             const R = D_Rastr2(r)
             const Typ   = R[3]
             const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : arry
@@ -417,12 +388,25 @@
             return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
         }
 
-        return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'vemPDDS')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
+        function Tm_Td(v,e,x,Typ,dado){      const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
+            return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
+        }
+        return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
+    }
+
+    function Format_Bndj_Clnt(){
+        $$(`.FikaFika`).forEach(e=>{
+            const R = D_Rastr(_td(e))
+            if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`}
+            if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`}
+        })
+        $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{
+            Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
+                        <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
+                        <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
     
 </script>
-
-
 
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
@@ -590,18 +574,6 @@
         // Conferir se tem Tecla Cntrl
         Tog(Eu,'SelectSoma')
         Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
-    }
-
-    function Format_Bndj_Clnt(){
-        $$(`.FikaFika`).forEach(e=>{
-            const R = D_Rastr(_td(e))
-            if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`}
-            if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`}
-        })
-        $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{
-            Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
-                        <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
-                        <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
 
     const MonitoreBandeja=()=>{
@@ -1692,8 +1664,6 @@
 
 <button onclick="GetConfig()"> Salve </button>
 <button onclick="console.log('trigger Livre')">trigger</button>
-
-
 
 <script> // Storage Salva Configurações
 
