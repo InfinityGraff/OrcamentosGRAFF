@@ -198,7 +198,7 @@
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
          PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
-         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['E','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
+         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
          PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
          CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
          GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
@@ -301,41 +301,15 @@
     // Strings Extras
     const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
 
-    const _Tm_Bndj=()=>{
-        const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                    <tbody>${
-                                        arr.slice(1).map(LL=>`<tr class="tr-Mdds">${
-                                            LL.map((v,x)=>`<td class="">${v}</td>`).join('')
-                                        }</tr>`).join('')
-                                    }</tbody>
-                                 </table>`
-        function Process2(e,R){
-            e.onclick = ()=>{ShowBndj(e,SVG.Ponta)}
-            const Typ   = R[2]
-            const Find  = J['SERV'].filter(E=>E.ID==R[1])[0].Calc
-            const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)]
-            const Title = `${Find.Qnt} - ${Find.Lag}x${Find.Alt}${Find.Val==''?'':` R$ ${Cm(Find.Val)}`}`
-            const Lista = MORE2(F2,'SERV')
-            const Zindx = `style="z-index:${'30'}"`
-            
-//            console.log(Typ,Title)
-            e.innerHTML = `<div class="Ct"><p name="${Title}">${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div></td>`
-        }
-        
-    //    $$(Rx2(['PDDS','Bndj'])).forEach(e=>{Process (e,D_Rastr(e))})
-        $$(Rx2(['SERV','Bndj'])).forEach(e=>{Process2(e,D_Rastr(e))})
-    }
-
     function Format(){
         $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
         $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
+        $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
 
         $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS);e.innerHTML = `<p class="P-P Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`}) // isso aqui é oq faz o value somar oq tem na lista de serv dentro de pedidos todos os valores
 
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
-
-        $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
     }
 </script>
 
@@ -373,16 +347,28 @@
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
         }
         function _Tm_Bndj(arry,r){ // esse R é o D_Raster
+
+            const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                                    <tbody>${
+                                        arr.slice(1).map(LL=>`<tr class="tr-Mdds">${
+                                            LL.map((v,x)=>`<td class="">${v}</td>`).join('')
+                                        }</tr>`).join('')
+                                    }</tbody>
+                                 </table>`
+
             const R = D_Rastr2(r)
             const Typ   = R[3]
-            const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : arry
+            const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : Typ==='Calc' ? arry : arry
+
+            const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
 
             const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                           Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                          Typ==='Calc' ? `${Find.Qnt} - ${Find.Lag}x${Find.Alt}${Find.Val==''?'':` R$ ${Cm(Find.Val)}`}` :
                                          Find.map(e=>e[R[3]]).join(' | ')
             
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
-            const Lista = Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
+            const Lista = Typ==='Calc' ?  MORE2(F2,'SERV')  :  Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
             const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
 
             return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
@@ -397,8 +383,8 @@
     function Format_Bndj_Clnt(){
         $$(`.FikaFika`).forEach(e=>{
             const R = D_Rastr(_td(e))
-            if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`}
-            if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`}
+            if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`} // no caso o Lance de quando estiver vazio, (provavelmente se tiver vazio nem roda a Bandeja, pula direto pra isso!)
+            if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`} // aqui a mesma coisa do de cima
         })
         $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{
             Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
@@ -1554,7 +1540,7 @@
         // if(PrimeiraVez){GetConfig();PrimeiraVez=false} // tem um erro no GetConfig() no index 0
         Onloads('body');
 
-        // Format_Bndj_Clnt()
+        Format_Bndj_Clnt()
 
         NavPag(Atual['Pag'])
         // GetConfigOrdem()
