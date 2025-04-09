@@ -197,8 +197,8 @@
      const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
-         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],Forn:['S','','']     ,Ok:['C','',''],Imgs:['M','','']  ,'-'     :['F','w0','']},  // Removi 'RG'
-         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['E','','']     ,Forn:['S','','']     ,OK:  ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['V','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
+         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],Forn    :['S','','']     ,Ok:['C','',''],Imgs:['M','','']  ,'-'     :['F','w0','']},  // Removi 'RG'
+         SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
          PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['F','','' ],Valr:['E','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
          CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
          GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
@@ -381,24 +381,29 @@
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
 
             Grds:(e,R)=>`${e}`,
+            Bndj:(e,R)=>`${e}`,
         }
 
-        function _Tm_Bndj(arry,r){ // esse R é o D_Raster
+        const Tm_Td=(v,e,x,Typ,dado)=>{
+            console.log(dado)
+            const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
+            console.log(R)
+            return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${  dado==='vemBndj'  ? Tm_Tm[dR[4]](v,R) : dR[4] === 'Bndj'? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
+        }
 
-            const MORE =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                      <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
+        const Tm_Bndj =(arr,Typ)=>`<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                                        <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
 
-                                        return `<td class="${Tm_Rastr(LL,x,Typ,0)}">${v}</td>`
+                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')  // `<td class="${Tm_Rastr(LL,x,Typ,'Id')}">${v}</td>`
 
-                                      }).join('')}</tr>`).join('')}</tbody>
+                                        }).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
 
+        function _Tm_Bndj(arry,r){ // esse R é o D_Raster
                 // se for Bndj(c) aqui é pra array imbutidos dentro do json
-                // se for Link(c) aqui no caso é id do cliente
-                
+                // se for Link(c) aqui no caso é id do cliente  
             const R = D_Rastr2(r)
             const Typ   = R[3]
-
             const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : arry
 
             const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
@@ -406,24 +411,13 @@
                                          Find.map(e=>e[R[3]]).join(' | ')
             
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
-            const Lista = Find.map((e,x)=>x===0 ? MORE(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
+            const Lista = Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
             const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
 
             return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
         }
 
-        return arry.map(e=>{
-            return `<tr class="tr-${e.Id}">
-                ${ObjOrdn(e,OjKy(typ)).map((c,x)=>{
-                    const R = Tm_Rastr(e,x,typ,'Id') ; const dR = D_Rastr2(R)
-                    return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${
-                        
-                    dR[4] === 'Bndj'? _Tm_Bndj(c,R) : Tm_Tm[dR[4]](c,R)
-
-                    }</td>`}).join('')}
-                ${Tm_Lixo(typ,e)}
-            </tr>`
-        }).join('')
+        return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'vemPDDS')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
     }
     
 </script>
@@ -1753,6 +1747,7 @@
 
 <script> // Templates pra iserir mais pra frente
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
+
 </script>
 
 </html>
