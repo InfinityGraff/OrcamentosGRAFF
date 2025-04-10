@@ -54,7 +54,7 @@
                 Espelhado     :{item:'7',Tipo:'',Valr:80 ,Cust:20},
                 Perfurado     :{item:'5',Tipo:'',Valr:100,Cust:35},
             }},
-        Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte' ,Variantes:{
+        Etiqueta :{Calc:'M2', Stts:'Disp', Prvw:'CanvMdd', Desc:'Impressão + Recorte' ,Forn:['Grafit'],Variantes:{
                 'Refilada'        :{item:'6',Tipo:'',Valr:70,Cust:20},
                 'Redonda'         :{item:'7',Tipo:'',Valr:75,Cust:30},
                 'Personalizada'    :{item:'7',Tipo:'',Valr:80,Cust:30},
@@ -193,6 +193,28 @@
          Serv:['','Adesivo','Banner','Cartão','Talão','Sub.Total','Varios','Panfleto','Lona','Quadro','Arte','Serigrafia','Recorte','Faixa','Envelopamento','Figurinha','Router','Topo de Bolo','Cardápio','Vendas'],
          Arte:['','Allan','Baby','Fexta','Ja Tinha','n tem',''],
          Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
+
+    const Fornecedores = { // aqui pra filtar o serv, pra pelomenos achar fornecedor sozinho
+        "Adesivo"       :["Grafit"],
+        "Banner"        :["Grafit"],
+        "Cartao"        :[""],
+        "Talao"         :[""],
+        "Sub.Total"     :[""],
+        "Varios"        :[""],
+        "Panfleto"      :[""],
+        "Lona"          :["Grafit"],
+        "Quadro"        :[""],
+        "Arte"          :[""],
+        "Serigrafia"    :[""],
+        "Recorte"       :[""],
+        "Faixa"         :[""],
+        "Envelopamento" :[""],
+        "Figurinha"     :[""],
+        "Router"        :[""],
+        "Topo de Bolo"  :[""],
+        "Cardapio"      :[""],
+        "Vendas"        :[""]
+    }
  
      const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
      const CrypF = {T:'Total',C:'Config'}
@@ -207,6 +229,7 @@
          MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
          CALC:{}
     }
+
  
      const CC = {
          // PDDS:{},
@@ -337,6 +360,9 @@
 
             Grds:(e,R)=>`${e}`,
         }
+
+        // pra eu ver a soma de qualquer coisa vai ser pelo rodape
+        // então terei uma abasinha pra selecionar as linhas, e ai a soma do q foi selecionado aparecerá no rodapé, incluindo a soma de todas as colunas
 
         // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
         // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
@@ -1539,11 +1565,8 @@
     }
     let PrimeiraVez = true
     function PosGet(){
-        // if(PrimeiraVez){GetConfig();PrimeiraVez=false} // tem um erro no GetConfig() no index 0
-        Onloads('body');
-
+        Onloads('body')
         Format_Bndj_Clnt()
-
         NavPag(Atual['Pag'])
         // GetConfigOrdem()
         // Condicional()
@@ -1678,29 +1701,16 @@
 <script> // comentários
     
     // Permitir Remover o Fx do <Header>
-    // tenho q fazer uma Fila de Fetcher, pra não dar conflito caso faça varios d euma só vez
-    // Método de Pesquisa
     // Mostrar o Valor por M2 ao Lado do Option
     // se não tiver valor Atualizado fica Vermelho, ou Inativo
-    // Permitir Drag nas as Linhas
+    // Permitir Drag nas Linhas
     // imitar Bureal no Futuro (deixando todas bandeijas aberta)
-    // Exibir a Lista de Produtos e Serviços como se Fosse um Menu de Pesquisa igual da primeira página com Fotinha e tal
-    // em quanto seleciona as opções o Menu de pesquisa já fica no Papo
-    
-
     // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
     // selecionar option automaticamente caso tenha apeans 1
-    // quando Limpar, também limpa os Selects
     // Proibir Drag em Imagens
-
     // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
     // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-    
     // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
-
-
-    // pra eu ver a soma de qualquer coisa vai ser pelo rodape
-        // então terei uma abasinha pra selecionar as linhas, e ai a soma do q foi selecionado aparecerá no rodapé, incluindo a soma de todas as colunas
 </script>
 
 <script> // Templates pra iserir mais pra frente
