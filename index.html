@@ -46,7 +46,7 @@
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = {
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}] , Extra:[] ,Variantes:{
+                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}] , Extra:[] , HotKey:["colar", "adesivar", "autocolante"]        , Variantes:{
                             'Brilho'          :{item:'1',Tipo:'',Valr:60 ,Cust:20},
                             'Fosco'           :{item:'2',Tipo:'',Valr:60 ,Cust:20},
                             'Blackout'        :{item:'3',Tipo:'',Valr:70 ,Cust:25},
@@ -56,34 +56,36 @@
                             'Perfurado'       :{item:'5',Tipo:'',Valr:100,Cust:35},
             }},
         'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Recorte'           ] , Extra:[] , Variantes:{
+                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Recorte'                ] , Extra:[] , HotKey:["rótulo", "identificação", "label", "tag"] , Variantes:{
                             'Refilada'        :{item:'6',Tipo:'',Valr:70 ,Cust:20},
                             'Redonda'         :{item:'7',Tipo:'',Valr:75 ,Cust:30},
                             'Personalizada'   :{item:'7',Tipo:'',Valr:80 ,Cust:30},
             }},
         'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'                     ] , Extra:[] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00'] , Variantes:{
+                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'                          ] , Extra:[] , HotKey:["painel"] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00'] , Variantes:{
                             'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22}, 
                             'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22}, 
                             'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22},
                             'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20},
         }},
         'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'] , Extra:['PVC','Fita'] , Mdds:['0,30 x 0,20'] , Variantes:{
+                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"] , Mdds:['0,30 x 0,20'] , Variantes:{
                             'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        '}, 
                             'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                             'PVC 5mm'         :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
                             'PS 1mm '         :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
                             'PS 2mm '         :{item:'18',Tipo:'',Valr:130,Cust:'        '},
             }},
-        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit'] , Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
-                '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
-                '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-                '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   ,
+                        Forn:['Grafit'] , Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
+                            '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , Forn:['Grafit'] , Variantes:{
-                'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
-                'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
+        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    ,
+                        Forn:['Grafit'] , Variantes:{
+                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
+                            'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    ,Variantes:{
@@ -166,10 +168,10 @@
     const Vari=e=>ObjKey(Prod[e].Variantes)
 
     const PalavrasRelacionadas = {
-        "Adesivo": ["colar", "adesivar", "autocolante"],
-        "Etiqueta": ["rótulo", "identificação", "label", "tag"],
-        "Lona": ["painel", "banner", "banner de lona", "material resistente"],
-        "Quadro": ["moldura", "pôster", "imagem", "arte", "foto", "cartaz"],
+    //    "Adesivo": ["colar", "adesivar", "autocolante"],
+    //    "Etiqueta": ["rótulo", "identificação", "label", "tag"],
+    //    "Lona": ["painel"],
+    //    "Quadro": ["moldura", "pôster", "cartaz"],
         "ímã": ["imã", "imã de geladeira", "magneto", "imagem magnética", "adesivo magnético", 'manta magnética'],
         "Recorte": ["corte", "design recortado"],
         "Envelopamento": ["adesivo de carro", " automotiva"],
@@ -197,7 +199,9 @@
          Serv:['','Adesivo','Banner','Cartão','Talão','Sub.Total','Varios','Panfleto','Lona','Quadro','Arte','Serigrafia','Recorte','Faixa','Envelopamento','Figurinha','Router','Topo de Bolo','Cardápio','Vendas'],
          Arte:['','Allan','Baby','Fexta','Ja Tinha','n tem',''],
          Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
- 
+        
+        // ['','Adesivo','Banner','Cartão','Talão','Sub.Total','Varios','Panfleto','Lona','Quadro','Arte','Serigrafia','Recorte','Faixa','Envelopamento','Figurinha','Router','Topo de Bolo','Cardápio','Vendas'],
+
      const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'} // Aqui pode ter Data, Valr (vai facilitar pra encontrar) já q n to usando mt input
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
