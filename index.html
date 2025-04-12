@@ -45,10 +45,10 @@
 <script> // Base de Produtos
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = {
-        'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile','Aplicação'] , Extra:{'Aplicação':10},Variantes:{
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     ,
                         Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}] , Extra:[] , HotKey:["colar", "adesivar", "autocolante"]        , Variantes:{
                             'Brilho'          :{item:'1',Tipo:'',Valr:60 ,Cust:20},
+                            'Fosco'           :{item:'2',Tipo:'',Valr:60 ,Cust:20},
                             'Blackout'        :{item:'3',Tipo:'',Valr:70 ,Cust:25},
                             'Transparente'    :{item:'4',Tipo:'',Valr:70 ,Cust:25},
                             'Laminado'        :{item:'6',Tipo:'',Valr:70 ,Cust:20},
