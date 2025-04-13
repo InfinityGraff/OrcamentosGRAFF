@@ -82,8 +82,8 @@
                             '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    ,
-                        Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'     ] , Variantes:{
+        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , // dar Limite pra Tamanho (Limit fica em cada um)
+                        Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:[] , HotKey:[], Mdds:['0,05 x 0,06','0,60 x 0,30'] , Variantes:{
                             'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
         }},
@@ -135,28 +135,28 @@
                     '1Pag':{},
                     '2pag':{},
         }},
-        Camisa   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        'Camisa'   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Sublimação Total'   ,Variantes:{
             'M.Curta'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
             Regata     :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
             Polo       :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,},
             'M.Longa'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
         }},
-        'Calção'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+        'Calção'   :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
                 'Bermuda' :{},
                 'Short'   :{},
         }},  
-        WindFlag :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+        'WindFlag' :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
             Faca         :{Tipo:['P','M','G'],Valr:0,Cust:0},
             Vela         :{Tipo:['P','M','G'],Valr:0,Cust:0},
             Pena         :{Tipo:['P','M','G'],Valr:0,Cust:0},
             Gota         :{Tipo:['P','M','G'],Valr:0,Cust:0},
             }},
-        BigBall  :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
+        'BigBall'  :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Tecido: Oxford'     ,Extra:{'Base':80},Variantes:{
                 P         :{Tipo:[''],Valr:0,Cust:0},
                 M         :{Tipo:[''],Valr:0,Cust:0},
                 G         :{Tipo:[''],Valr:0,Cust:0},
-            }},
-    
+            }},   
         'Bandeira'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
                 'Oxford' :{},
                 'Cettin' :{},
