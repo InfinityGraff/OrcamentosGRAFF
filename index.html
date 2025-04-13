@@ -43,6 +43,12 @@
 </style>
 
 <script> // Base de Produtos
+    const Edi   = 'contenteditable="true"'
+    const Link  = 'http://localhost:3000'
+    const Atual = {Pag:'#Pag_PDDS'}
+    const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
+    const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
+    let scrollPosition = [0,0]
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -175,50 +181,28 @@
         // "Envelopamento": ["adesivo de carro", " automotiva"],
         // "Placa": ["placa de sinalização", "placa de identificação", "placa publicitária", "painel"],
         // Corte a Lazer e Acrilico e PVC Router
+        // 'Varios',
+        // 'Arte',
+        // 'Serigrafia',
+        // 'Envelopamento',
+        // 'Figurinha',
+        // 'Topo de Bolo',
+        // 'Vendas'],
         }
-    const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
-    const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
-    const AllProd = [...AllServM2,...AllServOFS]
+
+    const HotKy = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]]))
+    // const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')                             // Obsoleto pq n to usando
+    // const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')      // Obsoleto pq n to usando
+    const AllProd = ObjKey(Prod)
     const Vari=e=>ObjKey(Prod[e].Variantes)
-    const PalavrasRelacionadas = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]]))
 
-</script>
-
-<script> // Base de Peiddos
-    const Edi   = 'contenteditable="true"'
-    const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_PDDS'}
-    const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
-    const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
-    let scrollPosition = [0,0]
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
          Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
-         Serv:['','Adesivo','Banner','Cartão','Talão','Sub.Total','Varios','Panfleto','Lona','Quadro','Arte','Serigrafia','Recorte','Faixa','Envelopamento','Figurinha','Router','Topo de Bolo','Cardápio','Vendas'],
-         Arte:['','Allan','Baby','Fexta','Ja Tinha','n tem',''],
+         Serv:['','Adesivo','Banner','...'],
+         Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
          Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
         
-        // ['',
-        // 'Adesivo',
-        // 'Banner',
-        // 'Cartão',
-        // 'Talão',
-        // 'Sub.Total',
-        // 'Varios',
-        // 'Panfleto',
-        // 'Lona',
-        // 'Quadro',
-        // 'Arte',
-        // 'Serigrafia',
-        // 'Recorte',
-        // 'Faixa',
-        // 'Envelopamento',
-        // 'Figurinha',
-        // 'Router',
-        // 'Topo de Bolo',
-        // 'Cardápio',
-        // 'Vendas'],
-
      const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'}
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
@@ -233,7 +217,6 @@
          CALC:{}
     }
 
- 
      const CC = {
          // PDDS:{},
          SERV:[
@@ -241,12 +224,7 @@
              {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
              {Forn:["['Varyus'].includes()",'Varys','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
          ],
-         // CLNT:{},
-         // PGMT:{},
-         // GRAD:{},
-         // OOSS:{},
-         // UBER:{},
-         // MPAG:{}
+         // CLNT:{}, // PGMT:{},  // GRAD:{},  // OOSS:{},  // UBER:{},  // MPAG:{}
      }
 </script>
 
@@ -299,20 +277,20 @@
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 
     // Mask levar pra o Prescript
-    function MaskR$(el) {
-      let v = el.innerText.replace(/\D/g, '').padStart(3, '0');
-      let r = v.slice(0, -2), c = v.slice(-2);
-      el.innerText = `R$ ${parseInt(r).toLocaleString('pt-BR')},${c}`;
-      setCursorToEnd(el);
+    function MaskR$(el){
+      let v = el.innerText.replace(/\D/g,'').padStart(3,'0')
+      let r = v.slice(0,-2), c = v.slice(-2)
+      el.innerText = `R$ ${parseInt(r).toLocaleString('pt-BR')},${c}`
+      setCursorToEnd(el)
     }
     // Mask levar pra o Prescript tbm
-    function setCursorToEnd(el) {
-      const range = document.createRange();
-      const sel = window.getSelection();
-      range.selectNodeContents(el);
-      range.collapse(false);
-      sel.removeAllRanges();
-      sel.addRange(range);
+    function setCursorToEnd(el){
+      const range = document.createRange()
+      const sel = window.getSelection()
+      range.selectNodeContents(el)
+      range.collapse(false)
+      sel.removeAllRanges()
+      sel.addRange(range)
     }
 
 </script>
@@ -354,7 +332,7 @@
             Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`,
             Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
             Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
-            Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
+            Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
             Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
             Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
@@ -364,15 +342,14 @@
             Grds:(e,R)=>`${e}`,
         }
 
-        // pra eu ver a soma de qualquer coisa vai ser pelo rodape
-        // então terei uma abasinha pra selecionar as linhas, e ai a soma do q foi selecionado aparecerá no rodapé, incluindo a soma de todas as colunas
-
+        // pra ver a soma de qualquer coisa vai ser pelo Rodape (Seleciona e Consulta) | uma soma pra cada colunas
         // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
         // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
+
         function Tm_Bndj(arr,Typ){return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                         <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
 
-                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')  
+                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')
 
                                         }).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
@@ -395,7 +372,7 @@
 
             const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                           Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                          Typ==='Calc' ? `${Find.Qnt} - ${Find.Lag}x${Find.Alt}${Find.Val==''?'':` R$ ${Cm(Find.Val)}`}` :
+                          Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                          Find.map(e=>e[R[3]]).join(' | ')
             
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
@@ -405,7 +382,7 @@
             return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
         }
 
-        function Tm_Td(v,e,x,Typ,dado){      const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
+        function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
             return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
         }
         return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
@@ -979,7 +956,7 @@
                                             <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
                                             <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
-                                            <div class="rgx none">${(PalavrasRelacionadas[e] || []).map(e => e).join(',')}</div>
+                                            <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
                                             <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
                                             <img class="Abslt tec2 HOV" onclick="Carrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
                                 </div>`
@@ -1098,7 +1075,7 @@
                         <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                            <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllServM2,...AllServOFS]))"></select></td>
+                            <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllProd]))"></select></td>
                             <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
                             <td width="10%">
                                 <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select>

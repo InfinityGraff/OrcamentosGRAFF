@@ -246,7 +246,7 @@ const NovoJson = [
         "Serv": [
           {
             "Id": 1,
-            "Serv": "Banner",
+            "Serv": "Lona",
             "Desc": "25x20",
             "Calc": [
               "30|40|10",
