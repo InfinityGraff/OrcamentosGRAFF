@@ -61,29 +61,29 @@
                             'Redonda'         :{item:'7',Tipo:'',Valr:75 ,Cust:30},
                             'Personalizada'   :{item:'7',Tipo:'',Valr:80 ,Cust:30},
             }},
-        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'                          ] , Extra:[] , HotKey:["painel"] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00'] , Variantes:{
-                            'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22}, 
+        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'] , Extra:[] , HotKey:["painel"] ,
+                        Variantes:{
+                            'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22 , Limit:['largura maxia da madeira'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
                             'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22}, 
                             'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22},
                             'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20},
-        }},
-        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"] , Mdds:['0,30 x 0,20'] , Variantes:{
-                            'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        '}, 
-                            'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
-                            'PVC 5mm'         :{item:'16',Tipo:'',Valr:' ',Cust:'        '},
-                            'PS 1mm '         :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                            'PS 2mm '         :{item:'18',Tipo:'',Valr:130,Cust:'        '},
+            }},
+        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie',{'Laminação':10}] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"],
+                        Variantes:{    
+                            'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
+                            'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
+                            'PVC 5mm'         :{item:'16',Tipo:'',Valr:' ',Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
+                            'PS 1mm '         :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                            'PS 2mm '         :{item:'18',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},
             }},
         'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:['Manta'] , Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
+                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:['Manta'] , HotKey:["magneto", 'manta magnética'], Mdds:['0,05 x 0,06','0,60 x 0,30'] , Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
                             '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
                             '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
         'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:[] , HotKey:[], Mdds:['0,05 x 0,06','0,60 x 0,30'] , Variantes:{
+                        Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:[] , HotKey:[] ,Mdds:[]  , Variantes:{
                             'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
         }},
@@ -172,7 +172,7 @@
     //    "Etiqueta": ["rótulo", "identificação", "label", "tag"],
     //    "Lona": ["painel"],
     //    "Quadro": ["moldura", "pôster", "cartaz"],
-        "ímã": ["imã", "imã de geladeira", "magneto", "imagem magnética", "adesivo magnético", 'manta magnética'],
+    //    "ímã": ["magneto", 'manta magnética'],
         "Recorte": ["corte", "design recortado"],
         "Envelopamento": ["adesivo de carro", " automotiva"],
         "Placa": ["placa de sinalização", "placa de identificação", "placa publicitária", "painel"],
