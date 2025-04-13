@@ -44,7 +44,7 @@
 
 <script> // Base de Produtos
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
-    const Prod = {
+    const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
                         Variantes:{
                             'Brilho'          :{item:'1',Tipo:'',Valr:60 ,Cust:20},
@@ -64,9 +64,9 @@
         'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'                                      ] , Extra:[            ] , HotKey:["painel"                                 ] ,
                         Variantes:{
                             'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
-                            'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:[]}, 
-                            'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:[] , Mdds:[]},
-                            'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20 , Limit:[] , Mdds:[]},
+                            'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['2,00 x 0,50']}, 
+                            'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:['0,00 x 3,20'] , Mdds:['1,00 x 1,00']},
+                            'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20 , Limit:['0,00 x 3,20'] , Mdds:[]},
             }},
         'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
                         Variantes:{    
@@ -76,19 +76,20 @@
                             'PS 1mm '         :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
                             'PS 2mm '         :{item:'18',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},
             }},
-        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:['Manta'] , HotKey:["magneto", 'manta magnética'], Mdds:['0,05 x 0,06','0,60 x 0,30'] , Variantes:{ // Adicional de Calendário (Acima de 500 UND) // Adicionar dentro do option um botão pra medida padrão // Adicionar Limite pra o ímã
-                            '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:['Manta'     ] , HotKey:["magneto", 'manta magnética'             ] ,
+                        Variantes:{ // Adicional de Calendário (Acima de 500 UND)
+                            '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , // dar Limite pra Tamanho (Limit fica em cada um)
-                        Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'     ] , Extra:[] , HotKey:[] ,Mdds:[]  , Variantes:{
-                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70 },
-                            'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100},
+        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
+                        Variantes:{
+                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    ,Variantes:{
+        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    ,
+                        Variantes:{
                 'Brilho'      :{Table:[
                     ['Frente' ,'250g',[['500', 90,31],['1.000',135,45]]],
                     ['F.Verso','250g',[['500',115,42],['1.000',150,54]]], 
@@ -98,7 +99,8 @@
                     ['Frente' ,'300g',[['500',155,62],['1.000',190,78]]],
                     ['F.Verso','300g',[['500',190,80],['1.000',230,99]]], ]},
             }},
-        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       ,Variantes:{
+        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       ,
+                        Variantes:{
                 '10 x 15':{Table:[
                     ['Frente' ,'90g',[['1.000',130, 67],['2.500',180, 85],['5.000' , 270,170],['10.000',650,340]]],
                     ['F.Verso','90g',[['2.500',280,135],['5.000',320,220],['10.000', 720,392]]], ]},
@@ -106,7 +108,8 @@
                     ['Frente' ,'90g',[['1.000',270,127],['2.500',340,170],['5.000' , 650,340],['10.000',900,600]]],
                     ['F.Verso','90g',[['2.500',500,270],['5.000',700,440],['10.000',1200,800]]], ]},
             }},
-        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       ,Variantes:{
+        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       ,
+                        Variantes:{
                 '10 x 15':{Table:[
                     ['Preto e Branco','1 Via',[['4',60,30],['8', 90,45],['12',130,65],['20',170, 85]]],
                     ['Colorido'      ,'1 Via',[['4',80,40],['8',110,55],['12',150,75],['20',200,100]]],
@@ -126,7 +129,8 @@
                     ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
                 ]},
         }},
-        'Tag'      :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Desc:'Gramatura: 90g'       ,Variantes:{
+        'Tag'      :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Desc:'Gramatura: 90g'       ,
+                        Variantes:{
                     'Reto' :{},
                     'Curva':{},
             }},
@@ -157,10 +161,12 @@
                 M         :{Tipo:[''],Valr:0,Cust:0},
                 G         :{Tipo:[''],Valr:0,Cust:0},
             }},   
-        'Bandeira'      :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
+        'Bandeira' :{Calc:'QNT',Stts:'Offf', Prvw:''       , Desc:'Gramatura: 90g'     ,Variantes:{
                 'Oxford' :{},
                 'Cettin' :{},
         }},    
+        
+        // "Envelopamento": ["adesivo de carro", " automotiva"],
         }
     const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')
     const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')
@@ -173,8 +179,8 @@
     //    "Lona": ["painel"],
     //    "Quadro": ["moldura", "pôster", "cartaz"],
     //    "ímã": ["magneto", 'manta magnética'],
-        "Recorte": ["corte", "design recortado"],
-        "Envelopamento": ["adesivo de carro", " automotiva"],
+    //    "Recorte": ["corte", "design recortado"],
+        
         "Placa": ["placa de sinalização", "placa de identificação", "placa publicitária", "painel"],
 
         "Cartão": ["cartão de visita", "business card", "papel cartão", "cartão de agradecimento"],
