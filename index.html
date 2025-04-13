@@ -45,8 +45,8 @@
 <script> // Base de Produtos
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = {
-        'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}] , Extra:[] , HotKey:["colar", "adesivar", "autocolante"]        , Variantes:{
+        'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
+                        Variantes:{
                             'Brilho'          :{item:'1',Tipo:'',Valr:60 ,Cust:20},
                             'Fosco'           :{item:'2',Tipo:'',Valr:60 ,Cust:20},
                             'Blackout'        :{item:'3',Tipo:'',Valr:70 ,Cust:25},
@@ -55,20 +55,20 @@
                             'Espelhado'       :{item:'7',Tipo:'',Valr:80 ,Cust:20},
                             'Perfurado'       :{item:'5',Tipo:'',Valr:100,Cust:35},
             }},
-        'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  ,
-                        Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Recorte'                ] , Extra:[] , HotKey:["rótulo", "identificação", "label", "tag"] , Variantes:{
+        'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Recorte'                            ] , Extra:[            ] , HotKey:["rótulo", "identificação", "label", "tag"] ,
+                        Variantes:{
                             'Refilada'        :{item:'6',Tipo:'',Valr:70 ,Cust:20},
                             'Redonda'         :{item:'7',Tipo:'',Valr:75 ,Cust:30},
                             'Personalizada'   :{item:'7',Tipo:'',Valr:80 ,Cust:30},
             }},
-        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'] , Extra:[] , HotKey:["painel"] ,
+        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte'                                      ] , Extra:[            ] , HotKey:["painel"                                 ] ,
                         Variantes:{
-                            'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22 , Limit:['largura maxia da madeira'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
-                            'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22}, 
-                            'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22},
-                            'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20},
+                            'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
+                            'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:[]}, 
+                            'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:[] , Mdds:[]},
+                            'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20 , Limit:[] , Mdds:[]},
             }},
-        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie',{'Laminação':10}] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"],
+        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
                         Variantes:{    
                             'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
                             'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
