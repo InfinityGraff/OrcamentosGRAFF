@@ -356,17 +356,18 @@
         }
         function _Tm_Bndj(arry,r){ // esse R é o D_Raster
 
-            const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+            const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${['Larg','Alt','Qnt','Valor'].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                     <tbody>${
-                                        arr.slice(1).map(LL=>`<tr class="tr-Mdds">${
-                                            LL.map((v,x)=>`<td class="">${v}</td>`).join('')
+                                        arr.map(LL=>`<tr class="tr-Mdds">${
+                                            LL.map((v,x)=>`<td class="">${Tm_Tm['Edit'](v)}</td>`).join('') // se for o ultimo é R$ no caso valr
                                         }</tr>`).join('')
                                     }</tbody>
                                  </table>`
 
             const R = D_Rastr2(r)
             const Typ   = R[3]
-            const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : Typ==='Calc' ? arry : arry
+            if(Typ==='Calc'){ console.log('box',arry.map(e=>e.split('|'))) }
+            const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : Typ==='Calc' ? arry.map(e=>e.split('|')) : arry
 
             const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
 
@@ -376,7 +377,7 @@
                                          Find.map(e=>e[R[3]]).join(' | ')
             
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
-            const Lista = Typ==='Calc' ?  MORE2(F2,'SERV')  :  Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
+            const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
             const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
 
             return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`

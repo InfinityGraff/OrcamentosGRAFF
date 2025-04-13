@@ -185,8 +185,8 @@ const NovoJson = [
             "Serv": "Adesivo",
             "Desc": "Bandeira",
             "Calc": [
-              "30|40|10",
-              "50|60|5"
+              "30|40|10|0",
+              "50|60|5|0"
             ],
             "Arte": true,
             "Valr": 150.00,
@@ -202,7 +202,7 @@ const NovoJson = [
             "Serv": "Recorte",
             "Desc": "244",
             "Calc": [
-              "20|30|15"
+              "20|30|15|0"
             ],
             "Arte": false,
             "Valr": 80.00,
@@ -249,8 +249,8 @@ const NovoJson = [
             "Serv": "Lona",
             "Desc": "25x20",
             "Calc": [
-              "30|40|10",
-              "50|60|5"
+              "30|40|10|0",
+              "50|60|5 |0"
             ],
             "Arte": true,
             "Valr": 150.00,
@@ -266,7 +266,7 @@ const NovoJson = [
             "Serv": "WindFlag",
             "Desc": "Vela",
             "Calc": [
-              "20|30|15"
+              "20|30|15|0"
             ],
             "Arte": false,
             "Valr": 80.00,
