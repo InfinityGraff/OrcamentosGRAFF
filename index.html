@@ -35,7 +35,6 @@
     .Formt_Azul{background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
     .Formt_Redd{background:rgb(224, 104, 104);color:#910000;font-weight:bold}
 
-
     .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
     .Dark option{color:white;background:#3d3d3d}
     .Lite optgroup{color:#00000038;background:white;  font-size: 10px; text-align: left;padding-left: 80px}
@@ -195,6 +194,7 @@
     // const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')      // Obsoleto pq n to usando
     const AllProd = ObjKey(Prod)
     const Vari=e=>ObjKey(Prod[e].Variantes)
+    
 
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
@@ -203,10 +203,10 @@
          Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
          Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
         
-     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data'}
+     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma'}
      const CrypF = {T:'Total',C:'Config'}
      const BS = {
-         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['V','','Total'],Pgmt:['B','','Total'],Cust:['G','',''],Finc:    ['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
+         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['O','','Total'],Pgmt:['B','','Total'],Cust:['E','',''], Finc:    ['E','',''],Stts:['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
          SERV:{ID:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
          PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
          CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
@@ -226,6 +226,17 @@
          ],
          // CLNT:{}, // PGMT:{},  // GRAD:{},  // OOSS:{},  // UBER:{},  // MPAG:{}
      }
+
+     let NovoJsonss = []
+
+        fetch('./PDDS.json')
+        .then(res => res.json())
+        .then(data => {
+            NovoJsonss = data
+            console.log('Dados carregados:', NovoJsonss)
+        })
+        .catch(err => console.error('Erro ao carregar o JSON:', err))
+
 </script>
 
 <script> // Bibliotecas
@@ -310,7 +321,7 @@
         $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
         $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
 
-        $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS);e.innerHTML = `<p class="P-P Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`}) // isso aqui é oq faz o value somar oq tem na lista de serv dentro de pedidos todos os valores
+        $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS)  ;  e.innerHTML = `<p class="P-P Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`}) // isso aqui é oq faz o value somar oq tem na lista de serv dentro de pedidos todos os valores
 
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
@@ -328,17 +339,19 @@
     const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
     
     const Tm_TablePDDS=(typ,arry)=>{
+        const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
+
         const Tm_Tm = {
             Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`,
             Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
+            Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${0}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
             Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
             Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
-            Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e==='true'?'checked':''}>`,
+            Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
             Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
             Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
-
             Grds:(e,R)=>`${e}`,
         }
 
@@ -366,7 +379,6 @@
 
             const R = D_Rastr2(r)
             const Typ   = R[3]
-            if(Typ==='Calc'){ console.log('box',arry.map(e=>e.split('|'))) }
             const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : Typ==='Calc' ? arry.map(e=>e.split('|')) : arry
 
             const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
@@ -379,8 +391,9 @@
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
             const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
             const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
+            const iconFone = Typ==='Clnt'? Find[0].Cntt==='' ? '' : `<a class="Rltv"><img class="icoFone Abslt HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg"></a>`:''
 
-            return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
+            return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}<div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
         }
 
         function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
@@ -771,6 +784,8 @@
             #Rodape{height: 200px;}
 
             .ColorFix{background: #a7a7a78e !important;}
+
+            .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
@@ -787,7 +802,7 @@
             </style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_TablePDDS('PDDS',NovoJson))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
+                <tbody onload="Inn(this,Tm_TablePDDS('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
 
