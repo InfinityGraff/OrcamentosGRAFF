@@ -198,23 +198,24 @@
 
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
-         Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
-         Serv:['','Adesivo','Banner','...'],
-         Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
-         Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
+        Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
+        Serv:['','Adesivo','Banner','...'],
+        Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
+        Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
         
-     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma'}
-     const CrypF = {T:'Total',C:'Config'}
-     const BS = {
-         PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['O','','Total'],Pgmt:['B','','Total'],Cust:['E','',''], Finc:    ['E','',''],Stts:['E','',''],'-'     :['F','w0','']},  // Removi 'RG'
-         SERV:{Id:['F','w0',''],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Arte:['S','','' ]    ,Valr:['V','','']     ,Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],SVG:['M','',''],Grad:['F','',''],Clnt:['F','',''],Data:['F','',''],'-':['F','w0','']},
-         PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'-':['F','w0','']},
-         CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
-         GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
-         OOSS:{ID:['F','w0',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
-         UBER:{ID:['F','w0',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
-         MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
-         CALC:{}
+    const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
+    const CrypF = {T:'Total',C:'Config'}
+    const BS = {
+        PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['O','','Total'],Pgmt:['B','','Total'],Cust:['E','',''], Finc:    ['E','',''],Stts:['E','',''],'Lixo'     :['X','w0','']},  // Removi 'RG'
+        SERV:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Valr:['V','',''],Arte:['S','','' ],SVG:['M','',''],Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],Grad:['F','',''],'Lixo':['X','w0','']},
+        PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'Lixo':['X','w0','']},
+        
+        CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
+        GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
+        OOSS:{ID:['F','w0',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
+        UBER:{ID:['F','w0',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
+        MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
+        CALC:{}
     }
 
      const CC = {
@@ -226,17 +227,6 @@
          ],
          // CLNT:{}, // PGMT:{},  // GRAD:{},  // OOSS:{},  // UBER:{},  // MPAG:{}
      }
-
-     let NovoJsonss = []
-
-        fetch('./PDDS.json')
-        .then(res => res.json())
-        .then(data => {
-            NovoJsonss = data
-            console.log('Dados carregados:', NovoJsonss)
-        })
-        .catch(err => console.error('Erro ao carregar o JSON:', err))
-
 </script>
 
 <script> // Bibliotecas
@@ -263,6 +253,8 @@
     const Tog_N=e=>Tog(e,'none')
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
+    const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
+
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -319,9 +311,8 @@
     function Format(){
         $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
         $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
+        
         $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
-
-        $$(Rx2(['PDDS','Valr'])).forEach(e=>{const id_PDDS = Extrat_Clss(Pai(e),'tr-');const trus = J['SERV'].filter(E=>(E.ID).split('|')[0] == id_PDDS)  ;  e.innerHTML = `<p class="P-P Soma" name="${SOMA_Obj(trus,'Valr')}" onclick="CtrlSoma(this)">R$ ${Cm(SOMA_Obj(trus,'Valr'))}</p>`}) // isso aqui é oq faz o value somar oq tem na lista de serv dentro de pedidos todos os valores
 
         $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
         $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
@@ -342,7 +333,7 @@
         const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
 
         const Tm_Tm = {
-            Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`,
+            Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
             Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${0}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
             Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
@@ -353,25 +344,16 @@
             Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
             Grds:(e,R)=>`${e}`,
+            Lixo:(e,R)=>`<a onclick="RmvROW('${D_Rastr2(R)[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`
         }
-
-        // pra ver a soma de qualquer coisa vai ser pelo Rodape (Seleciona e Consulta) | uma soma pra cada colunas
-        // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
-        // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
 
         function Tm_Bndj(arr,Typ){
-            console.log(arr)
             return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                        <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>{
-
-                                            return  Tm_Td(v,LL,x,Typ,'vemBndj')
-
-                                        }).join('')}</tr>`).join('')}</tbody>
+                                        <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
         }
-        function _Tm_Bndj(arry,r){ // esse R é o D_Raster
 
-            console.log(Tm_thSort(ObjKey(BS.SERV)))
+        function _Tm_Bndj(arry,r){ // esse R é o D_Raster
 
             const MORE2 =(arr,Typ)=>`<table class="Bdj_${'Calc'} TableMORE"><thead><tr>${['Larg','Alt','Qnt','Valor'].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                     <tbody>${
@@ -393,7 +375,11 @@
                                          Find.map(e=>e[R[3]]).join(' | ')
             
             const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
-            const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(ArrObj_ArrArr(Find),Typ.toUpperCase()) : '').join('')
+            const Reordem =()=>{if(Typ=='Serv'||Typ=='Pgmt'){
+                 return reorderArr_Arr(ArrObj_ArrArr(Find),ObjKey(BS[Typ.toUpperCase()]))
+                }else{return ArrObj_ArrArr(Find)}} 
+
+            const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
             const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
             const iconFone = Typ==='Clnt'? Find[0].Cntt==='' ? '' : `<a class="Rltv"><img class="icoFone Abslt HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg"></a>`:''
 
@@ -403,7 +389,12 @@
         function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
             return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
         }
-        return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}${Tm_Lixo(typ,e)}</tr>`).join('')
+        return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
+    
+        // pra ver a soma de qualquer coisa vai ser pelo Rodape (Seleciona e Consulta) | uma soma pra cada colunas
+        // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
+        // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
+        // Adicionar Lixo por aqui fora do array, adicionar no final do array, pra pdoer remover do Json, q tive q botar lá
     }
 
     function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
