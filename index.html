@@ -195,25 +195,31 @@
     const AllProd = ObjKey(Prod)
     const Vari=e=>ObjKey(Prod[e].Variantes)
 
-    const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
+    const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
     const O = {
         Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
         Serv:['','Adesivo','Banner','...'],
         Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
-        Form:['','Pix','Av','Card','1x','2x','3x','4x','5x']}
+        Form:['','Pix','Av','Card','1x','2x','3x','4x','5x'],
+        Dstn:['','Serv1','Serv2']}
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const CrypF = {T:'Total',C:'Config'}
     const BS = {
-        PDDS:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['B','','' ],Valr:['O','','Total'],Pgmt:['B','','Total'],Cust:['E','',''], Finc:    ['E','',''],Stts:['E','',''],'Lixo'     :['X','w0','']},  // Removi 'RG'
-        SERV:{Id:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Serv:['S','', ''],Desc:['E','','' ],Calc:['B','','' ],Valr:['V','',''],Arte:['S','','' ],SVG:['M','',''],Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],Grad:['F','',''],'Lixo':['X','w0','']},
-        PGMT:{ID:['F','w0',''],Data:['D','', ''],Clnt:['B','','' ],Valr:['V','','' ],Form:['S','','']     ,Desc:['E','','']     ,Stts:['E','',''],Link:    ['E','',''],Mpag    :['E','',''],'Lixo':['X','w0','']},
-        
-        CLNT:{ID:['F','w0',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
-        GRAD:{ID:['F','w0',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
-        OOSS:{ID:['F','w0',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
-        UBER:{ID:['F','w0',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
-        MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
+        //['Tipo','','']
+        PDDS:{Id:['F','',''],Data:['D','', ''],Clnt:['B','',''],Serv:['B','',''],Valr:['O','',''],Pgmt:['B','',''],Cust:['B','',''],Finc:['B','',''],Stts:['E','',''],Lixo:['X','w0','']},  // Removi 'RG'
+        SERV:{Id:['F','',''],Data:['D','', ''],Clnt:['B','',''],Serv:['S','',''],Desc:['E','',''],Calc:['B','',''],Valr:['V','',''],Arte:['S','',''],SVG: ['M','',''],Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],Grad:['F','',''],'Lixo':['X','w0','']},
+        PGMT:{ID:['F','',''],Data:['D','', ''],Clnt:['B','',''],Valr:['V','',''],Form:['S','',''],Desc:['E','',''],Stts:['E','',''],Link:['E','',''],Mpag:['E','',''],Lixo:['X','w0','']},
+        CUST:{Id:['F','',''],Data:['D','', ''],Item:['E','',''],Valr:['V','',''],Forn:['S','',''],Dstn:['S','',''],Pcnt:['A','','']},
+        FINC:{Id:['F','',''],Data:['D','', ''],Forn:['S','',''],Item:['E','',''],Valr:['V','',''],Dstn:['E','',''],Pcnt:['E','','']},
+
+        //"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""
+
+        CLNT:{ID:['F','',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
+        GRAD:{ID:['F','',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
+        OOSS:{ID:['F','',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
+        UBER:{ID:['F','',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
+        MPAG:{ID:['F','',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
         CALC:{}
     }
 
@@ -349,7 +355,8 @@
         function Tm_Bndj(arr,Typ){
             return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                         <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
-                                  </table> ${Typ==='SERV'||Typ==='PGMT'?`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`:''}`
+                                  </table> ${Typ==='CLNT'?'':`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`}`
+                                  // conferir se typ é CLNT é desnessesário pois, logo logo Clnt vai ser subistidio por 'LINK'
         }
 
         function _Tm_Bndj(arry,r){ // esse R é o D_Raster

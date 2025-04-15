@@ -20248,75 +20248,6 @@ const J = {
   PDDS:[],SERV:[],PGMT:[],GRAD:[],OOSS:[],UBER:[],MPAG:[]
 }
 
-
-const NovoJsonX = [
-  {
-    "Id": 1,
-    "Rg": "2025-03-12 14:30:00",
-    "Data": "2025-03-12",
-    "Clnt": 1238,
-    "Serv": [
-      {
-        "Id": 1,
-        "Serv": "Adesivo",
-        "Desc": "Bandeira",
-        "Calc": [
-          "30|40|10|0",
-          "50|60|5|0"
-        ],
-        "Arte": true,
-        "Valr": 150.00,
-        "Forn": "Fornecedor X",
-        "Ok": true,
-        "Entregue": false,
-        "Data_entregue": null,
-        "Coment": "Cliente pediu bordas arredondadas",
-        "imgs": "./Prod/Adesivo_Brilho.webp"
-      },
-      {
-        "Id": 2,
-        "Serv": "Recorte",
-        "Desc": "244",
-        "Calc": [
-          "20|30|15|0"
-        ],
-        "Arte": false,
-        "Valr": 80.00,
-        "Forn": "Fornecedor Y",
-        "Ok": true,
-        "Entregue": true,
-        "Data_entregue": "2025-03-11",
-        "Coment": "Corte ajustado conforme solicitado",
-        "imgs": "./Prod/Adesivo_Brilho.webp"
-      }
-    ],
-    "Valr": 230.00,
-    "Pgmt": [
-      {
-        "Id": 1,
-        "Data": "2025-03-12",
-        "Clnt": 123,
-        "Valr": 100.00,
-        "Form": "Pix",
-        "Desc": "Pagamento inicial",
-        "Lixo":"","Mpag": true
-      },
-      {
-        "Id": 2,
-        "Data": "2025-03-13",
-        "Clnt": 123,
-        "Valr": 130.00,
-        "Form": "Av",
-        "Desc": "Pagamento final",
-        "Lixo":"","Mpag": true
-      }
-    ],
-    "Cust": ["s", "s"],
-    "Finc": ["s", "s"],
-  }
-]
-
-
 const NovoJson = [
   {
     "Id": "1",
@@ -20359,7 +20290,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "001",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20402,7 +20333,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "004",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"1","Data":"2024-12-03","Item":"Adesivo","Valr":"20","Forn":"Grafit","Dstn":"Serv1","Pcnt":"100%"}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20445,7 +20376,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "006",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20488,7 +20419,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "007",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20531,7 +20462,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "003",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20574,7 +20505,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "005",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20617,7 +20548,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "008",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20648,7 +20579,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "009",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -20691,7 +20622,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "011",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20734,7 +20665,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "010",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20777,7 +20708,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "012",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20837,7 +20768,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "013",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20880,7 +20811,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "014",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -20974,7 +20905,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "015",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21017,7 +20948,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "016",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21060,7 +20991,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "017",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21114,7 +21045,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "018",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21157,7 +21088,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "019",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21200,7 +21131,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "020",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21243,7 +21174,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "021",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21286,7 +21217,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "022",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21329,7 +21260,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "023",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21389,7 +21320,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "024",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21432,7 +21363,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "025",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21475,7 +21406,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "026",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21529,7 +21460,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "027",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21572,7 +21503,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "028",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21615,7 +21546,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "029",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21658,7 +21589,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "030",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21701,7 +21632,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "031",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21744,7 +21675,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "032",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21787,7 +21718,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "033",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21886,7 +21817,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "034",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21951,7 +21882,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "035",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -21982,7 +21913,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "036",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -22025,7 +21956,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "037",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22079,7 +22010,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "038",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22122,7 +22053,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "040",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22165,7 +22096,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "039",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22208,7 +22139,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "025.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22268,7 +22199,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "041",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22311,7 +22242,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "042",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22354,7 +22285,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "043",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22414,7 +22345,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "044",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22457,7 +22388,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "045",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22500,7 +22431,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "047",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22531,7 +22462,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "048",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22574,7 +22505,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "049",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22628,7 +22559,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "050",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22659,7 +22590,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "060",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22702,7 +22633,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "059",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22745,7 +22676,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "058",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22788,7 +22719,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "061",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22848,7 +22779,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "055",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22891,7 +22822,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "056",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22934,7 +22865,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "057",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -22988,7 +22919,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "062",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23048,7 +22979,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "063",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23091,7 +23022,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "065",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23134,7 +23065,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "066",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23194,7 +23125,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "067",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23265,7 +23196,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "068",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23336,7 +23267,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "069",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23379,7 +23310,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "070",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23433,7 +23364,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "071",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23476,7 +23407,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "072",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23519,7 +23450,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "073",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23562,7 +23493,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "078",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23605,7 +23536,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "030.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23670,7 +23601,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "030.6",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23741,7 +23672,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "074",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23795,7 +23726,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "041.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23838,7 +23769,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "075",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23881,7 +23812,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "076",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23924,7 +23855,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "077",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -23967,7 +23898,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "079",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24010,7 +23941,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "080",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24053,7 +23984,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "081",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24096,7 +24027,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "082",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24109,7 +24040,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "083",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -24140,7 +24071,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "084",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24183,7 +24114,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "085",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24226,7 +24157,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "086",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24269,7 +24200,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "089.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24312,7 +24243,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "088",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -24383,7 +24314,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "089",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24437,7 +24368,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "31 >> 59",
     "Stts": "090",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24480,7 +24411,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "091",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24540,7 +24471,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "092",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24583,7 +24514,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "093",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24643,7 +24574,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "094",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24686,7 +24617,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "095",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24729,7 +24660,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "096",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24772,7 +24703,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "097",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24803,7 +24734,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "098",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24846,7 +24777,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "099",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24900,7 +24831,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "125 >> 50",
     "Stts": "117",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24977,7 +24908,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "101",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -24990,7 +24921,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "102",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -25003,7 +24934,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "103",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -25051,7 +24982,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "104",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25105,7 +25036,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "105",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25118,7 +25049,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "1",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -25131,7 +25062,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "1",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -25225,7 +25156,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "106",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25330,7 +25261,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "100 >> 90",
     "Stts": "107",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25384,7 +25315,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "200 >> 180",
     "Stts": "108",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25444,7 +25375,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "109",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25487,7 +25418,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "110",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25530,7 +25461,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "111",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25601,7 +25532,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "112",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25644,7 +25575,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Grad",
     "Stts": "113",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25687,7 +25618,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "0 >> 10",
     "Stts": "114",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25730,7 +25661,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "115",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25812,7 +25743,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "350 >> 112",
     "Stts": "116",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25843,7 +25774,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "0 >> 8",
     "Stts": "118",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25886,7 +25817,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "0 >> 15",
     "Stts": "119",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25929,7 +25860,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Grad",
     "Stts": "113.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -25972,7 +25903,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "120",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26015,7 +25946,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "121",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26137,7 +26068,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "122 Amarelo",
     "Stts": "122",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26168,7 +26099,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "123",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26211,7 +26142,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "118.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26265,7 +26196,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "119.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26319,7 +26250,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "90 >> 140",
     "Stts": "124",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26362,7 +26293,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "125",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26422,7 +26353,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "126",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26476,7 +26407,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "127",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26530,7 +26461,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "128",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26590,7 +26521,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "129",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26695,7 +26626,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "130",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26749,7 +26680,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "093.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26792,7 +26723,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "110.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26835,7 +26766,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "131",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26878,7 +26809,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "11,62 >> 28,38",
     "Stts": "132",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26955,7 +26886,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "133",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -26998,7 +26929,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "134",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27041,7 +26972,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "135",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27084,7 +27015,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo 10,50",
     "Stts": "136",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27127,7 +27058,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "137",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27170,7 +27101,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "138",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27213,7 +27144,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "139",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27301,7 +27232,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "140",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27344,7 +27275,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "141",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27398,7 +27329,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "142",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27441,7 +27372,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "143",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27501,7 +27432,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "144",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27544,7 +27475,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "145",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27575,7 +27506,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "146",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27618,7 +27549,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "147",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27661,7 +27592,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "148",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27704,7 +27635,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "149",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27747,7 +27678,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "150",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27790,7 +27721,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "151",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27833,7 +27764,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "152",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27893,7 +27824,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "153",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27936,7 +27867,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "154",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -27984,7 +27915,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "155",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -28027,7 +27958,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "156",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28098,7 +28029,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "157",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28158,7 +28089,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "158",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28218,7 +28149,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "159",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28261,7 +28192,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "160",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28304,7 +28235,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "161",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28347,7 +28278,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "162",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28390,7 +28321,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "163",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28433,7 +28364,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "164",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28476,7 +28407,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "165",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28519,7 +28450,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "166",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28562,7 +28493,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "167",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28605,7 +28536,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "168",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28636,7 +28567,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "162.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28679,7 +28610,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "169",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28722,7 +28653,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "170",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28782,7 +28713,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "171",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28836,7 +28767,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "172",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28879,7 +28810,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "173",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28922,7 +28853,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "174",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -28982,7 +28913,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "175",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29025,7 +28956,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "176",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29068,7 +28999,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "177",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29111,7 +29042,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "11 Uber + 5 folha",
     "Stts": "178",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29154,7 +29085,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "179",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29214,7 +29145,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "180",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29257,7 +29188,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "181",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29300,7 +29231,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "182",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29348,7 +29279,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "183",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29391,7 +29322,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "184",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29434,7 +29365,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "185",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29477,7 +29408,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "186",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29520,7 +29451,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "187",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29591,7 +29522,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "173.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29634,7 +29565,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "188",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29677,7 +29608,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "189",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29720,7 +29651,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "190",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29774,7 +29705,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "191",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29828,7 +29759,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "192",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29899,7 +29830,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "193",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -29959,7 +29890,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "194",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30030,7 +29961,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "195",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30061,7 +29992,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "196",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30104,7 +30035,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "197",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30147,7 +30078,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "198",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30201,7 +30132,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "199",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30261,7 +30192,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "200",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30304,7 +30235,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "201",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30335,7 +30266,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "202",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30378,7 +30309,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "203",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30421,7 +30352,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "204",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30464,7 +30395,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "205",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30495,7 +30426,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "206",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30538,7 +30469,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "207",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30581,7 +30512,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "208",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30612,7 +30543,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "209",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30655,7 +30586,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "210",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30726,7 +30657,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "211",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30769,7 +30700,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "212",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30812,7 +30743,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "213",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30855,7 +30786,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "214",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30886,7 +30817,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "215",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30940,7 +30871,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "216",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -30971,7 +30902,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "217",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31014,7 +30945,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "199.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31027,7 +30958,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "218",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -31070,7 +31001,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "200.1",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31113,7 +31044,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "205.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31156,7 +31087,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "219",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31199,7 +31130,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "220",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31242,7 +31173,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "221",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31296,7 +31227,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "222",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31339,7 +31270,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "223",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31382,7 +31313,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "224",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31453,7 +31384,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "225",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31496,7 +31427,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "226",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31539,7 +31470,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "227",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31552,7 +31483,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "228",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -31583,7 +31514,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "228",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31626,7 +31557,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "229",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31669,7 +31600,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "230",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31700,7 +31631,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "231",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31731,7 +31662,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "232",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31762,7 +31693,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "233",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31805,7 +31736,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "129.60",
     "Stts": "234",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31859,7 +31790,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "95 >> 45",
     "Stts": "235",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31890,7 +31821,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "236",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31921,7 +31852,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "237",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -31964,7 +31895,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "238",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32024,7 +31955,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "239",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32055,7 +31986,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "240",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32098,7 +32029,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "241",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32141,7 +32072,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "120,00",
     "Stts": "242",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32184,7 +32115,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "226.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32197,7 +32128,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "243",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -32274,7 +32205,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "244",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32328,7 +32259,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "245",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32422,7 +32353,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "246",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32465,7 +32396,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "247",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32525,7 +32456,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "248",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32596,7 +32527,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "249",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32627,7 +32558,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "250",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32640,7 +32571,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "251",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -32653,7 +32584,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "252",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -32696,7 +32627,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "253",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32739,7 +32670,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "254",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32782,7 +32713,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "255",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32825,7 +32756,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "256",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32868,7 +32799,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "257",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32881,7 +32812,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "258",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32924,7 +32855,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "259",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -32967,7 +32898,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "260",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33010,7 +32941,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "122,00",
     "Stts": "261",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33041,7 +32972,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "262",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33084,7 +33015,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "263",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33097,7 +33028,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "264",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -33140,7 +33071,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "265",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33171,7 +33102,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "266",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33225,7 +33156,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "267",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33268,7 +33199,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "268",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33311,7 +33242,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "231.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33354,7 +33285,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "269",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33397,7 +33328,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "270",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33428,7 +33359,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "271",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33459,7 +33390,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "272",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33502,7 +33433,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "273",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33556,7 +33487,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "250,00",
     "Stts": "274",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33587,7 +33518,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "275",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33618,7 +33549,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "276",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33661,7 +33592,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "277",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33704,7 +33635,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "276.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33747,7 +33678,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "278",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33801,7 +33732,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "279",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33844,7 +33775,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "280",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33915,7 +33846,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo: R$ 202,00",
     "Stts": "281",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -33958,7 +33889,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 80,00",
     "Stts": "282",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34001,7 +33932,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 4,00",
     "Stts": "283",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34044,7 +33975,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 15,00",
     "Stts": "284",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34087,7 +34018,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 25,00",
     "Stts": "285",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34130,7 +34061,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 120,00",
     "Stts": "286",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34161,7 +34092,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "R$ 14,00",
     "Stts": "287",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34204,7 +34135,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 90,00",
     "Stts": "288",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34235,7 +34166,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "289",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34278,7 +34209,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "290",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34321,7 +34252,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "291",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34364,7 +34295,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 13,40",
     "Stts": "292",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34407,7 +34338,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "293",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -34455,7 +34386,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "294",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34509,7 +34440,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "295",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34580,7 +34511,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 32,60",
     "Stts": "296",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34623,7 +34554,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "297",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34677,7 +34608,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo 25 | Lucro R$ 40",
     "Stts": "292.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34731,7 +34662,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 18,00",
     "Stts": "298",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34762,7 +34693,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "Custo R$ 18,40",
     "Stts": "299",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34793,7 +34724,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "Custo R$ 3,60",
     "Stts": "300",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34836,7 +34767,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 32,00",
     "Stts": "301",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34890,7 +34821,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "120 PVC",
     "Stts": "302",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34944,7 +34875,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 103,68",
     "Stts": "303",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -34957,7 +34888,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "304",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -35022,7 +34953,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 9,00",
     "Stts": "304",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35035,7 +34966,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "305",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -35048,7 +34979,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "306",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -35091,7 +35022,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "R$ 10,00",
     "Stts": "307",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35122,7 +35053,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "308",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35165,7 +35096,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "309",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35208,7 +35139,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "310",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35251,7 +35182,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "311",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35305,7 +35236,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "312",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35348,7 +35279,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "313",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35391,7 +35322,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "314",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35451,7 +35382,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "315",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35511,7 +35442,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "316",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35554,7 +35485,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "317",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35567,7 +35498,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "318",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -35610,7 +35541,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "318",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35664,7 +35595,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "319",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35707,7 +35638,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "320",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35806,7 +35737,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "321",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35837,7 +35768,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "Hojy",
     "Stts": "322",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -35880,7 +35811,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day1",
     "Stts": "315.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35923,7 +35854,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "322",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35966,7 +35897,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "323",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -35997,7 +35928,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "Day2",
     "Stts": "324",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36040,7 +35971,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "325",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36083,7 +36014,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Day2",
     "Stts": "326",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36114,7 +36045,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "Day2",
     "Stts": "327",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36145,7 +36076,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "328",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36176,7 +36107,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "329",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -36219,7 +36150,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "322.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36250,7 +36181,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "329",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36293,7 +36224,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "330",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36336,7 +36267,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "331",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36413,7 +36344,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "332",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36456,7 +36387,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "333",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36487,7 +36418,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "334",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36530,7 +36461,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "335",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36573,7 +36504,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "336",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36633,7 +36564,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "337",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36676,7 +36607,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "338",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36719,7 +36650,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "339",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36750,7 +36681,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "340",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36781,7 +36712,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "341",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36835,7 +36766,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "342",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36878,7 +36809,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "343",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36921,7 +36852,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "344",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -36964,7 +36895,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "345",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37018,7 +36949,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "346",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37061,7 +36992,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "347",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37092,7 +37023,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "348",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37135,7 +37066,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "349",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37178,7 +37109,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "350",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37221,7 +37152,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "351",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37264,7 +37195,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "352",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37307,7 +37238,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "353",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37361,7 +37292,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "354",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37432,7 +37363,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "355",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37475,7 +37406,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "356",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37535,7 +37466,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "357",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37612,7 +37543,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "358",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37655,7 +37586,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "359",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37698,7 +37629,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "360",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37752,7 +37683,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 30,00",
     "Stts": "361",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37795,7 +37726,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "362",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37826,7 +37757,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "aqui eu tive q imprimir 3 folhas 138° | 139° | 147°",
     "Stts": "363",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37857,7 +37788,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "364",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37900,7 +37831,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "365",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37943,7 +37874,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "366",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -37986,7 +37917,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "367",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38017,7 +37948,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "359.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38060,7 +37991,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "359.6",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38091,7 +38022,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "359.7",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38134,7 +38065,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "368",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38165,7 +38096,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "369",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38208,7 +38139,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "370",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38239,7 +38170,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "371",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38282,7 +38213,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "372",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38325,7 +38256,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "373",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38379,7 +38310,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "374",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38439,7 +38370,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "Custo R$ 25,00",
     "Stts": "375",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38452,7 +38383,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "376",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "0"
   },
   {
@@ -38495,7 +38426,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "377",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38538,7 +38469,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "374.5",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38581,7 +38512,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "379",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38641,7 +38572,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "380",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38684,7 +38615,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "381",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38727,7 +38658,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "382",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38758,7 +38689,7 @@ const NovoJson = [
     "Pgmt": [],
     "Lixo":"","Lcro": "",
     "Stts": "383",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38801,7 +38732,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "384",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
@@ -38844,7 +38775,7 @@ const NovoJson = [
     ],
     "Lixo":"","Lcro": "",
     "Stts": "385",
-    "Cust": ["s", "s"],
+    "Cust":[{"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""}],
     "Finc": ["s", "s"], "OFF": "1"
   },
   {
