@@ -74,18 +74,18 @@
                             'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20 , Limit:['0,00 x 3,20'] , Mdds:[]},
             }},
         'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
-                        Variantes:{    
+                        Variantes:{  
+                            'PS 1mm'          :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                            'PS 2mm'          :{item:'18',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},  
                             'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
                             'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                             'PVC 5mm'         :{item:'16',Tipo:'',Valr:' ',Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
-                            'PS 1mm '         :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                            'PS 2mm '         :{item:'18',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},
             }},
         'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:['Manta'     ] , HotKey:["magneto", 'manta magnética'             ] ,
                         Variantes:{ // Adicional de Calendário (Acima de 500 UND)
                             '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
                             '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.8 - Carro    ' :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.8 - Carro'     :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
         'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , Forn:['WM SilkSing','Casas leo'  ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
                         Variantes:{
@@ -127,7 +127,7 @@
                     ['Preto e Branco','2 Via',[['2',75,35],['4',105,55],['10',185, 90],['20',315,165]]],
                     ['Colorido'      ,'2 Via',[['2',95,45],['4',125,65],['10',215,110],['20',365,195]]],
                 ]},
-                ' 9 x 21':{Table:[
+                '9 x 21' :{Table:[
                     ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150,75]]],
                     ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190,95]]],
                     ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
@@ -194,7 +194,6 @@
     // const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')      // Obsoleto pq n to usando
     const AllProd = ObjKey(Prod)
     const Vari=e=>ObjKey(Prod[e].Variantes)
-    
 
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const O = {
@@ -217,8 +216,6 @@
         MPAG:{ID:['F','w0',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
         CALC:{}
     }
-
-    
 
      const CC = {
          // PDDS:{},
