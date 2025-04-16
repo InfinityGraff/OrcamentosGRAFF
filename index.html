@@ -204,22 +204,18 @@
         Dstn:['','Serv1','Serv2']}
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
-    const CrypF = {T:'Total',C:'Config'}
     const BS = {
-        //['Tipo','','']
-        PDDS:{Id:['F','',''],Data:['D','', ''],Clnt:['B','',''],Serv:['B','',''],Valr:['O','',''],Pgmt:['B','',''],Cust:['B','',''],Finc:['B','',''],Stts:['E','',''],Lixo:['X','w0','']},  // Removi 'RG'
-        SERV:{Id:['F','',''],Data:['D','', ''],Clnt:['B','',''],Serv:['S','',''],Desc:['E','',''],Calc:['B','',''],Valr:['V','',''],Arte:['S','',''],SVG: ['M','',''],Forn:['S','',''],OK:      ['C','',''],Entregue:['C','',''],DataEntg:['E','',''],Coment:['E','',''],Grad:['F','',''],'Lixo':['X','w0','']},
-        PGMT:{ID:['F','',''],Data:['D','', ''],Clnt:['B','',''],Valr:['V','',''],Form:['S','',''],Desc:['E','',''],Stts:['E','',''],Link:['E','',''],Mpag:['E','',''],Lixo:['X','w0','']},
-        CUST:{Id:['F','',''],Data:['D','', ''],Item:['E','',''],Valr:['V','',''],Forn:['S','',''],Dstn:['S','',''],Pcnt:['A','','']},
-        FINC:{Id:['F','',''],Data:['D','', ''],Forn:['S','',''],Item:['E','',''],Valr:['V','',''],Dstn:['E','',''],Pcnt:['E','','']},
+        PDDS:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['E',''],Lixo:['X','']},
+        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Coment:['E',''],Grad:['F',''],'Lixo':['X','']},
+        PGMT:{ID:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
+        CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['S',''],Pcnt:['A',''],Lixo:['X','']},
+        FINC:{Id:['F',''],Data:['D',''],Forn:['S',''],Item:['E',''],Valr:['V',''],Dstn:['E',''],Pcnt:['E',''],Lixo:['X','']},
 
-        //"Id":"","Data":"","Item":"","Valr":"","Forn":"","Dstn":"","Pcnt":""
-
-        CLNT:{ID:['F','',''],Clnt:['E','', ''],Cmpt:['E','','' ],Cntt:['E','','' ],Lcal:['E','','']     ,Loja:['E','','']     ,CtLj:['E','',''],Cat:     ['E','',''],Stts    :['E','',''],Link:['E','',''],'-':['F','w0','']},
-        GRAD:{ID:['F','',''],Data:['D','','C'],Emal:['E','','' ],Forn:['S','','C'],OS  :['E','','C']    ,Nome:['T','','']     ,Cont:['E','',''],Uber:    ['E','',''],Valr    :['E','',''],Valr2:['E','',''],NSrv:['E','',''],Link:['G','',''],Imag:['M','',''],'-':['F','w0','']},
-        OOSS:{ID:['F','',''],Nome:['E','','C'],Link:['E','','' ],Desc:['E','','' ],'-' :['F','w0','']},
-        UBER:{ID:['F','',''],Data:['D','','C'],Dest:['E','','C'],Hora:['E','','' ],Valr:['E','','C']    ,Dirc:['E','','C']    ,Prds:['E','','C'],Desc:['E','','C'],Grad:['E','','C'],Link:['G','','C'],'-':['F','w0','']},
-        MPAG:{ID:['F','',''],Data:['D','', ''],Clnt:['E','','' ],Valr:['E','','' ],Hora:['E','','']     ,Form:['E','','']     ,Mpag:['E','',''],Link:['G','',''],'-':['F','w0','']}, // Removi 'Cpvt'
+        CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Imag:['M',''],Lixo:['X','']},
+        UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        MPAG:{ID:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
 
@@ -264,7 +260,8 @@
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
-
+    const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
+    const ExtrNomeServ = l => l.flatMap(t => t.split('|').map(p => p.trim().split(' ')[0])) // muito especifica, pega apenas a primeira palavra do SERV da tabela
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -308,32 +305,26 @@
 
 </script>
 
-<script> // Template String
-    
-    const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+<script> // Template String ANTIGO FICANDO OBSOLETO
     const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
     const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
-    const Tm_tdFoot=(arr,typ)=>arr.map((e,x)=>`<td class="Rastr-Foot-${e}-${OjKy(typ)[x]}-${typ}"><p>${e}</p></td>`).join('')
-
-    // Strings Extras
-    const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
-
+    
     function Format(){
-        $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
-        $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
-        
-        $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
-
-        $$(Rx2(['Foot','Total','Valr'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > p`),(e)=>{return Num(Inn(e))}))}`})
-        $$(Rx2(['Foot','Total','Pgmt'])).forEach(e=>{const R = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt($$(`#H_${R[3]} > tbody > tr > td:nth-child(${FIdx(ObjKey(BS[R[3]]),R[2])+1}) > div > p`))}`})
+        // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
+        // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
+        // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
     }
+
+
 </script>
 
-<script>// Template NOVO e Atualizado da Versão 7
+<script>// Template String v7.3
+    const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const D_Rastr2=R=>R.split('-')
     const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
     const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
-    
+    const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
+
     // tentar Jogar estes Tm_Suggs pra dentro da 'Tm_Tm'
     const Tm_SuSg=()=>`<span class="Sugg Shdw rd Abslt Cl none"></span>`
     const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
@@ -382,6 +373,8 @@
 
             const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                           Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                          Typ==='Cust' ? Find.map(e=>`${e['Valr']}`) :
+                          Typ==='Finc' ? Find.map(e=>`${''}`) :
                           Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                          Find.map(e=>e[R[3]]).join(' | ')
             
@@ -402,10 +395,9 @@
         }
         return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
     
-        // pra ver a soma de qualquer coisa vai ser pelo Rodape (Seleciona e Consulta) | uma soma pra cada colunas
-        // na Bandeja Permitir excluir Linha, (Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!, fazer esse Filtro pra Separar, isso vai ser Adianto)
-        // Talvez isso possa simplificar o Sugg e condensar e ai eu só escolho o tipo de Sugg, ou de troca, ou de subtração
-        // Adicionar Lixo por aqui fora do array, adicionar no final do array, pra pdoer remover do Json, q tive q botar lá
+        
+        // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
+        // tipo de Sugg, ou de troca, ou de subtração
     }
 
     function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
@@ -420,6 +412,28 @@
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
     
+    function Rfresh_Foot(){
+        const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
+
+        const objClnt=()=>ContRepete(getAllCol('PDDS','Clnt').map(e=>e.innerHTML))
+        const objServ=()=>ContRepete(ExtrNomeServ(getAllCol('PDDS','Serv').map(e=>e.innerHTML)))
+
+        function SOMAPgmt(Array){
+            const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
+            let ArrPix = [] ; let ArrAv = []
+            Array.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
+                    if      (RgxPixAV(I)[2] === 'Pix') {ArrPix.push(Num(RgxPixAV(I)[1]))}
+                    else if (RgxPixAV(I)[2] === 'Av' ) { ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
+            return Tm_PixAv(ArrPix,ArrAv)
+        }
+
+        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objClnt()).sort((a, b) => b[1] - a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objServ()).sort((a, b) => b[1] - a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
+        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+    }
 </script>
 
 <script> // Manipulações
@@ -439,7 +453,7 @@
 
                     if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
         }
-        function Pesquisa(Val,Typ){ // incluir conteudo da bandeija, e sem conteudo da bandeija
+        function Pesquisa(Val,Typ){ // incluir conteudo da bandeija, e sem conteudo da bandeija (e permitir as mesmas opções do CntrlF daqui do VSCODE)
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
                 const Concat = $$(':scope > td',tr).map(td=>VAL(td)).join('-')
                 const match  = Concat.toLowerCase().includes(Val.toLowerCase())
@@ -576,13 +590,7 @@
     }
     //SUGGLINK
 
-    function SOMAPgmt(Divs){
-        let pixArray = [] ; let avArray = []
-        Divs.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
-                if (RgxPixAV(I)[2] === 'Pix') {pixArray.push(Num(RgxPixAV(I)[1]))}
-                else if (RgxPixAV(I)[2] === 'Av') {avArray.push(Num(RgxPixAV(I)[1]))} }) })
-        return Tm_PixAv(pixArray,avArray)
-    }
+
 
     function CtrlSoma(Eu){
         // Conferir se tem Tecla Cntrl
@@ -658,7 +666,7 @@
                 #Lupa:hover{opacity: 1;}
                 @media (max-width:500px){ #Div-Pesq{width: 50%} }
             </style>
-            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
+            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS');Rfresh_Foot()">
             <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
         </div>
 
@@ -804,7 +812,8 @@
                 <button onclick="LimparFiltro('PDDS')">Limpar Filtro</button>
             </div>
             <style>
-                #H_PDDS > tbody > tr > td:nth-child(1){width: 10px; color: red;} 
+                #H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: red;}
+
             </style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
@@ -1583,6 +1592,8 @@
         // window.scrollTo(scrollPosition[0],scrollPosition[1])
         // ReStts()
         // FinaldeTUDO()
+        Rfresh_Foot()
+        console.log('entrou no rfresh')
     }
 
     async function EditCell(e,vall=null){
