@@ -414,25 +414,23 @@
     
     function Rfresh_Foot(){
         const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
+        const objClnt=()=>ContRepete(             getAllCol('PDDS','Clnt').map(e=>Inn(e)) )
+        const objServ=()=>ContRepete(ExtrNomeServ(getAllCol('PDDS','Serv').map(e=>Inn(e))))
 
-        const objClnt=()=>ContRepete(getAllCol('PDDS','Clnt').map(e=>e.innerHTML))
-        const objServ=()=>ContRepete(ExtrNomeServ(getAllCol('PDDS','Serv').map(e=>e.innerHTML)))
-
-        function SOMAPgmt(Array){
+        function SOMAPgmt(Arr){
             const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
             let ArrPix = [] ; let ArrAv = []
-            Array.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
-                    if      (RgxPixAV(I)[2] === 'Pix') {ArrPix.push(Num(RgxPixAV(I)[1]))}
-                    else if (RgxPixAV(I)[2] === 'Av' ) { ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
-            return Tm_PixAv(ArrPix,ArrAv)
-        }
+            Arr.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
+                    if      (RgxPixAV(I)[2]==='Pix'){ArrPix.push(Num(RgxPixAV(I)[1]))}
+                    else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
+            return Tm_PixAv(ArrPix,ArrAv)}
 
-        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objClnt()).sort((a, b) => b[1] - a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objServ()).sort((a, b) => b[1] - a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
-        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const [Typ,x,Col,Cry] = D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objClnt()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objServ()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
+        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 </script>
 
