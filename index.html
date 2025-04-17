@@ -425,14 +425,19 @@
                     else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
             return Tm_PixAv(ArrPix,ArrAv)}
 
-        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objClnt()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div class="Abslt Red">${ObjEtr(objServ()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<p>${k}: ${v} vezes</p>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="">Abrir</div> <div class="Abslt none Cl footbndjj">${ObjEtr(objClnt()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="">Abrir</div> <div class="Abslt none Cl footbndjj">${ObjEtr(objServ()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
         $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
         $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
         $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
         $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 </script>
+
+<style>
+    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: 300px;} 
+    .footbndjj span{color: black ; font-size: 10px;}
+</style>
 
 <script> // Manipulações
     //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
