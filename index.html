@@ -177,9 +177,62 @@
                 'Cettin' :{},
         }},    
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Corte a Lazer e Acrilico e PVC Router
-        // 'Envelopamento' , 'Varios' , 'Arte' , 'Serigrafia' , 'Figurinha' , 'Topo de Bolo' , 'Vendas' , 'Placa' , 'sinalização'
+        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },
+        'Router'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },
+        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        }
+        ,'Envelopamento'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        }
+        ,'Serigrafia'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        }
+        ,'Figurinha'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },'Topo de Bolo'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },'Vendas'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },'Placa'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },'sinalização'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        }
         }
 
     const HotKy = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]])) // ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')  // pegar apenas 1 tipo
@@ -262,6 +315,8 @@
                   : R[3]==='Sugg' ? $('p',td).textContent.trim()
                   : R[3]==='Auto' ? $('p',td).textContent.trim()
                   : R[3]==='SVG'  ? $('p',td).textContent.trim()
+                  : R[3]==='Soma' ? $('p',td).textContent.trim()
+                  : R[3]==='Data' ? $('p',td).textContent.trim()
                   : R[3]==='Bndj' ? $('p',td).textContent.trim()
                   : R[3]==='Slct' ? $('select',td).value
                   : R[3]==='Inpt' ? $('input' ,td).value
@@ -319,14 +374,14 @@
     
     const Tm_TablePDDS=(typ,arry)=>{
         const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
-        const Tm_Tm = {
+        const Tm_Tm = {// tenho q começar a questionar o uso da class P-P parece q já não ta sendo mais nessesária
             Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
-            Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${0}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
+            Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr')}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
             Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
             Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
             Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
-            Data:e=>    `<p class="Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+            Data:e=>    `<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
             Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
@@ -396,13 +451,11 @@
                         <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
-    // grifar a palavra q foi pesquisada na tabela
-    // permitir o filtro por data e tudo mais
-    function Rfresh_Foot(){
+
+    function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
         const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
         const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
         const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
-        console.log('Serv',objServ())
 
         function SOMAPgmt(Arr){
             const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
@@ -414,11 +467,13 @@
 
         $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
         $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
         $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
         $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
         $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
+
+    function RealTime(){Rfresh_Foot()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
 </script>
 
 <style>
@@ -426,36 +481,49 @@
     .footbndjj span{color: black}
 </style>
 
-<script> // Manipulações
-    //FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
+<script> // FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
         function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
             const Sugg = $('.THSugg',_th(e))  ;  TogShow(Sugg)
-            const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > .P-P`
-            const blx = $$(qry)
-            const ArrVAL = Clik==1 ? Uniq(blx.map(e=>VAL(_td(e)))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(_td(e))}}))
-            const arrayLimpo = ArrVAL.filter(e => e !== undefined)
+            const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > p`
+            const blx = Inn(e)==="Serv" ? $$(qry).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value)) /*isso aqui tem no rfreshFoot*/ : $$(qry)
+            
+            const ArrVAL = Clik==1 ? Uniq(Inn(e)==="Serv" ? blx : blx.map(e=>VAL(_td(e)))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(_td(e))}}))
+
+            const arrayLimpo = ArrVAL.filter(e => e !== undefined) // não sei pq tenho q tirar os Undefined
             Inn(Sugg,arrayLimpo.map(e=>`<p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p>`).join(''))
+            
+            // no Filtro pegar intervalos de Datas
+            // no filtro do Pgmt tem q remover todos numeros e dar Unique pra ficar apenas Pix, Card, e Av
+            // no filtro posso escolher menor q < ou maior > um determinado valor todos abaixo de R$ 10,00
         }
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
             if(event.ctrlKey){}else{None($$('.THSugg'))}
             $$(Qry).forEach(e=>{
-                if(VAL(_td(e))==Inn(Eu)){ // aqui eu tenho q usar contem
+                if(VAL(_td(e))==Inn(Eu) || VAL(_td(e)).includes(Inn(Eu))){ // dei um ou incluides aqui, mas isso tem q ser apenas pra Serv (mas o correto mesmo é encontrar pelo select dentro do serv)
 
                     if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
+            RealTime()
         }
-        function Pesquisa(Val,Typ){ // incluir conteudo da bandeija, e sem conteudo da bandeija (e permitir as mesmas opções do CntrlF daqui do VSCODE)
+        function Pesquisa(Val,Typ){
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
                 const Concat = $$(':scope > td',tr).map(td=>VAL(td)).join('-')
                 const match  = Concat.toLowerCase().includes(Val.toLowerCase())
                 if(match){Rmv_N(tr)}else{Add_N(tr)}
             })
+            RealTime()
+            // incluir conteudo da bandeija, e sem conteudo da bandeija
+            // e permitir as mesmas opções do CntrlF daqui do VSCODE
+            // grifar a palavra q foi pesquisada na tabela
         }
-        function LimparFiltro(Typ){
-            Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))}
-    //FILTROS
+        function LimparFiltro(Typ){ // criar um atalho pra Limpar Ex: Ctrl+Esc
+            Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))
+            RealTime()
+        }  
+</script>
 
-    //RECOLOR
-        function RRecolor(){ // esta função está sendo chamada pelo EditCell()
+<script> // RECOLOR
+
+    function RRecolor(){ // esta função está sendo chamada pelo EditCell()
             // talvez aqui de pra fazer recolor de forma individual
             console.log('Sera feito o Recolor sem Demora!')
         }
@@ -532,9 +600,10 @@
             $$('.G_Cor').forEach(e=>{Add(_tr(e),'Tr-G_Cor')})
             $$('.B_Cor').forEach(e=>{Add(_tr(e),'Tr-B_Cor')})
         }
-    //RECOLOR
 
-    //SUGGLINK
+</script>
+
+<script> // SUGGLINK
     function SuggLink(Eu,Typ){
         TogShow(SibQSl(Eu,'span'))
         TogShow(SibQSl(Eu,'div'))
@@ -578,19 +647,10 @@
         else{
             console.log($('span',Pai(Eu)))}
     }
-    //SUGGLINK
 
+</script>
 
-
-    function CtrlSoma(Eu){
-        // Conferir se tem Tecla Cntrl
-        Tog(Eu,'SelectSoma')
-        Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
-    }
-
-    const MonitoreBandeja=()=>{
-        console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')
-    }
+<script> // Previews
 
     function AbrirImg(img){MdalShow('#FormIMG')
         Inn($('#FormIMG'),`<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}"><span>aquificara fica Os<span><div>`)
@@ -611,12 +671,20 @@
 
 </script>
 
+<script> // Manipulações Extras
+    function CtrlSoma(Eu){Tog(Eu,'SelectSoma') ; Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
+
+    const MonitoreBandeja=()=>{
+        console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')
+    }
+</script>
+
 <body class="Dark" onclick="NoneBndj()">
 
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
             body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px; z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
-            #Sommma{position:fixed; top:0px; right:0px; padding:8px; background:#11111150}
+
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
@@ -656,7 +724,7 @@
                 #Lupa:hover{opacity: 1;}
                 @media (max-width:500px){ #Div-Pesq{width: 50%} }
             </style>
-            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS');Rfresh_Foot()">
+            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
             <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
         </div>
 
@@ -700,8 +768,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="Sommma" class="none">Soma: 00,00</div>
         
         <div id="ALERT" class="Abslt rd none">
             <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
@@ -1582,7 +1648,7 @@
         // window.scrollTo(scrollPosition[0],scrollPosition[1])
         // ReStts()
         // FinaldeTUDO()
-        Rfresh_Foot()
+        RealTime()
         console.log('entrou no rfresh')
     }
 
