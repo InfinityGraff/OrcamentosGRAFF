@@ -1626,10 +1626,11 @@
     }
 </script>
 
-<script> // Veio da Tabela MyPlan
-    function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
+<script> // Controla a Base de Dados
+    
     function Rfresh(){(async()=>{await GetJSON()})()}
     async function GetJSON(){
+        console.log('Não Está Rodando')
         async function UparClnt(){FetchPOST(Link+'/postUpar_Clnt_Data',[''])}
         async function UparLink(){FetchPOST(Link+'/postUparLink',[''])}
         async function UparLinkMPAG(){FetchPOST(Link+'/postUparLinkMPAG',[''])}
@@ -1638,18 +1639,18 @@
         for(let end of ['CLNT','SERV','PGMT','UBER','GRAD','OOSS','PDDS','MPAG']){await Get_Json(end)}
         PosGet()
     }
-    let PrimeiraVez = true
+
     function PosGet(){
         Onloads('body')
-        Format_Bndj_Clnt()
         NavPag(Atual['Pag'])
+        Format_Bndj_Clnt()
+        
         // GetConfigOrdem()
         // Condicional()
         // window.scrollTo(scrollPosition[0],scrollPosition[1])
         // ReStts()
         // FinaldeTUDO()
         RealTime()
-        console.log('entrou no rfresh')
     }
 
     async function EditCell(e,vall=null){
@@ -1663,10 +1664,7 @@
         RRecolor()
     }
     
-    function EditVlr(e,E){
-        const R = D_Rastr(_td(e))
-        console.log('Chamou',E,R)
-    }///////////////////////////////////////////////////////////////
+    function EditVlr(e,E){ const R = D_Rastr(_td(e)) ; console.log('Chamou',E,R) }
 
     function EditCellFake(eu){ 
         const val = Nm($('input',Pai(eu)))
@@ -1678,8 +1676,7 @@
     const EditCellFake2=(e)=>{
         const R = D_Rastr(_td(e))
         e.value.split('|').forEach(E=>{
-            // isso ta rodando 2 vezes mesmo quando só tem 1 no caso quando eu não digioto o |
-            // talvez seja pq ta rodando 2 vezes, uma no Enter, e outra no Onblur
+            // isso ta rodando 2 vezes mesmo quando só tem 1 no caso quando eu não digioto o | // talvez seja pq ta rodando 2 vezes, uma no Enter, e outra no Onblur
             AddROW('PGMT',{Link:R[1],Valr:RgxPixAV(E)[1],Form:RgxPixAV(E)[2]})
         })
     }
@@ -1737,23 +1734,13 @@
 
             PosGet()
         }
-
-
     
-
-    AtivaEventos()
-    PosGet()
-
-    
-    
+    PosGet()    
 </script>
 
-<div id="relatoio"></div>
-
-<button onclick="GetConfig()"> Salve </button>
-<button onclick="console.log('trigger Livre')">trigger</button>
-
 <script> // Storage Salva Configurações
+    function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
+    // AtivaEventos()
 
     function Disparos(e){console.log('Dispoaro >') ; e.dispatchEvent(new Event('change')); console.log('< Dispoaro')}
 
@@ -1776,10 +1763,8 @@
 </script>
 
 <script> // comentários
-    
     // Permitir Remover o Fx do <Header>
     // Mostrar o Valor por M2 ao Lado do Option
-    // se não tiver valor Atualizado fica Vermelho, ou Inativo
     // Permitir Drag nas Linhas
     // imitar Bureal no Futuro (deixando todas bandeijas aberta)
     // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
@@ -1792,20 +1777,17 @@
 
 
     // ficar trocando a Barra de Pesquisa lá do Topo, pra cada página
-    // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
     // um click abre a imagem, click duplo Adiciona ela em baixo
+    // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
     // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
-    // quero criar meu próprio Teclado de Input de Medidas, pois dentro dele posso escolher centimetro, Milimetro, Metros
-    // e o teclado não vai ficar tão grande na tela
+    // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
+    // como impedir q a página dê zoom, pelo celular
 
     // https://www.youtube.com/watch?v=si0VFSOH0wQ
-
-    // como impedir q a página dê zoom, pelo celular
 </script>
 
 <script> // Templates pra iserir mais pra frente
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
-
 </script>
 
 </html>
