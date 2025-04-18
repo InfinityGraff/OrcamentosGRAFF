@@ -24,16 +24,14 @@
     .SelectSoma{background: red}
     .Ubuiaxik{width: 800px; height: 500px;}
     .Nuevoevo{color: white;background-color: #53004873;padding: 2px;}
-    .R_Cor{background:#ff0000}.Tr-R_Cor{background:#ff000086}
-    .G_Cor{background:#008000}.Tr-G_Cor{background:#1c9e1c85}
-    .B_Cor{background:#0000ff}.Tr-B_Cor{background:#0000ff81}
     .SuggSelects   {background:#f357d1}
     .RecolorSelects{background:#f357d1}
     .THSugg p:hover{background:#f357d1}
     .THSugg{z-index: 500;}
-    .Formt_Verd{background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
-    .Formt_Azul{background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
-    .Formt_Redd{background:rgb(224, 104, 104);color:#910000;font-weight:bold}
+    .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
+    .Formt_VerdOK{background:rgb(14, 196, 14  );color:#274e24;font-weight:bold}
+    .Formt_Azul  {background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
+    .Formt_Redd  {background:rgb(224, 104, 104);color:#910000;font-weight:bold}
 
     .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
     .Dark option{color:white;background:#3d3d3d}
@@ -179,65 +177,43 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         },
         'Router'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
-        },
-        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
-        Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         }
         ,'Envelopamento'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         }
         ,'Serigrafia'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         }
         ,'Figurinha'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
             Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         },
         'Topo de Bolo'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
             Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         },
         'Vendas'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         },
         'Placa'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         },
         'sinalização'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
+                    'Reto' :{}}
         }
         }
+
+    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo de Bolo','Vendas','Placa','sinalização']
 
     const HotKy = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]])) // ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')  // pegar apenas 1 tipo
     const AllProd = ObjKey(Prod)
@@ -272,15 +248,7 @@
         'Zimaz',
     ]
 
-     const CC = {
-         // PDDS:{},
-         SERV:[
-             {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-             {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-             {Forn:["['Varyus'].includes()",'Varys','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-         ],
-         // CLNT:{}, // PGMT:{},  // GRAD:{},  // OOSS:{},  // UBER:{},  // MPAG:{}
-     }
+
 </script>
 
 <script> // Bibliotecas
@@ -311,7 +279,12 @@
     const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
     const Num2 = e => isNaN(value = parseFloat(e.replace('R$ ','').replace(/\./g,'').replace(',','.'))) ? 0 : value
     const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
-    const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase();
+    const tr_ID=tr=>getClass(tr,'tr-').replace('tr-','').trim()
+    const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
+    const LocPcnt = (parte,total) => (parte / total)
+
+
+    const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
 
 
 
@@ -394,7 +367,7 @@
             Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
             Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
             Data:e=>    `<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-            Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false" src="${e}">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
+            Imgs:e=>    `<img onclick="AbrirImg(this)" draggable="false">`, // src="${e}" // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
             Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
             Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
             Grds:(e,R)=>`${e}`,
@@ -513,85 +486,57 @@
 </script>
 
 <script> // RECOLOR
+    function Rfresh_Color(){
+        const modo = 'Stts' // também tem de [separar Tipos, Agrupar, Ordenar,status conclusão]
+        const onde = 'tr'   // também rem para [td,tr] todo name de tr e td será relacionado a cor
 
-    function RRecolor(){ // esta função está sendo chamada pelo EditCell()
-            // talvez aqui de pra fazer recolor de forma individual
-            console.log('Sera feito o Recolor sem Demora!')
+        const CC = {
+            SERV:[
+                {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+            ],
         }
-        // Recoloração igual ao Filter (pra separar tipos, Agrupar e Ordenar)
-        // Recoloração por Status de Conclusão
-        // quero fazer tudo no Rodapé e Salvar um Json pra manter Fixo pra as Próximas Atualizações
-        // e também quero Pressets de combinações de Cores pra eu Já ir Direto!
 
-        function ReStts(){
-            ObjKey(CC).forEach(Typ=>{
-                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
-                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                    let id = VAL($(`:scope > ${Coll(1)}`,tr))
-                    let Acc = []
-                    let Grup = []
+        const Typ  = 'PDDS'
+        $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
+        $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
+            const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
+            const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} > .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
 
-                    // Validar pra saber se Corresponde ao Critério lá da base de dados
-                    function Validar(K){
-                            const td = $(`:scope > ${Col(Typ,K[0])}`,tr)
-                            const valor = VAL(td)
-                            const Stg = K[1][0].replace('()',`('${valor}')`)
-                            const Result = eval(`${K[1][0].includes('includes') ?'':'valor'} ${Stg}`)
-                            return Result
-                    }
+            if(Td_Val('Valr')==Td_Val('Pgmt')){
+                Add(TD('Valr'),'Formt_Verd')
+                Add(TD('Pgmt'),'Formt_Verd')
+            }
 
-                    // Conferir de qual Grupo ele Pertence
-                        CC[Typ].forEach((e,x)=>{const K = ObjEtr(e)[0] ; if(Validar(K)){Grup = [K[0],K[1][1],K[1][2],x]}})
-                    // Dar String vazia caso não Pertença a nenhum Grupo
-                        if(Grup.length == 0){Grup = ['','','',0]}
-                    // Conferir Intensidade
-                        ObjEtr(CC[Typ][Grup[3]]).forEach(K=>{Acc.push(Validar(K) ? [K[0],true]: [K[0],false])})
-                    // Fazer o Concar pra Botar no SetAtributes
-                        const Concat = Acc.map(e=>{return e[1]==true ? e[0] : ''}).join('-')
-//                        console.log(id,Concat.replace(/\-*/,'-'))
-                        // tr.setAttribute('data-Color','john_doe')
-                        
-                        
-                        //console.log(VAL(td),Stg,Result==true?'verdadeiro':'falsos')
-                        //
-                    
-                    //console.log(id,Acc)
+            function Validar(K,tyyp,trbdj){ // Validar pra saber se Corresponde ao Critério lá da base de dados
+                const td = $(`:scope > ${Col(tyyp,K[0])}`,trbdj)
+                const valor = VAL(td)
+                const Stg = K[1][0].replace('()',`('${valor}')`)
+                const Result = eval(`${K[1][0].includes('includes') ?'':'valor'} ${Stg}`)
+                return Result
+            }
 
-                })
+            $$(`:scope .Bdj_SERV > tbody > tr`,TD('Serv')).forEach((trbdj,x)=>{ // oq fazer dentro da bandeja Serv
+                let Acc = [] ; let Grup = []
+
+                CC['SERV'].forEach((e,x)=>{const K = ObjEtr(e)[0] ; if(Validar(K,'SERV',trbdj)){Grup = [K[0],K[1][1],K[1][2],x]} }) // Conferir de qual Grupo ele Pertence
+                if(Grup.length == 0){Grup = ['','','',0] ; return} // Dar String vazia caso não Pertença a nenhum Grupo
+                ObjEtr(CC['SERV'][Grup[3]]).forEach(K=>{Acc.push(Validar(K,'SERV',trbdj) ? [K[0],true]: [K[0],false])}) // Conferir Intensidade
+                const Concat = Acc.map(e=>{return e[1]==true ? e[0] : ''}).join('-') // Fazer o Concar pra Botar no SetAtributes (Concat Por Extenso)
+                const Length = Concat.split('-').filter(v=>v).length
+                const Pcnt = Length / Concat.split('-').length
+                const CorVerd = Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
+                
+                // será q ta pintando um moi de VEZ?
+                Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
+                Add(TD('Serv'),CorVerd) ; RGBa(TD('Serv'),Pcnt)
+                Add(tr,'Formt_Verd')    ; RGBa(tr        ,Pcnt)
+            
             })
-        }
-
-        function ExibRecolor(Eu){if(Pai(event.target)==Eu){Tog_N($('span',Eu))}}
-        function TogCorlor(eu,Typ){Tog(eu,'RecolorSelects') ; RloadColor()}
-
-        function RecolorFil(Eu){
-            $('span',Eu).style.width = '150px'
-            const R = D_Rastr(_td(Eu))
-            Inn($('span',Eu),`${R[2]=='Data'||R[2]=='Valr'?`<div>Acima de</div>   <div>Abaixo de</div>`:``}
-                              ${Uniq(J[R[3]].map(e=>e[R[2]])).map(e=>`<div onclick="TogCorlor(this,'${R[3]}')">${e}</div>`).join('')}`)
-        }
-
-        function RloadColor(){
-            // tentar Simplificar isso depois, em 1 Unica Linha
-            $$('.R_Cor,   .G_Cor,   .B_Cor'   ).forEach(e=>{Rmv(e,'R_Cor'   );Rmv(e,'G_Cor'   );Rmv(e,'B_Cor'   )})
-            $$('.Tr-R_Cor,.Tr-G_Cor,.Tr-B_Cor').forEach(e=>{Rmv(e,'Tr-R_Cor');Rmv(e,'Tr-G_Cor');Rmv(e,'Tr-B_Cor')})
-
-            $$('.RGB').forEach(e=>{
-                const   cor = Inn($('a',e))
-                const valid = $$('.RecolorSelects',e).map(E=>E==null?null:Inn(E))  
-                const     X = IdxDe(_td(e))+1
-                const     R = D_Rastr(_td(e))
-                console.log(R[3])
-                // só roda isso, se tiver certo ai o R[3] com nome da tabela
-                $$(`#H_${'UBER'} > tbody > tr ${Coll(X)}`).forEach(td=>{ if(valid.includes(VAL(td))){Add(td,`${cor}_Cor`)} })
-            })
-
-            // tentar Simplificar isso depois, em 1 Unica Linha
-            $$('.R_Cor').forEach(e=>{Add(_tr(e),'Tr-R_Cor')})
-            $$('.G_Cor').forEach(e=>{Add(_tr(e),'Tr-G_Cor')})
-            $$('.B_Cor').forEach(e=>{Add(_tr(e),'Tr-B_Cor')})
-        }
-
+        })
+    }    
+    // Quero fazer tudo no Rodapé e manter alterações Fixas
 </script>
 
 <script> // SUGGLINK
@@ -684,11 +629,7 @@
         $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 
-    function Rfresh_Color(){
-
-    }
-
-    function RealTime(){Rfresh_Foot() ; Rfresh_Color()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
+    function RealTime(){Rfresh_Foot() ; Rfresh_Color() ; /*ReStts()*/} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
 </script>
 
 <script> // Manipulações Extras
@@ -1049,8 +990,9 @@
                     })}
 
                     function tmplt_Prod(e){ //GRANDE
+                        const Fora = ListaFora.includes(e)
                         return `<div class="Rltv Start2">
-                            <span class="Start"><img src="./Prod/IconProd/${e}.svg"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
+                            <span class="Start"><img src="${Fora?'./placeholder.svg':`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
                             <div class="KeyInn none">...</div>
 
                                 <div class="Ct w100 Opts Abslt">${
@@ -1058,7 +1000,7 @@
                                         const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
                                         const Larg = `width:${(200/l.length)+15}px;`
                                         const Zidx = `z-index:${(l.length-x)+10};`
-                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="./Prod/IconProd/${e}_${vv}.svg"></div>`
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora?'./placeholder.svg':`./Prod/IconProd/${e}_${vv}.svg`}"></div>`
                                 }).join('')}</div>
 
                             <div class="Ct DivVrnts">
@@ -1066,7 +1008,7 @@
                                 return `<div class="Conteudo Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
                                             <div class="KeyVariants rgx">${V}</div>
-                                            <img class="fotO" src="./Prod/${e}_${V}.webp" onclick="MdalShow('#Mdal-Prod')">
+                                            <img class="fotO" src="${Fora?'./placeholder.svg':`./Prod/${e}_${V}.webp`}" onclick="MdalShow('#Mdal-Prod')">
                                             <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
                                             <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
@@ -1672,7 +1614,7 @@
     function EditCell(e,vall=null){
         const[Typ,x,Col,Cry]=D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        const idPDD = getClass(Pai(_td(Pai(_td(e)))),'tr-').replace('tr-','').trim()
+        const idPDD =  tr_ID(Pai(_td(Pai(_td(e)))))
         const isBdj = D_Rastr(_td(Pai(_td(e))))[3]
 
         if(Val===Nm(e)){return}
