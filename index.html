@@ -232,10 +232,10 @@
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const BS = {
         PDDS:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['E',''],Lixo:['X','']},
-        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['F',''],Coment:['E',''],'Lixo':['X','']},
+        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['F',''],OS:['F',''],Uber:['F',''],Coment:['E',''],'Lixo':['X','']},
         PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
-        CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['S',''],Pcnt:['A',''],Lixo:['X','']},
-        FINC:{Id:['F',''],Data:['D',''],Forn:['S',''],Item:['E',''],Valr:['V',''],Dstn:['E',''],Pcnt:['E',''],Lixo:['X','']},
+        CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
+        FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
         GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Imag:['M',''],Lixo:['X','']},
@@ -245,12 +245,7 @@
         CALC:{}
     }
 
-    const ListaKits=[
-        'Zebu',
-        'Zimaz',
-    ]
-
-
+    const ListaKits=['Zebu','Zimaz',]
 </script>
 
 <script> // Bibliotecas
@@ -402,7 +397,7 @@
             const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                           Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
                           Typ==='Cust' ? Find.map(e=>`${e['Valr']}`) :
-                          Typ==='Finc' ? Find.map(e=>`${''}`) :
+                          Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`) :
                           Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                          Find.map(e=>e[R[3]]).join(' | ')
             
@@ -526,9 +521,10 @@
                 const JaFeito   = Concat.split('-')[1]==='OK'
                 const Entregue = Concat.split('-')[2]==='Entregue'
                 const Devendo = Td_Val('Valr')>Td_Val('Pgmt')
+                const LucroOK = Td_Val('Cust')!=='' && Td_Val('Finc')!==''
 
-                const CorTd   = Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
-                const CorTr   = Devendo ? 'Formt_Redd' : 'Formt_Verd'
+                const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
+                const CorTr   = LucroOK ? 'Formt_Azul' : Devendo ? 'Formt_Redd' : 'Formt_Verd'
 
                 // será q ta pintando um moi de VEZ?
                 Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
@@ -538,7 +534,10 @@
                 // Ficar Azul quando ta OK até o Relatório
             })
 
-            if(Td_Val('Pgmt')==0){
+            if(Td_Val('Cust')!=='' && Td_Val('Finc')!==''){
+                Add(TD('Cust'),'Formt_Azul')
+                Add(TD('Finc'),'Formt_Azul')
+            }else if(Td_Val('Pgmt')==0){
                 Add(TD('Valr'),'Formt_Redd')
                 Add(TD('Pgmt'),'Formt_Redd')
             }else if(Td_Val('Valr')>Td_Val('Pgmt')){
@@ -683,10 +682,10 @@
             </style>
 
             <div id="Title1" class="Cl" onclick="NavPag('#Pag_ORC',this)"> <!--Titulo Mobile     onclick="Tog($('#BarraLateral'),'none')"-->
-                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.3</h1>
+                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.4</h1>
             </div>
             <div id="Title2" class="Ct"> <!--Titulo PC-->
-                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.3</h1>
+                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.4</h1>
             </div>
         </div>
         
@@ -836,6 +835,7 @@
             .Bdj_SERV > tbody > tr > td:nth-child(3),.Bdj_SERV > thead > tr > th:nth-child(3){border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(9),.Bdj_SERV > thead > tr > th:nth-child(9){border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(16),.Bdj_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
             
         </style>
 
