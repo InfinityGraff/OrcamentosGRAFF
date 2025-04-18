@@ -255,7 +255,7 @@
     const BS = {
         PDDS:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['E',''],Lixo:['X','']},
         SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Coment:['E',''],Grad:['F',''],'Lixo':['X','']},
-        PGMT:{ID:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
+        PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['S',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Id:['F',''],Data:['D',''],Forn:['S',''],Item:['E',''],Valr:['V',''],Dstn:['E',''],Pcnt:['E',''],Lixo:['X','']},
 
@@ -309,6 +309,12 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
     const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
+    const Num2 = e => isNaN(value = parseFloat(e.replace('R$ ','').replace(/\./g,'').replace(',','.'))) ? 0 : value
+    const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
+    const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase();
+
+
+
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -322,6 +328,8 @@
                   : R[3]==='Soma' ? $('p',td).textContent.trim()
                   : R[3]==='Data' ? $('p',td).textContent.trim()
                   : R[3]==='Bndj' ? $('p',td).textContent.trim()
+                  : R[3]==='Valr' ? Num2($('p',td).textContent.trim())
+                  
                   : R[3]==='Slct' ? $('select',td).value
                   : R[3]==='Inpt' ? $('input' ,td).value
                   : R[3]==='Chek' ? $('input' ,td).checked
@@ -363,7 +371,7 @@
 </script>
 
 <script>// Template String v7.3
-    const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+    const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const D_Rastr2=R=>R.split('-')
     const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
     const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
@@ -456,28 +464,6 @@
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
 
-    function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
-        const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
-        const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
-        const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
-
-        function SOMAPgmt(Arr){
-            const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
-            let ArrPix = [] ; let ArrAv = []
-            Arr.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
-                    if      (RgxPixAV(I)[2]==='Pix'){ArrPix.push(Num(RgxPixAV(I)[1]))}
-                    else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
-            return Tm_PixAv(ArrPix,ArrAv)}
-
-        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
-        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
-        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-    }
-
-    function RealTime(){Rfresh_Foot()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
 </script>
 
 <style>
@@ -485,8 +471,9 @@
     .footbndjj span{color: black}
 </style>
 
-<script> // FILTROS == Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
-        function Filtrar(e,Clik){event.preventDefault() // isso deveria ser tm_SuggFilt()
+<script> // FILTROS
+            // Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
+        function Filtrar(e,Clik){event.preventDefault() // isso deveria se chamar tm_SuggFilt()
             const Sugg = $('.THSugg',_th(e))  ;  TogShow(Sugg)
             const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > p`
             const blx = Inn(e)==="Serv" ? $$(qry).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value)) /*isso aqui tem no rfreshFoot*/ : $$(qry)
@@ -673,6 +660,35 @@
         EditCell(td,'')
     }
 
+</script>
+
+<script> // REALTIME
+    function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
+        const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
+        const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
+        const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+
+        function SOMAPgmt(Arr){
+            const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
+            let ArrPix = [] ; let ArrAv = []
+            Arr.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
+                    if      (RgxPixAV(I)[2]==='Pix'){ArrPix.push(Num(RgxPixAV(I)[1]))}
+                    else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
+            return Tm_PixAv(ArrPix,ArrAv)}
+
+        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
+        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
+        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+    }
+
+    function Rfresh_Color(){
+
+    }
+
+    function RealTime(){Rfresh_Foot() ; Rfresh_Color()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
 </script>
 
 <script> // Manipulações Extras
@@ -1635,7 +1651,7 @@
 <script> // Controla a Base de Dados
     
     function Rfresh(){(async()=>{await GetJSON()})()}
-    async function GetJSON(){
+    async function GetJSON(){ // por enquanto não ta sendo usado
         console.log('Não Está Rodando')
         async function UparClnt(){FetchPOST(Link+'/postUpar_Clnt_Data',[''])}
         async function UparLink(){FetchPOST(Link+'/postUparLink',[''])}
@@ -1653,29 +1669,52 @@
         RealTime()
     }
 
-    
-    async function EditCell(e,vall=null){
-        const R = D_Rastr(_td(e))
+    function EditCell(e,vall=null){
+        const[Typ,x,Col,Cry]=D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        if(Val===Nm(e)){return}
-        const arrays = [R[0],R[1],R[2],vall===""?"":vall?vall:Val] // [Tabela,Linha,Coluna,NovoValor]
-        Nm(e,e.textContent.trim())
-        console.log('arrayFinal',arrays)
-        if(R[2]==='Data' && R[3]==='Inpt' || R[3]==='Sugg'){EditJSON(arrays)}else{EditJSON(arrays)}
-        RRecolor()
-        console.log('Foi Editado')
-    }
-    
-    function EditVlr(e,E){ const R = D_Rastr(_td(e)) ; console.log('Chamou',E,R) }
+        const idPDD = getClass(Pai(_td(Pai(_td(e)))),'tr-').replace('tr-','').trim()
+        const isBdj = D_Rastr(_td(Pai(_td(e))))[3]
 
-    function EditCellFake(eu){ 
+        if(Val===Nm(e)){return}
+        const Arr = [Typ,idPDD,Cry,x,Col,isBdj,vall===""?"":vall?vall:Val] // [Tabela,Linha,Coluna,NovoValor]
+        Nm(e,e.textContent.trim())
+        console.log('arrayFinal',Arr)
+        EditCONST(Arr) //EditJSON(arrays)
+    }
+
+    function EditCONST(Arr){
+        const [Typ,idPDD,Cry,x,col,isBdj,vall] = Arr
+        const item = NovoJson.find(obj=>obj['Id']==idPDD)
+        const Idx = NovoJson.findIndex(obj=>obj['Id']==idPDD)
+        console.log(isBdj)
+        if(isBdj=='Bndj'){
+            const typ = item[minuscule(Typ)]
+            const Idxbdj = NovoJson[Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==x)
+            NovoJson[Idx][minuscule(Typ)][Idxbdj][col] = vall //idPDD
+            console.log(NovoJson[Idx])
+        }else{
+            console.log(`${NovoJson[col]} >> ${vall}`)
+            NovoJson[col] = vall 
+        }
+    }
+
+
+    const TesteClnt=(e,td=null)=>{
+        if($('#ConfirCliente').checked){console.log('Perguntar')}
+            if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
+                if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
+    }
+</script>
+
+<script> // Controladores antigos pra confiscar
+    function EditCellFake(eu){ // Usado apenas no Format_Bndj_Clnt()   // assim q eu eliminar lá, poderei apagar isso aqui!
         const val = Nm($('input',Pai(eu)))
         const R = D_Rastr(Avo(eu.closest('.Bandj')))
         const arrays = (['PDDS',R[1],'Clnt',val]) // [Tabela,Linha,Coluna,NovoValor]
         console.log(arrays)
         EditJSON(arrays)
     }
-    const EditCellFake2=(e)=>{
+    const EditCellFake2=(e)=>{ // Usado apenas no Format_Bndj_Clnt() // é a mesma coisa, tem q ver lá tbm
         const R = D_Rastr(_td(e))
         e.value.split('|').forEach(E=>{
             // isso ta rodando 2 vezes mesmo quando só tem 1 no caso quando eu não digioto o | // talvez seja pq ta rodando 2 vezes, uma no Enter, e outra no Onblur
@@ -1683,11 +1722,7 @@
         })
     }
 
-    const TesteClnt=(e,td=null)=>{
-        if($('#ConfirCliente').checked){console.log('Perguntar')}
-            if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
-                if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
-    }
+
 
     function add_PDDS(e,nome){
         const TestePgmt=()=>{if(e[5]){AddROW('PGMT',{Desc:e[5]});return D['PGMT']}else{return '.'}}
