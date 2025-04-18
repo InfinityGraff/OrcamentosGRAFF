@@ -176,22 +176,13 @@
                 'Oxford' :{},
                 'Cettin' :{},
         }},    
-        
-        // "Envelopamento": ["adesivo de carro", " automotiva"],
-        // "Placa": ["placa de sinalização", "placa de identificação", "placa publicitária", "painel"],
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // Corte a Lazer e Acrilico e PVC Router
-        // 'Varios',
-        // 'Arte',
-        // 'Serigrafia',
-        // 'Envelopamento',
-        // 'Figurinha',
-        // 'Topo de Bolo',
-        // 'Vendas'],
+        // 'Envelopamento' , 'Varios' , 'Arte' , 'Serigrafia' , 'Figurinha' , 'Topo de Bolo' , 'Vendas' , 'Placa' , 'sinalização'
         }
 
-    const HotKy = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]]))
-    // const AllServM2  = ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')                             // Obsoleto pq n to usando
-    // const AllServOFS = ObjKey(Prod).filter(k=>Prod[k].Calc==='OFS'||Prod[k].Calc==='QNT')      // Obsoleto pq n to usando
+    const HotKy = Object.fromEntries(ObjEtr(Prod).map(([k,v])=>[k,v.HotKey||[]])) // ObjKey(Prod).filter(k=>Prod[k].Calc==='M2')  // pegar apenas 1 tipo
     const AllProd = ObjKey(Prod)
     const Vari=e=>ObjKey(Prod[e].Variantes)
 
@@ -261,7 +252,6 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
     const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
-    const ExtrNomeServ = l => l.flatMap(t => t.split('|').map(p => p.trim().split(' ')[0])) // muito especifica, pega apenas a primeira palavra do SERV da tabela
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -305,23 +295,20 @@
 
 </script>
 
-<script> // Template String ANTIGO FICANDO OBSOLETO
-    const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
-    const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
-    
+<script> // Template String
     function Format(){
         // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
         // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
         // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
     }
-
-
 </script>
 
 <script>// Template String v7.3
     const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const D_Rastr2=R=>R.split('-')
+    const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
     const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
+    const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
     const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
     const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
 
@@ -332,7 +319,6 @@
     
     const Tm_TablePDDS=(typ,arry)=>{
         const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
-
         const Tm_Tm = {
             Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
@@ -394,7 +380,6 @@
             return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
         }
         return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
-    
         
         // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
         // tipo de Sugg, ou de troca, ou de subtração
@@ -411,11 +396,13 @@
                         <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
     }
-    
+    // grifar a palavra q foi pesquisada na tabela
+    // permitir o filtro por data e tudo mais
     function Rfresh_Foot(){
         const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
-        const objClnt=()=>ContRepete(             getAllCol('PDDS','Clnt').map(e=>Inn(e)) )
-        const objServ=()=>ContRepete(ExtrNomeServ(getAllCol('PDDS','Serv').map(e=>Inn(e))))
+        const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
+        const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+        console.log('Serv',objServ())
 
         function SOMAPgmt(Arr){
             const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
@@ -425,18 +412,18 @@
                     else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
             return Tm_PixAv(ArrPix,ArrAv)}
 
-        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="">Abrir</div> <div class="Abslt none Cl footbndjj">${ObjEtr(objClnt()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="">Abrir</div> <div class="Abslt none Cl footbndjj">${ObjEtr(objServ()).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
-        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const [Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
+        $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
+        $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+        $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 </script>
 
 <style>
-    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: 300px;} 
-    .footbndjj span{color: black ; font-size: 10px;}
+    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
+    .footbndjj span{color: black}
 </style>
 
 <script> // Manipulações
@@ -1744,6 +1731,10 @@
     // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
     // quero criar meu próprio Teclado de Input de Medidas, pois dentro dele posso escolher centimetro, Milimetro, Metros
     // e o teclado não vai ficar tão grande na tela
+
+    // https://www.youtube.com/watch?v=si0VFSOH0wQ
+
+    // como impedir q a página dê zoom, pelo celular
 </script>
 
 <script> // Templates pra iserir mais pra frente
