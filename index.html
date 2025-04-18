@@ -29,9 +29,11 @@
     .THSugg p:hover{background:#f357d1}
     .THSugg{z-index: 500;}
     .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
-    .Formt_VerdOK{background:rgb(14, 196, 14  );color:#274e24;font-weight:bold}
+    .Formt_VerdOK{background:rgb(43, 211, 43  );color:#274e24;font-weight:bold}
     .Formt_Azul  {background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
     .Formt_Redd  {background:rgb(224, 104, 104);color:#910000;font-weight:bold}
+    .Formt_Yell  {background:rgb(228, 252, 94 );color:#910000;font-weight:bold}
+    .Formt_Orag  {background:rgb(255, 187, 0);color:#910000;font-weight:bold}
 
     .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
     .Dark option{color:white;background:#3d3d3d}
@@ -230,7 +232,7 @@
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const BS = {
         PDDS:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['E',''],Lixo:['X','']},
-        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Coment:['E',''],Grad:['F',''],'Lixo':['X','']},
+        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['F',''],Coment:['E',''],'Lixo':['X','']},
         PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['S',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Id:['F',''],Data:['D',''],Forn:['S',''],Item:['E',''],Valr:['V',''],Dstn:['E',''],Pcnt:['E',''],Lixo:['X','']},
@@ -504,11 +506,6 @@
             const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
             const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} > .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
 
-            if(Td_Val('Valr')==Td_Val('Pgmt')){
-                Add(TD('Valr'),'Formt_Verd')
-                Add(TD('Pgmt'),'Formt_Verd')
-            }
-
             function Validar(K,tyyp,trbdj){ // Validar pra saber se Corresponde ao Critério lá da base de dados
                 const td = $(`:scope > ${Col(tyyp,K[0])}`,trbdj)
                 const valor = VAL(td)
@@ -526,16 +523,34 @@
                 const Concat = Acc.map(e=>{return e[1]==true ? e[0] : ''}).join('-') // Fazer o Concar pra Botar no SetAtributes (Concat Por Extenso)
                 const Length = Concat.split('-').filter(v=>v).length
                 const Pcnt = Length / Concat.split('-').length
-                const CorVerd = Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
-                
+                const JaFeito   = Concat.split('-')[1]==='OK'
+                const Entregue = Concat.split('-')[2]==='Entregue'
+                const Devendo = Td_Val('Valr')>Td_Val('Pgmt')
+
+                const CorTd   = Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
+                const CorTr   = Devendo ? 'Formt_Redd' : 'Formt_Verd'
+
                 // será q ta pintando um moi de VEZ?
                 Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
-                Add(TD('Serv'),CorVerd) ; RGBa(TD('Serv'),Pcnt)
-                Add(tr,'Formt_Verd')    ; RGBa(tr        ,Pcnt)
-            
+                Add(TD('Serv'),CorTd)   ; RGBa(TD('Serv'),Pcnt)
+                Add(tr,CorTr)           ; RGBa(tr        ,Pcnt)
+
+                // Ficar Azul quando ta OK até o Relatório
             })
+
+            if(Td_Val('Pgmt')==0){
+                Add(TD('Valr'),'Formt_Redd')
+                Add(TD('Pgmt'),'Formt_Redd')
+            }else if(Td_Val('Valr')>Td_Val('Pgmt')){
+                Add(TD('Valr'),'Formt_Orag')
+                Add(TD('Pgmt'),'Formt_Orag')
+            }
+            else if(Td_Val('Valr')==Td_Val('Pgmt')){
+                Add(TD('Valr'),'Formt_VerdOK')
+                Add(TD('Pgmt'),'Formt_VerdOK')
+            }
         })
-    }    
+    }
     // Quero fazer tudo no Rodapé e manter alterações Fixas
 </script>
 
@@ -817,6 +832,11 @@
             .ColorFix{background: #a7a7a78e !important;}
 
             .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
+
+            .Bdj_SERV > tbody > tr > td:nth-child(3),.Bdj_SERV > thead > tr > th:nth-child(3){border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(9),.Bdj_SERV > thead > tr > th:nth-child(9){border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
@@ -1638,6 +1658,7 @@
             console.log(`${NovoJson[col]} >> ${vall}`)
             NovoJson[col] = vall 
         }
+        RealTime()
     }
 
 
