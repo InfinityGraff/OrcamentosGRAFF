@@ -208,26 +208,30 @@
             }
         }
         ,'Figurinha'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+            Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },
+        'Topo de Bolo'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+            Variantes:{
+                    'Reto' :{},
+                    'Curva':{},
+            }
+        },
+        'Vendas'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
                     'Reto' :{},
                     'Curva':{},
             }
-        },'Topo de Bolo'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        },
+        'Placa'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
                     'Reto' :{},
                     'Curva':{},
             }
-        },'Vendas'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
-        Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
-        },'Placa'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
-        Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
-            }
-        },'sinalização'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
+        },
+        'sinalização'     :{Calc:'UND', Stts:'Offf' , Prvw:''        ,
         Variantes:{
                     'Reto' :{},
                     'Curva':{},
@@ -1402,6 +1406,8 @@
         </div>
     </div>
 
+    <div id="ReturnOBJ" onclick="$('#ReturnOBJ').textContent=JSON.stringify(NovoJson,null,2)">ReloadOBJ</div>
+
     <style> /*CSS dos Modais*/
         .Dark #FModal>div{background:#1b1b1b}
         .Lite #FModal>div{background:#ffffff}
@@ -1644,12 +1650,6 @@
         Onloads('body')
         NavPag(Atual['Pag'])
         Format_Bndj_Clnt()
-        
-        // GetConfigOrdem()
-        // Condicional()
-        // window.scrollTo(scrollPosition[0],scrollPosition[1])
-        // ReStts()
-        // FinaldeTUDO()
         RealTime()
     }
 
@@ -1663,6 +1663,7 @@
         console.log('arrayFinal',arrays)
         if(R[2]==='Data' && R[3]==='Inpt' || R[3]==='Sugg'){EditJSON(arrays)}else{EditJSON(arrays)}
         RRecolor()
+        console.log('Foi Editado')
     }
     
     function EditVlr(e,E){ const R = D_Rastr(_td(e)) ; console.log('Chamou',E,R) }
@@ -1708,14 +1709,14 @@
         function AddROW(Pln,obj=null){/*AddRowPratica(Pln,obj,'<')*/ ; AddROWConst(Pln,obj) ; /* FetchPOST(Link+'/postLINHA',[Pln,obj],(e)=>{ALERT(e)}) */ }
 
 
-            function AddRowPratica(Pln,obj,Pose){
-                let tbody =  $(`#H_${Pln} > tbody`)
-                let Colll = $$(`#H_${Pln} > thead th p`).map(p=>Inn(p))
-                let Clone =  $('tr',tbody).cloneNode(true)
-                $$(':scope > td',Clone).forEach((td,x)=>{if($('p',td)){Inn($('p',td),obj[Colll[x]]??'')}}) // Atualizar (este if ta aqui só por que a Lixeira não tem uma Tag <p> dai ela retorna Null) Atualizar de Forma Genérica (q Funcione com td Input, Edit, CheckBox tudo!)
-                Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
-                // o Clone não ta Exibindo Bandeja corretamente talvez por causa da exibição de bandeija depende do ID, e não ta sendo passado corretamente na hora do clone
-            }
+        function AddRowPratica(Pln,obj,Pose){
+            let tbody =  $(`#H_${Pln} > tbody`)
+            let Colll = $$(`#H_${Pln} > thead th p`).map(p=>Inn(p))
+            let Clone =  $('tr',tbody).cloneNode(true)
+            $$(':scope > td',Clone).forEach((td,x)=>{if($('p',td)){Inn($('p',td),obj[Colll[x]]??'')}}) // Atualizar (este if ta aqui só por que a Lixeira não tem uma Tag <p> dai ela retorna Null) Atualizar de Forma Genérica (q Funcione com td Input, Edit, CheckBox tudo!)
+            Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
+            // o Clone não ta Exibindo Bandeja corretamente talvez por causa da exibição de bandeija depende do ID, e não ta sendo passado corretamente na hora do clone
+        }
 
 
         function RmvROW(Typ,id,eu){eu.closest('tr').remove() ; FetchPOST(Link+'/postDELETE' ,[Typ,id],(e)=>{ALERT(e)})}
@@ -1783,8 +1784,6 @@
     // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
     // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
     // como impedir q a página dê zoom, pelo celular
-
-    // https://www.youtube.com/watch?v=si0VFSOH0wQ
 </script>
 
 <script> // Templates pra iserir mais pra frente
