@@ -39,6 +39,9 @@
     .Dark option{color:white;background:#3d3d3d}
     .Lite optgroup{color:#00000038;background:white;  font-size: 10px; text-align: left;padding-left: 80px}
     .Lite option{color:black;background:white}
+
+    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
+    .footbndjj span{color: black}
 </style>
 
 <script> // Base de Produtos
@@ -280,7 +283,8 @@
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
     const LocPcnt = (parte,total) => (parte / total)
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
-
+    const Grifar=(e,Rgx)=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
+    const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
 
@@ -432,13 +436,8 @@
 
 </script>
 
-<style>
-    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
-    .footbndjj span{color: black}
-</style>
-
 <script> // Manipulações Extras
-    function CtrlSoma(Eu){Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
+    function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
     const MonitoreBandeja=()=>{console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')}
 </script>
 
@@ -468,23 +467,22 @@
         }
         
         function Pesquisa(Val,Typ){
-            const Aa = true
-            const A_ = true
+            const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
+            const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                // if(se for com conteudo da bandeja){faz o devido concat}
-                const Concat = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
-                const match = A_ ? new RegExp(`\\b${Val}\\b`, Aa ? '' : 'i').test(Concat) : // Palavra Inteira
-                              Aa ? Concat.includes(Val) :                                   // Maiuscula minusc
-                              Concat.toLowerCase().includes(Val.toLowerCase())              // iguinorar os 2
-                if(match){Rmv_N(tr)}else{Add_N(tr)}
+                const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
+                $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
+                if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
             })
-            RealTime()
-            // Grifar a palavra q foi pesquisada na Tabela
+            Rfresh_Foot() // RealTime()
+            // if(se for com conteudo da bandeja){faz o devido concat}
+            // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
         }
-        function LimparFiltro(Typ){ // criar um atalho pra Limpar Ex: Ctrl+Esc
+
+        function LimparFiltro(Typ){ // Atalho Esc
             Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))
             RealTime()
-        }  
+        }
 </script>
 
 <script> // RECOLOR
@@ -646,7 +644,7 @@
         $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 
-    function RealTime(){Rfresh_Foot() ; Rfresh_Color() ; /*ReStts()*/} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
+    function RealTime(){Rfresh_Foot() ; Rfresh_Color() ; /*ReStts()*/} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
 </script>
 
 <body class="Dark" onclick="NoneBndj()">
@@ -684,7 +682,6 @@
             </div>
         </div>
         
-
         <div id="Div-Pesq" class="Rltv hov"> <!--Pesquisa-->
             <style> /*Input de Pesquisa*/
                 #Div-Pesq{width: 30%}
@@ -692,13 +689,15 @@
                 #H_Pesq::placeholder{color: #ffffff;opacity: 0.5}
                 #Lupa{top: 8px; right: 6px; width: 17px; opacity: 0.5;}
                 #Lupa:hover{opacity: 1;}
-                .Pesq-Aa{color: #00ff0d;}
-                .Pesq-A_{color: #00ff0d;}
+                #Pesq-Aa{top: 8px; right: 50px ; color: white;}
+                #Pesq-A_{top: 8px; right: 30px ; color: white;}
+                .Pesq-Aa{color: #00ff0d !important;}
+                .Pesq-A_{color: #00ff0d !important;}
                 @media (max-width:500px){ #Div-Pesq{width: 50%} }
             </style>
             <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
-            <a onclick="Tog(this,'Pesq-Aa')">Aa</a>
-            <a onclick="Tog(this,'Pesq-A_')">A]</a>
+            <a id="Pesq-Aa" class="Abslt HOV" onclick="Tog(this,'Pesq-Aa');Pesquisa($('#H_Pesq').value,'PDDS')">Aa</a>
+            <a id="Pesq-A_" class="Abslt HOV" onclick="Tog(this,'Pesq-A_');Pesquisa($('#H_Pesq').value,'PDDS')">A]</a>
             <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
         </div>
 
@@ -1061,20 +1060,12 @@
             
             <div> <!--Pesquisa PROD-->
                 <input id="PesqPROD" type="text" oninput="pesquisaProd(this)" placeholder="Pesquisar Produto...">
-                
                 <script>
                     function pesquisaProd(ipt){
-                        // const NewRegex = e=>new RegExp(e.split('').map(e=>e+'.{0,1}').join(''),'i')
-                        // const r = NewRegex(RxClear(ipt.value))
                         const r = new RegExp(RxClear(ipt.value),'i')
-                        
                         $$('#Div-Prod > div').forEach(e=>{
-                            $$(".rgx",e).forEach(Rx=>{
-                                const ori = Rx.textContent
-                                Rx.innerHTML = ori.replace(r,match=>`<strong style="background:orange" name="">${match}</strong>`)
-                            })
-                            const t = RxClear(e.textContent)
-                            e.style.display = r.test(t) ? '' : 'none'
+                            $$(".rgx",e).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,r)}) // Grifar
+                            e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
                         })
                     }
                 </script>
@@ -1775,16 +1766,26 @@
     // Poder Diferenciar oq foi preenchido Automatico, e o q foi preenchido Manualmente
 
 
-    // ficar trocando a Barra de Pesquisa lá do Topo, pra cada página
+    // Ficar trocando a Barra de Pesquisa lá do Topo, pra cada Página
     // um click abre a imagem, click duplo Adiciona ela em baixo
     // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
     // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
     // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
     // como impedir q a página dê zoom, pelo celular
+
+    //missrand.e bixinha da musica Rendow - Damn Fly
+
 </script>
 
 <script> // Templates pra iserir mais pra frente
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
+</script>
+
+<script>
+    document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
+            LimparFiltro('PDDS')}
+        })
 </script>
 
 </html>
