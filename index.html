@@ -23,11 +23,18 @@
     select{background: #7e7e7e28 !important}
     .SelectSoma{background: red}
     .Ubuiaxik{width: 800px; height: 500px;}
-    .Nuevoevo{color: white;background-color: #53004873;padding: 2px;}
+    .Nuevoevo{color: white;background: #53004873;padding: 2px;}
     .SuggSelects   {background:#f357d1}
     .RecolorSelects{background:#f357d1}
-    .THSugg p:hover{background:#f357d1}
-    .THSugg{z-index: 500;}
+
+    .THSugg div:hover{background:#f357d1; color: white;}
+    .THSugg div:hover div{opacity: 1}
+    .THSugg p{margin-left: 28px}
+    .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
+    .THSugg{z-index: 999 !important;}
+    .thNotif{background: red; border-radius: 255px; width: 15px; height: 15px; text-align: center; top: -5px; right: 10px; }
+    .ThFilt_Atv{background: #d822ab; color: white;}
+
     .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
     .Formt_VerdOK{background:rgb(43, 211, 43  );color:#274e24;font-weight:bold}
     .Formt_Azul  {background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
@@ -344,7 +351,7 @@
     const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const D_Rastr2=R=>R.split('-')
     const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
-    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Filtrar(this,1)" oncontextmenu="Filtrar(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> </th>`).join('')
+    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Tm_Filt(this,1)" oncontextmenu="Tm_Filt(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> <div class="Abslt Ct thNotif none">0</div> </th>`).join('')
     const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
     const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
     const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
@@ -442,8 +449,7 @@
 </script>
 
 <script> // FILTROS
-            // Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
-        function Filtrar(e,Clik){event.preventDefault() // isso deveria se chamar tm_SuggFilt()
+        function Tm_Filt(e,Clik){event.preventDefault()
             const Sugg = $('.THSugg',_th(e))  ;  TogShow(Sugg)
             const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > p`
             const blx = Inn(e)==="Serv" ? $$(qry).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value)) /*isso aqui tem no rfreshFoot*/ : $$(qry)
@@ -451,21 +457,32 @@
             const ArrVAL = Clik==1 ? Uniq(Inn(e)==="Serv" ? blx : blx.map(e=>VAL(_td(e)))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(_td(e))}}))
 
             const arrayLimpo = ArrVAL.filter(e => e !== undefined) // não sei pq tenho q tirar os Undefined
-            Inn(Sugg,arrayLimpo.map(e=>`<p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p>`).join(''))
+            Inn(Sugg,arrayLimpo.map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join(''))
             
-            // no Filtro pegar intervalos de Datas
-            // no filtro do Pgmt tem q remover todos numeros e dar Unique pra ficar apenas Pix, Card, e Av
-            // no filtro posso escolher menor q < ou maior > um determinado valor todos abaixo de R$ 10,00
+            // Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro (da pra Mudar pelo Add) ecria uma BNolinha de Notificação no Filter pra dizer q tem Fitlro
+            // PGMT apenas Pix, Card, e Av
+            // Intervalos
+            // Maior < Menor >
+
+            // remover Abreviação dos Thead se precisar
         }
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
+            if(Clik=='+'){
+                console.log('Entrou')
+                Add($('p',Pai(Eu)),'ThFilt_Atv')
+                Show($('.thNotif',_th(Eu))) ; $('.thNotif',_th(Eu)).innerHTML = $$('.ThFilt_Atv',_th(Eu)).length
+                return
+            }
+
+            
+
             if(event.ctrlKey){}else{None($$('.THSugg'))}
             $$(Qry).forEach(e=>{
-                if(VAL(_td(e))==Inn(Eu) || VAL(_td(e)).includes(Inn(Eu))){ // dei um ou incluides aqui, mas isso tem q ser apenas pra Serv (mas o correto mesmo é encontrar pelo select dentro do serv)
-
+                if(VAL(_td(e)).includes(Inn(Eu))){
                     if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
-            RealTime()
+            
         }
-        
+        // RealTime()
         function Pesquisa(Val,Typ){
             const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
             const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
@@ -481,6 +498,7 @@
 
         function LimparFiltro(Typ){ // Atalho Esc
             Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))
+            $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
             RealTime()
         }
 </script>
@@ -838,8 +856,9 @@
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
-            <div class="Ct Bt Red">
+            <div class="Ct Bt">
                 <button onclick="NovoPedido()">Novo Pedido +</button>
+                <h1 style="filter:none">Tabela de Pedidos</h1>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -1774,6 +1793,8 @@
     // como impedir q a página dê zoom, pelo celular
 
     //missrand.e bixinha da musica Rendow - Damn Fly
+
+    // toda bandeija sair com Esc independente de qual seja, Sugg th e tudo amis (pega uma class e oculta todas especifica q todas terão)
 
 </script>
 
