@@ -279,11 +279,7 @@
     const tr_ID=tr=>getClass(tr,'tr-').replace('tr-','').trim()
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
     const LocPcnt = (parte,total) => (parte / total)
-
-
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
-
-
 
 
     const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
@@ -441,6 +437,11 @@
     .footbndjj span{color: black}
 </style>
 
+<script> // Manipulações Extras
+    function CtrlSoma(Eu){Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
+    const MonitoreBandeja=()=>{console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')}
+</script>
+
 <script> // FILTROS
             // Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro
         function Filtrar(e,Clik){event.preventDefault() // isso deveria se chamar tm_SuggFilt()
@@ -465,16 +466,20 @@
                     if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
             RealTime()
         }
+        
         function Pesquisa(Val,Typ){
+            const Aa = true
+            const A_ = true
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                const Concat = $$(':scope > td',tr).map(td=>VAL(td)).join('-')
-                const match  = Concat.toLowerCase().includes(Val.toLowerCase())
+                // if(se for com conteudo da bandeja){faz o devido concat}
+                const Concat = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
+                const match = A_ ? new RegExp(`\\b${Val}\\b`, Aa ? '' : 'i').test(Concat) : // Palavra Inteira
+                              Aa ? Concat.includes(Val) :                                   // Maiuscula minusc
+                              Concat.toLowerCase().includes(Val.toLowerCase())              // iguinorar os 2
                 if(match){Rmv_N(tr)}else{Add_N(tr)}
             })
             RealTime()
-            // incluir conteudo da bandeija, e sem conteudo da bandeija
-            // e permitir as mesmas opções do CntrlF daqui do VSCODE
-            // grifar a palavra q foi pesquisada na tabela
+            // Grifar a palavra q foi pesquisada na Tabela
         }
         function LimparFiltro(Typ){ // criar um atalho pra Limpar Ex: Ctrl+Esc
             Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))
@@ -484,8 +489,9 @@
 
 <script> // RECOLOR
     function Rfresh_Color(){
-        const modo = 'Stts' // também tem de [separar Tipos, Agrupar, Ordenar,status conclusão]
-        const onde = 'tr'   // também rem para [td,tr] todo name de tr e td será relacionado a cor
+        // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
+        // todo name de tr e td será relacionado a cor
+        const Typ  = 'PDDS'
 
         const CC = {
             SERV:[
@@ -495,7 +501,6 @@
             ],
         }
 
-        const Typ  = 'PDDS'
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
             const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
@@ -524,7 +529,7 @@
                 const LucroOK = Td_Val('Cust')!=='' && Td_Val('Finc')!==''
 
                 const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
-                const CorTr   = LucroOK ? 'Formt_Azul' : Devendo ? 'Formt_Redd' : 'Formt_Verd'
+                const CorTr   = LucroOK ? 'Formt_Azul' : Devendo           ? 'Formt_Redd' : 'Formt_Verd'
 
                 // será q ta pintando um moi de VEZ?
                 Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
@@ -558,7 +563,6 @@
         TogShow(SibQSl(Eu,'span'))
         TogShow(SibQSl(Eu,'div'))
         const Fillt=e=>{
-            console.log()
             return  Typ=='SERV' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
                     Typ=='PGMT' ? e.Mpag=='' && e.Form!='Av' :
                     Typ=='GRAD' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
@@ -569,7 +573,6 @@
                 return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'SuggSelects')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
             }).join('')
             }</table>`
-            
         }else{
             console.log(J[Typ].filter(e=>Fillt(e)))
             SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'SuggSelects')">${
@@ -610,7 +613,7 @@
         $('#FormIMG').innerHTML = `<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}">
             <span>Nome: ${Nome}<span>
             <button onclick="LimparNomeSVG('${_td(img).className.trim()}')">Limpar</button>
-        <div>`  
+        <div>`
     }
 
     function LimparNomeSVG(Clss){
@@ -644,14 +647,6 @@
     }
 
     function RealTime(){Rfresh_Foot() ; Rfresh_Color() ; /*ReStts()*/} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais
-</script>
-
-<script> // Manipulações Extras
-    function CtrlSoma(Eu){Tog(Eu,'SelectSoma') ; Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
-
-    const MonitoreBandeja=()=>{
-        console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')
-    }
 </script>
 
 <body class="Dark" onclick="NoneBndj()">
@@ -697,9 +692,13 @@
                 #H_Pesq::placeholder{color: #ffffff;opacity: 0.5}
                 #Lupa{top: 8px; right: 6px; width: 17px; opacity: 0.5;}
                 #Lupa:hover{opacity: 1;}
+                .Pesq-Aa{color: #00ff0d;}
+                .Pesq-A_{color: #00ff0d;}
                 @media (max-width:500px){ #Div-Pesq{width: 50%} }
             </style>
             <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
+            <a onclick="Tog(this,'Pesq-Aa')">Aa</a>
+            <a onclick="Tog(this,'Pesq-A_')">A]</a>
             <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
         </div>
 
