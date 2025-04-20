@@ -52,7 +52,7 @@
     .footbndjj span{color: black}
 </style>
 
-<script> // Base de Produtos
+<script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
     const Atual = {Pag:'#Pag_PDDS'}
@@ -237,7 +237,7 @@
         Forn:['','Grafit','Inová','Bureal','BPrint','Stock','Arte','JLTal','Varyus','Tatiane','-'],
         Serv:['','Adesivo','Banner','...'],
         Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
-        Form:['','Pix','Av','Card','1x','2x','3x','4x','5x'],
+        Form:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Devendo','Entregue','JaFeito','Produção']
     }
@@ -259,6 +259,10 @@
     }
 
     const ListaKits=['Zebu','Zimaz',]
+
+    const JServ = NovoJson.flatMap(obj=>obj.Serv)
+    const JPgmt = NovoJson.flatMap(obj=>obj.Pgmt)
+
 </script>
 
 <script> // Bibliotecas
@@ -447,7 +451,7 @@
 
 </script>
 
-<script> // Manipulações Extras
+<script> // Manipulações Simples
     function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
     const MonitoreBandeja=()=>{console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')}
 </script>
@@ -455,17 +459,15 @@
 <script> // FILTROS
         function Palavras(Qry,tipo){
             const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
-                          tipo==='Pgmt' ? ['Pix','Av','Card'] : 
-                          tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText)) : // aqui deve ter um regex pra remover R$ 
-                          tipo==='Stts' ? O['Stts'] : // Uniq($$(Qry).map(e=>e.value)) : 
+                          tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :              
+                          tipo==='Stts' ? O['Stts'] :              
+                          tipo==='Pgmt' ? O['Form'] : 
                           Uniq($$(Qry).map(e=>e.innerText))
-
-            if(tipo==='Stts'){console.log($$(Qry),Valls)}
             return Valls
         }
 
         function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-            console.log('incopetente')
+            console.log('Mudanças')
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                 const tipo = Inn(th)
                 const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
@@ -477,6 +479,7 @@
                 th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
             })
         }
+
         function LimpaThAtv(quem){ // opções pra poder limpar de Colunas especificas
             if(quem==='All'){
                 $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
@@ -666,6 +669,17 @@
 
 </script>
 
+<script> // AUTO COMPLETE
+
+    // Teria um Botão pra Refaturar (ou seja ele n precisa ficar rodando a todo tempo, desde que as coisas não mudem) (roda quando eu apertar e mostrará mudanças caso exista pra eu poder escolher)
+
+    // Nome, muda em PDDS - Completa em 'Serv' e 'Pgmt'
+    // em Serv Muda os Options de Forn
+    // ao Clicar em Entregue Preenche OK automatico
+    // Fazer o Calculo automático
+
+</script>
+
 <script> // Previews
 
     function AbrirImg(img){MdalShow('#FormIMG')
@@ -709,7 +723,7 @@
         $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
     }
 
-    function RealTime(){Rfresh_Foot() ; Rfresh_Color() ; /*ReStts()*/} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
+    function RealTime(){Rfresh_Foot() ; Rfresh_Color()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
 </script>
 
 <body class="Dark" onclick="NoneBndj()">
@@ -914,10 +928,7 @@
                 </script>
                 <button onclick="LimparFiltro('PDDS')">Limpar Filtro</button>
             </div>
-            <style>
-                #H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: red;}
-
-            </style>
+            <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_TablePDDS('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
@@ -939,7 +950,7 @@
             </div>
             <table id="H_SERV" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('SERV',J['SERV']))"></tbody>
+                <tbody onload="Inn(this,Tm_Table('SERV',JServ))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.SERV)[2],'SERV'))"></tr></tfoot>
             </table>
         </div>
@@ -953,10 +964,10 @@
             </div>
             <table id="H_PGMT" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('PGMT',J['PGMT']))"></tbody>
+                <tbody onload="Inn(this,Tm_Table('PGMT',JPgmt))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
-
+            <!--
             <div class="Ct Bt">
                 <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
@@ -966,6 +977,7 @@
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
             </table>
+            -->
         </div>
 
         <div id="Pag_GRAD" class="TBLAA none Cl">
