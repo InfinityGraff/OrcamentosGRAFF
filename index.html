@@ -34,6 +34,7 @@
     .THSugg{z-index: 999 !important;}
     .thNotif{background: red; border-radius: 255px; width: 15px; height: 15px; text-align: center; top: -5px; right: 10px; }
     .ThFilt_Atv{background: #d822ab; color: white;}
+    .RodapeThSugg{background: #d822ab; color: white; top: 0px; width: 100%;}
 
     .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
     .Formt_VerdOK{background:rgb(43, 211, 43  );color:#274e24;font-weight:bold}
@@ -351,7 +352,7 @@
     const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
     const D_Rastr2=R=>R.split('-')
     const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
-    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Tm_Filt(this,1)" oncontextmenu="Tm_Filt(this,0)">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl"></div> <div class="Abslt Ct thNotif none">0</div> </th>`).join('')
+    const Tm_thSort=arr=>arr.map((e,x)=>`<th class="Rltv noslt"><p class="ppt" onclick="Tog_N($('.THSugg',Pai(this)))">${e}</p> <a class="Abslt ppt" onclick="OrdenarRows(this,'${x}','p')">▼</a> <div class="Abslt none THSugg Sugg Shdw rd Cl">${e}</div> <div class="Abslt Ct thNotif none">0</div></th>`).join('')
     const Tm_Table=(typ,obj)=>obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
     const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
     const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
@@ -439,6 +440,7 @@
             Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
                         <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                         <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
+                        
     }
 
 </script>
@@ -449,40 +451,74 @@
 </script>
 
 <script> // FILTROS
-        function Tm_Filt(e,Clik){event.preventDefault()
-            const Sugg = $('.THSugg',_th(e))  ;  TogShow(Sugg)
-            const qry = `#${_table(e).id} > tbody > tr > td:nth-child(${IdxDe(_th(e))+1}) > p`
-            const blx = Inn(e)==="Serv" ? $$(qry).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value)) /*isso aqui tem no rfreshFoot*/ : $$(qry)
-            
-            const ArrVAL = Clik==1 ? Uniq(Inn(e)==="Serv" ? blx : blx.map(e=>VAL(_td(e)))) : Uniq(blx.map(e=>{if(Notem(_tr(e),'none')){return VAL(_td(e))}}))
-
-            const arrayLimpo = ArrVAL.filter(e => e !== undefined) // não sei pq tenho q tirar os Undefined
-            Inn(Sugg,arrayLimpo.map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}',1)" oncontextmenu="FILT_Clik(this,'${qry}',0)">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join(''))
-            
-            // Se clicar com o Direito Soma os Filtros, se Clicar com Botão Esquerdo Sobrepõe o Filtro (da pra Mudar pelo Add) ecria uma BNolinha de Notificação no Filter pra dizer q tem Fitlro
-            // PGMT apenas Pix, Card, e Av
-            // Intervalos
-            // Maior < Menor >
-
-            // remover Abreviação dos Thead se precisar
+        function Palavras(Qry,tipo){
+            const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
+                                            : Uniq($$(Qry).map(e=>e.innerText))
+            return Valls
         }
-        function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
-            if(Clik=='+'){
-                console.log('Entrou')
-                Add($('p',Pai(Eu)),'ThFilt_Atv')
-                Show($('.thNotif',_th(Eu))) ; $('.thNotif',_th(Eu)).innerHTML = $$('.ThFilt_Atv',_th(Eu)).length
-                return
+
+        function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
+            console.log('Darius Zarari')
+            $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
+                const tipo = Inn(th)
+                const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > p`
+
+                th.innerHTML = `<div class="RodapeThSugg Ev">
+                                        <span class="HOV ppt" onclick="OcultaThTh(this,'All')">  Tudo </span>
+                                        <span class="HOV ppt" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}')"> Filtado </span>
+                                </div>`
+                th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+            })
+        }
+        function LimpaThAtv(quem){ // opções pra poder limpar de Colunas especificas
+            if(quem==='All'){
+                $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
+                $$('.thNotif').forEach(e=>Add_N(e))
             }
+        }// Rascunho
 
+        function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
+            $('#FiltRERERE').innerHTML = 'OK'
+            $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
+            $('#FiltRERERE').innerHTML = ''
+        }// Rascunho
+
+        function OcultaThTh(btn,Qry){
+            const ThSug = btn.closest('.THSugg')
+                    $$('p',ThSug).forEach(E=>{
+                        if(Qry==='All'){Rmv_N(Pai(E))}
+                        else if(Palavras(Qry).includes(E.innerText)){Rmv_N(Pai(E))}else{Add_N(Pai(E))}
+                    })
+        }// Rascunho
+
+        function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
+            const chek = !!$('.Filteraddd')
+            if(Clik=='Clik'){LimpaThAtv('All')}
+                if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
+                const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent)
+                const Length = $$('.ThFilt_Atv',_th(Eu)).length
+                const Notifi = $('.thNotif',_th(Eu))
+                if(Length==0){None(Notifi)}else{Show(Notifi)}
+                Inn(Notifi,Length)
+
+            const regex = new RegExp(Ativos.join('|'), 'i')
             
-
-            if(event.ctrlKey){}else{None($$('.THSugg'))}
             $$(Qry).forEach(e=>{
-                if(VAL(_td(e)).includes(Inn(Eu))){
-                    if(Clik==1){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}})
+                if(regex.test(VAL(_td(e)))){
+                    if(chek){Rmv_N(_tr(e))} // Conferir se Limpa os none antes de continuar
+                }else{Add_N(_tr(e))}})
+
+            if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
             
-        }
+        }// Rascunho
+
+        // remover Abreviação dos Thead se precisar
+        // PGMT apenas Pix, Card, e Av
+        // Maior < Menor >
+        // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
         // RealTime()
+
+        // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
         function Pesquisa(Val,Typ){
             const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
             const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
@@ -497,8 +533,9 @@
         }
 
         function LimparFiltro(Typ){ // Atalho Esc
-            Rmv_N($$(`#H_${Typ} tr`)) ; None($$('.THSugg'))
-            $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
+            Rmv_N($$(`#H_${Typ} tr`))
+            $$('.THSugg').forEach(e=>Add_N(e))
+            LimpaThAtv('All')
             RealTime()
         }
 </script>
@@ -859,6 +896,8 @@
             <div class="Ct Bt">
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <h1 style="filter:none">Tabela de Pedidos</h1>
+                <style>.Filteraddd{color: red !important;}</style>
+                <div class="Filteraddd" onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -877,12 +916,7 @@
 
             <div style="margin-top:100px"><!--comentários-->
                 <ul>
-                    <li>se eu Clicar com Direito no th eu mostrarei apenas os que estão visiveis, com esquerdo mostra todos</li>
-                    <li>Como usar o Filter, Clicando com Esquerdo Sobrepõe o Filtro, Clicando com Esquerdo Soma os Filtros</li>
-                    <br>
                     <li>1 - Ordem de Data não ta Funcionando</li>
-                    <li>2 - Pressioanndo Ctrl: Quero Poder Escolher 2 Critérios do Mesmo Filtro</li>
-                    <li>3 - Limpar os THSugg apertando Enter</li>
                 </ul>
             </div>
         </div>
@@ -1637,6 +1671,7 @@
         Onloads('body')
         NavPag(Atual['Pag'])
         Format_Bndj_Clnt()
+        Tm_Filt()
         RealTime()
     }
 
