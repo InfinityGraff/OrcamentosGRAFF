@@ -460,8 +460,10 @@
         function Palavras(Qry,tipo){
             const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
                           tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :              
-                          tipo==='Stts' ? O['Stts'] :              
+                          tipo==='Stts' ? O['Stts'] :              // Simplificar
                           tipo==='Pgmt' ? O['Form'] : 
+                          tipo==='Arte' ? O['Arte'] : 
+                          tipo==='Forn' ? O['Forn'] : 
                           Uniq($$(Qry).map(e=>e.innerText))
             return Valls
         }
@@ -622,6 +624,11 @@
         })
     }
     // Quero fazer tudo no Rodapé e manter alterações Fixas
+
+    function RandonColorFilt(){
+        // pegar todos os FIltros e Pintar Filtro com Pintura, apenas Filtro, apenas Pintura
+        // Rando PIntura geral uma cor pra cada!
+    }
 </script>
 
 <script> // SUGGLINK
@@ -909,10 +916,16 @@
 
             .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
 
-            .Bdj_SERV > tbody > tr > td:nth-child(3),.Bdj_SERV > thead > tr > th:nth-child(3){border-right: 4px solid #bb0092}
-            .Bdj_SERV > tbody > tr > td:nth-child(9),.Bdj_SERV > thead > tr > th:nth-child(9){border-right: 4px solid #bb0092}
+            /*Talvez toda essa trolha de pra simplificar, pois isso é só pra fazer as Linhas*/
+            .Bdj_SERV > tbody > tr > td:nth-child(3) ,.Bdj_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(9) ,.Bdj_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(16),.Bdj_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+
+            #H_SERV > tbody > tr > td:nth-child(3) ,#H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(9) ,#H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(13),#H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(16),#H_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
             
         </style>
 
@@ -950,7 +963,7 @@
             </div>
             <table id="H_SERV" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('SERV',JServ))"></tbody>
+                <tbody onload="Inn(this,Tm_TablePDDS('SERV',JServ))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.SERV)[2],'SERV'))"></tr></tfoot>
             </table>
         </div>
