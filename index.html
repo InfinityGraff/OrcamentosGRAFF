@@ -238,11 +238,13 @@
         Serv:['','Adesivo','Banner','...'],
         Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card','1x','2x','3x','4x','5x'],
-        Dstn:['','Serv1','Serv2']}
+        Dstn:['','Serv1','Serv2'],
+        Stts:['','Devendo','Entregue','JaFeito','Produção']
+    }
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const BS = {
-        PDDS:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['E',''],Lixo:['X','']},
+        PDDS:{Id:['F',''], Lin:['E',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
         SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['F',''],OS:['F',''],Uber:['F',''],Coment:['E',''],'Lixo':['X','']},
         PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
@@ -452,16 +454,21 @@
 
 <script> // FILTROS
         function Palavras(Qry,tipo){
-            const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
-                                            : Uniq($$(Qry).map(e=>e.innerText))
+            const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
+                          tipo==='Pgmt' ? ['Pix','Av','Card'] : 
+                          tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText)) : // aqui deve ter um regex pra remover R$ 
+                          tipo==='Stts' ? O['Stts'] : // Uniq($$(Qry).map(e=>e.value)) : 
+                          Uniq($$(Qry).map(e=>e.innerText))
+
+            if(tipo==='Stts'){console.log($$(Qry),Valls)}
             return Valls
         }
 
         function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-            console.log('Darius Zarari')
+            console.log('incopetente')
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                 const tipo = Inn(th)
-                const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > p`
+                const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
 
                 th.innerHTML = `<div class="RodapeThSugg Ev">
                                         <span class="HOV ppt" onclick="OcultaThTh(this,'All')">  Tudo </span>
@@ -485,9 +492,10 @@
 
         function OcultaThTh(btn,Qry){
             const ThSug = btn.closest('.THSugg')
+            const tipo = $('p',Pai(ThSug)).value
                     $$('p',ThSug).forEach(E=>{
                         if(Qry==='All'){Rmv_N(Pai(E))}
-                        else if(Palavras(Qry).includes(E.innerText)){Rmv_N(Pai(E))}else{Add_N(Pai(E))}
+                        else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))}else{Add_N(Pai(E))}
                     })
         }// Rascunho
 
@@ -509,14 +517,12 @@
                 }else{Add_N(_tr(e))}})
 
             if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
-            
+            RealTime()
         }// Rascunho
 
         // remover Abreviação dos Thead se precisar
-        // PGMT apenas Pix, Card, e Av
         // Maior < Menor >
         // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
-        // RealTime()
 
         // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
         function Pesquisa(Val,Typ){
@@ -556,6 +562,7 @@
 
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
+
             const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
             const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} > .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
 
@@ -580,6 +587,7 @@
                 const Entregue = Concat.split('-')[2]==='Entregue'
                 const Devendo = Td_Val('Valr')>Td_Val('Pgmt')
                 const LucroOK = Td_Val('Cust')!=='' && Td_Val('Finc')!==''
+                const TDStts = $(Rx2(['Stts','Slct'])+' select',tr)
 
                 const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
                 const CorTr   = LucroOK ? 'Formt_Azul' : Devendo           ? 'Formt_Redd' : 'Formt_Verd'
@@ -588,8 +596,10 @@
                 Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
                 Add(TD('Serv'),CorTd)   ; RGBa(TD('Serv'),Pcnt)
                 Add(tr,CorTr)           ; RGBa(tr        ,Pcnt)
-
-                // Ficar Azul quando ta OK até o Relatório
+                Add(TDStts,CorTd)       ; RGBa(TDStts    ,Pcnt)
+                
+                TDStts.value = Devendo ? 'Devendo' : Entregue ? 'Entregue' : JaFeito ? 'JaFeito' : 'Produção'
+                
             })
 
             if(Td_Val('Cust')!=='' && Td_Val('Finc')!==''){
@@ -897,7 +907,7 @@
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <h1 style="filter:none">Tabela de Pedidos</h1>
                 <style>.Filteraddd{color: red !important;}</style>
-                <div class="Filteraddd" onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
+                <div onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }

@@ -9,7 +9,7 @@ const J = {
       "Loja": "-",
       "CtLj": "-",
       "Cat": "-",
-      "Stts": "-",
+      "Stts":"","Lin": "-",
       "Link": "-"
     },
     {
@@ -20293,7 +20293,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "001",
+      "Stts":"","Lin": "001",
       "Cust": [
           {
               "Id": "",
@@ -20353,7 +20353,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "004",
+      "Stts":"","Lin": "004",
       "Cust": [
           {
               "Id": "1",
@@ -20413,7 +20413,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "006",
+      "Stts":"","Lin": "006",
       "Cust": [
           {
               "Id": "",
@@ -20473,7 +20473,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "007",
+      "Stts":"","Lin": "007",
       "Cust": [
           {
               "Id": "",
@@ -20533,7 +20533,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "003",
+      "Stts":"","Lin": "003",
       "Cust": [
           {
               "Id": "",
@@ -20593,7 +20593,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "005",
+      "Stts":"","Lin": "005",
       "Cust": [
           {
               "Id": "",
@@ -20653,7 +20653,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "008",
+      "Stts":"","Lin": "008",
       "Cust": [
           {
               "Id": "",
@@ -20700,7 +20700,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "009",
+      "Stts":"","Lin": "009",
       "Cust": [
           {
               "Id": "",
@@ -20760,7 +20760,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "011",
+      "Stts":"","Lin": "011",
       "Cust": [
           {
               "Id": "",
@@ -20820,7 +20820,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "010",
+      "Stts":"","Lin": "010",
       "Cust": [
           {
               "Id": "",
@@ -20880,7 +20880,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "012",
+      "Stts":"","Lin": "012",
       "Cust": [
           {
               "Id": "",
@@ -20960,7 +20960,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "013",
+      "Stts":"","Lin": "013",
       "Cust": [
           {
               "Id": "",
@@ -21020,7 +21020,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "014",
+      "Stts":"","Lin": "014",
       "Cust": [
           {
               "Id": "",
@@ -21140,7 +21140,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "015",
+      "Stts":"","Lin": "015",
       "Cust": [
           {
               "Id": "",
@@ -21200,7 +21200,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "016",
+      "Stts":"","Lin": "016",
       "Cust": [
           {
               "Id": "",
@@ -21260,7 +21260,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "017",
+      "Stts":"","Lin": "017",
       "Cust": [
           {
               "Id": "",
@@ -21332,7 +21332,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "018",
+      "Stts":"","Lin": "018",
       "Cust": [
           {
               "Id": "",
@@ -21392,7 +21392,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "019",
+      "Stts":"","Lin": "019",
       "Cust": [
           {
               "Id": "",
@@ -21452,7 +21452,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "020",
+      "Stts":"","Lin": "020",
       "Cust": [
           {
               "Id": "",
@@ -21512,7 +21512,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "021",
+      "Stts":"","Lin": "021",
       "Cust": [
           {
               "Id": "",
@@ -21572,7 +21572,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "022",
+      "Stts":"","Lin": "022",
       "Cust": [
           {
               "Id": "",
@@ -21632,7 +21632,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "023",
+      "Stts":"","Lin": "023",
       "Cust": [
           {
               "Id": "",
@@ -21712,7 +21712,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "024",
+      "Stts":"","Lin": "024",
       "Cust": [
           {
               "Id": "",
@@ -21772,7 +21772,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "025",
+      "Stts":"","Lin": "025",
       "Cust": [
           {
               "Id": "",
@@ -21832,7 +21832,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "026",
+      "Stts":"","Lin": "026",
       "Cust": [
           {
               "Id": "",
@@ -21904,7 +21904,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "027",
+      "Stts":"","Lin": "027",
       "Cust": [
           {
               "Id": "",
@@ -21964,7 +21964,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "028",
+      "Stts":"","Lin": "028",
       "Cust": [
           {
               "Id": "",
@@ -22024,7 +22024,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "029",
+      "Stts":"","Lin": "029",
       "Cust": [
           {
               "Id": "",
@@ -22084,7 +22084,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "030",
+      "Stts":"","Lin": "030",
       "Cust": [
           {
               "Id": "",
@@ -22144,7 +22144,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "031",
+      "Stts":"","Lin": "031",
       "Cust": [
           {
               "Id": "",
@@ -22204,7 +22204,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "032",
+      "Stts":"","Lin": "032",
       "Cust": [
           {
               "Id": "",
@@ -22264,7 +22264,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "033",
+      "Stts":"","Lin": "033",
       "Cust": [
           {
               "Id": "",
@@ -22388,7 +22388,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "034",
+      "Stts":"","Lin": "034",
       "Cust": [
           {
               "Id": "",
@@ -22472,7 +22472,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "035",
+      "Stts":"","Lin": "035",
       "Cust": [
           {
               "Id": "",
@@ -22519,7 +22519,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "036",
+      "Stts":"","Lin": "036",
       "Cust": [
           {
               "Id": "",
@@ -22579,7 +22579,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "037",
+      "Stts":"","Lin": "037",
       "Cust": [
           {
               "Id": "",
@@ -22651,7 +22651,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "038",
+      "Stts":"","Lin": "038",
       "Cust": [
           {
               "Id": "",
@@ -22711,7 +22711,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "040",
+      "Stts":"","Lin": "040",
       "Cust": [
           {
               "Id": "",
@@ -22771,7 +22771,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "039",
+      "Stts":"","Lin": "039",
       "Cust": [
           {
               "Id": "",
@@ -22831,7 +22831,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "025.5",
+      "Stts":"","Lin": "025.5",
       "Cust": [
           {
               "Id": "",
@@ -22911,7 +22911,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "041",
+      "Stts":"","Lin": "041",
       "Cust": [
           {
               "Id": "",
@@ -22971,7 +22971,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "042",
+      "Stts":"","Lin": "042",
       "Cust": [
           {
               "Id": "",
@@ -23031,7 +23031,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "043",
+      "Stts":"","Lin": "043",
       "Cust": [
           {
               "Id": "",
@@ -23111,7 +23111,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "044",
+      "Stts":"","Lin": "044",
       "Cust": [
           {
               "Id": "",
@@ -23171,7 +23171,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "045",
+      "Stts":"","Lin": "045",
       "Cust": [
           {
               "Id": "",
@@ -23231,7 +23231,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "047",
+      "Stts":"","Lin": "047",
       "Cust": [
           {
               "Id": "",
@@ -23278,7 +23278,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "048",
+      "Stts":"","Lin": "048",
       "Cust": [
           {
               "Id": "",
@@ -23338,7 +23338,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "049",
+      "Stts":"","Lin": "049",
       "Cust": [
           {
               "Id": "",
@@ -23410,7 +23410,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "050",
+      "Stts":"","Lin": "050",
       "Cust": [
           {
               "Id": "",
@@ -23457,7 +23457,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "060",
+      "Stts":"","Lin": "060",
       "Cust": [
           {
               "Id": "",
@@ -23517,7 +23517,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "059",
+      "Stts":"","Lin": "059",
       "Cust": [
           {
               "Id": "",
@@ -23577,7 +23577,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "058",
+      "Stts":"","Lin": "058",
       "Cust": [
           {
               "Id": "",
@@ -23637,7 +23637,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "061",
+      "Stts":"","Lin": "061",
       "Cust": [
           {
               "Id": "",
@@ -23717,7 +23717,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "055",
+      "Stts":"","Lin": "055",
       "Cust": [
           {
               "Id": "",
@@ -23777,7 +23777,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "056",
+      "Stts":"","Lin": "056",
       "Cust": [
           {
               "Id": "",
@@ -23837,7 +23837,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "057",
+      "Stts":"","Lin": "057",
       "Cust": [
           {
               "Id": "",
@@ -23909,7 +23909,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "062",
+      "Stts":"","Lin": "062",
       "Cust": [
           {
               "Id": "",
@@ -23989,7 +23989,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "063",
+      "Stts":"","Lin": "063",
       "Cust": [
           {
               "Id": "",
@@ -24049,7 +24049,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "065",
+      "Stts":"","Lin": "065",
       "Cust": [
           {
               "Id": "",
@@ -24109,7 +24109,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "066",
+      "Stts":"","Lin": "066",
       "Cust": [
           {
               "Id": "",
@@ -24189,7 +24189,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "067",
+      "Stts":"","Lin": "067",
       "Cust": [
           {
               "Id": "",
@@ -24281,7 +24281,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "068",
+      "Stts":"","Lin": "068",
       "Cust": [
           {
               "Id": "",
@@ -24373,7 +24373,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "069",
+      "Stts":"","Lin": "069",
       "Cust": [
           {
               "Id": "",
@@ -24433,7 +24433,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "070",
+      "Stts":"","Lin": "070",
       "Cust": [
           {
               "Id": "",
@@ -24505,7 +24505,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "071",
+      "Stts":"","Lin": "071",
       "Cust": [
           {
               "Id": "",
@@ -24565,7 +24565,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "072",
+      "Stts":"","Lin": "072",
       "Cust": [
           {
               "Id": "",
@@ -24625,7 +24625,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "073",
+      "Stts":"","Lin": "073",
       "Cust": [
           {
               "Id": "",
@@ -24685,7 +24685,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "078",
+      "Stts":"","Lin": "078",
       "Cust": [
           {
               "Id": "",
@@ -24745,7 +24745,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "030.5",
+      "Stts":"","Lin": "030.5",
       "Cust": [
           {
               "Id": "",
@@ -24829,7 +24829,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "030.6",
+      "Stts":"","Lin": "030.6",
       "Cust": [
           {
               "Id": "",
@@ -24921,7 +24921,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "074",
+      "Stts":"","Lin": "074",
       "Cust": [
           {
               "Id": "",
@@ -24993,7 +24993,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "041.5",
+      "Stts":"","Lin": "041.5",
       "Cust": [
           {
               "Id": "",
@@ -25053,7 +25053,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "075",
+      "Stts":"","Lin": "075",
       "Cust": [
           {
               "Id": "",
@@ -25113,7 +25113,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "076",
+      "Stts":"","Lin": "076",
       "Cust": [
           {
               "Id": "",
@@ -25173,7 +25173,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "077",
+      "Stts":"","Lin": "077",
       "Cust": [
           {
               "Id": "",
@@ -25233,7 +25233,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "079",
+      "Stts":"","Lin": "079",
       "Cust": [
           {
               "Id": "",
@@ -25293,7 +25293,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "080",
+      "Stts":"","Lin": "080",
       "Cust": [
           {
               "Id": "",
@@ -25353,7 +25353,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "081",
+      "Stts":"","Lin": "081",
       "Cust": [
           {
               "Id": "",
@@ -25413,7 +25413,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "082",
+      "Stts":"","Lin": "082",
       "Cust": [
           {
               "Id": "",
@@ -25439,7 +25439,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "083",
+      "Stts":"","Lin": "083",
       "Cust": [
           {
               "Id": "",
@@ -25486,7 +25486,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "084",
+      "Stts":"","Lin": "084",
       "Cust": [
           {
               "Id": "",
@@ -25546,7 +25546,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "085",
+      "Stts":"","Lin": "085",
       "Cust": [
           {
               "Id": "",
@@ -25606,7 +25606,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "086",
+      "Stts":"","Lin": "086",
       "Cust": [
           {
               "Id": "",
@@ -25666,7 +25666,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "089.5",
+      "Stts":"","Lin": "089.5",
       "Cust": [
           {
               "Id": "",
@@ -25726,7 +25726,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "088",
+      "Stts":"","Lin": "088",
       "Cust": [
           {
               "Id": "",
@@ -25818,7 +25818,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "089",
+      "Stts":"","Lin": "089",
       "Cust": [
           {
               "Id": "",
@@ -25890,7 +25890,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "31 >> 59",
-      "Stts": "090",
+      "Stts":"","Lin": "090",
       "Cust": [
           {
               "Id": "",
@@ -25950,7 +25950,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "091",
+      "Stts":"","Lin": "091",
       "Cust": [
           {
               "Id": "",
@@ -26030,7 +26030,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "092",
+      "Stts":"","Lin": "092",
       "Cust": [
           {
               "Id": "",
@@ -26090,7 +26090,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "093",
+      "Stts":"","Lin": "093",
       "Cust": [
           {
               "Id": "",
@@ -26170,7 +26170,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "094",
+      "Stts":"","Lin": "094",
       "Cust": [
           {
               "Id": "",
@@ -26230,7 +26230,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "095",
+      "Stts":"","Lin": "095",
       "Cust": [
           {
               "Id": "",
@@ -26290,7 +26290,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "096",
+      "Stts":"","Lin": "096",
       "Cust": [
           {
               "Id": "",
@@ -26350,7 +26350,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "097",
+      "Stts":"","Lin": "097",
       "Cust": [
           {
               "Id": "",
@@ -26397,7 +26397,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "098",
+      "Stts":"","Lin": "098",
       "Cust": [
           {
               "Id": "",
@@ -26457,7 +26457,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "099",
+      "Stts":"","Lin": "099",
       "Cust": [
           {
               "Id": "",
@@ -26529,7 +26529,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "125 >> 50",
-      "Stts": "117",
+      "Stts":"","Lin": "117",
       "Cust": [
           {
               "Id": "",
@@ -26629,7 +26629,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "101",
+      "Stts":"","Lin": "101",
       "Cust": [
           {
               "Id": "",
@@ -26655,7 +26655,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "102",
+      "Stts":"","Lin": "102",
       "Cust": [
           {
               "Id": "",
@@ -26681,7 +26681,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "103",
+      "Stts":"","Lin": "103",
       "Cust": [
           {
               "Id": "",
@@ -26748,7 +26748,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "104",
+      "Stts":"","Lin": "104",
       "Cust": [
           {
               "Id": "",
@@ -26820,7 +26820,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "105",
+      "Stts":"","Lin": "105",
       "Cust": [
           {
               "Id": "",
@@ -26846,7 +26846,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "1",
+      "Stts":"","Lin": "1",
       "Cust": [
           {
               "Id": "",
@@ -26872,7 +26872,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "1",
+      "Stts":"","Lin": "1",
       "Cust": [
           {
               "Id": "",
@@ -26992,7 +26992,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "106",
+      "Stts":"","Lin": "106",
       "Cust": [
           {
               "Id": "",
@@ -27124,7 +27124,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "100 >> 90",
-      "Stts": "107",
+      "Stts":"","Lin": "107",
       "Cust": [
           {
               "Id": "",
@@ -27196,7 +27196,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "200 >> 180",
-      "Stts": "108",
+      "Stts":"","Lin": "108",
       "Cust": [
           {
               "Id": "",
@@ -27276,7 +27276,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "109",
+      "Stts":"","Lin": "109",
       "Cust": [
           {
               "Id": "",
@@ -27336,7 +27336,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "110",
+      "Stts":"","Lin": "110",
       "Cust": [
           {
               "Id": "",
@@ -27396,7 +27396,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "111",
+      "Stts":"","Lin": "111",
       "Cust": [
           {
               "Id": "",
@@ -27488,7 +27488,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "112",
+      "Stts":"","Lin": "112",
       "Cust": [
           {
               "Id": "",
@@ -27548,7 +27548,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "113",
+      "Stts":"","Lin": "113",
       "Cust": [
           {
               "Id": "",
@@ -27608,7 +27608,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "0 >> 10",
-      "Stts": "114",
+      "Stts":"","Lin": "114",
       "Cust": [
           {
               "Id": "",
@@ -27668,7 +27668,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "115",
+      "Stts":"","Lin": "115",
       "Cust": [
           {
               "Id": "",
@@ -27772,7 +27772,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "350 >> 112",
-      "Stts": "116",
+      "Stts":"","Lin": "116",
       "Cust": [
           {
               "Id": "",
@@ -27819,7 +27819,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "0 >> 8",
-      "Stts": "118",
+      "Stts":"","Lin": "118",
       "Cust": [
           {
               "Id": "",
@@ -27879,7 +27879,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "0 >> 15",
-      "Stts": "119",
+      "Stts":"","Lin": "119",
       "Cust": [
           {
               "Id": "",
@@ -27939,7 +27939,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "113.5",
+      "Stts":"","Lin": "113.5",
       "Cust": [
           {
               "Id": "",
@@ -27999,7 +27999,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "120",
+      "Stts":"","Lin": "120",
       "Cust": [
           {
               "Id": "",
@@ -28059,7 +28059,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "121",
+      "Stts":"","Lin": "121",
       "Cust": [
           {
               "Id": "",
@@ -28211,7 +28211,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "122 Amarelo",
-      "Stts": "122",
+      "Stts":"","Lin": "122",
       "Cust": [
           {
               "Id": "",
@@ -28258,7 +28258,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "123",
+      "Stts":"","Lin": "123",
       "Cust": [
           {
               "Id": "",
@@ -28318,7 +28318,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "118.5",
+      "Stts":"","Lin": "118.5",
       "Cust": [
           {
               "Id": "",
@@ -28390,7 +28390,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "119.5",
+      "Stts":"","Lin": "119.5",
       "Cust": [
           {
               "Id": "",
@@ -28462,7 +28462,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "90 >> 140",
-      "Stts": "124",
+      "Stts":"","Lin": "124",
       "Cust": [
           {
               "Id": "",
@@ -28522,7 +28522,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "125",
+      "Stts":"","Lin": "125",
       "Cust": [
           {
               "Id": "",
@@ -28602,7 +28602,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "126",
+      "Stts":"","Lin": "126",
       "Cust": [
           {
               "Id": "",
@@ -28674,7 +28674,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "127",
+      "Stts":"","Lin": "127",
       "Cust": [
           {
               "Id": "",
@@ -28746,7 +28746,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "128",
+      "Stts":"","Lin": "128",
       "Cust": [
           {
               "Id": "",
@@ -28826,7 +28826,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "129",
+      "Stts":"","Lin": "129",
       "Cust": [
           {
               "Id": "",
@@ -28958,7 +28958,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "130",
+      "Stts":"","Lin": "130",
       "Cust": [
           {
               "Id": "",
@@ -29030,7 +29030,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "093.5",
+      "Stts":"","Lin": "093.5",
       "Cust": [
           {
               "Id": "",
@@ -29090,7 +29090,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "110.5",
+      "Stts":"","Lin": "110.5",
       "Cust": [
           {
               "Id": "",
@@ -29150,7 +29150,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "131",
+      "Stts":"","Lin": "131",
       "Cust": [
           {
               "Id": "",
@@ -29210,7 +29210,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "11,62 >> 28,38",
-      "Stts": "132",
+      "Stts":"","Lin": "132",
       "Cust": [
           {
               "Id": "",
@@ -29310,7 +29310,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "133",
+      "Stts":"","Lin": "133",
       "Cust": [
           {
               "Id": "",
@@ -29370,7 +29370,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "134",
+      "Stts":"","Lin": "134",
       "Cust": [
           {
               "Id": "",
@@ -29430,7 +29430,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "135",
+      "Stts":"","Lin": "135",
       "Cust": [
           {
               "Id": "",
@@ -29490,7 +29490,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo 10,50",
-      "Stts": "136",
+      "Stts":"","Lin": "136",
       "Cust": [
           {
               "Id": "",
@@ -29550,7 +29550,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "137",
+      "Stts":"","Lin": "137",
       "Cust": [
           {
               "Id": "",
@@ -29610,7 +29610,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "138",
+      "Stts":"","Lin": "138",
       "Cust": [
           {
               "Id": "",
@@ -29670,7 +29670,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "139",
+      "Stts":"","Lin": "139",
       "Cust": [
           {
               "Id": "",
@@ -29782,7 +29782,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "140",
+      "Stts":"","Lin": "140",
       "Cust": [
           {
               "Id": "",
@@ -29842,7 +29842,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "141",
+      "Stts":"","Lin": "141",
       "Cust": [
           {
               "Id": "",
@@ -29914,7 +29914,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "142",
+      "Stts":"","Lin": "142",
       "Cust": [
           {
               "Id": "",
@@ -29974,7 +29974,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "143",
+      "Stts":"","Lin": "143",
       "Cust": [
           {
               "Id": "",
@@ -30054,7 +30054,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "144",
+      "Stts":"","Lin": "144",
       "Cust": [
           {
               "Id": "",
@@ -30114,7 +30114,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "145",
+      "Stts":"","Lin": "145",
       "Cust": [
           {
               "Id": "",
@@ -30161,7 +30161,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "146",
+      "Stts":"","Lin": "146",
       "Cust": [
           {
               "Id": "",
@@ -30221,7 +30221,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "147",
+      "Stts":"","Lin": "147",
       "Cust": [
           {
               "Id": "",
@@ -30281,7 +30281,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "148",
+      "Stts":"","Lin": "148",
       "Cust": [
           {
               "Id": "",
@@ -30341,7 +30341,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "149",
+      "Stts":"","Lin": "149",
       "Cust": [
           {
               "Id": "",
@@ -30401,7 +30401,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "150",
+      "Stts":"","Lin": "150",
       "Cust": [
           {
               "Id": "",
@@ -30461,7 +30461,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "151",
+      "Stts":"","Lin": "151",
       "Cust": [
           {
               "Id": "",
@@ -30521,7 +30521,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "152",
+      "Stts":"","Lin": "152",
       "Cust": [
           {
               "Id": "",
@@ -30601,7 +30601,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "153",
+      "Stts":"","Lin": "153",
       "Cust": [
           {
               "Id": "",
@@ -30661,7 +30661,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "154",
+      "Stts":"","Lin": "154",
       "Cust": [
           {
               "Id": "",
@@ -30728,7 +30728,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "155",
+      "Stts":"","Lin": "155",
       "Cust": [
           {
               "Id": "",
@@ -30788,7 +30788,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "156",
+      "Stts":"","Lin": "156",
       "Cust": [
           {
               "Id": "",
@@ -30880,7 +30880,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "157",
+      "Stts":"","Lin": "157",
       "Cust": [
           {
               "Id": "",
@@ -30960,7 +30960,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "158",
+      "Stts":"","Lin": "158",
       "Cust": [
           {
               "Id": "",
@@ -31040,7 +31040,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "159",
+      "Stts":"","Lin": "159",
       "Cust": [
           {
               "Id": "",
@@ -31100,7 +31100,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "160",
+      "Stts":"","Lin": "160",
       "Cust": [
           {
               "Id": "",
@@ -31160,7 +31160,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "161",
+      "Stts":"","Lin": "161",
       "Cust": [
           {
               "Id": "",
@@ -31220,7 +31220,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "162",
+      "Stts":"","Lin": "162",
       "Cust": [
           {
               "Id": "",
@@ -31280,7 +31280,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "163",
+      "Stts":"","Lin": "163",
       "Cust": [
           {
               "Id": "",
@@ -31340,7 +31340,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "164",
+      "Stts":"","Lin": "164",
       "Cust": [
           {
               "Id": "",
@@ -31400,7 +31400,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "165",
+      "Stts":"","Lin": "165",
       "Cust": [
           {
               "Id": "",
@@ -31460,7 +31460,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "166",
+      "Stts":"","Lin": "166",
       "Cust": [
           {
               "Id": "",
@@ -31520,7 +31520,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "167",
+      "Stts":"","Lin": "167",
       "Cust": [
           {
               "Id": "",
@@ -31580,7 +31580,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "168",
+      "Stts":"","Lin": "168",
       "Cust": [
           {
               "Id": "",
@@ -31627,7 +31627,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "162.5",
+      "Stts":"","Lin": "162.5",
       "Cust": [
           {
               "Id": "",
@@ -31687,7 +31687,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "169",
+      "Stts":"","Lin": "169",
       "Cust": [
           {
               "Id": "",
@@ -31747,7 +31747,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "170",
+      "Stts":"","Lin": "170",
       "Cust": [
           {
               "Id": "",
@@ -31827,7 +31827,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "171",
+      "Stts":"","Lin": "171",
       "Cust": [
           {
               "Id": "",
@@ -31899,7 +31899,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "172",
+      "Stts":"","Lin": "172",
       "Cust": [
           {
               "Id": "",
@@ -31959,7 +31959,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "173",
+      "Stts":"","Lin": "173",
       "Cust": [
           {
               "Id": "",
@@ -32019,7 +32019,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "174",
+      "Stts":"","Lin": "174",
       "Cust": [
           {
               "Id": "",
@@ -32099,7 +32099,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "175",
+      "Stts":"","Lin": "175",
       "Cust": [
           {
               "Id": "",
@@ -32159,7 +32159,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "176",
+      "Stts":"","Lin": "176",
       "Cust": [
           {
               "Id": "",
@@ -32219,7 +32219,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "177",
+      "Stts":"","Lin": "177",
       "Cust": [
           {
               "Id": "",
@@ -32279,7 +32279,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "11 Uber + 5 folha",
-      "Stts": "178",
+      "Stts":"","Lin": "178",
       "Cust": [
           {
               "Id": "",
@@ -32339,7 +32339,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "179",
+      "Stts":"","Lin": "179",
       "Cust": [
           {
               "Id": "",
@@ -32419,7 +32419,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "180",
+      "Stts":"","Lin": "180",
       "Cust": [
           {
               "Id": "",
@@ -32479,7 +32479,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "181",
+      "Stts":"","Lin": "181",
       "Cust": [
           {
               "Id": "",
@@ -32539,7 +32539,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "182",
+      "Stts":"","Lin": "182",
       "Cust": [
           {
               "Id": "",
@@ -32606,7 +32606,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "183",
+      "Stts":"","Lin": "183",
       "Cust": [
           {
               "Id": "",
@@ -32666,7 +32666,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "184",
+      "Stts":"","Lin": "184",
       "Cust": [
           {
               "Id": "",
@@ -32726,7 +32726,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "185",
+      "Stts":"","Lin": "185",
       "Cust": [
           {
               "Id": "",
@@ -32786,7 +32786,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "186",
+      "Stts":"","Lin": "186",
       "Cust": [
           {
               "Id": "",
@@ -32846,7 +32846,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "187",
+      "Stts":"","Lin": "187",
       "Cust": [
           {
               "Id": "",
@@ -32938,7 +32938,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "173.5",
+      "Stts":"","Lin": "173.5",
       "Cust": [
           {
               "Id": "",
@@ -32998,7 +32998,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "188",
+      "Stts":"","Lin": "188",
       "Cust": [
           {
               "Id": "",
@@ -33058,7 +33058,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "189",
+      "Stts":"","Lin": "189",
       "Cust": [
           {
               "Id": "",
@@ -33118,7 +33118,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "190",
+      "Stts":"","Lin": "190",
       "Cust": [
           {
               "Id": "",
@@ -33190,7 +33190,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "191",
+      "Stts":"","Lin": "191",
       "Cust": [
           {
               "Id": "",
@@ -33262,7 +33262,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "192",
+      "Stts":"","Lin": "192",
       "Cust": [
           {
               "Id": "",
@@ -33354,7 +33354,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "193",
+      "Stts":"","Lin": "193",
       "Cust": [
           {
               "Id": "",
@@ -33434,7 +33434,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "194",
+      "Stts":"","Lin": "194",
       "Cust": [
           {
               "Id": "",
@@ -33526,7 +33526,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "195",
+      "Stts":"","Lin": "195",
       "Cust": [
           {
               "Id": "",
@@ -33573,7 +33573,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "196",
+      "Stts":"","Lin": "196",
       "Cust": [
           {
               "Id": "",
@@ -33633,7 +33633,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "197",
+      "Stts":"","Lin": "197",
       "Cust": [
           {
               "Id": "",
@@ -33693,7 +33693,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "198",
+      "Stts":"","Lin": "198",
       "Cust": [
           {
               "Id": "",
@@ -33765,7 +33765,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "199",
+      "Stts":"","Lin": "199",
       "Cust": [
           {
               "Id": "",
@@ -33845,7 +33845,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "200",
+      "Stts":"","Lin": "200",
       "Cust": [
           {
               "Id": "",
@@ -33905,7 +33905,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "201",
+      "Stts":"","Lin": "201",
       "Cust": [
           {
               "Id": "",
@@ -33952,7 +33952,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "202",
+      "Stts":"","Lin": "202",
       "Cust": [
           {
               "Id": "",
@@ -34012,7 +34012,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "203",
+      "Stts":"","Lin": "203",
       "Cust": [
           {
               "Id": "",
@@ -34072,7 +34072,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "204",
+      "Stts":"","Lin": "204",
       "Cust": [
           {
               "Id": "",
@@ -34132,7 +34132,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "205",
+      "Stts":"","Lin": "205",
       "Cust": [
           {
               "Id": "",
@@ -34179,7 +34179,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "206",
+      "Stts":"","Lin": "206",
       "Cust": [
           {
               "Id": "",
@@ -34239,7 +34239,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "207",
+      "Stts":"","Lin": "207",
       "Cust": [
           {
               "Id": "",
@@ -34299,7 +34299,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "208",
+      "Stts":"","Lin": "208",
       "Cust": [
           {
               "Id": "",
@@ -34346,7 +34346,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "209",
+      "Stts":"","Lin": "209",
       "Cust": [
           {
               "Id": "",
@@ -34406,7 +34406,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "210",
+      "Stts":"","Lin": "210",
       "Cust": [
           {
               "Id": "",
@@ -34498,7 +34498,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "211",
+      "Stts":"","Lin": "211",
       "Cust": [
           {
               "Id": "",
@@ -34558,7 +34558,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "212",
+      "Stts":"","Lin": "212",
       "Cust": [
           {
               "Id": "",
@@ -34618,7 +34618,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "213",
+      "Stts":"","Lin": "213",
       "Cust": [
           {
               "Id": "",
@@ -34678,7 +34678,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "214",
+      "Stts":"","Lin": "214",
       "Cust": [
           {
               "Id": "",
@@ -34725,7 +34725,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "215",
+      "Stts":"","Lin": "215",
       "Cust": [
           {
               "Id": "",
@@ -34797,7 +34797,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "216",
+      "Stts":"","Lin": "216",
       "Cust": [
           {
               "Id": "",
@@ -34844,7 +34844,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "217",
+      "Stts":"","Lin": "217",
       "Cust": [
           {
               "Id": "",
@@ -34904,7 +34904,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "199.5",
+      "Stts":"","Lin": "199.5",
       "Cust": [
           {
               "Id": "",
@@ -34930,7 +34930,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "218",
+      "Stts":"","Lin": "218",
       "Cust": [
           {
               "Id": "",
@@ -34990,7 +34990,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "200.1",
+      "Stts":"","Lin": "200.1",
       "Cust": [
           {
               "Id": "",
@@ -35050,7 +35050,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "205.5",
+      "Stts":"","Lin": "205.5",
       "Cust": [
           {
               "Id": "",
@@ -35110,7 +35110,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "219",
+      "Stts":"","Lin": "219",
       "Cust": [
           {
               "Id": "",
@@ -35170,7 +35170,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "220",
+      "Stts":"","Lin": "220",
       "Cust": [
           {
               "Id": "",
@@ -35230,7 +35230,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "221",
+      "Stts":"","Lin": "221",
       "Cust": [
           {
               "Id": "",
@@ -35302,7 +35302,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "222",
+      "Stts":"","Lin": "222",
       "Cust": [
           {
               "Id": "",
@@ -35362,7 +35362,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "223",
+      "Stts":"","Lin": "223",
       "Cust": [
           {
               "Id": "",
@@ -35422,7 +35422,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "224",
+      "Stts":"","Lin": "224",
       "Cust": [
           {
               "Id": "",
@@ -35514,7 +35514,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "225",
+      "Stts":"","Lin": "225",
       "Cust": [
           {
               "Id": "",
@@ -35574,7 +35574,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "226",
+      "Stts":"","Lin": "226",
       "Cust": [
           {
               "Id": "",
@@ -35634,7 +35634,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "227",
+      "Stts":"","Lin": "227",
       "Cust": [
           {
               "Id": "",
@@ -35660,7 +35660,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "228",
+      "Stts":"","Lin": "228",
       "Cust": [
           {
               "Id": "",
@@ -35707,7 +35707,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "228",
+      "Stts":"","Lin": "228",
       "Cust": [
           {
               "Id": "",
@@ -35767,7 +35767,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "229",
+      "Stts":"","Lin": "229",
       "Cust": [
           {
               "Id": "",
@@ -35827,7 +35827,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "230",
+      "Stts":"","Lin": "230",
       "Cust": [
           {
               "Id": "",
@@ -35874,7 +35874,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "231",
+      "Stts":"","Lin": "231",
       "Cust": [
           {
               "Id": "",
@@ -35921,7 +35921,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "232",
+      "Stts":"","Lin": "232",
       "Cust": [
           {
               "Id": "",
@@ -35968,7 +35968,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "233",
+      "Stts":"","Lin": "233",
       "Cust": [
           {
               "Id": "",
@@ -36028,7 +36028,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "129.60",
-      "Stts": "234",
+      "Stts":"","Lin": "234",
       "Cust": [
           {
               "Id": "",
@@ -36100,7 +36100,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "95 >> 45",
-      "Stts": "235",
+      "Stts":"","Lin": "235",
       "Cust": [
           {
               "Id": "",
@@ -36147,7 +36147,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "236",
+      "Stts":"","Lin": "236",
       "Cust": [
           {
               "Id": "",
@@ -36194,7 +36194,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "237",
+      "Stts":"","Lin": "237",
       "Cust": [
           {
               "Id": "",
@@ -36254,7 +36254,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "238",
+      "Stts":"","Lin": "238",
       "Cust": [
           {
               "Id": "",
@@ -36334,7 +36334,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "239",
+      "Stts":"","Lin": "239",
       "Cust": [
           {
               "Id": "",
@@ -36381,7 +36381,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "240",
+      "Stts":"","Lin": "240",
       "Cust": [
           {
               "Id": "",
@@ -36441,7 +36441,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "241",
+      "Stts":"","Lin": "241",
       "Cust": [
           {
               "Id": "",
@@ -36501,7 +36501,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "120,00",
-      "Stts": "242",
+      "Stts":"","Lin": "242",
       "Cust": [
           {
               "Id": "",
@@ -36561,7 +36561,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "226.5",
+      "Stts":"","Lin": "226.5",
       "Cust": [
           {
               "Id": "",
@@ -36587,7 +36587,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "243",
+      "Stts":"","Lin": "243",
       "Cust": [
           {
               "Id": "",
@@ -36687,7 +36687,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "244",
+      "Stts":"","Lin": "244",
       "Cust": [
           {
               "Id": "",
@@ -36759,7 +36759,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "245",
+      "Stts":"","Lin": "245",
       "Cust": [
           {
               "Id": "",
@@ -36879,7 +36879,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "246",
+      "Stts":"","Lin": "246",
       "Cust": [
           {
               "Id": "",
@@ -36939,7 +36939,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "247",
+      "Stts":"","Lin": "247",
       "Cust": [
           {
               "Id": "",
@@ -37019,7 +37019,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "248",
+      "Stts":"","Lin": "248",
       "Cust": [
           {
               "Id": "",
@@ -37111,7 +37111,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "249",
+      "Stts":"","Lin": "249",
       "Cust": [
           {
               "Id": "",
@@ -37158,7 +37158,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "250",
+      "Stts":"","Lin": "250",
       "Cust": [
           {
               "Id": "",
@@ -37184,7 +37184,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "251",
+      "Stts":"","Lin": "251",
       "Cust": [
           {
               "Id": "",
@@ -37210,7 +37210,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "252",
+      "Stts":"","Lin": "252",
       "Cust": [
           {
               "Id": "",
@@ -37270,7 +37270,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "253",
+      "Stts":"","Lin": "253",
       "Cust": [
           {
               "Id": "",
@@ -37330,7 +37330,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "254",
+      "Stts":"","Lin": "254",
       "Cust": [
           {
               "Id": "",
@@ -37390,7 +37390,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "255",
+      "Stts":"","Lin": "255",
       "Cust": [
           {
               "Id": "",
@@ -37450,7 +37450,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "256",
+      "Stts":"","Lin": "256",
       "Cust": [
           {
               "Id": "",
@@ -37510,7 +37510,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "257",
+      "Stts":"","Lin": "257",
       "Cust": [
           {
               "Id": "",
@@ -37536,7 +37536,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "258",
+      "Stts":"","Lin": "258",
       "Cust": [
           {
               "Id": "",
@@ -37596,7 +37596,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "259",
+      "Stts":"","Lin": "259",
       "Cust": [
           {
               "Id": "",
@@ -37656,7 +37656,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "260",
+      "Stts":"","Lin": "260",
       "Cust": [
           {
               "Id": "",
@@ -37716,7 +37716,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "122,00",
-      "Stts": "261",
+      "Stts":"","Lin": "261",
       "Cust": [
           {
               "Id": "",
@@ -37763,7 +37763,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "262",
+      "Stts":"","Lin": "262",
       "Cust": [
           {
               "Id": "",
@@ -37823,7 +37823,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "263",
+      "Stts":"","Lin": "263",
       "Cust": [
           {
               "Id": "",
@@ -37849,7 +37849,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "264",
+      "Stts":"","Lin": "264",
       "Cust": [
           {
               "Id": "",
@@ -37909,7 +37909,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "265",
+      "Stts":"","Lin": "265",
       "Cust": [
           {
               "Id": "",
@@ -37956,7 +37956,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "266",
+      "Stts":"","Lin": "266",
       "Cust": [
           {
               "Id": "",
@@ -38028,7 +38028,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "267",
+      "Stts":"","Lin": "267",
       "Cust": [
           {
               "Id": "",
@@ -38088,7 +38088,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "268",
+      "Stts":"","Lin": "268",
       "Cust": [
           {
               "Id": "",
@@ -38148,7 +38148,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "231.5",
+      "Stts":"","Lin": "231.5",
       "Cust": [
           {
               "Id": "",
@@ -38208,7 +38208,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "269",
+      "Stts":"","Lin": "269",
       "Cust": [
           {
               "Id": "",
@@ -38268,7 +38268,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "270",
+      "Stts":"","Lin": "270",
       "Cust": [
           {
               "Id": "",
@@ -38315,7 +38315,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "271",
+      "Stts":"","Lin": "271",
       "Cust": [
           {
               "Id": "",
@@ -38362,7 +38362,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "272",
+      "Stts":"","Lin": "272",
       "Cust": [
           {
               "Id": "",
@@ -38422,7 +38422,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "273",
+      "Stts":"","Lin": "273",
       "Cust": [
           {
               "Id": "",
@@ -38494,7 +38494,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "250,00",
-      "Stts": "274",
+      "Stts":"","Lin": "274",
       "Cust": [
           {
               "Id": "",
@@ -38541,7 +38541,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "275",
+      "Stts":"","Lin": "275",
       "Cust": [
           {
               "Id": "",
@@ -38588,7 +38588,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "276",
+      "Stts":"","Lin": "276",
       "Cust": [
           {
               "Id": "",
@@ -38648,7 +38648,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "277",
+      "Stts":"","Lin": "277",
       "Cust": [
           {
               "Id": "",
@@ -38708,7 +38708,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "276.5",
+      "Stts":"","Lin": "276.5",
       "Cust": [
           {
               "Id": "",
@@ -38768,7 +38768,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "278",
+      "Stts":"","Lin": "278",
       "Cust": [
           {
               "Id": "",
@@ -38840,7 +38840,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "279",
+      "Stts":"","Lin": "279",
       "Cust": [
           {
               "Id": "",
@@ -38900,7 +38900,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "280",
+      "Stts":"","Lin": "280",
       "Cust": [
           {
               "Id": "",
@@ -38992,7 +38992,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo: R$ 202,00",
-      "Stts": "281",
+      "Stts":"","Lin": "281",
       "Cust": [
           {
               "Id": "",
@@ -39052,7 +39052,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 80,00",
-      "Stts": "282",
+      "Stts":"","Lin": "282",
       "Cust": [
           {
               "Id": "",
@@ -39112,7 +39112,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 4,00",
-      "Stts": "283",
+      "Stts":"","Lin": "283",
       "Cust": [
           {
               "Id": "",
@@ -39172,7 +39172,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 15,00",
-      "Stts": "284",
+      "Stts":"","Lin": "284",
       "Cust": [
           {
               "Id": "",
@@ -39232,7 +39232,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 25,00",
-      "Stts": "285",
+      "Stts":"","Lin": "285",
       "Cust": [
           {
               "Id": "",
@@ -39292,7 +39292,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 120,00",
-      "Stts": "286",
+      "Stts":"","Lin": "286",
       "Cust": [
           {
               "Id": "",
@@ -39339,7 +39339,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "R$ 14,00",
-      "Stts": "287",
+      "Stts":"","Lin": "287",
       "Cust": [
           {
               "Id": "",
@@ -39399,7 +39399,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 90,00",
-      "Stts": "288",
+      "Stts":"","Lin": "288",
       "Cust": [
           {
               "Id": "",
@@ -39446,7 +39446,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "289",
+      "Stts":"","Lin": "289",
       "Cust": [
           {
               "Id": "",
@@ -39506,7 +39506,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "290",
+      "Stts":"","Lin": "290",
       "Cust": [
           {
               "Id": "",
@@ -39566,7 +39566,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "291",
+      "Stts":"","Lin": "291",
       "Cust": [
           {
               "Id": "",
@@ -39626,7 +39626,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 13,40",
-      "Stts": "292",
+      "Stts":"","Lin": "292",
       "Cust": [
           {
               "Id": "",
@@ -39686,7 +39686,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "293",
+      "Stts":"","Lin": "293",
       "Cust": [
           {
               "Id": "",
@@ -39753,7 +39753,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "294",
+      "Stts":"","Lin": "294",
       "Cust": [
           {
               "Id": "",
@@ -39825,7 +39825,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "295",
+      "Stts":"","Lin": "295",
       "Cust": [
           {
               "Id": "",
@@ -39917,7 +39917,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 32,60",
-      "Stts": "296",
+      "Stts":"","Lin": "296",
       "Cust": [
           {
               "Id": "",
@@ -39977,7 +39977,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "297",
+      "Stts":"","Lin": "297",
       "Cust": [
           {
               "Id": "",
@@ -40049,7 +40049,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo 25 | Lucro R$ 40",
-      "Stts": "292.5",
+      "Stts":"","Lin": "292.5",
       "Cust": [
           {
               "Id": "",
@@ -40121,7 +40121,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 18,00",
-      "Stts": "298",
+      "Stts":"","Lin": "298",
       "Cust": [
           {
               "Id": "",
@@ -40168,7 +40168,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Custo R$ 18,40",
-      "Stts": "299",
+      "Stts":"","Lin": "299",
       "Cust": [
           {
               "Id": "",
@@ -40215,7 +40215,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Custo R$ 3,60",
-      "Stts": "300",
+      "Stts":"","Lin": "300",
       "Cust": [
           {
               "Id": "",
@@ -40275,7 +40275,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 32,00",
-      "Stts": "301",
+      "Stts":"","Lin": "301",
       "Cust": [
           {
               "Id": "",
@@ -40347,7 +40347,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "120 PVC",
-      "Stts": "302",
+      "Stts":"","Lin": "302",
       "Cust": [
           {
               "Id": "",
@@ -40419,7 +40419,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 103,68",
-      "Stts": "303",
+      "Stts":"","Lin": "303",
       "Cust": [
           {
               "Id": "",
@@ -40445,7 +40445,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "304",
+      "Stts":"","Lin": "304",
       "Cust": [
           {
               "Id": "",
@@ -40529,7 +40529,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 9,00",
-      "Stts": "304",
+      "Stts":"","Lin": "304",
       "Cust": [
           {
               "Id": "",
@@ -40555,7 +40555,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "305",
+      "Stts":"","Lin": "305",
       "Cust": [
           {
               "Id": "",
@@ -40581,7 +40581,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "306",
+      "Stts":"","Lin": "306",
       "Cust": [
           {
               "Id": "",
@@ -40641,7 +40641,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 10,00",
-      "Stts": "307",
+      "Stts":"","Lin": "307",
       "Cust": [
           {
               "Id": "",
@@ -40688,7 +40688,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "308",
+      "Stts":"","Lin": "308",
       "Cust": [
           {
               "Id": "",
@@ -40748,7 +40748,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "309",
+      "Stts":"","Lin": "309",
       "Cust": [
           {
               "Id": "",
@@ -40808,7 +40808,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "310",
+      "Stts":"","Lin": "310",
       "Cust": [
         
         {
@@ -40870,7 +40870,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "311",
+      "Stts":"","Lin": "311",
       "Cust": [
           {
               "Id": "",
@@ -40942,7 +40942,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "312",
+      "Stts":"","Lin": "312",
       "Cust": [
           {
               "Id": "",
@@ -41002,7 +41002,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "313",
+      "Stts":"","Lin": "313",
       "Cust": [
           {
               "Id": "",
@@ -41062,7 +41062,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "314",
+      "Stts":"","Lin": "314",
       "Cust": [
           {
               "Id": "",
@@ -41142,7 +41142,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "315",
+      "Stts":"","Lin": "315",
       "Cust": [
           {
               "Id": "",
@@ -41222,7 +41222,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "316",
+      "Stts":"","Lin": "316",
       "Cust": [
           {
               "Id": "",
@@ -41282,7 +41282,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "317",
+      "Stts":"","Lin": "317",
       "Cust": [
           {
               "Id": "",
@@ -41308,7 +41308,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "318",
+      "Stts":"","Lin": "318",
       "Cust": [
           {
               "Id": "",
@@ -41368,7 +41368,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "318",
+      "Stts":"","Lin": "318",
       "Cust": [
           {
               "Id": "",
@@ -41440,7 +41440,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "319",
+      "Stts":"","Lin": "319",
       "Cust": [
           {
               "Id": "",
@@ -41500,7 +41500,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "320",
+      "Stts":"","Lin": "320",
       "Cust": [
           {
               "Id": "",
@@ -41624,7 +41624,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "321",
+      "Stts":"","Lin": "321",
       "Cust": [
           {
               "Id": "",
@@ -41671,7 +41671,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Hojy",
-      "Stts": "322",
+      "Stts":"","Lin": "322",
       "Cust": [
           {
               "Id": "",
@@ -41731,7 +41731,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts": "315.5",
+      "Stts":"","Lin": "315.5",
       "Cust": [
           {
               "Id": "",
@@ -41791,7 +41791,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "322",
+      "Stts":"","Lin": "322",
       "Cust": [
           {
               "Id": "",
@@ -41851,7 +41851,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "323",
+      "Stts":"","Lin": "323",
       "Cust": [
           {
               "Id": "",
@@ -41898,7 +41898,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "324",
+      "Stts":"","Lin": "324",
       "Cust": [
           {
               "Id": "",
@@ -41958,7 +41958,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "325",
+      "Stts":"","Lin": "325",
       "Cust": [
           {
               "Id": "",
@@ -42018,7 +42018,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "326",
+      "Stts":"","Lin": "326",
       "Cust": [
           {
               "Id": "",
@@ -42065,7 +42065,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts": "327",
+      "Stts":"","Lin": "327",
       "Cust": [
           {
               "Id": "",
@@ -42112,7 +42112,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "328",
+      "Stts":"","Lin": "328",
       "Cust": [
           {
               "Id": "",
@@ -42159,7 +42159,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "329",
+      "Stts":"","Lin": "329",
       "Cust": [
           {
               "Id": "",
@@ -42219,7 +42219,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "322.5",
+      "Stts":"","Lin": "322.5",
       "Cust": [
           {
               "Id": "",
@@ -42266,7 +42266,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "329",
+      "Stts":"","Lin": "329",
       "Cust": [
           {
               "Id": "",
@@ -42326,7 +42326,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "330",
+      "Stts":"","Lin": "330",
       "Cust": [
           {
               "Id": "",
@@ -42386,7 +42386,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "331",
+      "Stts":"","Lin": "331",
       "Cust": [
           {
               "Id": "",
@@ -42486,7 +42486,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "332",
+      "Stts":"","Lin": "332",
       "Cust": [
           {
               "Id": "",
@@ -42546,7 +42546,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "333",
+      "Stts":"","Lin": "333",
       "Cust": [
           {
               "Id": "",
@@ -42593,7 +42593,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "334",
+      "Stts":"","Lin": "334",
       "Cust": [
           {
               "Id": "",
@@ -42653,7 +42653,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "335",
+      "Stts":"","Lin": "335",
       "Cust": [
           {
               "Id": "",
@@ -42713,7 +42713,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "336",
+      "Stts":"","Lin": "336",
       "Cust": [
           {
               "Id": "",
@@ -42793,7 +42793,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "337",
+      "Stts":"","Lin": "337",
       "Cust": [
           {
               "Id": "",
@@ -42853,7 +42853,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "338",
+      "Stts":"","Lin": "338",
       "Cust": [
           {
               "Id": "",
@@ -42913,7 +42913,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "339",
+      "Stts":"","Lin": "339",
       "Cust": [
           {
               "Id": "",
@@ -42960,7 +42960,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "340",
+      "Stts":"","Lin": "340",
       "Cust": [
           {
               "Id": "",
@@ -43007,7 +43007,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "341",
+      "Stts":"","Lin": "341",
       "Cust": [
           {
               "Id": "",
@@ -43059,7 +43059,7 @@ const NovoJson = [
               "Valr": "35",
               "Form": "Pix",
               "Desc": "",
-              "Stts": "Lucas Martins De Sousa",
+              "Stts":"","Lin": "Lucas Martins De Sousa",
               "Link": "384",
               "Lixo": "",
               "Mpag": ""
@@ -43071,7 +43071,7 @@ const NovoJson = [
               "Valr": "45",
               "Form": "Pix",
               "Desc": "",
-              "Stts": "Pix de 65,00 Lucas Martins De Sousa",
+              "Stts":"","Lin": "Pix de 65,00 Lucas Martins De Sousa",
               "Link": "384",
               "Lixo": "",
               "Mpag": ""
@@ -43079,7 +43079,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "342",
+      "Stts":"","Lin": "342",
       "Cust": [
           {
               "Id": "",
@@ -43139,7 +43139,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "343",
+      "Stts":"","Lin": "343",
       "Cust": [
           {
               "Id": "",
@@ -43199,7 +43199,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "344",
+      "Stts":"","Lin": "344",
       "Cust": [
           {
               "Id": "",
@@ -43259,7 +43259,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "345",
+      "Stts":"","Lin": "345",
       "Cust": [
           {
               "Id": "",
@@ -43331,7 +43331,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "346",
+      "Stts":"","Lin": "346",
       "Cust": [
           {
               "Id": "",
@@ -43391,7 +43391,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "347",
+      "Stts":"","Lin": "347",
       "Cust": [
           {
               "Id": "",
@@ -43438,7 +43438,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "348",
+      "Stts":"","Lin": "348",
       "Cust": [
           {
               "Id": "",
@@ -43498,7 +43498,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "349",
+      "Stts":"","Lin": "349",
       "Cust": [
           {
               "Id": "",
@@ -43558,7 +43558,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "350",
+      "Stts":"","Lin": "350",
       "Cust": [
           {
               "Id": "",
@@ -43618,7 +43618,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "351",
+      "Stts":"","Lin": "351",
       "Cust": [
           {
               "Id": "",
@@ -43678,7 +43678,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "352",
+      "Stts":"","Lin": "352",
       "Cust": [
           {
               "Id": "",
@@ -43738,7 +43738,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "353",
+      "Stts":"","Lin": "353",
       "Cust": [
           {
               "Id": "",
@@ -43810,7 +43810,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "354",
+      "Stts":"","Lin": "354",
       "Cust": [
           {
               "Id": "",
@@ -43902,7 +43902,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "355",
+      "Stts":"","Lin": "355",
       "Cust": [
           {
               "Id": "",
@@ -43962,7 +43962,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "356",
+      "Stts":"","Lin": "356",
       "Cust": [
           {
               "Id": "",
@@ -44042,7 +44042,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "357",
+      "Stts":"","Lin": "357",
       "Cust": [
           {
               "Id": "",
@@ -44142,7 +44142,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "358",
+      "Stts":"","Lin": "358",
       "Cust": [
           {
               "Id": "",
@@ -44202,7 +44202,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "359",
+      "Stts":"","Lin": "359",
       "Cust": [
           {
               "Id": "",
@@ -44262,7 +44262,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "360",
+      "Stts":"","Lin": "360",
       "Cust": [
           {
               "Id": "",
@@ -44334,7 +44334,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 30,00",
-      "Stts": "361",
+      "Stts":"","Lin": "361",
       "Cust": [
           {
               "Id": "",
@@ -44394,7 +44394,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "362",
+      "Stts":"","Lin": "362",
       "Cust": [
           {
               "Id": "",
@@ -44441,7 +44441,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "aqui eu tive q imprimir 3 folhas 138° | 139° | 147°",
-      "Stts": "363",
+      "Stts":"","Lin": "363",
       "Cust": [
           {
               "Id": "",
@@ -44488,7 +44488,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "364",
+      "Stts":"","Lin": "364",
       "Cust": [
           {
               "Id": "",
@@ -44548,7 +44548,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "365",
+      "Stts":"","Lin": "365",
       "Cust": [
           {
               "Id": "",
@@ -44608,7 +44608,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "366",
+      "Stts":"","Lin": "366",
       "Cust": [
           {
               "Id": "",
@@ -44668,7 +44668,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "367",
+      "Stts":"","Lin": "367",
       "Cust": [
           {
               "Id": "",
@@ -44715,7 +44715,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "359.5",
+      "Stts":"","Lin": "359.5",
       "Cust": [
           {
               "Id": "",
@@ -44775,7 +44775,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "359.6",
+      "Stts":"","Lin": "359.6",
       "Cust": [
           {
               "Id": "",
@@ -44822,7 +44822,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "359.7",
+      "Stts":"","Lin": "359.7",
       "Cust": [
           {
               "Id": "",
@@ -44882,7 +44882,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "368",
+      "Stts":"","Lin": "368",
       "Cust": [
           {
               "Id": "",
@@ -44929,7 +44929,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "369",
+      "Stts":"","Lin": "369",
       "Cust": [
           {
               "Id": "",
@@ -44989,7 +44989,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "370",
+      "Stts":"","Lin": "370",
       "Cust": [
           {
               "Id": "",
@@ -45036,7 +45036,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "371",
+      "Stts":"","Lin": "371",
       "Cust": [
           {
               "Id": "",
@@ -45096,7 +45096,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "372",
+      "Stts":"","Lin": "372",
       "Cust": [
           {
               "Id": "",
@@ -45156,7 +45156,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "373",
+      "Stts":"","Lin": "373",
       "Cust": [
           {
               "Id": "",
@@ -45228,7 +45228,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "374",
+      "Stts":"","Lin": "374",
       "Cust": [
           {
               "Id": "",
@@ -45308,7 +45308,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 25,00",
-      "Stts": "375",
+      "Stts":"","Lin": "375",
       "Cust": [
           {
               "Id": "",
@@ -45334,7 +45334,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "376",
+      "Stts":"","Lin": "376",
       "Cust": [
           {
               "Id": "",
@@ -45394,7 +45394,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "377",
+      "Stts":"","Lin": "377",
       "Cust": [
           {
               "Id": "",
@@ -45454,7 +45454,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "374.5",
+      "Stts":"","Lin": "374.5",
       "Cust": [
           {
               "Id": "",
@@ -45514,7 +45514,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "379",
+      "Stts":"","Lin": "379",
       "Cust": [
           {
               "Id": "",
@@ -45594,7 +45594,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "380",
+      "Stts":"","Lin": "380",
       "Cust": [
           {
               "Id": "",
@@ -45654,7 +45654,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "381",
+      "Stts":"","Lin": "381",
       "Cust": [
           {
               "Id": "",
@@ -45714,7 +45714,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "382",
+      "Stts":"","Lin": "382",
       "Cust": [
           {
               "Id": "",
@@ -45761,7 +45761,7 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "383",
+      "Stts":"","Lin": "383",
       "Cust": [
           {
               "Id": "",
@@ -45821,7 +45821,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "384",
+      "Stts":"","Lin": "384",
       "Cust": [
           {
               "Id": "",
@@ -45881,7 +45881,7 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts": "385",
+      "Stts":"","Lin": "385",
       "Cust": [
           {
               "Id": "",
