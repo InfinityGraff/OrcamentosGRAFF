@@ -387,7 +387,7 @@
 
         function Tm_Bndj(arr,Typ){
             return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                        <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL['Id']}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
+                                        <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL[0]}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
                                   </table> ${Typ==='CLNT'?'':`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`}`
                                   // conferir se typ é CLNT é desnessesário pois, logo logo Clnt vai ser subistidio por 'LINK'
         }
@@ -602,7 +602,8 @@
                 Add(TD('Serv'),CorTd)   ; RGBa(TD('Serv'),Pcnt)
                 Add(tr,CorTr)           ; RGBa(tr        ,Pcnt)
                 Add(TDStts,CorTd)       ; RGBa(TDStts    ,Pcnt)
-                
+                Add($(`#H_SERV .${Array.from(trbdj.classList)[0]}`),Grup[2]) // Pintar a Tabela de Fora!
+
                 TDStts.value = Devendo ? 'Devendo' : Entregue ? 'Entregue' : JaFeito ? 'JaFeito' : 'Produção'
                 
             })

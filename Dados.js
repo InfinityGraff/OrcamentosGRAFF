@@ -20256,7 +20256,7 @@ const NovoJson = [
       "Clnt": "1449",
       "Serv": [
           {
-              "Id": "1|1",
+              "Id": "1_1",
               "Serv": "Quadro",
               "Desc": "",
               "Calc": [
@@ -20316,7 +20316,7 @@ const NovoJson = [
       "Clnt": "1451",
       "Serv": [
           {
-              "Id": "3|1",
+              "Id": "3_1",
               "Serv": "Adesivo",
               "Desc": "2 - A4",
               "Calc": [
@@ -20376,7 +20376,7 @@ const NovoJson = [
       "Clnt": "125",
       "Serv": [
           {
-              "Id": "4|1",
+              "Id": "4_1",
               "Serv": "Arte",
               "Desc": "Rifa",
               "Calc": [
@@ -20436,7 +20436,7 @@ const NovoJson = [
       "Clnt": "1453",
       "Serv": [
           {
-              "Id": "5|1",
+              "Id": "5_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -20496,7 +20496,7 @@ const NovoJson = [
       "Clnt": "99",
       "Serv": [
           {
-              "Id": "11|1",
+              "Id": "11_1",
               "Serv": "Adesivo",
               "Desc": "1 - Pedaço de Vinil",
               "Calc": [
@@ -20556,7 +20556,7 @@ const NovoJson = [
       "Clnt": "1452",
       "Serv": [
           {
-              "Id": "14|1",
+              "Id": "14_1",
               "Serv": "Etiqueta",
               "Desc": "200 UND",
               "Calc": [
@@ -20616,7 +20616,7 @@ const NovoJson = [
       "Clnt": "1454",
       "Serv": [
           {
-              "Id": "15|1",
+              "Id": "15_1",
               "Serv": "Banner",
               "Desc": "",
               "Calc": [
@@ -20676,7 +20676,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "16|1",
+              "Id": "16_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -20723,7 +20723,7 @@ const NovoJson = [
       "Clnt": "1455",
       "Serv": [
           {
-              "Id": "17|1",
+              "Id": "17_1",
               "Serv": "",
               "Desc": "1 - Recorte / Figurinha",
               "Calc": [
@@ -20783,7 +20783,7 @@ const NovoJson = [
       "Clnt": "1456",
       "Serv": [
           {
-              "Id": "18|1",
+              "Id": "18_1",
               "Serv": "Recorte",
               "Desc": "Placa de 2 Camada",
               "Calc": [
@@ -20843,7 +20843,7 @@ const NovoJson = [
       "Clnt": "1449",
       "Serv": [
           {
-              "Id": "19|1",
+              "Id": "19_1",
               "Serv": "Quadro",
               "Desc": "1 UND (PVC)",
               "Calc": [
@@ -20903,7 +20903,7 @@ const NovoJson = [
       "Clnt": "1458",
       "Serv": [
           {
-              "Id": "23|1",
+              "Id": "23_1",
               "Serv": "Adesivo",
               "Desc": "Branco",
               "Calc": [
@@ -20923,7 +20923,7 @@ const NovoJson = [
               "Data": "2024-12-04"
           },
           {
-              "Id": "23|2",
+              "Id": "23_2",
               "Serv": "Envelopamento",
               "Desc": "Geladeira",
               "Calc": [
@@ -20983,7 +20983,7 @@ const NovoJson = [
       "Clnt": "1459",
       "Serv": [
           {
-              "Id": "24|1",
+              "Id": "24_1",
               "Serv": "Etiqueta",
               "Desc": "1000 UND",
               "Calc": [
@@ -21043,7 +21043,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "25|1",
+              "Id": "25_1",
               "Serv": "Adesivo",
               "Desc": "1m Rect",
               "Calc": [
@@ -21063,7 +21063,7 @@ const NovoJson = [
               "Data": "2024-12-04"
           },
           {
-              "Id": "25|2",
+              "Id": "25_2",
               "Serv": "Adesivo",
               "Desc": "do Gordin",
               "Calc": [
@@ -21083,7 +21083,7 @@ const NovoJson = [
               "Data": "2024-12-04"
           },
           {
-              "Id": "25|3",
+              "Id": "25_3",
               "Serv": "Adesivo",
               "Desc": "50x50",
               "Calc": [
@@ -21103,7 +21103,7 @@ const NovoJson = [
               "Data": "2024-12-04"
           },
           {
-              "Id": "25|4",
+              "Id": "25_4",
               "Serv": "Recorte",
               "Desc": "Antigos",
               "Calc": [
@@ -21163,7 +21163,7 @@ const NovoJson = [
       "Clnt": "1460",
       "Serv": [
           {
-              "Id": "26|1",
+              "Id": "26_1",
               "Serv": "Recorte",
               "Desc": "2 UND",
               "Calc": [
@@ -21223,7 +21223,7 @@ const NovoJson = [
       "Clnt": "1461",
       "Serv": [
           {
-              "Id": "27|1",
+              "Id": "27_1",
               "Serv": "Recorte",
               "Desc": "Placa 2 Camada",
               "Calc": [
@@ -21283,7 +21283,7 @@ const NovoJson = [
       "Clnt": "1462",
       "Serv": [
           {
-              "Id": "28|1",
+              "Id": "28_1",
               "Serv": "Faixa",
               "Desc": "1 UND",
               "Calc": [
@@ -21355,7 +21355,7 @@ const NovoJson = [
       "Clnt": "1463",
       "Serv": [
           {
-              "Id": "29|1",
+              "Id": "29_1",
               "Serv": "Serigrafia",
               "Desc": "1 UND",
               "Calc": [
@@ -21415,7 +21415,7 @@ const NovoJson = [
       "Clnt": "1453",
       "Serv": [
           {
-              "Id": "30|1",
+              "Id": "30_1",
               "Serv": "Cartão",
               "Desc": "50 - UND",
               "Calc": [
@@ -21475,7 +21475,7 @@ const NovoJson = [
       "Clnt": "1464",
       "Serv": [
           {
-              "Id": "31|1",
+              "Id": "31_1",
               "Serv": "",
               "Desc": "1 - Cartela",
               "Calc": [
@@ -21535,7 +21535,7 @@ const NovoJson = [
       "Clnt": "1465",
       "Serv": [
           {
-              "Id": "32|1",
+              "Id": "32_1",
               "Serv": "Recorte",
               "Desc": "3 - UND",
               "Calc": [
@@ -21595,7 +21595,7 @@ const NovoJson = [
       "Clnt": "1466",
       "Serv": [
           {
-              "Id": "33|1",
+              "Id": "33_1",
               "Serv": "Recorte",
               "Desc": "2 - UND",
               "Calc": [
@@ -21655,7 +21655,7 @@ const NovoJson = [
       "Clnt": "1467",
       "Serv": [
           {
-              "Id": "34|1",
+              "Id": "34_1",
               "Serv": "Recorte",
               "Desc": "haha",
               "Calc": [
@@ -21675,7 +21675,7 @@ const NovoJson = [
               "Data": "2024-12-05"
           },
           {
-              "Id": "34|2",
+              "Id": "34_2",
               "Serv": "Adesivo",
               "Desc": "Gvt, Tnq",
               "Calc": [
@@ -21735,7 +21735,7 @@ const NovoJson = [
       "Clnt": "1468",
       "Serv": [
           {
-              "Id": "35|1",
+              "Id": "35_1",
               "Serv": "Router",
               "Desc": "PVC 5mm + Acrilico",
               "Calc": [
@@ -21795,7 +21795,7 @@ const NovoJson = [
       "Clnt": "1469",
       "Serv": [
           {
-              "Id": "36|1",
+              "Id": "36_1",
               "Serv": "Quadro",
               "Desc": "2 - A4",
               "Calc": [
@@ -21855,7 +21855,7 @@ const NovoJson = [
       "Clnt": "1470",
       "Serv": [
           {
-              "Id": "37|1",
+              "Id": "37_1",
               "Serv": "Sub.Total",
               "Desc": "1 - G",
               "Calc": [
@@ -21927,7 +21927,7 @@ const NovoJson = [
       "Clnt": "1471",
       "Serv": [
           {
-              "Id": "38|1",
+              "Id": "38_1",
               "Serv": "Adesivo",
               "Desc": "Tampa do Tanque",
               "Calc": [
@@ -21987,7 +21987,7 @@ const NovoJson = [
       "Clnt": "6",
       "Serv": [
           {
-              "Id": "40|1",
+              "Id": "40_1",
               "Serv": "Adesivo",
               "Desc": "8 und",
               "Calc": [
@@ -22047,7 +22047,7 @@ const NovoJson = [
       "Clnt": "1473",
       "Serv": [
           {
-              "Id": "41|1",
+              "Id": "41_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -22107,7 +22107,7 @@ const NovoJson = [
       "Clnt": "1474",
       "Serv": [
           {
-              "Id": "42|1",
+              "Id": "42_1",
               "Serv": "",
               "Desc": "50Adesivo 7x9",
               "Calc": [
@@ -22167,7 +22167,7 @@ const NovoJson = [
       "Clnt": "1478",
       "Serv": [
           {
-              "Id": "43|1",
+              "Id": "43_1",
               "Serv": "",
               "Desc": "2 - Cartela / Fg",
               "Calc": [
@@ -22227,7 +22227,7 @@ const NovoJson = [
       "Clnt": "32",
       "Serv": [
           {
-              "Id": "44|1",
+              "Id": "44_1",
               "Serv": "",
               "Desc": "1 Fig Olográfico",
               "Calc": [
@@ -22287,7 +22287,7 @@ const NovoJson = [
       "Clnt": "128",
       "Serv": [
           {
-              "Id": "45|2",
+              "Id": "45_2",
               "Serv": "Adesivo",
               "Desc": "Vidro",
               "Calc": [
@@ -22307,7 +22307,7 @@ const NovoJson = [
               "Data": "2024-12-10"
           },
           {
-              "Id": "45|3",
+              "Id": "45_3",
               "Serv": "Banner",
               "Desc": "Menina",
               "Calc": [
@@ -22327,7 +22327,7 @@ const NovoJson = [
               "Data": "2024-12-10"
           },
           {
-              "Id": "45|1",
+              "Id": "45_1",
               "Serv": "Recorte",
               "Desc": "Patas 25 UND",
               "Calc": [
@@ -22411,7 +22411,7 @@ const NovoJson = [
       "Clnt": "139",
       "Serv": [
           {
-              "Id": "46|1",
+              "Id": "46_1",
               "Serv": "Adesivo",
               "Desc": "60 - 50x40",
               "Calc": [
@@ -22495,7 +22495,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "47|1",
+              "Id": "47_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -22542,7 +22542,7 @@ const NovoJson = [
       "Clnt": "1480",
       "Serv": [
           {
-              "Id": "48|1",
+              "Id": "48_1",
               "Serv": "Recorte",
               "Desc": "5 UND",
               "Calc": [
@@ -22602,7 +22602,7 @@ const NovoJson = [
       "Clnt": "1449",
       "Serv": [
           {
-              "Id": "49|1",
+              "Id": "49_1",
               "Serv": "Adesivo",
               "Desc": "3 UND",
               "Calc": [
@@ -22674,7 +22674,7 @@ const NovoJson = [
       "Clnt": "1482",
       "Serv": [
           {
-              "Id": "50|1",
+              "Id": "50_1",
               "Serv": "Adesivo",
               "Desc": "Recortes",
               "Calc": [
@@ -22734,7 +22734,7 @@ const NovoJson = [
       "Clnt": "32",
       "Serv": [
           {
-              "Id": "51|1",
+              "Id": "51_1",
               "Serv": "Quadro",
               "Desc": "2 UND",
               "Calc": [
@@ -22794,7 +22794,7 @@ const NovoJson = [
       "Clnt": "1483",
       "Serv": [
           {
-              "Id": "52|1",
+              "Id": "52_1",
               "Serv": "Adesivo",
               "Desc": "Atrevida Raio",
               "Calc": [
@@ -22854,7 +22854,7 @@ const NovoJson = [
       "Clnt": "1465",
       "Serv": [
           {
-              "Id": "53|1",
+              "Id": "53_1",
               "Serv": "Adesivo",
               "Desc": "2 Jovem",
               "Calc": [
@@ -22874,7 +22874,7 @@ const NovoJson = [
               "Data": "2024-12-12"
           },
           {
-              "Id": "53|2",
+              "Id": "53_2",
               "Serv": "Recorte",
               "Desc": "HangLose & outras",
               "Calc": [
@@ -22934,7 +22934,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "55|1",
+              "Id": "55_1",
               "Serv": "Adesivo",
               "Desc": "3 Parapodio",
               "Calc": [
@@ -22994,7 +22994,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "56|1",
+              "Id": "56_1",
               "Serv": "Cartão",
               "Desc": "5 Carteira",
               "Calc": [
@@ -23054,7 +23054,7 @@ const NovoJson = [
       "Clnt": "1487",
       "Serv": [
           {
-              "Id": "57|1",
+              "Id": "57_1",
               "Serv": "Arte",
               "Desc": "Odara",
               "Calc": [
@@ -23074,7 +23074,7 @@ const NovoJson = [
               "Data": "2024-12-16"
           },
           {
-              "Id": "57|2",
+              "Id": "57_2",
               "Serv": "Arte",
               "Desc": "Avil Noivas",
               "Calc": [
@@ -23134,7 +23134,7 @@ const NovoJson = [
       "Clnt": "1451",
       "Serv": [
           {
-              "Id": "58|1",
+              "Id": "58_1",
               "Serv": "Quadro",
               "Desc": "5 - A4",
               "Calc": [
@@ -23194,7 +23194,7 @@ const NovoJson = [
       "Clnt": "1162",
       "Serv": [
           {
-              "Id": "60|1",
+              "Id": "60_1",
               "Serv": "Adesivo",
               "Desc": "4 - 35x25",
               "Calc": [
@@ -23254,7 +23254,7 @@ const NovoJson = [
       "Clnt": "1489",
       "Serv": [
           {
-              "Id": "61|1",
+              "Id": "61_1",
               "Serv": "Arte",
               "Desc": "Gordo Cortes",
               "Calc": [
@@ -23301,7 +23301,7 @@ const NovoJson = [
       "Clnt": "1490",
       "Serv": [
           {
-              "Id": "62|1",
+              "Id": "62_1",
               "Serv": "Recorte",
               "Desc": "porta carro",
               "Calc": [
@@ -23361,7 +23361,7 @@ const NovoJson = [
       "Clnt": "1491",
       "Serv": [
           {
-              "Id": "63|1",
+              "Id": "63_1",
               "Serv": "Topo de Bolo",
               "Desc": "Natal",
               "Calc": [
@@ -23433,7 +23433,7 @@ const NovoJson = [
       "Clnt": "16",
       "Serv": [
           {
-              "Id": "64|1",
+              "Id": "64_1",
               "Serv": "Recorte",
               "Desc": "2 Kit Beach",
               "Calc": [
@@ -23480,7 +23480,7 @@ const NovoJson = [
       "Clnt": "57",
       "Serv": [
           {
-              "Id": "65|1",
+              "Id": "65_1",
               "Serv": "",
               "Desc": "Figs",
               "Calc": [
@@ -23540,7 +23540,7 @@ const NovoJson = [
       "Clnt": "57",
       "Serv": [
           {
-              "Id": "66|1",
+              "Id": "66_1",
               "Serv": "Recorte",
               "Desc": "Kit CTwister",
               "Calc": [
@@ -23600,7 +23600,7 @@ const NovoJson = [
       "Clnt": "1451",
       "Serv": [
           {
-              "Id": "67|1",
+              "Id": "67_1",
               "Serv": "Quadro",
               "Desc": "6 - A4",
               "Calc": [
@@ -23660,7 +23660,7 @@ const NovoJson = [
       "Clnt": "1492",
       "Serv": [
           {
-              "Id": "68|1",
+              "Id": "68_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -23680,7 +23680,7 @@ const NovoJson = [
               "Data": "2024-12-16"
           },
           {
-              "Id": "68|2",
+              "Id": "68_2",
               "Serv": "Cartão",
               "Desc": "1.000 F",
               "Calc": [
@@ -23740,7 +23740,7 @@ const NovoJson = [
       "Clnt": "1493",
       "Serv": [
           {
-              "Id": "69|1",
+              "Id": "69_1",
               "Serv": "Recorte",
               "Desc": "Figs",
               "Calc": [
@@ -23800,7 +23800,7 @@ const NovoJson = [
       "Clnt": "1494",
       "Serv": [
           {
-              "Id": "70|1",
+              "Id": "70_1",
               "Serv": "Recorte",
               "Desc": "asinha",
               "Calc": [
@@ -23860,7 +23860,7 @@ const NovoJson = [
       "Clnt": "1494",
       "Serv": [
           {
-              "Id": "71|1",
+              "Id": "71_1",
               "Serv": "Recorte",
               "Desc": "2 asinhas erro",
               "Calc": [
@@ -23932,7 +23932,7 @@ const NovoJson = [
       "Clnt": "1466",
       "Serv": [
           {
-              "Id": "72|1",
+              "Id": "72_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -23952,7 +23952,7 @@ const NovoJson = [
               "Data": "2024-12-17"
           },
           {
-              "Id": "72|2",
+              "Id": "72_2",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -24012,7 +24012,7 @@ const NovoJson = [
       "Clnt": "1496",
       "Serv": [
           {
-              "Id": "74|1",
+              "Id": "74_1",
               "Serv": "Banner",
               "Desc": "0,80 x 1,20",
               "Calc": [
@@ -24072,7 +24072,7 @@ const NovoJson = [
       "Clnt": "1497",
       "Serv": [
           {
-              "Id": "75|1",
+              "Id": "75_1",
               "Serv": "Topo de Bolo",
               "Desc": "Infermagem",
               "Calc": [
@@ -24132,7 +24132,7 @@ const NovoJson = [
       "Clnt": "1498",
       "Serv": [
           {
-              "Id": "76|1",
+              "Id": "76_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -24152,7 +24152,7 @@ const NovoJson = [
               "Data": "2024-12-17"
           },
           {
-              "Id": "76|2",
+              "Id": "76_2",
               "Serv": "Adesivo",
               "Desc": "bruxo",
               "Calc": [
@@ -24212,7 +24212,7 @@ const NovoJson = [
       "Clnt": "1495",
       "Serv": [
           {
-              "Id": "77|1",
+              "Id": "77_1",
               "Serv": "Talão",
               "Desc": "8 - 10x15",
               "Calc": [
@@ -24232,7 +24232,7 @@ const NovoJson = [
               "Data": "2024-12-18"
           },
           {
-              "Id": "77|2",
+              "Id": "77_2",
               "Serv": "Talão",
               "Desc": "10 - 20x15",
               "Calc": [
@@ -24304,7 +24304,7 @@ const NovoJson = [
       "Clnt": "1499",
       "Serv": [
           {
-              "Id": "78|1",
+              "Id": "78_1",
               "Serv": "Envelopamento",
               "Desc": "2 - Geladeira",
               "Calc": [
@@ -24324,7 +24324,7 @@ const NovoJson = [
               "Data": "2024-12-18"
           },
           {
-              "Id": "78|2",
+              "Id": "78_2",
               "Serv": "Banner",
               "Desc": "0,80 X 1,20",
               "Calc": [
@@ -24396,7 +24396,7 @@ const NovoJson = [
       "Clnt": "1500",
       "Serv": [
           {
-              "Id": "79|1",
+              "Id": "79_1",
               "Serv": "Figurinha",
               "Desc": "Fig / adesivo ossacortes",
               "Calc": [
@@ -24456,7 +24456,7 @@ const NovoJson = [
       "Clnt": "1501",
       "Serv": [
           {
-              "Id": "80|1",
+              "Id": "80_1",
               "Serv": "Envelopamento",
               "Desc": "1 - Geladeira Branca",
               "Calc": [
@@ -24528,7 +24528,7 @@ const NovoJson = [
       "Clnt": "1502",
       "Serv": [
           {
-              "Id": "81|1",
+              "Id": "81_1",
               "Serv": "Recorte",
               "Desc": "Gato e Balas",
               "Calc": [
@@ -24588,7 +24588,7 @@ const NovoJson = [
       "Clnt": "1491",
       "Serv": [
           {
-              "Id": "82|1",
+              "Id": "82_1",
               "Serv": "Cardápio",
               "Desc": "Dogão",
               "Calc": [
@@ -24648,7 +24648,7 @@ const NovoJson = [
       "Clnt": "1503",
       "Serv": [
           {
-              "Id": "83|1",
+              "Id": "83_1",
               "Serv": "Sub.Total",
               "Desc": "30 UND",
               "Calc": [
@@ -24708,7 +24708,7 @@ const NovoJson = [
       "Clnt": "125",
       "Serv": [
           {
-              "Id": "84|1",
+              "Id": "84_1",
               "Serv": "Arte",
               "Desc": "Paraná Gold",
               "Calc": [
@@ -24768,7 +24768,7 @@ const NovoJson = [
       "Clnt": "1504",
       "Serv": [
           {
-              "Id": "86|1",
+              "Id": "86_1",
               "Serv": "Sub.Total",
               "Desc": "3camisa 3 calção",
               "Calc": [
@@ -24852,7 +24852,7 @@ const NovoJson = [
       "Clnt": "527",
       "Serv": [
           {
-              "Id": "87|1",
+              "Id": "87_1",
               "Serv": "Adesivo",
               "Desc": "Odonto Leite",
               "Calc": [
@@ -24872,7 +24872,7 @@ const NovoJson = [
               "Data": "2024-12-30"
           },
           {
-              "Id": "87|2",
+              "Id": "87_2",
               "Serv": "",
               "Desc": "Perfurado e Adesivo",
               "Calc": [
@@ -24944,7 +24944,7 @@ const NovoJson = [
       "Clnt": "1505",
       "Serv": [
           {
-              "Id": "92|1",
+              "Id": "92_1",
               "Serv": "Router",
               "Desc": "Acrilico + PVC",
               "Calc": [
@@ -25016,7 +25016,7 @@ const NovoJson = [
       "Clnt": "1506",
       "Serv": [
           {
-              "Id": "93|1",
+              "Id": "93_1",
               "Serv": "Router",
               "Desc": "533",
               "Calc": [
@@ -25076,7 +25076,7 @@ const NovoJson = [
       "Clnt": "1507",
       "Serv": [
           {
-              "Id": "94|1",
+              "Id": "94_1",
               "Serv": "Recorte",
               "Desc": "Olográfico",
               "Calc": [
@@ -25136,7 +25136,7 @@ const NovoJson = [
       "Clnt": "1508",
       "Serv": [
           {
-              "Id": "95|1",
+              "Id": "95_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -25196,7 +25196,7 @@ const NovoJson = [
       "Clnt": "121",
       "Serv": [
           {
-              "Id": "96|1",
+              "Id": "96_1",
               "Serv": "Adesivo",
               "Desc": "2M Bichinhos",
               "Calc": [
@@ -25256,7 +25256,7 @@ const NovoJson = [
       "Clnt": "1510",
       "Serv": [
           {
-              "Id": "97|1",
+              "Id": "97_1",
               "Serv": "Vendas",
               "Desc": "Bonbinha d'agua",
               "Calc": [
@@ -25316,7 +25316,7 @@ const NovoJson = [
       "Clnt": "1459",
       "Serv": [
           {
-              "Id": "98|1",
+              "Id": "98_1",
               "Serv": "Adesivo",
               "Desc": "1.000 UND",
               "Calc": [
@@ -25376,7 +25376,7 @@ const NovoJson = [
       "Clnt": "1509",
       "Serv": [
           {
-              "Id": "99|1",
+              "Id": "99_1",
               "Serv": "Adesivo",
               "Desc": "0.5m Branco",
               "Calc": [
@@ -25462,7 +25462,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "101|1",
+              "Id": "101_1",
               "Serv": "Recorte",
               "Desc": "Branco",
               "Calc": [
@@ -25509,7 +25509,7 @@ const NovoJson = [
       "Clnt": "1560",
       "Serv": [
           {
-              "Id": "102|1",
+              "Id": "102_1",
               "Serv": "Figurinha",
               "Desc": "Cartela e OsasGráfico",
               "Calc": [
@@ -25569,7 +25569,7 @@ const NovoJson = [
       "Clnt": "1511",
       "Serv": [
           {
-              "Id": "103|1",
+              "Id": "103_1",
               "Serv": "Recorte",
               "Desc": "Provlone da Bike",
               "Calc": [
@@ -25629,7 +25629,7 @@ const NovoJson = [
       "Clnt": "1512",
       "Serv": [
           {
-              "Id": "104|1",
+              "Id": "104_1",
               "Serv": "Adesivo",
               "Desc": "3M - Stiker",
               "Calc": [
@@ -25689,7 +25689,7 @@ const NovoJson = [
       "Clnt": "57",
       "Serv": [
           {
-              "Id": "105|1",
+              "Id": "105_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -25749,7 +25749,7 @@ const NovoJson = [
       "Clnt": "1513",
       "Serv": [
           {
-              "Id": "106|1",
+              "Id": "106_1",
               "Serv": "Arte",
               "Desc": "Barber",
               "Calc": [
@@ -25769,7 +25769,7 @@ const NovoJson = [
               "Data": "2025-01-06"
           },
           {
-              "Id": "106|2",
+              "Id": "106_2",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -25841,7 +25841,7 @@ const NovoJson = [
       "Clnt": "493",
       "Serv": [
           {
-              "Id": "107|1",
+              "Id": "107_1",
               "Serv": "Cartão",
               "Desc": "500 F",
               "Calc": [
@@ -25913,7 +25913,7 @@ const NovoJson = [
       "Clnt": "1514",
       "Serv": [
           {
-              "Id": "108|1",
+              "Id": "108_1",
               "Serv": "Recorte",
               "Desc": "Monster",
               "Calc": [
@@ -25973,7 +25973,7 @@ const NovoJson = [
       "Clnt": "1478",
       "Serv": [
           {
-              "Id": "109|1",
+              "Id": "109_1",
               "Serv": "Recorte",
               "Desc": "Recoret Olográfico",
               "Calc": [
@@ -25993,7 +25993,7 @@ const NovoJson = [
               "Data": "2025-01-07"
           },
           {
-              "Id": "109|2",
+              "Id": "109_2",
               "Serv": "Figurinha",
               "Desc": "Recort Vendas, OsasOLografic",
               "Calc": [
@@ -26053,7 +26053,7 @@ const NovoJson = [
       "Clnt": "1515",
       "Serv": [
           {
-              "Id": "110|1",
+              "Id": "110_1",
               "Serv": "Recorte",
               "Desc": "varius",
               "Calc": [
@@ -26113,7 +26113,7 @@ const NovoJson = [
       "Clnt": "1516",
       "Serv": [
           {
-              "Id": "111|1",
+              "Id": "111_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -26133,7 +26133,7 @@ const NovoJson = [
               "Data": "2025-01-07"
           },
           {
-              "Id": "111|2",
+              "Id": "111_2",
               "Serv": "",
               "Desc": "Perfurado",
               "Calc": [
@@ -26193,7 +26193,7 @@ const NovoJson = [
       "Clnt": "1451",
       "Serv": [
           {
-              "Id": "112|1",
+              "Id": "112_1",
               "Serv": "Quadro",
               "Desc": "2-A4",
               "Calc": [
@@ -26253,7 +26253,7 @@ const NovoJson = [
       "Clnt": "1517",
       "Serv": [
           {
-              "Id": "113|1",
+              "Id": "113_1",
               "Serv": "Quadro",
               "Desc": "21-30x25 | 2-60x50",
               "Calc": [
@@ -26313,7 +26313,7 @@ const NovoJson = [
       "Clnt": "1518",
       "Serv": [
           {
-              "Id": "115|1",
+              "Id": "115_1",
               "Serv": "Figurinha",
               "Desc": "Vendas - 8 QuikSilver",
               "Calc": [
@@ -26373,7 +26373,7 @@ const NovoJson = [
       "Clnt": "1519",
       "Serv": [
           {
-              "Id": "116|1",
+              "Id": "116_1",
               "Serv": "Adesivo",
               "Desc": "transaretne",
               "Calc": [
@@ -26420,7 +26420,7 @@ const NovoJson = [
       "Clnt": "1520",
       "Serv": [
           {
-              "Id": "117|1",
+              "Id": "117_1",
               "Serv": "Recorte",
               "Desc": "vendo Branco",
               "Calc": [
@@ -26480,7 +26480,7 @@ const NovoJson = [
       "Clnt": "1503",
       "Serv": [
           {
-              "Id": "118|1",
+              "Id": "118_1",
               "Serv": "Sub.Total",
               "Desc": "4PP, 1P",
               "Calc": [
@@ -26552,7 +26552,7 @@ const NovoJson = [
       "Clnt": "1521",
       "Serv": [
           {
-              "Id": "121|1",
+              "Id": "121_1",
               "Serv": "Cartão",
               "Desc": "30 UND",
               "Calc": [
@@ -26572,7 +26572,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "121|2",
+              "Id": "121_2",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -26592,7 +26592,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "121|3",
+              "Id": "121_3",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -26704,7 +26704,7 @@ const NovoJson = [
       "Clnt": "16",
       "Serv": [
           {
-              "Id": "124|1",
+              "Id": "124_1",
               "Serv": "Recorte",
               "Desc": "varios cortes",
               "Calc": [
@@ -26724,7 +26724,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "124|2",
+              "Id": "124_2",
               "Serv": "",
               "Desc": "transparente pequeno",
               "Calc": [
@@ -26771,7 +26771,7 @@ const NovoJson = [
       "Clnt": "1522",
       "Serv": [
           {
-              "Id": "125|1",
+              "Id": "125_1",
               "Serv": "Adesivo",
               "Desc": "Cristo Moto",
               "Calc": [
@@ -26895,7 +26895,7 @@ const NovoJson = [
       "Clnt": "1523",
       "Serv": [
           {
-              "Id": "128|1",
+              "Id": "128_1",
               "Serv": "Quadro",
               "Desc": "8-35x25",
               "Calc": [
@@ -26915,7 +26915,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "128|2",
+              "Id": "128_2",
               "Serv": "Adesivo",
               "Desc": "Bart",
               "Calc": [
@@ -26935,7 +26935,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "128|3",
+              "Id": "128_3",
               "Serv": "Recorte",
               "Desc": "S Jorge",
               "Calc": [
@@ -26955,7 +26955,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "128|4",
+              "Id": "128_4",
               "Serv": "",
               "Desc": "Transparent",
               "Calc": [
@@ -27015,7 +27015,7 @@ const NovoJson = [
       "Clnt": "1524",
       "Serv": [
           {
-              "Id": "129|1",
+              "Id": "129_1",
               "Serv": "Banner",
               "Desc": "10 UND",
               "Calc": [
@@ -27035,7 +27035,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "129|2",
+              "Id": "129_2",
               "Serv": "Quadro",
               "Desc": "5-40x27",
               "Calc": [
@@ -27055,7 +27055,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "129|3",
+              "Id": "129_3",
               "Serv": "Adesivo",
               "Desc": "2m",
               "Calc": [
@@ -27075,7 +27075,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "129|4",
+              "Id": "129_4",
               "Serv": "Cardápio",
               "Desc": "",
               "Calc": [
@@ -27147,7 +27147,7 @@ const NovoJson = [
       "Clnt": "139",
       "Serv": [
           {
-              "Id": "130|1",
+              "Id": "130_1",
               "Serv": "Banner",
               "Desc": "20 UND",
               "Calc": [
@@ -27219,7 +27219,7 @@ const NovoJson = [
       "Clnt": "1525",
       "Serv": [
           {
-              "Id": "131|1",
+              "Id": "131_1",
               "Serv": "Adesivo",
               "Desc": "Transp",
               "Calc": [
@@ -27239,7 +27239,7 @@ const NovoJson = [
               "Data": "2025-01-09"
           },
           {
-              "Id": "131|2",
+              "Id": "131_2",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -27299,7 +27299,7 @@ const NovoJson = [
       "Clnt": "1526",
       "Serv": [
           {
-              "Id": "132|1",
+              "Id": "132_1",
               "Serv": "Vendas",
               "Desc": "Honda Olografic | Quadro",
               "Calc": [
@@ -27359,7 +27359,7 @@ const NovoJson = [
       "Clnt": "1527",
       "Serv": [
           {
-              "Id": "133|1",
+              "Id": "133_1",
               "Serv": "Recorte",
               "Desc": "Frase",
               "Calc": [
@@ -27419,7 +27419,7 @@ const NovoJson = [
       "Clnt": "1478",
       "Serv": [
           {
-              "Id": "134|1",
+              "Id": "134_1",
               "Serv": "Recorte",
               "Desc": "Olograficos e Chevrolet",
               "Calc": [
@@ -27439,7 +27439,7 @@ const NovoJson = [
               "Data": "2025-01-10"
           },
           {
-              "Id": "134|2",
+              "Id": "134_2",
               "Serv": "Vendas",
               "Desc": "Osascort Ologra",
               "Calc": [
@@ -27511,7 +27511,7 @@ const NovoJson = [
       "Clnt": "1529",
       "Serv": [
           {
-              "Id": "135|1",
+              "Id": "135_1",
               "Serv": "Router",
               "Desc": "Toten e Letras",
               "Calc": [
@@ -27571,7 +27571,7 @@ const NovoJson = [
       "Clnt": "1528",
       "Serv": [
           {
-              "Id": "136|1",
+              "Id": "136_1",
               "Serv": "Recorte",
               "Desc": "Aranha",
               "Calc": [
@@ -27631,7 +27631,7 @@ const NovoJson = [
       "Clnt": "1516",
       "Serv": [
           {
-              "Id": "137|1",
+              "Id": "137_1",
               "Serv": "Sub.Total",
               "Desc": "2-XG, 2-M",
               "Calc": [
@@ -27691,7 +27691,7 @@ const NovoJson = [
       "Clnt": "1504",
       "Serv": [
           {
-              "Id": "138|1",
+              "Id": "138_1",
               "Serv": "Sub.Total",
               "Desc": "Cam: 3-M,4-P | Cal: 3G,4M",
               "Calc": [
@@ -27711,7 +27711,7 @@ const NovoJson = [
               "Data": "2025-01-13"
           },
           {
-              "Id": "138|2",
+              "Id": "138_2",
               "Serv": "Sub.Total",
               "Desc": "Cam: 2M | Cal: 1G",
               "Calc": [
@@ -27795,7 +27795,7 @@ const NovoJson = [
       "Clnt": "1473",
       "Serv": [
           {
-              "Id": "139|1",
+              "Id": "139_1",
               "Serv": "Recorte",
               "Desc": "@ dele, Esquece",
               "Calc": [
@@ -27842,7 +27842,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "140|1",
+              "Id": "140_1",
               "Serv": "Recorte",
               "Desc": "Pub, Aranha, Chora",
               "Calc": [
@@ -27902,7 +27902,7 @@ const NovoJson = [
       "Clnt": "99",
       "Serv": [
           {
-              "Id": "141|1",
+              "Id": "141_1",
               "Serv": "Adesivo",
               "Desc": "Coringa",
               "Calc": [
@@ -27962,7 +27962,7 @@ const NovoJson = [
       "Clnt": "1531",
       "Serv": [
           {
-              "Id": "142|1",
+              "Id": "142_1",
               "Serv": "Adesivo",
               "Desc": "1 remessa Recorte",
               "Calc": [
@@ -28022,7 +28022,7 @@ const NovoJson = [
       "Clnt": "1532",
       "Serv": [
           {
-              "Id": "143|1",
+              "Id": "143_1",
               "Serv": "Cartão",
               "Desc": "4 carteira",
               "Calc": [
@@ -28082,7 +28082,7 @@ const NovoJson = [
       "Clnt": "1533",
       "Serv": [
           {
-              "Id": "144|1",
+              "Id": "144_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -28102,7 +28102,7 @@ const NovoJson = [
               "Data": "2025-01-14"
           },
           {
-              "Id": "144|2",
+              "Id": "144_2",
               "Serv": "",
               "Desc": "Perfurado",
               "Calc": [
@@ -28122,7 +28122,7 @@ const NovoJson = [
               "Data": "2025-01-14"
           },
           {
-              "Id": "144|3",
+              "Id": "144_3",
               "Serv": "Envelopamento",
               "Desc": "Escolar",
               "Calc": [
@@ -28142,7 +28142,7 @@ const NovoJson = [
               "Data": "2025-01-14"
           },
           {
-              "Id": "144|4",
+              "Id": "144_4",
               "Serv": "Envelopamento",
               "Desc": "Focso",
               "Calc": [
@@ -28162,7 +28162,7 @@ const NovoJson = [
               "Data": "2025-01-14"
           },
           {
-              "Id": "144|5",
+              "Id": "144_5",
               "Serv": "Sub.Total",
               "Desc": "4-G V",
               "Calc": [
@@ -28234,7 +28234,7 @@ const NovoJson = [
       "Clnt": "1503",
       "Serv": [
           {
-              "Id": "145|1",
+              "Id": "145_1",
               "Serv": "",
               "Desc": "Dominó",
               "Calc": [
@@ -28281,7 +28281,7 @@ const NovoJson = [
       "Clnt": "1526",
       "Serv": [
           {
-              "Id": "146|1",
+              "Id": "146_1",
               "Serv": "",
               "Desc": "Recortes e Impressão",
               "Calc": [
@@ -28341,7 +28341,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "147|1",
+              "Id": "147_1",
               "Serv": "",
               "Desc": "2 - pedaço de holografico / 4 figurinha",
               "Calc": [
@@ -28413,7 +28413,7 @@ const NovoJson = [
       "Clnt": "1534",
       "Serv": [
           {
-              "Id": "148|1",
+              "Id": "148_1",
               "Serv": "Envelopamento",
               "Desc": "Geladeira",
               "Calc": [
@@ -28485,7 +28485,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "149|1",
+              "Id": "149_1",
               "Serv": "",
               "Desc": "4 Parapodio",
               "Calc": [
@@ -28545,7 +28545,7 @@ const NovoJson = [
       "Clnt": "527",
       "Serv": [
           {
-              "Id": "150|1",
+              "Id": "150_1",
               "Serv": "Adesivo",
               "Desc": "1,60 x 0,80",
               "Calc": [
@@ -28565,7 +28565,7 @@ const NovoJson = [
               "Data": "2025-01-15"
           },
           {
-              "Id": "150|2",
+              "Id": "150_2",
               "Serv": "Sub.Total",
               "Desc": "5-GG | 5-M",
               "Calc": [
@@ -28625,7 +28625,7 @@ const NovoJson = [
       "Clnt": "1535",
       "Serv": [
           {
-              "Id": "151|1",
+              "Id": "151_1",
               "Serv": "Sub.Total",
               "Desc": "",
               "Calc": [
@@ -28697,7 +28697,7 @@ const NovoJson = [
       "Clnt": "1452",
       "Serv": [
           {
-              "Id": "152|1",
+              "Id": "152_1",
               "Serv": "Adesivo",
               "Desc": "200 - Etiquetas",
               "Calc": [
@@ -28769,7 +28769,7 @@ const NovoJson = [
       "Clnt": "1536",
       "Serv": [
           {
-              "Id": "153|1",
+              "Id": "153_1",
               "Serv": "Recorte",
               "Desc": "Bag",
               "Calc": [
@@ -28789,7 +28789,7 @@ const NovoJson = [
               "Data": "2025-01-15"
           },
           {
-              "Id": "153|2",
+              "Id": "153_2",
               "Serv": "Figurinha",
               "Desc": "5 UND",
               "Calc": [
@@ -28849,7 +28849,7 @@ const NovoJson = [
       "Clnt": "1537",
       "Serv": [
           {
-              "Id": "154|1",
+              "Id": "154_1",
               "Serv": "",
               "Desc": "Placa",
               "Calc": [
@@ -28869,7 +28869,7 @@ const NovoJson = [
               "Data": "2025-01-15"
           },
           {
-              "Id": "154|2",
+              "Id": "154_2",
               "Serv": "",
               "Desc": "Pedido Antigo",
               "Calc": [
@@ -28889,7 +28889,7 @@ const NovoJson = [
               "Data": "2025-01-15"
           },
           {
-              "Id": "154|3",
+              "Id": "154_3",
               "Serv": "",
               "Desc": "WindFlag",
               "Calc": [
@@ -28909,7 +28909,7 @@ const NovoJson = [
               "Data": "2025-01-15"
           },
           {
-              "Id": "154|4",
+              "Id": "154_4",
               "Serv": "Adesivo",
               "Desc": "142 UND",
               "Calc": [
@@ -28981,7 +28981,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "155|1",
+              "Id": "155_1",
               "Serv": "Recorte",
               "Desc": "junto cm Zaquei",
               "Calc": [
@@ -29053,7 +29053,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "156|1",
+              "Id": "156_1",
               "Serv": "Adesivo",
               "Desc": "Lacerda Pintura",
               "Calc": [
@@ -29113,7 +29113,7 @@ const NovoJson = [
       "Clnt": "1538",
       "Serv": [
           {
-              "Id": "157|1",
+              "Id": "157_1",
               "Serv": "Vendas",
               "Desc": "Tampa do Tanque",
               "Calc": [
@@ -29173,7 +29173,7 @@ const NovoJson = [
       "Clnt": "1539",
       "Serv": [
           {
-              "Id": "158|1",
+              "Id": "158_1",
               "Serv": "Lona",
               "Desc": "8-A4",
               "Calc": [
@@ -29233,7 +29233,7 @@ const NovoJson = [
       "Clnt": "337",
       "Serv": [
           {
-              "Id": "159|1",
+              "Id": "159_1",
               "Serv": "Banner",
               "Desc": "1 UND",
               "Calc": [
@@ -29253,7 +29253,7 @@ const NovoJson = [
               "Data": "2025-01-17"
           },
           {
-              "Id": "159|2",
+              "Id": "159_2",
               "Serv": "Banner",
               "Desc": "1 UND",
               "Calc": [
@@ -29273,7 +29273,7 @@ const NovoJson = [
               "Data": "2025-01-17"
           },
           {
-              "Id": "159|3",
+              "Id": "159_3",
               "Serv": "Sub.Total",
               "Desc": "1 UND",
               "Calc": [
@@ -29333,7 +29333,7 @@ const NovoJson = [
       "Clnt": "1540",
       "Serv": [
           {
-              "Id": "160|1",
+              "Id": "160_1",
               "Serv": "Vendas",
               "Desc": "Asa Honda Rosa",
               "Calc": [
@@ -29393,7 +29393,7 @@ const NovoJson = [
       "Clnt": "1541",
       "Serv": [
           {
-              "Id": "161|1",
+              "Id": "161_1",
               "Serv": "Vendas",
               "Desc": "Recortes",
               "Calc": [
@@ -29453,7 +29453,7 @@ const NovoJson = [
       "Clnt": "36",
       "Serv": [
           {
-              "Id": "162|1",
+              "Id": "162_1",
               "Serv": "",
               "Desc": "Trofeus",
               "Calc": [
@@ -29513,7 +29513,7 @@ const NovoJson = [
       "Clnt": "1542",
       "Serv": [
           {
-              "Id": "163|1",
+              "Id": "163_1",
               "Serv": "Vendas",
               "Desc": "tampa tanque",
               "Calc": [
@@ -29573,7 +29573,7 @@ const NovoJson = [
       "Clnt": "1543",
       "Serv": [
           {
-              "Id": "164|1",
+              "Id": "164_1",
               "Serv": "Vendas",
               "Desc": "Tampa do tanque",
               "Calc": [
@@ -29633,7 +29633,7 @@ const NovoJson = [
       "Clnt": "656",
       "Serv": [
           {
-              "Id": "165|1",
+              "Id": "165_1",
               "Serv": "Adesivo",
               "Desc": "1m",
               "Calc": [
@@ -29693,7 +29693,7 @@ const NovoJson = [
       "Clnt": "159",
       "Serv": [
           {
-              "Id": "166|1",
+              "Id": "166_1",
               "Serv": "Adesivo",
               "Desc": "Valores",
               "Calc": [
@@ -29713,7 +29713,7 @@ const NovoJson = [
               "Data": "2025-01-21"
           },
           {
-              "Id": "166|2",
+              "Id": "166_2",
               "Serv": "Adesivo",
               "Desc": "Tampinha",
               "Calc": [
@@ -29733,7 +29733,7 @@ const NovoJson = [
               "Data": "2025-01-21"
           },
           {
-              "Id": "166|3",
+              "Id": "166_3",
               "Serv": "Adesivo",
               "Desc": "emenda",
               "Calc": [
@@ -29805,7 +29805,7 @@ const NovoJson = [
       "Clnt": "1162",
       "Serv": [
           {
-              "Id": "167|1",
+              "Id": "167_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -29865,7 +29865,7 @@ const NovoJson = [
       "Clnt": "1537",
       "Serv": [
           {
-              "Id": "168|1",
+              "Id": "168_1",
               "Serv": "Adesivo",
               "Desc": "A4 QRCODE",
               "Calc": [
@@ -29937,7 +29937,7 @@ const NovoJson = [
       "Clnt": "1546",
       "Serv": [
           {
-              "Id": "169|1",
+              "Id": "169_1",
               "Serv": "Recorte",
               "Desc": "MainStreet",
               "Calc": [
@@ -29997,7 +29997,7 @@ const NovoJson = [
       "Clnt": "1544",
       "Serv": [
           {
-              "Id": "170|1",
+              "Id": "170_1",
               "Serv": "Recorte",
               "Desc": "Tudo Preto",
               "Calc": [
@@ -30017,7 +30017,7 @@ const NovoJson = [
               "Data": "2025-01-21"
           },
           {
-              "Id": "170|2",
+              "Id": "170_2",
               "Serv": "Recorte",
               "Desc": "segundo pedido olograf",
               "Calc": [
@@ -30077,7 +30077,7 @@ const NovoJson = [
       "Clnt": "1545",
       "Serv": [
           {
-              "Id": "171|1",
+              "Id": "171_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -30137,7 +30137,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "172|1",
+              "Id": "172_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -30184,7 +30184,7 @@ const NovoJson = [
       "Clnt": "1547",
       "Serv": [
           {
-              "Id": "173|1",
+              "Id": "173_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -30244,7 +30244,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "174|1",
+              "Id": "174_1",
               "Serv": "Recorte",
               "Desc": "Varyus",
               "Calc": [
@@ -30304,7 +30304,7 @@ const NovoJson = [
       "Clnt": "32",
       "Serv": [
           {
-              "Id": "175|1",
+              "Id": "175_1",
               "Serv": "Vendas",
               "Desc": "deus no controel",
               "Calc": [
@@ -30364,7 +30364,7 @@ const NovoJson = [
       "Clnt": "1548",
       "Serv": [
           {
-              "Id": "176|1",
+              "Id": "176_1",
               "Serv": "Vendas",
               "Desc": "Vermelhos",
               "Calc": [
@@ -30424,7 +30424,7 @@ const NovoJson = [
       "Clnt": "1549",
       "Serv": [
           {
-              "Id": "177|1",
+              "Id": "177_1",
               "Serv": "Vendas",
               "Desc": "Cartela e KitVmax",
               "Calc": [
@@ -30484,7 +30484,7 @@ const NovoJson = [
       "Clnt": "1550",
       "Serv": [
           {
-              "Id": "178|1",
+              "Id": "178_1",
               "Serv": "Adesivo",
               "Desc": "filho motocross",
               "Calc": [
@@ -30544,7 +30544,7 @@ const NovoJson = [
       "Clnt": "125",
       "Serv": [
           {
-              "Id": "179|1",
+              "Id": "179_1",
               "Serv": "Arte",
               "Desc": "Arte do Bloco ano 3",
               "Calc": [
@@ -30564,7 +30564,7 @@ const NovoJson = [
               "Data": "2025-01-22"
           },
           {
-              "Id": "179|2",
+              "Id": "179_2",
               "Serv": "Arte",
               "Desc": "Saboré",
               "Calc": [
@@ -30624,7 +30624,7 @@ const NovoJson = [
       "Clnt": "1551",
       "Serv": [
           {
-              "Id": "180|1",
+              "Id": "180_1",
               "Serv": "Quadro",
               "Desc": "Tabela PS 1mm",
               "Calc": [
@@ -30684,7 +30684,7 @@ const NovoJson = [
       "Clnt": "79",
       "Serv": [
           {
-              "Id": "181|1",
+              "Id": "181_1",
               "Serv": "Lona",
               "Desc": "2 - ilhós 1x2",
               "Calc": [
@@ -30704,7 +30704,7 @@ const NovoJson = [
               "Data": "2025-01-23"
           },
           {
-              "Id": "181|2",
+              "Id": "181_2",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -30751,7 +30751,7 @@ const NovoJson = [
       "Clnt": "1552",
       "Serv": [
           {
-              "Id": "182|1",
+              "Id": "182_1",
               "Serv": "Sub.Total",
               "Desc": "",
               "Calc": [
@@ -30811,7 +30811,7 @@ const NovoJson = [
       "Clnt": "1554",
       "Serv": [
           {
-              "Id": "183|1",
+              "Id": "183_1",
               "Serv": "Adesivo",
               "Desc": "4m",
               "Calc": [
@@ -30831,7 +30831,7 @@ const NovoJson = [
               "Data": "2025-01-23"
           },
           {
-              "Id": "183|2",
+              "Id": "183_2",
               "Serv": "Adesivo",
               "Desc": "Arvore",
               "Calc": [
@@ -30903,7 +30903,7 @@ const NovoJson = [
       "Clnt": "1478",
       "Serv": [
           {
-              "Id": "184|1",
+              "Id": "184_1",
               "Serv": "Recorte",
               "Desc": "Chevrolet dourado",
               "Calc": [
@@ -30923,7 +30923,7 @@ const NovoJson = [
               "Data": "2025-01-23"
           },
           {
-              "Id": "184|2",
+              "Id": "184_2",
               "Serv": "Recorte",
               "Desc": "Recortes e Figs",
               "Calc": [
@@ -30983,7 +30983,7 @@ const NovoJson = [
       "Clnt": "1555",
       "Serv": [
           {
-              "Id": "185|1",
+              "Id": "185_1",
               "Serv": "Vendas",
               "Desc": "Kit VMax",
               "Calc": [
@@ -31003,7 +31003,7 @@ const NovoJson = [
               "Data": "2025-01-23"
           },
           {
-              "Id": "185|2",
+              "Id": "185_2",
               "Serv": "Recorte",
               "Desc": "Absolute",
               "Calc": [
@@ -31063,7 +31063,7 @@ const NovoJson = [
       "Clnt": "1556",
       "Serv": [
           {
-              "Id": "186|1",
+              "Id": "186_1",
               "Serv": "Vendas",
               "Desc": "Tampa do Tanque",
               "Calc": [
@@ -31123,7 +31123,7 @@ const NovoJson = [
       "Clnt": "1557",
       "Serv": [
           {
-              "Id": "187|1",
+              "Id": "187_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -31183,7 +31183,7 @@ const NovoJson = [
       "Clnt": "1558",
       "Serv": [
           {
-              "Id": "188|1",
+              "Id": "188_1",
               "Serv": "Vendas",
               "Desc": "Recorte",
               "Calc": [
@@ -31243,7 +31243,7 @@ const NovoJson = [
       "Clnt": "1559",
       "Serv": [
           {
-              "Id": "189|1",
+              "Id": "189_1",
               "Serv": "Sub.Total",
               "Desc": "Soldado Guarda",
               "Calc": [
@@ -31303,7 +31303,7 @@ const NovoJson = [
       "Clnt": "1561",
       "Serv": [
           {
-              "Id": "190|1",
+              "Id": "190_1",
               "Serv": "Vendas",
               "Desc": "Tamp tanque",
               "Calc": [
@@ -31363,7 +31363,7 @@ const NovoJson = [
       "Clnt": "1562",
       "Serv": [
           {
-              "Id": "191|1",
+              "Id": "191_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -31423,7 +31423,7 @@ const NovoJson = [
       "Clnt": "1563",
       "Serv": [
           {
-              "Id": "192|1",
+              "Id": "192_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -31483,7 +31483,7 @@ const NovoJson = [
       "Clnt": "1564",
       "Serv": [
           {
-              "Id": "193|1",
+              "Id": "193_1",
               "Serv": "Recorte",
               "Desc": "1 - Ossascorte e 2 @",
               "Calc": [
@@ -31543,7 +31543,7 @@ const NovoJson = [
       "Clnt": "1565",
       "Serv": [
           {
-              "Id": "194|1",
+              "Id": "194_1",
               "Serv": "Vendas",
               "Desc": "",
               "Calc": [
@@ -31603,7 +31603,7 @@ const NovoJson = [
       "Clnt": "16",
       "Serv": [
           {
-              "Id": "195|1",
+              "Id": "195_1",
               "Serv": "Recorte",
               "Desc": "extreme",
               "Calc": [
@@ -31650,7 +31650,7 @@ const NovoJson = [
       "Clnt": "1449",
       "Serv": [
           {
-              "Id": "196|1",
+              "Id": "196_1",
               "Serv": "Banner",
               "Desc": "120 x 80",
               "Calc": [
@@ -31710,7 +31710,7 @@ const NovoJson = [
       "Clnt": "527",
       "Serv": [
           {
-              "Id": "197|1",
+              "Id": "197_1",
               "Serv": "Adesivo",
               "Desc": "Plaquinhas 29,50 x 10,50",
               "Calc": [
@@ -31770,7 +31770,7 @@ const NovoJson = [
       "Clnt": "1567",
       "Serv": [
           {
-              "Id": "198|1",
+              "Id": "198_1",
               "Serv": "Cartão",
               "Desc": "2.000 FV",
               "Calc": [
@@ -31790,7 +31790,7 @@ const NovoJson = [
               "Data": "2025-01-28"
           },
           {
-              "Id": "198|2",
+              "Id": "198_2",
               "Serv": "Quadro",
               "Desc": "da Parede",
               "Calc": [
@@ -31850,7 +31850,7 @@ const NovoJson = [
       "Clnt": "1566",
       "Serv": [
           {
-              "Id": "199|1",
+              "Id": "199_1",
               "Serv": "Recorte",
               "Desc": "varios escolar recorte",
               "Calc": [
@@ -31922,7 +31922,7 @@ const NovoJson = [
       "Clnt": "1568",
       "Serv": [
           {
-              "Id": "200|1",
+              "Id": "200_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -31982,7 +31982,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "201|1",
+              "Id": "201_1",
               "Serv": "",
               "Desc": "2 - Carteiras",
               "Calc": [
@@ -32042,7 +32042,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "202|1",
+              "Id": "202_1",
               "Serv": "Adesivo",
               "Desc": "Kit Vmax",
               "Calc": [
@@ -32062,7 +32062,7 @@ const NovoJson = [
               "Data": "2025-01-29"
           },
           {
-              "Id": "202|2",
+              "Id": "202_2",
               "Serv": "Recorte",
               "Desc": "Olografics",
               "Calc": [
@@ -32122,7 +32122,7 @@ const NovoJson = [
       "Clnt": "1569",
       "Serv": [
           {
-              "Id": "203|1",
+              "Id": "203_1",
               "Serv": "Adesivo",
               "Desc": "1x1",
               "Calc": [
@@ -32182,7 +32182,7 @@ const NovoJson = [
       "Clnt": "1511",
       "Serv": [
           {
-              "Id": "204|1",
+              "Id": "204_1",
               "Serv": "Recorte",
               "Desc": "Pitú",
               "Calc": [
@@ -32242,7 +32242,7 @@ const NovoJson = [
       "Clnt": "1466",
       "Serv": [
           {
-              "Id": "205|1",
+              "Id": "205_1",
               "Serv": "Topo de Bolo",
               "Desc": "Carnaval",
               "Calc": [
@@ -32302,7 +32302,7 @@ const NovoJson = [
       "Clnt": "1518",
       "Serv": [
           {
-              "Id": "206|1",
+              "Id": "206_1",
               "Serv": "Recorte",
               "Desc": "Wolskvagem",
               "Calc": [
@@ -32362,7 +32362,7 @@ const NovoJson = [
       "Clnt": "27",
       "Serv": [
           {
-              "Id": "207|1",
+              "Id": "207_1",
               "Serv": "Vendas",
               "Desc": "WC masc Fem",
               "Calc": [
@@ -32382,7 +32382,7 @@ const NovoJson = [
               "Data": "2025-01-30"
           },
           {
-              "Id": "207|2",
+              "Id": "207_2",
               "Serv": "Recorte",
               "Desc": "Caveira",
               "Calc": [
@@ -32442,7 +32442,7 @@ const NovoJson = [
       "Clnt": "693",
       "Serv": [
           {
-              "Id": "208|1",
+              "Id": "208_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -32502,7 +32502,7 @@ const NovoJson = [
       "Clnt": "1570",
       "Serv": [
           {
-              "Id": "209|1",
+              "Id": "209_1",
               "Serv": "",
               "Desc": "400 Etiquetas (1,00 x 0,70)",
               "Calc": [
@@ -32562,7 +32562,7 @@ const NovoJson = [
       "Clnt": "99",
       "Serv": [
           {
-              "Id": "210|1",
+              "Id": "210_1",
               "Serv": "Envelopamento",
               "Desc": "Etiquetas",
               "Calc": [
@@ -32582,7 +32582,7 @@ const NovoJson = [
               "Data": "2025-01-31"
           },
           {
-              "Id": "210|2",
+              "Id": "210_2",
               "Serv": "",
               "Desc": "adesivo branco",
               "Calc": [
@@ -32629,7 +32629,7 @@ const NovoJson = [
       "Clnt": "1571",
       "Serv": [
           {
-              "Id": "211|1",
+              "Id": "211_1",
               "Serv": "Vendas",
               "Desc": "Asinha Olografic, fig coelho",
               "Calc": [
@@ -32689,7 +32689,7 @@ const NovoJson = [
       "Clnt": "1572",
       "Serv": [
           {
-              "Id": "212|1",
+              "Id": "212_1",
               "Serv": "Adesivo",
               "Desc": "Laminado (pra colar na plaquetinha Espanhol)",
               "Calc": [
@@ -32749,7 +32749,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "213|1",
+              "Id": "213_1",
               "Serv": "Quadro",
               "Desc": "QR Code , Sorria",
               "Calc": [
@@ -32809,7 +32809,7 @@ const NovoJson = [
       "Clnt": "1573",
       "Serv": [
           {
-              "Id": "214|1",
+              "Id": "214_1",
               "Serv": "",
               "Desc": "Homem Aranha",
               "Calc": [
@@ -32869,7 +32869,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "215|1",
+              "Id": "215_1",
               "Serv": "Envelopamento",
               "Desc": "1 - Parapodio",
               "Calc": [
@@ -32889,7 +32889,7 @@ const NovoJson = [
               "Data": "2025-01-28"
           },
           {
-              "Id": "215|2",
+              "Id": "215_2",
               "Serv": "Envelopamento",
               "Desc": "1 - Parapodio",
               "Calc": [
@@ -32961,7 +32961,7 @@ const NovoJson = [
       "Clnt": "1574",
       "Serv": [
           {
-              "Id": "216|1",
+              "Id": "216_1",
               "Serv": "Cartão",
               "Desc": "1.000 F",
               "Calc": [
@@ -33021,7 +33021,7 @@ const NovoJson = [
       "Clnt": "1575",
       "Serv": [
           {
-              "Id": "217|1",
+              "Id": "217_1",
               "Serv": "Adesivo",
               "Desc": "Etiquetas Batman",
               "Calc": [
@@ -33081,7 +33081,7 @@ const NovoJson = [
       "Clnt": "1576",
       "Serv": [
           {
-              "Id": "218|1",
+              "Id": "218_1",
               "Serv": "Recorte",
               "Desc": "Tanque",
               "Calc": [
@@ -33141,7 +33141,7 @@ const NovoJson = [
       "Clnt": "1577",
       "Serv": [
           {
-              "Id": "219|1",
+              "Id": "219_1",
               "Serv": "Adesivo",
               "Desc": "do Carro",
               "Calc": [
@@ -33213,7 +33213,7 @@ const NovoJson = [
       "Clnt": "1578",
       "Serv": [
           {
-              "Id": "220|1",
+              "Id": "220_1",
               "Serv": "Adesivo",
               "Desc": "Perfurado e Frente",
               "Calc": [
@@ -33285,7 +33285,7 @@ const NovoJson = [
       "Clnt": "1579",
       "Serv": [
           {
-              "Id": "221|1",
+              "Id": "221_1",
               "Serv": "Adesivo",
               "Desc": "0,45 x 0,85",
               "Calc": [
@@ -33305,7 +33305,7 @@ const NovoJson = [
               "Data": "2025-02-04"
           },
           {
-              "Id": "221|2",
+              "Id": "221_2",
               "Serv": "Sub.Total",
               "Desc": "3 - MLong GG",
               "Calc": [
@@ -33377,7 +33377,7 @@ const NovoJson = [
       "Clnt": "1580",
       "Serv": [
           {
-              "Id": "222|1",
+              "Id": "222_1",
               "Serv": "Adesivo",
               "Desc": "Santa",
               "Calc": [
@@ -33397,7 +33397,7 @@ const NovoJson = [
               "Data": "2025-02-04"
           },
           {
-              "Id": "222|2",
+              "Id": "222_2",
               "Serv": "Sub.Total",
               "Desc": "",
               "Calc": [
@@ -33457,7 +33457,7 @@ const NovoJson = [
       "Clnt": "1581",
       "Serv": [
           {
-              "Id": "223|1",
+              "Id": "223_1",
               "Serv": "Cartão",
               "Desc": "100 UND",
               "Calc": [
@@ -33477,7 +33477,7 @@ const NovoJson = [
               "Data": "2025-02-04"
           },
           {
-              "Id": "223|2",
+              "Id": "223_2",
               "Serv": "",
               "Desc": "ímã 100",
               "Calc": [
@@ -33549,7 +33549,7 @@ const NovoJson = [
       "Clnt": "1582",
       "Serv": [
           {
-              "Id": "224|1",
+              "Id": "224_1",
               "Serv": "",
               "Desc": "Topos de Bolo",
               "Calc": [
@@ -33596,7 +33596,7 @@ const NovoJson = [
       "Clnt": "1537",
       "Serv": [
           {
-              "Id": "225|1",
+              "Id": "225_1",
               "Serv": "Cartão",
               "Desc": "50",
               "Calc": [
@@ -33656,7 +33656,7 @@ const NovoJson = [
       "Clnt": "1552",
       "Serv": [
           {
-              "Id": "226|1",
+              "Id": "226_1",
               "Serv": "Adesivo",
               "Desc": "Caminhão",
               "Calc": [
@@ -33716,7 +33716,7 @@ const NovoJson = [
       "Clnt": "1583",
       "Serv": [
           {
-              "Id": "227|1",
+              "Id": "227_1",
               "Serv": "Router",
               "Desc": "Culto para Familia",
               "Calc": [
@@ -33788,7 +33788,7 @@ const NovoJson = [
       "Clnt": "1585",
       "Serv": [
           {
-              "Id": "228|1",
+              "Id": "228_1",
               "Serv": "Envelopamento",
               "Desc": "2 Prancha",
               "Calc": [
@@ -33808,7 +33808,7 @@ const NovoJson = [
               "Data": "2025-02-06"
           },
           {
-              "Id": "228|4",
+              "Id": "228_4",
               "Serv": "Adesivo",
               "Desc": "Tubarão",
               "Calc": [
@@ -33868,7 +33868,7 @@ const NovoJson = [
       "Clnt": "1575",
       "Serv": [
           {
-              "Id": "229|1",
+              "Id": "229_1",
               "Serv": "Adesivo",
               "Desc": "batman nova remessa",
               "Calc": [
@@ -33928,7 +33928,7 @@ const NovoJson = [
       "Clnt": "1584",
       "Serv": [
           {
-              "Id": "230|1",
+              "Id": "230_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -33975,7 +33975,7 @@ const NovoJson = [
       "Clnt": "1580",
       "Serv": [
           {
-              "Id": "231|1",
+              "Id": "231_1",
               "Serv": "Recorte",
               "Desc": "Frases",
               "Calc": [
@@ -34035,7 +34035,7 @@ const NovoJson = [
       "Clnt": "1569",
       "Serv": [
           {
-              "Id": "232|1",
+              "Id": "232_1",
               "Serv": "Lona",
               "Desc": "2 - 0,89 x 0,94",
               "Calc": [
@@ -34095,7 +34095,7 @@ const NovoJson = [
       "Clnt": "1586",
       "Serv": [
           {
-              "Id": "233|1",
+              "Id": "233_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -34155,7 +34155,7 @@ const NovoJson = [
       "Clnt": "1576",
       "Serv": [
           {
-              "Id": "234|1",
+              "Id": "234_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -34202,7 +34202,7 @@ const NovoJson = [
       "Clnt": "1566",
       "Serv": [
           {
-              "Id": "235|1",
+              "Id": "235_1",
               "Serv": "Recorte",
               "Desc": "Mantenha Distância",
               "Calc": [
@@ -34262,7 +34262,7 @@ const NovoJson = [
       "Clnt": "1587",
       "Serv": [
           {
-              "Id": "236|1",
+              "Id": "236_1",
               "Serv": "Recorte",
               "Desc": "ja q ta assim deixa",
               "Calc": [
@@ -34322,7 +34322,7 @@ const NovoJson = [
       "Clnt": "1588",
       "Serv": [
           {
-              "Id": "237|1",
+              "Id": "237_1",
               "Serv": "Talão",
               "Desc": "",
               "Calc": [
@@ -34369,7 +34369,7 @@ const NovoJson = [
       "Clnt": "1589",
       "Serv": [
           {
-              "Id": "238|1",
+              "Id": "238_1",
               "Serv": "Arte",
               "Desc": "da Camisa",
               "Calc": [
@@ -34429,7 +34429,7 @@ const NovoJson = [
       "Clnt": "1518",
       "Serv": [
           {
-              "Id": "239|1",
+              "Id": "239_1",
               "Serv": "Adesivo",
               "Desc": "Genga e coelho rosa",
               "Calc": [
@@ -34449,7 +34449,7 @@ const NovoJson = [
               "Data": "2025-02-10"
           },
           {
-              "Id": "239|4",
+              "Id": "239_4",
               "Serv": "Figurinha",
               "Desc": "recortadas",
               "Calc": [
@@ -34521,7 +34521,7 @@ const NovoJson = [
       "Clnt": "1511",
       "Serv": [
           {
-              "Id": "240|1",
+              "Id": "240_1",
               "Serv": "Recorte",
               "Desc": "BTX",
               "Calc": [
@@ -34581,7 +34581,7 @@ const NovoJson = [
       "Clnt": "1590",
       "Serv": [
           {
-              "Id": "241|1",
+              "Id": "241_1",
               "Serv": "Adesivo",
               "Desc": "0,40 x 0,50",
               "Calc": [
@@ -34641,7 +34641,7 @@ const NovoJson = [
       "Clnt": "1591",
       "Serv": [
           {
-              "Id": "242|1",
+              "Id": "242_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -34701,7 +34701,7 @@ const NovoJson = [
       "Clnt": "1592",
       "Serv": [
           {
-              "Id": "243|1",
+              "Id": "243_1",
               "Serv": "",
               "Desc": "camisas e Recortes",
               "Calc": [
@@ -34748,7 +34748,7 @@ const NovoJson = [
       "Clnt": "1501",
       "Serv": [
           {
-              "Id": "244|1",
+              "Id": "244_1",
               "Serv": "Envelopamento",
               "Desc": "",
               "Calc": [
@@ -34820,7 +34820,7 @@ const NovoJson = [
       "Clnt": "1593",
       "Serv": [
           {
-              "Id": "245|1",
+              "Id": "245_1",
               "Serv": "Adesivo",
               "Desc": "Transparente",
               "Calc": [
@@ -34867,7 +34867,7 @@ const NovoJson = [
       "Clnt": "1594",
       "Serv": [
           {
-              "Id": "246|1",
+              "Id": "246_1",
               "Serv": "Adesivo",
               "Desc": "Nautico",
               "Calc": [
@@ -34953,7 +34953,7 @@ const NovoJson = [
       "Clnt": "1562",
       "Serv": [
           {
-              "Id": "248|1",
+              "Id": "248_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -35013,7 +35013,7 @@ const NovoJson = [
       "Clnt": "1596",
       "Serv": [
           {
-              "Id": "249|1",
+              "Id": "249_1",
               "Serv": "Envelopamento",
               "Desc": "3 Caderno",
               "Calc": [
@@ -35073,7 +35073,7 @@ const NovoJson = [
       "Clnt": "1597",
       "Serv": [
           {
-              "Id": "250|1",
+              "Id": "250_1",
               "Serv": "Vendas",
               "Desc": "Tampa tanque",
               "Calc": [
@@ -35133,7 +35133,7 @@ const NovoJson = [
       "Clnt": "1598",
       "Serv": [
           {
-              "Id": "251|1",
+              "Id": "251_1",
               "Serv": "Recorte",
               "Desc": "Recorte Branco",
               "Calc": [
@@ -35193,7 +35193,7 @@ const NovoJson = [
       "Clnt": "1599",
       "Serv": [
           {
-              "Id": "252|1",
+              "Id": "252_1",
               "Serv": "Cartão",
               "Desc": "50 Cartão de Visita",
               "Calc": [
@@ -35253,7 +35253,7 @@ const NovoJson = [
       "Clnt": "1600",
       "Serv": [
           {
-              "Id": "253|1",
+              "Id": "253_1",
               "Serv": "Adesivo",
               "Desc": "0,55 x 1,18",
               "Calc": [
@@ -35325,7 +35325,7 @@ const NovoJson = [
       "Clnt": "1459",
       "Serv": [
           {
-              "Id": "254|1",
+              "Id": "254_1",
               "Serv": "Adesivo",
               "Desc": "1000 UND",
               "Calc": [
@@ -35385,7 +35385,7 @@ const NovoJson = [
       "Clnt": "307",
       "Serv": [
           {
-              "Id": "255|1",
+              "Id": "255_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -35445,7 +35445,7 @@ const NovoJson = [
       "Clnt": "1601",
       "Serv": [
           {
-              "Id": "256|1",
+              "Id": "256_1",
               "Serv": "Adesivo",
               "Desc": "Quadros e Arte",
               "Calc": [
@@ -35465,7 +35465,7 @@ const NovoJson = [
               "Data": "2025-02-12"
           },
           {
-              "Id": "256|4",
+              "Id": "256_4",
               "Serv": "Banner",
               "Desc": "Carnaval",
               "Calc": [
@@ -35537,7 +35537,7 @@ const NovoJson = [
       "Clnt": "1531",
       "Serv": [
           {
-              "Id": "257|1",
+              "Id": "257_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -35597,7 +35597,7 @@ const NovoJson = [
       "Clnt": "1602",
       "Serv": [
           {
-              "Id": "258|1",
+              "Id": "258_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -35683,7 +35683,7 @@ const NovoJson = [
       "Clnt": "1603",
       "Serv": [
           {
-              "Id": "260|1",
+              "Id": "260_1",
               "Serv": "Sub.Total",
               "Desc": "3 G - Curta | 3 G - Longa",
               "Calc": [
@@ -35730,7 +35730,7 @@ const NovoJson = [
       "Clnt": "57",
       "Serv": [
           {
-              "Id": "261|1",
+              "Id": "261_1",
               "Serv": "Recorte",
               "Desc": "Frases",
               "Calc": [
@@ -35790,7 +35790,7 @@ const NovoJson = [
       "Clnt": "1604",
       "Serv": [
           {
-              "Id": "262|1",
+              "Id": "262_1",
               "Serv": "Adesivo",
               "Desc": "Adesivo",
               "Calc": [
@@ -35850,7 +35850,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "263|1",
+              "Id": "263_1",
               "Serv": "Envelopamento",
               "Desc": "Rosa",
               "Calc": [
@@ -35897,7 +35897,7 @@ const NovoJson = [
       "Clnt": "1592",
       "Serv": [
           {
-              "Id": "264|1",
+              "Id": "264_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -35944,7 +35944,7 @@ const NovoJson = [
       "Clnt": "97",
       "Serv": [
           {
-              "Id": "265|1",
+              "Id": "265_1",
               "Serv": "Envelopamento",
               "Desc": "Carrocinha",
               "Calc": [
@@ -35991,7 +35991,7 @@ const NovoJson = [
       "Clnt": "693",
       "Serv": [
           {
-              "Id": "266|1",
+              "Id": "266_1",
               "Serv": "Panfleto",
               "Desc": "2.500 FV",
               "Calc": [
@@ -36051,7 +36051,7 @@ const NovoJson = [
       "Clnt": "1605",
       "Serv": [
           {
-              "Id": "267|1",
+              "Id": "267_1",
               "Serv": "Sub.Total",
               "Desc": "2-M Longa, 1-M Curta",
               "Calc": [
@@ -36123,7 +36123,7 @@ const NovoJson = [
       "Clnt": "1532",
       "Serv": [
           {
-              "Id": "268|1",
+              "Id": "268_1",
               "Serv": "",
               "Desc": "Novos QRCODE",
               "Calc": [
@@ -36170,7 +36170,7 @@ const NovoJson = [
       "Clnt": "1606",
       "Serv": [
           {
-              "Id": "269|1",
+              "Id": "269_1",
               "Serv": "",
               "Desc": "Banner Consultoria",
               "Calc": [
@@ -36217,7 +36217,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "270|1",
+              "Id": "270_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -36277,7 +36277,7 @@ const NovoJson = [
       "Clnt": "527",
       "Serv": [
           {
-              "Id": "271|1",
+              "Id": "271_1",
               "Serv": "Recorte",
               "Desc": "Porta Automatica",
               "Calc": [
@@ -36297,7 +36297,7 @@ const NovoJson = [
               "Data": "2025-02-18"
           },
           {
-              "Id": "271|4",
+              "Id": "271_4",
               "Serv": "Adesivo",
               "Desc": "Faixa Fisioterapia",
               "Calc": [
@@ -36357,7 +36357,7 @@ const NovoJson = [
       "Clnt": "1592",
       "Serv": [
           {
-              "Id": "272|1",
+              "Id": "272_1",
               "Serv": "Recorte",
               "Desc": "Daniel João e Livia",
               "Calc": [
@@ -36404,7 +36404,7 @@ const NovoJson = [
       "Clnt": "1608",
       "Serv": [
           {
-              "Id": "273|1",
+              "Id": "273_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -36464,7 +36464,7 @@ const NovoJson = [
       "Clnt": "139",
       "Serv": [
           {
-              "Id": "274|1",
+              "Id": "274_1",
               "Serv": "Adesivo",
               "Desc": "30 UND",
               "Calc": [
@@ -36524,7 +36524,7 @@ const NovoJson = [
       "Clnt": "1609",
       "Serv": [
           {
-              "Id": "275|1",
+              "Id": "275_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -36610,7 +36610,7 @@ const NovoJson = [
       "Clnt": "1610",
       "Serv": [
           {
-              "Id": "277|1",
+              "Id": "277_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -36630,7 +36630,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "277|4",
+              "Id": "277_4",
               "Serv": "Adesivo",
               "Desc": "Recortado",
               "Calc": [
@@ -36650,7 +36650,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "277|7",
+              "Id": "277_7",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -36710,7 +36710,7 @@ const NovoJson = [
       "Clnt": "757",
       "Serv": [
           {
-              "Id": "278|1",
+              "Id": "278_1",
               "Serv": "Adesivo",
               "Desc": "5 - A4 (Aluga-se)",
               "Calc": [
@@ -36782,7 +36782,7 @@ const NovoJson = [
       "Clnt": "1611",
       "Serv": [
           {
-              "Id": "279|1",
+              "Id": "279_1",
               "Serv": "Banner",
               "Desc": "",
               "Calc": [
@@ -36802,7 +36802,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "279|4",
+              "Id": "279_4",
               "Serv": "Vendas",
               "Desc": "WC Router",
               "Calc": [
@@ -36822,7 +36822,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "279|7",
+              "Id": "279_7",
               "Serv": "Router",
               "Desc": "Numeros",
               "Calc": [
@@ -36842,7 +36842,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "279|10",
+              "Id": "279_10",
               "Serv": "Banner",
               "Desc": "Aluga-se",
               "Calc": [
@@ -36902,7 +36902,7 @@ const NovoJson = [
       "Clnt": "1594",
       "Serv": [
           {
-              "Id": "280|1",
+              "Id": "280_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -36962,7 +36962,7 @@ const NovoJson = [
       "Clnt": "656",
       "Serv": [
           {
-              "Id": "281|1",
+              "Id": "281_1",
               "Serv": "Adesivo",
               "Desc": "Varyus",
               "Calc": [
@@ -36982,7 +36982,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "281|4",
+              "Id": "281_4",
               "Serv": "Adesivo",
               "Desc": "30 x 10",
               "Calc": [
@@ -37042,7 +37042,7 @@ const NovoJson = [
       "Clnt": "1162",
       "Serv": [
           {
-              "Id": "282|1",
+              "Id": "282_1",
               "Serv": "Adesivo",
               "Desc": "Sala de Jogos",
               "Calc": [
@@ -37062,7 +37062,7 @@ const NovoJson = [
               "Data": "2025-02-19"
           },
           {
-              "Id": "282|4",
+              "Id": "282_4",
               "Serv": "Adesivo",
               "Desc": "Adesivo preto",
               "Calc": [
@@ -37134,7 +37134,7 @@ const NovoJson = [
       "Clnt": "97",
       "Serv": [
           {
-              "Id": "283|1",
+              "Id": "283_1",
               "Serv": "",
               "Desc": "Sorvetão",
               "Calc": [
@@ -37233,7 +37233,7 @@ const NovoJson = [
       "Clnt": "1612",
       "Serv": [
           {
-              "Id": "286|1",
+              "Id": "286_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -37293,7 +37293,7 @@ const NovoJson = [
       "Clnt": "1613",
       "Serv": [
           {
-              "Id": "287|1",
+              "Id": "287_1",
               "Serv": "Vendas",
               "Desc": "Figs e Recortes",
               "Calc": [
@@ -37353,7 +37353,7 @@ const NovoJson = [
       "Clnt": "1614",
       "Serv": [
           {
-              "Id": "288|1",
+              "Id": "288_1",
               "Serv": "Adesivo",
               "Desc": "Wandinha",
               "Calc": [
@@ -37413,7 +37413,7 @@ const NovoJson = [
       "Clnt": "1615",
       "Serv": [
           {
-              "Id": "289|1",
+              "Id": "289_1",
               "Serv": "Recorte",
               "Desc": "LogoGotica",
               "Calc": [
@@ -37473,7 +37473,7 @@ const NovoJson = [
       "Clnt": "1616",
       "Serv": [
           {
-              "Id": "290|1",
+              "Id": "290_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -37559,7 +37559,7 @@ const NovoJson = [
       "Clnt": "1617",
       "Serv": [
           {
-              "Id": "292|1",
+              "Id": "292_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -37619,7 +37619,7 @@ const NovoJson = [
       "Clnt": "1618",
       "Serv": [
           {
-              "Id": "293|1",
+              "Id": "293_1",
               "Serv": "Figurinha",
               "Desc": "",
               "Calc": [
@@ -37679,7 +37679,7 @@ const NovoJson = [
       "Clnt": "1619",
       "Serv": [
           {
-              "Id": "294|1",
+              "Id": "294_1",
               "Serv": "Lona",
               "Desc": "2,30 x 1,65",
               "Calc": [
@@ -37739,7 +37739,7 @@ const NovoJson = [
       "Clnt": "337",
       "Serv": [
           {
-              "Id": "295|1",
+              "Id": "295_1",
               "Serv": "Banner",
               "Desc": "Triangulo",
               "Calc": [
@@ -37786,7 +37786,7 @@ const NovoJson = [
       "Clnt": "1567",
       "Serv": [
           {
-              "Id": "296|1",
+              "Id": "296_1",
               "Serv": "Cartão",
               "Desc": "2.000 FV",
               "Calc": [
@@ -37872,7 +37872,7 @@ const NovoJson = [
       "Clnt": "1601",
       "Serv": [
           {
-              "Id": "298|1",
+              "Id": "298_1",
               "Serv": "",
               "Desc": "40 Camisas",
               "Calc": [
@@ -37932,7 +37932,7 @@ const NovoJson = [
       "Clnt": "1620",
       "Serv": [
           {
-              "Id": "299|1",
+              "Id": "299_1",
               "Serv": "Topo de Bolo",
               "Desc": "Homem Aranha",
               "Calc": [
@@ -37979,7 +37979,7 @@ const NovoJson = [
       "Clnt": "1621",
       "Serv": [
           {
-              "Id": "300|1",
+              "Id": "300_1",
               "Serv": "Etiqueta",
               "Desc": "",
               "Calc": [
@@ -38051,7 +38051,7 @@ const NovoJson = [
       "Clnt": "1622",
       "Serv": [
           {
-              "Id": "301|1",
+              "Id": "301_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -38111,7 +38111,7 @@ const NovoJson = [
       "Clnt": "1623",
       "Serv": [
           {
-              "Id": "302|1",
+              "Id": "302_1",
               "Serv": "Recorte",
               "Desc": "Balas",
               "Calc": [
@@ -38171,7 +38171,7 @@ const NovoJson = [
       "Clnt": "1624",
       "Serv": [
           {
-              "Id": "303|1",
+              "Id": "303_1",
               "Serv": "Sub.Total",
               "Desc": "M - 2 UND (Polo)",
               "Calc": [
@@ -38231,7 +38231,7 @@ const NovoJson = [
       "Clnt": "1625",
       "Serv": [
           {
-              "Id": "304|1",
+              "Id": "304_1",
               "Serv": "Adesivo",
               "Desc": "70-9x17 | 28-7x34",
               "Calc": [
@@ -38291,7 +38291,7 @@ const NovoJson = [
       "Clnt": "1626",
       "Serv": [
           {
-              "Id": "305|1",
+              "Id": "305_1",
               "Serv": "Adesivo",
               "Desc": "Rodagem",
               "Calc": [
@@ -38338,7 +38338,7 @@ const NovoJson = [
       "Clnt": "1496",
       "Serv": [
           {
-              "Id": "306|1",
+              "Id": "306_1",
               "Serv": "Etiqueta",
               "Desc": "20 - 2,5 x 2,5",
               "Calc": [
@@ -38385,7 +38385,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "307|1",
+              "Id": "307_1",
               "Serv": "Adesivo",
               "Desc": "3 Carteira",
               "Calc": [
@@ -38445,7 +38445,7 @@ const NovoJson = [
       "Clnt": "1627",
       "Serv": [
           {
-              "Id": "308|1",
+              "Id": "308_1",
               "Serv": "Sub.Total",
               "Desc": "10 G",
               "Calc": [
@@ -38517,7 +38517,7 @@ const NovoJson = [
       "Clnt": "1628",
       "Serv": [
           {
-              "Id": "309|1",
+              "Id": "309_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -38564,7 +38564,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "310|1",
+              "Id": "310_1",
               "Serv": "Envelopamento",
               "Desc": "superman",
               "Calc": [
@@ -38611,7 +38611,7 @@ const NovoJson = [
       "Clnt": "1601",
       "Serv": [
           {
-              "Id": "311|1",
+              "Id": "311_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -38671,7 +38671,7 @@ const NovoJson = [
       "Clnt": "1629",
       "Serv": [
           {
-              "Id": "312|1",
+              "Id": "312_1",
               "Serv": "",
               "Desc": "4000 cartão",
               "Calc": [
@@ -38731,7 +38731,7 @@ const NovoJson = [
       "Clnt": "1630",
       "Serv": [
           {
-              "Id": "313|1",
+              "Id": "313_1",
               "Serv": "Banner",
               "Desc": "",
               "Calc": [
@@ -38791,7 +38791,7 @@ const NovoJson = [
       "Clnt": "1631",
       "Serv": [
           {
-              "Id": "314|1",
+              "Id": "314_1",
               "Serv": "Cardápio",
               "Desc": "4 UND - FV",
               "Calc": [
@@ -38863,7 +38863,7 @@ const NovoJson = [
       "Clnt": "1632",
       "Serv": [
           {
-              "Id": "315|1",
+              "Id": "315_1",
               "Serv": "Faixa",
               "Desc": "70 x 50",
               "Calc": [
@@ -38923,7 +38923,7 @@ const NovoJson = [
       "Clnt": "1633",
       "Serv": [
           {
-              "Id": "316|1",
+              "Id": "316_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -38943,7 +38943,7 @@ const NovoJson = [
               "Data": "2025-03-10"
           },
           {
-              "Id": "316|4",
+              "Id": "316_4",
               "Serv": "",
               "Desc": "frete",
               "Calc": [
@@ -39015,7 +39015,7 @@ const NovoJson = [
       "Clnt": "36",
       "Serv": [
           {
-              "Id": "317|1",
+              "Id": "317_1",
               "Serv": "",
               "Desc": "Toten Acrilicos",
               "Calc": [
@@ -39075,7 +39075,7 @@ const NovoJson = [
       "Clnt": "1634",
       "Serv": [
           {
-              "Id": "318|1",
+              "Id": "318_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -39135,7 +39135,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "319|1",
+              "Id": "319_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -39195,7 +39195,7 @@ const NovoJson = [
       "Clnt": "1511",
       "Serv": [
           {
-              "Id": "320|1",
+              "Id": "320_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -39255,7 +39255,7 @@ const NovoJson = [
       "Clnt": "139",
       "Serv": [
           {
-              "Id": "321|1",
+              "Id": "321_1",
               "Serv": "Adesivo",
               "Desc": "30 UND",
               "Calc": [
@@ -39315,7 +39315,7 @@ const NovoJson = [
       "Clnt": "1635",
       "Serv": [
           {
-              "Id": "322|1",
+              "Id": "322_1",
               "Serv": "Cartão",
               "Desc": "",
               "Calc": [
@@ -39362,7 +39362,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "323|1",
+              "Id": "323_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -39422,7 +39422,7 @@ const NovoJson = [
       "Clnt": "16",
       "Serv": [
           {
-              "Id": "324|1",
+              "Id": "324_1",
               "Serv": "Recorte",
               "Desc": "Kit Extreme",
               "Calc": [
@@ -39469,7 +39469,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "325|1",
+              "Id": "325_1",
               "Serv": "Vendas",
               "Desc": "",
               "Calc": [
@@ -39529,7 +39529,7 @@ const NovoJson = [
       "Clnt": "1636",
       "Serv": [
           {
-              "Id": "326|1",
+              "Id": "326_1",
               "Serv": "Recorte",
               "Desc": "Holografico",
               "Calc": [
@@ -39589,7 +39589,7 @@ const NovoJson = [
       "Clnt": "493",
       "Serv": [
           {
-              "Id": "327|1",
+              "Id": "327_1",
               "Serv": "Cardápio",
               "Desc": "",
               "Calc": [
@@ -39649,7 +39649,7 @@ const NovoJson = [
       "Clnt": "516",
       "Serv": [
           {
-              "Id": "328|1",
+              "Id": "328_1",
               "Serv": "Quadro",
               "Desc": "2 - quadro e 1 - Recorte",
               "Calc": [
@@ -39709,7 +39709,7 @@ const NovoJson = [
       "Clnt": "1611",
       "Serv": [
           {
-              "Id": "329|1",
+              "Id": "329_1",
               "Serv": "Adesivo",
               "Desc": "3,00 x 2,00",
               "Calc": [
@@ -39729,7 +39729,7 @@ const NovoJson = [
               "Data": "2025-03-12"
           },
           {
-              "Id": "329|4",
+              "Id": "329_4",
               "Serv": "Router",
               "Desc": "60 x 60",
               "Calc": [
@@ -39776,7 +39776,7 @@ const NovoJson = [
       "Clnt": "1638",
       "Serv": [
           {
-              "Id": "330|1",
+              "Id": "330_1",
               "Serv": "Router",
               "Desc": "Letras",
               "Calc": [
@@ -39848,7 +39848,7 @@ const NovoJson = [
       "Clnt": "1162",
       "Serv": [
           {
-              "Id": "331|1",
+              "Id": "331_1",
               "Serv": "Etiqueta",
               "Desc": "343 UND - 2x6",
               "Calc": [
@@ -39868,7 +39868,7 @@ const NovoJson = [
               "Data": "2025-03-12"
           },
           {
-              "Id": "331|4",
+              "Id": "331_4",
               "Serv": "Adesivo",
               "Desc": "1,00 x 1,20",
               "Calc": [
@@ -39940,7 +39940,7 @@ const NovoJson = [
       "Clnt": "1639",
       "Serv": [
           {
-              "Id": "332|1",
+              "Id": "332_1",
               "Serv": "Quadro",
               "Desc": "2 - Quadro 1 - Recorte",
               "Calc": [
@@ -40000,7 +40000,7 @@ const NovoJson = [
       "Clnt": "1640",
       "Serv": [
           {
-              "Id": "333|1",
+              "Id": "333_1",
               "Serv": "Sub.Total",
               "Desc": "G",
               "Calc": [
@@ -40072,7 +40072,7 @@ const NovoJson = [
       "Clnt": "1641",
       "Serv": [
           {
-              "Id": "334|1",
+              "Id": "334_1",
               "Serv": "Etiqueta",
               "Desc": "720 UND - 2x6",
               "Calc": [
@@ -40144,7 +40144,7 @@ const NovoJson = [
       "Clnt": "101",
       "Serv": [
           {
-              "Id": "335|1",
+              "Id": "335_1",
               "Serv": "",
               "Desc": "300 ímã",
               "Calc": [
@@ -40191,7 +40191,7 @@ const NovoJson = [
       "Clnt": "1635",
       "Serv": [
           {
-              "Id": "336|1",
+              "Id": "336_1",
               "Serv": "Adesivo",
               "Desc": "3 UND 30x20",
               "Calc": [
@@ -40238,7 +40238,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "337|1",
+              "Id": "337_1",
               "Serv": "Figurinha",
               "Desc": "1m Cartela",
               "Calc": [
@@ -40298,7 +40298,7 @@ const NovoJson = [
       "Clnt": "128",
       "Serv": [
           {
-              "Id": "338|1",
+              "Id": "338_1",
               "Serv": "Router",
               "Desc": "Stencil",
               "Calc": [
@@ -40370,7 +40370,7 @@ const NovoJson = [
       "Clnt": "1567",
       "Serv": [
           {
-              "Id": "339|1",
+              "Id": "339_1",
               "Serv": "Cartão",
               "Desc": "2.000 UND",
               "Calc": [
@@ -40468,7 +40468,7 @@ const NovoJson = [
       "Clnt": "1639",
       "Serv": [
           {
-              "Id": "341|1",
+              "Id": "341_1",
               "Serv": "Recorte",
               "Desc": "@ icaro e Quadro",
               "Calc": [
@@ -40604,7 +40604,7 @@ const NovoJson = [
       "Clnt": "1644",
       "Serv": [
           {
-              "Id": "344|1",
+              "Id": "344_1",
               "Serv": "Recorte",
               "Desc": "Holografico",
               "Calc": [
@@ -40664,7 +40664,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "345|1",
+              "Id": "345_1",
               "Serv": "Envelopamento",
               "Desc": "Relampago makim carros",
               "Calc": [
@@ -40711,7 +40711,7 @@ const NovoJson = [
       "Clnt": "1645",
       "Serv": [
           {
-              "Id": "346|1",
+              "Id": "346_1",
               "Serv": "Adesivo",
               "Desc": "2 UND 40 x 14",
               "Calc": [
@@ -40771,7 +40771,7 @@ const NovoJson = [
       "Clnt": "1646",
       "Serv": [
           {
-              "Id": "347|1",
+              "Id": "347_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -40833,7 +40833,7 @@ const NovoJson = [
       "Clnt": "1647",
       "Serv": [
           {
-              "Id": "348|1",
+              "Id": "348_1",
               "Serv": "Envelopamento",
               "Desc": "Frigobar Heineken",
               "Calc": [
@@ -40893,7 +40893,7 @@ const NovoJson = [
       "Clnt": "1605",
       "Serv": [
           {
-              "Id": "349|1",
+              "Id": "349_1",
               "Serv": "Sub.Total",
               "Desc": "2 Camisa",
               "Calc": [
@@ -40965,7 +40965,7 @@ const NovoJson = [
       "Clnt": "1648",
       "Serv": [
           {
-              "Id": "350|1",
+              "Id": "350_1",
               "Serv": "Adesivo",
               "Desc": "1 Banner 70x40",
               "Calc": [
@@ -41025,7 +41025,7 @@ const NovoJson = [
       "Clnt": "1649",
       "Serv": [
           {
-              "Id": "351|1",
+              "Id": "351_1",
               "Serv": "",
               "Desc": "1 Crachá",
               "Calc": [
@@ -41085,7 +41085,7 @@ const NovoJson = [
       "Clnt": "1650",
       "Serv": [
           {
-              "Id": "352|1",
+              "Id": "352_1",
               "Serv": "Adesivo",
               "Desc": "0,70 x 0,16",
               "Calc": [
@@ -41105,7 +41105,7 @@ const NovoJson = [
               "Data": "2025-03-17"
           },
           {
-              "Id": "352|4",
+              "Id": "352_4",
               "Serv": "",
               "Desc": "Carteira",
               "Calc": [
@@ -41165,7 +41165,7 @@ const NovoJson = [
       "Clnt": "1535",
       "Serv": [
           {
-              "Id": "353|1",
+              "Id": "353_1",
               "Serv": "Cardápio",
               "Desc": "3 UND",
               "Calc": [
@@ -41185,7 +41185,7 @@ const NovoJson = [
               "Data": "2025-03-17"
           },
           {
-              "Id": "353|4",
+              "Id": "353_4",
               "Serv": "Adesivo",
               "Desc": "2 UND",
               "Calc": [
@@ -41245,7 +41245,7 @@ const NovoJson = [
       "Clnt": "79",
       "Serv": [
           {
-              "Id": "354|1",
+              "Id": "354_1",
               "Serv": "Lona",
               "Desc": "com ilhós 2 UND 2,00 x 1,00",
               "Calc": [
@@ -41331,7 +41331,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "356|1",
+              "Id": "356_1",
               "Serv": "",
               "Desc": "5 Carteiras",
               "Calc": [
@@ -41391,7 +41391,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "357|1",
+              "Id": "357_1",
               "Serv": "Recorte",
               "Desc": "34 Frases 2 Camadas",
               "Calc": [
@@ -41463,7 +41463,7 @@ const NovoJson = [
       "Clnt": "693",
       "Serv": [
           {
-              "Id": "358|1",
+              "Id": "358_1",
               "Serv": "Arte",
               "Desc": "Quarzolit",
               "Calc": [
@@ -41523,7 +41523,7 @@ const NovoJson = [
       "Clnt": "1651",
       "Serv": [
           {
-              "Id": "359|1",
+              "Id": "359_1",
               "Serv": "Adesivo",
               "Desc": "Fachada e Lateral",
               "Calc": [
@@ -41543,7 +41543,7 @@ const NovoJson = [
               "Data": "2025-03-18"
           },
           {
-              "Id": "359|4",
+              "Id": "359_4",
               "Serv": "Panfleto",
               "Desc": "",
               "Calc": [
@@ -41563,7 +41563,7 @@ const NovoJson = [
               "Data": "2025-03-18"
           },
           {
-              "Id": "359|7",
+              "Id": "359_7",
               "Serv": "Banner",
               "Desc": "",
               "Calc": [
@@ -41647,7 +41647,7 @@ const NovoJson = [
       "Clnt": "0",
       "Serv": [
           {
-              "Id": "360|1",
+              "Id": "360_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -41694,7 +41694,7 @@ const NovoJson = [
       "Clnt": "1551",
       "Serv": [
           {
-              "Id": "361|1",
+              "Id": "361_1",
               "Serv": "Quadro",
               "Desc": "PS 1mm",
               "Calc": [
@@ -41754,7 +41754,7 @@ const NovoJson = [
       "Clnt": "1605",
       "Serv": [
           {
-              "Id": "362|1",
+              "Id": "362_1",
               "Serv": "Sub.Total",
               "Desc": "",
               "Calc": [
@@ -41814,7 +41814,7 @@ const NovoJson = [
       "Clnt": "1652",
       "Serv": [
           {
-              "Id": "363|1",
+              "Id": "363_1",
               "Serv": "Adesivo",
               "Desc": "2 coelhos",
               "Calc": [
@@ -41874,7 +41874,7 @@ const NovoJson = [
       "Clnt": "1653",
       "Serv": [
           {
-              "Id": "364|1",
+              "Id": "364_1",
               "Serv": "Adesivo",
               "Desc": "Adesivo da igreja marrom",
               "Calc": [
@@ -41921,7 +41921,7 @@ const NovoJson = [
       "Clnt": "1654",
       "Serv": [
           {
-              "Id": "365|1",
+              "Id": "365_1",
               "Serv": "Quadro",
               "Desc": "4 QRCode - 20x15",
               "Calc": [
@@ -41981,7 +41981,7 @@ const NovoJson = [
       "Clnt": "1655",
       "Serv": [
           {
-              "Id": "366|1",
+              "Id": "366_1",
               "Serv": "Quadro",
               "Desc": "PVC 5mm",
               "Calc": [
@@ -42041,7 +42041,7 @@ const NovoJson = [
       "Clnt": "367",
       "Serv": [
           {
-              "Id": "367|1",
+              "Id": "367_1",
               "Serv": "Adesivo",
               "Desc": "2 camisa",
               "Calc": [
@@ -42088,7 +42088,7 @@ const NovoJson = [
       "Clnt": "79",
       "Serv": [
           {
-              "Id": "368|1",
+              "Id": "368_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -42135,7 +42135,7 @@ const NovoJson = [
       "Clnt": "1656",
       "Serv": [
           {
-              "Id": "369|1",
+              "Id": "369_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -42182,7 +42182,7 @@ const NovoJson = [
       "Clnt": "1657",
       "Serv": [
           {
-              "Id": "370|1",
+              "Id": "370_1",
               "Serv": "Adesivo",
               "Desc": "44 x 26",
               "Calc": [
@@ -42242,7 +42242,7 @@ const NovoJson = [
       "Clnt": "1658",
       "Serv": [
           {
-              "Id": "371|1",
+              "Id": "371_1",
               "Serv": "Recorte",
               "Desc": "Versiculo",
               "Calc": [
@@ -42289,7 +42289,7 @@ const NovoJson = [
       "Clnt": "1659",
       "Serv": [
           {
-              "Id": "372|1",
+              "Id": "372_1",
               "Serv": "Recorte",
               "Desc": "Grau Dichava e Osascorte Venda",
               "Calc": [
@@ -42349,7 +42349,7 @@ const NovoJson = [
       "Clnt": "294",
       "Serv": [
           {
-              "Id": "373|1",
+              "Id": "373_1",
               "Serv": "",
               "Desc": "Colchê A3",
               "Calc": [
@@ -42409,7 +42409,7 @@ const NovoJson = [
       "Clnt": "1577",
       "Serv": [
           {
-              "Id": "374|1",
+              "Id": "374_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -42429,7 +42429,7 @@ const NovoJson = [
               "Data": "2025-03-20"
           },
           {
-              "Id": "374|4",
+              "Id": "374_4",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -42449,7 +42449,7 @@ const NovoJson = [
               "Data": "2025-03-20"
           },
           {
-              "Id": "374|7",
+              "Id": "374_7",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -42509,7 +42509,7 @@ const NovoJson = [
       "Clnt": "1660",
       "Serv": [
           {
-              "Id": "375|1",
+              "Id": "375_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -42569,7 +42569,7 @@ const NovoJson = [
       "Clnt": "1661",
       "Serv": [
           {
-              "Id": "376|1",
+              "Id": "376_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -42616,7 +42616,7 @@ const NovoJson = [
       "Clnt": "1662",
       "Serv": [
           {
-              "Id": "377|1",
+              "Id": "377_1",
               "Serv": "Adesivo",
               "Desc": "15 propircional",
               "Calc": [
@@ -42676,7 +42676,7 @@ const NovoJson = [
       "Clnt": "7",
       "Serv": [
           {
-              "Id": "378|1",
+              "Id": "378_1",
               "Serv": "Recorte",
               "Desc": "Novas Frases com Vermelho e Coração",
               "Calc": [
@@ -42736,7 +42736,7 @@ const NovoJson = [
       "Clnt": "1459",
       "Serv": [
           {
-              "Id": "379|1",
+              "Id": "379_1",
               "Serv": "Etiqueta",
               "Desc": "1000 UND",
               "Calc": [
@@ -42756,7 +42756,7 @@ const NovoJson = [
               "Data": "2025-03-24"
           },
           {
-              "Id": "379|4",
+              "Id": "379_4",
               "Serv": "Adesivo",
               "Desc": "70 x 70",
               "Calc": [
@@ -42816,7 +42816,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "380|1",
+              "Id": "380_1",
               "Serv": "Envelopamento",
               "Desc": "Parapodio ROSA",
               "Calc": [
@@ -42876,7 +42876,7 @@ const NovoJson = [
       "Clnt": "1640",
       "Serv": [
           {
-              "Id": "381|1",
+              "Id": "381_1",
               "Serv": "Adesivo",
               "Desc": "A4 Regras",
               "Calc": [
@@ -42936,7 +42936,7 @@ const NovoJson = [
       "Clnt": "1663",
       "Serv": [
           {
-              "Id": "382|1",
+              "Id": "382_1",
               "Serv": "Adesivo",
               "Desc": "19 x 12",
               "Calc": [
@@ -42983,7 +42983,7 @@ const NovoJson = [
       "Clnt": "36",
       "Serv": [
           {
-              "Id": "383|1",
+              "Id": "383_1",
               "Serv": "Router",
               "Desc": "Caixa",
               "Calc": [
@@ -43030,7 +43030,7 @@ const NovoJson = [
       "Clnt": "1664",
       "Serv": [
           {
-              "Id": "384|1",
+              "Id": "384_1",
               "Serv": "Sub.Total",
               "Desc": "Camisa Polo",
               "Calc": [
@@ -43102,7 +43102,7 @@ const NovoJson = [
       "Clnt": "1562",
       "Serv": [
           {
-              "Id": "385|1",
+              "Id": "385_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -43162,7 +43162,7 @@ const NovoJson = [
       "Clnt": "1485",
       "Serv": [
           {
-              "Id": "386|1",
+              "Id": "386_1",
               "Serv": "Envelopamento",
               "Desc": "2 Parapodio (Princesa e Autista)",
               "Calc": [
@@ -43222,7 +43222,7 @@ const NovoJson = [
       "Clnt": "1665",
       "Serv": [
           {
-              "Id": "387|1",
+              "Id": "387_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -43282,7 +43282,7 @@ const NovoJson = [
       "Clnt": "1533",
       "Serv": [
           {
-              "Id": "388|1",
+              "Id": "388_1",
               "Serv": "Sub.Total",
               "Desc": "2 Cam G (Gola V)",
               "Calc": [
@@ -43354,7 +43354,7 @@ const NovoJson = [
       "Clnt": "1162",
       "Serv": [
           {
-              "Id": "389|1",
+              "Id": "389_1",
               "Serv": "Vendas",
               "Desc": "WC",
               "Calc": [
@@ -43414,7 +43414,7 @@ const NovoJson = [
       "Clnt": "1666",
       "Serv": [
           {
-              "Id": "390|1",
+              "Id": "390_1",
               "Serv": "",
               "Desc": "160 - Etiquetas divididas os sabores",
               "Calc": [
@@ -43461,7 +43461,7 @@ const NovoJson = [
       "Clnt": "1667",
       "Serv": [
           {
-              "Id": "391|1",
+              "Id": "391_1",
               "Serv": "Sub.Total",
               "Desc": "3 Camisa M",
               "Calc": [
@@ -43521,7 +43521,7 @@ const NovoJson = [
       "Clnt": "1668",
       "Serv": [
           {
-              "Id": "392|1",
+              "Id": "392_1",
               "Serv": "Arte",
               "Desc": "Artes (identidade visual)",
               "Calc": [
@@ -43581,7 +43581,7 @@ const NovoJson = [
       "Clnt": "1669",
       "Serv": [
           {
-              "Id": "393|1",
+              "Id": "393_1",
               "Serv": "Recorte",
               "Desc": "2 UND",
               "Calc": [
@@ -43641,7 +43641,7 @@ const NovoJson = [
       "Clnt": "1466",
       "Serv": [
           {
-              "Id": "394|1",
+              "Id": "394_1",
               "Serv": "Adesivo",
               "Desc": "",
               "Calc": [
@@ -43701,7 +43701,7 @@ const NovoJson = [
       "Clnt": "1670",
       "Serv": [
           {
-              "Id": "395|1",
+              "Id": "395_1",
               "Serv": "Recorte",
               "Desc": "Kit CB Twister",
               "Calc": [
@@ -43761,7 +43761,7 @@ const NovoJson = [
       "Clnt": "1671",
       "Serv": [
           {
-              "Id": "396|1",
+              "Id": "396_1",
               "Serv": "Adesivo",
               "Desc": "2m (15x20)",
               "Calc": [
@@ -43833,7 +43833,7 @@ const NovoJson = [
       "Clnt": "1672",
       "Serv": [
           {
-              "Id": "397|1",
+              "Id": "397_1",
               "Serv": "Quadro",
               "Desc": "1 (0,75 x 0,46)",
               "Calc": [
@@ -43853,7 +43853,7 @@ const NovoJson = [
               "Data": "2025-03-27"
           },
           {
-              "Id": "397|4",
+              "Id": "397_4",
               "Serv": "Figurinha",
               "Desc": "Santa",
               "Calc": [
@@ -43925,7 +43925,7 @@ const NovoJson = [
       "Clnt": "1673",
       "Serv": [
           {
-              "Id": "398|1",
+              "Id": "398_1",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -43985,7 +43985,7 @@ const NovoJson = [
       "Clnt": "1261",
       "Serv": [
           {
-              "Id": "399|1",
+              "Id": "399_1",
               "Serv": "Adesivo",
               "Desc": "80x80",
               "Calc": [
@@ -44005,7 +44005,7 @@ const NovoJson = [
               "Data": "2025-03-27"
           },
           {
-              "Id": "399|4",
+              "Id": "399_4",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -44065,7 +44065,7 @@ const NovoJson = [
       "Clnt": "1674",
       "Serv": [
           {
-              "Id": "400|1",
+              "Id": "400_1",
               "Serv": "",
               "Desc": "Banner",
               "Calc": [
@@ -44085,7 +44085,7 @@ const NovoJson = [
               "Data": "2025-03-27"
           },
           {
-              "Id": "400|4",
+              "Id": "400_4",
               "Serv": "",
               "Desc": "WindFlag",
               "Calc": [
@@ -44105,7 +44105,7 @@ const NovoJson = [
               "Data": "2025-03-27"
           },
           {
-              "Id": "400|7",
+              "Id": "400_7",
               "Serv": "",
               "Desc": "ímã",
               "Calc": [
@@ -44165,7 +44165,7 @@ const NovoJson = [
       "Clnt": "35",
       "Serv": [
           {
-              "Id": "401|1",
+              "Id": "401_1",
               "Serv": "Recorte",
               "Desc": "",
               "Calc": [
@@ -44225,7 +44225,7 @@ const NovoJson = [
       "Clnt": "1675",
       "Serv": [
           {
-              "Id": "402|1",
+              "Id": "402_1",
               "Serv": "Recorte",
               "Desc": "10-(25cm) 10-(20cm)",
               "Calc": [
@@ -44285,7 +44285,7 @@ const NovoJson = [
       "Clnt": "1648",
       "Serv": [
           {
-              "Id": "403|1",
+              "Id": "403_1",
               "Serv": "Talão",
               "Desc": "2 14x20",
               "Calc": [
@@ -44357,7 +44357,7 @@ const NovoJson = [
       "Clnt": "1664",
       "Serv": [
           {
-              "Id": "404|1",
+              "Id": "404_1",
               "Serv": "Adesivo",
               "Desc": "Info Moto 6x3",
               "Calc": [
@@ -44417,7 +44417,7 @@ const NovoJson = [
       "Clnt": "1486",
       "Serv": [
           {
-              "Id": "405|1",
+              "Id": "405_1",
               "Serv": "Adesivo",
               "Desc": "13 Carteira - 2 Correção",
               "Calc": [
@@ -44464,7 +44464,7 @@ const NovoJson = [
       "Clnt": "1676",
       "Serv": [
           {
-              "Id": "406|1",
+              "Id": "406_1",
               "Serv": "Adesivo",
               "Desc": "2 UND A4",
               "Calc": [
@@ -44511,7 +44511,7 @@ const NovoJson = [
       "Clnt": "1675",
       "Serv": [
           {
-              "Id": "407|1",
+              "Id": "407_1",
               "Serv": "Sub.Total",
               "Desc": "2 M.Longa Preta M",
               "Calc": [
@@ -44571,7 +44571,7 @@ const NovoJson = [
       "Clnt": "1453",
       "Serv": [
           {
-              "Id": "408|1",
+              "Id": "408_1",
               "Serv": "Adesivo",
               "Desc": "Way Fuorino",
               "Calc": [
@@ -44631,7 +44631,7 @@ const NovoJson = [
       "Clnt": "1469",
       "Serv": [
           {
-              "Id": "409|1",
+              "Id": "409_1",
               "Serv": "Banner",
               "Desc": "80x80",
               "Calc": [
@@ -44691,7 +44691,7 @@ const NovoJson = [
       "Clnt": "1677",
       "Serv": [
           {
-              "Id": "410|1",
+              "Id": "410_1",
               "Serv": "",
               "Desc": "CAMISA BRASIL Tam.M",
               "Calc": [
@@ -44738,7 +44738,7 @@ const NovoJson = [
       "Clnt": "1679",
       "Serv": [
           {
-              "Id": "411|1",
+              "Id": "411_1",
               "Serv": "",
               "Desc": "tabela de Adesivo",
               "Calc": [
@@ -44798,7 +44798,7 @@ const NovoJson = [
       "Clnt": "1678",
       "Serv": [
           {
-              "Id": "412|1",
+              "Id": "412_1",
               "Serv": "Vendas",
               "Desc": "Adesivo Jamaika",
               "Calc": [
@@ -44845,7 +44845,7 @@ const NovoJson = [
       "Clnt": "1680",
       "Serv": [
           {
-              "Id": "413|1",
+              "Id": "413_1",
               "Serv": "Recorte",
               "Desc": "Olografico da Kombi",
               "Calc": [
@@ -44905,7 +44905,7 @@ const NovoJson = [
       "Clnt": "1672",
       "Serv": [
           {
-              "Id": "414|1",
+              "Id": "414_1",
               "Serv": "Quadro",
               "Desc": "boyisnho novo",
               "Calc": [
@@ -44952,7 +44952,7 @@ const NovoJson = [
       "Clnt": "1680",
       "Serv": [
           {
-              "Id": "415|1",
+              "Id": "415_1",
               "Serv": "Quadro",
               "Desc": "",
               "Calc": [
@@ -45012,7 +45012,7 @@ const NovoJson = [
       "Clnt": "1451",
       "Serv": [
           {
-              "Id": "416|1",
+              "Id": "416_1",
               "Serv": "Quadro",
               "Desc": "2 - 20x30",
               "Calc": [
@@ -45059,7 +45059,7 @@ const NovoJson = [
       "Clnt": "1681",
       "Serv": [
           {
-              "Id": "417|1",
+              "Id": "417_1",
               "Serv": "",
               "Desc": "3 - Cartela Adesivo / camisa da graff",
               "Calc": [
@@ -45119,7 +45119,7 @@ const NovoJson = [
       "Clnt": "1664",
       "Serv": [
           {
-              "Id": "418|1",
+              "Id": "418_1",
               "Serv": "Adesivo",
               "Desc": "100 (8x2)",
               "Calc": [
@@ -45179,7 +45179,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "419|1",
+              "Id": "419_1",
               "Serv": "",
               "Desc": "1 - Recorte / 1 - Cartela de Adesivo",
               "Calc": [
@@ -45251,7 +45251,7 @@ const NovoJson = [
       "Clnt": "1682",
       "Serv": [
           {
-              "Id": "420|1",
+              "Id": "420_1",
               "Serv": "Sub.Total",
               "Desc": "",
               "Calc": [
@@ -45271,7 +45271,7 @@ const NovoJson = [
               "Data": "2025-04-01"
           },
           {
-              "Id": "420|4",
+              "Id": "420_4",
               "Serv": "Arte",
               "Desc": "",
               "Calc": [
@@ -45357,7 +45357,7 @@ const NovoJson = [
       "Clnt": "1684",
       "Serv": [
           {
-              "Id": "422|1",
+              "Id": "422_1",
               "Serv": "",
               "Desc": "1 - Rodagem",
               "Calc": [
@@ -45417,7 +45417,7 @@ const NovoJson = [
       "Clnt": "1685",
       "Serv": [
           {
-              "Id": "423|1",
+              "Id": "423_1",
               "Serv": "",
               "Desc": "2 - Cartela Adesivo",
               "Calc": [
@@ -45477,7 +45477,7 @@ const NovoJson = [
       "Clnt": "1530",
       "Serv": [
           {
-              "Id": "424|1",
+              "Id": "424_1",
               "Serv": "",
               "Desc": "1 - Recorte (Stock)",
               "Calc": [
@@ -45537,7 +45537,7 @@ const NovoJson = [
       "Clnt": "1680",
       "Serv": [
           {
-              "Id": "425|1",
+              "Id": "425_1",
               "Serv": "",
               "Desc": "1 - Adesivo (Coelho 50 x 30) | 3 Adesivos (Stock) | tampa tanque",
               "Calc": [
@@ -45557,7 +45557,7 @@ const NovoJson = [
               "Data": "2025-04-02"
           },
           {
-              "Id": "425|4",
+              "Id": "425_4",
               "Serv": "",
               "Desc": "",
               "Calc": [
@@ -45617,7 +45617,7 @@ const NovoJson = [
       "Clnt": "1686",
       "Serv": [
           {
-              "Id": "426|1",
+              "Id": "426_1",
               "Serv": "Arte",
               "Desc": "1 - Arte camisa",
               "Calc": [
@@ -45677,7 +45677,7 @@ const NovoJson = [
       "Clnt": "1687",
       "Serv": [
           {
-              "Id": "427|1",
+              "Id": "427_1",
               "Serv": "Adesivo",
               "Desc": "(0,70 x 0,70) Capacete",
               "Calc": [
@@ -45737,7 +45737,7 @@ const NovoJson = [
       "Clnt": "1671",
       "Serv": [
           {
-              "Id": "428|1",
+              "Id": "428_1",
               "Serv": "Adesivo",
               "Desc": "200 UND - 6x4",
               "Calc": [
@@ -45784,7 +45784,7 @@ const NovoJson = [
       "Clnt": "1688",
       "Serv": [
           {
-              "Id": "429|1",
+              "Id": "429_1",
               "Serv": "Figurinha",
               "Desc": "2 und",
               "Calc": [
@@ -45844,7 +45844,7 @@ const NovoJson = [
       "Clnt": "1689",
       "Serv": [
           {
-              "Id": "430|1",
+              "Id": "430_1",
               "Serv": "Envelopamento",
               "Desc": "2 - Evelopamento Parapodio ( superman / Dragoll Boll Z)",
               "Calc": [
@@ -45904,7 +45904,7 @@ const NovoJson = [
       "Clnt": "0",
       "Serv": [
           {
-              "Id": "431|1",
+              "Id": "431_1",
               "Serv": "",
               "Desc": "",
               "Calc": [
