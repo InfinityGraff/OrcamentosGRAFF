@@ -494,6 +494,7 @@
             .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
             .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
             .ThFilt > a{position:absolute; background: #d822ab; color: white; top: 100%;left:0;right:0 ; height: 24px;}
+            .ThFilt > a img{height: 20px; width: 20px;}
 
             .SuggSelects   {background:#f357d1}
             .RecolorSelects{background:#f357d1}
@@ -557,8 +558,12 @@
                     const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
 
                     $('a',_th(th)).innerHTML = `
-                                            <span class="HOV ppt" onclick="OcultaThTh(this,'All')">  Tudo </span>
-                                            <span class="HOV ppt" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}')"> Filtado </span>`
+                                            <span class="HOV ppt" onclick="OcultaThTh(this,'All')"><img src="./SVG/Icon_Todos.svg"><p>Todos</p></span>
+                                            <span class="HOV ppt" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}')"><img src="./SVG/Icon_Filtados.svg"><p>Filtados</p></span>
+                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Lin.svg"></span>
+                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
+                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Destacar.svg"><p>Destacar</p></span>
+                                            `
 
                     th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
                 })
