@@ -493,8 +493,8 @@
         <style>
             .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
             .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
-            .ThFilt > a{position:absolute; background: #d822ab; color: white; top: 100%;left:0;right:0 ; height: 24px;}
-            .ThFilt > a img{height: 20px; width: 20px;}
+            .ThFilt > a{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px;}
+            .ThFilt > a img{height: 18px; width: 18px;}
 
             .SuggSelects   {background:#f357d1}
             .RecolorSelects{background:#f357d1}
@@ -502,7 +502,7 @@
             .THSugg div:hover div{opacity: 1}
             .THSugg p{margin-left: 28px}
             .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
-            .THSugg{z-index: 999 !important; top: 200% !important;}
+            .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important;}
             
             
             .ThFilt_Atv{background: #d822ab; color: white;}
@@ -522,8 +522,12 @@
                 const Do_AllExceto    = (Clss,Exeto,Func)=>Func([...$$(`${Clss}`)].filter(e=>e!==Exeto)) // Ex: Aplica uma função a todos os elementos com a classe informada, exceto o elemento especificado (de preferência Add_N , Rmv_N , Tog_N)
                 const Do_AllExcetoTog = (Clss,Exeto,Func)=>{Tog_N(Exeto) ; if(event.shiftKey){return}else{Func([...$$(`${Clss}`)].filter(e=>e!==Exeto))}} // mesma coisa da de cima,só q aplica o Tog no Final
                 const TogThSugg=eu=>{Do_AllExcetoTog('.THSugg',$('.THSugg',Pai(eu)),Add_N) ; Do_AllExcetoTog('.ThFilt > a',$('.ThFilt > a',Pai(eu)),Add_N)} // deixei isso aqui sópra Simplificar o Tm_thSort
-            // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
+                function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
+                window.addEventListener('load', checkThFilt)
+                window.addEventListener('resize', checkThFilt)
+                // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
             // se tiver aberto o Esc Sai da Bandeja
+            // exibir a quantidade de clientes q tiver sendo exibido no thSugg
 
             /*
                 document.addEventListener('keydown',e=>{
@@ -537,7 +541,7 @@
                                                         <i onclick="OrdenarRows2(this,'${x}','p')">▼</i>
                                                         <b class="Ct none">0</b>
                                                         <a class="Ev none"></a>
-                                                        <div class="Abslt none THSugg Sugg Shdw rd Cl">${e}</div>
+                                                        <div class="Abslt none THSugg Sugg Shdw Cl">${e}</div>
                                                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, div=Sugg
             
             function Palavras(Qry,tipo){
@@ -552,17 +556,17 @@
             }
 
             function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-                console.log('Manjinga')
+                console.log('meu')
                 $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                     const tipo = Inn(th)
                     const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
 
                     $('a',_th(th)).innerHTML = `
-                                            <span class="HOV ppt" onclick="OcultaThTh(this,'All')"><img src="./SVG/Icon_Todos.svg"><p>Todos</p></span>
-                                            <span class="HOV ppt" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}')"><img src="./SVG/Icon_Filtados.svg"><p>Filtados</p></span>
-                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Lin.svg"></span>
-                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
-                                            <span class="HOV ppt" onclick=""><img src="./SVG/Icon_Destacar.svg"><p>Destacar</p></span>
+                                            <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
+                                            <span class="HOV ppt Ct" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}','${IdxDe(_th(th))+1}')"><img src="./SVG/Icon_Filtados.svg">  <p>Filtados</p></span>
+                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Lin.svg"></span>
+                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
+                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
                                             `
 
                     th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
@@ -582,16 +586,23 @@
                 $('#FiltRERERE').innerHTML = ''
             }// Rascunho
 
-            function OcultaThTh(btn,Qry){
-                const ThSug = btn.closest('.THSugg')
-                const tipo = $('p',Pai(ThSug)).value
+            function OcultaThTh(btn,Qry,Col){
+                const ThSug = $('.THSugg',_th(btn))
+                const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
+                const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
+                const tipo = $('p',_th(btn)).value
                         $$('p',ThSug).forEach(E=>{
-                            if(Qry==='All'){Rmv_N(Pai(E))}
-                            else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))}else{Add_N(Pai(E))}
+                            if(Qry==='Todos'){Rmv_N(Pai(E))}
+                            else if(arry){
+                                if(arry.includes(E.innerText)){Rmv_N(Pai(E))}
+                                else{Add_N(Pai(E))}
+                            }
+                            else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))}
+                            else{Add_N(Pai(E))}
                         })
             }// Rascunho
 
-            function FILT_Clik(Eu,Qry,Clik){event.preventDefault()
+            function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
                 const chek = !!$('.Filteraddd')
                 if(Clik=='Clik'){LimpaThAtv('All')}
                     if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
@@ -636,6 +647,11 @@
                 LimpaThAtv('All')
                 RealTime()
             }
+
+            
+
+
+
         </script>
     </div>
 
@@ -1952,6 +1968,9 @@
 
     // se a data for "-" não Formata pra Type="Date" pois ta dando um erro alerta no Console
 
+
+    // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
+
 </script>
 
 <script> // Templates pra iserir mais pra frente
@@ -1964,6 +1983,8 @@
             LimparFiltro('PDDS')}
         })
         */
+
+
 </script>
 
 </html>
