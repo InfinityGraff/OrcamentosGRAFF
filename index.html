@@ -455,7 +455,7 @@
 
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
                 const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
-                const iconFone = Typ==='Clnt'? Find[0].Cntt==='' ? '' : `<a class="Rltv"><img class="icoFone Abslt HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg"></a>`:''
+                const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<a class="Rltv"><img class="icoFone Abslt HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg"></a>`:'' : ''
 
                 return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}<div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
             }
@@ -494,7 +494,7 @@
             .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
             .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
             .ThFilt > a{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px;}
-            .ThFilt > a img{height: 18px; width: 18px;}
+            .ThFilt > a img{height:18px ; width:18px ;}
 
             .SuggSelects   {background:#f357d1}
             .RecolorSelects{background:#f357d1}
@@ -503,11 +503,9 @@
             .THSugg p{margin-left: 28px}
             .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
             .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important;}
-            
-            
+                        
             .ThFilt_Atv{background: #d822ab; color: white;}
             
-
             .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500}
                 .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
                 .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
@@ -592,13 +590,12 @@
                 const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
                 const tipo = $('p',_th(btn)).value
                         $$('p',ThSug).forEach(E=>{
-                            if(Qry==='Todos'){Rmv_N(Pai(E))}
-                            else if(arry){
+                            if(Qry==='Todos'){Rmv_N(Pai(E))
+                            }else if(arry){
                                 if(arry.includes(E.innerText)){Rmv_N(Pai(E))}
                                 else{Add_N(Pai(E))}
-                            }
-                            else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))}
-                            else{Add_N(Pai(E))}
+                            }else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))
+                            }else{Add_N(Pai(E))}
                         })
             }// Rascunho
 
@@ -1970,6 +1967,10 @@
 
 
     // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
+
+
+    // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
+    // Transitar com as Setinhas na tabela do APP igual na Planilha
 
 </script>
 

@@ -20232,18 +20232,104 @@ const J = {
       "Stts": "",
       "Link": ""
     },
-    {
-      "ID": 1689,
-      "Clnt": "Inspira-se Acessorio",
-      "Cmpt": "",
-      "Cntt": "",
-      "Lcal": "",
-      "Loja": "",
-      "CtLj": "",
-      "Cat": "",
-      "Stts": "",
-      "Link": ""
-    }
+    {"ID": 1689,"Clnt": "Allan Ze delivery","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1690,"Clnt": "Robson","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1691,"Clnt": "Ronaldo","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1692,"Clnt": "coroa q veio com o cara do onibus","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1693,"Clnt": "Jaime","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1694,"Clnt": "inspire-se","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1695,"Clnt": "Cara do Ônibus","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1696,"Clnt": "Eduardo","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1697,"Clnt": "Cleonilda","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1698,"Clnt": "Paulo Gonçalves","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1699,"Clnt": "Cara Grilaslho","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1700,"Clnt": "Renan","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1701,"Clnt": "higor","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1702,"Clnt": "Nordeste Grafica","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1703,"Clnt": "darlly pagou 10","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1704,"Clnt": "Karol Oliveira","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1705,"Clnt": "Luan Henri","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1706,"Clnt": "Lay Santos","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1707,"Clnt": "Ubirajara","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1708,"Clnt": "Nordeste Grafica","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1709,"Clnt": "Bernardo Pingo Cortes","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1710,"Clnt": "dois boy suado ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1711,"Clnt": "Índia","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1712,"Clnt": "Anderson Bug","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1713,"Clnt": "Marcos LM Cosmetico","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1714,"Clnt": "Tia Paula","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1715,"Clnt": "Kesia","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1716,"Clnt": "Filho de Lampeão","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1717,"Clnt": "Marcio","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1718,"Clnt": "Luca","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1719,"Clnt": "Cosme Fransisco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1720,"Clnt": "Carlos André (Bar da Piaba)","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1721,"Clnt": "Mônica Lopes","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1722,"Clnt": "Anderson Bug","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1723,"Clnt": "JOAO GABRIEL CARNEIRO DE SOUSA","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1724,"Clnt": "","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1725,"Clnt": "Tronco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1726,"Clnt": "Cintyia PetShop","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1727,"Clnt": "Wesley José ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1728,"Clnt": "Helia Leão","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1729,"Clnt": "Tronco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1730,"Clnt": "ímã 81","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1731,"Clnt": "Entregador de Nino","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1732,"Clnt": "Ubirajara","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1733,"Clnt": "RS água e Gas (Lucas Ewerton)","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1734,"Clnt": "Galego 244","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1735,"Clnt": "ìndia","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1736,"Clnt": "Tati","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1737,"Clnt": "Ecoprime","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1738,"Clnt": "Hora Doce Cake","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1739,"Clnt": "Wesley José ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1740,"Clnt": "Arthur ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1741,"Clnt": "Talita Alaide","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1742,"Clnt": "Rildak","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1743,"Clnt": "Clenilda","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1744,"Clnt": "Etiqueta do Urcinho","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1745,"Clnt": "Wilson","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1746,"Clnt": "Swane","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1747,"Clnt": "Estofados Gênesis (Geraldo)","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1748,"Clnt": "Laura Lima","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1749,"Clnt": "Joelma Rê studio ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1750,"Clnt": "Fabricio ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1751,"Clnt": "Panela De Barro","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1752,"Clnt": "Lucca de Neguinho","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1753,"Clnt": "Inspira-se ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1754,"Clnt": "isaque da Kombi","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1755,"Clnt": "Miminho Cortes","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1756,"Clnt": "Fernando ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1757,"Clnt": "Dudu 360","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1758,"Clnt": "Orlando","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1759,"Clnt": "JulioExcamozin","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1760,"Clnt": "Polar Chups","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1761,"Clnt": "RS água e Gas ","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1762,"Clnt": "Deyvison conexão SLM","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1763,"Clnt": "Xandii","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1764,"Clnt": "Everson ( Cova de Onça)","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1765,"Clnt": "Biteupainho","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1766,"Clnt": "Bilesinhodoscorte","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1767,"Clnt": "regi desamanche","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1768,"Clnt": "Tronco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1769,"Clnt": "cara do adesivo do som","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1770,"Clnt": "Vila Brasil","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1771,"Clnt": "Nino","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1772,"Clnt": "Nino","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1773,"Clnt": "Nino","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1774,"Clnt": "Italo Lino","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1775,"Clnt": "Tronco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1776,"Clnt": "Anderson Camará","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1777,"Clnt": "SJ Turismo","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1778,"Clnt": "Cara do Estofado","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1779,"Clnt": "Tassia","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1780,"Clnt": "espaço lazer","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1781,"Clnt": "isaque da Kombi","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1782,"Clnt": "Coroa Catamarã","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1783,"Clnt": "Vânia","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1784,"Clnt": "cap america","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1785,"Clnt": "nono","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
+    {"ID": 1786,"Clnt": "Thuco","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
   ],
   PDDS:[],SERV:[],PGMT:[],GRAD:[],OOSS:[],UBER:[],MPAG:[]
 }
@@ -20271,7 +20357,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 8,
+              "OS": "",
+              "Uber": "",
+              "Grad": 8,
               "Clnt": 1449,
               "Data": "2024-12-02"
           }
@@ -20293,7 +20381,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "001",
+      "Stts": "",
+      "Lin": "001",
       "Cust": [
           {
               "Id": "",
@@ -20305,7 +20394,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20331,7 +20425,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 8,
+              "OS": "",
+              "Uber": "",
+              "Grad": 8,
               "Clnt": 1451,
               "Data": "2024-12-03"
           }
@@ -20353,7 +20449,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "004",
+      "Stts": "",
+      "Lin": "004",
       "Cust": [
           {
               "Id": "1",
@@ -20365,7 +20462,12 @@ const NovoJson = [
               "Pcnt": "100%"
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20391,7 +20493,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 125,
               "Data": "2024-12-03"
           }
@@ -20413,7 +20517,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "006",
+      "Stts": "",
+      "Lin": "006",
       "Cust": [
           {
               "Id": "",
@@ -20425,7 +20530,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20451,7 +20561,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 8,
+              "OS": "",
+              "Uber": "",
+              "Grad": 8,
               "Clnt": 1453,
               "Data": "2024-12-03"
           }
@@ -20473,7 +20585,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "007",
+      "Stts": "",
+      "Lin": "007",
       "Cust": [
           {
               "Id": "",
@@ -20485,7 +20598,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20511,7 +20629,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 99,
               "Data": "2024-12-03"
           }
@@ -20533,7 +20653,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "003",
+      "Stts": "",
+      "Lin": "003",
       "Cust": [
           {
               "Id": "",
@@ -20545,7 +20666,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20571,7 +20697,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 1,
+              "OS": "",
+              "Uber": "",
+              "Grad": 1,
               "Clnt": "1452",
               "Data": "03/12/2024"
           }
@@ -20593,7 +20721,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "005",
+      "Stts": "",
+      "Lin": "005",
       "Cust": [
           {
               "Id": "",
@@ -20605,7 +20734,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20631,7 +20765,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 9,
+              "OS": "",
+              "Uber": "",
+              "Grad": 9,
               "Clnt": 1454,
               "Data": "03/12/2024"
           }
@@ -20653,7 +20789,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "008",
+      "Stts": "",
+      "Lin": "008",
       "Cust": [
           {
               "Id": "",
@@ -20665,7 +20802,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20691,7 +20833,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "03/12/2024"
           }
@@ -20700,7 +20844,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "009",
+      "Stts": "",
+      "Lin": "009",
       "Cust": [
           {
               "Id": "",
@@ -20712,7 +20857,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -20738,7 +20888,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1455,
               "Data": "2024-12-03"
           }
@@ -20760,7 +20912,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "011",
+      "Stts": "",
+      "Lin": "011",
       "Cust": [
           {
               "Id": "",
@@ -20772,7 +20925,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20798,7 +20956,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1456,
               "Data": "2024-12-03"
           }
@@ -20820,7 +20980,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "010",
+      "Stts": "",
+      "Lin": "010",
       "Cust": [
           {
               "Id": "",
@@ -20832,7 +20993,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20858,7 +21024,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 2,
+              "OS": "",
+              "Uber": "",
+              "Grad": 2,
               "Clnt": "1449",
               "Data": "2024-12-04"
           }
@@ -20880,7 +21048,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "012",
+      "Stts": "",
+      "Lin": "012",
       "Cust": [
           {
               "Id": "",
@@ -20892,7 +21061,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20918,7 +21092,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1458,
               "Data": "2024-12-04"
           },
@@ -20938,7 +21114,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1458,
               "Data": "2024-12-04"
           }
@@ -20960,7 +21138,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "013",
+      "Stts": "",
+      "Lin": "013",
       "Cust": [
           {
               "Id": "",
@@ -20972,7 +21151,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -20998,7 +21182,9 @@ const NovoJson = [
               "Coment": "275+488",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1459,
               "Data": "2024-12-04"
           }
@@ -21020,7 +21206,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "014",
+      "Stts": "",
+      "Lin": "014",
       "Cust": [
           {
               "Id": "",
@@ -21032,7 +21219,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21058,7 +21250,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 2,
+              "OS": "",
+              "Uber": "",
+              "Grad": 2,
               "Clnt": "7",
               "Data": "2024-12-04"
           },
@@ -21078,7 +21272,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 2,
+              "OS": "",
+              "Uber": "",
+              "Grad": 2,
               "Clnt": "7",
               "Data": "2024-12-04"
           },
@@ -21098,7 +21294,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 2,
+              "OS": "",
+              "Uber": "",
+              "Grad": 2,
               "Clnt": "7",
               "Data": "2024-12-04"
           },
@@ -21118,7 +21316,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2024-12-04"
           }
@@ -21140,7 +21340,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "015",
+      "Stts": "",
+      "Lin": "015",
       "Cust": [
           {
               "Id": "",
@@ -21152,7 +21353,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21178,7 +21384,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1460,
               "Data": "2024-12-04"
           }
@@ -21200,7 +21408,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "016",
+      "Stts": "",
+      "Lin": "016",
       "Cust": [
           {
               "Id": "",
@@ -21212,7 +21421,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21238,7 +21452,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1461,
               "Data": "2024-12-04"
           }
@@ -21260,7 +21476,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "017",
+      "Stts": "",
+      "Lin": "017",
       "Cust": [
           {
               "Id": "",
@@ -21272,7 +21489,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21298,7 +21520,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 4,
+              "OS": "",
+              "Uber": "",
+              "Grad": 4,
               "Clnt": 1462,
               "Data": "2024-12-05"
           }
@@ -21332,7 +21556,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "018",
+      "Stts": "",
+      "Lin": "018",
       "Cust": [
           {
               "Id": "",
@@ -21344,7 +21569,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21370,7 +21600,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1463,
               "Data": "2024-12-05"
           }
@@ -21392,7 +21624,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "019",
+      "Stts": "",
+      "Lin": "019",
       "Cust": [
           {
               "Id": "",
@@ -21404,7 +21637,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21430,7 +21668,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 13,
+              "OS": "",
+              "Uber": "",
+              "Grad": 13,
               "Clnt": "1453",
               "Data": "2024-12-05"
           }
@@ -21452,7 +21692,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "020",
+      "Stts": "",
+      "Lin": "020",
       "Cust": [
           {
               "Id": "",
@@ -21464,7 +21705,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21490,7 +21736,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1464,
               "Data": "2024-12-05"
           }
@@ -21512,7 +21760,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "021",
+      "Stts": "",
+      "Lin": "021",
       "Cust": [
           {
               "Id": "",
@@ -21524,7 +21773,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21550,7 +21804,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1465,
               "Data": "2024-12-05"
           }
@@ -21572,7 +21828,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "022",
+      "Stts": "",
+      "Lin": "022",
       "Cust": [
           {
               "Id": "",
@@ -21584,7 +21841,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21610,7 +21872,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1466,
               "Data": "2024-12-05"
           }
@@ -21632,7 +21896,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "023",
+      "Stts": "",
+      "Lin": "023",
       "Cust": [
           {
               "Id": "",
@@ -21644,7 +21909,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21670,7 +21940,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1467,
               "Data": "2024-12-05"
           },
@@ -21690,7 +21962,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 14,
+              "OS": "",
+              "Uber": "",
+              "Grad": 14,
               "Clnt": 1467,
               "Data": "2024-12-05"
           }
@@ -21712,7 +21986,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "024",
+      "Stts": "",
+      "Lin": "024",
       "Cust": [
           {
               "Id": "",
@@ -21724,7 +21999,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21750,7 +22030,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1468,
               "Data": "2024-12-05"
           }
@@ -21772,7 +22054,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "025",
+      "Stts": "",
+      "Lin": "025",
       "Cust": [
           {
               "Id": "",
@@ -21784,7 +22067,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21810,7 +22098,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 11,
+              "OS": "",
+              "Uber": "",
+              "Grad": 11,
               "Clnt": 1469,
               "Data": "2024-12-05"
           }
@@ -21832,7 +22122,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "026",
+      "Stts": "",
+      "Lin": "026",
       "Cust": [
           {
               "Id": "",
@@ -21844,7 +22135,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21870,7 +22166,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1470,
               "Data": "2024-12-09"
           }
@@ -21904,7 +22202,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "027",
+      "Stts": "",
+      "Lin": "027",
       "Cust": [
           {
               "Id": "",
@@ -21916,7 +22215,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -21942,7 +22246,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1471,
               "Data": "2024-12-09"
           }
@@ -21964,7 +22270,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "028",
+      "Stts": "",
+      "Lin": "028",
       "Cust": [
           {
               "Id": "",
@@ -21976,7 +22283,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22002,7 +22314,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 5,
+              "OS": "",
+              "Uber": "",
+              "Grad": 5,
               "Clnt": "6",
               "Data": "2024-12-09"
           }
@@ -22024,7 +22338,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "029",
+      "Stts": "",
+      "Lin": "029",
       "Cust": [
           {
               "Id": "",
@@ -22036,7 +22351,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22062,7 +22382,9 @@ const NovoJson = [
               "Coment": "osascorte olografic",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1473,
               "Data": "2024-12-09"
           }
@@ -22084,7 +22406,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "030",
+      "Stts": "",
+      "Lin": "030",
       "Cust": [
           {
               "Id": "",
@@ -22096,7 +22419,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22122,7 +22450,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 12,
+              "OS": "",
+              "Uber": "",
+              "Grad": 12,
               "Clnt": 1474,
               "Data": "2024-12-10"
           }
@@ -22144,7 +22474,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "031",
+      "Stts": "",
+      "Lin": "031",
       "Cust": [
           {
               "Id": "",
@@ -22156,7 +22487,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22182,7 +22518,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2024-12-10"
           }
@@ -22204,7 +22542,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "032",
+      "Stts": "",
+      "Lin": "032",
       "Cust": [
           {
               "Id": "",
@@ -22216,7 +22555,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22242,7 +22586,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "32",
               "Data": "2024-12-10"
           }
@@ -22264,7 +22610,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "033",
+      "Stts": "",
+      "Lin": "033",
       "Cust": [
           {
               "Id": "",
@@ -22276,7 +22623,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22302,7 +22654,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 5,
+              "OS": "",
+              "Uber": "",
+              "Grad": 5,
               "Clnt": "128",
               "Data": "2024-12-10"
           },
@@ -22322,7 +22676,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 6,
+              "OS": "",
+              "Uber": "",
+              "Grad": 6,
               "Clnt": "128",
               "Data": "2024-12-10"
           },
@@ -22342,7 +22698,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "128",
               "Data": "2024-12-10"
           }
@@ -22388,7 +22746,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "034",
+      "Stts": "",
+      "Lin": "034",
       "Cust": [
           {
               "Id": "",
@@ -22400,7 +22759,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22426,7 +22790,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 7,
+              "OS": "",
+              "Uber": "",
+              "Grad": 7,
               "Clnt": "139",
               "Data": "2024-12-11"
           }
@@ -22472,7 +22838,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "035",
+      "Stts": "",
+      "Lin": "035",
       "Cust": [
           {
               "Id": "",
@@ -22484,7 +22851,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22510,7 +22882,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2024-12-11"
           }
@@ -22519,7 +22893,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "036",
+      "Stts": "",
+      "Lin": "036",
       "Cust": [
           {
               "Id": "",
@@ -22531,7 +22906,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -22557,7 +22937,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1480,
               "Data": "2024-12-12"
           }
@@ -22579,7 +22961,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "037",
+      "Stts": "",
+      "Lin": "037",
       "Cust": [
           {
               "Id": "",
@@ -22591,7 +22974,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22617,7 +23005,9 @@ const NovoJson = [
               "Coment": "6 foi do Uber dela",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 14,
+              "OS": "",
+              "Uber": "",
+              "Grad": 14,
               "Clnt": "1449",
               "Data": "2024-12-12"
           }
@@ -22651,7 +23041,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "038",
+      "Stts": "",
+      "Lin": "038",
       "Cust": [
           {
               "Id": "",
@@ -22663,7 +23054,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22689,7 +23085,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 15,
+              "OS": "",
+              "Uber": "",
+              "Grad": 15,
               "Clnt": 1482,
               "Data": "2024-12-12"
           }
@@ -22711,7 +23109,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "040",
+      "Stts": "",
+      "Lin": "040",
       "Cust": [
           {
               "Id": "",
@@ -22723,7 +23122,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22749,7 +23153,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 15,
+              "OS": "",
+              "Uber": "",
+              "Grad": 15,
               "Clnt": "32",
               "Data": "2024-12-12"
           }
@@ -22771,7 +23177,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "039",
+      "Stts": "",
+      "Lin": "039",
       "Cust": [
           {
               "Id": "",
@@ -22783,7 +23190,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22809,7 +23221,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 11,
+              "OS": "",
+              "Uber": "",
+              "Grad": 11,
               "Clnt": 1483,
               "Data": "2024-12-05"
           }
@@ -22831,7 +23245,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "025.5",
+      "Stts": "",
+      "Lin": "025.5",
       "Cust": [
           {
               "Id": "",
@@ -22843,7 +23258,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22869,7 +23289,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 14,
+              "OS": "",
+              "Uber": "",
+              "Grad": 14,
               "Clnt": "1465",
               "Data": "2024-12-12"
           },
@@ -22889,7 +23311,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1465",
               "Data": "2024-12-12"
           }
@@ -22911,7 +23335,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "041",
+      "Stts": "",
+      "Lin": "041",
       "Cust": [
           {
               "Id": "",
@@ -22923,7 +23348,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -22949,7 +23379,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 14,
+              "OS": "",
+              "Uber": "",
+              "Grad": 14,
               "Clnt": 1485,
               "Data": "-"
           }
@@ -22971,7 +23403,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "042",
+      "Stts": "",
+      "Lin": "042",
       "Cust": [
           {
               "Id": "",
@@ -22983,7 +23416,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23009,7 +23447,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 10,
+              "OS": "",
+              "Uber": "",
+              "Grad": 10,
               "Clnt": 1486,
               "Data": "-"
           }
@@ -23031,7 +23471,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "043",
+      "Stts": "",
+      "Lin": "043",
       "Cust": [
           {
               "Id": "",
@@ -23043,7 +23484,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23069,7 +23515,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1487,
               "Data": "2024-12-16"
           },
@@ -23089,7 +23537,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1487,
               "Data": "2024-12-16"
           }
@@ -23111,7 +23561,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "044",
+      "Stts": "",
+      "Lin": "044",
       "Cust": [
           {
               "Id": "",
@@ -23123,7 +23574,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23149,7 +23605,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 16,
+              "OS": "",
+              "Uber": "",
+              "Grad": 16,
               "Clnt": "1451",
               "Data": "2024-12-16"
           }
@@ -23171,7 +23629,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "045",
+      "Stts": "",
+      "Lin": "045",
       "Cust": [
           {
               "Id": "",
@@ -23183,7 +23642,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23209,7 +23673,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 16,
+              "OS": "",
+              "Uber": "",
+              "Grad": 16,
               "Clnt": "1162",
               "Data": "2024-12-16"
           }
@@ -23231,7 +23697,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "047",
+      "Stts": "",
+      "Lin": "047",
       "Cust": [
           {
               "Id": "",
@@ -23243,7 +23710,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23269,7 +23741,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1489,
               "Data": "2024-12-16"
           }
@@ -23278,7 +23752,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "048",
+      "Stts": "",
+      "Lin": "048",
       "Cust": [
           {
               "Id": "",
@@ -23290,7 +23765,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23316,7 +23796,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1490,
               "Data": "2024-12-16"
           }
@@ -23338,7 +23820,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "049",
+      "Stts": "",
+      "Lin": "049",
       "Cust": [
           {
               "Id": "",
@@ -23350,7 +23833,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23376,7 +23864,9 @@ const NovoJson = [
               "Coment": "UberExtra 15",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 17,
+              "OS": "",
+              "Uber": "",
+              "Grad": 17,
               "Clnt": 1491,
               "Data": "2024-12-16"
           }
@@ -23410,7 +23900,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "050",
+      "Stts": "",
+      "Lin": "050",
       "Cust": [
           {
               "Id": "",
@@ -23422,7 +23913,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23448,7 +23944,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "16",
               "Data": "2024-12-17"
           }
@@ -23457,7 +23955,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "060",
+      "Stts": "",
+      "Lin": "060",
       "Cust": [
           {
               "Id": "",
@@ -23469,7 +23968,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23495,7 +23999,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "57",
               "Data": "2024-12-17"
           }
@@ -23517,7 +24023,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "059",
+      "Stts": "",
+      "Lin": "059",
       "Cust": [
           {
               "Id": "",
@@ -23529,7 +24036,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23555,7 +24067,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "57",
               "Data": "2024-12-17"
           }
@@ -23577,7 +24091,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "058",
+      "Stts": "",
+      "Lin": "058",
       "Cust": [
           {
               "Id": "",
@@ -23589,7 +24104,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23615,7 +24135,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 21,
+              "OS": "",
+              "Uber": "",
+              "Grad": 21,
               "Clnt": "1451",
               "Data": "2024-12-17"
           }
@@ -23637,7 +24159,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "061",
+      "Stts": "",
+      "Lin": "061",
       "Cust": [
           {
               "Id": "",
@@ -23649,7 +24172,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23675,7 +24203,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1492,
               "Data": "2024-12-16"
           },
@@ -23695,7 +24225,9 @@ const NovoJson = [
               "Coment": "Botei pra rodar dia 06/01",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1492,
               "Data": "2024-12-16"
           }
@@ -23717,7 +24249,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "055",
+      "Stts": "",
+      "Lin": "055",
       "Cust": [
           {
               "Id": "",
@@ -23729,7 +24262,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23755,7 +24293,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1493,
               "Data": "2024-12-16"
           }
@@ -23777,7 +24317,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "056",
+      "Stts": "",
+      "Lin": "056",
       "Cust": [
           {
               "Id": "",
@@ -23789,7 +24330,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23815,7 +24361,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1494,
               "Data": "2024-12-16"
           }
@@ -23837,7 +24385,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "057",
+      "Stts": "",
+      "Lin": "057",
       "Cust": [
           {
               "Id": "",
@@ -23849,7 +24398,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23875,7 +24429,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1494",
               "Data": "2024-12-17"
           }
@@ -23909,7 +24465,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "062",
+      "Stts": "",
+      "Lin": "062",
       "Cust": [
           {
               "Id": "",
@@ -23921,7 +24478,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -23947,7 +24509,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 22,
+              "OS": "",
+              "Uber": "",
+              "Grad": 22,
               "Clnt": "1466",
               "Data": "2024-12-17"
           },
@@ -23967,7 +24531,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 19,
+              "OS": "",
+              "Uber": "",
+              "Grad": 19,
               "Clnt": "1466",
               "Data": "2024-12-17"
           }
@@ -23989,7 +24555,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "063",
+      "Stts": "",
+      "Lin": "063",
       "Cust": [
           {
               "Id": "",
@@ -24001,7 +24568,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24027,7 +24599,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 22,
+              "OS": "",
+              "Uber": "",
+              "Grad": 22,
               "Clnt": 1496,
               "Data": "2024-12-18"
           }
@@ -24049,7 +24623,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "065",
+      "Stts": "",
+      "Lin": "065",
       "Cust": [
           {
               "Id": "",
@@ -24061,7 +24636,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24087,7 +24667,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 18,
+              "OS": "",
+              "Uber": "",
+              "Grad": 18,
               "Clnt": 1497,
               "Data": "2024-12-18"
           }
@@ -24109,7 +24691,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "066",
+      "Stts": "",
+      "Lin": "066",
       "Cust": [
           {
               "Id": "",
@@ -24121,7 +24704,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24147,7 +24735,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1498,
               "Data": "2024-12-17"
           },
@@ -24167,7 +24757,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1498,
               "Data": "2024-12-17"
           }
@@ -24189,7 +24781,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "067",
+      "Stts": "",
+      "Lin": "067",
       "Cust": [
           {
               "Id": "",
@@ -24201,7 +24794,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24227,7 +24825,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1495",
               "Data": "2024-12-18"
           },
@@ -24247,7 +24847,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1495",
               "Data": "2024-12-18"
           }
@@ -24281,7 +24883,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "068",
+      "Stts": "",
+      "Lin": "068",
       "Cust": [
           {
               "Id": "",
@@ -24293,7 +24896,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24319,7 +24927,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1499,
               "Data": "2024-12-18"
           },
@@ -24339,7 +24949,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 6,
+              "OS": "",
+              "Uber": "",
+              "Grad": 6,
               "Clnt": 1499,
               "Data": "2024-12-18"
           }
@@ -24373,7 +24985,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "069",
+      "Stts": "",
+      "Lin": "069",
       "Cust": [
           {
               "Id": "",
@@ -24385,7 +24998,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24411,7 +25029,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1500,
               "Data": "2024-12-18"
           }
@@ -24433,7 +25053,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "070",
+      "Stts": "",
+      "Lin": "070",
       "Cust": [
           {
               "Id": "",
@@ -24445,7 +25066,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24471,7 +25097,9 @@ const NovoJson = [
               "Coment": "Branco Blacout",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1501,
               "Data": "2024-12-18"
           }
@@ -24505,7 +25133,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "071",
+      "Stts": "",
+      "Lin": "071",
       "Cust": [
           {
               "Id": "",
@@ -24517,7 +25146,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24543,7 +25177,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "002 - 2025-01-06 _4.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1502,
               "Data": "2024-12-18"
           }
@@ -24565,7 +25201,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "072",
+      "Stts": "",
+      "Lin": "072",
       "Cust": [
           {
               "Id": "",
@@ -24577,7 +25214,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24603,7 +25245,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 18,
+              "OS": "",
+              "Uber": "",
+              "Grad": 18,
               "Clnt": "1491",
               "Data": "2024-12-18"
           }
@@ -24625,7 +25269,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "073",
+      "Stts": "",
+      "Lin": "073",
       "Cust": [
           {
               "Id": "",
@@ -24637,7 +25282,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24663,7 +25313,9 @@ const NovoJson = [
               "Coment": "3PP | 2P | 7M | 16G | 1GG | 1XG | 1XXG",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": 23,
+              "OS": "",
+              "Uber": "",
+              "Grad": 23,
               "Clnt": 1503,
               "Data": "2025-01-03"
           }
@@ -24685,7 +25337,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "078",
+      "Stts": "",
+      "Lin": "078",
       "Cust": [
           {
               "Id": "",
@@ -24697,7 +25350,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24723,7 +25381,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "125",
               "Data": "2024-12-09"
           }
@@ -24745,7 +25405,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "030.5",
+      "Stts": "",
+      "Lin": "030.5",
       "Cust": [
           {
               "Id": "",
@@ -24757,7 +25418,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24783,7 +25449,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1504,
               "Data": "2024-12-10"
           }
@@ -24829,7 +25497,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "030.6",
+      "Stts": "",
+      "Lin": "030.6",
       "Cust": [
           {
               "Id": "",
@@ -24841,7 +25510,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24867,7 +25541,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2024-12-30"
           },
@@ -24887,7 +25563,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2024-12-30"
           }
@@ -24921,7 +25599,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "074",
+      "Stts": "",
+      "Lin": "074",
       "Cust": [
           {
               "Id": "",
@@ -24933,7 +25612,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -24959,7 +25643,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1505,
               "Data": "2024-12-13"
           }
@@ -24993,7 +25679,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "041.5",
+      "Stts": "",
+      "Lin": "041.5",
       "Cust": [
           {
               "Id": "",
@@ -25005,7 +25692,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25031,7 +25723,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1506,
               "Data": "2024-12-30"
           }
@@ -25053,7 +25747,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "075",
+      "Stts": "",
+      "Lin": "075",
       "Cust": [
           {
               "Id": "",
@@ -25065,7 +25760,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25091,7 +25791,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1507,
               "Data": "2024-12-31"
           }
@@ -25113,7 +25815,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "076",
+      "Stts": "",
+      "Lin": "076",
       "Cust": [
           {
               "Id": "",
@@ -25125,7 +25828,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25151,7 +25859,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1508,
               "Data": "2024-12-31"
           }
@@ -25173,7 +25883,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "077",
+      "Stts": "",
+      "Lin": "077",
       "Cust": [
           {
               "Id": "",
@@ -25185,7 +25896,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25211,7 +25927,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "121",
               "Data": "2025-01-06"
           }
@@ -25233,7 +25951,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "079",
+      "Stts": "",
+      "Lin": "079",
       "Cust": [
           {
               "Id": "",
@@ -25245,7 +25964,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25271,7 +25995,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1510,
               "Data": "2025-01-06"
           }
@@ -25293,7 +26019,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "080",
+      "Stts": "",
+      "Lin": "080",
       "Cust": [
           {
               "Id": "",
@@ -25305,7 +26032,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25331,7 +26063,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1459",
               "Data": "2025-01-06"
           }
@@ -25353,7 +26087,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "081",
+      "Stts": "",
+      "Lin": "081",
       "Cust": [
           {
               "Id": "",
@@ -25365,7 +26100,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25391,7 +26131,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1509,
               "Data": "2025-01-06"
           }
@@ -25413,7 +26155,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "082",
+      "Stts": "",
+      "Lin": "082",
       "Cust": [
           {
               "Id": "",
@@ -25425,7 +26168,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25439,7 +26187,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "083",
+      "Stts": "",
+      "Lin": "083",
       "Cust": [
           {
               "Id": "",
@@ -25451,7 +26200,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -25477,7 +26231,9 @@ const NovoJson = [
               "Coment": "desse msm dia 06/01",
               "Lixo": "",
               "SVG": "002 - 2025-01-06 _4.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-01-06"
           }
@@ -25486,7 +26242,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "084",
+      "Stts": "",
+      "Lin": "084",
       "Cust": [
           {
               "Id": "",
@@ -25498,7 +26255,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25524,7 +26286,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1560,
               "Data": "2025-01-06"
           }
@@ -25546,7 +26310,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "085",
+      "Stts": "",
+      "Lin": "085",
       "Cust": [
           {
               "Id": "",
@@ -25558,7 +26323,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25584,7 +26354,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "001 - 2025-01-06 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1511,
               "Data": "2025-01-06"
           }
@@ -25606,7 +26378,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "086",
+      "Stts": "",
+      "Lin": "086",
       "Cust": [
           {
               "Id": "",
@@ -25618,7 +26391,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25644,7 +26422,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1512,
               "Data": "2025-01-07"
           }
@@ -25666,7 +26446,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "089.5",
+      "Stts": "",
+      "Lin": "089.5",
       "Cust": [
           {
               "Id": "",
@@ -25678,7 +26459,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25704,7 +26490,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "57",
               "Data": "2025-01-06"
           }
@@ -25726,7 +26514,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "088",
+      "Stts": "",
+      "Lin": "088",
       "Cust": [
           {
               "Id": "",
@@ -25738,7 +26527,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -25764,7 +26558,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1513,
               "Data": "2025-01-06"
           },
@@ -25784,7 +26580,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1513,
               "Data": "2025-01-06"
           }
@@ -25818,7 +26616,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "089",
+      "Stts": "",
+      "Lin": "089",
       "Cust": [
           {
               "Id": "",
@@ -25830,7 +26629,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25856,7 +26660,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "493",
               "Data": "2025-01-07"
           }
@@ -25890,7 +26696,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "31 >> 59",
-      "Stts":"","Lin": "090",
+      "Stts": "",
+      "Lin": "090",
       "Cust": [
           {
               "Id": "",
@@ -25902,7 +26709,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25928,7 +26740,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "005 - 07.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1514,
               "Data": "2025-01-07"
           }
@@ -25950,7 +26764,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "091",
+      "Stts": "",
+      "Lin": "091",
       "Cust": [
           {
               "Id": "",
@@ -25962,7 +26777,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -25988,7 +26808,9 @@ const NovoJson = [
               "Coment": "pediu desde dezembro",
               "Lixo": "",
               "SVG": "002 - 2025-01-06 _4.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-07"
           },
@@ -26008,7 +26830,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-07"
           }
@@ -26030,7 +26854,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "092",
+      "Stts": "",
+      "Lin": "092",
       "Cust": [
           {
               "Id": "",
@@ -26042,7 +26867,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26068,7 +26898,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "003 - 07.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1515,
               "Data": "2025-01-07"
           }
@@ -26090,7 +26922,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "093",
+      "Stts": "",
+      "Lin": "093",
       "Cust": [
           {
               "Id": "",
@@ -26102,7 +26935,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26128,7 +26966,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1516,
               "Data": "2025-01-07"
           },
@@ -26148,7 +26988,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1516,
               "Data": "2025-01-07"
           }
@@ -26170,7 +27012,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "094",
+      "Stts": "",
+      "Lin": "094",
       "Cust": [
           {
               "Id": "",
@@ -26182,7 +27025,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26208,7 +27056,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1451",
               "Data": "2025-01-07"
           }
@@ -26230,7 +27080,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "095",
+      "Stts": "",
+      "Lin": "095",
       "Cust": [
           {
               "Id": "",
@@ -26242,7 +27093,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26268,7 +27124,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1517,
               "Data": "2025-01-07"
           }
@@ -26290,7 +27148,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "096",
+      "Stts": "",
+      "Lin": "096",
       "Cust": [
           {
               "Id": "",
@@ -26302,7 +27161,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26328,7 +27192,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1518,
               "Data": "2025-01-08"
           }
@@ -26350,7 +27216,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "097",
+      "Stts": "",
+      "Lin": "097",
       "Cust": [
           {
               "Id": "",
@@ -26362,7 +27229,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26388,7 +27260,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1519,
               "Data": "2025-01-08"
           }
@@ -26397,7 +27271,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "098",
+      "Stts": "",
+      "Lin": "098",
       "Cust": [
           {
               "Id": "",
@@ -26409,7 +27284,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26435,7 +27315,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "006 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1520,
               "Data": "2025-01-08"
           }
@@ -26457,7 +27339,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "099",
+      "Stts": "",
+      "Lin": "099",
       "Cust": [
           {
               "Id": "",
@@ -26469,7 +27352,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26495,7 +27383,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1503",
               "Data": "2025-01-13"
           }
@@ -26529,7 +27419,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "125 >> 50",
-      "Stts":"","Lin": "117",
+      "Stts": "",
+      "Lin": "117",
       "Cust": [
           {
               "Id": "",
@@ -26541,7 +27432,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26567,7 +27463,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1521,
               "Data": "2025-01-09"
           },
@@ -26587,7 +27485,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1521,
               "Data": "2025-01-09"
           },
@@ -26607,7 +27507,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1521,
               "Data": "2025-01-09"
           }
@@ -26629,7 +27531,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "101",
+      "Stts": "",
+      "Lin": "101",
       "Cust": [
           {
               "Id": "",
@@ -26641,7 +27544,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26655,7 +27563,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "102",
+      "Stts": "",
+      "Lin": "102",
       "Cust": [
           {
               "Id": "",
@@ -26667,7 +27576,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -26681,7 +27595,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "103",
+      "Stts": "",
+      "Lin": "103",
       "Cust": [
           {
               "Id": "",
@@ -26693,7 +27608,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -26719,7 +27639,9 @@ const NovoJson = [
               "Coment": "cecilia, teve correção depois",
               "Lixo": "",
               "SVG": "007 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "16",
               "Data": "2025-01-09"
           },
@@ -26739,7 +27661,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "16",
               "Data": "2025-01-09"
           }
@@ -26748,7 +27672,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "104",
+      "Stts": "",
+      "Lin": "104",
       "Cust": [
           {
               "Id": "",
@@ -26760,7 +27685,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26786,7 +27716,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1522,
               "Data": "2025-01-09"
           }
@@ -26820,7 +27752,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "105",
+      "Stts": "",
+      "Lin": "105",
       "Cust": [
           {
               "Id": "",
@@ -26832,7 +27765,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -26846,7 +27784,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "1",
+      "Stts": "",
+      "Lin": "1",
       "Cust": [
           {
               "Id": "",
@@ -26858,7 +27797,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -26872,7 +27816,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "1",
+      "Stts": "",
+      "Lin": "1",
       "Cust": [
           {
               "Id": "",
@@ -26884,7 +27829,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -26910,7 +27860,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1523,
               "Data": "2025-01-09"
           },
@@ -26930,7 +27882,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1523,
               "Data": "2025-01-09"
           },
@@ -26950,7 +27904,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "008.4 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1523,
               "Data": "2025-01-09"
           },
@@ -26970,7 +27926,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1523,
               "Data": "2025-01-09"
           }
@@ -26992,7 +27950,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "106",
+      "Stts": "",
+      "Lin": "106",
       "Cust": [
           {
               "Id": "",
@@ -27004,7 +27963,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27030,7 +27994,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1524,
               "Data": "2025-01-09"
           },
@@ -27050,7 +28016,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1524,
               "Data": "2025-01-09"
           },
@@ -27070,7 +28038,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1524,
               "Data": "2025-01-09"
           },
@@ -27090,7 +28060,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1524,
               "Data": "2025-01-09"
           }
@@ -27124,7 +28096,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "100 >> 90",
-      "Stts":"","Lin": "107",
+      "Stts": "",
+      "Lin": "107",
       "Cust": [
           {
               "Id": "",
@@ -27136,7 +28109,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27162,7 +28140,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "139",
               "Data": "2025-01-09"
           }
@@ -27196,7 +28176,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "200 >> 180",
-      "Stts":"","Lin": "108",
+      "Stts": "",
+      "Lin": "108",
       "Cust": [
           {
               "Id": "",
@@ -27208,7 +28189,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27234,7 +28220,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1525,
               "Data": "2025-01-09"
           },
@@ -27254,7 +28242,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "008 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1525,
               "Data": "2025-01-09"
           }
@@ -27276,7 +28266,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "109",
+      "Stts": "",
+      "Lin": "109",
       "Cust": [
           {
               "Id": "",
@@ -27288,7 +28279,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27314,7 +28310,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1526,
               "Data": "2025-01-09"
           }
@@ -27336,7 +28334,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "110",
+      "Stts": "",
+      "Lin": "110",
       "Cust": [
           {
               "Id": "",
@@ -27348,7 +28347,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27374,7 +28378,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "008.2 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1527,
               "Data": "2025-01-10"
           }
@@ -27396,7 +28402,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "111",
+      "Stts": "",
+      "Lin": "111",
       "Cust": [
           {
               "Id": "",
@@ -27408,7 +28415,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27434,7 +28446,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "008.1 - 09.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-10"
           },
@@ -27454,7 +28468,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-10"
           }
@@ -27488,7 +28504,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "112",
+      "Stts": "",
+      "Lin": "112",
       "Cust": [
           {
               "Id": "",
@@ -27500,7 +28517,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27526,7 +28548,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1529,
               "Data": "2025-01-10"
           }
@@ -27548,7 +28572,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "113",
+      "Stts": "",
+      "Lin": "113",
       "Cust": [
           {
               "Id": "",
@@ -27560,7 +28585,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27586,7 +28616,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "009 - 13.01.2025 _4.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1528,
               "Data": "2025-01-13"
           }
@@ -27608,7 +28640,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "0 >> 10",
-      "Stts":"","Lin": "114",
+      "Stts": "",
+      "Lin": "114",
       "Cust": [
           {
               "Id": "",
@@ -27620,7 +28653,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27646,7 +28684,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1516",
               "Data": "2025-01-13"
           }
@@ -27668,7 +28708,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "115",
+      "Stts": "",
+      "Lin": "115",
       "Cust": [
           {
               "Id": "",
@@ -27680,7 +28721,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27706,7 +28752,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1504",
               "Data": "2025-01-13"
           },
@@ -27726,7 +28774,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1504",
               "Data": "2025-01-13"
           }
@@ -27772,7 +28822,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "350 >> 112",
-      "Stts":"","Lin": "116",
+      "Stts": "",
+      "Lin": "116",
       "Cust": [
           {
               "Id": "",
@@ -27784,7 +28835,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27810,7 +28866,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "009 - 13.01.2025 _4.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1473",
               "Data": "2025-01-13"
           }
@@ -27819,7 +28877,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "0 >> 8",
-      "Stts":"","Lin": "118",
+      "Stts": "",
+      "Lin": "118",
       "Cust": [
           {
               "Id": "",
@@ -27831,7 +28890,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27857,7 +28921,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "010 - 14.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1530,
               "Data": "2025-01-13"
           }
@@ -27879,7 +28945,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "0 >> 15",
-      "Stts":"","Lin": "119",
+      "Stts": "",
+      "Lin": "119",
       "Cust": [
           {
               "Id": "",
@@ -27891,7 +28958,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27917,7 +28989,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "99",
               "Data": "2025-01-10"
           }
@@ -27939,7 +29013,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "113.5",
+      "Stts": "",
+      "Lin": "113.5",
       "Cust": [
           {
               "Id": "",
@@ -27951,7 +29026,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -27977,7 +29057,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1531,
               "Data": "2025-01-14"
           }
@@ -27999,7 +29081,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "120",
+      "Stts": "",
+      "Lin": "120",
       "Cust": [
           {
               "Id": "",
@@ -28011,7 +29094,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28037,7 +29125,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1532,
               "Data": "2025-01-14"
           }
@@ -28059,7 +29149,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "121",
+      "Stts": "",
+      "Lin": "121",
       "Cust": [
           {
               "Id": "",
@@ -28071,7 +29162,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28097,7 +29193,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1533,
               "Data": "2025-01-14"
           },
@@ -28117,7 +29215,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1533,
               "Data": "2025-01-14"
           },
@@ -28137,7 +29237,9 @@ const NovoJson = [
               "Coment": "122 Custo >> 228",
               "Lixo": "",
               "SVG": "012 - 18.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1533,
               "Data": "2025-01-14"
           },
@@ -28157,7 +29259,9 @@ const NovoJson = [
               "Coment": "17,60 Custo >> 2,4",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1533,
               "Data": "2025-01-14"
           },
@@ -28177,7 +29281,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1533,
               "Data": "2025-01-14"
           }
@@ -28211,7 +29317,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "122 Amarelo",
-      "Stts":"","Lin": "122",
+      "Stts": "",
+      "Lin": "122",
       "Cust": [
           {
               "Id": "",
@@ -28223,7 +29330,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28249,7 +29361,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1503",
               "Data": "2025-01-14"
           }
@@ -28258,7 +29372,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "123",
+      "Stts": "",
+      "Lin": "123",
       "Cust": [
           {
               "Id": "",
@@ -28270,7 +29385,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28296,7 +29416,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1526",
               "Data": "2025-01-13"
           }
@@ -28318,7 +29440,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "118.5",
+      "Stts": "",
+      "Lin": "118.5",
       "Cust": [
           {
               "Id": "",
@@ -28330,7 +29453,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28356,7 +29484,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1530",
               "Data": "2025-01-14"
           }
@@ -28390,7 +29520,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "119.5",
+      "Stts": "",
+      "Lin": "119.5",
       "Cust": [
           {
               "Id": "",
@@ -28402,7 +29533,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28428,7 +29564,9 @@ const NovoJson = [
               "Coment": "570 x 72 Efetivo R$ 90,00 de Custo",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1534,
               "Data": "2025-01-14"
           }
@@ -28462,7 +29600,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "90 >> 140",
-      "Stts":"","Lin": "124",
+      "Stts": "",
+      "Lin": "124",
       "Cust": [
           {
               "Id": "",
@@ -28474,7 +29613,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28500,7 +29644,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-01-15"
           }
@@ -28522,7 +29668,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "125",
+      "Stts": "",
+      "Lin": "125",
       "Cust": [
           {
               "Id": "",
@@ -28534,7 +29681,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28560,7 +29712,9 @@ const NovoJson = [
               "Coment": "Hulk verde claro",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2025-01-15"
           },
@@ -28580,7 +29734,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2025-01-15"
           }
@@ -28602,7 +29758,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "126",
+      "Stts": "",
+      "Lin": "126",
       "Cust": [
           {
               "Id": "",
@@ -28614,7 +29771,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28640,7 +29802,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1535,
               "Data": "2025-01-15"
           }
@@ -28674,7 +29838,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "127",
+      "Stts": "",
+      "Lin": "127",
       "Cust": [
           {
               "Id": "",
@@ -28686,7 +29851,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28712,7 +29882,9 @@ const NovoJson = [
               "Coment": "443° Grafit - 1501",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1452",
               "Data": "2025-01-15"
           }
@@ -28746,7 +29918,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "128",
+      "Stts": "",
+      "Lin": "128",
       "Cust": [
           {
               "Id": "",
@@ -28758,7 +29931,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28784,7 +29962,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "011 - 16.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1536,
               "Data": "2025-01-15"
           },
@@ -28804,7 +29984,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1536,
               "Data": "2025-01-15"
           }
@@ -28826,7 +30008,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "129",
+      "Stts": "",
+      "Lin": "129",
       "Cust": [
           {
               "Id": "",
@@ -28838,7 +30021,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28864,7 +30052,9 @@ const NovoJson = [
               "Coment": "Custo 24",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1537,
               "Data": "2025-01-15"
           },
@@ -28884,7 +30074,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1537,
               "Data": "2025-01-15"
           },
@@ -28904,7 +30096,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1537,
               "Data": "2025-01-15"
           },
@@ -28924,7 +30118,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1537,
               "Data": "2025-01-15"
           }
@@ -28958,7 +30154,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "130",
+      "Stts": "",
+      "Lin": "130",
       "Cust": [
           {
               "Id": "",
@@ -28970,7 +30167,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -28996,7 +30198,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "004 - 07.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1530",
               "Data": "2025-01-07"
           }
@@ -29030,7 +30234,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "093.5",
+      "Stts": "",
+      "Lin": "093.5",
       "Cust": [
           {
               "Id": "",
@@ -29042,7 +30247,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29068,7 +30278,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-01-10"
           }
@@ -29090,7 +30302,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "110.5",
+      "Stts": "",
+      "Lin": "110.5",
       "Cust": [
           {
               "Id": "",
@@ -29102,7 +30315,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29128,7 +30346,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1538,
               "Data": "2025-01-16"
           }
@@ -29150,7 +30370,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "131",
+      "Stts": "",
+      "Lin": "131",
       "Cust": [
           {
               "Id": "",
@@ -29162,7 +30383,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29188,7 +30414,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1539,
               "Data": "2025-01-16"
           }
@@ -29210,7 +30438,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "11,62 >> 28,38",
-      "Stts":"","Lin": "132",
+      "Stts": "",
+      "Lin": "132",
       "Cust": [
           {
               "Id": "",
@@ -29222,7 +30451,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29248,7 +30482,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "337",
               "Data": "2025-01-17"
           },
@@ -29268,7 +30504,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "337",
               "Data": "2025-01-17"
           },
@@ -29288,7 +30526,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "337",
               "Data": "2025-01-17"
           }
@@ -29310,7 +30550,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "133",
+      "Stts": "",
+      "Lin": "133",
       "Cust": [
           {
               "Id": "",
@@ -29322,7 +30563,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29348,7 +30594,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1540,
               "Data": "2025-01-17"
           }
@@ -29370,7 +30618,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "134",
+      "Stts": "",
+      "Lin": "134",
       "Cust": [
           {
               "Id": "",
@@ -29382,7 +30631,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29408,7 +30662,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1541,
               "Data": "2025-01-17"
           }
@@ -29430,7 +30686,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "135",
+      "Stts": "",
+      "Lin": "135",
       "Cust": [
           {
               "Id": "",
@@ -29442,7 +30699,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29468,7 +30730,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "36",
               "Data": "2025-01-17"
           }
@@ -29490,7 +30754,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo 10,50",
-      "Stts":"","Lin": "136",
+      "Stts": "",
+      "Lin": "136",
       "Cust": [
           {
               "Id": "",
@@ -29502,7 +30767,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29528,7 +30798,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1542,
               "Data": "2025-01-18"
           }
@@ -29550,7 +30822,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "137",
+      "Stts": "",
+      "Lin": "137",
       "Cust": [
           {
               "Id": "",
@@ -29562,7 +30835,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29588,7 +30866,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1543,
               "Data": "2025-01-18"
           }
@@ -29610,7 +30890,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "138",
+      "Stts": "",
+      "Lin": "138",
       "Cust": [
           {
               "Id": "",
@@ -29622,7 +30903,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29648,7 +30934,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "656",
               "Data": "2025-01-21"
           }
@@ -29670,7 +30958,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "139",
+      "Stts": "",
+      "Lin": "139",
       "Cust": [
           {
               "Id": "",
@@ -29682,7 +30971,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29708,7 +31002,9 @@ const NovoJson = [
               "Coment": "Custo 91,80",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "159",
               "Data": "2025-01-21"
           },
@@ -29728,7 +31024,9 @@ const NovoJson = [
               "Coment": "Custo 127,50",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "159",
               "Data": "2025-01-21"
           },
@@ -29748,7 +31046,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "159",
               "Data": "2025-01-21"
           }
@@ -29782,7 +31082,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "140",
+      "Stts": "",
+      "Lin": "140",
       "Cust": [
           {
               "Id": "",
@@ -29794,7 +31095,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29820,7 +31126,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-01-21"
           }
@@ -29842,7 +31150,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "141",
+      "Stts": "",
+      "Lin": "141",
       "Cust": [
           {
               "Id": "",
@@ -29854,7 +31163,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29880,7 +31194,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1537",
               "Data": "2025-01-21"
           }
@@ -29914,7 +31230,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "142",
+      "Stts": "",
+      "Lin": "142",
       "Cust": [
           {
               "Id": "",
@@ -29926,7 +31243,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -29952,7 +31274,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "013 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1546,
               "Data": "2025-01-21"
           }
@@ -29974,7 +31298,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "143",
+      "Stts": "",
+      "Lin": "143",
       "Cust": [
           {
               "Id": "",
@@ -29986,7 +31311,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30012,7 +31342,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "014 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1544,
               "Data": "2025-01-21"
           },
@@ -30032,7 +31364,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "019 - 22.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1544,
               "Data": "2025-01-21"
           }
@@ -30054,7 +31388,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "144",
+      "Stts": "",
+      "Lin": "144",
       "Cust": [
           {
               "Id": "",
@@ -30066,7 +31401,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30092,7 +31432,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "017 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1545,
               "Data": "2025-01-21"
           }
@@ -30114,7 +31456,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "145",
+      "Stts": "",
+      "Lin": "145",
       "Cust": [
           {
               "Id": "",
@@ -30126,7 +31469,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30152,7 +31500,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "015 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-01-21"
           }
@@ -30161,7 +31511,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "146",
+      "Stts": "",
+      "Lin": "146",
       "Cust": [
           {
               "Id": "",
@@ -30173,7 +31524,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30199,7 +31555,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "016 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1547,
               "Data": "2025-01-21"
           }
@@ -30221,7 +31579,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "147",
+      "Stts": "",
+      "Lin": "147",
       "Cust": [
           {
               "Id": "",
@@ -30233,7 +31592,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30259,7 +31623,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "018 - 21.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-01-22"
           }
@@ -30281,7 +31647,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "148",
+      "Stts": "",
+      "Lin": "148",
       "Cust": [
           {
               "Id": "",
@@ -30293,7 +31660,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30319,7 +31691,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "32",
               "Data": "2025-01-22"
           }
@@ -30341,7 +31715,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "149",
+      "Stts": "",
+      "Lin": "149",
       "Cust": [
           {
               "Id": "",
@@ -30353,7 +31728,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30379,7 +31759,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1548,
               "Data": "2025-01-22"
           }
@@ -30401,7 +31783,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "150",
+      "Stts": "",
+      "Lin": "150",
       "Cust": [
           {
               "Id": "",
@@ -30413,7 +31796,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30439,7 +31827,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1549,
               "Data": "2025-01-22"
           }
@@ -30461,7 +31851,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "151",
+      "Stts": "",
+      "Lin": "151",
       "Cust": [
           {
               "Id": "",
@@ -30473,7 +31864,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30499,7 +31895,9 @@ const NovoJson = [
               "Coment": "105° BPrint - 2301",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1550,
               "Data": "2025-01-22"
           }
@@ -30521,7 +31919,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "152",
+      "Stts": "",
+      "Lin": "152",
       "Cust": [
           {
               "Id": "",
@@ -30533,7 +31932,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30559,7 +31963,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "125",
               "Data": "2025-01-22"
           },
@@ -30579,7 +31985,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "125",
               "Data": "2025-01-22"
           }
@@ -30601,7 +32009,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "153",
+      "Stts": "",
+      "Lin": "153",
       "Cust": [
           {
               "Id": "",
@@ -30613,7 +32022,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30639,7 +32053,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1551,
               "Data": "2025-01-23"
           }
@@ -30661,7 +32077,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "154",
+      "Stts": "",
+      "Lin": "154",
       "Cust": [
           {
               "Id": "",
@@ -30673,7 +32090,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30699,7 +32121,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "79",
               "Data": "2025-01-23"
           },
@@ -30719,7 +32143,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "79",
               "Data": "2025-01-23"
           }
@@ -30728,7 +32154,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "155",
+      "Stts": "",
+      "Lin": "155",
       "Cust": [
           {
               "Id": "",
@@ -30740,7 +32167,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -30766,7 +32198,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1552,
               "Data": "2025-01-23"
           }
@@ -30788,7 +32222,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "156",
+      "Stts": "",
+      "Lin": "156",
       "Cust": [
           {
               "Id": "",
@@ -30800,7 +32235,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30826,7 +32266,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1554,
               "Data": "2025-01-23"
           },
@@ -30846,7 +32288,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1554,
               "Data": "2025-01-23"
           }
@@ -30880,7 +32324,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "157",
+      "Stts": "",
+      "Lin": "157",
       "Cust": [
           {
               "Id": "",
@@ -30892,7 +32337,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30918,7 +32368,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "020 - 23.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-23"
           },
@@ -30938,7 +32390,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "023 - 23.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1478",
               "Data": "2025-01-23"
           }
@@ -30960,7 +32414,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "158",
+      "Stts": "",
+      "Lin": "158",
       "Cust": [
           {
               "Id": "",
@@ -30972,7 +32427,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -30998,7 +32458,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1555,
               "Data": "2025-01-23"
           },
@@ -31018,7 +32480,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "021 - 23.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1555,
               "Data": "2025-01-23"
           }
@@ -31040,7 +32504,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "159",
+      "Stts": "",
+      "Lin": "159",
       "Cust": [
           {
               "Id": "",
@@ -31052,7 +32517,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31078,7 +32548,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1556,
               "Data": "2025-01-23"
           }
@@ -31100,7 +32572,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "160",
+      "Stts": "",
+      "Lin": "160",
       "Cust": [
           {
               "Id": "",
@@ -31112,7 +32585,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31138,7 +32616,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1557,
               "Data": "2025-01-23"
           }
@@ -31160,7 +32640,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "161",
+      "Stts": "",
+      "Lin": "161",
       "Cust": [
           {
               "Id": "",
@@ -31172,7 +32653,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31198,7 +32684,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1558,
               "Data": "2025-01-23"
           }
@@ -31220,7 +32708,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "162",
+      "Stts": "",
+      "Lin": "162",
       "Cust": [
           {
               "Id": "",
@@ -31232,7 +32721,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31258,7 +32752,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1559,
               "Data": "2025-01-23"
           }
@@ -31280,7 +32776,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "163",
+      "Stts": "",
+      "Lin": "163",
       "Cust": [
           {
               "Id": "",
@@ -31292,7 +32789,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31318,7 +32820,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1561,
               "Data": "2025-01-24"
           }
@@ -31340,7 +32844,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "164",
+      "Stts": "",
+      "Lin": "164",
       "Cust": [
           {
               "Id": "",
@@ -31352,7 +32857,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31378,7 +32888,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1562,
               "Data": "2025-01-24"
           }
@@ -31400,7 +32912,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "165",
+      "Stts": "",
+      "Lin": "165",
       "Cust": [
           {
               "Id": "",
@@ -31412,7 +32925,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31438,7 +32956,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1563,
               "Data": "2025-01-24"
           }
@@ -31460,7 +32980,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "166",
+      "Stts": "",
+      "Lin": "166",
       "Cust": [
           {
               "Id": "",
@@ -31472,7 +32993,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31498,7 +33024,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "024 - 24.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1564,
               "Data": "2025-01-24"
           }
@@ -31520,7 +33048,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "167",
+      "Stts": "",
+      "Lin": "167",
       "Cust": [
           {
               "Id": "",
@@ -31532,7 +33061,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31558,7 +33092,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1565,
               "Data": "2025-01-24"
           }
@@ -31580,7 +33116,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "168",
+      "Stts": "",
+      "Lin": "168",
       "Cust": [
           {
               "Id": "",
@@ -31592,7 +33129,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31618,7 +33160,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "022 - 23.01.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "16",
               "Data": "2025-01-23"
           }
@@ -31627,7 +33171,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "162.5",
+      "Stts": "",
+      "Lin": "162.5",
       "Cust": [
           {
               "Id": "",
@@ -31639,7 +33184,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31665,7 +33215,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1449",
               "Data": "2025-01-27"
           }
@@ -31687,7 +33239,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "169",
+      "Stts": "",
+      "Lin": "169",
       "Cust": [
           {
               "Id": "",
@@ -31699,7 +33252,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31725,7 +33283,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2025-01-27"
           }
@@ -31747,7 +33307,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "170",
+      "Stts": "",
+      "Lin": "170",
       "Cust": [
           {
               "Id": "",
@@ -31759,7 +33320,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31785,7 +33351,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1567,
               "Data": "2025-01-28"
           },
@@ -31805,7 +33373,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1567,
               "Data": "2025-01-28"
           }
@@ -31827,7 +33397,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "171",
+      "Stts": "",
+      "Lin": "171",
       "Cust": [
           {
               "Id": "",
@@ -31839,7 +33410,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31865,7 +33441,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1566,
               "Data": "2025-01-28"
           }
@@ -31899,7 +33477,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "172",
+      "Stts": "",
+      "Lin": "172",
       "Cust": [
           {
               "Id": "",
@@ -31911,7 +33490,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31937,7 +33521,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1568,
               "Data": "2025-01-28"
           }
@@ -31959,7 +33545,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "173",
+      "Stts": "",
+      "Lin": "173",
       "Cust": [
           {
               "Id": "",
@@ -31971,7 +33558,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -31997,7 +33589,9 @@ const NovoJson = [
               "Coment": "110° BPrint - 3001",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1486",
               "Data": "2025-01-29"
           }
@@ -32019,7 +33613,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "174",
+      "Stts": "",
+      "Lin": "174",
       "Cust": [
           {
               "Id": "",
@@ -32031,7 +33626,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32057,7 +33657,9 @@ const NovoJson = [
               "Coment": "108° BPrint - 2901",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-01-29"
           },
@@ -32077,7 +33679,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-01-29"
           }
@@ -32099,7 +33703,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "175",
+      "Stts": "",
+      "Lin": "175",
       "Cust": [
           {
               "Id": "",
@@ -32111,7 +33716,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32137,7 +33747,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1569,
               "Data": "2025-01-29"
           }
@@ -32159,7 +33771,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "176",
+      "Stts": "",
+      "Lin": "176",
       "Cust": [
           {
               "Id": "",
@@ -32171,7 +33784,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32197,7 +33815,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1511",
               "Data": "2025-01-29"
           }
@@ -32219,7 +33839,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "177",
+      "Stts": "",
+      "Lin": "177",
       "Cust": [
           {
               "Id": "",
@@ -32231,7 +33852,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32257,7 +33883,9 @@ const NovoJson = [
               "Coment": "110° BPrint - 3001",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1466",
               "Data": "2025-01-29"
           }
@@ -32279,7 +33907,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "11 Uber + 5 folha",
-      "Stts":"","Lin": "178",
+      "Stts": "",
+      "Lin": "178",
       "Cust": [
           {
               "Id": "",
@@ -32291,7 +33920,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32317,7 +33951,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1518",
               "Data": "2025-01-30"
           }
@@ -32339,7 +33975,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "179",
+      "Stts": "",
+      "Lin": "179",
       "Cust": [
           {
               "Id": "",
@@ -32351,7 +33988,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32377,7 +34019,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "27",
               "Data": "2025-01-30"
           },
@@ -32397,7 +34041,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "27",
               "Data": "2025-01-30"
           }
@@ -32419,7 +34065,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "180",
+      "Stts": "",
+      "Lin": "180",
       "Cust": [
           {
               "Id": "",
@@ -32431,7 +34078,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32457,7 +34109,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "693",
               "Data": "2025-01-31"
           }
@@ -32479,7 +34133,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "181",
+      "Stts": "",
+      "Lin": "181",
       "Cust": [
           {
               "Id": "",
@@ -32491,7 +34146,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32517,7 +34177,9 @@ const NovoJson = [
               "Coment": "454° Grafit - 0302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1570,
               "Data": "2025-01-31"
           }
@@ -32539,7 +34201,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "182",
+      "Stts": "",
+      "Lin": "182",
       "Cust": [
           {
               "Id": "",
@@ -32551,7 +34214,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32577,7 +34245,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "99",
               "Data": "2025-01-31"
           },
@@ -32597,7 +34267,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "99",
               "Data": "2025-01-31"
           }
@@ -32606,7 +34278,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "183",
+      "Stts": "",
+      "Lin": "183",
       "Cust": [
           {
               "Id": "",
@@ -32618,7 +34291,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32644,7 +34322,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1571,
               "Data": "2025-02-03"
           }
@@ -32666,7 +34346,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "184",
+      "Stts": "",
+      "Lin": "184",
       "Cust": [
           {
               "Id": "",
@@ -32678,7 +34359,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32704,7 +34390,9 @@ const NovoJson = [
               "Coment": "454° Grafit - 0302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1572,
               "Data": "2025-02-03"
           }
@@ -32726,7 +34414,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "185",
+      "Stts": "",
+      "Lin": "185",
       "Cust": [
           {
               "Id": "",
@@ -32738,7 +34427,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32764,7 +34458,9 @@ const NovoJson = [
               "Coment": "454° Grafit - 0302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1486",
               "Data": "2025-02-03"
           }
@@ -32786,7 +34482,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "186",
+      "Stts": "",
+      "Lin": "186",
       "Cust": [
           {
               "Id": "",
@@ -32798,7 +34495,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32824,7 +34526,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1573,
               "Data": "2025-02-03"
           }
@@ -32846,7 +34550,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "187",
+      "Stts": "",
+      "Lin": "187",
       "Cust": [
           {
               "Id": "",
@@ -32858,7 +34563,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32884,7 +34594,9 @@ const NovoJson = [
               "Coment": "Mickey",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-01-28"
           },
@@ -32904,7 +34616,9 @@ const NovoJson = [
               "Coment": "Azul",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-01-28"
           }
@@ -32938,7 +34652,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "173.5",
+      "Stts": "",
+      "Lin": "173.5",
       "Cust": [
           {
               "Id": "",
@@ -32950,7 +34665,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -32976,7 +34696,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1574,
               "Data": "2025-02-03"
           }
@@ -32998,7 +34720,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "188",
+      "Stts": "",
+      "Lin": "188",
       "Cust": [
           {
               "Id": "",
@@ -33010,7 +34733,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33036,7 +34764,9 @@ const NovoJson = [
               "Coment": "454° Grafit - 0302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1575,
               "Data": "2025-02-03"
           }
@@ -33058,7 +34788,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "189",
+      "Stts": "",
+      "Lin": "189",
       "Cust": [
           {
               "Id": "",
@@ -33070,7 +34801,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33096,7 +34832,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1576,
               "Data": "2025-02-03"
           }
@@ -33118,7 +34856,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "190",
+      "Stts": "",
+      "Lin": "190",
       "Cust": [
           {
               "Id": "",
@@ -33130,7 +34869,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33156,7 +34900,9 @@ const NovoJson = [
               "Coment": "457° Grafit - 0702",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1577,
               "Data": "2025-02-03"
           }
@@ -33190,7 +34936,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "191",
+      "Stts": "",
+      "Lin": "191",
       "Cust": [
           {
               "Id": "",
@@ -33202,7 +34949,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33228,7 +34980,9 @@ const NovoJson = [
               "Coment": "456° Grafit - 0402",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1578,
               "Data": "2025-02-03"
           }
@@ -33262,7 +35016,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "192",
+      "Stts": "",
+      "Lin": "192",
       "Cust": [
           {
               "Id": "",
@@ -33274,7 +35029,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33300,7 +35060,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1579,
               "Data": "2025-02-04"
           },
@@ -33320,7 +35082,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1579,
               "Data": "2025-02-04"
           }
@@ -33354,7 +35118,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "193",
+      "Stts": "",
+      "Lin": "193",
       "Cust": [
           {
               "Id": "",
@@ -33366,7 +35131,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33392,7 +35162,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1580,
               "Data": "2025-02-04"
           },
@@ -33412,7 +35184,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1580,
               "Data": "2025-02-04"
           }
@@ -33434,7 +35208,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "194",
+      "Stts": "",
+      "Lin": "194",
       "Cust": [
           {
               "Id": "",
@@ -33446,7 +35221,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33472,7 +35252,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1581,
               "Data": "2025-02-04"
           },
@@ -33492,7 +35274,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1581,
               "Data": "2025-02-04"
           }
@@ -33526,7 +35310,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "195",
+      "Stts": "",
+      "Lin": "195",
       "Cust": [
           {
               "Id": "",
@@ -33538,7 +35323,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33564,7 +35354,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1582,
               "Data": "2025-02-04"
           }
@@ -33573,7 +35365,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "196",
+      "Stts": "",
+      "Lin": "196",
       "Cust": [
           {
               "Id": "",
@@ -33585,7 +35378,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33611,7 +35409,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1537",
               "Data": "2025-02-04"
           }
@@ -33633,7 +35433,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "197",
+      "Stts": "",
+      "Lin": "197",
       "Cust": [
           {
               "Id": "",
@@ -33645,7 +35446,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33671,7 +35477,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1552",
               "Data": "2025-02-05"
           }
@@ -33693,7 +35501,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "198",
+      "Stts": "",
+      "Lin": "198",
       "Cust": [
           {
               "Id": "",
@@ -33705,7 +35514,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33731,7 +35545,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1583,
               "Data": "2025-02-05"
           }
@@ -33765,7 +35581,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "199",
+      "Stts": "",
+      "Lin": "199",
       "Cust": [
           {
               "Id": "",
@@ -33777,7 +35594,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33803,7 +35625,9 @@ const NovoJson = [
               "Coment": "113° BPrint - 0601",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1585,
               "Data": "2025-02-06"
           },
@@ -33823,7 +35647,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1585,
               "Data": "2025-02-06"
           }
@@ -33845,7 +35671,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "200",
+      "Stts": "",
+      "Lin": "200",
       "Cust": [
           {
               "Id": "",
@@ -33857,7 +35684,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33883,7 +35715,9 @@ const NovoJson = [
               "Coment": "116° BPrint - 1102",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1575",
               "Data": "2025-02-06"
           }
@@ -33905,7 +35739,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "201",
+      "Stts": "",
+      "Lin": "201",
       "Cust": [
           {
               "Id": "",
@@ -33917,7 +35752,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33943,7 +35783,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1584,
               "Data": "2025-02-06"
           }
@@ -33952,7 +35794,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "202",
+      "Stts": "",
+      "Lin": "202",
       "Cust": [
           {
               "Id": "",
@@ -33964,7 +35807,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -33990,7 +35838,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "029 - 06.02.2025 _2.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1580",
               "Data": "2025-02-06"
           }
@@ -34012,7 +35862,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "203",
+      "Stts": "",
+      "Lin": "203",
       "Cust": [
           {
               "Id": "",
@@ -34024,7 +35875,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34050,7 +35906,9 @@ const NovoJson = [
               "Coment": "457° Grafit - 0702",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1569",
               "Data": "2025-02-07"
           }
@@ -34072,7 +35930,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "204",
+      "Stts": "",
+      "Lin": "204",
       "Cust": [
           {
               "Id": "",
@@ -34084,7 +35943,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34110,7 +35974,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1586,
               "Data": "2025-02-06"
           }
@@ -34132,7 +35998,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "205",
+      "Stts": "",
+      "Lin": "205",
       "Cust": [
           {
               "Id": "",
@@ -34144,7 +36011,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34170,7 +36042,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "029 - 06.02.2025 _2.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1576",
               "Data": "2025-02-06"
           }
@@ -34179,7 +36053,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "206",
+      "Stts": "",
+      "Lin": "206",
       "Cust": [
           {
               "Id": "",
@@ -34191,7 +36066,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34217,7 +36097,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "030 - 07.02.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1566",
               "Data": "2025-02-06"
           }
@@ -34239,7 +36121,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "207",
+      "Stts": "",
+      "Lin": "207",
       "Cust": [
           {
               "Id": "",
@@ -34251,7 +36134,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34277,7 +36165,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "031 - 10.02.2025 _2.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1587,
               "Data": "2025-02-07"
           }
@@ -34299,7 +36189,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "208",
+      "Stts": "",
+      "Lin": "208",
       "Cust": [
           {
               "Id": "",
@@ -34311,7 +36202,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34337,7 +36233,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1588,
               "Data": "2025-02-07"
           }
@@ -34346,7 +36244,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "209",
+      "Stts": "",
+      "Lin": "209",
       "Cust": [
           {
               "Id": "",
@@ -34358,7 +36257,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34384,7 +36288,9 @@ const NovoJson = [
               "Coment": "to fazendo até dia 17/02/2025 | Parei dia 25/02",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1589,
               "Data": "2025-02-07"
           }
@@ -34406,7 +36312,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "210",
+      "Stts": "",
+      "Lin": "210",
       "Cust": [
           {
               "Id": "",
@@ -34418,7 +36325,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34444,7 +36356,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1518",
               "Data": "2025-02-10"
           },
@@ -34464,7 +36378,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1518",
               "Data": "2025-02-10"
           }
@@ -34498,7 +36414,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "211",
+      "Stts": "",
+      "Lin": "211",
       "Cust": [
           {
               "Id": "",
@@ -34510,7 +36427,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34536,7 +36458,9 @@ const NovoJson = [
               "Coment": "Allan e Fexta",
               "Lixo": "",
               "SVG": "032 - 10.02.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1511",
               "Data": "2025-02-10"
           }
@@ -34558,7 +36482,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "212",
+      "Stts": "",
+      "Lin": "212",
       "Cust": [
           {
               "Id": "",
@@ -34570,7 +36495,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34596,7 +36526,9 @@ const NovoJson = [
               "Coment": "116° BPrint - 1102",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1590,
               "Data": "2025-02-10"
           }
@@ -34618,7 +36550,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "213",
+      "Stts": "",
+      "Lin": "213",
       "Cust": [
           {
               "Id": "",
@@ -34630,7 +36563,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34656,7 +36594,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1591,
               "Data": "2025-02-10"
           }
@@ -34678,7 +36618,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "214",
+      "Stts": "",
+      "Lin": "214",
       "Cust": [
           {
               "Id": "",
@@ -34690,7 +36631,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34716,7 +36662,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "031 - 10.02.2025 _2.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1592,
               "Data": "2025-02-10"
           }
@@ -34725,7 +36673,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "215",
+      "Stts": "",
+      "Lin": "215",
       "Cust": [
           {
               "Id": "",
@@ -34737,7 +36686,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34763,7 +36717,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1501",
               "Data": "2025-02-10"
           }
@@ -34797,7 +36753,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "216",
+      "Stts": "",
+      "Lin": "216",
       "Cust": [
           {
               "Id": "",
@@ -34809,7 +36766,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34835,7 +36797,9 @@ const NovoJson = [
               "Coment": "116° BPrint - 1102",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1593,
               "Data": "2025-02-10"
           }
@@ -34844,7 +36808,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "217",
+      "Stts": "",
+      "Lin": "217",
       "Cust": [
           {
               "Id": "",
@@ -34856,7 +36821,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34882,7 +36852,9 @@ const NovoJson = [
               "Coment": "116° BPrint - 1102",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1594,
               "Data": "2025-02-05"
           }
@@ -34904,7 +36876,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "199.5",
+      "Stts": "",
+      "Lin": "199.5",
       "Cust": [
           {
               "Id": "",
@@ -34916,7 +36889,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -34930,7 +36908,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "218",
+      "Stts": "",
+      "Lin": "218",
       "Cust": [
           {
               "Id": "",
@@ -34942,7 +36921,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -34968,7 +36952,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1562",
               "Data": "2025-02-06"
           }
@@ -34990,7 +36976,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "200.1",
+      "Stts": "",
+      "Lin": "200.1",
       "Cust": [
           {
               "Id": "",
@@ -35002,7 +36989,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35028,7 +37020,9 @@ const NovoJson = [
               "Coment": "115° BPrint - 0702",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1596,
               "Data": "2025-02-06"
           }
@@ -35050,7 +37044,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "205.5",
+      "Stts": "",
+      "Lin": "205.5",
       "Cust": [
           {
               "Id": "",
@@ -35062,7 +37057,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35088,7 +37088,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1597,
               "Data": "2025-02-11"
           }
@@ -35110,7 +37112,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "219",
+      "Stts": "",
+      "Lin": "219",
       "Cust": [
           {
               "Id": "",
@@ -35122,7 +37125,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35148,7 +37156,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "034 - 11.02.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1598,
               "Data": "2025-02-11"
           }
@@ -35170,7 +37180,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "220",
+      "Stts": "",
+      "Lin": "220",
       "Cust": [
           {
               "Id": "",
@@ -35182,7 +37193,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35208,7 +37224,9 @@ const NovoJson = [
               "Coment": "117° BPrint - 1102",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1599,
               "Data": "2025-02-11"
           }
@@ -35230,7 +37248,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "221",
+      "Stts": "",
+      "Lin": "221",
       "Cust": [
           {
               "Id": "",
@@ -35242,7 +37261,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35268,7 +37292,9 @@ const NovoJson = [
               "Coment": "118° BPrint - 1202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1600,
               "Data": "2025-02-11"
           }
@@ -35302,7 +37328,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "222",
+      "Stts": "",
+      "Lin": "222",
       "Cust": [
           {
               "Id": "",
@@ -35314,7 +37341,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35340,7 +37372,9 @@ const NovoJson = [
               "Coment": "458° Grafit - 01202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1459",
               "Data": "2025-02-11"
           }
@@ -35362,7 +37396,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "223",
+      "Stts": "",
+      "Lin": "223",
       "Cust": [
           {
               "Id": "",
@@ -35374,7 +37409,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35400,7 +37440,9 @@ const NovoJson = [
               "Coment": "pagou coisa antiga tbm",
               "Lixo": "",
               "SVG": "033 - 11.02.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "307",
               "Data": "2025-02-11"
           }
@@ -35422,7 +37464,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "224",
+      "Stts": "",
+      "Lin": "224",
       "Cust": [
           {
               "Id": "",
@@ -35434,7 +37477,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35460,7 +37508,9 @@ const NovoJson = [
               "Coment": "118° BPrint - 1202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1601,
               "Data": "2025-02-12"
           },
@@ -35480,7 +37530,9 @@ const NovoJson = [
               "Coment": "458° Grafit - 01202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1601,
               "Data": "2025-02-12"
           }
@@ -35514,7 +37566,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "225",
+      "Stts": "",
+      "Lin": "225",
       "Cust": [
           {
               "Id": "",
@@ -35526,7 +37579,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35552,7 +37610,9 @@ const NovoJson = [
               "Coment": "118° BPrint - 1202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1531",
               "Data": "2025-02-12"
           }
@@ -35574,7 +37634,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "226",
+      "Stts": "",
+      "Lin": "226",
       "Cust": [
           {
               "Id": "",
@@ -35586,7 +37647,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35612,7 +37678,9 @@ const NovoJson = [
               "Coment": "118° BPrint - 1202",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1602,
               "Data": "2025-02-12"
           }
@@ -35634,7 +37702,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "227",
+      "Stts": "",
+      "Lin": "227",
       "Cust": [
           {
               "Id": "",
@@ -35646,7 +37715,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35660,7 +37734,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "228",
+      "Stts": "",
+      "Lin": "228",
       "Cust": [
           {
               "Id": "",
@@ -35672,7 +37747,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -35698,7 +37778,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1603,
               "Data": "2025-02-13"
           }
@@ -35707,7 +37789,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "228",
+      "Stts": "",
+      "Lin": "228",
       "Cust": [
           {
               "Id": "",
@@ -35719,7 +37802,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35745,7 +37833,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "035 - 13.02.2025 _1.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "57",
               "Data": "2025-02-13"
           }
@@ -35767,7 +37857,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "229",
+      "Stts": "",
+      "Lin": "229",
       "Cust": [
           {
               "Id": "",
@@ -35779,7 +37870,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35805,7 +37901,9 @@ const NovoJson = [
               "Coment": "459° Grafit - 1302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1604,
               "Data": "2025-02-13"
           }
@@ -35827,7 +37925,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "230",
+      "Stts": "",
+      "Lin": "230",
       "Cust": [
           {
               "Id": "",
@@ -35839,7 +37938,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35865,7 +37969,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-02-13"
           }
@@ -35874,7 +37980,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "231",
+      "Stts": "",
+      "Lin": "231",
       "Cust": [
           {
               "Id": "",
@@ -35886,7 +37993,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35912,7 +38024,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1592",
               "Data": "2025-02-13"
           }
@@ -35921,7 +38035,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "232",
+      "Stts": "",
+      "Lin": "232",
       "Cust": [
           {
               "Id": "",
@@ -35933,7 +38048,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -35959,7 +38079,9 @@ const NovoJson = [
               "Coment": "459° Grafit - 1302",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "97",
               "Data": "2025-02-14"
           }
@@ -35968,7 +38090,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "233",
+      "Stts": "",
+      "Lin": "233",
       "Cust": [
           {
               "Id": "",
@@ -35980,7 +38103,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36006,7 +38134,9 @@ const NovoJson = [
               "Coment": "Msm Hora",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 693,
               "Data": "2025-02-17"
           }
@@ -36028,7 +38158,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "129.60",
-      "Stts":"","Lin": "234",
+      "Stts": "",
+      "Lin": "234",
       "Cust": [
           {
               "Id": "",
@@ -36040,7 +38171,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36066,7 +38202,9 @@ const NovoJson = [
               "Coment": "Msm Hora",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1605,
               "Data": "2025-02-17"
           }
@@ -36100,7 +38238,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "95 >> 45",
-      "Stts":"","Lin": "235",
+      "Stts": "",
+      "Lin": "235",
       "Cust": [
           {
               "Id": "",
@@ -36112,7 +38251,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36138,7 +38282,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1532",
               "Data": "2025-02-17"
           }
@@ -36147,7 +38293,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "236",
+      "Stts": "",
+      "Lin": "236",
       "Cust": [
           {
               "Id": "",
@@ -36159,7 +38306,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36185,7 +38337,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1606,
               "Data": "2025-02-17"
           }
@@ -36194,7 +38348,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "237",
+      "Stts": "",
+      "Lin": "237",
       "Cust": [
           {
               "Id": "",
@@ -36206,7 +38361,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36232,7 +38392,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-02-18"
           }
@@ -36254,7 +38416,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "238",
+      "Stts": "",
+      "Lin": "238",
       "Cust": [
           {
               "Id": "",
@@ -36266,7 +38429,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36292,7 +38460,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2025-02-18"
           },
@@ -36312,7 +38482,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "Arte - 119° BPrint - 1902 (4).svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "527",
               "Data": "2025-02-18"
           }
@@ -36334,7 +38506,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "239",
+      "Stts": "",
+      "Lin": "239",
       "Cust": [
           {
               "Id": "",
@@ -36346,7 +38519,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36372,7 +38550,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1592",
               "Data": "2025-02-18"
           }
@@ -36381,7 +38561,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "240",
+      "Stts": "",
+      "Lin": "240",
       "Cust": [
           {
               "Id": "",
@@ -36393,7 +38574,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36419,7 +38605,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1608,
               "Data": "2025-02-18"
           }
@@ -36441,7 +38629,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "241",
+      "Stts": "",
+      "Lin": "241",
       "Cust": [
           {
               "Id": "",
@@ -36453,7 +38642,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36479,7 +38673,9 @@ const NovoJson = [
               "Coment": "Custo R$ 120,00",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "139",
               "Data": "2025-02-18"
           }
@@ -36501,7 +38697,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "120,00",
-      "Stts":"","Lin": "242",
+      "Stts": "",
+      "Lin": "242",
       "Cust": [
           {
               "Id": "",
@@ -36513,7 +38710,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36539,7 +38741,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1609,
               "Data": "2025-02-12"
           }
@@ -36561,7 +38765,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "226.5",
+      "Stts": "",
+      "Lin": "226.5",
       "Cust": [
           {
               "Id": "",
@@ -36573,7 +38778,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36587,7 +38797,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "243",
+      "Stts": "",
+      "Lin": "243",
       "Cust": [
           {
               "Id": "",
@@ -36599,7 +38810,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -36625,7 +38841,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1610,
               "Data": "2025-02-19"
           },
@@ -36645,7 +38863,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "Arte - 119° BPrint - 1902 (1).svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1610,
               "Data": "2025-02-19"
           },
@@ -36665,7 +38885,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1610,
               "Data": "2025-02-19"
           }
@@ -36687,7 +38909,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "244",
+      "Stts": "",
+      "Lin": "244",
       "Cust": [
           {
               "Id": "",
@@ -36699,7 +38922,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36725,7 +38953,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "Arte - 119° BPrint - 1902 (5).svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "757",
               "Data": "2025-02-19"
           }
@@ -36759,7 +38989,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "245",
+      "Stts": "",
+      "Lin": "245",
       "Cust": [
           {
               "Id": "",
@@ -36771,7 +39002,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36797,7 +39033,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1611,
               "Data": "2025-02-19"
           },
@@ -36817,7 +39055,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1611,
               "Data": "2025-02-19"
           },
@@ -36837,7 +39077,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1611,
               "Data": "2025-02-19"
           },
@@ -36857,7 +39099,9 @@ const NovoJson = [
               "Coment": "461° Grafit - 1902",
               "Lixo": "",
               "SVG": "Arte - 461° Grafit - 1902.svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1611,
               "Data": "2025-02-19"
           }
@@ -36879,7 +39123,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "246",
+      "Stts": "",
+      "Lin": "246",
       "Cust": [
           {
               "Id": "",
@@ -36891,7 +39136,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36917,7 +39167,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "Arte - 119° BPrint - 1902 (3).svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1594",
               "Data": "2025-02-19"
           }
@@ -36939,7 +39191,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "247",
+      "Stts": "",
+      "Lin": "247",
       "Cust": [
           {
               "Id": "",
@@ -36951,7 +39204,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -36977,7 +39235,9 @@ const NovoJson = [
               "Coment": "119° BPrint - 1902",
               "Lixo": "",
               "SVG": "Arte - 119° BPrint - 1902 (2).svg",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "656",
               "Data": "2025-02-19"
           },
@@ -36997,7 +39257,9 @@ const NovoJson = [
               "Coment": "120° BPrint - 2602",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "656",
               "Data": "2025-02-19"
           }
@@ -37019,7 +39281,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "248",
+      "Stts": "",
+      "Lin": "248",
       "Cust": [
           {
               "Id": "",
@@ -37031,7 +39294,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37057,7 +39325,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-02-19"
           },
@@ -37077,7 +39347,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-02-19"
           }
@@ -37111,7 +39383,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "249",
+      "Stts": "",
+      "Lin": "249",
       "Cust": [
           {
               "Id": "",
@@ -37123,7 +39396,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37149,7 +39427,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "97",
               "Data": "2025-02-20"
           }
@@ -37158,7 +39438,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "250",
+      "Stts": "",
+      "Lin": "250",
       "Cust": [
           {
               "Id": "",
@@ -37170,7 +39451,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37184,7 +39470,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "251",
+      "Stts": "",
+      "Lin": "251",
       "Cust": [
           {
               "Id": "",
@@ -37196,7 +39483,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -37210,7 +39502,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "252",
+      "Stts": "",
+      "Lin": "252",
       "Cust": [
           {
               "Id": "",
@@ -37222,7 +39515,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -37248,7 +39546,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1612,
               "Data": "2025-02-21"
           }
@@ -37270,7 +39570,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "253",
+      "Stts": "",
+      "Lin": "253",
       "Cust": [
           {
               "Id": "",
@@ -37282,7 +39583,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37308,7 +39614,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1613,
               "Data": "2025-02-21"
           }
@@ -37330,7 +39638,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "254",
+      "Stts": "",
+      "Lin": "254",
       "Cust": [
           {
               "Id": "",
@@ -37342,7 +39651,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37368,7 +39682,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1614,
               "Data": "2025-02-21"
           }
@@ -37390,7 +39706,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "255",
+      "Stts": "",
+      "Lin": "255",
       "Cust": [
           {
               "Id": "",
@@ -37402,7 +39719,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37428,7 +39750,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1615,
               "Data": "2025-02-21"
           }
@@ -37450,7 +39774,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "256",
+      "Stts": "",
+      "Lin": "256",
       "Cust": [
           {
               "Id": "",
@@ -37462,7 +39787,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37488,7 +39818,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1616,
               "Data": "2025-02-24"
           }
@@ -37510,7 +39842,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "257",
+      "Stts": "",
+      "Lin": "257",
       "Cust": [
           {
               "Id": "",
@@ -37522,7 +39855,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37536,7 +39874,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "258",
+      "Stts": "",
+      "Lin": "258",
       "Cust": [
           {
               "Id": "",
@@ -37548,7 +39887,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37574,7 +39918,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1617,
               "Data": "2025-02-24"
           }
@@ -37596,7 +39942,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "259",
+      "Stts": "",
+      "Lin": "259",
       "Cust": [
           {
               "Id": "",
@@ -37608,7 +39955,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37634,7 +39986,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1618,
               "Data": "2025-02-24"
           }
@@ -37656,7 +40010,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "260",
+      "Stts": "",
+      "Lin": "260",
       "Cust": [
           {
               "Id": "",
@@ -37668,7 +40023,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37694,7 +40054,9 @@ const NovoJson = [
               "Coment": "fexta tbm",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1619,
               "Data": "2025-02-25"
           }
@@ -37716,7 +40078,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "122,00",
-      "Stts":"","Lin": "261",
+      "Stts": "",
+      "Lin": "261",
       "Cust": [
           {
               "Id": "",
@@ -37728,7 +40091,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37754,7 +40122,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "337",
               "Data": "2025-02-25"
           }
@@ -37763,7 +40133,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "262",
+      "Stts": "",
+      "Lin": "262",
       "Cust": [
           {
               "Id": "",
@@ -37775,7 +40146,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37801,7 +40177,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1567",
               "Data": "2025-02-25"
           }
@@ -37823,7 +40201,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "263",
+      "Stts": "",
+      "Lin": "263",
       "Cust": [
           {
               "Id": "",
@@ -37835,7 +40214,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37849,7 +40233,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "264",
+      "Stts": "",
+      "Lin": "264",
       "Cust": [
           {
               "Id": "",
@@ -37861,7 +40246,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -37887,7 +40277,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1601",
               "Data": "2025-02-25"
           }
@@ -37909,7 +40301,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "265",
+      "Stts": "",
+      "Lin": "265",
       "Cust": [
           {
               "Id": "",
@@ -37921,7 +40314,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37947,7 +40345,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1620,
               "Data": "2025-02-25"
           }
@@ -37956,7 +40356,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "266",
+      "Stts": "",
+      "Lin": "266",
       "Cust": [
           {
               "Id": "",
@@ -37968,7 +40369,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -37994,7 +40400,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1621,
               "Data": "2025-02-25"
           }
@@ -38028,7 +40436,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "267",
+      "Stts": "",
+      "Lin": "267",
       "Cust": [
           {
               "Id": "",
@@ -38040,7 +40449,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38066,7 +40480,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1622,
               "Data": "2025-02-25"
           }
@@ -38088,7 +40504,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "268",
+      "Stts": "",
+      "Lin": "268",
       "Cust": [
           {
               "Id": "",
@@ -38100,7 +40517,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38126,7 +40548,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1623,
               "Data": "2025-02-13"
           }
@@ -38148,7 +40572,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "231.5",
+      "Stts": "",
+      "Lin": "231.5",
       "Cust": [
           {
               "Id": "",
@@ -38160,7 +40585,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38186,7 +40616,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1624,
               "Data": "2025-02-26"
           }
@@ -38208,7 +40640,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "269",
+      "Stts": "",
+      "Lin": "269",
       "Cust": [
           {
               "Id": "",
@@ -38220,7 +40653,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38246,7 +40684,9 @@ const NovoJson = [
               "Coment": "121° BPrint - 2602",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1625,
               "Data": "2025-02-26"
           }
@@ -38268,7 +40708,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "270",
+      "Stts": "",
+      "Lin": "270",
       "Cust": [
           {
               "Id": "",
@@ -38280,7 +40721,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38306,7 +40752,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1626,
               "Data": "2025-02-26"
           }
@@ -38315,7 +40763,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "271",
+      "Stts": "",
+      "Lin": "271",
       "Cust": [
           {
               "Id": "",
@@ -38327,7 +40776,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38353,7 +40807,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1496",
               "Data": "2025-02-27"
           }
@@ -38362,7 +40818,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "272",
+      "Stts": "",
+      "Lin": "272",
       "Cust": [
           {
               "Id": "",
@@ -38374,7 +40831,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38400,7 +40862,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1486",
               "Data": "2025-02-27"
           }
@@ -38422,7 +40886,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "273",
+      "Stts": "",
+      "Lin": "273",
       "Cust": [
           {
               "Id": "",
@@ -38434,7 +40899,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38460,7 +40930,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1627,
               "Data": "2025-02-27"
           }
@@ -38494,7 +40966,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "250,00",
-      "Stts":"","Lin": "274",
+      "Stts": "",
+      "Lin": "274",
       "Cust": [
           {
               "Id": "",
@@ -38506,7 +40979,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38532,7 +41010,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1628,
               "Data": "2025-02-27"
           }
@@ -38541,7 +41021,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "275",
+      "Stts": "",
+      "Lin": "275",
       "Cust": [
           {
               "Id": "",
@@ -38553,7 +41034,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38579,7 +41065,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-02-27"
           }
@@ -38588,7 +41076,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "276",
+      "Stts": "",
+      "Lin": "276",
       "Cust": [
           {
               "Id": "",
@@ -38600,7 +41089,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38626,7 +41120,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1601",
               "Data": "2025-02-28"
           }
@@ -38648,7 +41144,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "277",
+      "Stts": "",
+      "Lin": "277",
       "Cust": [
           {
               "Id": "",
@@ -38660,7 +41157,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38686,7 +41188,9 @@ const NovoJson = [
               "Coment": "era pra ser 450",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1629,
               "Data": "2025-02-27"
           }
@@ -38708,7 +41212,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "276.5",
+      "Stts": "",
+      "Lin": "276.5",
       "Cust": [
           {
               "Id": "",
@@ -38720,7 +41225,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38746,7 +41256,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1630,
               "Data": "2025-02-28"
           }
@@ -38768,7 +41280,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "278",
+      "Stts": "",
+      "Lin": "278",
       "Cust": [
           {
               "Id": "",
@@ -38780,7 +41293,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38806,7 +41324,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1631,
               "Data": "2025-02-28"
           }
@@ -38840,7 +41360,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "279",
+      "Stts": "",
+      "Lin": "279",
       "Cust": [
           {
               "Id": "",
@@ -38852,7 +41373,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38878,7 +41404,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1632,
               "Data": "2025-02-28"
           }
@@ -38900,7 +41428,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "280",
+      "Stts": "",
+      "Lin": "280",
       "Cust": [
           {
               "Id": "",
@@ -38912,7 +41441,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -38938,7 +41472,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1633,
               "Data": "2025-03-10"
           },
@@ -38958,7 +41494,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1633,
               "Data": "2025-03-10"
           }
@@ -38992,7 +41530,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo: R$ 202,00",
-      "Stts":"","Lin": "281",
+      "Stts": "",
+      "Lin": "281",
       "Cust": [
           {
               "Id": "",
@@ -39004,7 +41543,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39030,7 +41574,9 @@ const NovoJson = [
               "Coment": "Corte deu 70",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "36",
               "Data": "2025-03-10"
           }
@@ -39052,7 +41598,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 80,00",
-      "Stts":"","Lin": "282",
+      "Stts": "",
+      "Lin": "282",
       "Cust": [
           {
               "Id": "",
@@ -39064,7 +41611,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39090,7 +41642,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1634,
               "Data": "2025-03-10"
           }
@@ -39112,7 +41666,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 4,00",
-      "Stts":"","Lin": "283",
+      "Stts": "",
+      "Lin": "283",
       "Cust": [
           {
               "Id": "",
@@ -39124,7 +41679,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39150,7 +41710,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1530",
               "Data": "2025-03-10"
           }
@@ -39172,7 +41734,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 15,00",
-      "Stts":"","Lin": "284",
+      "Stts": "",
+      "Lin": "284",
       "Cust": [
           {
               "Id": "",
@@ -39184,7 +41747,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39210,7 +41778,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1511",
               "Data": "2025-03-10"
           }
@@ -39232,7 +41802,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 25,00",
-      "Stts":"","Lin": "285",
+      "Stts": "",
+      "Lin": "285",
       "Cust": [
           {
               "Id": "",
@@ -39244,7 +41815,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39270,7 +41846,9 @@ const NovoJson = [
               "Coment": "sem Uber peguei com o Negão",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "139",
               "Data": "2025-03-10"
           }
@@ -39292,7 +41870,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 120,00",
-      "Stts":"","Lin": "286",
+      "Stts": "",
+      "Lin": "286",
       "Cust": [
           {
               "Id": "",
@@ -39304,7 +41883,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39330,7 +41914,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1635,
               "Data": "2025-03-10"
           }
@@ -39339,7 +41925,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "R$ 14,00",
-      "Stts":"","Lin": "287",
+      "Stts": "",
+      "Lin": "287",
       "Cust": [
           {
               "Id": "",
@@ -39351,7 +41938,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39377,7 +41969,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-03-10"
           }
@@ -39399,7 +41993,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 90,00",
-      "Stts":"","Lin": "288",
+      "Stts": "",
+      "Lin": "288",
       "Cust": [
           {
               "Id": "",
@@ -39411,7 +42006,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39437,7 +42037,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "16",
               "Data": "2025-03-11"
           }
@@ -39446,7 +42048,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "289",
+      "Stts": "",
+      "Lin": "289",
       "Cust": [
           {
               "Id": "",
@@ -39458,7 +42061,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39484,7 +42092,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-03-11"
           }
@@ -39506,7 +42116,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "290",
+      "Stts": "",
+      "Lin": "290",
       "Cust": [
           {
               "Id": "",
@@ -39518,7 +42129,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39544,7 +42160,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1636,
               "Data": "2025-03-11"
           }
@@ -39566,7 +42184,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "291",
+      "Stts": "",
+      "Lin": "291",
       "Cust": [
           {
               "Id": "",
@@ -39578,7 +42197,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39604,7 +42228,9 @@ const NovoJson = [
               "Coment": "Bprint - 002104",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "493",
               "Data": "2025-03-11"
           }
@@ -39626,7 +42252,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 13,40",
-      "Stts":"","Lin": "292",
+      "Stts": "",
+      "Lin": "292",
       "Cust": [
           {
               "Id": "",
@@ -39638,7 +42265,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39664,7 +42296,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "516",
               "Data": "2025-03-11"
           }
@@ -39686,7 +42320,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "293",
+      "Stts": "",
+      "Lin": "293",
       "Cust": [
           {
               "Id": "",
@@ -39698,7 +42333,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -39724,7 +42364,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1611",
               "Data": "2025-03-12"
           },
@@ -39744,7 +42386,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1611",
               "Data": "2025-03-12"
           }
@@ -39753,7 +42397,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "294",
+      "Stts": "",
+      "Lin": "294",
       "Cust": [
           {
               "Id": "",
@@ -39765,7 +42410,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39791,7 +42441,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1638,
               "Data": "2025-03-12"
           }
@@ -39825,7 +42477,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "295",
+      "Stts": "",
+      "Lin": "295",
       "Cust": [
           {
               "Id": "",
@@ -39837,7 +42490,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39863,7 +42521,9 @@ const NovoJson = [
               "Coment": "Grafit - 009605",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-03-12"
           },
@@ -39883,7 +42543,9 @@ const NovoJson = [
               "Coment": "Grafit - 009605",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-03-12"
           }
@@ -39917,7 +42579,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 32,60",
-      "Stts":"","Lin": "296",
+      "Stts": "",
+      "Lin": "296",
       "Cust": [
           {
               "Id": "",
@@ -39929,7 +42592,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -39955,7 +42623,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1639,
               "Data": "2025-03-12"
           }
@@ -39977,7 +42647,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "297",
+      "Stts": "",
+      "Lin": "297",
       "Cust": [
           {
               "Id": "",
@@ -39989,7 +42660,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40015,7 +42691,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1640,
               "Data": "2025-03-11"
           }
@@ -40049,7 +42727,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo 25 | Lucro R$ 40",
-      "Stts":"","Lin": "292.5",
+      "Stts": "",
+      "Lin": "292.5",
       "Cust": [
           {
               "Id": "",
@@ -40061,7 +42740,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40087,7 +42771,9 @@ const NovoJson = [
               "Coment": "Grafit - 009605",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1641,
               "Data": "2025-03-12"
           }
@@ -40121,7 +42807,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 18,00",
-      "Stts":"","Lin": "298",
+      "Stts": "",
+      "Lin": "298",
       "Cust": [
           {
               "Id": "",
@@ -40133,7 +42820,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40159,7 +42851,9 @@ const NovoJson = [
               "Coment": "Grafit - 009605",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "101",
               "Data": "2025-03-12"
           }
@@ -40168,7 +42862,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Custo R$ 18,40",
-      "Stts":"","Lin": "299",
+      "Stts": "",
+      "Lin": "299",
       "Cust": [
           {
               "Id": "",
@@ -40180,7 +42875,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40206,7 +42906,9 @@ const NovoJson = [
               "Coment": "Grafit - 009605",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1635",
               "Data": "2025-03-12"
           }
@@ -40215,7 +42917,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Custo R$ 3,60",
-      "Stts":"","Lin": "300",
+      "Stts": "",
+      "Lin": "300",
       "Cust": [
           {
               "Id": "",
@@ -40227,7 +42930,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40253,7 +42961,9 @@ const NovoJson = [
               "Coment": "Bprint - 002104",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-03-12"
           }
@@ -40275,7 +42985,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 32,00",
-      "Stts":"","Lin": "301",
+      "Stts": "",
+      "Lin": "301",
       "Cust": [
           {
               "Id": "",
@@ -40287,7 +42998,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40313,7 +43029,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "128",
               "Data": "2025-03-13"
           }
@@ -40347,7 +43065,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "120 PVC",
-      "Stts":"","Lin": "302",
+      "Stts": "",
+      "Lin": "302",
       "Cust": [
           {
               "Id": "",
@@ -40359,7 +43078,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40385,7 +43109,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1567",
               "Data": "2025-03-13"
           }
@@ -40419,7 +43145,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 103,68",
-      "Stts":"","Lin": "303",
+      "Stts": "",
+      "Lin": "303",
       "Cust": [
           {
               "Id": "",
@@ -40431,7 +43158,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40445,7 +43177,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "304",
+      "Stts": "",
+      "Lin": "304",
       "Cust": [
           {
               "Id": "",
@@ -40457,7 +43190,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -40483,7 +43221,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1639",
               "Data": "2025-03-13"
           }
@@ -40529,7 +43269,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 9,00",
-      "Stts":"","Lin": "304",
+      "Stts": "",
+      "Lin": "304",
       "Cust": [
           {
               "Id": "",
@@ -40541,7 +43282,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40555,7 +43301,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "305",
+      "Stts": "",
+      "Lin": "305",
       "Cust": [
           {
               "Id": "",
@@ -40567,7 +43314,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -40581,7 +43333,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "306",
+      "Stts": "",
+      "Lin": "306",
       "Cust": [
           {
               "Id": "",
@@ -40593,7 +43346,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -40619,7 +43377,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1644,
               "Data": "2025-03-13"
           }
@@ -40641,7 +43401,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "R$ 10,00",
-      "Stts":"","Lin": "307",
+      "Stts": "",
+      "Lin": "307",
       "Cust": [
           {
               "Id": "",
@@ -40653,7 +43414,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40679,7 +43445,9 @@ const NovoJson = [
               "Coment": "Bprint - 002114",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-03-14"
           }
@@ -40688,7 +43456,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "308",
+      "Stts": "",
+      "Lin": "308",
       "Cust": [
           {
               "Id": "",
@@ -40700,7 +43469,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40726,7 +43500,9 @@ const NovoJson = [
               "Coment": "Bprint - 002114",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1645,
               "Data": "2025-03-14"
           }
@@ -40748,7 +43524,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "309",
+      "Stts": "",
+      "Lin": "309",
       "Cust": [
           {
               "Id": "",
@@ -40760,7 +43537,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40786,7 +43568,9 @@ const NovoJson = [
               "Coment": "e 4 setas de recorte",
               "Lixo": "",
               "SVG": "",
-              "OS":"BPrint - 002114","Uber":"Edilson 14/03/2025","Grad": "129° BPrint -1403",
+              "OS": "BPrint - 002114",
+              "Uber": "Edilson 14/03/2025",
+              "Grad": "129° BPrint -1403",
               "Clnt": 1646,
               "Data": "2025-03-14"
           }
@@ -40808,21 +43592,25 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "310",
+      "Stts": "",
+      "Lin": "310",
       "Cust": [
-        
-        {
-          "Id": "129",
-          "Data": "2025-03-14",
-          "Item": "129° BPrint - 1403 | Grad | 1 - Adesivo (Brilho) 1,00 x 0,82 | R$ 16,40",
-          "Valr": "4.80",
-          "Forn": "BPrint",
-          "Dstn": "347|1",
-          "Pcnt": ""
-        }
-
+          {
+              "Id": "129",
+              "Data": "2025-03-14",
+              "Item": "129° BPrint - 1403 | Grad | 1 - Adesivo (Brilho) 1,00 x 0,82 | R$ 16,40",
+              "Valr": "4.80",
+              "Forn": "BPrint",
+              "Dstn": "347|1",
+              "Pcnt": ""
+          }
       ],
-      "Finc": [{"Valr":"40","Cust":"4.80","Lcro":"35.2"}
+      "Finc": [
+          {
+              "Valr": "40",
+              "Cust": "4.80",
+              "Lcro": "35.2"
+          }
       ],
       "OFF": "1"
   },
@@ -40848,7 +43636,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1647,
               "Data": "2025-03-17"
           }
@@ -40870,7 +43660,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "311",
+      "Stts": "",
+      "Lin": "311",
       "Cust": [
           {
               "Id": "",
@@ -40882,7 +43673,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40908,7 +43704,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1605",
               "Data": "2025-03-17"
           }
@@ -40942,7 +43740,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "312",
+      "Stts": "",
+      "Lin": "312",
       "Cust": [
           {
               "Id": "",
@@ -40954,7 +43753,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -40980,7 +43784,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1648,
               "Data": "2025-03-17"
           }
@@ -41002,7 +43808,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "313",
+      "Stts": "",
+      "Lin": "313",
       "Cust": [
           {
               "Id": "",
@@ -41014,7 +43821,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41040,7 +43852,9 @@ const NovoJson = [
               "Coment": "Grau Técnico",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1649,
               "Data": "2025-03-17"
           }
@@ -41062,7 +43876,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "314",
+      "Stts": "",
+      "Lin": "314",
       "Cust": [
           {
               "Id": "",
@@ -41074,7 +43889,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41100,7 +43920,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1650,
               "Data": "2025-03-17"
           },
@@ -41120,7 +43942,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1650,
               "Data": "2025-03-17"
           }
@@ -41142,7 +43966,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "315",
+      "Stts": "",
+      "Lin": "315",
       "Cust": [
           {
               "Id": "",
@@ -41154,7 +43979,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41180,7 +44010,9 @@ const NovoJson = [
               "Coment": "teve entrega dia 19/03",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1535",
               "Data": "2025-03-17"
           },
@@ -41200,7 +44032,9 @@ const NovoJson = [
               "Coment": "teve entrega dia 19/03",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1535",
               "Data": "2025-03-17"
           }
@@ -41222,7 +44056,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "316",
+      "Stts": "",
+      "Lin": "316",
       "Cust": [
           {
               "Id": "",
@@ -41234,7 +44069,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41260,7 +44100,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "79",
               "Data": "2025-03-17"
           }
@@ -41282,7 +44124,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "317",
+      "Stts": "",
+      "Lin": "317",
       "Cust": [
           {
               "Id": "",
@@ -41294,7 +44137,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41308,7 +44156,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "318",
+      "Stts": "",
+      "Lin": "318",
       "Cust": [
           {
               "Id": "",
@@ -41320,7 +44169,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -41346,7 +44200,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1486",
               "Data": "2025-03-17"
           }
@@ -41368,7 +44224,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "318",
+      "Stts": "",
+      "Lin": "318",
       "Cust": [
           {
               "Id": "",
@@ -41380,7 +44237,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41406,7 +44268,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-03-17"
           }
@@ -41440,7 +44304,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "319",
+      "Stts": "",
+      "Lin": "319",
       "Cust": [
           {
               "Id": "",
@@ -41452,7 +44317,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41478,7 +44348,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "693",
               "Data": "2025-03-18"
           }
@@ -41500,7 +44372,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "320",
+      "Stts": "",
+      "Lin": "320",
       "Cust": [
           {
               "Id": "",
@@ -41512,7 +44385,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41538,7 +44416,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1651,
               "Data": "2025-03-18"
           },
@@ -41558,7 +44438,9 @@ const NovoJson = [
               "Coment": "Peguei no dia 25/03",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1651,
               "Data": "2025-03-18"
           },
@@ -41578,7 +44460,9 @@ const NovoJson = [
               "Coment": "Peguei no dia 25/03",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1651,
               "Data": "2025-03-18"
           }
@@ -41624,7 +44508,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "321",
+      "Stts": "",
+      "Lin": "321",
       "Cust": [
           {
               "Id": "",
@@ -41636,7 +44521,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41662,7 +44552,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 0,
               "Data": "2025-03-17"
           }
@@ -41671,7 +44563,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Hojy",
-      "Stts":"","Lin": "322",
+      "Stts": "",
+      "Lin": "322",
       "Cust": [
           {
               "Id": "",
@@ -41683,7 +44576,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -41709,7 +44607,9 @@ const NovoJson = [
               "Coment": "fiz entrega Uber 19/03/2025",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1551",
               "Data": "2025-03-17"
           }
@@ -41731,7 +44631,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day1",
-      "Stts":"","Lin": "315.5",
+      "Stts": "",
+      "Lin": "315.5",
       "Cust": [
           {
               "Id": "",
@@ -41743,7 +44644,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41769,7 +44675,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1605",
               "Data": "2025-03-19"
           }
@@ -41791,7 +44699,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "322",
+      "Stts": "",
+      "Lin": "322",
       "Cust": [
           {
               "Id": "",
@@ -41803,7 +44712,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41829,7 +44743,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1652,
               "Data": "2025-03-19"
           }
@@ -41851,7 +44767,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "323",
+      "Stts": "",
+      "Lin": "323",
       "Cust": [
           {
               "Id": "",
@@ -41863,7 +44780,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41889,7 +44811,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1653,
               "Data": "2025-03-19"
           }
@@ -41898,7 +44822,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "324",
+      "Stts": "",
+      "Lin": "324",
       "Cust": [
           {
               "Id": "",
@@ -41910,7 +44835,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41936,7 +44866,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1654,
               "Data": "2025-03-19"
           }
@@ -41958,7 +44890,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "325",
+      "Stts": "",
+      "Lin": "325",
       "Cust": [
           {
               "Id": "",
@@ -41970,7 +44903,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -41996,7 +44934,9 @@ const NovoJson = [
               "Coment": "teve custo com fita",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1655,
               "Data": "2025-03-19"
           }
@@ -42018,7 +44958,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "326",
+      "Stts": "",
+      "Lin": "326",
       "Cust": [
           {
               "Id": "",
@@ -42030,7 +44971,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42056,7 +45002,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "367",
               "Data": "2025-03-19"
           }
@@ -42065,7 +45013,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "Day2",
-      "Stts":"","Lin": "327",
+      "Stts": "",
+      "Lin": "327",
       "Cust": [
           {
               "Id": "",
@@ -42077,7 +45026,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42103,7 +45057,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "79",
               "Data": "2025-03-20"
           }
@@ -42112,7 +45068,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "328",
+      "Stts": "",
+      "Lin": "328",
       "Cust": [
           {
               "Id": "",
@@ -42124,7 +45081,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42150,7 +45112,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1656,
               "Data": "2025-03-20"
           }
@@ -42159,7 +45123,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "329",
+      "Stts": "",
+      "Lin": "329",
       "Cust": [
           {
               "Id": "",
@@ -42171,7 +45136,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -42197,7 +45167,9 @@ const NovoJson = [
               "Coment": "teve entrega dia 20/03 (R$ 4,57)",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1657,
               "Data": "2025-03-19"
           }
@@ -42219,7 +45191,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "322.5",
+      "Stts": "",
+      "Lin": "322.5",
       "Cust": [
           {
               "Id": "",
@@ -42231,7 +45204,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42257,7 +45235,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1658,
               "Data": "2025-03-20"
           }
@@ -42266,7 +45246,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "329",
+      "Stts": "",
+      "Lin": "329",
       "Cust": [
           {
               "Id": "",
@@ -42278,7 +45259,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42304,7 +45290,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1659,
               "Data": "2025-03-20"
           }
@@ -42326,7 +45314,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "330",
+      "Stts": "",
+      "Lin": "330",
       "Cust": [
           {
               "Id": "",
@@ -42338,7 +45327,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42364,7 +45358,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "294",
               "Data": "2025-03-20"
           }
@@ -42386,7 +45382,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "331",
+      "Stts": "",
+      "Lin": "331",
       "Cust": [
           {
               "Id": "",
@@ -42398,7 +45395,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42424,7 +45426,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1577",
               "Data": "2025-03-20"
           },
@@ -42444,7 +45448,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1577",
               "Data": "2025-03-20"
           },
@@ -42464,7 +45470,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1577",
               "Data": "2025-03-20"
           }
@@ -42486,7 +45494,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "332",
+      "Stts": "",
+      "Lin": "332",
       "Cust": [
           {
               "Id": "",
@@ -42498,7 +45507,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42524,7 +45538,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1660,
               "Data": "2025-03-20"
           }
@@ -42546,7 +45562,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "333",
+      "Stts": "",
+      "Lin": "333",
       "Cust": [
           {
               "Id": "",
@@ -42558,7 +45575,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42584,7 +45606,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1661,
               "Data": "2025-03-21"
           }
@@ -42593,7 +45617,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "334",
+      "Stts": "",
+      "Lin": "334",
       "Cust": [
           {
               "Id": "",
@@ -42605,7 +45630,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42631,7 +45661,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1662,
               "Data": "2025-03-21"
           }
@@ -42653,7 +45685,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "335",
+      "Stts": "",
+      "Lin": "335",
       "Cust": [
           {
               "Id": "",
@@ -42665,7 +45698,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42691,7 +45729,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "7",
               "Data": "2025-03-21"
           }
@@ -42713,7 +45753,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "336",
+      "Stts": "",
+      "Lin": "336",
       "Cust": [
           {
               "Id": "",
@@ -42725,7 +45766,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42751,7 +45797,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1459",
               "Data": "2025-03-24"
           },
@@ -42771,7 +45819,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1459",
               "Data": "2025-03-24"
           }
@@ -42793,7 +45843,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "337",
+      "Stts": "",
+      "Lin": "337",
       "Cust": [
           {
               "Id": "",
@@ -42805,7 +45856,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42831,7 +45887,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-03-24"
           }
@@ -42853,7 +45911,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "338",
+      "Stts": "",
+      "Lin": "338",
       "Cust": [
           {
               "Id": "",
@@ -42865,7 +45924,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42891,7 +45955,9 @@ const NovoJson = [
               "Coment": "Eurik",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1640",
               "Data": "2025-03-24"
           }
@@ -42913,7 +45979,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "339",
+      "Stts": "",
+      "Lin": "339",
       "Cust": [
           {
               "Id": "",
@@ -42925,7 +45992,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42951,7 +46023,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1663,
               "Data": "2025-03-25"
           }
@@ -42960,7 +46034,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "340",
+      "Stts": "",
+      "Lin": "340",
       "Cust": [
           {
               "Id": "",
@@ -42972,7 +46047,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -42998,7 +46078,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "36",
               "Data": "2025-03-25"
           }
@@ -43007,7 +46089,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "341",
+      "Stts": "",
+      "Lin": "341",
       "Cust": [
           {
               "Id": "",
@@ -43019,7 +46102,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43045,7 +46133,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1664,
               "Data": "2025-03-25"
           }
@@ -43059,7 +46149,8 @@ const NovoJson = [
               "Valr": "35",
               "Form": "Pix",
               "Desc": "",
-              "Stts":"","Lin": "Lucas Martins De Sousa",
+              "Stts": "",
+              "Lin": "Lucas Martins De Sousa",
               "Link": "384",
               "Lixo": "",
               "Mpag": ""
@@ -43071,7 +46162,8 @@ const NovoJson = [
               "Valr": "45",
               "Form": "Pix",
               "Desc": "",
-              "Stts":"","Lin": "Pix de 65,00 Lucas Martins De Sousa",
+              "Stts": "",
+              "Lin": "Pix de 65,00 Lucas Martins De Sousa",
               "Link": "384",
               "Lixo": "",
               "Mpag": ""
@@ -43079,7 +46171,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "342",
+      "Stts": "",
+      "Lin": "342",
       "Cust": [
           {
               "Id": "",
@@ -43091,7 +46184,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43117,7 +46215,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1562",
               "Data": "2025-03-25"
           }
@@ -43139,7 +46239,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "343",
+      "Stts": "",
+      "Lin": "343",
       "Cust": [
           {
               "Id": "",
@@ -43151,7 +46252,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43177,7 +46283,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1485",
               "Data": "2025-03-25"
           }
@@ -43199,7 +46307,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "344",
+      "Stts": "",
+      "Lin": "344",
       "Cust": [
           {
               "Id": "",
@@ -43211,7 +46320,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43237,7 +46351,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1665,
               "Data": "2025-03-25"
           }
@@ -43259,7 +46375,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "345",
+      "Stts": "",
+      "Lin": "345",
       "Cust": [
           {
               "Id": "",
@@ -43271,7 +46388,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43297,7 +46419,9 @@ const NovoJson = [
               "Coment": "18:00h 25/03/2025",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1533",
               "Data": "2025-03-25"
           }
@@ -43331,7 +46455,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "346",
+      "Stts": "",
+      "Lin": "346",
       "Cust": [
           {
               "Id": "",
@@ -43343,7 +46468,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43369,7 +46499,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1162",
               "Data": "2025-03-25"
           }
@@ -43391,7 +46523,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "347",
+      "Stts": "",
+      "Lin": "347",
       "Cust": [
           {
               "Id": "",
@@ -43403,7 +46536,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43429,7 +46567,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1666,
               "Data": "2025-03-26"
           }
@@ -43438,7 +46578,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "348",
+      "Stts": "",
+      "Lin": "348",
       "Cust": [
           {
               "Id": "",
@@ -43450,7 +46591,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43476,7 +46622,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1667,
               "Data": "2025-03-26"
           }
@@ -43498,7 +46646,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "349",
+      "Stts": "",
+      "Lin": "349",
       "Cust": [
           {
               "Id": "",
@@ -43510,7 +46659,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43536,7 +46690,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1668,
               "Data": "2025-03-26"
           }
@@ -43558,7 +46714,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "350",
+      "Stts": "",
+      "Lin": "350",
       "Cust": [
           {
               "Id": "",
@@ -43570,7 +46727,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43596,7 +46758,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1669,
               "Data": "2025-03-26"
           }
@@ -43618,7 +46782,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "351",
+      "Stts": "",
+      "Lin": "351",
       "Cust": [
           {
               "Id": "",
@@ -43630,7 +46795,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43656,7 +46826,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1466",
               "Data": "2025-03-26"
           }
@@ -43678,7 +46850,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "352",
+      "Stts": "",
+      "Lin": "352",
       "Cust": [
           {
               "Id": "",
@@ -43690,7 +46863,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43716,7 +46894,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1670,
               "Data": "2025-03-26"
           }
@@ -43738,7 +46918,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "353",
+      "Stts": "",
+      "Lin": "353",
       "Cust": [
           {
               "Id": "",
@@ -43750,7 +46931,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43776,7 +46962,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1671,
               "Data": "2025-03-26"
           }
@@ -43810,7 +46998,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "354",
+      "Stts": "",
+      "Lin": "354",
       "Cust": [
           {
               "Id": "",
@@ -43822,7 +47011,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43848,7 +47042,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1672,
               "Data": "2025-03-27"
           },
@@ -43868,7 +47064,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1672,
               "Data": "2025-03-27"
           }
@@ -43902,7 +47100,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "355",
+      "Stts": "",
+      "Lin": "355",
       "Cust": [
           {
               "Id": "",
@@ -43914,7 +47113,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -43940,7 +47144,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1673,
               "Data": "2025-03-27"
           }
@@ -43962,7 +47168,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "356",
+      "Stts": "",
+      "Lin": "356",
       "Cust": [
           {
               "Id": "",
@@ -43974,7 +47181,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44000,7 +47212,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1261",
               "Data": "2025-03-27"
           },
@@ -44020,7 +47234,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1261",
               "Data": "2025-03-27"
           }
@@ -44042,7 +47258,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "357",
+      "Stts": "",
+      "Lin": "357",
       "Cust": [
           {
               "Id": "",
@@ -44054,7 +47271,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44080,7 +47302,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1674,
               "Data": "2025-03-27"
           },
@@ -44100,7 +47324,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1674,
               "Data": "2025-03-27"
           },
@@ -44120,7 +47346,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1674,
               "Data": "2025-03-27"
           }
@@ -44142,7 +47370,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "358",
+      "Stts": "",
+      "Lin": "358",
       "Cust": [
           {
               "Id": "",
@@ -44154,7 +47383,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44180,7 +47414,9 @@ const NovoJson = [
               "Coment": "tudo branco",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "35",
               "Data": "2025-03-28"
           }
@@ -44202,7 +47438,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "359",
+      "Stts": "",
+      "Lin": "359",
       "Cust": [
           {
               "Id": "",
@@ -44214,7 +47451,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44240,7 +47482,9 @@ const NovoJson = [
               "Coment": "tudo branco, 3 Preto de cada",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1675,
               "Data": "2025-03-31"
           }
@@ -44262,7 +47506,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "360",
+      "Stts": "",
+      "Lin": "360",
       "Cust": [
           {
               "Id": "",
@@ -44274,7 +47519,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44300,7 +47550,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1648",
               "Data": "2025-03-31"
           }
@@ -44334,7 +47586,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 30,00",
-      "Stts":"","Lin": "361",
+      "Stts": "",
+      "Lin": "361",
       "Cust": [
           {
               "Id": "",
@@ -44346,7 +47599,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44372,7 +47630,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1664",
               "Data": "2025-03-31"
           }
@@ -44394,7 +47654,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "362",
+      "Stts": "",
+      "Lin": "362",
       "Cust": [
           {
               "Id": "",
@@ -44406,7 +47667,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44432,7 +47698,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1486",
               "Data": "2025-03-31"
           }
@@ -44441,7 +47709,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "aqui eu tive q imprimir 3 folhas 138° | 139° | 147°",
-      "Stts":"","Lin": "363",
+      "Stts": "",
+      "Lin": "363",
       "Cust": [
           {
               "Id": "",
@@ -44453,7 +47722,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44479,7 +47753,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1676,
               "Data": "2025-03-31"
           }
@@ -44488,7 +47764,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "364",
+      "Stts": "",
+      "Lin": "364",
       "Cust": [
           {
               "Id": "",
@@ -44500,7 +47777,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44526,7 +47808,9 @@ const NovoJson = [
               "Coment": "@Luizinho_dettona @ glebsomfc 244",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1675",
               "Data": "2025-03-31"
           }
@@ -44548,7 +47832,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "365",
+      "Stts": "",
+      "Lin": "365",
       "Cust": [
           {
               "Id": "",
@@ -44560,7 +47845,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44586,7 +47876,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1453",
               "Data": "2025-03-31"
           }
@@ -44608,7 +47900,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "366",
+      "Stts": "",
+      "Lin": "366",
       "Cust": [
           {
               "Id": "",
@@ -44620,7 +47913,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44646,7 +47944,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1469",
               "Data": "2025-03-31"
           }
@@ -44668,7 +47968,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "367",
+      "Stts": "",
+      "Lin": "367",
       "Cust": [
           {
               "Id": "",
@@ -44680,7 +47981,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44706,7 +48012,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1677,
               "Data": "2025-03-28"
           }
@@ -44715,7 +48023,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "359.5",
+      "Stts": "",
+      "Lin": "359.5",
       "Cust": [
           {
               "Id": "",
@@ -44727,7 +48036,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44753,7 +48067,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1679,
               "Data": "2025-03-28"
           }
@@ -44775,7 +48091,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "359.6",
+      "Stts": "",
+      "Lin": "359.6",
       "Cust": [
           {
               "Id": "",
@@ -44787,7 +48104,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44813,7 +48135,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1678,
               "Data": "2025-03-28"
           }
@@ -44822,7 +48146,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "359.7",
+      "Stts": "",
+      "Lin": "359.7",
       "Cust": [
           {
               "Id": "",
@@ -44834,7 +48159,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44860,7 +48190,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1680,
               "Data": "2025-03-31"
           }
@@ -44882,7 +48214,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "368",
+      "Stts": "",
+      "Lin": "368",
       "Cust": [
           {
               "Id": "",
@@ -44894,7 +48227,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44920,7 +48258,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1672",
               "Data": "2025-03-31"
           }
@@ -44929,7 +48269,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "369",
+      "Stts": "",
+      "Lin": "369",
       "Cust": [
           {
               "Id": "",
@@ -44941,7 +48282,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -44967,7 +48313,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1680",
               "Data": "2025-04-01"
           }
@@ -44989,7 +48337,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "370",
+      "Stts": "",
+      "Lin": "370",
       "Cust": [
           {
               "Id": "",
@@ -45001,7 +48350,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45027,7 +48381,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1451",
               "Data": "2025-04-01"
           }
@@ -45036,7 +48392,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "371",
+      "Stts": "",
+      "Lin": "371",
       "Cust": [
           {
               "Id": "",
@@ -45048,7 +48405,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45074,7 +48436,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1681,
               "Data": "2025-04-01"
           }
@@ -45096,7 +48460,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "372",
+      "Stts": "",
+      "Lin": "372",
       "Cust": [
           {
               "Id": "",
@@ -45108,7 +48473,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45134,7 +48504,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1664",
               "Data": "2025-04-01"
           }
@@ -45156,7 +48528,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "373",
+      "Stts": "",
+      "Lin": "373",
       "Cust": [
           {
               "Id": "",
@@ -45168,7 +48541,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45194,7 +48572,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1530",
               "Data": "2025-04-01"
           }
@@ -45228,7 +48608,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "374",
+      "Stts": "",
+      "Lin": "374",
       "Cust": [
           {
               "Id": "",
@@ -45240,7 +48621,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45266,7 +48652,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1682,
               "Data": "2025-04-01"
           },
@@ -45286,7 +48674,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1682,
               "Data": "2025-04-01"
           }
@@ -45308,7 +48698,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "Custo R$ 25,00",
-      "Stts":"","Lin": "375",
+      "Stts": "",
+      "Lin": "375",
       "Cust": [
           {
               "Id": "",
@@ -45320,7 +48711,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45334,7 +48730,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "376",
+      "Stts": "",
+      "Lin": "376",
       "Cust": [
           {
               "Id": "",
@@ -45346,7 +48743,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "0"
   },
@@ -45372,7 +48774,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1684,
               "Data": "2025-04-02"
           }
@@ -45394,7 +48798,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "377",
+      "Stts": "",
+      "Lin": "377",
       "Cust": [
           {
               "Id": "",
@@ -45406,7 +48811,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45432,7 +48842,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1685,
               "Data": "2025-04-01"
           }
@@ -45454,7 +48866,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "374.5",
+      "Stts": "",
+      "Lin": "374.5",
       "Cust": [
           {
               "Id": "",
@@ -45466,7 +48879,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45492,7 +48910,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1530",
               "Data": "2025-04-02"
           }
@@ -45514,7 +48934,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "379",
+      "Stts": "",
+      "Lin": "379",
       "Cust": [
           {
               "Id": "",
@@ -45526,7 +48947,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45549,10 +48975,12 @@ const NovoJson = [
               "OK": "",
               "Entregue": "",
               "DataEntg": "",
-              "Coment": "",
+              "Coment": "(pagou os 20 dia 04/04/2025)",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1680",
               "Data": "2025-04-02"
           },
@@ -45569,10 +48997,12 @@ const NovoJson = [
               "OK": "",
               "Entregue": "",
               "DataEntg": "",
-              "Coment": "",
+              "Coment": "r$ 7",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1680",
               "Data": "2025-04-02"
           }
@@ -45594,7 +49024,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "380",
+      "Stts": "",
+      "Lin": "380",
       "Cust": [
           {
               "Id": "",
@@ -45606,7 +49037,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45632,7 +49068,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1686,
               "Data": "2025-04-02"
           }
@@ -45654,7 +49092,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "381",
+      "Stts": "",
+      "Lin": "381",
       "Cust": [
           {
               "Id": "",
@@ -45666,7 +49105,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45692,7 +49136,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1687,
               "Data": "2025-04-02"
           }
@@ -45714,7 +49160,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "382",
+      "Stts": "",
+      "Lin": "382",
       "Cust": [
           {
               "Id": "",
@@ -45726,7 +49173,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45752,7 +49204,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": "1671",
               "Data": "2025-04-02"
           }
@@ -45761,7 +49215,8 @@ const NovoJson = [
       "Pgmt": [],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "383",
+      "Stts": "",
+      "Lin": "383",
       "Cust": [
           {
               "Id": "",
@@ -45773,7 +49228,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45799,7 +49259,9 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
               "Clnt": 1688,
               "Data": "2025-04-02"
           }
@@ -45821,7 +49283,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "384",
+      "Stts": "",
+      "Lin": "384",
       "Cust": [
           {
               "Id": "",
@@ -45833,7 +49296,12 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
@@ -45841,7 +49309,7 @@ const NovoJson = [
       "Id": "430",
       "Rg": "05/04/2025 11:33:26",
       "Data": "2025-04-02",
-      "Clnt": "1689",
+      "Clnt": 1753,
       "Serv": [
           {
               "Id": "430_1",
@@ -45859,8 +49327,10 @@ const NovoJson = [
               "Coment": "",
               "Lixo": "",
               "SVG": "",
-              "OS":"","Uber":"","Grad": "",
-              "Clnt": 1689,
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1753,
               "Data": "2025-04-02"
           }
       ],
@@ -45869,7 +49339,7 @@ const NovoJson = [
           {
               "Id": 424,
               "Data": "",
-              "Clnt": 1689,
+              "Clnt": 1753,
               "Valr": "80",
               "Form": "Pix",
               "Desc": "",
@@ -45881,7 +49351,8 @@ const NovoJson = [
       ],
       "Lixo": "",
       "Lcro": "",
-      "Stts":"","Lin": "385",
+      "Stts": "",
+      "Lin": "385",
       "Cust": [
           {
               "Id": "",
@@ -45893,38 +49364,6586 @@ const NovoJson = [
               "Pcnt": ""
           }
       ],
-      "Finc": [{"Valr":"","Cust":"","Lcro":""}
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
       ],
       "OFF": "1"
   },
+
   {
-      "Id": "431",
-      "Rg": "08/04/2025 17:46:37",
-      "Data": "-",
-      "Clnt": "0",
-      "Serv": [
-          {
-              "Id": "431_1",
-              "Serv": "",
-              "Desc": "",
-              "Calc": [
-                  "-|-|-|0"
-              ],
-              "Arte": "",
-              "Valr": "",
-              "Forn": "",
-              "OK": "",
-              "Entregue": "",
-              "DataEntg": "",
-              "Coment": "",
-              "Lixo": "",
-              "SVG": "",
-              "OS":"","Uber":"","Grad": "",
-              "Clnt": 0,
-              "Data": "-"
-          }
-      ],
-      "Valr": "",
-      "Pgmt": []
-  }
+    "Id": "431",
+    "Rg": "",
+    "Data": "2025-04-02",
+    "Clnt": 1786,
+    "Serv": [
+        {
+            "Id": "431_1",
+            "Serv": "",
+            "Desc": "1 - Recorte (Preto) - 0,03 x 0,014",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1786,
+            "Data": "2025-04-02"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "425",
+            "Data": "",
+            "Clnt": 1786,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "386",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},
+{
+    "Id": "432",
+    "Rg": "",
+    "Data": "2025-04-02",
+    "Clnt": 1785,
+    "Serv": [
+        {
+            "Id": "432_1",
+            "Serv": "",
+            "Desc": "Arte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "100",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1785,
+            "Data": "2025-04-02"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "426",
+            "Data": "",
+            "Clnt": 1785,
+            "Valr": "100",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "387",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "433",
+    "Rg": "",
+    "Data": "2025-04-02",
+    "Clnt": 1784,
+    "Serv": [
+        {
+            "Id": "433_1",
+            "Serv": "",
+            "Desc": "Arte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1784,
+            "Data": "2025-04-02"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "427",
+            "Data": "",
+            "Clnt": 1784,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "388",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "434",
+    "Rg": "",
+    "Data": "2025-04-03",
+    "Clnt": 1783,
+    "Serv": [
+        {
+            "Id": "434_1",
+            "Serv": "",
+            "Desc": "cartela da barbie + Figurinha (25+2) (analisar a coversa)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "27",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1783,
+            "Data": "2025-04-03"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "428",
+            "Data": "",
+            "Clnt": 1783,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "389",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "435",
+    "Rg": "",
+    "Data": "2025-04-03",
+    "Clnt": 1782,
+    "Serv": [
+        {
+            "Id": "435_1",
+            "Serv": "",
+            "Desc": "45x15",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1782,
+            "Data": "2025-04-03"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "429",
+            "Data": "",
+            "Clnt": 1782,
+            "Valr": "30",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "390",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "436",
+    "Rg": "",
+    "Data": "2025-04-03",
+    "Clnt": 1781,
+    "Serv": [
+        {
+            "Id": "436_1",
+            "Serv": "",
+            "Desc": "Cão Covaerde 30x20 | 2 Cartela | Papalegua 40 x 20 (10+5+5+10)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1781,
+            "Data": "2025-04-03"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "430",
+            "Data": "",
+            "Clnt": 1781,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "391",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "437",
+    "Rg": "",
+    "Data": "2025-04-03",
+    "Clnt": 1780,
+    "Serv": [
+        {
+            "Id": "437_1",
+            "Serv": "",
+            "Desc": "Adesivo Redondo (Cuidado)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1780,
+            "Data": "2025-04-03"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "431",
+            "Data": "",
+            "Clnt": 1780,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "392",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "438",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1779,
+    "Serv": [
+        {
+            "Id": "438_1",
+            "Serv": "",
+            "Desc": "Recorte Santa e nome Tassia",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "15",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1779,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "432",
+            "Data": "",
+            "Clnt": 1779,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "393",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "439",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1778,
+    "Serv": [
+        {
+            "Id": "439_1",
+            "Serv": "",
+            "Desc": "Camisa m Curta",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "50",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1778,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "433",
+            "Data": "",
+            "Clnt": 1778,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "394",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "440",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1777,
+    "Serv": [
+        {
+            "Id": "440_1",
+            "Serv": "",
+            "Desc": "3 Adesivo A4",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1777,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "434",
+            "Data": "2025-04-04",
+            "Clnt": 1777,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "395",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "441",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1776,
+    "Serv": [
+        {
+            "Id": "441_1",
+            "Serv": "",
+            "Desc": "5x6 | 7x7 (10 de Cada)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "15",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1776,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "435",
+            "Data": "",
+            "Clnt": 1776,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "396",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "442",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1775,
+    "Serv": [
+        {
+            "Id": "442_1",
+            "Serv": "",
+            "Desc": "caloi",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1775,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "436",
+            "Data": "",
+            "Clnt": 1775,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "397",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "443",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1774,
+    "Serv": [
+        {
+            "Id": "443_1",
+            "Serv": "",
+            "Desc": "Camisa M (Cachorro)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "50",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1774,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "437",
+            "Data": "2025-04-04",
+            "Clnt": 1774,
+            "Valr": "50",
+            "Form": "Pix",
+            "Desc": "Pix de Maya",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "398",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "444",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1773,
+    "Serv": [
+        {
+            "Id": "444_1",
+            "Serv": "",
+            "Desc": "zero",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "240",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1773,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "438",
+            "Data": "",
+            "Clnt": 1773,
+            "Valr": "120",
+            "Form": "Pix",
+            "Desc": "Pix de 180 tudo",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "399",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "445",
+    "Rg": "",
+    "Data": "2025-04-04",
+    "Clnt": 1772,
+    "Serv": [
+        {
+            "Id": "445_1",
+            "Serv": "",
+            "Desc": "Cartão de Visita",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "58",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1772,
+            "Data": "2025-04-04"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "439",
+            "Data": "",
+            "Clnt": 1772,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "Pix de 180 tudo",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "400",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "446",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1771,
+    "Serv": [
+        {
+            "Id": "446_1",
+            "Serv": "",
+            "Desc": "100 etiqueta 8 x 4",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "35",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1771,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "440",
+            "Data": "",
+            "Clnt": 1771,
+            "Valr": "35",
+            "Form": "Pix",
+            "Desc": "Pix de 180 tudo",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "401",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "447",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1770,
+    "Serv": [
+        {
+            "Id": "447_1",
+            "Serv": "",
+            "Desc": "2 - Placa de PVC A4 2 pvc A3",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1770,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "441",
+            "Data": "",
+            "Clnt": 1770,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "Pix de 50",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "402",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "448",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1769,
+    "Serv": [
+        {
+            "Id": "448_1",
+            "Serv": "",
+            "Desc": "Adesivo 40 x 15",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "25",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1769,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "442",
+            "Data": "",
+            "Clnt": 1769,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "403",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "449",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1768,
+    "Serv": [
+        {
+            "Id": "449_1",
+            "Serv": "",
+            "Desc": "Caloi Denovo",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1768,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "443",
+            "Data": "",
+            "Clnt": 1768,
+            "Valr": "10",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "404",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "450",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1767,
+    "Serv": [
+        {
+            "Id": "450_1",
+            "Serv": "",
+            "Desc": "Fiorino",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "52",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1767,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "444",
+            "Data": "",
+            "Clnt": 1767,
+            "Valr": "2",
+            "Form": "Av",
+            "Desc": " | 50Pix (Pagou o Antigo)",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "405",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "451",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1766,
+    "Serv": [
+        {
+            "Id": "451_1",
+            "Serv": "",
+            "Desc": "Figurinhas (Falta @ )",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Promoção (Cartela)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1766,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "445",
+            "Data": "",
+            "Clnt": 1766,
+            "Valr": "30",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "406",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "452",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1765,
+    "Serv": [
+        {
+            "Id": "452_1",
+            "Serv": "",
+            "Desc": "Figurinhas",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "41",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Promoção (Cartela)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1765,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "446",
+            "Data": "",
+            "Clnt": 1765,
+            "Valr": "41",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "407",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "453",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1764,
+    "Serv": [
+        {
+            "Id": "453_1",
+            "Serv": "",
+            "Desc": "20 Camisas Regata + Arte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "620",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1764,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "447",
+            "Data": "",
+            "Clnt": 1764,
+            "Valr": "150",
+            "Form": "Pix ",
+            "Desc": "| 470Card",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "408",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "454",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1763,
+    "Serv": [
+        {
+            "Id": "454_1",
+            "Serv": "",
+            "Desc": "1 - Quadro ( melhorarar Imagem ) 75 x 50",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "80",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Promoção (2 Cartela)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1763,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "448",
+            "Data": "",
+            "Clnt": 1763,
+            "Valr": "80",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "409",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "455",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1762,
+    "Serv": [
+        {
+            "Id": "455_1",
+            "Serv": "",
+            "Desc": "1 - Cartela / Tampa tanque / figurinha",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "12",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1762,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "449",
+            "Data": "",
+            "Clnt": 1762,
+            "Valr": "12",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "410",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "456",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1761,
+    "Serv": [
+        {
+            "Id": "456_1",
+            "Serv": "",
+            "Desc": "Cartão de Visita / Imã de Geladeira",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "96",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Pago (10/04/2025)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1761,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "450",
+            "Data": "",
+            "Clnt": 1761,
+            "Valr": "96",
+            "Form": "Pix",
+            "Desc": "158 Pix Geral",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "411",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "457",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1760,
+    "Serv": [
+        {
+            "Id": "457_1",
+            "Serv": "",
+            "Desc": "Varyus Metros de Adesivo",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "1500",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Serviço por Fora!",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1760,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "451",
+            "Data": "",
+            "Clnt": 1760,
+            "Valr": "1000",
+            "Form": "Pix",
+            "Desc": " | 500Pix",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "412",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "458",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1759,
+    "Serv": [
+        {
+            "Id": "458_1",
+            "Serv": "",
+            "Desc": "Vendas || OsascorteHolog+Aranha+Figs",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "17",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "--- (veio pela Promoção)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1759,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "452",
+            "Data": "",
+            "Clnt": 1759,
+            "Valr": "17",
+            "Form": "Av",
+            "Desc": "Pagou os 8 q devia",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "413",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "459",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1758,
+    "Serv": [
+        {
+            "Id": "459_1",
+            "Serv": "",
+            "Desc": "Cartelas e Figurinha",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "--- (veio pela Promoção)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1758,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "453",
+            "Data": "",
+            "Clnt": 1758,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "414",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "460",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1757,
+    "Serv": [
+        {
+            "Id": "460_1",
+            "Serv": "",
+            "Desc": "Figurinhas e Quadros",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "Promoção (Cartela)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1757,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "454",
+            "Data": "",
+            "Clnt": 1757,
+            "Valr": "30",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "415",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "461",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1756,
+    "Serv": [
+        {
+            "Id": "461_1",
+            "Serv": "",
+            "Desc": "Adesivo Recorte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1756,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "455",
+            "Data": "",
+            "Clnt": 1756,
+            "Valr": "5",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "416",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "462",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1755,
+    "Serv": [
+        {
+            "Id": "462_1",
+            "Serv": "",
+            "Desc": "3 Quadros",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "--- (veio pela Promoção)",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1755,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "456",
+            "Data": "",
+            "Clnt": 1755,
+            "Valr": "10",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "417",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "463",
+    "Rg": "",
+    "Data": "2025-04-07",
+    "Clnt": 1754,
+    "Serv": [
+        {
+            "Id": "463_1",
+            "Serv": "",
+            "Desc": "Popye Picapal aranha, cartela",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "35",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1754,
+            "Data": "2025-04-07"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "457",
+            "Data": "",
+            "Clnt": 1754,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "418",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "464",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1753,
+    "Serv": [
+        {
+            "Id": "464_1",
+            "Serv": "",
+            "Desc": "1 - Parapodio ( Futebol Azul )",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1753,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "458",
+            "Data": "",
+            "Clnt": 1753,
+            "Valr": "40",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "419",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "465",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1752,
+    "Serv": [
+        {
+            "Id": "465_1",
+            "Serv": "",
+            "Desc": "1 - Camisa ( P) ",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1752,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "459",
+            "Data": "",
+            "Clnt": 1752,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "420",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "466",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1751,
+    "Serv": [
+        {
+            "Id": "466_1",
+            "Serv": "",
+            "Desc": "200 - Cartão de Visita",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1751,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "460",
+            "Data": "",
+            "Clnt": 1751,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "421",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "467",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1750,
+    "Serv": [
+        {
+            "Id": "467_1",
+            "Serv": "",
+            "Desc": "2 - Recortes",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "6",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1750,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "461",
+            "Data": "",
+            "Clnt": 1750,
+            "Valr": "6",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "422",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "468",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1749,
+    "Serv": [
+        {
+            "Id": "468_1",
+            "Serv": "",
+            "Desc": "1 - Banner ( 0,70 x 0,50 )",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "35",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1749,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "462",
+            "Data": "",
+            "Clnt": 1749,
+            "Valr": "35",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "423",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "469",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1748,
+    "Serv": [
+        {
+            "Id": "469_1",
+            "Serv": "",
+            "Desc": "10 - Bonecos / COI / 1 - Faixa",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "1170",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1748,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "463",
+            "Data": "",
+            "Clnt": 1748,
+            "Valr": "630",
+            "Form": "Pix ",
+            "Desc": "| 540Av",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "424",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "470",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1747,
+    "Serv": [
+        {
+            "Id": "470_1",
+            "Serv": "",
+            "Desc": "1 - Camisa G",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "50",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1747,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "464",
+            "Data": "",
+            "Clnt": 1747,
+            "Valr": "20",
+            "Form": "Pix ",
+            "Desc": "| 30Pix",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "425",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "471",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1746,
+    "Serv": [
+        {
+            "Id": "471_1",
+            "Serv": "",
+            "Desc": "1 Banner 1,15 x 0,90 | 100 Adesivo 5x5 | 4 ímã (56) (29) (100)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "190",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1746,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "465",
+            "Data": "",
+            "Clnt": 1746,
+            "Valr": "95",
+            "Form": "Av",
+            "Desc": " | 95Av",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "426",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "472",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1745,
+    "Serv": [
+        {
+            "Id": "472_1",
+            "Serv": "",
+            "Desc": "Varias figurinhas",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "100",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1745,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "466",
+            "Data": "",
+            "Clnt": 1745,
+            "Valr": "100",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "427",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "473",
+    "Rg": "",
+    "Data": "2025-04-08",
+    "Clnt": 1744,
+    "Serv": [
+        {
+            "Id": "473_1",
+            "Serv": "",
+            "Desc": "100 de cada",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "34",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1744,
+            "Data": "2025-04-08"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "467",
+            "Data": "",
+            "Clnt": 1744,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "428",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "474",
+    "Rg": "",
+    "Data": "2025-04-09",
+    "Clnt": 1743,
+    "Serv": [
+        {
+            "Id": "474_1",
+            "Serv": "",
+            "Desc": "Lona sem acabamento 60x60",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1743,
+            "Data": "2025-04-09"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "468",
+            "Data": "",
+            "Clnt": 1743,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "429",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "475",
+    "Rg": "",
+    "Data": "2025-04-09",
+    "Clnt": 1742,
+    "Serv": [
+        {
+            "Id": "475_1",
+            "Serv": "",
+            "Desc": "Recorte olografica",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "15",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1742,
+            "Data": "2025-04-09"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "469",
+            "Data": "",
+            "Clnt": 1742,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "430",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "476",
+    "Rg": "",
+    "Data": "2025-04-09",
+    "Clnt": 1741,
+    "Serv": [
+        {
+            "Id": "476_1",
+            "Serv": "",
+            "Desc": "impressão e recorte adesivo (100 etiqueta 12,5 x 4,5) (25 Etiqueta 5x3,5 4 vezes)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "34",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1741,
+            "Data": "2025-04-09"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "470",
+            "Data": "",
+            "Clnt": 1741,
+            "Valr": "34",
+            "Form": "Pix",
+            "Desc": " | 26Pix",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "431",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "477",
+    "Rg": "",
+    "Data": "2025-04-09",
+    "Clnt": 1740,
+    "Serv": [
+        {
+            "Id": "477_1",
+            "Serv": "",
+            "Desc": "1 - Par de Azinha ( Branco )",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1740,
+            "Data": "2025-04-09"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "471",
+            "Data": "",
+            "Clnt": 1740,
+            "Valr": "10",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "432",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "478",
+    "Rg": "",
+    "Data": "2025-04-09",
+    "Clnt": 1739,
+    "Serv": [
+        {
+            "Id": "478_1",
+            "Serv": "",
+            "Desc": "1 - Adesivo ",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1739,
+            "Data": "2025-04-09"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "472",
+            "Data": "",
+            "Clnt": 1739,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "433",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "479",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1738,
+    "Serv": [
+        {
+            "Id": "479_1",
+            "Serv": "",
+            "Desc": "100 Etiquetas",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "25",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1738,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "473",
+            "Data": "",
+            "Clnt": 1738,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "434",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "480",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1737,
+    "Serv": [
+        {
+            "Id": "480_1",
+            "Serv": "",
+            "Desc": "100 Etiqueta (PVC1mm) | 5 Camsia (4-M | 1-G) mLonga",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "355",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1737,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "474",
+            "Data": "2025-05-09",
+            "Clnt": 1737,
+            "Valr": "177.50",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "435",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "481",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1736,
+    "Serv": [
+        {
+            "Id": "481_1",
+            "Serv": "",
+            "Desc": "11 Quadros",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "132",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1736,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "475",
+            "Data": "",
+            "Clnt": 1736,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "436",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "482",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1735,
+    "Serv": [
+        {
+            "Id": "482_1",
+            "Serv": "",
+            "Desc": "2 Placa Sinalização",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1735,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "476",
+            "Data": "",
+            "Clnt": 1735,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "437",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "483",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1734,
+    "Serv": [
+        {
+            "Id": "483_1",
+            "Serv": "",
+            "Desc": "Recorte @",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "?",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1734,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "477",
+            "Data": "",
+            "Clnt": 1734,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "438",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "484",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1733,
+    "Serv": [
+        {
+            "Id": "484_1",
+            "Serv": "",
+            "Desc": "Faixa - 2026 Pai chegou",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "62",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1733,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "478",
+            "Data": "",
+            "Clnt": 1733,
+            "Valr": "62",
+            "Form": "Pix",
+            "Desc": "(158 Pix Geral) Pago (10/04/2025)",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "439",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "485",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1732,
+    "Serv": [
+        {
+            "Id": "485_1",
+            "Serv": "",
+            "Desc": "Plotagem Moldura vidro",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1732,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "479",
+            "Data": "",
+            "Clnt": 1732,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": "Pix de 55",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "440",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "486",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1731,
+    "Serv": [
+        {
+            "Id": "486_1",
+            "Serv": "",
+            "Desc": "Cartela",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1731,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "480",
+            "Data": "",
+            "Clnt": 1731,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "441",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "487",
+    "Rg": "",
+    "Data": "2025-04-10",
+    "Clnt": 1730,
+    "Serv": [
+        {
+            "Id": "487_1",
+            "Serv": "",
+            "Desc": "2 ímã 60 x 30",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "90",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1730,
+            "Data": "2025-04-10"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "481",
+            "Data": "",
+            "Clnt": 1730,
+            "Valr": "50",
+            "Form": "Pix ",
+            "Desc": "| 40Pix (PG dia 10) (PG dia 11)",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "442",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "488",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1729,
+    "Serv": [
+        {
+            "Id": "488_1",
+            "Serv": "",
+            "Desc": "4 Camisas",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "160",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1729,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "482",
+            "Data": "",
+            "Clnt": 1729,
+            "Valr": "160",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "443",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "489",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1728,
+    "Serv": [
+        {
+            "Id": "489_1",
+            "Serv": "",
+            "Desc": "1 - Arte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "25",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1728,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "483",
+            "Data": "",
+            "Clnt": 1728,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "444",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "490",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1727,
+    "Serv": [
+        {
+            "Id": "490_1",
+            "Serv": "",
+            "Desc": "2 - Recortes",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "7",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1727,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "484",
+            "Data": "2025-04-11",
+            "Clnt": 1727,
+            "Valr": "7",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "445",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "491",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1726,
+    "Serv": [
+        {
+            "Id": "491_1",
+            "Serv": "",
+            "Desc": "Figurinhasss",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1726,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "485",
+            "Data": "2025-04-11",
+            "Clnt": 1726,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "446",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "492",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1725,
+    "Serv": [
+        {
+            "Id": "492_1",
+            "Serv": "",
+            "Desc": "2 @ (Preto e Branco)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "8",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1725,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "486",
+            "Data": "",
+            "Clnt": 1725,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "447",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "493",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1724,
+    "Serv": [
+        {
+            "Id": "493_1",
+            "Serv": "",
+            "Desc": "2 par de asa olográfico (12x9)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1724,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "487",
+            "Data": "",
+            "Clnt": 1724,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "448",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "494",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1723,
+    "Serv": [
+        {
+            "Id": "494_1",
+            "Serv": "",
+            "Desc": "Recorte Pop100",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1723,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "488",
+            "Data": "",
+            "Clnt": 1723,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": " | 30Card  - (2° Conferir)",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "449",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "495",
+    "Rg": "",
+    "Data": "2025-04-11",
+    "Clnt": 1722,
+    "Serv": [
+        {
+            "Id": "495_1",
+            "Serv": "",
+            "Desc": "2 Kit - N1 Beach (Prata com Rosa, e Preto com Prata)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1722,
+            "Data": "2025-04-11"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "489",
+            "Data": "",
+            "Clnt": 1722,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "450",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "496",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1721,
+    "Serv": [
+        {
+            "Id": "496_1",
+            "Serv": "",
+            "Desc": "2 Faixas 0,80 x 0,50",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "70",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1721,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "490",
+            "Data": "",
+            "Clnt": 1721,
+            "Valr": "70",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "451",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "497",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1720,
+    "Serv": [
+        {
+            "Id": "497_1",
+            "Serv": "",
+            "Desc": "Banner VENDE-SE",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "70",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1720,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "491",
+            "Data": "",
+            "Clnt": 1720,
+            "Valr": "70",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "452",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "498",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1719,
+    "Serv": [
+        {
+            "Id": "498_1",
+            "Serv": "",
+            "Desc": "Adesivo Santa 90x90 (Uber A)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "50",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1719,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "492",
+            "Data": "",
+            "Clnt": 1719,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": " | 25Pix - 2°Pix COSME FRANCISCO XAVIER",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "453",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "499",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1718,
+    "Serv": [
+        {
+            "Id": "499_1",
+            "Serv": "",
+            "Desc": "camisa dele q ja tava na fita",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1718,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "493",
+            "Data": "",
+            "Clnt": 1718,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "454",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "500",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1717,
+    "Serv": [
+        {
+            "Id": "500_1",
+            "Serv": "",
+            "Desc": "1 - Cartela / tampa de tanque / 1 - Adesivo",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "14",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1717,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "494",
+            "Data": "",
+            "Clnt": 1717,
+            "Valr": "14",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "455",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "501",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1716,
+    "Serv": [
+        {
+            "Id": "501_1",
+            "Serv": "",
+            "Desc": "Pedaço de Vinil Preto",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1716,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "495",
+            "Data": "",
+            "Clnt": 1716,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "456",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "502",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1715,
+    "Serv": [
+        {
+            "Id": "502_1",
+            "Serv": "",
+            "Desc": "100 Etiquetas 4x4 (Uber A)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "25",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1715,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "496",
+            "Data": "",
+            "Clnt": 1715,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": "Laura Rodrigues Da Silva",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "457",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "503",
+    "Rg": "",
+    "Data": "2025-04-14",
+    "Clnt": 1714,
+    "Serv": [
+        {
+            "Id": "503_1",
+            "Serv": "",
+            "Desc": "100 Etiquetas 4x4 (Uber A)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "25",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1714,
+            "Data": "2025-04-14"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "497",
+            "Data": "",
+            "Clnt": 1714,
+            "Valr": "25",
+            "Form": "Pix",
+            "Desc": "Ana Paula Ribeiro De Moraes Jordao",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "458",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "504",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1713,
+    "Serv": [
+        {
+            "Id": "504_1",
+            "Serv": "",
+            "Desc": "Recorte Tam A4",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1713,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "498",
+            "Data": "",
+            "Clnt": 1713,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "Marcio Alves Santos",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "459",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "505",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1712,
+    "Serv": [
+        {
+            "Id": "505_1",
+            "Serv": "",
+            "Desc": "Nomes",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "8",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1712,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "499",
+            "Data": "",
+            "Clnt": 1712,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "460",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "506",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1711,
+    "Serv": [
+        {
+            "Id": "506_1",
+            "Serv": "",
+            "Desc": "Plaquinha A4",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1711,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "500",
+            "Data": "",
+            "Clnt": 1711,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "Laudilene Custodio Da Silva",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "461",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "507",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1710,
+    "Serv": [
+        {
+            "Id": "507_1",
+            "Serv": "",
+            "Desc": "2 - Cartela ",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1710,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "501",
+            "Data": "",
+            "Clnt": 1710,
+            "Valr": "10",
+            "Form": "Av ",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "462",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "508",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1709,
+    "Serv": [
+        {
+            "Id": "508_1",
+            "Serv": "",
+            "Desc": "2 - Camisetas Regata (M)",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "80",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1709,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "502",
+            "Data": "",
+            "Clnt": 1709,
+            "Valr": "40",
+            "Form": "Pix",
+            "Desc": "Leandro Bernardo",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "463",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "509",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1708,
+    "Serv": [
+        {
+            "Id": "509_1",
+            "Serv": "",
+            "Desc": "Arte (Vetorização) da igreja",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1708,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "503",
+            "Data": "",
+            "Clnt": 1708,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "Nordeste Grafica",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "464",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "510",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1707,
+    "Serv": [
+        {
+            "Id": "510_1",
+            "Serv": "",
+            "Desc": "1 - Banner ",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1707,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "504",
+            "Data": "",
+            "Clnt": 1707,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "465",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "511",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1706,
+    "Serv": [
+        {
+            "Id": "511_1",
+            "Serv": "",
+            "Desc": "1- Crachá PS",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1706,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "505",
+            "Data": "",
+            "Clnt": 1706,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "466",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "512",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1705,
+    "Serv": [
+        {
+            "Id": "512_1",
+            "Serv": "",
+            "Desc": "4 Carteira",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "28",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1705,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "506",
+            "Data": "",
+            "Clnt": 1705,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "467",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "513",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1704,
+    "Serv": [
+        {
+            "Id": "513_1",
+            "Serv": "",
+            "Desc": "30 Etiqueta 6x6",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1704,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "507",
+            "Data": "",
+            "Clnt": 1704,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "468",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "514",
+    "Rg": "",
+    "Data": "2025-04-15",
+    "Clnt": 1703,
+    "Serv": [
+        {
+            "Id": "514_1",
+            "Serv": "",
+            "Desc": "bolinhas papel adesivo",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1703,
+            "Data": "2025-04-15"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "508",
+            "Data": "",
+            "Clnt": 1703,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "469",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "515",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1702,
+    "Serv": [
+        {
+            "Id": "515_1",
+            "Serv": "",
+            "Desc": "Arte Cardapio",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "50",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1702,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "509",
+            "Data": "",
+            "Clnt": 1702,
+            "Valr": "50",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "470",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "516",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1701,
+    "Serv": [
+        {
+            "Id": "516_1",
+            "Serv": "",
+            "Desc": "4 - Cartela ",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "15",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1701,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "510",
+            "Data": "",
+            "Clnt": 1701,
+            "Valr": "15",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "471",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "517",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1700,
+    "Serv": [
+        {
+            "Id": "517_1",
+            "Serv": "",
+            "Desc": "1 - Cartela",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1700,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "511",
+            "Data": "",
+            "Clnt": 1700,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "472",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "518",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1699,
+    "Serv": [
+        {
+            "Id": "518_1",
+            "Serv": "",
+            "Desc": "1 - Cartela",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1699,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "512",
+            "Data": "",
+            "Clnt": 1699,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "473",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "519",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1698,
+    "Serv": [
+        {
+            "Id": "519_1",
+            "Serv": "",
+            "Desc": "1 - Recorte Monaco",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "10",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1698,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "513",
+            "Data": "",
+            "Clnt": 1698,
+            "Valr": "10",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "474",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "520",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1697,
+    "Serv": [
+        {
+            "Id": "520_1",
+            "Serv": "",
+            "Desc": "1 Adesivo 70 x 100 | 1 lona  0,54 x 0,27",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "70",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1697,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "514",
+            "Data": "",
+            "Clnt": 1697,
+            "Valr": "70",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "475",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "521",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1696,
+    "Serv": [
+        {
+            "Id": "521_1",
+            "Serv": "",
+            "Desc": "Camisa do Grau Coiote",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "70",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1696,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "515",
+            "Data": "",
+            "Clnt": 1696,
+            "Valr": "50",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "476",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "522",
+    "Rg": "",
+    "Data": "2025-04-16",
+    "Clnt": 1695,
+    "Serv": [
+        {
+            "Id": "522_1",
+            "Serv": "",
+            "Desc": "Etiquetas Acentos",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "20",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1695,
+            "Data": "2025-04-16"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "516",
+            "Data": "",
+            "Clnt": 1695,
+            "Valr": "20",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "477",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "523",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1694,
+    "Serv": [
+        {
+            "Id": "523_1",
+            "Serv": "",
+            "Desc": "Parapodio PEPA",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "false",
+            "Entregue": "false",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1694,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "517",
+            "Data": "",
+            "Clnt": 1694,
+            "Valr": "",
+            "Form": "",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "478",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "524",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1693,
+    "Serv": [
+        {
+            "Id": "524_1",
+            "Serv": "",
+            "Desc": "Artes",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "30",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1693,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "518",
+            "Data": "",
+            "Clnt": 1693,
+            "Valr": "30",
+            "Form": "Pix",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "479",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "525",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1692,
+    "Serv": [
+        {
+            "Id": "525_1",
+            "Serv": "",
+            "Desc": "tampa do tanque",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1692,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "519",
+            "Data": "",
+            "Clnt": 1692,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "480",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "526",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1691,
+    "Serv": [
+        {
+            "Id": "526_1",
+            "Serv": "",
+            "Desc": "1 - Tampa de tanque",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1691,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "520",
+            "Data": "",
+            "Clnt": 1691,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "481",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "527",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1690,
+    "Serv": [
+        {
+            "Id": "527_1",
+            "Serv": "",
+            "Desc": "1 - Cartela",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "5",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1690,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "521",
+            "Data": "",
+            "Clnt": 1690,
+            "Valr": "5",
+            "Form": "Av",
+            "Desc": "",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "482",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+},{
+    "Id": "528",
+    "Rg": "",
+    "Data": "2025-04-17",
+    "Clnt": 1689,
+    "Serv": [
+        {
+            "Id": "528_1",
+            "Serv": "",
+            "Desc": "Arte",
+            "Calc": [
+                "-|-|-|0"
+            ],
+            "Arte": "",
+            "Valr": "40",
+            "Forn": "",
+            "OK": "true",
+            "Entregue": "true",
+            "DataEntg": "",
+            "Coment": "",
+            "Lixo": "",
+            "SVG": "",
+            "OS": "",
+            "Uber": "",
+            "Grad": "",
+            "Clnt": 1689,
+            "Data": "2025-04-17"
+        }
+    ],
+    "Valr": "",
+    "Pgmt": [
+        {
+            "Id": "522",
+            "Data": "",
+            "Clnt": 1689,
+            "Valr": "40",
+            "Form": "Pix",
+            "Desc": "comentario Pix",
+            "Stts": "",
+            "Link": "",
+            "Lixo": "",
+            "Mpag": ""
+        }
+    ],
+    "Lixo": "",
+    "Lcro": "",
+    "Stts": "",
+    "Lin": "483",
+    "Cust": [
+        {
+            "Id": "",
+            "Data": "",
+            "Item": "",
+            "Valr": "",
+            "Forn": "",
+            "Dstn": "",
+            "Pcnt": ""
+        }
+    ],
+    "Finc": [
+        {
+            "Valr": "",
+            "Cust": "",
+            "Lcro": ""
+        }
+    ],
+    "OFF": "1"
+}
+
+
+
+  
 ]
