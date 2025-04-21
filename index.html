@@ -565,7 +565,7 @@
             }
 
             function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-                console.log('Chama')
+                console.log('trunfo')
                 $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                     const tipo = Inn(th)
                     const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
@@ -786,21 +786,27 @@
 
     <script> // AUTO COMPLETE
 
-        function Complete_Forn(){
-            $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{
-                    if(VAL(e)==''){return}
-                    const Forn = $(Rx(['Forn','Slct']),_tr(e))
-                    console.log(VAL(e),'Deveria ter',AllForn[VAL(e)])
-                    $$('option',Forn).forEach(o=>{
-                            Add_N(o)
-                        if(AllForn[VAL(e)].includes(o.value)){
-                            Rmv_N(o)
-                        }
+        function Complete_Forn(){ // depois fazer pegar nas 2 Tabelas
+                    const IN = performance.now()
+                    $$(Rx(['SERV','Serv','Slct']),$('#H_PDDS')).forEach(e=>{
+                            if(VAL(e)==''){return}
+                            const Forn = $(Rx(['Forn','Slct']),_tr(e))
+                            // console.log(VAL(e),'Deveria ter',AllForn[VAL(e)])
+                            if(AllForn[VAL(e)].length==1){
+                                
+                                $('select',Forn).value = AllForn[VAL(e)][0]
+                            }
+                            $$('option',Forn).forEach(o=>{
+                                    Add_N(o)
+                                if(AllForn[VAL(e)].includes(o.value)){
+                                    Rmv_N(o)
+                                }
+                            })
+                        
+                        // Depois q terminar fazer isso atualizar a Const
                     })
-                
-                // Depois q terminar fazer isso atualizar a Const
-            })
-            
+                    const FIM = performance.now()
+                    console.log(`⏱️ Complete_Forn(): ${(FIM-IN).toFixed(2)}ms`)
         }
 
         // pra cada td deixar escrito em data-set=""  o numero da Coluna, e o nome do thead da coluna (serv, pgmt, coment...) isso vai facilitar muito
