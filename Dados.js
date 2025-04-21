@@ -49373,6577 +49373,6668 @@ const NovoJson = [
       ],
       "OFF": "1"
   },
-
   {
-    "Id": "431",
-    "Rg": "",
-    "Data": "2025-04-02",
-    "Clnt": 1786,
-    "Serv": [
-        {
-            "Id": "431_1",
-            "Serv": "",
-            "Desc": "1 - Recorte (Preto) - 0,03 x 0,014",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1786,
-            "Data": "2025-04-02"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "425",
-            "Data": "",
-            "Clnt": 1786,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "386",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},
-{
-    "Id": "432",
-    "Rg": "",
-    "Data": "2025-04-02",
-    "Clnt": 1785,
-    "Serv": [
-        {
-            "Id": "432_1",
-            "Serv": "",
-            "Desc": "Arte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "100",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1785,
-            "Data": "2025-04-02"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "426",
-            "Data": "",
-            "Clnt": 1785,
-            "Valr": "100",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "387",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "433",
-    "Rg": "",
-    "Data": "2025-04-02",
-    "Clnt": 1784,
-    "Serv": [
-        {
-            "Id": "433_1",
-            "Serv": "",
-            "Desc": "Arte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1784,
-            "Data": "2025-04-02"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "427",
-            "Data": "",
-            "Clnt": 1784,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "388",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "434",
-    "Rg": "",
-    "Data": "2025-04-03",
-    "Clnt": 1783,
-    "Serv": [
-        {
-            "Id": "434_1",
-            "Serv": "",
-            "Desc": "cartela da barbie + Figurinha (25+2) (analisar a coversa)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "27",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1783,
-            "Data": "2025-04-03"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "428",
-            "Data": "",
-            "Clnt": 1783,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "389",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "435",
-    "Rg": "",
-    "Data": "2025-04-03",
-    "Clnt": 1782,
-    "Serv": [
-        {
-            "Id": "435_1",
-            "Serv": "",
-            "Desc": "45x15",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1782,
-            "Data": "2025-04-03"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "429",
-            "Data": "",
-            "Clnt": 1782,
-            "Valr": "30",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "390",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "436",
-    "Rg": "",
-    "Data": "2025-04-03",
-    "Clnt": 1781,
-    "Serv": [
-        {
-            "Id": "436_1",
-            "Serv": "",
-            "Desc": "Cão Covaerde 30x20 | 2 Cartela | Papalegua 40 x 20 (10+5+5+10)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1781,
-            "Data": "2025-04-03"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "430",
-            "Data": "",
-            "Clnt": 1781,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "391",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "437",
-    "Rg": "",
-    "Data": "2025-04-03",
-    "Clnt": 1780,
-    "Serv": [
-        {
-            "Id": "437_1",
-            "Serv": "",
-            "Desc": "Adesivo Redondo (Cuidado)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1780,
-            "Data": "2025-04-03"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "431",
-            "Data": "",
-            "Clnt": 1780,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "392",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "438",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1779,
-    "Serv": [
-        {
-            "Id": "438_1",
-            "Serv": "",
-            "Desc": "Recorte Santa e nome Tassia",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "15",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1779,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "432",
-            "Data": "",
-            "Clnt": 1779,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "393",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "439",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1778,
-    "Serv": [
-        {
-            "Id": "439_1",
-            "Serv": "",
-            "Desc": "Camisa m Curta",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "50",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1778,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "433",
-            "Data": "",
-            "Clnt": 1778,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "394",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "440",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1777,
-    "Serv": [
-        {
-            "Id": "440_1",
-            "Serv": "",
-            "Desc": "3 Adesivo A4",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1777,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "434",
-            "Data": "2025-04-04",
-            "Clnt": 1777,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "395",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "441",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1776,
-    "Serv": [
-        {
-            "Id": "441_1",
-            "Serv": "",
-            "Desc": "5x6 | 7x7 (10 de Cada)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "15",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1776,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "435",
-            "Data": "",
-            "Clnt": 1776,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "396",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "442",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1775,
-    "Serv": [
-        {
-            "Id": "442_1",
-            "Serv": "",
-            "Desc": "caloi",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1775,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "436",
-            "Data": "",
-            "Clnt": 1775,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "397",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "443",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1774,
-    "Serv": [
-        {
-            "Id": "443_1",
-            "Serv": "",
-            "Desc": "Camisa M (Cachorro)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "50",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1774,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "437",
-            "Data": "2025-04-04",
-            "Clnt": 1774,
-            "Valr": "50",
-            "Form": "Pix",
-            "Desc": "Pix de Maya",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "398",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "444",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1773,
-    "Serv": [
-        {
-            "Id": "444_1",
-            "Serv": "",
-            "Desc": "zero",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "240",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1773,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "438",
-            "Data": "",
-            "Clnt": 1773,
-            "Valr": "120",
-            "Form": "Pix",
-            "Desc": "Pix de 180 tudo",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "399",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "445",
-    "Rg": "",
-    "Data": "2025-04-04",
-    "Clnt": 1772,
-    "Serv": [
-        {
-            "Id": "445_1",
-            "Serv": "",
-            "Desc": "Cartão de Visita",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "58",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1772,
-            "Data": "2025-04-04"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "439",
-            "Data": "",
-            "Clnt": 1772,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "Pix de 180 tudo",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "400",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "446",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1771,
-    "Serv": [
-        {
-            "Id": "446_1",
-            "Serv": "",
-            "Desc": "100 etiqueta 8 x 4",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "35",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1771,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "440",
-            "Data": "",
-            "Clnt": 1771,
-            "Valr": "35",
-            "Form": "Pix",
-            "Desc": "Pix de 180 tudo",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "401",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "447",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1770,
-    "Serv": [
-        {
-            "Id": "447_1",
-            "Serv": "",
-            "Desc": "2 - Placa de PVC A4 2 pvc A3",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1770,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "441",
-            "Data": "",
-            "Clnt": 1770,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "Pix de 50",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "402",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "448",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1769,
-    "Serv": [
-        {
-            "Id": "448_1",
-            "Serv": "",
-            "Desc": "Adesivo 40 x 15",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "25",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1769,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "442",
-            "Data": "",
-            "Clnt": 1769,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "403",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "449",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1768,
-    "Serv": [
-        {
-            "Id": "449_1",
-            "Serv": "",
-            "Desc": "Caloi Denovo",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1768,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "443",
-            "Data": "",
-            "Clnt": 1768,
-            "Valr": "10",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "404",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "450",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1767,
-    "Serv": [
-        {
-            "Id": "450_1",
-            "Serv": "",
-            "Desc": "Fiorino",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "52",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1767,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "444",
-            "Data": "",
-            "Clnt": 1767,
-            "Valr": "2",
-            "Form": "Av",
-            "Desc": " | 50Pix (Pagou o Antigo)",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "405",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "451",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1766,
-    "Serv": [
-        {
-            "Id": "451_1",
-            "Serv": "",
-            "Desc": "Figurinhas (Falta @ )",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Promoção (Cartela)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1766,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "445",
-            "Data": "",
-            "Clnt": 1766,
-            "Valr": "30",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "406",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "452",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1765,
-    "Serv": [
-        {
-            "Id": "452_1",
-            "Serv": "",
-            "Desc": "Figurinhas",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "41",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Promoção (Cartela)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1765,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "446",
-            "Data": "",
-            "Clnt": 1765,
-            "Valr": "41",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "407",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "453",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1764,
-    "Serv": [
-        {
-            "Id": "453_1",
-            "Serv": "",
-            "Desc": "20 Camisas Regata + Arte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "620",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1764,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "447",
-            "Data": "",
-            "Clnt": 1764,
-            "Valr": "150",
-            "Form": "Pix ",
-            "Desc": "| 470Card",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "408",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "454",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1763,
-    "Serv": [
-        {
-            "Id": "454_1",
-            "Serv": "",
-            "Desc": "1 - Quadro ( melhorarar Imagem ) 75 x 50",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "80",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Promoção (2 Cartela)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1763,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "448",
-            "Data": "",
-            "Clnt": 1763,
-            "Valr": "80",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "409",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "455",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1762,
-    "Serv": [
-        {
-            "Id": "455_1",
-            "Serv": "",
-            "Desc": "1 - Cartela / Tampa tanque / figurinha",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "12",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1762,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "449",
-            "Data": "",
-            "Clnt": 1762,
-            "Valr": "12",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "410",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "456",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1761,
-    "Serv": [
-        {
-            "Id": "456_1",
-            "Serv": "",
-            "Desc": "Cartão de Visita / Imã de Geladeira",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "96",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Pago (10/04/2025)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1761,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "450",
-            "Data": "",
-            "Clnt": 1761,
-            "Valr": "96",
-            "Form": "Pix",
-            "Desc": "158 Pix Geral",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "411",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "457",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1760,
-    "Serv": [
-        {
-            "Id": "457_1",
-            "Serv": "",
-            "Desc": "Varyus Metros de Adesivo",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "1500",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Serviço por Fora!",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1760,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "451",
-            "Data": "",
-            "Clnt": 1760,
-            "Valr": "1000",
-            "Form": "Pix",
-            "Desc": " | 500Pix",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "412",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "458",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1759,
-    "Serv": [
-        {
-            "Id": "458_1",
-            "Serv": "",
-            "Desc": "Vendas || OsascorteHolog+Aranha+Figs",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "17",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "--- (veio pela Promoção)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1759,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "452",
-            "Data": "",
-            "Clnt": 1759,
-            "Valr": "17",
-            "Form": "Av",
-            "Desc": "Pagou os 8 q devia",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "413",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "459",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1758,
-    "Serv": [
-        {
-            "Id": "459_1",
-            "Serv": "",
-            "Desc": "Cartelas e Figurinha",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "--- (veio pela Promoção)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1758,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "453",
-            "Data": "",
-            "Clnt": 1758,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "414",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "460",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1757,
-    "Serv": [
-        {
-            "Id": "460_1",
-            "Serv": "",
-            "Desc": "Figurinhas e Quadros",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "Promoção (Cartela)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1757,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "454",
-            "Data": "",
-            "Clnt": 1757,
-            "Valr": "30",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "415",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "461",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1756,
-    "Serv": [
-        {
-            "Id": "461_1",
-            "Serv": "",
-            "Desc": "Adesivo Recorte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1756,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "455",
-            "Data": "",
-            "Clnt": 1756,
-            "Valr": "5",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "416",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "462",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1755,
-    "Serv": [
-        {
-            "Id": "462_1",
-            "Serv": "",
-            "Desc": "3 Quadros",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "--- (veio pela Promoção)",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1755,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "456",
-            "Data": "",
-            "Clnt": 1755,
-            "Valr": "10",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "417",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "463",
-    "Rg": "",
-    "Data": "2025-04-07",
-    "Clnt": 1754,
-    "Serv": [
-        {
-            "Id": "463_1",
-            "Serv": "",
-            "Desc": "Popye Picapal aranha, cartela",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "35",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1754,
-            "Data": "2025-04-07"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "457",
-            "Data": "",
-            "Clnt": 1754,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "418",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "464",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1753,
-    "Serv": [
-        {
-            "Id": "464_1",
-            "Serv": "",
-            "Desc": "1 - Parapodio ( Futebol Azul )",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1753,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "458",
-            "Data": "",
-            "Clnt": 1753,
-            "Valr": "40",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "419",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "465",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1752,
-    "Serv": [
-        {
-            "Id": "465_1",
-            "Serv": "",
-            "Desc": "1 - Camisa ( P) ",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1752,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "459",
-            "Data": "",
-            "Clnt": 1752,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "420",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "466",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1751,
-    "Serv": [
-        {
-            "Id": "466_1",
-            "Serv": "",
-            "Desc": "200 - Cartão de Visita",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1751,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "460",
-            "Data": "",
-            "Clnt": 1751,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "421",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "467",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1750,
-    "Serv": [
-        {
-            "Id": "467_1",
-            "Serv": "",
-            "Desc": "2 - Recortes",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "6",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1750,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "461",
-            "Data": "",
-            "Clnt": 1750,
-            "Valr": "6",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "422",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "468",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1749,
-    "Serv": [
-        {
-            "Id": "468_1",
-            "Serv": "",
-            "Desc": "1 - Banner ( 0,70 x 0,50 )",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "35",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1749,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "462",
-            "Data": "",
-            "Clnt": 1749,
-            "Valr": "35",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "423",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "469",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1748,
-    "Serv": [
-        {
-            "Id": "469_1",
-            "Serv": "",
-            "Desc": "10 - Bonecos / COI / 1 - Faixa",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "1170",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1748,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "463",
-            "Data": "",
-            "Clnt": 1748,
-            "Valr": "630",
-            "Form": "Pix ",
-            "Desc": "| 540Av",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "424",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "470",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1747,
-    "Serv": [
-        {
-            "Id": "470_1",
-            "Serv": "",
-            "Desc": "1 - Camisa G",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "50",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1747,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "464",
-            "Data": "",
-            "Clnt": 1747,
-            "Valr": "20",
-            "Form": "Pix ",
-            "Desc": "| 30Pix",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "425",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "471",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1746,
-    "Serv": [
-        {
-            "Id": "471_1",
-            "Serv": "",
-            "Desc": "1 Banner 1,15 x 0,90 | 100 Adesivo 5x5 | 4 ímã (56) (29) (100)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "190",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1746,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "465",
-            "Data": "",
-            "Clnt": 1746,
-            "Valr": "95",
-            "Form": "Av",
-            "Desc": " | 95Av",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "426",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "472",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1745,
-    "Serv": [
-        {
-            "Id": "472_1",
-            "Serv": "",
-            "Desc": "Varias figurinhas",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "100",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1745,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "466",
-            "Data": "",
-            "Clnt": 1745,
-            "Valr": "100",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "427",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "473",
-    "Rg": "",
-    "Data": "2025-04-08",
-    "Clnt": 1744,
-    "Serv": [
-        {
-            "Id": "473_1",
-            "Serv": "",
-            "Desc": "100 de cada",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "34",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1744,
-            "Data": "2025-04-08"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "467",
-            "Data": "",
-            "Clnt": 1744,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "428",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "474",
-    "Rg": "",
-    "Data": "2025-04-09",
-    "Clnt": 1743,
-    "Serv": [
-        {
-            "Id": "474_1",
-            "Serv": "",
-            "Desc": "Lona sem acabamento 60x60",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1743,
-            "Data": "2025-04-09"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "468",
-            "Data": "",
-            "Clnt": 1743,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "429",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "475",
-    "Rg": "",
-    "Data": "2025-04-09",
-    "Clnt": 1742,
-    "Serv": [
-        {
-            "Id": "475_1",
-            "Serv": "",
-            "Desc": "Recorte olografica",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "15",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1742,
-            "Data": "2025-04-09"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "469",
-            "Data": "",
-            "Clnt": 1742,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "430",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "476",
-    "Rg": "",
-    "Data": "2025-04-09",
-    "Clnt": 1741,
-    "Serv": [
-        {
-            "Id": "476_1",
-            "Serv": "",
-            "Desc": "impressão e recorte adesivo (100 etiqueta 12,5 x 4,5) (25 Etiqueta 5x3,5 4 vezes)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "34",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1741,
-            "Data": "2025-04-09"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "470",
-            "Data": "",
-            "Clnt": 1741,
-            "Valr": "34",
-            "Form": "Pix",
-            "Desc": " | 26Pix",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "431",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "477",
-    "Rg": "",
-    "Data": "2025-04-09",
-    "Clnt": 1740,
-    "Serv": [
-        {
-            "Id": "477_1",
-            "Serv": "",
-            "Desc": "1 - Par de Azinha ( Branco )",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1740,
-            "Data": "2025-04-09"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "471",
-            "Data": "",
-            "Clnt": 1740,
-            "Valr": "10",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "432",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "478",
-    "Rg": "",
-    "Data": "2025-04-09",
-    "Clnt": 1739,
-    "Serv": [
-        {
-            "Id": "478_1",
-            "Serv": "",
-            "Desc": "1 - Adesivo ",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1739,
-            "Data": "2025-04-09"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "472",
-            "Data": "",
-            "Clnt": 1739,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "433",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "479",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1738,
-    "Serv": [
-        {
-            "Id": "479_1",
-            "Serv": "",
-            "Desc": "100 Etiquetas",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "25",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1738,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "473",
-            "Data": "",
-            "Clnt": 1738,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "434",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "480",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1737,
-    "Serv": [
-        {
-            "Id": "480_1",
-            "Serv": "",
-            "Desc": "100 Etiqueta (PVC1mm) | 5 Camsia (4-M | 1-G) mLonga",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "355",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1737,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "474",
-            "Data": "2025-05-09",
-            "Clnt": 1737,
-            "Valr": "177.50",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "435",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "481",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1736,
-    "Serv": [
-        {
-            "Id": "481_1",
-            "Serv": "",
-            "Desc": "11 Quadros",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "132",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1736,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "475",
-            "Data": "",
-            "Clnt": 1736,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "436",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "482",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1735,
-    "Serv": [
-        {
-            "Id": "482_1",
-            "Serv": "",
-            "Desc": "2 Placa Sinalização",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1735,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "476",
-            "Data": "",
-            "Clnt": 1735,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "437",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "483",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1734,
-    "Serv": [
-        {
-            "Id": "483_1",
-            "Serv": "",
-            "Desc": "Recorte @",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "?",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1734,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "477",
-            "Data": "",
-            "Clnt": 1734,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "438",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "484",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1733,
-    "Serv": [
-        {
-            "Id": "484_1",
-            "Serv": "",
-            "Desc": "Faixa - 2026 Pai chegou",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "62",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1733,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "478",
-            "Data": "",
-            "Clnt": 1733,
-            "Valr": "62",
-            "Form": "Pix",
-            "Desc": "(158 Pix Geral) Pago (10/04/2025)",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "439",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "485",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1732,
-    "Serv": [
-        {
-            "Id": "485_1",
-            "Serv": "",
-            "Desc": "Plotagem Moldura vidro",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1732,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "479",
-            "Data": "",
-            "Clnt": 1732,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": "Pix de 55",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "440",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "486",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1731,
-    "Serv": [
-        {
-            "Id": "486_1",
-            "Serv": "",
-            "Desc": "Cartela",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1731,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "480",
-            "Data": "",
-            "Clnt": 1731,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "441",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "487",
-    "Rg": "",
-    "Data": "2025-04-10",
-    "Clnt": 1730,
-    "Serv": [
-        {
-            "Id": "487_1",
-            "Serv": "",
-            "Desc": "2 ímã 60 x 30",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "90",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1730,
-            "Data": "2025-04-10"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "481",
-            "Data": "",
-            "Clnt": 1730,
-            "Valr": "50",
-            "Form": "Pix ",
-            "Desc": "| 40Pix (PG dia 10) (PG dia 11)",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "442",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "488",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1729,
-    "Serv": [
-        {
-            "Id": "488_1",
-            "Serv": "",
-            "Desc": "4 Camisas",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "160",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1729,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "482",
-            "Data": "",
-            "Clnt": 1729,
-            "Valr": "160",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "443",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "489",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1728,
-    "Serv": [
-        {
-            "Id": "489_1",
-            "Serv": "",
-            "Desc": "1 - Arte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "25",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1728,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "483",
-            "Data": "",
-            "Clnt": 1728,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "444",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "490",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1727,
-    "Serv": [
-        {
-            "Id": "490_1",
-            "Serv": "",
-            "Desc": "2 - Recortes",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "7",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1727,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "484",
-            "Data": "2025-04-11",
-            "Clnt": 1727,
-            "Valr": "7",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "445",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "491",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1726,
-    "Serv": [
-        {
-            "Id": "491_1",
-            "Serv": "",
-            "Desc": "Figurinhasss",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1726,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "485",
-            "Data": "2025-04-11",
-            "Clnt": 1726,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "446",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "492",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1725,
-    "Serv": [
-        {
-            "Id": "492_1",
-            "Serv": "",
-            "Desc": "2 @ (Preto e Branco)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "8",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1725,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "486",
-            "Data": "",
-            "Clnt": 1725,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "447",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "493",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1724,
-    "Serv": [
-        {
-            "Id": "493_1",
-            "Serv": "",
-            "Desc": "2 par de asa olográfico (12x9)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1724,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "487",
-            "Data": "",
-            "Clnt": 1724,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "448",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "494",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1723,
-    "Serv": [
-        {
-            "Id": "494_1",
-            "Serv": "",
-            "Desc": "Recorte Pop100",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1723,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "488",
-            "Data": "",
-            "Clnt": 1723,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": " | 30Card  - (2° Conferir)",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "449",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "495",
-    "Rg": "",
-    "Data": "2025-04-11",
-    "Clnt": 1722,
-    "Serv": [
-        {
-            "Id": "495_1",
-            "Serv": "",
-            "Desc": "2 Kit - N1 Beach (Prata com Rosa, e Preto com Prata)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1722,
-            "Data": "2025-04-11"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "489",
-            "Data": "",
-            "Clnt": 1722,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "450",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "496",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1721,
-    "Serv": [
-        {
-            "Id": "496_1",
-            "Serv": "",
-            "Desc": "2 Faixas 0,80 x 0,50",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "70",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1721,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "490",
-            "Data": "",
-            "Clnt": 1721,
-            "Valr": "70",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "451",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "497",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1720,
-    "Serv": [
-        {
-            "Id": "497_1",
-            "Serv": "",
-            "Desc": "Banner VENDE-SE",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "70",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1720,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "491",
-            "Data": "",
-            "Clnt": 1720,
-            "Valr": "70",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "452",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "498",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1719,
-    "Serv": [
-        {
-            "Id": "498_1",
-            "Serv": "",
-            "Desc": "Adesivo Santa 90x90 (Uber A)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "50",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1719,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "492",
-            "Data": "",
-            "Clnt": 1719,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": " | 25Pix - 2°Pix COSME FRANCISCO XAVIER",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "453",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "499",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1718,
-    "Serv": [
-        {
-            "Id": "499_1",
-            "Serv": "",
-            "Desc": "camisa dele q ja tava na fita",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1718,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "493",
-            "Data": "",
-            "Clnt": 1718,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "454",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "500",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1717,
-    "Serv": [
-        {
-            "Id": "500_1",
-            "Serv": "",
-            "Desc": "1 - Cartela / tampa de tanque / 1 - Adesivo",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "14",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1717,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "494",
-            "Data": "",
-            "Clnt": 1717,
-            "Valr": "14",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "455",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "501",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1716,
-    "Serv": [
-        {
-            "Id": "501_1",
-            "Serv": "",
-            "Desc": "Pedaço de Vinil Preto",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1716,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "495",
-            "Data": "",
-            "Clnt": 1716,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "456",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "502",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1715,
-    "Serv": [
-        {
-            "Id": "502_1",
-            "Serv": "",
-            "Desc": "100 Etiquetas 4x4 (Uber A)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "25",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1715,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "496",
-            "Data": "",
-            "Clnt": 1715,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": "Laura Rodrigues Da Silva",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "457",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "503",
-    "Rg": "",
-    "Data": "2025-04-14",
-    "Clnt": 1714,
-    "Serv": [
-        {
-            "Id": "503_1",
-            "Serv": "",
-            "Desc": "100 Etiquetas 4x4 (Uber A)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "25",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1714,
-            "Data": "2025-04-14"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "497",
-            "Data": "",
-            "Clnt": 1714,
-            "Valr": "25",
-            "Form": "Pix",
-            "Desc": "Ana Paula Ribeiro De Moraes Jordao",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "458",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "504",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1713,
-    "Serv": [
-        {
-            "Id": "504_1",
-            "Serv": "",
-            "Desc": "Recorte Tam A4",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1713,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "498",
-            "Data": "",
-            "Clnt": 1713,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "Marcio Alves Santos",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "459",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "505",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1712,
-    "Serv": [
-        {
-            "Id": "505_1",
-            "Serv": "",
-            "Desc": "Nomes",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "8",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1712,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "499",
-            "Data": "",
-            "Clnt": 1712,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "460",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "506",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1711,
-    "Serv": [
-        {
-            "Id": "506_1",
-            "Serv": "",
-            "Desc": "Plaquinha A4",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1711,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "500",
-            "Data": "",
-            "Clnt": 1711,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "Laudilene Custodio Da Silva",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "461",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "507",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1710,
-    "Serv": [
-        {
-            "Id": "507_1",
-            "Serv": "",
-            "Desc": "2 - Cartela ",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1710,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "501",
-            "Data": "",
-            "Clnt": 1710,
-            "Valr": "10",
-            "Form": "Av ",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "462",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "508",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1709,
-    "Serv": [
-        {
-            "Id": "508_1",
-            "Serv": "",
-            "Desc": "2 - Camisetas Regata (M)",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "80",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1709,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "502",
-            "Data": "",
-            "Clnt": 1709,
-            "Valr": "40",
-            "Form": "Pix",
-            "Desc": "Leandro Bernardo",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "463",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "509",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1708,
-    "Serv": [
-        {
-            "Id": "509_1",
-            "Serv": "",
-            "Desc": "Arte (Vetorização) da igreja",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1708,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "503",
-            "Data": "",
-            "Clnt": 1708,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "Nordeste Grafica",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "464",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "510",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1707,
-    "Serv": [
-        {
-            "Id": "510_1",
-            "Serv": "",
-            "Desc": "1 - Banner ",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1707,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "504",
-            "Data": "",
-            "Clnt": 1707,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "465",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "511",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1706,
-    "Serv": [
-        {
-            "Id": "511_1",
-            "Serv": "",
-            "Desc": "1- Crachá PS",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1706,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "505",
-            "Data": "",
-            "Clnt": 1706,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "466",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "512",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1705,
-    "Serv": [
-        {
-            "Id": "512_1",
-            "Serv": "",
-            "Desc": "4 Carteira",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "28",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1705,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "506",
-            "Data": "",
-            "Clnt": 1705,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "467",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "513",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1704,
-    "Serv": [
-        {
-            "Id": "513_1",
-            "Serv": "",
-            "Desc": "30 Etiqueta 6x6",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1704,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "507",
-            "Data": "",
-            "Clnt": 1704,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "468",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "514",
-    "Rg": "",
-    "Data": "2025-04-15",
-    "Clnt": 1703,
-    "Serv": [
-        {
-            "Id": "514_1",
-            "Serv": "",
-            "Desc": "bolinhas papel adesivo",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1703,
-            "Data": "2025-04-15"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "508",
-            "Data": "",
-            "Clnt": 1703,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "469",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "515",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1702,
-    "Serv": [
-        {
-            "Id": "515_1",
-            "Serv": "",
-            "Desc": "Arte Cardapio",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "50",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1702,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "509",
-            "Data": "",
-            "Clnt": 1702,
-            "Valr": "50",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "470",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "516",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1701,
-    "Serv": [
-        {
-            "Id": "516_1",
-            "Serv": "",
-            "Desc": "4 - Cartela ",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "15",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1701,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "510",
-            "Data": "",
-            "Clnt": 1701,
-            "Valr": "15",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "471",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "517",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1700,
-    "Serv": [
-        {
-            "Id": "517_1",
-            "Serv": "",
-            "Desc": "1 - Cartela",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1700,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "511",
-            "Data": "",
-            "Clnt": 1700,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "472",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "518",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1699,
-    "Serv": [
-        {
-            "Id": "518_1",
-            "Serv": "",
-            "Desc": "1 - Cartela",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1699,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "512",
-            "Data": "",
-            "Clnt": 1699,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "473",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "519",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1698,
-    "Serv": [
-        {
-            "Id": "519_1",
-            "Serv": "",
-            "Desc": "1 - Recorte Monaco",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "10",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1698,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "513",
-            "Data": "",
-            "Clnt": 1698,
-            "Valr": "10",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "474",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "520",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1697,
-    "Serv": [
-        {
-            "Id": "520_1",
-            "Serv": "",
-            "Desc": "1 Adesivo 70 x 100 | 1 lona  0,54 x 0,27",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "70",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1697,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "514",
-            "Data": "",
-            "Clnt": 1697,
-            "Valr": "70",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "475",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "521",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1696,
-    "Serv": [
-        {
-            "Id": "521_1",
-            "Serv": "",
-            "Desc": "Camisa do Grau Coiote",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "70",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1696,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "515",
-            "Data": "",
-            "Clnt": 1696,
-            "Valr": "50",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "476",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "522",
-    "Rg": "",
-    "Data": "2025-04-16",
-    "Clnt": 1695,
-    "Serv": [
-        {
-            "Id": "522_1",
-            "Serv": "",
-            "Desc": "Etiquetas Acentos",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "20",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1695,
-            "Data": "2025-04-16"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "516",
-            "Data": "",
-            "Clnt": 1695,
-            "Valr": "20",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "477",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "523",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1694,
-    "Serv": [
-        {
-            "Id": "523_1",
-            "Serv": "",
-            "Desc": "Parapodio PEPA",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "false",
-            "Entregue": "false",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1694,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "517",
-            "Data": "",
-            "Clnt": 1694,
-            "Valr": "",
-            "Form": "",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "478",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "524",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1693,
-    "Serv": [
-        {
-            "Id": "524_1",
-            "Serv": "",
-            "Desc": "Artes",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "30",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1693,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "518",
-            "Data": "",
-            "Clnt": 1693,
-            "Valr": "30",
-            "Form": "Pix",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "479",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "525",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1692,
-    "Serv": [
-        {
-            "Id": "525_1",
-            "Serv": "",
-            "Desc": "tampa do tanque",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1692,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "519",
-            "Data": "",
-            "Clnt": 1692,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "480",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "526",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1691,
-    "Serv": [
-        {
-            "Id": "526_1",
-            "Serv": "",
-            "Desc": "1 - Tampa de tanque",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1691,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "520",
-            "Data": "",
-            "Clnt": 1691,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "481",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "527",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1690,
-    "Serv": [
-        {
-            "Id": "527_1",
-            "Serv": "",
-            "Desc": "1 - Cartela",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "5",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1690,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "521",
-            "Data": "",
-            "Clnt": 1690,
-            "Valr": "5",
-            "Form": "Av",
-            "Desc": "",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "482",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-},{
-    "Id": "528",
-    "Rg": "",
-    "Data": "2025-04-17",
-    "Clnt": 1689,
-    "Serv": [
-        {
-            "Id": "528_1",
-            "Serv": "",
-            "Desc": "Arte",
-            "Calc": [
-                "-|-|-|0"
-            ],
-            "Arte": "",
-            "Valr": "40",
-            "Forn": "",
-            "OK": "true",
-            "Entregue": "true",
-            "DataEntg": "",
-            "Coment": "",
-            "Lixo": "",
-            "SVG": "",
-            "OS": "",
-            "Uber": "",
-            "Grad": "",
-            "Clnt": 1689,
-            "Data": "2025-04-17"
-        }
-    ],
-    "Valr": "",
-    "Pgmt": [
-        {
-            "Id": "522",
-            "Data": "",
-            "Clnt": 1689,
-            "Valr": "40",
-            "Form": "Pix",
-            "Desc": "comentario Pix",
-            "Stts": "",
-            "Link": "",
-            "Lixo": "",
-            "Mpag": ""
-        }
-    ],
-    "Lixo": "",
-    "Lcro": "",
-    "Stts": "",
-    "Lin": "483",
-    "Cust": [
-        {
-            "Id": "",
-            "Data": "",
-            "Item": "",
-            "Valr": "",
-            "Forn": "",
-            "Dstn": "",
-            "Pcnt": ""
-        }
-    ],
-    "Finc": [
-        {
-            "Valr": "",
-            "Cust": "",
-            "Lcro": ""
-        }
-    ],
-    "OFF": "1"
-}
-
-
-
-  
+      "Id": "431",
+      "Rg": "",
+      "Data": "2025-04-02",
+      "Clnt": 1786,
+      "Serv": [
+          {
+              "Id": "431_1",
+              "Serv": "",
+              "Desc": "1 - Recorte (Preto) - 0,03 x 0,014",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1786,
+              "Data": "2025-04-02"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "425",
+              "Data": "",
+              "Clnt": 1786,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "386",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "432",
+      "Rg": "",
+      "Data": "2025-04-02",
+      "Clnt": 1785,
+      "Serv": [
+          {
+              "Id": "432_1",
+              "Serv": "",
+              "Desc": "Arte",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "100",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1785,
+              "Data": "2025-04-02"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "426",
+              "Data": "",
+              "Clnt": 1785,
+              "Valr": "100",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "387",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "433",
+      "Rg": "",
+      "Data": "2025-04-02",
+      "Clnt": 1784,
+      "Serv": [
+          {
+              "Id": "433_1",
+              "Serv": "",
+              "Desc": "Arte",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1784,
+              "Data": "2025-04-02"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "427",
+              "Data": "",
+              "Clnt": 1784,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "388",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "434",
+      "Rg": "",
+      "Data": "2025-04-03",
+      "Clnt": 1783,
+      "Serv": [
+          {
+              "Id": "434_1",
+              "Serv": "",
+              "Desc": "cartela da barbie + Figurinha (25+2) (analisar a coversa)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "27",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1783,
+              "Data": "2025-04-03"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "428",
+              "Data": "",
+              "Clnt": 1783,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "389",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "435",
+      "Rg": "",
+      "Data": "2025-04-03",
+      "Clnt": 1782,
+      "Serv": [
+          {
+              "Id": "435_1",
+              "Serv": "",
+              "Desc": "45x15",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1782,
+              "Data": "2025-04-03"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "429",
+              "Data": "",
+              "Clnt": 1782,
+              "Valr": "30",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "390",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "436",
+      "Rg": "",
+      "Data": "2025-04-03",
+      "Clnt": 1781,
+      "Serv": [
+          {
+              "Id": "436_1",
+              "Serv": "",
+              "Desc": "Cão Covaerde 30x20 | 2 Cartela | Papalegua 40 x 20 (10+5+5+10)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1781,
+              "Data": "2025-04-03"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "430",
+              "Data": "",
+              "Clnt": 1781,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "391",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "437",
+      "Rg": "",
+      "Data": "2025-04-03",
+      "Clnt": 1780,
+      "Serv": [
+          {
+              "Id": "437_1",
+              "Serv": "",
+              "Desc": "Adesivo Redondo (Cuidado)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1780,
+              "Data": "2025-04-03"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "431",
+              "Data": "",
+              "Clnt": 1780,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "392",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "438",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1779,
+      "Serv": [
+          {
+              "Id": "438_1",
+              "Serv": "",
+              "Desc": "Recorte Santa e nome Tassia",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "15",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1779,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "432",
+              "Data": "",
+              "Clnt": 1779,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "393",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "439",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1778,
+      "Serv": [
+          {
+              "Id": "439_1",
+              "Serv": "",
+              "Desc": "Camisa m Curta",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "50",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1778,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "433",
+              "Data": "",
+              "Clnt": 1778,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "394",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "440",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1777,
+      "Serv": [
+          {
+              "Id": "440_1",
+              "Serv": "",
+              "Desc": "3 Adesivo A4",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1777,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "434",
+              "Data": "2025-04-04",
+              "Clnt": 1777,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "395",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "441",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1776,
+      "Serv": [
+          {
+              "Id": "441_1",
+              "Serv": "",
+              "Desc": "5x6 | 7x7 (10 de Cada)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "15",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1776,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "435",
+              "Data": "",
+              "Clnt": 1776,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "396",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "442",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1775,
+      "Serv": [
+          {
+              "Id": "442_1",
+              "Serv": "",
+              "Desc": "caloi",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1775,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "436",
+              "Data": "",
+              "Clnt": 1775,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "397",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "443",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1774,
+      "Serv": [
+          {
+              "Id": "443_1",
+              "Serv": "",
+              "Desc": "Camisa M (Cachorro)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "50",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1774,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "437",
+              "Data": "2025-04-04",
+              "Clnt": 1774,
+              "Valr": "50",
+              "Form": "Pix",
+              "Desc": "Pix de Maya",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "398",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "444",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1773,
+      "Serv": [
+          {
+              "Id": "444_1",
+              "Serv": "",
+              "Desc": "zero",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "240",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1773,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "438",
+              "Data": "",
+              "Clnt": 1773,
+              "Valr": "120",
+              "Form": "Pix",
+              "Desc": "Pix de 180 tudo",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "399",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "445",
+      "Rg": "",
+      "Data": "2025-04-04",
+      "Clnt": 1772,
+      "Serv": [
+          {
+              "Id": "445_1",
+              "Serv": "",
+              "Desc": "Cartão de Visita",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "58",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1772,
+              "Data": "2025-04-04"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "439",
+              "Data": "",
+              "Clnt": 1772,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "Pix de 180 tudo",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "400",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "446",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1771,
+      "Serv": [
+          {
+              "Id": "446_1",
+              "Serv": "",
+              "Desc": "100 etiqueta 8 x 4",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "35",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1771,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "440",
+              "Data": "",
+              "Clnt": 1771,
+              "Valr": "35",
+              "Form": "Pix",
+              "Desc": "Pix de 180 tudo",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "401",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "447",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1770,
+      "Serv": [
+          {
+              "Id": "447_1",
+              "Serv": "",
+              "Desc": "2 - Placa de PVC A4 2 pvc A3",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1770,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "441",
+              "Data": "",
+              "Clnt": 1770,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "Pix de 50",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "402",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "448",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1769,
+      "Serv": [
+          {
+              "Id": "448_1",
+              "Serv": "",
+              "Desc": "Adesivo 40 x 15",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "25",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1769,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "442",
+              "Data": "",
+              "Clnt": 1769,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "403",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "449",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1768,
+      "Serv": [
+          {
+              "Id": "449_1",
+              "Serv": "",
+              "Desc": "Caloi Denovo",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1768,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "443",
+              "Data": "",
+              "Clnt": 1768,
+              "Valr": "10",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "404",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "450",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1767,
+      "Serv": [
+          {
+              "Id": "450_1",
+              "Serv": "",
+              "Desc": "Fiorino",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "52",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1767,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "444",
+              "Data": "",
+              "Clnt": 1767,
+              "Valr": "2",
+              "Form": "Av",
+              "Desc": " | 50Pix (Pagou o Antigo)",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "405",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "451",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1766,
+      "Serv": [
+          {
+              "Id": "451_1",
+              "Serv": "",
+              "Desc": "Figurinhas (Falta @ )",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Promoção (Cartela)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1766,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "445",
+              "Data": "",
+              "Clnt": 1766,
+              "Valr": "30",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "406",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "452",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1765,
+      "Serv": [
+          {
+              "Id": "452_1",
+              "Serv": "",
+              "Desc": "Figurinhas",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "41",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Promoção (Cartela)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1765,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "446",
+              "Data": "",
+              "Clnt": 1765,
+              "Valr": "41",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "407",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "453",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1764,
+      "Serv": [
+          {
+              "Id": "453_1",
+              "Serv": "",
+              "Desc": "20 Camisas Regata + Arte",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "620",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1764,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "447",
+              "Data": "",
+              "Clnt": 1764,
+              "Valr": "150",
+              "Form": "Pix ",
+              "Desc": "| 470Card",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "408",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "454",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1763,
+      "Serv": [
+          {
+              "Id": "454_1",
+              "Serv": "",
+              "Desc": "1 - Quadro ( melhorarar Imagem ) 75 x 50",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "80",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Promoção (2 Cartela)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1763,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "448",
+              "Data": "",
+              "Clnt": 1763,
+              "Valr": "80",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "409",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "455",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1762,
+      "Serv": [
+          {
+              "Id": "455_1",
+              "Serv": "",
+              "Desc": "1 - Cartela / Tampa tanque / figurinha",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "12",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1762,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "449",
+              "Data": "",
+              "Clnt": 1762,
+              "Valr": "12",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "410",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "456",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1761,
+      "Serv": [
+          {
+              "Id": "456_1",
+              "Serv": "",
+              "Desc": "Cartão de Visita / Imã de Geladeira",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "96",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Pago (10/04/2025)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1761,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "450",
+              "Data": "",
+              "Clnt": 1761,
+              "Valr": "96",
+              "Form": "Pix",
+              "Desc": "158 Pix Geral",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "411",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "457",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1760,
+      "Serv": [
+          {
+              "Id": "457_1",
+              "Serv": "",
+              "Desc": "Varyus Metros de Adesivo",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "1500",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Serviço por Fora!",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1760,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "451",
+              "Data": "",
+              "Clnt": 1760,
+              "Valr": "1000",
+              "Form": "Pix",
+              "Desc": " | 500Pix",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "412",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "458",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1759,
+      "Serv": [
+          {
+              "Id": "458_1",
+              "Serv": "",
+              "Desc": "Vendas || OsascorteHolog+Aranha+Figs",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "17",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "--- (veio pela Promoção)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1759,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "452",
+              "Data": "",
+              "Clnt": 1759,
+              "Valr": "17",
+              "Form": "Av",
+              "Desc": "Pagou os 8 q devia",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "413",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "459",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1758,
+      "Serv": [
+          {
+              "Id": "459_1",
+              "Serv": "",
+              "Desc": "Cartelas e Figurinha",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "--- (veio pela Promoção)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1758,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "453",
+              "Data": "",
+              "Clnt": 1758,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "414",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "460",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1757,
+      "Serv": [
+          {
+              "Id": "460_1",
+              "Serv": "",
+              "Desc": "Figurinhas e Quadros",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "Promoção (Cartela)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1757,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "454",
+              "Data": "",
+              "Clnt": 1757,
+              "Valr": "30",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "415",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "461",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1756,
+      "Serv": [
+          {
+              "Id": "461_1",
+              "Serv": "",
+              "Desc": "Adesivo Recorte",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1756,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "455",
+              "Data": "",
+              "Clnt": 1756,
+              "Valr": "5",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "416",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "462",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1755,
+      "Serv": [
+          {
+              "Id": "462_1",
+              "Serv": "",
+              "Desc": "3 Quadros",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "--- (veio pela Promoção)",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1755,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "456",
+              "Data": "",
+              "Clnt": 1755,
+              "Valr": "10",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "417",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "463",
+      "Rg": "",
+      "Data": "2025-04-07",
+      "Clnt": 1754,
+      "Serv": [
+          {
+              "Id": "463_1",
+              "Serv": "",
+              "Desc": "Popye Picapal aranha, cartela",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "35",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1754,
+              "Data": "2025-04-07"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "457",
+              "Data": "",
+              "Clnt": 1754,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "418",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "464",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1753,
+      "Serv": [
+          {
+              "Id": "464_1",
+              "Serv": "",
+              "Desc": "1 - Parapodio ( Futebol Azul )",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "40",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1753,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "458",
+              "Data": "",
+              "Clnt": 1753,
+              "Valr": "40",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "419",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "465",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1752,
+      "Serv": [
+          {
+              "Id": "465_1",
+              "Serv": "",
+              "Desc": "1 - Camisa ( P) ",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "40",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1752,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "459",
+              "Data": "",
+              "Clnt": 1752,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "420",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "466",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1751,
+      "Serv": [
+          {
+              "Id": "466_1",
+              "Serv": "",
+              "Desc": "200 - Cartão de Visita",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1751,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "460",
+              "Data": "",
+              "Clnt": 1751,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "421",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "467",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1750,
+      "Serv": [
+          {
+              "Id": "467_1",
+              "Serv": "",
+              "Desc": "2 - Recortes",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "6",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1750,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "461",
+              "Data": "",
+              "Clnt": 1750,
+              "Valr": "6",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "422",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "468",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1749,
+      "Serv": [
+          {
+              "Id": "468_1",
+              "Serv": "",
+              "Desc": "1 - Banner ( 0,70 x 0,50 )",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "35",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1749,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "462",
+              "Data": "",
+              "Clnt": 1749,
+              "Valr": "35",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "423",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "469",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1748,
+      "Serv": [
+          {
+              "Id": "469_1",
+              "Serv": "",
+              "Desc": "10 - Bonecos / COI / 1 - Faixa",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "1170",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1748,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "463",
+              "Data": "",
+              "Clnt": 1748,
+              "Valr": "630",
+              "Form": "Pix ",
+              "Desc": "| 540Av",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "424",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "470",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1747,
+      "Serv": [
+          {
+              "Id": "470_1",
+              "Serv": "",
+              "Desc": "1 - Camisa G",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "50",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1747,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "464",
+              "Data": "",
+              "Clnt": 1747,
+              "Valr": "20",
+              "Form": "Pix ",
+              "Desc": "| 30Pix",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "425",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "471",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1746,
+      "Serv": [
+          {
+              "Id": "471_1",
+              "Serv": "",
+              "Desc": "1 Banner 1,15 x 0,90 | 100 Adesivo 5x5 | 4 ímã (56) (29) (100)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "190",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1746,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "465",
+              "Data": "",
+              "Clnt": 1746,
+              "Valr": "95",
+              "Form": "Av",
+              "Desc": " | 95Av",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "426",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "472",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1745,
+      "Serv": [
+          {
+              "Id": "472_1",
+              "Serv": "",
+              "Desc": "Varias figurinhas",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "100",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1745,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "466",
+              "Data": "",
+              "Clnt": 1745,
+              "Valr": "100",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "427",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "473",
+      "Rg": "",
+      "Data": "2025-04-08",
+      "Clnt": 1744,
+      "Serv": [
+          {
+              "Id": "473_1",
+              "Serv": "",
+              "Desc": "100 de cada",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "34",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1744,
+              "Data": "2025-04-08"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "467",
+              "Data": "",
+              "Clnt": 1744,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "428",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "474",
+      "Rg": "",
+      "Data": "2025-04-09",
+      "Clnt": 1743,
+      "Serv": [
+          {
+              "Id": "474_1",
+              "Serv": "",
+              "Desc": "Lona sem acabamento 60x60",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1743,
+              "Data": "2025-04-09"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "468",
+              "Data": "",
+              "Clnt": 1743,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "429",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "475",
+      "Rg": "",
+      "Data": "2025-04-09",
+      "Clnt": 1742,
+      "Serv": [
+          {
+              "Id": "475_1",
+              "Serv": "",
+              "Desc": "Recorte olografica",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "15",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1742,
+              "Data": "2025-04-09"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "469",
+              "Data": "",
+              "Clnt": 1742,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "430",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "476",
+      "Rg": "",
+      "Data": "2025-04-09",
+      "Clnt": 1741,
+      "Serv": [
+          {
+              "Id": "476_1",
+              "Serv": "",
+              "Desc": "impressão e recorte adesivo (100 etiqueta 12,5 x 4,5) (25 Etiqueta 5x3,5 4 vezes)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "34",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1741,
+              "Data": "2025-04-09"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "470",
+              "Data": "",
+              "Clnt": 1741,
+              "Valr": "34",
+              "Form": "Pix",
+              "Desc": " | 26Pix",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "431",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "477",
+      "Rg": "",
+      "Data": "2025-04-09",
+      "Clnt": 1740,
+      "Serv": [
+          {
+              "Id": "477_1",
+              "Serv": "",
+              "Desc": "1 - Par de Azinha ( Branco )",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1740,
+              "Data": "2025-04-09"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "471",
+              "Data": "",
+              "Clnt": 1740,
+              "Valr": "10",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "432",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "478",
+      "Rg": "",
+      "Data": "2025-04-09",
+      "Clnt": 1739,
+      "Serv": [
+          {
+              "Id": "478_1",
+              "Serv": "",
+              "Desc": "1 - Adesivo ",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1739,
+              "Data": "2025-04-09"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "472",
+              "Data": "",
+              "Clnt": 1739,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "433",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "479",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1738,
+      "Serv": [
+          {
+              "Id": "479_1",
+              "Serv": "",
+              "Desc": "100 Etiquetas",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "25",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1738,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "473",
+              "Data": "",
+              "Clnt": 1738,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "434",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "480",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1737,
+      "Serv": [
+          {
+              "Id": "480_1",
+              "Serv": "",
+              "Desc": "100 Etiqueta (PVC1mm) | 5 Camsia (4-M | 1-G) mLonga",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "355",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1737,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "474",
+              "Data": "2025-05-09",
+              "Clnt": 1737,
+              "Valr": "177.50",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "435",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "481",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1736,
+      "Serv": [
+          {
+              "Id": "481_1",
+              "Serv": "",
+              "Desc": "11 Quadros",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "132",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1736,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "475",
+              "Data": "",
+              "Clnt": 1736,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "436",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "482",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1735,
+      "Serv": [
+          {
+              "Id": "482_1",
+              "Serv": "",
+              "Desc": "2 Placa Sinalização",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1735,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "476",
+              "Data": "",
+              "Clnt": 1735,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "437",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "483",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1734,
+      "Serv": [
+          {
+              "Id": "483_1",
+              "Serv": "",
+              "Desc": "Recorte @",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "?",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1734,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "477",
+              "Data": "",
+              "Clnt": 1734,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "438",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "484",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1733,
+      "Serv": [
+          {
+              "Id": "484_1",
+              "Serv": "",
+              "Desc": "Faixa - 2026 Pai chegou",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "62",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1733,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "478",
+              "Data": "",
+              "Clnt": 1733,
+              "Valr": "62",
+              "Form": "Pix",
+              "Desc": "(158 Pix Geral) Pago (10/04/2025)",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "439",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "485",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1732,
+      "Serv": [
+          {
+              "Id": "485_1",
+              "Serv": "",
+              "Desc": "Plotagem Moldura vidro",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1732,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "479",
+              "Data": "",
+              "Clnt": 1732,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": "Pix de 55",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "440",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "486",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1731,
+      "Serv": [
+          {
+              "Id": "486_1",
+              "Serv": "",
+              "Desc": "Cartela",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1731,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "480",
+              "Data": "",
+              "Clnt": 1731,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "441",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "487",
+      "Rg": "",
+      "Data": "2025-04-10",
+      "Clnt": 1730,
+      "Serv": [
+          {
+              "Id": "487_1",
+              "Serv": "",
+              "Desc": "2 ímã 60 x 30",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "90",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1730,
+              "Data": "2025-04-10"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "481",
+              "Data": "",
+              "Clnt": 1730,
+              "Valr": "50",
+              "Form": "Pix ",
+              "Desc": "| 40Pix (PG dia 10) (PG dia 11)",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "442",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "488",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1729,
+      "Serv": [
+          {
+              "Id": "488_1",
+              "Serv": "",
+              "Desc": "4 Camisas",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "160",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1729,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "482",
+              "Data": "",
+              "Clnt": 1729,
+              "Valr": "160",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "443",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "489",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1728,
+      "Serv": [
+          {
+              "Id": "489_1",
+              "Serv": "",
+              "Desc": "1 - Arte",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "25",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1728,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "483",
+              "Data": "",
+              "Clnt": 1728,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "444",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "490",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1727,
+      "Serv": [
+          {
+              "Id": "490_1",
+              "Serv": "",
+              "Desc": "2 - Recortes",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "7",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1727,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "484",
+              "Data": "2025-04-11",
+              "Clnt": 1727,
+              "Valr": "7",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "445",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "491",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1726,
+      "Serv": [
+          {
+              "Id": "491_1",
+              "Serv": "",
+              "Desc": "Figurinhasss",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1726,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "485",
+              "Data": "2025-04-11",
+              "Clnt": 1726,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "446",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "492",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1725,
+      "Serv": [
+          {
+              "Id": "492_1",
+              "Serv": "",
+              "Desc": "2 @ (Preto e Branco)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "8",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1725,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "486",
+              "Data": "",
+              "Clnt": 1725,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "447",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "493",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1724,
+      "Serv": [
+          {
+              "Id": "493_1",
+              "Serv": "",
+              "Desc": "2 par de asa olográfico (12x9)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1724,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "487",
+              "Data": "",
+              "Clnt": 1724,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "448",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "494",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1723,
+      "Serv": [
+          {
+              "Id": "494_1",
+              "Serv": "",
+              "Desc": "Recorte Pop100",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "40",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1723,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "488",
+              "Data": "",
+              "Clnt": 1723,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": " | 30Card - (2° Conferir)",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "449",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "495",
+      "Rg": "",
+      "Data": "2025-04-11",
+      "Clnt": 1722,
+      "Serv": [
+          {
+              "Id": "495_1",
+              "Serv": "",
+              "Desc": "2 Kit - N1 Beach (Prata com Rosa, e Preto com Prata)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1722,
+              "Data": "2025-04-11"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "489",
+              "Data": "",
+              "Clnt": 1722,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "450",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "496",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1721,
+      "Serv": [
+          {
+              "Id": "496_1",
+              "Serv": "",
+              "Desc": "2 Faixas 0,80 x 0,50",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "70",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1721,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "490",
+              "Data": "",
+              "Clnt": 1721,
+              "Valr": "70",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "451",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "497",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1720,
+      "Serv": [
+          {
+              "Id": "497_1",
+              "Serv": "",
+              "Desc": "Banner VENDE-SE",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "70",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1720,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "491",
+              "Data": "",
+              "Clnt": 1720,
+              "Valr": "70",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "452",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "498",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1719,
+      "Serv": [
+          {
+              "Id": "498_1",
+              "Serv": "",
+              "Desc": "Adesivo Santa 90x90 (Uber A)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "50",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1719,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "492",
+              "Data": "",
+              "Clnt": 1719,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": " | 25Pix - 2°Pix COSME FRANCISCO XAVIER",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "453",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "499",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1718,
+      "Serv": [
+          {
+              "Id": "499_1",
+              "Serv": "",
+              "Desc": "camisa dele q ja tava na fita",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "40",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1718,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "493",
+              "Data": "",
+              "Clnt": 1718,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "454",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "500",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1717,
+      "Serv": [
+          {
+              "Id": "500_1",
+              "Serv": "",
+              "Desc": "1 - Cartela / tampa de tanque / 1 - Adesivo",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "14",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1717,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "494",
+              "Data": "",
+              "Clnt": 1717,
+              "Valr": "14",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "455",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "501",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1716,
+      "Serv": [
+          {
+              "Id": "501_1",
+              "Serv": "",
+              "Desc": "Pedaço de Vinil Preto",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1716,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "495",
+              "Data": "",
+              "Clnt": 1716,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "456",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "502",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1715,
+      "Serv": [
+          {
+              "Id": "502_1",
+              "Serv": "",
+              "Desc": "100 Etiquetas 4x4 (Uber A)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "25",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1715,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "496",
+              "Data": "",
+              "Clnt": 1715,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": "Laura Rodrigues Da Silva",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "457",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "503",
+      "Rg": "",
+      "Data": "2025-04-14",
+      "Clnt": 1714,
+      "Serv": [
+          {
+              "Id": "503_1",
+              "Serv": "",
+              "Desc": "100 Etiquetas 4x4 (Uber A)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "25",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1714,
+              "Data": "2025-04-14"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "497",
+              "Data": "",
+              "Clnt": 1714,
+              "Valr": "25",
+              "Form": "Pix",
+              "Desc": "Ana Paula Ribeiro De Moraes Jordao",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "458",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "504",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1713,
+      "Serv": [
+          {
+              "Id": "504_1",
+              "Serv": "",
+              "Desc": "Recorte Tam A4",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1713,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "498",
+              "Data": "",
+              "Clnt": 1713,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "Marcio Alves Santos",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "459",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "505",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1712,
+      "Serv": [
+          {
+              "Id": "505_1",
+              "Serv": "",
+              "Desc": "Nomes",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "8",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1712,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "499",
+              "Data": "",
+              "Clnt": 1712,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "460",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "506",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1711,
+      "Serv": [
+          {
+              "Id": "506_1",
+              "Serv": "",
+              "Desc": "Plaquinha A4",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1711,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "500",
+              "Data": "",
+              "Clnt": 1711,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "Laudilene Custodio Da Silva",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "461",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "507",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1710,
+      "Serv": [
+          {
+              "Id": "507_1",
+              "Serv": "",
+              "Desc": "2 - Cartela ",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1710,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "501",
+              "Data": "",
+              "Clnt": 1710,
+              "Valr": "10",
+              "Form": "Av ",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "462",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "508",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1709,
+      "Serv": [
+          {
+              "Id": "508_1",
+              "Serv": "",
+              "Desc": "2 - Camisetas Regata (M)",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "80",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1709,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "502",
+              "Data": "",
+              "Clnt": 1709,
+              "Valr": "40",
+              "Form": "Pix",
+              "Desc": "Leandro Bernardo",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "463",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "509",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1708,
+      "Serv": [
+          {
+              "Id": "509_1",
+              "Serv": "",
+              "Desc": "Arte (Vetorização) da igreja",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1708,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "503",
+              "Data": "",
+              "Clnt": 1708,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "Nordeste Grafica",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "464",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "510",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1707,
+      "Serv": [
+          {
+              "Id": "510_1",
+              "Serv": "",
+              "Desc": "1 - Banner ",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1707,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "504",
+              "Data": "",
+              "Clnt": 1707,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "465",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "511",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1706,
+      "Serv": [
+          {
+              "Id": "511_1",
+              "Serv": "",
+              "Desc": "1- Crachá PS",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1706,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "505",
+              "Data": "",
+              "Clnt": 1706,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "466",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "512",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1705,
+      "Serv": [
+          {
+              "Id": "512_1",
+              "Serv": "",
+              "Desc": "4 Carteira",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "28",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1705,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "506",
+              "Data": "",
+              "Clnt": 1705,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "467",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "513",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1704,
+      "Serv": [
+          {
+              "Id": "513_1",
+              "Serv": "",
+              "Desc": "30 Etiqueta 6x6",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1704,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "507",
+              "Data": "",
+              "Clnt": 1704,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "468",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "514",
+      "Rg": "",
+      "Data": "2025-04-15",
+      "Clnt": 1703,
+      "Serv": [
+          {
+              "Id": "514_1",
+              "Serv": "",
+              "Desc": "bolinhas papel adesivo",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1703,
+              "Data": "2025-04-15"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "508",
+              "Data": "",
+              "Clnt": 1703,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "469",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "515",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1702,
+      "Serv": [
+          {
+              "Id": "515_1",
+              "Serv": "",
+              "Desc": "Arte Cardapio",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "50",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1702,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "509",
+              "Data": "",
+              "Clnt": 1702,
+              "Valr": "50",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "470",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "516",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1701,
+      "Serv": [
+          {
+              "Id": "516_1",
+              "Serv": "",
+              "Desc": "4 - Cartela ",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "15",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1701,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "510",
+              "Data": "",
+              "Clnt": 1701,
+              "Valr": "15",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "471",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "517",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1700,
+      "Serv": [
+          {
+              "Id": "517_1",
+              "Serv": "",
+              "Desc": "1 - Cartela",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1700,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "511",
+              "Data": "",
+              "Clnt": 1700,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "472",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "518",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1699,
+      "Serv": [
+          {
+              "Id": "518_1",
+              "Serv": "",
+              "Desc": "1 - Cartela",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1699,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "512",
+              "Data": "",
+              "Clnt": 1699,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "473",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "519",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1698,
+      "Serv": [
+          {
+              "Id": "519_1",
+              "Serv": "Recorte",
+              "Desc": "1 - Recorte Monaco",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "10",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1698,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "513",
+              "Data": "",
+              "Clnt": 1698,
+              "Valr": "10",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "474",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "520",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1697,
+      "Serv": [
+          {
+              "Id": "520_1",
+              "Serv": "",
+              "Desc": "1 Adesivo 70 x 100 | 1 lona 0,54 x 0,27",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "70",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1697,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "514",
+              "Data": "",
+              "Clnt": 1697,
+              "Valr": "70",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "475",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "521",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1696,
+      "Serv": [
+          {
+              "Id": "521_1",
+              "Serv": "Camisa",
+              "Desc": "Grau Coiote",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "70",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1696,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "515",
+              "Data": "",
+              "Clnt": 1696,
+              "Valr": "50",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "476",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "522",
+      "Rg": "",
+      "Data": "2025-04-16",
+      "Clnt": 1695,
+      "Serv": [
+          {
+              "Id": "522_1",
+              "Serv": "Etiqueta",
+              "Desc": "numeros Acentos",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "20",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1695,
+              "Data": "2025-04-16"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "516",
+              "Data": "",
+              "Clnt": 1695,
+              "Valr": "20",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "477",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "523",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1694,
+      "Serv": [
+          {
+              "Id": "523_1",
+              "Serv": "",
+              "Desc": "Parapodio PEPA",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "Allan",
+              "Valr": "40",
+              "Forn": "",
+              "OK": false,
+              "Entregue": false,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1694,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "517",
+              "Data": "",
+              "Clnt": 1694,
+              "Valr": "",
+              "Form": "",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "478",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "524",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1693,
+      "Serv": [
+          {
+              "Id": "524_1",
+              "Serv": "Arte",
+              "Desc": "3 und",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "Baby",
+              "Valr": "30",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1693,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "518",
+              "Data": "",
+              "Clnt": 1693,
+              "Valr": "30",
+              "Form": "Pix",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "479",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "525",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1692,
+      "Serv": [
+          {
+              "Id": "525_1",
+              "Serv": "Vendas",
+              "Desc": "tampa do tanque",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1692,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "519",
+              "Data": "",
+              "Clnt": 1692,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "480",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "526",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1691,
+      "Serv": [
+          {
+              "Id": "526_1",
+              "Serv": "Vendas",
+              "Desc": "1 - Tampa de tanque",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1691,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "520",
+              "Data": "",
+              "Clnt": 1691,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "481",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "527",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1690,
+      "Serv": [
+          {
+              "Id": "527_1",
+              "Serv": "Vendas",
+              "Desc": "1 - Cartela",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "",
+              "Valr": "5",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1690,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "521",
+              "Data": "",
+              "Clnt": 1690,
+              "Valr": "5",
+              "Form": "Av",
+              "Desc": "",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "482",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  },
+  {
+      "Id": "528",
+      "Rg": "",
+      "Data": "2025-04-17",
+      "Clnt": 1689,
+      "Serv": [
+          {
+              "Id": "528_1",
+              "Serv": "Arte",
+              "Desc": "",
+              "Calc": [
+                  "-|-|-|0"
+              ],
+              "Arte": "Allan",
+              "Valr": "40",
+              "Forn": "",
+              "OK": true,
+              "Entregue": true,
+              "DataEntg": "",
+              "Coment": "",
+              "Lixo": "",
+              "SVG": "",
+              "OS": "",
+              "Uber": "",
+              "Grad": "",
+              "Clnt": 1689,
+              "Data": "2025-04-17"
+          }
+      ],
+      "Valr": "",
+      "Pgmt": [
+          {
+              "Id": "522",
+              "Data": "",
+              "Clnt": 1689,
+              "Valr": "40",
+              "Form": "Pix",
+              "Desc": "comentario Pix",
+              "Stts": "",
+              "Link": "",
+              "Lixo": "",
+              "Mpag": ""
+          }
+      ],
+      "Lixo": "",
+      "Lcro": "",
+      "Stts": "",
+      "Lin": "483",
+      "Cust": [
+          {
+              "Id": "",
+              "Data": "",
+              "Item": "",
+              "Valr": "",
+              "Forn": "",
+              "Dstn": "",
+              "Pcnt": ""
+          }
+      ],
+      "Finc": [
+          {
+              "Valr": "",
+              "Cust": "",
+              "Lcro": ""
+          }
+      ],
+      "OFF": "1"
+  }
 ]
