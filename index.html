@@ -285,7 +285,7 @@
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const BS = {
         PDDS:{Id:['F',''], Lin:['G',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
-        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['F',''],OS:['F',''],Uber:['F',''],Coment:['E',''],'Lixo':['X','']},
+        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E',''],Uber:['E',''],Coment:['E',''],'Lixo':['X','']},
         PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -655,6 +655,8 @@
                 LimpaThAtv('All')
                 RealTime()
             }
+
+            // ao lado do + no Filter, tbm quero ter um - oq siguinifica q o filtro vai remover ele
         </script>
     </div>
 
@@ -737,6 +739,8 @@
             // pegar todos os FIltros e Pintar Filtro com Pintura, apenas Filtro, apenas Pintura
             // Rando PIntura geral uma cor pra cada!
         }
+
+        // ao Editar muda a cor apenas da própria Linha
     </script>
 
     <script> // SUGGLINK
@@ -1065,6 +1069,10 @@
                 <style>.Filteraddd{color: red !important;}</style>
                 <button onclick="Complete_Forn()">Complet Forn</button>
                 <div onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
+                <textarea style="background-color: gray;" class="ppt"  onclick="copiarTexto(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
+                <script>
+                    function copiarTexto(area,stg){area.value = stg ; area.select() ; document.execCommand('copy') ; console.log('Copiado')}
+                </script>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -1592,8 +1600,6 @@
         </div>
     </div>
 
-    <div id="ReturnOBJ" onclick="$('#ReturnOBJ').textContent=JSON.stringify(NovoJson,null,2)">ReloadOBJ</div>
-
     <style> /*CSS dos Modais*/
         .Dark #FModal>div{background:#1b1b1b}
         .Lite #FModal>div{background:#ffffff}
@@ -1867,7 +1873,7 @@
             console.log(`${NovoJson[col]} >> ${vall}`)
             NovoJson[col] = vall 
         }
-        RealTime()
+        //RealTime()
     }
 
 
@@ -2005,6 +2011,8 @@
     // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
     // Transitar com as Setinhas na tabela do APP igual na Planilha
 
+
+    
     
  
 </script>
