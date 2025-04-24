@@ -56267,7 +56267,7 @@ const NovoJson = [
     "Serv": [
       {
         "Id": "532_1",
-        "Serv": "",
+        "Serv": "Quadro",
         "Desc": "3 - Cardapio",
         "Calc": [
           "-|-|-|0"
@@ -56607,7 +56607,7 @@ const NovoJson = [
     "Serv": [
       {
         "Id": "537_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "2 - Osacortes (Preto)",
         "Calc": [
           "-|-|-|0"
@@ -56675,7 +56675,7 @@ const NovoJson = [
     "Serv": [
       {
         "Id": "538_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "PS",
         "Calc": [
           "-|-|-|0"
@@ -56812,7 +56812,7 @@ const NovoJson = [
       {
         "Id": "540_1",
         "Serv": "Recorte",
-        "Desc": "Recorte Capacete",
+        "Desc": "Capacete",
         "Calc": [
           "-|-|-|0"
         ],
@@ -57151,8 +57151,8 @@ const NovoJson = [
     "Serv": [
       {
         "Id": "545_1",
-        "Serv": "",
-        "Desc": "2 Camsia M Longa (DUDU) (rOSA)",
+        "Serv": "Camisa",
+        "Desc": "2 - M Longa (DUDU) (ROSA)",
         "Calc": [
           "-|-|-|0"
         ],

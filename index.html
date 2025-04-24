@@ -511,7 +511,6 @@
             .RecolorSelects{background:#f357d1}
             .THSugg div:hover{background:#f357d1; color: white;}
             .THSugg div:hover div{opacity: 1}
-            .THSugg p{margin-left: 28px}
             .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
             .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important;}
                         
@@ -534,12 +533,13 @@
                 function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
                 window.addEventListener('load', checkThFilt)
                 window.addEventListener('resize', checkThFilt)
-                // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
+            
+            // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
             // se tiver aberto o Esc Sai da Bandeja
-            // exibir a quantidade de clientes q tiver sendo exibido no thSugg
+            // Exibir a quantidade de clientes Visiveis
 
-            /*
-                document.addEventListener('keydown',e=>{
+            /* 
+                document.addEventListener('keydown',e=>{   // botão do Esc
                 if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
                     LimparFiltro('PDDS')}
                 })
@@ -565,7 +565,7 @@
             }
 
             function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-                console.log('trunfo')
+                console.log('Frufru')
                 $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                     const tipo = Inn(th)
                     const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
@@ -578,8 +578,9 @@
                                             <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
                                             `
 
-                    th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+                    th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
                 })
+                // Botão pra Exibir todos os Vazios
             }
 
             function LimpaThAtv(quem){ // opções pra poder limpar Colunas especificas
@@ -611,23 +612,28 @@
             }// Rascunho
 
             function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
-                const chek = !!$('.Filteraddd')
+                const chek = !!$('.Filteraddd') // isso deve ser aquele check q tem a função de Exibir todos com o Filtro, ou eles combinados
                 if(Clik=='Clik'){LimpaThAtv('All')}
-                    if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
-                    const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent)
-                    const Length = $$('.ThFilt_Atv',_th(Eu)).length
-                    const Notifi = $('b',_th(Eu))
-                    if(Length==0){None(Notifi)}else{Show(Notifi)}
-                    Inn(Notifi,Length)
 
-                const regex = new RegExp(Ativos.join('|'), 'i')
+                if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
+
+                const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+                const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+
+                // Atualiza Notificação
+                const Length = $$('.ThFilt_Atv',_th(Eu)).length
+                const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length) 
+
+                $$(Qry).forEach(e=>{ 
+                    if(RxAtv.test(VAL(_td(e)))){
+                        console.log('Atv',_tr(e))
+                        if(chek){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}
+                })
                 
-                $$(Qry).forEach(e=>{
-                    if(regex.test(VAL(_td(e)))){
-                        if(chek){Rmv_N(_tr(e))} // Conferir se Limpa os none antes de continuar
-                    }else{Add_N(_tr(e))}})
+
 
                 if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
+                if(event.ctrlKey||Clik=='-'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
                 RealTime()
             }// Rascunho
 
