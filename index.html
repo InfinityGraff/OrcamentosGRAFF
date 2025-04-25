@@ -347,15 +347,15 @@
 
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = R[3]==='Edit' ? $('p',td).textContent.trim()
-                  : R[3]==='Fx'   ? $('p',td).textContent.trim()
-                  : R[3]==='Sugg' ? $('p',td).textContent.trim()
-                  : R[3]==='Auto' ? $('p',td).textContent.trim()
-                  : R[3]==='SVG'  ? $('p',td).textContent.trim()
-                  : R[3]==='Soma' ? $('p',td).textContent.trim()
-                  : R[3]==='Data' ? $('p',td).textContent.trim()
-                  : R[3]==='Bndj' ? $('p',td).textContent.trim()
-                  : R[3]==='Valr' ? Num2($('p',td).textContent.trim())
+        const val = R[3]==='Edit' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Fx'   ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Sugg' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Auto' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='SVG'  ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Soma' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Data' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
+                  : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
                   
                   : R[3]==='Slct' ? $('select',td).value
                   : R[3]==='Inpt' ? $('input' ,td).value
@@ -365,6 +365,25 @@
                   : null
         return val
     }
+
+    // Exibir Bandeija abaixo de uma Div Especifica
+    function ShowBndj2(div,svg){ // div, é o clicado
+        if (event.target.tagName === 'IMG') return
+        function PoseBndj(e){
+            const parent = e.dataset.pai ? $(e.dataset.pai) : Pai(e) // Pai pode ser propprio Pai, ou um Pai externo, com 'dataset="#bandeja"'
+            const rect = parent.getBoundingClientRect()
+            const cor = window.getComputedStyle(e).backgroundColor
+                if(!$('.Seta',e)){
+                    e.innerHTML += `<a class="Seta traz none" style="height:12px;z-index:0">${svg.replace('""',`"fill:#ff7300"`)}</a>`
+                    e.innerHTML += `<a class="Seta" style="height:10px;z-index:1">${svg.replace('""',`"fill:${cor}"`)}</a>`}
+            e.style.top  = `${rect.bottom+window.scrollY+10}px`
+            e.style.left = `${(rect.left+(rect.width/2))-(e.offsetWidth/2)+window.scrollX}px`
+        }
+        const e = $('.Bandj',div)
+        if (e.contains(event.target)){if(Tecla('ctrl')){e}else{return}}else{TogShow(e);PoseBndj(e)}
+        if(Tecla('ctrl')){Add(e,'Trav');Show($('.traz',e));ClickFora(div,()=>{Show(e)})}else{Rmv(e,'Trav');None($('.traz',e));ClickFora(div,()=>{None(e)})}
+    }
+
     //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
@@ -414,16 +433,20 @@
         
         const Tm_TablePDDS=(typ,arry)=>{
             const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
+            const LocPasta=(R)=>{
+                const Rx = /(?=.*SERV)(?=.*SVG)(?=.*imgs)/i
+                if(Rx.test(R)){return 'Recorte'}
+            }
             const Tm_Tm = {// tenho q começar a questionar o uso da class P-P parece q já não ta sendo mais nessesária
-                Fixo:e=>    `<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-                Auto:e=>    `<p class="P-P Ct         " name="${e}">${e}</p>`,
+                Fixo:(e,R)=>`<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
+                Auto:(e,R)=>`<p class="P-P Ct         " name="${e}">${e}</p>`,
                 Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr')}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
-                Edit:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
+                Edit:(e,R)=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
                 Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
-                Chek:e=>    `<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
-                Data:e=>    `<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Imgs:e=>    `<img onclick="AbrirImg(this)" src="${e}" draggable="false">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
-                Valr:e=>    `<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
+                Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
+                Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+                Imgs:(e,R)=>`<img onclick="AbrirImg(this)" src="./Base/${LocPasta(R)}/${e}" draggable="false">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
+                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
                 Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
                 Grds:(e,R)=>`${e}`,
                 Lixo:(e,R)=>`<a onclick="RmvROW('${D_Rastr2(R)[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`
@@ -466,13 +489,14 @@
 
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
                 const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
-                const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<a class="Rltv"><img class="icoFone Abslt HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg"></a>`:'' : ''
+                const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
+                const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Recorte/${e['SVG']}">`).join('|') : ''
 
-                return `<p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}<div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
+                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
+                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj2(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
             }
             return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
             
@@ -684,7 +708,7 @@
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
 
                 const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
-                const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} > .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
+                const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
 
                 function Validar(K,tyyp,trbdj){ // Validar pra saber se Corresponde ao Critério lá da base de dados
                     const td = $(`:scope > ${Col(tyyp,K[0])}`,trbdj)
@@ -1024,7 +1048,7 @@
             .Dark .TBLAA tbody tr td:nth-child(1){color: #ffffff3b;background: #00000034}
             .Lite .TBLAA tbody tr td:nth-child(1){color: #0000008c}
             
-            .TBLAA td p{width: 100%; height: 100%; padding: 2px 6px; text-align: center}
+            .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
 
             .TBLAA .hMin td{height:10px}
             .TBLAA .hMin td select,.hMin td input{height: 17px !important}
