@@ -429,29 +429,28 @@
         const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
 
-        // tentar Jogar estes Tm_Suggs pra dentro da 'Tm_Tm'
+        // tentar Jogar estes Tm_Suggs pra dentro da 'tm_tm'
         const Tm_SuSg=()=>`<span class="Sugg Shdw rd Abslt Cl none"></span>`
         const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
         
         const Tm_TablePDDS=(typ,arry)=>{ const IN = performance.now()
 
-            const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
-            const LocPasta=(R)=>{const Rx = /(?=.*SERV)(?=.*Arte)(?=.*imgs)/i ; if(Rx.test(R)){return 'Recorte'}} // Localizar Pasta!
+            const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma // parar quando achar
 
             const Tm_Tm = {// tenho q começar a questionar o uso da class P-P parece q já não ta sendo mais nessesária
-                Fixo:(e,R)=>`<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-                Auto:(e,R)=>`<p class="P-P Ct         " name="${e}">${e}</p>`,
-                Soma:(e,R)=>`<p class="P-P Ct         " onclick="CtrlSoma(this)" name="${SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr')}">R$ ${Cm(SOMA_Obj(FiltID(D_Rastr2(R)[2])[0],'Valr'))}</p>`,
-                Edit:(e,R)=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${e}</p>`,
-                Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${ D_Rastr2(R)[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[D_Rastr2(R)[3]],e)}</select>`,
+                Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
+                Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
+                Soma:(e,R)=>{const soma = SOMA_Obj(FiltID(R[2])[0],'Valr') ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+                Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
+                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');this.select()" oninput="MaskR$(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
+                Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
                 Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
                 Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Imgs:(e,R)=>`<img onclick="AbrirImg(this)" src="./Base/${LocPasta(R)}/${e}" draggable="false">`, // se tiver img da Edit, e tbm permitir Edit mesmo se tiver imagem
-                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${e}" oninput="MaskR$(this)" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${RS(e)}</p>`, // ao clickar no input de valor já deixar o campo inteiro selecionado
+                Imgs:(e,R)=>`<img onclick="AbrirImg(this)" src="./Base/${R[3]}/${e}" draggable="false">`, // [R]3 é a Pasta, ${e} é o nome do arquivo
                 Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
                 Grds:(e,R)=>`${e}`,
-                Lixo:(e,R)=>`<a onclick="RmvROW('${D_Rastr2(R)[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`
+                Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`
             }
 
             function Tm_Bndj(arr,Typ){
@@ -492,16 +491,16 @@
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
                 const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
-                const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Recorte/${e['Arte']}">`).join('|') : ''
+                const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Arte']}">`).join('|') : ''
 
                 return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj2(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : `<div class="Ct">${Tm_Tm[dR[4]](v,R)}</div>`}</td>`
+                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj2(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : `<div class="Ct">${Tm_Tm[dR[4]](v,D_Rastr2(R))}</div>`}</td>`
             }
             const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
-            console.log(`⏱️ Tm_TablePDDS(${typ}): ${(performance.now()-IN).toFixed(2)}ms`)
+            console.log(`⏱️ Tm_TablePDDS(${typ}): ${(performance.now()-IN).toFixed(2)}ms`) // 179.10ms // 164.70ms
             return Retorno
             
             // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
@@ -1090,7 +1089,7 @@
 
             #Rodape{height: 200px;}
 
-            .ColorFix{background: #a7a7a78e !important;}
+            
 
             .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
 
@@ -1104,6 +1103,8 @@
             #H_SERV > tbody > tr > td:nth-child(9) ,#H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
             #H_SERV > tbody > tr > td:nth-child(13),#H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
             #H_SERV > tbody > tr > td:nth-child(16),#H_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+
+            .TBLAA > table > tbody > tr > td:nth-child(1){background: #a7a7a78e !important}
             
         </style>
 
