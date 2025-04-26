@@ -366,6 +366,9 @@
         return val
     }
 
+    function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
+
+
     // Exibir Bandeija abaixo de uma Div Especifica
     function ShowBndj2(div,svg){ // div, é o clicado
         if (event.target.tagName === 'IMG') return
@@ -434,7 +437,7 @@
         const Tm_TablePDDS=(typ,arry)=>{ const IN = performance.now()
 
             const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
-            const LocPasta=(R)=>{const Rx = /(?=.*SERV)(?=.*SVG)(?=.*imgs)/i ; if(Rx.test(R)){return 'Recorte'}} // Localizar Pasta!
+            const LocPasta=(R)=>{const Rx = /(?=.*SERV)(?=.*Arte)(?=.*imgs)/i ; if(Rx.test(R)){return 'Recorte'}} // Localizar Pasta!
 
             const Tm_Tm = {// tenho q começar a questionar o uso da class P-P parece q já não ta sendo mais nessesária
                 Fixo:(e,R)=>`<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
@@ -489,7 +492,7 @@
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
                 const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
-                const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Recorte/${e['SVG']}">`).join('|') : ''
+                const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Recorte/${e['Arte']}">`).join('|') : ''
 
                 return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Bandj Shdw none rd Cl" ${Zindx}>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div>`
             }
@@ -602,11 +605,9 @@
                                             <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
                                             <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
                                             `
-                    
-                    const retorno = Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
-                    console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
-                    th.innerHTML += retorno
+                    th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
                 })
+                console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
                 // Botão pra Exibir todos os Vazios
             }
 
@@ -857,6 +858,15 @@
 
     <script> // Previews
 
+        function IMGENS(){ // função q filtra linhas se existir imagem
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{
+                const TD=(stg)=>$(`:scope > ${Col('PDDS',stg)}`,tr)
+                const ArryImg = $$(':scope > div > img',TD('Serv'))
+                const tem1 = ArryImg.some(e=>isImageLoaded(e))
+                if(tem1){Rmv_N(tr)}else{Add_N(tr)}
+            })
+        }
+
         function AbrirImg(img){MdalShow('#FormIMG')
             Inn($('#FormIMG'),`<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}"><span>aquificara fica Os<span><div>`)
         }
@@ -1104,6 +1114,8 @@
                 <style>.Filteraddd{color: red !important;}</style>
                 <button onclick="Complete_Forn()">Complet Forn</button>
                 <div onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
+                <button onclick="IMGENS()">Filtrarapeansimg</button>
+
                 <textarea style="background-color: gray;" class="ppt"  onclick="copiarTexto(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
                 <script>
                     function copiarTexto(area,stg){area.value = stg ; area.select() ; document.execCommand('copy') ; console.log('Copiado')}
@@ -1877,7 +1889,7 @@
         Onloads('body')
         NavPag(Atual['Pag'])
         Format_Bndj_Clnt()
-        Tm_Filt()
+        Tm_Filt() // Carregar todo Conteúdo do THFilt
         RealTime()
         console.log('✅ Concluido')
     }
@@ -2011,6 +2023,8 @@
     // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     // function savecoifigTABLE(){StogeSet('Orden',x)}
     // Save para MenuNav
+
+    
 </script>
 
 <script> // comentários
@@ -2048,7 +2062,7 @@
     // Transitar com as Setinhas na tabela do APP igual na Planilha
 
 
-    
+    // ao exibir o SVG grande, mostra o tamanho das coisas
     
  
 </script>
