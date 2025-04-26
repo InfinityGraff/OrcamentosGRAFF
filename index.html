@@ -92,7 +92,7 @@
     const O = {
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
         Serv:['','Adesivo','Banner','...'],
-        Arte:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
+        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Devendo','Entregue','JaFeito','Produção']
@@ -284,8 +284,8 @@
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const BS = {
-        PDDS:{Id:['F',''], Lin:['G',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
-        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Arte:['S',''],SVG: ['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E',''],Uber:['E',''],Coment:['E',''],'Lixo':['X','']},
+        PDDS:{Id:['F',''], Lin:['E',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
+        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Dsng:['S',''],Arte:['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E',''],Uber:['E',''],Coment:['E',''],'Lixo':['X','']},
         PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -431,12 +431,11 @@
         const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
         
-        const Tm_TablePDDS=(typ,arry)=>{
+        const Tm_TablePDDS=(typ,arry)=>{ const IN = performance.now()
+
             const FiltID=id=>NovoJson.filter(e=>e.Id==id).map(E=>E.Serv) // isso é só pra fazer a Soma
-            const LocPasta=(R)=>{
-                const Rx = /(?=.*SERV)(?=.*SVG)(?=.*imgs)/i
-                if(Rx.test(R)){return 'Recorte'}
-            }
+            const LocPasta=(R)=>{const Rx = /(?=.*SERV)(?=.*SVG)(?=.*imgs)/i ; if(Rx.test(R)){return 'Recorte'}} // Localizar Pasta!
+
             const Tm_Tm = {// tenho q começar a questionar o uso da class P-P parece q já não ta sendo mais nessesária
                 Fixo:(e,R)=>`<p class="P-P Ct ColorFix" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct         " name="${e}">${e}</p>`,
@@ -496,12 +495,15 @@
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj2(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : Tm_Tm[dR[4]](v,R)}</td>`
+                return `<td class="${R}" onclick="${dR[4] === 'Bndj'? 'ShowBndj2(this,SVG.Ponta)':''}">${dR[4] === 'Bndj' ? _Tm_Bndj(v,R) : `<div class="Ct">${Tm_Tm[dR[4]](v,R)}</div>`}</td>`
             }
-            return arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
+            const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
+            console.log(`⏱️ Tm_TablePDDS(${typ}): ${(performance.now()-IN).toFixed(2)}ms`)
+            return Retorno
             
             // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
             // tipo de Sugg, ou de troca, ou de subtração
+
         }
 
         function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
@@ -579,21 +581,19 @@
             
             function Palavras(Qry,tipo){
                 const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
-                            tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :              
-                            tipo==='Stts' ? O['Stts'] :              // Simplificar
-                            tipo==='Pgmt' ? O['Form'] : 
-                            tipo==='Arte' ? O['Arte'] : 
-                            tipo==='Forn' ? O['Forn'] : 
-                            Uniq($$(Qry).map(e=>e.innerText))
+                              tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :
+                              tipo==='Stts' ? O['Stts'] : // Simplificar
+                              tipo==='Pgmt' ? O['Form'] : // Simplificar
+                              tipo==='Dsgn' ? O['Dsgn'] : // Simplificar
+                              tipo==='Forn' ? O['Forn'] : // Simplificar
+                              Uniq($$(Qry).map(e=>e.innerText))
                 return Valls
             }
 
-            function Tm_Filt(){ // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-                console.log('Frufru')
+            function Tm_Filt(){ const IN = performance.now() // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
                 $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                     const tipo = Inn(th)
-                    const temdiv = 'Serv'===tipo ? 'div >' : '' // isso é só pra botar a div
-                    const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > ${temdiv} .P-P`
+                    const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
 
                     $('a',_th(th)).innerHTML = `
                                             <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
@@ -602,8 +602,10 @@
                                             <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
                                             <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
                                             `
-
-                    th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+                    
+                    const retorno = Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+                    console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
+                    th.innerHTML += retorno
                 })
                 // Botão pra Exibir todos os Vazios
             }
@@ -899,7 +901,9 @@
             const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
         }
 
-        function RealTime(){Rfresh_Foot() ; Rfresh_Color()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
+        function RealTime(){
+            Rfresh_Foot() ; Rfresh_Color()
+        } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 </div>
 
@@ -1875,6 +1879,7 @@
         Format_Bndj_Clnt()
         Tm_Filt()
         RealTime()
+        console.log('✅ Concluido')
     }
 
     function EditCell(e,vall=null){
@@ -1988,9 +1993,9 @@
     function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
     // AtivaEventos()
 
-    function Disparos(e){console.log('Dispoaro >') ; e.dispatchEvent(new Event('change')); console.log('< Dispoaro')}
+    function Disparos(e){/*console.log('Dispoaro >')*/ ; e.dispatchEvent(new Event('change')); /* console.log('< Dispoaro') */}
 
-    function SaveConfig(e){StogeSet(e.id,Vll(e)) ; console.log('Save',e.id,Vll(e))}
+    function SaveConfig(e){StogeSet(e.id,Vll(e)) ; /* console.log('Save',e.id,Vll(e)) */ }
 
     function GetConfig(){$$('.GETConfig').forEach(e=>{
         const Valor = StogeGet(e.id)

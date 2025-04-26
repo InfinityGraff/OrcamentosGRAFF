@@ -20366,7 +20366,7 @@ const NovoJson = [
         "Calc": [
           "20|30|1|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -20374,7 +20374,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 8,
@@ -20434,7 +20434,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "16",
         "Forn": "BPrint",
         "OK": true,
@@ -20442,7 +20442,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 8,
@@ -20502,7 +20502,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -20510,7 +20510,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -20570,7 +20570,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": true,
@@ -20578,7 +20578,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 8,
@@ -20638,7 +20638,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -20646,7 +20646,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -20706,7 +20706,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": 50,
         "Forn": "Grafit",
         "OK": true,
@@ -20714,7 +20714,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 1,
@@ -20774,7 +20774,7 @@ const NovoJson = [
         "Calc": [
           "100|100|1|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "BPrint",
         "OK": true,
@@ -20782,7 +20782,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 9,
@@ -20842,7 +20842,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -20850,7 +20850,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -20897,7 +20897,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -20905,7 +20905,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -20965,7 +20965,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -20973,7 +20973,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21033,7 +21033,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -21041,7 +21041,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 2,
@@ -21101,7 +21101,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "60",
         "Forn": "Stock",
         "OK": true,
@@ -21109,7 +21109,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21123,7 +21123,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -21131,7 +21131,7 @@ const NovoJson = [
         "DataEntg": "10/12/2024",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21191,7 +21191,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "Varyus",
         "OK": true,
@@ -21199,7 +21199,7 @@ const NovoJson = [
         "DataEntg": "(30/12 pa Tráz)",
         "Coment": "275+488",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21259,7 +21259,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -21267,7 +21267,7 @@ const NovoJson = [
         "DataEntg": "10/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 2,
@@ -21281,7 +21281,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "34",
         "Forn": "Grafit",
         "OK": true,
@@ -21289,7 +21289,7 @@ const NovoJson = [
         "DataEntg": "10/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 2,
@@ -21303,7 +21303,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "33",
         "Forn": "Grafit",
         "OK": true,
@@ -21311,7 +21311,7 @@ const NovoJson = [
         "DataEntg": "10/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 2,
@@ -21325,7 +21325,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "23",
         "Forn": "Stock",
         "OK": true,
@@ -21333,7 +21333,7 @@ const NovoJson = [
         "DataEntg": "10/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21393,7 +21393,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "19",
         "Forn": "Stock",
         "OK": true,
@@ -21401,7 +21401,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21461,7 +21461,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -21469,7 +21469,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21529,7 +21529,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -21537,7 +21537,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 4,
@@ -21609,7 +21609,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -21617,7 +21617,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21677,7 +21677,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "28",
         "Forn": "BPrint",
         "OK": true,
@@ -21685,7 +21685,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 13,
@@ -21745,7 +21745,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -21753,7 +21753,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21813,7 +21813,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "27",
         "Forn": "Stock",
         "OK": true,
@@ -21821,7 +21821,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21881,7 +21881,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "30",
         "Forn": "Stock",
         "OK": true,
@@ -21889,7 +21889,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21949,7 +21949,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -21957,7 +21957,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -21971,7 +21971,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "BPrint",
         "OK": true,
@@ -21979,7 +21979,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 14,
@@ -22039,7 +22039,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -22047,7 +22047,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22107,7 +22107,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -22115,7 +22115,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 11,
@@ -22175,7 +22175,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "Inová",
         "OK": true,
@@ -22183,7 +22183,7 @@ const NovoJson = [
         "DataEntg": "13/12/2024 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22255,7 +22255,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "Grafit",
         "OK": true,
@@ -22263,7 +22263,7 @@ const NovoJson = [
         "DataEntg": "(30/12 pa Tráz)",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22323,7 +22323,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -22331,7 +22331,7 @@ const NovoJson = [
         "DataEntg": "14/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 5,
@@ -22391,7 +22391,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -22399,7 +22399,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "osascorte olografic",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22459,7 +22459,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "35",
         "Forn": "BPrint",
         "OK": true,
@@ -22467,7 +22467,7 @@ const NovoJson = [
         "DataEntg": "12/12/2024 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 12,
@@ -22527,7 +22527,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -22535,7 +22535,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22595,7 +22595,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "4",
         "Forn": "Stock",
         "OK": true,
@@ -22603,7 +22603,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22663,7 +22663,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -22671,7 +22671,7 @@ const NovoJson = [
         "DataEntg": "14/12/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 5,
@@ -22685,7 +22685,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": true,
@@ -22693,7 +22693,7 @@ const NovoJson = [
         "DataEntg": "14/12/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 6,
@@ -22707,7 +22707,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "200",
         "Forn": "Stock",
         "OK": true,
@@ -22715,7 +22715,7 @@ const NovoJson = [
         "DataEntg": "no dia q painho levou as letras",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22799,7 +22799,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "360",
         "Forn": "Grafit",
         "OK": true,
@@ -22807,7 +22807,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 7,
@@ -22891,7 +22891,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -22899,7 +22899,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -22946,7 +22946,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -22954,7 +22954,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23014,7 +23014,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "21",
         "Forn": "BPrint",
         "OK": true,
@@ -23022,7 +23022,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "6 foi do Uber dela",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 14,
@@ -23094,7 +23094,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "45",
         "Forn": "BPrint",
         "OK": true,
@@ -23102,7 +23102,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 15,
@@ -23162,7 +23162,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -23170,7 +23170,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 15,
@@ -23230,7 +23230,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "BPrint",
         "OK": true,
@@ -23238,7 +23238,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 11,
@@ -23298,7 +23298,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "15",
         "Forn": "BPrint",
         "OK": true,
@@ -23306,7 +23306,7 @@ const NovoJson = [
         "DataEntg": "12/12/2024 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 14,
@@ -23320,7 +23320,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -23328,7 +23328,7 @@ const NovoJson = [
         "DataEntg": "12/12/2024 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23378,7 +23378,7 @@ const NovoJson = [
   {
     "Id": "55",
     "Rg": "14/12/2024 23:41:02",
-    "Data": "-",
+    "Data": "",
     "Clnt": "1485",
     "Serv": [
       {
@@ -23388,7 +23388,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "110",
         "Forn": "BPrint",
         "OK": true,
@@ -23396,12 +23396,12 @@ const NovoJson = [
         "DataEntg": "20/12/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 14,
         "Clnt": 1485,
-        "Data": "-"
+        "Data": ""
       }
     ],
     "Valr": "",
@@ -23446,7 +23446,7 @@ const NovoJson = [
   {
     "Id": "56",
     "Rg": "14/12/2024 23:43:34",
-    "Data": "-",
+    "Data": "",
     "Clnt": "1486",
     "Serv": [
       {
@@ -23456,7 +23456,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "35",
         "Forn": "BPrint",
         "OK": true,
@@ -23464,12 +23464,12 @@ const NovoJson = [
         "DataEntg": "16/12/2024 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 10,
         "Clnt": 1486,
-        "Data": "-"
+        "Data": ""
       }
     ],
     "Valr": "",
@@ -23524,7 +23524,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Arte",
         "OK": true,
@@ -23532,7 +23532,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23546,7 +23546,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Arte",
         "OK": true,
@@ -23554,7 +23554,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23614,7 +23614,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "BPrint",
         "OK": true,
@@ -23622,7 +23622,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 16,
@@ -23682,7 +23682,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "BPrint",
         "OK": true,
@@ -23690,7 +23690,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 16,
@@ -23750,7 +23750,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "20",
         "Forn": "Arte",
         "OK": "",
@@ -23758,7 +23758,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23805,7 +23805,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Stock",
         "OK": true,
@@ -23813,7 +23813,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -23873,7 +23873,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "BPrint",
         "OK": true,
@@ -23881,7 +23881,7 @@ const NovoJson = [
         "DataEntg": "16/12/2024 18:00h",
         "Coment": "UberExtra 15",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 17,
@@ -23953,7 +23953,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "Stock",
         "OK": true,
@@ -23961,7 +23961,7 @@ const NovoJson = [
         "DataEntg": "- 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24008,7 +24008,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "3",
         "Forn": "Stock",
         "OK": true,
@@ -24016,7 +24016,7 @@ const NovoJson = [
         "DataEntg": "- 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24076,7 +24076,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -24084,7 +24084,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24144,7 +24144,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "55",
         "Forn": "Grafit",
         "OK": true,
@@ -24152,7 +24152,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 21,
@@ -24212,7 +24212,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Arte",
         "OK": true,
@@ -24220,7 +24220,7 @@ const NovoJson = [
         "DataEntg": "18/12/2024 11:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24234,7 +24234,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "130",
         "Forn": "Bureal",
         "OK": true,
@@ -24242,7 +24242,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Botei pra rodar dia 06/01",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24302,7 +24302,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -24310,7 +24310,7 @@ const NovoJson = [
         "DataEntg": "- 17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24370,7 +24370,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -24378,7 +24378,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24438,7 +24438,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -24446,7 +24446,7 @@ const NovoJson = [
         "DataEntg": "18/12/2024 17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24518,7 +24518,7 @@ const NovoJson = [
         "Calc": [
           "80|210|1|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -24526,7 +24526,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 22,
@@ -24540,7 +24540,7 @@ const NovoJson = [
         "Calc": [
           "60|50|1|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -24548,7 +24548,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 19,
@@ -24608,7 +24608,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -24616,7 +24616,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 22,
@@ -24676,7 +24676,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "0.1",
         "Forn": "BPrint",
         "OK": true,
@@ -24684,7 +24684,7 @@ const NovoJson = [
         "DataEntg": "18/12/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 18,
@@ -24744,7 +24744,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "35",
         "Forn": "Stock",
         "OK": "",
@@ -24752,7 +24752,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24766,7 +24766,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
         "OK": "",
@@ -24774,7 +24774,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24834,7 +24834,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "100",
         "Forn": "JLTal",
         "OK": true,
@@ -24842,7 +24842,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24856,7 +24856,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "200",
         "Forn": "JLTal",
         "OK": true,
@@ -24864,7 +24864,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24936,7 +24936,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "390",
         "Forn": "Stock",
         "OK": true,
@@ -24944,7 +24944,7 @@ const NovoJson = [
         "DataEntg": "28/12/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -24958,7 +24958,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": true,
@@ -24966,7 +24966,7 @@ const NovoJson = [
         "DataEntg": "15/12/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 6,
@@ -25038,7 +25038,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -25046,7 +25046,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25106,7 +25106,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "200",
         "Forn": "Stock",
         "OK": true,
@@ -25114,7 +25114,7 @@ const NovoJson = [
         "DataEntg": "19/12/2024 16:00h",
         "Coment": "Branco Blacout",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25186,7 +25186,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -25194,7 +25194,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "002 - 2025-01-06 _4.svg",
+        "Arte": "002 - 2025-01-06 _4.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25254,7 +25254,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "60",
         "Forn": "BPrint",
         "OK": true,
@@ -25262,7 +25262,7 @@ const NovoJson = [
         "DataEntg": "18/12/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 18,
@@ -25322,7 +25322,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "1095",
         "Forn": "Inová",
         "OK": true,
@@ -25330,7 +25330,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 15:00h",
         "Coment": "3PP | 2P | 7M | 16G | 1GG | 1XG | 1XXG",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": 23,
@@ -25390,7 +25390,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "15",
         "Forn": "Arte",
         "OK": true,
@@ -25398,7 +25398,7 @@ const NovoJson = [
         "DataEntg": "13/12/2024 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25458,7 +25458,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "200",
         "Forn": "Inová",
         "OK": true,
@@ -25466,7 +25466,7 @@ const NovoJson = [
         "DataEntg": "20/12/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25550,7 +25550,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "800",
         "Forn": "Grafit",
         "OK": true,
@@ -25558,7 +25558,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25572,7 +25572,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "250",
         "Forn": "Grafit",
         "OK": true,
@@ -25580,7 +25580,7 @@ const NovoJson = [
         "DataEntg": "16/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25652,7 +25652,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "250",
         "Forn": "Stock",
         "OK": true,
@@ -25660,7 +25660,7 @@ const NovoJson = [
         "DataEntg": "20/12/2024 11:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25732,7 +25732,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "35",
         "Forn": "Stock",
         "OK": true,
@@ -25740,7 +25740,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25800,7 +25800,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "50",
         "Forn": "Stock",
         "OK": true,
@@ -25808,7 +25808,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25868,7 +25868,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "12",
         "Forn": "",
         "OK": true,
@@ -25876,7 +25876,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -25936,7 +25936,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "Grafit",
         "OK": true,
@@ -25944,7 +25944,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26004,7 +26004,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -26012,7 +26012,7 @@ const NovoJson = [
         "DataEntg": "06/01/2025 09:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26072,7 +26072,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "",
         "OK": true,
@@ -26080,7 +26080,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26140,7 +26140,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Varyus",
         "OK": true,
@@ -26148,7 +26148,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26240,7 +26240,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "7",
         "Forn": "Stock",
         "OK": true,
@@ -26248,7 +26248,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "desse msm dia 06/01",
         "Lixo": "",
-        "SVG": "002 - 2025-01-06 _4.svg",
+        "Arte": "002 - 2025-01-06 _4.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26295,7 +26295,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "9",
         "Forn": "Stock",
         "OK": true,
@@ -26303,7 +26303,7 @@ const NovoJson = [
         "DataEntg": "06/01/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26363,7 +26363,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -26371,7 +26371,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "001 - 2025-01-06 _1.svg",
+        "Arte": "001 - 2025-01-06 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26431,7 +26431,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": true,
@@ -26439,7 +26439,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26499,7 +26499,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -26507,7 +26507,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26567,7 +26567,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Arte",
         "OK": "",
@@ -26575,7 +26575,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26589,7 +26589,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "8",
         "Forn": "Stock",
         "OK": true,
@@ -26597,7 +26597,7 @@ const NovoJson = [
         "DataEntg": "06/01/2025 17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26669,7 +26669,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "90",
         "Forn": "Bureal",
         "OK": true,
@@ -26677,7 +26677,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26749,7 +26749,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -26757,7 +26757,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "005 - 07.01.2025 _1.svg",
+        "Arte": "005 - 07.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26817,7 +26817,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -26825,7 +26825,7 @@ const NovoJson = [
         "DataEntg": "07/01/2024 15:00h",
         "Coment": "pediu desde dezembro",
         "Lixo": "",
-        "SVG": "002 - 2025-01-06 _4.svg",
+        "Arte": "002 - 2025-01-06 _4.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26839,7 +26839,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "8",
         "Forn": "Stock",
         "OK": true,
@@ -26847,7 +26847,7 @@ const NovoJson = [
         "DataEntg": "07/01/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26907,7 +26907,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "Stock",
         "OK": true,
@@ -26915,7 +26915,7 @@ const NovoJson = [
         "DataEntg": "07/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "003 - 07.01.2025 _1.svg",
+        "Arte": "003 - 07.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26975,7 +26975,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -26983,7 +26983,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -26997,7 +26997,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -27005,7 +27005,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27065,7 +27065,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -27073,7 +27073,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27133,7 +27133,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "345",
         "Forn": "Grafit",
         "OK": true,
@@ -27141,7 +27141,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27201,7 +27201,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -27209,7 +27209,7 @@ const NovoJson = [
         "DataEntg": "08/01/2025 10:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27269,7 +27269,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -27277,7 +27277,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27324,7 +27324,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "12",
         "Forn": "Stock",
         "OK": true,
@@ -27332,7 +27332,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "006 - 09.01.2025 _1.svg",
+        "Arte": "006 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27392,7 +27392,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "175",
         "Forn": "Inová",
         "OK": true,
@@ -27400,7 +27400,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27472,7 +27472,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "22",
         "Forn": "BPrint",
         "OK": true,
@@ -27480,7 +27480,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27494,7 +27494,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "Grafit",
         "OK": true,
@@ -27502,7 +27502,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27516,7 +27516,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -27524,7 +27524,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27574,7 +27574,7 @@ const NovoJson = [
   {
     "Id": "122",
     "Rg": "09/01/2025 09:37:46",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -27606,7 +27606,7 @@ const NovoJson = [
   {
     "Id": "123",
     "Rg": "09/01/2025 09:37:49",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -27648,7 +27648,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -27656,7 +27656,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "cecilia, teve correção depois",
         "Lixo": "",
-        "SVG": "007 - 09.01.2025 _1.svg",
+        "Arte": "007 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27670,7 +27670,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -27678,7 +27678,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27725,7 +27725,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -27733,7 +27733,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27795,7 +27795,7 @@ const NovoJson = [
   {
     "Id": "126",
     "Rg": "09/01/2025 11:07:14",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -27827,7 +27827,7 @@ const NovoJson = [
   {
     "Id": "127",
     "Rg": "09/01/2025 11:07:58",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -27869,7 +27869,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "Grafit",
         "OK": true,
@@ -27877,7 +27877,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27891,7 +27891,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Grafit",
         "OK": true,
@@ -27899,7 +27899,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27913,7 +27913,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -27921,7 +27921,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "008.4 - 09.01.2025 _1.svg",
+        "Arte": "008.4 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -27935,7 +27935,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Grafit",
         "OK": true,
@@ -27943,7 +27943,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28003,7 +28003,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "190",
         "Forn": "Grafit",
         "OK": true,
@@ -28011,7 +28011,7 @@ const NovoJson = [
         "DataEntg": "17/01/2025 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28025,7 +28025,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -28033,7 +28033,7 @@ const NovoJson = [
         "DataEntg": "17/01/2025 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28047,7 +28047,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -28055,7 +28055,7 @@ const NovoJson = [
         "DataEntg": "17/01/2025 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28069,7 +28069,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "250",
         "Forn": "BPrint",
         "OK": true,
@@ -28077,7 +28077,7 @@ const NovoJson = [
         "DataEntg": "17/01/2025 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28149,7 +28149,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "380",
         "Forn": "Grafit",
         "OK": true,
@@ -28157,7 +28157,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28229,7 +28229,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -28237,7 +28237,7 @@ const NovoJson = [
         "DataEntg": "09/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28251,7 +28251,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "7",
         "Forn": "Stock",
         "OK": true,
@@ -28259,7 +28259,7 @@ const NovoJson = [
         "DataEntg": "09/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "008 - 09.01.2025 _1.svg",
+        "Arte": "008 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28319,7 +28319,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -28327,7 +28327,7 @@ const NovoJson = [
         "DataEntg": "09/01/2024 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28387,7 +28387,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -28395,7 +28395,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "008.2 - 09.01.2025 _1.svg",
+        "Arte": "008.2 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28455,7 +28455,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "28",
         "Forn": "Stock",
         "OK": true,
@@ -28463,7 +28463,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "008.1 - 09.01.2025 _1.svg",
+        "Arte": "008.1 - 09.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28477,7 +28477,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "3",
         "Forn": "Stock",
         "OK": true,
@@ -28485,7 +28485,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28557,7 +28557,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "450",
         "Forn": "Grafit",
         "OK": true,
@@ -28565,7 +28565,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28625,7 +28625,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -28633,7 +28633,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "009 - 13.01.2025 _4.svg",
+        "Arte": "009 - 13.01.2025 _4.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28693,7 +28693,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "170",
         "Forn": "Inová",
         "OK": true,
@@ -28701,7 +28701,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28761,7 +28761,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "462",
         "Forn": "Inová",
         "OK": true,
@@ -28769,7 +28769,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28783,7 +28783,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "66",
         "Forn": "Inová",
         "OK": true,
@@ -28791,7 +28791,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28875,7 +28875,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "8",
         "Forn": "Stock",
         "OK": true,
@@ -28883,7 +28883,7 @@ const NovoJson = [
         "DataEntg": "13/01/2024 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "009 - 13.01.2025 _4.svg",
+        "Arte": "009 - 13.01.2025 _4.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28930,7 +28930,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -28938,7 +28938,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "010 - 14.01.2025 _1.svg",
+        "Arte": "010 - 14.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -28998,7 +28998,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Grafit",
         "OK": true,
@@ -29006,7 +29006,7 @@ const NovoJson = [
         "DataEntg": "10/01/2024 20:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29066,7 +29066,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -29074,7 +29074,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29134,7 +29134,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "28",
         "Forn": "BPrint",
         "OK": true,
@@ -29142,7 +29142,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29202,7 +29202,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -29210,7 +29210,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29224,7 +29224,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "90",
         "Forn": "Grafit",
         "OK": true,
@@ -29232,7 +29232,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29246,7 +29246,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "350",
         "Forn": "Stock",
         "OK": true,
@@ -29254,7 +29254,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "122 Custo >> 228",
         "Lixo": "",
-        "SVG": "012 - 18.01.2025 _1.svg",
+        "Arte": "012 - 18.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29268,7 +29268,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -29276,7 +29276,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "17,60 Custo >> 2,4",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29290,7 +29290,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "170",
         "Forn": "Inová",
         "OK": true,
@@ -29298,7 +29298,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29370,7 +29370,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": "",
@@ -29378,7 +29378,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29425,7 +29425,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Grafit",
         "OK": true,
@@ -29433,7 +29433,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29493,7 +29493,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "14",
         "Forn": "Stock",
         "OK": true,
@@ -29501,7 +29501,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29573,7 +29573,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "230",
         "Forn": "Stock",
         "OK": true,
@@ -29581,7 +29581,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "570 x 72 Efetivo R$ 90,00 de Custo",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29653,7 +29653,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "160",
         "Forn": "Grafit",
         "OK": true,
@@ -29661,7 +29661,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29721,7 +29721,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -29729,7 +29729,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Hulk verde claro",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29743,7 +29743,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "350",
         "Forn": "Inová",
         "OK": true,
@@ -29751,7 +29751,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29811,7 +29811,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "72",
         "Forn": "Inová",
         "OK": true,
@@ -29819,7 +29819,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29891,7 +29891,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": true,
@@ -29899,7 +29899,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "443° Grafit - 1501",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29971,7 +29971,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -29979,7 +29979,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "011 - 16.01.2025 _1.svg",
+        "Arte": "011 - 16.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -29993,7 +29993,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -30001,7 +30001,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30061,7 +30061,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "200",
         "Forn": "Grafit",
         "OK": true,
@@ -30069,7 +30069,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Custo 24",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30083,7 +30083,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "90",
         "Forn": "Grafit",
         "OK": true,
@@ -30091,7 +30091,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30105,7 +30105,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "180",
         "Forn": "RevendaMais",
         "OK": true,
@@ -30113,7 +30113,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30127,7 +30127,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -30135,7 +30135,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30207,7 +30207,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -30215,7 +30215,7 @@ const NovoJson = [
         "DataEntg": "07/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "004 - 07.01.2025 _1.svg",
+        "Arte": "004 - 07.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30287,7 +30287,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -30295,7 +30295,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30355,7 +30355,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -30363,7 +30363,7 @@ const NovoJson = [
         "DataEntg": "16/01/2025 10:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30423,7 +30423,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -30431,7 +30431,7 @@ const NovoJson = [
         "DataEntg": "31/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30491,7 +30491,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -30499,7 +30499,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30513,7 +30513,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": true,
@@ -30521,7 +30521,7 @@ const NovoJson = [
         "DataEntg": "Pediu dia 23/01",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30535,7 +30535,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Inová",
         "OK": true,
@@ -30543,7 +30543,7 @@ const NovoJson = [
         "DataEntg": "Pediu dia 23/01",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30603,7 +30603,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -30611,7 +30611,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30671,7 +30671,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "18",
         "Forn": "Stock",
         "OK": true,
@@ -30679,7 +30679,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30739,7 +30739,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "185",
         "Forn": "",
         "OK": true,
@@ -30747,7 +30747,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30807,7 +30807,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -30815,7 +30815,7 @@ const NovoJson = [
         "DataEntg": "18/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30875,7 +30875,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -30883,7 +30883,7 @@ const NovoJson = [
         "DataEntg": "18/01/2025 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -30943,7 +30943,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -30951,7 +30951,7 @@ const NovoJson = [
         "DataEntg": "31/01/2025 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31011,7 +31011,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "160",
         "Forn": "Grafit",
         "OK": true,
@@ -31019,7 +31019,7 @@ const NovoJson = [
         "DataEntg": "24/01/2024 11:00h",
         "Coment": "Custo 91,80",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31033,7 +31033,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "200",
         "Forn": "Grafit",
         "OK": true,
@@ -31041,7 +31041,7 @@ const NovoJson = [
         "DataEntg": "24/01/2024 11:00h",
         "Coment": "Custo 127,50",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31055,7 +31055,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "80",
         "Forn": "Grafit",
         "OK": true,
@@ -31063,7 +31063,7 @@ const NovoJson = [
         "DataEntg": "24/01/2024 11:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31135,7 +31135,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -31143,7 +31143,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31203,7 +31203,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "5",
         "Forn": "Grafit",
         "OK": true,
@@ -31211,7 +31211,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31283,7 +31283,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -31291,7 +31291,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "013 - 21.01.2025 _1.svg",
+        "Arte": "013 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31351,7 +31351,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "12",
         "Forn": "Stock",
         "OK": true,
@@ -31359,7 +31359,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "014 - 21.01.2025 _1.svg",
+        "Arte": "014 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31373,7 +31373,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "12",
         "Forn": "Stock",
         "OK": true,
@@ -31381,7 +31381,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "019 - 22.01.2025 _1.svg",
+        "Arte": "019 - 22.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31441,7 +31441,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Stock",
         "OK": true,
@@ -31449,7 +31449,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "017 - 21.01.2025 _1.svg",
+        "Arte": "017 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31509,7 +31509,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -31517,7 +31517,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "015 - 21.01.2025 _1.svg",
+        "Arte": "015 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31564,7 +31564,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -31572,7 +31572,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "016 - 21.01.2025 _1.svg",
+        "Arte": "016 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31632,7 +31632,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "45",
         "Forn": "Stock",
         "OK": true,
@@ -31640,7 +31640,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "018 - 21.01.2025 _1.svg",
+        "Arte": "018 - 21.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31700,7 +31700,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "4",
         "Forn": "Stock",
         "OK": true,
@@ -31708,7 +31708,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 12:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31768,7 +31768,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -31776,7 +31776,7 @@ const NovoJson = [
         "DataEntg": "22/01/2024 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31836,7 +31836,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -31844,7 +31844,7 @@ const NovoJson = [
         "DataEntg": "16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31904,7 +31904,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "BPrint",
         "OK": true,
@@ -31912,7 +31912,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "105° BPrint - 2301",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31972,7 +31972,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -31980,7 +31980,7 @@ const NovoJson = [
         "DataEntg": "22/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -31994,7 +31994,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -32002,7 +32002,7 @@ const NovoJson = [
         "DataEntg": "22/01/2025 15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32062,7 +32062,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Grafit",
         "OK": true,
@@ -32070,7 +32070,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32130,7 +32130,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "200",
         "Forn": "Grafit",
         "OK": "",
@@ -32138,7 +32138,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32152,7 +32152,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -32160,7 +32160,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32207,7 +32207,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "60",
         "Forn": "Inová",
         "OK": true,
@@ -32215,7 +32215,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32275,7 +32275,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "230",
         "Forn": "Grafit",
         "OK": true,
@@ -32283,7 +32283,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32297,7 +32297,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -32305,7 +32305,7 @@ const NovoJson = [
         "DataEntg": "30/01/2025 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32377,7 +32377,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -32385,7 +32385,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "020 - 23.01.2025 _1.svg",
+        "Arte": "020 - 23.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32399,7 +32399,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -32407,7 +32407,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "023 - 23.01.2025 _1.svg",
+        "Arte": "023 - 23.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32467,7 +32467,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -32475,7 +32475,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32489,7 +32489,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -32497,7 +32497,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "021 - 23.01.2025 _1.svg",
+        "Arte": "021 - 23.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32557,7 +32557,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -32565,7 +32565,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32625,7 +32625,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "2",
         "Forn": "Stock",
         "OK": true,
@@ -32633,7 +32633,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32693,7 +32693,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "3",
         "Forn": "Stock",
         "OK": true,
@@ -32701,7 +32701,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32761,7 +32761,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "150",
         "Forn": "Inová",
         "OK": true,
@@ -32769,7 +32769,7 @@ const NovoJson = [
         "DataEntg": "31/01/2025 13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32829,7 +32829,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -32837,7 +32837,7 @@ const NovoJson = [
         "DataEntg": "11:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32897,7 +32897,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Arte",
         "OK": true,
@@ -32905,7 +32905,7 @@ const NovoJson = [
         "DataEntg": "14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -32965,7 +32965,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "2",
         "Forn": "Stock",
         "OK": true,
@@ -32973,7 +32973,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33033,7 +33033,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -33041,7 +33041,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "024 - 24.01.2025 _1.svg",
+        "Arte": "024 - 24.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33101,7 +33101,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -33109,7 +33109,7 @@ const NovoJson = [
         "DataEntg": "17:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33169,7 +33169,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "Stock",
         "OK": true,
@@ -33177,7 +33177,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "022 - 23.01.2025 _1.svg",
+        "Arte": "022 - 23.01.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33224,7 +33224,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -33232,7 +33232,7 @@ const NovoJson = [
         "DataEntg": "30/01/2025 19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33292,7 +33292,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -33300,7 +33300,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33360,7 +33360,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "290",
         "Forn": "Bureal",
         "OK": true,
@@ -33368,7 +33368,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33382,7 +33382,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -33390,7 +33390,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33450,7 +33450,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "950",
         "Forn": "Stock",
         "OK": true,
@@ -33458,7 +33458,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33530,7 +33530,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "14",
         "Forn": "Stock",
         "OK": true,
@@ -33538,7 +33538,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33598,7 +33598,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "14",
         "Forn": "BPrint",
         "OK": true,
@@ -33606,7 +33606,7 @@ const NovoJson = [
         "DataEntg": "pagou junto com QRCODE",
         "Coment": "110° BPrint - 3001",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33666,7 +33666,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "BPrint",
         "OK": true,
@@ -33674,7 +33674,7 @@ const NovoJson = [
         "DataEntg": "pagar 20 pq tinha 10",
         "Coment": "108° BPrint - 2901",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33688,7 +33688,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -33696,7 +33696,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33756,7 +33756,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -33764,7 +33764,7 @@ const NovoJson = [
         "DataEntg": "31/01/2025 11:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33824,7 +33824,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -33832,7 +33832,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33892,7 +33892,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": true,
@@ -33900,7 +33900,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "110° BPrint - 3001",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -33960,7 +33960,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -33968,7 +33968,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34028,7 +34028,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -34036,7 +34036,7 @@ const NovoJson = [
         "DataEntg": "20:39h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34050,7 +34050,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -34058,7 +34058,7 @@ const NovoJson = [
         "DataEntg": "20:39h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34118,7 +34118,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -34126,7 +34126,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34186,7 +34186,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -34194,7 +34194,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "454° Grafit - 0302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34254,7 +34254,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
         "OK": "",
@@ -34262,7 +34262,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34276,7 +34276,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": "",
@@ -34284,7 +34284,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34331,7 +34331,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "17",
         "Forn": "Stock",
         "OK": true,
@@ -34339,7 +34339,7 @@ const NovoJson = [
         "DataEntg": "13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34399,7 +34399,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -34407,7 +34407,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "454° Grafit - 0302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34467,7 +34467,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -34475,7 +34475,7 @@ const NovoJson = [
         "DataEntg": "pagou junto com QRCODE",
         "Coment": "454° Grafit - 0302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34535,7 +34535,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "BPrint",
         "OK": true,
@@ -34543,7 +34543,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34603,7 +34603,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -34611,7 +34611,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Mickey",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34625,7 +34625,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -34633,7 +34633,7 @@ const NovoJson = [
         "DataEntg": "18:00h 06/02/2025",
         "Coment": "Azul",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34705,7 +34705,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "135",
         "Forn": "Bureal",
         "OK": true,
@@ -34713,7 +34713,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34773,7 +34773,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "16",
         "Forn": "Grafit",
         "OK": true,
@@ -34781,7 +34781,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "454° Grafit - 0302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34841,7 +34841,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -34849,7 +34849,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34909,7 +34909,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "Grafit",
         "OK": true,
@@ -34917,7 +34917,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "457° Grafit - 0702",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -34989,7 +34989,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "300",
         "Forn": "Grafit",
         "OK": true,
@@ -34997,7 +34997,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "456° Grafit - 0402",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35069,7 +35069,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": true,
@@ -35077,7 +35077,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35091,7 +35091,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "180",
         "Forn": "Inová",
         "OK": true,
@@ -35099,7 +35099,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35171,7 +35171,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "Grafit",
         "OK": true,
@@ -35179,7 +35179,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35193,7 +35193,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -35201,7 +35201,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35261,7 +35261,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "Inová",
         "OK": true,
@@ -35269,7 +35269,7 @@ const NovoJson = [
         "DataEntg": "05/02/2025 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35283,7 +35283,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -35291,7 +35291,7 @@ const NovoJson = [
         "DataEntg": "05/02/2025 16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35363,7 +35363,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -35371,7 +35371,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35418,7 +35418,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "28",
         "Forn": "",
         "OK": true,
@@ -35426,7 +35426,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35486,7 +35486,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -35494,7 +35494,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35554,7 +35554,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Stock",
         "OK": true,
@@ -35562,7 +35562,7 @@ const NovoJson = [
         "DataEntg": "12:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35634,7 +35634,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "",
         "OK": true,
@@ -35642,7 +35642,7 @@ const NovoJson = [
         "DataEntg": "19:00h",
         "Coment": "113° BPrint - 0601",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35656,7 +35656,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -35664,7 +35664,7 @@ const NovoJson = [
         "DataEntg": "19:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35724,7 +35724,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -35732,7 +35732,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "116° BPrint - 1102",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35792,7 +35792,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -35800,7 +35800,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35847,7 +35847,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -35855,7 +35855,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "029 - 06.02.2025 _2.svg",
+        "Arte": "029 - 06.02.2025 _2.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35915,7 +35915,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -35923,7 +35923,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "457° Grafit - 0702",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -35983,7 +35983,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "7",
         "Forn": "",
         "OK": "",
@@ -35991,7 +35991,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36051,7 +36051,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -36059,7 +36059,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "029 - 06.02.2025 _2.svg",
+        "Arte": "029 - 06.02.2025 _2.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36106,7 +36106,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Stock",
         "OK": true,
@@ -36114,7 +36114,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "030 - 07.02.2025 _1.svg",
+        "Arte": "030 - 07.02.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36174,7 +36174,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -36182,7 +36182,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "031 - 10.02.2025 _2.svg",
+        "Arte": "031 - 10.02.2025 _2.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36242,7 +36242,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "84",
         "Forn": "JLTal",
         "OK": true,
@@ -36250,7 +36250,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36297,7 +36297,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -36305,7 +36305,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "to fazendo até dia 17/02/2025 | Parei dia 25/02",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36365,7 +36365,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -36373,7 +36373,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36387,7 +36387,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -36395,7 +36395,7 @@ const NovoJson = [
         "DataEntg": "12:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36467,7 +36467,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -36475,7 +36475,7 @@ const NovoJson = [
         "DataEntg": "16:00h",
         "Coment": "Allan e Fexta",
         "Lixo": "",
-        "SVG": "032 - 10.02.2025 _1.svg",
+        "Arte": "032 - 10.02.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36535,7 +36535,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "BPrint",
         "OK": true,
@@ -36543,7 +36543,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "116° BPrint - 1102",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36603,7 +36603,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -36611,7 +36611,7 @@ const NovoJson = [
         "DataEntg": "16:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36671,7 +36671,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Stock",
         "OK": true,
@@ -36679,7 +36679,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "031 - 10.02.2025 _2.svg",
+        "Arte": "031 - 10.02.2025 _2.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36726,7 +36726,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "290",
         "Forn": "Stock",
         "OK": true,
@@ -36734,7 +36734,7 @@ const NovoJson = [
         "DataEntg": "18:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36806,7 +36806,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -36814,7 +36814,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "116° BPrint - 1102",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36861,7 +36861,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "15",
         "Forn": "BPrint",
         "OK": true,
@@ -36869,7 +36869,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "116° BPrint - 1102",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -36961,7 +36961,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "30",
         "Forn": "Arte",
         "OK": true,
@@ -36969,7 +36969,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37029,7 +37029,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "45",
         "Forn": "BPrint",
         "OK": true,
@@ -37037,7 +37037,7 @@ const NovoJson = [
         "DataEntg": "10/02/2025 17:00h",
         "Coment": "115° BPrint - 0702",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37097,7 +37097,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -37105,7 +37105,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37165,7 +37165,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "",
         "Forn": "Stock",
         "OK": true,
@@ -37173,7 +37173,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "034 - 11.02.2025 _1.svg",
+        "Arte": "034 - 11.02.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37233,7 +37233,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": true,
@@ -37241,7 +37241,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "117° BPrint - 1102",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37301,7 +37301,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": true,
@@ -37309,7 +37309,7 @@ const NovoJson = [
         "DataEntg": "13/02/2025 12:00h",
         "Coment": "118° BPrint - 1202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37381,7 +37381,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "Grafit",
         "OK": true,
@@ -37389,7 +37389,7 @@ const NovoJson = [
         "DataEntg": "26/02/2025",
         "Coment": "458° Grafit - 01202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37449,7 +37449,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -37457,7 +37457,7 @@ const NovoJson = [
         "DataEntg": "11/02/2025 19:00h",
         "Coment": "pagou coisa antiga tbm",
         "Lixo": "",
-        "SVG": "033 - 11.02.2025 _1.svg",
+        "Arte": "033 - 11.02.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37517,7 +37517,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -37525,7 +37525,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "118° BPrint - 1202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37539,7 +37539,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "25",
         "Forn": "Grafit",
         "OK": true,
@@ -37547,7 +37547,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "458° Grafit - 01202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37619,7 +37619,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "BPrint",
         "OK": true,
@@ -37627,7 +37627,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "118° BPrint - 1202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37687,7 +37687,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -37695,7 +37695,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "118° BPrint - 1202",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37787,7 +37787,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "300",
         "Forn": "Inová",
         "OK": "",
@@ -37795,7 +37795,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37842,7 +37842,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -37850,7 +37850,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "035 - 13.02.2025 _1.svg",
+        "Arte": "035 - 13.02.2025 _1.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37910,7 +37910,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -37918,7 +37918,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "459° Grafit - 1302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -37978,7 +37978,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -37986,7 +37986,7 @@ const NovoJson = [
         "DataEntg": "13/02/2025 12:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38033,7 +38033,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "Stock",
         "OK": "",
@@ -38041,7 +38041,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38088,7 +38088,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "",
         "Forn": "Grafit",
         "OK": "",
@@ -38096,7 +38096,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "459° Grafit - 1302",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38143,7 +38143,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "200",
         "Forn": "Bureal",
         "OK": true,
@@ -38151,7 +38151,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Msm Hora",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38211,7 +38211,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "140",
         "Forn": "Inová",
         "OK": true,
@@ -38219,7 +38219,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Msm Hora",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38291,7 +38291,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
         "OK": "",
@@ -38299,7 +38299,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38346,7 +38346,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -38354,7 +38354,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38401,7 +38401,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -38409,7 +38409,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38469,7 +38469,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -38477,7 +38477,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38491,7 +38491,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "BPrint",
         "OK": true,
@@ -38499,7 +38499,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "Arte - 119° BPrint - 1902 (4).svg",
+        "Arte": "Arte - 119° BPrint - 1902 (4).svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38559,7 +38559,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
         "OK": "",
@@ -38567,7 +38567,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38614,7 +38614,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "12",
         "Forn": "",
         "OK": "",
@@ -38622,7 +38622,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38682,7 +38682,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "",
         "OK": true,
@@ -38690,7 +38690,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Custo R$ 120,00",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38750,7 +38750,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -38758,7 +38758,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38850,7 +38850,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "60",
         "Forn": "BPrint",
         "OK": true,
@@ -38858,7 +38858,7 @@ const NovoJson = [
         "DataEntg": "20 da Aplicação",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38872,7 +38872,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": true,
@@ -38880,7 +38880,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "Arte - 119° BPrint - 1902 (1).svg",
+        "Arte": "Arte - 119° BPrint - 1902 (1).svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38894,7 +38894,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -38902,7 +38902,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -38962,7 +38962,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": "",
@@ -38970,7 +38970,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "Arte - 119° BPrint - 1902 (5).svg",
+        "Arte": "Arte - 119° BPrint - 1902 (5).svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39042,7 +39042,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "980",
         "Forn": "",
         "OK": "",
@@ -39050,7 +39050,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39064,7 +39064,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
         "OK": "",
@@ -39072,7 +39072,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39086,7 +39086,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -39094,7 +39094,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39108,7 +39108,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
         "OK": "",
@@ -39116,7 +39116,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "461° Grafit - 1902",
         "Lixo": "",
-        "SVG": "Arte - 461° Grafit - 1902.svg",
+        "Arte": "Arte - 461° Grafit - 1902.svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39176,7 +39176,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "",
         "OK": "",
@@ -39184,7 +39184,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "Arte - 119° BPrint - 1902 (3).svg",
+        "Arte": "Arte - 119° BPrint - 1902 (3).svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39244,7 +39244,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
         "OK": true,
@@ -39252,7 +39252,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "119° BPrint - 1902",
         "Lixo": "",
-        "SVG": "Arte - 119° BPrint - 1902 (2).svg",
+        "Arte": "Arte - 119° BPrint - 1902 (2).svg",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39266,7 +39266,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": "",
@@ -39274,7 +39274,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "120° BPrint - 2602",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39334,7 +39334,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "150",
         "Forn": "Grafit",
         "OK": true,
@@ -39342,7 +39342,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39356,7 +39356,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -39364,7 +39364,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39436,7 +39436,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -39444,7 +39444,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39481,7 +39481,7 @@ const NovoJson = [
   {
     "Id": "284",
     "Rg": "20/02/2025 11:37:04",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -39513,7 +39513,7 @@ const NovoJson = [
   {
     "Id": "285",
     "Rg": "20/02/2025 15:05:53",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -39555,7 +39555,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -39563,7 +39563,7 @@ const NovoJson = [
         "DataEntg": "15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39623,7 +39623,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -39631,7 +39631,7 @@ const NovoJson = [
         "DataEntg": "15:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39691,7 +39691,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Grafit",
         "OK": true,
@@ -39699,7 +39699,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39759,7 +39759,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -39767,7 +39767,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39827,7 +39827,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "17",
         "Forn": "Stock",
         "OK": true,
@@ -39835,7 +39835,7 @@ const NovoJson = [
         "DataEntg": "13:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39927,7 +39927,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -39935,7 +39935,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -39995,7 +39995,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -40003,7 +40003,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40063,7 +40063,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "266",
         "Forn": "Tatiane",
         "OK": true,
@@ -40071,7 +40071,7 @@ const NovoJson = [
         "DataEntg": "28/02/2025 14:00h",
         "Coment": "fexta tbm",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40131,7 +40131,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": "",
@@ -40139,7 +40139,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40186,7 +40186,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "310",
         "Forn": "Bureal",
         "OK": true,
@@ -40194,7 +40194,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40286,7 +40286,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta",
+        "Dsng": "Fexta",
         "Valr": "800",
         "Forn": "Inová",
         "OK": "",
@@ -40294,7 +40294,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40354,7 +40354,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": "",
@@ -40362,7 +40362,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40409,7 +40409,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "45",
         "Forn": "Grafit",
         "OK": true,
@@ -40417,7 +40417,7 @@ const NovoJson = [
         "DataEntg": "28/02/2025 14:00h",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40489,7 +40489,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Stock",
         "OK": true,
@@ -40497,7 +40497,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40557,7 +40557,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -40565,7 +40565,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40625,7 +40625,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "160",
         "Forn": "Inová",
         "OK": "",
@@ -40633,7 +40633,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40693,7 +40693,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "110",
         "Forn": "BPrint",
         "OK": "",
@@ -40701,7 +40701,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "121° BPrint - 2602",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40761,7 +40761,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "BPrint",
         "OK": "",
@@ -40769,7 +40769,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40816,7 +40816,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": "",
@@ -40824,7 +40824,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40871,7 +40871,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "21",
         "Forn": "BPrint",
         "OK": true,
@@ -40879,7 +40879,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -40939,7 +40939,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "380",
         "Forn": "Inová",
         "OK": true,
@@ -40947,7 +40947,7 @@ const NovoJson = [
         "DataEntg": "16:00h 14/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41019,7 +41019,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "700",
         "Forn": "Tatiane",
         "OK": true,
@@ -41027,7 +41027,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41074,7 +41074,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "",
         "OK": "",
@@ -41082,7 +41082,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41129,7 +41129,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
         "OK": "",
@@ -41137,7 +41137,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41197,7 +41197,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "300",
         "Forn": "",
         "OK": "",
@@ -41205,7 +41205,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "era pra ser 450",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41265,7 +41265,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "60",
         "Forn": "BPrint",
         "OK": "",
@@ -41273,7 +41273,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41333,7 +41333,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "60",
         "Forn": "BPrint",
         "OK": "",
@@ -41341,7 +41341,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41413,7 +41413,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": true,
@@ -41421,7 +41421,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41481,7 +41481,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta e Allan",
+        "Dsng": "Fexta e Allan",
         "Valr": "160",
         "Forn": "Inová",
         "OK": true,
@@ -41489,7 +41489,7 @@ const NovoJson = [
         "DataEntg": "13:00h 15/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41503,7 +41503,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -41511,7 +41511,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41583,7 +41583,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
         "OK": false,
@@ -41591,7 +41591,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Corte deu 70",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41651,7 +41651,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "4",
         "Forn": "Stock",
         "OK": true,
@@ -41659,7 +41659,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41719,7 +41719,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "Stock",
         "OK": true,
@@ -41727,7 +41727,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41787,7 +41787,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Stock",
         "OK": true,
@@ -41795,7 +41795,7 @@ const NovoJson = [
         "DataEntg": "19:00h 12/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41855,7 +41855,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "Grafit",
         "OK": true,
@@ -41863,7 +41863,7 @@ const NovoJson = [
         "DataEntg": "13/03/2025 16:00h",
         "Coment": "sem Uber peguei com o Negão",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41923,7 +41923,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "22",
         "Forn": "BPrint",
         "OK": true,
@@ -41931,7 +41931,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -41978,7 +41978,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "90",
         "Forn": "Stock",
         "OK": true,
@@ -41986,7 +41986,7 @@ const NovoJson = [
         "DataEntg": "16:00h 15/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42046,7 +42046,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "",
         "Forn": "Stock",
         "OK": true,
@@ -42054,7 +42054,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42101,7 +42101,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -42109,7 +42109,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42169,7 +42169,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -42177,7 +42177,7 @@ const NovoJson = [
         "DataEntg": "12/03",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42237,7 +42237,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": true,
@@ -42245,7 +42245,7 @@ const NovoJson = [
         "DataEntg": "16:00h 14/03/2025",
         "Coment": "Bprint - 002104",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42305,7 +42305,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "65",
         "Forn": "",
         "OK": "",
@@ -42313,7 +42313,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42373,7 +42373,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta e Allan",
+        "Dsng": "Fexta e Allan",
         "Valr": "400",
         "Forn": "Tatiane",
         "OK": true,
@@ -42381,7 +42381,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42395,7 +42395,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "80",
         "Forn": "Stock",
         "OK": true,
@@ -42403,7 +42403,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42450,7 +42450,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "1200",
         "Forn": "Stock",
         "OK": true,
@@ -42458,7 +42458,7 @@ const NovoJson = [
         "DataEntg": "15:00h 16/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42530,7 +42530,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": true,
@@ -42538,7 +42538,7 @@ const NovoJson = [
         "DataEntg": "20:00h 14/03/2025",
         "Coment": "Grafit - 009605",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42552,7 +42552,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -42560,7 +42560,7 @@ const NovoJson = [
         "DataEntg": "20:00h 14/03/2025",
         "Coment": "Grafit - 009605",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42632,7 +42632,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "12",
         "Forn": "Grafit",
         "OK": true,
@@ -42640,7 +42640,7 @@ const NovoJson = [
         "DataEntg": "12/03",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42700,7 +42700,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "65",
         "Forn": "Inová",
         "OK": true,
@@ -42708,7 +42708,7 @@ const NovoJson = [
         "DataEntg": "17:00h 21/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42780,7 +42780,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -42788,7 +42788,7 @@ const NovoJson = [
         "DataEntg": "20:00h 14/03/2025",
         "Coment": "Grafit - 009605",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42860,7 +42860,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "130",
         "Forn": "Grafit",
         "OK": true,
@@ -42868,7 +42868,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Grafit - 009605",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42915,7 +42915,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Grafit",
         "OK": true,
@@ -42923,7 +42923,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Grafit - 009605",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -42970,7 +42970,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -42978,7 +42978,7 @@ const NovoJson = [
         "DataEntg": "16:00h 15/03/2025",
         "Coment": "Bprint - 002104",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43038,7 +43038,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "500",
         "Forn": "Stock",
         "OK": true,
@@ -43046,7 +43046,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43118,7 +43118,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "310",
         "Forn": "Bureal",
         "OK": "",
@@ -43126,7 +43126,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43230,7 +43230,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "9",
         "Forn": "Stock",
         "OK": true,
@@ -43238,7 +43238,7 @@ const NovoJson = [
         "DataEntg": "15:00h 13/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43386,7 +43386,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -43394,7 +43394,7 @@ const NovoJson = [
         "DataEntg": "16:00h 14/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43454,7 +43454,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
         "OK": true,
@@ -43462,7 +43462,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Bprint - 002114",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43509,7 +43509,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -43517,7 +43517,7 @@ const NovoJson = [
         "DataEntg": "16:00h 14/03/2025",
         "Coment": "Bprint - 002114",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43577,7 +43577,7 @@ const NovoJson = [
         "Calc": [
           "36|16|4|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
         "OK": true,
@@ -43585,7 +43585,7 @@ const NovoJson = [
         "DataEntg": "19:00h 14/03/2025",
         "Coment": "e 4 setas de recorte",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "BPrint - 002114",
         "Uber": "Edilson 14/03/2025",
         "Grad": "129° BPrint -1403",
@@ -43645,7 +43645,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "130",
         "Forn": "Grafit",
         "OK": true,
@@ -43653,7 +43653,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43713,7 +43713,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Inová",
         "OK": true,
@@ -43721,7 +43721,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43793,7 +43793,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": true,
@@ -43801,7 +43801,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43861,7 +43861,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": true,
@@ -43869,7 +43869,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Grau Técnico",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43929,7 +43929,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -43937,7 +43937,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -43951,7 +43951,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -43959,7 +43959,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44019,7 +44019,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "45",
         "Forn": "BPrint",
         "OK": true,
@@ -44027,7 +44027,7 @@ const NovoJson = [
         "DataEntg": "18:00h 18/03/2025",
         "Coment": "teve entrega dia 19/03",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44041,7 +44041,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "16",
         "Forn": "Grafit",
         "OK": true,
@@ -44049,7 +44049,7 @@ const NovoJson = [
         "DataEntg": "18:00h 18/03/2025",
         "Coment": "teve entrega dia 19/03",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44109,7 +44109,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "200",
         "Forn": "Grafit",
         "OK": true,
@@ -44117,7 +44117,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44167,7 +44167,7 @@ const NovoJson = [
   {
     "Id": "355",
     "Rg": "17/03/2025 20:31:15",
-    "Data": "-",
+    "Data": "",
     "Clnt": "0",
     "Serv": [],
     "Valr": "",
@@ -44209,7 +44209,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "35",
         "Forn": "BPrint",
         "OK": true,
@@ -44217,7 +44217,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44277,7 +44277,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "200",
         "Forn": "Stock",
         "OK": true,
@@ -44285,7 +44285,7 @@ const NovoJson = [
         "DataEntg": "17:00h 21/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44357,7 +44357,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Arte",
         "OK": true,
@@ -44365,7 +44365,7 @@ const NovoJson = [
         "DataEntg": "12:00h 18/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44425,7 +44425,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "390",
         "Forn": "Grafit",
         "OK": true,
@@ -44433,7 +44433,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44447,7 +44447,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "100",
         "Forn": "Bureal",
         "OK": true,
@@ -44455,7 +44455,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Peguei no dia 25/03",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44469,7 +44469,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -44477,7 +44477,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Peguei no dia 25/03",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44561,7 +44561,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -44569,7 +44569,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44616,7 +44616,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "25",
         "Forn": "Grafit",
         "OK": true,
@@ -44624,7 +44624,7 @@ const NovoJson = [
         "DataEntg": "16:00h 19/03/2025",
         "Coment": "fiz entrega Uber 19/03/2025",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44684,7 +44684,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Inová",
         "OK": "",
@@ -44692,7 +44692,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44752,7 +44752,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "Grafit",
         "OK": true,
@@ -44760,7 +44760,7 @@ const NovoJson = [
         "DataEntg": "14:00h 21/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44820,7 +44820,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -44828,7 +44828,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44875,7 +44875,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "BPrint",
         "OK": true,
@@ -44883,7 +44883,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -44943,7 +44943,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "130",
         "Forn": "BPrint",
         "OK": true,
@@ -44951,7 +44951,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "teve custo com fita",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45011,7 +45011,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "100",
         "Forn": "Inová",
         "OK": "",
@@ -45019,7 +45019,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45066,7 +45066,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Grafit",
         "OK": true,
@@ -45074,7 +45074,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45121,7 +45121,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -45129,7 +45129,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45176,7 +45176,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Grafit",
         "OK": true,
@@ -45184,7 +45184,7 @@ const NovoJson = [
         "DataEntg": "15:00h 20/03/2025",
         "Coment": "teve entrega dia 20/03 (R$ 4,57)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45244,7 +45244,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -45252,7 +45252,7 @@ const NovoJson = [
         "DataEntg": "14:00h 25/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45299,7 +45299,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -45307,7 +45307,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45367,7 +45367,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -45375,7 +45375,7 @@ const NovoJson = [
         "DataEntg": "17:00g 25/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45435,7 +45435,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "360",
         "Forn": "Grafit",
         "OK": false,
@@ -45443,7 +45443,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45457,7 +45457,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -45465,7 +45465,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45479,7 +45479,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -45487,7 +45487,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45547,7 +45547,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -45555,7 +45555,7 @@ const NovoJson = [
         "DataEntg": "13:00h 21/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45615,7 +45615,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -45623,7 +45623,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45670,7 +45670,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "BPrint",
         "OK": true,
@@ -45678,7 +45678,7 @@ const NovoJson = [
         "DataEntg": "14:00h 25/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45738,7 +45738,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -45746,7 +45746,7 @@ const NovoJson = [
         "DataEntg": "17:00h 21/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45806,7 +45806,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "",
         "OK": true,
@@ -45814,7 +45814,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45828,7 +45828,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
         "OK": true,
@@ -45836,7 +45836,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45896,7 +45896,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Stock",
         "OK": true,
@@ -45904,7 +45904,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -45964,7 +45964,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Inová",
         "OK": true,
@@ -45972,7 +45972,7 @@ const NovoJson = [
         "DataEntg": "17:00h",
         "Coment": "Eurik",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46032,7 +46032,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "BPrint",
         "OK": true,
@@ -46040,7 +46040,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46087,7 +46087,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
         "OK": "",
@@ -46095,7 +46095,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46142,7 +46142,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Canva",
+        "Dsng": "Canva",
         "Valr": "80",
         "Forn": "Inová",
         "OK": "",
@@ -46150,7 +46150,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46224,7 +46224,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Fexta e Allan",
+        "Dsng": "Fexta e Allan",
         "Valr": "20",
         "Forn": "Grafit",
         "OK": true,
@@ -46232,7 +46232,7 @@ const NovoJson = [
         "DataEntg": "14:00h 25/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46292,7 +46292,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
         "OK": "",
@@ -46300,7 +46300,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46360,7 +46360,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -46368,7 +46368,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46428,7 +46428,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "110",
         "Forn": "Inová",
         "OK": "",
@@ -46436,7 +46436,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "18:00h 25/03/2025",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46508,7 +46508,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -46516,7 +46516,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46576,7 +46576,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": "",
@@ -46584,7 +46584,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46631,7 +46631,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "180",
         "Forn": "Inová",
         "OK": "",
@@ -46639,7 +46639,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46699,7 +46699,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "300",
         "Forn": "",
         "OK": "",
@@ -46707,7 +46707,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46767,7 +46767,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "22",
         "Forn": "Stock",
         "OK": true,
@@ -46775,7 +46775,7 @@ const NovoJson = [
         "DataEntg": "10:00h 26/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46835,7 +46835,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": "",
@@ -46843,7 +46843,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46903,7 +46903,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "54",
         "Forn": "Stock",
         "OK": true,
@@ -46911,7 +46911,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -46971,7 +46971,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Grafit",
         "OK": true,
@@ -46979,7 +46979,7 @@ const NovoJson = [
         "DataEntg": "18:00h 01/04/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47051,7 +47051,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "95",
         "Forn": "Grafit",
         "OK": true,
@@ -47059,7 +47059,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47073,7 +47073,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "4",
         "Forn": "Stock",
         "OK": true,
@@ -47081,7 +47081,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47153,7 +47153,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Arte",
         "OK": true,
@@ -47161,7 +47161,7 @@ const NovoJson = [
         "DataEntg": "16:00h 27/03/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47221,7 +47221,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "60",
         "Forn": "Grafit",
         "OK": true,
@@ -47229,7 +47229,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47243,7 +47243,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "5",
         "Forn": "Arte",
         "OK": true,
@@ -47251,7 +47251,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47311,7 +47311,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "80",
         "Forn": "Grafit",
         "OK": true,
@@ -47319,7 +47319,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47333,7 +47333,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "180",
         "Forn": "RevendaMais",
         "OK": true,
@@ -47341,7 +47341,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47355,7 +47355,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "70",
         "Forn": "Grafit",
         "OK": true,
@@ -47363,7 +47363,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47423,7 +47423,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -47431,7 +47431,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "tudo branco",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47491,7 +47491,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Stock",
         "OK": "",
@@ -47499,7 +47499,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "tudo branco, 3 Preto de cada",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47559,7 +47559,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "75",
         "Forn": "",
         "OK": "",
@@ -47567,7 +47567,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47639,7 +47639,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -47647,7 +47647,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47707,7 +47707,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "77",
         "Forn": "BPrint",
         "OK": "",
@@ -47715,7 +47715,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47762,7 +47762,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
         "OK": "",
@@ -47770,7 +47770,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47817,7 +47817,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Inová",
         "OK": true,
@@ -47825,7 +47825,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "@Luizinho_dettona @ glebsomfc 244",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47885,7 +47885,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "24",
         "Forn": "",
         "OK": "",
@@ -47893,7 +47893,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -47953,7 +47953,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
         "OK": true,
@@ -47961,7 +47961,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48021,7 +48021,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "60",
         "Forn": "",
         "OK": "",
@@ -48029,7 +48029,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48076,7 +48076,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": "",
@@ -48084,7 +48084,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48144,7 +48144,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "2",
         "Forn": "",
         "OK": "",
@@ -48152,7 +48152,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48199,7 +48199,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "84",
         "Forn": "Stock",
         "OK": true,
@@ -48207,7 +48207,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48267,7 +48267,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
         "OK": "",
@@ -48275,7 +48275,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48322,7 +48322,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "26",
         "Forn": "",
         "OK": true,
@@ -48330,7 +48330,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48390,7 +48390,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
         "OK": true,
@@ -48398,7 +48398,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48445,7 +48445,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -48453,7 +48453,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48513,7 +48513,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "Grafit",
         "OK": true,
@@ -48521,7 +48521,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48581,7 +48581,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "9",
         "Forn": "Stock",
         "OK": true,
@@ -48589,7 +48589,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48661,7 +48661,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "Inová",
         "OK": "",
@@ -48669,7 +48669,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48683,7 +48683,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -48691,7 +48691,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48741,7 +48741,7 @@ const NovoJson = [
   {
     "Id": "421",
     "Rg": "02/04/2025 11:57:08",
-    "Data": "-",
+    "Data": "",
     "Clnt": "1683",
     "Serv": [],
     "Valr": "",
@@ -48783,7 +48783,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -48791,7 +48791,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48851,7 +48851,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -48859,7 +48859,7 @@ const NovoJson = [
         "DataEntg": "16:00h 01/04/2025",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48919,7 +48919,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "4",
         "Forn": "",
         "OK": true,
@@ -48927,7 +48927,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -48987,7 +48987,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": "",
@@ -48995,7 +48995,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "(pagou os 20 dia 04/04/2025)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49009,7 +49009,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": "",
@@ -49017,7 +49017,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "r$ 7",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49077,7 +49077,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "20",
         "Forn": "Arte",
         "OK": true,
@@ -49085,7 +49085,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49145,7 +49145,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -49153,7 +49153,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49213,7 +49213,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Ja Tinha",
+        "Dsng": "Ja Tinha",
         "Valr": "39",
         "Forn": "",
         "OK": "",
@@ -49221,7 +49221,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "482° Grafit - 1604",
@@ -49268,7 +49268,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "n tem",
+        "Dsng": "n tem",
         "Valr": "2",
         "Forn": "Stock",
         "OK": true,
@@ -49276,7 +49276,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49336,7 +49336,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "80",
         "Forn": "",
         "OK": "",
@@ -49344,7 +49344,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49404,7 +49404,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -49412,7 +49412,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49472,7 +49472,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "100",
         "Forn": "",
         "OK": true,
@@ -49480,7 +49480,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49540,7 +49540,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -49548,7 +49548,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49608,7 +49608,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "27",
         "Forn": "",
         "OK": true,
@@ -49616,7 +49616,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49676,7 +49676,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -49684,7 +49684,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49744,7 +49744,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -49752,7 +49752,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49812,7 +49812,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -49820,7 +49820,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49880,7 +49880,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -49888,7 +49888,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -49948,7 +49948,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -49956,7 +49956,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50016,7 +50016,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -50024,7 +50024,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50084,7 +50084,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -50092,7 +50092,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50152,7 +50152,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -50160,7 +50160,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50220,7 +50220,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -50228,7 +50228,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50288,7 +50288,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "240",
         "Forn": "",
         "OK": true,
@@ -50296,7 +50296,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50356,7 +50356,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "58",
         "Forn": "",
         "OK": true,
@@ -50364,7 +50364,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50424,7 +50424,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "35",
         "Forn": "",
         "OK": true,
@@ -50432,7 +50432,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50492,7 +50492,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -50500,7 +50500,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50560,7 +50560,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": true,
@@ -50568,7 +50568,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50628,7 +50628,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -50636,7 +50636,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50696,7 +50696,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "52",
         "Forn": "",
         "OK": true,
@@ -50704,7 +50704,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50764,7 +50764,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -50772,7 +50772,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Promoção (Cartela)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50832,7 +50832,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "41",
         "Forn": "",
         "OK": true,
@@ -50840,7 +50840,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Promoção (Cartela)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50900,7 +50900,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "620",
         "Forn": "",
         "OK": true,
@@ -50908,7 +50908,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -50968,7 +50968,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "80",
         "Forn": "",
         "OK": true,
@@ -50976,7 +50976,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Promoção (2 Cartela)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51036,7 +51036,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "12",
         "Forn": "",
         "OK": true,
@@ -51044,7 +51044,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51104,7 +51104,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "96",
         "Forn": "",
         "OK": true,
@@ -51112,7 +51112,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Pago (10/04/2025)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51172,7 +51172,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "1500",
         "Forn": "",
         "OK": true,
@@ -51180,7 +51180,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Serviço por Fora!",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51240,7 +51240,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "17",
         "Forn": "",
         "OK": true,
@@ -51248,7 +51248,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "--- (veio pela Promoção)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51308,7 +51308,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -51316,7 +51316,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "--- (veio pela Promoção)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51376,7 +51376,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -51384,7 +51384,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "Promoção (Cartela)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51444,7 +51444,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -51452,7 +51452,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51512,7 +51512,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -51520,7 +51520,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "--- (veio pela Promoção)",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51580,7 +51580,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "35",
         "Forn": "",
         "OK": true,
@@ -51588,7 +51588,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51648,7 +51648,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "40",
         "Forn": "",
         "OK": true,
@@ -51656,7 +51656,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51716,7 +51716,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "40",
         "Forn": "",
         "OK": true,
@@ -51724,7 +51724,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51784,7 +51784,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -51792,7 +51792,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51852,7 +51852,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "6",
         "Forn": "",
         "OK": true,
@@ -51860,7 +51860,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51920,7 +51920,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "35",
         "Forn": "",
         "OK": true,
@@ -51928,7 +51928,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -51988,7 +51988,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "1170",
         "Forn": "",
         "OK": true,
@@ -51996,7 +51996,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52056,7 +52056,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -52064,7 +52064,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52124,7 +52124,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "190",
         "Forn": "",
         "OK": true,
@@ -52132,7 +52132,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52192,7 +52192,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "100",
         "Forn": "",
         "OK": true,
@@ -52200,7 +52200,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52260,7 +52260,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "34",
         "Forn": "",
         "OK": true,
@@ -52268,7 +52268,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52328,7 +52328,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -52336,7 +52336,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52396,7 +52396,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -52404,7 +52404,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52464,7 +52464,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "34",
         "Forn": "",
         "OK": true,
@@ -52472,7 +52472,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52532,7 +52532,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -52540,7 +52540,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52600,7 +52600,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -52608,7 +52608,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52668,7 +52668,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": true,
@@ -52676,7 +52676,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52736,7 +52736,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "355",
         "Forn": "",
         "OK": true,
@@ -52744,7 +52744,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52804,7 +52804,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "132",
         "Forn": "",
         "OK": true,
@@ -52812,7 +52812,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52872,7 +52872,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -52880,7 +52880,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -52940,7 +52940,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "?",
         "Forn": "",
         "OK": false,
@@ -52948,7 +52948,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53008,7 +53008,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "62",
         "Forn": "",
         "OK": true,
@@ -53016,7 +53016,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53076,7 +53076,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -53084,7 +53084,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53144,7 +53144,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -53152,7 +53152,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53212,7 +53212,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "90",
         "Forn": "",
         "OK": true,
@@ -53220,7 +53220,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53280,7 +53280,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "160",
         "Forn": "",
         "OK": false,
@@ -53288,7 +53288,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53348,7 +53348,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": true,
@@ -53356,7 +53356,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53416,7 +53416,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "7",
         "Forn": "",
         "OK": true,
@@ -53424,7 +53424,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53484,7 +53484,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -53492,7 +53492,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53552,7 +53552,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "8",
         "Forn": "",
         "OK": false,
@@ -53560,7 +53560,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53620,7 +53620,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -53628,7 +53628,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53688,7 +53688,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "40",
         "Forn": "",
         "OK": true,
@@ -53696,7 +53696,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53756,7 +53756,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -53764,7 +53764,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53824,7 +53824,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -53832,7 +53832,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53892,7 +53892,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -53900,7 +53900,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -53960,7 +53960,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -53968,7 +53968,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54028,7 +54028,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "40",
         "Forn": "",
         "OK": true,
@@ -54036,7 +54036,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54096,7 +54096,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "14",
         "Forn": "",
         "OK": true,
@@ -54104,7 +54104,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54164,7 +54164,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -54172,7 +54172,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54232,7 +54232,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": true,
@@ -54240,7 +54240,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54300,7 +54300,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "25",
         "Forn": "",
         "OK": true,
@@ -54308,7 +54308,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54368,7 +54368,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -54376,7 +54376,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54436,7 +54436,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "8",
         "Forn": "",
         "OK": true,
@@ -54444,7 +54444,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54504,7 +54504,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -54512,7 +54512,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54572,7 +54572,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -54580,7 +54580,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54640,7 +54640,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "80",
         "Forn": "",
         "OK": false,
@@ -54648,7 +54648,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54708,7 +54708,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -54716,7 +54716,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54776,7 +54776,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -54784,7 +54784,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54844,7 +54844,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -54852,7 +54852,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54912,7 +54912,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "28",
         "Forn": "",
         "OK": true,
@@ -54920,7 +54920,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -54980,7 +54980,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -54988,7 +54988,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55048,7 +55048,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -55056,7 +55056,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55116,7 +55116,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -55124,7 +55124,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55184,7 +55184,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -55192,7 +55192,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55252,7 +55252,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -55260,7 +55260,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55320,7 +55320,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -55328,7 +55328,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55388,7 +55388,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -55396,7 +55396,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55456,7 +55456,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -55464,7 +55464,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55524,7 +55524,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "70",
         "Forn": "Inová",
         "OK": false,
@@ -55532,7 +55532,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55592,7 +55592,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -55600,7 +55600,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55660,7 +55660,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
         "OK": false,
@@ -55668,7 +55668,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55728,7 +55728,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Baby",
+        "Dsng": "Baby",
         "Valr": "30",
         "Forn": "Arte",
         "OK": true,
@@ -55736,7 +55736,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55796,7 +55796,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -55804,7 +55804,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55864,7 +55864,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -55872,7 +55872,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -55932,7 +55932,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "",
+        "Dsng": "",
         "Valr": "5",
         "Forn": "Stock",
         "OK": true,
@@ -55940,7 +55940,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56000,7 +56000,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Arte",
         "OK": true,
@@ -56008,7 +56008,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56068,7 +56068,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Grafit",
         "OK": true,
@@ -56076,7 +56076,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "483° Grafit - 1704",
@@ -56136,7 +56136,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -56144,7 +56144,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56204,7 +56204,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
         "OK": true,
@@ -56212,7 +56212,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "484° Grafit - 2204",
@@ -56272,7 +56272,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "",
         "Forn": "",
         "OK": true,
@@ -56280,7 +56280,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "484° Grafit - 2204",
@@ -56340,7 +56340,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Grafit",
         "OK": "",
@@ -56348,7 +56348,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56408,7 +56408,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "270",
         "Forn": "",
         "OK": true,
@@ -56416,7 +56416,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "484° Grafit - 2204",
@@ -56476,7 +56476,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Inová",
         "OK": "",
@@ -56484,7 +56484,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56544,7 +56544,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Grafit",
         "OK": "",
@@ -56552,7 +56552,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "484° Grafit - 2204",
@@ -56612,7 +56612,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -56620,7 +56620,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56680,7 +56680,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Stock",
         "OK": true,
@@ -56688,7 +56688,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56748,7 +56748,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "4",
         "Forn": "Stock",
         "OK": true,
@@ -56756,7 +56756,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56816,7 +56816,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Stock",
         "OK": true,
@@ -56824,7 +56824,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56884,7 +56884,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -56892,7 +56892,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -56952,7 +56952,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Stock",
         "OK": true,
@@ -56960,7 +56960,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -57020,7 +57020,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "70",
         "Forn": "BPrint",
         "OK": "",
@@ -57028,7 +57028,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "154° BPrint - 2304",
@@ -57088,7 +57088,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "120",
         "Forn": "Grafit",
         "OK": "",
@@ -57096,7 +57096,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -57156,7 +57156,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Inová",
         "OK": "",
@@ -57164,7 +57164,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "",
@@ -57224,7 +57224,7 @@ const NovoJson = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Arte": "Allan",
+        "Dsng": "Allan",
         "Valr": "80",
         "Forn": "BPrint",
         "OK": "",
@@ -57232,7 +57232,7 @@ const NovoJson = [
         "DataEntg": "",
         "Coment": "",
         "Lixo": "",
-        "SVG": "",
+        "Arte": "",
         "OS": "",
         "Uber": "",
         "Grad": "155° BPrint - 2304",
