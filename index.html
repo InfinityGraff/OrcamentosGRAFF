@@ -592,7 +592,8 @@
                 console.log('Frufru')
                 $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                     const tipo = Inn(th)
-                    const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > .P-P`
+                    const temdiv = 'Serv'===tipo ? 'div >' : '' // isso é só pra botar a div
+                    const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > ${temdiv} .P-P`
 
                     $('a',_th(th)).innerHTML = `
                                             <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
@@ -691,11 +692,9 @@
     </div>
 
     <script> // RECOLOR
-        function Rfresh_Color(){
-            // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
-            // todo name de tr e td será relacionado a cor
+        function Rfresh_Color(){ // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
+            const IN = performance.now()
             const Typ  = 'PDDS'
-
             const CC = {
                 SERV:[
                     {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
@@ -703,12 +702,10 @@
                     {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
                 ],
             }
-
-            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
-            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-
-                const TD=(stg)=>$(`:scope > ${Col(Typ,stg)}`,tr)
-                const Td_Val =(stg)=>Nm($(`:scope > ${Col(Typ,stg)} .P-P`,tr)) // ta .P-P só por medo, mas pode ser apenas '> p' tbm
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha
+                const TD     =(stg)=>   $(`:scope > ${Col('PDDS',stg)}`     ,tr)
+                const Td_Val =(stg)=>Nm($(`:scope > ${Col('PDDS',stg)} .P-P`,tr))
 
                 function Validar(K,tyyp,trbdj){ // Validar pra saber se Corresponde ao Critério lá da base de dados
                     const td = $(`:scope > ${Col(tyyp,K[0])}`,trbdj)
@@ -762,6 +759,8 @@
                     Add(TD('Pgmt'),'Formt_VerdOK')
                 }
             })
+
+            console.log(`⏱️ Rfresh_Color(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
         // Quero fazer tudo no Rodapé e manter alterações Fixas
 
@@ -839,8 +838,7 @@
                         
                         // Depois q terminar fazer isso atualizar a Const
                     })
-                    const FIM = performance.now()
-                    console.log(`⏱️ Complete_Forn(): ${(FIM-IN).toFixed(2)}ms`)
+                    const FIM = performance.now() ; console.log(`⏱️ Complete_Forn(): ${(FIM-IN).toFixed(2)}ms`)
         }
 
         // pra cada td deixar escrito em data-set=""  o numero da Coluna, e o nome do thead da coluna (serv, pgmt, coment...) isso vai facilitar muito
@@ -878,7 +876,8 @@
 
     <script> // REALTIME
         function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
-            const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > p`)
+            const IN = performance.now()
+            const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not(.none) > ${Col(Typ,col)} > div > .P-P`)
             const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
             const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
 
@@ -896,6 +895,8 @@
             $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
             $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
             $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+            
+            const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
         }
 
         function RealTime(){Rfresh_Foot() ; Rfresh_Color()} // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
