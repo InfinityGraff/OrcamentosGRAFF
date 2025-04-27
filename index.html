@@ -426,7 +426,6 @@
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
         
         const Tm_TablePDDS=(typ,arry)=>{ const IN = performance.now()
-
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -497,17 +496,14 @@
             
             // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
             // tipo de Sugg, ou de troca, ou de subtração
-
         }
-        console.log('olhar')
-            // Exibir Bandeija abaixo de uma Div Especifica
-        function ShowBndj2(div){ // div, é o clicado
-            if (event.target.tagName=='IMG') return
-            const e = $('.Bandj2',div)            
+
+        function ShowBndj2(div){
+            if(event.target.tagName=='IMG'){return}
+            const e = $('.Bandj2',div)
             if(e.contains(event.target)){return}else{
-                if(Tecla('ctrl')){Tog_N(e)}else{$$('.Bandj2:not(.none)').forEach(E=>Add_N(E));Rmv_N(e)}}
-            if(Tecla('ctrl')){
-                 return}
+            if(Tecla('ctrl')){Tog_N(e)}else{$$('.Bandj2:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
+            if(Tecla('ctrl')){return}
             else{ClickFora(div,()=>{Add_N(e)})}
         }
 
