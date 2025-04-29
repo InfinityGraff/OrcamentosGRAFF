@@ -430,8 +430,12 @@
                 Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
                 Grds:(e,R)=>`${e}`,
                 Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${R.join('-')}')">${e}</p>
-                                <span class="Sugg Shdw rd Abslt Cl none"></span>
-                                <div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar</div>
+                                <div class="Abslt none Cl Bandj2">
+                                    <a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>
+                                    <span class="Sugg Shdw rd Cl"></span>
+                                    <i class="Sugg ppt SuggFoot Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i>
+                                </div>
+                                
                             </div>`,
                             // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
                             // descobrir quem é quem do Sug, pelo título da coluna
@@ -477,7 +481,7 @@
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Arte']}">`).join('|') : ''
 
-                return `<div class="Ct"><p class="P-P" ondblclick="event.preventDefault()" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Rltivis Rltv w100"><div class="Bandj2 Abslt Shdw none rd Cl" ${Zindx}><a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
+                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Rltivis Rltv w100"><div class="Bandj2 Abslt Shdw none rd Cl" ${Zindx}><a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
@@ -545,7 +549,8 @@
                 .Sugg a p:first-child {font-size: 10px; opacity: 0.6}
                     .Lite .Sugg a:hover {background: #ffaced}
                     .Dark .Sugg a:hover {background: #757575}
-            .Linke .Sugg{width: 350px !important; transform: translate(-40%,0%)}
+            .Linke .Sugg{width: 350px !important}
+            .Bandj2{transform: translate(-50%,0%);left:50%}
         </style>
         <script> // FILTROS
             //Conteudo Possível pra Bibliotecas
@@ -769,9 +774,10 @@
     </script>
 
     <script> // SUGGLINK
+    console.log('Variola')
         function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela 
-            TogShow(SibQSl(Eu,'span')) ; TogShow(SibQSl(Eu,'div' ))
-            const [aa,bb,cc,Typ]=D_Rastr2(R)
+            TogShow(SibQSl(Eu,'div'))
+            const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
 
             const Fillt=e=>{
                 return  Typ=='SERV' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
@@ -780,11 +786,14 @@
                         true
             }
 
-            
-            console.log(D_Rastr2(R))
-            if(Typ=='MPag'){
+            if(Typ=='Mpag'){
                 console.log(Eu,Typ)
-                console.log(J[Typ].filter(e=>Fillt(e)))
+                console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'SuggSelects')">${
+                    Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
+                }</a></div>`).join('')
+
+
 
             }else if(Typ=='GRAD'){
                 SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
@@ -1076,7 +1085,7 @@
 
             .SuggFoot{top: 256px !important; background:#ff00c8 !important;color: white !important;}
 
-            .Bandj2{padding:5px; transform: translate(-50%,0%);left:50%;top:5px;background:#bb0092}
+            
             .Seta{fill:#bb0092}
 
 
