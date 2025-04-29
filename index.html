@@ -29,7 +29,7 @@
     .Formt_Azul  {background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
     .Formt_Redd  {background:rgb(224, 104, 104);color:#910000;font-weight:bold}
     .Formt_Yell  {background:rgb(228, 252, 94 );color:#910000;font-weight:bold}
-    .Formt_Orag  {background:rgb(255, 187, 0);color:#910000;font-weight:bold}
+    .Formt_Orag  {background:rgb(255, 187, 0  );color:#910000;font-weight:bold}
 
     .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
     .Dark option{color:white;background:#3d3d3d}
@@ -285,14 +285,14 @@
     const BS = {
         PDDS:{Id:['F',''], Lin:['E',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
         SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Dsng:['S',''],Arte:['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E',''],Uber:['E',''],Coment:['E',''],'Lixo':['X','']},
-        PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['E',''],Lixo:['X','']},
+        PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['G',''],Lixo:['X','']},
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
         GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Imag:['M',''],Lixo:['X','']},
         UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{ID:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
@@ -400,7 +400,7 @@
 
 </script>
 
-<div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
+      <div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
     <script> // Template String
         function Format(){
             // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
@@ -410,24 +410,13 @@
     </script>
 
     <script>// Template String v7.3
-        const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const D_Rastr2=R=>R.split('-')
+        const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
-        
-        const Tm_Table=(typ,obj)=>{ const IN = performance.now()
-            const retorno = obj.map(e=>`<tr class="tr-${e.ID}">${ObjOrdn(e,OjKy(typ)).map((c,x)=>`<td class="${Tm_Rastr(e,x,typ,'ID')} ${BSBS(typ,x,1)}">${c}</td>`).join('')}<td class="w0 Rastr-${typ}-${e.ID}-Lixo-Lixo"><a onclick="${typ==='PDDS'?'Rmv':'Exc'}ROW('${typ}','${e['ID']}',this)">${SVG.Lixo}</a></td></tr>`).join('')
-            console.log(`⏱️ Tm_Table(${typ}): ${(performance.now()-IN).toFixed(2)}ms`)
-            return retorno
-        }
-        const Tm_Lixo=(typ,e)=>`<td class="w0 Rastr-${typ}-${e.Id}-Lixo-Lixo"><a onclick="RmvROW('${typ}','${e['Id']}',this)">${SVG.Lixo}</a></td>`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
-
-        // tentar Jogar estes Tm_Suggs pra dentro da 'tm_tm'
-        const Tm_SuSg=()=>`<span class="Sugg Shdw rd Abslt Cl none"></span>`
-        const Tm_Sugg=()=>`${Tm_SuSg()}<div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar </div>`
-        const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente">${Tm_SuSg()}</div>`
+        const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
-        const Tm_TablePDDS=(typ,arry)=>{ const IN = performance.now()
+        const Tm_Table=(typ,arry)=>{ const IN = performance.now()
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -438,9 +427,14 @@
                 Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
                 Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
-                Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${"SERV"}')">${e}</p>${Tm_Sugg()}</div>`, // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando | descobrir quem é quem do Sug, pelo título da coluna, se ta procurando Linkar grade, Pedido ou Serviço, ou Cliente
+                Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
                 Grds:(e,R)=>`${e}`,
-                Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`
+                Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${R.join('-')}')">${e}</p>
+                                <span class="Sugg Shdw rd Abslt Cl none"></span>
+                                <div class="Sugg ppt SuggFoot Shdw rd Abslt Ct Hov none" onclick="Linkar(this)" name="Gambiarra-sopranbugar">Linkar</div>
+                            </div>`,
+                            // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
+                            // descobrir quem é quem do Sug, pelo título da coluna
             }
 
             function Tm_Bndj(arr,Typ){
@@ -493,7 +487,7 @@
 
             const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
 
-            console.log(`⏱️ Tm_TablePDDS(${typ}): ${(performance.now()-IN).toFixed(2)}ms`) // 179.10ms // 164.70ms
+            console.log(`⏱️ Tm_Table(${typ}): ${(performance.now()-IN).toFixed(2)}ms`) // 179.10ms // 164.70ms
             return Retorno
             
             // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
@@ -518,8 +512,7 @@
             $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
                 Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
                             <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
-                            <a class="sppns none" onclick="EditCellFake(this)"></a>`)})
-                            
+                            <a class="sppns none" onclick="EditCellFake(this)"></a>`)})                    
         }
 
     </script>
@@ -776,16 +769,24 @@
     </script>
 
     <script> // SUGGLINK
-        function SuggLink(Eu,Typ){
-            TogShow(SibQSl(Eu,'span'))
-            TogShow(SibQSl(Eu,'div'))
+        function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela 
+            TogShow(SibQSl(Eu,'span')) ; TogShow(SibQSl(Eu,'div' ))
+            const [aa,bb,cc,Typ]=D_Rastr2(R)
+
             const Fillt=e=>{
                 return  Typ=='SERV' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
                         Typ=='PGMT' ? e.Mpag=='' && e.Form!='Av' :
                         Typ=='GRAD' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
                         true
             }
-            if(Typ=='GRAD'){
+
+            
+            console.log(D_Rastr2(R))
+            if(Typ=='MPag'){
+                console.log(Eu,Typ)
+                console.log(J[Typ].filter(e=>Fillt(e)))
+
+            }else if(Typ=='GRAD'){
                 SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
                     return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'SuggSelects')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
                 }).join('')
@@ -1128,7 +1129,7 @@
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_TablePDDS('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
+                <tbody onload="Inn(this,Tm_Table('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
         </div>
@@ -1141,7 +1142,7 @@
             </div>
             <table id="H_SERV" class="hMin">
                 <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_TablePDDS('SERV',JServ))"></tbody>
+                <tbody onload="Inn(this,Tm_Table('SERV',JServ))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.SERV)[2],'SERV'))"></tr></tfoot>
             </table>
         </div>
@@ -1158,44 +1159,46 @@
                 <tbody onload="Inn(this,Tm_Table('PGMT',JPgmt))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
-            <!--
-                <div class="Ct Bt">
-                    <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
-                    <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
-                    <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
-                </div>
-                <table id="H_MPAG" class="w100 hMax">
-                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
-                    <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
-                </table>
-            -->
         </div>
 
         <div id="Pag_GRAD" class="TBLAA none Cl">
+
             <div class="Ct Bt">
-                <button onclick="AddROW('GRAD')">Grad +</button>
-                <button onclick="AddROW('OOSS')">OS +</button>
-                <button onclick="AddROW('UBER')">Uber +</button>
-                <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
-                <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
-                <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
-                <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
+                <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
+                <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
+                <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
             </div>
-            <table id="H_GRAD" class="w100 hMax">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('GRAD',J['GRAD']))"></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
+            <table id="H_MPAG" class="w100 hMax">
+                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
+                <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
             </table>
-            <table id="H_OOSS" class="w100 hMax">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('OOSS',J['OOSS']))"></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
-            </table>
-            <table id="H_UBER" class="w100 hMax">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('UBER',J['UBER']))"></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
-            </table>
+
+            <!--
+                <div class="Ct Bt">
+                    <button onclick="AddROW('GRAD')">Grad +</button>
+                    <button onclick="AddROW('OOSS')">OS +</button>
+                    <button onclick="AddROW('UBER')">Uber +</button>
+                    <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
+                    <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
+                    <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
+                    <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
+                </div>
+                <table id="H_GRAD" class="w100 hMax">
+                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
+                    <tbody onload="Inn(this,Tm_Table('GRAD',J['GRAD']))"></tbody>
+                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
+                </table>
+                <table id="H_OOSS" class="w100 hMax">
+                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
+                    <tbody onload="Inn(this,Tm_Table('OOSS',J['OOSS']))"></tbody>
+                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
+                </table>
+                <table id="H_UBER" class="w100 hMax">
+                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
+                    <tbody onload="Inn(this,Tm_Table('UBER',J['UBER']))"></tbody>
+                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
+                </table>
+            -->
         </div>
 
         <div id="Pag_CLNT" class="TBLAA none Cl">

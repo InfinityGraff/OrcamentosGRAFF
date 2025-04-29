@@ -20349,7 +20349,44 @@ const J = {
     {"ID": 1803,"Clnt": "Yuri","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },
     {"ID": 1804,"Clnt": "Romario","Cmpt": "","Cntt": "","Lcal": "",  "Loja": "", "CtLj": "",    "Cat": "","Stts": "","Link":""  },	
   ],
-  PDDS:[],SERV:[],PGMT:[],GRAD:[],OOSS:[],UBER:[],MPAG:[]
+  PDDS:[],SERV:[],PGMT:[],GRAD:[],OOSS:[],UBER:[],
+  
+  MPAG:[
+    {
+      Id: "001",
+      Data: "2025-04-01",
+      Clnt: "Cliente A",
+      Valr: "150.00",
+      Form: "Cartão",
+      Hora: "Pagamento mensalidade",
+      Stts: "Pago",
+      Link: "Link",
+      Mpag: "PagSeguro",
+      Lixo: ""
+    },{
+      Id: "002",
+      Data: "2025-04-05",
+      Clnt: "Cliente B",
+      Valr: "89.90",
+      Form: "Boleto",
+      Hora: "Serviço técnico",
+      Stts: "Pendente",
+      Link: "Link",
+      Mpag: "MercadoPago",
+      Lixo: ""
+    },{
+      Id: "003",
+      Data: "2025-04-10",
+      Clnt: "Cliente C",
+      Valr: "230.00",
+      Form: "Pix",
+      Hora: "Assinatura anual",
+      Stts: "Cancelado",
+      Link: "Link",
+      Mpag: "Iugu",
+      Lixo: ""
+    }
+  ]
 }
 
 const NovoJson = [
