@@ -429,8 +429,8 @@
                 Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
                 Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
                 Grds:(e,R)=>`${e}`,
-                Sugg:(e,R)=>`<div class="Rltv Linke"><p onclick="SuggLink(this,'${R.join('-')}')">${e}</p>
-                                <div class="Abslt none Cl Bandj2">
+                Sugg:(e,R)=>`<div class="Rltv Linke"><p class="P-P">${e}</p>
+                                <div class="BNdj BndjSUG Abslt Cl none">
                                     <a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>
                                     <span class="Sugg Shdw rd Cl"></span>
                                     <i class="Sugg ppt SuggFoot Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i>
@@ -481,11 +481,12 @@
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Arte']}">`).join('|') : ''
 
-                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Rltivis Rltv w100"><div class="Bandj2 Abslt Shdw none rd Cl" ${Zindx}><a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
+                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Rltivis Rltv w100"><div class="BndjTBL BNdj Abslt Shdw none rd Cl" ${Zindx}><a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-                return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj2(this)">${_Tm_Bndj(v,R)}</td>`
+                return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj2(this)">${_Tm_Bndj(v,R)}</td>` :
+                       dR[4]=='Sugg'? `<td class="${R}" onclick="ShowBndj2(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
                                     : `<td class="${R}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             }
 
@@ -498,11 +499,14 @@
             // tipo de Sugg, ou de troca, ou de subtração
         }
 
+        console.log('Compilou gay')
+
         function ShowBndj2(div){
             if(event.target.tagName=='IMG'){return}
-            const e = $('.Bandj2',div)
-            if(e.contains(event.target)){return}else{
-            if(Tecla('ctrl')){Tog_N(e)}else{$$('.Bandj2:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
+            const e = $('.BNdj',div)
+            console.log(e,event.target)
+            if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho
+            if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
             if(Tecla('ctrl')){return}
             else{ClickFora(div,()=>{Add_N(e)})}
         }
@@ -531,26 +535,18 @@
             .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
             .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
             .ThFilt > a{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px;}
-            .ThFilt > a img{height:18px ; width:18px ;}
+            .ThFilt > a img{height:18px ; width:18px}
 
-            .SuggSelects   {background:#f357d1}
+
             .RecolorSelects{background:#f357d1}
-            .THSugg div:hover{background:#f357d1; color: white;}
+            .THSugg div:hover{background:#57f374; color: white;}
             .THSugg div:hover div{opacity: 1}
             .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
             .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important;}
                         
             .ThFilt_Atv{background: #d822ab; color: white;}
+            .Sugg_Atv  {background: #d822ab; color: white;}
             
-            .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500}
-                .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
-                .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
-                .Sugg a p {padding: 3px}
-                .Sugg a p:first-child {font-size: 10px; opacity: 0.6}
-                    .Lite .Sugg a:hover {background: #ffaced}
-                    .Dark .Sugg a:hover {background: #757575}
-            .Linke .Sugg{width: 350px !important}
-            .Bandj2{transform: translate(-50%,0%);left:50%}
         </style>
         <script> // FILTROS
             //Conteudo Possível pra Bibliotecas
@@ -772,63 +768,77 @@
 
         // ao Editar muda a cor apenas da própria Linha
     </script>
+    <div> <!--SUGGLINK-->
+        <style> 
+            .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500}
+                .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
+                .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
+                .Sugg a p {padding: 3px}
+                .Sugg a p:first-child {font-size: 10px; opacity: 0.6}
+                    .Lite .Sugg a:hover {background: #ffaced}
+                    .Dark .Sugg a:hover {background: #757575}
+            .Linke .Sugg{width: 350px !important}
+            .BNdj{transform: translate(-50%,0%);left:50%;z-index: 500}
+            .BndjSUG{padding:0;}
+            .BndjTBL{padding:5px; background-color:#bb0092;}
+        </style>
+        <script> // SUGGLINK
+            function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
+                const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
 
-    <script> // SUGGLINK
-    console.log('Variola')
-        function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela 
-            TogShow(SibQSl(Eu,'div'))
-            const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
-
-            const Fillt=e=>{
-                return  Typ=='SERV' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
-                        Typ=='PGMT' ? e.Mpag=='' && e.Form!='Av' :
-                        Typ=='GRAD' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
-                        true
-            }
-
-            if(Typ=='Mpag'){
-                console.log(Eu,Typ)
-                console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
-                $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'SuggSelects')">${
-                    Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
-                }</a></div>`).join('')
-
-
-
-            }else if(Typ=='GRAD'){
-                SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
-                    return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'SuggSelects')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
-                }).join('')
-                }</table>`
-            }else{
-                console.log(J[Typ].filter(e=>Fillt(e)))
-                SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'SuggSelects')">${
-                Typ=='SERV' ? `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}` :
-                Typ=='PGMT' ? `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}` :
-                ``
-                }</a></div>`).join('')
-            }
-        }
-
-        function Linkar(Eu){
-            if(_table(Eu).id == 'H_MPAG'){
-                EditCell(Eu,$$('.SuggSelects',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))
-            }
-            if(_table(Eu).id == 'H_GRAD'){
-                const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
-                const NovoArry = $$('.SuggSelects',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
-                if(Inn($('p',Eu.closest('td')))=='-'){
-                    EditCell(Eu,NovoArry)
-                }else{
-                    EditCell(Eu,[...ArryAntg,...NovoArry])
+                const Fillt=e=>{
+                    return  Typ=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
+                            Typ=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
+                            Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
+                            true
                 }
-                
-            }
-            else{
-                console.log($('span',Pai(Eu)))}
-        }
 
-    </script>
+                if(Typ=='Mpag'){
+                    console.log(Eu,Typ)
+                    console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                    $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
+                        Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
+                    }</a></div>`).join('')
+
+                    // deixar disponivel os que eu permito selecionar mais de 1
+
+                }/*else if(Typ=='Grad'){
+                    SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
+                        return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'Sugg_Atv')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
+                    }).join('')
+                    }</table>`
+                }else{
+                    console.log(J[Typ].filter(e=>Fillt(e)))
+                    SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
+                    Typ=='SERV' ? `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}` :
+                    Typ=='PGMT' ? `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}` :
+                    ``
+                    }</a></div>`).join('')
+                }
+                    */
+            }
+
+            function Linkar(Eu){
+                if(_table(Eu).id == 'H_MPAG'){
+                    EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))
+                }
+                if(_table(Eu).id == 'H_GRAD'){
+                    const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
+                    const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
+                    if(Inn($('p',Eu.closest('td')))=='-'){
+                        EditCell(Eu,NovoArry)
+                    }else{
+                        EditCell(Eu,[...ArryAntg,...NovoArry])
+                    }
+                    
+                }
+                else{
+                    console.log($('span',Pai(Eu)))}
+            }
+
+        </script>
+        
+    </div>
 
     <script> // AUTO COMPLETE
 
@@ -922,8 +932,8 @@
         }
 
         function RealTime(){
-            Rfresh_Foot()
-            Rfresh_Color()
+        //    Rfresh_Foot()
+        //    Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 </div>
@@ -1948,7 +1958,7 @@
 <script> // Controladores antigos pra confiscar
     function EditCellFake(eu){ // Usado apenas no Format_Bndj_Clnt()   // assim q eu eliminar lá, poderei apagar isso aqui!
         const val = Nm($('input',Pai(eu)))
-        const R = D_Rastr(Avo(eu.closest('.Bandj2')))
+        const R = D_Rastr(Avo(eu.closest('.BNdj')))
         const arrays = (['PDDS',R[1],'Clnt',val]) // [Tabela,Linha,Coluna,NovoValor]
         console.log(arrays)
         EditJSON(arrays)
