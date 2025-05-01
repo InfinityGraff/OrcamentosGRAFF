@@ -286,7 +286,6 @@
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
     const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
-    const Num2 = e => isNaN(value = parseFloat(e.replace('R$ ','').replace(/\./g,'').replace(',','.'))) ? 0 : value
     const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
     const tr_ID=tr=>getClass(tr,'tr-').replace('tr-','').trim()
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
@@ -295,6 +294,11 @@
     const Grifar=(e,Rgx)=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
+
+    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
+        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+        const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
+        const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
@@ -307,7 +311,6 @@
                   : R[3]==='Data' ? $('.P-P',td).textContent.trim()
                   : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
                   : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
-                  
                   : R[3]==='Slct' ? $('select',td).value
                   : R[3]==='Inpt' ? $('input' ,td).value
                   : R[3]==='Chek' ? $('input' ,td).checked
@@ -317,35 +320,69 @@
         return val
     }
 
-    
 
-    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
-    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-    const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
-    const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
-
-
-    // Mask levar pra o Prescript tbm
+    const Do_AllExceto    = (Clss,Exeto,Func)=>Func([...$$(`${Clss}`)].filter(e=>e!==Exeto)) // Ex: Aplica uma função a todos os elementos com a classe informada, exceto o elemento especificado (de preferência Add_N , Rmv_N , Tog_N)
+    const Do_AllExcetoTog = (Clss,Exeto,Func)=>{Tog_N(Exeto) ; if(event.shiftKey){return}else{Func([...$$(`${Clss}`)].filter(e=>e!==Exeto))}} // mesma coisa da de cima,só q aplica o Tog no Final
+    const TogThSugg=eu=>{
+        Do_AllExcetoTog('.THSugg',$('.THSugg',Pai(eu)),Add_N)
+        Do_AllExcetoTog('.ThFilt > a',$('.ThFilt > a',Pai(eu)),Add_N)
+    } // deixei isso aqui sópra Simplificar o Tm_thSort
 
 
-    // Mask levar pra o Prescript
-    function MaskR$(el){
-      let v = el.innerText.replace(/\D/g,'').padStart(3,'0')
-      let r = v.slice(0,-2), c = v.slice(-2)
-      el.innerText = `R$ ${parseInt(r).toLocaleString('pt-BR')},${c}`
-      CurEnd(el)
+    function ShowBndj(div){
+        if(event.target.tagName=='IMG'){return}
+        if(event.target.tagName=='I'){return}
+        const e = $('.BNdj',div)
+        console.log(e,event.target , e.contains(event.target))
+
+        if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho (este if tem que seguir em frente caso seja o Svg da Seta)
+        if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
+        if(Tecla('ctrl')){return}
+        else{ClickFora(div,()=>{Add_N(e)})}
+
+
     }
+
+    console.log('Bilola')
 
 </script>
 
-      <div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
-    <script> // Template String
-        function Format(){
-            // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
-            // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
-            // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
-        }
-    </script>
+<div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
+    <style> /*Todo o CSS da Tabela*/
+        .BNdj{transform:translate(-50%,0%); left:50%; z-index:500}
+        .BNdj > a{position:absolute; bottom:100%; left:50%; transform:translate(-50%,0%) ; height:10px; z-index:1}
+
+        .BndjSUG{padding:0px ; min-width: 200px}
+        .BndjSUG > a{fill:#ff00c8}    
+        .BndjSUG > i{background:#ff00c8; color:white; z-index:2 ; padding: 5px}
+
+        .BndjTBL{padding:5px; background:#bb0092}
+        .BndjTBL > a{fill:#bb0092}
+
+        .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
+        .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
+        .ThFilt > div > div > .conffffff{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px}
+        .ThFilt > div > div > .conffffff img{height:18px ; width:18px}
+
+
+        
+        .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important}
+            .THSugg div:hover{background:#57f374; color: white}
+            .THSugg div:hover div{opacity: 1}
+            .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0}
+        
+        .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500 ; width: 100%}
+                .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
+                .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
+                .Sugg a p {padding: 3px}
+                .Sugg a p:first-child {font-size: 10px; opacity: 0.6}
+                    .Lite .Sugg a:hover {background: #ffaced}
+                    .Dark .Sugg a:hover {background: #757575}
+
+        .RecolorSelects{background:#f357d1}                    
+        .ThFilt_Atv{background: #d822ab; color: white}
+        .Sugg_Atv  {background: #d822ab; color: white}
+    </style>
 
     <script>// Template String v7.3
         const D_Rastr2=R=>R.split('-')
@@ -367,16 +404,10 @@
                 Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
                 Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
                 Grds:(e,R)=>`${e}`,
-                Sugg:(e,R)=>`<div class="Rltv Linke"><p class="P-P">${e}</p>
-                                <div class="BNdj BndjSUG Abslt Cl none">
-                                    <a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>
-                                    <span class="Sugg Shdw rd Cl"></span>
-                                    <i class="Sugg ppt SuggFoot Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i>
-                                </div>
-                                
-                            </div>`,
-                            // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
-                            // descobrir quem é quem do Sug, pelo título da coluna
+                Sugg:(e,R)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
+                        // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
+                        // descobrir quem é quem do Sug, pelo título da coluna
+                        // no Linkar deixar 2Botões abaixo, para tipo de Sugg, ou de Troca, ou de Adição       
             }
 
             function Tm_Bndj(arr,Typ){
@@ -415,16 +446,24 @@
                     }else{return ArrObj_ArrArr(Find)}} 
 
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
-                const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : ''
+                const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : '' 
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Arte']}">`).join('|') : ''
 
-                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div><div class="Rltivis Rltv w100"><div class="BndjTBL BNdj Abslt Shdw none rd Cl" ${Zindx}><a class="Seta" style="height:10px;z-index:1">${SVG.Ponta}</a>${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}</div></div>`
+                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div>
+                            <div class="Rltv w100">
+                                <div class="BndjTBL BNdj Abslt Shdw none rd Cl" ${Zindx}>
+                                    <a>${SVG.Ponta}</a>
+                                    ${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}
+                                </div>
+                            </div>`
+
+                // o Zindex é o segfuinte o ultimo selecionado fica na Frente! e isso fica interessante ser exibido na hora do ShowBndj() pq funcionará para Bandejas e Filters
             }
 
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
-                return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj2(this)">${_Tm_Bndj(v,R)}</td>` :
-                       dR[4]=='Sugg'? `<td class="${R}" onclick="ShowBndj2(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
+                return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj(this)">${_Tm_Bndj(v,R)}</td>` :
+                       dR[4]=='Sugg'? `<td class="${R}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
                                     : `<td class="${R}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             }
 
@@ -433,21 +472,19 @@
             console.log(`⏱️ Tm_Table(${typ}): ${(performance.now()-IN).toFixed(2)}ms`) // 179.10ms // 164.70ms
             return Retorno
             
-            // Bndj é quando carrego Array interno, LinkBndj é quando carrego Json de fora!
-            // tipo de Sugg, ou de troca, ou de subtração
+            // Tipo de BndjTable = Array interno, ou Array de Fora
+            
+            // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
+            // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
+            // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
+        
+            // toda bandeija sair com Esc independente de qual seja, Sugg th e tudo amis (pega uma class e oculta todas especifica q todas terão)
+            // se a data for "-" não Formata pra Type="Date" pois ta dando um erro alerta no Console
+            // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
+            // Transitar com as Setinhas na tabela do APP igual na Planilha
         }
 
-        console.log('Viadinho')
 
-        function ShowBndj2(div){
-            if(event.target.tagName=='IMG'){return}
-            const e = $('.BNdj',div)
-            console.log(e,event.target)
-            if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho
-            if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
-            if(Tecla('ctrl')){return}
-            else{ClickFora(div,()=>{Add_N(e)})}
-        }
 
         function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
             $$(`.FikaFika`).forEach(e=>{
@@ -468,163 +505,202 @@
         const MonitoreBandeja=()=>{console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')}
     </script>
 
-    <div> <!--FILTROS-->
-        <style>
-            .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
-            .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
-            .ThFilt > a{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px;}
-            .ThFilt > a img{height:18px ; width:18px}
+    <script> // FILTROS
+        //Conteudo Possível pra Bibliotecas
+            function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
+            window.addEventListener('load', checkThFilt)
+            window.addEventListener('resize', checkThFilt)
+        // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
+        // se tiver aberto o Esc Sai da Bandeja
+        // Exibir a quantidade de clientes Visiveis
 
+        /* 
+            document.addEventListener('keydown',e=>{   // botão do Esc
+            if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
+                LimparFiltro('PDDS')}
+            })
+        */
+        
+        const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj()">
+                                                    <p class="ppt">${e}</p>
+                                                    <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
+                                                    <b class="Ct none">0</b>
 
-            .RecolorSelects{background:#f357d1}
-            .THSugg div:hover{background:#57f374; color: white;}
-            .THSugg div:hover div{opacity: 1}
-            .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0;}
-            .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important;}
-                        
-            .ThFilt_Atv{background: #d822ab; color: white;}
-            .Sugg_Atv  {background: #d822ab; color: white;}
-            
-        </style>
-        <script> // FILTROS
-            //Conteudo Possível pra Bibliotecas
-                const Do_AllExceto    = (Clss,Exeto,Func)=>Func([...$$(`${Clss}`)].filter(e=>e!==Exeto)) // Ex: Aplica uma função a todos os elementos com a classe informada, exceto o elemento especificado (de preferência Add_N , Rmv_N , Tog_N)
-                const Do_AllExcetoTog = (Clss,Exeto,Func)=>{Tog_N(Exeto) ; if(event.shiftKey){return}else{Func([...$$(`${Clss}`)].filter(e=>e!==Exeto))}} // mesma coisa da de cima,só q aplica o Tog no Final
-                const TogThSugg=eu=>{Do_AllExcetoTog('.THSugg',$('.THSugg',Pai(eu)),Add_N) ; Do_AllExcetoTog('.ThFilt > a',$('.ThFilt > a',Pai(eu)),Add_N)} // deixei isso aqui sópra Simplificar o Tm_thSort
-                function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
-                window.addEventListener('load', checkThFilt)
-                window.addEventListener('resize', checkThFilt)
-            
-            // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
-            // se tiver aberto o Esc Sai da Bandeja
-            // Exibir a quantidade de clientes Visiveis
+                                                    <div class="Rltv w100">
+                                                        <div class="BNdj Abslt Shdw">
+                                                            <div class="conffffff Ev"></div>
+                                                            <span class="Abslt THSugg Sugg Shdw Cl">${e}</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, div=Sugg    | TogThSugg(this)
+        
+        function Palavras(Qry,tipo){
+            const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
+                            tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :
+                            tipo==='Stts' ? O['Stts'] : // Simplificar
+                            tipo==='Pgmt' ? O['Form'] : // Simplificar
+                            tipo==='Dsgn' ? O['Dsgn'] : // Simplificar
+                            tipo==='Forn' ? O['Forn'] : // Simplificar
+                            Uniq($$(Qry).map(e=>e.innerText))
+            return Valls
+        }
 
-            /* 
-                document.addEventListener('keydown',e=>{   // botão do Esc
-                if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
-                    LimparFiltro('PDDS')}
-                })
-            */
+        function Tm_Filt(){ const IN = performance.now() // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
+            $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
+                const tipo = Inn(th)
+                const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
+
+                $('a',_th(th)).innerHTML = `
+                                        <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
+                                        <span class="HOV ppt Ct" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}','${IdxDe(_th(th))+1}')"><img src="./SVG/Icon_Filtados.svg">  <p>Filtados</p></span>
+                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Lin.svg"></span>
+                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
+                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
+                                        `
+                th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+            })
+            console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
+            // Botão pra Exibir todos os Vazios
+        }
+
+        function LimpaThAtv(quem){ // opções pra poder limpar Colunas especificas
+            if(quem==='All'){
+                $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
+                //$$('.thNotif').forEach(e=>Add_N(e))
+            }
+        }// Rascunho
+
+        function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
+            $('#FiltRERERE').innerHTML = 'OK'
+            $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
+            $('#FiltRERERE').innerHTML = ''
+        }// Rascunho
+
+        function OcultaThTh(btn,Qry,Col){
+            const ThSug = $('.THSugg',_th(btn))
+            const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
+            const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
+            const tipo = $('p',_th(btn)).value
+                    $$('p',ThSug).forEach(E=>{
+                        if(Qry==='Todos'){Rmv_N(Pai(E))
+                        }else if(arry){
+                            if(arry.includes(E.innerText)){Rmv_N(Pai(E))}
+                            else{Add_N(Pai(E))}
+                        }else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))
+                        }else{Add_N(Pai(E))}
+                    })
+        }// Rascunho
+
+        function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
+            const chek = !!$('.Filteraddd') // isso deve ser aquele check q tem a função de Exibir todos com o Filtro, ou eles combinados
+            if(Clik=='Clik'){LimpaThAtv('All')}
+
+            if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
+
+            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+
+            // Atualiza Notificação
+            const Length = $$('.ThFilt_Atv',_th(Eu)).length
+            const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length) 
+
+            $$(Qry).forEach(e=>{ 
+                if(RxAtv.test(VAL(_td(e)))){
+                    console.log('Atv',_tr(e))
+                    if(chek){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}
+            })
             
-            const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt">
-                                                        <p class="ppt" onclick="TogThSugg(this)">${e}</p>
-                                                        <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
-                                                        <b class="Ct none">0</b>
-                                                        <a class="Ev none"></a>
-                                                        <div class="Abslt none THSugg Sugg Shdw Cl">${e}</div>
-                                                </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, div=Sugg
-            
-            function Palavras(Qry,tipo){
-                const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
-                              tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :
-                              tipo==='Stts' ? O['Stts'] : // Simplificar
-                              tipo==='Pgmt' ? O['Form'] : // Simplificar
-                              tipo==='Dsgn' ? O['Dsgn'] : // Simplificar
-                              tipo==='Forn' ? O['Forn'] : // Simplificar
-                              Uniq($$(Qry).map(e=>e.innerText))
-                return Valls
+            console.log(Inn('#FiltRERERE'))
+
+            if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
+            if(event.ctrlKey||Clik=='-'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
+            RealTime()
+        }// Rascunho
+
+        // remover Abreviação dos Thead se precisar
+        // Maior < Menor >
+        // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
+
+        // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
+        function Pesquisa(Val,Typ){
+            const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
+            const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
+            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
+                const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
+                $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
+                if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
+            })
+            Rfresh_Foot() // RealTime()
+            // if(se for com conteudo da bandeja){faz o devido concat}
+            // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
+        }
+
+        function LimparFiltro(Typ){ // Atalho Esc
+            Rmv_N($$(`#H_${Typ} tr`))
+            $$('.THSugg').forEach(e=>Add_N(e))
+            LimpaThAtv('All')
+            RealTime()
+        }
+
+        // ao lado do + no Filter, tbm quero ter um - oq siguinifica q o filtro vai remover ele
+    </script>
+
+    <script> // SUGGLINK
+        function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
+            const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
+
+            const Fillt=e=>{
+                return  Typ=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
+                        Typ=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
+                        Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
+                        true
             }
 
-            function Tm_Filt(){ const IN = performance.now() // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
-                $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
-                    const tipo = Inn(th)
-                    const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
+            if(Typ=='Mpag'){
+                console.log(Eu,Typ)
+                console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
+                    Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
+                }</a></div>`).join('')
 
-                    $('a',_th(th)).innerHTML = `
-                                            <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
-                                            <span class="HOV ppt Ct" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}','${IdxDe(_th(th))+1}')"><img src="./SVG/Icon_Filtados.svg">  <p>Filtados</p></span>
-                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Lin.svg"></span>
-                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
-                                            <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
-                                            `
-                    th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
-                })
-                console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
-                // Botão pra Exibir todos os Vazios
+                // deixar disponivel os que eu permito selecionar mais de 1
+
+            }/*else if(Typ=='Grad'){
+                SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
+                    return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'Sugg_Atv')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
+                }).join('')
+                }</table>`
+            }else{
+                console.log(J[Typ].filter(e=>Fillt(e)))
+                SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
+                Typ=='SERV' ? `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}` :
+                Typ=='PGMT' ? `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}` :
+                ``
+                }</a></div>`).join('')
             }
+                */
+        }
 
-            function LimpaThAtv(quem){ // opções pra poder limpar Colunas especificas
-                if(quem==='All'){
-                    $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
-                    //$$('.thNotif').forEach(e=>Add_N(e))
+        function Linkar(Eu){
+            if(_table(Eu).id == 'H_MPAG'){
+                EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))
+            }
+            if(_table(Eu).id == 'H_GRAD'){
+                const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
+                const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
+                if(Inn($('p',Eu.closest('td')))=='-'){
+                    EditCell(Eu,NovoArry)
+                }else{
+                    EditCell(Eu,[...ArryAntg,...NovoArry])
                 }
-            }// Rascunho
-
-            function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
-                $('#FiltRERERE').innerHTML = 'OK'
-                $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
-                $('#FiltRERERE').innerHTML = ''
-            }// Rascunho
-
-            function OcultaThTh(btn,Qry,Col){
-                const ThSug = $('.THSugg',_th(btn))
-                const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
-                const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
-                const tipo = $('p',_th(btn)).value
-                        $$('p',ThSug).forEach(E=>{
-                            if(Qry==='Todos'){Rmv_N(Pai(E))
-                            }else if(arry){
-                                if(arry.includes(E.innerText)){Rmv_N(Pai(E))}
-                                else{Add_N(Pai(E))}
-                            }else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))
-                            }else{Add_N(Pai(E))}
-                        })
-            }// Rascunho
-
-            function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
-                const chek = !!$('.Filteraddd') // isso deve ser aquele check q tem a função de Exibir todos com o Filtro, ou eles combinados
-                if(Clik=='Clik'){LimpaThAtv('All')}
-
-                if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
-
-                const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
-                const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
-
-                // Atualiza Notificação
-                const Length = $$('.ThFilt_Atv',_th(Eu)).length
-                const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length) 
-
-                $$(Qry).forEach(e=>{ 
-                    if(RxAtv.test(VAL(_td(e)))){
-                        console.log('Atv',_tr(e))
-                        if(chek){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}
-                })
                 
-                console.log(Inn('#FiltRERERE'))
-
-                if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
-                if(event.ctrlKey||Clik=='-'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
-                RealTime()
-            }// Rascunho
-
-            // remover Abreviação dos Thead se precisar
-            // Maior < Menor >
-            // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
-
-            // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
-            function Pesquisa(Val,Typ){
-                const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
-                const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
-                $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                    const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
-                    $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
-                    if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
-                })
-                Rfresh_Foot() // RealTime()
-                // if(se for com conteudo da bandeja){faz o devido concat}
-                // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
             }
-
-            function LimparFiltro(Typ){ // Atalho Esc
-                Rmv_N($$(`#H_${Typ} tr`))
-                $$('.THSugg').forEach(e=>Add_N(e))
-                LimpaThAtv('All')
-                RealTime()
-            }
-
-            // ao lado do + no Filter, tbm quero ter um - oq siguinifica q o filtro vai remover ele
-        </script>
-    </div>
+            else{
+                console.log($('span',Pai(Eu)))}
+        }
+    </script>
 
     <script> // RECOLOR
         function Rfresh_Color(){ // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
@@ -706,78 +782,7 @@
 
         // ao Editar muda a cor apenas da própria Linha
     </script>
-    <div> <!--SUGGLINK-->
-        <style> 
-            .Sugg{top:100%;left:0;right:0;max-height: 250px;overflow-y:auto;z-index: 500}
-                .Lite .Sugg{background: #ffffff;border: 3px #ff00c8 solid ; color:#000000}
-                .Dark .Sugg{background: #585858;border: 1px #2e2e2e solid ; color:#ffffff}
-                .Sugg a p {padding: 3px}
-                .Sugg a p:first-child {font-size: 10px; opacity: 0.6}
-                    .Lite .Sugg a:hover {background: #ffaced}
-                    .Dark .Sugg a:hover {background: #757575}
-            .Linke .Sugg{width: 350px !important}
-            .BNdj{transform: translate(-50%,0%);left:50%;z-index: 500}
-            .BndjSUG{padding:0;}
-            .BndjTBL{padding:5px; background-color:#bb0092;}
-        </style>
-        <script> // SUGGLINK
-            function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
-                const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
-
-                const Fillt=e=>{
-                    return  Typ=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
-                            Typ=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
-                            Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
-                            true
-                }
-
-                if(Typ=='Mpag'){
-                    console.log(Eu,Typ)
-                    console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
-                    $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                        Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
-                    }</a></div>`).join('')
-
-                    // deixar disponivel os que eu permito selecionar mais de 1
-
-                }/*else if(Typ=='Grad'){
-                    SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
-                        return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'Sugg_Atv')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
-                    }).join('')
-                    }</table>`
-                }else{
-                    console.log(J[Typ].filter(e=>Fillt(e)))
-                    SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                    Typ=='SERV' ? `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}` :
-                    Typ=='PGMT' ? `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}` :
-                    ``
-                    }</a></div>`).join('')
-                }
-                    */
-            }
-
-            function Linkar(Eu){
-                if(_table(Eu).id == 'H_MPAG'){
-                    EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))
-                }
-                if(_table(Eu).id == 'H_GRAD'){
-                    const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
-                    const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
-                    if(Inn($('p',Eu.closest('td')))=='-'){
-                        EditCell(Eu,NovoArry)
-                    }else{
-                        EditCell(Eu,[...ArryAntg,...NovoArry])
-                    }
-                    
-                }
-                else{
-                    console.log($('span',Pai(Eu)))}
-            }
-
-        </script>
-        
-    </div>
-
+    
     <script> // AUTO COMPLETE
 
         function Complete_Forn(){ // depois fazer pegar nas 2 Tabelas
@@ -882,8 +887,6 @@
     <header class="Bt Fx"> <!--HEADER-->
         <style> /*CSS do Header*/
             body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px; z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
-
-
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
         <script> // Funções do Header
@@ -1029,15 +1032,6 @@
                 .TBLAA .hMin td .svg-Lixo{height:17px}
                 .TBLAA .hMin td img{height:17px; width: auto;}
             .TBLAA .hMin tfoot td{padding:8px 6px}
-
-
-            .SuggFoot{top: 256px !important; background:#ff00c8 !important;color: white !important;}
-
-            
-            .Seta{fill:#bb0092}
-
-
-
             
             .TableMORE thead{background:#0000007c}
             .More{margin:5px; padding:5px 10px; height:20px}
@@ -1048,8 +1042,6 @@
             .teste{color: #79ff79;}
 
             #Rodape{height: 200px;}
-
-            
 
             .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
 
@@ -1820,7 +1812,6 @@
 </script>
 
 <script> // Coisas da NOTA
-
     function estaOculta(e) {return getComputedStyle(e).display === "none"}
 
     function VerNota(){
@@ -1833,7 +1824,6 @@
 </script>
 
 <script> // Controla a Base de Dados
-    
     function Rfresh(){(async()=>{await GetJSON()})()}
     async function GetJSON(){ // por enquanto não ta sendo usado
         console.log('Não Está Rodando')
@@ -1909,8 +1899,6 @@
         })
     }
 
-
-
     function add_PDDS(e,nome){
         const TestePgmt=()=>{if(e[5]){AddROW('PGMT',{Desc:e[5]});return D['PGMT']}else{return '.'}}
         const TesteServ=()=>{AddROW('SERV',{ID:`${D['PDDS']}|1`,Serv:e[2],Desc:e[3],Valr:Num(e[4]),Forn:e[6],OK:false});return 1}
@@ -1930,7 +1918,6 @@
         // os que execulta antes de atualizar o Json "//FAST//"
         function AddROW(Pln,obj=null){/*AddRowPratica(Pln,obj,'<')*/ ; AddROWConst(Pln,obj) ; /* FetchPOST(Link+'/postLINHA',[Pln,obj],(e)=>{ALERT(e)}) */ }
 
-
         function AddRowPratica(Pln,obj,Pose){
             let tbody =  $(`#H_${Pln} > tbody`)
             let Colll = $$(`#H_${Pln} > thead th p`).map(p=>Inn(p))
@@ -1940,11 +1927,9 @@
             // o Clone não ta Exibindo Bandeja corretamente talvez por causa da exibição de bandeija depende do ID, e não ta sendo passado corretamente na hora do clone
         }
 
-
         function RmvROW(Typ,id,eu){eu.closest('tr').remove() ; FetchPOST(Link+'/postDELETE' ,[Typ,id],(e)=>{ALERT(e)})}
         function ExcROW(Typ,id,eu){eu.closest('tr').remove() ; FetchPOST(Link+'/postEXCLUIR',[Typ,id],(e)=>{ALERT(e)})}
         function EditJSON(arry){FetchPOST(Link+'/postEDIT',arry,(e)=>{ALERT(e);return e})}
-
 
         function AddROWConst(Typ,obj=null){ // ESTE É BEM MELHOR que o AddRowPratica() NA TORA (depois mudar pra inserir no Inicio ou no Final)
             const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
@@ -1955,10 +1940,8 @@
             if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
             J[Typ].push(Novo)
             console.log(Novo)
-
             PosGet()
         }
-    
     PosGet()    
 </script>
 
@@ -1972,19 +1955,13 @@
 
     function GetConfig(){$$('.GETConfig').forEach(e=>{
         const Valor = StogeGet(e.id)
-        if(Valor){
-
-            llv(e,Valor);Disparos(e)
-
-        }})}
+        if(Valor){ llv(e,Valor);Disparos(e)  }})}
     
-
     window.onload = () => {GetConfig()}
 
     // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     // function savecoifigTABLE(){StogeSet('Orden',x)}
     // Save para MenuNav
-
     
 </script>
 
@@ -2011,35 +1988,12 @@
 
     //missrand.e bixinha da musica Rendow - Damn Fly
 
-    // toda bandeija sair com Esc independente de qual seja, Sugg th e tudo amis (pega uma class e oculta todas especifica q todas terão)
-
-    // se a data for "-" não Formata pra Type="Date" pois ta dando um erro alerta no Console
-
-
-    // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
-
-
     // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
-    // Transitar com as Setinhas na tabela do APP igual na Planilha
-
-
     // ao exibir o SVG grande, mostra o tamanho das coisas
-    
- 
 </script>
 
 <script> // Templates pra iserir mais pra frente
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
-</script>
-
-<script>/*
-    document.addEventListener('keydown',e=>{
-        if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
-            LimparFiltro('PDDS')}
-        })
-        */
-
-
 </script>
 
 </html>
