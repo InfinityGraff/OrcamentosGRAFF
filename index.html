@@ -6,7 +6,7 @@
     <title>Orcamento</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
     <link rel="stylesheet" href="./cssGRAFF.css">
-    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
+    <script                 src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"></script> <!--https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js-->
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
@@ -39,46 +39,6 @@
     .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
     .footbndjj span{color: black}
 </style>
-
-<script> // só mudei de 'a' pra 'i'
-    function OrdenarRows2(e,x,Cntd=null,order=null){ // se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
-        function AtualizaSetas(e,asc){
-            $$('th',e.closest('table')).forEach(th=>{const seta = $('i',th);if(seta){seta.style.opacity=0.5;seta.textContent='▼'}})
-                const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
-            }
-            const table = e.closest('table')
-            const tbody = $('tbody',table)
-            const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
-            const Txxt=e=> Cntd ? Txt($(Cntd,e.children[x])) : Txt(e.children[x])
-
-            // Verifica se o valor é uma data no formato DD/MM/YYYY
-            const isDate=(val)=>/^\d{2}\/\d{2}\/\d{4}$/.test(val)
-
-            const convertDate=(val)=>{ // Não ta resolvendo NADA
-                if (isDate(val)) {
-                    const [day, month, year] = val.split('/')
-                    return `${year}-${month}-${day}`
-                }
-                return val
-            }
-
-            const Ordn = [...tbody.rows].sort((a, b) => {
-            const valA = parseFloat(Txxt(a).replace('R$',''))
-            const valB = parseFloat(Txxt(b).replace('R$',''))
-        
-            if (!isNaN(valA) && !isNaN(valB)){return asc ? valA - valB : valB - valA}
-        
-            // Ordena como texto se não forem números
-            const txtA = convertDate(`${Txxt(a)}`.replace('R$',''))
-            const txtB = convertDate(`${Txxt(b)}`.replace('R$',''))
-
-            return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
-        })
-            table.dataset.sortOrder = asc ? "asc" : "desc"
-            Ordn.forEach(r=>tbody.appendChild(r))
-            AtualizaSetas(e,asc)
-    }
-</script>
 
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
@@ -301,7 +261,6 @@
 
     const JServ = NovoJson.flatMap(obj=>obj.Serv)
     const JPgmt = NovoJson.flatMap(obj=>obj.Pgmt)
-
 </script>
 
 <script> // Bibliotecas
@@ -323,13 +282,6 @@
     const SERV_Find_CLNT=e=>J_Find('CLNT',J_Find('PDDS',e.ID).Clnt).Clnt
     const FindClnt=e=>J_Find('CLNT',e.Clnt).Clnt
     const Block=e=>e.style.display = 'block'
-    function copiarTexto(area,stg){area.value = stg ; area.select() ; document.execCommand('copy') ; console.log('Copiado')}
-
-        const toArray = e => Array.isArray(e) ? e : [e]
-        const Add_N = e => toArray(e).forEach(el => Add(el, 'none'))
-        const Rmv_N = e => toArray(e).forEach(el => Rmv(el, 'none'))
-        const Tog_N = e => toArray(e).forEach(el => Tog(el, 'none'))
-
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
@@ -342,8 +294,7 @@
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
     const Grifar=(e,Rgx)=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-
-    const llv2 = (e,v)=>{if(e.tagName === 'INPUT' && e.type === 'checkbox'){e.checked = typeof v === 'string' ? JSON.parse(v) : v;} else {e.value = v}}
+    function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
 
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
@@ -366,12 +317,25 @@
         return val
     }
 
-    function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
+    
 
     //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
+
+
+    // Mask levar pra o Prescript tbm
+    const selectContent=e=>{
+        const r = document.createRange(); r.selectNodeContents(e);
+        const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+
+    const setCursorToEnd=e=>{
+        const r = document.createRange(); r.selectNodeContents(e); r.collapse(false);
+        const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+
 
     // Mask levar pra o Prescript
     function MaskR$(el){
@@ -379,23 +343,6 @@
       let r = v.slice(0,-2), c = v.slice(-2)
       el.innerText = `R$ ${parseInt(r).toLocaleString('pt-BR')},${c}`
       setCursorToEnd(el)
-    }
-    // Mask levar pra o Prescript tbm
-    function setCursorToEnd(e){
-      const range = document.createRange()
-      const sel = window.getSelection()
-      range.selectNodeContents(e)
-      range.collapse(false)
-      sel.removeAllRanges()
-      sel.addRange(range)
-    }
-
-    function selectContent(e){
-        const range = document.createRange()
-        range.selectNodeContents(e)
-        const sel = window.getSelection()
-        sel.removeAllRanges()
-        sel.addRange(range)
     }
 
 </script>
@@ -499,7 +446,7 @@
             // tipo de Sugg, ou de troca, ou de subtração
         }
 
-        console.log('Compilou gay')
+        console.log('Viadinho')
 
         function ShowBndj2(div){
             if(event.target.tagName=='IMG'){return}
@@ -570,7 +517,7 @@
             
             const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt">
                                                         <p class="ppt" onclick="TogThSugg(this)">${e}</p>
-                                                        <i onclick="OrdenarRows2(this,'${x}','p')">▼</i>
+                                                        <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
                                                         <b class="Ct none">0</b>
                                                         <a class="Ev none"></a>
                                                         <div class="Abslt none THSugg Sugg Shdw Cl">${e}</div>
@@ -1138,7 +1085,7 @@
                 <button onclick="Complete_Forn()">Complet Forn</button>
                 <div onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
-                <textarea style="background-color: gray;" class="ppt"  onclick="copiarTexto(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
+                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -2036,7 +1983,7 @@
         const Valor = StogeGet(e.id)
         if(Valor){
 
-            llv2(e,Valor);Disparos(e)
+            llv(e,Valor);Disparos(e)
 
         }})}
     
