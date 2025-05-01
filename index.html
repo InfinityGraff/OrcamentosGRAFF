@@ -326,15 +326,6 @@
 
 
     // Mask levar pra o Prescript tbm
-    const selectContent=e=>{
-        const r = document.createRange(); r.selectNodeContents(e);
-        const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-    }
-
-    const setCursorToEnd=e=>{
-        const r = document.createRange(); r.selectNodeContents(e); r.collapse(false);
-        const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-    }
 
 
     // Mask levar pra o Prescript
@@ -342,7 +333,7 @@
       let v = el.innerText.replace(/\D/g,'').padStart(3,'0')
       let r = v.slice(0,-2), c = v.slice(-2)
       el.innerText = `R$ ${parseInt(r).toLocaleString('pt-BR')},${c}`
-      setCursorToEnd(el)
+      CurEnd(el)
     }
 
 </script>
@@ -369,7 +360,7 @@
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');selectContent(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
+                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
                 Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
                 Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
                 Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
