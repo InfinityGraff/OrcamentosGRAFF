@@ -264,6 +264,8 @@
 
     const JServ = NovoJson.flatMap(obj=>obj.Serv)
     const JPgmt = NovoJson.flatMap(obj=>obj.Pgmt)
+
+    let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 </script>
 
 <script> // Bibliotecas Curta
@@ -325,6 +327,10 @@
     const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 
+    const Add_C=e=>FazArry(e).forEach(el=>Add(el,'colur'))
+    const Rmv_C=e=>FazArry(e).forEach(el=>Rmv(el,'colur'))
+    const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
+
     function ShowBndj(div){
         if(event.target.tagName=='IMG'){return}
         if(event.target.tagName=='I'){return}
@@ -371,7 +377,8 @@
                     .Dark .Sugg a:hover {background: #757575}
 
         .RecolorSelects{background:#f357d1}                    
-        .ThFilt_Atv{background: #d822ab; color: white}
+        .ThFilt_Atv{background: #059b00; color: white}
+        .ThFilt_Rtv{background: #ff0000; color: white}
         .Sugg_Atv  {background: #d822ab; color: white}
 
         .colur{background-color: #e648f5 !important; color: white;}
@@ -388,7 +395,7 @@
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-                Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+                Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
                 Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
@@ -428,10 +435,19 @@
 
                 const Title =   Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                                 Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                                Typ==='Cust' ? Find.map(e=>`${e['Valr']}`) :
-                                Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`) :
+                                Typ==='Cust' ? Find.map(e=>`${e['Valr']}`).join('') :
+                                Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`).join('') :
                                 Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
-                                            Find.map(e=>e[R[3]]).join(' | ')
+                                            Find.map(e=>e[R[3]]).join(' | ').replace('_ - _x_ R$ 0,00','')
+
+                
+                if(Title!=''){
+                        if(['Cust','Finc','Calc'].includes(Typ)){
+                            todoTitle[Typ].push(Title)}
+                }
+                
+                Typ=='Serv' ? Find.map(e=>`${todoTitle[Typ].push(e['Serv'])}`) : null
+                
                 
                 const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
                 const Reordem =()=>{if(Typ=='Serv'||Typ=='Pgmt'){
@@ -470,7 +486,6 @@
             // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
             // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
         
-            // se a data for "-" não Formata pra Type="Date" pois ta dando um erro alerta no Console
             // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
             // Transitar com as Setinhas na tabela do APP igual na Planilha
         }
@@ -516,7 +531,7 @@
         }
     </script>
 
-    <script> /* FILTROS*/ console.log('Lula')
+    <script> /* FILTROS*/ console.log('Ocean')
         //Conteudo Possível pra Bibliotecas
             function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
             window.addEventListener('load', checkThFilt)
@@ -525,7 +540,6 @@
         // Exibir a quantidade de clientes Visiveis
         // remover Abreviação dos Thead se precisar
         // Maior < Menor >
-        // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
 
         const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id)">
                                                     <p class="ppt">${e}</p>
@@ -540,43 +554,43 @@
                                                     </div>
                                             </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
         
+        function PlvrLimp(arry,tipo){ // essa função é igual ao Trato()
+            Valls =   tipo==='Valr' ? arry.map(e=>e.replace('R$','').trim())
+                    : tipo==='Pgmt' ? arry.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
+                    : arry
+            return Valls
+        }
+
         function Palavras(Qry,tipo,modelo,typ){
-            const IN = performance.now()
-            // se vai Mostrar tudo ent mostra direto do Obj e n precisa fazer Query
-            // pode ter um IF antes pra pesqusiar primeiro no OJB
-
-            //console.log('Sant',NovoJson.flatMap(e=>e['Serv'].map(E=>E[tipo])))
-                                
+            const IN = performance.now()                                
                 const Clientes = ["ID","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
-                const Servicos = ['Id','Desc','DataEntg','Grad','OS','Uber','Coment']
-                const Pagament = ['Id','Desc','Link','Mpag']
+                const Servicos = ['Id','Desc','Data','Valr','DataEntg','Grad','OS','Uber','Coment']
+                const Pagament = ['Id','Desc','Data','Link','Mpag','Valr']
+                const Pedidoss = ['Id','Lin','Data']
+                const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
 
-
-                const Valls =   tipo==="Lin" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>e[tipo])) :
-                                tipo==="Lixo" ? [''] :
+                const Trato=(val,tipo)=>{ // essa função é igual a PlvrLimp()
+                    return  tipo=='Data' ? BrevData(DMY(val)) : // só esse q demora um pouquinho, se pá posso não abreviar
+                            tipo=='Valr' ? Cm(val) :
+                            val
+                }
+                const Valls =   tipo==='OK'        && typ=="H_SERV" ? ['True','False'] :
+                                tipo==='Entregue'  && typ=="H_SERV" ? ['True','False'] : 
                                 typ=="H_CLNT" && Clientes.includes(tipo) ? Uniq(J.CLNT.map(E=>E[tipo])) :
-                                typ=="H_SERV" && Servicos.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>E[tipo]))) :
-                                typ=="H_PGMT" && Pagament.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>E[tipo]))) :
+                                typ=="H_MPAG" && Mercapag.includes(tipo) ? Uniq(J.MPAG.map(E=>E[tipo])) :
+                                typ=="H_SERV" && Servicos.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>Trato(e[tipo],tipo)))) :
+                                typ=="H_PGMT" && Pagament.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>Trato(e[tipo],tipo)))) :
+                                typ=="H_PDDS" && Pedidoss.includes(tipo) ? Uniq(NovoJson.map(e=>Trato(e[tipo],tipo))) :
                                 tipo=='Clnt' ? AllClnt :
-                                tipo==="Id" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>e[tipo])) :
-                                tipo==="Data" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>BrevData(DMY(e[tipo])))) :                        // 0.00ms
-                                tipo==="Data" && typ=="H_SERV" ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>BrevData(DMY(E[tipo]))))) :  // 0.00ms
-                                tipo==="Data" && typ=="H_PGMT" ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>BrevData(DMY(E[tipo]))))) :  // 0.00ms
-                                tipo==='Valr' && typ=="H_PDDS" ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :           // PEZADO PEZADO
-                                tipo==='Valr' && typ=="H_SERV" ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>Cm(E[tipo])))) :             // 0.00ms
-                                tipo==='Valr' && typ=="H_PGMT" ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>Cm(E[tipo])))) :             // 0.00ms
-                                tipo==='OK'        && typ=="H_SERV" ? ['True','False'] :                                                // 0.00ms
-                                tipo==='Entregue'  && typ=="H_SERV" ? ['True','False'] :                                                // 0.00ms
-                                
-                                tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : // PEZADO
-                                
-                                AllList.includes(tipo) && modelo==='Limpar' ? Uniq($$(Qry).map(e=>e.innerText)) :
-                                AllList.includes(tipo) ? O[tipo] : // Direto do OBJ Limpo
-                                Uniq($$(Qry).map(e=>e.innerText))  // PEZADO
-
+                                ['Cust','Finc','Calc'].includes(tipo) ? Uniq(todoTitle[tipo]) :
+                                tipo==='Valr' && typ=="H_PDDS" ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
+                                tipo==="Serv" ? Uniq(todoTitle[tipo]) :
+                                AllList.includes(tipo) && modelo==='Limpar' ? Uniq($$(Qry).map(e=>e.innerText)) : // PEZADO
+                                AllList.includes(tipo) ? O[tipo] :
+                                ['Nada']
 
                 const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 1 ? null : console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
+                Perform < 0.5 ? null : console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
                 return Valls
         }
 
@@ -595,41 +609,27 @@
                                         `
 
                 th.innerHTML =          `<div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
-                                            <p onclick="FILT_Clik(this,'${qry}','Vazio')">'--'</p>
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
+                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
+                                            <p onclick="FILT_Clik(this,'${qry}','Vazio')">'Vazio'</p>
+                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
                                         </div>`
                                         
-                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).filter(Boolean).map(e=>`
+                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).map(e=>`
                                         <div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
+                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
                                             <p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p>
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
+                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
                                         </div>`).join('')
             })
             // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
             console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
 
-        function LimpaThAtv(quem){ // opções pra poder limpar Colunas especificas
-            if(quem==='All'){
-                $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv'))
-                //$$('.thNotif').forEach(e=>Add_N(e))
-            }
-        }// Rascunho
-
         function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
             $('#FiltRERERE').innerHTML = 'OK'
             $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
             $('#FiltRERERE').innerHTML = ''
         }// Rascunho
-
-        function PlvrLimp(arry,tipo){
-            Valls =   tipo==='Valr' ? arry.map(e=>e.replace('R$','').trim())
-                    : tipo==='Pgmt' ? arry.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
-                    : arry
-            return Valls
-        }
 
         function FiltrarFiltro(btn,Qry,Col){
             const ThSug = $('.THSugg',_th(btn))
@@ -660,35 +660,50 @@
             console.log('Opacity',Valid)
         }
 
-        const Add_C=e=>FazArry(e).forEach(el=>Add(el,'colur'))
-        const Rmv_C=e=>FazArry(e).forEach(el=>Rmv(el,'colur'))
-        const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
 
-        function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
-            const chek = !!$('.Filteraddd') // isso deve ser aquele check q tem a função de Exibir todos com o Filtro, ou eles combinados
-            if(Clik=='Clik'){LimpaThAtv('All')}
+        function AtvRtvFilt(Eu,Qry,Clik){
+            const nome = $('p',Pai(Eu))
+            if(Clik=='+'){if(nome.classList.contains('ThFilt_Rtv')){Rmv(nome,'ThFilt_Rtv')}else{Add(nome,'ThFilt_Atv')}}
+            if(Clik=='-'){if(nome.classList.contains('ThFilt_Atv')){Rmv(nome,'ThFilt_Atv')}else{Add(nome,'ThFilt_Rtv')}}
+            FILT_Clik(Eu,Qry,Clik)
+        }
 
-            if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
+        function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
+            const chek = !!$('.Filteraddd') // isso é o check q Exibe todos com o Filtro, ou eles combinados
+            if(Clik=='Clik'){LimpaThAtv()}
+
+            // if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
 
             const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
             const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
 
+            console.log('Ativos',RxAtv)
+            console.log('Destivs',RxRtv)
+
             // Atualiza Notificação
             const Length = $$('.ThFilt_Atv',_th(Eu)).length
             const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length)
-            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
+            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`) 
 
             $$(Qry).forEach(e=>{
-                if(Clik=='Vazio' && VAL(_td(e))==''){
-                    if(chek){                             Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
-                }else if(RxAtv.test(VAL(_td(e)))){
-                    if(chek){                             Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
-                }else{                                    Corlor ? Rmv_C(_tr(e)) : Add_N(_tr(e)) }
+                const VaL = VAL(_td(e))
+                if(Clik=='Vazio' && VaL==''){
+                            if(chek){Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
+                }else if(RxAtv.test(VaL)){
+                            if(chek){Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
+                }else{Corlor ? Rmv_C(_tr(e)) : Add_N(_tr(e)) }
+
+                if(RxRtv.test(VaL)){
+                    Corlor ? Add(_tr(e),'Red') : Add_N(_tr(e))
+                }
+                if(RxAtv.test(VaL)){
+                    Corlor ? Add(_tr(e),'Red') : Rmv_N(_tr(e))
+                }
             })
-            RealTime()
+            Rfresh_Foot() // RealTime()
         }
 
-        function FiltRandon(Eu,Qry,Clik){
+        function FiltRandon(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR...
             const objClnt=()=>$$(Qry).map(e=>Inn(e))
             let NewObj = {}
             const QntCores = Uniq(objClnt()).length
@@ -697,17 +712,16 @@
                 else{NewObj[k]=v}               // do maior pra o menor
                                                 // corsin Cor Não
             })
-            
-            console.log(CoresEtr)
-
             $$(Qry).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
         }
 
+        function LimpaThAtv(){$$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv')) ; $$('.thNotif').forEach(e=>Add_N(e))}
         function LimparFiltro(Typ){
             Rmv_N($$(`#H_${Typ} tr`))
-            $$('.THSugg').forEach(e=>Add_N(e))
-            LimpaThAtv('All')
-            RealTime()
+            $$('.ThFilt b').forEach(e=>None(e))
+            $$('.SelectSoma').forEach(e=>Rmv(e,'SelectSoma')) // também remover aquele vermelho da Soma
+            LimpaThAtv()
+            Rfresh_Foot() // RealTime()
         }
     </script>
 
@@ -946,7 +960,6 @@
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 </div>
-
 
 <body class="Dark" onclick="NoneBndj()">
 
