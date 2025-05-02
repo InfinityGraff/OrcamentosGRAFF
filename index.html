@@ -53,6 +53,7 @@
         Serv:['','Adesivo','Banner','...'],
         Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card'],
+        Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Devendo','Entregue','JaFeito','Produção']
     }
@@ -238,6 +239,8 @@
     const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
     const AllForn = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.Forn  ||[]]))
     const Vari=e=>ObjKey(Prod[e].Variantes)
+    const AllList = ObjKey(O)
+    const AllClnt = Uniq(J.CLNT.map(E=>E['Clnt']))
 
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
         
@@ -263,7 +266,7 @@
     const JPgmt = NovoJson.flatMap(obj=>obj.Pgmt)
 </script>
 
-<script> // Bibliotecas
+<script> // Bibliotecas Curta
     const Dat=e=>new Date(e)
     const Rx2=arry=>Rx(['Rastr',...arry])
     const OjKy=Typ=>ObjKey(BS[Typ])
@@ -295,11 +298,6 @@
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
 
-    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
-        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-        const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
-        const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
-
     function VAL(td){ // e deve ser um 'td'
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
         const val = R[3]==='Edit' ? $('.P-P',td).textContent.trim()
@@ -319,32 +317,24 @@
                   : null
         return val
     }
+</script>
 
-
-    const Do_AllExceto    = (Clss,Exeto,Func)=>Func([...$$(`${Clss}`)].filter(e=>e!==Exeto)) // Ex: Aplica uma função a todos os elementos com a classe informada, exceto o elemento especificado (de preferência Add_N , Rmv_N , Tog_N)
-    const Do_AllExcetoTog = (Clss,Exeto,Func)=>{Tog_N(Exeto) ; if(event.shiftKey){return}else{Func([...$$(`${Clss}`)].filter(e=>e!==Exeto))}} // mesma coisa da de cima,só q aplica o Tog no Final
-    const TogThSugg=eu=>{
-        Do_AllExcetoTog('.THSugg',$('.THSugg',Pai(eu)),Add_N)
-        Do_AllExcetoTog('.ThFilt > a',$('.ThFilt > a',Pai(eu)),Add_N)
-    } // deixei isso aqui sópra Simplificar o Tm_thSort
-
+<script> // Bibliotecas Longa
+    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+    const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
+    const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
 
     function ShowBndj(div){
         if(event.target.tagName=='IMG'){return}
         if(event.target.tagName=='I'){return}
         const e = $('.BNdj',div)
-        console.log(e,event.target , e.contains(event.target))
-
         if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho (este if tem que seguir em frente caso seja o Svg da Seta)
-        if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
+            e.style.zIndex = $$('.BNdj:not(.none)').length + 500
+            if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
         if(Tecla('ctrl')){return}
         else{ClickFora(div,()=>{Add_N(e)})}
-
-
     }
-
-    console.log('Bilola')
-
 </script>
 
 <div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
@@ -361,13 +351,14 @@
 
         .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
         .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
-        .ThFilt > div > div > .conffffff{position:absolute; background: #ff00c8; color: white; top: 100%;left:0;right:0 ; height: 24px}
+        .ThFilt > div > div > .conffffff {background: #ff00c8; color: white; height: 24px}
         .ThFilt > div > div > .conffffff img{height:18px ; width:18px}
-
-
+        .ThFilt > div > div > .conffffff span.Atv{fill: #ffff00; background: #00df00;}
         
-        .THSugg{z-index: 999 !important; top: 200% !important;border-radius: 0 0 10px 10px !important}
-            .THSugg div:hover{background:#57f374; color: white}
+        .ShodShod{width: 250px}
+
+        .THSugg{border-radius: 0 0 10px 10px !important}
+            .THSugg div:hover{background:#df4ccb; color: white}
             .THSugg div:hover div{opacity: 1}
             .THSugg div div{font-size: 15px;background: #d822ab; color: white !important; width: 18px; height: 18px; text-align: center; margin-left:10px ; opacity: 0}
         
@@ -382,6 +373,8 @@
         .RecolorSelects{background:#f357d1}                    
         .ThFilt_Atv{background: #d822ab; color: white}
         .Sugg_Atv  {background: #d822ab; color: white}
+
+        .colur{background-color: #e648f5 !important; color: white;}
     </style>
 
     <script>// Template String v7.3
@@ -433,11 +426,11 @@
 
                 const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
 
-                const Title = Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
-                            Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                            Typ==='Cust' ? Find.map(e=>`${e['Valr']}`) :
-                            Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`) :
-                            Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
+                const Title =   Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
+                                Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                                Typ==='Cust' ? Find.map(e=>`${e['Valr']}`) :
+                                Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`) :
+                                Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                             Find.map(e=>e[R[3]]).join(' | ')
                 
                 const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
@@ -446,13 +439,12 @@
                     }else{return ArrObj_ArrArr(Find)}} 
 
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
-                const Zindx = R[1]==='PDDS' ? `style="z-index:${R[2]+10}"` : '' 
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = Typ==='Serv'? Find.map(e=> `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Arte']}">`).join('|') : ''
 
                 return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div>
                             <div class="Rltv w100">
-                                <div class="BndjTBL BNdj Abslt Shdw none rd Cl" ${Zindx}>
+                                <div class="BndjTBL BNdj Abslt Shdw none rd Cl">
                                     <a>${SVG.Ponta}</a>
                                     ${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}
                                 </div>
@@ -478,13 +470,10 @@
             // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
             // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
         
-            // toda bandeija sair com Esc independente de qual seja, Sugg th e tudo amis (pega uma class e oculta todas especifica q todas terão)
             // se a data for "-" não Formata pra Type="Date" pois ta dando um erro alerta no Console
             // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
             // Transitar com as Setinhas na tabela do APP igual na Planilha
         }
-
-
 
         function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
             $$(`.FikaFika`).forEach(e=>{
@@ -502,67 +491,124 @@
 
     <script> // Manipulações Simples
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
-        const MonitoreBandeja=()=>{console.log('nada Monitorar bandeja pra ver a hora q ela é fechada pra atualizar a div')}
+
+        document.addEventListener('DOMContentLoaded', function(){
+            document.addEventListener('keydown',function(event){
+                if(event.key==='Escape'){
+                    if(EShow($('#FModal'))){return}
+                    else{$$(`${Atual.Pag} .BNdj`).forEach(e=>Add_N(e))}
+                }
+                // LimparFiltro(Atual.Pag) // se for outro botão
+        })})
+
+        function Pesquisa(Val,Typ){
+            const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
+            const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
+            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
+                const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
+                $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
+                if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
+            })
+            Rfresh_Foot() // RealTime()
+            // if(se for com conteudo da bandeja){faz o devido concat}
+            // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
+            // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
+        }
     </script>
 
-    <script> // FILTROS
+    <script> /* FILTROS*/ console.log('Lula')
         //Conteudo Possível pra Bibliotecas
             function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
             window.addEventListener('load', checkThFilt)
             window.addEventListener('resize', checkThFilt)
-        // se a bandeijinha quuebrar Linha então aumenta ela se não fica tamanho da Div
-        // se tiver aberto o Esc Sai da Bandeja
+        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
         // Exibir a quantidade de clientes Visiveis
+        // remover Abreviação dos Thead se precisar
+        // Maior < Menor >
+        // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
 
-        /* 
-            document.addEventListener('keydown',e=>{   // botão do Esc
-            if(e.key==='Escape'&&Atual.Pag==='#Pag_PDDS'){
-                LimparFiltro('PDDS')}
-            })
-        */
-        
-        const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj()">
+        const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id)">
                                                     <p class="ppt">${e}</p>
                                                     <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
                                                     <b class="Ct none">0</b>
 
                                                     <div class="Rltv w100">
-                                                        <div class="BNdj Abslt Shdw">
+                                                        <div class="ShodShod BNdj Abslt Shdw none">
                                                             <div class="conffffff Ev"></div>
-                                                            <span class="Abslt THSugg Sugg Shdw Cl">${e}</span>
+                                                            <span class="THSugg Sugg Shdw Cl">${e}</span>
                                                         </div>
                                                     </div>
-                                                    
-                                                    
-                                            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, div=Sugg    | TogThSugg(this)
+                                            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
         
-        function Palavras(Qry,tipo){
-            const Valls = tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : /*isso aqui tem no rfreshFoot*/ // fora isso a função ta bem resumida
-                            tipo==='Valr' ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :
-                            tipo==='Stts' ? O['Stts'] : // Simplificar
-                            tipo==='Pgmt' ? O['Form'] : // Simplificar
-                            tipo==='Dsgn' ? O['Dsgn'] : // Simplificar
-                            tipo==='Forn' ? O['Forn'] : // Simplificar
-                            Uniq($$(Qry).map(e=>e.innerText))
-            return Valls
+        function Palavras(Qry,tipo,modelo,typ){
+            const IN = performance.now()
+            // se vai Mostrar tudo ent mostra direto do Obj e n precisa fazer Query
+            // pode ter um IF antes pra pesqusiar primeiro no OJB
+
+            //console.log('Sant',NovoJson.flatMap(e=>e['Serv'].map(E=>E[tipo])))
+                                
+                const Clientes = ["ID","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
+                const Servicos = ['Id','Desc','DataEntg','Grad','OS','Uber','Coment']
+                const Pagament = ['Id','Desc','Link','Mpag']
+
+
+                const Valls =   tipo==="Lin" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>e[tipo])) :
+                                tipo==="Lixo" ? [''] :
+                                typ=="H_CLNT" && Clientes.includes(tipo) ? Uniq(J.CLNT.map(E=>E[tipo])) :
+                                typ=="H_SERV" && Servicos.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>E[tipo]))) :
+                                typ=="H_PGMT" && Pagament.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>E[tipo]))) :
+                                tipo=='Clnt' ? AllClnt :
+                                tipo==="Id" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>e[tipo])) :
+                                tipo==="Data" && typ=="H_PDDS" ? Uniq(NovoJson.map(e=>BrevData(DMY(e[tipo])))) :                        // 0.00ms
+                                tipo==="Data" && typ=="H_SERV" ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>BrevData(DMY(E[tipo]))))) :  // 0.00ms
+                                tipo==="Data" && typ=="H_PGMT" ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>BrevData(DMY(E[tipo]))))) :  // 0.00ms
+                                tipo==='Valr' && typ=="H_PDDS" ? Uniq($$(Qry).map(e=>e.innerText.replace('R\$','').trim())) :           // PEZADO PEZADO
+                                tipo==='Valr' && typ=="H_SERV" ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>Cm(E[tipo])))) :             // 0.00ms
+                                tipo==='Valr' && typ=="H_PGMT" ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>Cm(E[tipo])))) :             // 0.00ms
+                                tipo==='OK'        && typ=="H_SERV" ? ['True','False'] :                                                // 0.00ms
+                                tipo==='Entregue'  && typ=="H_SERV" ? ['True','False'] :                                                // 0.00ms
+                                
+                                tipo==="Serv" ? Uniq($$(Qry).map(q=>Pai(q)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))) : // PEZADO
+                                
+                                AllList.includes(tipo) && modelo==='Limpar' ? Uniq($$(Qry).map(e=>e.innerText)) :
+                                AllList.includes(tipo) ? O[tipo] : // Direto do OBJ Limpo
+                                Uniq($$(Qry).map(e=>e.innerText))  // PEZADO
+
+
+                const Perform = (performance.now()-IN).toFixed(2)
+                Perform < 1 ? null : console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
+                return Valls
         }
 
         function Tm_Filt(){ const IN = performance.now() // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                 const tipo = Inn(th)
                 const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
+                const Qry_N = qry.replace('tr','tr:not(.none)')
 
-                $('a',_th(th)).innerHTML = `
-                                        <span class="HOV ppt Ct" onclick="OcultaThTh(this,'Todos')"                                                     ><img src="./SVG/Icon_Todos.svg">     <p>Todos</p></span>
-                                        <span class="HOV ppt Ct" onclick="OcultaThTh(this,'${qry.replace('tr','tr:not(.none)')}','${IdxDe(_th(th))+1}')"><img src="./SVG/Icon_Filtados.svg">  <p>Filtados</p></span>
-                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Lin.svg"></span>
-                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Randomizar.svg"><p>Randomizar</p></span>
-                                        <span class="HOV ppt Ct" onclick=""                                                                             ><img src="./SVG/Icon_Destacar.svg">  <p>Destacar</p></span>
+                $('.conffffff',_th(th)).innerHTML = `
+                                        <span class="HOV ppt Ct" onclick="FiltrarFiltro(this,'Todos')"                             ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
+                                        <span class="HOV ppt Ct" onclick="FiltrarFiltro(this,'${Qry_N}','${IdxDe(_th(th))+1}')"    ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
+                                        <span class="HOV ppt Ct" onclick=""                                                        ><img src="./SVG/Icon_Lin.svg">                                      </span> 
+                                        <span class="HOV ppt Ct" onclick="FiltRandon(this,'${Qry_N}')"                             ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
+                                        <span id="icnFilt_${tipo}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"                    ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
                                         `
-                th.innerHTML += Palavras(qry,tipo).filter(Boolean).map(e=>`<div class="Ct w100"><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div><p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p><div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div></div>`).join('')
+
+                th.innerHTML =          `<div class="Ct w100">
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
+                                            <p onclick="FILT_Clik(this,'${qry}','Vazio')">'--'</p>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
+                                        </div>`
+                                        
+                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).filter(Boolean).map(e=>`
+                                        <div class="Ct w100">
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
+                                            <p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
+                                        </div>`).join('')
             })
+            // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
             console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
-            // Botão pra Exibir todos os Vazios
         }
 
         function LimpaThAtv(quem){ // opções pra poder limpar Colunas especificas
@@ -578,20 +624,45 @@
             $('#FiltRERERE').innerHTML = ''
         }// Rascunho
 
-        function OcultaThTh(btn,Qry,Col){
+        function PlvrLimp(arry,tipo){
+            Valls =   tipo==='Valr' ? arry.map(e=>e.replace('R$','').trim())
+                    : tipo==='Pgmt' ? arry.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
+                    : arry
+            return Valls
+        }
+
+        function FiltrarFiltro(btn,Qry,Col){
             const ThSug = $('.THSugg',_th(btn))
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
             const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
-            const tipo = $('p',_th(btn)).value
-                    $$('p',ThSug).forEach(E=>{
-                        if(Qry==='Todos'){Rmv_N(Pai(E))
-                        }else if(arry){
-                            if(arry.includes(E.innerText)){Rmv_N(Pai(E))}
-                            else{Add_N(Pai(E))}
-                        }else if(Palavras(Qry,tipo).includes(E.innerText)){Rmv_N(Pai(E))
-                        }else{Add_N(Pai(E))}
-                    })
-        }// Rascunho
+            const tipo = $('p',_th(btn)).innerText
+            const Plvrs   = !arry && PlvrLimp(Palavras(Qry,tipo,'Limpar'),tipo)
+            console.log('tem? ',Plvrs)
+                $$('p',ThSug).forEach(E=>{
+                    if(Qry==='Todos'){Rmv_N(Pai(E))
+                    }else if(arry){
+                        if(arry.includes(E.innerText)){Rmv_N(Pai(E))
+                        }else{Add_N(Pai(E))}               // da pra remover isso
+                    }else if(Plvrs.includes(E.innerText)){Rmv_N(Pai(E))
+                    }else{Add_N(Pai(E))}                   // da pra remover isso
+                })
+        }
+
+        function OpcyFilt(Typ){
+            const Valid = $$(`#${Typ} .ThFilt b`).some(e=>e.innerText!=0)
+            const Icon1 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(1)`)
+            const Icon2 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(2)`)
+            const Icon3 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(4)`)
+            const Icon4 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(5)`)
+            if(Valid){
+                  Icon2.forEach(e=>e.style.opacity = 1)
+            }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
+            console.log('Opacity',Valid)
+        }
+
+        const Add_C=e=>FazArry(e).forEach(el=>Add(el,'colur'))
+        const Rmv_C=e=>FazArry(e).forEach(el=>Rmv(el,'colur'))
+        const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
 
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Analisar por que isso demora tanto
             const chek = !!$('.Filteraddd') // isso deve ser aquele check q tem a função de Exibir todos com o Filtro, ou eles combinados
@@ -604,47 +675,40 @@
 
             // Atualiza Notificação
             const Length = $$('.ThFilt_Atv',_th(Eu)).length
-            const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length) 
+            const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length)
+            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
 
-            $$(Qry).forEach(e=>{ 
-                if(RxAtv.test(VAL(_td(e)))){
-                    console.log('Atv',_tr(e))
-                    if(chek){Rmv_N(_tr(e))}}else{Add_N(_tr(e))}
+            $$(Qry).forEach(e=>{
+                if(Clik=='Vazio' && VAL(_td(e))==''){
+                    if(chek){                             Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
+                }else if(RxAtv.test(VAL(_td(e)))){
+                    if(chek){                             Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
+                }else{                                    Corlor ? Rmv_C(_tr(e)) : Add_N(_tr(e)) }
             })
-            
-            console.log(Inn('#FiltRERERE'))
-
-            if(event.ctrlKey||Clik=='+'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
-            if(event.ctrlKey||Clik=='-'){return}else{Add_N(Eu.closest('.THSugg'))} // Cntrol Serve Apenas pra não deixar Fechar
             RealTime()
-        }// Rascunho
-
-        // remover Abreviação dos Thead se precisar
-        // Maior < Menor >
-        // também Filtrar por Status, oq vai siguinificar as cores (Devendo, Pendente, e tudo Mais!)
-
-        // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
-        function Pesquisa(Val,Typ){
-            const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
-            const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
-            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
-                $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
-                if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
-            })
-            Rfresh_Foot() // RealTime()
-            // if(se for com conteudo da bandeja){faz o devido concat}
-            // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
         }
 
-        function LimparFiltro(Typ){ // Atalho Esc
+        function FiltRandon(Eu,Qry,Clik){
+            const objClnt=()=>$$(Qry).map(e=>Inn(e))
+            let NewObj = {}
+            const QntCores = Uniq(objClnt()).length
+            const CoresEtr = ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+                if(true){NewObj[k]=RandoCor()}  // cor Randon
+                else{NewObj[k]=v}               // do maior pra o menor
+                                                // corsin Cor Não
+            })
+            
+            console.log(CoresEtr)
+
+            $$(Qry).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
+        }
+
+        function LimparFiltro(Typ){
             Rmv_N($$(`#H_${Typ} tr`))
             $$('.THSugg').forEach(e=>Add_N(e))
             LimpaThAtv('All')
             RealTime()
         }
-
-        // ao lado do + no Filter, tbm quero ter um - oq siguinifica q o filtro vai remover ele
     </script>
 
     <script> // SUGGLINK
@@ -872,10 +936,12 @@
             $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
             
             const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
+        
+            // no ID contar a quantidade de Linhas q tem visiveis
         }
 
         function RealTime(){
-        //    Rfresh_Foot()
+            Rfresh_Foot()
         //    Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
@@ -1077,7 +1143,7 @@
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
@@ -1090,7 +1156,7 @@
                 <button onclick="LimparFiltro('SERV')">Limpar Filtro</button>
             </div>
             <table id="H_SERV" class="hMin">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV)))"></tr></thead>
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('SERV',JServ))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.SERV)[2],'SERV'))"></tr></tfoot>
             </table>
@@ -1104,7 +1170,7 @@
                 <button onclick="LimparFiltro('PGMT')">Limpar Filtro</button>
             </div>
             <table id="H_PGMT" class="hMin">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT)))"></tr></thead>
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('PGMT',JPgmt))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
@@ -1118,7 +1184,7 @@
                 <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
             </div>
             <table id="H_MPAG" class="w100 hMax">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
             </table>
 
@@ -1133,17 +1199,17 @@
                     <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
                 </div>
                 <table id="H_GRAD" class="w100 hMax">
-                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
+                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
                     <tbody onload="Inn(this,Tm_Table('GRAD',J['GRAD']))"></tbody>
                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
                 </table>
                 <table id="H_OOSS" class="w100 hMax">
-                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
+                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
                     <tbody onload="Inn(this,Tm_Table('OOSS',J['OOSS']))"></tbody>
                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
                 </table>
                 <table id="H_UBER" class="w100 hMax">
-                    <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
+                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
                     <tbody onload="Inn(this,Tm_Table('UBER',J['UBER']))"></tbody>
                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
                 </table>
@@ -1156,7 +1222,7 @@
                 <button onclick="LimparFiltro('CLNT')">Limpar Filtro</button>
             </div>
             <table id="H_CLNT" class="hMin">
-                <thead class="Stky"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('CLNT',J['CLNT']))"></tbody>
             </table>
         </div>
