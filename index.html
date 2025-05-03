@@ -382,6 +382,9 @@
         .Sugg_Atv  {background: #d822ab; color: white}
 
         .colur{background-color: #e648f5 !important; color: white;}
+
+        .filtTrue{background: green;}
+        .filtFals{background: red  ;}
     </style>
 
     <script>// Template String v7.3
@@ -657,7 +660,6 @@
             if(Valid){
                   Icon2.forEach(e=>e.style.opacity = 1)
             }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
-            console.log('Opacity',Valid)
         }
 
 
@@ -669,7 +671,7 @@
         }
 
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
-            const chek = !!$('.Filteraddd') // isso é o check q Exibe todos com o Filtro, ou eles combinados
+            const chek = true // !!$('.Filteraddd') // isso é o check q Exibe todos com o Filtro, ou eles combinados
             if(Clik=='Clik'){LimpaThAtv()}
 
             // if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
@@ -685,22 +687,19 @@
             const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length)
             const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`) 
 
-            $$(Qry).forEach(e=>{
+            // (check escolhe apenas os visiveis , se não escolhe todos)
+            $$(Qry).forEach(e=>{ // escolher se rodo apenas os visiveis
                 const VaL = VAL(_td(e))
-                if(Clik=='Vazio' && VaL==''){
-                            if(chek){Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
-                }else if(RxAtv.test(VaL)){
-                            if(chek){Corlor ? Add_C(_tr(e)) : Rmv_N(_tr(e)) }
-                }else{Corlor ? Rmv_C(_tr(e)) : Add_N(_tr(e)) }
 
-                if(RxRtv.test(VaL)){
-                    Corlor ? Add(_tr(e),'Red') : Add_N(_tr(e))
-                }
-                if(RxAtv.test(VaL)){
-                    Corlor ? Add(_tr(e),'Red') : Rmv_N(_tr(e))
-                }
+                if(Clik=='Vazio' && VaL==''){ if(chek){Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') } // se for vazio
+                }else if(RxAtv.test(VaL)   ){ if(chek){if(Corlor){Add_C(_tr(e))}else{Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}} // se tem selecionado +    
+                }else if(RxRtv.test(VaL)   ){ if(chek){if(Corlor){Add_C(_tr(e))}else{Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}} // se tem selecionado -    
+                
+                }else{Corlor ? Rmv_C(_tr(e)) : Rmv(_tr(e),'filtTrue') }
             })
-            Rfresh_Foot() // RealTime()
+
+
+        //    Rfresh_Foot() // RealTime()
         }
 
         function FiltRandon(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR...
@@ -721,7 +720,7 @@
             $$('.ThFilt b').forEach(e=>None(e))
             $$('.SelectSoma').forEach(e=>Rmv(e,'SelectSoma')) // também remover aquele vermelho da Soma
             LimpaThAtv()
-            Rfresh_Foot() // RealTime()
+        //    Rfresh_Foot() // RealTime()
         }
     </script>
 
@@ -955,7 +954,7 @@
         }
 
         function RealTime(){
-            Rfresh_Foot()
+        //    Rfresh_Foot()
         //    Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
