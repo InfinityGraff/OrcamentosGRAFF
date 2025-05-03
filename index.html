@@ -385,6 +385,7 @@
 
         .filtTrue{background: green;}
         .filtFals{background: red  ;}
+        .filtRest{background: blue  ;}
     </style>
 
     <script>// Template String v7.3
@@ -534,7 +535,7 @@
         }
     </script>
 
-    <script> /* FILTROS*/ console.log('Ocean')
+    <script> /* FILTROS*/ console.log('xupa lil')
         //Conteudo Possível pra Bibliotecas
             function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
             window.addEventListener('load', checkThFilt)
@@ -613,14 +614,14 @@
 
                 th.innerHTML =          `<div class="Ct w100">
                                             <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
-                                            <p onclick="FILT_Clik(this,'${qry}','Vazio')">'Vazio'</p>
+                                            <p>'Vazio'</p>
                                             <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
                                         </div>`
                                         
                 th.innerHTML += Palavras(qry,tipo,'',_table(th).id).map(e=>`
                                         <div class="Ct w100">
                                             <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
-                                            <p onclick="FILT_Clik(this,'${qry}','Clik')">${e}</p>
+                                            <p>${e}</p>
                                             <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
                                         </div>`).join('')
             })
@@ -662,7 +663,6 @@
             }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
         }
 
-
         function AtvRtvFilt(Eu,Qry,Clik){
             const nome = $('p',Pai(Eu))
             if(Clik=='+'){if(nome.classList.contains('ThFilt_Rtv')){Rmv(nome,'ThFilt_Rtv')}else{Add(nome,'ThFilt_Atv')}}
@@ -672,33 +672,53 @@
 
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
             const chek = true // !!$('.Filteraddd') // isso é o check q Exibe todos com o Filtro, ou eles combinados
-            if(Clik=='Clik'){LimpaThAtv()}
 
             // if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
 
             const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
             const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
 
-            console.log('Ativos',RxAtv)
-            console.log('Destivs',RxRtv)
+            console.log('Ativos',Ativos)
+            console.log('Destivs',Rtivos)
 
             // Atualiza Notificação
             const Length = $$('.ThFilt_Atv',_th(Eu)).length
             const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length)
-            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`) 
+            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
+            const temvz = $('p',Pai(Eu)).innerHTML
+            
+            
+            const PP = $('p', Pai(Eu))
+            const nenhuma = ['ThFilt_Atv','ThFilt_Rtv'].every(c => !PP.classList.contains(c))
 
-            // (check escolhe apenas os visiveis , se não escolhe todos)
+            
             $$(Qry).forEach(e=>{ // escolher se rodo apenas os visiveis
                 const VaL = VAL(_td(e))
-
-                if(Clik=='Vazio' && VaL==''){ if(chek){Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') } // se for vazio
-                }else if(RxAtv.test(VaL)   ){ if(chek){if(Corlor){Add_C(_tr(e))}else{Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}} // se tem selecionado +    
-                }else if(RxRtv.test(VaL)   ){ if(chek){if(Corlor){Add_C(_tr(e))}else{Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}} // se tem selecionado -    
                 
-                }else{Corlor ? Rmv_C(_tr(e)) : Rmv(_tr(e),'filtTrue') }
+                if(temvz=="'Vazio'" && VaL==''){ Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') }
+                if(temvz==VaL && nenhuma){Rmv(_tr(e),'filtFals') ; return}
+                if(Ativos=='' && Rtivos==''){
+                    Add(_tr(e),'filtTrue') ; Rmv(_tr(e),'filtFals')
+                }else{
+                    if(_tr(e).classList.contains('filtFals')){return}
+
+                    if(Ativos!=='' && RxAtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
+                          Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}
+                    }
+                    else if(Rtivos!=='' && RxRtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
+                          Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}
+                    }
+                    else{
+                        if(Ativos!==''){Add(_tr(e),'filtFals')}
+                        if(Rtivos!==''){Add(_tr(e),'filtTrue')}
+
+                        } // tratar dos Restantes
+
+        
+                    
+                }
+                // else{Corlor ? Rmv_C(_tr(e)) : Rmv(_tr(e),'filtTrue') }
             })
-
-
         //    Rfresh_Foot() // RealTime()
         }
 
@@ -2068,6 +2088,12 @@
 
     // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
     // ao exibir o SVG grande, mostra o tamanho das coisas
+
+    // https://www.erome.com/a/wcmxSNOS
+    // https://www.erome.com/a/VkT1uhYg
+    // https://www.erome.com/a/PWY4fkMD
+    // https://www.erome.com/a/Vk99UZ8L
+    // https://www.erome.com/a/K0hAD4GJ
 </script>
 
 <script> // Templates pra iserir mais pra frente
