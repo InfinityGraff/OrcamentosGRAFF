@@ -381,6 +381,8 @@
 
         .filtTrue{background: green !important; color: white;}
         .filtFals{background: red   !important; color: white;}
+
+        .n1{display: none}
     </style>
 
     <script>// Template String v7.3
@@ -521,7 +523,7 @@
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
                 const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
                 $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
-                if(regex.test(Cnct)){Rmv_N(tr)}else{Add_N(tr)}                                         // Ocultar
+                if(regex.test(Cnct)){Rmv_N(tr )}else{Add_N(tr)}                                         // Ocultar
             })
             Rfresh_Foot() // RealTime()
             // if(se for com conteudo da bandeja){faz o devido concat}
@@ -530,7 +532,7 @@
         }
     </script>
 
-    <script> /* FILTROS*/ console.log('xupa lil')
+    <script> /* FILTROS*/ console.log('Kimbachi')
         //Conteudo Possível pra Bibliotecas
             function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
             window.addEventListener('load', checkThFilt)
@@ -598,7 +600,7 @@
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                 const tipo = Inn(th)
                 const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
-                const Qry_N = qry.replace('tr','tr:not(.none)')
+                const Qry_N = qry.replace('tr','tr:not(.none)') // const Qry_N = Qry.replace('tr','tr:not([class^="n"]):not([class*=" n"])') // Aplicar apenas para Linhas Visiveis
 
                 $('.conffffff',_th(th)).innerHTML = `
                                         <span class="HOV ppt Ct" onclick="FiltrarFiltro(this,'Todos')"                             ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
@@ -624,10 +626,6 @@
             // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
             console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
-
-        function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
-            $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
-        }// Rascunho
 
         function FiltrarFiltro(btn,Qry,Col){
             const ThSug = $('.THSugg',_th(btn))
@@ -658,82 +656,52 @@
         }
 
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
-            
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Clik=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
             if(Clik=='-'){if(PP.classList.contains('ThFilt_Atv')){Rmv(PP,'ThFilt_Atv')}else{Tog(PP,'ThFilt_Rtv')}} // Decide se é -
-
             const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
             Notifi('Atv') ; Notifi('Rtv')
 
-            const thcomfilt = $$('.ThFilt',_table(Eu)).filter(th=>$$('b',th).some(b=>Inn(b)!=='0')).map(e=>_th(e)) // todos os th q estão com algum filro ativo
-            const Maisde1 = thcomfilt.length > 1 // Conferir se só tem apenas 1 Filtro Ligado
-
             const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
             const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+            // console.log('Atv:',Ativos,' - Rtv:',Rtivos)
 
             const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
-            const nenhuma = ['ThFilt_Atv','ThFilt_Rtv'].every(c=>!PP.classList.contains(c))
+            const x = IdxDe(_th(Eu))+1           
+            const Add_C=e=>Add(e,'filtTrue') ; const Add_F=e=>Add(e,'filtFals')
+            const Rmv_C=e=>Rmv(e,'filtTrue') ; const Rmv_F=e=>Rmv(e,'filtFals')
 
-            const Qry_N = Qry.replace('tr','tr:not(.none)') // Aplicar apenas para Linhas Visiveis
-
-            console.log('Atv:',Ativos,' - Rtv:',Rtivos)
-
-            const Add_C=e=>{Add(e,'filtTrue');Rmv(e,'filtFals')}
-            const Rmv_C=e=>{Rmv(e,'filtTrue');Add(e,'filtFals')}
-
-            if(Maisde1){ // usa - Qry_N // Roda apenas nas Visiveis (quando tem mais de 1) (ou Opicional)
-                $$(Qry).forEach(e=>{ 
-                    const VaL = VAL(_td(e))
-                    
-                    if(Inn(PP)=="'Vazio'" && VaL==''){ Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') }
-                    if(Inn(PP)==VaL && nenhuma){Rmv(_tr(e),'filtFals') ; return}
-                    if(Ativos=='' && Rtivos==''){
-                        Add(_tr(e),'filtTrue') ; Rmv(_tr(e),'filtFals')
-                    }else{
-                        if(_tr(e).classList.contains('filtFals')){return}
-
-                        if(Ativos!=='' && RxAtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
-                            Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}
-                        }
-                        else if(Rtivos!=='' && RxRtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
-                            Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}
-                        }
-                        else{
-                            if(Ativos!==''){Add(_tr(e),'filtFals')}
-                            if(Rtivos!==''){Add(_tr(e),'filtTrue')}
-
-                            }
-                    }
-                })
-
-            }else{  // usa - Qry  // Roda em Todos (geralmente quando tem apenas 1 ou Zero) (ou Opicional)
+            if(true){ // este if diz se vai ser Combinado ou não
                 $$(Qry).forEach(e=>{ 
                     const VaL = VAL(_td(e)) || "'Vazio'"
                     const tr = _tr(e)
-                    if(Ativos=='' && Rtivos==''){Rmv_N(tr)
-                    }else{
-                        if(Ativos!=='' && RxAtv.test(VaL)){
-                            if(Corlor){Add_C(tr)}else{Rmv_N(tr)}
+                    if(Ativos=='' && Rtivos==''){Rmv(tr,`n${x}`);Rmv_C(tr);Rmv_F(tr)}
+                    else{
+                                 if(Ativos!=='' && RxAtv.test(VaL)){Corlor ? Add_C(tr) : Rmv(tr,`n${x}`)}
+                            else if(Rtivos!=='' && RxRtv.test(VaL)){Corlor ? Add_F(tr) : Add(tr,`n${x}`)}
+                            else{ 
+                                    if(Ativos!==''){Corlor ? Rmv_C(tr) : Add(tr,`n${x}`)}
+                                    if(Rtivos!==''){Corlor ? Rmv_F(tr) : Rmv(tr,`n${x}`)}
+                                }
                         }
-                        else if(Rtivos!=='' && RxRtv.test(VaL)){
-                            if(Corlor){Add_C(tr)}else{Add_N(tr)}
-                        }
-                        else{
-                            if(Corlor){Rmv_C(tr)}else{
-                                if(Ativos!==''){Add_N(tr)} ; if(Rtivos!==''){Rmv_N(tr)}
-                            }
-                            
-                        }
-                    }
                 })
             }
-
-
         //    Rfresh_Foot() // RealTime()
         }
 
-        function FiltRandon(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR...
+        function LimparFiltro(Typ){
+            $$(`#H_${Typ} > tbody > tr`).forEach(e=>For(20).forEach(E=>Rmv(e,`n${E}`)))
+            $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
+            //['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma'].forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
+            $$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv')) // LimpaThAtv
+            $$('.ThFilt_Rtv').forEach(e=>Rmv(e,'ThFilt_Rtv')) // LimpaThRtv
+            $$('.filtTrue'  ).forEach(e=>Rmv(e,'filtTrue'  )) // LimpaTrue
+            $$('.filtFals'  ).forEach(e=>Rmv(e,'filtFals'  )) // LimpaTrue
+            $$('.SelectSoma').forEach(e=>Rmv(e,'SelectSoma')) // Remover aquele Vermelho da Soma
+        //    Rfresh_Foot() // RealTime()
+        }
+
+        function FiltRandon(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR... preciso criar a remoção
             const objClnt=()=>$$(Qry).map(e=>Inn(e))
             let NewObj = {}
             const QntCores = Uniq(objClnt()).length
@@ -743,15 +711,6 @@
                                                 // corsin Cor Não
             })
             $$(Qry).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
-        }
-
-        function LimpaThAtv(){$$('.ThFilt_Atv').forEach(e=>Rmv(e,'ThFilt_Atv')) ; $$('.thNotif').forEach(e=>Add_N(e))}
-        function LimparFiltro(Typ){
-            Rmv_N($$(`#H_${Typ} tr`))
-            $$('.ThFilt b').forEach(e=>None(e))
-            $$('.SelectSoma').forEach(e=>Rmv(e,'SelectSoma')) // também remover aquele vermelho da Soma
-            LimpaThAtv()
-        //    Rfresh_Foot() // RealTime()
         }
     </script>
 
@@ -934,7 +893,7 @@
                 const TD=(stg)=>$(`:scope > ${Col('PDDS',stg)}`,tr)
                 const ArryImg = $$(':scope > div > img',TD('Serv'))
                 const tem1 = ArryImg.some(e=>isImageLoaded(e))
-                if(tem1){Rmv_N(tr)}else{Add_N(tr)}
+                if(tem1){Rmv_N(tr )}else{Add_N(tr)}
             })
         }
 
