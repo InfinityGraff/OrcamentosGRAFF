@@ -326,14 +326,11 @@
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
-
-    const Add_C=e=>FazArry(e).forEach(el=>Add(el,'colur'))
-    const Rmv_C=e=>FazArry(e).forEach(el=>Rmv(el,'colur'))
     const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
 
     function ShowBndj(div){
         if(event.target.tagName=='IMG'){return}
-        if(event.target.tagName=='I'){return}
+        if(event.target.tagName== 'I' ){return}
         const e = $('.BNdj',div)
         if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho (este if tem que seguir em frente caso seja o Svg da Seta)
             e.style.zIndex = $$('.BNdj:not(.none)').length + 500
@@ -356,7 +353,8 @@
         .BndjTBL > a{fill:#bb0092}
 
         .ThFilt > i{position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
-        .ThFilt > b{position:absolute; background:red; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
+        .ThFilt > b.Atv{position:absolute; background:#0c8f00; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:29px}
+        .ThFilt > b.Rtv{position:absolute; background:#ff0000; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; right:10px}
         .ThFilt > div > div > .conffffff {background: #ff00c8; color: white; height: 24px}
         .ThFilt > div > div > .conffffff img{height:18px ; width:18px}
         .ThFilt > div > div > .conffffff span.Atv{fill: #ffff00; background: #00df00;}
@@ -381,11 +379,8 @@
         .ThFilt_Rtv{background: #ff0000; color: white}
         .Sugg_Atv  {background: #d822ab; color: white}
 
-        .colur{background-color: #e648f5 !important; color: white;}
-
-        .filtTrue{background: green;}
-        .filtFals{background: red  ;}
-        .filtRest{background: blue  ;}
+        .filtTrue{background: green !important; color: white;}
+        .filtFals{background: red   !important; color: white;}
     </style>
 
     <script>// Template String v7.3
@@ -548,7 +543,8 @@
         const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id)">
                                                     <p class="ppt">${e}</p>
                                                     <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
-                                                    <b class="Ct none">0</b>
+                                                    <b class="Ct none Atv">0</b>
+                                                    <b class="Ct none Rtv">0</b>
 
                                                     <div class="Rltv w100">
                                                         <div class="ShodShod BNdj Abslt Shdw none">
@@ -613,16 +609,16 @@
                                         `
 
                 th.innerHTML =          `<div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
                                             <p>'Vazio'</p>
-                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
                                         </div>`
                                         
-                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).map(e=>`
+                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).filter(Boolean).map(e=>`
                                         <div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','-')">-</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
                                             <p>${e}</p>
-                                            <div class="ppt RD HOV" onclick="AtvRtvFilt(this,'${qry}','+')">+</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
                                         </div>`).join('')
             })
             // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
@@ -630,9 +626,7 @@
         }
 
         function AtivFiltroGeral(Typ){ // Conciderar os 2 Clitérios Livres, ou Aninhados
-            $('#FiltRERERE').innerHTML = 'OK'
             $$('.ThFilt_Atv').forEach(e=>DispClick($('div',Pai(e))))
-            $('#FiltRERERE').innerHTML = ''
         }// Rascunho
 
         function FiltrarFiltro(btn,Qry,Col){
@@ -663,62 +657,79 @@
             }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
         }
 
-        function AtvRtvFilt(Eu,Qry,Clik){
-            const nome = $('p',Pai(Eu))
-            if(Clik=='+'){if(nome.classList.contains('ThFilt_Rtv')){Rmv(nome,'ThFilt_Rtv')}else{Add(nome,'ThFilt_Atv')}}
-            if(Clik=='-'){if(nome.classList.contains('ThFilt_Atv')){Rmv(nome,'ThFilt_Atv')}else{Add(nome,'ThFilt_Rtv')}}
-            FILT_Clik(Eu,Qry,Clik)
-        }
-
         function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
-            const chek = true // !!$('.Filteraddd') // isso é o check q Exibe todos com o Filtro, ou eles combinados
+            
+            const PP = $('p',Pai(Eu)) // Valor Clicado
+            if(Clik=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
+            if(Clik=='-'){if(PP.classList.contains('ThFilt_Atv')){Rmv(PP,'ThFilt_Atv')}else{Tog(PP,'ThFilt_Rtv')}} // Decide se é -
 
-            // if(Inn('#FiltRERERE')!=='OK'){Tog($('p',Pai(Eu)),'ThFilt_Atv')}  // o if é só pra evitar remover class quando for Geral
+            const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
+            Notifi('Atv') ; Notifi('Rtv')
 
-            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxAtv = new RegExp(Ativos,'i')
-            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>e.textContent).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+            const thcomfilt = $$('.ThFilt',_table(Eu)).filter(th=>$$('b',th).some(b=>Inn(b)!=='0')).map(e=>_th(e)) // todos os th q estão com algum filro ativo
+            const Maisde1 = thcomfilt.length > 1 // Conferir se só tem apenas 1 Filtro Ligado
 
-            console.log('Ativos',Ativos)
-            console.log('Destivs',Rtivos)
+            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
 
-            // Atualiza Notificação
-            const Length = $$('.ThFilt_Atv',_th(Eu)).length
-            const Notifi = $('b',_th(Eu)) ; if(Length==0){None(Notifi)}else{Show(Notifi)} ; Inn(Notifi,Length)
             const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
-            const temvz = $('p',Pai(Eu)).innerHTML
-            
-            
-            const PP = $('p', Pai(Eu))
-            const nenhuma = ['ThFilt_Atv','ThFilt_Rtv'].every(c => !PP.classList.contains(c))
+            const nenhuma = ['ThFilt_Atv','ThFilt_Rtv'].every(c=>!PP.classList.contains(c))
 
-            
-            $$(Qry).forEach(e=>{ // escolher se rodo apenas os visiveis
-                const VaL = VAL(_td(e))
-                
-                if(temvz=="'Vazio'" && VaL==''){ Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') }
-                if(temvz==VaL && nenhuma){Rmv(_tr(e),'filtFals') ; return}
-                if(Ativos=='' && Rtivos==''){
-                    Add(_tr(e),'filtTrue') ; Rmv(_tr(e),'filtFals')
-                }else{
-                    if(_tr(e).classList.contains('filtFals')){return}
+            const Qry_N = Qry.replace('tr','tr:not(.none)') // Aplicar apenas para Linhas Visiveis
 
-                    if(Ativos!=='' && RxAtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
-                          Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}
-                    }
-                    else if(Rtivos!=='' && RxRtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
-                          Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}
-                    }
-                    else{
-                        if(Ativos!==''){Add(_tr(e),'filtFals')}
-                        if(Rtivos!==''){Add(_tr(e),'filtTrue')}
+            console.log('Atv:',Ativos,' - Rtv:',Rtivos)
 
-                        } // tratar dos Restantes
+            const Add_C=e=>{Add(e,'filtTrue');Rmv(e,'filtFals')}
+            const Rmv_C=e=>{Rmv(e,'filtTrue');Add(e,'filtFals')}
 
-        
+            if(Maisde1){ // usa - Qry_N // Roda apenas nas Visiveis (quando tem mais de 1) (ou Opicional)
+                $$(Qry).forEach(e=>{ 
+                    const VaL = VAL(_td(e))
                     
-                }
-                // else{Corlor ? Rmv_C(_tr(e)) : Rmv(_tr(e),'filtTrue') }
-            })
+                    if(Inn(PP)=="'Vazio'" && VaL==''){ Corlor ? Add_C(_tr(e)) : Add(_tr(e),'filtTrue') }
+                    if(Inn(PP)==VaL && nenhuma){Rmv(_tr(e),'filtFals') ; return}
+                    if(Ativos=='' && Rtivos==''){
+                        Add(_tr(e),'filtTrue') ; Rmv(_tr(e),'filtFals')
+                    }else{
+                        if(_tr(e).classList.contains('filtFals')){return}
+
+                        if(Ativos!=='' && RxAtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
+                            Add(_tr(e),'filtTrue');Rmv(_tr(e),'filtFals')}
+                        }
+                        else if(Rtivos!=='' && RxRtv.test(VaL)){if(Corlor){Add_C(_tr(e))}else{
+                            Add(_tr(e),'filtFals');Rmv(_tr(e),'filtTrue')}
+                        }
+                        else{
+                            if(Ativos!==''){Add(_tr(e),'filtFals')}
+                            if(Rtivos!==''){Add(_tr(e),'filtTrue')}
+
+                            }
+                    }
+                })
+
+            }else{  // usa - Qry  // Roda em Todos (geralmente quando tem apenas 1 ou Zero) (ou Opicional)
+                $$(Qry).forEach(e=>{ 
+                    const VaL = VAL(_td(e)) || "'Vazio'"
+                    const tr = _tr(e)
+                    if(Ativos=='' && Rtivos==''){Rmv_N(tr)
+                    }else{
+                        if(Ativos!=='' && RxAtv.test(VaL)){
+                            if(Corlor){Add_C(tr)}else{Rmv_N(tr)}
+                        }
+                        else if(Rtivos!=='' && RxRtv.test(VaL)){
+                            if(Corlor){Add_C(tr)}else{Add_N(tr)}
+                        }
+                        else{
+                            if(Corlor){Rmv_C(tr)}else{
+                                if(Ativos!==''){Add_N(tr)} ; if(Rtivos!==''){Rmv_N(tr)}
+                            }
+                            
+                        }
+                    }
+                })
+            }
+
+
         //    Rfresh_Foot() // RealTime()
         }
 
@@ -1162,9 +1173,7 @@
             <div class="Ct Bt">
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <h1 style="filter:none">Tabela de Pedidos</h1>
-                <style>.Filteraddd{color: red !important;}</style>
                 <button onclick="Complete_Forn()">Complet Forn</button>
-                <div onclick="Tog(this,'Filteraddd');AtivFiltroGeral('PDDS')">FilterADD</div><div id="FiltRERERE"></div>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
                 <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
                 <script>
