@@ -43,7 +43,7 @@
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_ORC'}
+    const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -398,7 +398,6 @@
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
         const Tm_Table=(typ,arry)=>{ const IN = performance.now()
-            return
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -512,33 +511,35 @@
     </script>
 
     <script> // Manipulações Simples
+        function NavPesq(Pesq){$$(':scope > *',Pai($(Pesq))).forEach(e=>None(e));Show($(Pesq))}
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
 
-        document.addEventListener('DOMContentLoaded', function(){
+        document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
             document.addEventListener('keydown',function(event){
                 if(event.key==='Escape'){
                     if(EShow($('#FModal'))){return}
                     else{$$(`${Atual.Pag} .BNdj`).forEach(e=>Add_N(e))}
-                }
-                // LimparFiltro(Atual.Pag) // se for outro botão
+                }// LimparFiltro(Atual.Pag) // se for outro botão
         })})
-
+        console.log('rufs')
         function Pesquisa(Val,Typ){
-            const Aa=$('.Pesq-Aa')?'':'i' ; const A_=$('.Pesq-A_')?'\\b':''
+            const Aa=$(`#Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`#Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`#Pesq_${Typ} .Pesq-Bj.Atv`)
             const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
-            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{
-                const Cnct = $$(':scope > td',tr).map(td=>VAL(td)).join('#')
-                $$(":scope > td > .P-P",tr).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,regex)}) // Grifar
-                if(regex.test(Cnct)){Rmv_N(tr )}else{Add_N(tr)}                                         // Ocultar
+            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{ // Quando for Orc, mostra outra coisa!
+                const P_P = $$(`:scope > td ${Bj?'':'> div >'} p.P-P`,tr)
+                const Cnct = P_P.map(Rx=>Rx.textContent).join('#')
+                P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
+                if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
             })
             Rfresh_Foot() // RealTime()
-            // if(se for com conteudo da bandeja){faz o devido concat}
-            // fazer ela funcionar rpa todas as tabelas, e pra Produtos também
-            // as funcionalidades de 'Aa' e de 'A_' também podem existir dentro dos FIltros Th então transofrma o match em uma função global
+            // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
+            // depois encontrar mais de 1 correpondência na mesma linha
+            // Lembrando q da erro em Select, provavelmente em inpuit
         }
+        
     </script>
 
-    <script> /* FILTROS*/ console.log('Calabresa')
+    <script> /* FILTROS*/
 
         function Trato2(arry,tipo){ // essa função é igual ao Trato()
             Valls =   tipo==='Valr' ? arry.map(e=>e.replace('R$','').trim())
@@ -983,25 +984,28 @@
                 <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.4</h1>
             </div>
         </div>
-        
-        <div id="Div-Pesq" class="Rltv hov"> <!--Pesquisa-->
-            <style> /*Input de Pesquisa*/
-                #Div-Pesq{width: 30%}
-                #H_Pesq{background:#00000018; color:#ffffff;border: 1px solid #ef3aff}
-                #H_Pesq::placeholder{color: #ffffff;opacity: 0.5}
-                #Lupa{top: 8px; right: 6px; width: 17px; opacity: 0.5;}
-                #Lupa:hover{opacity: 1;}
-                #Pesq-Aa{top: 8px; right: 50px ; color: white;}
-                #Pesq-A_{top: 8px; right: 30px ; color: white;}
-                .Pesq-Aa{color: #00ff0d !important;}
-                .Pesq-A_{color: #00ff0d !important;}
-                @media (max-width:500px){ #Div-Pesq{width: 50%} }
-            </style>
-            <input id="H_Pesq" class="w100" placeholder="Pesquisar..." oninput="Pesquisa(this.value,'PDDS')">
-            <a id="Pesq-Aa" class="Abslt HOV" onclick="Tog(this,'Pesq-Aa');Pesquisa($('#H_Pesq').value,'PDDS')">Aa</a>
-            <a id="Pesq-A_" class="Abslt HOV" onclick="Tog(this,'Pesq-A_');Pesquisa($('#H_Pesq').value,'PDDS')">A]</a>
-            <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
-        </div>
+
+        <style> /*Input de Pesquisa*/
+            #Div-Pesq{width: 30%}
+            #Div-Pesq .H_Pesq{background:#00000018; color:#ffffff;border: 1px solid #ef3aff}
+            #Div-Pesq .H_Pesq::placeholder{color: #ffffff;opacity:0.5}
+            #Lupa{top:8px; right:6px; width:17px; opacity:0.5}
+            #Lupa:hover{opacity:1}
+            .Pesq-Aa{top:8px; right:50px ; color:white} .Pesq-Aa.Atv{color:#00ff0d !important}
+            .Pesq-A_{top:8px; right:30px ; color:white} .Pesq-A_.Atv{color:#00ff0d !important}
+            .Pesq-Bj{top:8px; right:70px ; color:white} .Pesq-Bj.Atv{color:#00ff0d !important}
+            @media (max-width:500px){#Div-Pesq{width:50%}}
+        </style>
+        <div id="Div-Pesq" class="Rltv hov"></div><!--Pesquisa-->
+        <script>
+            Inn('#Div-Pesq',NavImg.map(Typ=>{return `<div id="Pesq_${Typ}" class="none">
+                    <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
+                    <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
+                    <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
+                    <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Bj</a>
+                    <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
+            </div>`}).join(''))
+        </script>
 
         <div class="Ct"> <!--Nav e Perfil-->
             <style>
@@ -1013,7 +1017,7 @@
                 #H_Nav img:hover{filter: drop-shadow(0px 0px 5px #f030c0)}
             </style>
             <nav id="H_Nav" class="Ct"></nav>
-            <script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}'">`).join(''))</script>
+            <script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}')">`).join(''))</script>
             
             <div id="BdjLogin" class="Cl">
                 <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px" onclick="AbreLogin()">
@@ -1023,13 +1027,13 @@
             </div>
 
             <style>
-                #MAIS{background:#4e4e4e; width: 250px;}
+                #MAIS{background:#4e4e4e; width: 250px}
                 #MAIS div{padding:10px;cursor:pointer;font-size:15px;width: 100%;}
                 #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
                 #MAIS div:last-child{padding: 10px}
                 #MAIS img{height:25px;margin-right:10px}
                 #MAIS p,#MAIS p a{font-size: 10px}
-                #H_Mais{top: 60px;right: 0px;}
+                #H_Mais{top: 60px;right: 0px}
             </style>
 
             <div id="H_Mais" class="Abslt none bndj">
@@ -1483,18 +1487,26 @@
 
                         const Adicional = Serv=='Trofeu' ? 1*Qnt : 0
 
+                        const oMetro  = Lrg*Alt*Qnt
+                        const DESCt   = oMetro <= 5 ? 0 : oMetro >= 15 ? 0.15 : oMetro/100  // Melhorar Progressivo
+                        const DescQtn = (oMetro <= 1 ? 0 : (Qnt/100))/2
+
                         const Cust = M2?.Cust ?? 0
                         const Valr = M2?.Valr ?? 0
                         const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt                       : F_Cust
                         const CRCT  = Calc=='M2' ? Valr*Lrg*Alt*Qnt+Adicional             : F_Cust
                         const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt)+Adicional : F_Valr
+                        
+                        const VALOR_D = Math.floor(VALOR-(VALOR*(DESCt-(DescQtn))))
+                        
+                        console.log(`${oMetro}m² - `,'Desc1:',DESCt,' - Desc2:',DescQtn)
 
                         InNa_RS($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
                         InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
                         InNa_RS($('.ORC_CRCT_Vund',tr),CRCT/Qnt)
                         InNa_RS($('.ORC_CRCT_SbTt',tr),CRCT)
-                        InNa_RS($('.ORC_RSUT_Vund',tr),VALOR/Qnt)
-                        InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR)
+                        InNa_RS($('.ORC_RSUT_Vund',tr),VALOR_D/Qnt)
+                        InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR_D)
 
                         ReloadTotal()
                     }
@@ -1905,7 +1917,7 @@
 
     function PosGet(){
         Onloads('body')
-        NavPag(Atual['Pag'])
+        NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','#Pesq_'))
         Format_Bndj_Clnt()
         Tm_Filt() // Carregar todo Conteúdo do THFilt
         RealTime()
