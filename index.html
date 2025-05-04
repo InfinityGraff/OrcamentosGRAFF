@@ -532,31 +532,9 @@
         }
     </script>
 
-    <script> /* FILTROS*/ console.log('Kimbachi')
-        //Conteudo Possível pra Bibliotecas
-            function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
-            window.addEventListener('load', checkThFilt)
-            window.addEventListener('resize', checkThFilt)
-        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
-        // Exibir a quantidade de clientes Visiveis
-        // remover Abreviação dos Thead se precisar
-        // Maior < Menor > f
+    <script> /* FILTROS*/ console.log('Calabresa')
 
-        const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id)">
-                                                    <p class="ppt">${e}</p>
-                                                    <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
-                                                    <b class="Ct none Atv">0</b>
-                                                    <b class="Ct none Rtv">0</b>
-
-                                                    <div class="Rltv w100">
-                                                        <div class="ShodShod BNdj Abslt Shdw none">
-                                                            <div class="conffffff Ev"></div>
-                                                            <span class="THSugg Sugg Shdw Cl">${e}</span>
-                                                        </div>
-                                                    </div>
-                                            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
-        
-        function PlvrLimp(arry,tipo){ // essa função é igual ao Trato()
+        function Trato2(arry,tipo){ // essa função é igual ao Trato()
             Valls =   tipo==='Valr' ? arry.map(e=>e.replace('R$','').trim())
                     : tipo==='Pgmt' ? arry.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
                     : arry
@@ -571,7 +549,7 @@
                 const Pedidoss = ['Id','Lin','Data']
                 const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
 
-                const Trato=(val,tipo)=>{ // essa função é igual a PlvrLimp()
+                const Trato=(val,tipo)=>{ // essa função é igual a Trato2()
                     return  tipo=='Data' ? BrevData(DMY(val)) : // só esse q demora um pouquinho, se pá posso não abreviar
                             tipo=='Valr' ? Cm(val) :
                             val
@@ -596,10 +574,26 @@
                 return Valls
         }
 
+        const Tm_thSort=arr=>arr.map((e,x)=>`<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id)">
+                                                    <p class="ppt">${e}</p>
+                                                    <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
+                                                    <b class="Ct none Atv">0</b>
+                                                    <b class="Ct none Rtv">0</b>
+
+                                                    <div class="Rltv w100">
+                                                        <div class="ShodShod BNdj Abslt Shdw none">
+                                                            <div class="conffffff Ev"></div>
+                                                            <span class="THSugg Sugg Shdw Cl">${e}</span>
+                                                        </div>
+                                                    </div>
+                                            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
+        
+
         function Tm_Filt(){ const IN = performance.now() // Função q depende q a Tabela Carregue primeiro pra depois ser Chamada
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
-                const tipo = Inn(th)
-                const qry   = `#${_table(th).id} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
+                const INN = performance.now()
+                const tipo = Inn(th) ; const Typ = _table(th).id
+                const qry   = `#${Typ} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
                 const Qry_N = qry.replace('tr','tr:not(.none)') // const Qry_N = Qry.replace('tr','tr:not([class^="n"]):not([class*=" n"])') // Aplicar apenas para Linhas Visiveis
 
                 $('.conffffff',_th(th)).innerHTML = `
@@ -609,21 +603,20 @@
                                         <span class="HOV ppt Ct" onclick="FiltRandon(this,'${Qry_N}')"                             ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
                                         <span id="icnFilt_${tipo}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"                    ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
                                         `
+                const Lista = Palavras(qry,tipo,'',Typ)
+                const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
 
-                th.innerHTML =          `<div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
-                                            <p>'Vazio'</p>
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
-                                        </div>`
-                                        
-                th.innerHTML += Palavras(qry,tipo,'',_table(th).id).filter(Boolean).map(e=>`
+                th.innerHTML = NovoArry.map(e=>`
                                         <div class="Ct w100">
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','-')">-</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}')">-</div>
                                             <p>${e}</p>
-                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}','+')">+</div>
+                                            <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}')">+</div>
                                         </div>`).join('')
+
+                console.log(`⏱️ FILT(${Typ},${tipo}): ${(performance.now()-INN).toFixed(2)}ms`)
             })
             // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
+            
             console.log(`⏱️ Tm_Filt(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
 
@@ -632,8 +625,7 @@
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
             const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
             const tipo = $('p',_th(btn)).innerText
-            const Plvrs   = !arry && PlvrLimp(Palavras(Qry,tipo,'Limpar'),tipo)
-            console.log('tem? ',Plvrs)
+            const Plvrs   = !arry && Trato2(Palavras(Qry,tipo,'Limpar'),tipo)
                 $$('p',ThSug).forEach(E=>{
                     if(Qry==='Todos'){Rmv_N(Pai(E))
                     }else if(arry){
@@ -642,6 +634,8 @@
                     }else if(Plvrs.includes(E.innerText)){Rmv_N(Pai(E))
                     }else{Add_N(Pai(E))}                   // da pra remover isso
                 })
+
+            // Exibir a quantidade de clientes Visiveis
         }
 
         function OpcyFilt(Typ){
@@ -655,10 +649,10 @@
             }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
         }
 
-        function FILT_Clik(Eu,Qry,Clik){event.preventDefault() // Função PEZADA
+        function FILT_Clik(Eu,Qry){event.preventDefault() // Função PEZADA
             const PP = $('p',Pai(Eu)) // Valor Clicado
-            if(Clik=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
-            if(Clik=='-'){if(PP.classList.contains('ThFilt_Atv')){Rmv(PP,'ThFilt_Atv')}else{Tog(PP,'ThFilt_Rtv')}} // Decide se é -
+            if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
+            if(Inn(Eu)=='-'){if(PP.classList.contains('ThFilt_Atv')){Rmv(PP,'ThFilt_Atv')}else{Tog(PP,'ThFilt_Rtv')}} // Decide se é -
             const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
             Notifi('Atv') ; Notifi('Rtv')
 
@@ -677,16 +671,17 @@
                     const tr = _tr(e)
                     if(Ativos=='' && Rtivos==''){Rmv(tr,`n${x}`);Rmv_C(tr);Rmv_F(tr)}
                     else{
-                                 if(Ativos!=='' && RxAtv.test(VaL)){Corlor ? Add_C(tr) : Rmv(tr,`n${x}`)}
-                            else if(Rtivos!=='' && RxRtv.test(VaL)){Corlor ? Add_F(tr) : Add(tr,`n${x}`)}
-                            else{ 
-                                    if(Ativos!==''){Corlor ? Rmv_C(tr) : Add(tr,`n${x}`)}
-                                    if(Rtivos!==''){Corlor ? Rmv_F(tr) : Rmv(tr,`n${x}`)}
-                                }
-                        }
+                             if(Ativos!=='' && RxAtv.test(VaL)){Corlor ? Add_C(tr) : Rmv(tr,`n${x}`)}
+                        else if(Rtivos!=='' && RxRtv.test(VaL)){Corlor ? Add_F(tr) : Add(tr,`n${x}`)}
+                        else{ 
+                                if(Ativos!==''){Corlor ? Rmv_C(tr) : Add(tr,`n${x}`)}
+                                if(Rtivos!==''){Corlor ? Rmv_F(tr) : Rmv(tr,`n${x}`)}
+                            }
+                    }
                 })
             }
-        //    Rfresh_Foot() // RealTime()
+        // Maior < Menor >
+        Rfresh_Foot() // RealTime()
         }
 
         function LimparFiltro(Typ){
@@ -698,7 +693,7 @@
             $$('.filtTrue'  ).forEach(e=>Rmv(e,'filtTrue'  )) // LimpaTrue
             $$('.filtFals'  ).forEach(e=>Rmv(e,'filtFals'  )) // LimpaTrue
             $$('.SelectSoma').forEach(e=>Rmv(e,'SelectSoma')) // Remover aquele Vermelho da Soma
-        //    Rfresh_Foot() // RealTime()
+        Rfresh_Foot() // RealTime()
         }
 
         function FiltRandon(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR... preciso criar a remoção
@@ -944,8 +939,8 @@
         }
 
         function RealTime(){
-        //    Rfresh_Foot()
-        //    Rfresh_Color()
+            Rfresh_Foot()
+         //   Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 </div>
@@ -1816,11 +1811,11 @@
             const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
             return Par.concat(Imp).join('')
         }
-
+        
         const User={
-            '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia'   ,'Img/Perfil_Baby.png'   ],
+            '31$r1-31&-4eV49@4K':['(Baby)','Baby Massia'   ,'Img/Perfil_Baby.png'   ],
             '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'  ],
-            '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo' ,'Img/Perfil_Lisa.png'   ],
+            '34$r4-34&-7eV79@7K':['(Lisa)','Lisa Caramelo' ,'Img/Perfil_Lisa.png'   ],
             '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
         }
 
@@ -2062,6 +2057,15 @@
     // https://www.erome.com/a/PWY4fkMD
     // https://www.erome.com/a/Vk99UZ8L
     // https://www.erome.com/a/K0hAD4GJ
+
+        // isso aqui eu fiz pra ficar trocando a exibição de textos conforme resize
+            /*  
+                function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
+                window.addEventListener('load', checkThFilt)
+                window.addEventListener('resize', checkThFilt)
+            */
+        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
+        // remover Abreviação dos Thead se precisar
 </script>
 
 <script> // Templates pra iserir mais pra frente
