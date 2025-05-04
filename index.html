@@ -43,7 +43,7 @@
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_PDDS'}
+    const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['LOJA','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     let scrollPosition = [0,0]
@@ -99,6 +99,11 @@
                         Variantes:{
                             'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
+        }},
+        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Acrilico Cristal de 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
+                        Variantes:{
+                            'Virado'          :{Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                            'Colado'          :{Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
@@ -393,6 +398,7 @@
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
         const Tm_Table=(typ,arry)=>{ const IN = performance.now()
+            return
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -1415,8 +1421,6 @@
                     [class^="ORC_RSUT_"]{color:#48ff00}
                 </style>
 
-
-
                 <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
                     <thead class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));Tm_RmvAll();Tm_ClrAll()"></tr></thead>
                     <tbody>
@@ -1477,11 +1481,13 @@
                             F_Valr = filt2[0][1]
                         }
 
+                        const Adicional = Serv=='Trofeu' ? 1*Qnt : 0
+
                         const Cust = M2?.Cust ?? 0
                         const Valr = M2?.Valr ?? 0
-                        const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt : F_Cust
-                        const CRCT  = Calc=='M2' ? Valr*Lrg*Alt*Qnt : F_Cust
-                        const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt) : F_Valr
+                        const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt                       : F_Cust
+                        const CRCT  = Calc=='M2' ? Valr*Lrg*Alt*Qnt+Adicional             : F_Cust
+                        const VALOR = Calc=='M2' ? TotalCress(Valr,Lrg*Alt*Qnt)+Adicional : F_Valr
 
                         InNa_RS($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
                         InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
