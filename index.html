@@ -10,7 +10,8 @@
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
-    <script src="./Dados.js"></script>
+    <script src="./DadosCLNT.js"></script>
+    <script src="./DadosPDDS.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -398,7 +399,6 @@
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
         const Tm_Table=(typ,arry)=>{ const IN = performance.now()
-            return
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -948,7 +948,7 @@
 
         function RealTime(){
             Rfresh_Foot()
-         //   Rfresh_Color()
+            Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 </div>
@@ -1140,7 +1140,7 @@
                 <h1 style="filter:none">Tabela de Pedidos</h1>
                 <button onclick="Complete_Forn()">Complet Forn</button>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
-                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,JSON.stringify(NovoJson,null,2))" readonly></textarea>
+                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const NovoJson = ${JSON.stringify(NovoJson,null,2)}`)" readonly></textarea>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
