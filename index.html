@@ -398,6 +398,7 @@
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
         const Tm_Table=(typ,arry)=>{ const IN = performance.now()
+            return
             const Tm_Tm = {
                 Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -1249,6 +1250,108 @@
             <script>
                 $('#DivListaKits')
             </script>
+
+            <input type="file" id="svgInput" accept=".svg">
+            <input id="SVGLarg" type="text" placeholder="Largura"><input id="SvgAlt" type="text" placeholder="Altura"><input id="SvgQnt" type="text" placeholder="Qnt">
+            <div id="RsultsImgSvg"></div>
+            <p id="resultadoSVG"></p>
+
+            <script> // Render SVG
+
+                function contarNos(d) {
+                const comandos = d.match(/[a-zA-Z]|-?\d*\.?\d+/g);
+                if (!comandos) return 0;
+
+                let totalNos = 0;
+                let i = 0;
+
+                while (i < comandos.length) {
+                    const cmd = comandos[i++].toUpperCase();
+
+                    switch (cmd) {
+                    case 'M':
+                    case 'L':
+                    case 'T':
+                        while (i + 1 < comandos.length && !isNaN(Number(comandos[i])) && !isNaN(Number(comandos[i + 1]))) {
+                        totalNos++;
+                        i += 2;
+                        }
+                        break;
+
+                    case 'H':
+                    case 'V':
+                        while (i < comandos.length && !isNaN(Number(comandos[i]))) {
+                        totalNos++;
+                        i++;
+                        }
+                        break;
+
+                    case 'C':
+                        while (i + 5 < comandos.length) {
+                        totalNos++; // conta só o ponto final
+                        i += 6;
+                        }
+                        break;
+
+                    case 'S':
+                    case 'Q':
+                        while (i + 3 < comandos.length) {
+                        totalNos++;
+                        i += 4;
+                        }
+                        break;
+
+                    case 'A':
+                        while (i + 6 < comandos.length) {
+                        totalNos++;
+                        i += 7;
+                        }
+                        break;
+
+                    case 'Z':
+                        // não conta nó
+                        break;
+
+                    default:
+                        if (!isNaN(Number(cmd))) {
+                        i++;
+                        }
+                    }
+                }
+
+                return totalNos;
+                }
+
+                console.log('Buzanfa')
+
+                const ContPoly=p=>p?Math.floor(p.trim().split(/[\s,]+/).length/2):0
+
+                $('#svgInput').addEventListener('change',function(event){
+                  const file = event.target.files[0]
+                  if (!file) {return}
+
+                  const reader = new FileReader()
+                  reader.onload = function (e) {
+                    const svgText = e.target.result
+                    const parser = new DOMParser()
+                    const svgDoc = parser.parseFromString(svgText, "image/svg+xml")
+
+                    let totalNosPath = 0 ; let totalNosPoly = 0
+                    $$('path'   ,svgDoc).forEach(path=>{totalNosPath += contarNos(path.getAttribute('d'     )||'')}) // Conta <path>
+                    $$('polygon',svgDoc).forEach(poly=>{totalNosPoly += ContPoly( poly.getAttribute('points')||'')}) // Conta <polygon>
+
+                    const Qnt = svgText.length
+                    const qtdVirgulas = (svgText.match(/,/g) || []).length;
+                    const valor = Num($('#SVGLarg').value) * Num($('#SvgAlt').value) * Num($('#SvgQnt').value) * 100
+                    const TotalNos = totalNosPath+totalNosPoly
+                    const Porcent = (TotalNos/100)*1.7
+                    $('#resultadoSVG').textContent = `${TotalNos} Nós, R$ ${Cm(valor+(valor*Porcent))} - Porcent ${valor*Porcent}`
+                    $('#RsultsImgSvg').innerHTML = svgText
+                  }
+
+                  reader.readAsText(file)
+                })
+            </script>
         </div>
 
         <script>
@@ -2089,5 +2192,7 @@
 <script> // Templates pra iserir mais pra frente
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
 </script>
+
+
 
 </html>
