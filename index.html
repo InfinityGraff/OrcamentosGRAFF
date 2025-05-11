@@ -13,6 +13,7 @@
     <script src="./DadosCLNT.js"></script>
     <script src="./DadosPDDS.js"></script>
     <script src="./DadosGRAD.js"></script>
+    <script src="./BibliotecaGRAFF.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -310,24 +311,25 @@
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
 
     function VAL(td){ // e deve ser um 'td'
-        const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = R[3]==='Edit' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Fx'   ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Sugg' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Auto' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='SVG'  ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Soma' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Data' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
-                  : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
-                  : R[3]==='Slct' ? $('select',td).value
-                  : R[3]==='Inpt' ? $('input' ,td).value
-                  : R[3]==='Chek' ? $('input' ,td).checked
-                  : is(td,'input')? td.value
-                  : R[3]==='Lixo' ? '-'
-                  : null
+    const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
+    const val = R[3]==='Edit' ? $('.P-P',td).textContent.trim()
+                : R[3]==='Fx'   ? $('.P-P',td).textContent.trim()
+                : R[3]==='Sugg' ? $('.P-P',td).textContent.trim()
+                : R[3]==='Auto' ? $('.P-P',td).textContent.trim()
+                : R[3]==='SVG'  ? $('.P-P',td).textContent.trim()
+                : R[3]==='Soma' ? $('.P-P',td).textContent.trim()
+                : R[3]==='Data' ? $('.P-P',td).textContent.trim()
+                : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
+                : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
+                : R[3]==='Slct' ? $('select',td).value
+                : R[3]==='Inpt' ? $('input' ,td).value
+                : R[3]==='Chek' ? $('input' ,td).checked
+                : is(td,'input')? td.value
+                : R[3]==='Lixo' ? '-'
+                : null
         return val
     }
+    function DarVAL(td,v){const dR = ['Rastr',...D_Rastr(td)] ;Inn(td,Tm_Tm[dR[4]](v,dR))}
 </script>
 
 <script> // Bibliotecas Longa
@@ -401,24 +403,25 @@
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         
+        const Tm_Tm = {
+            Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
+            Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
+            Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+            Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
+            Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
+            Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
+            Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
+            Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+            Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
+            Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
+            Grds:(e,R)=>`${e}`,
+            Sugg:(e,R)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
+                    // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
+                    // descobrir quem é quem do Sug, pelo título da coluna
+                    // no Linkar deixar 2Botões abaixo, para tipo de Sugg, ou de Troca, ou de Adição       
+        }
+
         const Tm_Table=(typ,arry)=>{ const IN = performance.now()
-            const Tm_Tm = {
-                Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-                Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-                Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
-                Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-                Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
-                Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
-                Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
-                Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
-                Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
-                Grds:(e,R)=>`${e}`,
-                Sugg:(e,R)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
-                        // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
-                        // descobrir quem é quem do Sug, pelo título da coluna
-                        // no Linkar deixar 2Botões abaixo, para tipo de Sugg, ou de Troca, ou de Adição       
-            }
 
             function Tm_Bndj(arr,Typ){
                 return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
@@ -528,9 +531,21 @@
         console.log('rufs')
         function Pesquisa(Val,Typ){
             const Aa=$(`#Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`#Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`#Pesq_${Typ} .Pesq-Bj.Atv`)
-            const regex = new RegExp(`${A_}${EscpRgx(Val)}${A_}`,Aa)
+            const CleaVal = Val.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
+
+                const matches = [...Val.matchAll(/\[([^\]]*)\]/g)]
+                const COL1 = matches[0]?.[1] || false // Primeiro valor dentro de []
+                const COL2 = matches[1]?.[1] || false // Segundo  valor dentro de []
+
+            console.log('COL1',COL1,Col(Typ,COL1),'>',CleaVal)
+            console.log('COL2',COL2,Col(COL1.toUpperCase(),COL2),'>',CleaVal)
+
+            const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
             $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{ // Quando for Orc, mostra outra coisa!
-                const P_P = $$(`:scope > td ${Bj?'':'> div >'} p.P-P`,tr)
+                
+                const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
+                const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
+                 
                 const Cnct = P_P.map(Rx=>Rx.textContent).join('#')
                 P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
                 if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
@@ -539,6 +554,9 @@
             // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
             // depois encontrar mais de 1 correpondência na mesma linha
             // Lembrando q da erro em Select, provavelmente em inpuit
+            // Fazer a Pesquisa em uma Determinada Coluna
+            // [Serv] [Grad] A
+
         }
         
     </script>
@@ -890,29 +908,21 @@
         // ao Clicar em Entregue Preenche OK automatico
         // Fazer o Calculo automático
 
-        function LocAno(Email) {
-            const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
-            const id = +Email.match(/^(\d+)°/)?.[1] || 0
-            const Dados = {
-                Grafit: { '01-07': '2022', '08-235': '2023', '236-432': '2024', '433-_': '2025' },
-                Bprint: { '01-099': '2024', '100-_': '2025' }
+        function RfreshJson(Typ){
+            const Dataa=e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
+            const Fornn=e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
+            const Gradd=e=>`${e.Emal}.webp`
+
+            if(Typ=='GRAD'){
+                DadosGRAD.forEach((e,x)=>{
+                    if(['BPrint','Grafit'].some(v=>e.Emal.includes(v))){
+                        e.Data = Dataa(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Data'])}`), e.Data)
+                        e.Forn = Fornn(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn)
+                        e.Grad = Gradd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Grad'])}`), e.Grad)
+                    }
+                })
             }
-            for (let faixa in Dados[nome] || {}) {
-                let [ini, fim] = faixa.split('-').map(x => x === '_' ? Infinity : +x)
-                if (id >= ini && id <= fim) return Dados[nome][faixa]
-            }
-            return ""
         }
-
-
-        function RfreshJson(){
-            DadosGRAD.forEach(e=>{
-                e.Data = `${LocAno(e.Emal)}-${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('-')||""}`
-                e.Forn = e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
-                e.Grad = `${e.Emal}.webp`
-            })
-        }
-
     </script>
 
     <script> // Previews
@@ -1224,7 +1234,7 @@
         <div id="Pag_GRAD" class="TBLAA none Cl">
 
             <div class="Ct Bt">
-                <button onclick="RfreshJson()">Rfresh</button>
+                <button onclick="RfreshJson('GRAD')">Rfresh</button>
                 <button onclick="AddROW('GRAD')">Grad +</button>
                 <button onclick="AddROW('OOSS')">OS +</button>
                 <button onclick="AddROW('UBER')">Uber +</button>

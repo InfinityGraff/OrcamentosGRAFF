@@ -23,7 +23,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 8,
+        "Grad": "B_087",
         "Clnt": 1449,
         "Data": "2024-12-02"
       }
@@ -91,7 +91,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 8,
+        "Grad": "B_087",
         "Clnt": 1451,
         "Data": "2024-12-03"
       }
@@ -227,7 +227,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 8,
+        "Grad": "B_087",
         "Clnt": 1453,
         "Data": "2024-12-03"
       }
@@ -363,7 +363,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 1,
+        "Grad": "G_423",
         "Clnt": "1452",
         "Data": "2024-12-03"
       }
@@ -431,7 +431,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 9,
+        "Grad": "B_429",
         "Clnt": 1454,
         "Data": "2024-12-03"
       }
@@ -916,7 +916,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 2,
+        "Grad": "G_424",
         "Clnt": "7",
         "Data": "2024-12-04"
       },
@@ -938,7 +938,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 2,
+        "Grad": "G_424",
         "Clnt": "7",
         "Data": "2024-12-04"
       },
@@ -960,7 +960,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 2,
+        "Grad": "G_424",
         "Clnt": "7",
         "Data": "2024-12-04"
       },
@@ -1186,7 +1186,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 4,
+        "Grad": "G_426",
         "Clnt": 1462,
         "Data": "2024-12-05"
       }
@@ -1334,7 +1334,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 13,
+        "Grad": "B_092",
         "Clnt": "1453",
         "Data": "2024-12-05"
       }
@@ -1628,7 +1628,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 14,
+        "Grad": "B_093",
         "Clnt": 1467,
         "Data": "2024-12-05"
       }
@@ -1764,7 +1764,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 11,
+        "Grad": "B_090",
         "Clnt": 1469,
         "Data": "2024-12-05"
       }
@@ -1980,7 +1980,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 5,
+        "Grad": "G_427",
         "Clnt": "6",
         "Data": "2024-12-09"
       }
@@ -2116,7 +2116,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 12,
+        "Grad": "B_092",
         "Clnt": 1474,
         "Data": "2024-12-10"
       }
@@ -2320,7 +2320,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 5,
+        "Grad": "G_427",
         "Clnt": "128",
         "Data": "2024-12-10"
       },
@@ -2342,7 +2342,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 6,
+        "Grad": "G_428",
         "Clnt": "128",
         "Data": "2024-12-10"
       },
@@ -2671,7 +2671,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 14,
+        "Grad": "B_093",
         "Clnt": "1449",
         "Data": "2024-12-12"
       }
@@ -2751,7 +2751,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 15,
+        "Grad": "B_094",
         "Clnt": 1482,
         "Data": "2024-12-12"
       }
@@ -2887,7 +2887,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 11,
+        "Grad": "G_090",
         "Clnt": 1483,
         "Data": "2024-12-05"
       }
@@ -2955,7 +2955,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 14,
+        "Grad": "B_093",
         "Clnt": "1465",
         "Data": "2024-12-12"
       },
@@ -3045,7 +3045,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 14,
+        "Grad": "B_093",
         "Clnt": 1485,
         "Data": ""
       }
@@ -3113,7 +3113,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 10,
+        "Grad": "B_089",
         "Clnt": 1486,
         "Data": ""
       }
@@ -3271,7 +3271,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 16,
+        "Grad": "B_095",
         "Clnt": "1451",
         "Data": "2024-12-16"
       }
@@ -3339,7 +3339,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 16,
+        "Grad": "B_095",
         "Clnt": "1162",
         "Data": "2024-12-16"
       }
@@ -3530,7 +3530,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 17,
+        "Grad": "B_096",
         "Clnt": 1491,
         "Data": "2024-12-16"
       }
@@ -3801,7 +3801,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 21,
+        "Grad": "G_430",
         "Clnt": "1451",
         "Data": "2024-12-17"
       }
@@ -4175,7 +4175,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 22,
+        "Grad": "G_431",
         "Clnt": "1466",
         "Data": "2024-12-17"
       },
@@ -4197,7 +4197,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 19,
+        "Grad": "B_098",
         "Clnt": "1466",
         "Data": "2024-12-17"
       }
@@ -4333,7 +4333,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "097° BPrint - 1812",
+        "Grad": "B_097",
         "Clnt": 1497,
         "Data": "2024-12-18"
       }
@@ -4615,7 +4615,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 6,
+        "Grad": "G_428",
         "Clnt": 1499,
         "Data": "2024-12-18"
       }
@@ -4911,7 +4911,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "097° BPrint - 1812",
+        "Grad": "B_097°",
         "Clnt": "1491",
         "Data": "2024-12-18"
       }
@@ -7151,7 +7151,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "100° BPrint - 0901",
+        "Grad": "B_100",
         "Clnt": 1521,
         "Data": "2025-01-09"
       },
@@ -7173,7 +7173,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "101° BPrint - 0901",
+        "Grad": "B_101",
         "Clnt": 1521,
         "Data": "2025-01-09"
       }
@@ -15075,7 +15075,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "111° BPrint - 0401",
+        "Grad": "B_111",
         "Clnt": "1537",
         "Data": "2025-02-04"
       }
@@ -15291,7 +15291,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "113° BPrint - 0601",
+        "Grad": "B_113",
         "Clnt": 1585,
         "Data": "2025-02-06"
       },
@@ -15313,7 +15313,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "113° BPrint - 0601",
+        "Grad": "B_113",
         "Clnt": 1585,
         "Data": "2025-02-06"
       }
@@ -15381,7 +15381,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "113° BPrint - 0601",
+        "Grad": "B_113",
         "Clnt": "1575",
         "Data": "2025-02-06"
       }
@@ -16192,7 +16192,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "116° BPrint - 1102",
+        "Grad": "B_116",
         "Clnt": 1590,
         "Data": "2025-02-10"
       }
@@ -16463,7 +16463,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "116° BPrint - 1102",
+        "Grad": "B_116",
         "Clnt": 1593,
         "Data": "2025-02-10"
       }
@@ -16686,7 +16686,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "115° BPrint - 0702",
+        "Grad": "B_115",
         "Clnt": 1596,
         "Data": "2025-02-06"
       }
@@ -16890,7 +16890,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "117° BPrint - 1102",
+        "Grad": "B_117",
         "Clnt": 1599,
         "Data": "2025-02-11"
       }
@@ -17196,7 +17196,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "458° Grafit - 01202",
+        "Grad": "G_458",
         "Clnt": 1601,
         "Data": "2025-02-12"
       }
