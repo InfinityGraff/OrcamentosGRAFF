@@ -12,6 +12,7 @@
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
     <script src="./DadosCLNT.js"></script>
     <script src="./DadosPDDS.js"></script>
+    <script src="./DadosGRAD.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -39,6 +40,8 @@
 
     .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
     .footbndjj span{color: black}
+
+    #H_GRAD img{height: 15px}
 </style>
 
 <script> // Base de Dados
@@ -259,7 +262,7 @@
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Imag:['M',''],Lixo:['X','']},
+        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Grad:['M',''],Lixo:['X','']},
         UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
@@ -887,6 +890,29 @@
         // ao Clicar em Entregue Preenche OK automatico
         // Fazer o Calculo automático
 
+        function LocAno(Email) {
+            const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
+            const id = +Email.match(/^(\d+)°/)?.[1] || 0
+            const Dados = {
+                Grafit: { '01-07': '2022', '08-235': '2023', '236-432': '2024', '433-_': '2025' },
+                Bprint: { '01-099': '2024', '100-_': '2025' }
+            }
+            for (let faixa in Dados[nome] || {}) {
+                let [ini, fim] = faixa.split('-').map(x => x === '_' ? Infinity : +x)
+                if (id >= ini && id <= fim) return Dados[nome][faixa]
+            }
+            return ""
+        }
+
+
+        function RfreshJson(){
+            DadosGRAD.forEach(e=>{
+                e.Data = `${LocAno(e.Emal)}-${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('-')||""}`
+                e.Forn = e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
+                e.Grad = `${e.Emal}.webp`
+            })
+        }
+
     </script>
 
     <script> // Previews
@@ -1182,46 +1208,47 @@
                 <tbody onload="Inn(this,Tm_Table('PGMT',JPgmt))"></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
-        </div>
-
-        <div id="Pag_GRAD" class="TBLAA none Cl">
 
             <div class="Ct Bt">
-                <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
-                <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
-                <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
+            <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
+            <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
+            <button onclick="LimparFiltro('MPAG')">Limpar Filtro</button>
             </div>
             <table id="H_MPAG" class="w100 hMax">
                 <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG)))"></tr></thead>
                 <tbody onload="Inn(this,Tm_Table('MPAG',J['MPAG']))"></tbody>
             </table>
 
-            <!--
-                <div class="Ct Bt">
-                    <button onclick="AddROW('GRAD')">Grad +</button>
-                    <button onclick="AddROW('OOSS')">OS +</button>
-                    <button onclick="AddROW('UBER')">Uber +</button>
-                    <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
-                    <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
-                    <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
-                    <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
-                </div>
-                <table id="H_GRAD" class="w100 hMax">
-                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
-                    <tbody onload="Inn(this,Tm_Table('GRAD',J['GRAD']))"></tbody>
-                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
-                </table>
-                <table id="H_OOSS" class="w100 hMax">
-                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
-                    <tbody onload="Inn(this,Tm_Table('OOSS',J['OOSS']))"></tbody>
-                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
-                </table>
-                <table id="H_UBER" class="w100 hMax">
-                    <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
-                    <tbody onload="Inn(this,Tm_Table('UBER',J['UBER']))"></tbody>
-                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
-                </table>
-            -->
+        </div>
+
+        <div id="Pag_GRAD" class="TBLAA none Cl">
+
+            <div class="Ct Bt">
+                <button onclick="RfreshJson()">Rfresh</button>
+                <button onclick="AddROW('GRAD')">Grad +</button>
+                <button onclick="AddROW('OOSS')">OS +</button>
+                <button onclick="AddROW('UBER')">Uber +</button>
+                <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
+                <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
+                <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
+                <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
+            </div>
+            <table id="H_GRAD" class="w100 hMax">
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
+                <tbody onload="Inn(this,Tm_Table('GRAD',DadosGRAD))"></tbody>
+                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
+            </table>
+            <table id="H_OOSS" class="w100 hMax">
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS)))"></tr></thead>
+                <tbody onload="Inn(this,Tm_Table('OOSS',J['OOSS']))"></tbody>
+                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
+            </table>
+            <table id="H_UBER" class="w100 hMax">
+                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER)))"></tr></thead>
+                <tbody onload="Inn(this,Tm_Table('UBER',J['UBER']))"></tbody>
+                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
+            </table>
+            
         </div>
 
         <div id="Pag_CLNT" class="TBLAA none Cl">
