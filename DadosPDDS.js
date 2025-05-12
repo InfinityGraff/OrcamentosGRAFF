@@ -1,4 +1,4 @@
-const NovoJson = [
+const DadosPDDS = [
   {
     "Id": "1",
     "Rg": "02/12/2024 21:50:23",
@@ -4265,7 +4265,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "431° Grafit - 1812",
+        "Grad": "G_431",
         "Clnt": 1496,
         "Data": "2024-12-18"
       }
@@ -5207,7 +5207,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "432° Grafit - 3012",
+        "Grad": "G_432",
         "Clnt": "527",
         "Data": "2024-12-30"
       },
@@ -5593,7 +5593,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "433° Grafit - 0601",
+        "Grad": "G_433",
         "Clnt": "121",
         "Data": "2025-01-06"
       }
@@ -5729,7 +5729,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "434° Grafit - 0601",
+        "Grad": "G_434",
         "Clnt": "1459",
         "Data": "2025-01-06"
       }
@@ -6088,7 +6088,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "435° Grafit - 0701",
+        "Grad": "G_435",
         "Clnt": 1512,
         "Data": "2025-01-07"
       }
@@ -6632,7 +6632,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "437° Grafit - 0801",
+        "Grad": "G_437",
         "Clnt": 1516,
         "Data": "2025-01-07"
       },
@@ -6654,7 +6654,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "437° Grafit - 0801",
+        "Grad": "G_437",
         "Clnt": 1516,
         "Data": "2025-01-07"
       }
@@ -6722,7 +6722,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "436° Grafit - 0701",
+        "Grad": "G_436",
         "Clnt": "1451",
         "Data": "2025-01-07"
       }
@@ -6790,7 +6790,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "436° Grafit - 0701",
+        "Grad": "G_436",
         "Clnt": 1517,
         "Data": "2025-01-07"
       }
@@ -7327,7 +7327,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "438° Grafit - 0901",
+        "Grad": "G_438",
         "Clnt": "16",
         "Data": "2025-01-09"
       }
@@ -7660,7 +7660,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "440° Grafit - 1301",
+        "Grad": "G_440",
         "Clnt": 1524,
         "Data": "2025-01-09"
       },
@@ -7806,7 +7806,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "440° Grafit - 1301",
+        "Grad": "G_440",
         "Clnt": "139",
         "Data": "2025-01-09"
       }
@@ -13413,7 +13413,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "451° Grafit - 2901",
+        "Grad": "G_451",
         "Clnt": 1569,
         "Data": "2025-01-29"
       }
@@ -14430,7 +14430,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "454° Grafit - 0302",
+        "Grad": "G_454",
         "Clnt": 1575,
         "Data": "2025-02-03"
       }
@@ -14566,7 +14566,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "457° Grafit - 0702",
+        "Grad": "G_457",
         "Clnt": 1577,
         "Data": "2025-02-03"
       }
@@ -14646,7 +14646,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "456° Grafit - 0402",
+        "Grad": "G_456",
         "Clnt": 1578,
         "Data": "2025-02-03"
       }
@@ -15572,7 +15572,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "457° Grafit - 0702",
+        "Grad": "G_457",
         "Clnt": "1569",
         "Data": "2025-02-07"
       }
@@ -16958,7 +16958,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "118° BPrint - 1202",
+        "Grad": "B_118",
         "Clnt": 1600,
         "Data": "2025-02-11"
       }
@@ -17038,7 +17038,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "458° Grafit - 01202",
+        "Grad": "G_458",
         "Clnt": "1459",
         "Data": "2025-02-11"
       }
@@ -17174,7 +17174,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "118° BPrint - 1202",
+        "Grad": "B_118",
         "Clnt": 1601,
         "Data": "2025-02-12"
       },
@@ -17276,7 +17276,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "118° BPrint - 1202",
+        "Grad": "B_118",
         "Clnt": "1531",
         "Data": "2025-02-12"
       }
@@ -17344,7 +17344,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "118° BPrint - 1202",
+        "Grad": "B_118",
         "Clnt": 1602,
         "Data": "2025-02-12"
       }
@@ -17567,7 +17567,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "459° Grafit - 1302",
+        "Grad": "G_459",
         "Clnt": 1604,
         "Data": "2025-02-13"
       }
@@ -17745,7 +17745,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "459° Grafit - 1302",
+        "Grad": "G_459",
         "Clnt": "97",
         "Data": "2025-02-14"
       }
@@ -17948,7 +17948,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "119° BPrint - 1902",
+        "Grad": "B_119",
         "Clnt": "1532",
         "Data": "2025-02-17"
       }
@@ -18003,7 +18003,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "124° BPrint - 2802",
+        "Grad": "B_124",
         "Clnt": 1606,
         "Data": "2025-02-17"
       }
@@ -18339,7 +18339,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "460° Grafit - 1802",
+        "Grad": "G_460",
         "Clnt": "139",
         "Data": "2025-02-18"
       }
@@ -18619,7 +18619,7 @@ const NovoJson = [
         "Arte": "Arte - 119° BPrint - 1902 (5).svg",
         "OS": "",
         "Uber": "",
-        "Grad": "119° BPrint - 1902",
+        "Grad": "B_119",
         "Clnt": "757",
         "Data": "2025-02-19"
       }
@@ -18765,7 +18765,7 @@ const NovoJson = [
         "Arte": "Arte - 461° Grafit - 1902.svg",
         "OS": "",
         "Uber": "",
-        "Grad": "461° Grafit - 1902",
+        "Grad": "G_461",
         "Clnt": 1611,
         "Data": "2025-02-19"
       }
@@ -18833,7 +18833,7 @@ const NovoJson = [
         "Arte": "Arte - 119° BPrint - 1902 (3).svg",
         "OS": "",
         "Uber": "",
-        "Grad": "119° BPrint - 1902",
+        "Grad": "B_119",
         "Clnt": "1594",
         "Data": "2025-02-19"
       }
@@ -18901,7 +18901,7 @@ const NovoJson = [
         "Arte": "Arte - 119° BPrint - 1902 (2).svg",
         "OS": "",
         "Uber": "",
-        "Grad": "119° BPrint - 1902",
+        "Grad": "B_119",
         "Clnt": "656",
         "Data": "2025-02-19"
       },
@@ -18923,7 +18923,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "120° BPrint - 2602",
+        "Grad": "B_120",
         "Clnt": "656",
         "Data": "2025-02-19"
       }
@@ -19093,7 +19093,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "463° Grafit - 2602",
+        "Grad": "G_463",
         "Clnt": "97",
         "Data": "2025-02-20"
       }
@@ -20066,7 +20066,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "463° Grafit - 2602",
+        "Grad": "G_463",
         "Clnt": 1621,
         "Data": "2025-02-25"
       }
@@ -20350,7 +20350,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "121° BPrint - 2602",
+        "Grad": "B_121",
         "Clnt": 1625,
         "Data": "2025-02-26"
       }
@@ -20731,7 +20731,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "123° BPrint - 2802",
+        "Grad": "B_123",
         "Clnt": "1485",
         "Data": "2025-02-27"
       }
@@ -20922,7 +20922,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "124° BPrint - 2802",
+        "Grad": "B_124",
         "Clnt": 1630,
         "Data": "2025-02-28"
       }
@@ -20990,7 +20990,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "125° BPrint - 2802",
+        "Grad": "B_125",
         "Clnt": 1631,
         "Data": "2025-02-28"
       }
@@ -21512,7 +21512,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "465° Grafit - 1003",
+        "Grad": "G_465",
         "Clnt": "139",
         "Data": "2025-03-10"
       }
@@ -21894,7 +21894,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Bprint - 002104",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "127° BPrint -1203",
+        "Grad": "B_127",
         "Clnt": "493",
         "Data": "2025-03-11"
       }
@@ -22187,7 +22187,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009605",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "466° Grafit - 1203",
+        "Grad": "G_466",
         "Clnt": "1162",
         "Data": "2025-03-12"
       },
@@ -22209,7 +22209,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009605",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "467° Grafit - 1203",
+        "Grad": "G_467",
         "Clnt": "1162",
         "Data": "2025-03-12"
       }
@@ -22437,7 +22437,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009605",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "466° Grafit - 1203",
+        "Grad": "G_466",
         "Clnt": 1641,
         "Data": "2025-03-12"
       }
@@ -22517,7 +22517,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009605",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "467° Grafit - 1203",
+        "Grad": "G_467",
         "Clnt": "101",
         "Data": "2025-03-12"
       }
@@ -22572,7 +22572,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009605",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "467° Grafit - 1203",
+        "Grad": "G_467",
         "Clnt": "1635",
         "Data": "2025-03-12"
       }
@@ -22627,7 +22627,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Bprint - 002104",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "128° BPrint -1203",
+        "Grad": "B_128",
         "Clnt": "7",
         "Data": "2025-03-12"
       }
@@ -23111,7 +23111,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Bprint - 002114",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "129° BPrint -1403",
+        "Grad": "B_129",
         "Clnt": "1485",
         "Data": "2025-03-14"
       }
@@ -23166,7 +23166,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Bprint - 002114",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "129° BPrint -1403",
+        "Grad": "B_129",
         "Clnt": 1645,
         "Data": "2025-03-14"
       }
@@ -23234,7 +23234,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Bprint - 002114",
         "Uber": "2025-03-14 - Edilson",
-        "Grad": "129° BPrint -1403",
+        "Grad": "B_129",
         "Clnt": 1646,
         "Data": "2025-03-14"
       }
@@ -23302,7 +23302,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009635",
         "Uber": "2025-03-18 - Teckson",
-        "Grad": "469° Grafit - 1703",
+        "Grad": "G_469",
         "Clnt": 1647,
         "Data": "2025-03-17"
       }
@@ -23518,7 +23518,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "131° BPrint - 1903",
+        "Grad": "B_131",
         "Clnt": 1649,
         "Data": "2025-03-17"
       }
@@ -23586,7 +23586,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009635",
         "Uber": "2025-03-18 - Teckson",
-        "Grad": "130° BPrint - 1703",
+        "Grad": "B_130",
         "Clnt": 1650,
         "Data": "2025-03-17"
       },
@@ -23676,7 +23676,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009635",
         "Uber": "2025-03-18 - Teckson",
-        "Grad": "130° BPrint - 1703",
+        "Grad": "G_130",
         "Clnt": "1535",
         "Data": "2025-03-17"
       },
@@ -23698,7 +23698,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009635",
         "Uber": "2025-03-18 - Teckson",
-        "Grad": "469° Grafit - 1703",
+        "Grad": "G_469",
         "Clnt": "1535",
         "Data": "2025-03-17"
       }
@@ -23766,7 +23766,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "Grafit - 009635",
         "Uber": "2025-03-18 - Teckson",
-        "Grad": "469° Grafit - 1703",
+        "Grad": "G_469",
         "Clnt": "79",
         "Data": "2025-03-17"
       }
@@ -24082,7 +24082,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "470° Grafit - 1903",
+        "Grad": "G_470",
         "Clnt": 1651,
         "Data": "2025-03-18"
       },
@@ -24126,7 +24126,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "134° BPrint - 2503",
+        "Grad": "B_134",
         "Clnt": 1651,
         "Data": "2025-03-18"
       }
@@ -24409,7 +24409,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "470° Grafit - 1903",
+        "Grad": "G_470",
         "Clnt": 1652,
         "Data": "2025-03-19"
       }
@@ -24477,7 +24477,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "470° Grafit - 1903",
+        "Grad": "G_470",
         "Clnt": 1653,
         "Data": "2025-03-19"
       }
@@ -24600,7 +24600,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "131° BPrint - 2003",
+        "Grad": "B_131",
         "Clnt": 1655,
         "Data": "2025-03-19"
       }
@@ -24833,7 +24833,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "470° Grafit - 1903",
+        "Grad": "G_470",
         "Clnt": 1657,
         "Data": "2025-03-19"
       }
@@ -25136,7 +25136,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "132° BPrint - 2103",
+        "Grad": "B_132",
         "Clnt": "1577",
         "Data": "2025-03-20"
       }
@@ -25463,7 +25463,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "132° BPrint - 2103",
+        "Grad": "B_132",
         "Clnt": "1459",
         "Data": "2025-03-24"
       },
@@ -25485,7 +25485,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "134° BPrint - 2503",
+        "Grad": "B_134",
         "Clnt": "1459",
         "Data": "2025-03-24"
       }
@@ -28870,7 +28870,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "482° Grafit - 1604",
+        "Grad": "G_482",
         "Clnt": "1671",
         "Data": "2025-04-02"
       }
@@ -35725,7 +35725,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "483° Grafit - 1704",
+        "Grad": "G_483",
         "Clnt": 1804,
         "Data": "2025-04-22"
       }
@@ -35861,7 +35861,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "2025-04-23 - Hidaim",
-        "Grad": "484° Grafit - 2204",
+        "Grad": "G_484",
         "Clnt": 1802,
         "Data": "2025-04-22"
       }
@@ -35929,7 +35929,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "2025-04-23 - Hidaim",
-        "Grad": "484° Grafit - 2204",
+        "Grad": "G_484",
         "Clnt": 1801,
         "Data": "2025-04-22"
       }
@@ -36065,7 +36065,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "484° Grafit - 2204",
+        "Grad": "G_484",
         "Clnt": 1799,
         "Data": "2025-04-22"
       }
@@ -36201,7 +36201,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "2025-04-23 - Hidaim",
-        "Grad": "484° Grafit - 2204",
+        "Grad": "G_484",
         "Clnt": 1797,
         "Data": "2025-04-22"
       }
@@ -36677,7 +36677,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "154° BPrint - 2304",
+        "Grad": "B_154",
         "Clnt": 1790,
         "Data": "2025-04-23"
       }
@@ -36881,7 +36881,7 @@ const NovoJson = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": "155° BPrint - 2304",
+        "Grad": "B_155",
         "Clnt": 1787,
         "Data": "2025-04-23"
       }

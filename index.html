@@ -10,9 +10,9 @@
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
-    <script src="./DadosCLNT.js"></script>
     <script src="./DadosPDDS.js"></script>
     <script src="./DadosGRAD.js"></script>
+    <script src="./DadosCLNT.js"></script>
     <script src="./BibliotecaGRAFF.js"></script>
 </head>
 
@@ -270,10 +270,10 @@
         CALC:{}
     }
 
-    const ListaKits=['Zebu','Zimaz',]
+    const ListaKits=['Zebu','Zimaz']
 
-    const JServ = NovoJson.flatMap(obj=>obj.Serv)
-    const JPgmt = NovoJson.flatMap(obj=>obj.Pgmt)
+    const JServ = J['PDDS'].flatMap(obj=>obj.Serv) // Novo Array
+    const JPgmt = J['PDDS'].flatMap(obj=>obj.Pgmt) // Novo Array
 
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 </script>
@@ -406,7 +406,7 @@
         const Tm_Tm = {
             Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-            Soma:(e,R)=>{const FiltID=id=>NovoJson.find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+            Soma:(e,R)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
             Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
             Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
             Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
@@ -587,9 +587,9 @@
                                 tipo==='Entregue'  && typ=="H_SERV" ? ['True','False'] : 
                                 typ=="H_CLNT" && Clientes.includes(tipo) ? Uniq(J.CLNT.map(E=>E[tipo])) :
                                 typ=="H_MPAG" && Mercapag.includes(tipo) ? Uniq(J.MPAG.map(E=>E[tipo])) :
-                                typ=="H_SERV" && Servicos.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Serv'].map(E=>Trato(e[tipo],tipo)))) :
-                                typ=="H_PGMT" && Pagament.includes(tipo) ? Uniq(NovoJson.flatMap(e=>e['Pgmt'].map(E=>Trato(e[tipo],tipo)))) :
-                                typ=="H_PDDS" && Pedidoss.includes(tipo) ? Uniq(NovoJson.map(e=>Trato(e[tipo],tipo))) :
+                                typ=="H_SERV" && Servicos.includes(tipo) ? Uniq(J['PDDS'].flatMap(e=>e['Serv'].map(E=>Trato(e[tipo],tipo)))) :
+                                typ=="H_PGMT" && Pagament.includes(tipo) ? Uniq(J['PDDS'].flatMap(e=>e['Pgmt'].map(E=>Trato(e[tipo],tipo)))) :
+                                typ=="H_PDDS" && Pedidoss.includes(tipo) ? Uniq(J['PDDS'].map(e=>Trato(e[tipo],tipo))) :
                                 tipo=='Clnt' ? AllClnt :
                                 ['Cust','Finc','Calc'].includes(tipo) ? Uniq(todoTitle[tipo]) :
                                 tipo==='Valr' && typ=="H_PDDS" ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
@@ -1178,7 +1178,7 @@
                 <h1 style="filter:none">Tabela de Pedidos</h1>
                 <button onclick="Complete_Forn()">Complet Forn</button>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
-                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const NovoJson = ${JSON.stringify(NovoJson,null,2)}`)" readonly></textarea>
+                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -1188,7 +1188,7 @@
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS)))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Table('PDDS',NovoJson.filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
+                <tbody onload="Inn(this,Tm_Table('PDDS',J['PDDS'].filter(e=>e.OFF=='1')))"></tbody> <!--J.PDDS.filter(e=>e.OFF===1)-->
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
         </div>
@@ -2066,34 +2066,44 @@
         console.log('✅ Concluido')
     }
 
-    function EditCell(e,vall=null){
+    function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
         const[Typ,x,Col,Cry]=D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        const idPDD =  tr_ID(Pai(_td(Pai(_td(e)))))
-        const isBdj = D_Rastr(_td(Pai(_td(e))))[3]
+        const TemBndj = !!e.closest('.BndjTBL')
 
-        if(Val===Nm(e)){return}
-        const Arr = [Typ,idPDD,Cry,x,Col,isBdj,vall===""?"":vall?vall:Val] // [Tabela,Linha,Coluna,NovoValor]
-        Nm(e,e.textContent.trim())
-        console.log('arrayFinal',Arr)
-        EditCONST(Arr) //EditJSON(arrays)
+        const idPDD1 = tr_ID(_tr(_td(e))) // se n for Bndj
+        console.log('TemBndj?',TemBndj,'-',Typ,x,Col,Cry,'>>',idPDD1)
+
+        const idPDD = tr_ID(Pai(_td(Pai(_td(e))))) // isso se for Bndj
+        const isBdj = D_Rastr(_td(Pai(_td(e))))[3] // isso se for Bndj
+
+        console.log(0,Val,idPDD,isBdj)
+        console.log(1,Typ,x,Col,Cry)
+        // o erro é q acontece com qualquer um q não seja Bandeja
+
+        if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
+        const NewVal = vall===""?"":vall?vall:Val
+        const Arr = [Typ,idPDD,Cry,x,Col,isBdj,NewVal] // [Tabela, Linha, Coluna, NovoValor]
+        
+        Nm(e,e.textContent.trim()) // Mudar o Name
+        console.log('NovoArray:',Arr)
+        EditCONST(Arr)
+        //RealTime()
     }
 
-    function EditCONST(Arr){
+    function EditCONST(Arr){ // isso aqui Edita quando é Normal
         const [Typ,idPDD,Cry,x,col,isBdj,vall] = Arr
-        const item = NovoJson.find(obj=>obj['Id']==idPDD)
-        const Idx = NovoJson.findIndex(obj=>obj['Id']==idPDD)
-        console.log(isBdj)
+        const item = J['PDDS'].find(obj=>obj['Id']==idPDD)
+        const Idx  = J['PDDS'].findIndex(obj=>obj['Id']==idPDD)
+        console.log('EditCONST()',isBdj)
         if(isBdj=='Bndj'){
             const typ = item[minuscule(Typ)]
-            const Idxbdj = NovoJson[Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==x)
-            NovoJson[Idx][minuscule(Typ)][Idxbdj][col] = vall //idPDD
-            console.log(NovoJson[Idx])
-        }else{
-            console.log(`${NovoJson[col]} >> ${vall}`)
-            NovoJson[col] = vall 
+            const Idxbdj = J['PDDS'][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==x)
+            J['PDDS'][Idx][minuscule(Typ)][Idxbdj][col] = vall //idPDD
         }
-        //RealTime()
+        else{J['PDDS'][col] = vall} // Apenas Trocar o Valor Simples!
+
+        console.log(`Atualizado: ${J['PDDS'][col]} >> ${vall}`)
     }
 
 

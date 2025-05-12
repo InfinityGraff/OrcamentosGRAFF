@@ -1,4 +1,8 @@
 const J = {
+
+  GRAD:DadosGRAD,
+  PDDS:DadosPDDS,
+
   CLNT: [
     {
       "ID": 0,
@@ -28882,5 +28886,4 @@ const J = {
         "Link": "-"
     }
   ],
-
 }
