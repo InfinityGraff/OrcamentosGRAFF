@@ -988,7 +988,6 @@
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
     
-
 </div>
 
 <body class="Dark" onclick="NoneBndj()">
@@ -2066,46 +2065,34 @@
         console.log('✅ Concluido')
     }
 
+    // o Importante é saber, se estou Editando a Primeira Camada, Segunda Camada ou Terceira (por enquanto só essas 3)
+    const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,
+                    SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',FINC:'PDDS'}
+
     function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
-        const[Typ,x,Col,Cry]=D_Rastr(_td(e))
+        const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
         const Val = vall===""?"":VAL(_td(e))
-        const TemBndj = !!e.closest('.BndjTBL')
-
-        const idPDD1 = tr_ID(_tr(_td(e))) // se n for Bndj
-        console.log('TemBndj?',TemBndj,'-',Typ,x,Col,Cry,'>>',idPDD1)
-
-        const idPDD = tr_ID(Pai(_td(Pai(_td(e))))) // isso se for Bndj
-        const isBdj = D_Rastr(_td(Pai(_td(e))))[3] // isso se for Bndj
-
-        console.log(0,Val,idPDD,isBdj)
-        console.log(1,Typ,x,Col,Cry)
-        // o erro é q acontece com qualquer um q não seja Bandeja
-
         if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
+        const isBdj  = !!e.closest('.BndjTBL')
+        const Lin    = isBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
         const NewVal = vall===""?"":vall?vall:Val
-        const Arr = [Typ,idPDD,Cry,x,Col,isBdj,NewVal] // [Tabela, Linha, Coluna, NovoValor]
-        
+        const Antg   = Nm(e)
+        const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
         Nm(e,e.textContent.trim()) // Mudar o Name
-        console.log('NovoArray:',Arr)
-        EditCONST(Arr)
-        //RealTime()
-    }
+        
+        // console.log('NovoArray:',Arr)
 
-    function EditCONST(Arr){ // isso aqui Edita quando é Normal
-        const [Typ,idPDD,Cry,x,col,isBdj,vall] = Arr
-        const item = J['PDDS'].find(obj=>obj['Id']==idPDD)
-        const Idx  = J['PDDS'].findIndex(obj=>obj['Id']==idPDD)
-        console.log('EditCONST()',isBdj)
-        if(isBdj=='Bndj'){
-            const typ = item[minuscule(Typ)]
-            const Idxbdj = J['PDDS'][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==x)
-            J['PDDS'][Idx][minuscule(Typ)][Idxbdj][col] = vall //idPDD
+        // de fato o Ato de Editar
+        if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
+        else{
+            const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin) // Achar o Index da tabela de pedidos
+            const Idxbdj = J[Camada[Typ]][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
+            J[Camada[Typ]][Idx][minuscule(Typ)][Idxbdj][col] = NewVal
+            //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
         }
-        else{J['PDDS'][col] = vall} // Apenas Trocar o Valor Simples!
-
-        console.log(`Atualizado: ${J['PDDS'][col]} >> ${vall}`)
+        console.log(0,Typ,Lin,col,Lin2,`Atualizado: ${Antg} >> ${NewVal}`)
+        // RealTime()
     }
-
 
     const TesteClnt=(e,td=null)=>{
         if($('#ConfirCliente').checked){console.log('Perguntar')}

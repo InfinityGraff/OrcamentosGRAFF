@@ -14,7 +14,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": ""
+        "Grad":""
     },
     {
         "ID": 2,
@@ -34,7 +34,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": ""
+        "Grad":""
     },
     {
         "ID": 3,
@@ -49,7 +49,7 @@ const DadosGRAD = [
         "Link": "-",
         "Valr": "",
         "Valr2": "",
-        "Grad": "425° Grafit - 0612.webp"
+        "Grad":""
     },
     {
         "ID": 4,
@@ -66,7 +66,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "426° Grafit - 0912.webp"
+        "Grad":""
     },
     {
         "ID": 5,
@@ -84,7 +84,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "427° Grafit - 0912.webp"
+        "Grad":""
     },
     {
         "ID": 6,
@@ -102,7 +102,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "428° Grafit - 1012.webp"
+        "Grad":""
     },
     {
         "ID": 7,
@@ -119,7 +119,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "429° Grafit - 1112.webp"
+        "Grad":""
     },
     {
         "ID": 8,
@@ -138,7 +138,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "087° BPrint - 0312.webp"
+        "Grad":""
     },
     {
         "ID": 9,
@@ -155,7 +155,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "088° BPrint - 0312.webp"
+        "Grad":""
     },
     {
         "ID": 10,
@@ -172,7 +172,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "089° BPrint - 0312.webp"
+        "Grad":""
     },
     {
         "ID": 11,
@@ -190,7 +190,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "090° BPrint - 0612.webp"
+        "Grad":""
     },
     {
         "ID": 12,
@@ -207,7 +207,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "091° BPrint - 1012.webp"
+        "Grad":""
     },
     {
         "ID": 13,
@@ -224,7 +224,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "092° BPrint - 1012.webp"
+        "Grad":""
     },
     {
         "ID": 14,
@@ -244,7 +244,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "093° BPrint - 1112.webp"
+        "Grad":""
     },
     {
         "ID": 15,
@@ -262,7 +262,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "094° BPrint - 1312.webp"
+        "Grad":""
     },
     {
         "ID": 16,
@@ -280,7 +280,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "095° BPrint - 1612.webp"
+        "Grad":""
     },
     {
         "ID": 17,
@@ -297,7 +297,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "096° BPrint - 1612.webp"
+        "Grad":""
     },
     {
         "ID": 18,
@@ -315,7 +315,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "097° BPrint - 1812.webp"
+        "Grad":""
     },
     {
         "ID": 19,
@@ -332,7 +332,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "098° BPrint - 2012.webp"
+        "Grad":""
     },
     {
         "ID": 20,
@@ -347,7 +347,7 @@ const DadosGRAD = [
         "Link": "-",
         "Valr": "",
         "Valr2": "",
-        "Grad": "099° BPrint - 2212.webp"
+        "Grad":""
     },
     {
         "ID": 21,
@@ -364,7 +364,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "430° Grafit - 1712.webp"
+        "Grad":""
     },
     {
         "ID": 22,
@@ -382,7 +382,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": "431° Grafit - 1812.webp"
+        "Grad":""
     },
     {
         "ID": 23,
@@ -399,7 +399,7 @@ const DadosGRAD = [
         ],
         "Valr": "",
         "Valr2": "",
-        "Grad": ""
+        "Grad":""
     },
     {
         "ID": 24,
@@ -414,7 +414,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "432° Grafit - 3012.webp"
+        "Grad":""
     },
     {
         "ID": 25,
@@ -429,7 +429,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "R$ 2,75",
         "Valr2": "40,00",
-        "Grad": "433° Grafit - 0601.webp"
+        "Grad":""
     },
     {
         "ID": 26,
@@ -444,7 +444,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "R$ 2,75",
         "Valr2": "36,00",
-        "Grad": "434° Grafit - 0601.webp"
+        "Grad":""
     },
     {
         "ID": 27,
@@ -459,7 +459,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "R$ 2,75",
         "Valr2": "15,00 | 73,50 | 30,33",
-        "Grad": "435° Grafit - 0701.webp"
+        "Grad":""
     },
     {
         "ID": 28,
@@ -474,7 +474,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "R$ 2,75",
         "Valr2": "42,00 | 7,60",
-        "Grad": "436° Grafit - 0701.webp"
+        "Grad":""
     },
     {
         "ID": 29,
@@ -489,7 +489,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "437° Grafit - 0801.webp"
+        "Grad":""
     },
     {
         "ID": 30,
@@ -504,7 +504,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "100° BPrint - 0901.webp"
+        "Grad":""
     },
     {
         "ID": 31,
@@ -519,7 +519,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "101° BPrint - 0901.webp"
+        "Grad":""
     },
     {
         "ID": 32,
@@ -534,7 +534,7 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "438° Grafit - 0901.webp"
+        "Grad":""
     },
     {
         "ID": 33,
@@ -549,6 +549,6 @@ const DadosGRAD = [
         "Link": "",
         "Valr": "",
         "Valr2": "",
-        "Grad": "439° Grafit - 1001.webp"
+        "Grad":""
     }
   ]
