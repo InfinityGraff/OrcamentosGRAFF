@@ -440,12 +440,7 @@ const DadosGRAD = [
 
 
         "NSrv": "",
-        "Link": [
-            "67_1"
-        ],
-
-
-
+        "Link": ["67_1"],
         "Lixo": ""
     },
     {
