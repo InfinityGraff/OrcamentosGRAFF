@@ -263,12 +263,12 @@
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Grad:['M',''],Lixo:['X','']},
+        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],Grad:['M',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Lixo:['X','']},
         UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
-    }
+    }// em GRAD este segundo ,'A' siguinifica q ele tem AutoComplete
 
     const ListaKits=['Zebu','Zimaz']
 
@@ -329,7 +329,7 @@
                 : null
         return val
     }
-    function DarVAL(td,v){const dR = ['Rastr',...D_Rastr(td)] ;Inn(td,Tm_Tm[dR[4]](v,dR))}
+    function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ;Inn(td,Tm_Tm[dR[4]](v,dR,A))}
 </script>
 
 <script> // Bibliotecas Longa
@@ -394,6 +394,14 @@
         .filtFals{background: red   !important; color: white;}
 
         .n1{display: none}
+
+        .Antig{color: #ffffff; font-size: 7px; top: 0px;}
+        .Ant-Blu{background: #0000ff !important}
+        .Ant-Red{background: #ff0000 !important}
+        .Ant-Grn{background: #008000 !important}
+        .Ant-Bol{width: 6px;height: 6px; border-radius: 255px}
+        
+        .AutoComp{background: #94949473;}
     </style>
 
     <script>// Template String v7.3
@@ -402,20 +410,21 @@
         const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
+        const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
         
         const Tm_Tm = {
-            Fixo:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-            Auto:(e,R)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-            Soma:(e,R)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
-            Edit:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-            Valr:(e,R)=>`<p class="P-P Ct" ${Edi} name="${e}" onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
-            Slct:(e,R)=>`<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
-            Chek:(e,R)=>`<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,
-            Data:(e,R)=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-            Imgs:(e,R)=>`<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
-            Lixo:(e,R)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
-            Grds:(e,R)=>`${e}`,
-            Sugg:(e,R)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
+            Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
+            Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
+            Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
+            Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
+            Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+            Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
+            Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
+            Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${e}">`,
+            Lixo:(e,R,A)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
+            Grds:(e,R,A)=>`${e}`,
+            Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+            Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
                     // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
                     // descobrir quem é quem do Sug, pelo título da coluna
                     // no Linkar deixar 2Botões abaixo, para tipo de Sugg, ou de Troca, ou de Adição       
@@ -485,8 +494,8 @@
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
                 return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj(this)">${_Tm_Bndj(v,R)}</td>` :
                        dR[4]=='Sugg'? `<td class="${R}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
-                                    : `<td class="${R}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
-            }
+                                    : `<td class="${R} Rltv"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
+            } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
             const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
 
@@ -916,12 +925,18 @@
             if(Typ=='GRAD'){
                 DadosGRAD.forEach((e,x)=>{
                     if(['BPrint','Grafit'].some(v=>e.Emal.includes(v))){
-                        e.Data = Dataa(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Data'])}`), e.Data)
-                        e.Forn = Fornn(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn)
-                        e.Grad = Gradd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Grad'])}`), e.Grad)
+                        const A1 = e.Data ; e.Data = Dataa(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Data'])}`), e.Data , A1==""?["Blu",'']:A1==e.Data?['Grn','']:['Red',A1])
+                        const A2 = e.Forn ; e.Forn = Fornn(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A2==""?["Blu",'']:A2==e.Forn?['Grn','']:['Red',A2])
+                        const A3 = e.Grad ; e.Grad = Gradd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Grad'])}`), e.Grad , A3==""?["Blu",'']:A3==e.Grad?['Grn','']:['Red',A3])
                     }
                 })
             }
+        }
+
+        function AplicaCSSAutoComplete(){
+            $$(Rx(['GRAD','Data'])).forEach(e=>Add(e,'AutoComp'))
+            $$(Rx(['GRAD','Forn'])).forEach(e=>Add(e,'AutoComp'))
+            $$(Rx(['GRAD','Grad'])).forEach(e=>Add(e,'AutoComp'))
         }
     </script>
 
@@ -985,6 +1000,7 @@
         function RealTime(){
             Rfresh_Foot()
             Rfresh_Color()
+            AplicaCSSAutoComplete()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
     
@@ -1140,8 +1156,8 @@
 
             .TBLAA .hMin td{height:10px}
             .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-                .TBLAA .hMin td .svg-Lixo{height:17px}
-                .TBLAA .hMin td img{height:17px; width: auto;}
+                .TBLAA td .svg-Lixo{height:17px}
+                .TBLAA td img{height:17px; width: auto;}
             .TBLAA .hMin tfoot td{padding:8px 6px}
             
             .TableMORE thead{background:#0000007c}

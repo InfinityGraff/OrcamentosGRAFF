@@ -3,38 +3,64 @@ const DadosGRAD = [
         "ID": 1,
         "Emal": "423° Grafit - 0312",
         "Data": "",
-        "Forn": "",
+        "Forn": "Grafit",
         "OS": "OS-009190",
-        "Nome": "1 - Ads(Rct) 1,00 x 0,67",
+        "Grad": "",
         "Cont": "-",
-        "Uber": "-",
-        "NSrv": "1",
-        "Link": [
-            "14|1"
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Rct) 1,00 x 0,67",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["14_1"],
+            }
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Lixo": ""
     },
     {
         "ID": 2,
         "Emal": "424° Grafit - 0412",
         "Data": "",
-        "Forn": "",
+        "Forn": "BPrint",
         "OS": "OS-009190",
-        "Nome": "1 - Ads(Rct) 1,00 x 0,77 | 1 - Ads(Blh) 1,00 x 1,00 | 1 - Ads(Rct) 1,00 x 1,00",
-        "Cont": "-",
-        "Uber": "-",
-        "NSrv": "4",
-        "Link": [
-            "25|1",
-            "25|2",
-            "25|3",
-            "19|1"
+        "Grad": "", "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Rct) 1,00 x 1,00",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["25_1"],
+            },
+            {
+                "Id": 'B',
+                "Nome": "1 - Ads(Rct) 1,00 x 0,77",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["25_2"],
+            },
+            {
+                "Id": 'C',
+                "Nome": "1 - Ads(Blh) 1,00 x 1,00",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["25_3","19_1"],
+            },
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Lixo": ""
     },
     {
         "ID": 3,
@@ -42,14 +68,26 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "Sem OS",
-        "Nome": "1 - Ilhós 1,46 x 0,48",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+            "1 - Ilhós 1,46 x 0,48"],
+
         "NSrv": "1",
         "Link": "-",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 4,
@@ -57,16 +95,30 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009213",
-        "Nome": "1 - Faixa - 1,46 x 0,48",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+
+            "1 - Faixa - 1,46 x 0,48"],
+
+
         "NSrv": "1",
         "Link": [
-            "28|1"
+            "28_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 5,
@@ -74,17 +126,31 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009213",
-        "Nome": "1 - Ads(Blh) 1,00 x 0,70 | 1 - Ads(Blh) 1,00 x 1,60",
+        "Grad": "",
         "Cont": "-",
-        "Uber": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+            "1 - Ads(Blh) 1,00 x 0,70", "1 - Ads(Blh) 1,00 x 1,60"],
+
+
         "NSrv": "3",
         "Link": [
-            "40|1",
-            "45|2"
+            "40_1",
+            "45_2"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 6,
@@ -92,17 +158,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009213",
-        "Nome": "1 - Bnnr 0,65 x 1,60 | 1 - Bnnr 0,70 x 1,10",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Bnnr 0,65 x 1,60", "1 - Bnnr 0,70 x 1,10"],
+
+
         "NSrv": "2",
         "Link": [
-            "45|3",
-            "78|2"
+            "45_3",
+            "78_2"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 7,
@@ -110,16 +177,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "Manual1",
-        "Nome": "1 - Ads(Blh) 1,00 x 12,00",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 12,00"],
+
+
         "NSrv": "1",
         "Link": [
-            "46|1"
+            "46_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 8,
@@ -127,18 +195,19 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) - 1,00 x 0,70",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) - 1,00 x 0,70"],
+
+
         "NSrv": "4",
         "Link": [
-            "3|1",
-            "5|1",
-            "1|1"
+            "3_1",
+            "5_1",
+            "1_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 9,
@@ -146,16 +215,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Bnnr 1,00 x 1,00",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Bnnr 1,00 x 1,00"],
+
+
         "NSrv": "1",
         "Link": [
-            "15|1"
+            "15_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 10,
@@ -163,16 +233,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Colchê Adesivo (A3 Lazer)",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Colchê Adesivo (A3 Lazer)"],
+
+
         "NSrv": "1",
         "Link": [
-            "56|1"
+            "56_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 11,
@@ -180,17 +251,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 0,55",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,55"],
+
+
         "NSrv": "3",
         "Link": [
-            "36|1",
-            "52|1"
+            "36_1",
+            "52_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 12,
@@ -198,16 +270,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 0,43",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,43"],
+
+
         "NSrv": "1",
         "Link": [
-            "42|1"
+            "42_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 13,
@@ -215,16 +288,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "4 - Triplex Branco 250g Brilho",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["4 - Triplex Branco 250g Brilho"],
+
+
         "NSrv": "1",
         "Link": [
-            "30|1"
+            "30_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 14,
@@ -232,19 +306,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 1,80",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 1,80"],
+
+
         "NSrv": "4",
         "Link": [
-            "34|2",
-            "53|1",
-            "55|1",
-            "49|1"
+            "34_2",
+            "53_1",
+            "55_1",
+            "49_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 15,
@@ -252,17 +327,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Rct) 1,00 x 0,55 | 1 - Ads(Blh) 1,00 x 1,00",
-        "Cont": "-",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Rct) 1,00 x 0,55", "1 - Ads(Blh) 1,00 x 1,00"],
+
+
         "NSrv": "3",
         "Link": [
-            "50|1",
-            "51|1"
+            "50_1",
+            "51_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 16,
@@ -270,17 +346,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 0,50",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,50"],
+
+
         "NSrv": "2",
         "Link": [
-            "60|1",
-            "58|1"
+            "60_1",
+            "58_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 17,
@@ -288,16 +365,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Triplex Branco 250g",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Triplex Branco 250g"],
+
+
         "NSrv": "1",
         "Link": [
-            "63|1"
+            "63_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 18,
@@ -305,17 +383,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Triplex Branco 250g | 6 - Colchê 90g Plastificado",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Triplex Branco 250g", "6 - Colchê 90g Plastificado"],
+
+
         "NSrv": "2",
         "Link": [
-            "75|1",
-            "82|1"
+            "75_1",
+            "82_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 19,
@@ -323,16 +402,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 1,05",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 1,05"],
+
+
         "NSrv": "2",
         "Link": [
-            "72|2"
+            "72_2"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 20,
@@ -340,14 +420,15 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "2 - Triplex Branco 250g",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["2 - Triplex Branco 250g"],
+
+
         "NSrv": "1",
         "Link": "-",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 21,
@@ -355,16 +436,17 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,00 x 0,55",
-        "Cont": "",
-        "Uber": "-",
+        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,55"],
+
+
         "NSrv": "",
         "Link": [
-            "67|1"
+            "67_1"
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+
+
+
+        "Lixo": ""
     },
     {
         "ID": 22,
@@ -372,17 +454,32 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "1 - Ads(Blh) 1,01 x 2,40 | 1 - Banner 0,80 x 1,20",
-        "Cont": "",
-        "Uber": "-",
-        "NSrv": "",
-        "Link": [
-            "72|1",
-            "74|1"
+        "Grad": "",
+        "Cont": "-",
+        "ABCD":
+        [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,01 x 2,40",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["72_1"],
+            },
+            {
+                "Id": 'B',
+                "Nome": "1 - Banner 0,80 x 1,20",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["74_1"],
+            }
         ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Lixo": ""
     },
     {
         "ID": 23,
@@ -390,16 +487,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "-",
-        "NSrv": "",
-        "Link": [
-            "83|1"
-        ],
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["83_1"],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 24,
@@ -407,14 +508,18 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "-",
-        "NSrv": "",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "", "Cont": "-", "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 25,
@@ -422,14 +527,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009292",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "23",
-        "NSrv": "2",
-        "Link": "",
-        "Valr": "R$ 2,75",
-        "Valr2": "40,00",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "40,00",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 26,
@@ -437,14 +548,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009292",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "23",
-        "NSrv": "1",
-        "Link": "",
-        "Valr": "R$ 2,75",
-        "Valr2": "36,00",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "36,00",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 27,
@@ -452,14 +569,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009292",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "23",
-        "NSrv": "2",
-        "Link": "",
-        "Valr": "R$ 2,75",
-        "Valr2": "15,00 | 73,50 | 30,33",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "15,00 _ 73,50 _ 30,33",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 28,
@@ -467,14 +590,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009292",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "23",
-        "NSrv": "4",
-        "Link": "",
-        "Valr": "R$ 2,75",
-        "Valr2": "42,00 | 7,60",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "42,00 _ 7,60",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 29,
@@ -482,14 +611,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "",
-        "NSrv": "2",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 30,
@@ -497,14 +632,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "",
-        "NSrv": "",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 31,
@@ -512,14 +653,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "",
-        "NSrv": "",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 32,
@@ -527,14 +674,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
-        "Cont": "",
-        "Uber": "",
-        "NSrv": "",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "Grad": "",
+        "Cont": "-",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     },
     {
         "ID": 33,
@@ -542,13 +695,19 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Nome": "",
+        "Grad": "",
         "Cont": "",
-        "Uber": "",
-        "NSrv": "",
-        "Link": "",
-        "Valr": "",
-        "Valr2": "",
-        "Grad":""
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            }],
+        "Lixo": ""
     }
-  ]
+]
