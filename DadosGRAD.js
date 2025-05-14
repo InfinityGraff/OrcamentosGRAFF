@@ -6,7 +6,7 @@ const DadosGRAD = [
         "Forn": "Grafit",
         "OS": "OS-009190",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -27,7 +27,7 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "BPrint",
         "OS": "OS-009190",
-        "Grad": "", "Cont": "-",
+        "Grad": "", "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -68,25 +68,19 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "Sem OS",
-        "Grad": "", "Cont": "-",
+        "Grad": "", "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "",
+                "Nome": "1 - Ilhós 1,46 x 0,48",
                 "Desc": "",
-                "QntServ": "",
+                "QntServ": "1",
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
                 "Link": [""],
             },
-            "1 - Ilhós 1,46 x 0,48"],
-
-        "NSrv": "1",
-        "Link": "-",
-
-
-
+        ],
         "Lixo": ""
     },
     {
@@ -95,29 +89,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009213",
-        "Grad": "", "Cont": "-",
+        "Grad": "", "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "",
+                "Nome": "1 - Faixa - 1,46 x 0,48",
                 "Desc": "",
-                "QntServ": "",
+                "QntServ": "1",
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": [""],
+                "Link": ["28_1"],
             },
 
-            "1 - Faixa - 1,46 x 0,48"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "28_1"
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -127,29 +112,29 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "OS-009213",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "",
+                "Nome": "1 - Ads(Blh) 1,00 x 0,70",
                 "Desc": "",
-                "QntServ": "",
+                "QntServ": "1",
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": [""],
+                "Link": ["40_1"],
             },
-            "1 - Ads(Blh) 1,00 x 0,70", "1 - Ads(Blh) 1,00 x 1,60"],
-
-
-        "NSrv": "3",
-        "Link": [
-            "40_1",
-            "45_2"
+            {
+                "Id": 'B',
+                "Nome": "1 - Ads(Blh) 1,00 x 1,60",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["45_2"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -158,17 +143,30 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "OS-009213",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Bnnr 0,65 x 1,60", "1 - Bnnr 0,70 x 1,10"],
-
-
-        "NSrv": "2",
-        "Link": [
-            "45_3",
-            "78_2"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Bnnr 0,65 x 1,60",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["45_3"],
+            },
+            {
+                "Id": 'B',
+                "Nome": "1 - Bnnr 0,70 x 1,10",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["78_2"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -177,16 +175,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "Manual1",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 12,00"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "46_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 12,00",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["46_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -195,18 +197,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) - 1,00 x 0,70"],
-
-
-        "NSrv": "4",
-        "Link": [
-            "3_1",
-            "5_1",
-            "1_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) - 1,00 x 0,70",
+                "Desc": "",
+                "QntServ": "3",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["3_1","5_1","1_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -215,16 +219,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Bnnr 1,00 x 1,00"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "15_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Bnnr 1,00 x 1,00",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["15_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -233,16 +241,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Colchê Adesivo (A3 Lazer)"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "56_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Colchê Adesivo (A3 Lazer)",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["56_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -251,17 +263,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,55"],
-
-
-        "NSrv": "3",
-        "Link": [
-            "36_1",
-            "52_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 0,55",
+                "Desc": "",
+                "QntServ": "2",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["36_1","52_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -270,16 +285,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,43"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "42_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 0,43",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["42_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -288,16 +307,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["4 - Triplex Branco 250g Brilho"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "30_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "4 - Triplex Branco 250g Brilho",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["30_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -306,19 +329,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 1,80"],
-
-
-        "NSrv": "4",
-        "Link": [
-            "34_2",
-            "53_1",
-            "55_1",
-            "49_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 1,80",
+                "Desc": "",
+                "QntServ": "4",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["34_2","53_1","55_1","49_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -327,17 +351,30 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Rct) 1,00 x 0,55", "1 - Ads(Blh) 1,00 x 1,00"],
-
-
-        "NSrv": "3",
-        "Link": [
-            "50_1",
-            "51_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Rct) 1,00 x 0,55",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["50_1"],
+            },
+            {
+                "Id": 'B',
+                "Nome": "1 - Ads(Blh) 1,00 x 1,00",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["51_1"],
+            }
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -346,17 +383,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,50"],
-
-
-        "NSrv": "2",
-        "Link": [
-            "60_1",
-            "58_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 0,50",
+                "Desc": "",
+                "QntServ": "2",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["60_1","58_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -365,16 +405,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Triplex Branco 250g"],
-
-
-        "NSrv": "1",
-        "Link": [
-            "63_1"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Triplex Branco 250g",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["63_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -383,17 +427,28 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Triplex Branco 250g", "6 - Colchê 90g Plastificado"],
-
-
-        "NSrv": "2",
-        "Link": [
-            "75_1",
-            "82_1"
+        "Grad": "", "Cont": "", "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Triplex Branco 250g",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["75_1"],
+            },
+            {
+                "Id": 'B',
+                "Nome": "6 - Colchê 90g Plastificado",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["82_1"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -402,16 +457,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 1,05"],
-
-
-        "NSrv": "2",
-        "Link": [
-            "72_2"
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 1,05",
+                "Desc": "",
+                "QntServ": "2",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["72_2"],
+            },
         ],
-
-
-
         "Lixo": ""
     },
     {
@@ -420,14 +479,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["2 - Triplex Branco 250g"],
-
-
-        "NSrv": "1",
-        "Link": "-",
-
-
-
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "2 - Triplex Branco 250g",
+                "Desc": "",
+                "QntServ": "1",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+        ],
         "Lixo": ""
     },
     {
@@ -436,11 +501,20 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": ["1 - Ads(Blh) 1,00 x 0,55"],
-
-
-        "NSrv": "",
-        "Link": ["67_1"],
+        "Grad": "",
+        "Cont": "",
+        "ABCD": [
+            {
+                "Id": 'A',
+                "Nome": "1 - Ads(Blh) 1,00 x 0,55",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": ["67_1"],
+            },
+        ],
         "Lixo": ""
     },
     {
@@ -450,7 +524,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD":
         [
             {
@@ -483,7 +557,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -503,7 +577,7 @@ const DadosGRAD = [
         "Data": "",
         "Forn": "",
         "OS": "",
-        "Grad": "", "Cont": "-", "ABCD": [
+        "Grad": "", "Cont": "", "ABCD": [
             {
                 "Id": 'A',
                 "Nome": "",
@@ -523,7 +597,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "OS-009292",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -544,7 +618,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "OS-009292",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -565,7 +639,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "OS-009292",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -586,7 +660,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "OS-009292",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -607,7 +681,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -628,7 +702,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -649,7 +723,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
@@ -670,7 +744,7 @@ const DadosGRAD = [
         "Forn": "",
         "OS": "",
         "Grad": "",
-        "Cont": "-",
+        "Cont": "",
         "ABCD": [
             {
                 "Id": 'A',
