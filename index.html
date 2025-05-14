@@ -262,11 +262,12 @@
         CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
-        CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],Grad:['M',''],OS  :['E',''],Nome:['T',''],Cont:['E',''],Uber:['E',''],Valr:['E',''],Valr2:['E',''],NSrv:['E',''],Link:['G',''],Lixo:['X','']},
-        UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
-        OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
+        CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''   ],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''   ],Grad:['M',''],OS  :['E',''],Cont:['E',''],ABCD:['B',''],Lixo:['X','']},
+        ABCD:{Id:['E',''],Nome:['E',''],Desc:['E',''],QntServ:['E',''],Valr:['V',''],Uber:['E',''],VUber:['V',''],Link:['E','']},
+        UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''   ],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''   ],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''   ],Lixo:['X','']},
         CALC:{}
     }// em GRAD este segundo ,'A' siguinifica q ele tem AutoComplete
 
@@ -455,14 +456,14 @@
 
                 const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
 
-                const Title =   Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
+                const Title =   Typ==='ABCD' ? Find.map(e=>`${e['Id']}`).join('') :
+                                Typ==='Pgmt' ? Find.map(e=>`${e['Valr']}${ e['Form']}`).join(' | ') :
                                 Typ==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
                                 Typ==='Cust' ? Find.map(e=>`${e['Valr']}`).join('') :
                                 Typ==='Finc' ? Find.map(e=>`${e['Lcro']}`).join('') :
                                 Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                             Find.map(e=>e[R[3]]).join(' | ').replace('_ - _x_ R$ 0,00','')
 
-                
                 if(Title!=''){
                         if(['Cust','Finc','Calc'].includes(Typ)){
                             todoTitle[Typ].push(Title)}
@@ -933,10 +934,14 @@
             }
         }
 
-        function AplicaCSSAutoComplete(){
+        function AplicaCSSAutoComplete(){ // isso deve ser Condensado em usar oq terá na BS
             $$(Rx(['GRAD','Data'])).forEach(e=>Add(e,'AutoComp'))
             $$(Rx(['GRAD','Forn'])).forEach(e=>Add(e,'AutoComp'))
             $$(Rx(['GRAD','Grad'])).forEach(e=>Add(e,'AutoComp'))
+
+            $$(Rx(['ABCD','QntServ'])).forEach(e=>Add(e,'AutoComp'))
+            $$(Rx(['ABCD','Valr'   ])).forEach(e=>Add(e,'AutoComp'))
+            $$(Rx(['ABCD','VUber'  ])).forEach(e=>Add(e,'AutoComp'))
         }
     </script>
 

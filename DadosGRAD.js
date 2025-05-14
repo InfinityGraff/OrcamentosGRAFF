@@ -57,7 +57,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": ["25_3","19_1"],
+                "Link": ["25_3", "19_1"],
             },
         ],
         "Lixo": ""
@@ -208,7 +208,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": ["3_1","5_1","1_1"],
+                "Link": ["3_1", "5_1", "1_1"],
             },
         ],
         "Lixo": ""
@@ -274,7 +274,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": ["36_1","52_1"],
+                "Link": ["36_1", "52_1"],
             },
         ],
         "Lixo": ""
@@ -340,7 +340,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": ["34_2","53_1","55_1","49_1"],
+                "Link": ["34_2", "53_1", "55_1", "49_1"],
             },
         ],
         "Lixo": ""
@@ -394,7 +394,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUber": "",
-                "Link": ["60_1","58_1"],
+                "Link": ["60_1", "58_1"],
             },
         ],
         "Lixo": ""
@@ -526,28 +526,28 @@ const DadosGRAD = [
         "Grad": "",
         "Cont": "",
         "ABCD":
-        [
-            {
-                "Id": 'A',
-                "Nome": "1 - Ads(Blh) 1,01 x 2,40",
-                "Desc": "",
-                "QntServ": "",
-                "Valr": "",
-                "Uber": "",
-                "VUber": "",
-                "Link": ["72_1"],
-            },
-            {
-                "Id": 'B',
-                "Nome": "1 - Banner 0,80 x 1,20",
-                "Desc": "",
-                "QntServ": "",
-                "Valr": "",
-                "Uber": "",
-                "VUber": "",
-                "Link": ["74_1"],
-            }
-        ],
+            [
+                {
+                    "Id": 'A',
+                    "Nome": "1 - Ads(Blh) 1,01 x 2,40",
+                    "Desc": "",
+                    "QntServ": "",
+                    "Valr": "",
+                    "Uber": "",
+                    "VUber": "",
+                    "Link": ["72_1"],
+                },
+                {
+                    "Id": 'B',
+                    "Nome": "1 - Banner 0,80 x 1,20",
+                    "Desc": "",
+                    "QntServ": "",
+                    "Valr": "",
+                    "Uber": "",
+                    "VUber": "",
+                    "Link": ["74_1"],
+                }
+            ],
         "Lixo": ""
     },
     {
@@ -650,7 +650,28 @@ const DadosGRAD = [
                 "Uber": "23",
                 "VUber": "R$ 2,75",
                 "Link": [""],
-            }],
+            },
+            {
+                "Id": 'B',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            },
+            {
+                "Id": 'C',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "23",
+                "VUber": "R$ 2,75",
+                "Link": [""],
+            }
+        ],
         "Lixo": ""
     },
     {
@@ -671,7 +692,19 @@ const DadosGRAD = [
                 "Uber": "23",
                 "VUber": "R$ 2,75",
                 "Link": [""],
-            }],
+            },
+            {
+                "Id": 'B',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+
+        ],
         "Lixo": ""
     },
     {
@@ -692,7 +725,29 @@ const DadosGRAD = [
                 "Uber": "",
                 "VUber": "",
                 "Link": [""],
-            }],
+            },
+            {
+                "Id": 'B',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+            {
+                "Id": 'C',
+                "Nome": "",
+                "Desc": "",
+                "QntServ": "",
+                "Valr": "",
+                "Uber": "",
+                "VUber": "",
+                "Link": [""],
+            },
+
+        ],
         "Lixo": ""
     },
     {
