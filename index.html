@@ -17,15 +17,20 @@
 </head>
 
 <style> /*CSS Genérico*/
-    .svg-Lixo {width:auto; height:100px; fill:#ffbb00}
+    .svg-Lixo {width:auto; height:15px; fill:#ffbb00}
     .ClntATV{background:#ff4500}
     p,div{cursor: default}
     #FormServ{width: 500px; background: #363636}
-    input[type="checkbox"]{height: auto;}
+    input[type="checkbox"]{height:auto}
+    .SelectSoma{background: #ff0000}
+    .Ubuiaxik{width: 800px; height: 500px}
+    .Nuevoevo{color: white;background: #53004873;padding: 2px}
+
     select{background: #7e7e7e28 !important}
-    .SelectSoma{background: red}
-    .Ubuiaxik{width: 800px; height: 500px;}
-    .Nuevoevo{color: white;background: #53004873;padding: 2px;}
+    .Dark option{color:#ffffff; background:#3d3d3d}
+    .Lite option{color:#000000; background:#ffffff}
+    .Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
+    .Lite optgroup{color:#00000038; background:white  ; font-size:10px; text-align:left; padding-left:80px}
 
     .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
     .Formt_VerdOK{background:rgb(43, 211, 43  );color:#274e24;font-weight:bold}
@@ -33,16 +38,9 @@
     .Formt_Redd  {background:rgb(224, 104, 104);color:#910000;font-weight:bold}
     .Formt_Yell  {background:rgb(228, 252, 94 );color:#910000;font-weight:bold}
     .Formt_Orag  {background:rgb(255, 187, 0  );color:#910000;font-weight:bold}
-
-    .Dark optgroup{color:#ffffff3f;background:#3d3d3d;font-size: 10px; text-align: left;padding-left: 80px}
-    .Dark option{color:white;background:#3d3d3d}
-    .Lite optgroup{color:#00000038;background:white;  font-size: 10px; text-align: left;padding-left: 80px}
-    .Lite option{color:black;background:white}
-
-    .footbndjj{background:white; bottom: 0px;  overflow: scroll; height: auto;max-height: 300px}
-    .footbndjj span{color: black}
-
-    #H_GRAD img{height: 15px}
+    
+    .footbndjj{background:white; bottom:0px;  overflow:scroll; height:auto; max-height:300px}
+    .footbndjj span{color:black}
 </style>
 
 <script> // Base de Dados
@@ -266,7 +264,9 @@
         GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''   ],Grad:['M',''],OS  :['E',''],Cont:['E',''],ABCD:['B',''],Lixo:['X','']},
         ABCD:{Id:['E',''],Nome:['E',''],Desc:['E',''],QntServ:['E',''],Valr:['V',''],Uber:['E',''],VUber:['V',''],Link:['E','']},
         UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''   ],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        
         MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''   ],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        
         OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''   ],Lixo:['X','']},
         CALC:{}
     }// em GRAD este segundo ,'A' siguinifica q ele tem AutoComplete
@@ -311,15 +311,10 @@
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
 
-    function VAL(td){ // e deve ser um 'td'
-    const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-    const val = R[3]==='Edit' ? $('.P-P',td).textContent.trim()
-                : R[3]==='Fx'   ? $('.P-P',td).textContent.trim()
-                : R[3]==='Sugg' ? $('.P-P',td).textContent.trim()
-                : R[3]==='Auto' ? $('.P-P',td).textContent.trim()
-                : R[3]==='SVG'  ? $('.P-P',td).textContent.trim()
-                : R[3]==='Soma' ? $('.P-P',td).textContent.trim()
-                : R[3]==='Data' ? $('.P-P',td).textContent.trim()
+    function VAL(e){
+        const td = e.tagName === 'TD' ? e : _td(e)
+        const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
+        const val = ['Edit','Fx','Sugg','Auto','SVG','Soma','Data'].includes(R[3]) ? $('.P-P',td).textContent.trim()
                 : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
                 : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
                 : R[3]==='Slct' ? $('select',td).value
@@ -329,6 +324,7 @@
                 : R[3]==='Lixo' ? '-'
                 : null
         return val
+        // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
     }
     function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ;Inn(td,Tm_Tm[dR[4]](v,dR,A))}
 </script>
@@ -2132,7 +2128,7 @@
 
     function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
         const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
-        const Val = vall===""?"":VAL(_td(e))
+        const Val = vall===""?"":VAL(e)
         if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
         const isBdj  = !!e.closest('.BndjTBL')
         const Lin    = isBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
