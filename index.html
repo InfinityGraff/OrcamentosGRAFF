@@ -504,12 +504,7 @@
             return Retorno
             
             // Tipo de BndjTable = Array interno, ou Array de Fora
-            
-            // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
-            // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
-            // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
-        
-            // Mudei de idéia sobre a bandeija de medidas (ela só vai existir quando o pedido for realmente muito variado) fora isso, cada linha representará um unico serv, igual ta na pag orçamento
+            // Permitir mudar os 2 Tipos de Bandeijas, dentro da cell, e em formato de bandeja
             // Transitar com as Setinhas na tabela do APP igual na Planilha
         }
 
@@ -932,6 +927,10 @@
                     }
                 })
             }
+
+            // $$(Rx2(['GRAD','Grds'])).forEach(e=>Inn(e,Inn(e).split('|').map(E=>`<a>${E.trim()}</a>`).join('')))
+            // $$(Rx2(['GRAD','Cont'])).forEach(e=>Inn(e,`<p>${$$(`${Col('GRAD','Nome')} a`,_tr(e)).length}</p>`)) // Independente do q foi passado Genérioco, este aqui reescreve por cima!
+            // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
         }
 
         function AplicaCSSAutoComplete(){ // isso deve ser Condensado em usar oq terá na BS
@@ -1000,6 +999,33 @@
             const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
         
             // no ID contar a quantidade de Linhas q tem visiveis
+        }
+
+
+        function MudarFormatBndj1(Typ){
+            const Div = $$(`${Rx(['ABCD','Bndj'])} .BndjTBL` )
+            const Btn = $$(`${Rx(['ABCD','Bndj'])} .Nuevoevo`)
+            const p = $$(`${Rx(['ABCD','Bndj'])} > div > .P-P`)
+
+            Div.forEach(e=>{
+                e.classList.remove('BndjTBL','BNdj','Abslt','Shdw','rd','Cl','none')
+                Add(e,'bnDJ') ; Add_N($('a',e)) ; Add_N($('thead',e))
+            })
+            Btn.forEach(e=>Add_N(e))
+            p.forEach(e=>Add_N(Pai(e)))
+        }
+
+        function MudarFormatBndj2(Typ){
+            const Div = $$(`${Rx(['ABCD','Bndj'])} .bnDJ` )
+            const Btn = $$(`${Rx(['ABCD','Bndj'])} .Nuevoevo`)
+            const p = $$(`${Rx(['ABCD','Bndj'])} > div > .P-P`)
+
+            Div.forEach(e=>{
+                e.classList.add('BndjTBL','BNdj','Abslt','Shdw','rd','Cl','none')
+                Rmv(e,'bnDJ') ; Rmv_N($('a',e)) ; Rmv_N($('thead',e))
+            })
+            Btn.forEach(e=>Rmv_N(e))
+            p.forEach(e=>Rmv_N(Pai(e)))
         }
 
         function RealTime(){
@@ -1191,11 +1217,16 @@
             .TBLAA > table > tbody > tr > td:nth-child(1){background: #a7a7a78e !important}
 
 
-            .TBLAA p.P-P{
-                display: inline-block;
-                white-space: nowrap;
-            }
+            .TBLAA p.P-P{display: inline-block; white-space: nowrap; }
 
+            .bnDJ .Bdj_ABCD td:nth-child(1){width: 25px;}
+            .bnDJ .Bdj_ABCD td:nth-child(2){width: 200px;}
+            .bnDJ .Bdj_ABCD td:nth-child(3){width: 25px;}
+            .bnDJ .Bdj_ABCD td:nth-child(4){width: 25px;}
+            .bnDJ .Bdj_ABCD td:nth-child(5){width: 60px;}
+            .bnDJ .Bdj_ABCD td:nth-child(6){width: 25px;}
+            .bnDJ .Bdj_ABCD td:nth-child(7){width: 60px;}
+            .bnDJ .Bdj_ABCD td:nth-child(8){width: 200px;}
             
         </style>
 
@@ -1269,6 +1300,8 @@
                 <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
                 <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
                 <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
+                <button onclick="MudarFormatBndj1('GRAD')">Bndj1</button>
+                <button onclick="MudarFormatBndj2('GRAD')">Bndj2</button>
             </div>
             <table id="H_GRAD" class="w100 hMax">
                 <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD)))"></tr></thead>
