@@ -12,6 +12,7 @@
     <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
     <script src="./DadosPDDS.js"></script>
     <script src="./DadosGRAD.js"></script>
+    <script src="./DadosMPAG.js"></script>
     <script src="./DadosCLNT.js"></script>
     <script src="./BibliotecaGRAFF.js"></script>
 </head>
@@ -265,7 +266,7 @@
         ABCD:{Id:['E',''],Nome:['E',''],Desc:['E',''],QntServ:['E',''],Valr:['V',''],Uber:['E',''],VUber:['V',''],Link:['E','']},
         UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''   ],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         
-        MPAG:{Id:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''   ],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{ID:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''   ],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
         OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''   ],Lixo:['X','']},
         CALC:{}
@@ -496,7 +497,9 @@
 
             const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
 
-            console.log(`⏱️ Tm_Table(${typ}): ${(performance.now()-IN).toFixed(2)}ms`) // 179.10ms // 164.70ms
+            const Perform = (performance.now()-IN).toFixed(2)
+            // Perform < 0.5 ? null : console.log(`⏱️ Tm_Table(${typ}): ${Perform}ms`)
+            // console.log(`⏱️ Tm_Table(${typ}): ${Perform}ms`)
             return Retorno
             
             // Tipo de BndjTable = Array interno, ou Array de Fora
@@ -529,7 +532,7 @@
                     else{$$(`${Atual.Pag} .BNdj`).forEach(e=>Add_N(e))}
                 }// LimparFiltro(Atual.Pag) // se for outro botão
         })})
-        console.log('rufs')
+
         function Pesquisa(Val,Typ){
             const Aa=$(`#Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`#Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`#Pesq_${Typ} .Pesq-Bj.Atv`)
             const CleaVal = Val.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
@@ -600,7 +603,8 @@
                                 ['Nada']
 
                 const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 0.5 ? null : console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
+                // Perform < 0.5 ? null : console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
+                console.log(`⏱️ Palavras(${typ},${tipo}): ${Perform}ms`)
                 return Valls
         }
 
@@ -623,6 +627,7 @@
             $$('#PAGES > div > table > thead > tr > th .THSugg').forEach(th=>{
                 const INN = performance.now()
                 const tipo = Inn(th) ; const Typ = _table(th).id
+                if(tipo!=='Id'){return}
                 const qry   = `#${Typ} > tbody > tr > td:nth-child(${IdxDe(_th(th))+1}) > div > .P-P`
                 const Qry_N = qry.replace('tr','tr:not(.none)') // const Qry_N = Qry.replace('tr','tr:not([class^="n"]):not([class*=" n"])') // Aplicar apenas para Linhas Visiveis
 
@@ -642,8 +647,9 @@
                                             <p>${e}</p>
                                             <div class="ppt RD HOV" onclick="FILT_Clik(this,'${qry}')">+</div>
                                         </div>`).join('')
-
-                console.log(`⏱️ FILT(${Typ},${tipo}): ${(performance.now()-INN).toFixed(2)}ms`)
+                
+                const Perform = (performance.now()-IN).toFixed(2)
+                Perform < 0.5 ? null : console.log(`⏱️ FILT(${Typ},${tipo}): ${Perform}ms`)
             })
             // se existir Vazio exibe no Filt se n existir não mostra nada, mostra só a Lista normal
             
@@ -1417,7 +1423,6 @@
                 return totalNos;
                 }
 
-                console.log('Buzanfa')
 
                 const ContPoly=p=>p?Math.floor(p.trim().split(/[\s,]+/).length/2):0
 
