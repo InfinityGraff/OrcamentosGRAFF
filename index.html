@@ -560,6 +560,8 @@
             // [Serv] [Grad] A
 
         }
+
+        const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
         
     </script>
 
@@ -591,7 +593,7 @@
                   :val
         }
 
-        function Palavras(Qry,Col,Typ){
+        function Palavras(Typ,Col,n){
             const IN = performance.now()                                
                 const Clientes = ["ID","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
                 const Servicos = ['Id','Desc','Data','Valr','DataEntg','Grad','OS','Uber','Coment']
@@ -611,29 +613,29 @@
                                 Col==='Valr' && Typ=="PDDS" ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
                                 Col==="Serv" ? Uniq(todoTitle[Col]) :
                                 AllList.includes(Col) ? O[Col] :
-                                Uniq($$(Qry).map(e=>e.innerText)) // PEZADO
+                                Uniq(Colls(Typ,Col,n).map(e=>e.innerText)) // PEZADO
 
                 const Perform = (performance.now()-IN).toFixed(2)
                 Perform < 0.5 ? null : console.log(`⏱️🟡 Palavras(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
                 return Valls
         }
 
-        function Tm_Filt(Eu,Typ,Col){ // Depende da tabela Carregada
+        function Tm_Filt(Eu,Typ,col){ // Depende da tabela Carregada
             const IN = performance.now()
             const th = $('.THSugg',Eu)
-            const col = Inn(th)
-            const X = IdxDe(_th(th))+1
-            const qry   = `#H_${Typ} > tbody > tr > td:nth-child(${X}) > div > .P-P`
-            const Qry_N = qry.replace('tr',"tr:not([class*=` n`])") // Aplicar apenas para Linhas Visiveis
+            const X = IdxDe(_th(th))+1           
+            const qry   = `#H_${Typ} > tbody > tr > ${Col(Typ,col)} > div > .P-P`
+            const Qry_N = qry.replace('tr',"tr:not([class*=` n`])") // Aplicar apenas para Linhas Visiveis // Pode Sair!
+            const QRY = [Typ,col]
 
             $('.conffffff',_th(th)).innerHTML = `
-                <span class="HOV ppt Ct" onclick="F_Filt(this,'Todos')"                 ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
-                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Qry_N}','${X}')"       ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
+                <span class="HOV ppt Ct" onclick="F_Filt(this,${Typ},${col},'Todos')"                 ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
+                <span class="HOV ppt Ct" onclick="F_Filt(this,${Typ},${col},'${Qry_N}','${X}')"       ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
                 <span class="HOV ppt Ct" onclick=""                                     ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"              ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
                 <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')" ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
             `
-            const Lista = Palavras(qry,col,Typ)
+            const Lista = Palavras(Typ,col)
             const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
 
             th.innerHTML = NovoArry.map(e=>`<div class="Ct w100">
@@ -646,13 +648,13 @@
             Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt(${Typ},${col}): ${Perform}ms`)
         }
 
-        function F_Filt(btn,Qry,Col){ // Função q Filtra a Bandeijinha de Filtros
-            const QRY = Qry.replace('` n`','" n"')
+        function F_Filt(btn,Typ,cOl,Qry,Col){ // Função q Filtra a Bandeijinha de Filtros
+            //const QRY = Qry.replace('` n`','" n"')
             const ThSug = $('.THSugg',_th(btn))
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
             const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
-            const col = $('p',_th(btn)).innerText
-            const Plvrs   = !arry && Trato2(Palavras(QRY,col),col)
+            // const col = $('p',_th(btn)).innerText
+            const Plvrs   = !arry && Trato2(Palavras(Typ,cOl,true),cOl)
                 $$('p',ThSug).forEach(E=>{
                     if(Qry==='Todos'){Rmv_N(Pai(E))
                     }else if(arry){
@@ -702,10 +704,10 @@
 
         function F_Rndn(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR... preciso criar a remoção
             const QRY = Qry.replace('` n`','" n"')
-            const objClnt=()=>$$(QRY).map(e=>Inn(e))
+            const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
-            const QntCores = Uniq(objClnt()).length
-            const CoresEtr = ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+            const QntCores = Uniq(ObbjClnt()).length
+            const CoresEtr = ObjEtr(ContRepete(ObbjClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
                 if(true){NewObj[k]=RandoCor()}  // cor Randon
                 else{NewObj[k]=v}               // do maior pra o menor
                                                 // corsin Cor Não
@@ -937,23 +939,20 @@
 
     <script> // REALTIME
 
-        function Load_Table(Typ){ // quando tem 2 Tabelas dentro da mesma Pagina
-            if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true ; // console.log(PreTable)
-            Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ]))
+        function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
+            if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
+            Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
         }
 
-        function Load_ThFilt(Eu,Typ,Col){
-            if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true ; // console.log(BS[Typ])
+        function Load_ThFilt(Eu,Typ,Col){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
+            if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; console.log(BS[Typ])
             Tm_Filt(Eu,Typ,Col)
         }
 
-
-
         function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
             const IN = performance.now()
-            const getAllCol=(Typ,col)=>$$(`#H_${Typ} > tbody > tr:not([class*=" n"]) > ${Col(Typ,col)} > div > .P-P`)
-            const objClnt=()=>getAllCol('PDDS','Clnt').map(e=>Inn(e))
-            const objServ=()=>getAllCol('PDDS','Serv').map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+            const objClnt=()=>Colls('PDDS','Clnt',true).map(e=>Inn(e))
+            const objServ=()=>Colls('PDDS','Serv',true).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
 
             function SOMAPgmt(Arr){
                 const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
@@ -965,14 +964,15 @@
 
             $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
             $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-            $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
-            $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(getAllCol(Typ,Col))}`})
-            $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
-            $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(getAllCol(Typ,Col),e=>Num(Inn(e))))}`})
+            $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
+            $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
+            $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}`})
+            $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}`})
             
             const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
         
             // no ID contar a quantidade de Linhas q tem visiveis
+            // Contar o Cliente Pelo ID pois pode ter nomes repetidos, mas o ID vai ser diferente sempre
         }
 
 
