@@ -803,7 +803,7 @@
                 ],
             }
             $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS
                 const TD     =(stg)=>   $(`:scope > ${Col('PDDS',stg)}`     ,tr)
                 const Td_Val =(stg)=>Nm($(`:scope > ${Col('PDDS',stg)} .P-P`,tr))
 
@@ -833,15 +833,16 @@
                     const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
                     const CorTr   = LucroOK ? 'Formt_Azul' : Devendo           ? 'Formt_Redd' : 'Formt_Verd'
 
+                    console.log('chegou 0')
+
                     // será q ta pintando um moi de VEZ?
                     Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
                     Add(TD('Serv'),CorTd)   ; RGBa(TD('Serv'),Pcnt)
                     Add(tr,CorTr)           ; RGBa(tr        ,Pcnt)
                     Add(TDStts,CorTd)       ; RGBa(TDStts    ,Pcnt)
-                    Add($(`#H_SERV .${Array.from(trbdj.classList)[0]}`),Grup[2]) // Pintar a Tabela de Fora!
+                    Add($(`#H_SERV .${trbdj.classList[0]}`),Grup[2]) // Pintar a Tabela de Fora!
 
-                    TDStts.value = Devendo ? 'Devendo' : Entregue ? 'Entregue' : JaFeito ? 'JaFeito' : 'Produção'
-                    
+                    TDStts.value = Devendo ? 'Devendo' : Entregue ? 'Entregue' : JaFeito ? 'JaFeito' : 'Produção'                    
                 })
 
                 if(Td_Val('Cust')!=='' && Td_Val('Finc')!==''){
@@ -853,8 +854,7 @@
                 }else if(Td_Val('Valr')>Td_Val('Pgmt')){
                     Add(TD('Valr'),'Formt_Orag')
                     Add(TD('Pgmt'),'Formt_Orag')
-                }
-                else if(Td_Val('Valr')==Td_Val('Pgmt')){
+                }else if(Td_Val('Valr')==Td_Val('Pgmt')){
                     Add(TD('Valr'),'Formt_VerdOK')
                     Add(TD('Pgmt'),'Formt_VerdOK')
                 }
@@ -873,6 +873,30 @@
     </script>
     
     <script> // AUTO COMPLETE
+
+        function ReStts(){ // fazer todo tratamento de Mudança de Array oq vai atribuir os valores automaticos           
+            J['PDDS'].forEach((e,x)=>{
+                if(x > 1){return}
+                console.log(e)
+                    // isso vai rodar antes do tm_Table)()
+                    // completar forn Complete_Forn()
+                    // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
+                    // Fazer a Soma dos Serv na tabela de Pedido
+                    // se Pagamento é == ao Valor
+                    // atualiza o Finc pra Mostrar o Lucro
+                    // Atualiza o Status completo da Linha
+            })
+
+            // detálhe oq atualizar aqui dentro da Bandeja Serv e Pgmt e outras atualizará o Obj da const, antes de Rodar o o tm_table()
+            // siguinifica q ao abrir qualquer uma tabela, essas mudanças vai acontecer primeiro, antes de exibir
+            // e quando for exibir a tabela H_SERV ou H_PGMT já estará com esses novos Status. tabela estará atualizada
+            // a cor quero poder escolher livremente por fora!
+
+            // essas mudanças também será feitas nas outras tabelas, oq é igual ao complete da Grad
+            // que pode ser feito antes ou depois do tm_table()
+            // quero poder escolher isso, e ter as 2 opções!
+        }
+
 
         function Complete_Forn(){ // depois fazer pegar nas 2 Tabelas
                     const IN = performance.now()
@@ -942,6 +966,8 @@
         function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
+            RealTime()
+
         }
 
         function Load_ThFilt(Eu,Typ,Col){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
@@ -1004,7 +1030,7 @@
 
         function RealTime(){
             Rfresh_Foot()
-            Rfresh_Color()
+            //Rfresh_Color()
             AplicaCSSAutoComplete()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
@@ -1241,6 +1267,7 @@
                 <button onclick="NovoPedido()">Novo Pedido +</button>
                 <h1 style="filter:none">Tabela de Pedidos</h1>
                 <button onclick="Complete_Forn()">Complet Forn</button>
+                <button onclick="ReStts()">Restts</button>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
                 <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
