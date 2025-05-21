@@ -552,7 +552,7 @@
                 P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
                 if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
             })
-            Rfresh_Foot() // RealTime()
+            Rfresh_Foot()
             // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
             // depois encontrar mais de 1 correpondência na mesma linha
             // Lembrando q da erro em Select, provavelmente em inpuit
@@ -581,12 +581,12 @@
                         </div>
                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
 
-        const Trato2=(Arr,col)=>{ // MELHORAR
+        const Trato2=(Arr,col)=>{ // SIMPLIFICAR
             return col==='Valr' ? Arr.map(e=>e.replace('R$','').trim())
                   :col==='Pgmt' ? Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
                   :Arr
         }
-        const Trato=(val,col)=>{  // MELHORAR
+        const Trato=(val,col)=>{  // SIMPLIFICAR
             console.log(val,col)
             return col=='Data' ? BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
                   :col=='Valr' ? Cm(val)
@@ -699,7 +699,7 @@
                 })
             }
             // Maior < Menor >
-            Rfresh_Foot() // RealTime()
+            Rfresh_Foot()
         }
 
         function F_Rndn(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR... preciso criar a remoção
@@ -720,7 +720,7 @@
             $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
             const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
             Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
-            Rfresh_Foot() // RealTime()
+            Rfresh_Foot()
         }
 
         function OpcyFilt(Typ){ // Desativa filtros indisponíveis (Função meio desnessesária (o bom seria simplifica-la))
@@ -874,17 +874,30 @@
     
     <script> // AUTO COMPLETE
 
-        function ReStts(){ // fazer todo tratamento de Mudança de Array oq vai atribuir os valores automaticos           
-            J['PDDS'].forEach((e,x)=>{
+        function ReStts(){ // fazer todo Tratamento de Mudança de Array oq vai atribuir os valores Automáticos
+            // Terei 2 Maneira de Fazer isso, Antes do do tm_Table(), e depois de ele Já ter carregado!
+            J['PDDS'].forEach((e,x)=>{ // Versão Antes
+                const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint'}
                 if(x > 1){return}
-                console.log(e)
-                    // isso vai rodar antes do tm_Table)()
-                    // completar forn Complete_Forn()
-                    // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
+                let novoObj = e
+                const Serv = e.Serv
+                    Serv.forEach((S,x)=>{
+                        let novoServ = S
+                        novoServ.Forn = Dbbrev[S.Grad.split('_')[0]]
+                        novoObj.Serv[x] = novoServ
+                    })
+                console.log('Antigo',e)
+                console.log('Novooo',novoObj)
                     // Fazer a Soma dos Serv na tabela de Pedido
                     // se Pagamento é == ao Valor
                     // atualiza o Finc pra Mostrar o Lucro
                     // Atualiza o Status completo da Linha
+
+
+                    // Completar forn Complete_Forn()
+                    // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
+
+                //    J['PDDS'][x] = novoObj // Efetuando a Mudança! na Linha
             })
 
             // detálhe oq atualizar aqui dentro da Bandeja Serv e Pgmt e outras atualizará o Obj da const, antes de Rodar o o tm_table()
@@ -905,7 +918,6 @@
                             const Forn = $(Rx(['Forn','Slct']),_tr(e))
                             // console.log(VAL(e),'Deveria ter',AllForn[VAL(e)])
                             if(AllForn[VAL(e)].length==1){
-                                
                                 $('select',Forn).value = AllForn[VAL(e)][0]
                             }
                             $$('option',Forn).forEach(o=>{
@@ -930,18 +942,26 @@
         // ao Clicar em Entregue Preenche OK automatico
         // Fazer o Calculo automático
 
-        function RfreshJson(Typ){
+        function RfreshJson(Typ){ // tr:nth-Child(${x+1}) isso aqui só ta funcionando se não tiver reordenado (Preciso Melhorar!)
             const Dataa=e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
             const Fornn=e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
             const Gradd=e=>`${e.Emal}.webp`
+            const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint'}
+            const Forns=e=>Dbbrev[e.Grad.split('_')[0]]
 
             if(Typ=='GRAD'){
-                DadosGRAD.forEach((e,x)=>{
+                J['GRAD'].forEach((e,x)=>{
                     if(['BPrint','Grafit'].some(v=>e.Emal.includes(v))){
                         const A1 = e.Data ; e.Data = Dataa(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Data'])}`), e.Data , A1==""?["Blu",'']:A1==e.Data?['Grn','']:['Red',A1])
                         const A2 = e.Forn ; e.Forn = Fornn(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A2==""?["Blu",'']:A2==e.Forn?['Grn','']:['Red',A2])
                         const A3 = e.Grad ; e.Grad = Gradd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Grad'])}`), e.Grad , A3==""?["Blu",'']:A3==e.Grad?['Grn','']:['Red',A3])
                     }
+                })
+            }
+            if(Typ=='SERV'){
+                J['SERV'].forEach((e,x)=>{
+                    const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
+                    console.log(A1,e.Forn)
                 })
             }
 
@@ -950,14 +970,24 @@
             // $$(Rx2(['SERV','Grad'])).forEach(e=>{$('p',e).innerHTML = J['GRAD'].filter(E=>E.ID==$('p',e).innerHTML).map(E=>`${E.Forn}-${$('p',e).innerHTML}`)})
         }
 
-        function AplicaCSSAutoComplete(){ // isso deve ser Condensado em usar oq terá na BS
-            $$(Rx(['GRAD','Data'])).forEach(e=>Add(e,'AutoComp'))
-            $$(Rx(['GRAD','Forn'])).forEach(e=>Add(e,'AutoComp'))
-            $$(Rx(['GRAD','Grad'])).forEach(e=>Add(e,'AutoComp'))
+        function AplicaCSSAutoComplete(Typ){ // isso deve ser Condensado em usar oq terá na BS
+            if(Typ=='GRAD'){
+                $$(Rx(['GRAD','Data'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['GRAD','Forn'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['GRAD','Grad'])).forEach(e=>Add(e,'AutoComp'))
 
-            $$(Rx(['ABCD','QntServ'])).forEach(e=>Add(e,'AutoComp'))
-            $$(Rx(['ABCD','Valr'   ])).forEach(e=>Add(e,'AutoComp'))
-            $$(Rx(['ABCD','VUber'  ])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['ABCD','QntServ'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['ABCD','Valr'   ])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['ABCD','VUber'  ])).forEach(e=>Add(e,'AutoComp'))
+            }
+            if(Typ=='SERV'||Typ=='PDDS'){
+                $$(Rx(['SERV','Data'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['SERV','Clnt'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['SERV','Forn'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['SERV','OS'  ])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['SERV','Uber'])).forEach(e=>Add(e,'AutoComp'))
+                $$(Rx(['SERV','Valr'])).forEach(e=>Add(e,'AutoComp'))
+            }
         }
     </script>
 
@@ -966,7 +996,7 @@
         function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
-            RealTime()
+            RealTime(Typ)
 
         }
 
@@ -1028,10 +1058,10 @@
             p.forEach(e=>Rmv_N(Pai(e)))
         }
 
-        function RealTime(){
+        function RealTime(Typ){
             Rfresh_Foot()
             //Rfresh_Color()
-            AplicaCSSAutoComplete()
+            AplicaCSSAutoComplete(Typ)
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 
@@ -1286,6 +1316,7 @@
 
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="Ct Bt">
+                <button onclick="RfreshJson('SERV')">Rfresh</button>
                 <input id="SERV_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
                 <button onclick="F_Clen('SERV')">Limpar Filtro</button>
@@ -2183,7 +2214,6 @@
             //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
         }
         console.log(0,Typ,Lin,col,Lin2,`Atualizado: ${Antg} >> ${NewVal}`)
-        // RealTime()
     }
 
     const TesteClnt=(e,td=null)=>{
