@@ -4979,7 +4979,7 @@ const DadosPDDS = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Grad": 23,
+        "Grad": "23",
         "Clnt": 1503,
         "Data": "2025-01-03"
       }
