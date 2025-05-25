@@ -6,10 +6,16 @@
     <title>Orcamento</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
     <link rel="stylesheet" href="./cssGRAFF.css">
-    <script                 src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"></script> <!--https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js-->
-    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
-    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
-    <script                 src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
+    <!--
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
+    -->
+    <script src="../MyBiblioteca/PreScript.js"></script>
+    <script src="../MyBiblioteca/Base.js"></script>
+    <script src="../MyBiblioteca/BaseGRAFF.js"></script>
+    <script src="../MyBiblioteca/Templates.js"></script>
     <script src="./DadosPDDS.js"></script>
     <script src="./DadosGRAD.js"></script>
     <script src="./DadosMPAG.js"></script>
@@ -254,27 +260,26 @@
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
-    const BS = { // ['1 é Forma de carregar', '2 é True e False pra Carregar ThFilt']
-        PDDS:{Id:['F',''], Lin:['E',''],Data:['D',''],Clnt:['B',''],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Finc:['B',''],Stts:['S',''],Lixo:['X','']},
-        SERV:{Id:['F',''],Data:['D',''],Clnt:['B',''],Serv:['S',''],Desc:['E',''],Calc:['B',''],Valr:['V',''],Dsng:['S',''],Arte:['M',''],Forn:['S',''],OK:['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E',''],Uber:['E',''],Coment:['E',''],Lixo:['X','']},
-        PGMT:{Id:['F',''],Data:['D',''],Clnt:['B',''],Valr:['V',''],Form:['S',''],Desc:['E',''],Stts:['E',''],Link:['E',''],Mpag:['G',''],Lixo:['X','']},
-        CUST:{Id:['F',''],Data:['D',''],Item:['E',''],Valr:['V',''],Forn:['S',''],Dstn:['E',''],Pcnt:['A',''],Lixo:['X','']},
+    const CRYCLS = {A:'AutoComp',I:'CorID'}
+    const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
+        PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['B','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E','A'],Uber:['E','A'],Coment:['E',''],Lixo:['X','']},
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
+        CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
-        CLNT:{ID:['F',''],Clnt:['E',''],Cmpt:['E',''],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E',''],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{ID:['F',''],Data:['D',''],Emal:['E',''],Forn:['S',''],Grad:['M',''],OS  :['E',''],Cont:['E',''],ABCD:['B',''],Lixo:['X','']},
-        ABCD:{Id:['E',''],Nome:['E',''],Desc:['E',''],QntS:['E',''],Valr:['V',''],Uber:['E',''],VUbr:['V',''],Link:['E','']},
-        UBER:{ID:['F',''],Data:['D',''],Dest:['E',''],Hora:['E',''],Valr:['E',''],Dirc:['E',''],Prds:['E',''],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{ID:['F',''],Data:['D',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''],Form:['E',''],Mpag:['E',''],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        CLNT:{ID:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        GRAD:{ID:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Lixo:['X','']},
+        ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E','']},
+        UBER:{ID:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        MPAG:{ID:['F','I'],Data:['D','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],Mpag:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
-        OOSS:{ID:['F',''],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
+        OOSS:{ID:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
-    }// em GRAD este segundo ,'A' siguinifica q ele tem AutoComplete
+    }
 
     const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo de Bolo','Vendas','Placa','sinalização','Cartela','Plotagem']
-
     const ListaKits=['Zebu','Zimaz']
-
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 </script>
 
@@ -309,6 +314,7 @@
     const Grifar=(e,Rgx)=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
+    const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
 
     function VAL(e){
         const td = e.tagName === 'TD' ? e : _td(e)
@@ -397,10 +403,12 @@
         .Ant-Grn{background: #008000 !important}
         .Ant-Bol{width: 6px;height: 6px; border-radius: 255px}
         
-        .AutoComp{background: #94949473;}
+        .AutoComp{background: #94949473}
+        .CorID   {background: #94949473}
     </style>
 
     <script>// Template String v7.3
+        // pra cada td deixar escrito em data-set=""  o numero da Coluna, e o nome do thead da coluna (serv, pgmt, coment...) isso vai facilitar muito
         const D_Rastr2=R=>R.split('-')
         const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
@@ -490,7 +498,7 @@
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
                 return dR[4]=='Bndj'? `<td class="${R}" onclick="ShowBndj(this)">${_Tm_Bndj(v,R)}</td>` :
                        dR[4]=='Sugg'? `<td class="${R}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
-                                    : `<td class="${R} Rltv"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
+                                    : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
             const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
@@ -502,7 +510,7 @@
             // Tipo de BndjTable = Array interno, ou Array de Fora
             // Permitir mudar os 2 Tipos de Bandeijas, dentro da cell, e em formato de bandeja
             // Transitar com as Setinhas na tabela do APP igual na Planilha
-        }
+        }        
 
         function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
             $$(`.FikaFika`).forEach(e=>{
@@ -515,7 +523,6 @@
                             <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                             <a class="sppns none" onclick="EditCellFake(this)"></a>`)})                    
         }
-
 
     </script>
 
@@ -873,56 +880,36 @@
     </script>
     
     <script> // AUTO COMPLETE
-
-        // pra cada td deixar escrito em data-set=""  o numero da Coluna, e o nome do thead da coluna (serv, pgmt, coment...) isso vai facilitar muito
-
-        function AplicaCSSAutoComplete(Typ){ // isso deve ser Condensado em usar oq terá na BS pra já ser Aplicado de forma Automatica!
-            if(Typ=='GRAD'){
-                $$(Rx(['GRAD','Data'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['GRAD','Forn'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['GRAD','Grad'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['GRAD','Cont'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['ABCD','QntServ'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['ABCD','Valr'   ])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['ABCD','VUber'  ])).forEach(e=>Add(e,'AutoComp'))}
-            if(Typ=='SERV'||Typ=='PDDS'){
-                $$(Rx(['SERV','Data'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['SERV','Clnt'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['SERV','Forn'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['SERV','OS'  ])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['SERV','Uber'])).forEach(e=>Add(e,'AutoComp'))
-                $$(Rx(['SERV','Valr'])).forEach(e=>Add(e,'AutoComp'))}
-        }
-
         function RfreshJson(Typ){const IN = performance.now()
-            const Dataa=e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
-            const Fornn=e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
-            const Gradd=e=>`${e.Emal}.webp`
+
+            const G = {
+                   ID:e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
+                ,Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
+                ,Forn:e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
+                ,Grad:e=>`${e.Emal}.webp`
+                ,Cont:e=>`${e.ABCD.length}`
+            }
             const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}
             const Forns=e=>Dbbrev[e.Grad.split('_')[0]]||''
-            const ABCDd=e=>`${e.ABCD.length}`
-            const Iiddd=e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
             const ValOr=a=>{const [val1, val2] = (a.Nome.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1) ; return Num(val1)*Num(val2)*20}
+
+            function Exec(Typ,Col,e,x){
+                const A = e[Col] ; e[Col] = G[Col](e)
+                const boa = A==""&&e[Col]!==''?["Blu",'']:A==e[Col]?['Grn','']:['Red',A]
+                DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2([Col])}`),e[Col],boa)
+            }
 
             if(Typ=='GRAD'){// tr:nth-Child(${x+1}) isso aqui só ta funcionando se não tiver reordenado (Preciso Melhorar!)
                 J['GRAD'].forEach((e,x)=>{
                     if(['BPrint','Grafit'].some(v=>e.Emal.includes(v))){
-                        const A0 = e.ID   ; e.ID   = Iiddd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['ID'  ])}`), e.ID   , A0==""&&e.ID  !==''?["Blu",'']:A0==e.ID  ?['Grn','']:['Red',A0])
-                        const A1 = e.Data ; e.Data = Dataa(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Data'])}`), e.Data , A1==""&&e.Data!==''?["Blu",'']:A1==e.Data?['Grn','']:['Red',A1])
-                        const A2 = e.Forn ; e.Forn = Fornn(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A2==""&&e.Forn!==''?["Blu",'']:A2==e.Forn?['Grn','']:['Red',A2])
-                        const A3 = e.Grad ; e.Grad = Gradd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Grad'])}`), e.Grad , A3==""&&e.Grad!==''?["Blu",'']:A3==e.Grad?['Grn','']:['Red',A3])
-                        const A4 = e.Cont ; e.Cont = ABCDd(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Cont'])}`), e.Cont , A4==""&&e.Cont!==''?["Blu",'']:A4==e.Cont?['Grn','']:['Red',A4])
+                        ['ID','Data','Forn','Grad','Cont'].forEach(Col=>{Exec(Typ,Col,e,x)})
                         const Ttd = $(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['ABCD'])}`)
-                        e.ABCD.forEach((a,X)=>{
-                            const A5 = a.Valr ; a.Valr = ValOr(a) ; DarVAL($(`.Bdj_ABCD > tbody > tr:nth-Child(${X+1}) > ${Rx2(['Valr'])}`,Ttd), a.Valr , A5==""&&a.Valr!==''?["Blu",'']:A5==a.Valr?['Grn','']:['Red',A5])    
-                        })
-                    }
-                })
-            }
+                    // e.ABCD.forEach((a,X)=>{const A5 = a.Valr ; a.Valr = ValOr(a) ; DarVAL($(`.Bdj_ABCD > tbody > tr:nth-Child(${X+1}) > ${Rx2(['Valr'])}`,Ttd), a.Valr , A5==""&&a.Valr!==''?["Blu",'']:A5==a.Valr?['Grn','']:['Red',A5])})
+            }})}
             if(Typ=='SERV'){
                 J['SERV'].forEach((e,x)=>{
-                        const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""&&e.Forn!==''?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
-                        // console.log(A1,e.Forn)
+                    const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""&&e.Forn!==''?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
+                    // console.log(A1,e.Forn)
                 })
 
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{
@@ -933,11 +920,10 @@
                     $$('option',Forn).forEach(o=>{Add_N(o);if(AllForn[VAL(e)].includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
                 })        
             }
-            // Escolher Todos ou Apenas 1 unica Linha!
-            // Ao Editar uma celula, Chamar esta função apenas para uma Unica Linha
-            // a cor quero poder escolher livremente por fora!
+            // Escolher para Todos ou Apenas 1 unica Linha! (Aplica na Linha ao Editar uma Célula)
+            // Escolher a cor livremente por Fora!
+            // Se Tiver Entregue Preenche OK Automatico
 
-            // se tiver Entregue Preenche OK Automatico
             // Fazer o Calculo automático da medida
             // Fazer a Soma dos Serv na tabela de Pedido (esse aqui já está dentro do Tm_Tm() mas se pá traz pra cá q é mais certo!) (pois ele tem q ser dinamico e mudar conforme altero valor)
             // se Pagamento é == ao Valor
@@ -989,7 +975,6 @@
             // Contar o Cliente Pelo ID pois pode ter nomes repetidos, mas o ID vai ser diferente sempre
         }
 
-
         function MudarFormatBndj1(Typ){
             const Div = $$(`${Rx(['ABCD','Bndj'])} .BndjTBL` )
             const Btn = $$(`${Rx(['ABCD','Bndj'])} .Nuevoevo`)
@@ -1018,8 +1003,7 @@
 
         function RealTime(Typ){
             Rfresh_Foot()
-            //Rfresh_Color()
-            AplicaCSSAutoComplete(Typ)
+            // Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 
@@ -1198,8 +1182,7 @@
                 .Dark .TBLAA tfoot{background:#111111;color:white}
                 .Lite .TBLAA tfoot{background:#8b0085;color:white}
 
-            .Dark .TBLAA tbody tr td:nth-child(1){color: #ffffff3b;background: #00000034}
-            .Lite .TBLAA tbody tr td:nth-child(1){color: #0000008c}
+
             
             .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
 
