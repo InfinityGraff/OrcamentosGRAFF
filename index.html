@@ -285,10 +285,8 @@
 
 <script> // Bibliotecas Curta
     const Dat=e=>new Date(e)
-    const Rx2=arry=>Rx(['Rastr',...arry])
     const OjKy=Typ=>ObjKey(BS[Typ])
     const ExtObj=Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i]))
-    const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
     const TogTd=e=>$('input',e)!==event.target && TogNoSh([$('input', e),$('p',e)])
     const ALERT=e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
     const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
@@ -296,8 +294,6 @@
     //const J_Filt=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])
     //const J_Find=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])[0]
     const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
-    const Coll=(x)=>`td:nth-child(${x})`
-    const Col=(typ,col)=>`td:nth-child(${FIdx(OjKy(typ),col)+1})`
     function EnterBlur(e){KeyEntr(()=>e.blur())}
     //const SERV_Find_CLNT=e=>J_Find('CLNT',J_Find('PDDS',e.ID).Clnt).Clnt
     //const FindClnt=e=>J_Find('CLNT',e.Clnt).Clnt
@@ -315,6 +311,15 @@
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
     const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
+    const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
+
+    // Gets
+    const Rx2=arry=>Rx(['Rastr',...arry])
+    const Coll=(x)=>`td:nth-child(${x})`
+    const Col=(typ,col)=>`td:nth-child(${FIdx(OjKy(typ),col)+1})`
+    const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
+    const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
+    const D_Rastr2=R=>R.split('-')
 
     function VAL(e){
         const td = e.tagName === 'TD' ? e : _td(e)
@@ -339,8 +344,7 @@
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
     const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
-    const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
-
+    
     function ShowBndj(div){
         if(event.target.tagName=='IMG'){return}
         if(event.target.tagName== 'I' ){return}
@@ -354,6 +358,17 @@
 </script>
 
 <div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
+    <!--Criar um Modo de Preview de Bandeijas e do conteúdo dela (Tanto pra Tabela Principal quanto pra Bandeijas e Sub-Bandeijas)
+        bandeja{
+            Modo1 = Bandeija Flutiante, o modelo q já tem
+            Modo2 = Bandeija dentro da tabela Misturada
+        }
+        conteúdo{
+            Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
+            Modo2 = Formato de Lista , igual oq já tem no Sugg
+            Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
+        }
+    -->
     <style> /*Todo o CSS da Tabela*/
         .BNdj{transform:translate(-50%,0%); left:50%; z-index:500}
         .BNdj > a{position:absolute; bottom:100%; left:50%; transform:translate(-50%,0%) ; height:10px; z-index:1}
@@ -407,11 +422,9 @@
         .CorID   {background: #94949473}
     </style>
 
-    <script>// Template String v7.3
-        // pra cada td deixar escrito em data-set=""  o numero da Coluna, e o nome do thead da coluna (serv, pgmt, coment...) isso vai facilitar muito
-        const D_Rastr2=R=>R.split('-')
-        const Tm_Rastr=(e,x,typ,id)=>`Rastr-${typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(typ)[x]}-${CRYPP[BSBS(typ,x,0)]}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
-        const Tm_Config=typ=>`<input type="checkbox" onchange="TrcTog($('#H_${typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${typ}'),'w100');SaveConfig()">`
+    <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
+        const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+        const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
@@ -512,7 +525,7 @@
             // Transitar com as Setinhas na tabela do APP igual na Planilha
         }        
 
-        function Format_Bndj_Clnt(){ // inputs quando tiver Vazio, e alterar Cliente
+        function Format_Bndj_Clnt(){ // Esta Função aqui precisa ser Corrigida!
             $$(`.FikaFika`).forEach(e=>{
                 const R = D_Rastr(_td(e))
                 if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`} // no caso o Lance de quando estiver vazio, (provavelmente se tiver vazio nem roda a Bandeja, pula direto pra isso!)
@@ -521,7 +534,9 @@
             $$(`#H_PDDS ${Rx2(['CLNT','Id'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
                 Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
                             <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
-                            <a class="sppns none" onclick="EditCellFake(this)"></a>`)})                    
+                            <a class="sppns none" onclick="EditCellFake(this)"></a>`)})      
+            // Comentários Antigos
+            // inputs quando tiver Vazio, e alterar Cliente              
         }
 
     </script>
@@ -538,7 +553,7 @@
                 }// F_Clen(Atual.Pag) // se for outro botão
         })})
 
-        function Pesquisa(Val,Typ){
+        function Pesquisa(Val,Typ){ // dar uma Ajeitada pq eu já dei uma Baratinada, kkkk
             const Aa=$(`#Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`#Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`#Pesq_${Typ} .Pesq-Bj.Atv`)
             const CleaVal = Val.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
 
@@ -567,9 +582,6 @@
             // [Serv] [Grad] A
 
         }
-
-        const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
-        
     </script>
 
     <script> // FILTROS (Quase Perfeito)
@@ -730,7 +742,7 @@
             Rfresh_Foot()
         }
 
-        function OpcyFilt(Typ){ // Desativa filtros indisponíveis (Função meio desnessesária (o bom seria simplifica-la))
+        function OpcyFilt(Typ){ // Desativa filtros indisponíveis (Função meio fraca e inutil (o bom seria simplifica-la))
             const Valid = $$(`#${Typ} .ThFilt b`).some(e=>e.innerText!=0)
             const Icon1 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(1)`)
             const Icon2 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(2)`)
@@ -743,7 +755,7 @@
         }
     </script>
 
-    <script> // SUGGLINK
+    <script> // SUGGLINK (Voltar a Analizar ela!)
         function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
             const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
 
@@ -753,52 +765,37 @@
                         Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
                         true
             }
+            const Tm_Exib = { // Isso Provavelmente vai ficar Fora daqui, pois vai ser usado naquela idéia q sujerir de Exibições de Bandeijas diferente e esta será uam versão abreviada do Modo Lista
+                 Mpag:(e)=> `${e.ID} - ${e.Clnt}, ${e.Valr} ${e.Form}`
+                ,Pgmt:(e)=> `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}`
+                ,Serv:(e)=> `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}`
+            }
 
             if(Typ=='Mpag'){
-                console.log(Eu,Typ)
-                console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                // console.log(Eu,Typ)
+                // console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
                 $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                    Typ=='Mpag' ? `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`:``
+                    Typ=='Mpag' ? Tm_Exib[Typ](e) :``
                 }</a></div>`).join('')
-
-                // deixar disponivel os que eu permito selecionar mais de 1
-
-            }/*else if(Typ=='Grad'){
-                SibQSl(Eu,'span').innerHTML = `<table class="w100">${J[Typ].filter(e=>Fillt(e)).map(e=>{
-                    return e.Nome.split('|').map(s=>`<tr onclick="Tog(this,'Sugg_Atv')"><td>${e.ID}</td><td>${DMY(e.Data)}</td><td>${s}</td></tr>`).join('')
-                }).join('')
-                }</table>`
-            }else{
-                console.log(J[Typ].filter(e=>Fillt(e)))
-                SibQSl(Eu,'span').innerHTML = J[Typ].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                Typ=='SERV' ? `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}` :
-                Typ=='PGMT' ? `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}` :
-                ``
-                }</a></div>`).join('')
+                // deixar disponivel os que eu Permito selecionar mais de 1
             }
-                */
         }
 
         function Linkar(Eu){
-            if(_table(Eu).id == 'H_MPAG'){
-                EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))
-            }
+            if(_table(Eu).id == 'H_MPAG'){EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
             if(_table(Eu).id == 'H_GRAD'){
                 const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
                 const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
                 if(Inn($('p',Eu.closest('td')))=='-'){
                     EditCell(Eu,NovoArry)
-                }else{
-                    EditCell(Eu,[...ArryAntg,...NovoArry])
-                }
-                
-            }
-            else{
-                console.log($('span',Pai(Eu)))}
+                }else{EditCell(Eu,[...ArryAntg,...NovoArry])} 
+            }else{console.log($('span',Pai(Eu)))}
         }
     </script>
 
     <script> // RECOLOR
+        // este Recolor vai ser Simplificado pois os critérios e condições serão feitos no AutoComplete
+        // 
         function Rfresh_Color(){ // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
             const IN = performance.now()
             const Typ  = 'PDDS'
