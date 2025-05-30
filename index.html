@@ -263,18 +263,18 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['B','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entregue:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E','A'],Uber:['E','A'],Coment:['E',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['B','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E','A'],Uber:['E','A'],Coment:['E',''],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
-        CLNT:{ID:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{ID:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Lixo:['X','']},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E','']},
-        UBER:{ID:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{ID:['F','I'],Data:['D','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],Mpag:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        MPAG:{Id:['F','I'],Data:['D','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],Mpag:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
-        OOSS:{ID:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
+        OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
 
@@ -293,14 +293,14 @@
     const ALERT=e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
     const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
     const SunPix=Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
-    const J_Filt=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])
-    const J_Find=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])[0]
+    //const J_Filt=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])
+    //const J_Find=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])[0]
     const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
     const Coll=(x)=>`td:nth-child(${x})`
     const Col=(typ,col)=>`td:nth-child(${FIdx(OjKy(typ),col)+1})`
     function EnterBlur(e){KeyEntr(()=>e.blur())}
-    const SERV_Find_CLNT=e=>J_Find('CLNT',J_Find('PDDS',e.ID).Clnt).Clnt
-    const FindClnt=e=>J_Find('CLNT',e.Clnt).Clnt
+    //const SERV_Find_CLNT=e=>J_Find('CLNT',J_Find('PDDS',e.ID).Clnt).Clnt
+    //const FindClnt=e=>J_Find('CLNT',e.Clnt).Clnt
     const Block=e=>e.style.display = 'block'
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
@@ -455,7 +455,7 @@
 
                 const R = D_Rastr2(r)
                 const Typ   = R[3]
-                const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.ID==arry) : Typ==='Calc' ? arry.map(e=>e.split('|')) : arry
+                const Find  = Typ==='Clnt' ? J[Typ.toUpperCase()].filter(E=>E.Id==arry) : Typ==='Calc' ? arry.map(e=>e.split('|')) : arry
 
                 const F2    = [ObjKey(Find).map(e=>e),ObjVal(Find).map(e=>e)] // coisa penas do 'Calc'
 
@@ -518,7 +518,7 @@
                 if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`} // no caso o Lance de quando estiver vazio, (provavelmente se tiver vazio nem roda a Bandeja, pula direto pra isso!)
                 if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`} // aqui a mesma coisa do de cima
             })
-            $$(`#H_PDDS ${Rx2(['CLNT','ID'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
+            $$(`#H_PDDS ${Rx2(['CLNT','Id'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
                 Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
                             <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
                             <a class="sppns none" onclick="EditCellFake(this)"></a>`)})                    
@@ -602,14 +602,14 @@
 
         function Palavras(Typ,Col,n){
             const IN = performance.now()                                
-                const Clientes = ["ID","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
+                const Clientes = ["Id","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
                 const Servicos = ['Id','Desc','Data','Valr','DataEntg','Grad','OS','Uber','Coment']
                 const Pagament = ['Id','Desc','Data','Link','Mpag','Valr']
                 const Pedidoss = ['Id','Lin','Data']
                 const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
 
                 const Valls =   Col==='OK'        && Typ=="SERV" ? ['True','False'] :
-                                Col==='Entregue'  && Typ=="SERV" ? ['True','False'] : 
+                                Col==='Entg'  && Typ=="SERV" ? ['True','False'] : 
                                 Typ=="CLNT" && Clientes.includes(Col) ? Uniq(J.CLNT.map(E=>E[Col])) :
                                 Typ=="MPAG" && Mercapag.includes(Col) ? Uniq(J.MPAG.map(E=>E[Col])) :
                                 Typ=="SERV" && Servicos.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Serv'].map(E=>Trato(e[Col],Col)))) :
@@ -804,9 +804,9 @@
             const Typ  = 'PDDS'
             const CC = {
                 SERV:[
-                    {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entregue:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
                 ],
             }
             $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
@@ -832,12 +832,12 @@
                     const Length = Concat.split('-').filter(v=>v).length
                     const Pcnt = Length / Concat.split('-').length
                     const JaFeito   = Concat.split('-')[1]==='OK'
-                    const Entregue = Concat.split('-')[2]==='Entregue'
+                    const Entg = Concat.split('-')[2]==='Entg'
                     const Devendo = Td_Val('Valr')>Td_Val('Pgmt')
                     const LucroOK = Td_Val('Cust')!=='' && Td_Val('Finc')!==''
                     const TDStts = $(Rx2(['Stts','Slct'])+' select',tr)
 
-                    const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entregue ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
+                    const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entg ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
                     const CorTr   = LucroOK ? 'Formt_Azul' : Devendo           ? 'Formt_Redd' : 'Formt_Verd'
 
                     console.log('chegou 0')
@@ -849,7 +849,7 @@
                     Add(TDStts,CorTd)       ; RGBa(TDStts    ,Pcnt)
                     Add($(`#H_SERV .${trbdj.classList[0]}`),Grup[2]) // Pintar a Tabela de Fora!
 
-                    TDStts.value = Devendo ? 'Devendo' : Entregue ? 'Entregue' : JaFeito ? 'JaFeito' : 'Produção'                    
+                    TDStts.value = Devendo ? 'Devendo' : Entg ? 'Entg' : JaFeito ? 'JaFeito' : 'Produção'                    
                 })
 
                 if(Td_Val('Cust')!=='' && Td_Val('Finc')!==''){
@@ -882,34 +882,49 @@
     <script> // AUTO COMPLETE
         function RfreshJson(Typ){const IN = performance.now()
 
-            const G = {
-                   ID:e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
-                ,Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
-                ,Forn:e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
-                ,Grad:e=>`${e.Emal}.webp`
-                ,Cont:e=>`${e.ABCD.length}`
-            }
-            const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}
-            const Forns=e=>Dbbrev[e.Grad.split('_')[0]]||''
-            const ValOr=a=>{const [val1, val2] = (a.Nome.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1) ; return Num(val1)*Num(val2)*20}
+            // Virar Biblioteca
+                const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
+                const Includ=(e,arr)=>arr.some(v=>e.includes(v))
 
-            function Exec(Typ,Col,e,x){
-                const A = e[Col] ; e[Col] = G[Col](e)
-                const boa = A==""&&e[Col]!==''?["Blu",'']:A==e[Col]?['Grn','']:['Red',A]
-                DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2([Col])}`),e[Col],boa)
+            const Func = {
+                 G_Id  :e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
+                ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
+                ,G_Forn:e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
+                ,G_Grad:e=>`${e.Emal}.webp`
+                ,G_Cont:e=>`${e.ABCD.length}`
+                ,GA_Valr:a=>{
+                    const [val1,val2] = (a.Nome.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1) ;
+                    if(a.Nome==''){return 0}
+                    if(!val1){return 0}
+                    if(!val2){return 0}
+                    return Num(val1)*Num(val2)*20}
+            }
+            
+            // const Forns=e=>Dbbrev[e.Grad.split('_')[0]]||''
+
+            function Exec(e,c,tr,Tag){ // 'c' de Col
+                const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
+                const Cor = A==""&&e[c]!==''?["Blu",'']:A==e[c]?['Grn','']:['Red',A]
+                DarVAL($(Rx2([c]),tr),e[c],Cor)
             }
 
-            if(Typ=='GRAD'){// tr:nth-Child(${x+1}) isso aqui só ta funcionando se não tiver reordenado (Preciso Melhorar!)
-                J['GRAD'].forEach((e,x)=>{
-                    if(['BPrint','Grafit'].some(v=>e.Emal.includes(v))){
-                        ['ID','Data','Forn','Grad','Cont'].forEach(Col=>{Exec(Typ,Col,e,x)})
-                        const Ttd = $(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['ABCD'])}`)
-                    // e.ABCD.forEach((a,X)=>{const A5 = a.Valr ; a.Valr = ValOr(a) ; DarVAL($(`.Bdj_ABCD > tbody > tr:nth-Child(${X+1}) > ${Rx2(['Valr'])}`,Ttd), a.Valr , A5==""&&a.Valr!==''?["Blu",'']:A5==a.Valr?['Grn','']:['Red',A5])})
-            }})}
+            if(Typ=='GRAD'){
+                $$(`#H_GRAD > tbody > tr`).forEach(tr=>{ // Camada1
+                    const e = J['GRAD'].filter(s=>s.Id==tr_ID(tr))[0] // Encontrar Linha no Json pelo ID
+                    if(Includ(e.Emal,['BPrint','Grafit'])){
+                        ['Id','Data','Forn','Grad','Cont'].forEach(c=>Exec(e,c,tr,'G'))
+                        $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
+                            const a = e['ABCD'].filter(s=>s.Id==tr_ID(tr2))[0] // Encontrar Linha no Json pelo ID
+                            const arrays = ['Valr'] ; arrays.forEach(c=>Exec(a,c,tr2,'GA'))
+                        })
+                    }
+                })
+            }
+            /*
             if(Typ=='SERV'){
                 J['SERV'].forEach((e,x)=>{
                     const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""&&e.Forn!==''?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
-                    // console.log(A1,e.Forn)
+                    console.log(A1,e.Forn)
                 })
 
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{
@@ -920,6 +935,8 @@
                     $$('option',Forn).forEach(o=>{Add_N(o);if(AllForn[VAL(e)].includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
                 })        
             }
+            */
+
             // Escolher para Todos ou Apenas 1 unica Linha! (Aplica na Linha ao Editar uma Célula)
             // Escolher a cor livremente por Fora!
             // Se Tiver Entregue Preenche OK Automatico
@@ -1181,8 +1198,6 @@
                     .Dark .TBLAA td.Foco{background:#ffffff18}
                 .Dark .TBLAA tfoot{background:#111111;color:white}
                 .Lite .TBLAA tfoot{background:#8b0085;color:white}
-
-
             
             .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
 
@@ -1210,16 +1225,18 @@
             .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(16),.Bdj_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
 
-            #H_SERV > tbody > tr > td:nth-child(3) ,#H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(9) ,#H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(13),#H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(16),#H_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(3) ,    #H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(9) ,    #H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(13),    #H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(16),    #H_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+
+            #H_SERV > tbody > tr > td:nth-child(11),    #H_SERV > thead > tr > th:nth-child(11){width: 15px !important;}
+            #H_SERV > tbody > tr > td:nth-child(12),    #H_SERV > thead > tr > th:nth-child(12){width: 15px !important;}
 
             .TBLAA > table > tbody > tr > td:nth-child(1){background: #a7a7a78e !important}
 
 
             /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
-
             
             .bnDJ .Bdj_ABCD td:nth-child(1){width: 25px;}
             .bnDJ .Bdj_ABCD td:nth-child(2){width: 200px;}
@@ -1256,7 +1273,6 @@
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="RfreshJson('SERV')">Rfresh</button>
-                <input id="SERV_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
                 <button onclick="F_Clen('SERV')">Limpar Filtro</button>
             </div>
@@ -1270,7 +1286,6 @@
         <div id="Pag_PGMT" class="TBLAA none Cl">
             <div class="Ct Bt">
                 <button onclick="AddROW('PGMT')">Nova Linha +</button>
-                <input id="PGMT_TrocaCor" type="checkbox" onchange="Condicional()">
                 <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
                 <button onclick="F_Clen('PGMT')">Limpar Filtro</button>
             </div>
@@ -1281,7 +1296,6 @@
             </table>
 
             <div class="Ct Bt">
-            <input id="MPAG_TrocaCor" type="checkbox" onchange="Condicional()">
             <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
             <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
             </div>
@@ -1302,7 +1316,6 @@
                 <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
                 <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
                 <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
-                <input id="UBER_TrocaCor" type="checkbox" onchange="Condicional()">
                 <button onclick="MudarFormatBndj1('GRAD')">Bndj1</button>
                 <button onclick="MudarFormatBndj2('GRAD')">Bndj2</button>
             </div>
