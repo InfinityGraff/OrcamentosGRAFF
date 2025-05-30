@@ -795,7 +795,7 @@
 
     <script> // RECOLOR
         // este Recolor vai ser Simplificado pois os critérios e condições serão feitos no AutoComplete
-        // 
+        // e esta função de recolor só vai pegar o resultado do Status, de cada tabela, e vai mudar as cores baseada na cor escolhida no thead
         function Rfresh_Color(){ // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
             const IN = performance.now()
             const Typ  = 'PDDS'
@@ -866,13 +866,6 @@
 
             console.log(`⏱️ Rfresh_Color(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
-        // Quero fazer tudo no Rodapé e manter alterações Fixas
-
-        function RandonColorFilt(){
-            // pegar todos os FIltros e Pintar Filtro com Pintura, apenas Filtro, apenas Pintura
-            // Rando PIntura geral uma cor pra cada!
-        }
-
         // ao Editar muda a cor apenas da própria Linha
     </script>
     
@@ -896,7 +889,6 @@
                     if(!val2){return 0}
                     return Num(val1)*Num(val2)*20}
             }
-            
             // const Forns=e=>Dbbrev[e.Grad.split('_')[0]]||''
 
             function Exec(e,c,tr,Tag){ // 'c' de Col
@@ -2237,21 +2229,15 @@
 <script> // Storage Salva Configurações
     function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
     // AtivaEventos()
-
     function Disparos(e){/*console.log('Dispoaro >')*/ ; e.dispatchEvent(new Event('change')); /* console.log('< Dispoaro') */}
-
     function SaveConfig(e){StogeSet(e.id,Vll(e)) ; /* console.log('Save',e.id,Vll(e)) */ }
-
     function GetConfig(){$$('.GETConfig').forEach(e=>{
         const Valor = StogeGet(e.id)
         if(Valor){ llv(e,Valor);Disparos(e)  }})}
-    
     window.onload = () => {GetConfig()}
-
     // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     // function savecoifigTABLE(){StogeSet('Orden',x)}
     // Save para MenuNav
-    
 </script>
 
 <script> // comentários
@@ -2267,8 +2253,6 @@
     // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
     // Poder Diferenciar oq foi preenchido Automatico, e o q foi preenchido Manualmente
 
-
-    // Ficar trocando a Barra de Pesquisa lá do Topo, pra cada Página
     // um click abre a imagem, click duplo Adiciona ela em baixo
     // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
     // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
