@@ -6,12 +6,12 @@
     <title>Orcamento</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
     <link rel="stylesheet" href="./cssGRAFF.css">
-    <!--
+    
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
-    -->
+    <!--
     <script src="../MyBiblioteca/PreScript.js"></script>
     <script src="../MyBiblioteca/Base.js"></script>
     <script src="../MyBiblioteca/BaseGRAFF.js"></script>
@@ -303,7 +303,8 @@
     const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
     const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
     const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
-    const tr_ID=tr=>getClass(tr,'tr-').replace('tr-','').trim()
+    const tr_ID=tr=>getClass(tr,'tr-').split('-')[1]
+    const tr_X =tr=>getClass(tr,'tr-').split('-')[2]
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
     const LocPcnt = (parte,total) => (parte / total)
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
@@ -316,10 +317,11 @@
     // Gets
     const Rx2=arry=>Rx(['Rastr',...arry])
     const Coll=(x)=>`td:nth-child(${x})`
-    const Col=(typ,col)=>`td:nth-child(${FIdx(OjKy(typ),col)+1})`
+    const Col=(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
     const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
     const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
     const D_Rastr2=R=>R.split('-')
+    const TRs=(Typ)=>$$(`#H_${Typ} > tbody > tr`)
 
     function VAL(e){
         const td = e.tagName === 'TD' ? e : _td(e)
@@ -451,7 +453,7 @@
 
             function Tm_Bndj(arr,Typ){
                 return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                            <tbody>${arr.slice(1).map(LL=>`<tr class="tr-${LL[0]}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
+                                            <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
                                     </table> ${Typ==='CLNT'?'':`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`}`
                                     // conferir se typ é CLNT é desnessesário pois, logo logo Clnt vai ser subistidio por 'LINK'
             }
@@ -514,7 +516,7 @@
                                     : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
-            const Retorno = arry.map(e=>`<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
+            const Retorno = arry.map((e,X)=>`<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
 
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
@@ -565,7 +567,7 @@
             console.log('COL2',COL2,Col(COL1.toUpperCase(),COL2),'>',CleaVal)
 
             const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
-            $$(`#H_${Typ} > tbody > tr`).forEach(tr=>{ // Quando for Orc, mostra outra coisa!
+            TRs(Typ).forEach(tr=>{ // Quando for Orc, mostra outra coisa!
                 
                 const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
                 const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
@@ -735,7 +737,7 @@
         }
         
         function F_Clen(Typ){ // Limpa todos os Filtros (Deve Limpar Cores do Random também)
-            $$(`#H_${Typ} > tbody > tr`).forEach(e=>For(20).forEach(E=>Rmv(e,`n${E}`))) // Exibe todas as Linhas
+            TRs(Typ).forEach(e=>For(20).forEach(E=>Rmv(e,`n${E}`))) // Exibe todas as Linhas
             $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
             const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
             Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
@@ -806,8 +808,8 @@
                     {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
                 ],
             }
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela //TRs(Typ)
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS  //TRs(Typ)
                 const TD     =(stg)=>   $(`:scope > ${Col('PDDS',stg)}`     ,tr)
                 const Td_Val =(stg)=>Nm($(`:scope > ${Col('PDDS',stg)} .P-P`,tr))
 
@@ -867,6 +869,11 @@
             console.log(`⏱️ Rfresh_Color(): ${(performance.now()-IN).toFixed(2)}ms`)
         }
         // ao Editar muda a cor apenas da própria Linha
+        function Re_color(Typ){
+            TRs(Typ).forEach(e=>{
+                Add(e,'Formt_Verd')
+            })
+        }
     </script>
     
     <script> // AUTO COMPLETE
@@ -898,18 +905,15 @@
             }
 
             if(Typ=='GRAD'){
-                $$(`#H_GRAD > tbody > tr`).forEach(tr=>{ // Camada1
-                    const e = J['GRAD'].filter(s=>s.Id==tr_ID(tr))[0] // Encontrar Linha no Json pelo ID
+                TRs(Typ).forEach(tr=>{ // Camada1
+                    const e = J['GRAD'][tr_X(tr)] // Encontrar Linha no Json pelo Index
                     if(Includ(e.Emal,['BPrint','Grafit'])){
                         ['Id','Data','Forn','Grad','Cont'].forEach(c=>Exec(e,c,tr,'G'))
                         $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
-                            const a = e['ABCD'].filter(s=>s.Id==tr_ID(tr2))[0] // Encontrar Linha no Json pelo ID
-                            const arrays = ['Valr'] ; arrays.forEach(c=>Exec(a,c,tr2,'GA'))
-                        })
-                    }
-                })
-            }
-            /*
+                            const a = e['ABCD'][tr_X(tr2)]; // Encontrar Linha no Json pelo Index
+                            ['Valr'].forEach(c=>Exec(a,c,tr2,'GA'))
+            })}});Re_color('GRAD')}
+            
             if(Typ=='SERV'){
                 J['SERV'].forEach((e,x)=>{
                     const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""&&e.Forn!==''?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
@@ -924,7 +928,7 @@
                     $$('option',Forn).forEach(o=>{Add_N(o);if(AllForn[VAL(e)].includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
                 })        
             }
-            */
+            
 
             // Escolher para Todos ou Apenas 1 unica Linha! (Aplica na Linha ao Editar uma Célula)
             // Escolher a cor livremente por Fora!
@@ -943,7 +947,6 @@
     </script>
 
     <script> // REALTIME
-
         function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
@@ -1016,7 +1019,7 @@
     <script> // Previews
 
         function IMGENS(){ // função q filtra linhas se existir imagem
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{
+            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{ //TRs(Typ)
                 const TD=(stg)=>$(`:scope > ${Col('PDDS',stg)}`,tr)
                 const ArryImg = $$(':scope > div > img',TD('Serv'))
                 const tem1 = ArryImg.some(e=>isImageLoaded(e))
