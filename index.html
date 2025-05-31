@@ -265,7 +265,7 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['E','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['E','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -340,7 +340,7 @@
         return val
         // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
     }
-    function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ; Inn(td,Tm_Tm[dR[4]](v,dR,A))}
+    function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ; Inn(td,Tm_Tm[dR[4]](v,dR,A))} 
 </script>
 
 <script> // Bibliotecas Longa
@@ -887,6 +887,12 @@
                 const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
                 const Includ=(e,arr)=>arr.some(v=>e.includes(v))
 
+            const arrayss = {
+                GRAD:['Id','Data','Forn','Grad','Cont'],
+                SERV:['Forn','OS'],
+                ABCD:['Valr']
+            }
+
             const Func = {
                  G_Id  :e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
                 ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
@@ -901,7 +907,12 @@
                     return Num(val1)*Num(val2)*20}
 
                 ,S_Forn:e=>Dbbrev[e.Grad.split('_')[0]]||''
-                ,S_OS:e=>`Azimot` // aqui eu estou consultando de outra Tabela
+                ,S_OS:e=>{
+                    if(e.Grad==''){return ''}
+                    const j = J['GRAD'].find(E=>E.Id==e.Grad)
+                    if(!j){return ''}
+                    return j['OS']||''
+                } // aqui eu estou consultando de outra Tabela
             }
 
             function Exec(e,c,tr,Tag){ // 'c' de Col
@@ -918,18 +929,18 @@
 
             if(Typ=='GRAD'){
                 TRs(Typ).forEach(tr=>{ // Camada1
-                    const e = J['GRAD'][tr_X(tr)] // Encontrar pelo Idx
+                    const e = J[Typ][tr_X(tr)] // Encontrar pelo Idx
                     if(Includ(e.Emal,['BPrint','Grafit'])){
-                        ['Id','Data','Forn','Grad','Cont'].forEach(c=>Exec(e,c,tr,'G'))
+                        arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
                         $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
                             const a = e['ABCD'][tr_X(tr2)]; // Encontrar pelo Idx
-                            ['Valr'].forEach(c=>Exec(a,c,tr2,'GA'))
-            })}});Re_color('GRAD')}
+                            arrayss['ABCD'].forEach(c=>Exec(a,c,tr2,'GA'))
+            })}});Re_color(Typ)}
             
             if(Typ=='SERV'){
                 TRs(Typ).forEach(tr=>{
-                    const e = J['SERV'][tr_X(tr)];
-                    ['Forn','OS'].forEach(c=>Exec(e,c,tr,'S'))
+                    const e = J[Typ][tr_X(tr)]
+                    arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
                 })
                 
 

@@ -1,10 +1,10 @@
 const DadosGRAD = [
     {
-        "Id": 1,
+        "Id": "G_423",
         "Emal": "423° Grafit - 0312",
         "Data": "",
         "Forn": "Grafit",
-        "OS": "OS-009190",
+        "OS": "OS_009190",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -22,11 +22,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 2,
+        "Id": "G_424",
         "Emal": "424° Grafit - 0412",
         "Data": "",
         "Forn": "BPrint",
-        "OS": "OS-009190",
+        "OS": "OS_009190",
         "Grad": "", "Cont": "",
         "ABCD": [
             {
@@ -63,7 +63,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 3,
+        "Id": "G_425",
         "Emal": "425° Grafit - 0612",
         "Data": "",
         "Forn": "",
@@ -84,11 +84,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 4,
+        "Id": "G_426",
         "Emal": "426° Grafit - 0912",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009213",
+        "OS": "OS_009213",
         "Grad": "", "Cont": "",
         "ABCD": [
             {
@@ -106,11 +106,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 5,
+        "Id": "G_427",
         "Emal": "427° Grafit - 0912",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009213",
+        "OS": "OS_009213",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -138,11 +138,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 6,
+        "Id": "G_428",
         "Emal": "428° Grafit - 1012",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009213",
+        "OS": "OS_009213",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -170,7 +170,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 7,
+        "Id": "G_429",
         "Emal": "429° Grafit - 1112",
         "Data": "",
         "Forn": "",
@@ -192,7 +192,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 8,
+        "Id": "B_087",
         "Emal": "087° BPrint - 0312",
         "Data": "",
         "Forn": "",
@@ -214,7 +214,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 9,
+        "Id": "B_088",
         "Emal": "088° BPrint - 0312",
         "Data": "",
         "Forn": "",
@@ -236,7 +236,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 10,
+        "Id": "B_089",
         "Emal": "089° BPrint - 0312",
         "Data": "",
         "Forn": "",
@@ -258,7 +258,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 11,
+        "Id": "B_090",
         "Emal": "090° BPrint - 0612",
         "Data": "",
         "Forn": "",
@@ -280,7 +280,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 12,
+        "Id": "B_091",
         "Emal": "091° BPrint - 1012",
         "Data": "",
         "Forn": "",
@@ -302,7 +302,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 13,
+        "Id": "B_092",
         "Emal": "092° BPrint - 1012",
         "Data": "",
         "Forn": "",
@@ -324,7 +324,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 14,
+        "Id": "B_093",
         "Emal": "093° BPrint - 1112",
         "Data": "",
         "Forn": "",
@@ -346,7 +346,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 15,
+        "Id": "B_094",
         "Emal": "094° BPrint - 1312",
         "Data": "",
         "Forn": "",
@@ -378,7 +378,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 16,
+        "Id": "B_095",
         "Emal": "095° BPrint - 1612",
         "Data": "",
         "Forn": "",
@@ -400,7 +400,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 17,
+        "Id": "B_096",
         "Emal": "096° BPrint - 1612",
         "Data": "",
         "Forn": "",
@@ -422,7 +422,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 18,
+        "Id": "B_097",
         "Emal": "097° BPrint - 1812",
         "Data": "",
         "Forn": "",
@@ -452,7 +452,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 19,
+        "Id": "B_098",
         "Emal": "098° BPrint - 2012",
         "Data": "",
         "Forn": "",
@@ -474,7 +474,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 20,
+        "Id": "B_099",
         "Emal": "099° BPrint - 2212",
         "Data": "",
         "Forn": "",
@@ -496,7 +496,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 21,
+        "Id": "G_430",
         "Emal": "430° Grafit - 1712",
         "Data": "",
         "Forn": "",
@@ -518,7 +518,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 22,
+        "Id": "G_431",
         "Emal": "431° Grafit - 1812",
         "Data": "",
         "Forn": "",
@@ -572,7 +572,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 24,
+        "Id": "G_432",
         "Emal": "432° Grafit - 3012",
         "Data": "",
         "Forn": "",
@@ -591,11 +591,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 25,
+        "Id": "G_433",
         "Emal": "433° Grafit - 0601",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009292",
+        "OS": "OS_009292",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -612,11 +612,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 26,
+        "Id": "G_434",
         "Emal": "434° Grafit - 0601",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009292",
+        "OS": "OS_009292",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -633,11 +633,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 27,
+        "Id": "G_435",
         "Emal": "435° Grafit - 0701",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009292",
+        "OS": "OS_009292",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -675,11 +675,11 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 28,
+        "Id": "G_436",
         "Emal": "436° Grafit - 0701",
         "Data": "",
         "Forn": "",
-        "OS": "OS-009292",
+        "OS": "OS_009292",
         "Grad": "",
         "Cont": "",
         "ABCD": [
@@ -708,7 +708,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 29,
+        "Id": "G_437",
         "Emal": "437° Grafit - 0801",
         "Data": "",
         "Forn": "",
@@ -751,7 +751,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 30,
+        "Id": "B_100",
         "Emal": "100° BPrint - 0901",
         "Data": "",
         "Forn": "",
@@ -772,7 +772,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 31,
+        "Id": "B_101",
         "Emal": "101° BPrint - 0901",
         "Data": "",
         "Forn": "",
@@ -793,7 +793,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 32,
+        "Id": "G_438",
         "Emal": "438° Grafit - 0901",
         "Data": "",
         "Forn": "",
@@ -814,7 +814,7 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 33,
+        "Id": "G_439",
         "Emal": "439° Grafit - 1001",
         "Data": "",
         "Forn": "",
