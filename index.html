@@ -265,14 +265,14 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['B','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],DataEntg:['E',''],Grad:['E',''],OS:['E','A'],Uber:['E','A'],Coment:['E',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Desc:['E',''],Calc:['E','' ],Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E',''],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Lixo:['X','']},
-        ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E','']},
+        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Stts:['E',''],Lixo:['X','']},
+        ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F','I'],Data:['D','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],Mpag:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
@@ -543,6 +543,8 @@
             // inputs quando tiver Vazio, e alterar Cliente              
         }
 
+        // ter uma opção no thead na qual eu possa Ocultar a coluna e deiaxar apenas um Icone, e quando clicar q exibe uma Bandeja, ou voltar pra o normal
+        // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
     </script>
 
     <script> // Manipulações Simples
@@ -619,7 +621,7 @@
         function Palavras(Typ,Col,n){
             const IN = performance.now()                                
                 const Clientes = ["Id","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
-                const Servicos = ['Id','Desc','Data','Valr','DataEntg','Grad','OS','Uber','Coment']
+                const Servicos = ['Id','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
                 const Pagament = ['Id','Desc','Data','Link','Mpag','Valr']
                 const Pedidoss = ['Id','Lin','Data']
                 const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
@@ -805,13 +807,13 @@
             const Typ  = 'PDDS'
             const CC = {
                 SERV:[
-                    {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entg:['==true'],DataEntg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
+                    {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
                 ],
             }
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela //TRs(Typ)
-            $$(`#H_PDDS > tbody > tr`).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS  //TRs(Typ)
+            TRs(Typ).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
+            TRs(Typ).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS
                 const TD     =(stg)=>   $(`:scope > ${Col('PDDS',stg)}`     ,tr)
                 const Td_Val =(stg)=>Nm($(`:scope > ${Col('PDDS',stg)} .P-P`,tr))
 
@@ -897,8 +899,10 @@
                     if(!val1){return 0}
                     if(!val2){return 0}
                     return Num(val1)*Num(val2)*20}
+
+                ,S_Forn:e=>Dbbrev[e.Grad.split('_')[0]]||''
+                ,S_OS:e=>`Azimot` // aqui eu estou consultando de outra Tabela
             }
-            // const Forns=e=>Dbbrev[e.Grad.split('_')[0]]||''
 
             function Exec(e,c,tr,Tag){ // 'c' de Col
                 const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
@@ -906,23 +910,30 @@
                 DarVAL($(Rx2([c]),tr),e[c],Cor)
             }
 
+            // a função que se organzia pra chamar o Exec também poderia ser uma função separada
+            // pra facilitar pra poder funcionar todas as tabelas, e também pra mutiplas camadas
+
+            // o Pre-AutoComplete precisa existir de todo Jeito por que, preciso disso pra poder autocompletar tabelas que consulta outras
+            // mas antes disso preciso garantir que nesse Preautocomplete, tenha como eu armazenar o valor antigo
+
             if(Typ=='GRAD'){
                 TRs(Typ).forEach(tr=>{ // Camada1
-                    const e = J['GRAD'][tr_X(tr)] // Encontrar Linha no Json pelo Index
+                    const e = J['GRAD'][tr_X(tr)] // Encontrar pelo Idx
                     if(Includ(e.Emal,['BPrint','Grafit'])){
                         ['Id','Data','Forn','Grad','Cont'].forEach(c=>Exec(e,c,tr,'G'))
                         $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
-                            const a = e['ABCD'][tr_X(tr2)]; // Encontrar Linha no Json pelo Index
+                            const a = e['ABCD'][tr_X(tr2)]; // Encontrar pelo Idx
                             ['Valr'].forEach(c=>Exec(a,c,tr2,'GA'))
             })}});Re_color('GRAD')}
             
             if(Typ=='SERV'){
-                J['SERV'].forEach((e,x)=>{
-                    const A1 = e.Forn ; e.Forn = Forns(e) ; DarVAL($(`#H_${Typ} > tbody > tr:nth-Child(${x+1}) > ${Rx2(['Forn'])}`), e.Forn , A1==""&&e.Forn!==''?["Blu",'']:A1==e.Forn?['Grn','']:['Red',A1])
-                    console.log(A1,e.Forn)
+                TRs(Typ).forEach(tr=>{
+                    const e = J['SERV'][tr_X(tr)];
+                    ['Forn','OS'].forEach(c=>Exec(e,c,tr,'S'))
                 })
+                
 
-                $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{
+                $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
                     if(Pai(_tr(e)).tagName=='TFOOT'){return}
                     if(VAL(e)==''){return}
                     const Forn = $(Rx(['Forn','Slct']),_tr(e))
@@ -1217,12 +1228,12 @@
             .Bdj_SERV > tbody > tr > td:nth-child(3) ,.Bdj_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(9) ,.Bdj_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
             .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
-            .Bdj_SERV > tbody > tr > td:nth-child(16),.Bdj_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(17),.Bdj_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
 
             #H_SERV > tbody > tr > td:nth-child(3) ,    #H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
             #H_SERV > tbody > tr > td:nth-child(9) ,    #H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
             #H_SERV > tbody > tr > td:nth-child(13),    #H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(16),    #H_SERV > thead > tr > th:nth-child(16){border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(17),    #H_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
 
             #H_SERV > tbody > tr > td:nth-child(11),    #H_SERV > thead > tr > th:nth-child(11){width: 15px !important;}
             #H_SERV > tbody > tr > td:nth-child(12),    #H_SERV > thead > tr > th:nth-child(12){width: 15px !important;}

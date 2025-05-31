@@ -16,10 +16,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["14_1"],
+                "AStts":"","Link": ["14_1"],
             }
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 2,
@@ -37,7 +37,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["25_1"],
+                "AStts":"","Link": ["25_1"],
             },
             {
                 "Id": 'B',
@@ -47,7 +47,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["25_2"],
+                "AStts":"","Link": ["25_2"],
             },
             {
                 "Id": 'C',
@@ -57,10 +57,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["25_3", "19_1"],
+                "AStts":"","Link": ["25_3", "19_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 3,
@@ -78,10 +78,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 4,
@@ -99,11 +99,11 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["28_1"],
+                "AStts":"","Link": ["28_1"],
             },
 
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 5,
@@ -122,7 +122,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["40_1"],
+                "AStts":"","Link": ["40_1"],
             },
             {
                 "Id": 'B',
@@ -132,10 +132,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["45_2"],
+                "AStts":"","Link": ["45_2"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 6,
@@ -154,7 +154,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["45_3"],
+                "AStts":"","Link": ["45_3"],
             },
             {
                 "Id": 'B',
@@ -164,10 +164,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["78_2"],
+                "AStts":"","Link": ["78_2"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 7,
@@ -186,10 +186,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["46_1"],
+                "AStts":"","Link": ["46_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 8,
@@ -208,10 +208,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["3_1", "5_1", "1_1"],
+                "AStts":"","Link": ["3_1", "5_1", "1_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 9,
@@ -230,10 +230,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["15_1"],
+                "AStts":"","Link": ["15_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 10,
@@ -252,10 +252,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["56_1"],
+                "AStts":"","Link": ["56_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 11,
@@ -274,10 +274,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["36_1", "52_1"],
+                "AStts":"","Link": ["36_1", "52_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 12,
@@ -296,10 +296,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["42_1"],
+                "AStts":"","Link": ["42_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 13,
@@ -318,10 +318,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["30_1"],
+                "AStts":"","Link": ["30_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 14,
@@ -340,10 +340,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["34_2", "53_1", "55_1", "49_1"],
+                "AStts":"","Link": ["34_2", "53_1", "55_1", "49_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 15,
@@ -362,7 +362,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["50_1"],
+                "AStts":"","Link": ["50_1"],
             },
             {
                 "Id": 'B',
@@ -372,10 +372,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["51_1"],
+                "AStts":"","Link": ["51_1"],
             }
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 16,
@@ -394,10 +394,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["60_1", "58_1"],
+                "AStts":"","Link": ["60_1", "58_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 17,
@@ -416,10 +416,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["63_1"],
+                "AStts":"","Link": ["63_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 18,
@@ -436,7 +436,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["75_1"],
+                "AStts":"","Link": ["75_1"],
             },
             {
                 "Id": 'B',
@@ -446,10 +446,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["82_1"],
+                "AStts":"","Link": ["82_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 19,
@@ -468,10 +468,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["72_2"],
+                "AStts":"","Link": ["72_2"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 20,
@@ -490,10 +490,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 21,
@@ -512,10 +512,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["67_1"],
+                "AStts":"","Link": ["67_1"],
             },
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 22,
@@ -535,7 +535,7 @@ const DadosGRAD = [
                     "Valr": "",
                     "Uber": "",
                     "VUbr": "",
-                    "Link": ["72_1"],
+                    "AStts":"","Link": ["72_1"],
                 },
                 {
                     "Id": 'B',
@@ -545,10 +545,10 @@ const DadosGRAD = [
                     "Valr": "",
                     "Uber": "",
                     "VUbr": "",
-                    "Link": ["74_1"],
+                    "AStts":"","Link": ["74_1"],
                 }
             ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 23,
@@ -567,9 +567,9 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": ["83_1"],
+                "AStts":"","Link": ["83_1"],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 24,
@@ -586,9 +586,9 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 25,
@@ -607,9 +607,9 @@ const DadosGRAD = [
                 "Valr": "40,00",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 26,
@@ -628,9 +628,9 @@ const DadosGRAD = [
                 "Valr": "36,00",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 27,
@@ -649,7 +649,7 @@ const DadosGRAD = [
                 "Valr": "15,00 _ 73,50 _ 30,33",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
             {
                 "Id": 'B',
@@ -659,7 +659,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
             {
                 "Id": 'C',
@@ -669,10 +669,10 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 28,
@@ -691,7 +691,7 @@ const DadosGRAD = [
                 "Valr": "42,00 _ 7,60",
                 "Uber": "23",
                 "VUbr": "R$ 2,75",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
             {
                 "Id": 'B',
@@ -701,11 +701,11 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
 
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 29,
@@ -724,7 +724,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
             {
                 "Id": 'B',
@@ -734,7 +734,7 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
             {
                 "Id": 'C',
@@ -744,11 +744,11 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             },
 
         ],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 30,
@@ -767,9 +767,9 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 31,
@@ -788,9 +788,9 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 32,
@@ -809,9 +809,9 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     },
     {
         "Id": 33,
@@ -830,8 +830,8 @@ const DadosGRAD = [
                 "Valr": "",
                 "Uber": "",
                 "VUbr": "",
-                "Link": [""],
+                "AStts":"","Link": [""],
             }],
-        "Lixo": ""
+        "Stts":"","Lixo": ""
     }
 ]
