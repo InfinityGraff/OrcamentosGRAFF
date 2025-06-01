@@ -93,7 +93,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Faixa - 1,46 x 0,48",
+                "Nome": "1 - Faixa 1,46 x 0,48",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -202,7 +202,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Ads(Blh) - 1,00 x 0,70",
+                "Nome": "1 - Ads(Blh) 1,00 x 0,70",
                 "Desc": "",
                 "QntS": "3",
                 "Valr": "",
@@ -246,7 +246,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Colchê Adesivo (A3 Lazer)",
+                "Nome": "1 - Colch(Ads) A3",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -312,7 +312,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "4 - Triplex Branco 250g Brilho",
+                "Nome": "4 - Tplx(Bb 250g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -410,7 +410,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Triplex Branco 250g",
+                "Nome": "1 - Tplx(Bb 250g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -430,7 +430,7 @@ const DadosGRAD = [
         "Grad": "", "Cont": "", "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Triplex Branco 250g",
+                "Nome": "1 - Tplx(Bb 250g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -440,7 +440,7 @@ const DadosGRAD = [
             },
             {
                 "Id": 'B',
-                "Nome": "6 - Colchê 90g Plastificado",
+                "Nome": "6 - Colch(Plstf 90g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -484,7 +484,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "2 - Triplex Branco 250g",
+                "Nome": "2 - Tplx(Bb 250g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -551,8 +551,8 @@ const DadosGRAD = [
         "Stts":"","Lixo": ""
     },
     {
-        "Id": 23,
-        "Emal": "SANTO",
+        "Id": "I_001",
+        "Emal": "001° Inová - 0101",
         "Data": "",
         "Forn": "",
         "OS": "",
@@ -562,7 +562,7 @@ const DadosGRAD = [
             {
                 "Id": 'A',
                 "Nome": "",
-                "Desc": "",
+                "Desc": "SANTO",
                 "QntS": "",
                 "Valr": "",
                 "Uber": "",
