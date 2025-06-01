@@ -902,7 +902,7 @@
                 ,G_Cont:e=>`${e.ABCD.length}`
                 ,GA_Valr:a=>{const [v1,v2]=SplitNome(a.Nome) ; return v1&&v2 ? Num(v1)*Num(v2)*20 : 0 } // Melhorar pra (Banner, Adesivo, Transp)
                 ,S_Forn:e=>Dbbrev[e.Grad.split('_')[0]]||''
-                ,S_Abcd:e=>``                                    // Consulta
+                ,S_Abcd:e=>e.Grad?'A':''                                    // Consulta
                     // Cada Linha em ABCD dentro de Grad localizará seu Iten
                     // Cada Linha de SERV vai fazer a mesma coisa também
                     
@@ -918,6 +918,7 @@
             function Exec(e,c,tr,Tag){ // 'c' de Col
                 const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
                 const Cor = A==""&&e[c]!==''?["Blu",'']:A==e[c]?['Grn','']:['Red',A]
+                if(A=="" && e[c]==""){return}
                 DarVAL($(Rx2([c]),tr),e[c],Cor)
             }
 
