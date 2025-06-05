@@ -377,7 +377,6 @@ const DadosPDDS = [
         "Arte": "",
         "OS": "OS_009190",
         "Uber": "",
-        "Abcd":"","Grad": "G_423",
         "Grad": "G_423",
         "Clnt": "1452",
         "Data": "2024-12-03"
@@ -448,7 +447,6 @@ const DadosPDDS = [
         "Arte": "",
         "OS": "",
         "Uber": "",
-        "Abcd":"","Grad": "B_429",
         "Grad": "B_429",
         "Clnt": 1454,
         "Data": "2024-12-03"
