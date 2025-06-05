@@ -62,44 +62,43 @@
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let scrollPosition = [0,0]
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
-
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
                         Variantes:{
-                            'Brilho'          :{item:'1',Tipo:'',Valr:60 ,Cust:20},
-                            'Fosco'           :{item:'2',Tipo:'',Valr:60 ,Cust:20},
-                            'Blackout'        :{item:'3',Tipo:'',Valr:70 ,Cust:25},
-                            'Transparente'    :{item:'4',Tipo:'',Valr:70 ,Cust:25},
-                            'Laminado'        :{item:'6',Tipo:'',Valr:70 ,Cust:20},
-                            'Espelhado'       :{item:'7',Tipo:'',Valr:80 ,Cust:20},
-                            'Perfurado'       :{item:'5',Tipo:'',Valr:100,Cust:35},
+                            'Brilho'          :{item:'1',Grad:'Ads(Blh)',Tipo:'',Valr:60 ,Cust:20},
+                            'Fosco'           :{item:'2',Grad:'Ads(Fos)',Tipo:'',Valr:60 ,Cust:20},
+                            'Blackout'        :{item:'3',Grad:'Ads(Blk)',Tipo:'',Valr:70 ,Cust:25},
+                            'Transparente'    :{item:'4',Grad:'Ads(Trp)',Tipo:'',Valr:70 ,Cust:25},
+                            'Laminado'        :{item:'6',Grad:'Ads(Blh)',Tipo:'',Valr:70 ,Cust:20},
+                            'Espelhado'       :{item:'7',Grad:'Ads(Trp)',Tipo:'',Valr:80 ,Cust:20},
+                            'Perfurado'       :{item:'5',Grad:'Ads(Prf)',Tipo:'',Valr:100,Cust:35},
             }},
         'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Recorte'                            ] , Extra:[            ] , HotKey:["rótulo", "identificação", "label", "tag"] ,
                         Variantes:{
-                            'Refilada'        :{item:'6',Tipo:'',Valr:70 ,Cust:20},
-                            'Redonda'         :{item:'7',Tipo:'',Valr:75 ,Cust:30},
-                            'Personalizada'   :{item:'7',Tipo:'',Valr:80 ,Cust:30},
+                            'Refilada'        :{item:'6',Grad:'Ads(Blh)',Tipo:'',Valr:70 ,Cust:20},
+                            'Redonda'         :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:75 ,Cust:30},
+                            'Personalizada'   :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:80 ,Cust:30},
             }},
         'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte'                                      ] , Extra:[            ] , HotKey:["painel"                                 ] ,
                         Variantes:{
-                            'Banner'          :{item:'8' ,Tipo:''                              ,Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
-                            'Faixa'           :{item:'9' ,Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['2,00 x 0,50']}, 
-                            'com ilhós'       :{item:'11',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:['0,00 x 3,20'] , Mdds:['1,00 x 1,00']},
-                            'Sem Acabamento'  :{item:'13',Tipo:''                              ,Valr:60,Cust:20 , Limit:['0,00 x 3,20'] , Mdds:[]},
+                            'Banner'          :{item:'8' ,Grad:'Lon(Bnn)',Tipo:''                              ,Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
+                            'Faixa'           :{item:'9' ,Grad:'Lon(Fax)',Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['2,00 x 0,50']}, 
+                            'com ilhós'       :{item:'11',Grad:'Lon(Ilh)',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:['0,00 x 3,20'] , Mdds:['1,00 x 1,00']},
+                            'Sem Acabamento'  :{item:'13',Grad:'Lon(Sem)',Tipo:''                              ,Valr:60,Cust:20 , Limit:['0,00 x 3,20'] , Mdds:[]},
             }},
         'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
                         Variantes:{  
-                            'PS 1mm'          :{item:'17',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                            'PS 2mm'          :{item:'18',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},  
-                            'PVC 2mm'         :{item:'14',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
-                            'PVC 3mm'         :{item:'15',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
-                            'PVC 5mm'         :{item:'16',Tipo:'',Valr:' ',Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
+                            'PS 1mm'          :{item:'17',Grad:'Ads(Blh)',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                            'PS 2mm'          :{item:'18',Grad:'Ads(Blh)',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},  
+                            'PVC 2mm'         :{item:'14',Grad:'Ads(Blh)',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
+                            'PVC 3mm'         :{item:'15',Grad:'Ads(Blh)',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
+                            'PVC 5mm'         :{item:'16',Grad:'Ads(Blh)',Tipo:'',Valr:' ',Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
             }},
         'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:['Manta'     ] , HotKey:["magneto", 'manta magnética'             ] ,
                         Variantes:{ // Adicional de Calendário (Acima de 500 UND)
-                            '0.3 - Geladeira' :{item:'19',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.4 - Geladeira' :{item:'20',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.8 - Carro'     :{item:'21',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.3 - Geladeira' :{item:'19',Grad:'Ads(Blh)',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.4 - Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.8 - Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
         'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , Forn:['Stock'                      ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
                         Variantes:{
@@ -108,8 +107,8 @@
         }},
         'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Acrilico Cristal de 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
                         Variantes:{
-                            'Virado'          :{Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-                            'Colado'          :{Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                            'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                            'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
@@ -198,47 +197,47 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Arte'           :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Arte']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Arte' :{}}
         },
         'Router'         :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Barraca','Jailson']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Router' :{}}
         },
         'Envelopamento'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Plotagem' :{}}
         },
         'Serigrafia'     :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Serigrafia' :{}}
         },
         'Figurinha'      :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
             Variantes:{
-                    'Reto' :{}}
+                    'Figurinha' :{}}
         },
         'Topo de Bolo'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['BPrint']      ,
             Variantes:{
-                    'Reto' :{}}
+                    'Topo de Bolo' :{}}
         },
         'Vendas'         :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Vendas' :{}}
         },
         'Placa'          :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Placa' :{}}
         },
-        'sinalização'    :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
+        'Sinalização'    :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Sinalização' :{}}
         },
         'Cartela'        :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Cartela' :{}}
         },
         'Plotagem'       :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
-                    'Reto' :{}}
+                    'Plotagem' :{}}
         }
         }
    
@@ -896,7 +895,9 @@
                 ABCD:['Valr']
             }
             const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
-            const LocIten=(Serv,Tipo)=>Prod[Serv].Variantes[Tipo].item
+            const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
+            const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || "";
+
 
             const Func = {
                  G_Id  :e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
@@ -908,24 +909,23 @@
                 ,S_Forn:e=>Dbbrev[e.Grad.split('_')[0]]||''
                 ,S_Abcd:e=>{
                     if(!e.Grad){return ''} // se n tem dados return Vazio
-                    else{return ''
-                        const ItenSERV = '' // LocIten(e.Serv,e.Tipo)
-                        const ItenGRAD = ''                        
-                        // if(tiver = 1 linha){return J['GRAD'][0].Id} // Geralmente será "A"    
-                    }
-                } 
-                        
-                    // J.GRAD?.find(x=>x.Id==e.Grad)?.OS||''                                // Consulta
-                    // Cada Linha em ABCD dentro de Grad localizará seu Iten
-                    // Cada Linha de SERV vai fazer a mesma coisa também
-                    
-                    // if(tiver = 1 linha){return J['GRAD'][0].Id} // Geralmente será "A"
-                    // se tiver > 1 linha então procura a Linha certa comparando os Itens de SERV com ABCD
-                    // se tiver = 1 unica correspodência retorna o "id" q pode ser A,B,C,D...
-                    // se tiver > 1 linha correspondente ao iten então me da opção pra eu escolher.
+                    else{ // também conferir o valor que já tem antes!
+                        const ItenSERV = LocIten(e.Serv,e.Tipo)
+                        const LinGrad = J.GRAD?.find(x=>x.Id==e.Grad)?.ABCD||'' // Consulta
+                        if(Array.isArray(LinGrad)){
+                            const Linfilt = LinGrad.filter(G=>G.Nome!=="")
+                                const Filtrado = Linfilt.filter(G=>ItenSERV == extrairNomeSigla(G.Nome))
+                                if(Linfilt.length==1){return 'A'}
+                                if(Linfilt.length==0){return 'Falta Nome'}
+                                else if(Filtrado.length==1){return Filtrado[0].Id}
+                                else{ return `${Linfilt.length}...`}
+                                return ItenSERV
+                        //    }
+                        }else{return 'sem ID'}
 
-                ,S_OS  :e=>J.GRAD?.find(x=>x.Id==e.Grad)?.OS||'' // Consulta
-                
+                    } // Levar a Imagem da Grad pra dentro da Tabela de SERV
+                }             
+                ,S_OS  :e=>J.GRAD?.find(x=>x.Id==e.Grad)?.OS||'' // Consulta                
             }
 
             function Exec(e,c,tr,Tag){ // 'c' de Col

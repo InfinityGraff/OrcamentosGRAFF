@@ -72,7 +72,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Ilhós 1,46 x 0,48",
+                "Nome": "1 - Lon(Ilh) 1,46 x 0,48",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -93,7 +93,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Faixa 1,46 x 0,48",
+                "Nome": "1 - Lon(Fax) 1,46 x 0,48",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -148,7 +148,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Bnnr 0,65 x 1,60",
+                "Nome": "1 - Lon(Bnn) 0,65 x 1,60",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -158,7 +158,7 @@ const DadosGRAD = [
             },
             {
                 "Id": 'B',
-                "Nome": "1 - Bnnr 0,70 x 1,10",
+                "Nome": "1 - Lon(Bnn) 0,70 x 1,10",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -224,7 +224,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Bnnr 1,00 x 1,00",
+                "Nome": "1 - Lon(Bnn) 1,00 x 1,00",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -246,7 +246,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "1 - Colch(Ads) A3",
+                "Nome": "1 - Cch(Ads) A3",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -312,7 +312,7 @@ const DadosGRAD = [
         "ABCD": [
             {
                 "Id": 'A',
-                "Nome": "4 - Tplx(Bb 250g) A4",
+                "Nome": "4 - Tpx(Bbl 250g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -440,7 +440,7 @@ const DadosGRAD = [
             },
             {
                 "Id": 'B',
-                "Nome": "6 - Colch(Plstf 90g) A4",
+                "Nome": "6 - Cch(Plstf 90g) A4",
                 "Desc": "",
                 "QntS": "1",
                 "Valr": "",
@@ -539,7 +539,7 @@ const DadosGRAD = [
                 },
                 {
                     "Id": 'B',
-                    "Nome": "1 - Banner 0,80 x 1,20",
+                    "Nome": "1 - Lon(Bnn) 0,80 x 1,20",
                     "Desc": "",
                     "QntS": "",
                     "Valr": "",
