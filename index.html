@@ -932,14 +932,18 @@
                 ,S_Gimg:e=>`${J.GRAD?.find(x=>x.Id==e.Grad)?.Emal||''}.webp`
             }
 
-            function Exec(e,c,tr,Tag){ // 'c' de Col
-            console.log(J['PDDS'][0])
+            function Exec2(e,c,tr,Tag){ // 'c' de Col // neste exec2 os dados são editados lá na const principal J[typ]
                 const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
                 const Cor = A==""&&e[c]!==''?["Blu",'']:A==e[c]?['Grn','']:['Red',A]
                 if(A=="" && e[c]==""){return}
-            console.log(J['PDDS'][0])
                 DarVAL($(Rx2([c]),tr),e[c],Cor)
-            console.log(J['PDDS'][0])
+            }
+
+            function Exec(e,c,tr,Tag){ // 'c' de Col
+                const A = e[c] ; const v = Func[`${Tag}_${c}`](e)
+                const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
+                if(A=="" && v==""){return}
+                DarVAL($(Rx2([c]),tr),v,Cor)
             }
 
             // Separar a função que chama o Exec ajuda a reutilizar em várias tabelas e camadas
