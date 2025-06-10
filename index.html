@@ -267,7 +267,7 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],/*Cmnt:['E',''],*/SStts:['E','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],/*Cmnt:['E',''],*/SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -434,7 +434,8 @@
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
-        
+        const BrevSrc={Grad:'Grad',Gimg:'Grad'}
+
         const Tm_Tm = {
             Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -443,7 +444,7 @@
             Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
             Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
-            Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${R[3]}/${R[3]=='Arte'&&ListARQ.includes(R[2])?`${R[2]}.svg`:e}" ${Err}>`,
+            Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R[3]]||R[3]}/${R[3]=='Arte'&&ListARQ.includes(R[2])?`${R[2]}.svg`:e}" ${Err}>`,
             Lixo:(e,R,A)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
             Grds:(e,R,A)=>`${e}`,
             Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
@@ -891,7 +892,7 @@
 
             const arrayss = {
                 GRAD:['Id'  ,'Data','Forn','Grad','Cont'],
-                SERV:['Forn','Abcd','OS'],
+                SERV:['Forn','Abcd','OS','Gimg'],
                 ABCD:['Valr']
             }
             const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
@@ -906,7 +907,9 @@
                 ,G_Grad:e=>`${e.Emal}.webp`
                 ,G_Cont:e=>`${e.ABCD.length}`
                 ,GA_Valr:a=>{const [v1,v2]=SplitNome(a.Nome) ; return v1&&v2 ? Num(v1)*Num(v2)*20 : 0 } // Melhorar pra (Banner, Adesivo, Transp)
-                ,S_Forn:e=>Dbbrev[e.Grad.split('_')[0]]||''
+                ,S_Forn:e=>{
+                    const buxu = Prod[e.Serv]?.Forn ?? []
+                    return e.Grad ? Dbbrev[e.Grad.split('_')[0]]||'' : buxu.length == 1 ?  buxu[0] : '' }
                 ,S_Abcd:e=>{
                     if(!e.Grad){return ''} // se n tem dados return Vazio
                     else{ // também conferir o valor que já tem antes!
@@ -925,14 +928,18 @@
 
                     } // Levar a Imagem da Grad pra dentro da Tabela de SERV
                 }             
-                ,S_OS  :e=>J.GRAD?.find(x=>x.Id==e.Grad)?.OS||'' // Consulta                
+                ,S_OS  :e=>J.GRAD?.find(x=>x.Id==e.Grad)?.OS||'' // Consulta
+                ,S_Gimg:e=>`${J.GRAD?.find(x=>x.Id==e.Grad)?.Emal||''}.webp`
             }
 
             function Exec(e,c,tr,Tag){ // 'c' de Col
+            console.log(J['PDDS'][0])
                 const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
                 const Cor = A==""&&e[c]!==''?["Blu",'']:A==e[c]?['Grn','']:['Red',A]
                 if(A=="" && e[c]==""){return}
+            console.log(J['PDDS'][0])
                 DarVAL($(Rx2([c]),tr),e[c],Cor)
+            console.log(J['PDDS'][0])
             }
 
             // Separar a função que chama o Exec ajuda a reutilizar em várias tabelas e camadas
@@ -972,7 +979,7 @@
                         const Tipo = $(Rx(['Tipo','Slct']),_tr(e))
                         if(Vari(VAL(e)).length==1){$('select',Forn).value = Vari(VAL(e))[0]} // mudar pra o Unico q tem, se tiver
                         $$('option',Tipo).forEach(o=>{Add_N(o);if(Vari(VAL(e)).includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
-                })        
+                })
             }
             
 
