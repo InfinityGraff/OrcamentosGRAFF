@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
 
-    
+    <script src="./Degrade.js"></script>
 
         <!--
     <script src="../MyBiblioteca/PreScript.js"></script>
@@ -53,6 +53,9 @@
     
     .footbndjj{background:white; bottom:0px;  overflow:scroll; height:auto; max-height:300px}
     .footbndjj span{color:black}
+
+    .Body1 > header{height:10vh;padding:0px;z-index:999;background:url(./SVG/Fundo.png);background-size: cover} /*linear-gradient(to left,#530048,#83007b)*/
+    .Body1 > #PAGES{height:90vh}
 </style>
 
 <script> // Base de Dados
@@ -1108,14 +1111,13 @@
     
 </div>
 
-<body class="Dark" onclick="NoneBndj()">
+<body class="Dark Body1" onclick="NoneBndj()">
 
-    <header class="Bt Fx"> <!--HEADER-->
-        <style> /*CSS do Header*/
-            body > header{background:url(./SVG/Fundo.png);background-size: cover;height:60px;padding:0px; z-index: 999;} /*linear-gradient(to left,#530048,#83007b)*/
+    <header class="Bt"> <!--HEADER-->
+        <style>
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
-        <script> // Funções do Header
+        <script>
             const OFF =()=> 'OFF'
             const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
             function ExieMais2(E,Off){ event.preventDefault() ;if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais')}}
@@ -1147,10 +1149,10 @@
             #Div-Pesq .H_Pesq::placeholder{color: #ffffff;opacity:0.5}
             #Lupa{top:8px; right:6px; width:17px; opacity:0.5}
             #Lupa:hover{opacity:1}
-            .Pesq-Aa{top:8px; right:50px ; color:white} .Pesq-Aa.Atv{color:#00ff0d !important}
-            .Pesq-A_{top:8px; right:30px ; color:white} .Pesq-A_.Atv{color:#00ff0d !important}
-            .Pesq-Bj{top:8px; right:70px ; color:white} .Pesq-Bj.Atv{color:#00ff0d !important}
-            @media (max-width:500px){#Div-Pesq{width:50%}}
+            .Pesq-Aa{top:8px; right:50px ; color:#ffffff} .Pesq-Aa.Atv{color:#00ff0d !important}
+            .Pesq-A_{top:8px; right:30px ; color:#ffffff} .Pesq-A_.Atv{color:#00ff0d !important}
+            .Pesq-Bj{top:8px; right:70px ; color:#ffffff} .Pesq-Bj.Atv{color:#00ff0d !important}
+            @media(max-width:500px){#Div-Pesq{width:50%}}
         </style>
         <div id="Div-Pesq" class="Rltv hov"></div><!--Pesquisa-->
         <script>
@@ -1240,7 +1242,7 @@
         </script>
     </header>
 
-    <div id="PAGES" style="margin-top: 60px">
+    <div id="PAGES">
         <style> /*Styles das Tabelas Principais*/
             table{text-align:center;border-collapse:collapse}
                 .Dark .TBLAA table{background: #222222}
@@ -1525,7 +1527,7 @@
             </script>
         </div>
 
-        <div id="Pag_GBRT" class=" none Cl">
+        <div id="Pag_GBRT" class=" none Ct">
             <style>/*CSS dos SVGs*/
                 #Config svg {cursor: pointer}
                 #Config .fil0{fill: #ff7300; width: 20px; margin: 5px; height: 20px}
@@ -1536,100 +1538,217 @@
                 #Config .Cor2{fill: purple}
             </style>
             <style> /*CSS da Aba de Config*/
-                #DivCnvs{top:60px; width:75%; height:89vh; left: 24.6%;z-index: -5;overflow: scroll;}
-                #Config {top:60px; width:25%; height:100vh; left:  0px; background:#00000046;overflow: scroll}
+                #DivCnvs{width:75%; height:100%; left: 24.6%;z-index: -5;overflow: scroll}
+                #Config {width:25%; height:100%; left:  0px; background:#00000046;overflow: scroll}
                 #Config > div {background: #50505025;border-radius: 15px;margin: 3px; width: 97%; padding: 20px}
                 #Config input[type="range"]{width: 50%}
                 #IconsCofng{top:-10px; right:-10px}
                 #CropedID{top:5px; right:5px}
                 .g90{transform: rotate(90deg)}
 
-                .controls{margin-bottom: 20px}
-                .CanvBox{width: 380px;height: 350px; margin-top: 10px;}
+                .CanvBox{width: 380px;height: 350px; margin-top: 10px}
                 .CanvBox canvas {background:#505050;margin:5px}
-                .CanvBox canvas{width: 40%;}
-                label{margin:10px;font-family:Almarose-regular;}
-                .Controles{height: 80px; left: -25px;top: 10px;}
+                .CanvBox canvas{width: 40%}
+                label{margin:10px;font-family:Almarose-regular}
 
+                input.Error{background:red}
+                select.Error{background:red}
+
+                #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); border-radius: 255px}
+                #FinaisCnvs{border: 2px solid #2e2e2e96}
+                .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
+                .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
+                .FilesIMG img.Larg{width:100%; height:auto}
+                .FilesIMG img.Alt{width:auto; height:100%}
+                .Close{border-radius:5px; background:#ff3232; padding:1px; width:16px; height:16px; opacity: 0;top: 0; right: 0}
+                .DivImgRsut:hover .Close{opacity:1}
+                
+                .w33{width: 33%;}
+
+                #Rodape{width: 100%; height: 300px}
+
+                .Moldura{padding: 2px;border: 1px solid #ff480000}
+                .Moldura.active{border: 1px solid #ff4800}
+                .ConfigTxt canvas{margin: 3px;}
+                .ConfigTxt label{margin:2px}
+
+                #Inpfiles-001{margin-top: 80px}
             </style>
-            <div id="Config" class="Cl Fx"> <!--CONFIGURAÇÕES-->
 
-                <div class="Ct w50"><!--NOME DO PEDIDO-->
+            <script> // Biblioteca dos GBRT
+                    const Tmnhs = ['PP','P','M','G','GG','XG','XXGG']
+                    const PrcAryObj=(e,Stg)=>e.find(E=>E.tamn===Stg)?.qnt || 'nada'
+                    function AtivarDiv(e){Add($(e),'active')}
+                    function DestivDiv(e){Rmv($(e),'active')}
+                    const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
+                    const SplitAvanc=(Stg)=>{
+                        const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
+                        let [nome,qnt,tamn] = ['','','']
+                        partes.forEach(e=>{
+                            if(Tmnhs.includes(e.toUpperCase())){tamn=e.toUpperCase()} 
+                            else if(/^\d+\s*und?$/i.test(e)){qnt = parseInt(e)}
+                            else if(/^\d+$/.test(e)){qnt = parseInt(e)} 
+                            else {nome += (nome ? ' ' : '') + e}
+                        })
+                        return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
+                    }
+            </script>
+
+            <div id="Config" class="Cl"> <!--CONFIGURAÇÕES-->
+
+                <div class="Ct">       <!--NOME DO PEDIDO-->
                     <div><input id="NomeCliente" type="text" placeholder="Nome do Pedido"></div>
                 </div>
 
-                <div class="Ct w50 Rltv"> <!--CONFIGURAÇÕES DE TAMANHO-->
+                <div class="Ct Rltv">  <!--CONFIGURAÇÕES DE TAMANHO-->
                     <div id="CropedID" class="Ct DivCrop Abslt">
                         <div onclick="$('#Crop').click()" id="CropSvg"></div><script>Inn('#CropSvg',IcoCrop('fil0','Opacy'))</script>
                         <input id="Crop" type="checkbox" class="none" onchange="Tog('.Croped','Opacy');Read_Canvs()">
                     </div>
+      
+                    <div class="w100"> <!--Aqui é o Controlador de Posições-->
+                        <img src="./Tudi.jpg" height="150px">
 
-                    <div class="controls">
-                        <div class="w100">
-                            <div class="Ct"><label>Tamanho</label><input type="range" id="size" min="0" max="150" value="50" oninput="Read_Canvs()"></div>
-                            
-                            <img src="./Tudi.jpg" height="150px" alt="">
+                        <div class="w100 Ct">
+                            <div class="Ct"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div> <!--Copia o atalho do Corel C e E-->
+                            <div class="Ct"><Button class="btnY" onclick="Centlizar($('#top'))" >Y</Button></div> <!--Copia o atalho do Corel C e E-->
+                        </div>                           
+                    </div>                    
+                </div>
 
-                            <div class="Controles w100 Ct">
-                                <div class="Ct"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div> <!--Copia o atalho do Corel C e E-->
-                                <div class="Ct"><Button class="btnY" onclick="Centlizar($('#top'))" >Y</Button></div> <!--Copia o atalho do Corel C e E-->
-                            </div>                           
+                <div class="ConfigTxt Ct"> <!--CONFIGURAÇÕES DE TEXTO-->
+                    <div class="Ct w100"><label>Sombra:   </label><input class="w30" id="shadowColor"   type="color" value="#000000"> <input class="w30" id="shadowBlur"   type="number" value="10" oninput="Read_Canvs()"></div>
+                    <hr class="w100">
+                    <div class="Ct w100"><label>Contorno: </label><input class="w20" id="outlineColor"  type="color" value="#FFFFFF"> <input id="outlineWidth" type="range" value="2" min="1" max="10" step="0.2" oninput="Read_Canvs()"></div>
+                    <hr class="w100">
+                    <div class="Ct w100">
+                        <div class="Ct"><label class="ppt" id="TypeColor" onclick="InnTogg(this,'Cor:','Degradê:');Tog($$('.inptcolor1,.inptcolor2'),'none')">Degradê:</label></div>
+                        <div class="Ct w30 none inptcolor1">
+                            <input id="FontColor" type="color" value="#000000" oninput="Read_Canvs()">
                         </div>
-                    </div>
-                </div>
-
-            <div class="ConfigTxt Ct"> <!--CONFIGURAÇÕES DE TEXTO-->
-                <div class="Ct w100"><label>Sombra:   </label><input class="w30" id="shadowColor"   type="color" value="#000000"> <input class="w30" id="shadowBlur"   type="number" value="10" oninput="Read_Canvs()"></div>
-                <hr class="w100">
-                <div class="Ct w100"><label>Contorno: </label><input class="w20" id="outlineColor"  type="color" value="#FFFFFF"> <input id="outlineWidth" type="range" value="2" min="1" max="10" step="0.2" oninput="Read_Canvs()"></div>
-                <hr class="w100">
-                <div class="Ct w100">
-                    <div class="Ct"><label class="ppt" id="TypeColor" onclick="InnTogg(this,'Cor:','Degradê:');Tog($$('.inptcolor1,.inptcolor2'),'none')">Degradê:</label></div>
-                    <div class="Ct w30 none inptcolor1">
-                        <input id="FontColor" type="color" value="#000000" oninput="Read_Canvs()">
-                    </div>
-                    <div class="Ct inptcolor2">
-                        <canvas id="controlCanvas" class="Rd Moldura ClickCanv" width="70" height="70"></canvas>
-                        <input class="Opacy noClk" type="color" id="colorPicker1" style="display: none;">
-                        <input class="Opacy noClk" type="color" id="colorPicker2" style="display: none;">
-                        <div class="Cl">
-                            <div class="ClickCanv" id="alignX">X</div> <script>Inn('#alignX',IconAling('fil1','white','white'))</script>
-                            <div class="ClickCanv" id="alignY">Y</div> <script>Inn('#alignY',IconAling('fil1 g90','white','white'))</script>
+                        <div class="Ct inptcolor2">
+                            <canvas id="controlCanvas" class="Rd Moldura ClickCanv" width="70" height="70"></canvas>
+                            <input class="Opacy noClk" type="color" id="colorPicker1" style="display: none;">
+                            <input class="Opacy noClk" type="color" id="colorPicker2" style="display: none;">
+                            <div class="Cl">
+                                <div class="ClickCanv" id="alignX">X</div> <script>Inn('#alignX',IconAling('fil1','white','white'))</script>
+                                <div class="ClickCanv" id="alignY">Y</div> <script>Inn('#alignY',IconAling('fil1 g90','white','white'))</script>
+                            </div>
                         </div>
+                        
                     </div>
-                    
+                    <hr class="w100">
+                    <div class="Ct w100"><label>Fonte:</label><select class="w50" id="fontFamily" onchange="CssFont('#fontFamily',this.value);Read_Canvs()"></select><script>load_OptsFnt($('#fontFamily'),KitFonts)</script></div>
                 </div>
-                <hr class="w100">
-                <div class="Ct w100"><label>Fonte:</label><select class="w50" id="fontFamily" onchange="CssFont('#fontFamily',this.value);Read_Canvs()"></select><script>load_OptsFnt($('#fontFamily'),KitFonts)</script></div>
-            </div>
 
-            <div class="Ct w50"> <!--ABA DE LISTAS-->
-                <div class="Cl Rltv">
-                    <button onclick="Mdal_Area('#Area')">Editar Inputs</button>
+                <div class="Ct">           <!--ABA DE LISTAS-->
+                    <div class="Cl Rltv">
+                        <button onclick="Mdal_Area('#Area')">Editar Inputs</button>
 
-                    <div id="IconsCofng" class="Ct Abslt">
-                        <div id="IcoMais" onclick="AddRow()"></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
-                        <div id="IcoLixo" onclick="Limpar();LimpObj()"></div><script>Inn('#IcoLixo',IcoClen('fil0'))</script>
+                        <div id="IconsCofng" class="Ct Abslt">
+                            <div id="IcoMais" onclick="AddRow()"          ></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
+                            <div id="IcoLixo" onclick="Limpar();LimpObj()"></div><script>Inn('#IcoLixo',IcoClen('fil0'))</script>
+                        </div>
+
+                        <table id="Lista-001">
+                            <thead><tr><th class="w60">Nome</th><th class="w20">Tamnh</th><th class="w20">Qnt</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="w60"><input class="w90 nome" type="text"   placeholder="Nome" oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" onpaste="ColarTudo(this)" autocomplete="off"></td>
+                                    <td class="w20"><select class="w90 tamn" onchange="Read_Obj_Ipt()"></select><script>load_Opts($('#Lista-001 .td-tamn > select'),['',...Tmnhs])</script></td>
+                                    <td class="w20"><input class="w90 qnt" type="number" placeholder="Qnt"  oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" autocomplete="off"></td>
+                                    <td><div class="td-Src none"></div></td>
+                                    <td><div class="td-Org none"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <script>
+                            // Atualiza Objeto Baseado na Area     // Depois tentar para Sincronizar
+                            function Read_Obj_Area(Area,inpt){
+                                ObjCanvs.splice(IdxDe(Avo(inpt)))
+                                $(Area).value.split('\n').map(match=>{
+                                const {Nome,Tamn,Qnt} = SplitAvanc(match)
+                                ObjCanvs.push({qnt:Qnt, tamn:Tamn, nome:Nome,src:'',Orgn:''})
+                                })
+                                Read_Ipt_Obj()
+                            }
+
+                            // Atualiza Objetos Baseado nas Imagens (Fundo e Nomes) // Depois tentar Sincronizar
+                            function Read_Obj_Img(imgs){
+                                ObjCanvs = []
+                                const Imgss = $$(imgs).filter(e=>!/fundo/i.test(e.name))
+                                const Funds = $$(imgs).filter(e=> /fundo/i.test(e.name))
+                                if(Imgss.length>0){Imgss.map(e=>{
+                                        const {Nome,Qnt,Tamn} = SplitAvanc(e.name)
+                                        ObjCanvs.push({qnt:Qnt,tamn:Tamn,nome:Nome,Orgn:'Imgs',src:e.src})});Read_Ipt_Obj()
+                                }
+                                if(Funds.length>0){Funds.map(e=>{ObjFundo.push({lado:SplitFundo(e.name),src:e.src})})}
+                            }
+
+                            // Atualiza Inputs Baseado no Objeto
+                            function Read_Ipt_Obj(){
+                                None(FMdal)
+                                Limpar()
+                                ObjCanvs.forEach((i,x)=>{
+                                    if(x>0){AddRow()}
+                                    const lastRow = $('#Lista-001 tbody tr:last-child')
+                                    $('.qnt',lastRow).value = i.qnt
+                                    $('.tamn',lastRow).value = i.tamn
+                                    $('.nome',lastRow).value = i.nome
+                                    $('.td-Src',lastRow).innerHTML = i.src
+                                    $('.td-Org',lastRow).innerHTML = i.Orgn
+                                })
+                            }
+
+                            // Atualiza Inputs Baseado no CntrlV Unico
+                            function Read_Ipt_Lin(inpt,obj){
+                                const {Nome,Tamn,Qnt} = SplitAvanc(obj)
+                                const RowAtual = $('#Lista-001').rows[IdxDe(Avo(inpt))+1]
+                                $('.qnt',RowAtual).value = Qnt
+                                $('.tamn',RowAtual).value = Tamn
+                                $('.nome',RowAtual).value = Nome
+                                $('.td-Src',RowAtual).innerHTML = ''
+                                $('.td-Org',RowAtual).innerHTML = ''
+                                
+                            }
+
+                            // Atualiza Objeto Baseado no Inputs
+                            function Read_Obj_Ipt(){
+                                ObjCanvs = []
+                                $$('#Lista-001 tbody tr').map(e=>{
+                                    const qnt  = $('.qnt',e).value
+                                    const tamn = $('.tamn',e).value
+                                    const nome = $('.nome',e).value
+                                    const src  = $('.td-Src',e).innerHTML
+                                    const org  = $('.td-Org',e).innerHTML
+
+                                    ObjCanvs.push({qnt:Number(qnt),tamn,nome,src,org})
+
+                                //if(qnt&&tamn&&nome){console.log('tem tudo');}else{}
+                                })
+                                console.log('Objeto Atualizado',ObjCanvs)
+                            }
+                        </script>
                     </div>
-
-                    <table id="Lista-001" class="Lista" class="Cl">
-                        <thead class="Cl">
-                            <tr class="Ct w100"><th class="td-nome">Nome</th><th class="td-tamn">Tamanho</th><th class="td-qnt">Qnt</th></tr>
-                        </thead>
-                        <tbody class="Cl">
-                            <tr class="Ct w100">
-                                <td class="td-nome Ct"><input  class="nome" type="text" placeholder="Nome" oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" onpaste="ColarTudo(this)" autocomplete="off"></td>
-                                <td class="td-tamn Ct"><select class="tamn" onchange="Read_Obj_Ipt()"></select><script>load_Opts($('#Lista-001 .td-tamn > select'),['',...Tmnhs])</script></td>
-                                <td class="td-qnt Ct"><input   class="qnt"  type="number" placeholder="Qnt" oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" autocomplete="off"></td>
-                                <td><div    class="td-Src none"></div></td>
-                                <td><div    class="td-Org none"></div></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-    
+
+            <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
+                <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
+                <div id="FilesIMG-001" class="w100 FilesIMG Ct"><div class="imgs Ct"></div></div>
+                <canvas id="gradientCanvas" width="400" height="400"></canvas>
+                <div id="AllCanvas" class="Ct"></div>
+                <div id="Rodape"></div>
             </div>
+
+            <div id="FinaisCnvs" class="Ct Fx"> <!--CONFIRMAÇÕES FINAIS-->
+                <button onclick="Load_Cnvs('#AllCanvas')">Carregar Canvas</button>
+            </div>
+
+            <script>
+                LoadDegade($('#controlCanvas'))
+            </script>
         </div>
 
         <script>
@@ -2090,6 +2209,10 @@
     <div id="FModal" class="Ct">
         <script>function SairMdal(){None('#FModal')} </script>
 
+        <div id="Mdal-Area">
+            <textarea id="Area" placeholder="Digite aqui..." oninput="ResizeArea(this)" onkeydown="KeyEntr(()=>Read_Obj_Area('#Area'))"></textarea>
+        </div>
+
         <div id="ModalLogin" class="Ct Rltv Rd">
             <div class="Close Ct" onclick="SairMdal()">X</div>
             <div class="Bt Loginn">Login</div>
@@ -2416,7 +2539,6 @@
 </script>
 
 <script> // comentários
-    // Permitir Remover o Fx do <Header>
     // Mostrar o Valor por M2 ao Lado do Option
     // Permitir Drag nas Linhas
     // imitar Bureal no Futuro (deixando todas bandeijas aberta)
