@@ -55,28 +55,6 @@
     
 </style>
 
-<style> /*CSS Genérico*/
-    /*Fixos*/
-        header{padding:0px ; z-index:999}
-        header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
-        header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
-    /*Body1*/
-    .Body1 > header{height:8vh  ; width: 100vw ; background:url(./SVG/Fundo.png);background-size:cover}
-    .Body1 > #PAGES{height:auto ; width: 100vw }
-        .Body1 > header nav          {margin:0px 10px}
-        .Body1 > header nav img      {height:22px; margin:0px 5px}
-        .Body1 > header nav p        {display: none;}
-        .Body1 #NavPerf              {flex-direction: row;}
-
-    /*Body2*/
-    .Body2 > header{height:100vh ; width: 18% ; overflow-y: scroll; background:url(./SVG/Fundo.png);background-size:cover ; display: flex ; flex-direction: column;}
-    .Body2 > #PAGES{height:100vh ; width: 82% ; overflow-y: scroll;}
-        .Body2 > header nav          {margin:10px 0px; flex-direction:column; width: 100%}
-        .Body2 > header nav img      {height:22px; margin:5px 0px}
-        .Body2 > header nav p        {display: block;}
-        .Body2 #NavPerf              {flex-direction: column; width: 90%}
-</style>
-
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
