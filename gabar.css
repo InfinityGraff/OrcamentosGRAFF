@@ -1,5 +1,6 @@
 /*Identidade Visual______________________________________________________________ */
-nav{height:35px;transition:all 0.2s ease-in-out}nav a{height:100%;padding:0px 10px;transition:all 0.2s ease-in-out}
+nav{height:35px;transition:all 0.2s ease-in-out}
+nav a{height:100%;padding:0px 10px;transition:all 0.2s ease-in-out}
 nav.Lite{background:#ff6600;color:white}
   nav.Lite a.Atv{color: purple}
   nav.Lite a:hover{background:purple;color: white;}
