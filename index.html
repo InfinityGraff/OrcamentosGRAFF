@@ -38,7 +38,6 @@
     .Ubuiaxik{width: 800px; height: 500px}
     .Nuevoevo{color: white;background: #53004873;padding: 2px}
 
-    select{background: #7e7e7e28 !important}
     .Dark option{color:#ffffff; background:#3d3d3d}
     .Lite option{color:#000000; background:#ffffff}
     .Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
@@ -54,8 +53,8 @@
     .footbndjj{background:white; bottom:0px;  overflow:scroll; height:auto; max-height:300px}
     .footbndjj span{color:black}
 
-    .Body1 > header{height:10vh;padding:0px;z-index:999;background:url(./SVG/Fundo.png);background-size: cover} /*linear-gradient(to left,#530048,#83007b)*/
-    .Body1 > #PAGES{height:90vh}
+    .Body1 > header{height:8vh;padding:0px;z-index:999;background:url(./SVG/Fundo.png);background-size: cover} /*linear-gradient(to left,#530048,#83007b)*/
+    .Body1 > #PAGES{height:92vh}
 </style>
 
 <script> // Base de Dados
@@ -1167,6 +1166,7 @@
 
         <div>
             <button onclick="NavPag('#Pag_GBRT',this)">Gabarito</button>
+            <button onclick="console.log($$('button>img, .button>img, input>img, select>img'))">sOKA</button>
         </div>
 
         <div class="Ct"> <!--Nav e Perfil-->
