@@ -59,7 +59,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_PDDS'}
+    const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['ORC','LOJA','GBRT','LIN','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
@@ -1118,58 +1118,51 @@
                 header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
                 header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
-                .Body1 > header{height:8vh  ; width: 100vw ; background:url(./SVG/Fundo.png);background-size:cover}
-                .Body1 > #PAGES{height:auto ; width: 100vw }
-                    .Body1 > header nav     {margin:0px 10px}
+                .Body1 > header{height:8vh  ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover}
+                .Body1 > #PAGES{height:auto ; width:100vw }
+                        .Body1 > header #Title    {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
+                        .Body1 > header #Title img{margin:5px; height:30px}         
+                        .Body1 > header #Title h1 {font-size:3vw; color:white}    @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
+                    .Body1 > header nav     {margin:0px 10px}                       @media(max-width:700px){.Body1 > header nav       {display:none}}
                     .Body1 > header nav img {height:22px; margin:0px 5px}
-                    .Body1 > header nav p   {display: none;}
-                    .Body1 #NavPerf         {flex-direction: row;}
-
+                    .Body1 > header nav p   {display:none; color:white}
+                    .Body1 #NavPerf         {flex-direction:row}
             /*Body2*/
-                .Body2 > header{height:100vh ; width: 18% ; overflow-y: scroll; background:url(./SVG/Fundo.png);background-size:cover ; display: flex ; flex-direction: column;}
-                .Body2 > #PAGES{height:100vh ; width: 82% ; overflow-y: scroll;}
+                .Body2 > header{height:100vh ; width:18% ; overflow-y:scroll; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column;}
+                .Body2 > #PAGES{height:100vh ; width:82% ; overflow-y:scroll}
+                        .Body2 > header #Title    {margin-left:15px}
+                        .Body2 > header #Title img{margin:5px; height:30px}
+                        .Body2 > header #Title h1 {font-size:50%; color:white}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
                     .Body2 > header nav img {height:22px; margin:5px 0px}
-                    .Body2 > header nav p   {display: block;}
-                    .Body2 #NavPerf         {flex-direction: column; width: 90%}
-        
+                    .Body2 > header nav p   {display:block; color:white}
+                    .Body2 > header nav div {width: 90% ; justify-content: start;}
+                    .Body2 > header nav div:hover{border-radius: 8px}
+                    .Body2 > header nav div:hover{background: #ffffff15}
+                    .Body2 > header nav #HNVDv_  {display: none;}
+                    
+                    .Body2 #NavPerf         {flex-direction:column; width: 90%}
+                    .Body2 #Div-Pesq        {display:none}
+
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
         <script>
             const OFF =()=> 'OFF'
-            const ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
-            function ExieMais2(E,Off){ event.preventDefault() ;if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais')}}
+            const    ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
+            function ExieMais2(E,Off){event.preventDefault();if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais')}}
             function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
         </script>
 
-        <div id="Div-Titulo"> <!--Titulo-->
-            <style> /*Titulo PC e Cell*/
-                #Div-Titulo div{margin-left:15px}
-                #Div-Titulo img{margin:5px; height:30px}
-                #Div-Titulo h1{color: white !important}
-                #Title1 h1{font-size:12px}
-                #Title2 h1{font-size:40px}
-                @media (max-width:1250px){#Title2 h1{font-size:29px}}
-                @media (max-width:1100px){#Title2 h1{font-size:25px}}
-            </style>
-
-             <!--Titulo Mobile-->
-            <div id="Title1" class="Cl"><img draggable="false" src="./Img/Logo.png"><h1 class="noslt" onclick="TrocaBody()">InfinityAPP 7.5</h1></div>
-            <!--Titulo PC-->
-            <div id="Title2" class="Ct"><img draggable="false" src="./Img/Logo.png"><h1 class="noslt" onclick="TrocaBody()">InfinityAPP 7.5</h1></div>
-        
-            <script> // Titulo CSS
-                function TrocarTitle(){if(window.innerWidth<=500){
-                            Show($('#Title1'),$('#Title2'))
-                            None($('#H_Nav')) }
-                    else {  Show($('#Title2'),$('#Title1'))
-                            Show($('#H_Nav'))
+        <div id="Title" class="Ct"> <!--Titulo-->
+            <img draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
+            <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.5</h1>
+            <script>
+                function TrocaBody() {
+                    if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')
+                    }else{
+                        console.log("Tela pequena")
                     }
                 }
-                window.addEventListener('resize',()=>TrocarTitle())
-                TrocarTitle()
-
-                function TrocaBody(){Trc($('body'),'Body1','Body2')}
             </script>
         </div>
 
@@ -1197,11 +1190,12 @@
 
         <div id="NavPerf" class="Ct"> <!--Nav e Perfil-->
             <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
-            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<div class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
+            <nav id="H_Nav" class="Ct"></nav>
+            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
             
             <div id="BdjLogin" class="Cl">
                 <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px"    onclick="AbreLogin()">
-                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="          Abslt NObj"      onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj"                onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
                 <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
