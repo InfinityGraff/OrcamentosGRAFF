@@ -52,14 +52,29 @@
     
     .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
     .footbndjj span{color:#000000}
+    
 </style>
 
-<style>
-    .Body1 > header{height:8vh;padding:0px;z-index:999;background:url(./SVG/Fundo.png);background-size:cover}
-    .Body1 > #PAGES{height:92vh}
+<style> /*CSS Genérico*/
+    /*Fixos*/
+        header{padding:0px ; z-index:999}
+        header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
+        header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+    /*Body1*/
+    .Body1 > header{height:8vh  ; width: 100vw ; background:url(./SVG/Fundo.png);background-size:cover}
+    .Body1 > #PAGES{height:auto ; width: 100vw }
         .Body1 > header nav          {margin:0px 10px}
-        .Body1 > header nav img      {height:22px; margin:0px 5px; filter:drop-shadow(0px 0px 8px #3a002b)}
-        .Body1 > header nav img:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+        .Body1 > header nav img      {height:22px; margin:0px 5px}
+        .Body1 > header nav p        {display: none;}
+        .Body1 #NavPerf              {flex-direction: row;}
+
+    /*Body2*/
+    .Body2 > header{height:100vh ; width: 18% ; overflow-y: scroll; background:url(./SVG/Fundo.png);background-size:cover ; display: flex ; flex-direction: column;}
+    .Body2 > #PAGES{height:100vh ; width: 82% ; overflow-y: scroll;}
+        .Body2 > header nav          {margin:10px 0px; flex-direction:column; width: 100%}
+        .Body2 > header nav img      {height:22px; margin:5px 0px}
+        .Body2 > header nav p        {display: block;}
+        .Body2 #NavPerf              {flex-direction: column; width: 90%}
 </style>
 
 <script> // Base de Dados
@@ -71,6 +86,7 @@
     const NavImg= ['ORC','LOJA','GBRT','LIN','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let scrollPosition = [0,0]
+    const N_Brev={ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'Grades',CLNT:'Cliente'}
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -1115,10 +1131,30 @@
     
 </div>
 
-<body class="Dark Body1" onclick="NoneBndj()">
+<body class="Dark Body1 Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
+            /*Fixos*/
+                header{padding:0px ; z-index:999}
+                header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
+                header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+            /*Body1*/
+                .Body1 > header{height:8vh  ; width: 100vw ; background:url(./SVG/Fundo.png);background-size:cover}
+                .Body1 > #PAGES{height:auto ; width: 100vw }
+                    .Body1 > header nav     {margin:0px 10px}
+                    .Body1 > header nav img {height:22px; margin:0px 5px}
+                    .Body1 > header nav p   {display: none;}
+                    .Body1 #NavPerf         {flex-direction: row;}
+
+            /*Body2*/
+                .Body2 > header{height:100vh ; width: 18% ; overflow-y: scroll; background:url(./SVG/Fundo.png);background-size:cover ; display: flex ; flex-direction: column;}
+                .Body2 > #PAGES{height:100vh ; width: 82% ; overflow-y: scroll;}
+                    .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
+                    .Body2 > header nav img {height:22px; margin:5px 0px}
+                    .Body2 > header nav p   {display: block;}
+                    .Body2 #NavPerf         {flex-direction: column; width: 90%}
+        
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
         <script>
@@ -1139,12 +1175,24 @@
                 @media (max-width:1100px){#Title2 h1{font-size:25px}}
             </style>
 
-            <div id="Title1" class="Cl" onclick="NavPag('#Pag_ORC',this)"> <!--Titulo Mobile     onclick="Tog($('#BarraLateral'),'none')"-->
-                <img draggable="false" src="./Img/Logo.png"><h1 class="noslt">InfinityAPP 7.4</h1>
-            </div>
-            <div id="Title2" class="Ct"> <!--Titulo PC-->
-                <img draggable="false" onclick="Tog($('#BarraLateral'),'none')" src="./Img/Logo.png"><h1 class="noslt" onclick="NavPag('#Pag_ORC',this)">InfinityAPP 7.4</h1>
-            </div>
+             <!--Titulo Mobile-->
+            <div id="Title1" class="Cl"><img draggable="false" src="./Img/Logo.png"><h1 class="noslt" onclick="TrocaBody()">InfinityAPP 7.5</h1></div>
+            <!--Titulo PC-->
+            <div id="Title2" class="Ct"><img draggable="false" src="./Img/Logo.png"><h1 class="noslt" onclick="TrocaBody()">InfinityAPP 7.5</h1></div>
+        
+            <script> // Titulo CSS
+                function TrocarTitle(){if(window.innerWidth<=500){
+                            Show($('#Title1'),$('#Title2'))
+                            None($('#H_Nav')) }
+                    else {  Show($('#Title2'),$('#Title1'))
+                            Show($('#H_Nav'))
+                    }
+                }
+                window.addEventListener('resize',()=>TrocarTitle())
+                TrocarTitle()
+
+                function TrocaBody(){Trc($('body'),'Body1','Body2')}
+            </script>
         </div>
 
         <style> /*Input de Pesquisa*/
@@ -1169,18 +1217,14 @@
             </div>`}).join(''))
         </script>
 
-        <div>
-            <button onclick="console.log($$('button>img, .button>img, input>img, select>img'))">sOKA</button>
-        </div>
-
-        <div class="Ct"> <!--Nav e Perfil-->
+        <div id="NavPerf" class="Ct"> <!--Nav e Perfil-->
             <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
-            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<img class="ppt HOV" src="./SVG/${e}.svg" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')">`).join(''))</script>
+            <nav id="H_Nav" class="Ct"></nav><script>Inn('#H_Nav',NavImg.map(e=>`<div class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
             
             <div id="BdjLogin" class="Cl">
-                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px" onclick="AbreLogin()">
-                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png" class="          Abslt NObj"      onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                <img id="Img-Perfil" draggable="false"                        class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px"    onclick="AbreLogin()">
+                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="          Abslt NObj"      onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
             </div>
 
@@ -1210,32 +1254,6 @@
             <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
             <span class="w100 Ct" style="height: 30px"></span>
         </div>
-
-        <div id="BarraLateral" class="Abslt none">
-            <style>
-                #BarraLateral{
-                    background: #ff4160;
-                    height: 100vh;
-                    top: 60px;
-                    width: 250px;
-                    z-index: 5;
-                }
-
-            </style>
-            marionete
-        </div>
-
-        <script> // Titulo CSS
-            function TrocarTitle(){if(window.innerWidth<=500){
-                        Show($('#Title1'),$('#Title2'))
-                        None($('#H_Nav')) }
-                else {  Show($('#Title2'),$('#Title1'))
-                        Show($('#H_Nav'))
-                }
-            }
-            window.addEventListener('resize',()=>TrocarTitle())
-            TrocarTitle()
-        </script>
     </header>
 
     <div id="PAGES">
@@ -2168,6 +2186,7 @@
 
                 </script>
             </div>
+            <button onclick="console.log($$('button>img, .button>img, input>img, select>img'))">sOKA</button>
         </div>
 
         <script>
