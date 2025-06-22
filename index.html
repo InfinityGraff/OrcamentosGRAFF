@@ -1190,13 +1190,17 @@
             </style>
             <div id="Div-Pesq" class="Rltv w100 hov"></div><!--Pesquisa-->
             <script>
-                Inn('#Div-Pesq',NavImg.map(Typ=>{return `<div id="Pesq_${Typ}" class="none">
+                function Load_Pesq(Typ){
+                    return `<div id="Pesq_${Typ}" class="none">
                         <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
                         <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
                         <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
                         <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Bj</a>
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
-                </div>`}).join(''))
+                    </div>`
+                }
+                Inn('#Div-Pesq',NavImg.map(Typ=>Load_Pesq(Typ)).join(''))
+
             </script>
         </div>
 
@@ -1322,15 +1326,16 @@
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
                 <h1>Tabela de Pedidos</h1>
+                <div id="PagPesq_PDDS" class="Rltv" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
-                <textarea style="background: gray" class="ppt h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
+                <textarea style="background:gray" class="ppt rd h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
                 </script>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
-            <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
+            <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
             <table id="H_PDDS" class="hMin">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                 <tbody></tbody>
