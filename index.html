@@ -52,7 +52,6 @@
     
     .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
     .footbndjj span{color:#000000}
-    
 </style>
 
 <script> // Base de Dados
@@ -264,7 +263,6 @@
     }
     const AllList = ObjKey(O)
     const AllClnt = Uniq(J.CLNT.map(E=>E['Clnt']))
-
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
         
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
@@ -525,7 +523,7 @@
                                     : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
-            const Retorno = arry.map((e,X)=>`<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`).join('')
+            const Retorno = arry.map((e,X)=>{if(X>10){return} ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
 
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
@@ -566,34 +564,53 @@
                 }// F_Clen(Atual.Pag) // se for outro botão
         })})
 
-        function Pesquisa(Val,Typ){ // dar uma Ajeitada pq eu já dei uma Baratinada, kkkk
-            const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
-            const CleaVal = Val.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
+        function Pesq(Inpt,Typ){
+            if(Typ=='ORC'){
+                const r = new RegExp(RxClear(Inpt.value),'i')
+                $$('#Div-Prod > div').forEach(e=>{
+                    $$(".rgx",e).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,r)}) // Grifar
+                    e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
+            })}
+            else if($(`#Pag_${Typ}`).classList.contains('TBLAA')){ // Conferir se a pesquisa é uma Tabela
+                console.log('é uma Tabela')
+                const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'
+                const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''
+                const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
+                const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
 
-                const matches = [...Val.matchAll(/\[([^\]]*)\]/g)]
-                const COL1 = matches[0]?.[1] || false // Primeiro valor dentro de []
-                const COL2 = matches[1]?.[1] || false // Segundo  valor dentro de []
+                    if(Bj){ console.log('Bandeija Selecionada')
+                        const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
+                        const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
+                        const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
 
-            console.log('COL1',COL1,Col(Typ,COL1),'>',CleaVal)
-            console.log('COL2',COL2,Col(COL1.toUpperCase(),COL2),'>',CleaVal)
+                        console.log('COL1',COL1,Col(Typ                ,COL1),'>',CleaVal)
+                        console.log('COL2',COL2,Col(COL1?.toUpperCase(),COL2),'>',CleaVal)
 
-            const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
-            TRs(Typ).forEach(tr=>{ // Quando for Orc, mostra outra coisa!
-                
-                const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
-                const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
-                 
-                const Cnct = P_P.map(Rx=>Rx.textContent).join('#')
-                P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
-                if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
-            })
-            Rfresh_Foot()
+                        const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
+                        TRs(Typ).forEach(tr=>{
+                            const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
+                            const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
+
+                            const Cnct = P_P.map(Rx=>Rx.textContent).join('#')
+                            console.log(Cnct)
+                            P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
+                            if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
+                        })
+                    }else{ console.log('Sem Bandeija')
+
+
+                    }
+
+
+
+                // Rfresh_Foot()
+            }
+
             // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
             // depois encontrar mais de 1 correpondência na mesma linha
             // Lembrando q da erro em Select, provavelmente em inpuit
             // Fazer a Pesquisa em uma Determinada Coluna
             // [Serv] [Grad] A
-
         }
     </script>
 
@@ -1127,10 +1144,11 @@
                         .Body1 > header #Title h1   {font-size:3vw}                   @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
                         .Body1 > header #recolhe    {display:none}
                     .Body1 > header nav     {margin:0px 10px}                         @media(max-width:700px){.Body1 > header nav       {display:none}}
-                    .Body1 > header nav img {height:22px; margin:0px 5px}
+                    .Body1 > header nav img {height:22px; margin:3px 3px}
                     .Body1 > header nav p   {display:none}
+                    .Body1 > header nav div {border-radius:5px ; margin: 0px 2px;}
                     .Body1 #NavPerf         {flex-direction:row}
-                    .Body2 #Login-Top       {display: none;}
+                    .Body1 #Login-Top       {display:none}
             /*Body2*/
                 .Body2{justify-content: flex-start}
                 .Body2 > header{height:100vh ; width:18% ; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column}
@@ -1141,18 +1159,18 @@
                         .Body2 > header #Title      {width: 90%; justify-content: space-between}
                         .Body2 > header #Title #Logo{margin:5px; height:30px}
                         .Body2 > header #Title h1   {font-size:50% ; display:none}
-                        .Body2 > header #recolhe    {height: 18px;}
+                        .Body2 > header #recolhe    {height: 18px}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}                           .Body2.recolhe > header nav img {margin-right: 0px}
+                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px}                            .Body2.recolhe > header nav img {margin-right: 0px}
                     .Body2 > header nav p   {display:block ; font-size: 14px}                                            .Body2.recolhe > header nav p   {display:none}
-                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .Body2.recolhe > header nav div {justify-content: center}
+                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .Body2.recolhe > header nav div {justify-content:center}
                     .Body2 > header nav div:hover     {background: #ffffff15}
                     .Body2 > header nav #HNVDv_LIN img{display: none}
                     .Body2 > header nav #HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
                     .Body2 #NavPerf         {flex-direction:column; width: 90%}
                     .Body2 #Div-Pesq        {display:none}
                     .Body2 #DivNav          {width:90%}
-                    .Body2 #BdjLogin        {width: 100% ; justify-content: flex-end; background: #38003fa6;}
+                    .Body2 #BdjLogin        {width: 100% ; justify-content: flex-end; background: #38003fa6}
                     .Body2 #Login-Top       {display: flex; margin-right: 7px; font-size: 14px;}
                     .NavAtv{background: #da00aa;}
                     .NavAtv:hover{background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
@@ -1196,10 +1214,10 @@
             <script>
                 function Load_Pesq(Typ){
                     return `<div class="pPesq Pesq_${Typ}" class="none">
-                        <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
-                        <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
-                        <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
-                        <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Bj</a>
+                        <input class="w100 H_Pesq" placeholder="Pesquisar em ${N_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
+                        <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">Aa</a>
+                        <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">A]</a>
+                        <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">Bj</a>
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
                     </div>`
                 }
@@ -1794,6 +1812,10 @@
 
         <div id="Pag_ORC" class="none Cl">
 
+            <div> 
+                <input id="PesqPROD" type="text" oninput="Pesq(this,'ORC')" placeholder="Pesquisar Produto..."> <!--Pesquisa PROD-->
+            </div>
+
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
                     #Div-Prod          {margin-bottom:30px; overflow-x:scroll; flex-wrap:nowrap;height: 360px; width: 100%;}
@@ -1888,18 +1910,7 @@
                 </script>
             </div>
             
-            <div> <!--Pesquisa PROD-->
-                <input id="PesqPROD" type="text" oninput="pesquisaProd(this)" placeholder="Pesquisar Produto...">
-                <script>
-                    function pesquisaProd(ipt){
-                        const r = new RegExp(RxClear(ipt.value),'i')
-                        $$('#Div-Prod > div').forEach(e=>{
-                            $$(".rgx",e).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,r)}) // Grifar
-                            e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
-                        })
-                    }
-                </script>
-            </div>
+
 
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
