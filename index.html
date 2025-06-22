@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
     <link rel="stylesheet" href="./cssGRAFF.css">
  
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>
+    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
@@ -428,6 +429,9 @@
         
         .AutoComp{background: #94949473}
         .CorID   {background: #94949473}
+
+        td       .grifoo{display: none ; background: #ff8800; height: 5px; width: 5px ; left: 0px;}
+        td.Grifo .grifoo{display: block}
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
@@ -504,8 +508,9 @@
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
                 const iconFone = Typ==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = Typ==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
+                const Grifo = `<i class="grifoo RD"></i>`
 
-                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}</div>
+                return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
                             <div class="Rltv w100">
                                 <div class="BndjTBL BNdj Abslt Shdw none rd Cl">
                                     <a>${SVG.Ponta}</a>
@@ -516,7 +521,6 @@
                 // o Zindex é o segfuinte o ultimo selecionado fica na Frente! e isso fica interessante ser exibido na hora do ShowBndj() pq funcionará para Bandejas e Filters
                 // Opção de Ordenar pelo q tem mais caractére (textos maiores em cima textos menores em baixo)
             }
-
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
                 return dR[4]=='Bndj'? `<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this)">${_Tm_Bndj(v,R)}</td>` :
                        dR[4]=='Sugg'? `<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
@@ -578,39 +582,35 @@
                 const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
                 const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
 
-                    if(Bj){ console.log('Bandeija Selecionada')
-                        const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
-                        const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
-                        const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
+                    const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
+                    const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
+                    const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
 
-                        console.log('COL1',COL1,Col(Typ                ,COL1),'>',CleaVal)
-                        console.log('COL2',COL2,Col(COL1?.toUpperCase(),COL2),'>',CleaVal)
+                    console.log('COL1',COL1,Col(Typ                ,COL1),'>',CleaVal)
+                    //console.log('COL2',COL2,Col(COL1?.toUpperCase(),COL2),'>',CleaVal)
 
-                        const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
-                        TRs(Typ).forEach(tr=>{
-                            const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
-                            const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
+                    const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
 
-                            const Cnct = P_P.map(Rx=>Rx.textContent).join('#')
-                            console.log(Cnct)
-                            P_P.forEach(Rx=>{Inn(Rx,Grifar(Rx.textContent,regex))})  // Grifar
-                            if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}     // Ocultar (Aplica None)
-                        })
-                    }else{ console.log('Sem Bandeija')
+                    TRs(Typ).forEach(tr=>{
+                        const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
+                        // const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
 
-
-                    }
+                        const Cnct = P_P2.map(Rx=>Rx.textContent).join('#')
+                        P_P2.forEach(Rx=>{ //Grifar
+                            Inn(Rx,Grifar(Rx.textContent,regex)) // Grifar o Texto encontrado
+                            if(regex.test(Rx.textContent) && isBdj(Rx)){Add(_td(_tr(Rx)),'Grifo')}})
+                        if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
+                    })
+                    
 
 
 
-                // Rfresh_Foot()
+                Rfresh_Foot()
             }
-
             // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
             // depois encontrar mais de 1 correpondência na mesma linha
             // Lembrando q da erro em Select, provavelmente em inpuit
-            // Fazer a Pesquisa em uma Determinada Coluna
-            // [Serv] [Grad] A
+            // Fazer a Pesquisa em uma Determinada Coluna: [Serv] [Grad] A
         }
     </script>
 

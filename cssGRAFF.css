@@ -25,4 +25,31 @@ button,.button{background:var(--Degrade);background-size:500%;padding: 3px 6px}
 button:hover,.button:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
 button:active,.button:active{transform:scale(0.95)}
 
+.n0  { display: none; }
+.n1  { display: none; }
+.n2  { display: none; }
+.n3  { display: none; }
+.n4  { display: none; }
+.n5  { display: none; }
+.n6  { display: none; }
+.n7  { display: none; }
+.n8  { display: none; }
+.n9  { display: none; }
+.n10 { display: none; }
+.n11 { display: none; }
+.n12 { display: none; }
+.n13 { display: none; }
+.n14 { display: none; }
+.n15 { display: none; }
+.n16 { display: none; }
+.n17 { display: none; }
+.n18 { display: none; }
+.n19 { display: none; }
+.n20 { display: none; }
 
+
+/*Anailsar depois*/
+#Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
+.Dark #Alert{background:#1b1b1b}
+.Lite #Alert{background:#ffffff}
+.Dark #ModalNota{background:#ffffff;color:black}
