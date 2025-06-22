@@ -59,7 +59,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const Atual = {Pag:'#Pag_ORC'}
+    const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const NavImg= ['ORC','LOJA','GBRT','LIN','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
@@ -1114,36 +1114,44 @@
     <header class="Bt"> <!--HEADER-->
         <style>
             /*Fixos*/
-                header{padding:0px ; z-index:999}
+                header{padding:0px ; z-index:999 ; transition: width ease-in-out 0.2s}
+                #PAGES{transition: width ease-in-out 0.2s;}
                 header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
                 header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
-                .Body1 > header{height:8vh  ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover}
+                .Body1{justify-content: flex-start}
+                .Body1 > header{height:8vh  ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
                 .Body1 > #PAGES{height:auto ; width:100vw }
-                        .Body1 > header #Title    {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
-                        .Body1 > header #Title img{margin:5px; height:30px}         
-                        .Body1 > header #Title h1 {font-size:3vw; color:white}    @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
-                    .Body1 > header nav     {margin:0px 10px}                       @media(max-width:700px){.Body1 > header nav       {display:none}}
+                        .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
+                        .Body1 > header #Title #Logo{margin:5px; height:30px}         
+                        .Body1 > header #Title h1   {font-size:3vw; color:white}    @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
+                        .Body1 > header #recolhe    {display:none}
+                    .Body1 > header nav     {margin:0px 10px}                         @media(max-width:700px){.Body1 > header nav       {display:none}}
                     .Body1 > header nav img {height:22px; margin:0px 5px}
                     .Body1 > header nav p   {display:none; color:white}
                     .Body1 #NavPerf         {flex-direction:row}
             /*Body2*/
-                .Body2 > header{height:100vh ; width:18% ; overflow-y:scroll; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column;}
+                .Body2{justify-content: flex-start;}
+                .Body2 > header{height:100vh ; width:18% ; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column}
                 .Body2 > #PAGES{height:100vh ; width:82% ; overflow-y:scroll}
-                        .Body2 > header #Title    {margin-left:15px}
-                        .Body2 > header #Title img{margin:5px; height:30px}
-                        .Body2 > header #Title h1 {font-size:50%; color:white}
+                .Body2.recolhe > header{width:5% }
+                .Body2.recolhe > #PAGES{width:95%}
+                .Body2.recolhe #Logo{display: none}
+                        .Body2 > header #Title      {width: 90%; justify-content: space-between;}
+                        .Body2 > header #Title #Logo{margin:5px; height:30px}
+                        .Body2 > header #Title h1   {font-size:50%; color:white ; display: none;}
+                        .Body2 > header #recolhe    {height: 22px;}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}
-                    .Body2 > header nav p   {display:block; color:white}
-                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px}
-                    .Body2 > header nav div:hover{border-radius: 8px}
-                    .Body2 > header nav div:hover{background: #ffffff15}
+                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}      .Body2.recolhe > header nav img         {margin-right: 0px}
+                    .Body2 > header nav p   {display:block; color:white}                          .Body2.recolhe > header nav p   {display:none}
+                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px}  .Body2.recolhe > header nav div {justify-content: center}
+                    .Body2 > header nav div:hover     {border-radius: 8px}
+                    .Body2 > header nav div:hover     {background: #ffffff15}
                     .Body2 > header nav #HNVDv_LIN img{display: none}
                     .Body2 > header nav #HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3;}
-
                     .Body2 #NavPerf         {flex-direction:column; width: 90%}
                     .Body2 #Div-Pesq        {display:none}
+                    .Body2 #DivNav          {width:90%}
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
@@ -1155,8 +1163,9 @@
         </script>
 
         <div id="Title" class="Ct"> <!--Titulo-->
-            <img draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
+            <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
             <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.5</h1>
+            <img id="recolhe" src="./SVG/CONFIG.svg" onclick="Recolher()">
             <script>
                 function TrocaBody() {
                     if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')
@@ -1164,37 +1173,41 @@
                         console.log("Tela pequena")
                     }
                 }
+                function Recolher(){Tog($('body'),'recolhe')}
             </script>
         </div>
 
-        <style> /*Input de Pesquisa*/
-            #Div-Pesq{width: 30%}
-            #Div-Pesq .H_Pesq{background:#00000018; color:#ffffff;border: 1px solid #ef3aff}
-            #Div-Pesq .H_Pesq::placeholder{color: #ffffff;opacity:0.5}
-            #Lupa{top:8px; right:6px; width:17px; opacity:0.5}
-            #Lupa:hover{opacity:1}
-            .Pesq-Aa{top:8px; right:50px ; color:#ffffff} .Pesq-Aa.Atv{color:#00ff0d !important}
-            .Pesq-A_{top:8px; right:30px ; color:#ffffff} .Pesq-A_.Atv{color:#00ff0d !important}
-            .Pesq-Bj{top:8px; right:70px ; color:#ffffff} .Pesq-Bj.Atv{color:#00ff0d !important}
-            @media(max-width:500px){#Div-Pesq{width:50%}}
-        </style>
-        <div id="Div-Pesq" class="Rltv hov"></div><!--Pesquisa-->
-        <script>
-            Inn('#Div-Pesq',NavImg.map(Typ=>{return `<div id="Pesq_${Typ}" class="none">
-                    <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
-                    <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
-                    <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
-                    <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Bj</a>
-                    <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
-            </div>`}).join(''))
-        </script>
+        <div class="w30"> <!--Pesquisa-->
+            <style> /*Input de Pesquisa*/
+                #Div-Pesq .H_Pesq{background:#00000018; color:#ffffff;border: 1px solid #ef3aff}
+                #Div-Pesq .H_Pesq::placeholder{color: #ffffff;opacity:0.5}
+                #Lupa{top:8px; right:6px; width:17px; opacity:0.5}
+                #Lupa:hover{opacity:1}
+                .Pesq-Aa{top:8px; right:50px ; color:#ffffff} .Pesq-Aa.Atv{color:#00ff0d !important}
+                .Pesq-A_{top:8px; right:30px ; color:#ffffff} .Pesq-A_.Atv{color:#00ff0d !important}
+                .Pesq-Bj{top:8px; right:70px ; color:#ffffff} .Pesq-Bj.Atv{color:#00ff0d !important}
+                @media(max-width:500px){#Div-Pesq{width:50%}}
+            </style>
+            <div id="Div-Pesq" class="Rltv w100 hov"></div><!--Pesquisa-->
+            <script>
+                Inn('#Div-Pesq',NavImg.map(Typ=>{return `<div id="Pesq_${Typ}" class="none">
+                        <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
+                        <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
+                        <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
+                        <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Bj</a>
+                        <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
+                </div>`}).join(''))
+            </script>
+        </div>
 
-        <div id="NavPerf" class="Ct"> <!--Nav e Perfil-->
-            <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
+        <div id="DivNav"> <!--Nav-->
             <nav id="H_Nav" class="Ct"></nav>
-            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
-            
-            <div id="BdjLogin" class="Cl">
+            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
+        </div>  
+
+        <div> <!--Perfil-->
+            <div id="BdjLogin" class="Rltv Cl">
+                <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
                 <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px"    onclick="AbreLogin()">
                 <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj"                onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
                 <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
@@ -1296,10 +1309,18 @@
             
         </style>
 
+        <style>
+            .DivConf{background: #d6d6d6;}
+            .Body1 .DivConf{top: 55px}
+            .Body1 .Theadd{top:  100px}
+            .Body2 .DivConf{top:  0px}
+            .Body2 .Theadd{top:  50px}
+        </style>
+
         <div id="Pag_PDDS" class="TBLAA none Cl">
-            <div class="Ct Bt">
-                <button onclick="NovoPedido()">Novo Pedido +</button>
-                <h1 style="filter:none">Tabela de Pedidos</h1>
+            <div class="DivConf Ct Bt Stky">
+                <button onclick="NovoPedido()">+ Novo Pedido</button>
+                <h1 >Tabela de Pedidos</h1>
                 <button onclick="IMGENS()">Filtrarapeansimg</button>
                 <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
@@ -1310,7 +1331,7 @@
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                <thead class="Stky Theadd" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
@@ -1742,7 +1763,7 @@
             const INgeral = performance.now()
         </script>
 
-        <div id="Pag_ORC" class="none Cl" style="margin-top:60px;padding-top:20px">
+        <div id="Pag_ORC" class="none Cl">
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
