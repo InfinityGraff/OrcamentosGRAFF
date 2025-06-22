@@ -555,7 +555,7 @@
     </script>
 
     <script> // Manipulações Simples
-        function NavPesq(Pesq){$$(':scope > *',Pai($(Pesq))).forEach(e=>None(e));Show($(Pesq))}
+        function NavPesq(Pesq){$$('.pPesq').forEach(e=>None(e));Show($$(Pesq))}
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
 
         document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
@@ -567,7 +567,7 @@
         })})
 
         function Pesquisa(Val,Typ){ // dar uma Ajeitada pq eu já dei uma Baratinada, kkkk
-            const Aa=$(`#Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`#Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`#Pesq_${Typ} .Pesq-Bj.Atv`)
+            const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?'':'i' ; const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':'' ; const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
             const CleaVal = Val.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
 
                 const matches = [...Val.matchAll(/\[([^\]]*)\]/g)]
@@ -1115,13 +1115,13 @@
         <style>
             /*Fixos*/
                 header{padding:0px ; z-index:999 ; transition: width ease-in-out 0.2s}
-                #PAGES{transition: width ease-in-out 0.2s;}
+                #PAGES{transition: width ease-in-out 0.2s}
                 header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
                 header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
                 .Body1 > header{height:55px ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
-                .Body1 > #PAGES{height:auto ; width:100vw }
+                .Body1 > #PAGES{height:auto ; width:100vw}
                         .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
                         .Body1 > header #Title #Logo{margin:5px; height:30px}         
                         .Body1 > header #Title h1   {font-size:3vw; color:white}    @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
@@ -1131,24 +1131,24 @@
                     .Body1 > header nav p   {display:none; color:white}
                     .Body1 #NavPerf         {flex-direction:row}
             /*Body2*/
-                .Body2{justify-content: flex-start;}
+                .Body2{justify-content: flex-start}
                 .Body2 > header{height:100vh ; width:18% ; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column}
                 .Body2 > #PAGES{height:100vh ; width:82% ; overflow-y:scroll}
                 .Body2.recolhe > header{width:5% }
                 .Body2.recolhe > #PAGES{width:95%}
-                .Body2.recolhe #Logo{display: none}
-                        .Body2 > header #Title      {width: 90%; justify-content: space-between;}
+                .Body2.recolhe #Logo   {display: none}
+                        .Body2 > header #Title      {width: 90%; justify-content: space-between}
                         .Body2 > header #Title #Logo{margin:5px; height:30px}
-                        .Body2 > header #Title h1   {font-size:50%; color:white ; display: none;}
+                        .Body2 > header #Title h1   {font-size:50%; color:white ; display:none}
                         .Body2 > header #recolhe    {height: 22px;}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}      .Body2.recolhe > header nav img         {margin-right: 0px}
+                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}      .Body2.recolhe > header nav img {margin-right: 0px}
                     .Body2 > header nav p   {display:block; color:white}                          .Body2.recolhe > header nav p   {display:none}
                     .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px}  .Body2.recolhe > header nav div {justify-content: center}
                     .Body2 > header nav div:hover     {border-radius: 8px}
                     .Body2 > header nav div:hover     {background: #ffffff15}
                     .Body2 > header nav #HNVDv_LIN img{display: none}
-                    .Body2 > header nav #HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3;}
+                    .Body2 > header nav #HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
                     .Body2 #NavPerf         {flex-direction:column; width: 90%}
                     .Body2 #Div-Pesq        {display:none}
                     .Body2 #DivNav          {width:90%}
@@ -1191,7 +1191,7 @@
             <div id="Div-Pesq" class="Rltv w100 hov"></div><!--Pesquisa-->
             <script>
                 function Load_Pesq(Typ){
-                    return `<div id="Pesq_${Typ}" class="none">
+                    return `<div class="pPesq Pesq_${Typ}" class="none">
                         <input class="w100 H_Pesq" placeholder="Pesquisar em ${Typ}..." oninput="Pesquisa(this.value,'${Typ}')">
                         <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">Aa</a>
                         <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesquisa($('input',Pai(this)).value,'${Typ}')">A]</a>
@@ -1200,13 +1200,12 @@
                     </div>`
                 }
                 Inn('#Div-Pesq',NavImg.map(Typ=>Load_Pesq(Typ)).join(''))
-
             </script>
         </div>
 
         <div id="DivNav"> <!--Nav-->
             <nav id="H_Nav" class="Ct"></nav>
-            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('#Pesq_${e}');Load_Table('${e}')"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
+            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('.Pesq_${e}');Load_Table('${e}')"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
         </div>  
 
         <div> <!--Perfil-->
@@ -1316,17 +1315,21 @@
         <style>
             .DivConf{background:#d6d6d6}
             .DivConf h1{font-size: 25px;}
+
             .Body1 .DivConf{top:55px ; height: 40px}
             .Body1 thead   {top:95px}
+            .Body1 .PagPEsq{display:none}
+
             .Body2 .DivConf{top:0px  ; height: 40px}
-            .Body2 thead   {top:39px }
+            .Body2 thead   {top:39px}
+            .Body2 .PagPEsq{display:block}
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
                 <h1>Tabela de Pedidos</h1>
-                <div id="PagPesq_PDDS" class="Rltv" onload="Inn(this,Load_Pesq('PDDS'))"></div>
+                <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
                 <textarea style="background:gray" class="ppt rd h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
@@ -1346,6 +1349,8 @@
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('SERV')">Rfresh</button>
+                <h1>Tabela de Serviço</h1>
+                <div id="PagPesq_SERV" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
                 <button onclick="F_Clen('SERV')">Limpar Filtro</button>
             </div>
@@ -1359,6 +1364,8 @@
         <div id="Pag_PGMT" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('PGMT')">Nova Linha +</button>
+                <h1>Tabela de Pagamentos</h1>
+                <div id="PagPesq_PGMT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
                 <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
                 <button onclick="F_Clen('PGMT')">Limpar Filtro</button>
             </div>
@@ -1412,7 +1419,9 @@
 
         <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="AddROW('CLNT')">Nova Linha +</button>
+                <button onclick="AddROW('CLNT')">+ Nova Linha</button>
+                <h1>Tabela de Pagamentos</h1>
+                <div id="PagPesq_CLNT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
             </div>
             <table id="H_CLNT" class="hMin">
@@ -2436,7 +2445,7 @@
 
     function PosGet(){
         Onloads('body')
-        NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','#Pesq_'))
+        NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
         Format_Bndj_Clnt()
         RealTime()
         console.log('✅ Concluido')
