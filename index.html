@@ -1114,22 +1114,23 @@
     <header class="Bt"> <!--HEADER-->
         <style>
             /*Fixos*/
-                header{padding:0px ; z-index:999 ; transition: width ease-in-out 0.2s}
+                header{padding:0px ; z-index:999 ; color: white ; transition: width ease-in-out 0.2s}
                 #PAGES{transition: width ease-in-out 0.2s}
-                header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
-                header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+                #Login-Top      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
+                #Login-Top:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
                 .Body1 > header{height:55px ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
                 .Body1 > #PAGES{height:auto ; width:100vw}
                         .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
                         .Body1 > header #Title #Logo{margin:5px; height:30px}         
-                        .Body1 > header #Title h1   {font-size:3vw; color:white}    @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
+                        .Body1 > header #Title h1   {font-size:3vw}                   @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
                         .Body1 > header #recolhe    {display:none}
                     .Body1 > header nav     {margin:0px 10px}                         @media(max-width:700px){.Body1 > header nav       {display:none}}
                     .Body1 > header nav img {height:22px; margin:0px 5px}
-                    .Body1 > header nav p   {display:none; color:white}
+                    .Body1 > header nav p   {display:none}
                     .Body1 #NavPerf         {flex-direction:row}
+                    .Body2 #Login-Top       {display: none;}
             /*Body2*/
                 .Body2{justify-content: flex-start}
                 .Body2 > header{height:100vh ; width:18% ; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column}
@@ -1139,19 +1140,22 @@
                 .Body2.recolhe #Logo   {display: none}
                         .Body2 > header #Title      {width: 90%; justify-content: space-between}
                         .Body2 > header #Title #Logo{margin:5px; height:30px}
-                        .Body2 > header #Title h1   {font-size:50%; color:white ; display:none}
+                        .Body2 > header #Title h1   {font-size:50% ; display:none}
                         .Body2 > header #recolhe    {height: 22px;}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}      .Body2.recolhe > header nav img {margin-right: 0px}
-                    .Body2 > header nav p   {display:block; color:white}                          .Body2.recolhe > header nav p   {display:none}
-                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px}  .Body2.recolhe > header nav div {justify-content: center}
-                    .Body2 > header nav div:hover     {border-radius: 8px}
+                    .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}                           .Body2.recolhe > header nav img {margin-right: 0px}
+                    .Body2 > header nav p   {display:block ; font-size: 14px}                                            .Body2.recolhe > header nav p   {display:none}
+                    .Body2 > header nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .Body2.recolhe > header nav div {justify-content: center}
                     .Body2 > header nav div:hover     {background: #ffffff15}
                     .Body2 > header nav #HNVDv_LIN img{display: none}
                     .Body2 > header nav #HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
                     .Body2 #NavPerf         {flex-direction:column; width: 90%}
                     .Body2 #Div-Pesq        {display:none}
                     .Body2 #DivNav          {width:90%}
+                    .Body2 #BdjLogin        {width: 100% ; justify-content: flex-end; background: #38003fa6;}
+                    .Body2 #Login-Top       {display: flex; margin-right: 7px; font-size: 14px;}
+                    .NavAtv{background: #da00aa;}
+                    .NavAtv:hover{background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
         </style>
@@ -1205,26 +1209,36 @@
 
         <div id="DivNav"> <!--Nav-->
             <nav id="H_Nav" class="Ct"></nav>
-            <script>Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NavPag('#Pag_${e}',this);Atual['Pag']='#Pag_${e}';NavPesq('.Pesq_${e}');Load_Table('${e}')"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
+            <script>
+            function NAVPAG(e,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
+                NavPag(`#Pag_${e}`,Eu)
+                Atual['Pag']=`#Pag_${e}`
+                Rmv($$('.NavAtv',Pai(Eu)),'NavAtv') ; Add(Eu,'NavAtv')
+                NavPesq(`.Pesq_${e}`)
+                Load_Table(`${e}`)
+            }
+            Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
         </div>  
 
-        <div> <!--Perfil-->
-            <div id="BdjLogin" class="Rltv Cl">
-                <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
-                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="55px"    onclick="AbreLogin()">
-                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj"                onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+        <div id="BdjLogin" class="Ct"> <!--Perfil-->
+                <style>#Img-Perfil,#IMG-PerfiL{width:42px; height:42px; margin:4px 4px; top:3px}</style>
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
-            </div>
+                <div class="Rltv">
+                    <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="56px" top="0px"  onclick="AbreLogin()">
+                    <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj none"           onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                    <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+                </div>
+
 
             <style>
-                #MAIS{background:#4e4e4e; width: 250px}
-                #MAIS div{padding:10px;cursor:pointer;font-size:15px;width: 100%;}
+                .Body1 #H_Mais{top:55px; right:0px}
+                .Body2 #H_Mais{bottom: 0%; left:170px}
+                #MAIS{background:#4e4e4e; width:250px ; color:white}
+                #MAIS div{padding:10px;cursor:pointer;font-size:15px; width:100%}
                 #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
-                #MAIS div:last-child{padding: 10px}
+                #MAIS div:last-child{padding:10px}
                 #MAIS img{height:25px;margin-right:10px}
-                #MAIS p,#MAIS p a{font-size: 10px}
-                #H_Mais{top: 60px;right: 0px}
+                #MAIS p,#MAIS p a{font-size:10px}
             </style>
 
             <div id="H_Mais" class="Abslt none bndj">
