@@ -53,6 +53,8 @@
     
     .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
     .footbndjj span{color:#000000}
+
+    select.Psq{background: #ff7b00;}
 </style>
 
 <script> // Base de Dados
@@ -315,11 +317,12 @@
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
     const LocPcnt = (parte,total) => (parte / total)
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
-    const Grifar=(e,Rgx)=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
+    
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
     const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
     const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
+    const isBdj=e=> !!e.closest('.BndjTBL')
 
     // Gets
     const Rx2=arry=>Rx(['Rastr',...arry])
@@ -366,19 +369,8 @@
     }
 </script>
 
-<div> <!--Todo Conteúdo Relacionado as Tabelas JS e CSS-->
-    <!--Criar um Modo de Preview de Bandeijas e do conteúdo dela (Tanto pra Tabela Principal quanto pra Bandeijas e Sub-Bandeijas)
-        bandeja{
-            Modo1 = Bandeija Flutiante, o modelo q já tem
-            Modo2 = Bandeija dentro da tabela Misturada
-        }
-        conteúdo{
-            Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
-            Modo2 = Formato de Lista , igual oq já tem no Sugg
-            Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
-        }
-    -->
-    <style> /*Todo o CSS da Tabela*/
+<div> <!--JS e CSS das Tabelas-->
+    <style> /*CSS das Tabelas*/
         .BNdj{transform:translate(-50%,0%); left:50%; z-index:500}
         .BNdj > a{position:absolute; bottom:100%; left:50%; transform:translate(-50%,0%) ; height:10px; z-index:1}
 
@@ -430,8 +422,82 @@
         .AutoComp{background: #94949473}
         .CorID   {background: #94949473}
 
-        td       .grifoo{display: none ; background: #ff8800; height: 5px; width: 5px ; left: 0px;}
-        td.Grifo .grifoo{display: block}
+        td        .grifoo{display: none ; height: 5px; width: 5px ; left: 0px;}
+        td.Grifo2 .grifoo{display: block ; background: #ff880060}
+        td.Grifo1 .grifoo{display: block ; background: #ff8800fd}
+
+            table{text-align:center;border-collapse:collapse}
+                .Dark .TBLAA table{background: #222222}
+                .Lite .TBLAA table{background: white}
+            .TBLAA th{padding:4px 6px}
+                .Dark .TBLAA th,.Dark .TBLAA td{border:1px solid #cccccc27}
+                .Lite .TBLAA th,.Lite .TBLAA td{border:1px solid #00000041}
+                .Dark .TBLAA th{background: #161616;color:white}
+                .Lite .TBLAA th{background: #8b0085;color:white}
+                    .Lite .TBLAA td.Foco{background:#c300ff2a}
+                    .Dark .TBLAA td.Foco{background:#ffffff18}
+                .Dark .TBLAA tfoot{background:#111111;color:white}
+                .Lite .TBLAA tfoot{background:#8b0085;color:white}
+            
+            .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
+
+            .TBLAA .hMin td{height:10px}
+            .TBLAA .hMin td select,.hMin td input{height: 17px !important}
+                .TBLAA td .svg-Lixo{height:17px}
+                .TBLAA td img{height:17px; width: auto;}
+            .TBLAA .hMin tfoot td{padding:8px 6px}
+            
+            .TableMORE thead{background:#0000007c}
+            .More{margin:5px; padding:5px 10px; height:20px}
+
+            .TBLAA tfoot a{color: #00df00;}
+            .TBLAA tfoot .RS{color: #00df00; font-size: 7px;}
+
+            .teste{color: #79ff79;}
+
+            #Rodape{height: 200px;}
+
+            .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
+
+            /*Talvez toda essa trolha de pra simplificar, pois isso é só pra fazer as Linhas*/
+            .Bdj_SERV > tbody > tr > td:nth-child(3) ,.Bdj_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(9) ,.Bdj_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            .Bdj_SERV > tbody > tr > td:nth-child(17),.Bdj_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
+
+            #H_SERV > tbody > tr > td:nth-child(3) ,    #H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(9) ,    #H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(13),    #H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
+            #H_SERV > tbody > tr > td:nth-child(17),    #H_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
+
+            #H_SERV > tbody > tr > td:nth-child(11),    #H_SERV > thead > tr > th:nth-child(11){width: 15px !important;}
+            #H_SERV > tbody > tr > td:nth-child(12),    #H_SERV > thead > tr > th:nth-child(12){width: 15px !important;}
+
+            .TBLAA > table > tbody > tr > td:nth-child(1){background: #a7a7a78e !important}
+
+
+            /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
+            
+            .bnDJ .Bdj_ABCD td:nth-child(1){width: 23px;}
+            .bnDJ .Bdj_ABCD td:nth-child(2){width: 190px;}
+            .bnDJ .Bdj_ABCD td:nth-child(3){width: 50px;}
+            .bnDJ .Bdj_ABCD td:nth-child(4){width: 23px;}
+            .bnDJ .Bdj_ABCD td:nth-child(5){width: 80px;}
+            .bnDJ .Bdj_ABCD td:nth-child(6){width: 50px;}
+            .bnDJ .Bdj_ABCD td:nth-child(7){width: 80px;}
+            /*.bnDJ .Bdj_ABCD td:nth-child(8){width: 200px;}*/
+            .bnDJ .Bdj_ABCD td:nth-child(9){width: 30px;}
+
+            .DivConf{background:#d6d6d6}
+            .DivConf h1{font-size: 25px;}
+
+            .Body1 .DivConf{top:55px ; height: 40px}
+            .Body1 thead   {top:95px}
+            .Body1 .PagPEsq{display:none}
+
+            .Body2 .DivConf{top:0px  ; height: 40px}
+            .Body2 thead   {top:39px}
+            .Body2 .PagPEsq{display:block}
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
@@ -527,7 +593,7 @@
                                     : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
-            const Retorno = arry.map((e,X)=>{if(X>10){return} ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
+            const Retorno = arry.map((e,X)=>{/*if(X>10){return}*/ ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
 
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
@@ -556,10 +622,9 @@
         // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
     </script>
 
-    <script> // Manipulações Simples
-        function NavPesq(Pesq){$$('.pPesq').forEach(e=>None(e));Show($$(Pesq))}
+    <script> // SIMPLES  - ⭐_ _ _ _
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
-
+        
         document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
             document.addEventListener('keydown',function(event){
                 if(event.key==='Escape'){
@@ -567,8 +632,15 @@
                     else{$$(`${Atual.Pag} .BNdj`).forEach(e=>Add_N(e))}
                 }// F_Clen(Atual.Pag) // se for outro botão
         })})
+    </script>
 
-        function Pesq(Inpt,Typ){
+    <script> // PESQUISA - ⭐⭐⭐⭐_
+        const NavPesq =(Pesq   )=>$$('.pPesq').forEach(e=>None(e));Show($$(Pesq))
+        const Grifar  =(e,Rgx  )=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
+        const Espelhar=(Org,Dst)=>{Dst.forEach(e=>{e.innerHTML = Org.innerHTML ; $('input',e) ? $('input',e).value = $('input',Org).value : null})} // Provavelmnte da pra usar com outras coisas tbm fora Pesq
+
+        function Pesq(Inpt,Typ){                // ✔️ Fazer a Pesquisa
+            Espelhar(Pai(Inpt),$$(`.Pesq_${Typ}`).filter(e=>e!==Pai(Inpt)))
             if(Typ=='ORC'){
                 const r = new RegExp(RxClear(Inpt.value),'i')
                 $$('#Div-Prod > div').forEach(e=>{
@@ -576,45 +648,38 @@
                     e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
             })}
             else if($(`#Pag_${Typ}`).classList.contains('TBLAA')){ // Conferir se a pesquisa é uma Tabela
-                console.log('é uma Tabela')
                 const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'
                 const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''
                 const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
                 const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
-
+                const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
                     const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
                     const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
                     const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
+                TRs(Typ).forEach(tr=>{                                   
+                    const P_P2  = !COL2 ? $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} .P-P`,tr)                                        // Fora ou Fora e Dentro
+                                        : $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col((COL1||'').toUpperCase(),COL2):'td'} .P-P`,tr)  // Apenas Dentro da Bandeja
 
-                    console.log('COL1',COL1,Col(Typ                ,COL1),'>',CleaVal)
-                    //console.log('COL2',COL2,Col(COL1?.toUpperCase(),COL2),'>',CleaVal)
-
-                    const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
-
-                    TRs(Typ).forEach(tr=>{
-                        const P_P2 = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} p.P-P`,tr)                                   // Fora ou Fora e Dentro
-                        // const P_P  = $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col(COL1.toUpperCase(),COL2):'td'} p.P-P`,tr)   // Apenas Dentro da Bandeja
-
-                        const Cnct = P_P2.map(Rx=>Rx.textContent).join('#')
-                        P_P2.forEach(Rx=>{ //Grifar
-                            Inn(Rx,Grifar(Rx.textContent,regex)) // Grifar o Texto encontrado
-                            if(regex.test(Rx.textContent) && isBdj(Rx)){Add(_td(_tr(Rx)),'Grifo')}})
-                        if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
-                    })
-                    
-
-
-
-                Rfresh_Foot()
+                    const Cnct = P_P2.map(Rx=>VAL(Rx)).join('#')
+                    P_P2.forEach(Rx=>{if(Rx.tagName=='P'){Inn(Rx,Grifar(Rx.textContent,regex))}else{regex.source!==''&&regex.test(VAL(Rx))&&Inpt.value!=='' ? Add(Rx,'Psq') : Rmv(Rx,'Psq')}})  // Grifar o Texto encontrado // o else é se n for tag p, provavelmente é um Select
+                    $$(Rx2([Typ,'Bndj']),tr).forEach(e=>{                    // Cria a Bolinha
+                        const Camada1_p = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                        const Camada1_s = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
+                        const Camada2_p = $$(               '.BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                        const Camada2_s = $$(               '.BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
+                        if(Camada1_p||Camada1_s){Add(e,'Grifo1')}else{Rmv(e,'Grifo1')}
+                        if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
+                    })                       
+                    if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
+                })
+                // Rfresh_Foot()
             }
-            // Grifa dentro, mas deixa uma bolinha fora pra saber q o conteúdo ta dentro!
-            // depois encontrar mais de 1 correpondência na mesma linha
-            // Lembrando q da erro em Select, provavelmente em inpuit
-            // Fazer a Pesquisa em uma Determinada Coluna: [Serv] [Grad] A
-        }
+            // Depois Encontrar mais de 1 Correpondência na mesma linha
+            // Depois criar uma configuração de Pesquisa q troca de oninput para onkeyEnter (pra n ficar muito Pezado)
+        } 
     </script>
 
-    <script> // FILTROS (Quase Perfeito)
+    <script> // FILTROS  - ⭐⭐⭐⭐_
         const Tm_thSort=(arr,Typ)=>arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
@@ -630,19 +695,19 @@
                         </div>
                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
 
-        const Trato2=(Arr,col)=>{ // SIMPLIFICAR
+        const Trato2=(Arr,col)=>{               // ❌ Corrige Palavras //SIMPLIFICAR//
             return col==='Valr' ? Arr.map(e=>e.replace('R$','').trim())
                   :col==='Pgmt' ? Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
                   :Arr
         }
-        const Trato=(val,col)=>{  // SIMPLIFICAR
+        const Trato=(val,col)=>{                // ❌ Corrige Palavras //SIMPLIFICAR//
             console.log(val,col)
             return col=='Data' ? BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
                   :col=='Valr' ? Cm(val)
                   :val
         }
 
-        function Palavras(Typ,Col,n){
+        function Palavras(Typ,Col,n){           // ✔️ Encontra as Palavras q vai Exibir no Filtro
             const IN = performance.now()                                
                 const Clientes = ["Id","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
                 const Servicos = ['Id','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
@@ -669,7 +734,7 @@
                 return Valls
         }
 
-        function Tm_Filt(Eu,Typ,col){ // Depende da tabela Carregada
+        function Tm_Filt(Eu,Typ,col){           // ✔️ Depende da Tabela Carregada
             const IN = performance.now()
             const th = $('.THSugg',Eu)
             const X = IdxDe(_th(th))+1           
@@ -678,8 +743,8 @@
             const QRY = [Typ,col]
 
             $('.conffffff',_th(th)).innerHTML = `
-                <span class="HOV ppt Ct" onclick="F_Filt(this,${Typ},${col},'Todos')"                 ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
-                <span class="HOV ppt Ct" onclick="F_Filt(this,${Typ},${col},'${Qry_N}','${X}')"       ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
+                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"                 ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
+                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')"       ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
                 <span class="HOV ppt Ct" onclick=""                                     ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"              ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
                 <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')" ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
@@ -697,7 +762,7 @@
             Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt(${Typ},${col}): ${Perform}ms`)
         }
 
-        function F_Filt(btn,Typ,cOl,Qry,Col){ // Função q Filtra a Bandeijinha de Filtros
+        function F_Filt(btn,Typ,cOl,Qry,Col){   // ✔️ Filtra o Filter
             //const QRY = Qry.replace('` n`','" n"')
             const ThSug = $('.THSugg',_th(btn))
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
@@ -715,7 +780,7 @@
             // Exibir a quantidade de clientes Visiveis
         }
 
-        function F_Clik(Eu,Qry){// Função que Oculta e Exibe conforme Critério do Filtro
+        function F_Clik(Eu,Qry){                // ✔️ Executa o Filto na Tabela
             event.preventDefault()
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
@@ -723,8 +788,8 @@
             const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
             Notifi('Atv') ; Notifi('Rtv')
 
-            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
-            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>`\\b${Inn(e)}\\b`).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>`\\b${Inn(e)}\\b`).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
             // console.log('Atv:',Ativos,' - Rtv:',Rtivos)
 
             const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
@@ -751,7 +816,7 @@
             Rfresh_Foot()
         }
 
-        function F_Rndn(Eu,Qry,Clik){ // Funcionando Muito bem, depois EVOLUIR... preciso criar a remoção
+        function F_Rndn(Eu,Qry,Clik){           // ✔️ Randomiza
             const QRY = Qry.replace('` n`','" n"')
             const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
@@ -764,15 +829,15 @@
             $$(QRY).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
         }
         
-        function F_Clen(Typ){ // Limpa todos os Filtros (Deve Limpar Cores do Random também)
-            TRs(Typ).forEach(e=>For(20).forEach(E=>Rmv(e,`n${E}`))) // Exibe todas as Linhas
+        function F_Clen(Typ){                   // ✔️ Limpa todos os Filtros
+            TRs(Typ).forEach(e=>{For(20).forEach(E=>Rmv(e,`n${E}`)) ; e.style.background = ''}) // Exibe todas as Linhas e Limpa o Random
             $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
             const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
             Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
             Rfresh_Foot()
         }
 
-        function OpcyFilt(Typ){ // Desativa filtros indisponíveis (Função meio fraca e inutil (o bom seria simplifica-la))
+        function OpcyFilt(Typ){                 // ❌ Desativa Icon do F_Filt() //SIMPLIFICAR//
             const Valid = $$(`#${Typ} .ThFilt b`).some(e=>e.innerText!=0)
             const Icon1 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(1)`)
             const Icon2 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(2)`)
@@ -785,43 +850,7 @@
         }
     </script>
 
-    <script> // SUGGLINK (Voltar a Analizar ela!)
-        function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
-            const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
 
-            const Fillt=e=>{
-                return  Typ=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
-                        Typ=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
-                        Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
-                        true
-            }
-            const Tm_Exib = { // Isso Provavelmente vai ficar Fora daqui, pois vai ser usado naquela idéia q sujerir de Exibições de Bandeijas diferente e esta será uam versão abreviada do Modo Lista
-                 Mpag:(e)=> `${e.ID} - ${e.Clnt}, ${e.Valr} ${e.Form}`
-                ,Pgmt:(e)=> `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}`
-                ,Serv:(e)=> `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}`
-            }
-
-            if(Typ=='Mpag'){
-                // console.log(Eu,Typ)
-                // console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
-                $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                    Typ=='Mpag' ? Tm_Exib[Typ](e) :``
-                }</a></div>`).join('')
-                // deixar disponivel os que eu Permito selecionar mais de 1
-            }
-        }
-
-        function Linkar(Eu){
-            if(_table(Eu).id == 'H_MPAG'){EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
-            if(_table(Eu).id == 'H_GRAD'){
-                const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
-                const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
-                if(Inn($('p',Eu.closest('td')))=='-'){
-                    EditCell(Eu,NovoArry)
-                }else{EditCell(Eu,[...ArryAntg,...NovoArry])} 
-            }else{console.log($('span',Pai(Eu)))}
-        }
-    </script>
 
     <script> // RECOLOR
         // este Recolor vai ser Simplificado pois os critérios e condições serão feitos no AutoComplete
@@ -1094,6 +1123,44 @@
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 
+    <script> // SUGGLINK (Voltar a Analizar ela!)
+        function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada tabela
+            const [aa,Tbl,cc,Typ,dd]=D_Rastr2(R)
+
+            const Fillt=e=>{
+                return  Typ=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
+                        Typ=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
+                        Typ=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
+                        true
+            }
+            const Tm_Exib = { // Isso Provavelmente vai ficar Fora daqui, pois vai ser usado naquela idéia q sujerir de Exibições de Bandeijas diferente e esta será uam versão abreviada do Modo Lista
+                 Mpag:(e)=> `${e.ID} - ${e.Clnt}, ${e.Valr} ${e.Form}`
+                ,Pgmt:(e)=> `${e.ID} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}`
+                ,Serv:(e)=> `${e.ID} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}`
+            }
+
+            if(Typ=='Mpag'){
+                // console.log(Eu,Typ)
+                // console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                $('span',Pai(Eu)).innerHTML = J[Typ.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
+                    Typ=='Mpag' ? Tm_Exib[Typ](e) :``
+                }</a></div>`).join('')
+                // deixar disponivel os que eu Permito selecionar mais de 1
+            }
+        }
+
+        function Linkar(Eu){
+            if(_table(Eu).id == 'H_MPAG'){EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
+            if(_table(Eu).id == 'H_GRAD'){
+                const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
+                const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
+                if(Inn($('p',Eu.closest('td')))=='-'){
+                    EditCell(Eu,NovoArry)
+                }else{EditCell(Eu,[...ArryAntg,...NovoArry])} 
+            }else{console.log($('span',Pai(Eu)))}
+        }
+    </script>
+
     <script> // Previews
 
         function IMGENS(){ // função q filtra linhas se existir imagem
@@ -1239,14 +1306,13 @@
         </div>  
 
         <div id="BdjLogin" class="Ct"> <!--Perfil-->
-                <style>#Img-Perfil,#IMG-PerfiL{width:42px; height:42px; margin:4px 4px; top:3px}</style>
-                <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
-                <div class="Rltv">
-                    <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="56px" top="0px"  onclick="AbreLogin()">
-                    <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj none"           onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                    <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
-                </div>
-
+            <style>#Img-Perfil,#IMG-PerfiL{width:42px; height:42px; margin:4px 4px; top:3px}</style>
+            <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
+            <div class="Rltv">
+                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="56px" top="0px"  onclick="AbreLogin()">
+                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj none"           onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
+                <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
+            </div>
 
             <style>
                 .Body1 #H_Mais{top:55px; right:0px}
@@ -1278,88 +1344,10 @@
     </header>
 
     <div id="PAGES">
-        <style> /*Styles das Tabelas Principais*/
-            table{text-align:center;border-collapse:collapse}
-                .Dark .TBLAA table{background: #222222}
-                .Lite .TBLAA table{background: white}
-            .TBLAA th{padding:4px 6px}
-                .Dark .TBLAA th,.Dark .TBLAA td{border:1px solid #cccccc27}
-                .Lite .TBLAA th,.Lite .TBLAA td{border:1px solid #00000041}
-                .Dark .TBLAA th{background: #161616;color:white}
-                .Lite .TBLAA th{background: #8b0085;color:white}
-                    .Lite .TBLAA td.Foco{background:#c300ff2a}
-                    .Dark .TBLAA td.Foco{background:#ffffff18}
-                .Dark .TBLAA tfoot{background:#111111;color:white}
-                .Lite .TBLAA tfoot{background:#8b0085;color:white}
-            
-            .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
-
-            .TBLAA .hMin td{height:10px}
-            .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-                .TBLAA td .svg-Lixo{height:17px}
-                .TBLAA td img{height:17px; width: auto;}
-            .TBLAA .hMin tfoot td{padding:8px 6px}
-            
-            .TableMORE thead{background:#0000007c}
-            .More{margin:5px; padding:5px 10px; height:20px}
-
-            .TBLAA tfoot a{color: #00df00;}
-            .TBLAA tfoot .RS{color: #00df00; font-size: 7px;}
-
-            .teste{color: #79ff79;}
-
-            #Rodape{height: 200px;}
-
-            .icoFone{height: 12px !important ; width: 12px !important ; top: -16px; right: -87px;}
-
-            /*Talvez toda essa trolha de pra simplificar, pois isso é só pra fazer as Linhas*/
-            .Bdj_SERV > tbody > tr > td:nth-child(3) ,.Bdj_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
-            .Bdj_SERV > tbody > tr > td:nth-child(9) ,.Bdj_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
-            .Bdj_SERV > tbody > tr > td:nth-child(13),.Bdj_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
-            .Bdj_SERV > tbody > tr > td:nth-child(17),.Bdj_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
-
-            #H_SERV > tbody > tr > td:nth-child(3) ,    #H_SERV > thead > tr > th:nth-child(3) {border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(9) ,    #H_SERV > thead > tr > th:nth-child(9) {border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(13),    #H_SERV > thead > tr > th:nth-child(13){border-right: 4px solid #bb0092}
-            #H_SERV > tbody > tr > td:nth-child(17),    #H_SERV > thead > tr > th:nth-child(17){border-right: 4px solid #bb0092}
-
-            #H_SERV > tbody > tr > td:nth-child(11),    #H_SERV > thead > tr > th:nth-child(11){width: 15px !important;}
-            #H_SERV > tbody > tr > td:nth-child(12),    #H_SERV > thead > tr > th:nth-child(12){width: 15px !important;}
-
-            .TBLAA > table > tbody > tr > td:nth-child(1){background: #a7a7a78e !important}
-
-
-            /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
-            
-            .bnDJ .Bdj_ABCD td:nth-child(1){width: 23px;}
-            .bnDJ .Bdj_ABCD td:nth-child(2){width: 190px;}
-            .bnDJ .Bdj_ABCD td:nth-child(3){width: 50px;}
-            .bnDJ .Bdj_ABCD td:nth-child(4){width: 23px;}
-            .bnDJ .Bdj_ABCD td:nth-child(5){width: 80px;}
-            .bnDJ .Bdj_ABCD td:nth-child(6){width: 50px;}
-            .bnDJ .Bdj_ABCD td:nth-child(7){width: 80px;}
-            /*.bnDJ .Bdj_ABCD td:nth-child(8){width: 200px;}*/
-            .bnDJ .Bdj_ABCD td:nth-child(9){width: 30px;}
-            
-            
-        </style>
-
-        <style>
-            .DivConf{background:#d6d6d6}
-            .DivConf h1{font-size: 25px;}
-
-            .Body1 .DivConf{top:55px ; height: 40px}
-            .Body1 thead   {top:95px}
-            .Body1 .PagPEsq{display:none}
-
-            .Body2 .DivConf{top:0px  ; height: 40px}
-            .Body2 thead   {top:39px}
-            .Body2 .PagPEsq{display:block}
-        </style>
-
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
+                <button onclick="RfreshJson('PDDS')">Rfresh</button>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
@@ -2484,8 +2472,8 @@
         const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
         const Val = vall===""?"":VAL(e)
         if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
-        const isBdj  = !!e.closest('.BndjTBL')
-        const Lin    = isBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
+        const IsBdj  = isBdj(e) // !!e.closest('.BndjTBL') // antes tava isso
+        const Lin    = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
         const NewVal = vall===""?"":vall?vall:Val
         const Antg   = Nm(e)
         const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
@@ -2624,6 +2612,18 @@
             */
         // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
         // remover Abreviação dos Thead se precisar
+
+        // Modos de Preview da Tabela (Pra Variar)
+        // bandeja{
+        //     Modo1 = Bandeija Flutiante, o modelo q já tem
+        //     Modo2 = Bandeija Dentro da tabela Misturada
+        // }
+        // conteúdo{
+        //     Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
+        //     Modo2 = Formato de Lista , igual oq já tem no Sugg
+        //     Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
+        // }
+
 </script>
 
 <script> // Templates pra iserir mais pra frente
