@@ -61,10 +61,10 @@
     const Link  = 'http://localhost:3000'
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
-    const NavImg= ['ORC','LOJA','GBRT','LIN','PDDS','SERV','LIN','PGMT','GRAD','LIN','CLNT']
+    const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
+    const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let scrollPosition = [0,0]
-    const N_Brev={ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'Grades',CLNT:'Cliente'}
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -1141,7 +1141,7 @@
                         .Body2 > header #Title      {width: 90%; justify-content: space-between}
                         .Body2 > header #Title #Logo{margin:5px; height:30px}
                         .Body2 > header #Title h1   {font-size:50% ; display:none}
-                        .Body2 > header #recolhe    {height: 22px;}
+                        .Body2 > header #recolhe    {height: 18px;}
                     .Body2 > header nav     {margin:10px 0px; flex-direction:column; width: 100%}
                     .Body2 > header nav img {height:22px; margin:5px 0px ; margin-right: 9px;}                           .Body2.recolhe > header nav img {margin-right: 0px}
                     .Body2 > header nav p   {display:block ; font-size: 14px}                                            .Body2.recolhe > header nav p   {display:none}
@@ -1169,7 +1169,7 @@
         <div id="Title" class="Ct"> <!--Titulo-->
             <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
             <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.5</h1>
-            <img id="recolhe" src="./SVG/CONFIG.svg" onclick="Recolher()">
+            <img id="recolhe" src="./SVG/Recolhe.svg" onclick="Recolher()">
             <script>
                 function TrocaBody() {
                     if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')
