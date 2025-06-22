@@ -1120,7 +1120,7 @@
                 header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
-                .Body1 > header{height:8vh  ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
+                .Body1 > header{height:55px ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
                 .Body1 > #PAGES{height:auto ; width:100vw }
                         .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
                         .Body1 > header #Title #Logo{margin:5px; height:30px}         
@@ -1208,7 +1208,7 @@
         <div> <!--Perfil-->
             <div id="BdjLogin" class="Rltv Cl">
                 <style>#Img-Perfil,#IMG-PerfiL{width:45px; height:45px; margin:5px 5px; top:2px}</style>
-                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="60px"    onclick="AbreLogin()">
+                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="55px"    onclick="AbreLogin()">
                 <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj"                onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
                 <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
                 <div id="Login-Top"  class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
@@ -1310,19 +1310,20 @@
         </style>
 
         <style>
-            .DivConf{background: #d6d6d6;}
-            .Body1 .DivConf{top: 55px}
-            .Body1 .Theadd{top:  100px}
-            .Body2 .DivConf{top:  0px}
-            .Body2 .Theadd{top:  50px}
+            .DivConf{background:#d6d6d6}
+            .DivConf h1{font-size: 25px;}
+            .Body1 .DivConf{top:55px ; height: 40px}
+            .Body1 thead   {top:95px}
+            .Body2 .DivConf{top:0px  ; height: 40px}
+            .Body2 thead   {top:39px }
         </style>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
-                <h1 >Tabela de Pedidos</h1>
-                <button onclick="IMGENS()">Filtrarapeansimg</button>
-                <textarea style="background-color: gray;" class="ppt"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
+                <h1>Tabela de Pedidos</h1>
+                <button onclick="IMGENS()">FiltSoIMG</button>
+                <textarea style="background: gray" class="ppt h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <script>
                     const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
                     function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
@@ -1331,33 +1332,33 @@
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width: 0%; color: #4b4b4b;}</style>
             <table id="H_PDDS" class="hMin">
-                <thead class="Stky Theadd" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
             </table>
         </div>
 
         <div id="Pag_SERV" class="TBLAA none Cl">
-            <div class="Ct Bt">
+            <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('SERV')">Rfresh</button>
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
                 <button onclick="F_Clen('SERV')">Limpar Filtro</button>
             </div>
             <table id="H_SERV" class="hMin">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.SERV)[2],'SERV'))"></tr></tfoot>
             </table>
         </div>
 
         <div id="Pag_PGMT" class="TBLAA none Cl">
-            <div class="Ct Bt">
+            <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('PGMT')">Nova Linha +</button>
                 <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
                 <button onclick="F_Clen('PGMT')">Limpar Filtro</button>
             </div>
             <table id="H_PGMT" class="hMin">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PGMT)[2],'PGMT'))"></tr></tfoot>
             </table>
@@ -1367,7 +1368,7 @@
             <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
             </div>
             <table id="H_MPAG" class="w100 hMax">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
                 <tbody></tbody>
             </table>
 
@@ -1375,7 +1376,7 @@
 
         <div id="Pag_GRAD" class="TBLAA none Cl">
 
-            <div class="Ct Bt">
+            <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('GRAD')">Rfresh</button>
                 <button onclick="AddROW('GRAD')">Grad +</button>
                 <button onclick="AddROW('OOSS')">OS +</button>
@@ -1387,7 +1388,7 @@
                 <button onclick="MudarFormatBndj2('GRAD')">Bndj2</button>
             </div>
             <table id="H_GRAD" class="w100 hMax">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.GRAD)[2],'GRAD'))"></tr></tfoot>
             </table>
@@ -1397,7 +1398,7 @@
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.OOSS)[2],'OOSS'))"></tr></tfoot>
             </table>
             <table id="H_UBER" class="w100 hMax">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.UBER)[2],'UBER'))"></tr></tfoot>
             </table>
@@ -1405,12 +1406,12 @@
         </div>
 
         <div id="Pag_CLNT" class="TBLAA none Cl">
-            <div class="Ct Bt">
+            <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('CLNT')">Nova Linha +</button>
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
             </div>
             <table id="H_CLNT" class="hMin">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
+                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
