@@ -61,6 +61,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
+    const LimitLin = 1000
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
@@ -503,7 +504,7 @@
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
         const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
-        const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')}"></td>`).join('')
+        const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')} Rltv"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
         const BrevSrc={Grad:'Grad',Gimg:'Grad'}
@@ -593,7 +594,7 @@
                                     : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
-            const Retorno = arry.map((e,X)=>{/*if(X>10){return}*/ ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
+            const Retorno = arry.map((e,X)=>{if(X>LimitLin){return} ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
 
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
@@ -629,58 +630,65 @@
             document.addEventListener('keydown',function(event){
                 if(event.key==='Escape'){
                     if(EShow($('#FModal'))){return}
-                    else{$$(`${Atual.Pag} .BNdj`).forEach(e=>Add_N(e))}
+                    else{$$(`${Atual.Pag} .BNdj, ${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
                 }// F_Clen(Atual.Pag) // se for outro botão
         })})
     </script>
 
     <script> // PESQUISA - ⭐⭐⭐⭐_
-        const NavPesq =(Pesq   )=>$$('.pPesq').forEach(e=>None(e));Show($$(Pesq))
+        const NavPesq =(Pesq   )=>{$$('.pPesq').forEach(e=>None(e));Show($$(Pesq))}
         const Grifar  =(e,Rgx  )=>e.replace(Rgx,match=>`<strong style="background:orange" name="">${match}</strong>`)
         const Espelhar=(Org,Dst)=>{Dst.forEach(e=>{e.innerHTML = Org.innerHTML ; $('input',e) ? $('input',e).value = $('input',Org).value : null})} // Provavelmnte da pra usar com outras coisas tbm fora Pesq
+        let debounceTimer
 
         function Pesq(Inpt,Typ){                // ✔️ Fazer a Pesquisa
-            Espelhar(Pai(Inpt),$$(`.Pesq_${Typ}`).filter(e=>e!==Pai(Inpt)))
-            if(Typ=='ORC'){
-                const r = new RegExp(RxClear(Inpt.value),'i')
-                $$('#Div-Prod > div').forEach(e=>{
-                    $$(".rgx",e).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,r)}) // Grifar
-                    e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
-            })}
-            else if($(`#Pag_${Typ}`).classList.contains('TBLAA')){ // Conferir se a pesquisa é uma Tabela
-                const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'
-                const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''
-                const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
-                const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
-                const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
-                    const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
-                    const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
-                    const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
-                TRs(Typ).forEach(tr=>{                                   
-                    const P_P2  = !COL2 ? $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} .P-P`,tr)                                        // Fora ou Fora e Dentro
-                                        : $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col((COL1||'').toUpperCase(),COL2):'td'} .P-P`,tr)  // Apenas Dentro da Bandeja
+            clearTimeout(debounceTimer) // cancela chamadas anteriores
+            debounceTimer = setTimeout(() => {
+                Espelhar(Pai(Inpt),$$(`.Pesq_${Typ}`).filter(e=>e!==Pai(Inpt)))
+                if(Typ=='ORC'){
+                    const r = new RegExp(RxClear(Inpt.value),'i')
+                    $$('#Div-Prod > div').forEach(e=>{
+                        $$(".rgx",e).forEach(Rx=>{Rx.innerHTML = Grifar(Rx.textContent,r)}) // Grifar
+                        e.style.display = r.test(RxClear(e.textContent)) ? '' : 'none'      // Ocultar
+                })}
+                else if($(`#Pag_${Typ}`).classList.contains('TBLAA')){ // Conferir se a pesquisa é uma Tabela
+                    const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'
+                    const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''
+                    const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
+                    const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
+                    const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
+                        const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
+                        const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
+                        const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
+                    TRs(Typ).forEach(tr=>{                                   
+                        const P_P2  = !COL2 ? $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} .P-P`,tr)                                        // Fora ou Fora e Dentro
+                                            : $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col((COL1||'').toUpperCase(),COL2):'td'} .P-P`,tr)  // Apenas Dentro da Bandeja
 
-                    const Cnct = P_P2.map(Rx=>VAL(Rx)).join('#')
-                    P_P2.forEach(Rx=>{if(Rx.tagName=='P'){Inn(Rx,Grifar(Rx.textContent,regex))}else{regex.source!==''&&regex.test(VAL(Rx))&&Inpt.value!=='' ? Add(Rx,'Psq') : Rmv(Rx,'Psq')}})  // Grifar o Texto encontrado // o else é se n for tag p, provavelmente é um Select
-                    $$(Rx2([Typ,'Bndj']),tr).forEach(e=>{                    // Cria a Bolinha
-                        const Camada1_p = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
-                        const Camada1_s = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
-                        const Camada2_p = $$(               '.BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
-                        const Camada2_s = $$(               '.BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
-                        if(Camada1_p||Camada1_s){Add(e,'Grifo1')}else{Rmv(e,'Grifo1')}
-                        if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
-                    })                       
-                    if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
-                })
-                // Rfresh_Foot()
-            }
+                        const Cnct = P_P2.map(Rx=>VAL(Rx)).join('#')
+                        P_P2.forEach(Rx=>{if(Rx.tagName=='P'){Inn(Rx,Grifar(Rx.textContent,regex))}else{regex.source!==''&&regex.test(VAL(Rx))&&Inpt.value!=='' ? Add(Rx,'Psq') : Rmv(Rx,'Psq')}})  // Grifar o Texto encontrado // o else é se n for tag p, provavelmente é um Select
+                        $$(Rx2([Typ,'Bndj']),tr).forEach(e=>{                    // Cria a Bolinha
+                            const Camada1_p = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                            const Camada1_s = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
+                            const Camada2_p = $$(               '.BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                            const Camada2_s = $$(               '.BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
+                            if(Camada1_p||Camada1_s){Add(e,'Grifo1')}else{Rmv(e,'Grifo1')}
+                            if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
+                        })                       
+                        if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
+                    })
+                    Rfresh_Foot(Typ)
+                }
+            },300)
             // Depois Encontrar mais de 1 Correpondência na mesma linha
             // Depois criar uma configuração de Pesquisa q troca de oninput para onkeyEnter (pra n ficar muito Pezado)
-        } 
+        }
+        // Opção de pesquisar com Enter
+        // não chamar a função se digitar bem Rápido
     </script>
 
     <script> // FILTROS  - ⭐⭐⭐⭐_
-        const Tm_thSort=(arr,Typ)=>arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
+        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega todos os Th Filter
+            return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
                         <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
@@ -694,12 +702,14 @@
                             </div>
                         </div>
                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
+        }
 
         const Trato2=(Arr,col)=>{               // ❌ Corrige Palavras //SIMPLIFICAR//
             return col==='Valr' ? Arr.map(e=>e.replace('R$','').trim())
                   :col==='Pgmt' ? Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
                   :Arr
         }
+        
         const Trato=(val,col)=>{                // ❌ Corrige Palavras //SIMPLIFICAR//
             console.log(val,col)
             return col=='Data' ? BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
@@ -743,19 +753,20 @@
             const QRY = [Typ,col]
 
             $('.conffffff',_th(th)).innerHTML = `
-                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"                 ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
-                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')"       ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
-                <span class="HOV ppt Ct" onclick=""                                     ><img src="./SVG/Icon_Lin.svg">                                      </span> 
-                <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"              ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
-                <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')" ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
-            `
+                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"           ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
+                <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')" ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
+                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"             ><img src="./SVG/Icon_Lin.svg">                                      </span> 
+                <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
+                <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"              ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
+            ` // queria poder atualziar a tabela conforme eu troco essas cosias, q seria Trocar Destacar por Fittro, e já chamar a função novamente pra atualziar
+              // no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
             const Lista = Palavras(Typ,col)
             const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
 
             th.innerHTML = NovoArry.map(e=>`<div class="Ct w100">
-                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}')">-</div>
+                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}','${Typ}')">-</div>
                                                 <p>${e}</p>
-                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}')">+</div>
+                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}','${Typ}')">+</div>
                                                 </div>`).join('')
             
             const Perform = (performance.now()-IN).toFixed(2)
@@ -780,7 +791,7 @@
             // Exibir a quantidade de clientes Visiveis
         }
 
-        function F_Clik(Eu,Qry){                // ✔️ Executa o Filto na Tabela
+        function F_Clik(Eu,Qry,Typ){            // ✔️ Executa o Filto na Tabela
             event.preventDefault()
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
@@ -788,9 +799,9 @@
             const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
             Notifi('Atv') ; Notifi('Rtv')
 
-            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>`\\b${Inn(e)}\\b`).join('|') ; const RxAtv = new RegExp(Ativos,'i')
-            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>`\\b${Inn(e)}\\b`).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
-            // console.log('Atv:',Ativos,' - Rtv:',Rtivos)
+            const Front = $(`#icnFront_${Inn($('p',_th(Eu)))}.Atv`)
+            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
 
             const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
             const x = IdxDe(_th(Eu))+1           
@@ -813,7 +824,7 @@
                 })
             }
             // Maior < Menor >
-            Rfresh_Foot()
+            Rfresh_Foot(Typ)
         }
 
         function F_Rndn(Eu,Qry,Clik){           // ✔️ Randomiza
@@ -834,7 +845,7 @@
             $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
             const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
             Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
-            Rfresh_Foot()
+            Rfresh_Foot(Typ)
         }
 
         function OpcyFilt(Typ){                 // ❌ Desativa Icon do F_Filt() //SIMPLIFICAR//
@@ -849,8 +860,6 @@
             // Precisa evitar o Click, tem q dar Return quando isso tiver Ativo!
         }
     </script>
-
-
 
     <script> // RECOLOR
         // este Recolor vai ser Simplificado pois os critérios e condições serão feitos no AutoComplete
@@ -928,8 +937,15 @@
         // ao Editar muda a cor apenas da própria Linha
         function Re_color(Typ){
             TRs(Typ).forEach(e=>{
-            //    Add(e,'Formt_Verd')
+                console.log($$('.P-P',e).map(E=>VAL(E)).join('#'))
+                Add(e,'Formt_Verd')
             })
+        }
+        function R_Color(tr,Typ){
+            if(Typ=='SERV'){
+                console.log($$('.P-P',tr).map(e=>VAL(e))) 
+                Add(tr,'Formt_Verd')
+            }
         }
     </script>
     
@@ -1018,11 +1034,10 @@
                         // Camada 2
                             // camada 2
                             // camada 1
+                    R_Color(tr,Typ)
                 })
-                Re_color(Typ)
-            }
+                // Re_color(Typ)
 
-            if(Typ=='SERV'){
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
                     if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada
                     // Ação para o Forn
@@ -1034,8 +1049,7 @@
                         if(Vari(VAL(e)).length==1){$('select',Forn).value = Vari(VAL(e))[0]} // mudar pra o Unico q tem, se tiver
                         $$('option',Tipo).forEach(o=>{Add_N(o);if(Vari(VAL(e)).includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
                 })
-            }
-            
+            }           
 
             // Escolher para Todos ou Apenas 1 unica Linha! (Aplica na Linha ao Editar uma Célula)
             // Escolher a cor livremente por Fora!
@@ -1053,6 +1067,19 @@
         }
     </script>
 
+    <style>
+        .footbndjj{
+            overflow: auto ; border:3px #ff00c8 solid ;
+            box-shadow: 3px -4px 6px #0000004d;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        .confFoot{
+            background: #ff00c8;
+            color: white;
+            height: 24px;
+        }
+    </style>
     <script> // REALTIME
         function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
@@ -1065,30 +1092,35 @@
             Tm_Filt(Eu,Typ,Col)
         }
 
-        function Rfresh_Foot(){ // jogar essas 3 primeiras const pra fora pra ser usada também no Filtro
-            const IN = performance.now()
-            const objClnt=()=>Colls('PDDS','Clnt',true).map(e=>Inn(e))
-            const objServ=()=>Colls('PDDS','Serv',true).map(e=>Pai(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+        function SOMAPgmt(Arr){
+            const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
+            let ArrPix = [] ; let ArrAv = []
+            Arr.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
+                    if      (RgxPixAV(I)[2]==='Pix'){ArrPix.push(Num(RgxPixAV(I)[1]))}
+                    else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
+            return Tm_PixAv(ArrPix,ArrAv)
+        }
 
-            function SOMAPgmt(Arr){
-                const Tm_PixAv=(Pix,Av)=>`<div class="Ct Ev"><div class="Ct">${Tm_RS(SOMA(Pix))}Pix</div> <div class="Ct">${Tm_RS(SOMA(Av))}Av</div></div>`
-                let ArrPix = [] ; let ArrAv = []
-                Arr.forEach(e=>{Inn(e).split('|').forEach(I=>{if(I===''){return}
-                        if      (RgxPixAV(I)[2]==='Pix'){ArrPix.push(Num(RgxPixAV(I)[1]))}
-                        else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
-                return Tm_PixAv(ArrPix,ArrAv)}
+        function Rfresh_Foot(typ){ 
+            let IN = performance.now()
+            const IIN = performance.now()
+            // Tentar usar esses Obj em Filter também pra carregar apenas 1 Vez
+                const objClnt = Colls('PDDS','Clnt',true).map(e=>Inn(e)) // Contar o Cliente Pelo ID
+                const objServ = Colls('PDDS','Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
 
-            $$(Rx2(['PDDS','Foot','Clnt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt()).length} Clientes</div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objClnt())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-            $$(Rx2(['PDDS','Foot','Serv'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${objServ().length} Serviços        </div> <div class="Abslt none Cl footbndjj">${ObjEtr(ContRepete(objServ())).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}</div>`}) // o Sort é só pra reordenar
-            $$(Rx2(['PDDS','Foot','Valr'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}</div><div id="Sommma">Soma: 00,00</div>`})
-            $$(Rx2(['PDDS','Foot','Pgmt'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
-            $$(Rx2(['PDDS','Foot','Cust'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}`})
-            $$(Rx2(['PDDS','Foot','Finc'])).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(Colls(Typ,Col,true),e=>Num(Inn(e))))}`})
-            
-            const FIM = performance.now() ; console.log(`⏱️ Rfresh_Foot(): ${(FIM-IN).toFixed(2)}ms`)
-        
-            // no ID contar a quantidade de Linhas q tem visiveis
-            // Contar o Cliente Pelo ID pois pode ter nomes repetidos, mas o ID vai ser diferente sempre
+            console.log(`⏱️ Rfresh_Foot:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now()
+
+            IN = performance.now()
+            $(Rx2(['PDDS','Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objClnt.length}         </div>`
+            $(Rx2(['PDDS','Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClnt).length} Clientes</div></div>` // o Sort é só pra reordenar
+            $(Rx2(['PDDS','Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
+            Array.of($(Rx2(['PDDS','Foot','Valr']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+            Array.of($(Rx2(['PDDS','Foot','Pgmt']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
+            Array.of($(Rx2(['PDDS','Foot','Cust']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
+            Array.of($(Rx2(['PDDS','Foot','Finc']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
+
+            console.log(`⏱️ Rfresh_Foot:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`)
+            console.log(`⏱️ Rfresh_Foot:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
         }
 
         function MudarFormatBndj1(Typ){
@@ -1118,7 +1150,7 @@
         }
 
         function RealTime(Typ){
-            Rfresh_Foot()
+            Rfresh_Foot(Typ)
             // Rfresh_Color()
         } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
@@ -1347,7 +1379,7 @@
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
-                <button onclick="RfreshJson('PDDS')">Rfresh</button>
+                <button onclick="RfreshJson('PDDS')">Recolor</button>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
@@ -1597,7 +1629,7 @@
                 input.Error{background:red}
                 select.Error{background:red}
 
-                #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); border-radius: 255px}
+                #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; -webkit-backdrop-filter:blur(5px) ; backdrop-filter:blur(5px); border-radius: 255px}
                 #FinaisCnvs{border: 2px solid #2e2e2e96}
                 .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
                 .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
