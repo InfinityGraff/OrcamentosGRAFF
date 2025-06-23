@@ -701,8 +701,8 @@
                         <div class="Rltv w100">
                             <div class="ShodShod BNdj Abslt Shdw none">
                                 <div class="conffffff Ev" onclick="ExibeInptData('${e}','${Typ}')"></div>
-                                ${e=='Data'?`<input type="date" onchange="RangeDate(this)" class="${Typ}-DataInn input_Mini LargInpt none">
-                                             <input type="date" onchange="RangeDate(this)" class="${Typ}-DataOut input_Mini LargInpt none">` : ''}
+                                ${e=='Data'?`<input type="date" onchange="RangeDate(this,'${Typ}')" class="${Typ}-DataInn input_Mini LargInpt none">
+                                             <input type="date" onchange="RangeDate(this,'${Typ}')" class="${Typ}-DataOut input_Mini LargInpt none">` : ''}
                                 <span class="THSugg Sugg Shdw Cl">${e}</span>
                             </div>
                         </div>
@@ -872,9 +872,18 @@
             Tog($(`.${Typ}-DataOut`),'none')
         }
 
-        function RangeDate(Eu){
-            const tSug = $('.THSugg',_th(Eu))   // ❌ //SIMPLIFICAR//
-
+        function RangeDate(Eu,Typ){
+            console.log('Datinha')
+            const inn  = $(`.${Typ}-DataInn`).value
+            const out  = $(`.${Typ}-DataOut`).value || inn
+            const tSugs = $$('.THSugg > div',_th(Eu))   // ❌ //SIMPLIFICAR//
+            tSugs.forEach(e=>{
+                const Data = $('p',e)
+                if(Data >= inn && Data <= out){
+                    const BtnDisp = $$('div',e)[1]
+                    DispClick(BtnDisp)
+                }
+            })
         }
 
     </script>
