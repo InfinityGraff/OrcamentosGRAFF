@@ -61,7 +61,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 1000
+    const LimitLin = 10
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
@@ -318,6 +318,7 @@
     const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
     const LocPcnt = (parte,total) => (parte / total)
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
+    const zipObj=(arr1,arr2)=>Object.fromEntries(arr1.map((k,i)=>[k,arr2[i]]))
     
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
@@ -678,7 +679,7 @@
                     })
                     Rfresh_Foot(Typ)
                 }
-            },300)
+            },100)
             // Depois Encontrar mais de 1 Correpondência na mesma linha
             // Depois criar uma configuração de Pesquisa q troca de oninput para onkeyEnter (pra n ficar muito Pezado)
         }
@@ -687,7 +688,7 @@
     </script>
 
     <script> // FILTROS  - ⭐⭐⭐⭐_
-        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega todos os Th Filter
+        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos
             return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
@@ -709,7 +710,7 @@
                   :col==='Pgmt' ? Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
                   :Arr
         }
-        
+
         const Trato=(val,col)=>{                // ❌ Corrige Palavras //SIMPLIFICAR//
             console.log(val,col)
             return col=='Data' ? BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
@@ -770,7 +771,7 @@
                                                 </div>`).join('')
             
             const Perform = (performance.now()-IN).toFixed(2)
-            Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt(${Typ},${col}): ${Perform}ms`)
+            Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt:(${Typ},${col}): ${Perform}ms`)
         }
 
         function F_Filt(btn,Typ,cOl,Qry,Col){   // ✔️ Filtra o Filter
@@ -861,91 +862,27 @@
         }
     </script>
 
-    <script> // RECOLOR
-        // este Recolor vai ser Simplificado pois os critérios e condições serão feitos no AutoComplete
-        // e esta função de recolor só vai pegar o resultado do Status, de cada tabela, e vai mudar as cores baseada na cor escolhida no thead
-        function Rfresh_Color(){ // também tem de   [separar Tipos, Agrupar, Ordenar,status conclusão]
-            const IN = performance.now()
-            const Typ  = 'PDDS'
-            const CC = {
-                SERV:[
-                    {Forn:["['Stock','Arte'].includes()",                            'Stok','Formt_Azul'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[` ==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Grafit','BPrint','Inová','Bureal','JLTal'].includes()",'Grad','Formt_Verd'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                    {Forn:["['Varyus'].includes()"                                 ,'Varys','Formt_Verd'],OK:['==true'],Entg:['==true'],Detg:[`!==""`],Grad:[`!==""`]}, // O Primeiro Define a cor, o Resto Define a Intencidade  
-                ],
-            }
-            TRs(Typ).forEach(tr=>Nm(tr,'')) // Limpar o Name de todas Linhas da Tabela
-            TRs(Typ).forEach(tr=>{          // Percorrer Cada Linha da Tabela de PDDS
-                const TD     =(stg)=>   $(`:scope > ${Col('PDDS',stg)}`     ,tr)
-                const Td_Val =(stg)=>Nm($(`:scope > ${Col('PDDS',stg)} .P-P`,tr))
-
-                function Validar(K,tyyp,trbdj){ // Validar pra saber se Corresponde ao Critério lá da base de dados
-                    const td = $(`:scope > ${Col(tyyp,K[0])}`,trbdj)
-                    const valor = VAL(td)
-                    const Stg = K[1][0].replace('()',`('${valor}')`)
-                    const Result = eval(`${K[1][0].includes('includes') ?'':'valor'} ${Stg}`)
-                    return Result
-                }
-
-                $$(`:scope .Bdj_SERV > tbody > tr`,TD('Serv')).forEach((trbdj,x)=>{ // oq fazer dentro da bandeja Serv
-                    let Acc = [] ; let Grup = []
-
-                    CC['SERV'].forEach((e,x)=>{const K = ObjEtr(e)[0] ; if(Validar(K,'SERV',trbdj)){Grup = [K[0],K[1][1],K[1][2],x]} }) // Conferir de qual Grupo ele Pertence
-                    if(Grup.length == 0){Grup = ['','','',0] ; return} // Dar String vazia caso não Pertença a nenhum Grupo
-                    ObjEtr(CC['SERV'][Grup[3]]).forEach(K=>{Acc.push(Validar(K,'SERV',trbdj) ? [K[0],true]: [K[0],false])}) // Conferir Intensidade
-                    const Concat = Acc.map(e=>{return e[1]==true ? e[0] : ''}).join('-') // Fazer o Concar pra Botar no SetAtributes (Concat Por Extenso)
-                    const Length = Concat.split('-').filter(v=>v).length
-                    const Pcnt = Length / Concat.split('-').length
-                    const JaFeito   = Concat.split('-')[1]==='OK'
-                    const Entg = Concat.split('-')[2]==='Entg'
-                    const Devendo = Td_Val('Valr')>Td_Val('Pgmt')
-                    const LucroOK = Td_Val('Cust')!=='' && Td_Val('Finc')!==''
-                    const TDStts = $(Rx2(['Stts','Slct'])+' select',tr)
-
-                    const CorTd   = LucroOK ? 'Formt_Azul' : Devendo&&Entg ? 'Formt_Redd' : Devendo&&JaFeito ? 'Formt_Orag' : Pcnt === 1 ? 'Formt_VerdOK' : 'Formt_Verd'
-                    const CorTr   = LucroOK ? 'Formt_Azul' : Devendo           ? 'Formt_Redd' : 'Formt_Verd'
-
-                    console.log('chegou 0')
-
-                    // será q ta pintando um moi de VEZ?
-                    Add(trbdj,Grup[2])      ; RGBa(trbdj     ,Pcnt) // Grup[2] é 'Formt_Verd' ou os outros
-                    Add(TD('Serv'),CorTd)   ; RGBa(TD('Serv'),Pcnt)
-                    Add(tr,CorTr)           ; RGBa(tr        ,Pcnt)
-                    Add(TDStts,CorTd)       ; RGBa(TDStts    ,Pcnt)
-                    Add($(`#H_SERV .${trbdj.classList[0]}`),Grup[2]) // Pintar a Tabela de Fora!
-
-                    TDStts.value = Devendo ? 'Devendo' : Entg ? 'Entg' : JaFeito ? 'JaFeito' : 'Produção'                    
-                })
-
-                if(Td_Val('Cust')!=='' && Td_Val('Finc')!==''){
-                    Add(TD('Cust'),'Formt_Azul')
-                    Add(TD('Finc'),'Formt_Azul')
-                }else if(Td_Val('Pgmt')==0){
-                    Add(TD('Valr'),'Formt_Redd')
-                    Add(TD('Pgmt'),'Formt_Redd')
-                }else if(Td_Val('Valr')>Td_Val('Pgmt')){
-                    Add(TD('Valr'),'Formt_Orag')
-                    Add(TD('Pgmt'),'Formt_Orag')
-                }else if(Td_Val('Valr')==Td_Val('Pgmt')){
-                    Add(TD('Valr'),'Formt_VerdOK')
-                    Add(TD('Pgmt'),'Formt_VerdOK')
-                }
-            })
-
-            console.log(`⏱️ Rfresh_Color(): ${(performance.now()-IN).toFixed(2)}ms`)
+    <script> // RECOLOR  - ⭐⭐_ _ _
+        function Re_colorAll(Typ){ // Muda a cor de Todas (Depois fazer apenas para as Visiveis)
+            TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})
         }
-        // ao Editar muda a cor apenas da própria Linha
-        function Re_color(Typ){
-            TRs(Typ).forEach(e=>{
-                console.log($$('.P-P',e).map(E=>VAL(E)).join('#'))
-                Add(e,'Formt_Verd')
-            })
+
+        const OB = { // Criterio 1 é Obrigaório, mas tbm terá outro critério de Comparação
+            SERV:['Serv','Tipo','Dsng','Forn','OK','Entg','Detg','Grad']
         }
-        function R_Color(tr,Typ){
-            if(Typ=='SERV'){
-                console.log($$('.P-P',tr).map(e=>VAL(e))) 
-                Add(tr,'Formt_Verd')
+        function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
+            if (Typ==='SERV'){
+                const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
+                const newobj = zipObj(OjKy(Typ),Arr)
+                const Atual  = OB[Typ].filter(k=>{const v = newobj[k] ; return v!=='' && v!==false && v!==undefined}) // esse false e undefined pode virar biblioteca
+                const pcnt   = Atual.length / OB[Typ].length
+                const opacy  = Math.min(Math.max(pcnt,0),1) // Entre 0 e 1
+                
+                Atual.forEach(e=>$(Rx2([Typ,e]),tr).style.background = `rgba(0, 180, 0, ${(opacy/2).toFixed(2)})`)   // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
+                tr.style.background = `rgba(0, 255, 0, ${(opacy/3).toFixed(2)})`                                     // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
             }
+            // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
+            // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
         }
     </script>
     
@@ -1081,13 +1018,13 @@
         }
     </style>
     <script> // REALTIME
-        function Load_Table(Typ){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
+        function Load_Table(Typ){ //acho q serve pra evitar q carregue novamente  // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
             RealTime(Typ)
         }
 
-        function Load_ThFilt(Eu,Typ,Col){ // Da um jeito de Remover daqui e Fundir dentro da Propria função
+        function Load_ThFilt(Eu,Typ,Col){ //acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; console.log(BS[Typ])
             Tm_Filt(Eu,Typ,Col)
         }
@@ -1101,26 +1038,31 @@
             return Tm_PixAv(ArrPix,ArrAv)
         }
 
-        function Rfresh_Foot(typ){ 
-            let IN = performance.now()
-            const IIN = performance.now()
-            // Tentar usar esses Obj em Filter também pra carregar apenas 1 Vez
-                const objClnt = Colls('PDDS','Clnt',true).map(e=>Inn(e)) // Contar o Cliente Pelo ID
-                const objServ = Colls('PDDS','Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+        function Rfresh_Foot(typ){  // Deixei ASYNC
+            setTimeout(() => {
+                let IN = performance.now()
+                const IIN = performance.now()
+                // Tentar usar esses Obj em Filter também pra carregar apenas 1 Vez
+                    const objClnt = Colls(typ,'Clnt',true).map(e=>Inn(e)) // Contar o Cliente Pelo ID
+                    const objServ = typ=="PDDS" ?
+                        Colls(typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
+                        : Colls(typ,'Serv',true).map(e=>VAL(e))
 
-            console.log(`⏱️ Rfresh_Foot:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now()
+                //console.log(`⏱️ Rfresh_Foot:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now() // manter em quanto Melhora
 
-            IN = performance.now()
-            $(Rx2(['PDDS','Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objClnt.length}         </div>`
-            $(Rx2(['PDDS','Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClnt).length} Clientes</div></div>` // o Sort é só pra reordenar
-            $(Rx2(['PDDS','Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
-            Array.of($(Rx2(['PDDS','Foot','Valr']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
-            Array.of($(Rx2(['PDDS','Foot','Pgmt']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
-            Array.of($(Rx2(['PDDS','Foot','Cust']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
-            Array.of($(Rx2(['PDDS','Foot','Finc']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
+                IN = performance.now()
+                // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
+                $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objClnt.length}         </div>`
+                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClnt).length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
+                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
+                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
+                Array.of($(Rx2([typ,'Foot','Finc']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Lucro: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
 
-            console.log(`⏱️ Rfresh_Foot:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`)
-            console.log(`⏱️ Rfresh_Foot:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
+                //console.log(`⏱️ Rfresh_Foot:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
+                console.log(`⏱️ Rfresh_Foot:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
+            },0)
         }
 
         function MudarFormatBndj1(Typ){
@@ -2492,7 +2434,7 @@
         Onloads('body')
         NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
         Format_Bndj_Clnt()
-        RealTime()
+        RealTime(Atual['Pag'].replace('#Pag_',''))
         console.log('✅ Concluido')
     }
 
