@@ -61,7 +61,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 10
+    const LimitLin = 100
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
@@ -338,7 +338,8 @@
     function VAL(e){
         const td = e.tagName === 'TD' ? e : _td(e)
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = ['Edit','Fx','Sugg','Auto','SVG','Soma','Data'].includes(R[3]) ? $('.P-P',td).textContent.trim()
+        const val = ['Edit','Fx','Sugg','Auto','SVG','Soma'].includes(R[3]) ? $('.P-P',td).textContent.trim()
+                : R[3]==='Data' ? Nm($('.P-P',td))
                 : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
                 : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
                 : R[3]==='Slct' ? $('select',td).value
@@ -373,7 +374,7 @@
 
 <div> <!--JS e CSS das Tabelas-->
     <style> /*CSS das Tabelas*/
-        .BNdj{transform:translate(-50%,0%); left:50%; z-index:500}
+        .BNdj{transform:translate(-50%,0%); left:50%; z-index:500 ; background: white;}
         .BNdj > a{position:absolute; bottom:100%; left:50%; transform:translate(-50%,0%) ; height:10px; z-index:1}
 
         .BndjSUG{padding:0px ; min-width: 200px}
@@ -391,6 +392,7 @@
         .ThFilt > div > div > .conffffff span.Atv{fill: #ffff00; background: #00df00;}
         
         .ShodShod{width: 250px}
+        .LargInpt{width: 80px}
 
         .THSugg{border-radius: 0 0 10px 10px !important}
             .THSugg div:hover{background:#df4ccb; color: white}
@@ -688,7 +690,7 @@
     </script>
 
     <script> // FILTROS  - ⭐⭐⭐⭐_
-        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos
+        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os input=[date])
             return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
@@ -698,7 +700,9 @@
 
                         <div class="Rltv w100">
                             <div class="ShodShod BNdj Abslt Shdw none">
-                                <div class="conffffff Ev"></div>
+                                <div class="conffffff Ev" onclick="ExibeInptData('${e}','${Typ}')"></div>
+                                ${e=='Data'?`<input type="date" onchange="RangeDate(this)" class="${Typ}-DataInn input_Mini LargInpt none">
+                                             <input type="date" onchange="RangeDate(this)" class="${Typ}-DataOut input_Mini LargInpt none">` : ''}
                                 <span class="THSugg Sugg Shdw Cl">${e}</span>
                             </div>
                         </div>
@@ -711,9 +715,9 @@
                   :Arr
         }
 
-        const Trato=(val,col)=>{                // ❌ Corrige Palavras //SIMPLIFICAR//
+        const Trato= (val,col)=>{               // ❌ Corrige Palavras //SIMPLIFICAR//
             console.log(val,col)
-            return col=='Data' ? BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
+            return col=='Data' ? YMD(val) // BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
                   :col=='Valr' ? Cm(val)
                   :val
         }
@@ -726,7 +730,7 @@
                 const Pedidoss = ['Id','Lin','Data']
                 const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
 
-                const Valls =   Col==='OK'        && Typ=="SERV" ? ['True','False'] :
+                const Valls =   Col==='OK'    && Typ=="SERV" ? ['True','False'] :
                                 Col==='Entg'  && Typ=="SERV" ? ['True','False'] : 
                                 Typ=="CLNT" && Clientes.includes(Col) ? Uniq(J.CLNT.map(E=>E[Col])) :
                                 Typ=="MPAG" && Mercapag.includes(Col) ? Uniq(J.MPAG.map(E=>E[Col])) :
@@ -756,6 +760,7 @@
             $('.conffffff',_th(th)).innerHTML = `
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"           ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')" ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
+                <input class="input_Mini LargInpt" placeholder="pesq">
                 <span id="icnFront_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"             ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
                 <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"              ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
@@ -792,7 +797,7 @@
             // Exibir a quantidade de clientes Visiveis
         }
 
-        function F_Clik(Eu,Qry,Typ){            // ✔️ Executa o Filto na Tabela
+        function F_Clik(Eu,Qry,Typ){            // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
             event.preventDefault()
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
@@ -809,9 +814,10 @@
             const Add_C=e=>Add(e,'filtTrue') ; const Add_F=e=>Add(e,'filtFals')
             const Rmv_C=e=>Rmv(e,'filtTrue') ; const Rmv_F=e=>Rmv(e,'filtFals')
 
-            if(true){ // este if diz se vai ser Combinado ou não
-                $$(Qry).forEach(e=>{ 
+            if(true){ // este if diz se vai ser Combinado ou não (Não Lembro oq é Combinado)
+                $$(Qry).forEach(e=>{
                     const VaL = VAL(_td(e)) || "'Vazio'"
+                    console.log(RxAtv)
                     const tr = _tr(e)
                     if(Ativos=='' && Rtivos==''){Rmv(tr,`n${x}`);Rmv_C(tr);Rmv_F(tr)}
                     else{
@@ -824,7 +830,6 @@
                     }
                 })
             }
-            // Maior < Menor >
             Rfresh_Foot(Typ)
         }
 
@@ -860,6 +865,18 @@
             }else{Icon2.forEach(e=>e.style.opacity = 0.4)}
             // Precisa evitar o Click, tem q dar Return quando isso tiver Ativo!
         }
+
+        function ExibeInptData(Col,Typ){        // ❌ //SIMPLIFICAR//
+            if(Col!=='Data'){return}
+            Tog($(`.${Typ}-DataInn`),'none')
+            Tog($(`.${Typ}-DataOut`),'none')
+        }
+
+        function RangeDate(Eu){
+            const tSug = $('.THSugg',_th(Eu))   // ❌ //SIMPLIFICAR//
+
+        }
+
     </script>
 
     <script> // RECOLOR  - ⭐⭐_ _ _
@@ -1217,6 +1234,10 @@
                     .NavAtv:hover{background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
+
+            .TBLAA tbody > tr       {background:transparent;transition:background 0.5s ease-out} /*  Saída lenta   */
+            .TBLAA tbody > tr:hover {background:#8000a0a6;transition:background 0.02s ease-in} /* Entrada rápida */
+
         </style>
         <script>
             const OFF =()=> 'OFF'
@@ -2578,14 +2599,8 @@
     // https://www.erome.com/a/Vk99UZ8L
     // https://www.erome.com/a/K0hAD4GJ
 
-        // isso aqui eu fiz pra ficar trocando a exibição de textos conforme resize
-            /*  
-                function checkThFilt(){$$('.ThFilt').forEach(th=>{$$('a p',th).forEach(e=>e.style.display = th.offsetWidth < 300 ?'none':'block')})}
-                window.addEventListener('load', checkThFilt)
-                window.addEventListener('resize', checkThFilt)
-            */
-        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
         // remover Abreviação dos Thead se precisar
+        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
 
         // Modos de Preview da Tabela (Pra Variar)
         // bandeja{
@@ -2597,6 +2612,14 @@
         //     Modo2 = Formato de Lista , igual oq já tem no Sugg
         //     Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
         // }
+
+        // O Filtro de Data quero fazer ordenar correto invertido
+        // No filtro de data mostrar um input Type="Date" (pra selecionar intervalo e Datas)
+        // Adicionar uma pesquisa dentro do Filtro (Pra pesquisar a lista q aparece no Filtro)
+        // No Recorte preencher a Grade com "-"
+        // Procurar todo mundo de camisa pra tentar fazer finalmente o relatório completo, no filtro Inova e vazio
+        // Fazer tanto o Filtro quanto o Footer localizar o Cliente Baseado no seu ID e dar Unique no ID e não no nome
+        // Mostrar a Soma do valor na Barra de Config
 
 </script>
 
