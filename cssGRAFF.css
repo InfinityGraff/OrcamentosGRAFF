@@ -20,7 +20,6 @@
         .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
           .Dark input:focus{background: #ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
           .Lite input:focus{                         border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
-      .input_Mini{height: 18px;}
 
 button,.button{background:var(--Degrade);background-size:500%;padding: 3px 6px}
 button:hover,.button:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}

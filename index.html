@@ -55,6 +55,8 @@
     .footbndjj span{color:#000000}
 
     select.Psq{background: #ff7b00;}
+
+    
 </style>
 
 <script> // Base de Dados
@@ -325,6 +327,7 @@
     const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
     const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
     const isBdj=e=> !!e.closest('.BndjTBL')
+    const isArr=e=>Array.isArray(e)
 
     // Gets
     const Rx2=arry=>Rx(['Rastr',...arry])
@@ -334,12 +337,13 @@
     const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
     const D_Rastr2=R=>R.split('-')
     const TRs=(Typ)=>$$(`#H_${Typ} > tbody > tr`)
+    const TH=(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
 
     function VAL(e){
         const td = e.tagName === 'TD' ? e : _td(e)
         const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = ['Edit','Fx','Sugg','Auto','SVG','Soma'].includes(R[3]) ? $('.P-P',td).textContent.trim()
-                : R[3]==='Data' ? Nm($('.P-P',td))
+        const val = ['Edit','Fixo','Sugg','Auto','SVG','Soma'].includes(R[3]) ? $('.P-P',td).textContent.trim()
+                : R[3]==='Data' ? Nm($('.P-P',td)).trim()
                 : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
                 : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
                 : R[3]==='Slct' ? $('select',td).value
@@ -370,6 +374,40 @@
         if(Tecla('ctrl')){return}
         else{ClickFora(div,()=>{Add_N(e)})}
     }
+
+    function OrdenarRows2(e,x,Cntd=null,order=null){ // se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
+        function AtualizaSetas(e,asc){
+            $$('th',e.closest('table')).forEach(th=>{const seta = $('i',th);if(seta){seta.style.opacity=0.5;seta.textContent='▼'}})
+            const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
+        }
+        const table = e.closest('table')
+        const tbody = $('tbody',table)
+        const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
+        const Get=e=> Cntd ? $(Cntd,e.children[x]) : e.children[x]
+
+        const Ordn = [...tbody.rows].sort((a,b)=>{
+            // Ordena se for Numeros
+            const valA = parseFloat(Txt(Get(a)).replace('R$',''))
+            const valB = parseFloat(Txt(Get(b)).replace('R$',''))
+            if(!isNaN(valA) && !isNaN(valB)){return asc ? valA-valB : valB-valA}
+
+            // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
+            const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
+            const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')
+            //console.log('a',Get(a),'>',VAL(Get(a)).trim(),'>',dateA)
+            //console.log('b',Get(b),'>',VAL(Get(b)).trim(),'>',dateB)
+            console.log('a')
+            if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
+                
+            // Ordena como texto se não forem números
+            const txtA = `${VAL(Get(a))}`.replace('R$','')
+            const txtB = `${VAL(Get(b))}`.replace('R$','')
+            return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
+        })
+        table.dataset.sortOrder = asc ? "asc" : "desc"
+        Ordn.forEach(r=>tbody.appendChild(r))
+        AtualizaSetas(e,asc)
+    }
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -392,7 +430,7 @@
         .ThFilt > div > div > .conffffff span.Atv{fill: #ffff00; background: #00df00;}
         
         .ShodShod{width: 250px}
-        .LargInpt{width: 80px}
+        
 
         .THSugg{border-radius: 0 0 10px 10px !important}
             .THSugg div:hover{background:#df4ccb; color: white}
@@ -502,10 +540,12 @@
             .Body2 .DivConf{top:0px  ; height: 40px}
             .Body2 thead   {top:39px}
             .Body2 .PagPEsq{display:block}
+
+            th input{height: 18px ; width: 80px}
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
-        const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[Array.isArray(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+        const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')} Rltv"></td>`).join('')
         const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
@@ -689,63 +729,59 @@
         // não chamar a função se digitar bem Rápido
     </script>
 
-    <script> // FILTROS  - ⭐⭐⭐⭐_
-        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os input=[date])
+    <script> // FILTROS  - ⭐⭐⭐⭐_  botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela
+        
+        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
             return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
-                        <i onclick="OrdenarRows(this,'${x}','p')">▼</i>
+                        <i onclick="OrdenarRows2(this,'${x}','p')">▼</i>
                         <b class="Ct none Atv">0</b>
                         <b class="Ct none Rtv">0</b>
 
                         <div class="Rltv w100">
                             <div class="ShodShod BNdj Abslt Shdw none">
-                                <div class="conffffff Ev" onclick="ExibeInptData('${e}','${Typ}')"></div>
-                                ${e=='Data'?`<input type="date" onchange="RangeDate(this,'${Typ}')" class="${Typ}-DataInn input_Mini LargInpt none">
-                                             <input type="date" onchange="RangeDate(this,'${Typ}')" class="${Typ}-DataOut input_Mini LargInpt none">` : ''}
+                                <div class="conffffff Ev" onclick="ShowDate(this,'${Typ}','${e}')"></div>
+                                ${e=='Data'?`<input type="date" onchange="RangeDate(this,'${Typ}','${e}')" class="D-Inn none">
+                                             <input type="date" onchange="RangeDate(this,'${Typ}','${e}')" class="D-Out none">` : ''}
                                 <span class="THSugg Sugg Shdw Cl">${e}</span>
                             </div>
                         </div>
                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
         }
 
-        const Trato2=(Arr,col)=>{               // ❌ Corrige Palavras //SIMPLIFICAR//
-            return col==='Valr' ? Arr.map(e=>e.replace('R$','').trim())
-                  :col==='Pgmt' ? Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | '))
-                  :Arr
+        const Trato=(Arr,col)=>{                // ❌ Corrige Palavras
+            return col==='Valr' ?  FazArry(Arr).map(e=>Cm(e.replace('R$','').trim()))     // Remove os R$ (não tão nessesário caso os dados venham certinhos)
+                 : col==='Pgmt' ?      Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | ')) // Pega apenas os ['Pix','Av'...]
+                 : Arr
         }
 
-        const Trato= (val,col)=>{               // ❌ Corrige Palavras //SIMPLIFICAR//
-            console.log(val,col)
-            return col=='Data' ? YMD(val) // BrevData(DMY(val)) // só esse q demora um pouquinho, se pá posso não abreviar
-                  :col=='Valr' ? Cm(val)
-                  :val
-        }
-
-        function Palavras(Typ,Col,n){           // ✔️ Encontra as Palavras q vai Exibir no Filtro
+        function Palavras(Typ,Col,n,Brute){     // ✔️ Encontra e Modifica as Palavras q vai Exibir no Filtro
             const IN = performance.now()                                
-                const Clientes = ["Id","Clnt","Cmpt","Cntt","Lcal","Loja","CtLj","Cat","Stts","Lin","Link"]
-                const Servicos = ['Id','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
+                const Clientes = ['Id','Clnt','Cmpt','Cntt','Lcal','Loja','CtLj','Cat','Stts','Lin','Link']
+                const Servicos = ['Id','Serv','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
                 const Pagament = ['Id','Desc','Data','Link','Mpag','Valr']
-                const Pedidoss = ['Id','Lin','Data']
-                const Mercapag = ['Id','Data','Valr','Hora','Mpag','Link']
+                const Pedidoss = ['Id','Lin' ,'Data']
+                const Mercapag = ['Id','Valr','Data','Hora','Mpag','Link']
 
-                const Valls =   Col==='OK'    && Typ=="SERV" ? ['True','False'] :
-                                Col==='Entg'  && Typ=="SERV" ? ['True','False'] : 
+                const Valls =   Brute=='Brute'                        ? Uniq(Colls(Typ,Col,n).map(e=>VAL(e)))             :
+                                Typ=="SERV" && Col==='OK'             ? ['true','false']            :
+                                Typ=="SERV" && Col==='Entg'           ? ['true','false']            : 
                                 Typ=="CLNT" && Clientes.includes(Col) ? Uniq(J.CLNT.map(E=>E[Col])) :
                                 Typ=="MPAG" && Mercapag.includes(Col) ? Uniq(J.MPAG.map(E=>E[Col])) :
-                                Typ=="SERV" && Servicos.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Serv'].map(E=>Trato(e[Col],Col)))) :
-                                Typ=="PGMT" && Pagament.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Pgmt'].map(E=>Trato(e[Col],Col)))) :
-                                Typ=="PDDS" && Pedidoss.includes(Col) ? Uniq(J.PDDS.map(e=>Trato(e[Col],Col))) :
+                                Typ=="SERV" && Servicos.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Serv'].map(E=>Trato(E[Col],Col)))) :
+                                Typ=="PGMT" && Pagament.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Pgmt'].map(E=>Trato(E[Col],Col)))) :
+                                Typ=="PDDS" && Pedidoss.includes(Col) ? Uniq(J.PDDS.map(e=>e[Col])) :
                                 Col=='Clnt' ? AllClnt :
-                                ['Cust','Finc','Calc'].includes(Col) ? Uniq(todoTitle[Col]) :
-                                Col==='Valr' && Typ=="PDDS" ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
-                                Col==="Serv" ? Uniq(todoTitle[Col]) :
+                                Typ=="PDDS" && ['Cust','Finc','Calc'].includes(Col) ? Uniq(todoTitle[Col]) :
+                                Typ=="PDDS" && Col==="Serv"                         ? Uniq(todoTitle[Col]) :
+                                Typ=="PDDS" && Col==='Valr'                         ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
                                 AllList.includes(Col) ? O[Col] :
-                                Uniq(Colls(Typ,Col,n).map(e=>e.innerText)) // PEZADO
+                                // o Obigetivo central da Função é Evitar isso!
+                                Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
 
                 const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 0.5 ? null : console.log(`⏱️🟡 Palavras(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
+                Perform < 0.5 ? null : console.log(`⏱️🟡 Palavras:(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
                 return Valls
         }
 
@@ -756,36 +792,35 @@
             const qry   = `#H_${Typ} > tbody > tr > ${Col(Typ,col)} > div > .P-P`
             const Qry_N = qry.replace('tr',"tr:not([class*=` n`])") // Aplicar apenas para Linhas Visiveis // Pode Sair!
             const QRY = [Typ,col]
+            const Ex = `Ex_Filt('${Typ}','${col}')`
 
             $('.conffffff',_th(th)).innerHTML = `
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"           ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')" ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
-                <input class="input_Mini LargInpt" placeholder="pesq">
-                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"             ><img src="./SVG/Icon_Lin.svg">                                      </span> 
+                <input class="" placeholder="pesq">
+                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv');${Ex}"       ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
-                <span id="icnFilt_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv')"              ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
-            ` // queria poder atualziar a tabela conforme eu troco essas cosias, q seria Trocar Destacar por Fittro, e já chamar a função novamente pra atualziar
-              // no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
+                <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="Tog(this,'Atv');${Ex}"       ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
+            `// no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
+
             const Lista = Palavras(Typ,col)
             const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
 
             th.innerHTML = NovoArry.map(e=>`<div class="Ct w100">
-                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}','${Typ}')">-</div>
+                                                <div class="ppt RD HOV" onclick="F_Clik(this);${Ex}">-</div>
                                                 <p>${e}</p>
-                                                <div class="ppt RD HOV" onclick="F_Clik(this,'${qry}','${Typ}')">+</div>
+                                                <div class="ppt RD HOV" onclick="F_Clik(this);${Ex}">+</div>
                                                 </div>`).join('')
             
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt:(${Typ},${col}): ${Perform}ms`)
         }
 
-        function F_Filt(btn,Typ,cOl,Qry,Col){   // ✔️ Filtra o Filter
-            //const QRY = Qry.replace('` n`','" n"')
+        function F_Filt(btn,Typ,cOl,Qry,Col){   // ✔️ Filtra o Filter (descobrir pq n funciona com Numeros)
             const ThSug = $('.THSugg',_th(btn))
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
             const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
-            // const col = $('p',_th(btn)).innerText
-            const Plvrs   = !arry && Trato2(Palavras(Typ,cOl,true),cOl)
+            const Plvrs   = !arry && Trato(Palavras(Typ,cOl,true,'Brute'),cOl) // tem q ser no Brute pra poder pegar apenas os visíveis
                 $$('p',ThSug).forEach(E=>{
                     if(Qry==='Todos'){Rmv_N(Pai(E))
                     }else if(arry){
@@ -794,30 +829,31 @@
                     }else if(Plvrs.includes(E.innerText)){Rmv_N(Pai(E))
                     }else{Add_N(Pai(E))}                   // da pra remover isso
                 })
-            // Exibir a quantidade de clientes Visiveis
         }
 
-        function F_Clik(Eu,Qry,Typ){            // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
+        function F_Clik(Eu){                    // ✔️ Pinta o Filt com Ativo e Desativo
             event.preventDefault()
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
             if(Inn(Eu)=='-'){if(PP.classList.contains('ThFilt_Atv')){Rmv(PP,'ThFilt_Atv')}else{Tog(PP,'ThFilt_Rtv')}} // Decide se é -
             const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
             Notifi('Atv') ; Notifi('Rtv')
+        }
 
-            const Front = $(`#icnFront_${Inn($('p',_th(Eu)))}.Atv`)
-            const Ativos = $$('.ThFilt_Atv',_th(Eu)).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
-            const Rtivos = $$('.ThFilt_Rtv',_th(Eu)).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
-
-            const Corlor = $(`#icnFilt_${Inn($('p',_th(Eu)))}.Atv`)
-            const x = IdxDe(_th(Eu))+1           
+        function Ex_Filt(Typ,col){              // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
+            const thh    = TH(Typ,col)
+            const Corlor = $(`#icnFilt_${Inn($('p',thh))}.Atv`)
+            const Front = $(`#icnFront_${col}.Atv`)
+            const Ativos = $$('.ThFilt_Atv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxAtv = new RegExp(Ativos,'i')
+            const Rtivos = $$('.ThFilt_Rtv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxRtv = new RegExp(Rtivos,'i')
+            const x = IdxDe(thh)+1           
             const Add_C=e=>Add(e,'filtTrue') ; const Add_F=e=>Add(e,'filtFals')
             const Rmv_C=e=>Rmv(e,'filtTrue') ; const Rmv_F=e=>Rmv(e,'filtFals')
 
             if(true){ // este if diz se vai ser Combinado ou não (Não Lembro oq é Combinado)
+                const Qry   = `#H_${Typ} > tbody > tr > ${Col(Typ,col)} > div > .P-P`
                 $$(Qry).forEach(e=>{
-                    const VaL = VAL(_td(e)) || "'Vazio'"
-                    console.log(RxAtv)
+                    const VaL = `${VAL(_td(e))}` || "'Vazio'"
                     const tr = _tr(e)
                     if(Ativos=='' && Rtivos==''){Rmv(tr,`n${x}`);Rmv_C(tr);Rmv_F(tr)}
                     else{
@@ -854,7 +890,7 @@
             Rfresh_Foot(Typ)
         }
 
-        function OpcyFilt(Typ){                 // ❌ Desativa Icon do F_Filt() //SIMPLIFICAR//
+        function OpcyFilt(Typ){                 // ❌ Ativar Desativa opacy do Icon do F_Filt() //SIMPLIFICAR//
             const Valid = $$(`#${Typ} .ThFilt b`).some(e=>e.innerText!=0)
             const Icon1 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(1)`)
             const Icon2 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(2)`)
@@ -866,26 +902,21 @@
             // Precisa evitar o Click, tem q dar Return quando isso tiver Ativo!
         }
 
-        function ExibeInptData(Col,Typ){        // ❌ //SIMPLIFICAR//
-            if(Col!=='Data'){return}
-            Tog($(`.${Typ}-DataInn`),'none')
-            Tog($(`.${Typ}-DataOut`),'none')
+        function ShowDate(Eu,Typ,Col){          // ✔️ Oculta e Exibe a Bandeija de Range Data
+            if(Col=='Data'){Tog($$(`.D-Inn,.D-Out`,_th(Eu)),'none')}
         }
 
-        function RangeDate(Eu,Typ){
-            console.log('Datinha')
-            const inn  = $(`.${Typ}-DataInn`).value
-            const out  = $(`.${Typ}-DataOut`).value || inn
-            const tSugs = $$('.THSugg > div',_th(Eu))   // ❌ //SIMPLIFICAR//
-            tSugs.forEach(e=>{
-                const Data = $('p',e)
-                if(Data >= inn && Data <= out){
-                    const BtnDisp = $$('div',e)[1]
-                    DispClick(BtnDisp)
-                }
+        function RangeDate(Eu,Typ,col){         // ✔️ Seleciona o Intervalo de Data
+            const inn   =  $(`.D-Inn`).value
+            const out   =  $(`.D-Out`).value || inn
+            $$('.THSugg > div',_th(Eu)).forEach(e=>{const D = $('p',e) // D é Data
+                if(Inn(D)>=inn && Inn(D)<=out){Add(D,'ThFilt_Atv')}
+                else{Rmv(D,'ThFilt_Atv')}
             })
+            Ex_Filt(Typ,col)
+            // Depois Evoluir pra Criar minha Próprio Calendário, pra eu poder fazer aquele Range de faixa
+            // Adicionar Botão de Todo Período (oq seria Remover todos os Filtros)
         }
-
     </script>
 
     <script> // RECOLOR  - ⭐⭐_ _ _
@@ -944,7 +975,7 @@
                     else{ // também conferir o valor que já tem antes!
                         const ItenSERV = LocIten(e.Serv,e.Tipo)
                         const LinGrad = J.GRAD?.find(x=>x.Id==e.Grad)?.ABCD||'' // Consulta
-                        if(Array.isArray(LinGrad)){
+                        if(isArr(LinGrad)){
                             const Linfilt = LinGrad.filter(G=>G.Nome!=="")
                                 const Filtrado = Linfilt.filter(G=>ItenSERV == extrairNomeSigla(G.Nome))
                                 if(Linfilt.length==1){return 'A'}
@@ -2632,7 +2663,7 @@
 
 </script>
 
-<script> // Templates pra iserir mais pra frente
+<script> // Templates pra iserir mais pra frente ⏳ ❌ ✔️
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
 </script>
 
