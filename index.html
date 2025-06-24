@@ -55,15 +55,13 @@
     .footbndjj span{color:#000000}
 
     select.Psq{background: #ff7b00;}
-
-    
 </style>
 
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 100
+    const LimitLin = 1000
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
@@ -374,40 +372,6 @@
         if(Tecla('ctrl')){return}
         else{ClickFora(div,()=>{Add_N(e)})}
     }
-
-    function OrdenarRows2(e,x,Cntd=null,order=null){ // se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
-        function AtualizaSetas(e,asc){
-            $$('th',e.closest('table')).forEach(th=>{const seta = $('i',th);if(seta){seta.style.opacity=0.5;seta.textContent='▼'}})
-            const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
-        }
-        const table = e.closest('table')
-        const tbody = $('tbody',table)
-        const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
-        const Get=e=> Cntd ? $(Cntd,e.children[x]) : e.children[x]
-
-        const Ordn = [...tbody.rows].sort((a,b)=>{
-            // Ordena se for Numeros
-            const valA = parseFloat(Txt(Get(a)).replace('R$',''))
-            const valB = parseFloat(Txt(Get(b)).replace('R$',''))
-            if(!isNaN(valA) && !isNaN(valB)){return asc ? valA-valB : valB-valA}
-
-            // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
-            const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
-            const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')
-            //console.log('a',Get(a),'>',VAL(Get(a)).trim(),'>',dateA)
-            //console.log('b',Get(b),'>',VAL(Get(b)).trim(),'>',dateB)
-            console.log('a')
-            if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
-                
-            // Ordena como texto se não forem números
-            const txtA = `${VAL(Get(a))}`.replace('R$','')
-            const txtB = `${VAL(Get(b))}`.replace('R$','')
-            return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
-        })
-        table.dataset.sortOrder = asc ? "asc" : "desc"
-        Ordn.forEach(r=>tbody.appendChild(r))
-        AtualizaSetas(e,asc)
-    }
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -666,7 +630,7 @@
         // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
     </script>
 
-    <script> // SIMPLES  - ⭐_ _ _ _
+    <script> // SIMPLES  - ⭐_ _ _ _ botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela 
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
         
         document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
@@ -729,9 +693,8 @@
         // não chamar a função se digitar bem Rápido
     </script>
 
-    <script> // FILTROS  - ⭐⭐⭐⭐_  botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela
-        
-        const Tm_thSort=(arr,Typ)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
+    <script> // FILTROS  - ⭐⭐⭐⭐_       
+        const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
             return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
@@ -750,13 +713,13 @@
                 </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Sugg
         }
 
-        const Trato=(Arr,col)=>{                // ❌ Corrige Palavras
+        const Trato=(Arr,col)=>{                 // ❌ Corrige Palavras
             return col==='Valr' ?  FazArry(Arr).map(e=>Cm(e.replace('R$','').trim()))     // Remove os R$ (não tão nessesário caso os dados venham certinhos)
                  : col==='Pgmt' ?      Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | ')) // Pega apenas os ['Pix','Av'...]
                  : Arr
         }
 
-        function Palavras(Typ,Col,n,Brute){     // ✔️ Encontra e Modifica as Palavras q vai Exibir no Filtro
+        function Palavras(Typ,Col,n,Brute){      // ✔️ Encontra e Modifica as Palavras q vai Exibir no Filtro
             const IN = performance.now()                                
                 const Clientes = ['Id','Clnt','Cmpt','Cntt','Lcal','Loja','CtLj','Cat','Stts','Lin','Link']
                 const Servicos = ['Id','Serv','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
@@ -785,7 +748,7 @@
                 return Valls
         }
 
-        function Tm_Filt(Eu,Typ,col){           // ✔️ Depende da Tabela Carregada
+        function Tm_Filt(Eu,Typ,col){            // ✔️ Depende da Tabela Carregada
             const IN = performance.now()
             const th = $('.THSugg',Eu)
             const X = IdxDe(_th(th))+1           
@@ -816,7 +779,7 @@
             Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt:(${Typ},${col}): ${Perform}ms`)
         }
 
-        function F_Filt(btn,Typ,cOl,Qry,Col){   // ✔️ Filtra o Filter (descobrir pq n funciona com Numeros)
+        function F_Filt(btn,Typ,cOl,Qry,Col){    // ✔️ Filtra o Filter (descobrir pq n funciona com Numeros)
             const ThSug = $('.THSugg',_th(btn))
             const FotBndj = Col ? $(`:scope > tfoot > tr > td:nth-child(${Col}) .footbndjj`,_table(btn)) : null
             const arry    = FotBndj ? $$('span',FotBndj).map(s=>s.innerText.split(':')[0]) : null
@@ -831,7 +794,7 @@
                 })
         }
 
-        function F_Clik(Eu){                    // ✔️ Pinta o Filt com Ativo e Desativo
+        function F_Clik(Eu){                     // ✔️ Pinta o Filt com Ativo e Desativo
             event.preventDefault()
             const PP = $('p',Pai(Eu)) // Valor Clicado
             if(Inn(Eu)=='+'){if(PP.classList.contains('ThFilt_Rtv')){Rmv(PP,'ThFilt_Rtv')}else{Tog(PP,'ThFilt_Atv')}} // Decide se é +
@@ -840,7 +803,7 @@
             Notifi('Atv') ; Notifi('Rtv')
         }
 
-        function Ex_Filt(Typ,col){              // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
+        function Ex_Filt(Typ,col){               // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
             const thh    = TH(Typ,col)
             const Corlor = $(`#icnFilt_${Inn($('p',thh))}.Atv`)
             const Front = $(`#icnFront_${col}.Atv`)
@@ -869,7 +832,7 @@
             Rfresh_Foot(Typ)
         }
 
-        function F_Rndn(Eu,Qry,Clik){           // ✔️ Randomiza
+        function F_Rndn(Eu,Qry,Clik){            // ✔️ Randomiza
             const QRY = Qry.replace('` n`','" n"')
             const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
@@ -882,7 +845,7 @@
             $$(QRY).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
         }
         
-        function F_Clen(Typ){                   // ✔️ Limpa todos os Filtros
+        function F_Clen(Typ){                    // ✔️ Limpa todos os Filtros
             TRs(Typ).forEach(e=>{For(20).forEach(E=>Rmv(e,`n${E}`)) ; e.style.background = ''}) // Exibe todas as Linhas e Limpa o Random
             $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
             const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
@@ -890,7 +853,7 @@
             Rfresh_Foot(Typ)
         }
 
-        function OpcyFilt(Typ){                 // ❌ Ativar Desativa opacy do Icon do F_Filt() //SIMPLIFICAR//
+        function OpcyFilt(Typ){                  // ❌ Ativar Desativa opacy do Icon do F_Filt() //SIMPLIFICAR//
             const Valid = $$(`#${Typ} .ThFilt b`).some(e=>e.innerText!=0)
             const Icon1 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(1)`)
             const Icon2 = $$(`#${Typ} .ThFilt .BNdj > div span:nth-child(2)`)
@@ -902,11 +865,11 @@
             // Precisa evitar o Click, tem q dar Return quando isso tiver Ativo!
         }
 
-        function ShowDate(Eu,Typ,Col){          // ✔️ Oculta e Exibe a Bandeija de Range Data
+        function ShowDate(Eu,Typ,Col){           // ✔️ Oculta e Exibe a Bandeija de Range Data
             if(Col=='Data'){Tog($$(`.D-Inn,.D-Out`,_th(Eu)),'none')}
         }
 
-        function RangeDate(Eu,Typ,col){         // ✔️ Seleciona o Intervalo de Data
+        function RangeDate(Eu,Typ,col){          // ✔️ Seleciona o Intervalo de Data
             const inn   =  $(`.D-Inn`).value
             const out   =  $(`.D-Out`).value || inn
             $$('.THSugg > div',_th(Eu)).forEach(e=>{const D = $('p',e) // D é Data
@@ -917,18 +880,51 @@
             // Depois Evoluir pra Criar minha Próprio Calendário, pra eu poder fazer aquele Range de faixa
             // Adicionar Botão de Todo Período (oq seria Remover todos os Filtros)
         }
+        
+        function Orden(e,x,Cntd=null,order=null){// ✔️ se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
+            function AtualizaSetas(e,asc){
+                $$('th',e.closest('table')).forEach(th=>{const seta = $('i',th);if(seta){seta.style.opacity=0.5;seta.textContent='▼'}})
+                const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
+            }
+            const table = e.closest('table')
+            const tbody = $('tbody',table)
+            const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
+            const Get=e=> Cntd ? $(Cntd,e.children[x]) : e.children[x]
+
+            const Ordn = [...tbody.rows].sort((a,b)=>{
+                // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
+                    const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
+                    const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')           
+                    if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
+
+                // Ordena se for Numeros
+                    const valA = parseFloat(Txt(Get(a)).replace('R$',''))
+                    const valB = parseFloat(Txt(Get(b)).replace('R$',''))
+                    if(!isNaN(valA) && !isNaN(valB)){return asc ? valA-valB : valB-valA}
+                    
+                // Ordena como texto se não forem números
+                    const txtA = `${VAL(Get(a))}`.replace('R$','')
+                    const txtB = `${VAL(Get(b))}`.replace('R$','')
+                    return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
+            })
+            table.dataset.sortOrder = asc ? "asc" : "desc"
+            Ordn.forEach(r=>tbody.appendChild(r))
+            AtualizaSetas(e,asc)
+        }
     </script>
 
     <script> // RECOLOR  - ⭐⭐_ _ _
-        function Re_colorAll(Typ){ // Muda a cor de Todas (Depois fazer apenas para as Visiveis)
+        function Re_colrAll(Typ){ // Muda a cor de Todas (Depois fazer apenas para as Visiveis)
             TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})
         }
+
+        // também seria bom Limpar tudo antes de Recolorir
 
         const OB = { // Criterio 1 é Obrigaório, mas tbm terá outro critério de Comparação
             SERV:['Serv','Tipo','Dsng','Forn','OK','Entg','Detg','Grad']
         }
         function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
-            if (Typ==='SERV'){
+            if(Typ==='SERV'){
                 const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
                 const newobj = zipObj(OjKy(Typ),Arr)
                 const Atual  = OB[Typ].filter(k=>{const v = newobj[k] ; return v!=='' && v!==false && v!==undefined}) // esse false e undefined pode virar biblioteca
@@ -941,6 +937,7 @@
             // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
             // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
         }
+        // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
     </script>
     
     <script> // AUTO COMPLETE
@@ -1028,9 +1025,7 @@
                         // Camada 2
                             // camada 2
                             // camada 1
-                    R_Color(tr,Typ)
                 })
-                // Re_color(Typ)
 
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
                     if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada
@@ -1221,7 +1216,6 @@
         }
 
     </script>
-    
 </div>
 
 <body class="Dark Body1 Ct" onclick="NoneBndj()">
@@ -1275,8 +1269,10 @@
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
 
-            .TBLAA tbody > tr       {background:transparent;transition:background 0.5s ease-out} /*  Saída lenta   */
-            .TBLAA tbody > tr:hover {background:#8000a0a6;transition:background 0.02s ease-in} /* Entrada rápida */
+            /*.TBLAA tbody > tr       {background:transparent;transition:background 0.5s ease-out} /*  Saída lenta   */
+            /*.TBLAA tbody > tr:hover {background:#8000a0a6;transition:background 0.02s ease-in} /* Entrada rápida */
+            
+            .TBLAA tbody > tr:hover {background:#8000a0a6} /* Entrada rápida */
 
         </style>
         <script>
@@ -1403,7 +1399,8 @@
 
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="RfreshJson('SERV')">Rfresh</button>
+                <button onclick="RfreshJson('SERV')">Rfresh </button>
+                <button onclick="Re_colrAll('SERV')">Recolor</button>
                 <h1>Tabela de Serviço</h1>
                 <div id="PagPesq_SERV" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
@@ -2505,6 +2502,7 @@
 
     function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
         const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
+        R_Color(_tr(e),Typ)
         const Val = vall===""?"":VAL(e)
         if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
         const IsBdj  = isBdj(e) // !!e.closest('.BndjTBL') // antes tava isso
