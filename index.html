@@ -273,7 +273,7 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Finc:['B','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],/*Cmnt:['E',''],*/SStts:['E','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -698,7 +698,7 @@
             return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                 `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                         <p class="ppt">${e}</p>
-                        <i onclick="OrdenarRows2(this,'${x}','p')">▼</i>
+                        <i onclick="Orden(this,'${x}','p')">▼</i>
                         <b class="Ct none Atv">0</b>
                         <b class="Ct none Rtv">0</b>
 
@@ -813,7 +813,7 @@
             const Add_C=e=>Add(e,'filtTrue') ; const Add_F=e=>Add(e,'filtFals')
             const Rmv_C=e=>Rmv(e,'filtTrue') ; const Rmv_F=e=>Rmv(e,'filtFals')
 
-            if(true){ // este if diz se vai ser Combinado ou não (Não Lembro oq é Combinado)
+            if(true){ // depois vira (Combinado = && E) ou (Independente = || OU)
                 const Qry   = `#H_${Typ} > tbody > tr > ${Col(Typ,col)} > div > .P-P`
                 $$(Qry).forEach(e=>{
                     const VaL = `${VAL(_td(e))}` || "'Vazio'"
@@ -887,16 +887,18 @@
                 const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
             }
             const table = e.closest('table')
+            const cOl = $('p',_th(e))
             const tbody = $('tbody',table)
             const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
             const Get=e=> Cntd ? $(Cntd,e.children[x]) : e.children[x]
 
             const Ordn = [...tbody.rows].sort((a,b)=>{
-                // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
-                    const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
-                    const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')           
-                    if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
-
+                if(cOl=='Data'){
+                    // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
+                        const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
+                        const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')           
+                        if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
+                }
                 // Ordena se for Numeros
                     const valA = parseFloat(Txt(Get(a)).replace('R$',''))
                     const valB = parseFloat(Txt(Get(b)).replace('R$',''))
@@ -2658,6 +2660,17 @@
         // Procurar todo mundo de camisa pra tentar fazer finalmente o relatório completo, no filtro Inova e vazio
         // Fazer tanto o Filtro quanto o Footer localizar o Cliente Baseado no seu ID e dar Unique no ID e não no nome
         // Mostrar a Soma do valor na Barra de Config
+
+
+
+        // Orden n pega em Selcts e parece q tbm n ta pegando Numero!
+        // fica ruim pra clicar na célula quando n tem Nada
+        // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
+        // adicionar Crachá a Lista
+        // poder trocar o nome dos Caras
+        // Selecionar Várias Células e Colar uma coisa só
+        // o Hover precisa ta por cima das cores verde
+        // Opção de mais de 1 Designer
 
 </script>
 

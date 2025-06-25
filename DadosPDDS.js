@@ -171,7 +171,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 125,
         "Data": "2024-12-03"
       }
@@ -439,8 +439,8 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "15_1",
-        "Serv": "Banner",
-        "Desc": "",
+        "Serv": "Lona",
+        "Desc": "SCFV",
         "Tipo": "",
         "Calc": [
           "100|100|1|0"
@@ -459,7 +459,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "B_088",
         "Clnt": 1454,
         "Data": "2024-12-03"
       }
@@ -531,7 +531,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2024-12-03"
       }
@@ -662,7 +662,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1456,
         "Data": "2024-12-03"
       }
@@ -886,7 +886,7 @@ const DadosPDDS = [
         "Id": "24_1",
         "Serv": "Etiqueta",
         "Desc": "1000 UND",
-        "Tipo": "",
+        "Tipo": "Refilada",
         "Calc": [
           "-|-|-|0"
         ],
@@ -1054,7 +1054,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "7",
         "Data": "2024-12-04"
       }
@@ -1126,7 +1126,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1460,
         "Data": "2024-12-04"
       }
@@ -1198,7 +1198,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1461,
         "Data": "2024-12-04"
       }
@@ -1250,7 +1250,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "28_1",
-        "Serv": "Faixa",
+        "Serv": "Lona",
         "Desc": "1 UND",
         "Tipo": "",
         "Calc": [
@@ -1570,7 +1570,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1465,
         "Data": "2024-12-05"
       }
@@ -1642,7 +1642,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1466,
         "Data": "2024-12-05"
       }
@@ -1714,7 +1714,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1467,
         "Data": "2024-12-05"
       },
@@ -2165,7 +2165,7 @@ const DadosPDDS = [
       {
         "Id": "41_1",
         "Serv": "Figurinha",
-        "Desc": "",
+        "Desc": "osascorte olografic",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
@@ -2177,14 +2177,14 @@ const DadosPDDS = [
         "Entg": true,
         "Detg": "",
         "SStts": "",
-        "Cmnt": "osascorte olografic",
+        "Cmnt": "",
         "Lixo": "",
         "Arte": "",
         "OS": "",
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1473,
         "Data": "2024-12-09"
       }
@@ -2388,7 +2388,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "4",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -2478,7 +2478,7 @@ const DadosPDDS = [
       },
       {
         "Id": "45_3",
-        "Serv": "Banner",
+        "Serv": "Lona",
         "Desc": "Menina",
         "Tipo": "",
         "Calc": [
@@ -2524,7 +2524,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "128",
         "Data": "2024-12-10"
       }
@@ -2716,7 +2716,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2024-12-11"
       }
@@ -2775,7 +2775,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1480,
         "Data": "2024-12-12"
       }
@@ -2911,7 +2911,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "50_1",
-        "Serv": "Adesivo",
+        "Serv": "Etiqueta",
         "Desc": "Recortes",
         "Tipo": "",
         "Calc": [
@@ -3173,7 +3173,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1465",
         "Data": "2024-12-12"
       }
@@ -3371,7 +3371,7 @@ const DadosPDDS = [
         "Id": "57_1",
         "Serv": "Arte",
         "Desc": "Odara",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -3389,7 +3389,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1487,
         "Data": "2024-12-16"
       },
@@ -3397,7 +3397,7 @@ const DadosPDDS = [
         "Id": "57_2",
         "Serv": "Arte",
         "Desc": "Avil Noivas",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -3415,7 +3415,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1487,
         "Data": "2024-12-16"
       }
@@ -3613,7 +3613,7 @@ const DadosPDDS = [
         "Id": "61_1",
         "Serv": "Arte",
         "Desc": "Gordo Cortes",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -3631,7 +3631,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1489,
         "Data": "2024-12-16"
       }
@@ -3690,7 +3690,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1490,
         "Data": "2024-12-16"
       }
@@ -3846,7 +3846,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "16",
         "Data": "2024-12-17"
       }
@@ -3893,7 +3893,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "3",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "- 14:00h",
@@ -3977,7 +3977,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "57",
         "Data": "2024-12-17"
       }
@@ -4103,7 +4103,7 @@ const DadosPDDS = [
         "Id": "68_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -4121,7 +4121,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1492,
         "Data": "2024-12-16"
       },
@@ -4135,7 +4135,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "130",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -4219,7 +4219,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1493,
         "Data": "2024-12-16"
       }
@@ -4291,7 +4291,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1494,
         "Data": "2024-12-16"
       }
@@ -4363,7 +4363,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1494",
         "Data": "2024-12-17"
       }
@@ -4689,7 +4689,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1498,
         "Data": "2024-12-17"
       },
@@ -4903,9 +4903,9 @@ const DadosPDDS = [
       },
       {
         "Id": "78_2",
-        "Serv": "Banner",
+        "Serv": "Lona",
         "Desc": "0,80 X 1,20",
-        "Tipo": "",
+        "Tipo": "Banner",
         "Calc": [
           "-|-|-|0"
         ],
@@ -5007,7 +5007,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1500,
         "Data": "2024-12-18"
       }
@@ -5163,7 +5163,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1502,
         "Data": "2024-12-18"
       }
@@ -5287,7 +5287,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "83_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "30 UND",
         "Tipo": "",
         "Calc": [
@@ -5295,7 +5295,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "1095",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "10/01/2024 15:00h",
@@ -5361,7 +5361,7 @@ const DadosPDDS = [
         "Id": "84_1",
         "Serv": "Arte",
         "Desc": "Paraná Gold",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -5379,7 +5379,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "125",
         "Data": "2024-12-09"
       }
@@ -5431,15 +5431,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "86_1",
-        "Serv": "Sub.Total",
-        "Desc": "3camisa 3 calção",
+        "Serv": "Camisa",
+        "Desc": "3camisa 3 calção",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Ja Tinha",
         "Valr": "200",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "20/12/2024 16:00h",
@@ -5813,7 +5813,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1507,
         "Data": "2024-12-31"
       }
@@ -6029,7 +6029,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1510,
         "Data": "2025-01-06"
       }
@@ -6083,7 +6083,7 @@ const DadosPDDS = [
         "Id": "98_1",
         "Serv": "Adesivo",
         "Desc": "1.000 UND",
-        "Tipo": "",
+        "Tipo": "Refilada",
         "Calc": [
           "-|-|-|0"
         ],
@@ -6277,7 +6277,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-01-06"
       }
@@ -6336,7 +6336,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1560,
         "Data": "2025-01-06"
       }
@@ -6408,7 +6408,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1511,
         "Data": "2025-01-06"
       }
@@ -6606,7 +6606,7 @@ const DadosPDDS = [
         "Id": "106_1",
         "Serv": "Arte",
         "Desc": "Barber",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -6624,7 +6624,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1513,
         "Data": "2025-01-06"
       },
@@ -6650,7 +6650,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1513,
         "Data": "2025-01-06"
       }
@@ -6818,7 +6818,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1514,
         "Data": "2025-01-07"
       }
@@ -6890,7 +6890,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-07"
       },
@@ -6916,7 +6916,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-07"
       }
@@ -6988,7 +6988,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1515,
         "Data": "2025-01-07"
       }
@@ -7302,7 +7302,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1518,
         "Data": "2025-01-08"
       }
@@ -7433,7 +7433,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1520,
         "Data": "2025-01-08"
       }
@@ -7485,7 +7485,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "118_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "4PP, 1P",
         "Tipo": "",
         "Calc": [
@@ -7493,7 +7493,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "175",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -7623,7 +7623,7 @@ const DadosPDDS = [
         "Id": "121_3",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -7777,7 +7777,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "16",
         "Data": "2025-01-09"
       },
@@ -8062,7 +8062,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1523,
         "Data": "2025-01-09"
       },
@@ -8302,9 +8302,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "130_1",
-        "Serv": "Banner",
+        "Serv": "Lona",
         "Desc": "20 UND",
-        "Tipo": "",
+        "Tipo": "Banner",
         "Calc": [
           "-|-|-|0"
         ],
@@ -8386,7 +8386,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "131_1",
-        "Serv": "Adesivo",
+        "Serv": "Vendas",
         "Desc": "",
         "Tipo": "Transparente",
         "Calc": [
@@ -8406,7 +8406,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1525,
         "Data": "2025-01-09"
       },
@@ -8414,7 +8414,7 @@ const DadosPDDS = [
         "Id": "131_2",
         "Serv": "Recorte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Vinil",
         "Calc": [
           "-|-|-|0"
         ],
@@ -8432,7 +8432,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1525,
         "Data": "2025-01-09"
       }
@@ -8504,7 +8504,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1526,
         "Data": "2025-01-09"
       }
@@ -8576,7 +8576,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1527,
         "Data": "2025-01-10"
       }
@@ -8648,7 +8648,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-10"
       },
@@ -8674,7 +8674,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-10"
       }
@@ -8830,7 +8830,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1528,
         "Data": "2025-01-13"
       }
@@ -8882,7 +8882,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "137_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "2-XG, 2-M",
         "Tipo": "",
         "Calc": [
@@ -8890,7 +8890,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "170",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -8962,7 +8962,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "462",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -8988,7 +8988,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "66",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -9096,7 +9096,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1473",
         "Data": "2025-01-13"
       }
@@ -9155,7 +9155,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1530,
         "Data": "2025-01-13"
       }
@@ -9527,7 +9527,7 @@ const DadosPDDS = [
       },
       {
         "Id": "144_5",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "4-G V",
         "Tipo": "",
         "Calc": [
@@ -9535,7 +9535,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "170",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -9690,7 +9690,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1526",
         "Data": "2025-01-13"
       }
@@ -9750,7 +9750,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "14",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -9910,7 +9910,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "149_1",
-        "Serv": "",
+        "Serv": "Envelopamento",
         "Desc": "4 Parapodio",
         "Tipo": "",
         "Calc": [
@@ -10008,7 +10008,7 @@ const DadosPDDS = [
       },
       {
         "Id": "150_2",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "5-GG | 5-M",
         "Tipo": "",
         "Calc": [
@@ -10016,7 +10016,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "350",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -10268,7 +10268,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1536,
         "Data": "2025-01-15"
       },
@@ -10294,7 +10294,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1536,
         "Data": "2025-01-15"
       }
@@ -10528,7 +10528,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1530",
         "Data": "2025-01-07"
       }
@@ -10684,7 +10684,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1538,
         "Data": "2025-01-16"
       }
@@ -10952,7 +10952,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1540,
         "Data": "2025-01-17"
       }
@@ -11024,7 +11024,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1541,
         "Data": "2025-01-17"
       }
@@ -11168,7 +11168,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1542,
         "Data": "2025-01-18"
       }
@@ -11240,7 +11240,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1543,
         "Data": "2025-01-18"
       }
@@ -11676,7 +11676,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1546,
         "Data": "2025-01-21"
       }
@@ -11748,7 +11748,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1544,
         "Data": "2025-01-21"
       },
@@ -11774,7 +11774,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1544,
         "Data": "2025-01-21"
       }
@@ -11846,7 +11846,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1545,
         "Data": "2025-01-21"
       }
@@ -11918,7 +11918,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-01-21"
       }
@@ -11977,7 +11977,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1547,
         "Data": "2025-01-21"
       }
@@ -12049,7 +12049,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "7",
         "Data": "2025-01-22"
       }
@@ -12121,7 +12121,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "32",
         "Data": "2025-01-22"
       }
@@ -12193,7 +12193,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1548,
         "Data": "2025-01-22"
       }
@@ -12265,7 +12265,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1549,
         "Data": "2025-01-22"
       }
@@ -12391,7 +12391,7 @@ const DadosPDDS = [
         "Id": "179_1",
         "Serv": "Arte",
         "Desc": "Arte do Bloco ano 3",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -12409,7 +12409,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "125",
         "Data": "2025-01-22"
       },
@@ -12417,7 +12417,7 @@ const DadosPDDS = [
         "Id": "179_2",
         "Serv": "Arte",
         "Desc": "Saboré",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -12435,7 +12435,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "125",
         "Data": "2025-01-22"
       }
@@ -12846,7 +12846,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-23"
       },
@@ -12872,7 +12872,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1478",
         "Data": "2025-01-23"
       }
@@ -12944,7 +12944,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1555,
         "Data": "2025-01-23"
       },
@@ -12970,7 +12970,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1555,
         "Data": "2025-01-23"
       }
@@ -13042,7 +13042,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1556,
         "Data": "2025-01-23"
       }
@@ -13114,7 +13114,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1557,
         "Data": "2025-01-23"
       }
@@ -13186,7 +13186,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1558,
         "Data": "2025-01-23"
       }
@@ -13330,7 +13330,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1561,
         "Data": "2025-01-24"
       }
@@ -13384,7 +13384,7 @@ const DadosPDDS = [
         "Id": "191_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -13402,7 +13402,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1562,
         "Data": "2025-01-24"
       }
@@ -13474,7 +13474,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1563,
         "Data": "2025-01-24"
       }
@@ -13546,7 +13546,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1564,
         "Data": "2025-01-24"
       }
@@ -13618,7 +13618,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1565,
         "Data": "2025-01-24"
       }
@@ -13690,7 +13690,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "16",
         "Data": "2025-01-23"
       }
@@ -13881,7 +13881,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "290",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -13991,7 +13991,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1566,
         "Data": "2025-01-28"
       }
@@ -14075,7 +14075,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1568,
         "Data": "2025-01-28"
       }
@@ -14245,7 +14245,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-01-29"
       }
@@ -14389,7 +14389,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1511",
         "Data": "2025-01-29"
       }
@@ -14533,7 +14533,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1518",
         "Data": "2025-01-30"
       }
@@ -14605,7 +14605,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "27",
         "Data": "2025-01-30"
       },
@@ -14631,7 +14631,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "27",
         "Data": "2025-01-30"
       }
@@ -14685,11 +14685,11 @@ const DadosPDDS = [
         "Id": "208_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -14703,7 +14703,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "693",
         "Data": "2025-01-31"
       }
@@ -14932,7 +14932,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1571,
         "Data": "2025-02-03"
       }
@@ -15128,9 +15128,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "214_1",
-        "Serv": "",
+        "Serv": "Adesivo",
         "Desc": "Homem Aranha",
-        "Tipo": "",
+        "Tipo": "Brilho",
         "Calc": [
           "-|-|-|0"
         ],
@@ -15318,7 +15318,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "135",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -15474,7 +15474,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1576,
         "Data": "2025-02-03"
       }
@@ -15720,7 +15720,7 @@ const DadosPDDS = [
       },
       {
         "Id": "221_2",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "3 - MLong GG",
         "Tipo": "",
         "Calc": [
@@ -15728,7 +15728,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Baby",
         "Valr": "180",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -16012,8 +16012,8 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "224_1",
-        "Serv": "",
-        "Desc": "Topos de Bolo",
+        "Serv": "Topo de Bolo",
+        "Desc": "",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
@@ -16548,7 +16548,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1580",
         "Data": "2025-02-06"
       }
@@ -16764,7 +16764,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1576",
         "Data": "2025-02-06"
       }
@@ -16823,7 +16823,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1566",
         "Data": "2025-02-06"
       }
@@ -16895,7 +16895,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1587,
         "Data": "2025-02-07"
       }
@@ -17007,14 +17007,14 @@ const DadosPDDS = [
       {
         "Id": "238_1",
         "Serv": "Arte",
-        "Desc": "da Camisa",
-        "Tipo": "",
+        "Desc": "da  Camisa",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Allan",
         "Valr": "10",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -17026,7 +17026,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1589,
         "Data": "2025-02-07"
       }
@@ -17124,7 +17124,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1518",
         "Data": "2025-02-10"
       }
@@ -17208,7 +17208,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1511",
         "Data": "2025-02-10"
       }
@@ -17352,7 +17352,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1591,
         "Data": "2025-02-10"
       }
@@ -17414,7 +17414,7 @@ const DadosPDDS = [
         "Valr": "45",
         "Forn": "",
         "OK": true,
-        "Entg": false,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -17712,7 +17712,7 @@ const DadosPDDS = [
         "Id": "248_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -17730,7 +17730,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1562",
         "Data": "2025-02-06"
       }
@@ -17874,7 +17874,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1597,
         "Data": "2025-02-11"
       }
@@ -17946,7 +17946,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1598,
         "Data": "2025-02-11"
       }
@@ -18156,7 +18156,7 @@ const DadosPDDS = [
         "Id": "254_1",
         "Serv": "Adesivo",
         "Desc": "1000 UND",
-        "Tipo": "",
+        "Tipo": "Refilada",
         "Calc": [
           "-|-|-|0"
         ],
@@ -18246,7 +18246,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "307",
         "Data": "2025-02-11"
       }
@@ -18584,7 +18584,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "260_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "3 G - Curta | 3 G - Longa",
         "Tipo": "",
         "Calc": [
@@ -18592,9 +18592,9 @@ const DadosPDDS = [
         ],
         "Dsng": "Fexta",
         "Valr": "300",
-        "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -18663,7 +18663,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "57",
         "Data": "2025-02-13"
       }
@@ -18866,7 +18866,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1592",
         "Data": "2025-02-13"
       }
@@ -19036,7 +19036,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "267_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "2-M Longa, 1-M Curta",
         "Tipo": "",
         "Calc": [
@@ -19044,7 +19044,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Fexta",
         "Valr": "140",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "Msm Hora",
@@ -19258,7 +19258,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-02-18"
       }
@@ -19330,7 +19330,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "527",
         "Data": "2025-02-18"
       },
@@ -19428,7 +19428,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1592",
         "Data": "2025-02-18"
       }
@@ -19487,7 +19487,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1608,
         "Data": "2025-02-18"
       }
@@ -19787,7 +19787,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1610,
         "Data": "2025-02-19"
       }
@@ -19969,7 +19969,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1611,
         "Data": "2025-02-19"
       },
@@ -20496,7 +20496,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1612,
         "Data": "2025-02-21"
       }
@@ -20568,7 +20568,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1613,
         "Data": "2025-02-21"
       }
@@ -20712,7 +20712,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1615,
         "Data": "2025-02-21"
       }
@@ -20784,7 +20784,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1616,
         "Data": "2025-02-24"
       }
@@ -20888,7 +20888,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1617,
         "Data": "2025-02-24"
       }
@@ -20960,7 +20960,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1618,
         "Data": "2025-02-24"
       }
@@ -21086,7 +21086,7 @@ const DadosPDDS = [
         "Id": "295_1",
         "Serv": "Lona",
         "Desc": "Triangulo",
-        "Tipo": "",
+        "Tipo": "Banner",
         "Calc": [
           "-|-|-|0"
         ],
@@ -21151,7 +21151,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "310",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -21255,7 +21255,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Fexta",
         "Valr": "800",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -21267,7 +21267,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_001",
         "Clnt": "1601",
         "Data": "2025-02-25"
       }
@@ -21482,7 +21482,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1622,
         "Data": "2025-02-25"
       }
@@ -21554,7 +21554,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1623,
         "Data": "2025-02-13"
       }
@@ -21606,15 +21606,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "303_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "M - 2 UND (Polo)",
-        "Tipo": "",
+        "Tipo": "Polo",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Baby",
         "Valr": "160",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -21626,7 +21626,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_002",
         "Clnt": 1624,
         "Data": "2025-02-26"
       }
@@ -21940,15 +21940,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "308_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "10 G",
-        "Tipo": "",
+        "Tipo": "M.Curta",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Ja Tinha",
         "Valr": "380",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "16:00h 14/03/2025",
@@ -21960,7 +21960,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_003",
         "Clnt": 1627,
         "Data": "2025-02-27"
       }
@@ -22216,13 +22216,13 @@ const DadosPDDS = [
         "Id": "312_1",
         "Serv": "Cartão",
         "Desc": "4.000 UND",
-        "Tipo": "",
+        "Tipo": "Brilho",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Canva",
         "Valr": "300",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -22234,7 +22234,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "U_",
         "Clnt": 1629,
         "Data": "2025-02-27"
       }
@@ -22520,9 +22520,9 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "Fexta e Allan",
+        "Dsng": "Allan",
         "Valr": "160",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "13:00h 15/03/2025",
@@ -22534,7 +22534,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_009",
         "Clnt": 1633,
         "Data": "2025-03-10"
       },
@@ -22716,7 +22716,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1634,
         "Data": "2025-03-10"
       }
@@ -22788,7 +22788,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1530",
         "Data": "2025-03-10"
       }
@@ -22860,7 +22860,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1511",
         "Data": "2025-03-10"
       }
@@ -23063,7 +23063,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "7",
         "Data": "2025-03-10"
       }
@@ -23135,7 +23135,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "16",
         "Data": "2025-03-11"
       }
@@ -23194,7 +23194,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-03-11"
       }
@@ -23266,7 +23266,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1636,
         "Data": "2025-03-11"
       }
@@ -23813,7 +23813,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "333_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "G",
         "Tipo": "",
         "Calc": [
@@ -23821,7 +23821,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Allan",
         "Valr": "65",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "17:00h 21/03/2025",
@@ -23833,7 +23833,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_011",
         "Clnt": 1640,
         "Data": "2025-03-11"
       }
@@ -24263,7 +24263,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "310",
-        "Forn": "",
+        "Forn": "Bureal",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -24391,7 +24391,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1639",
         "Data": "2025-03-13"
       }
@@ -24551,7 +24551,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1644,
         "Data": "2025-03-13"
       }
@@ -24878,15 +24878,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "349_1",
-        "Serv": "Sub.Total",
-        "Desc": "2 Camisa",
+        "Serv": "Camisa",
+        "Desc": "2 UND",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Ja Tinha",
         "Valr": "100",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -25152,7 +25152,7 @@ const DadosPDDS = [
         "Uber": "2025-03-18 - Teckson",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1650,
         "Data": "2025-03-17"
       }
@@ -25498,7 +25498,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "7",
         "Data": "2025-03-17"
       }
@@ -25564,7 +25564,7 @@ const DadosPDDS = [
         "Id": "358_1",
         "Serv": "Arte",
         "Desc": "Quarzolit",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -25582,7 +25582,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "693",
         "Data": "2025-03-18"
       }
@@ -25636,7 +25636,7 @@ const DadosPDDS = [
         "Id": "359_1",
         "Serv": "Adesivo",
         "Desc": "Fachada",
-        "Tipo": "",
+        "Tipo": "Brilho",
         "Calc": [
           "-|-|-|0"
         ],
@@ -25913,7 +25913,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "362_1",
-        "Serv": "Sub.Total",
+        "Serv": "Camisa",
         "Desc": "",
         "Tipo": "",
         "Calc": [
@@ -25921,7 +25921,7 @@ const DadosPDDS = [
         ],
         "Dsng": "Ja Tinha",
         "Valr": "100",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -26260,15 +26260,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "367_1",
-        "Serv": "Adesivo",
-        "Desc": "2 camisa",
+        "Serv": "Camisa",
+        "Desc": "2 UND",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Canva",
         "Valr": "100",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -26529,7 +26529,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1658,
         "Data": "2025-03-20"
       }
@@ -26588,7 +26588,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1659,
         "Data": "2025-03-20"
       }
@@ -26714,7 +26714,7 @@ const DadosPDDS = [
         "Id": "374_1",
         "Serv": "Adesivo",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Brilho",
         "Calc": [
           "-|-|-|0"
         ],
@@ -26856,7 +26856,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1660,
         "Data": "2025-03-20"
       }
@@ -27059,7 +27059,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "7",
         "Data": "2025-03-21"
       }
@@ -27113,7 +27113,7 @@ const DadosPDDS = [
         "Id": "379_1",
         "Serv": "Etiqueta",
         "Desc": "1000 UND",
-        "Tipo": "",
+        "Tipo": "Refilada",
         "Calc": [
           "-|-|-|0"
         ],
@@ -27287,7 +27287,7 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "Allan",
+        "Dsng": "Eurik",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -27472,16 +27472,16 @@ const DadosPDDS = [
       {
         "Id": "384_1",
         "Serv": "Camisa",
-        "Desc": "Camisa Polo",
-        "Tipo": "",
+        "Desc": "1 G Polo",
+        "Tipo": "Polo",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Canva",
         "Valr": "80",
-        "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -27491,7 +27491,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_009",
         "Clnt": 1664,
         "Data": "2025-03-25"
       }
@@ -27559,11 +27559,11 @@ const DadosPDDS = [
         "Id": "385_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "Fexta e Allan",
+        "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
         "OK": true,
@@ -27577,7 +27577,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1562",
         "Data": "2025-03-25"
       }
@@ -27703,7 +27703,7 @@ const DadosPDDS = [
         "Id": "387_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -27721,7 +27721,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1665,
         "Data": "2025-03-25"
       }
@@ -27877,7 +27877,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1162",
         "Data": "2025-03-25"
       }
@@ -27988,17 +27988,17 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "391_1",
-        "Serv": "Sub.Total",
-        "Desc": "3 Camisa M",
+        "Serv": "Camisa",
+        "Desc": "3 M",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Allan",
         "Valr": "180",
-        "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -28008,7 +28008,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_010",
         "Clnt": 1667,
         "Data": "2025-03-26"
       }
@@ -28062,11 +28062,11 @@ const DadosPDDS = [
         "Id": "392_1",
         "Serv": "Arte",
         "Desc": "Artes (identidade visual)",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "300",
         "Forn": "",
         "OK": "",
@@ -28080,7 +28080,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1668,
         "Data": "2025-03-26"
       }
@@ -28152,7 +28152,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1669,
         "Data": "2025-03-26"
       }
@@ -28296,7 +28296,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1670,
         "Data": "2025-03-26"
       }
@@ -28478,7 +28478,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1672,
         "Data": "2025-03-27"
       }
@@ -28544,7 +28544,7 @@ const DadosPDDS = [
         "Id": "398_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -28562,7 +28562,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1673,
         "Data": "2025-03-27"
       }
@@ -28642,7 +28642,7 @@ const DadosPDDS = [
         "Id": "399_4",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -28660,7 +28660,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "1261",
         "Data": "2025-03-27"
       }
@@ -28856,7 +28856,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": "35",
         "Data": "2025-03-28"
       }
@@ -28917,8 +28917,8 @@ const DadosPDDS = [
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "tudo branco, 3 Preto de cada",
@@ -28928,7 +28928,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1675,
         "Data": "2025-03-31"
       }
@@ -29254,18 +29254,18 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "407_1",
-        "Serv": "Sub.Total",
-        "Desc": "2 M.Longa Preta M",
-        "Tipo": "",
+        "Serv": "Camisa",
+        "Desc": "2 M (Preta)",
+        "Tipo": "M.Longa",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Allan",
         "Valr": "100",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
-        "Entg": "",
-        "Detg": "",
+        "Entg": true,
+        "Detg": "amg de lk",
         "SStts": "",
         "Cmnt": "@Luizinho_dettona @ glebsomfc 244",
         "Lixo": "",
@@ -29274,7 +29274,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_011",
         "Clnt": "1675",
         "Data": "2025-03-31"
       }
@@ -29471,16 +29471,16 @@ const DadosPDDS = [
       {
         "Id": "410_1",
         "Serv": "Camisa",
-        "Desc": "CAMISA BRASIL Tam.M",
+        "Desc": "BRASIL M",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "",
         "Valr": "60",
-        "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -29490,7 +29490,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_011",
         "Clnt": 1677,
         "Data": "2025-03-28"
       }
@@ -29621,7 +29621,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1678,
         "Data": "2025-03-28"
       }
@@ -29680,7 +29680,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1680,
         "Data": "2025-03-31"
       }
@@ -30178,7 +30178,7 @@ const DadosPDDS = [
         "Id": "420_4",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -30196,7 +30196,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1682,
         "Data": "2025-04-01"
       }
@@ -30595,14 +30595,14 @@ const DadosPDDS = [
       {
         "Id": "426_1",
         "Serv": "Arte",
-        "Desc": "1 - Arte camisa",
-        "Tipo": "",
+        "Desc": "da Camisa",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "Baby",
         "Valr": "20",
-        "Forn": "",
+        "Forn": "Arte",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -30614,7 +30614,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1686,
         "Data": "2025-04-02"
       }
@@ -30817,7 +30817,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1688,
         "Data": "2025-04-02"
       }
@@ -31015,11 +31015,11 @@ const DadosPDDS = [
         "Id": "432_1",
         "Serv": "Arte",
         "Desc": "Arte",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "100",
         "Forn": "",
         "OK": true,
@@ -31033,7 +31033,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1785,
         "Data": "2025-04-02"
       }
@@ -31087,11 +31087,11 @@ const DadosPDDS = [
         "Id": "433_1",
         "Serv": "Arte",
         "Desc": "Arte",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
         "OK": true,
@@ -31105,7 +31105,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1784,
         "Data": "2025-04-02"
       }
@@ -31465,7 +31465,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1779,
         "Data": "2025-04-04"
       }
@@ -31518,14 +31518,14 @@ const DadosPDDS = [
       {
         "Id": "439_1",
         "Serv": "Camisa",
-        "Desc": "Camisa m Curta",
+        "Desc": "M Curta",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Baby",
         "Valr": "50",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -31537,7 +31537,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_012",
         "Clnt": 1778,
         "Data": "2025-04-04"
       }
@@ -31806,14 +31806,14 @@ const DadosPDDS = [
       {
         "Id": "443_1",
         "Serv": "Camisa",
-        "Desc": "Camisa M (Cachorro)",
+        "Desc": "1 M",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "",
         "Valr": "50",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -31825,7 +31825,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_012",
         "Clnt": 1774,
         "Data": "2025-04-04"
       }
@@ -32525,15 +32525,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "453_1",
-        "Serv": "",
+        "Serv": "Camisa",
         "Desc": "20 Camisas Regata + Arte",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Fexta",
         "Valr": "620",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -32545,7 +32545,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_013",
         "Clnt": 1764,
         "Data": "2025-04-07"
       }
@@ -32669,15 +32669,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "455_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "1 - Cartela / Tampa tanque / figurinha",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "12",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -32689,7 +32689,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1762,
         "Data": "2025-04-07"
       }
@@ -32885,7 +32885,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "458_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "Vendas || OsascorteHolog+Aranha+Figs",
         "Tipo": "",
         "Calc": [
@@ -32893,7 +32893,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "17",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -32957,7 +32957,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "459_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "Cartelas e Figurinha",
         "Tipo": "",
         "Calc": [
@@ -32965,7 +32965,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "10",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -33029,15 +33029,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "460_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "Figurinhas e Quadros",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "30",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -33173,7 +33173,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "462_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "3 Quadros",
         "Tipo": "",
         "Calc": [
@@ -33181,7 +33181,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "10",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -33245,7 +33245,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "463_1",
-        "Serv": "",
+        "Serv": "Adesivo",
         "Desc": "Popye Picapal aranha, cartela",
         "Tipo": "",
         "Calc": [
@@ -33389,15 +33389,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "465_1",
-        "Serv": "",
-        "Desc": "1 - Camisa ( P) ",
+        "Serv": "Camisa",
+        "Desc": "1 P",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Baby",
         "Valr": "40",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -33409,7 +33409,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_012",
         "Clnt": 1752,
         "Data": "2025-04-08"
       }
@@ -33749,15 +33749,15 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "470_1",
-        "Serv": "",
-        "Desc": "1 - Camisa G",
+        "Serv": "Camisa",
+        "Desc": "1 G",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Baby",
         "Valr": "50",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -33769,7 +33769,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_012",
         "Clnt": 1747,
         "Data": "2025-04-08"
       }
@@ -34129,7 +34129,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1742,
         "Data": "2025-04-09"
       }
@@ -34705,7 +34705,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1734,
         "Data": "2025-04-10"
       }
@@ -34903,13 +34903,13 @@ const DadosPDDS = [
         "Id": "486_1",
         "Serv": "Cartela",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Cartela",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "5",
-        "Forn": "",
+        "Forn": "Stock",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -34921,7 +34921,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1731,
         "Data": "2025-04-10"
       }
@@ -35046,16 +35046,16 @@ const DadosPDDS = [
       {
         "Id": "488_1",
         "Serv": "Camisa",
-        "Desc": "4 Camisas",
+        "Desc": "4 UND",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "160",
-        "Forn": "",
-        "OK": false,
-        "Entg": false,
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -35065,7 +35065,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_014",
         "Clnt": 1729,
         "Data": "2025-04-11"
       }
@@ -35497,7 +35497,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1723,
         "Data": "2025-04-11"
       }
@@ -35845,7 +35845,7 @@ const DadosPDDS = [
         ],
         "Dsng": "",
         "Valr": "40",
-        "Forn": "",
+        "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
@@ -36053,9 +36053,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "502_1",
-        "Serv": "",
-        "Desc": "100 Etiquetas 4x4 (Uber A)",
-        "Tipo": "",
+        "Serv": "Etiqueta",
+        "Desc": "100 4x4 (Uber A)",
+        "Tipo": "Redonda",
         "Calc": [
           "-|-|-|0"
         ],
@@ -36125,9 +36125,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "503_1",
-        "Serv": "",
-        "Desc": "100 Etiquetas 4x4 (Uber A)",
-        "Tipo": "",
+        "Serv": "Etiqueta",
+        "Desc": "100 4x4 (Uber A)",
+        "Tipo": "Redonda",
         "Calc": [
           "-|-|-|0"
         ],
@@ -36217,7 +36217,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1713,
         "Data": "2025-04-15"
       }
@@ -36485,17 +36485,17 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "508_1",
-        "Serv": "",
-        "Desc": "2 - Camisetas Regata (M)",
-        "Tipo": "",
+        "Serv": "Camisa",
+        "Desc": "2 M",
+        "Tipo": "Regata",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Ja Tinha",
         "Valr": "80",
-        "Forn": "",
-        "OK": false,
-        "Entg": false,
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -36505,7 +36505,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_015",
         "Clnt": 1709,
         "Data": "2025-04-15"
       }
@@ -36559,11 +36559,11 @@ const DadosPDDS = [
         "Id": "509_1",
         "Serv": "Arte",
         "Desc": "Arte (Vetorização) da igreja",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -36577,7 +36577,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1708,
         "Data": "2025-04-15"
       }
@@ -36629,9 +36629,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "510_1",
-        "Serv": "",
-        "Desc": "1 - Banner ",
-        "Tipo": "",
+        "Serv": "Lona",
+        "Desc": "1",
+        "Tipo": "Banner",
         "Calc": [
           "-|-|-|0"
         ],
@@ -36845,8 +36845,8 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "513_1",
-        "Serv": "",
-        "Desc": "30 Etiqueta 6x6",
+        "Serv": "Etiqueta",
+        "Desc": "30 - 6x6",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
@@ -36991,11 +36991,11 @@ const DadosPDDS = [
         "Id": "515_1",
         "Serv": "Arte",
         "Desc": "Arte Cardapio",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -37009,7 +37009,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1702,
         "Data": "2025-04-16"
       }
@@ -37297,7 +37297,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1698,
         "Data": "2025-04-16"
       }
@@ -37422,16 +37422,16 @@ const DadosPDDS = [
       {
         "Id": "521_1",
         "Serv": "Camisa",
-        "Desc": "Grau Coiote",
+        "Desc": "1 - M",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "70",
-        "Forn": "",
-        "OK": false,
-        "Entg": false,
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -37441,7 +37441,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_017",
         "Clnt": 1696,
         "Data": "2025-04-16"
       }
@@ -37565,7 +37565,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "523_1",
-        "Serv": "",
+        "Serv": "Envelopamento",
         "Desc": "Parapodio PEPA",
         "Tipo": "",
         "Calc": [
@@ -37639,7 +37639,7 @@ const DadosPDDS = [
         "Id": "524_1",
         "Serv": "Arte",
         "Desc": "3 und",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -37657,7 +37657,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1693,
         "Data": "2025-04-17"
       }
@@ -37729,7 +37729,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1692,
         "Data": "2025-04-17"
       }
@@ -37801,7 +37801,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1691,
         "Data": "2025-04-17"
       }
@@ -37873,7 +37873,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1690,
         "Data": "2025-04-17"
       }
@@ -37927,7 +37927,7 @@ const DadosPDDS = [
         "Id": "528_1",
         "Serv": "Arte",
         "Desc": "",
-        "Tipo": "",
+        "Tipo": "Arte",
         "Calc": [
           "-|-|-|0"
         ],
@@ -37945,7 +37945,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1689,
         "Data": "2025-04-17"
       }
@@ -38089,7 +38089,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1803,
         "Data": "2025-04-22"
       }
@@ -38593,7 +38593,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1796,
         "Data": "2025-04-22"
       }
@@ -38665,7 +38665,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1795,
         "Data": "2025-04-22"
       }
@@ -38737,7 +38737,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1794,
         "Data": "2025-04-22"
       }
@@ -38809,7 +38809,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1793,
         "Data": "2025-04-23"
       }
@@ -38881,7 +38881,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1792,
         "Data": "2025-04-23"
       }
@@ -38953,7 +38953,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "-",
         "Clnt": 1791,
         "Data": "2025-04-23"
       }
@@ -39150,16 +39150,16 @@ const DadosPDDS = [
       {
         "Id": "545_1",
         "Serv": "Camisa",
-        "Desc": "2 - M Longa (DUDU) (ROSA)",
-        "Tipo": "",
+        "Desc": "2 - M (DUDU) (ROSA)",
+        "Tipo": "M.Longa",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "Allan",
+        "Dsng": "Ja Tinha",
         "Valr": "100",
-        "Forn": "",
-        "OK": "",
-        "Entg": "",
+        "Forn": "Inová",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -39169,7 +39169,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "I_017",
         "Clnt": 1788,
         "Data": "2025-04-23"
       }
