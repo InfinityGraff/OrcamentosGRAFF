@@ -62,13 +62,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -134,13 +128,7 @@ const DadosPDDS = [
         "Pcnt": "100%"
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -206,13 +194,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -278,13 +260,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -350,13 +326,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -422,13 +392,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -494,13 +458,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -553,13 +511,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -625,13 +577,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -697,13 +643,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -769,13 +709,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -867,13 +801,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -939,13 +867,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1089,13 +1011,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1161,13 +1077,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1233,13 +1143,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1317,13 +1221,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1389,13 +1287,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1461,13 +1353,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1533,13 +1419,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1605,13 +1485,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1677,13 +1551,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1775,13 +1643,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1847,13 +1709,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -1919,13 +1775,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2003,13 +1853,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2075,13 +1919,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2147,13 +1985,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2219,13 +2051,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2291,13 +2117,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2363,13 +2183,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2435,13 +2249,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2583,13 +2391,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2679,13 +2481,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2738,13 +2534,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -2810,13 +2600,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2894,13 +2678,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -2966,13 +2744,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3038,13 +2810,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3110,13 +2876,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3208,13 +2968,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3280,13 +3034,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3352,13 +3100,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3450,13 +3192,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3522,13 +3258,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3594,13 +3324,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3653,13 +3377,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3725,13 +3443,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3809,13 +3521,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3868,13 +3574,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -3940,13 +3640,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4012,13 +3706,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4084,13 +3772,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4182,13 +3864,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4254,13 +3930,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4326,13 +3996,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4410,13 +4074,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4508,13 +4166,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4580,13 +4232,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4652,13 +4298,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4750,13 +4390,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4860,13 +4494,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -4970,13 +4598,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5042,13 +4664,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5126,13 +4742,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5198,13 +4808,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5270,13 +4874,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5342,13 +4940,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5414,13 +5006,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5510,13 +5096,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5620,13 +5200,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5704,13 +5278,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5776,13 +5344,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5848,13 +5410,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5920,13 +5476,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -5992,13 +5542,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6064,13 +5608,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6136,13 +5674,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6208,13 +5740,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6240,13 +5766,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -6299,13 +5819,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6371,13 +5885,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6443,13 +5951,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6515,13 +6017,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6587,13 +6083,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -6697,13 +6187,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6781,13 +6265,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6853,13 +6331,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -6951,13 +6423,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7023,13 +6489,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7121,13 +6581,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7193,13 +6647,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7265,13 +6713,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7337,13 +6779,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7396,13 +6832,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7468,13 +6898,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7552,13 +6976,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7676,13 +7094,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7708,13 +7120,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -7740,13 +7146,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -7825,13 +7225,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7909,13 +7303,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -7941,13 +7329,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -7973,13 +7355,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -8123,13 +7499,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8285,13 +7655,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8369,13 +7733,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8467,13 +7825,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8539,13 +7891,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8611,13 +7957,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8721,13 +8061,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8793,13 +8127,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8865,13 +8193,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -8937,13 +8259,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9059,13 +8375,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9118,13 +8428,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9190,13 +8494,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9262,13 +8560,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9334,13 +8626,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9406,13 +8692,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9594,13 +8874,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9653,13 +8927,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9725,13 +8993,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9809,13 +9071,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9893,13 +9149,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -9965,13 +9215,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10063,13 +9307,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10147,13 +9385,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10231,13 +9463,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10329,13 +9555,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10491,13 +9711,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10575,13 +9789,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10647,13 +9855,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10719,13 +9921,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10791,13 +9987,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10915,13 +10105,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -10987,13 +10171,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11059,13 +10237,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11131,13 +10303,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11203,13 +10369,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11275,13 +10435,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11347,13 +10501,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11483,13 +10631,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11555,13 +10697,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11639,13 +10775,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11711,13 +10841,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11809,13 +10933,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11881,13 +10999,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -11940,13 +11052,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12012,13 +11118,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12084,13 +11184,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12156,13 +11250,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12228,13 +11316,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12300,13 +11382,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12372,13 +11448,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12470,13 +11540,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12542,13 +11606,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12627,13 +11685,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -12699,13 +11751,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12809,13 +11855,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -12907,13 +11947,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13005,13 +12039,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13077,13 +12105,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13149,13 +12171,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13221,13 +12237,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13293,13 +12303,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13365,13 +12369,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13437,13 +12435,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13509,13 +12501,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13581,13 +12567,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13653,13 +12633,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13712,13 +12686,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13784,13 +12752,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13856,13 +12818,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -13954,13 +12910,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14038,13 +12988,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14110,13 +13054,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14182,13 +13120,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14280,13 +13212,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14352,13 +13278,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14424,13 +13344,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14496,13 +13410,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14568,13 +13476,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14666,13 +13568,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14738,13 +13634,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14810,13 +13700,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14895,13 +13779,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -14967,13 +13845,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15039,13 +13911,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15111,13 +13977,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15183,13 +14043,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15293,13 +14147,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15365,13 +14213,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15437,13 +14279,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15509,13 +14345,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15593,13 +14423,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15677,13 +14501,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15787,13 +14605,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15885,13 +14697,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -15995,13 +14801,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16054,13 +14854,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16126,13 +14920,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16198,13 +14986,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16282,13 +15064,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16380,13 +15156,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16452,13 +15222,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16511,13 +15275,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16583,13 +15341,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16655,13 +15407,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16727,13 +15473,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16786,13 +15526,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16858,13 +15592,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16930,13 +15658,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -16989,13 +15711,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17061,13 +15777,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17171,13 +15881,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17243,13 +15947,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17315,13 +16013,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17387,13 +16079,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17446,13 +16132,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17530,13 +16210,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17589,13 +16263,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17661,13 +16329,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17693,13 +16355,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -17765,13 +16421,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17837,13 +16487,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17909,13 +16553,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -17981,13 +16619,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18053,13 +16685,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18137,13 +16763,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18209,13 +16829,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18281,13 +16895,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18391,13 +16999,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18463,13 +17065,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18535,13 +17131,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18567,13 +17157,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -18626,13 +17210,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18698,13 +17276,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18770,13 +17342,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18829,13 +17395,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18888,13 +17448,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -18947,13 +17501,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19019,13 +17567,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19103,13 +17645,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19162,13 +17698,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19221,13 +17751,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19293,13 +17817,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19391,13 +17909,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19450,13 +17962,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19522,13 +18028,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19594,13 +18094,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19666,13 +18160,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19698,13 +18186,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -19822,13 +18304,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -19906,13 +18382,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20056,13 +18526,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20128,13 +18592,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20226,13 +18684,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20336,13 +18788,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20395,13 +18841,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20427,13 +18867,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -20459,13 +18893,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -20531,13 +18959,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20603,13 +19025,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20675,13 +19091,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20747,13 +19157,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20819,13 +19223,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20851,13 +19249,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20923,13 +19315,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -20995,13 +19381,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21067,13 +19447,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21126,13 +19500,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21198,13 +19566,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21230,13 +19592,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -21302,13 +19658,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21361,13 +19711,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21445,13 +19789,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21517,13 +19855,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21589,13 +19921,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21661,13 +19987,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21733,13 +20053,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21792,13 +20106,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21851,13 +20159,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -21923,13 +20225,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22007,13 +20303,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22066,13 +20356,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22125,13 +20409,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22197,13 +20475,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22269,13 +20541,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22341,13 +20607,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22425,13 +20685,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22497,13 +20751,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22607,13 +20855,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22679,13 +20921,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22751,13 +20987,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22823,13 +21053,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22895,13 +21119,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -22967,13 +21185,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23026,13 +21238,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23098,13 +21304,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23157,13 +21357,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23229,13 +21423,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23301,13 +21489,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23373,13 +21555,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23445,13 +21621,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -23530,13 +21700,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23614,13 +21778,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23724,13 +21882,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23796,13 +21948,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23880,13 +22026,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -23964,13 +22104,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24023,13 +22157,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24082,13 +22210,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24154,13 +22276,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24238,13 +22354,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24322,13 +22432,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24354,13 +22458,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -24450,13 +22548,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24482,13 +22574,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -24514,13 +22600,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -24586,13 +22666,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24645,13 +22719,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24717,13 +22785,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24789,13 +22851,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "40",
-        "Cust": "4.80",
-        "Lcro": "35.2"
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24861,13 +22917,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -24945,13 +22995,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25017,13 +23061,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25089,13 +23127,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25187,13 +23219,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25285,13 +23311,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25357,13 +23377,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25389,13 +23403,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -25461,13 +23469,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25545,13 +23547,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25617,13 +23613,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25765,13 +23755,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25824,13 +23808,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -25896,13 +23874,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -25968,13 +23940,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26040,13 +24006,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26099,13 +24059,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26171,13 +24125,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26243,13 +24191,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26302,13 +24244,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26361,13 +24297,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26420,13 +24350,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -26492,13 +24416,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26551,13 +24469,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26623,13 +24535,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26695,13 +24601,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26819,13 +24719,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26891,13 +24785,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -26950,13 +24838,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27022,13 +24904,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27094,13 +24970,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27192,13 +25062,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27264,13 +25128,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27336,13 +25194,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27395,13 +25247,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27454,13 +25300,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27540,13 +25380,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27612,13 +25446,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27684,13 +25512,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27756,13 +25578,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27840,13 +25656,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27912,13 +25722,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27971,13 +25775,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -27990,7 +25788,7 @@ const DadosPDDS = [
         "Id": "391_1",
         "Serv": "Camisa",
         "Desc": "3 M",
-        "Tipo": "",
+        "Tipo": "M.Longa",
         "Calc": [
           "-|-|-|0"
         ],
@@ -28043,13 +25841,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28115,13 +25907,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28187,13 +25973,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28259,13 +26039,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28331,13 +26105,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28415,13 +26183,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28525,13 +26287,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28597,13 +26353,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28695,13 +26445,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28819,13 +26563,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28891,13 +26629,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -28963,13 +26695,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29047,13 +26773,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29119,13 +26839,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29178,13 +26892,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29237,13 +26945,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29309,13 +27011,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29381,13 +27077,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29453,13 +27143,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29476,7 +27160,7 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Eurik",
         "Valr": "60",
         "Forn": "Inová",
         "OK": true,
@@ -29512,13 +27196,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29584,13 +27262,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29643,13 +27315,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29715,13 +27381,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29774,13 +27434,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29846,13 +27500,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29905,13 +27553,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -29977,13 +27619,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30049,13 +27685,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30133,13 +27763,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30231,13 +27855,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30263,13 +27881,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "0"
   },
   {
@@ -30335,13 +27947,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30407,13 +28013,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30479,13 +28079,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30577,13 +28171,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30649,13 +28237,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30721,13 +28303,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30780,13 +28356,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30852,13 +28422,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30924,13 +28488,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -30996,13 +28554,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31068,13 +28620,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31140,13 +28686,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31212,13 +28752,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31284,13 +28818,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31356,13 +28884,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31428,13 +28950,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31500,13 +29016,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31530,7 +29040,7 @@ const DadosPDDS = [
         "Entg": true,
         "Detg": "",
         "SStts": "",
-        "Cmnt": "",
+        "Cmnt": "pode esta errado XX",
         "Lixo": "",
         "Arte": "",
         "OS": "",
@@ -31572,13 +29082,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31644,13 +29148,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31716,13 +29214,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31788,13 +29280,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31811,7 +29297,7 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Inová",
         "OK": true,
@@ -31860,13 +29346,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -31932,13 +29412,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32004,13 +29478,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32076,13 +29544,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32148,13 +29610,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32220,13 +29676,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32292,13 +29742,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32364,13 +29808,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32436,13 +29874,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32508,13 +29940,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32580,13 +30006,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32652,13 +30072,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32724,13 +30138,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32796,13 +30204,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32868,13 +30270,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -32940,13 +30336,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33012,13 +30402,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33084,13 +30468,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33156,13 +30534,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33228,13 +30600,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33300,13 +30666,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33372,13 +30732,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33444,13 +30798,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33516,13 +30864,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33588,13 +30930,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33660,13 +30996,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33732,13 +31062,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33804,13 +31128,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33876,13 +31194,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -33948,13 +31260,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34020,13 +31326,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34092,13 +31392,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34164,13 +31458,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34236,13 +31524,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34308,13 +31590,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34380,13 +31656,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34452,13 +31722,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34524,13 +31788,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34596,13 +31854,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34668,13 +31920,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34740,13 +31986,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34812,13 +32052,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34884,13 +32118,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -34956,13 +32184,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35028,13 +32250,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35100,13 +32316,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35172,13 +32382,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35189,7 +32393,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "490_1",
-        "Serv": "",
+        "Serv": "Recorte",
         "Desc": "2 - Recortes",
         "Tipo": "",
         "Calc": [
@@ -35244,13 +32448,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35316,13 +32514,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35333,17 +32525,17 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "492_1",
-        "Serv": "",
+        "Serv": "Recorte",
         "Desc": "2 @ (Preto e Branco)",
-        "Tipo": "",
+        "Tipo": "Vinil",
         "Calc": [
           "-|-|-|0"
         ],
         "Dsng": "",
         "Valr": "8",
-        "Forn": "",
-        "OK": false,
-        "Entg": false,
+        "Forn": "Stock",
+        "OK": true,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -35388,13 +32580,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35405,9 +32591,9 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "493_1",
-        "Serv": "",
+        "Serv": "Recorte",
         "Desc": "2 par de asa olográfico (12x9)",
-        "Tipo": "",
+        "Tipo": "Holografico",
         "Calc": [
           "-|-|-|0"
         ],
@@ -35460,13 +32646,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35532,13 +32712,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35549,7 +32723,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "495_1",
-        "Serv": "",
+        "Serv": "Recorte",
         "Desc": "2 Kit - N1 Beach (Prata com Rosa, e Preto com Prata)",
         "Tipo": "",
         "Calc": [
@@ -35604,13 +32778,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35621,13 +32789,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "496_1",
-        "Serv": "",
+        "Serv": "Lona",
         "Desc": "2 Faixas 0,80 x 0,50",
-        "Tipo": "",
+        "Tipo": "Faixa",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Fexta",
         "Valr": "70",
         "Forn": "",
         "OK": true,
@@ -35641,7 +32809,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "G_481",
         "Clnt": 1721,
         "Data": "2025-04-14"
       }
@@ -35676,13 +32844,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35748,13 +32910,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35765,13 +32921,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "498_1",
-        "Serv": "",
+        "Serv": "Adesivo",
         "Desc": "Adesivo Santa 90x90 (Uber A)",
-        "Tipo": "",
+        "Tipo": "Brilho",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
         "OK": true,
@@ -35785,7 +32941,7 @@ const DadosPDDS = [
         "Uber": "",
         "Gimg": "",
         "Abcd": "",
-        "Grad": "",
+        "Grad": "G_481",
         "Clnt": 1719,
         "Data": "2025-04-14"
       }
@@ -35820,13 +32976,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35843,14 +32993,14 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Inová",
         "OK": true,
         "Entg": true,
         "Detg": "",
         "SStts": "",
-        "Cmnt": "",
+        "Cmnt": "provavelmente vermelha XX",
         "Lixo": "",
         "Arte": "",
         "OS": "",
@@ -35892,13 +33042,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35909,7 +33053,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "500_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "1 - Cartela / tampa de tanque / 1 - Adesivo",
         "Tipo": "",
         "Calc": [
@@ -35964,13 +33108,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -35981,13 +33119,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "501_1",
-        "Serv": "",
+        "Serv": "Vendas",
         "Desc": "Pedaço de Vinil Preto",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -36036,13 +33174,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36108,13 +33240,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36180,13 +33306,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36252,13 +33372,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36269,7 +33383,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "505_1",
-        "Serv": "",
+        "Serv": "Recorte",
         "Desc": "Nomes",
         "Tipo": "",
         "Calc": [
@@ -36324,13 +33438,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36341,7 +33449,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "506_1",
-        "Serv": "",
+        "Serv": "Quadro",
         "Desc": "Plaquinha A4",
         "Tipo": "",
         "Calc": [
@@ -36396,13 +33504,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36413,13 +33515,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "507_1",
-        "Serv": "",
+        "Serv": "Cartela",
         "Desc": "2 - Cartela ",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -36468,13 +33570,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36540,13 +33636,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36612,13 +33702,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36684,13 +33768,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36756,13 +33834,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36779,11 +33851,11 @@ const DadosPDDS = [
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Allan",
         "Valr": "28",
         "Forn": "",
         "OK": true,
-        "Entg": false,
+        "Entg": true,
         "Detg": "",
         "SStts": "",
         "Cmnt": "",
@@ -36828,13 +33900,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36900,13 +33966,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -36917,13 +33977,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "514_1",
-        "Serv": "",
+        "Serv": "Etiqueta",
         "Desc": "bolinhas papel adesivo",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
         "OK": true,
@@ -36972,13 +34032,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37044,13 +34098,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37061,13 +34109,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "516_1",
-        "Serv": "",
+        "Serv": "Cartela",
         "Desc": "4 - Cartela ",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
         "OK": true,
@@ -37116,13 +34164,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37133,13 +34175,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "517_1",
-        "Serv": "",
+        "Serv": "Cartela",
         "Desc": "1 - Cartela",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -37188,13 +34230,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37205,13 +34241,13 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "518_1",
-        "Serv": "",
+        "Serv": "Cartela",
         "Desc": "1 - Cartela",
         "Tipo": "",
         "Calc": [
           "-|-|-|0"
         ],
-        "Dsng": "",
+        "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
         "OK": true,
@@ -37260,13 +34296,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37332,13 +34362,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37404,13 +34428,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37476,13 +34494,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37548,13 +34560,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37620,13 +34626,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37692,13 +34692,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37764,13 +34758,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37836,13 +34824,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37908,13 +34890,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -37980,13 +34956,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38052,13 +35022,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38124,13 +35088,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38196,13 +35154,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38268,13 +35220,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38340,13 +35286,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38357,7 +35297,7 @@ const DadosPDDS = [
     "Serv": [
       {
         "Id": "534_1",
-        "Serv": "",
+        "Serv": "Trofeu",
         "Desc": "18 - Troféu Acrilico",
         "Tipo": "",
         "Calc": [
@@ -38412,13 +35352,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38484,13 +35418,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38556,13 +35484,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38628,13 +35550,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38700,13 +35616,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38772,13 +35682,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38844,13 +35748,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38916,13 +35814,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -38988,13 +35880,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -39060,13 +35946,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -39132,13 +36012,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -39204,13 +36078,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   },
   {
@@ -39276,13 +36144,7 @@ const DadosPDDS = [
         "Pcnt": ""
       }
     ],
-    "Finc": [
-      {
-        "Valr": "",
-        "Cust": "",
-        "Lcro": ""
-      }
-    ],
+    "Finc":"",
     "OFF": "1"
   }
 ]
