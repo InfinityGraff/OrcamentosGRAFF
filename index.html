@@ -27,6 +27,8 @@
     <script src="./DadosMPAG.js"></script>
     <script src="./DadosCLNT.js"></script>
     <script src="./BibliotecaGRAFF.js"></script>
+
+    <script src="./Gabaritto.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -62,7 +64,7 @@
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
     const LimitLin = 10
-    const Atual = {Pag:'#Pag_PDDS'}
+    const Atual = {Pag:'#Pag_GBRT'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
@@ -1254,8 +1256,9 @@
                 #Login-Top:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
-                .Body1 > header{height:55px ; width:100vw; background:url(./SVG/Fundo.png); background-size:cover ; position: sticky; top:0}
-                .Body1 > #PAGES{height:auto ; width:100vw}
+                .Body1 > header{height:8vh  ; width:100vw ; background:url(./SVG/Fundo.png); background-size:cover ; position:sticky; top:0}
+                .Body1 > #PAGES{height:92vh ; width:100vw }
+                .Body1 > #PAGES > div{height:100% ; overflow-y:scroll} /*Aqui são as Páginas de Fato*/
                         .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
                         .Body1 > header #Title #Logo{margin:5px; height:30px}         
                         .Body1 > header #Title h1   {font-size:3vw}                   @media(max-width:500px){.Body1 > header #Title h1 {display:none}}   
@@ -1289,8 +1292,8 @@
                     .Body2 #DivNav          {width:90%}
                     .Body2 #BdjLogin        {width: 100% ; justify-content: flex-end; background: #38003fa6}
                     .Body2 #Login-Top       {display: flex; margin-right: 7px; font-size: 14px;}
-                    .NavAtv{background: #da00aa;}
-                    .NavAtv:hover{background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
+                    .NavAtv                 {background: #da00aa}
+                    .NavAtv:hover           {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
 
             #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
 
@@ -1637,21 +1640,23 @@
             </script>
         </div>
 
-        <div id="Pag_GBRT" class=" none Ct">
+        <div id="Pag_GBRT" class=" none Ct" style="overflow: hidden">
             <style>/*CSS dos SVGs*/
                 #Config svg {cursor: pointer}
                 #Config .fil0{fill: #ff7300; width: 20px; margin: 5px; height: 20px}
-                #Config .fil0:hover{transform: scale(1.1)}
+                #Config .fil0:hover {transform: scale(1.1)}
                 #Config .fil0:active{transform: scale(1.05)}
                 #Config .fil1{fill:#ff000000; width: 25px;height: 25px}
                 #Config .Cor1{fill: #ff4800}
                 #Config .Cor2{fill: purple}
             </style>
             <style> /*CSS da Aba de Config*/
-                #DivCnvs{width:75%; height:100%; left: 24.6%;z-index: -5;overflow: scroll}
-                #Config {width:25%; height:100%; left:  0px; background:#00000046;overflow: scroll}
-                #Config > div {background: #50505025;border-radius: 15px;margin: 3px; width: 97%; padding: 20px}
-                #Config input[type="range"]{width: 50%}
+                
+                #DivCnvs{width:75% ; height:100% ; overflow-y:auto}
+                #Config {width:25% ; height:100% ; overflow-y:auto}
+
+                #Config > div {background:#50505025; border-radius:15px; margin:3px; width:97%; padding:20px}
+                #Config input[type="range"]{width:50%}
                 #IconsCofng{top:-10px; right:-10px}
                 #CropedID{top:5px; right:5px}
                 .g90{transform: rotate(90deg)}
@@ -1661,7 +1666,7 @@
                 .CanvBox canvas{width: 40%}
                 label{margin:10px;font-family:Almarose-regular}
 
-                input.Error{background:red}
+                input.Error {background:red}
                 select.Error{background:red}
 
                 #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; -webkit-backdrop-filter:blur(5px) ; backdrop-filter:blur(5px); border-radius: 255px}
@@ -1675,7 +1680,7 @@
                 
                 .w33{width: 33%;}
 
-                #Rodape{width: 100%; height: 300px}
+                #Rodape{width: 100%;}
 
                 .Moldura{padding: 2px;border: 1px solid #ff480000}
                 .Moldura.active{border: 1px solid #ff4800}
@@ -1704,6 +1709,41 @@
                     }
             </script>
 
+            <script> // Const Apenas para GABARITO
+                const OBJOBJ=[
+                    [{id:'C_PP'  ,W:'1333',H:'1956'},{id:'F_PP'  ,W:'1333',H:'1899'},],
+                    [{id:'C_P'   ,W:'1503',H:'2211'},{id:'F_P'   ,W:'1503',H:'2154'},],
+                    [{id:'C_M'   ,W:'1559',H:'2353'},{id:'F_M'   ,W:'1559',H:'2296'},],
+                    [{id:'C_G'   ,W:'1701',H:'2466'},{id:'F_G'   ,W:'1701',H:'2381'},],
+                    [{id:'C_GG'  ,W:'1815',H:'2504'},{id:'F_GG'  ,W:'1815',H:'2468'},],
+                    [{id:'C_XG'  ,W:'2041',H:'2565'},{id:'F_XG'  ,W:'2041',H:'2560'},],
+                    [{id:'C_XXGG',W:'2239',H:'2749'},{id:'F_XXGG',W:'2239',H:'2743'},],
+                ]
+
+                let ObjCanvs = []
+                const ObjFundo = []
+
+            </script>
+
+            <script> // Funções Pequenas GABARITO
+                function Mdal_Area(e){ShowModal($(FMdal),'#Mdal-Area') ;  $(e).value = '' ; Foco(e)}
+                function Centlizar(e){e.value = 50 ; Read_Canvs()}
+                function Limpar(){$$('#Lista-001 tbody tr:not(:first-child)').forEach(e=>e.remove()) ; Clen_Alls($('#Lista-001 tbody tr:first-child'))}
+                function LimpObj(){ObjCanvs = []}
+                function AddRow(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
+                
+                function Upload(div){$$(`${div} img`).forEach(img=>{
+                    Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
+                    if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}) ; Read_Obj_Img(`${div} img`)}
+
+                async function ColarTudo(inpt){
+                    const valor = await navigator.clipboard.readText()
+                    if(!valor.match(/\n/g)&& valor.match(/\t/g)){Read_Ipt_Lin(inpt,valor) ; return}
+                    if(!valor.match(/\n/g)&&!valor.match(/\t/g)){return}
+                    $('#Area').value = valor ; Read_Obj_Area('#Area',inpt)
+                }
+            </script>
+
             <div id="Config" class="Cl"> <!--CONFIGURAÇÕES-->
 
                 <div class="Ct">       <!--NOME DO PEDIDO-->
@@ -1721,7 +1761,7 @@
 
                         <div class="w100 Ct">
                             <div class="Ct"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div> <!--Copia o atalho do Corel C e E-->
-                            <div class="Ct"><Button class="btnY" onclick="Centlizar($('#top'))" >Y</Button></div> <!--Copia o atalho do Corel C e E-->
+                            <div class="Ct"><Button class="btnY" onclick="Centlizar($('#top' ))">Y</Button></div> <!--Copia o atalho do Corel C e E-->
                         </div>                           
                     </div>                    
                 </div>
@@ -1849,7 +1889,7 @@
                 <div id="FilesIMG-001" class="w100 FilesIMG Ct"><div class="imgs Ct"></div></div>
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
-                <div id="Rodape"></div>
+                <!--<div id="Rodape"></div>-->
             </div>
 
             <div id="FinaisCnvs" class="Ct Fx"> <!--CONFIRMAÇÕES FINAIS-->
@@ -1861,12 +1901,10 @@
             </script>
         </div>
 
-        <script>
-            const INgeral = performance.now()
-        </script>
-
         <div id="Pag_ORC" class="none Cl">
-
+            <script>
+                const INgeral = performance.now()
+            </script>
             <div> 
                 <input id="PesqPROD" type="text" oninput="Pesq(this,'ORC')" placeholder="Pesquisar Produto..."> <!--Pesquisa PROD-->
             </div>
@@ -2711,5 +2749,7 @@
 <script> // Templates pra iserir mais pra frente ⏳ ❌ ✔️
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
 </script>
+
+
 
 </html>
