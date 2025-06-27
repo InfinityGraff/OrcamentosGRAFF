@@ -61,7 +61,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 1000
+    const LimitLin = 10
     const Atual = {Pag:'#Pag_PDDS'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
@@ -394,8 +394,7 @@
         .ThFilt > div > div > .conffffff span.Atv{fill: #ffff00; background: #00df00;}
         
         .ShodShod{width: 250px}
-        
-
+    
         .THSugg{border-radius: 0 0 10px 10px !important}
             .THSugg div:hover{background:#df4ccb; color: white}
             .THSugg div:hover div{opacity: 1}
@@ -426,6 +425,7 @@
         .Ant-Bol{width: 6px;height: 6px; border-radius: 255px}
         
         .AutoComp{background: #94949473}
+        .AutoComp.Cor{background: #ffffff00}
         .CorID   {background: #94949473}
 
         td        .grifoo{display: none ; height: 5px; width: 5px ; left: 0px;}
@@ -436,8 +436,8 @@
                 .Dark .TBLAA table{background: #222222}
                 .Lite .TBLAA table{background: white}
             .TBLAA th{padding:4px 6px}
-                .Dark .TBLAA th,.Dark .TBLAA td{border:1px solid #cccccc27}
-                .Lite .TBLAA th,.Lite .TBLAA td{border:1px solid #00000041}
+                .Dark .TBLAA tr{border:1px solid #cccccc27}
+                .Lite .TBLAA tr{border:1px solid #00000027}
                 .Dark .TBLAA th{background: #161616;color:white}
                 .Lite .TBLAA th{background: #8b0085;color:white}
                     .Lite .TBLAA td.Foco{background:#c300ff2a}
@@ -916,30 +916,53 @@
     </script>
 
     <script> // RECOLOR  - ⭐⭐_ _ _
-        function Re_colrAll(Typ){ // Muda a cor de Todas (Depois fazer apenas para as Visiveis)
-            TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})
-        }
-
-        // também seria bom Limpar tudo antes de Recolorir
-
-        const OB = { // Criterio 1 é Obrigaório, mas tbm terá outro critério de Comparação
+        const NoVazi=v=>v!=='' && v!==false && v!==undefined // isso pode virar Biblioteca
+        const MinMax=(Atual,Lista)=>Math.min(Math.max(Atual/Lista,0),1) // Entre 0 e 1 
+        const OB = { // Criterio 1 é Obrigaório
             SERV:['Serv','Tipo','Dsng','Forn','OK','Entg','Detg','Grad']
         }
+        const OC = { // mas tbm terá outro critério de Comparação
+            SERV:['Forn==Grad']
+        }
+
+        // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
+        const R_Cor=(e,opacy,Cor)=>{
+            e.style.background   = `rgba(${Cor},${(opacy).toFixed(2)})`             // Colore o Fundo
+            e.style.color        = `rgb(${Cor.split(',').map(e=>e/2).join(',')})`   // Colore o Fundo
+            e.style.borderBottom = `1px solid rgba(${Cor},${(opacy).toFixed(2)})`   // Colore a Borda
+            $$('select',e).forEach(E=>E.style.background = '#00000000')
+        }
+
+        function Re_colrAll(Typ){                // ✔️ Muda a cor de Todas 
+            TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})
+            // Depois fazer Apenas para as Visiveis
+            // Também seria bom Limpar tudo antes de Recolorir
+        } 
+
         function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
             if(Typ==='SERV'){
                 const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
                 const newobj = zipObj(OjKy(Typ),Arr)
-                const Atual  = OB[Typ].filter(k=>{const v = newobj[k] ; return v!=='' && v!==false && v!==undefined}) // esse false e undefined pode virar biblioteca
-                const pcnt   = Atual.length / OB[Typ].length
-                const opacy  = Math.min(Math.max(pcnt,0),1) // Entre 0 e 1
-                
-                Atual.forEach(e=>$(Rx2([Typ,e]),tr).style.background = `rgba(0, 180, 0, ${(opacy/2).toFixed(2)})`)   // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
-                tr.style.background = `rgba(0, 255, 0, ${(opacy/3).toFixed(2)})`                                     // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
+                const Atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
+                const opacy  = MinMax(Atual.length,OB[Typ].length)
+                const Coclui = Atual.length === OB[Typ].length
+                const Cor    = $(`#${Typ}_Color`).value
+                const [Atv1,Atv2] = [$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
+                //Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
+                Atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
+                    td.style.background = ''                      // Zera Fundo
+                    td.style.border = ''                          // Zera Brorder
+                    if(Atv1){R_Cor(td,opacy/2,hexToRGB2(Cor))}
+                    if(Coclui){R_Cor(td,opacy,hexToRGB2(Cor))}
+                })
+                    tr.style.background = ''                      // Zera Fundo
+                    $$('td',tr).forEach(e=>e.style.border = '')   // Zera Borda
+                    if(Atv2){R_Cor(tr,opacy/2,hexToRGB2(Cor))}
+                    if(Coclui){R_Cor(tr,opacy,hexToRGB2(Cor))}
             }
             // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
             // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
         }
-        // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
     </script>
     
     <script> // AUTO COMPLETE
@@ -1274,7 +1297,8 @@
             /*.TBLAA tbody > tr       {background:transparent;transition:background 0.5s ease-out} /*  Saída lenta   */
             /*.TBLAA tbody > tr:hover {background:#8000a0a6;transition:background 0.02s ease-in} /* Entrada rápida */
             
-            .TBLAA tbody > tr:hover {background:#8000a0a6} /* Entrada rápida */
+            .TBLAA tbody > tr:hover    {background:#8000a0a6 !important} /* Entrada rápida */
+            .TBLAA tbody > tr td:hover {background:#dd56ffea !important} /* Entrada rápida */
 
         </style>
         <script>
@@ -1402,7 +1426,16 @@
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('SERV')">Rfresh </button>
-                <button onclick="Re_colrAll('SERV')">Recolor</button>
+
+                <div onchange="Re_colrAll('SERV')">
+                    <input id="SERV_Color" type="color">
+                    <input id="SERV_tdCor" type="checkbox">
+                    <input id="SERV_trCor" type="checkbox">
+                </div>
+                
+                <div><!--Exibir cor coluna automaica-->
+                    <input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label>
+                </div>
                 <h1>Tabela de Serviço</h1>
                 <div id="PagPesq_SERV" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
                 <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
