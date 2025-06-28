@@ -4,59 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
+
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Base.js"           ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/BaseGRAFF.js"      ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
+
+    <!--
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"           ></script>
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"      ></script>
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
+    -->
+
+    <!--
+        <script src="../MyBiblioteca/PreScript.js"></script>
+        <script src="../MyBiblioteca/Base.js"></script>
+        <script src="../MyBiblioteca/BaseGRAFF.js"></script>
+        <script src="../MyBiblioteca/Templates.js"></script>
+    -->
+
     <link rel="stylesheet" href="./cssGRAFF.css">
- 
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>
-    <!--<script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
-
-    <script src="./Degrade.js"></script>
-
-        <!--
-    <script src="../MyBiblioteca/PreScript.js"></script>
-    <script src="../MyBiblioteca/Base.js"></script>
-    <script src="../MyBiblioteca/BaseGRAFF.js"></script>
-    <script src="../MyBiblioteca/Templates.js"></script>
-        -->
     <script src="./DadosPDDS.js"></script>
     <script src="./DadosGRAD.js"></script>
     <script src="./DadosMPAG.js"></script>
     <script src="./DadosCLNT.js"></script>
     <script src="./BibliotecaGRAFF.js"></script>
-
+    <script src="./Degrade.js"></script>
     <script src="./Gabaritto.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
     .svg-Lixo {width:auto; height:15px; fill:#ffbb00}
-    .ClntATV{background:#ff4500}
-    p,div{cursor: default}
-    #FormServ{width: 500px; background: #363636}
-    input[type="checkbox"]{height:auto}
-    .SelectSoma{background: #ff0000}
-    .Ubuiaxik{width: 800px; height: 500px}
-    .Nuevoevo{color: white;background: #53004873;padding: 2px}
-
-    .Dark option{color:#ffffff; background:#3d3d3d}
-    .Lite option{color:#000000; background:#ffffff}
-    .Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
-    .Lite optgroup{color:#00000038; background:white  ; font-size:10px; text-align:left; padding-left:80px}
-
-    .Formt_Verd  {background:rgba(95, 219, 95 );color:#274e24;font-weight:bold}
-    .Formt_VerdOK{background:rgb(43, 211, 43  );color:#274e24;font-weight:bold}
-    .Formt_Azul  {background:rgb(104, 180, 224);color:#131a5f;font-weight:bold}
-    .Formt_Redd  {background:rgb(224, 104, 104);color:#910000;font-weight:bold}
-    .Formt_Yell  {background:rgb(228, 252, 94 );color:#910000;font-weight:bold}
-    .Formt_Orag  {background:rgb(255, 187, 0  );color:#910000;font-weight:bold}
-    
-    .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
-    .footbndjj span{color:#000000}
-
-    select.Psq{background: #ff7b00;}
 </style>
 
 <script> // Base de Dados
@@ -509,6 +492,13 @@
             .Body2 .PagPEsq{display:block}
 
             th input{height: 18px ; width: 80px}
+            .SelectSoma{background: #ff0000}
+            .Ubuiaxik{width: 800px; height: 500px}
+            .BtnMini{color:#ffffff; background:#53004873; padding:2px}
+            
+            .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
+            .footbndjj span{color:#000000}
+            select.Psq{background: #ff7b00} /*isso é como o Select vai ficar quando é corespondido a pesquisa*/
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
@@ -542,7 +532,7 @@
             function Tm_Bndj(arr,Typ){
                 return `<table class="Bdj_${Typ} TableMORE"><thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                             <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
-                                    </table> ${Typ==='CLNT'?'':`<div class="Nuevoevo RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`}`
+                                    </table> ${Typ==='CLNT'?'':`<div class="BtnMini RD Hov" onclick="NovaLinhaBDj(this)">Nova Linha +</div>`}`
                                     // conferir se typ é CLNT é desnessesário pois, logo logo Clnt vai ser subistidio por 'LINK'
             }
 
@@ -1147,7 +1137,7 @@
 
         function MudarFormatBndj1(Typ){
             const Div = $$(`${Rx(['ABCD','Bndj'])} .BndjTBL` )
-            const Btn = $$(`${Rx(['ABCD','Bndj'])} .Nuevoevo`)
+            const Btn = $$(`${Rx(['ABCD','Bndj'])} .BtnMini`)
             const p   = $$(`${Rx(['ABCD','Bndj'])} > div > .P-P`)
 
             Div.forEach(e=>{
@@ -1160,7 +1150,7 @@
 
         function MudarFormatBndj2(Typ){
             const Div = $$(`${Rx(['ABCD','Bndj'])} .bnDJ` )
-            const Btn = $$(`${Rx(['ABCD','Bndj'])} .Nuevoevo`)
+            const Btn = $$(`${Rx(['ABCD','Bndj'])} .BtnMini`)
             const p   = $$(`${Rx(['ABCD','Bndj'])} > div > .P-P`)
 
             Div.forEach(e=>{
@@ -1246,7 +1236,7 @@
     </script>
 </div>
 
-<body class="Dark Body1 Ct" onclick="NoneBndj()">
+<body class="Dark Body1 CSS2 Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
@@ -1303,7 +1293,6 @@
             
             .TBLAA tbody > tr:hover    {background:#8000a0a6 !important} /* Entrada rápida */
             .TBLAA tbody > tr td:hover {background:#dd56ffea !important} /* Entrada rápida */
-
         </style>
         <script>
             const OFF =()=> 'OFF'
@@ -1642,7 +1631,11 @@
         </div>
 
         <div id="Pag_GBRT" class=" none Ct" style="overflow: hidden">
-            <style>/*CSS dos SVGs*/
+            <style> /*CSS da Aba de Config*/
+                /*Coisas que devereia ser Geral*/
+                input.Error {background:red}
+                select.Error{background:red}
+
                 #Config svg {cursor: pointer}
                 #Config .fil0{fill: #ff7300; width: 20px; margin: 5px; height: 20px}
                 #Config .fil0:hover {transform: scale(1.1)}
@@ -1650,39 +1643,18 @@
                 #Config .fil1{fill:#ff000000; width: 25px;height: 25px}
                 #Config .Cor1{fill: #ff4800}
                 #Config .Cor2{fill: purple}
-            </style>
-            <style> /*CSS da Aba de Config*/
+
                 #DivCnvs{width:75% ; height:100% ; overflow-y:auto}
                 #Config {width:25% ; height:100% ; overflow-y:auto}
                 #Config > div {background:#50505025; border-radius:15px; margin:3px; width:97%; padding:20px}
                 #Config input[type="range"]{width:50%}
                 #IconsCofng{top:-10px; right:-10px}
                 #CropedID{top:5px; right:5px}
-                .g90{transform: rotate(90deg)}
-
-                .CanvBox{width: 380px;height: 350px; margin-top: 10px}
-                .CanvBox canvas {background:#505050;margin:5px}
-                .CanvBox canvas{width: 40%}
-                label{margin:10px;font-family:Almarose-regular}
-
-                input.Error {background:red}
-                select.Error{background:red}
-
-                #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; -webkit-backdrop-filter:blur(5px) ; backdrop-filter:blur(5px); border-radius: 255px}
-                #FinaisCnvs{border: 2px solid #2e2e2e96}
                 .Close{border-radius:5px; background:#ff3232; padding:1px; width:16px; height:16px; opacity: 0;top: 0; right: 0}
-                .DivImgRsut:hover .Close{opacity:1}
-                
-                .w33{width: 33%;}
-
-                #Rodape{width: 100%;}
-
                 .Moldura{padding: 2px;border: 1px solid #ff480000}
                 .Moldura.active{border: 1px solid #ff4800}
                 .ConfigTxt canvas{margin: 3px;}
                 .ConfigTxt label{margin:2px}
-
-                #Inpfiles-001{margin-top: 80px}
             </style>
 
             <script> // Biblioteca dos GBRT
@@ -1809,6 +1781,10 @@
 
             <div id="Config" class="Cl"> <!--CONFIGURAÇÕES-->
 
+                <style>
+
+                </style>
+
                 <div class="Ct">       <!--NOME DO PEDIDO-->
                     <div><input id="NomeCliente" type="text" placeholder="Nome do Pedido"></div>
                 </div>
@@ -1865,6 +1841,9 @@
                         <div id="IconsCofng" class="Ct Abslt">
                             <div id="IcoMais" onclick="AddRoW()"          ></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
                             <div id="IcoLixo" onclick="Limpar();LimpObj()"></div><script>Inn('#IcoLixo',IcoClen('fil0'))</script>
+                            
+                            <img class="HOV" src="./SVG/Mais.svg">
+                            <img class="HOV" src="./SVG/Clear.svg">
                         </div>
 
                         <table id="Lista-001">
@@ -1887,10 +1866,16 @@
 
             <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
                 <style>
+                    #Inpfiles-001{margin-top: 80px}
                     .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
                     .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
                     .FilesIMG img.Larg{width:100%; height:auto}
                     .FilesIMG img.Alt{width:auto; height:100%}
+                    .DivImgRsut:hover .Close{opacity:1}
+
+                    .CanvBox{width: 380px;height: 350px; margin-top: 10px}
+                    .CanvBox canvas {background:#505050;margin:5px}
+                    .CanvBox canvas{width: 40%}
                 </style>
                 <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
                 <div class="Ct w100">
@@ -1900,10 +1885,14 @@
                 </div>                   
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
-                <div id="Rodape"></div>
+                <div id="Rodape" class="w100"></div>
             </div>
 
             <div id="FinaisCnvs" class="Ct Fx"> <!--CONFIRMAÇÕES FINAIS-->
+                <style>
+                    #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; -webkit-backdrop-filter:blur(5px) ; backdrop-filter:blur(5px); border-radius: 255px}
+                    #FinaisCnvs{border: 2px solid #2e2e2e96}
+                </style>
                 <button onclick="Load_Cnvs('#AllCanvas')">Carregar Canvas</button>
             </div>
 

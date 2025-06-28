@@ -5,11 +5,21 @@
 @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
 
 /*Formatos das Tags______________________________________________________________ */
+    /*Body*/
+      body.Lite.CSS1{background: #ffffff          ;color:#000000}
+      body.Dark.CSS1{background: var(--DegradeFundo);color:#ffffff}
+      body.Lite.CSS2{background: #ffffff          ;color:#000000}
+      body.Dark.CSS2{background: #120c16          ;color:#ffffff}
     /*Button, Input e Select*/
       input,select,button,.button{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s ease-in-out}      
       button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/  
     /*Botões*/
-      button,.button{color: #ffffff}
+      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--Degrade); background-size:500%; padding: 3px 6px}
+      .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+      .CSS1 button:active,.CSS1 .button:active{transform:scale(0.95)}
+
+      .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300;border: 2px solid #ffae00;padding: 0px 10px;font-family: Almarose-Medium}
+
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -18,34 +28,38 @@
       .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272}
         .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
         .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
-          .Dark input:focus{background: #ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
-          .Lite input:focus{                         border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
+          .Dark input:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
+          .Lite input:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
 
-button,.button{background:var(--Degrade);background-size:500%;padding: 3px 6px}
-button:hover,.button:hover{transform:scale(1.1);animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
-button:active,.button:active{transform:scale(0.95)}
+    .CSS1.Dark option  {color:#ffffff  ; background:#3d3d3d}
+    .CSS1.Lite option  {color:#000000  ; background:#ffffff}
+    .CSS1.Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
+    .CSS1.Lite optgroup{color:#00000038; background:#ffffff; font-size:10px; text-align:left; padding-left:80px}
 
-.n0  { display: none; }
-.n1  { display: none; }
-.n2  { display: none; }
-.n3  { display: none; }
-.n4  { display: none; }
-.n5  { display: none; }
-.n6  { display: none; }
-.n7  { display: none; }
-.n8  { display: none; }
-.n9  { display: none; }
-.n10 { display: none; }
-.n11 { display: none; }
-.n12 { display: none; }
-.n13 { display: none; }
-.n14 { display: none; }
-.n15 { display: none; }
-.n16 { display: none; }
-.n17 { display: none; }
-.n18 { display: none; }
-.n19 { display: none; }
-.n20 { display: none; }
+
+
+/*Futuramente sair pois eu já botei no CSSBiblioteca*/
+  .n0  { display: none; }
+  .n1  { display: none; }
+  .n2  { display: none; }
+  .n3  { display: none; }
+  .n4  { display: none; }
+  .n5  { display: none; }
+  .n6  { display: none; }
+  .n7  { display: none; }
+  .n8  { display: none; }
+  .n9  { display: none; }
+  .n10 { display: none; }
+  .n11 { display: none; }
+  .n12 { display: none; }
+  .n13 { display: none; }
+  .n14 { display: none; }
+  .n15 { display: none; }
+  .n16 { display: none; }
+  .n17 { display: none; }
+  .n18 { display: none; }
+  .n19 { display: none; }
+  .n20 { display: none; }
 
 
 /*Anailsar depois*/
