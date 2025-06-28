@@ -8,34 +8,32 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Base.js"           ></script>
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/BaseGRAFF.js"      ></script>
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
 
     <!--
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"           ></script>
-        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"      ></script>
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
     -->
 
     <!--
-        <script src="../MyBiblioteca/PreScript.js"></script>
-        <script src="../MyBiblioteca/Base.js"></script>
-        <script src="../MyBiblioteca/BaseGRAFF.js"></script>
-        <script src="../MyBiblioteca/Templates.js"></script>
+        <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+        <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="../MyBiblioteca/PreScript.js"      ></script>
+        <script src="../MyBiblioteca/Templates.js"      ></script>
     -->
 
     <link rel="stylesheet" href="./cssGRAFF.css">
-    <script src="./DadosPDDS.js"></script>
-    <script src="./DadosGRAD.js"></script>
-    <script src="./DadosMPAG.js"></script>
-    <script src="./DadosCLNT.js"></script>
+    <script src="./BaseGRAFF.js"      ></script>
     <script src="./BibliotecaGRAFF.js"></script>
-    <script src="./Degrade.js"></script>
-    <script src="./Gabaritto.js"></script>
+    <script src="./Degrade.js"        ></script>
+    <script src="./Gabaritto.js"      ></script>
+
+    <script src="./JSON/DadosPDDS.js"></script>
+    <script src="./JSON/DadosGRAD.js"></script>
+    <script src="./JSON/DadosMPAG.js"></script>
+    <script src="./JSON/DadosCLNT.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -44,7 +42,7 @@
 
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
-    const Err   = `onerror="this.src='./placeholder.svg'"`
+    const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
     const LimitLin = 10
     const Atual = {Pag:'#Pag_GBRT'}
@@ -287,12 +285,8 @@
     const ALERT=e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
     const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
     const SunPix=Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
-    //const J_Filt=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])
-    //const J_Find=(Typ,e)=>J[Typ].filter(E=>E.ID==(e+"|").split('|')[0])[0]
     const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
     function EnterBlur(e){KeyEntr(()=>e.blur())}
-    //const SERV_Find_CLNT=e=>J_Find('CLNT',J_Find('PDDS',e.ID).Clnt).Clnt
-    //const FindClnt=e=>J_Find('CLNT',e.Clnt).Clnt
     const Block=e=>e.style.display = 'block'
     const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
     const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
@@ -305,7 +299,6 @@
     const LocPcnt = (parte,total) => (parte / total)
     const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
     const zipObj=(arr1,arr2)=>Object.fromEntries(arr1.map((k,i)=>[k,arr2[i]]))
-    
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
     const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
@@ -314,50 +307,23 @@
     const isArr=e=>Array.isArray(e)
 
     // Gets
-    const Rx2=arry=>Rx(['Rastr',...arry])
-    const Coll=(x)=>`td:nth-child(${x})`
-    const Col=(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
-    const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
-    const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
-    const D_Rastr2=R=>R.split('-')
-    const TRs=(Typ)=>$$(`#H_${Typ} > tbody > tr`)
-    const TH=(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
+        const Rx2=arry=>Rx(['Rastr',...arry])
+        const Coll=(x)=>`td:nth-child(${x})`
+        const Col=(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
+        const Colls=(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
+        const D_Rastr=e=>Extrat_Clss(e,'Rastr-').split('-') // Simplificar pra D_R e incluir closeset aqui dentro mesmo, caso precise.
+        const D_Rastr2=R=>R.split('-')
+        const TRs=(Typ)=>$$(`#H_${Typ} > tbody > tr`)
+        const TH=(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
 
-    function VAL(e){
-        const td = e.tagName === 'TD' ? e : _td(e)
-        const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = ['Edit','Fixo','Sugg','Auto','SVG','Soma'].includes(R[3]) ? $('.P-P',td).textContent.trim()
-                : R[3]==='Data' ? Nm($('.P-P',td)).trim()
-                : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
-                : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
-                : R[3]==='Slct' ? $('select',td).value
-                : R[3]==='Inpt' ? $('input' ,td).value
-                : R[3]==='Chek' ? $('input' ,td).checked
-                : is(td,'input')? td.value
-                : R[3]==='Lixo' ? '-'
-                : null
-        return val
-        // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
-    }
-    function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ; Inn(td,Tm_Tm[dR[4]](v,dR,A))} 
-</script>
-
-<script> // Bibliotecas Longa
     //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
-    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-    const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
-    const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
-    
-    function ShowBndj(div){
-        if(event.target.tagName=='IMG'){return}
-        if(event.target.tagName== 'I' ){return}
-        const e = $('.BNdj',div)
-        if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho (este if tem que seguir em frente caso seja o Svg da Seta)
-            e.style.zIndex = $$('.BNdj:not(.none)').length + 500
-            if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
-        if(Tecla('ctrl')){return}
-        else{ClickFora(div,()=>{Add_N(e)})}
-    }
+        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+        const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
+        const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
+    // Drags
+        function Prvn(){event.preventDefault()}
+        function Drag(){event.dataTransfer.setData("text",event.target.id)}
+        function Drop(){Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -1796,7 +1762,7 @@
                     </div>
       
                     <div class="w100"> <!--Aqui é o Controlador de Posições-->
-                        <img src="./Tudi.jpg" height="150px">                          
+                        <img src="./Testes/Tudi.jpg" height="150px">                          
                     </div> 
                     
                     <div class="controls">
@@ -1867,10 +1833,10 @@
             <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
                 <style>
                     #Inpfiles-001{margin-top: 80px}
-                    .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
-                    .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
-                    .FilesIMG img.Larg{width:100%; height:auto}
-                    .FilesIMG img.Alt{width:auto; height:100%}
+                    .DropZone .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
+                    .DropZone .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
+                    .DropZone img.Larg{width:100%; height:auto ; cursor: move}
+                    .DropZone img.Alt {width:auto; height:100% ; cursor: move}
                     .DivImgRsut:hover .Close{opacity:1}
 
                     .CanvBox{width: 380px;height: 350px; margin-top: 10px}
@@ -1879,12 +1845,25 @@
                 </style>
                 <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
                 <div class="Ct w100">
-                    <div id="FilesIMG-001" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
-                    <div id="FilesIMG-002" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
-                    <div id="FilesIMG-003" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-001" class="DropZone Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-002" class="DropZone Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-003" class="DropZone Ct"><div class="imgs Ct"></div></div>
                 </div>                   
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
+                
+                <div>
+                    <style>
+                    .DropZone2     {width:150px; height:150px; border:2px dashed #ccc}
+                    .DropZone2 img {width:100px; height:100px; cursor:move}
+                    </style>
+
+                    <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()">
+                        <img id="img1" src="./Img/Perfil_Allan.png" ondragstart="Drag()">
+                    </div>
+                    <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()"></div>
+                </div>
+
                 <div id="Rodape" class="w100"></div>
             </div>
 
@@ -1960,7 +1939,7 @@
                     function tmplt_Prod(e){ //GRANDE
                         const Fora = ListaFora.includes(e)
                         return `<div class="Rltv Start2">
-                            <span class="Start"><img src="${Fora?'./placeholder.svg':`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
+                            <span class="Start"><img src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
                             <div class="KeyInn none">...</div>
 
                                 <div class="Ct w100 Opts Abslt">${
@@ -1968,7 +1947,7 @@
                                         const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
                                         const Larg = `width:${(200/l.length)+15}px;`
                                         const Zidx = `z-index:${(l.length-x)+10};`
-                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora?'./placeholder.svg':`./Prod/IconProd/${e}_${vv}.svg`}"></div>`
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}_${vv}.svg`}"></div>`
                                 }).join('')}</div>
 
                             <div class="Ct DivVrnts">
@@ -1976,7 +1955,7 @@
                                 return `<div class="Conteudo Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
                                             <div class="KeyVariants rgx">${V}</div>
-                                            <img class="fotO" src="${Fora?'./placeholder.svg':`./Prod/${e}_${V}.webp`}" onclick="MdalShow('#Mdal-Prod')">
+                                            <img class="fotO" src="${Fora?'./SVG/placeholder.svg':`./Prod/${e}_${V}.webp`}" onclick="MdalShow('#Mdal-Prod')">
                                             <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
                                             <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
