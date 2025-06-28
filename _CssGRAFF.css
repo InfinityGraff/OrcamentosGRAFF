@@ -13,13 +13,15 @@
     /*Button, Input e Select*/
       input,select,button,.button{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s ease-in-out}      
       button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/  
+        .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
+        .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
       .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--Degrade); background-size:500%; padding: 3px 6px}
       .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
       .CSS1 button:active,.CSS1 .button:active{transform:scale(0.95)}
-
       .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300;border: 2px solid #ffae00;padding: 0px 10px;font-family: Almarose-Medium}
-
+      .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
+      .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -28,8 +30,6 @@
       .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272}
         .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
         .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
-          .Dark input:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
-          .Lite input:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
 
     .CSS1.Dark option  {color:#ffffff  ; background:#3d3d3d}
     .CSS1.Lite option  {color:#000000  ; background:#ffffff}
@@ -41,3 +41,8 @@
 .Dark #Alert{background:#1b1b1b}
 .Lite #Alert{background:#ffffff}
 .Dark #ModalNota{background:#ffffff;color:black}
+
+
+input.Error {background:red}
+select.Error{background:red}
+

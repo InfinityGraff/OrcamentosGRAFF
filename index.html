@@ -297,6 +297,10 @@
     const isBdj=e=> !!e.closest('.BndjTBL')
     const isArr=e=>Array.isArray(e)
 
+    const ATV=e=>Add($(e),'Atv')
+    const DTV=e=>Rmv($(e),'Atv')
+    const TOV=e=>Tog($(e),'Atv') // Modificar todos os Tog:Atv pra mudar pra TOV
+
     // Gets
         const Rx2=arry=>Rx(['Rastr',...arry])
         const Coll=(x)=>`td:nth-child(${x})`
@@ -723,9 +727,9 @@
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"           ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')" ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
                 <input class="" placeholder="pesq">
-                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="Tog(this,'Atv');${Ex}"       ><img src="./SVG/Icon_Lin.svg">                                      </span> 
+                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="TOV(this);${Ex}"       ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
-                <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="Tog(this,'Atv');${Ex}"       ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
+                <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="TOV(this);${Ex}"       ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
             `// no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
 
             const Lista = Palavras(Typ,col)
@@ -1043,7 +1047,7 @@
         }
     </script>
 
-    <script> // REALTIME  - ⭐⭐_ _ _
+    <script> // REALTIME - ⭐⭐_ _ _
         function Load_Table(Typ){ //acho q serve pra evitar q carregue novamente  // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
@@ -1587,11 +1591,14 @@
         </div>
 
         <div id="Pag_GBRT" class=" none Ct" style="overflow: hidden">
+            <!--
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+            -->
             <style> /*CSS da Aba de Config*/
-                /*Coisas que devereia ser Geral*/
-                input.Error {background:red}
-                select.Error{background:red}
-
                 #Config svg {cursor: pointer}
                 #Config .fil0{fill: #ff7300; width: 20px; margin: 5px; height: 20px}
                 #Config .fil0:hover {transform: scale(1.1)}
@@ -1608,24 +1615,9 @@
                 #CropedID{top:5px; right:5px}
                 .Close{border-radius:5px; background:#ff3232; padding:1px; width:16px; height:16px; opacity: 0;top: 0; right: 0}
                 .Moldura{padding: 2px;border: 1px solid #ff480000}
-                .Moldura.active{border: 1px solid #ff4800}
-                .ConfigTxt canvas{margin: 3px;}
-                .ConfigTxt label{margin:2px}
+                .ConfigTxt canvas{margin:3px}
+                .ConfigTxt label {margin:2px}
             </style>
-
-            <script> // Biblioteca dos GBRT
-//______________________________________________________________________________________________________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________________________________________________________________________________________________
-                const PrcAryObj=(e,Stg)=>e.find(E=>E.tamn===Stg)?.qnt || 'nada'
-                function Centlizar(e){e.value = 50 ; Read_Canvs()}
-                function AtivarDiv(e){Add($(e),'active')}
-                function DestivDiv(e){Rmv($(e),'active')}
-                const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
-
-            </script>
 
             <script> // Const Apenas para GABARITO
                 const OBJOBJ=[
@@ -1640,15 +1632,19 @@
 
                 let ObjCanvs = []
                 const ObjFundo = []
-
             </script>
 
-            <script> // Funções Pequenas GABARITO
+            <script>
+            // Biblioteca dos GBRT
+                const PrcAryObj=(e,Stg)=>e.find(E=>E.tamn===Stg)?.qnt || 'nada'
+                function Centlizar(e){e.value = 50}
+                const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
+            // Funções Pequenas GABARITO
                 function Mdal_Area(e){ShowModal($(FMdal),'#Mdal-Area') ;  $(e).value = '' ; Foco(e)}
                 function Limpar(){$$('#Lista-001 tbody tr:not(:first-child)').forEach(e=>e.remove()) ; Clen_Alls($('#Lista-001 tbody tr:first-child'))}
                 function LimpObj(){ObjCanvs = []}
                 function AddRoW(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
-                
+            // Funções Grandes GABARITO   
                 function Upload(div){$$(`${div} img`).forEach(img=>{
                     Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
                     if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}) ; Read_Obj_Img(`${div} img`)}
@@ -1726,18 +1722,13 @@
             </script>
 
             <div id="Config" class="Cl"> <!--CONFIGURAÇÕES-->
-
-                <style>
-
-                </style>
-
-                <div class="Ct">       <!--NOME DO PEDIDO-->
+                <div class="Ct">           <!--NOME DO PEDIDO-->
                     <div><input id="NomeCliente" type="text" placeholder="Nome do Pedido"></div>
                 </div>
 
-                <div class="Ct Rltv">  <!--CONFIGURAÇÕES DE TAMANHO-->
+                <div class="Ct Rltv">      <!--CONFIGURAÇÕES DE TAMANHO-->
                     <div id="CropedID" class="Ct DivCrop Abslt"> <!--Da pra Simplificar isso pra um Unico SVG-->
-                        <div onclick="$('#Crop').click()" id="CropSvg"></div><script>Inn('#CropSvg',IcoCrop('fil0','Opacy'))</script>
+                        <div onclick="$('#Crop').click()" id="CropSvg" onload="Inn(this,IcoCrop('fil0','Opacy'))"></div>
                         <input id="Crop" type="checkbox" class="none" onchange="Tog('.Croped','Opacy');Read_Canvs()">
                     </div>
       
@@ -1748,8 +1739,8 @@
                     <div class="controls">
                         <div class="w100">
                             <div class="Ct"><label>Tamanho</label><input type="range" id="size" min="0" max="150" value="50" oninput="Read_Canvs()"></div>
-                            <div class="Ct"><label>Largura</label><input type="range" id="left" min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div>
-                            <div class="Ct"><label>Alturaa</label><input type="range" id="top"  min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnY" onclick="Centlizar($('#top' ))">Y</Button></div>
+                            <div class="Ct"><label>Largura</label><input type="range" id="left" min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnX" onclick="Centlizar($('#left'));Read_Canvs()">X</Button></div>
+                            <div class="Ct"><label>Alturaa</label><input type="range" id="top"  min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnY" onclick="Centlizar($('#top' ));Read_Canvs()">Y</Button></div>
                         </div>
                     </div>
                 </div>
@@ -1765,17 +1756,15 @@
                             <input id="FontColor" type="color" value="#000000" oninput="Read_Canvs()">
                         </div>
                         <div class="Ct inptcolor2">
-                            <canvas id="controlCanvas" class="Rd Moldura ClickCanv" width="70" height="70"></canvas>
+                            <canvas id="controlCanvas" class="Rd Moldura ClickCanv FOC" width="70" height="70"></canvas>
                             <input class="Opacy noClk" type="color" id="colorPicker1" style="display: none;">
                             <input class="Opacy noClk" type="color" id="colorPicker2" style="display: none;">
                             <div class="Cl">
-                                <div class="ClickCanv" id="alignX">X</div> <script>Inn('#alignX',IconAling('fil1','white','white'))</script>
-                                <div class="ClickCanv" id="alignY">Y</div> <script>Inn('#alignY',IconAling('fil1 g90','white','white'))</script>
+                                <div class="ClickCanv" id="alignX" onload="Inn(this,IconAling('fil1'    ,'white','white'))">X</div>
+                                <div class="ClickCanv" id="alignY" onload="Inn(this,IconAling('fil1 g90','white','white'))">Y</div>
                             </div>
                         </div>
-                        
                     </div>
-                    
                     <hr class="w100">
                     <div class="Ct w100"><label>Fonte:</label><select class="w50" id="fontFamily" onchange="CssFont('#fontFamily',this.value);Read_Canvs()"></select><script>load_OptsFnt($('#fontFamily'),KitFonts)</script></div>
                 </div>
@@ -1785,11 +1774,8 @@
                         <button onclick="Mdal_Area('#Area')">Editar Inputs</button>
 
                         <div id="IconsCofng" class="Ct Abslt">
-                            <div id="IcoMais" onclick="AddRoW()"          ></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
-                            <div id="IcoLixo" onclick="Limpar();LimpObj()"></div><script>Inn('#IcoLixo',IcoClen('fil0'))</script>
-                            
-                            <img class="HOV" src="./SVG/Mais.svg">
-                            <img class="HOV" src="./SVG/Clear.svg">
+                            <div onload="Inn(this,IcoMais('fil0'))" onclick="AddRoW()"          ></div>
+                            <div onload="Inn(this,IcoClen('fil0'))" onclick="Limpar();LimpObj()"></div>
                         </div>
 
                         <table id="Lista-001">
@@ -1855,14 +1841,30 @@
                 <button onclick="Load_Cnvs('#AllCanvas')">Carregar Canvas</button>
             </div>
 
-<script>     
-            LoadDegade($('#controlCanvas'))       
+            <script>     
+                LoadDegade($('#controlCanvas'))   
+                const FMdal = $('#FModal')
+
+
+
+                document.addEventListener('click',e=>{const Div = e.target
+                    Rmv('.Moldura','Atv')
+                    if(S(Div).Coten('ClickCanv')||Div.closest('.ClickCanv')){ATV('.Moldura.ClickCanv')}
+                    else{DTV('.Moldura.ClickCanv')}
+                })
+                // Atalhos C e E
+                document.addEventListener('keydown',e=>{
+                    if($('.Moldura.ClickCanv.Atv')){
+                        if(e.key==='c'){$('#alignX').click()}
+                        if(e.key==='e'){$('#alignY').click()}
+                    }
+                })    
 //______________________________________________________________________________________________________________________________________________________________________________________________________
 //______________________________________________________________________________________________________________________________________________________________________________________________________
 //______________________________________________________________________________________________________________________________________________________________________________________________________
 //______________________________________________________________________________________________________________________________________________________________________________________________________
 //______________________________________________________________________________________________________________________________________________________________________________________________________
-</script>
+            </script>
         </div>
 
         <div id="Pag_ORC" class="none Cl">

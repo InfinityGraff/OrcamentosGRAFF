@@ -100,13 +100,13 @@ const SplitAvanc=(Stg)=>{
 let GlobDegrade = null; // Variável global para armazenar a cor do degradê
 
 function LoadDegade(CCnvs) {
-    const gCnvs = document.querySelector('#gradientCanvas'),
-        gCtx = gCnvs.getContext('2d');
-    const CCtx = CCnvs.getContext('2d');
-    const colorPicker1 = document.querySelector('#colorPicker1');
-    const colorPicker2 = document.querySelector('#colorPicker2');
-    const alignX = document.querySelector('#alignX');
-    const alignY = document.querySelector('#alignY');
+    const gCnvs = $('#gradientCanvas'),
+        gCtx = gCnvs.getContext('2d')
+    const CCtx = CCnvs.getContext('2d')
+    const colorPicker1 = $('#colorPicker1')
+    const colorPicker2 = $('#colorPicker2')
+    const alignX = $('#alignX')
+    const alignY = $('#alignY')
 
     let BllRd = 10,
         Bll1 = { x: CCnvs.width * 0.1, y: CCnvs.height * 0.1, color: '#ff0000' }, // Cor em formato hexadecimal
