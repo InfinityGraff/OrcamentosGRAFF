@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css">
     <link rel="stylesheet" href="./cssGRAFF.css">
  
-    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>-->
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"    ></script>
+    <!--<script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"></script>-->
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Base.js"     ></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/BaseGRAFF.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"></script>
@@ -1652,10 +1652,8 @@
                 #Config .Cor2{fill: purple}
             </style>
             <style> /*CSS da Aba de Config*/
-                
                 #DivCnvs{width:75% ; height:100% ; overflow-y:auto}
                 #Config {width:25% ; height:100% ; overflow-y:auto}
-
                 #Config > div {background:#50505025; border-radius:15px; margin:3px; width:97%; padding:20px}
                 #Config input[type="range"]{width:50%}
                 #IconsCofng{top:-10px; right:-10px}
@@ -1672,10 +1670,6 @@
 
                 #FinaisCnvs{left:45%; top:83vh; background:#1f1824f1; height:100px; width:500px; -webkit-backdrop-filter:blur(5px) ; backdrop-filter:blur(5px); border-radius: 255px}
                 #FinaisCnvs{border: 2px solid #2e2e2e96}
-                .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
-                .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
-                .FilesIMG img.Larg{width:100%; height:auto}
-                .FilesIMG img.Alt{width:auto; height:100%}
                 .Close{border-radius:5px; background:#ff3232; padding:1px; width:16px; height:16px; opacity: 0;top: 0; right: 0}
                 .DivImgRsut:hover .Close{opacity:1}
                 
@@ -1892,8 +1886,18 @@
             </div>
 
             <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
+                <style>
+                    .FilesIMG .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
+                    .FilesIMG .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
+                    .FilesIMG img.Larg{width:100%; height:auto}
+                    .FilesIMG img.Alt{width:auto; height:100%}
+                </style>
                 <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
-                <div id="FilesIMG-001" class="w100 FilesIMG Ct"><div class="imgs Ct"></div></div>
+                <div class="Ct w100">
+                    <div id="FilesIMG-001" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-002" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-003" class="FilesIMG Ct"><div class="imgs Ct"></div></div>
+                </div>                   
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
                 <div id="Rodape"></div>

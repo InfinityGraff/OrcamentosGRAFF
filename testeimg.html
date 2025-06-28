@@ -11,21 +11,20 @@
 </style>
 
 <script>
-  function Prev(e){e.preventDefault()}
-  function drag(e){e.dataTransfer.setData("text",e.target.id)}
+  function Prvn(){event.preventDefault()}
+  function drag(){event.dataTransfer.setData("text",event.target.id)}
 
-  function drop(e) {
-    e.preventDefault()
-    const Qry = e.dataTransfer.getData("text")
+  function drop(e){Prvn()
+    const Qry = event.dataTransfer.getData("text")
     console.log(Qry)
     const dragged = document.getElementById(Qry)
-    e.target.appendChild(dragged)
+    event.target.appendChild(dragged)
   }
 </script>
 
-<div class="dropzone" id="div1" ondrop="drop(event)" ondragover="event.preventDefault()">
-  <img id="img1" src="./Img/Perfil_Allan.png" draggable="true" ondragstart="drag(event)">
+<div class="dropzone" id="div1" ondrop="drop()" ondragover="Prvn()">
+  <img id="img1" src="./Img/Perfil_Allan.png" draggable="true" ondragstart="drag()">
 </div>
-<div class="dropzone" id="div2" ondrop="drop(event)" ondragover="event.preventDefault()">
+<div class="dropzone" id="div2" ondrop="drop()" ondragover="Prvn()">
   <!-- imagem pode ser movida pra cá -->
 </div>
