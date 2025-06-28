@@ -31,10 +31,6 @@
         <script src="./JSON/DadosCLNT.js"></script>
 </head>
 
-<style> /*CSS Genérico*/
-    .svg-Lixo {width:auto; height:15px; fill:#ffbb00}
-</style>
-
 <script> // Base de Dados
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
@@ -242,7 +238,7 @@
         Dstn:['','Serv1','Serv2'],
         Stts:['','Devendo','Entregue','JaFeito','Produção'],
         Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Cams:['','PP','P','M','G','GG','XG','XXG']
+        Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG']
     }
     const AllList = ObjKey(O)
     const AllClnt = Uniq(J.CLNT.map(E=>E['Clnt']))
@@ -396,7 +392,7 @@
 
             .TBLAA .hMin td{height:10px}
             .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-                .TBLAA td .svg-Lixo{height:17px}
+                .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
                 .TBLAA td img{height:17px; width: auto;}
             .TBLAA .hMin tfoot td{padding:8px 6px}
             
@@ -460,6 +456,18 @@
             .footbndjj{background:#ffffff; bottom:0px; overflow:scroll; height:auto; max-height:300px}
             .footbndjj span{color:#000000}
             select.Psq{background: #ff7b00} /*isso é como o Select vai ficar quando é corespondido a pesquisa*/
+
+            .footbndjj{
+                overflow: auto ; border:3px #ff00c8 solid ;
+                box-shadow: 3px -4px 6px #0000004d;
+                border-radius: 10px 10px 0 0 !important;
+            }
+
+            .confFoot{
+                background: #ff00c8;
+                color: white;
+                height: 24px;
+            }
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
@@ -919,7 +927,7 @@
         }
     </script>
     
-    <script> // AUTO COMPLETE
+    <script> // AUTOCOMP - ⭐⭐_ _ _
         function RfreshJson(Typ){const IN = performance.now()
 
             // Virar Biblioteca
@@ -1035,20 +1043,7 @@
         }
     </script>
 
-    <style>
-        .footbndjj{
-            overflow: auto ; border:3px #ff00c8 solid ;
-            box-shadow: 3px -4px 6px #0000004d;
-            border-radius: 10px 10px 0 0 !important;
-        }
-
-        .confFoot{
-            background: #ff00c8;
-            color: white;
-            height: 24px;
-        }
-    </style>
-    <script> // REALTIME
+    <script> // REALTIME  - ⭐⭐_ _ _
         function Load_Table(Typ){ //acho q serve pra evitar q carregue novamente  // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
             Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina

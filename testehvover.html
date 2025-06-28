@@ -1,0 +1,41 @@
+<style>
+  .scroll-area {
+    width: 300px;
+    height: 200px;
+    overflow-y: scroll;
+    scrollbar-gutter: stable; /* mantém espaço da barra mesmo quando invisível */
+  }
+
+  /* Barra padrão com largura */
+  .scroll-area::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* O "thumb" inicia invisível e suave */
+  .scroll-area::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0); /* invisível */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  /* No hover, o "thumb" aparece suavemente */
+  .scroll-area:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4); /* visível */
+  }
+
+  .scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+</style>
+
+<div class="scroll-area">
+  <div style="height: 600px;">
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+    <p>Conteúdo muito longo...</p>
+  </div>
+</div>
