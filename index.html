@@ -9,31 +9,26 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
-
     <!--
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
-    -->
 
-    <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
         <script src="../MyBiblioteca/Templates.js"      ></script>
     -->
 
-    <link rel="stylesheet" href="./cssGRAFF.css">
+    <link  href="./cssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"      ></script>
     <script src="./BibliotecaGRAFF.js"></script>
-    <script src="./Degrade.js"        ></script>
-    <script src="./Gabaritto.js"      ></script>
-
-    <script src="./JSON/DadosPDDS.js"></script>
-    <script src="./JSON/DadosGRAD.js"></script>
-    <script src="./JSON/DadosMPAG.js"></script>
-    <script src="./JSON/DadosCLNT.js"></script>
+    
+        <script src="./JSON/DadosPDDS.js"></script>
+        <script src="./JSON/DadosGRAD.js"></script>
+        <script src="./JSON/DadosMPAG.js"></script>
+        <script src="./JSON/DadosCLNT.js"></script>
 </head>
 
 <style> /*CSS Genérico*/
@@ -1634,17 +1629,7 @@
                 function AtivarDiv(e){Add($(e),'active')}
                 function DestivDiv(e){Rmv($(e),'active')}
                 const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
-                const SplitAvanc=(Stg)=>{
-                    const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
-                    let [nome,qnt,tamn] = ['','','']
-                    partes.forEach(e=>{
-                        if(O['Cams'].includes(e.toUpperCase())){tamn=e.toUpperCase()} 
-                        else if(/^\d+\s*und?$/i.test(e)){qnt = parseInt(e)}
-                        else if(/^\d+$/.test(e)){qnt = parseInt(e)} 
-                        else {nome += (nome ? ' ' : '') + e}
-                    })
-                    return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
-                }
+
             </script>
 
             <script> // Const Apenas para GABARITO
