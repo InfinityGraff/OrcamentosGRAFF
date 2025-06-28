@@ -236,10 +236,6 @@
         Variantes:{
                     'Placa' :{}}
         },
-        'Sinalização'    :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
-        Variantes:{
-                    'Sinalização' :{}}
-        },
         'Cartela'        :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
                     'Cartela' :{}}
@@ -247,6 +243,10 @@
         'Plotagem'       :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
         Variantes:{
                     'Plotagem' :{}}
+        },
+        'Sinalização'          :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
+        Variantes:{
+                    'Sinalização' :{}}
         }
         }
    
@@ -265,7 +265,8 @@
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Devendo','Entregue','JaFeito','Produção'],
-        Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))]
+        Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))],
+        Cams:['','PP','P','M','G','GG','XG','XXG']
     }
     const AllList = ObjKey(O)
     const AllClnt = Uniq(J.CLNT.map(E=>E['Clnt']))
@@ -290,7 +291,7 @@
         CALC:{}
     }
 
-    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo de Bolo','Vendas','Placa','sinalização','Cartela','Plotagem']
+    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo de Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem']
     const ListaKits=['Zebu','Zimaz']
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 </script>
@@ -1691,22 +1692,27 @@
             </style>
 
             <script> // Biblioteca dos GBRT
-                    const Tmnhs = ['PP','P','M','G','GG','XG','XXGG']
-                    const PrcAryObj=(e,Stg)=>e.find(E=>E.tamn===Stg)?.qnt || 'nada'
-                    function AtivarDiv(e){Add($(e),'active')}
-                    function DestivDiv(e){Rmv($(e),'active')}
-                    const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
-                    const SplitAvanc=(Stg)=>{
-                        const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
-                        let [nome,qnt,tamn] = ['','','']
-                        partes.forEach(e=>{
-                            if(Tmnhs.includes(e.toUpperCase())){tamn=e.toUpperCase()} 
-                            else if(/^\d+\s*und?$/i.test(e)){qnt = parseInt(e)}
-                            else if(/^\d+$/.test(e)){qnt = parseInt(e)} 
-                            else {nome += (nome ? ' ' : '') + e}
-                        })
-                        return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
-                    }
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+                const PrcAryObj=(e,Stg)=>e.find(E=>E.tamn===Stg)?.qnt || 'nada'
+                function Centlizar(e){e.value = 50 ; Read_Canvs()}
+                function AtivarDiv(e){Add($(e),'active')}
+                function DestivDiv(e){Rmv($(e),'active')}
+                const SplitFundo =e=>/costa|c\b/i.test(e)?'C':'F'
+                const SplitAvanc=(Stg)=>{
+                    const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
+                    let [nome,qnt,tamn] = ['','','']
+                    partes.forEach(e=>{
+                        if(O['Cams'].includes(e.toUpperCase())){tamn=e.toUpperCase()} 
+                        else if(/^\d+\s*und?$/i.test(e)){qnt = parseInt(e)}
+                        else if(/^\d+$/.test(e)){qnt = parseInt(e)} 
+                        else {nome += (nome ? ' ' : '') + e}
+                    })
+                    return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
+                }
             </script>
 
             <script> // Const Apenas para GABARITO
@@ -1727,10 +1733,9 @@
 
             <script> // Funções Pequenas GABARITO
                 function Mdal_Area(e){ShowModal($(FMdal),'#Mdal-Area') ;  $(e).value = '' ; Foco(e)}
-                function Centlizar(e){e.value = 50 ; Read_Canvs()}
                 function Limpar(){$$('#Lista-001 tbody tr:not(:first-child)').forEach(e=>e.remove()) ; Clen_Alls($('#Lista-001 tbody tr:first-child'))}
                 function LimpObj(){ObjCanvs = []}
-                function AddRow(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
+                function AddRoW(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
                 
                 function Upload(div){$$(`${div} img`).forEach(img=>{
                     Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
@@ -1744,6 +1749,70 @@
                 }
             </script>
 
+            <script> // Read OBJ area img inpt
+                function Read_Obj_Area(Area,inpt){ // Atualiza Objeto Baseado na Area     // Depois tentar para Sincronizar
+                    ObjCanvs.splice(IdxDe(Avo(inpt)))
+                    $(Area).value.split('\n').map(match=>{
+                    const {Nome,Tamn,Qnt} = SplitAvanc(match)
+                    ObjCanvs.push({qnt:Qnt, tamn:Tamn, nome:Nome,src:'',Orgn:''})
+                    })
+                    Read_Ipt_Obj()
+                }
+
+                function Read_Obj_Img(imgs){       // Atualiza Objetos Baseado nas Imagens (Fundo e Nomes) // Depois tentar Sincronizar
+                    ObjCanvs = []
+                    const Imgss = $$(imgs).filter(e=>!/fundo/i.test(e.name))
+                    const Funds = $$(imgs).filter(e=> /fundo/i.test(e.name))
+                    
+                    if(Imgss.length>0){Imgss.map(e=>{
+                            const {Nome,Qnt,Tamn} = SplitAvanc(e.name)
+                            ObjCanvs.push({qnt:Qnt,tamn:Tamn,nome:Nome,Orgn:'Imgs',src:e.src})});Read_Ipt_Obj()
+                    }
+                    if(Funds.length>0){Funds.map(e=>{ObjFundo.push({lado:SplitFundo(e.name),src:e.src})})}
+                }
+                
+                function Read_Ipt_Obj(){           // Atualiza Inputs Baseado no Objeto
+                    None(FMdal)
+                    Limpar()
+                    ObjCanvs.forEach((i,x)=>{
+                        if(x>0){AddRoW()}
+                        const lastRow = $('#Lista-001 tbody tr:last-child')
+                        $('.qnt',lastRow).value = i.qnt
+                        $('.tamn',lastRow).value = i.tamn
+                        $('.nome',lastRow).value = i.nome
+                        $('.td-Src',lastRow).innerHTML = i.src
+                        $('.td-Org',lastRow).innerHTML = i.Orgn
+                    })
+                }
+                
+                function Read_Ipt_Lin(inpt,obj){   // Atualiza Inputs Baseado no CntrlV Unico
+                    const {Nome,Tamn,Qnt} = SplitAvanc(obj)
+                    const RowAtual = $('#Lista-001').rows[IdxDe(Avo(inpt))+1]
+                    $('.qnt',RowAtual).value = Qnt
+                    $('.tamn',RowAtual).value = Tamn
+                    $('.nome',RowAtual).value = Nome
+                    $('.td-Src',RowAtual).innerHTML = ''
+                    $('.td-Org',RowAtual).innerHTML = ''
+                    
+                }
+
+                function Read_Obj_Ipt(){           // Atualiza Objeto Baseado no Inputs
+                    ObjCanvs = []
+                    $$('#Lista-001 tbody tr').map(e=>{
+                        const qnt  = $('.qnt',e).value
+                        const tamn = $('.tamn',e).value
+                        const nome = $('.nome',e).value
+                        const src  = $('.td-Src',e).innerHTML
+                        const org  = $('.td-Org',e).innerHTML
+
+                        ObjCanvs.push({qnt:Number(qnt),tamn,nome,src,org})
+
+                    //if(qnt&&tamn&&nome){console.log('tem tudo');}else{}
+                    })
+                    console.log('Objeto Atualizado',ObjCanvs)
+                }
+            </script>
+
             <div id="Config" class="Cl"> <!--CONFIGURAÇÕES-->
 
                 <div class="Ct">       <!--NOME DO PEDIDO-->
@@ -1751,19 +1820,22 @@
                 </div>
 
                 <div class="Ct Rltv">  <!--CONFIGURAÇÕES DE TAMANHO-->
-                    <div id="CropedID" class="Ct DivCrop Abslt">
+                    <div id="CropedID" class="Ct DivCrop Abslt"> <!--Da pra Simplificar isso pra um Unico SVG-->
                         <div onclick="$('#Crop').click()" id="CropSvg"></div><script>Inn('#CropSvg',IcoCrop('fil0','Opacy'))</script>
                         <input id="Crop" type="checkbox" class="none" onchange="Tog('.Croped','Opacy');Read_Canvs()">
                     </div>
       
                     <div class="w100"> <!--Aqui é o Controlador de Posições-->
-                        <img src="./Tudi.jpg" height="150px">
-
-                        <div class="w100 Ct">
-                            <div class="Ct"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div> <!--Copia o atalho do Corel C e E-->
-                            <div class="Ct"><Button class="btnY" onclick="Centlizar($('#top' ))">Y</Button></div> <!--Copia o atalho do Corel C e E-->
-                        </div>                           
-                    </div>                    
+                        <img src="./Tudi.jpg" height="150px">                          
+                    </div> 
+                    
+                    <div class="controls">
+                        <div class="w100">
+                            <div class="Ct"><label>Tamanho</label><input type="range" id="size" min="0" max="150" value="50" oninput="Read_Canvs()"></div>
+                            <div class="Ct"><label>Largura</label><input type="range" id="left" min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnX" onclick="Centlizar($('#left'))">X</Button></div>
+                            <div class="Ct"><label>Alturaa</label><input type="range" id="top"  min="0" max="150" value="50" oninput="Read_Canvs()"><Button class="btnY" onclick="Centlizar($('#top' ))">Y</Button></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="ConfigTxt Ct"> <!--CONFIGURAÇÕES DE TEXTO-->
@@ -1787,6 +1859,7 @@
                         </div>
                         
                     </div>
+                    
                     <hr class="w100">
                     <div class="Ct w100"><label>Fonte:</label><select class="w50" id="fontFamily" onchange="CssFont('#fontFamily',this.value);Read_Canvs()"></select><script>load_OptsFnt($('#fontFamily'),KitFonts)</script></div>
                 </div>
@@ -1796,7 +1869,7 @@
                         <button onclick="Mdal_Area('#Area')">Editar Inputs</button>
 
                         <div id="IconsCofng" class="Ct Abslt">
-                            <div id="IcoMais" onclick="AddRow()"          ></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
+                            <div id="IcoMais" onclick="AddRoW()"          ></div><script>Inn('#IcoMais',IcoMais('fil0'))</script>
                             <div id="IcoLixo" onclick="Limpar();LimpObj()"></div><script>Inn('#IcoLixo',IcoClen('fil0'))</script>
                         </div>
 
@@ -1804,82 +1877,16 @@
                             <thead><tr><th class="w60">Nome</th><th class="w20">Tamnh</th><th class="w20">Qnt</th></tr></thead>
                             <tbody>
                                 <tr>
-                                    <td class="w60"><input class="w90 nome" type="text"   placeholder="Nome" oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" onpaste="ColarTudo(this)" autocomplete="off"></td>
-                                    <td class="w20"><select class="w90 tamn" onchange="Read_Obj_Ipt()"></select><script>load_Opts($('#Lista-001 .td-tamn > select'),['',...Tmnhs])</script></td>
-                                    <td class="w20"><input class="w90 qnt" type="number" placeholder="Qnt"  oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" autocomplete="off"></td>
+                                    <td class="w60"><input  class="w90 nome" type="text"   placeholder="Nome" oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" onpaste="ColarTudo(this)" autocomplete="off"></td>
+                                    <td class="w20"><select class="w90 tamn" onchange="Read_Obj_Ipt()"></select><script>load_Opts($('#Lista-001 .tamn'),O['Cams'])</script></td>
+                                    <td class="w20"><input  class="w90 qnt"  type="number" placeholder="Qnt"  oninput="Rmv(this,'Error')" onchange="Read_Obj_Ipt()" autocomplete="off"></td>
                                     <td><div class="td-Src none"></div></td>
                                     <td><div class="td-Org none"></div></td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <script>
-                            // Atualiza Objeto Baseado na Area     // Depois tentar para Sincronizar
-                            function Read_Obj_Area(Area,inpt){
-                                ObjCanvs.splice(IdxDe(Avo(inpt)))
-                                $(Area).value.split('\n').map(match=>{
-                                const {Nome,Tamn,Qnt} = SplitAvanc(match)
-                                ObjCanvs.push({qnt:Qnt, tamn:Tamn, nome:Nome,src:'',Orgn:''})
-                                })
-                                Read_Ipt_Obj()
-                            }
 
-                            // Atualiza Objetos Baseado nas Imagens (Fundo e Nomes) // Depois tentar Sincronizar
-                            function Read_Obj_Img(imgs){
-                                ObjCanvs = []
-                                const Imgss = $$(imgs).filter(e=>!/fundo/i.test(e.name))
-                                const Funds = $$(imgs).filter(e=> /fundo/i.test(e.name))
-                                if(Imgss.length>0){Imgss.map(e=>{
-                                        const {Nome,Qnt,Tamn} = SplitAvanc(e.name)
-                                        ObjCanvs.push({qnt:Qnt,tamn:Tamn,nome:Nome,Orgn:'Imgs',src:e.src})});Read_Ipt_Obj()
-                                }
-                                if(Funds.length>0){Funds.map(e=>{ObjFundo.push({lado:SplitFundo(e.name),src:e.src})})}
-                            }
-
-                            // Atualiza Inputs Baseado no Objeto
-                            function Read_Ipt_Obj(){
-                                None(FMdal)
-                                Limpar()
-                                ObjCanvs.forEach((i,x)=>{
-                                    if(x>0){AddRow()}
-                                    const lastRow = $('#Lista-001 tbody tr:last-child')
-                                    $('.qnt',lastRow).value = i.qnt
-                                    $('.tamn',lastRow).value = i.tamn
-                                    $('.nome',lastRow).value = i.nome
-                                    $('.td-Src',lastRow).innerHTML = i.src
-                                    $('.td-Org',lastRow).innerHTML = i.Orgn
-                                })
-                            }
-
-                            // Atualiza Inputs Baseado no CntrlV Unico
-                            function Read_Ipt_Lin(inpt,obj){
-                                const {Nome,Tamn,Qnt} = SplitAvanc(obj)
-                                const RowAtual = $('#Lista-001').rows[IdxDe(Avo(inpt))+1]
-                                $('.qnt',RowAtual).value = Qnt
-                                $('.tamn',RowAtual).value = Tamn
-                                $('.nome',RowAtual).value = Nome
-                                $('.td-Src',RowAtual).innerHTML = ''
-                                $('.td-Org',RowAtual).innerHTML = ''
-                                
-                            }
-
-                            // Atualiza Objeto Baseado no Inputs
-                            function Read_Obj_Ipt(){
-                                ObjCanvs = []
-                                $$('#Lista-001 tbody tr').map(e=>{
-                                    const qnt  = $('.qnt',e).value
-                                    const tamn = $('.tamn',e).value
-                                    const nome = $('.nome',e).value
-                                    const src  = $('.td-Src',e).innerHTML
-                                    const org  = $('.td-Org',e).innerHTML
-
-                                    ObjCanvs.push({qnt:Number(qnt),tamn,nome,src,org})
-
-                                //if(qnt&&tamn&&nome){console.log('tem tudo');}else{}
-                                })
-                                console.log('Objeto Atualizado',ObjCanvs)
-                            }
-                        </script>
                     </div>
                 </div>
             </div>
@@ -1889,16 +1896,21 @@
                 <div id="FilesIMG-001" class="w100 FilesIMG Ct"><div class="imgs Ct"></div></div>
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
-                <!--<div id="Rodape"></div>-->
+                <div id="Rodape"></div>
             </div>
 
             <div id="FinaisCnvs" class="Ct Fx"> <!--CONFIRMAÇÕES FINAIS-->
                 <button onclick="Load_Cnvs('#AllCanvas')">Carregar Canvas</button>
             </div>
 
-            <script>
-                LoadDegade($('#controlCanvas'))
-            </script>
+<script>     
+            LoadDegade($('#controlCanvas'))       
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________________________________________________________________________________________
+</script>
         </div>
 
         <div id="Pag_ORC" class="none Cl">

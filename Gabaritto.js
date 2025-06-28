@@ -26,12 +26,14 @@ function Load_Cnvs(div){
 // Atualizar a Parte Interna do Canvas
 function Read_Canvs(){
     ObjCanvs.forEach(({qnt,tamn,nome,src},x)=>{
+
+        console.log(ObjFundo)
         
         const image  = new Image() ; image.src =  src && src !== '' ? src : './Testes/Edson.png'
-        const FundoF = new Image() ; FundoF.src =  ObjFundo.some(e=>e.lado==='F') ? ObjFundo.filter(e=>e.lado==='F').map(e=>e.src):'./Fundo.jpg'
-        const FundoC = new Image() ; FundoC.src =  ObjFundo.some(e=>e.lado==='C') ? ObjFundo.filter(e=>e.lado==='C').map(e=>e.src):FundoF.src
+        const FundoF = new Image() ; FundoF.src =  ObjFundo.some(e=>e.lado==='F') ? ObjFundo.filter(e=>e.lado==='F').map(e=>e.src) : './Testes/Fundo.jpg'
+        const FundoV = new Image() ; FundoV.src =  ObjFundo.some(e=>e.lado==='C') ? ObjFundo.filter(e=>e.lado==='C').map(e=>e.src) : './Testes/Fundo.jpg'
         const MoldeF = new Image() ; MoldeF.src = `./Moldes/F_${tamn}.png`
-        const MoldeC = new Image() ; MoldeC.src = `./Moldes/C_${tamn}.png`
+        const MoldeV = new Image() ; MoldeV.src = `./Moldes/C_${tamn}.png`
 
         function drawCanvas(cnvs,ctx,F_C,nome){
             const Crop = $('#Crop').checked
@@ -42,10 +44,10 @@ function Read_Canvs(){
             const newT = $('#top' ).value/100 * cH - (newH/2)
             ctx.clearRect(0,0,cW,cH)
             
-            const fundo = F_C === "F" ? FundoF : FundoC
+            const fundo = F_C === "F" ? FundoF : FundoV
             const [fundoW, fundoH] = [fundo.width, fundo.height]
 
-            if (Crop) {
+            if (Crop){
                 const scale = Math.max(cW / fundoW, cH / fundoH)
                 const cropX = (fundoW * scale - cW) / 2
                 const cropY = (fundoH * scale - cH) / 2
@@ -94,21 +96,20 @@ function Read_Canvs(){
                     ctx.drawImage(image,newL,newT,newW,newH)
                 }
             }
-            ctx.drawImage(F_C==="F"?MoldeF:MoldeC,0,0,cW,cH)
+            ctx.drawImage(F_C==="F"?MoldeF:MoldeV,0,0,cW,cH)
         }
         Promise.all([
             new Promise(r=>image.onload  =r),
             new Promise(r=>FundoF.onload =r),
-            new Promise(r=>FundoC.onload =r),
+            new Promise(r=>FundoV.onload =r),
             new Promise(r=>MoldeF.onload =r),
-            new Promise(r=>MoldeC.onload =r),
+            new Promise(r=>MoldeV.onload =r),
         ]).then(()=>{
             drawCanvas($(`#F_${tamn}${x}`),$(`#F_${tamn}${x}`).getContext('2d'),'F',nome)
             drawCanvas($(`#C_${tamn}${x}`),$(`#C_${tamn}${x}`).getContext('2d'),'C',nome)
         })
     })
 }
-
 
 function JuntarCanvas(C1,C2){
     const c1 = $('#'+C1)
@@ -133,7 +134,9 @@ function JuntarCanvas(C1,C2){
     return newCanvas
 }
 
-function Nome_Bxar(C1,und){return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`}
+function Nome_Bxar(C1,und){
+    return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`
+}
 
 function Baixar_Cnvs(C1,C2,und){
     console.log(C1,C2)
@@ -155,8 +158,3 @@ function saveCanvasAsZip(){
     })
     zip.generateAsync({type:'blob'}).then(e=>saveAs(e,'CAMISAS.zip'))
 }
-
-//Read_Ipt_Obj(ObjCanvs)
-//Load_Cnvs('#AllCanvas')
-
-LoadDegade($('#controlCanvas'))
