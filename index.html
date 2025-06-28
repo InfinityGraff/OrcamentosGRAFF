@@ -727,9 +727,9 @@
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','Todos')"           ><img src="./SVG/Icon_Todos.svg">     <p class="none">Todos     </p> </span>
                 <span class="HOV ppt Ct" onclick="F_Filt(this,'${Typ}','${col}','${Qry_N}','${X}')" ><img src="./SVG/Icon_Filtados.svg">  <p class="none">Filtados  </p> </span>
                 <input class="" placeholder="pesq">
-                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="TOV(this);${Ex}"       ><img src="./SVG/Icon_Lin.svg">                                      </span> 
+                <span id="icnFront_${col}" class="HOV ppt Ct" onclick="TOV(this);${Ex}"             ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                 <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
-                <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="TOV(this);${Ex}"       ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
+                <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="TOV(this);${Ex}"             ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
             `// no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
 
             const Lista = Palavras(Typ,col)
@@ -1292,9 +1292,9 @@
                 function Load_Pesq(Typ){
                     return `<div class="pPesq Pesq_${Typ}" class="none">
                         <input class="w100 H_Pesq" placeholder="Pesquisar em ${N_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
-                        <a class="Abslt HOV Pesq-Aa" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">Aa</a>
-                        <a class="Abslt HOV Pesq-A_" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">A]</a>
-                        <a class="Abslt HOV Pesq-Bj" onclick="Tog(this,'Atv');Pesq($('input',Pai(this)),'${Typ}')">Bj</a>
+                        <a class="Abslt HOV Pesq-Aa" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Aa</a>
+                        <a class="Abslt HOV Pesq-A_" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">A]</a>
+                        <a class="Abslt HOV Pesq-Bj" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Bj</a>
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
                     </div>`
                 }
@@ -1808,28 +1808,24 @@
                     .CanvBox{width: 380px;height: 350px; margin-top: 10px}
                     .CanvBox canvas {background:#505050;margin:5px}
                     .CanvBox canvas{width: 40%}
+
+                    .DropZone2     {width:150px; height:150px; border:2px dashed #ccc} /*esse é o Teste*/
+                    .DropZone2 img {width:100px; height:100px; cursor:move}              /*esse é o Teste*/
                 </style>
                 <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
                 <div class="Ct w100">
-                    <div id="FilesIMG-001" class="DropZone Ct"><div class="imgs Ct"></div></div>
-                    <div id="FilesIMG-002" class="DropZone Ct"><div class="imgs Ct"></div></div>
-                    <div id="FilesIMG-003" class="DropZone Ct"><div class="imgs Ct"></div></div>
+                    <div id="FilesIMG-001" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
+                    <div id="FilesIMG-002" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
+                    <div id="FilesIMG-003" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
                 </div>                   
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
-                
                 <div>
-                    <style>
-                    .DropZone2     {width:150px; height:150px; border:2px dashed #ccc}
-                    .DropZone2 img {width:100px; height:100px; cursor:move}
-                    </style>
-
                     <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()">
                         <img id="img1" src="./Img/Perfil_Allan.png" ondragstart="Drag()">
                     </div>
                     <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()"></div>
                 </div>
-
                 <div id="Rodape" class="w100"></div>
             </div>
 
@@ -1844,8 +1840,6 @@
             <script>     
                 LoadDegade($('#controlCanvas'))   
                 const FMdal = $('#FModal')
-
-
 
                 document.addEventListener('click',e=>{const Div = e.target
                     Rmv('.Moldura','Atv')
