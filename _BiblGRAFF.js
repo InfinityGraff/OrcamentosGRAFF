@@ -293,10 +293,10 @@ function Read_Canvs(){
         console.log(ObjFundo)
         
         const image  = new Image() ; image.src =  src && src !== '' ? src : './Testes/Edson.png'
-        const FundoF = new Image() ; FundoF.src =  ObjFundo.some(e=>e.lado==='F') ? ObjFundo.filter(e=>e.lado==='F').map(e=>e.src) : './Testes/Fundo.jpg'
-        const FundoV = new Image() ; FundoV.src =  ObjFundo.some(e=>e.lado==='C') ? ObjFundo.filter(e=>e.lado==='C').map(e=>e.src) : './Testes/Fundo.jpg'
         const MoldeF = new Image() ; MoldeF.src = `./Moldes/F_${tamn}.png`
         const MoldeV = new Image() ; MoldeV.src = `./Moldes/C_${tamn}.png`
+        const FundoF = new Image() ; FundoF.src =  ObjFundo['F'] || './Testes/Fundo.jpg'
+        const FundoV = new Image() ; FundoV.src =  ObjFundo['V'] || './Testes/Fundo.jpg'
 
         function drawCanvas(cnvs,ctx,F_C,nome){
             const Crop = $('#Crop').checked

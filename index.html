@@ -8,8 +8,8 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
-    <!--
+    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
+
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
@@ -18,8 +18,8 @@
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
-        <script src="../MyBiblioteca/Templates.js"      ></script>
-    -->
+    -->   <script src="../MyBiblioteca/Templates.js"      ></script>
+    
 
     <link  href="./_CssGRAFF.css" rel="stylesheet">
     <script src="./_BaseGRAFF.js"></script>
@@ -318,6 +318,7 @@
     // Drags
         function Prvn(){event.preventDefault()}
         function Drag(){event.dataTransfer.setData("text",event.target.id)}
+        function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
         function Drop(){Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
 </script>
 
@@ -1631,7 +1632,7 @@
                 ]
 
                 let ObjCanvs = []
-                const ObjFundo = []
+                const ObjFundo = {F:'',V:''}
             </script>
 
             <script>
@@ -1644,7 +1645,13 @@
                 function Limpar(){$$('#Lista-001 tbody tr:not(:first-child)').forEach(e=>e.remove()) ; Clen_Alls($('#Lista-001 tbody tr:first-child'))}
                 function LimpObj(){ObjCanvs = []}
                 function AddRoW(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
-            // Funções Grandes GABARITO   
+            // Funções Grandes GABARITO
+                function Upload(div,srcList){ // depois mudar de inner pra append pois inner ta subistituindo
+                    const btnX = `<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img()">X</div>`
+                    $(div).innerHTML = srcList.map((src,x)=>`<div id="ImgDrop${x}" class="DivImgRsut Ct Rltv">${btnX}<img src="${src}" ondragstart="Drag2()"></div>`).join('')
+                    $$(`${div} img`).forEach(img=>{img.onload=()=>{if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}})
+                    Read_Obj_Img()
+                }  
                 async function ColarTudo(inpt){
                     const valor = await navigator.clipboard.readText()
                     if(!valor.match(/\n/g)&& valor.match(/\t/g)){Read_Ipt_Lin(inpt,valor) ; return}
@@ -1664,15 +1671,16 @@
                 }
 
                 function Read_Obj_Img(imgs){       // Atualiza Objetos Baseado nas Imagens (Fundo e Nomes) // Depois tentar Sincronizar
-                    ObjCanvs = []
-                    const Imgss = $$(imgs).filter(e=>!/fundo/i.test(e.name))
-                    const Funds = $$(imgs).filter(e=> /fundo/i.test(e.name))
+                    ObjFundo['F'] = $('#DropsF img')?.src || ''
+                    ObjFundo['V'] = $('#DropsV img')?.src || ''
                     
-                    if(Imgss.length>0){Imgss.map(e=>{
+                    console.log('OBJ_IMG',ObjFundo)
+                    /*
+                    if(Imgss.length==0){Imgss.map(e=>{
                             const {Nome,Qnt,Tamn} = SplitAvanc(e.name)
                             ObjCanvs.push({qnt:Qnt,tamn:Tamn,nome:Nome,Orgn:'Imgs',src:e.src})});Read_Ipt_Obj()
                     }
-                    if(Funds.length>0){Funds.map(e=>{ObjFundo.push({lado:SplitFundo(e.name),src:e.src})})}
+                    */
                 }
                 
                 function Read_Ipt_Obj(){           // Atualiza Inputs Baseado no Objeto
@@ -1795,51 +1803,25 @@
             <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
                 <style>
                     .DropZone{background:#50505023; padding:10px; border-radius:15px}
-                    .DropZone .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
-                    .DropZone img.Larg{width:100%; height:auto ; cursor: move}
-                    .DropZone img.Alt {width:auto; height:100% ; cursor: move}
+                    .DropZone .DivImgRsut{cursor: move; border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
+                    .DropZone img.Larg{width:100%; height:auto}
+                    .DropZone img.Alt {width:auto; height:100%}
                     .DivImgRsut:hover .Close{opacity:1}
 
                     .CanvBox{width: 380px;height: 350px; margin-top: 10px}
                     .CanvBox canvas {background:#505050;margin:5px}
                     .CanvBox canvas{width: 40%}
-
-                    .DropZone2     {width:150px; height:80px; border:2px dashed #ccc} /*Esse é o Teste*/
-
-                    .DropZone2 img.Larg{width:50px; height:auto ; cursor: move}
-                    .DropZone2 img.Alt {width:auto; height:50px ; cursor: move}
-                    .DropZone2 img     {border: 1px solid #ff0000;padding:2px}
-                    
                 </style>
-                <script>
-                    function Upload(div,srcList){
-                        console.log(div,srcList)
-                        /*
-                        $$(`${div} img`).forEach(img=>{
-                        Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
-                        
-                        if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}) ; Read_Obj_Img(`${div} img`)
-                        */
-                    }
-                </script>
                 <div class="w100" onload="Inn(this,IptFile('#DropIMG'))"></div>
                 <div class="Ct w100" style="margin-top:30px">
-                    <div class="Cl"><label>Drop  </label><div class="DropZone Ct" id="DropIMG"></div></div>
-                    <div class="Cl"><label>Frente</label><div class="DropZone Ct"></div></div>
-                    <div class="Cl"><label>Costas</label><div class="DropZone Ct"></div></div>
-                    <div class="Cl"><label>Manga </label><div class="DropZone Ct"></div></div>
-                    <div class="Cl"><label>Nomes </label><div class="DropZone Ct"></div></div>
-                    <!--ondrop="Drop()" ondragover="Prvn()"-->
+                    <div class="Cl"><label>Drop  </label><div class="DropZone Ct" ondrop="Drop();Read_Obj_Img()" ondragover="Prvn()" id="DropIMG"></div></div>
+                    <div class="Cl"><label>Frente</label><div class="DropZone Ct" ondrop="Drop();Read_Obj_Img()" ondragover="Prvn()" id="DropsF"></div></div>
+                    <div class="Cl"><label>Costas</label><div class="DropZone Ct" ondrop="Drop();Read_Obj_Img()" ondragover="Prvn()" id="DropsV"></div></div>
+                    <div class="Cl"><label>Manga </label><div class="DropZone Ct" ondrop="Drop();Read_Obj_Img()" ondragover="Prvn()" id="DropsM"></div></div>
+                    <div class="Cl"><label>Nomes </label><div class="DropZone Ct" ondrop="Drop();Read_Obj_Img()" ondragover="Prvn()" id="DropsN"></div></div>
                 </div>                   
-                <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
-                <div>
-                    <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()">
-                        <img id="img1" class="Larg" src="./Img/Perfil_Allan.png" ondragstart="Drag()">
-                        <img id="img2" class="Larg" src="./Testes/Fundo F.webp"  ondragstart="Drag()">
-                    </div>
-                    <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()"></div>
-                </div>
+                <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="Rodape" class="w100"></div>
             </div>
 
