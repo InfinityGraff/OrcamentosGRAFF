@@ -40,11 +40,6 @@ svg{width:100%;height:100%}
   .ListCor li{width:30px;height:30px;margin: 2px}
   .ListCor li:hover{transform: scale(1.1)}
 
-  /*Naum sei*/ .FormOrcamento form {width:60%; height: auto; padding:50px 15px;}
-  /*Naum sei*/ .FormOrcamento .DivResult{width:40%; height: auto;}
-  /*Naum sei*/.inptFormOrc{display: flex; width: 100%; padding: 0px 8vw }
-  /*N deveria mais existir*/ form div[class*=Inpt]{display: flex;flex-flow: column;align-items: flex-start;margin: 4px;}
-  
   .FormOrcamento .Rodape {border-top: 1px solid #ffffff3b;padding-top: 4px;}
   .FormOrcamento .Rodape .HvrSVG div:nth-child(1){font-size: 9px; margin: 0px 3px 0px 5px;}
   .FormOrcamento .Rodape .HvrSVG div:nth-child(2){font-size: 15px;}

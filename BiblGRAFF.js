@@ -421,3 +421,14 @@ function saveCanvasAsZip(){
     })
     zip.generateAsync({type:'blob'}).then(e=>saveAs(e,'CAMISAS.zip'))
 }
+
+
+function CopyGRAFF(e,btn){
+    var temp = document.createElement('textarea')
+    temp.value = CopyPresset[e] ?? e.split('/').join('\n') // (Primeiro aceita o obj, segundo se for array)
+    document.body.appendChild(temp)
+    temp.select()
+    document.execCommand('copy')
+    document.body.removeChild(temp)
+    btn.innerText = 'Texto copiado!'
+}

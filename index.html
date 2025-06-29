@@ -29,6 +29,12 @@
         <script src="./JSON/DadosGRAD.js"></script>
         <script src="./JSON/DadosMPAG.js"></script>
         <script src="./JSON/DadosCLNT.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+
+        <script src="https://threejs.org/build/three.js"></script>
+        <script src="./AchaMdd.js"></script>
+        <script src="./Gera3D.js"></script>
 </head>
 
 <script> // Base de Dados
@@ -36,7 +42,7 @@
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
     const LimitLin = 10
-    const Atual = {Pag:'#Pag_GBRT'}
+    const Atual = {Pag:'#Pag_HOME'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
@@ -296,6 +302,7 @@
     const RandoCor=()=>'#'+Rndn(16777215).toString(16).padStart(6,'0')
     const isBdj=e=> !!e.closest('.BndjTBL')
     const isArr=e=>Array.isArray(e)
+    const Sib=e=>$(e,Pai(event.target))
 
     const ATV=e=>Add($(e),'Atv')
     const DTV=e=>Rmv($(e),'Atv')
@@ -1355,6 +1362,57 @@
     </header>
 
     <div id="PAGES">
+
+        <div id="Pag_HOME">
+            <style>
+                .Separador{border: #00df00 solid 1px; padding: 20px; width: 500px;}
+            </style>
+            <div class="Cl">
+                <div id="G_Cores" class="Ct Separador">
+                    <style>
+                        #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
+                        #G_Cores p  {width:30px; height:30px; margin:2px}
+                    </style>
+                    <script>  
+                        const Load_Cor =()=>StockjVinil.map(e=>`<p class="RD ppt" style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></p>`).join('')
+                        const mudarCor =cor=>$('#I_Cor').style.backgroundColor=cor
+                        const VariasCor=Cor=>{Cor.innerHTML = Cor.innerHTML==='1'?'':'1';Tog(Cor,'Atv')}
+                    </script>
+                    <div id="I_Cor" class="Ct Rd ppt" onclick="Tog_N(Sib('a'))">Escolha uma Cor</div>
+                    <a class="Ct none" onload="Inn(this,Load_Cor())"></a>
+                </div>
+
+                <div class="Separador Ct">
+                    <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="MaskNum(this);EscolheCalc()"></div>
+                    <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="MaskNum(this);EscolheCalc()"></div>
+                    <div id="Div-Inpt-Qnt"> <input placeholder="Qnt"></div>
+                </div>
+
+                <div class="Separador Ct">
+                    <div id="BtnMddArea" class="button Ct" onclick="InnTogg('#BtnMddArea','Achou','Achar Qnt');Tog($('#AreaX'),'none');Tog($('#AreaY'),'none')">Achar Qnt</div>
+                    <div class="Ct w100">    
+                        <div id="AreaX" class="none Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="MaskNum(this);EscolheCalc()"></div>
+                        <div id="AreaY" class="none Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="MaskNum(this);EscolheCalc()"></div>
+                    </div>
+                    <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
+                    <div>
+                        <div id="NewCanvas" class="Ct Cnvs"></div>
+                        <canvas id="CanvasMedidas" class="Cnvs"></canvas>
+                        <div id="ResutArea"></div>
+                    </div>
+                </div>
+
+                <div class="Separador Ct">
+                        <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
+                        <div class="Cl"><label>             .          </label><div class="baby" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
+                </div>
+
+                <div class="Separador Ct">
+                    
+                </div>
+            </div>
+        </div>
+
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="NovoPedido()">+ Novo Pedido</button>
@@ -2406,6 +2464,7 @@
             <div class="Close Ct" onclick="SairMdal()">X</div>
             <div>informações de Suporte</div>
             <div>dicas de como usar o APP, principalmente pra mim</div>
+            <button onclick="CopyGRAFF('Pix',this)">Copiar Pix</button>
         </div>
     </div>
 </body>
@@ -2697,6 +2756,15 @@
         // o Hover precisa ta por cima das cores verde
         // Opção de mais de 1 Designer
         // adicionar carteira
+
+        // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
+        // ID cria Sozinho no BackEnd na PLanilha
+        // Atribuir as definições de RG, em cada click q for nessesario
+        // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
+        // No preview podia ser um Gif
+        // O QUE É A NUVEM?
+        // UM ROBÔ PODE PENSAR POR CONTA PRÓPRIA?
+        // TIPOS DE ERROS NO JAVASCRIPT!
 
 </script>
 

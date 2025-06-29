@@ -1,107 +1,38 @@
 const ValidEmail=["@gmail.com","@yahoo.com","@yahoo.co.uk","@outlook.com","@hotmail.com","@live.com","@icloud.com","@me.com","@aol.com","@protonmail.com","@zoho.com","@mail.com","@gmx.com","@yandex.com"]
+const StockjVinil = ["#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#A52A2A","#800080","#000000","#FFFFFF","#808080"]
 
-const Ramos = [
-    ['Alimentos e Bebidas','Comércio','Padaria'],
-    ['Alimentos e Bebidas','Comércio','Depósito de Bebidas'],
-    ['Alimentos e Bebidas','Comércio','Depósito de Água e Gás'],
-    ['Alimentos e Bebidas','Comércio','Mercadinho'],
-    ['Alimentos e Bebidas','Comércio','Frigorifico & Peixe'],
-    ['Alimentos e Bebidas','Comércio','Frutas & Verduras'],
-    ['Alimentos e Bebidas','Comércio','Empório'],
-    ['Alimentos e Bebidas','Comércio','Ração'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Churrascaria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Restaurante'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Lanchonete'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Bar'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Bistrô & Café'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Buffet'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Sorveteria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Barraca Lanche'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Conveniência'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Açaíteria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Tapiocaria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Pizzaria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Temakeria'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Casa de Bolo'],
-    ['Alimentos e Bebidas','Comércio/Serviço','Confeiteiro'],
-    ['Alimentos e Bebidas','Fábrica','Fábrica de Sorvete'],
-    ['Vendas e Objetos','Comércio','Arte e Antiguidades'],
-    ['Vendas e Objetos','Comércio','Artigos Religiosos'],
-    ['Vendas e Objetos','Comércio','Bebês e Cia'],
-    ['Vendas e Objetos','Comércio','Brinquedos e Games'],
-    ['Vendas e Objetos','Comércio','Casa e Decoração'],
-    ['Vendas e Objetos','Comércio','Colecionáveis'],
-    ['Vendas e Objetos','Comércio','Cosméticos e Perfumaria'],
-    ['Vendas e Objetos','Comércio','Eletrodomésticos'],
-    ['Vendas e Objetos','Comércio','Fotografia'],
-    ['Vendas e Objetos','Comércio','Flores, Cestas e Presentes'],
-    ['Vendas e Objetos','Comércio','Instrumentos Musicais'],
-    ['Vendas e Objetos','Comércio','Joalheria'],
-    ['Vendas e Objetos','Comércio','Livros'],
-    ['Vendas e Objetos','Comércio','Funerários'],
-    ['Vendas e Objetos','Comércio','Variedades'],
-    ['Vendas e Objetos','Comércio','Gráfica'],
-    ['Vendas e Objetos','Comércio','Papelaria e Escritório'],
-    ['Vendas e Objetos','Comércio','Místicos'],
-    ['Estétia e Moda','Comércio','Sapatos'],
-    ['Estétia e Moda','Comércio','Roupas e Acessórios'],
-    ['Estétia e Moda','Serviço','Salão Cabeleireiro'],
-    ['Estétia e Moda','Serviço','Sobrancelha'],
-    ['Estétia e Moda','Serviço','Unha em Gel'],
-    ['Estétia e Moda','Serviço','Barbearia'],
-    ['Estétia e Moda','Serviço','Tatuagem'],
-    ['Estétia e Moda','Comércio','Sex Shop'],
-    ['Técnologia','Comércio','Informática'],
-    ['Técnologia','Serviço','Internet'],
-    ['Técnologia','Comércio','Assesórios Celular'],
-    ['Técnologia','Comércio/Serviço','Equipadora Som'],
-    ['Técnologia','Comércio','Eletrônica'],
-    ['Técnologia','Comércio/Serviço','Assistência Téc. PC'],
-    ['Técnologia','Comércio/Serviço','Assistência Téc. Celular'],
-    ['Técnologia','Serviço','Téc. Refrigeração'],
-    ['Saúde e Medicamento','Serviço','Nutrição'],
-    ['Saúde e Medicamento','Serviço','Pscicologia'],
-    ['Saúde e Medicamento','Serviço','Laboratório e Exame'],
-    ['Saúde e Medicamento','Serviço','Odontologia'],
-    ['Saúde e Medicamento','Comércio','Farmácia'],
-    ['Saúde e Medicamento','Comércio/Serviço','Vetrinário'],
-    ['Construção e Ferramentas','Serviço','Serralharia'],
-    ['Construção e Ferramentas','Serviço','Marcenaria'],
-    ['Construção e Ferramentas','Comércio/Serviço','Gesso'],
-    ['Construção e Ferramentas','Comércio','Armazém'],
-    ['Construção e Ferramentas','Serviço','Pedreiro'],
-    ['Construção e Ferramentas','Serviço','Engenharia'],
-    ['Construção e Ferramentas','Serviço','Eletricista'],
-    ['Construção e Ferramentas','Serviço','Encanação'],
-    ['Serviços Pessoais','Serviço','Seguradora'],
-    ['Serviços Pessoais','Serviço','Segurança'],
-    ['Serviços Pessoais','Serviço','Transporte'],
-    ['Serviços Pessoais','Serviço','Turismo'],
-    ['Serviços Pessoais','Serviço','Motéis'],
-    ['Serviços Pessoais','Serviço','Aluguel e Locações'],
-    ['Instituições','Serviço','Associações'],
-    ['Instituições','Serviço','Advocacia'],
-    ['Instituições','Serviço','Cartórios'],
-    ['Instituições','Serviço','Bibliotecas'],
-    ['Instituições','Serviço','Casas Lotéricas'],
-    ['Instituições','Serviço','Consórcios'],
-    ['Instituições','Serviço','Cooperativas'],
-    ['Instituições','Serviço','Emissoras de Rádio'],
-    ['Instituições','Serviço','Emissoras de Televisão'],
-    ['Instituições','Serviço','Instituições Religiosas'],
-    ['Instituições','Serviço','Prefeitura'],
-    ['Educação','Serviço','Escola'],
-    ['Educação','Serviço','Curso'],
-    ['Serviço','Serviço','Estacionamentos'],
-    ['Serviço','Serviço','limpeza'],
-    ['Serviço','Serviço','Ecologia'],
-    ['Serviço','Serviço','Agricultura'],
-    ['Serviço','Serviço','Festas & Eventos'],
-    ['Serviço','Serviço','Mecânico'],
-    ['Serviço','Serviço','Costureira'],
-    ['Serviço','Serviço','Serviços Gráficos'],
-    ['Serviço','Serviço','Pet Shop'],
-  ]
+const Ramos = {
+  'Alimentos e Bebidas': {
+      Comr:['Padaria','Depósito de Bebidas','Depósito de Água e Gás','Mercadinho','Frigorifico & Peixe','Frutas & Verduras','Empório','Ração'],
+      CoSv:['Churrascaria','Restaurante','Lanchonete','Bar','Bistrô & Café','Buffet','Sorveteria','Barraca Lanche','Conveniência','Açaíteria','Tapiocaria','Pizzaria','Temakeria','Casa de Bolo','Confeiteiro'],
+      Fabr:['Fábrica de Sorvete']
+  },'Vendas e Objetos': {
+      Comr:['Arte e Antiguidades','Artigos Religiosos','Bebês e Cia','Brinquedos e Games','Casa e Decoração','Colecionáveis','Cosméticos e Perfumaria','Eletrodomésticos','Fotografia','Flores, Cestas e Presentes','Instrumentos Musicais','Joalheria','Livros','Funerários','Variedades','Gráfica','Papelaria e Escritório','Místicos']
+  },'Estétia e Moda': {
+      Comr:['Sapatos','Roupas e Acessórios','Sex Shop'],
+      Serv:['Salão Cabeleireiro','Sobrancelha','Unha em Gel','Barbearia','Tatuagem']
+  },'Técnologia': {
+      Comr:['Informática','Assesórios Celular','Eletrônica'],
+      Serv:['Internet','Téc. Refrigeração'],
+      'Comércio/Serviço': ['Equipadora Som','Assistência Téc. PC','Assistência Téc. Celular']
+  },'Saúde e Medicamento': {
+      Serv:['Nutrição','Pscicologia','Laboratório e Exame','Odontologia'],
+      Comr:['Farmácia'],
+      CoSv:['Vetrinário']
+  },'Construção e Ferramentas': {
+      Serv:['Serralharia','Marcenaria','Pedreiro','Engenharia','Eletricista','Encanação'],
+      CoSv:['Gesso'],
+      Comr:['Armazém']
+  },'Serviços Pessoais': {
+      Serv:['Seguradora','Segurança','Transporte','Turismo','Motéis','Aluguel e Locações']
+  },'Instituições': {
+      Serv:['Associações','Advocacia','Cartórios','Bibliotecas','Casas Lotéricas','Consórcios','Cooperativas','Emissoras de Rádio','Emissoras de Televisão','Instituições Religiosas','Prefeitura']
+  },'Educação': {
+      Serv:['Escola','Curso']
+  },'Serviço': {
+      Serv:['Estacionamentos','limpeza','Ecologia','Agricultura','Festas & Eventos','Mecânico','Costureira','Serviços Gráficos','Pet Shop']
+  }
+}
 
 const CopyPresset = {
     Pix:`
@@ -115,4 +46,3 @@ const User={
   '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
   '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
 }
-
