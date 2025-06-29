@@ -251,6 +251,16 @@ function LoadDegade(CCnvs) {
 // GABARITO================================================================================================
 // GABARITO================================================================================================
 
+function Promss_Src(files){
+  const srcList = []
+  const promises = Array.from(files).map(File=>{
+    return new Promise(r=>{
+      const Rend = new FileReader()
+      Rend.onload=e=>{srcList.push(e.target.result);r()}
+      Rend.readAsDataURL(File)})
+  });return Promise.all(promises).then(()=>srcList)
+}
+
 // dar p Inner nos Input Canvas
 function Load_Cnvs(div){
     if(InptsVazio('#Lista-001 input,#Lista-001 select')){return}      

@@ -1607,7 +1607,7 @@
                 #Config .Cor1{fill: #ff4800}
                 #Config .Cor2{fill: purple}
 
-                #DivCnvs{width:75% ; height:100% ; overflow-y:auto}
+                #DivCnvs{width:75% ; height:100% ; overflow-y:auto ; padding-top: 70px;}
                 #Config {width:25% ; height:100% ; overflow-y:auto}
                 #Config > div {background:#50505025; border-radius:15px; margin:3px; width:97%; padding:20px}
                 #Config input[type="range"]{width:50%}
@@ -1645,10 +1645,6 @@
                 function LimpObj(){ObjCanvs = []}
                 function AddRoW(){const newRow = $('#Lista-001 tbody tr:last-child').cloneNode(true) ; Clen_Alls(newRow) ; $('#Lista-001 tbody').appendChild(newRow)}
             // Funções Grandes GABARITO   
-                function Upload(div){$$(`${div} img`).forEach(img=>{
-                    Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
-                    if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}) ; Read_Obj_Img(`${div} img`)}
-
                 async function ColarTudo(inpt){
                     const valor = await navigator.clipboard.readText()
                     if(!valor.match(/\n/g)&& valor.match(/\t/g)){Read_Ipt_Lin(inpt,valor) ; return}
@@ -1798,8 +1794,7 @@
 
             <div id="DivCnvs" class="Ct"> <!--ÁREA DE EXIBIÇÃO CANVAS-->
                 <style>
-                    #Inpfiles-001{margin-top: 80px}
-                    .DropZone .imgs{background:#50505023; padding:10px; border-radius:20px; margin:20px 0px}
+                    .DropZone{background:#50505023; padding:10px; border-radius:15px}
                     .DropZone .DivImgRsut{border:1px solid #ffffff2a; padding:2px; width:50px; height:50px}
                     .DropZone img.Larg{width:100%; height:auto ; cursor: move}
                     .DropZone img.Alt {width:auto; height:100% ; cursor: move}
@@ -1809,20 +1804,39 @@
                     .CanvBox canvas {background:#505050;margin:5px}
                     .CanvBox canvas{width: 40%}
 
-                    .DropZone2     {width:150px; height:150px; border:2px dashed #ccc} /*esse é o Teste*/
-                    .DropZone2 img {width:100px; height:100px; cursor:move}              /*esse é o Teste*/
+                    .DropZone2     {width:150px; height:80px; border:2px dashed #ccc} /*Esse é o Teste*/
+
+                    .DropZone2 img.Larg{width:50px; height:auto ; cursor: move}
+                    .DropZone2 img.Alt {width:auto; height:50px ; cursor: move}
+                    .DropZone2 img     {border: 1px solid #ff0000;padding:2px}
+                    
                 </style>
-                <div id="Inpfiles-001" class="w100"></div><script>Inn('#Inpfiles-001',IptFile('#FilesIMG-001 .imgs'))</script>
-                <div class="Ct w100">
-                    <div id="FilesIMG-001" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
-                    <div id="FilesIMG-002" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
-                    <div id="FilesIMG-003" class="DropZone Ct"><div class="imgs Ct" ondrop="Drop()" ondragover="Prvn()"></div></div>
+                <script>
+                    function Upload(div,srcList){
+                        console.log(div,srcList)
+                        /*
+                        $$(`${div} img`).forEach(img=>{
+                        Insert(Pai(img)).Befor(`<div class="Ct Abslt Close Opacy" onclick="Pai(this).remove();Read_Obj_Img('${div} img')">X</div>`)
+                        
+                        if(img.naturalWidth>img.naturalHeight){Add(img,'Larg')}else{Add(img,'Alt')}}) ; Read_Obj_Img(`${div} img`)
+                        */
+                    }
+                </script>
+                <div class="w100" onload="Inn(this,IptFile('#DropIMG'))"></div>
+                <div class="Ct w100" style="margin-top:30px">
+                    <div class="Cl"><label>Drop  </label><div class="DropZone Ct" id="DropIMG"></div></div>
+                    <div class="Cl"><label>Frente</label><div class="DropZone Ct"></div></div>
+                    <div class="Cl"><label>Costas</label><div class="DropZone Ct"></div></div>
+                    <div class="Cl"><label>Manga </label><div class="DropZone Ct"></div></div>
+                    <div class="Cl"><label>Nomes </label><div class="DropZone Ct"></div></div>
+                    <!--ondrop="Drop()" ondragover="Prvn()"-->
                 </div>                   
                 <canvas id="gradientCanvas" width="400" height="400"></canvas>
                 <div id="AllCanvas" class="Ct"></div>
                 <div>
                     <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()">
-                        <img id="img1" src="./Img/Perfil_Allan.png" ondragstart="Drag()">
+                        <img id="img1" class="Larg" src="./Img/Perfil_Allan.png" ondragstart="Drag()">
+                        <img id="img2" class="Larg" src="./Testes/Fundo F.webp"  ondragstart="Drag()">
                     </div>
                     <div class="DropZone2" ondrop="Drop()" ondragover="Prvn()"></div>
                 </div>
@@ -1963,8 +1977,6 @@
                 </script>
             </div>
             
-
-
             <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
 
                 <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
@@ -2709,7 +2721,5 @@
 <script> // Templates pra iserir mais pra frente ⏳ ❌ ✔️
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
 </script>
-
-
 
 </html>
