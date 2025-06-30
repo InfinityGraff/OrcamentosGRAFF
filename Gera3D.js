@@ -1,14 +1,17 @@
-const altura = $('#Div-Inpt-Alt input')
-const Largur = $('#Div-Inpt-Larg input')
-const Comprm = $('#Compmnt')
-const BackCub = $('#BackCub')
-
 const Dist = 4 ; let AngX = 0 ; let AngY =  70 ; let LastCUB;
-function SetCor(e){
- return new THREE.MeshBasicMaterial({color:e})
-}
+function SetCor(e){return new THREE.MeshBasicMaterial({color:e})}
 
 function Gera3d(div){
+  const altura  = $('#Div-Inpt-Alt input')
+  const Largur  = $('#Div-Inpt-Larg input')
+  const Comprm  = $('#Compmnt')
+  const BackCub = $('#BackCub')
+
+  // Desistência
+  if(parseFloat(Largur.value)===0||parseFloat(altura.value)===0||parseFloat(Comprm.value)===0){return}
+  
+  
+
   const scene = new THREE.Scene()
   const Cam   = new THREE.PerspectiveCamera(75, 1, 0.1, 1000)
   const Ct    = new THREE.Vector3(0,0,0)

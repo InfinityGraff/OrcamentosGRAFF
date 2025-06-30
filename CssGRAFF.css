@@ -4,24 +4,38 @@
 @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
 @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
 
+:root{
+  --CSS1btn:   linear-gradient(to right,#434343,#73008A,#FF5900);
+  --CSS3btn:   linear-gradient(135deg, #E8778D, #C151A8);
+  --CSS3btnDk: linear-gradient(135deg, #810483, #b8636e);
+  --CSS3btnLt: linear-gradient(135deg  ,#B654B8,#F0A8B2);
+  --CSS3TblLt: linear-gradient(135deg  ,#ECD1EA,#ffffff);
+  --CSS1Fnd:   linear-gradient(#1f1f1f,#101010) center center no-repeat fixed;
+}
+
 /*Formatos das Tags______________________________________________________________ */
     /*Body*/
-      body.Lite.CSS1{background: #ffffff          ;color:#000000}
-      body.Dark.CSS1{background: var(--DegradeFundo);color:#ffffff}
-      body.Lite.CSS2{background: #ffffff          ;color:#000000}
-      body.Dark.CSS2{background: #120c16          ;color:#ffffff}
+      body.Lite.CSS1{background: #ffffff       ;color:#000000}
+      body.Dark.CSS1{background: var(--CSS1Fnd)  ;color:#ffffff}
+      body.Lite.CSS2{background: #ffffff       ;color:#000000}
+      body.Dark.CSS2{background: #120c16       ;color:#ffffff}
+      body.Lite.CSS3{background: var(--CSS3btnLt);color:#3a0027}
+      body.Dark.CSS3{background: var(--CSS3btnDk);color:#ffffff}
+
     /*Button, Input e Select*/
       input,select,button,.button{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s ease-in-out}      
       button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/  
         .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
         .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
-      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--Degrade); background-size:500%; padding: 3px 6px}
+      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 3px 6px}
       .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
       .CSS1 button:active,.CSS1 .button:active{transform:scale(0.95)}
       .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300;border: 2px solid #ffae00;padding: 0px 10px;font-family: Almarose-Medium}
+      .CSS3 button       ,.CSS3 .button{color: #ffffff; background:var(--CSS3btn);border: 2px solid #F0A8B2;padding: 0px 10px;font-family: Almarose-Medium}
       .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
+      button.Block               {background: #797979 !important;border:1px solid #414141 !important;}
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -30,11 +44,49 @@
       .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272}
         .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
         .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
+    /*Options*/ 
+      .CSS1.Dark option  {color:#ffffff  ; background:#3d3d3d}
+      .CSS1.Lite option  {color:#000000  ; background:#ffffff}
+      .CSS1.Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
+      .CSS1.Lite optgroup{color:#00000038; background:#ffffff; font-size:10px; text-align:left; padding-left:80px}
+    /*Header*/ 
+      .CSS1 header{color:#ffffff;background:url(./SVG/Fundo.png); background-size:cover}
+      .CSS2 header{color:#ffffff;background:url(./SVG/Fundo.png); background-size:cover}
+      .CSS3 header{color:#ffffff;background:#c027b3}
+    /*Table*/ 
+      table{text-align:center;border-collapse:collapse}
+          .CSS1.Dark .TBLAA table{background: #222222}
+          .CSS1.Lite .TBLAA table{background: #ffffff}
+          .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; border-radius: 20px; overflow: hidden;box-shadow:0 5px 10px #a700a72f}
+    /*thead e tfoot*/ 
+      .CSS3.Lite .TBLAA thead tr{background: var(--CSS3btn);color:#ffffff; height: 30px;}
+      .CSS3.Lite .TBLAA tfoot tr{background: var(--CSS3btn);color:#ffffff; height: 60px;}
+      .CSS1.Dark .TBLAA tr{border:1px solid #cccccc27}
+      .CSS1.Lite .TBLAA tr{border:1px solid #00000027}
+      .TBLAA th{padding:4px 6px}
+      .CSS1.Dark .TBLAA th{background: #161616;color:#ffffff}
+      .CSS1.Lite .TBLAA th{background: #8b0085;color:#ffffff}
+      .CSS1.Dark .TBLAA tfoot{background:#111111;color:white}
+      .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:white}
+      .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px}
+    /*Tbody*/
+      .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
 
-    .CSS1.Dark option  {color:#ffffff  ; background:#3d3d3d}
-    .CSS1.Lite option  {color:#000000  ; background:#ffffff}
-    .CSS1.Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
-    .CSS1.Lite optgroup{color:#00000038; background:#ffffff; font-size:10px; text-align:left; padding-left:80px}
+    /*Outros Tabela*/
+      .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
+      .CSS1.Dark .TBLAA td.Foco{background:#ffffff18}     
+      .CSS1 .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
+      .CSS1 .TBLAA .hMin td{height:10px}
+      .CSS1 .TBLAA .hMin td select,.hMin td input{height: 17px !important}
+          .CSS1 .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
+          .CSS1 .TBLAA td img{height:17px; width: auto;}
+      
+      .CSS1 .TBLAA .AutoComp    {background: #94949473}
+      .CSS1 .TBLAA .AutoComp.Cor{background: #ffffff00}
+      .CSS3 .TBLAA .AutoComp    {background: #f08cb64f}
+      .CSS3 .TBLAA .AutoComp.Cor{background: #ffffff00}
+
+
 
 /*Anailsar depois*/
 #Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}

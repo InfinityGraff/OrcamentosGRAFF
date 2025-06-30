@@ -31,8 +31,9 @@
         <script src="./JSON/DadosCLNT.js"></script>
 
         <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
-
-        <script src="https://threejs.org/build/three.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+        <!--
+        <script src="https://threejs.org/build/three.js"></script>-->
         <script src="./AchaMdd.js"></script>
         <script src="./Gera3D.js"></script>
 </head>
@@ -379,34 +380,14 @@
         .Ant-Grn{background: #008000 !important}
         .Ant-Bol{width: 6px;height: 6px; border-radius: 255px}
         
-        .AutoComp{background: #94949473}
-        .AutoComp.Cor{background: #ffffff00}
+
         .CorID   {background: #94949473}
 
         td        .grifoo{display: none ; height: 5px; width: 5px ; left: 0px;}
         td.Grifo2 .grifoo{display: block ; background: #ff880060}
         td.Grifo1 .grifoo{display: block ; background: #ff8800fd}
 
-            table{text-align:center;border-collapse:collapse}
-                .Dark .TBLAA table{background: #222222}
-                .Lite .TBLAA table{background: white}
-            .TBLAA th{padding:4px 6px}
-                .Dark .TBLAA tr{border:1px solid #cccccc27}
-                .Lite .TBLAA tr{border:1px solid #00000027}
-                .Dark .TBLAA th{background: #161616;color:white}
-                .Lite .TBLAA th{background: #8b0085;color:white}
-                    .Lite .TBLAA td.Foco{background:#c300ff2a}
-                    .Dark .TBLAA td.Foco{background:#ffffff18}
-                .Dark .TBLAA tfoot{background:#111111;color:white}
-                .Lite .TBLAA tfoot{background:#8b0085;color:white}
-            
-            .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
 
-            .TBLAA .hMin td{height:10px}
-            .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-                .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
-                .TBLAA td img{height:17px; width: auto;}
-            .TBLAA .hMin tfoot td{padding:8px 6px}
             
             .TableMORE thead{background:#0000007c}
             .More{margin:5px; padding:5px 10px; height:20px}
@@ -452,8 +433,7 @@
             .DivConf{background:#d6d6d6}
             .DivConf h1{font-size: 25px;}
 
-            .Body1 .DivConf{top:55px ; height: 40px}
-            .Body1 thead   {top:95px}
+            .Body1 .DivConf{height: 40px}
             .Body1 .PagPEsq{display:none}
 
             .Body2 .DivConf{top:0px  ; height: 40px}
@@ -1204,18 +1184,18 @@
     </script>
 </div>
 
-<body class="Dark Body1 CSS2 Ct" onclick="NoneBndj()">
+<body class="Dark Body1 CSS3 Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
             /*Fixos*/
-                header{padding:0px ; z-index:999 ; color: white ; transition: width ease-in-out 0.2s}
+                header{padding:0px ; z-index:999 ; transition: width ease-in-out 0.2s}
                 #PAGES{transition: width ease-in-out 0.2s}
                 #Login-Top      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
                 #Login-Top:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
-                .Body1 > header{height:8vh  ; width:100vw ; background:url(./SVG/Fundo.png); background-size:cover ; position:sticky; top:0}
+                .Body1 > header{height:8vh  ; width:100vw ; position:sticky; top:0}
                 .Body1 > #PAGES{height:92vh ; width:100vw }
                 .Body1 > #PAGES > div{height:100% ; overflow-y:scroll} /*Aqui são as Páginas de Fato*/
                         .Body1 > header #Title      {margin-left:15px}                @media(max-width:500px){.Body1 > header #Title    {margin-left:3px}}
@@ -1230,7 +1210,7 @@
                     .Body1 #Login-Top       {display:none}
             /*Body2*/
                 .Body2{justify-content: flex-start}
-                .Body2 > header{height:100vh ; width:18% ; background:url(./SVG/Fundo.png);background-size:cover ; display:flex ; flex-direction: column}
+                .Body2 > header{height:100vh ; width:18% ; display:flex ; flex-direction: column}
                 .Body2 > #PAGES{height:100vh ; width:82% ; overflow-y:scroll}
                 .Body2.recolhe > header{width:5% }
                 .Body2.recolhe > #PAGES{width:95%}
@@ -1281,6 +1261,7 @@
                     }
                 }
                 function Recolher(){Tog($('body'),'recolhe')}
+                function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
             </script>
         </div>
 
@@ -1365,7 +1346,7 @@
 
         <div id="Pag_HOME">
             <style>
-                .Separador{border: #00df00 solid 1px; padding: 20px; width: 500px;}
+                .Separador{border: #00df00 solid 1px; padding: 20px; width: 700px;}
             </style>
             <div class="Cl">
                 <div id="G_Cores" class="Ct Separador">
@@ -1383,32 +1364,32 @@
                 </div>
 
                 <div class="Separador Ct">
-                    <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="MaskNum(this);EscolheCalc()"></div>
-                    <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="MaskNum(this);EscolheCalc()"></div>
+                    <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="MaskNum(this);RodaCanvMdds()"></div>
+                    <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="MaskNum(this);RodaCanvMdds()"></div>
                     <div id="Div-Inpt-Qnt"> <input placeholder="Qnt"></div>
                 </div>
 
-                <div class="Separador Ct">
+                <div class="Separador Cl">
                     <div id="BtnMddArea" class="button Ct" onclick="InnTogg('#BtnMddArea','Achou','Achar Qnt');Tog($('#AreaX'),'none');Tog($('#AreaY'),'none')">Achar Qnt</div>
                     <div class="Ct w100">    
-                        <div id="AreaX" class="none Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="MaskNum(this);EscolheCalc()"></div>
-                        <div id="AreaY" class="none Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="MaskNum(this);EscolheCalc()"></div>
+                        <div id="AreaX" class="none Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="MaskNum(this);RodaCanvMdds()"></div>
+                        <div id="AreaY" class="none Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="MaskNum(this);RodaCanvMdds()"></div>
                     </div>
+                    
+                    <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
+                    <div class="Cl"><div class="button Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
+
                     <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
+                    <button onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
                     <div>
-                        <div id="NewCanvas" class="Ct Cnvs"></div>
+                        <div id="NewCanvas"        class="Ct Cnvs"></div>
                         <canvas id="CanvasMedidas" class="Cnvs"></canvas>
                         <div id="ResutArea"></div>
                     </div>
                 </div>
 
                 <div class="Separador Ct">
-                        <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
-                        <div class="Cl"><label>             .          </label><div class="baby" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
-                </div>
 
-                <div class="Separador Ct">
-                    
                 </div>
             </div>
         </div>
@@ -2458,6 +2439,10 @@
             <div class="Ct Close" onclick="SairMdal()">X</div>
             <div><input id="DarkLite" type="checkbox" class="GETConfig" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
             <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
+            <button onclick="TrocaCSS('CSS1')">CSS1</button>
+            <button onclick="TrocaCSS('CSS2')">CSS2</button>
+            <button onclick="TrocaCSS('CSS3')">CSS3</button>
+            
         </div>
 
         <div id="PagSUPORTE" class="Cl Rltv Rd">
