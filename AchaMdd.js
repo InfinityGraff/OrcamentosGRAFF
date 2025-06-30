@@ -20,7 +20,6 @@ function RodaCanvMdds(){
     const [A_Lag,A_Alt] = [ParsMil('#I_AreaX'),ParsMil('#I_AreaY')]
     const BtnBlock=(Stg)=> `<button class="Block">🔒 ${Stg}</button>`
 
-    if(Inn('#BtnMddArea')==='Achar Qnt'){Inn('#LoadCanvaaas',BtnBlock('Indisponível'     ));None('#CanvasMedidas');return}
     if(Alt  ===0||Lag  ===0)            {Inn('#LoadCanvaaas',BtnBlock('Insira as Medidas'));None('#CanvasMedidas');return}
     if(A_Lag===0||A_Alt===0)            {Inn('#LoadCanvaaas',BtnBlock('Insira as Medidas'));None('#CanvasMedidas');return}
     const Cabe1 = (Alt <= A_Alt && Lag <= A_Lag) // só pra conferir se cabe pelomenos 1

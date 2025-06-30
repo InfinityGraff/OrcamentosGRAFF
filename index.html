@@ -51,6 +51,7 @@
     let scrollPosition = [0,0]
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
+        // Por M2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
                         Variantes:{
                             'Brilho'          :{item:'1',Grad:'Ads(Blh)',Tipo:'',Valr:60 ,Cust:20},
@@ -88,17 +89,12 @@
                             '0.4 - Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '0.8 - Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Recorte'  :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Adesivo Recortado'    , Forn:['Stock'                      ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
-                        Variantes:{
-                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
-                            'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
-        }},
-        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Acrilico Cristal de 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
+        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
                         Variantes:{
                             'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
                             'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Offset
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
                 'Brilho'      :{Table:[
@@ -145,88 +141,96 @@
                     'Reto' :{},
                     'Curva':{},
             }},
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         'Cardápio' :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['BPrint']          , Prdc:[] , Extra:[] , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
                         Variantes:{
                     '1Pag':{},
                     '2pag':{},
         }},
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        'Camisa'   :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:''        , Forn:['BPrint']      ,
                         Variantes:{
-            'M.Curta'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
-            Regata     :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
-            Polo       :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,},
-            'M.Longa'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
+                            'Topo de Bolo' :{}}
+        },
+        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Forn:['BPrint']      ,
+                        Variantes:{
+                            'Crachá' :{}}
+        },
+        // Tecido
+        'Camisa'   :{Calc:'QNT', Stts:'Offf' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+                        Variantes:{
+                            'M.Curta'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
+                            Regata     :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
+                            Polo       :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,},
+                            'M.Longa'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
         }},
-        'Calção'   :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Short','Sublimação','roupa','pano'] ,
+        'Calção'   :{Calc:'QNT', Stts:'Offf' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Short','Sublimação','roupa','pano'] ,
                         Variantes:{
-                'Bermuda' :{},
-                'Short'   :{},
+                            'Bermuda' :{},
+                            'Short'   :{},
         }},  
         'WindFlag' :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
                         Variantes:{
-            Faca         :{Tipo:['P','M','G'],Valr:0,Cust:0},
-            Vela         :{Tipo:['P','M','G'],Valr:0,Cust:0},
-            Pena         :{Tipo:['P','M','G'],Valr:0,Cust:0},
-            Gota         :{Tipo:['P','M','G'],Valr:0,Cust:0},
+                            Faca :{Tipo:['P','M','G'],Valr:0,Cust:0},
+                            Vela :{Tipo:['P','M','G'],Valr:0,Cust:0},
+                            Pena :{Tipo:['P','M','G'],Valr:0,Cust:0},
+                            Gota :{Tipo:['P','M','G'],Valr:0,Cust:0},
             }},
         'BigBall'  :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido"] ,
                         Variantes:{
-                P         :{Tipo:[''],Valr:0,Cust:0},
-                M         :{Tipo:[''],Valr:0,Cust:0},
-                G         :{Tipo:[''],Valr:0,Cust:0},
+                            P  :{Tipo:[''],Valr:0,Cust:0},
+                            M  :{Tipo:[''],Valr:0,Cust:0},
+                            G  :{Tipo:[''],Valr:0,Cust:0},
             }},   
-        'Bandeira' :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'Bandeira' :{Calc:'M2' , Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Sublimação',"Pano","Tecido"] ,
                         Variantes:{
-                'Oxford' :{},
-                'Cettin' :{},
+                            'Oxford' :{},
+                            'Cettin' :{},
         }},    
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        'Arte'           :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Arte']      ,
-        Variantes:{
+        // Cortes
+        'Router'   :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']  ,
+                        Variantes:{
+                            'PVC'      :{},
+                            'Acrilico' :{}}
+        },
+        'Recorte'  :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Adesivo Recortado'    , Forn:['Stock'                      ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
+                        Variantes:{
+                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
+        }},
+      'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
+                        Variantes:{
+                            'Sinalização' :{}}
+        },
+        // Serviços
+        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']      ,
+                        Variantes:{
                     'Arte' :{}}
         },
-        'Router'         :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Barraca','Jailson']      ,
-        Variantes:{
-                    'Router' :{}}
-        },
-        'Envelopamento'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-        Variantes:{
+        'Plotagem' :{Calc:'M2v', Stts:'Offf' , Prvw:''        , Forn:['Stock']              ,
+                        Variantes:{
                     'Plotagem' :{}}
         },
-        'Serigrafia'     :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-        Variantes:{
-                    'Serigrafia' :{}}
+        // Produtos
+        'Figurinha':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+                        Variantes:{
+                            'Figurinha' :{}}
         },
-        'Figurinha'      :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-            Variantes:{
-                    'Figurinha' :{}}
+        'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+                        Variantes:{
+                            'Vendas' :{}}
         },
-        'Topo de Bolo'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['BPrint']      ,
-            Variantes:{
-                    'Topo de Bolo' :{}}
+        'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+                        Variantes:{
+                            'Cartela' :{}}
         },
-        'Vendas'         :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-        Variantes:{
-                    'Vendas' :{}}
+        // Ferragem
+        'Placa'    :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
+                    Variantes:{
+                        'Placa' :{}}
+        }, 
+       'Serigrafia':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+                        Variantes:{
+                            'Serigrafia' :{}}
         },
-        'Placa'          :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
-        Variantes:{
-                    'Placa' :{}}
-        },
-        'Cartela'        :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-        Variantes:{
-                    'Cartela' :{}}
-        },
-        'Plotagem'       :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
-        Variantes:{
-                    'Plotagem' :{}}
-        },
-        'Sinalização'          :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
-        Variantes:{
-                    'Sinalização' :{}}
-        }
         }
    
     // Const Importante pra Compilar a Tabela pra deixa o Load Mais Rápido
@@ -1345,11 +1349,17 @@
     <div id="PAGES">
 
         <div id="Pag_HOME">
-            <style>
-                .Separador{border: #00df00 solid 1px; padding: 20px; width: 700px;}
-            </style>
             <div class="Cl">
                 <div id="G_Cores" class="Ct Separador">
+                    <!--
+                        isso ficará disponível apenas para coisas com cores sólidas como Recorte e Router
+                        deverá ser transformado em um Menu suspenso, uma Bandeija, pra n atrapalhar
+                        pois ele vai ficar dentro da tabela
+                        essa tabela terá uma Coluna Extra, [Serv, Tipo, Larg, Alt, Qnt, Extra]
+                        esse extra quando for algo q tenha cor, será a Cor o extra
+                        se for Placa, Plotagem o extra será comprimento
+
+                    -->
                     <style>
                         #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
                         #G_Cores p  {width:30px; height:30px; margin:2px}
@@ -1367,29 +1377,34 @@
                     <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="MaskNum(this);RodaCanvMdds()"></div>
                     <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="MaskNum(this);RodaCanvMdds()"></div>
                     <div id="Div-Inpt-Qnt"> <input placeholder="Qnt"></div>
+                    <!--Comprimento n precisa ser Value 0 aqui, se for Vazio então da Zero no Gera3D-->
+                    <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
                 </div>
 
                 <div class="Separador Cl">
-                    <div id="BtnMddArea" class="button Ct" onclick="InnTogg('#BtnMddArea','Achou','Achar Qnt');Tog($('#AreaX'),'none');Tog($('#AreaY'),'none')">Achar Qnt</div>
                     <div class="Ct w100">    
-                        <div id="AreaX" class="none Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="MaskNum(this);RodaCanvMdds()"></div>
-                        <div id="AreaY" class="none Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="MaskNum(this);RodaCanvMdds()"></div>
+                        <div id="AreaX" class="Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="MaskNum(this);RodaCanvMdds()"></div>
+                        <div id="AreaY" class="Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="MaskNum(this);RodaCanvMdds()"></div>
                     </div>
                     
-                    <div class="Cl"><label for="Compmnt">Comrimento</label><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
-                    <div class="Cl"><div class="button Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</div><input id="BackCub" class="none" value="0"></div>
+                    <!--Não preciso de um Input aqui pra receber 0 ou 1, isso pode fica diretamente na class do Button q deveria ser um CheckBox e Xuva-->
+                    <div class="Cl"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
 
                     <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
                     <button onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
                     <div>
+                        <!-- Criar uma Cópia do Canvas pra cada item da Tabela, pois existirá uma Aba de Detálhes pra cada um
+                            e cada aba detalhe terá seu próprio Canva
+                            só existirá um Canva se Existir uma Linha Correspondente a ele na tabela de ORC
+                            e de preferência passar todos esses Valores como Argumento pra rodar
+                            ambos os Canvas, de Mdds e de Gera3D
+                            Reajustar Canvas de ferragem pra aumentar o Size caso a medida exeda o Limite do Preview (meio q remvoer o Zoom)
+                            fazer o Resize Largura pela altura pra ver qual fica Auto e qual w100 (igual o Drop de imagens do GBRT)
+                        -->
                         <div id="NewCanvas"        class="Ct Cnvs"></div>
                         <canvas id="CanvasMedidas" class="Cnvs"></canvas>
                         <div id="ResutArea"></div>
                     </div>
-                </div>
-
-                <div class="Separador Ct">
-
                 </div>
             </div>
         </div>

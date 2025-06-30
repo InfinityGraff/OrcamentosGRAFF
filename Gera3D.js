@@ -8,7 +8,7 @@ function Gera3d(div){
   const BackCub = $('#BackCub')
 
   // Desistência
-  if(parseFloat(Largur.value)===0||parseFloat(altura.value)===0||parseFloat(Comprm.value)===0){return}
+  if(parseFloat(Largur.value)===0||parseFloat(altura.value)===0){return}
   
   
 
