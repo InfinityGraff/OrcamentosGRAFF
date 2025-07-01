@@ -432,3 +432,4 @@ function CopyGRAFF(e,btn){
     document.body.removeChild(temp)
     btn.innerText = 'Texto copiado!'
 }
+

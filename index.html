@@ -43,7 +43,7 @@
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
     const LimitLin = 10
-    const Atual = {Pag:'#Pag_HOME'}
+    const Atual = {Pag:'#Pag_ORC'}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
@@ -98,13 +98,13 @@
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
                 'Brilho'      :{Table:[
-                    ['Frente' ,'250g',[['500', 90,31],['1.000',135,45]]],
-                    ['F.Verso','250g',[['500',115,42],['1.000',150,54]]], 
-                    ['Frente' ,'300g',[['500',130,49],['1.000',145,56]]], 
-                    ['F.Verso','300g',[['500',150,58],['1.000',165,65]]], ]},
+                    ['Frente' ,'250g',[['500', 90,31,'left:38px ;top:167px'],['1.000',135,45,'left:134px;top:167px']]],
+                    ['F.Verso','250g',[['500',115,42,'left:262px;top:167px'],['1.000',150,54,'left:361px;top:167px']]], 
+                    ['Frente' ,'300g',[['500',130,49,'left:0px  ;top:0px  '],['1.000',145,56,'left:0px  ;top:0px  ']]], 
+                    ['F.Verso','300g',[['500',150,58,'left:0px  ;top:0px  '],['1.000',165,65,'left:0px  ;top:0px  ']]],]},
                 'Brilho Local':{Table:[
-                    ['Frente' ,'300g',[['500',155,62],['1.000',190,78]]],
-                    ['F.Verso','300g',[['500',190,80],['1.000',230,99]]], ]},
+                    ['Frente' ,'300g',[['500',155,62,'left:38px ;top:330px'],['1.000',190,78,'left:134px;top:330px']]],
+                    ['F.Verso','300g',[['500',190,80,'left:262px;top:330px'],['1.000',230,99,'left:361px;top:330px']]],]},
             }},
         'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["folheto", "papel", "informativo",'folha'] , 
                         Variantes:{
@@ -274,7 +274,7 @@
         CALC:{}
     }
 
-    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo de Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem']
+    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá']
     const ListaKits=['Zebu','Zimaz']
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 </script>
@@ -608,7 +608,7 @@
 
         function Pesq(Inpt,Typ){                // ✔️ Fazer a Pesquisa
             clearTimeout(debounceTimer) // cancela chamadas anteriores
-            debounceTimer = setTimeout(() => {
+            debounceTimer = setTimeout(()=>{
                 Espelhar(Pai(Inpt),$$(`.Pesq_${Typ}`).filter(e=>e!==Pai(Inpt)))
                 if(Typ=='ORC'){
                     const r = new RegExp(RxClear(Inpt.value),'i')
@@ -1188,7 +1188,7 @@
     </script>
 </div>
 
-<body class="Dark Body1 CSS3 Ct" onclick="NoneBndj()">
+<body class="Dark Body1 CSS2 Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
@@ -1358,7 +1358,6 @@
                         essa tabela terá uma Coluna Extra, [Serv, Tipo, Larg, Alt, Qnt, Extra]
                         esse extra quando for algo q tenha cor, será a Cor o extra
                         se for Placa, Plotagem o extra será comprimento
-
                     -->
                     <style>
                         #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
@@ -1912,23 +1911,21 @@
         </div>
 
         <div id="Pag_ORC" class="none Cl">
-            <script>
-                const INgeral = performance.now()
-            </script>
-            <div> 
+
+            <div class="Pesq_ORC PagPEsq" style="display: none;">
                 <input id="PesqPROD" type="text" oninput="Pesq(this,'ORC')" placeholder="Pesquisar Produto..."> <!--Pesquisa PROD-->
             </div>
 
             <div class="Ct w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
-                    #Div-Prod          {margin-bottom:30px; overflow-x:scroll; flex-wrap:nowrap;height: 360px; width: 100%;}
-                    #Div-Prod > div    {margin:9px 4px; display:flex; flex-direction:column}
-                    #Div-Prod span     {margin-left:10px; margin-bottom:10px}
-                    #Div-Prod span p   {margin:0px; font-size:9px}
-                    #Div-Prod span p strong  {font-size:9px}
-                    #Div-Prod span img {margin:5px; height:30px; width:30px}
-                    #Div-Prod span h3, #Div-Prod span h3 strong  {font-size:19px}
-                    #Div-Prod .DivVrnts{margin-top:20px}
+                    #Div-Prod              {margin-bottom:30px; overflow-x:scroll; flex-wrap:nowrap;height: 360px; width: 100%;}
+                    #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
+                    #Div-Prod span         {margin-left:10px; margin-bottom:10px}
+                    #Div-Prod span p       {margin:0px; font-size:9px}
+                    #Div-Prod span p strong{font-size:9px}
+                    #Div-Prod span img     {margin:5px; height:30px; width:30px}
+                    #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
+                    #Div-Prod .DivVrnts    {margin-top:20px}
 
                     #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
                     #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
@@ -1942,32 +1939,31 @@
                     #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
                     .offf{ top: 40px; background: #808080d7; color: #ffffff;font-size: 20px;}
                     #Div-Prod .Conteudo .fotO{height:160px; width:150px}
-                    .tec2 { z-index: 999; top: 310px; left: 20%; width: 60%; }
+                    .tec2 { z-index: 999; top: 310px; left: 20%; width: 60%;}
+
+                    #Mdal-Prod > div{width: 500px; height: 500px;}
+                    #Mdal-Prod > div img{top: 0px; left: 0px;}
+                    #Mdal-Prod .Fotnh{background: #00df00; width:18%; height:8%}
+                    #Mdal-Prod .Fotnh2{background: #00df0000; width:18%; height:8%}
+                    #Mdal-Prod .Fotnh2:hover{background: #f586ff63 ; border: 2px solid #ff00b3;}
                 </style>
                 <div id="Div-Prod" class="Start"></div>
                 <script>
                     function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
-                        $$('div',Pai(e)).forEach((B,x,l)=>{
-                            Rmv(B,'Atv')
-
-                            if(x < IdxDe(e)){
-                                Add(B,'Pre');Rmv(B,'Pos')
-                                B.style.zIndex = (l.length+x) - IdxDe(e)+10
-                            }else{
-                                Add(B,'Pos');Rmv(B,'Pre')
-                                B.style.zIndex = (l.length-x) + IdxDe(e)+10
-                            }
-                        })
+                        $$('div',Pai(e)).forEach((B,x,l)=>{Rmv(B,'Atv')
+                            if(x < IdxDe(e)){Add(B,'Pre');Rmv(B,'Pos') ; B.style.zIndex = (l.length+x)-IdxDe(e)+10}
+                            else{            Add(B,'Pos');Rmv(B,'Pre') ; B.style.zIndex = (l.length-x)+IdxDe(e)+10}})
                         Add(e,'Atv')
                         if(x===IdxDe(e)){Show(E)}else{None(E)}
                     })}
+
+                    function ReOrdenar(){Inn('#Div-Prod',AllProd.map(e=>tmplt_Prod(e)).join(''))} ; ReOrdenar()
 
                     function tmplt_Prod(e){ //GRANDE
                         const Fora = ListaFora.includes(e)
                         return `<div class="Rltv Start2">
                             <span class="Start"><img src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
                             <div class="KeyInn none">...</div>
-
                                 <div class="Ct w100 Opts Abslt">${
                                     Vari(e).map((vv,x,l)=>{
                                         const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
@@ -1975,7 +1971,6 @@
                                         const Zidx = `z-index:${(l.length-x)+10};`
                                         return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}_${vv}.svg`}"></div>`
                                 }).join('')}</div>
-
                             <div class="Ct DivVrnts">
                             ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
                                 return `<div class="Conteudo Cl ${x===0?'':'none'}">
@@ -1986,30 +1981,48 @@
                                             <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
                                             <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
                                             <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
-                                            <img class="Abslt tec2 HOV" onclick="Carrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
+                                            <img class="Abslt tec2 HOV" onclick="AddCarrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
                                 </div>`
                             }).join('')}
                             </div>
-                        </div>`
+                        </div>` //ExibeFotinha('${e}')
                     }
 
-                    function ReOrdenar(){ //  GRANDE
-                        $('#Div-Prod').innerHTML = ''
-                        AllProd.forEach(e=>{$('#Div-Prod').innerHTML+=tmplt_Prod(e)})
-                    }ReOrdenar()
-
-                    function Carrinho(serv,tipo){
-                        const ult = $$('#ORC .OrcAdd').slice(-1)[0]
-                        DispClick(ult)
-                        SERV = $$('#ORC .OrcServ').slice(-1)[0]
-                        SERV.value = serv
-                        SERVChang(SERV)
-                        // Delay(0.2)
-                        TIPO = $$('#ORC .OrcTipo').slice(-1)[0]
-                        TIPO.value = tipo
-                        TIPOChang(TIPO)
+                    function AddCarrinho(Serv,Tipo,Cbmt,Gram,Qntt){ // ta dando erro quando n tem Cbmnt, ou tipo ou outros
+                        const  ult = $$('#ORC .OrcAdd').slice(-1)[0]
+                        if($('#ORC .OrcServ').value!==""){DispClick(ult)}
+                        const SERV = $$('#ORC .OrcServ').slice(-1)[0] ; SERV.value = Serv ; SERVChang(SERV) // Delay(0.2)
+                        const TIPO = $$('#ORC .OrcTipo').slice(-1)[0] ; TIPO.value = Tipo ; TIPOChang(TIPO) 
+                        const CBMT = $$('#ORC .OrcCbmt').slice(-1)[0] ; CBMT.value = Cbmt ; CBMTChang(TIPO)
+                        const GRAM = $$('#ORC .OrcGram').slice(-1)[0] ; GRAM.value = Gram ; GRAMChang(TIPO)
+                        const QNTT = $$('#ORC .OrcQntt').slice(-1)[0] ; QNTT.value = Qntt ; QNTTChang(TIPO)
                     }
-                                    
+                    
+                    function ExibeFotinha(Serv){
+                        if(Serv=='Cartão'){ // cartão já tem as dimenções corretas
+                        const procTab=(T,V)=>T.Table.flatMap(([l,p,i])=>i.map(s=>[V,l,p,s[0],s[3]]))
+                        const Variants = Vari(Serv).flatMap((V,x)=>procTab(Prod[Serv].Variantes[V],V))
+                        $('#Mdal-Prod').innerHTML = `<div class="Rltv">
+                                <img class="Abslt w100 h100" src="./Fotos/${Serv}.webp">
+                                ${Variants.map((e,x)=>{
+                                    return `<div class="Abslt movel Fotnh2 Fotnh_Btn${x}" style="${e[4]}" onclick="AddCarrinho('${Serv}','${e[0]}','${e[1]}','${e[2]}','${e[3]}')"></div>`
+                                }).join('')}
+                            </div>`
+                        }else{ // quando ainda n tem dimenções
+                            const procTab=(T,V)=>T.Table.flatMap(([l,p,i])=>i.map(s=>[V,l,p,s[0],s[1]]))
+                            const Variants = Vari(Serv).flatMap((V,x)=>procTab(Prod[Serv].Variantes[V],V))
+                            console.log(Variants)
+                            $('#Mdal-Prod').innerHTML = `<div class="Rltv">
+                                    <img class="Abslt w100 h100" src="./Fotos/${Serv}.webp">
+                                    ${Variants.map((e,x)=>{
+                                        return `<div class="Abslt movel Fotnh Fotnh_Btn${x}">
+                                            ${e}
+                                            <div class="dimens"></div>
+                                            </div>`
+                                    }).join('') }
+                                </div>`
+                        }
+                    }   
                 </script>
             </div>
             
@@ -2323,10 +2336,6 @@
             </div>
             <button onclick="console.log($$('button>img, .button>img, input>img, select>img'))">sOKA</button>
         </div>
-
-        <script>
-            const FIMGeral = performance.now() ; console.log(`⏱️ ORçamento(): ${(FIMGeral-INgeral).toFixed(2)}ms`)
-        </script>
     </div>
 
     <style> /*CSS dos Modais*/
@@ -2770,6 +2779,17 @@
 
 <script> // Templates pra iserir mais pra frente ⏳ ❌ ✔️
     const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
+</script>
+
+<script>
+    ExibeFotinha('Cartão')
+
+    // Trexo relacionado a Mover os Botões das Fotinhas
+    let alvo,dx,dy
+    document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop});
+    document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
+    document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
+
 </script>
 
 </html>
