@@ -95,7 +95,7 @@
                             'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
         // Offset
-        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
+        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
                 'Brilho'      :{Table:[
                     ['Frente' ,'250g',[['500', 90,31,'left:38px ;top:167px'],['1.000',135,45,'left:134px;top:167px']]],
@@ -106,51 +106,63 @@
                     ['Frente' ,'300g',[['500',155,62,'left:38px ;top:330px'],['1.000',190,78,'left:134px;top:330px']]],
                     ['F.Verso','300g',[['500',190,80,'left:262px;top:330px'],['1.000',230,99,'left:361px;top:330px']]],]},
             }},
-        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["folheto", "papel", "informativo",'folha'] , 
+        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["folheto", "papel", "informativo",'folha'] , 
                         Variantes:{
                 '10 x 15':{Table:[
-                    ['Frente' ,'90g',[['1.000',130, 67],['2.500',180, 85],['5.000' , 270,170],['10.000',650,340]]],
-                    ['F.Verso','90g',[['2.500',280,135],['5.000',320,220],['10.000', 720,392]]], ]},
+                    ['Frente' ,'90g',[['1.000',130, 67,'left:126px;top:126px'],['2.500',180, 85,'left:126px;top:172px'],['5.000',270,170],['10.000',650,340 ]]],
+                    ['F.Verso','90g',                                         [['2.500',280,135,'left:347px;top:172px'],['5.000',320,220],['10.000',720,392 ]]],]},
                 '15 x 20':{Table:[
-                    ['Frente' ,'90g',[['1.000',270,127],['2.500',340,170],['5.000' , 650,340],['10.000',900,600]]],
-                    ['F.Verso','90g',[['2.500',500,270],['5.000',700,440],['10.000',1200,800]]], ]},
+                    ['Frente' ,'90g',[['1.000',190,127,'left:126px;top:282px'],['2.500',340,170,'left:126px;top:329px'],['5.000',650,340],['10.000',900,600 ]]],
+                    ['F.Verso','90g',                                         [['2.500',500,270,'left:347px;top:329px'],['5.000',700,440],['10.000',1200,800]]],]},
             }},
-        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['JLTal']           , Prdc:[] , Extra:[] , HotKey:[] , 
+        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['JLTal']           , Prdc:[] , Extra:[] , HotKey:[] , 
                         Variantes:{
                 '10 x 15':{Table:[
-                    ['Preto e Branco','1 Via',[['4',60,30],['8', 90,45],['12',130,65],['20',170, 85]]],
-                    ['Colorido'      ,'1 Via',[['4',80,40],['8',110,55],['12',150,75],['20',200,100]]],
+                    ['Preto e Branco','1 Via',[['4',60,30,'left:111px;top:134px'],['8', 90,45],['12',130,65],['20',170, 85,'left:111px;top:184px']]],
+                    ['Colorido'      ,'1 Via',[['4',80,40,'left:303px;top:134px'],['8',110,55],['12',150,75],['20',200,100,'left:303px;top:184px']]],
                     ['Preto e Branco','2 Via',[['4',75,35],['8',105,55],['12',145,70],['20',185, 80]]],
                     ['Colorido'      ,'2 Via',[['4',95,45],['8',125,65],['12',165,85],['20',215,110]]],
                 ]},
                 '15 x 20':{Table:[
-                    ['Preto e Branco','1 Via',[['2',60,30],['4', 90,45],['10',170, 85],['20',300,150]]],
-                    ['Colorido'      ,'1 Via',[['2',80,40],['4',110,55],['10',200,100],['20',350,175]]],
+                    ['Preto e Branco','1 Via',[['2',60,30,'left:111px;top:294px'],['4', 90,45],['10',170, 85],['20',300,150,'left:111px;top:346px']]],
+                    ['Colorido'      ,'1 Via',[['2',80,40,'left:303px;top:294px'],['4',110,55],['10',200,100],['20',350,175,'left:303px;top:346px']]],
                     ['Preto e Branco','2 Via',[['2',75,35],['4',105,55],['10',185, 90],['20',315,165]]],
                     ['Colorido'      ,'2 Via',[['2',95,45],['4',125,65],['10',215,110],['20',365,195]]],
                 ]},
                 '9 x 21' :{Table:[
-                    ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150,75]]],
-                    ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190,95]]],
+                    ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150, 75]]],
+                    ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190, 95]]],
                     ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
                     ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
                 ]},
         }},
-        'Tag'      :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
+        'Tag'      :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
                         Variantes:{
-                    'Reto' :{},
-                    'Curva':{},
+                '4 x 5':{Table:[
+                    ['Reto' ,'250g',[['1.000',130,73,'left:134px;top:155px']]],
+                    ['Curva','250g',[['1.000',150,85,'left:346px;top:155px']]]
+                ]},
+                '5 x 9':{Table:[
+                    ['Reto' ,'250g',[['500',100,57,'left:134px;top:270px'],['1.000',140,69,'left:134px;top:322px']]],
+                    ['Curva','250g',[['500',120,67,'left:346px;top:270px'],['1.000',150,79,'left:346px;top:322px']]]
+                ]},
             }},
-        'Cardápio' :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Desc:'Gramatura: 90g'       , Forn:['BPrint']          , Prdc:[] , Extra:[] , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
+        'Cardápio' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['BPrint']          , Prdc:[] , Extra:[] , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
                         Variantes:{
-                    '1Pag':{},
-                    '2pag':{},
+                'A4':{Table:[
+                    ['Frente' ,'170g',[['1',15,6.90,'left:115px;top:131px']]],
+                    ['F.Verso','170g',[['1',20,8.80,'left:343px;top:131px']]],
+                ]},
+                'A3':{Table:[
+                    ['Frente' ,'170g',[['1',30,13.75,'left:115px;top:181px']]],
+                    ['F.Verso','170g',[['1',35,17.50,'left:343px;top:181px']]],
+                ]},
         }},
-        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:''        , Forn:['BPrint']      ,
+        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
                         Variantes:{
                             'Topo de Bolo' :{}}
         },
-        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:''        , Forn:['BPrint']      ,
+        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
                         Variantes:{
                             'Crachá' :{}}
         },
@@ -1999,13 +2011,13 @@
                     }
                     
                     function ExibeFotinha(Serv){
-                        if(Serv=='Cartão'){ // cartão já tem as dimenções corretas
+                        if(Serv=='Cardápio'){ // cartão já tem as dimenções corretas
                         const procTab=(T,V)=>T.Table.flatMap(([l,p,i])=>i.map(s=>[V,l,p,s[0],s[3]]))
                         const Variants = Vari(Serv).flatMap((V,x)=>procTab(Prod[Serv].Variantes[V],V))
                         $('#Mdal-Prod').innerHTML = `<div class="Rltv">
                                 <img class="Abslt w100 h100" src="./Fotos/${Serv}.webp">
                                 ${Variants.map((e,x)=>{
-                                    return `<div class="Abslt movel Fotnh2 Fotnh_Btn${x}" style="${e[4]}" onclick="AddCarrinho('${Serv}','${e[0]}','${e[1]}','${e[2]}','${e[3]}')"></div>`
+                                    return `<div class="Abslt Fotnh2 Fotnh_Btn${x}" style="${e[4]||'left:0px;top:0px'}" onclick="AddCarrinho('${Serv}','${e[0]}','${e[1]}','${e[2]}','${e[3]}')"></div>`
                                 }).join('')}
                             </div>`
                         }else{ // quando ainda n tem dimenções
@@ -2022,7 +2034,11 @@
                                     }).join('') }
                                 </div>`
                         }
-                    }   
+                    }  
+                    // Inventar o Add Folhas
+                    // Adicionar as quantidade mínima
+                    // Aumenta 15 pra talões 2 Vias
+                    // Criar os Limites de Medidas
                 </script>
             </div>
             
@@ -2782,7 +2798,7 @@
 </script>
 
 <script>
-    ExibeFotinha('Cartão')
+    ExibeFotinha('Cardápio')
 
     // Trexo relacionado a Mover os Botões das Fotinhas
     let alvo,dx,dy
