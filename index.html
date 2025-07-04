@@ -28,10 +28,13 @@
         <script src="./JSON/DadosPDDS.js"></script>
         <script src="./JSON/DadosGRAD.js"></script>
         <script src="./JSON/DadosMPAG.js"></script>
+        <script src="./JSON/DadosOOSS.js"></script>
+        <script src="./JSON/DadosUBER.js"></script>
         <script src="./JSON/DadosCLNT.js"></script>
 
         <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
         <!--
         <script src="https://threejs.org/build/three.js"></script>-->
         <script src="./AchaMdd.js"></script>
@@ -39,6 +42,36 @@
 </head>
 
 <script> // Base de Dados
+    const J = {
+        PDDS: DadosPDDS,
+        SERV: DadosPDDS.flatMap(obj=>obj.Serv),
+        PGMT: DadosPDDS.flatMap(obj=>obj.Pgmt),
+        GRAD: DadosGRAD,
+        MPAG: [], // DadosMPAG,
+        OOSS: [], // DadosOOSS,
+        UBER: [], // DadosUBER,
+        CLNT: [], // DadosCLNT,
+    }
+
+    
+    // todos tem q ter pre e pos
+    // 'Pre' : 'https://www.mercadopago.com.br/activities/detail/'
+    // 'pos' : '?from=activities-frontend'
+    // 'mo'   : 'pix_transfer_mo_payout_movement-'
+    // 'mi'   : 'pix_transfer_mi_movement-'
+    // 'ch'   : 'checkout_merchant_order-'
+    // 'qr'   : 'instore_pix_qr-'
+    // 'qrm'  : 'qr_merchant_order-'
+    // 'trn'  : 'pix_transfer_mo_payment_movement-'
+    // 'pay'  : 'pix_payment_mo_payout_movement-'
+    // 'sig'  : 'single_player_prepaid-'
+    // 'card' : 'mp_card-'
+    // 'Cry'  : 'investment_crypto_bhs-'
+    // 'non'  : 'non_transactional-'
+    // 'deb'  : 'debt_notifications-'
+
+    DadosMPAG.forEach(e=>console.log(e.Link))
+
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
@@ -280,7 +313,7 @@
         GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AsStts:['E','A']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{Id:['F','I'],Data:['D','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],Mpag:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{ID:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
@@ -289,6 +322,11 @@
     const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá']
     const ListaKits=['Zebu','Zimaz']
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
+
+    // Configuração do Supabase
+    const SUPABASE_URL = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supabase = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
 
 <script> // Bibliotecas Curta
@@ -320,10 +358,12 @@
     const isBdj=e=> !!e.closest('.BndjTBL')
     const isArr=e=>Array.isArray(e)
     const Sib=e=>$(e,Pai(event.target))
+    const NULL__=a=>a.map(o=>Object.fromEntries(Object.entries(o).map(([k,v])=>[k,v??""])))
 
     const ATV=e=>Add($(e),'Atv')
     const DTV=e=>Rmv($(e),'Atv')
     const TOV=e=>Tog($(e),'Atv') // Modificar todos os Tog:Atv pra mudar pra TOV
+    const l0=e=>e.length===0
 
     // Gets
         const Rx2=arry=>Rx(['Rastr',...arry])
@@ -565,10 +605,11 @@
                 // o Zindex é o segfuinte o ultimo selecionado fica na Frente! e isso fica interessante ser exibido na hora do ShowBndj() pq funcionará para Bandejas e Filters
                 // Opção de Ordenar pelo q tem mais caractére (textos maiores em cima textos menores em baixo)
             }
+            
             function Tm_Td(v,e,x,Typ,dado){const R = Tm_Rastr(e,x,Typ,'Id') ; const dR = D_Rastr2(R)
                 return dR[4]=='Bndj'? `<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this)">${_Tm_Bndj(v,R)}</td>` :
                        dR[4]=='Sugg'? `<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
-                                    : `<td class="${R} Rltv ${daClass(dR)}"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
+                                    : `<td class="${R} ${daClass(dR)} Rltv"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
             const Retorno = arry.map((e,X)=>{if(X>LimitLin){return} ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
@@ -578,9 +619,9 @@
             return Retorno
             
             // Tipo de BndjTable = Array interno, ou Array de Fora
-            // Permitir mudar os 2 Tipos de Bandeijas, dentro da cell, e em formato de bandeja
-            // Transitar com as Setinhas na tabela do APP igual na Planilha
-        }        
+            // Permitir mudar os 2 Tipos de Bandeijas, dentro da Cell, e em formato de Bandeja
+            // Transitar com as Setas do Teclado na Tabela do APP igual na PlanilhaGogle
+        }
 
         function Format_Bndj_Clnt(){ // Esta Função aqui precisa ser Corrigida!
             $$(`.FikaFika`).forEach(e=>{
@@ -1052,11 +1093,6 @@
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _
-        function Load_Table(Typ){ //acho q serve pra evitar q carregue novamente  // Da um jeito de Remover daqui e Fundir dentro da Propria função
-            if(PreTable[Typ]==true){return}  ; PreTable[Typ]=true // ; console.log(PreTable)
-            Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ])) // quando tem 2 Tabelas dentro da mesma Pagina
-            RealTime(Typ)
-        }
 
         function Load_ThFilt(Eu,Typ,Col){ //acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; console.log(BS[Typ])
@@ -1073,6 +1109,7 @@
         }
 
         function Rfresh_Foot(typ){  // Deixei ASYNC
+            if(typ=='CLNT'){return} // sair por CLNT ainda n tem tfoot
             setTimeout(() => {
                 let IN = performance.now()
                 const IIN = performance.now()
@@ -1200,7 +1237,7 @@
     </script>
 </div>
 
-<body class="Dark Body1 CSS2 Ct" onclick="NoneBndj()">
+<body class="Dark Body1 CSS1 Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
@@ -1310,12 +1347,16 @@
         <div id="DivNav"> <!--Nav-->
             <nav id="H_Nav" class="Ct"></nav>
             <script>
-            function NAVPAG(e,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
-                NavPag(`#Pag_${e}`,Eu)
-                Atual['Pag']=`#Pag_${e}`
+            function NAVPAG(Typ,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
+                NavPag(`#Pag_${Typ}`,Eu)
+                Atual['Pag']=`#Pag_${Typ}`
                 Rmv($$('.NavAtv',Pai(Eu)),'NavAtv') ; Add(Eu,'NavAtv')
-                NavPesq(`.Pesq_${e}`)
-                Load_Table(`${e}`)
+                NavPesq(`.Pesq_${Typ}`)
+                if(ObjKey(J).includes(Typ)){
+                         if(Typ=='PGMT'){getSupaBS(Typ);getSupaBS('MPAG')                  } // tem 2 Tabelas na #PagPGMT
+                    else if(Typ=='GRAD'){getSupaBS(Typ);getSupaBS('UBER');getSupaBS('OOSS')} // tem 3 Tabelas na #PagGRAD
+                    else{getSupaBS(Typ)}                                                     // os demais tem só 1 tabela
+                }
             }
             Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
         </div>  
@@ -1475,7 +1516,7 @@
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
             </div>
             <table id="H_CLNT" class="hMin">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
+                <thead class="Stky" style="z-index:510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
@@ -2007,7 +2048,7 @@
                 </script>
                 
                 <div id="Div-Detalhes" class="Rltv">
-                    <h3 class="Start">Detalhes</h3>
+                    <h3 class="Start" onclick="TOV($('#DivIMGProd'))">Detalhes</h3>
                     <div id="IconDtlh" class="Abslt ppt" onclick="TOV($('#DivIMGProd'))">⭐</div>
                     <div id="DetalheFotinha"   class="canvi Ct"></div>
                     <div id="NewCanvas"        class="canvi Ct Cnvs"></div>
@@ -2517,6 +2558,29 @@
         </div>
     </div>
 </body>
+
+<script> // SupaBASE
+
+    async function getSupaBS(Typ){
+
+        function loadtmtable(Typ){Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ]));RealTime(Typ)}
+
+        if(PreTable[Typ]==true){return} ; PreTable[Typ]=true // Conferir se essa Aba já foi Aberta!
+        if(Typ=='CLNT'){ // se for Cliente pega do Supabase
+            let todas = [], lim = 1000, ofs = 0, data
+            do{({data}=await supabase.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+                if (!data) return console.error('Erro ao carregar dados')
+                todas.push(...data) ; ofs+=lim
+            }while(data.length===lim)
+            J[Typ] = NULL__(todas)
+            loadtmtable(Typ)
+        }else{
+            console.log('Carrega na Tora',Typ)
+            loadtmtable(Typ)} // se não for Pega na Tora sem o Supabase
+        // depois tentar mostrar um Load Carregando até completar todas pra saber q ta carregando
+    }
+
+</script>
 
 <script> // Funções de Login
     let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
