@@ -2567,7 +2567,6 @@
         }).subscribe()
     }
 
-
     function Supa_RealTime(crud,novo,Typ){
         if(crud==='UPDATE'){
             const tr = $(`#H_${Typ} tbody tr[class*="tr-${novo.Id}"]`)
@@ -2575,6 +2574,16 @@
             tr.innerHTML = tm
         }
     }
+
+    async function UpdateSupa(Typ,coluna,id,valor){
+        try {const { error } = await supabase.from(Typ).update({[coluna]:valor}).eq('Id',id)
+            if (error) {console.error('Erro ao atualizar:', error);//showToast('Erro ao atualizar serviço','error')
+            } else {console.log('Atualizado')  //showToast('Atualizado com sucesso!')
+            }
+        } catch (err){console.error('Erro:',err);//showToast('Erro ao atualizar serviço', 'error')
+        } finally {console.log('Salvo')}
+    }
+
 
 
     //     if (tipo==='UPDATE'){
@@ -2737,6 +2746,8 @@
             //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
         }
         console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
+
+        UpdateSupa(Typ,col,Lin,NewVal)
     }
 
     const TesteClnt=(e,td=null)=>{
