@@ -96,3 +96,20 @@ const ListARQ = [
     "281_1",
     "81_1",
 ]
+
+
+// todos tem q ter pre e pos
+// 'Pre' : 'https://www.mercadopago.com.br/activities/detail/'
+// 'pos' : '?from=activities-frontend'
+// 'mo'   : 'pix_transfer_mo_payout_movement-'
+// 'mi'   : 'pix_transfer_mi_movement-'
+// 'ch'   : 'checkout_merchant_order-'
+// 'qr'   : 'instore_pix_qr-'
+// 'qrm'  : 'qr_merchant_order-'
+// 'trn'  : 'pix_transfer_mo_payment_movement-'
+// 'pay'  : 'pix_payment_mo_payout_movement-'
+// 'sig'  : 'single_player_prepaid-'
+// 'card' : 'mp_card-'
+// 'Cry'  : 'investment_crypto_bhs-'
+// 'non'  : 'non_transactional-'
+// 'deb'  : 'debt_notifications-'

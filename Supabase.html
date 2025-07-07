@@ -84,7 +84,6 @@
         }
 
         // Função para atualizar a tabela
-
         function atualizarTabelaCLNT(dados){
             const Table = $('#H_CLNT')
             Table.innerHTML = ''
@@ -108,20 +107,20 @@
         }
 
         // Função para salvar serviço
-        async function salvarServico(ev,Eu){
+        async function salvarServico(ev,btn){
             ev.preventDefault()
             const nome    = nomeInput.value.trim()
             const servico = servicoInput.value.trim()
             const valor   = valorInput.value
             const data    = dataInput.value
             // Desabilitar botão durante o salvamento
-            Eu.disabled = true ; Eu.textContent = 'Salvando...'
+            btn.disabled = true ; btn.textContent = 'Salvando...'
 
             try {const {error} = await supabase.from('servicos').insert([{nome,servico,valor:parseFloat(valor),data}])
                 if (error){console.error('Erro ao salvar:',error);showToast('Erro ao salvar serviço','error')
                 } else {showToast('Serviço salvo com sucesso!');form.reset()}// Limpar formulário
             }catch(err){console.error('Erro:', err);showToast('Erro ao salvar serviço', 'error')
-            }finally{Eu.disabled = false; Eu.textContent = 'Salvar'} // Reabilitar botão
+            }finally{btn.disabled = false; btn.textContent = 'Salvar'} // Reabilitar botão
         }
 
         // Configurar realtime

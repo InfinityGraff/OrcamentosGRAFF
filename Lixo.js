@@ -115,7 +115,3 @@ async function PesquisaKM(inpt){
   RsutFrete.innerHTML = listaLugares[inpt]
   }else{RsutFrete.innerHTML = 'Lugar não Encontrado'}
   }
-
-
-
-

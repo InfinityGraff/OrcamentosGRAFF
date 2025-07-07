@@ -42,41 +42,12 @@
 </head>
 
 <script> // Base de Dados
-    const J = {
-        PDDS: DadosPDDS,
-        SERV: DadosPDDS.flatMap(obj=>obj.Serv),
-        PGMT: DadosPDDS.flatMap(obj=>obj.Pgmt),
-        GRAD: DadosGRAD,
-        MPAG: [], // DadosMPAG,
-        OOSS: [], // DadosOOSS,
-        UBER: [], // DadosUBER,
-        CLNT: [], // DadosCLNT,
-    }
-
-    
-    // todos tem q ter pre e pos
-    // 'Pre' : 'https://www.mercadopago.com.br/activities/detail/'
-    // 'pos' : '?from=activities-frontend'
-    // 'mo'   : 'pix_transfer_mo_payout_movement-'
-    // 'mi'   : 'pix_transfer_mi_movement-'
-    // 'ch'   : 'checkout_merchant_order-'
-    // 'qr'   : 'instore_pix_qr-'
-    // 'qrm'  : 'qr_merchant_order-'
-    // 'trn'  : 'pix_transfer_mo_payment_movement-'
-    // 'pay'  : 'pix_payment_mo_payout_movement-'
-    // 'sig'  : 'single_player_prepaid-'
-    // 'card' : 'mp_card-'
-    // 'Cry'  : 'investment_crypto_bhs-'
-    // 'non'  : 'non_transactional-'
-    // 'deb'  : 'debt_notifications-'
-
-    DadosMPAG.forEach(e=>console.log(e.Link))
-
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
     const LimitLin = 3000
     const Atual = {Pag:'#Pag_ORC'}
+    const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Cliente',CONF:'Configurações'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
@@ -313,7 +284,7 @@
         GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AsStts:['E','A']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{ID:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E',''],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
@@ -1109,7 +1080,7 @@
         }
 
         function Rfresh_Foot(typ){  // Deixei ASYNC
-            if(typ=='CLNT'){return} // sair por CLNT ainda n tem tfoot
+            if(typ=='CLNT'||typ=='MPAG'||typ=='UBER'||typ=='OOSS'){return} // sair por q ainda n tem tfoot
             setTimeout(() => {
                 let IN = performance.now()
                 const IIN = performance.now()
@@ -1354,7 +1325,7 @@
                 NavPesq(`.Pesq_${Typ}`)
                 if(ObjKey(J).includes(Typ)){
                          if(Typ=='PGMT'){getSupaBS(Typ);getSupaBS('MPAG')                  } // tem 2 Tabelas na #PagPGMT
-                    else if(Typ=='GRAD'){getSupaBS(Typ);getSupaBS('UBER');getSupaBS('OOSS')} // tem 3 Tabelas na #PagGRAD
+                    else if(Typ=='GRAD'){getSupaBS(Typ);getSupaBS('OOSS');getSupaBS('UBER')} // tem 3 Tabelas na #PagGRAD
                     else{getSupaBS(Typ)}                                                     // os demais tem só 1 tabela
                 }
             }
@@ -2562,23 +2533,68 @@
 <script> // SupaBASE
 
     async function getSupaBS(Typ){
-
         function loadtmtable(Typ){Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ]));RealTime(Typ)}
-
-        if(PreTable[Typ]==true){return} ; PreTable[Typ]=true // Conferir se essa Aba já foi Aberta!
-        if(Typ=='CLNT'){ // se for Cliente pega do Supabase
+        if(PreTable[Typ]==true){return}// Conferir se essa Aba já foi Aberta!
+        const Tabelas = ['CLNT','UBER','MPAG','OOSS','GRAD','PDDS','SERV','PGMT'] // Tabelas Disponíveis no SupaBase!
+        const Pedidos = ['PDDS','SERV','PGMT']
+        const TYP = Pedidos.includes(Typ)?'PDDS':Typ
+        if(TYP=='PDDS'&&(PreTable['PDDS']==true||PreTable['SERV']==true||PreTable['PGMT']==true)){
+            loadtmtable(Typ) // Só carega a tabela pois o Json já Existe na const!
+        }else if(Tabelas.includes(Typ)){ // Tabelas Disponíveis no SupaBase!
             let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supabase.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+            do{({data}=await supabase.from(TYP).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
                 if (!data) return console.error('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
-            J[Typ] = NULL__(todas)
+            
+            if(Pedidos.includes(Typ)){
+                J[TYP] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
+                console.log('tem sim',J['PDDS'])
+                J['SERV']=J['PDDS'].flatMap(obj=>obj.Serv)
+                J['PGMT']=J['PDDS'].flatMap(obj=>obj.Pgmt)
+
+            }else{J[TYP] = NULL__(todas)}
             loadtmtable(Typ)
-        }else{
-            console.log('Carrega na Tora',Typ)
-            loadtmtable(Typ)} // se não for Pega na Tora sem o Supabase
+        }
+        PreTable[Typ]=true // Deixar aba aberta após rodar tudo!
         // depois tentar mostrar um Load Carregando até completar todas pra saber q ta carregando
     }
+
+    function configurarRealtime(){
+        return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},(payload)=>{
+            const [crud,novo,Typ] = [payload.eventType,payload.new,payload.table]
+            Supa_RealTime(crud,novo,Typ)
+        }).subscribe()
+    }
+
+
+    function Supa_RealTime(crud,novo,Typ){
+        if(crud==='UPDATE'){
+            const tr = $(`#H_${Typ} tbody tr[class*="tr-${novo.Id}"]`)
+            const tm = Tm_Table(Typ,NULL__([novo])).replace(/^<tr[^>]*>/,'').replace(/<\/tr>$/,'')
+            tr.innerHTML = tm
+        }
+    }
+
+
+    //     if (tipo==='UPDATE'){
+    //         const id = novo.id
+    //         const campoAlterado = Object.keys(novo).find(k=>novo[k]!==antg[k])
+
+    //         const celula = $(`#linha-${id} .coluna-${campoAlterado}`)
+    //         if (celula){celula.textContent = novo[campoAlterado]}
+    //     }
+
+    //     if (tipo === 'INSERT') {
+    //         // Adiciona nova linha
+    //     }
+
+    //     if (tipo === 'DELETE') {
+    //         // Remove a linha do DOM
+    //     }
+    // }
+
+    
 
 </script>
 
@@ -2696,8 +2712,7 @@
     }
 
     // o Importante é saber, se estou Editando a Primeira Camada, Segunda Camada ou Terceira (por enquanto só essas 3)
-    const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,
-                    SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',FINC:'PDDS'}
+    const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'}
 
     function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
         const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
@@ -2721,7 +2736,7 @@
             J[Camada[Typ]][Idx][minuscule(Typ)][Idxbdj][col] = NewVal
             //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
         }
-        console.log(0,Typ,Lin,col,Lin2,`Atualizado: ${Antg} >> ${NewVal}`)
+        console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
     }
 
     const TesteClnt=(e,td=null)=>{
@@ -2807,7 +2822,7 @@
     // Save para MenuNav
 </script>
 
-<script> // comentários
+<script> // comentários ⏳ ❌ ✔️
     // Mostrar o Valor por M2 ao Lado do Option
     // Permitir Drag nas Linhas
     // imitar Bureal no Futuro (deixando todas bandeijas aberta)
@@ -2881,10 +2896,6 @@
 
 </script>
 
-<script> // Templates pra iserir mais pra frente ⏳ ❌ ✔️
-    const tmplt_Cores=e=>`<li class="Ct Rd ppt" style="background:${e}" onclick="mudarCor(this,'${e}');VariasCor(this,'${e}')"></li>`
-</script>
-
 <script>
     
     document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
@@ -2915,6 +2926,8 @@
     document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
     document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
 
+
+    configurarRealtime()
 </script>
 
 </html>

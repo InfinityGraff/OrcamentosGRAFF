@@ -10,9 +10,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "",
         "Tipo": "PVC 3mm",
-        "Calc": [
-          "20|30|1|0"
-        ],
+        "Calc":"20|30|1|0",
         "Dsng": "Baby",
         "Valr": "20",
         "Forn": "BPrint",
@@ -76,9 +74,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 - A4",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "16",
         "Forn": "BPrint",
@@ -142,9 +138,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Rifa",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "",
@@ -208,9 +202,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "BPrint",
@@ -274,9 +266,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1 - Pedaço de Vinil",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -340,9 +330,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "200 UND",
         "Tipo": "Redonda",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": 50,
         "Forn": "Grafit",
@@ -406,9 +394,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "SCFV",
         "Tipo": "",
-        "Calc": [
-          "100|100|1|0"
-        ],
+        "Calc":"100|100|1|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "BPrint",
@@ -472,9 +458,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Vinil",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -525,9 +509,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Recorte / Figurinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -591,9 +573,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Placa de 2 Camada",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "",
@@ -657,9 +637,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "1 UND",
         "Tipo": "PVC 3mm",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "20",
         "Forn": "Grafit",
@@ -723,9 +701,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "60",
         "Forn": "",
@@ -749,9 +725,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Geladeira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "40",
         "Forn": "",
@@ -815,9 +789,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "1000 UND",
         "Tipo": "Refilada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "",
@@ -881,9 +853,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "1m Rect",
         "Tipo": "Personalizada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "60",
         "Forn": "Grafit",
@@ -907,9 +877,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "do Gordin",
         "Tipo": "Personalizada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "34",
         "Forn": "Grafit",
@@ -933,9 +901,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "50x50",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "33",
         "Forn": "Grafit",
@@ -959,9 +925,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Antigos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "23",
         "Forn": "",
@@ -1025,9 +989,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "19",
         "Forn": "",
@@ -1091,9 +1053,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Placa 2 Camada",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "",
@@ -1157,9 +1117,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "1 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "60",
         "Forn": "Grafit",
@@ -1235,9 +1193,7 @@ const DadosPDDS = [
         "Serv": "Serigrafia",
         "Desc": "1 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "",
@@ -1301,9 +1257,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "50 - UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "28",
         "Forn": "BPrint",
@@ -1367,9 +1321,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -1433,9 +1385,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "3 - UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "27",
         "Forn": "",
@@ -1499,9 +1449,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 - UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "30",
         "Forn": "",
@@ -1565,9 +1513,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "haha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "",
@@ -1591,9 +1537,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Gvt, Tnq",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "BPrint",
@@ -1657,9 +1601,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "PVC 5mm + Acrilico",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "",
@@ -1723,9 +1665,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2 - A4",
         "Tipo": "PVC 3mm",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
@@ -1789,9 +1729,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "1 - G",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
@@ -1867,9 +1805,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Tampa do Tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "",
@@ -1933,9 +1869,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "8 und",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
@@ -1999,9 +1933,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "osascorte olografic",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -2065,9 +1997,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "50Adesivo 7x9",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "35",
         "Forn": "BPrint",
@@ -2131,9 +2061,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - Cartela / Fg",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
@@ -2197,9 +2125,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 Fig Olográfico",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "4",
         "Forn": "Stock",
@@ -2263,9 +2189,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Vidro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
@@ -2289,9 +2213,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "Menina",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
@@ -2315,9 +2237,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Patas 25 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
@@ -2405,9 +2325,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "60 - 50x40",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "360",
         "Forn": "Grafit",
@@ -2495,9 +2413,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -2548,9 +2464,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "5 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -2614,9 +2528,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "3 UND",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "21",
         "Forn": "BPrint",
@@ -2692,9 +2604,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "45",
         "Forn": "BPrint",
@@ -2758,9 +2668,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
@@ -2824,9 +2732,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Atrevida Raio",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "Grafit",
@@ -2890,9 +2796,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 Jovem",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "15",
         "Forn": "BPrint",
@@ -2916,9 +2820,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "HangLose & outras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "",
@@ -2982,9 +2884,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "3 Parapodio",
         "Tipo": "Laminado",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "110",
         "Forn": "BPrint",
@@ -3048,9 +2948,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "5 Carteira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "35",
         "Forn": "BPrint",
@@ -3114,9 +3012,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Odara",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -3140,9 +3036,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Avil Noivas",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -3206,9 +3100,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "5 - A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "BPrint",
@@ -3272,9 +3164,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "4 - 35x25",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "BPrint",
@@ -3338,9 +3228,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Gordo Cortes",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "20",
         "Forn": "",
@@ -3391,9 +3279,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "porta carro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -3457,9 +3343,7 @@ const DadosPDDS = [
         "Serv": "Topo de Bolo",
         "Desc": "Natal",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "BPrint",
@@ -3535,9 +3419,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 Kit Beach",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -3588,9 +3470,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Figs",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "3",
         "Forn": "Stock",
@@ -3654,9 +3534,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Kit CTwister",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -3720,9 +3598,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "6 - A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "55",
         "Forn": "Grafit",
@@ -3786,9 +3662,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -3812,9 +3686,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "1.000 F",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "130",
         "Forn": "Bureal",
@@ -3878,9 +3750,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Figs",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -3944,9 +3814,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "asinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -4010,9 +3878,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 asinhas erro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -4088,9 +3954,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "80|210|1|0"
-        ],
+        "Calc":"80|210|1|0",
         "Dsng": "Baby",
         "Valr": "100",
         "Forn": "Grafit",
@@ -4114,9 +3978,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "60|50|1|0"
-        ],
+        "Calc":"60|50|1|0",
         "Dsng": "Baby",
         "Valr": "20",
         "Forn": "BPrint",
@@ -4180,9 +4042,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "0,80 x 1,20",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "70",
         "Forn": "Grafit",
@@ -4246,9 +4106,7 @@ const DadosPDDS = [
         "Serv": "Topo de Bolo",
         "Desc": "Infermagem",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "0.1",
         "Forn": "BPrint",
@@ -4312,9 +4170,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "35",
         "Forn": "",
@@ -4338,9 +4194,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "bruxo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -4404,9 +4258,7 @@ const DadosPDDS = [
         "Serv": "Talão",
         "Desc": "8 - 10x15",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "100",
         "Forn": "",
@@ -4430,9 +4282,7 @@ const DadosPDDS = [
         "Serv": "Talão",
         "Desc": "10 - 20x15",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "200",
         "Forn": "",
@@ -4508,9 +4358,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "2 - Geladeira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "390",
         "Forn": "",
@@ -4534,9 +4382,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "0,80 X 1,20",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
@@ -4612,9 +4458,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "Fig / adesivo ossacortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -4678,9 +4522,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "1 - Geladeira Branca",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "200",
         "Forn": "",
@@ -4756,9 +4598,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Gato e Balas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -4822,9 +4662,7 @@ const DadosPDDS = [
         "Serv": "Cardápio",
         "Desc": "6 UND Dogão",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "60",
         "Forn": "BPrint",
@@ -4888,9 +4726,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "30 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "1095",
         "Forn": "Inová",
@@ -4954,9 +4790,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Paraná Gold",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "15",
         "Forn": "",
@@ -5020,9 +4854,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "3camisa 3 calção",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "200",
         "Forn": "Inová",
@@ -5110,9 +4942,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Odonto Leite",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "800",
         "Forn": "Grafit",
@@ -5136,9 +4966,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Perfurado e Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "250",
         "Forn": "",
@@ -5214,9 +5042,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Acrilico + PVC",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "250",
         "Forn": "",
@@ -5292,9 +5118,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "533",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "35",
         "Forn": "",
@@ -5358,9 +5182,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "50",
         "Forn": "",
@@ -5424,9 +5246,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "12",
         "Forn": "",
@@ -5490,9 +5310,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2M Bichinhos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "Grafit",
@@ -5556,9 +5374,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Bonbinha d'agua",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -5622,9 +5438,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1.000 UND",
         "Tipo": "Refilada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "Grafit",
@@ -5688,9 +5502,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "0.5m Branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -5780,9 +5592,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "7",
         "Forn": "",
@@ -5833,9 +5643,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "Cartela e OsasGráfico",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "9",
         "Forn": "",
@@ -5899,9 +5707,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Provlone da Bike",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -5965,9 +5771,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "0.5M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
@@ -6031,9 +5835,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -6097,9 +5899,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Barber",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -6123,9 +5923,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "8",
         "Forn": "",
@@ -6201,9 +5999,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "500 F",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "90",
         "Forn": "",
@@ -6279,9 +6075,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Monster",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "",
@@ -6345,9 +6139,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -6371,9 +6163,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Figs, OsasGrafic",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "8",
         "Forn": "",
@@ -6437,9 +6227,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "varius",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
@@ -6503,9 +6291,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
@@ -6529,9 +6315,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Perfurado",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
@@ -6595,9 +6379,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2-A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
@@ -6661,9 +6443,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "21-30x25 | 2-60x50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "345",
         "Forn": "Grafit",
@@ -6727,9 +6507,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "Vendas - 8 QuikSilver",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -6793,9 +6571,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Transparente",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -6846,9 +6622,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "vendo Branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "12",
         "Forn": "",
@@ -6912,9 +6686,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "4PP, 1P",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "175",
         "Forn": "Inová",
@@ -6990,9 +6762,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "30 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "22",
         "Forn": "",
@@ -7016,9 +6786,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "BPrint",
@@ -7042,9 +6810,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "BPrint",
@@ -7160,9 +6926,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "varios cortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -7186,9 +6950,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Pequeno",
         "Tipo": "Transparente",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "Grafit",
@@ -7239,9 +7001,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Cristo Moto",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -7369,9 +7129,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "8-35x25",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
@@ -7395,9 +7153,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Bart",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -7421,9 +7177,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "S Jorge",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -7447,9 +7201,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Transparente",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -7513,9 +7265,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "10 UND",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "190",
         "Forn": "Grafit",
@@ -7539,9 +7289,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "5-40x27",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "60",
         "Forn": "",
@@ -7565,9 +7313,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2m",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "",
@@ -7591,9 +7337,7 @@ const DadosPDDS = [
         "Serv": "Cardápio",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "250",
         "Forn": "",
@@ -7669,9 +7413,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "20 UND",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "380",
         "Forn": "Grafit",
@@ -7747,9 +7489,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "",
         "Tipo": "Transparente",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
@@ -7773,9 +7513,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Vinil",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "7",
         "Forn": "",
@@ -7839,9 +7577,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Honda Olografic | Quadro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -7905,9 +7641,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Frase",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -7971,9 +7705,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "e Chevrolet",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "28",
         "Forn": "",
@@ -7997,9 +7729,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Osascort Ologra",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "3",
         "Forn": "",
@@ -8075,9 +7805,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Toten e Letras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "450",
         "Forn": "",
@@ -8141,9 +7869,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Aranha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -8207,9 +7933,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2-XG, 2-M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "170",
         "Forn": "Inová",
@@ -8273,9 +7997,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "Cam: 3-M,4-P | Cal: 3G,4M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "462",
         "Forn": "Inová",
@@ -8299,9 +8021,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "Cam: 2M | Cal: 1G",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "66",
         "Forn": "Inová",
@@ -8389,9 +8109,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "@ dele, Esquece",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "8",
         "Forn": "",
@@ -8442,9 +8160,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Pub, Aranha, Chora",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "",
@@ -8508,9 +8224,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Coringa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -8574,9 +8288,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1 remessa Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -8640,9 +8352,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "4 carteira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "28",
         "Forn": "",
@@ -8706,9 +8416,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -8732,9 +8440,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Perfurado",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "90",
         "Forn": "",
@@ -8758,9 +8464,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Escolar",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "350",
         "Forn": "",
@@ -8784,9 +8488,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Focso",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -8810,9 +8512,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "4-G V",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "170",
         "Forn": "Inová",
@@ -8888,9 +8588,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Dominó",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -8941,9 +8639,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Recortes e Impressão",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -9007,9 +8703,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - pedaço de holografico / 4 figurinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "14",
         "Forn": "Stock",
@@ -9085,9 +8779,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Geladeira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "230",
         "Forn": "",
@@ -9163,9 +8855,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "4 Parapodio",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "160",
         "Forn": "",
@@ -9229,9 +8919,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1,60 x 0,80",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "",
@@ -9255,9 +8943,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "5-GG | 5-M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "350",
         "Forn": "Inová",
@@ -9321,9 +9007,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "72",
         "Forn": "",
@@ -9399,9 +9083,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "200 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "50",
         "Forn": "Grafit",
@@ -9477,9 +9159,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Bag",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -9503,9 +9183,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "5 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -9569,9 +9247,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Placa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "200",
         "Forn": "",
@@ -9595,9 +9271,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Pedido Antigo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "90",
         "Forn": "",
@@ -9621,9 +9295,7 @@ const DadosPDDS = [
         "Serv": "WindFlag",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "180",
         "Forn": "",
@@ -9647,9 +9319,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "142 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "70",
         "Forn": "",
@@ -9725,9 +9395,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "junto cm Zaquei",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -9803,9 +9471,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Lacerda Pintura",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "60",
         "Forn": "",
@@ -9869,9 +9535,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Tampa do Tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "",
@@ -9935,9 +9599,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "8-A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "",
@@ -10001,9 +9663,7 @@ const DadosPDDS = [
         "Serv": "Banner",
         "Desc": "1 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "",
@@ -10027,9 +9687,7 @@ const DadosPDDS = [
         "Serv": "Banner",
         "Desc": "1 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -10053,9 +9711,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "1 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "45",
         "Forn": "",
@@ -10119,9 +9775,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Asa Honda Rosa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -10185,9 +9839,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "18",
         "Forn": "",
@@ -10251,9 +9903,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Trofeus",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "185",
         "Forn": "",
@@ -10317,9 +9967,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "tampa tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -10383,9 +10031,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Tampa do tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -10449,9 +10095,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1m",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "",
@@ -10515,9 +10159,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Valores",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "160",
         "Forn": "",
@@ -10541,9 +10183,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Tampinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
@@ -10567,9 +10207,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "emenda",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "80",
         "Forn": "",
@@ -10645,9 +10283,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -10711,9 +10347,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "A4 QRCODE",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "5",
         "Forn": "",
@@ -10789,9 +10423,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "MainStreet",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -10855,9 +10487,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Tudo Preto",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "12",
         "Forn": "",
@@ -10881,9 +10511,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "segundo pedido olograf",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "12",
         "Forn": "",
@@ -10947,9 +10575,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -11013,9 +10639,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -11066,9 +10690,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -11132,9 +10754,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Varyus",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "45",
         "Forn": "",
@@ -11198,9 +10818,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "deus no controel",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "4",
         "Forn": "",
@@ -11264,9 +10882,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Vermelhos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -11330,9 +10946,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Cartela e KitVmax",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
@@ -11396,9 +11010,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "filho motocross",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "BPrint",
@@ -11462,9 +11074,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Arte do Bloco ano 3",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -11488,9 +11098,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Saboré",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -11554,9 +11162,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "Tabela",
         "Tipo": "PS 1mm",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -11620,9 +11226,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "2 - ilhós 1x2",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
@@ -11646,9 +11250,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -11699,9 +11301,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "60",
         "Forn": "",
@@ -11765,9 +11365,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "4m",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "230",
         "Forn": "",
@@ -11791,9 +11389,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Arvore",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "",
@@ -11869,9 +11465,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Chevrolet dourado",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -11895,9 +11489,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Recortes e Figs",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
@@ -11961,9 +11553,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Kit VMax",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -11987,9 +11577,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Absolute",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "20",
         "Forn": "",
@@ -12053,9 +11641,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Tampa do Tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -12119,9 +11705,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "2",
         "Forn": "",
@@ -12185,9 +11769,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "3",
         "Forn": "",
@@ -12251,9 +11833,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "Soldado Guarda",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "150",
         "Forn": "",
@@ -12317,9 +11897,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Tamp tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -12383,9 +11961,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -12449,9 +12025,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "2",
         "Forn": "",
@@ -12515,9 +12089,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "1 - Ossascorte e 2 @",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
@@ -12581,9 +12153,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -12647,9 +12217,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "extreme",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "",
@@ -12700,9 +12268,7 @@ const DadosPDDS = [
         "Serv": "Banner",
         "Desc": "120 x 80",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "70",
         "Forn": "",
@@ -12766,9 +12332,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Plaquinhas 29,50 x 10,50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -12832,9 +12396,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "2.000 FV",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "290",
         "Forn": "Bureal",
@@ -12858,9 +12420,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "da Parede",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
@@ -12924,9 +12484,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "varios escolar recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "950",
         "Forn": "",
@@ -13002,9 +12560,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "14",
         "Forn": "",
@@ -13068,9 +12624,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - Carteiras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "14",
         "Forn": "BPrint",
@@ -13134,9 +12688,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Kit Vmax",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "BPrint",
@@ -13160,9 +12712,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -13226,9 +12776,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1x1",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "60",
         "Forn": "Grafit",
@@ -13292,9 +12840,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Pitú",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -13358,9 +12904,7 @@ const DadosPDDS = [
         "Serv": "Topo de Bolo",
         "Desc": "Carnaval",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "BPrint",
@@ -13424,9 +12968,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Wolskvagem",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -13490,9 +13032,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "WC masc Fem",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -13516,9 +13056,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Caveira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -13582,9 +13120,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -13648,9 +13184,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "400 UND (1,00 x 0,70)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Grafit",
@@ -13714,9 +13248,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Etiquetas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -13740,9 +13272,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "adesivo branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -13793,9 +13323,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Asinha Olografic, fig coelho",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "17",
         "Forn": "",
@@ -13859,9 +13387,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Plaquetinha Espanhol",
         "Tipo": "Laminado",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
@@ -13925,9 +13451,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "QR Code , Sorria",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "Grafit",
@@ -13991,9 +13515,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Homem Aranha",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
@@ -14057,9 +13579,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "1 - Parapodio",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "",
@@ -14083,9 +13603,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "1 - Parapodio",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "40",
         "Forn": "",
@@ -14161,9 +13679,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "1.000 F",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "135",
         "Forn": "Bureal",
@@ -14227,9 +13743,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Etiquetas Batman",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "16",
         "Forn": "Grafit",
@@ -14293,9 +13807,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -14359,9 +13871,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "do Carro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "Grafit",
@@ -14437,9 +13947,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Perfurado e Frente",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "300",
         "Forn": "Grafit",
@@ -14515,9 +14023,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "0,45 x 0,85",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "50",
         "Forn": "",
@@ -14541,9 +14047,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "3 - MLong GG",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "180",
         "Forn": "Inová",
@@ -14619,9 +14123,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Santa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "",
@@ -14645,9 +14147,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "25",
         "Forn": "",
@@ -14711,9 +14211,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "100 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "",
@@ -14737,9 +14235,7 @@ const DadosPDDS = [
         "Serv": "ímã",
         "Desc": "100 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "",
@@ -14815,9 +14311,7 @@ const DadosPDDS = [
         "Serv": "Topo de Bolo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -14868,9 +14362,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "28",
         "Forn": "BPrint",
@@ -14934,9 +14426,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Caminhão",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -15000,9 +14490,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Culto para Familia",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -15078,9 +14566,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "2 Prancha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "BPrint",
@@ -15104,9 +14590,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Tubarão",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "BPrint",
@@ -15170,9 +14654,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "batman nova remessa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "BPrint",
@@ -15236,9 +14718,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -15289,9 +14769,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Frases",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -15355,9 +14833,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "2 - 0,89 x 0,94",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Grafit",
@@ -15421,9 +14897,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "7",
         "Forn": "",
@@ -15487,9 +14961,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -15540,9 +15012,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Mantenha Distância",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -15606,9 +15076,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "ja q ta assim deixa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -15672,9 +15140,7 @@ const DadosPDDS = [
         "Serv": "Talão",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "84",
         "Forn": "",
@@ -15725,9 +15191,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "da  Camisa",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Inová",
@@ -15791,9 +15255,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Genga e coelho rosa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "20",
         "Forn": "",
@@ -15817,9 +15279,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "recortadas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -15895,9 +15355,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "BTX",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -15961,9 +15419,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "0,40 x 0,50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "BPrint",
@@ -16027,9 +15483,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "",
@@ -16093,9 +15547,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "camisas e Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "45",
         "Forn": "",
@@ -16146,9 +15598,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "290",
         "Forn": "",
@@ -16224,9 +15674,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Transparente",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "BPrint",
@@ -16277,9 +15725,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Nautico",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "15",
         "Forn": "BPrint",
@@ -16369,9 +15815,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "30",
         "Forn": "",
@@ -16435,9 +15879,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "3 Caderno",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "45",
         "Forn": "BPrint",
@@ -16501,9 +15943,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Tampa tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -16567,9 +16007,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Branco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "",
         "Forn": "",
@@ -16633,9 +16071,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "50 Cartão de Visita",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "30",
         "Forn": "BPrint",
@@ -16699,9 +16135,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "0,55 x 1,18",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "50",
         "Forn": "BPrint",
@@ -16777,9 +16211,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1000 UND",
         "Tipo": "Refilada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "Grafit",
@@ -16843,9 +16275,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -16909,9 +16339,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Quadros e Arte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "40",
         "Forn": "BPrint",
@@ -16935,9 +16363,7 @@ const DadosPDDS = [
         "Serv": "Banner",
         "Desc": "Carnaval",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "25",
         "Forn": "Grafit",
@@ -17013,9 +16439,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "BPrint",
@@ -17079,9 +16503,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "BPrint",
@@ -17171,9 +16593,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "3 G - Curta | 3 G - Longa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "300",
         "Forn": "Inová",
@@ -17224,9 +16644,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Frases",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -17290,9 +16708,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Grafit",
@@ -17356,9 +16772,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Rosa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "40",
         "Forn": "",
@@ -17409,9 +16823,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "",
@@ -17462,9 +16874,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Carrocinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": 150,
         "Forn": "Grafit",
@@ -17515,9 +16925,7 @@ const DadosPDDS = [
         "Serv": "Panfleto",
         "Desc": "2.500 FV",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
@@ -17581,9 +16989,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2-M Longa, 1-M Curta",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "140",
         "Forn": "Inová",
@@ -17659,9 +17065,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Novos QRCODE",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "BPrint",
@@ -17712,9 +17116,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "Consultoria",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "",
         "Forn": "BPrint",
@@ -17765,9 +17167,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -17831,9 +17231,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Porta Automatica",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -17857,9 +17255,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Faixa Fisioterapia",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "BPrint",
@@ -17923,9 +17319,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Daniel João e Livia",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -17976,9 +17370,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "12",
         "Forn": "",
@@ -18042,9 +17434,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "30 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "Grafit",
@@ -18108,9 +17498,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -18200,9 +17588,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "60",
         "Forn": "BPrint",
@@ -18226,9 +17612,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Recortado",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
@@ -18252,9 +17636,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -18318,9 +17700,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "5 - A4 (Aluga-se)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
@@ -18396,9 +17776,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "980",
         "Forn": "Tatiane",
@@ -18422,9 +17800,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "WC Router",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "20",
         "Forn": "",
@@ -18448,9 +17824,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Numeros",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "",
         "Forn": "",
@@ -18474,9 +17848,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "Aluga-se",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "Grafit",
@@ -18540,9 +17912,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "BPrint",
@@ -18606,9 +17976,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Varyus",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
@@ -18632,9 +18000,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "30 x 10",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "30",
         "Forn": "BPrint",
@@ -18698,9 +18064,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Sala de Jogos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "150",
         "Forn": "",
@@ -18724,9 +18088,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Adesivo preto",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "",
         "Forn": "",
@@ -18802,9 +18164,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Sorvetão",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "Grafit",
@@ -18907,9 +18267,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -18973,9 +18331,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Figs e Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -19039,9 +18395,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Wandinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -19105,9 +18459,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "LogoGotica",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "5",
         "Forn": "",
@@ -19171,9 +18523,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "17",
         "Forn": "",
@@ -19263,9 +18613,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -19329,9 +18677,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -19395,9 +18741,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "2,30 x 1,65",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "266",
         "Forn": "Tatiane",
@@ -19461,9 +18805,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "Triangulo",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "30",
         "Forn": "",
@@ -19514,9 +18856,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "2.000 FV",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "310",
         "Forn": "Bureal",
@@ -19606,9 +18946,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "40 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "800",
         "Forn": "Inová",
@@ -19672,9 +19010,7 @@ const DadosPDDS = [
         "Serv": "Topo de Bolo",
         "Desc": "Homem Aranha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -19725,9 +19061,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "45",
         "Forn": "Grafit",
@@ -19803,9 +19137,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "45",
         "Forn": "",
@@ -19869,9 +19201,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Balas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -19935,9 +19265,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "M - 2 UND (Polo)",
         "Tipo": "Polo",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "160",
         "Forn": "Inová",
@@ -20001,9 +19329,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "70-9x17 | 28-7x34",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "110",
         "Forn": "BPrint",
@@ -20067,9 +19393,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Rodagem",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "",
@@ -20120,9 +19444,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "20 - 2,5 x 2,5",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -20173,9 +19495,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "3 Carteira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "21",
         "Forn": "",
@@ -20239,9 +19559,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "10 G",
         "Tipo": "M.Curta",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "380",
         "Forn": "Inová",
@@ -20317,9 +19635,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "700",
         "Forn": "Tatiane",
@@ -20370,9 +19686,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "superman",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
@@ -20423,9 +19737,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -20489,9 +19801,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "4.000 UND",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "300",
         "Forn": "Bureal",
@@ -20555,9 +19865,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "60x90",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "60",
         "Forn": "BPrint",
@@ -20621,9 +19929,7 @@ const DadosPDDS = [
         "Serv": "Cardápio",
         "Desc": "4 UND - FV",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "60",
         "Forn": "BPrint",
@@ -20699,9 +20005,7 @@ const DadosPDDS = [
         "Serv": "Faixa",
         "Desc": "70 x 50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -20765,9 +20069,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "160",
         "Forn": "Inová",
@@ -20791,9 +20093,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "frete",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -20869,9 +20169,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Toten Acrilicos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "200",
         "Forn": "",
@@ -20935,9 +20233,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "4",
         "Forn": "",
@@ -21001,9 +20297,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -21067,9 +20361,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -21133,9 +20425,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "30 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "210",
         "Forn": "Grafit",
@@ -21199,9 +20489,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "22",
         "Forn": "",
@@ -21252,9 +20540,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "90",
         "Forn": "",
@@ -21318,9 +20604,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Kit Extreme",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "",
         "Forn": "",
@@ -21371,9 +20655,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -21437,9 +20719,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "10",
         "Forn": "",
@@ -21503,9 +20783,7 @@ const DadosPDDS = [
         "Serv": "Cardápio",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "30",
         "Forn": "BPrint",
@@ -21569,9 +20847,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2 - quadro e 1 - Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "65",
         "Forn": "",
@@ -21635,9 +20911,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "3,00 x 2,00",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "400",
         "Forn": "Tatiane",
@@ -21661,9 +20935,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "60 x 60",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "80",
         "Forn": "",
@@ -21714,9 +20986,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Letras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "1200",
         "Forn": "",
@@ -21792,9 +21062,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "343 UND - 2x6",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "Grafit",
@@ -21818,9 +21086,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1,00 x 1,20",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
@@ -21896,9 +21162,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2 - Quadro 1 - Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "12",
         "Forn": "",
@@ -21962,9 +21226,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "G",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "65",
         "Forn": "Inová",
@@ -22040,9 +21302,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "720 UND - 2x6",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "Grafit",
@@ -22118,9 +21378,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "300 ímã",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "130",
         "Forn": "Grafit",
@@ -22171,9 +21429,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "3 UND 30x20",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Grafit",
@@ -22224,9 +21480,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "1m Cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "60",
         "Forn": "BPrint",
@@ -22290,9 +21544,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Stencil",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "500",
         "Forn": "",
@@ -22368,9 +21620,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "2.000 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "310",
         "Forn": "Bureal",
@@ -22472,9 +21722,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "@ icaro e Quadro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "9",
         "Forn": "",
@@ -22614,9 +21862,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "10",
         "Forn": "",
@@ -22680,9 +21926,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Relampago makim carros",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
@@ -22733,9 +21977,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 UND 40 x 14",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
@@ -22799,9 +22041,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "36x16 0800 e 4 Setas",
         "Tipo": "",
-        "Calc": [
-          "36|16|4|0"
-        ],
+        "Calc":"36|16|4|0",
         "Dsng": "Ja Tinha",
         "Valr": "40",
         "Forn": "BPrint",
@@ -22865,9 +22105,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Frigobar Heineken",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "130",
         "Forn": "Grafit",
@@ -22931,9 +22169,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Inová",
@@ -23009,9 +22245,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1 Banner 70x40",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -23075,9 +22309,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 Crachá",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "10",
         "Forn": "BPrint",
@@ -23141,9 +22373,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "0,70 x 0,16",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "BPrint",
@@ -23167,9 +22397,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Carteira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -23233,9 +22461,7 @@ const DadosPDDS = [
         "Serv": "Cardápio",
         "Desc": "3 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "45",
         "Forn": "Grafit",
@@ -23259,9 +22485,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "16",
         "Forn": "Grafit",
@@ -23325,9 +22549,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "com ilhós 2 UND 2,00 x 1,00",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "200",
         "Forn": "Grafit",
@@ -23417,9 +22639,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "5 Carteiras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "35",
         "Forn": "",
@@ -23483,9 +22703,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "34 Frases 2 Camadas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "200",
         "Forn": "",
@@ -23561,9 +22779,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Quarzolit",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -23627,9 +22843,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Fachada",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "390",
         "Forn": "Grafit",
@@ -23653,9 +22867,7 @@ const DadosPDDS = [
         "Serv": "Panfleto",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "100",
         "Forn": "",
@@ -23679,9 +22891,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "20",
         "Forn": "BPrint",
@@ -23769,9 +22979,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -23822,9 +23030,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "",
         "Tipo": "PS 1mm",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "25",
         "Forn": "",
@@ -23888,9 +23094,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Inová",
@@ -23954,9 +23158,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 coelhos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "Grafit",
@@ -24020,9 +23222,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Adesivo da igreja marrom",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "",
         "Forn": "Grafit",
@@ -24073,9 +23273,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "4 QRCode - 20x15",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -24139,9 +23337,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "",
         "Tipo": "PVC 5mm",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "130",
         "Forn": "BPrint",
@@ -24205,9 +23401,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "100",
         "Forn": "Inová",
@@ -24258,9 +23452,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -24311,9 +23503,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -24364,9 +23554,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "44 x 26",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "15",
         "Forn": "Grafit",
@@ -24430,9 +23618,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Versiculo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "5",
         "Forn": "",
@@ -24483,9 +23669,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Grau Dichava e Osascorte Venda",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -24549,9 +23733,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Colchê A3",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -24615,9 +23797,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "360",
         "Forn": "",
@@ -24641,9 +23821,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -24667,9 +23845,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "BPrint",
@@ -24733,9 +23909,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "10",
         "Forn": "",
@@ -24799,9 +23973,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -24852,9 +24024,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "15 propircional",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "5",
         "Forn": "",
@@ -24918,9 +24088,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Novas Frases com Vermelho e Coração",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "",
@@ -24984,9 +24152,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "1000 UND",
         "Tipo": "Refilada",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "95",
         "Forn": "BPrint",
@@ -25010,9 +24176,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "70 x 70",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "BPrint",
@@ -25076,9 +24240,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Parapodio ROSA",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "",
@@ -25142,9 +24304,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "A4 Regras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Eurik",
         "Valr": "10",
         "Forn": "",
@@ -25208,9 +24368,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "19 x 12",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
@@ -25261,9 +24419,7 @@ const DadosPDDS = [
         "Serv": "Router",
         "Desc": "Caixa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -25314,9 +24470,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "1 G Polo",
         "Tipo": "Polo",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Canva",
         "Valr": "80",
         "Forn": "Inová",
@@ -25394,9 +24548,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -25460,9 +24612,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "2 Parapodio (Princesa e Autista)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "",
@@ -25526,9 +24676,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -25592,9 +24740,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "2 Cam G (Gola V)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "110",
         "Forn": "",
@@ -25670,9 +24816,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "WC",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -25736,9 +24880,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "160 - Etiquetas divididas os sabores",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -25789,9 +24931,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "3 M",
         "Tipo": "M.Longa",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "180",
         "Forn": "Inová",
@@ -25855,9 +24995,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Artes (identidade visual)",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "300",
         "Forn": "",
@@ -25921,9 +25059,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "22",
         "Forn": "",
@@ -25987,9 +25123,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -26053,9 +25187,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Kit CB Twister",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "54",
         "Forn": "",
@@ -26119,9 +25251,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2m (15x20)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "",
@@ -26197,9 +25327,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "1 (0,75 x 0,46)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "95",
         "Forn": "",
@@ -26223,9 +25351,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "Santa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "4",
         "Forn": "",
@@ -26301,9 +25427,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -26367,9 +25491,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "80x80",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "60",
         "Forn": "",
@@ -26393,9 +25515,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "5",
         "Forn": "",
@@ -26459,9 +25579,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "80",
         "Forn": "",
@@ -26485,9 +25603,7 @@ const DadosPDDS = [
         "Serv": "WindFlag",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "180",
         "Forn": "",
@@ -26511,9 +25627,7 @@ const DadosPDDS = [
         "Serv": "ímã",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "70",
         "Forn": "",
@@ -26577,9 +25691,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -26643,9 +25755,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "10-(25cm) 10-(20cm)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -26709,9 +25819,7 @@ const DadosPDDS = [
         "Serv": "Talão",
         "Desc": "2 14x20",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "75",
         "Forn": "",
@@ -26787,9 +25895,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Info Moto 6x3",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -26853,9 +25959,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "13 Carteira - 2 Correção",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "77",
         "Forn": "",
@@ -26906,9 +26010,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "2 UND A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "15",
         "Forn": "",
@@ -26959,9 +26061,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2 M (Preta)",
         "Tipo": "M.Longa",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "Inová",
@@ -27025,9 +26125,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Way Fuorino",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "24",
         "Forn": "",
@@ -27091,9 +26189,7 @@ const DadosPDDS = [
         "Serv": "Banner",
         "Desc": "80x80",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -27157,9 +26253,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "BRASIL M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Eurik",
         "Valr": "60",
         "Forn": "Inová",
@@ -27210,9 +26304,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "tabela de Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -27276,9 +26368,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Adesivo Jamaika",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "2",
         "Forn": "",
@@ -27329,9 +26419,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "da Kombi",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "84",
         "Forn": "",
@@ -27395,9 +26483,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "boyisnho novo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "25",
         "Forn": "",
@@ -27448,9 +26534,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "26",
         "Forn": "",
@@ -27514,9 +26598,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "2 - 20x30",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -27567,9 +26649,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "3 - Cartela Adesivo / camisa da graff",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "50",
         "Forn": "",
@@ -27633,9 +26713,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "100 (8x2)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "25",
         "Forn": "",
@@ -27699,9 +26777,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Recorte / 1 - Cartela de Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "9",
         "Forn": "",
@@ -27777,9 +26853,7 @@ const DadosPDDS = [
         "Serv": "Sub.Total",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "50",
         "Forn": "",
@@ -27803,9 +26877,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -27895,9 +26967,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Rodagem",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -27961,9 +27031,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - Cartela Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -28027,9 +27095,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Recorte (Stock)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "4",
         "Forn": "",
@@ -28093,9 +27159,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Adesivo (Coelho 50 x 30) | 3 Adesivos (Stock) | tampa tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -28119,9 +27183,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -28185,9 +27247,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "da Camisa",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "20",
         "Forn": "Arte",
@@ -28251,9 +27311,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "(0,70 x 0,70) Capacete",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -28317,9 +27375,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "200 UND - 6x4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "39",
         "Forn": "Grafit",
@@ -28370,9 +27426,7 @@ const DadosPDDS = [
         "Serv": "Figurinha",
         "Desc": "2 und",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "2",
         "Forn": "",
@@ -28436,9 +27490,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "2 - Evelopamento Parapodio ( superman / Dragoll Boll Z)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "80",
         "Forn": "",
@@ -28502,9 +27554,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Recorte (Preto) - 0,03 x 0,014",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -28568,9 +27618,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Arte",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "100",
         "Forn": "",
@@ -28634,9 +27682,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Arte",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -28700,9 +27746,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "cartela da barbie + Figurinha (25+2) (analisar a coversa)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "27",
         "Forn": "",
@@ -28766,9 +27810,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "45x15",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -28832,9 +27874,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Cão Covaerde 30x20 | 2 Cartela | Papalegua 40 x 20 (10+5+5+10)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -28898,9 +27938,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Redondo (Cuidado)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -28964,9 +28002,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Recorte Santa e nome Tassia",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -29030,9 +28066,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "M Curta",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Inová",
@@ -29096,9 +28130,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "3 Adesivo A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -29162,9 +28194,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "5x6 | 7x7 (10 de Cada)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -29228,9 +28258,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "caloi",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -29294,9 +28322,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "1 M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Inová",
@@ -29360,9 +28386,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "zero",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "240",
         "Forn": "",
@@ -29426,9 +28450,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Cartão de Visita",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "58",
         "Forn": "",
@@ -29492,9 +28514,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "100 etiqueta 8 x 4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "35",
         "Forn": "",
@@ -29558,9 +28578,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - Placa de PVC A4 2 pvc A3",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -29624,9 +28642,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Adesivo 40 x 15",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -29690,9 +28706,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Caloi Denovo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -29756,9 +28770,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Fiorino",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "52",
         "Forn": "",
@@ -29822,9 +28834,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Figurinhas (Falta @ )",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -29888,9 +28898,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Figurinhas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "41",
         "Forn": "",
@@ -29954,9 +28962,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "20 Camisas Regata + Arte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "620",
         "Forn": "Inová",
@@ -30020,9 +29026,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Quadro ( melhorarar Imagem ) 75 x 50",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "80",
         "Forn": "",
@@ -30086,9 +29090,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "1 - Cartela / Tampa tanque / figurinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "12",
         "Forn": "Stock",
@@ -30152,9 +29154,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Cartão de Visita / Imã de Geladeira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "96",
         "Forn": "",
@@ -30218,9 +29218,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Varyus Metros de Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "1500",
         "Forn": "",
@@ -30284,9 +29282,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Vendas || OsascorteHolog+Aranha+Figs",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "17",
         "Forn": "Stock",
@@ -30350,9 +29346,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Cartelas e Figurinha",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "Stock",
@@ -30416,9 +29410,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Figurinhas e Quadros",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "30",
         "Forn": "Stock",
@@ -30482,9 +29474,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Adesivo Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -30548,9 +29538,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "3 Quadros",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "Stock",
@@ -30614,9 +29602,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Popye Picapal aranha, cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "35",
         "Forn": "",
@@ -30680,9 +29666,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Parapodio ( Futebol Azul )",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "40",
         "Forn": "",
@@ -30746,9 +29730,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "1 P",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Inová",
@@ -30812,9 +29794,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "200 - Cartão de Visita",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -30878,9 +29858,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 - Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "6",
         "Forn": "",
@@ -30944,9 +29922,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Banner ( 0,70 x 0,50 )",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "35",
         "Forn": "",
@@ -31010,9 +29986,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "10 - Bonecos / COI / 1 - Faixa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "1170",
         "Forn": "",
@@ -31076,9 +30050,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "1 G",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "50",
         "Forn": "Inová",
@@ -31142,9 +30114,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 Banner 1,15 x 0,90 | 100 Adesivo 5x5 | 4 ímã (56) (29) (100)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "190",
         "Forn": "",
@@ -31208,9 +30178,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Varias figurinhas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "100",
         "Forn": "",
@@ -31274,9 +30242,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "100 de cada",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "34",
         "Forn": "",
@@ -31340,9 +30306,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "60x60",
         "Tipo": "Sem Acabamento",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -31406,9 +30370,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "15",
         "Forn": "",
@@ -31472,9 +30434,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "impressão e recorte adesivo (100 etiqueta 12,5 x 4,5) (25 Etiqueta 5x3,5 4 vezes)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "34",
         "Forn": "",
@@ -31538,9 +30498,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Par de Azinha ( Branco )",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -31604,9 +30562,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Adesivo ",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -31670,9 +30626,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "100 Etiquetas",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -31736,9 +30690,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "100 Etiqueta (PVC1mm) | 5 Camsia (4-M | 1-G) mLonga",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "355",
         "Forn": "",
@@ -31802,9 +30754,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "11 Quadros",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "132",
         "Forn": "",
@@ -31868,9 +30818,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 Placa Sinalização",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -31934,9 +30882,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "@",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "?",
         "Forn": "",
@@ -32000,9 +30946,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Faixa - 2026 Pai chegou",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "62",
         "Forn": "",
@@ -32066,9 +31010,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Plotagem Moldura vidro",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -32132,9 +31074,7 @@ const DadosPDDS = [
         "Serv": "Cartela",
         "Desc": "",
         "Tipo": "Cartela",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "Stock",
@@ -32198,9 +31138,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "2 ímã 60 x 30",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "90",
         "Forn": "",
@@ -32264,9 +31202,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "4 UND",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "160",
         "Forn": "Inová",
@@ -32330,9 +31266,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 - Arte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -32396,9 +31330,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 - Recortes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "7",
         "Forn": "",
@@ -32462,9 +31394,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "Figurinhasss",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -32528,9 +31458,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 @ (Preto e Branco)",
         "Tipo": "Vinil",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "8",
         "Forn": "Stock",
@@ -32594,9 +31522,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 par de asa olográfico (12x9)",
         "Tipo": "Holografico",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -32660,9 +31586,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Pop100",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "40",
         "Forn": "",
@@ -32726,9 +31650,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "2 Kit - N1 Beach (Prata com Rosa, e Preto com Prata)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "",
         "Forn": "",
@@ -32792,9 +31714,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "2 Faixas 0,80 x 0,50",
         "Tipo": "Faixa",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Fexta",
         "Valr": "70",
         "Forn": "",
@@ -32858,9 +31778,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "VENDE-SE",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "70",
         "Forn": "",
@@ -32924,9 +31842,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Adesivo Santa 90x90 (Uber A)",
         "Tipo": "Brilho",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -32990,9 +31906,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "camisa dele q ja tava na fita",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "40",
         "Forn": "Inová",
@@ -33056,9 +31970,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "1 - Cartela / tampa de tanque / 1 - Adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "14",
         "Forn": "",
@@ -33122,9 +32034,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "Pedaço de Vinil Preto",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -33188,9 +32098,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "100 4x4 (Uber A)",
         "Tipo": "Redonda",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -33254,9 +32162,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "100 4x4 (Uber A)",
         "Tipo": "Redonda",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "25",
         "Forn": "",
@@ -33320,9 +32226,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Recorte Tam A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -33386,9 +32290,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Nomes",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "8",
         "Forn": "",
@@ -33452,9 +32354,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "Plaquinha A4",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -33518,9 +32418,7 @@ const DadosPDDS = [
         "Serv": "Cartela",
         "Desc": "2 - Cartela ",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "10",
         "Forn": "",
@@ -33584,9 +32482,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2 M",
         "Tipo": "Regata",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "80",
         "Forn": "Inová",
@@ -33650,9 +32546,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Arte (Vetorização) da igreja",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -33716,9 +32610,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "1",
         "Tipo": "Banner",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -33782,9 +32674,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1- Crachá PS",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -33848,9 +32738,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "4 Carteira",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "28",
         "Forn": "",
@@ -33914,9 +32802,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "30 - 6x6",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "30",
         "Forn": "",
@@ -33980,9 +32866,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "bolinhas papel adesivo",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "10",
         "Forn": "",
@@ -34046,9 +32930,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "Arte Cardapio",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "50",
         "Forn": "",
@@ -34112,9 +32994,7 @@ const DadosPDDS = [
         "Serv": "Cartela",
         "Desc": "4 - Cartela ",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "15",
         "Forn": "",
@@ -34178,9 +33058,7 @@ const DadosPDDS = [
         "Serv": "Cartela",
         "Desc": "1 - Cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -34244,9 +33122,7 @@ const DadosPDDS = [
         "Serv": "Cartela",
         "Desc": "1 - Cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "n tem",
         "Valr": "5",
         "Forn": "",
@@ -34310,9 +33186,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "1 - Recorte Monaco",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "10",
         "Forn": "",
@@ -34376,9 +33250,7 @@ const DadosPDDS = [
         "Serv": "",
         "Desc": "1 Adesivo 70 x 100 | 1 lona 0,54 x 0,27",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "70",
         "Forn": "",
@@ -34442,9 +33314,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "1 - M",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "Inová",
@@ -34508,9 +33378,7 @@ const DadosPDDS = [
         "Serv": "Etiqueta",
         "Desc": "numeros Acentos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "20",
         "Forn": "",
@@ -34574,9 +33442,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Parapodio PEPA",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -34640,9 +33506,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "3 und",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Baby",
         "Valr": "30",
         "Forn": "",
@@ -34706,9 +33570,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "tampa do tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -34772,9 +33634,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "1 - Tampa de tanque",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -34838,9 +33698,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "1 - Cartela",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "",
         "Valr": "5",
         "Forn": "",
@@ -34904,9 +33762,7 @@ const DadosPDDS = [
         "Serv": "Arte",
         "Desc": "",
         "Tipo": "Arte",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "",
@@ -34970,9 +33826,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "1 Banner",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "45",
         "Forn": "Grafit",
@@ -35036,9 +33890,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "1 - Coelho 2 - Recorte",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -35102,9 +33954,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "1 - Parapodio (Pepa)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "40",
         "Forn": "Grafit",
@@ -35168,9 +34018,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "3 - Cardapio",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "",
         "Forn": "Grafit",
@@ -35234,9 +34082,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "1 - Adesivo (0,17 x 0,22)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -35300,9 +34146,7 @@ const DadosPDDS = [
         "Serv": "Trofeu",
         "Desc": "18 - Troféu Acrilico",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "270",
         "Forn": "Grafit",
@@ -35366,9 +34210,7 @@ const DadosPDDS = [
         "Serv": "Lona",
         "Desc": "1 - Faixa",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "30",
         "Forn": "",
@@ -35432,9 +34274,7 @@ const DadosPDDS = [
         "Serv": "Quadro",
         "Desc": "1 - Placa de PVC (Inflamavel)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "Grafit",
@@ -35498,9 +34338,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "2 - Osacortes (Preto)",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -35564,9 +34402,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "PS",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "45",
         "Forn": "",
@@ -35630,9 +34466,7 @@ const DadosPDDS = [
         "Serv": "Vendas",
         "Desc": "2 - Adesivos",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "4",
         "Forn": "",
@@ -35696,9 +34530,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Capacete",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "20",
         "Forn": "",
@@ -35762,9 +34594,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "Avante",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -35828,9 +34658,7 @@ const DadosPDDS = [
         "Serv": "Recorte",
         "Desc": "",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "10",
         "Forn": "",
@@ -35894,9 +34722,7 @@ const DadosPDDS = [
         "Serv": "Cartão",
         "Desc": "10 - Carteiras",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "70",
         "Forn": "BPrint",
@@ -35960,9 +34786,7 @@ const DadosPDDS = [
         "Serv": "Envelopamento",
         "Desc": "Banca",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "120",
         "Forn": "",
@@ -36026,9 +34850,7 @@ const DadosPDDS = [
         "Serv": "Camisa",
         "Desc": "2 - M (DUDU) (ROSA)",
         "Tipo": "M.Longa",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Ja Tinha",
         "Valr": "100",
         "Forn": "Inová",
@@ -36092,9 +34914,7 @@ const DadosPDDS = [
         "Serv": "Adesivo",
         "Desc": "Blackout",
         "Tipo": "",
-        "Calc": [
-          "-|-|-|0"
-        ],
+        "Calc":"-|-|-|0",
         "Dsng": "Allan",
         "Valr": "80",
         "Forn": "BPrint",

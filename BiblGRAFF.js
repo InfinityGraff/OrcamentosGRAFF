@@ -433,3 +433,35 @@ function CopyGRAFF(e,btn){
     btn.innerText = 'Texto copiado!'
 }
 
+
+function PDDSconverterJSON(obj) {
+    const camposParaConverter = ["Serv","Pgmt","Cust"]
+    for (const campo of camposParaConverter) {
+        const valor = obj[campo];
+        if (typeof valor === "string" && valor.startsWith("[") || valor.startsWith("{")) {
+        obj[campo] = JSON.parse(valor);
+        }
+    }
+    return obj;
+}
+
+
+function exportToCSV(data) {
+    const headers = ["Id","Lin","Rg","Data","Clnt","Serv","Valr","Pgmt","Cust","Lcro","Stts","OFF","Lixo"]
+
+    const linhas = data.map(item => {
+        return headers.map(h => {
+            let val = h==="Serv"||h==='Pgmt'||h==='Cust' ? JSON.stringify(item[h] || []) : (item[h] || "");
+            // Escapa aspas duplas para o formato CSV
+            val = val.toString().replace(/"/g, '""');
+            return `"${val}"`;
+        });
+    });
+
+    const csv = [
+        headers.join(","),
+        ...linhas
+    ].join("\n");
+
+    return csv;
+}
