@@ -2582,28 +2582,43 @@
             }
         } catch (err){console.error('Erro:',err);//showToast('Erro ao atualizar serviço', 'error')
         } finally {console.log('Salvo')}
+        // Conferir se a Edição foi de Remover Linha ou Adicionar Linha
     }
 
+    async function CREATESupa(Typ,coluna,id,valor){
+        try {const { error } = await supabase.from(Typ).update({[coluna]:valor}).eq('Id',id)
+            if (error) {console.error('Erro ao atualizar:', error) // showToast('Erro ao atualizar serviço','error')
+            } else {console.log('Atualizado')  //showToast('Atualizado com sucesso!')
+            }
+        } catch (err){console.error('Erro:',err) //showToast('Erro ao atualizar serviço', 'error')
+        } finally {console.log('Salvo')}
+    }
 
+    async function criarLinhaNova(dados,btn){
+        btn.disabled = true
+        btn.textContent = 'Criando...'
 
-    //     if (tipo==='UPDATE'){
-    //         const id = novo.id
-    //         const campoAlterado = Object.keys(novo).find(k=>novo[k]!==antg[k])
+        try {
+            const { error } = await supabase
+                .from('servicos') // nome da tabela
+                .insert([dados]);
 
-    //         const celula = $(`#linha-${id} .coluna-${campoAlterado}`)
-    //         if (celula){celula.textContent = novo[campoAlterado]}
-    //     }
+            if (error) {
+                console.error('Erro ao criar:', error);
+                //showToast('Erro ao criar linha', 'error')
+            } else {
+                //showToast('Linha criada com sucesso!');
+            }
 
-    //     if (tipo === 'INSERT') {
-    //         // Adiciona nova linha
-    //     }
+        } catch (err) {
+            console.error('Erro:', err);
+            //showToast('Erro ao criar linha', 'error');
 
-    //     if (tipo === 'DELETE') {
-    //         // Remove a linha do DOM
-    //     }
-    // }
-
-    
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Criar';
+        }
+    }
 
 </script>
 
@@ -2689,39 +2704,20 @@
 
 <script> // Coisas da NOTA
     function estaOculta(e) {return getComputedStyle(e).display === "none"}
-
     function VerNota(){
         MdalShow('#ModalNota')
-        // Aqui em Baixo coletar tudo q ta no orçamento e Jogar pra cá!
-        // deixar uma Opção pra Copiar o Texto
         const dados = $$('#ORC tbody tr').map(tr=>$$('td input, td select',tr).map(e=>{if(estaOculta(e)){return}else{return e.value}}))
         console.log(dados)
     }
 </script>
 
 <script> // Controla a Base de Dados
-    function Rfresh(){(async()=>{await GetJSON()})()}
-    async function GetJSON(){ // por enquanto não ta sendo usado
-        console.log('Não Está Rodando')
-        async function UparClnt(){FetchPOST(Link+'/postUpar_Clnt_Data',[''])}
-        async function UparLink(){FetchPOST(Link+'/postUparLink',[''])}
-        async function UparLinkMPAG(){FetchPOST(Link+'/postUparLinkMPAG',[''])}
-        async function Get_Json(End){return new Promise(r=>{FetchGET(`${Link}/getJSON/${End}`,e=>{D[End]=MAX(e,'ID')+1;J[End]=e;r()})})}
-        await UparClnt() ; await UparLink() ; await UparLinkMPAG()
-        for(let end of ['CLNT','SERV','PGMT','UBER','GRAD','OOSS','PDDS','MPAG']){await Get_Json(end)}
-        PosGet()
-    }
-
     function PosGet(){
-        Onloads('body')
-        NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
-        Format_Bndj_Clnt()
+          Onloads('body')
+          NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
         RealTime(Atual['Pag'].replace('#Pag_',''))
-        console.log('✅ Concluido')
+        console.log('✅ Página Carregada!')
     }
-
-    // o Importante é saber, se estou Editando a Primeira Camada, Segunda Camada ou Terceira (por enquanto só essas 3)
-    const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'}
 
     function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
         const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
@@ -2736,6 +2732,7 @@
         Nm(e,e.textContent.trim()) // Mudar o Name
         
         // console.log('NovoArray:',Arr)
+        const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'} // o Importante é saber, se estou Editando a Primeira camada, Segunda camada ou Terceira (por enquanto só essas 3)
 
         // de fato o Ato de Editar
         if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
@@ -2752,8 +2749,9 @@
 
     const TesteClnt=(e,td=null)=>{
         if($('#ConfirCliente').checked){console.log('Perguntar')}
-            if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
-                if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}}
+        if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
+            if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}
+        }
     }
 </script>
 
