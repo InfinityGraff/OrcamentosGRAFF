@@ -170,6 +170,10 @@
                         Variantes:{
                             'Crachá' :{}}
         },
+        'Carteira' :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
+                    Variantes:{
+                            'Carteira' :{}}
+        },
         // Tecido
         'Camisa'   :{Calc:'QNT', Stts:'Offf' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
                         Variantes:{
@@ -487,15 +491,31 @@
                 color: white;
                 height: 24px;
             }
+
+            .DivSugg{width: 200px;}
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
         const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')} Rltv"></td>`).join('')
-        const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
         const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
         const BrevSrc={Grad:'Grad',Gimg:'Grad'}
+
+        const Tm_SuggCLNT=()=>`<div class="DivSugg Rltv"> <input class="w100" oninput="Sugg($Vl(this),J['CLNT'],'Clnt',SibQSl(this,'span'),'ClickSugg2');Nm(this,'')" onblur="" onkeydown="KeyEntr(()=>TesteClnt(this,this))" placeholder="Cliente"><span class="Sugg Shdw rd Abslt Cl none"></span></div>`
+        const neu = {
+            Pgmt:`<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`
+           ,Clnt:`<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`
+        }
+        // isso daqui cria um Input, mas o Input tem que ser de fato dentro da Célula, n precisa ficar solto igual uma Bandeija
+        // quero ter a Possibilidade de Modificar o conteúdo dentro da Bandeja, e fora dela o textinho q tá na célula
+        // o ato de modificar ele dispensa o Uso de cria esses FikFik e LugyLugy
+        // todo novo pedido sempre obrigatóriamente precisa vir com um Serv:'Default' e um Pgmt:'Default' e Cust:'Default'
+        // Menos o Clnt pois ele vem vazio na Tora msm
+
+        const AddNewPGMT=(e)=>{
+            e.value.split('|').forEach(E=>{console.log(`Valr:${RgxPixAV(E)[1]} Form:${RgxPixAV(E)[2]}`)})
+        }
 
         const Tm_Tm = {
             Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
@@ -548,14 +568,10 @@
                                 Typ==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}` :
                                             Find.map(e=>e[R[3]]).join(' | ').replace('_ - _x_ R$ 0,00','')
 
-                if(Title!=''){
-                        if(['Cust','Finc','Calc'].includes(Typ)){
-                            todoTitle[Typ].push(Title)}
-                }
+                if(Title!=''){if(['Cust','Finc','Calc'].includes(Typ)){todoTitle[Typ].push(Title)}}
                 
                 Typ=='Serv' ? Find.map(e=>`${todoTitle[Typ].push(e['Serv'])}`) : null
                 
-                const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
                 const Reordem =()=>{if(Typ=='Serv'||Typ=='Pgmt'||Typ=='ABCD'){
                     return reorderArr_Arr(ArrObj_ArrArr(Find),ObjKey(BS[Typ.toUpperCase()]))
                     }else{return ArrObj_ArrArr(Find)}} 
@@ -565,11 +581,14 @@
                 const ConcatIMG = Typ==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
                 const Grifo = `<i class="grifoo RD"></i>`
 
+                const NewPg = Typ==='Pgmt' && Title==='' ? '-' : ''
+                const temFikaFika = Typ=='Clnt' && Title==''
+
                 return `<div class="Ct"><p class="P-P" ${Typ==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
                             <div class="Rltv w100">
                                 <div class="BndjTBL BNdj Abslt Shdw none rd Cl">
                                     <a>${SVG.Ponta}</a>
-                                    ${NewPg==='-' || Title==='-'?'<a class="FikaFika"></a>':Lista}
+                                    ${temFikaFika?`<a class="FikaFika">${neu[Typ]}</a>`:Lista}
                                 </div>
                             </div>`
 
@@ -593,23 +612,6 @@
             // Permitir mudar os 2 Tipos de Bandeijas, dentro da Cell, e em formato de Bandeja
             // Transitar com as Setas do Teclado na Tabela do APP igual na PlanilhaGogle
         }
-
-        function Format_Bndj_Clnt(){ // Esta Função aqui precisa ser Corrigida!
-            $$(`.FikaFika`).forEach(e=>{
-                const R = D_Rastr(_td(e))
-                if(R[2]==='Pgmt'){e.innerHTML = `<div class="LugyLygy"><input placeholder="0Av | 0Pix" onblur="EditCellFake2(this)" onkeydown="KeyEntr(()=>{None(Bzv(this))})"></div>`} // no caso o Lance de quando estiver vazio, (provavelmente se tiver vazio nem roda a Bandeja, pula direto pra isso!)
-                if(R[2]==='Clnt'){e.innerHTML = `<div class="LugyLygy">${Tm_SuggCLNT()}</div><a class="sppns none" onclick="EditCellFake(this)"></a>`} // aqui a mesma coisa do de cima
-            })
-            $$(`#H_PDDS ${Rx2(['CLNT','Id'])}`).forEach(e=>{ // é melhor mudar isso pra um botão abaixo, com nome de trocar cliente, e ai carrega a Lista pra eu escolher (Lista com tudo, nome contato e tudo mais)
-                Inn(e,`<p class="Ct" onclick="None($$('.LugyLygy'));Show(SibNxt(this))">${$('p',e).innerHTML}</p>
-                            <div class="LugyLygy Abslt none">${Tm_SuggCLNT()}</div>
-                            <a class="sppns none" onclick="EditCellFake(this)"></a>`)})      
-            // Comentários Antigos
-            // inputs quando tiver Vazio, e alterar Cliente              
-        }
-
-        // ter uma opção no thead na qual eu possa Ocultar a coluna e deiaxar apenas um Icone, e quando clicar q exibe uma Bandeja, ou voltar pra o normal
-        // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
     </script>
 
     <script> // SIMPLES  - ⭐_ _ _ _ botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela 
@@ -1064,8 +1066,7 @@
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _
-
-        function Load_ThFilt(Eu,Typ,Col){ //acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
+        function Load_ThFilt(Eu,Typ,Col){ // Acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; console.log(BS[Typ])
             Tm_Filt(Eu,Typ,Col)
         }
@@ -1378,16 +1379,12 @@
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="NovoPedido()">+ Novo Pedido</button>
+                <button onclick="AddROW('PDDS')">+ Novo Pedido</button>
                 <button onclick="RfreshJson('PDDS')">Recolor</button>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
                 <textarea style="background:gray" class="ppt rd h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
-                <script>
-                    const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
-                    function NovoPedido(){AddROW('PDDS',{RG:AGORA(),OFF:1,Clnt:0,Data:'-',Stts:`${LrOrden('PDDS')}`}) /* AddROW('SERV',{ID:`${D.PDDS}|1`}) */ }
-                </script>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
@@ -1407,6 +1404,8 @@
                     <input id="SERV_tdCor" type="checkbox">
                     <input id="SERV_trCor" type="checkbox">
                 </div>
+
+                <button onclick="AddROW('SERV')">Nova Linha +</button>
                 
                 <div><!--Exibir cor coluna automaica-->
                     <input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label>
@@ -1438,8 +1437,9 @@
             </table>
 
             <div class="Ct Bt">
-            <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
-            <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
+                <button onclick="AddROW('MPAG')">Nova Linha +</button>
+                <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
+                <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
             </div>
             <table id="H_MPAG" class="w100 hMax">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
@@ -2530,8 +2530,100 @@
     </div>
 </body>
 
-<script> // SupaBASE
+<script> // Manipulações de Dados
+        function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
+            const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
+            R_Color(_tr(e),Typ)
+            const Val = vall===""?"":VAL(e)
+            if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
+            const IsBdj  = isBdj(e) // !!e.closest('.BndjTBL') // antes tava isso
+            const Lin    = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
+            const NewVal = vall===""?"":vall?vall:Val
+            const Antg   = Nm(e)
+            const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
+            Nm(e,e.textContent.trim()) // Mudar o Name
+            
+            // console.log('NovoArray:',Arr)
+            const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'} // o Importante é saber, se estou Editando a Primeira camada, Segunda camada ou Terceira (por enquanto só essas 3)
 
+            // de fato o Ato de Editar
+            if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
+            else{
+                const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin) // Achar o Index da tabela de pedidos
+                const Idxbdj = J[Camada[Typ]][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
+                J[Camada[Typ]][Idx][minuscule(Typ)][Idxbdj][col] = NewVal
+                //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
+            }
+            console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
+
+            UpdateSupa(Typ,col,Lin,NewVal)
+        }
+
+        function NovaLinhaBDj(Eu){ // Botão de NovaLInha na Bandeija // é bom passar o Typ
+            const R = D_Rastr(_td(Eu))
+            const Sv = $$('tbody tr',_td(Eu)) // olhar na const todas as Linhas desse json não precisa ser $$
+            // aqui abaixo devo Criar uma cópia da linha do json e limpar toda ela, e comar abaixo
+            // isso funcionará facilmente para todas 'Pgmt ou 'Serv' ou 'Cust'
+        }
+
+        function TesteClnt(e,td=null){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
+            if($('#ConfirCliente').checked){console.log('Perguntar')}
+            if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
+                if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}
+            }
+        }
+        // encontrar o ultimo id de uma coluna
+        const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
+
+        function AddROW(Typ,obj=null){ // um Obj no segundo argumento se Tiver
+            if(Typ=='PGMT'||Typ=="CUST"||Typ=="SERV"){
+                // Modal pedindo pra Escolher em quam "PDDS" vai querer Linkar, inclusive criar um Novo
+            }                         
+                                      // add Nova Linha, só clonar a linha default
+            AddRowPratic(Typ,obj,'<') // Antes de mais nada tem q Adicionar Pedido na Prática
+            AddROWConst(Typ,obj)      // Depois Atualiza a Const adicionando o novo pedido a ela
+            CREATESupa(Typ,id)        // Depois da o Fetch no SupaBase // na vdd quem deveria dar o ID é o Supabase
+            const ObjPresset = { // para Pedidos, clonar os Jsons
+                RG:AGORA(),
+                OFF:1,
+                Data:DMY(e[0]),
+                Clnt:TesteClnt(nome)
+            }
+            // Ao adicionar uma linha tanto em PGMT ou em SERV, estarei fazendo nada mais nada menos
+            // que adicionando uma linha em PDDS
+        }
+
+        function AddRowPratic(Typ,obj,Pose){
+            let tbody =  $(`#H_${Typ} > tbody`)
+            let Clone =  $('tr',tbody).cloneNode(true)
+            ClearRow(Clone) // isso poderia recarregar chamando Tm_Table apenas pra essa Linha (Limpará rapidinho)
+            Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
+        }
+
+        function AddROWConst(Typ,obj=null){ // depois mudar pra inserir no Inicio ou no Final
+            const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
+            const Arq = J[Typ]
+            const Novo = {...Arq[Arq.length-1]}                    // Clona Nova Linha
+            ObjKey(Novo).forEach(k=>(Novo[k]=''))                  // Limpa tudo
+            Novo['ID'] = LastRow(Arq,'ID') + 1                     // Muda Id para um Novo
+            if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
+            J[Typ].push(Novo)
+            console.log(Novo)
+        }
+
+        function RmvROW(Typ,id,eu){
+            // repito todo processo q fiz em adicionar, Pratico, const, Supa
+            eu.closest('tr').remove() ; ALERT(e)
+        }
+        function ExcROW(Typ,id,eu){
+            // repito todo processo q fiz em adicionar, Pratico, const, Supa
+            eu.closest('tr').remove() ; ALERT(e)
+        }
+        
+
+</script>
+
+<script> // SupaBASE ⭐_ _ _ _
     async function getSupaBS(Typ){
         function loadtmtable(Typ){Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ]));RealTime(Typ)}
         if(PreTable[Typ]==true){return}// Conferir se essa Aba já foi Aberta!
@@ -2622,8 +2714,8 @@
 
 </script>
 
-<script> // Funções de Login
-    let LgTp = {'Nome':'','Cod':'','Img':''} ; function SemLogin(){return LgTp.Cod===''}
+<script> // Login ⭐_ _ _ _
+    let LgTp = {'Nome':'','Cod':'','Img':''}
     function TestSenha(e,ipt=null){
 
         function CrypPass(senha){
@@ -2689,20 +2781,15 @@
         }
     }
     
+    function SemLogin(){return LgTp.Cod===''}
     function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
     function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
     LoginStorage()
-    /*
-    idéias pra o Login
-        Login com LocalStorage
-        deixar o CryPass() na BaseDados da Biblioteca
-        criar um Objeto no inicio com Nome User q vai passar todos os Dados do Usuário
-        e é atravéz desses dados que toda a interface vai carregar de acordo com o usuário
-        suas configurações e personalziações, suas informações e suas Listas de Pedidos
-    */
+    // deixar o CryPass() na BaseDados da Biblioteca
+    // levas as config do Usuáio para o SupaBase
 </script>
 
-<script> // Coisas da NOTA
+<script> // Nota  ⭐_ _ _ _
     function estaOculta(e) {return getComputedStyle(e).display === "none"}
     function VerNota(){
         MdalShow('#ModalNota')
@@ -2711,113 +2798,7 @@
     }
 </script>
 
-<script> // Controla a Base de Dados
-    function PosGet(){
-          Onloads('body')
-          NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
-        RealTime(Atual['Pag'].replace('#Pag_',''))
-        console.log('✅ Página Carregada!')
-    }
-
-    function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
-        const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
-        R_Color(_tr(e),Typ)
-        const Val = vall===""?"":VAL(e)
-        if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
-        const IsBdj  = isBdj(e) // !!e.closest('.BndjTBL') // antes tava isso
-        const Lin    = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
-        const NewVal = vall===""?"":vall?vall:Val
-        const Antg   = Nm(e)
-        const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
-        Nm(e,e.textContent.trim()) // Mudar o Name
-        
-        // console.log('NovoArray:',Arr)
-        const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'} // o Importante é saber, se estou Editando a Primeira camada, Segunda camada ou Terceira (por enquanto só essas 3)
-
-        // de fato o Ato de Editar
-        if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
-        else{
-            const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin) // Achar o Index da tabela de pedidos
-            const Idxbdj = J[Camada[Typ]][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
-            J[Camada[Typ]][Idx][minuscule(Typ)][Idxbdj][col] = NewVal
-            //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
-        }
-        console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
-
-        UpdateSupa(Typ,col,Lin,NewVal)
-    }
-
-    const TesteClnt=(e,td=null)=>{
-        if($('#ConfirCliente').checked){console.log('Perguntar')}
-        if(confirm(`Tem Certeza que quer salvar: ${e.value} como Cliente?`)){
-            if(Nmame(e)){return Nmame(e)}else{AddROW('CLNT',{Clnt:e.value});if(td){EditCell(td,D['CLNT'])} ; return D['CLNT']}
-        }
-    }
-</script>
-
-<script> // Controladores antigos pra confiscar
-    function EditCellFake(eu){ // Usado apenas no Format_Bndj_Clnt()   // assim q eu eliminar lá, poderei apagar isso aqui!
-        const val = Nm($('input',Pai(eu)))
-        const R = D_Rastr(Avo(eu.closest('.BNdj')))
-        const arrays = (['PDDS',R[1],'Clnt',val]) // [Tabela,Linha,Coluna,NovoValor]
-        console.log(arrays)
-        EditJSON(arrays)
-    }
-    const EditCellFake2=(e)=>{ // Usado apenas no Format_Bndj_Clnt() // é a mesma coisa, tem q ver lá tbm
-        const R = D_Rastr(_td(e))
-        e.value.split('|').forEach(E=>{
-            // isso ta rodando 2 vezes mesmo quando só tem 1 no caso quando eu não digioto o | // talvez seja pq ta rodando 2 vezes, uma no Enter, e outra no Onblur
-            AddROW('PGMT',{Link:R[1],Valr:RgxPixAV(E)[1],Form:RgxPixAV(E)[2]})
-        })
-    }
-
-    function add_PDDS(e,nome){
-        const TestePgmt=()=>{if(e[5]){AddROW('PGMT',{Desc:e[5]});return D['PGMT']}else{return '.'}}
-        const TesteServ=()=>{AddROW('SERV',{ID:`${D['PDDS']}|1`,Serv:e[2],Desc:e[3],Valr:Num(e[4]),Forn:e[6],OK:false});return 1}
-        AddROW('PDDS',{RG:AGORA(),OFF:1,Data:DMY(e[0]),Serv:TesteServ(),Clnt:TesteClnt(nome),Pgmt:TestePgmt()}) 
-        Clear($$('#FormPDDS input, #FormPDDS select'))
-        // neste Add_PDDS: quando salvar Pgmnt tem que Linkar o ID do Pedido
-    }
-
-    function NovaLinhaBDj(Eu){ // isso talvez deva ir la pra baixo
-        const R = D_Rastr(_td(Eu))
-        const Sv = $$('tbody tr',_td(Eu))
-        if(R[2]=='Pgmt'){ AddROW(R[2].toUpperCase(),{Link:`${R[1]}`}) }
-        if(R[2]=='Serv'){ AddROW(R[2].toUpperCase(),{ID:`${R[1]}|${Sv.length}`}) }
-    }
-
-    // Edit e Delet ta Funcionando
-        // os que execulta antes de atualizar o Json "//FAST//"
-        function AddROW(Pln,obj=null){/*AddRowPratica(Pln,obj,'<')*/ ; AddROWConst(Pln,obj) ; /* FetchPOST(Link+'/postLINHA',[Pln,obj],(e)=>{ALERT(e)}) */ }
-
-        function AddRowPratica(Pln,obj,Pose){
-            let tbody =  $(`#H_${Pln} > tbody`)
-            let Colll = $$(`#H_${Pln} > thead th p`).map(p=>Inn(p))
-            let Clone =  $('tr',tbody).cloneNode(true)
-            $$(':scope > td',Clone).forEach((td,x)=>{if($('p',td)){Inn($('p',td),obj[Colll[x]]??'')}}) // Atualizar (este if ta aqui só por que a Lixeira não tem uma Tag <p> dai ela retorna Null) Atualizar de Forma Genérica (q Funcione com td Input, Edit, CheckBox tudo!)
-            Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
-            // o Clone não ta Exibindo Bandeja corretamente talvez por causa da exibição de bandeija depende do ID, e não ta sendo passado corretamente na hora do clone
-        }
-
-        function RmvROW(Typ,id,eu){eu.closest('tr').remove() ; FetchPOST(Link+'/postDELETE' ,[Typ,id],(e)=>{ALERT(e)})}
-        function ExcROW(Typ,id,eu){eu.closest('tr').remove() ; FetchPOST(Link+'/postEXCLUIR',[Typ,id],(e)=>{ALERT(e)})}
-        function EditJSON(arry){FetchPOST(Link+'/postEDIT',arry,(e)=>{ALERT(e);return e})}
-
-        function AddROWConst(Typ,obj=null){ // ESTE É BEM MELHOR que o AddRowPratica() NA TORA (depois mudar pra inserir no Inicio ou no Final)
-            const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
-            const Arq = J[Typ]
-            const Novo = {...Arq[Arq.length-1]}                    // Clona Nova Linha
-            ObjKey(Novo).forEach(k=>(Novo[k]=''))                  // Limpa tudo
-            Novo['ID'] = LastRow(Arq,'ID') + 1                     // Muda Id para um Novo
-            if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
-            J[Typ].push(Novo)
-            console.log(Novo)
-            PosGet()
-        }
-    PosGet()    
-</script>
-
-<script> // Storage Salva Configurações
+<script> // Storage
     function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
     // AtivaEventos()
     function Disparos(e){/*console.log('Dispoaro >')*/ ; e.dispatchEvent(new Event('change')); /* console.log('< Dispoaro') */}
@@ -2831,81 +2812,15 @@
     // Save para MenuNav
 </script>
 
-<script> // comentários ⏳ ❌ ✔️
-    // Mostrar o Valor por M2 ao Lado do Option
-    // Permitir Drag nas Linhas
-    // imitar Bureal no Futuro (deixando todas bandeijas aberta)
-    // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
-    // selecionar option automaticamente caso tenha apeans 1
-    // Proibir Drag em Imagens
-    // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
-    // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-    // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
-    // Poder Diferenciar oq foi preenchido Automatico, e o q foi preenchido Manualmente
+<script>// Iniciação
 
-    // um click abre a imagem, click duplo Adiciona ela em baixo
-    // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
-    // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
-    // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
-    // como impedir q a página dê zoom, pelo celular
-
-    //missrand.e bixinha da musica Rendow - Damn Fly
-
-    // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
-    // ao exibir o SVG grande, mostra o tamanho das coisas
-
-    // https://www.erome.com/a/wcmxSNOS
-    // https://www.erome.com/a/VkT1uhYg
-    // https://www.erome.com/a/PWY4fkMD
-    // https://www.erome.com/a/Vk99UZ8L
-    // https://www.erome.com/a/K0hAD4GJ
-
-        // remover Abreviação dos Thead se precisar
-        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
-
-        // Modos de Preview da Tabela (Pra Variar)
-        // bandeja{
-        //     Modo1 = Bandeija Flutiante, o modelo q já tem
-        //     Modo2 = Bandeija Dentro da tabela Misturada
-        // }
-        // conteúdo{
-        //     Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
-        //     Modo2 = Formato de Lista , igual oq já tem no Sugg
-        //     Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
-        // }
-
-        // O Filtro de Data quero fazer ordenar correto invertido
-        // No filtro de data mostrar um input Type="Date" (pra selecionar intervalo e Datas)
-        // Adicionar uma pesquisa dentro do Filtro (Pra pesquisar a lista q aparece no Filtro)
-        // No Recorte preencher a Grade com "-"
-        // Procurar todo mundo de camisa pra tentar fazer finalmente o relatório completo, no filtro Inova e vazio
-        // Fazer tanto o Filtro quanto o Footer localizar o Cliente Baseado no seu ID e dar Unique no ID e não no nome
-        // Mostrar a Soma do valor na Barra de Config
-
-
-
-        // Orden n pega em Selcts e parece q tbm n ta pegando Numero!
-        // fica ruim pra clicar na célula quando n tem Nada
-        // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
-        // adicionar Crachá a Lista
-        // poder trocar o nome dos Caras
-        // Selecionar Várias Células e Colar uma coisa só
-        // o Hover precisa ta por cima das cores verde
-        // Opção de mais de 1 Designer
-        // adicionar carteira
-
-        // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
-        // ID cria Sozinho no BackEnd na PLanilha
-        // Atribuir as definições de RG, em cada click q for nessesario
-        // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
-        // No preview podia ser um Gif
-        // O QUE É A NUVEM?
-        // UM ROBÔ PODE PENSAR POR CONTA PRÓPRIA?
-        // TIPOS DE ERROS NO JAVASCRIPT!
-
-</script>
-
-<script>
+    function PosGet(){
+        Onloads('body')
+        NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
+      RealTime(Atual['Pag'].replace('#Pag_',''))
+        console.log('✅ Página Carregada!')
+    }
+    PosGet()
     
     document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
         // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
@@ -2937,6 +2852,57 @@
 
 
     configurarRealtime()
+</script>
+
+<script> // comentários ⏳ ❌ ✔️
+    // Orçamento
+        // Mostrar o Valor por M2 ao Lado do Option
+        // Permitir Drag nas Linhas
+        // imitar Bureal no Futuro (deixando todas bandeijas Aberta)
+        // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
+        // selecionar option automaticamente caso tenha apeans 1
+        // Proibir Drag em Imagens
+        // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
+        // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
+        // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
+        // Poder Diferenciar oq foi preenchido Automatico, e o q foi preenchido Manualmente
+        // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
+        // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
+        // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
+        // como impedir q a página dê zoom, pelo celular
+        // No preview podia ser um Gif
+        // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
+        // ID cria Sozinho no BackEnd na PLanilha
+        // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
+
+    // Tabelas
+        // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
+        // ao exibir o SVG grande, mostra o tamanho das coisas
+        // remover Abreviação dos Thead se precisar
+        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
+        // No filtro de data mostrar um input Type="Date" (pra selecionar intervalo e Datas)
+        // Adicionar uma pesquisa dentro do Filtro (Pra pesquisar a lista q aparece no Filtro)
+        // Mostrar a Soma do valor na Barra de Config
+        // Orden n pega em Selcts e parece q tbm n ta pegando Numero!
+        // fica ruim pra clicar na célula quando n tem Nada
+        // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
+        // Poder trocar o nome do Cliente
+        // Selecionar Várias Células e Colar uma coisa só
+        // o Hover precisa ta por cima das cores verde
+        // Opção de mais de 1 Designer
+        // ter uma opção no thead na qual eu possa Ocultar a coluna e deiaxar apenas um Icone, e quando clicar q exibe uma Bandeja, ou voltar pra o normal
+        // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
+
+    // Modos de Preview da Tabela (Pra Variar)
+        // bandeja{
+        //     Modo1 = Bandeija Flutiante, o modelo q já tem
+        //     Modo2 = Bandeija Dentro da tabela Misturada
+        // }
+        // conteúdo{
+        //     Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
+        //     Modo2 = Formato de Lista , igual oq já tem no Sugg
+        //     Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
+        // }
 </script>
 
 </html>
