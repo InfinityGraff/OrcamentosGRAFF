@@ -526,7 +526,7 @@
             Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
             Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
             Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R[3]]||R[3]}/${R[3]=='Arte'&&ListARQ.includes(R[2])?`${R[2]}.svg`:e}" ${Err}>`,
-            Lixo:(e,R,A)=>`<a onclick="RmvROW('${R[1]}','${e['Id']}',this)">${SVG.Lixo}</a>`,
+            Lixo:(e,R,A)=>`<a onclick="RmvROW('${R[1]}','${R[2]}',this)" name="${e}">${SVG.Lixo}</a>`,
             Grds:(e,R,A)=>`${e}`,
             Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
             Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><i class="ppt Shdw rd Ct Hov" onclick="Linkar(this)">Linkar</i></div></div>`,
@@ -602,7 +602,11 @@
                                     : `<td class="${R} ${daClass(dR)} Rltv"><div class="Ct">${Tm_Tm[dR[4]](v,dR)}</div></td>`
             } // Conferir se realmente eu posso deixar td Rltv, pra comportar a Div Antigo
 
-            const Retorno = arry.map((e,X)=>{if(X>LimitLin){return} ; return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'')).join('')}</tr>`}).join('')
+            const Retorno = arry.map((e,X)=>{
+                if(X > LimitLin){return} // Reduzir o Limit de linhas pra Exibir!
+                if(e.Lixo==true){return} // Remover os que estão Na Lixeira!
+                return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'',X)).join('')}</tr>`
+            }).join('')
 
             const Perform = (performance.now()-IN).toFixed(2)
             Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
@@ -817,14 +821,19 @@
         }
 
         function F_Rndn(Eu,Qry,Clik){            // ✔️ Randomiza
+            const noCopy = true
             const QRY = Qry.replace('` n`','" n"')
             const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
             const QntCores = Uniq(ObbjClnt()).length
             const CoresEtr = ObjEtr(ContRepete(ObbjClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
-                if(true){NewObj[k]=RandoCor()}  // cor Randon
-                else{NewObj[k]=v}               // do maior pra o menor
-                                                // corsin Cor Não
+                     if(noCopy&&v===1   ){} // não faz nada caso seja apenas 1 ocorrência
+                else if(!k||k.trim()==''){} // n faz nada caso seja vazio
+                else{
+                    if(true){NewObj[k]=RandoCor()}  // cor Randon
+                    else{NewObj[k]=v}               // do maior pra o menor
+                                                    // corsin Cor Não
+                }
             })
             $$(QRY).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
         }
@@ -1062,6 +1071,18 @@
             // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
             
             const FIM = performance.now() ; console.log(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
+        }
+    
+        function AutoClntPDDS(){
+            const CLNT = J['CLNT']
+            const PDDS = J['PDDS']
+            $$(`#H_CLNT > tbody > tr`).forEach(tr=>{
+                const oID = VAL($(Rx2(['CLNT','Id']),tr))
+                //console.log(J['PDDS'].forEach(e=>{console.log(e)}))
+                const PedidosAtrelados = J['PDDS'].filter(e=>e.Clnt == oID).map(e=>e.Id).join(',')
+                console.log(PedidosAtrelados)
+                $(Rx2(['CLNT','Link']),tr).innerHTML = PedidosAtrelados
+            })
         }
     </script>
 
@@ -1482,12 +1503,13 @@
         <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('CLNT')">+ Nova Linha</button>
+                <button onclick="AutoClntPDDS()">Link PDDS</button>
                 <h1>Tabela de Pagamentos</h1>
                 <div id="PagPesq_CLNT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
             </div>
             <table id="H_CLNT" class="hMin">
-                <thead class="Stky" style="z-index:510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT)))"></tr></thead>
+                <thead class="Stky" style="z-index:510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
                 <tbody></tbody>
             </table>
         </div>
@@ -2578,7 +2600,25 @@
         function AddROW(Typ,obj=null){ // um Obj no segundo argumento se Tiver
             if(Typ=='PGMT'||Typ=="CUST"||Typ=="SERV"){
                 // Modal pedindo pra Escolher em quam "PDDS" vai querer Linkar, inclusive criar um Novo
-            }                         
+            }
+            
+            function AddRowPratic(Typ,obj,Pose){
+                let tbody =  $(`#H_${Typ} > tbody`)
+                let Clone =  $('tr',tbody).cloneNode(true)
+                ClearRow(Clone) // isso poderia recarregar chamando Tm_Table apenas pra essa Linha (Limpará rapidinho)
+                Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
+            }
+
+            function AddROWConst(Typ,obj=null){ // depois mudar pra inserir no Inicio ou no Final
+                const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
+                const Arq = J[Typ]
+                const Novo = {...Arq[Arq.length-1]}                    // Clona Nova Linha
+                ObjKey(Novo).forEach(k=>(Novo[k]=''))                  // Limpa tudo
+                Novo['ID'] = LastRow(Arq,'ID') + 1                     // Muda Id para um Novo
+                if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
+                J[Typ].push(Novo)
+                console.log(Novo)
+            }
                                       // add Nova Linha, só clonar a linha default
             AddRowPratic(Typ,obj,'<') // Antes de mais nada tem q Adicionar Pedido na Prática
             AddROWConst(Typ,obj)      // Depois Atualiza a Const adicionando o novo pedido a ela
@@ -2593,27 +2633,13 @@
             // que adicionando uma linha em PDDS
         }
 
-        function AddRowPratic(Typ,obj,Pose){
-            let tbody =  $(`#H_${Typ} > tbody`)
-            let Clone =  $('tr',tbody).cloneNode(true)
-            ClearRow(Clone) // isso poderia recarregar chamando Tm_Table apenas pra essa Linha (Limpará rapidinho)
-            Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
-        }
-
-        function AddROWConst(Typ,obj=null){ // depois mudar pra inserir no Inicio ou no Final
-            const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
-            const Arq = J[Typ]
-            const Novo = {...Arq[Arq.length-1]}                    // Clona Nova Linha
-            ObjKey(Novo).forEach(k=>(Novo[k]=''))                  // Limpa tudo
-            Novo['ID'] = LastRow(Arq,'ID') + 1                     // Muda Id para um Novo
-            if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
-            J[Typ].push(Novo)
-            console.log(Novo)
-        }
-
         function RmvROW(Typ,id,eu){
-            // repito todo processo q fiz em adicionar, Pratico, const, Supa
-            eu.closest('tr').remove() ; ALERT(e)
+            if('se cliente tiver vinculado a um PDDS'==true){return}
+            eu.closest('tr').remove()      // Remove Prático
+            const i = J[Typ].findIndex(o=>o.Id==id)
+            if(i!==-1)J[Typ].splice(i,1)   // Remove do Obj
+            UpdateSupa(Typ,'Lixo',id,true) // Remove SupaBase
+            //ALERT(e)
         }
 
         function ExcROW(Typ,id,eu){
@@ -2662,6 +2688,7 @@
     function Supa_RealTime(crud,novo,Typ){
         if(crud==='UPDATE'){
             const tr = $(`#H_${Typ} tbody tr[class*="tr-${novo.Id}"]`)
+            if(!tr){return} // se não existe ela já foi foi Excluida! ou não foi Carregada
             const tm = Tm_Table(Typ,NULL__([novo])).replace(/^<tr[^>]*>/,'').replace(/<\/tr>$/,'')
             tr.innerHTML = tm
         }
