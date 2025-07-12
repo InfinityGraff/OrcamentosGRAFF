@@ -491,8 +491,11 @@
                 color: white;
                 height: 24px;
             }
-
+                
+            
             .DivSugg{width: 200px;}
+            .LinkAtv{background: #028602;color: white}
+            .LinkULT{background: #1900ff;color: white}
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
@@ -821,7 +824,8 @@
         }
 
         function F_Rndn(Eu,Qry,Clik){            // ✔️ Randomiza
-            const noCopy = true
+            const noCopy = true // impedir que pinte quando não tem cópias
+            const PermitOculta = true // opção pra ocultar quem n tem Randon
             const QRY = Qry.replace('` n`','" n"')
             const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
@@ -835,7 +839,10 @@
                                                     // corsin Cor Não
                 }
             })
-            $$(QRY).forEach(e=>{_tr(e).style.background = NewObj[Inn(e)]})
+            $$(QRY).forEach(e=>{
+                _tr(e).style.background = NewObj[Inn(e)]
+                if(PermitOculta && NewObj[Inn(e)]==undefined){Add(_tr(e),'none')}
+            })
         }
         
         function F_Clen(Typ){                    // ✔️ Limpa todos os Filtros
@@ -1074,14 +1081,14 @@
         }
     
         function AutoClntPDDS(){
-            const CLNT = J['CLNT']
-            const PDDS = J['PDDS']
             $$(`#H_CLNT > tbody > tr`).forEach(tr=>{
-                const oID = VAL($(Rx2(['CLNT','Id']),tr))
-                //console.log(J['PDDS'].forEach(e=>{console.log(e)}))
-                const PedidosAtrelados = J['PDDS'].filter(e=>e.Clnt == oID).map(e=>e.Id).join(',')
-                console.log(PedidosAtrelados)
-                $(Rx2(['CLNT','Link']),tr).innerHTML = PedidosAtrelados
+                const ID = VAL($(Rx2(['CLNT','Id']),tr))
+                const PddsLink = J['PDDS'].filter(e=>e.Clnt==ID).map(e=>e.Id).join(',')
+                const Cell = $(Rx2(['CLNT','Link']),tr)
+                Cell.innerHTML = PddsLink
+                _td(Cell).onclick = _td(Cell).onclick = function(event){
+                    if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}
+                }
             })
         }
     </script>
@@ -1503,8 +1510,9 @@
         <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('CLNT')">+ Nova Linha</button>
-                <button onclick="AutoClntPDDS()">Link PDDS</button>
                 <h1>Tabela de Pagamentos</h1>
+                <button onclick="AutoClntPDDS()">Link PDDS</button>
+                <button onclick="MesclarContato()">Mesclar</button>
                 <div id="PagPesq_CLNT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
             </div>
@@ -2634,7 +2642,7 @@
         }
 
         function RmvROW(Typ,id,eu){
-            if('se cliente tiver vinculado a um PDDS'==true){return}
+            if(Typ=='CLNT' && 'Link!==""'==true){return} // não pode apagar se tiver CLNT vinculado
             eu.closest('tr').remove()      // Remove Prático
             const i = J[Typ].findIndex(o=>o.Id==id)
             if(i!==-1)J[Typ].splice(i,1)   // Remove do Obj
@@ -2647,6 +2655,20 @@
             eu.closest('tr').remove() ; ALERT(e)
         }
         
+        function MesclarContato(){ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+            const Fim = $('#H_CLNT .LinkULT')
+            if(!Fim){console.log('Faltou o Link Final') ; return}
+            $$('#H_CLNT .LinkAtv').forEach(td=>{
+                const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
+                const Ids_PDDS = td.innerText.split(',')               
+                Ids_PDDS.forEach(ID=>{UpdateSupa('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
+                RmvROW('CLNT',dR[1],td) // remove a Linha
+                
+                // Editar Pedidos Prático e Const
+                //const Obj_PDDS   = J['PDDS'].filter(e=>e.Clnt==dR[1])
+                //Obj_PDDS['Clnt'] = linkFinal
+            })
+        }
 </script>
 
 <script> // SupaBASE ⭐_ _ _ _
