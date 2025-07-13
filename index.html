@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
-
+    <!--
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
-    <!--
+    --> 
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
-
+    <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
@@ -294,7 +294,7 @@
         CALC:{}
     }
 
-    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá']
+    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira']
     const ListaKits=['Zebu','Zimaz']
     let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 
@@ -305,29 +305,31 @@
 </script>
 
 <script> // Bibliotecas Curta
-    const Dat      =e=>new Date(e)
-    const OjKy     =Typ=>ObjKey(BS[Typ])
-    const ExtObj   =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i]))
-    const TogTd    =e=>$('input',e)!==event.target && TogNoSh([$('input', e),$('p',e)])
-    const ALERT    =e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
-    const RgxPixAV =e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
-    const SunPix   =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
-    const BSBS     =(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
-    const Block    =e=>e.style.display = 'block'
-    const ConvertDATA   =e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
-    const H_Col_p       =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
-    const reorderArr_Arr= (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
-    const ContRepete    =arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
-    const ContRepeteId  =arr=>arr.reduce((acc,e)=>{const k=e.Id ; acc[k] = (acc[k] || 0) + 1 ; return acc;},{})
-    function EnterBlur(e){KeyEntr(()=>e.blur())}
+    // os que tem q sair daqui (os Gerais)
+        const LocPcnt = (parte,total) => (parte / total)
+        const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
+        const zipObj=(arr1,arr2)=>Object.fromEntries(arr1.map((k,i)=>[k,arr2[i]]))
+    
+    
+    // Remover
+        const ConvertDATA =e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e // não ta sendo usada, mas vai q precisa!
 
-    const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
-    const tr_ID=tr=>getClass(tr,'tr-').split('-')[1]
-    const tr_X =tr=>getClass(tr,'tr-').split('-')[2]
-    const minuscule = str => str[0].toUpperCase() + str.slice(1).toLowerCase()
-    const LocPcnt = (parte,total) => (parte / total)
-    const RGBa=(e,op=0.2)=>{const [r,g,b]=getComputedStyle(e).backgroundColor.match(/\d+/g) ; e.style.backgroundColor = `rgba(${r},${g},${b},${op})`}
-    const zipObj=(arr1,arr2)=>Object.fromEntries(arr1.map((k,i)=>[k,arr2[i]]))
+    // os que são específicos daqui
+        // as q Retorna
+        const OjKy   =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
+        const ExtObj =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
+        const RgxPixAV =e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
+        const SunPix   =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
+        const H_Col_p  =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
+        const tr_ID    =tr=>getClas(tr,'tr-').split('-')[1]
+        const tr_X     =tr=>getClas(tr,'tr-').split('-')[2]
+
+        // as q Executa
+        const ALERT =e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
+        const EntBlr=e=>KeyEntr(()=>e.blur())
+
+
+    
     const EscpRgx=Stg=>Stg.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
     function isImageLoaded(img){return img.complete && img.naturalWidth !== 0}
     const daClass=R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
@@ -357,10 +359,10 @@
         const Trc2=(e,add,rmv)=>{Add($(e),add);Rmv($(e),rmv)}
         const DarkLite2=(e,Check)=>{if(Check){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Check)}
     // Drags
-        function Prvn(){event.preventDefault()}
-        function Drag(){event.dataTransfer.setData("text",event.target.id)}
+        function Prvn() {event.preventDefault()}
+        function Drag() {event.dataTransfer.setData("text",event.target.id)}
         function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
-        function Drop(){Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
+        function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -501,7 +503,11 @@
     </style>
 
     <script>// Template String v7.3 (Já Incluir o Numero da Coluna)
-        const Tm_Rastr=(e,x,Typ,id)=>`Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}` //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+        const Tm_Rastr=(e,x,Typ,id)=>{ //Argumento 'id', recebe string 'ID' se for Obj, e recebe '0' se for array
+            const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
+            return `Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}`
+        }
+
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
         const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_Rastr('Foot',x,Typ,'')} Rltv"></td>`).join('')
         const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
@@ -525,8 +531,8 @@
         const Tm_Tm = {
             Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
             Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
-            Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-            Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EnterBlur(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
+            Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
+            Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
             Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
             Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
             Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
@@ -578,7 +584,7 @@
                 Typ=='Serv' ? Find.map(e=>`${todoTitle[Typ].push(e['Serv'])}`) : null
                 
                 const Reordem =()=>{if(Typ=='Serv'||Typ=='Pgmt'||Typ=='ABCD'){
-                    return reorderArr_Arr(ArrObj_ArrArr(Find),ObjKey(BS[Typ.toUpperCase()]))
+                    return OrdnCol(ArrObj_ArrArr(Find),ObjKey(BS[Typ.toUpperCase()]))
                     }else{return ArrObj_ArrArr(Find)}} 
 
                 const Lista = Typ==='Calc' ?  MORE2(Find,'SERV') : Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),Typ.toUpperCase()) : '').join('')
@@ -832,7 +838,7 @@
             const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
             let NewObj = {}
             const QntCores = Uniq(ObbjClnt()).length
-            const CoresEtr = ObjEtr(ContRepete(ObbjClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+            const CoresEtr = ObjEtr(cRepet(ObbjClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
                      if(noCopy&&v===1   ){} // não faz nada caso seja apenas 1 ocorrência
                 else if(!k||k.trim()==''){} // n faz nada caso seja vazio
                 else{
@@ -1130,8 +1136,8 @@
                 IN = performance.now()
                 // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
                 $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${        objClnt.length}         </div>`
-                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepeteId(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k} - ${NovoOBJClnt[k]}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
-                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(  ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k} - ${NovoOBJClnt[k]}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
                 Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
                 Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
                 Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
@@ -1235,7 +1241,7 @@
         }
 
         function LimparNomeSVG(Clss){
-            const Edit=e=>`<p class="Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EnterBlur(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
+            const Edit=e=>`<p class="Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
             const td = $(`td[class="${Clss}"]`)
             EditCell(td,'')
         }
@@ -2585,8 +2591,8 @@
             if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
             else{
                 const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin) // Achar o Index da tabela de pedidos
-                const Idxbdj = J[Camada[Typ]][Idx][minuscule(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
-                J[Camada[Typ]][Idx][minuscule(Typ)][Idxbdj][col] = NewVal
+                const Idxbdj = J[Camada[Typ]][Idx][Aa(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
+                J[Camada[Typ]][Idx][Aa(Typ)][Idxbdj][col] = NewVal
                 //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
             }
             console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
