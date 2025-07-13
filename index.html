@@ -305,20 +305,22 @@
 </script>
 
 <script> // Bibliotecas Curta
-    const Dat=e=>new Date(e)
-    const OjKy=Typ=>ObjKey(BS[Typ])
-    const ExtObj=Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i]))
-    const TogTd=e=>$('input',e)!==event.target && TogNoSh([$('input', e),$('p',e)])
-    const ALERT=e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
-    const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
-    const SunPix=Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
-    const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
+    const Dat      =e=>new Date(e)
+    const OjKy     =Typ=>ObjKey(BS[Typ])
+    const ExtObj   =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i]))
+    const TogTd    =e=>$('input',e)!==event.target && TogNoSh([$('input', e),$('p',e)])
+    const ALERT    =e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
+    const RgxPixAV =e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
+    const SunPix   =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
+    const BSBS     =(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
+    const Block    =e=>e.style.display = 'block'
+    const ConvertDATA   =e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
+    const H_Col_p       =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
+    const reorderArr_Arr= (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
+    const ContRepete    =arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
+    const ContRepeteId  =arr=>arr.reduce((acc,e)=>{const k=e.Id ; acc[k] = (acc[k] || 0) + 1 ; return acc;},{})
     function EnterBlur(e){KeyEntr(()=>e.blur())}
-    const Block=e=>e.style.display = 'block'
-    const ConvertDATA=e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e
-    const H_Col_p=(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p`
-    const reorderArr_Arr = (arr,o)=>arr.map(e=>o.map(k=>e[arr[0].indexOf(k)]))
-    const ContRepete=arr=>arr.reduce((acc,e)=>{acc[e]=(acc[e] || 0) + 1 ; return acc},{}) // conta quantas vezes um nome se repete num Array
+
     const getClass=(e,Stg)=>[...e.classList].find(c=>c.includes(Stg)) || null
     const tr_ID=tr=>getClass(tr,'tr-').split('-')[1]
     const tr_X =tr=>getClass(tr,'tr-').split('-')[2]
@@ -1114,7 +1116,11 @@
                 let IN = performance.now()
                 const IIN = performance.now()
                 // Tentar usar esses Obj em Filter também pra carregar apenas 1 Vez
-                    const objClnt = Colls(typ,'Clnt',true).map(e=>Inn(e)) // Contar o Cliente Pelo ID
+                    const IDclass = (p)=>{ const tr = $(`tbody > tr`,_td(p)) ; if(tr){return tr_ID(tr)}}
+                    const objClnt = Colls(typ,'Clnt',true).map(p=>{const ID=IDclass(p) ; return {nome:Inn(p),Id:ID}})
+                    const NovoOBJClnt = objClnt.reduce((acc,e)=>{acc[e.Id] = e.nome ; return acc},{})
+                    const objClntID = objClnt.map(e=>e.Id)
+
                     const objServ = typ=="PDDS" ?
                         Colls(typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
                         : Colls(typ,'Serv',true).map(e=>VAL(e))
@@ -1123,9 +1129,9 @@
 
                 IN = performance.now()
                 // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
-                $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objClnt.length}         </div>`
-                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClnt).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClnt).length} Clientes</div></div>` // o Sort é só pra reordenar
-                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${      objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${        objClnt.length}         </div>`
+                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(ContRepeteId(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k} - ${NovoOBJClnt[k]}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.footbndjj',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl footbndjj ShodShod BNdj">${ObjEtr(  ContRepete(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
                 Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
                 Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `${SOMAPgmt(Colls(Typ,Col,true))}`})
                 Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{const[Typ,x,Col,Cry]=D_Rastr(e) ; e.innerHTML = `Custo: R$ ${Cm(SOMA(Colls(Typ,Col,true),s=>Num(Inn(s))))}`})
@@ -1412,7 +1418,6 @@
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
-                <textarea style="background:gray" class="ppt rd h100"  onclick="Copy(this,`const DadosPDDS = ${JSON.stringify(J['PDDS'],null,2)}`)" readonly></textarea>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
@@ -2656,11 +2661,13 @@
         }
         
         function MesclarContato(){ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
-            const Fim = $('#H_CLNT .LinkULT')
+            const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
+            // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){console.log('Faltou o Link Final') ; return}
+            // também da erro se tiver mais de uma Selecioanda
             $$('#H_CLNT .LinkAtv').forEach(td=>{
                 const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
-                const Ids_PDDS = td.innerText.split(',')               
+                const Ids_PDDS = td.innerText.split(',')
                 Ids_PDDS.forEach(ID=>{UpdateSupa('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
                 RmvROW('CLNT',dR[1],td) // remove a Linha
                 
@@ -2668,7 +2675,15 @@
                 //const Obj_PDDS   = J['PDDS'].filter(e=>e.Clnt==dR[1])
                 //Obj_PDDS['Clnt'] = linkFinal
             })
+            // quando terminar Limpa o Filtro
         }
+
+        // Adicionar Novo PDDS
+        // Botão de Nova Linha (SERV,PGMT,CUST)
+        // Remover PDDS
+        // Adicionar e trocar Cliente
+        // Editar elementos por dentro da Bndj
+        // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
 </script>
 
 <script> // SupaBASE ⭐_ _ _ _
