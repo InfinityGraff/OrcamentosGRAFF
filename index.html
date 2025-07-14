@@ -311,24 +311,18 @@
     const supabase = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
 
-<script> // Bibliotecas
-    // para o PreScript
-
-    
-    const ConvertDATA =e=>/^\d{4}-\d{2}-\d{2}$/.test(e)?DMY(e):e // ver se precisa Remover
-
+<script> // Bibliotecas  
     // Epecíficas (as q Retorna)
         const Prvn    =()=>event.preventDefault()
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
-        const daClass =R=>BS[R[1]][R[3]][1].split('').map(e=>CRYCLS[e]).join(' ')
+        const daClass =R=>BS[R.Typ][R.Col][1].split('').map(e=>CRYCLS[e]).join(' ') // Aplica as Casses q estão no BS
         const tr_ID   =tr =>getClas(tr,'tr-').split('-')[1]
         const tr_X    =tr =>getClas(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
         const Rx2     =arry=>Rx(['Rastr',...arry])
-        const D_Rastr =e=>Extrat_Clss(e,'Rastr-').split('-') // incluir closeset aqui dentro mesmo, caso precise
-        const D_Rastr2=R=>R.split('-')
-        const D_R     =R=>{const v= typeof R === "string" ? R.split('-') : Extrat_Clss(R,'Rastr-').split('-').unshift('Rastr'); return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+        const D_Rastr =e=>Extrat_Clss(e,'Rastr-').split('-')
+        const D_R     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
         const Coll    =x=>`td:nth-child(${x})`
         const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
         const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
@@ -337,14 +331,12 @@
         const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
         const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
         const isBdj   =e=>!!e.closest('.BndjTBL')
-        const Sib     =e=>$(e,Pai(event.target))
-        
+        const Sib     =e=>$(e,Pai(event.target))     
     // Epecíficas (as q Executa)
         const ALERT =e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
         function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
         function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
-
     //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     // conferir se essa é realmente nessesária
@@ -459,12 +451,12 @@
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R[3]==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R[3]],e)}</select>`,
+                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
-                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R[3]]||R[3]}/${R[3]=='Arte'&&ListARQ.includes(R[2])?`${R[2]}.svg`:e}" ${Err}>`,
-                Lixo:(e,R,A)=>`<a onclick="RmvROW('${R[1]}','${R[2]}',this)" name="${e}">${SVG.Lixo}</a>`,
+                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
+                Lixo:(e,R,A)=>`<a onclick="RmvROW('${R.Typ}','${R.Row}',this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
-                Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R[2]),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+                Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BNdj BndjSUG Abslt Cl none"><a>${SVG.Ponta}</a><span class="Sugg Shdw rd Cl"></span><button class="Mini" onclick="Linkar(this)">Linkar</button></div></div>`,
                         // se o Sugg tiver vazio deixar pelomenos uma mensagem avisando
                         // descobrir quem é quem do Sug, pelo título da coluna
@@ -482,6 +474,7 @@
 
                 function Tratamento(Arr,R){
                     const col   = R.Col
+                    console.log('Arry',Arr)
                     const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr)].filter(Boolean) : Arr
                     const Title = col==='ABCD' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
                                   col==='Pgmt' ? Find.map(e=>`${e['Valr']} ${e['Form']}`).join(' | ') :
@@ -511,16 +504,17 @@
                                 </div>`
                 }
                 
-                function Tm_Td(v,e,x,Typ,dado){const R = Tm_R(e,x,Typ,'Id') ; const dR = D_Rastr2(R) ; const r = D_R(R)
-                    return r.Tm=='Bndj'?`<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
-                           r.Tm=='Sugg'?`<td class="${R} ${daClass(dR)}" onclick="ShowBndj(this);SuggLink(this,'${R}')"><div class="Ct">${Tm_Tm[r.Tm](v,dR)}</div></td>`
-                                       :`<td class="${R} ${daClass(dR)} Rltv"><div class="Ct">${Tm_Tm[r.Tm](v,dR)}</div></td>`
+                function Tm_Td(v,e,x,Typ,dado){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r)
+                    return R.Tm=='Bndj'?`<td class="${r} ${daClass(R)}" onclick="ShowBndj(this)">${Tratamento(v,R)}</td>` :
+                           R.Tm=='Sugg'?`<td class="${r} ${daClass(R)}" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                                       :`<td class="${r} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                 }
 
                 const Retorno = arry.map((e,X)=>{
                     if(X > LimitLin){return} // Reduzir o Limit de linhas pra Exibir!
                     if(e.Lixo==true){return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as concluidas
+                    console.log('cmod efaut chega',e)
                     return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'',X)).join('')}</tr>`
                 }).join('')
 
@@ -1053,7 +1047,7 @@
                 $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objClnt.length}         </div>`
                 $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k} - ${NovoOBJClnt[k]}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
                 $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span>${k}: ${v}</span>`).join('')}<div class="confFoot w100 Ct">${      objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
-                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const R=D_R(e) ;console.log('fot',R) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
                 Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
                 Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
                 Array.of($(Rx2([typ,'Foot','Finc']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `Lucro: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
@@ -2529,18 +2523,22 @@
 
             UpdateSupa(Typ,col,Lin,NewVal)
         }
-        console.log('Rosaka 4') // 
+
         function NewLinBdj(Eu){ // Nova LInha na Bandeija
             const R = D_R(_td(Eu))
-            const v = Extrat_Clss(_td(Eu),'Rastr-').split('-').unshift('Rastr')
-            console.log(_td(Eu),v)
-            if(['Pgmt','Serv','Cust'].includes(R.Col)){
-                const ArrdeObj = J[R.Typ][R.Row][R.Col] // mostra oq tem dentro
-                const tbody = $('tbody',_td(Eu))
-                const Igual = ObjKey(Dfut[AA(R.Col)]).filter(k=>k!=="Id").every(k=>ArrdeObj[0][k]==Dfut[k])
-                if(ArrdeObj.length==1 && Igual){console.log('exibe o Default') ; Rmv_N($('tr',tbody)) ; return} // se tiver um Default apenas exibe ele
-                console.log('Não é Default',R.Col,ArrdeObj)
-                // Copiar o Json e criar um Novo Push
+            if(['Pgmt','Serv','Cust'].includes(R.Col)){ // por enquanto só funciona pra essas 3
+                const obj = J[R.Typ].find(e=>e.Id==R.Row) // mostra oq tem dentro
+                const Srvs= obj[R.Col]
+                const tbl = $('table',_td(Eu))
+                if(Srvs.length==1 && Srvs[0].Id==''){Rmv_N(tbl) ; /*Edita o ID*/ ; return} // se tiver um Default apenas exibe ele
+                else{
+                    console.log('Já tem Linha dentro')
+                    const Def    = Dfut[AA(R.Col)]
+                    const NewDef = Def   // novo Id:45_1 e repassa o Id do Cliente
+                    Srvs.push(NewDef)                               // Nova linha no Json
+                    Befor($('tbody',tbl),Tm_Table(AA(R.Col),[Def])) // Nova linha na Prática 
+                    //UpdateSupa(R.Typ,R.Col,R.Row,Srvs)            // Edita o SupaBase (Srvs pois vai mudar pra o Json Completo) e faz a mesma coisa toda vez q for editar um Json
+                }
             }
         }
 
