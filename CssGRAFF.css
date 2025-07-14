@@ -28,14 +28,16 @@
         .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
         .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
-      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 3px 6px}
+      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
       .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
       .CSS1 button:active,.CSS1 .button:active{transform:scale(0.95)}
-      .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300;border: 2px solid #ffae00;padding: 0px 10px;font-family: Almarose-Medium}
-      .CSS3 button       ,.CSS3 .button{color: #ffffff; background:var(--CSS3btn);border: 2px solid #F0A8B2;padding: 0px 10px;font-family: Almarose-Medium}
+      .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
+      .CSS3 button       ,.CSS3 .button{color: #ffffff; background:var(--CSS3btn);border: 2px solid #F0A8B2; padding:0px 10px; font-family:Almarose-Medium}
       .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
-      button.Block               {background: #797979 !important;border:1px solid #414141 !important;}
+      button.Block               {background: #797979 !important;border:1px solid #414141 !important}
+      button.Mini                {height: 20px;}
+      button                     {white-space: nowrap} /*Evitar quebra de Linha para todos Botões*/
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -98,3 +100,11 @@
 input.Error {background:red}
 select.Error{background:red}
 
+    /*DivConfig*/
+        .DivConf{background:#d6d6d6}
+        .DivConf h1{font-size: 25px;}
+            .Body1 .DivConf{height: 40px}
+            .Body1 .PagPEsq{display:none}
+                .Body2 .DivConf{top:0px  ; height: 40px}
+                .Body2 thead   {top:39px}
+                .Body2 .PagPEsq{display:block}

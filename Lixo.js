@@ -115,3 +115,6 @@ async function PesquisaKM(inpt){
   RsutFrete.innerHTML = listaLugares[inpt]
   }else{RsutFrete.innerHTML = 'Lugar não Encontrado'}
   }
+
+// isso é como eu Simplificaria o Calc no td, pra n ter q mostrar toda tabela
+// col==='Calc' ? `${Find.Qnt||'_'} - ${Find.Lag||'_'}x${Find.Alt||'_'}${Find.Val==''?'':` R$ ${Cm(Find.Val||'0')}`}`

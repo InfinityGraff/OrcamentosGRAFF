@@ -435,15 +435,23 @@ function CopyGRAFF(e,btn){
 
 
 function PDDSconverterJSON(obj) {
-    const camposParaConverter = ["Serv","Pgmt","Cust"]
+    const camposParaConverter = ["Serv", "Pgmt", "Cust","ABCD"];
     for (const campo of camposParaConverter) {
         const valor = obj[campo];
-        if (typeof valor === "string" && valor.startsWith("[") || valor.startsWith("{")) {
-        obj[campo] = JSON.parse(valor);
+        if (
+            typeof valor === "string" &&
+            (valor.trim().startsWith("{") || valor.trim().startsWith("["))
+        ) {
+            try {
+                obj[campo] = JSON.parse(valor);
+            } catch (e) {
+                console.warn(`Erro ao converter o campo ${campo}:`, e);
+            }
         }
     }
     return obj;
 }
+
 
 
 function exportToCSV(data) {
@@ -464,4 +472,13 @@ function exportToCSV(data) {
     ].join("\n");
 
     return csv;
+}
+
+const RmvPlural = Stg => {
+  if (Stg.endsWith('ões')) return Stg.slice(0, -3) + 'ão'
+  if (Stg.endsWith('ães')) return Stg.slice(0, -3) + 'ão'
+  if (Stg.endsWith('is' )) return Stg.slice(0, -2) + 'l'
+  if (Stg.endsWith('res')) return Stg.slice(0, -1)
+  if (Stg.endsWith('s') && Stg.length > 2) return Stg.slice(0, -1)
+  return Stg
 }
