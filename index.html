@@ -399,6 +399,45 @@
             .bnDJ .Bdj_ABCD td:nth-child(7){width: 80px;}
             /*.bnDJ .Bdj_ABCD td:nth-child(8){width: 200px;}*/
             .bnDJ .Bdj_ABCD td:nth-child(9){width: 30px;}
+
+            table.Card > thead{display: none}
+            table.Card > tfoot{display: none}
+            table.Card > tbody{display:flex; flex-wrap:wrap; gap:12px ; padding:10px}
+            table.Card > tbody > tr{ /*CARD*/
+                padding: 8px;
+                background:#ffffff;
+                border-radius: 16px;
+                box-shadow: 0 4px 12px #0000001a;
+            }
+            table.Card > tbody > tr {
+                display: grid;
+                grid-template-areas:
+                    "Id    Id  Data"
+                    "Clnt Clnt Stts"
+                    "Serv Serv Stts"
+                    "Valr Cust Pgmt"
+                    "Obs  Obs  Obs ";
+                grid-template-columns: 1fr auto auto;
+                gap: 4px 4px
+            }
+            table.Card .AutoComp,table.Card .CorID{background: transparent !important;}
+                                       table.Card > tbody > tr{width:calc(25% - 9px)}        /*Largura dos Cards 4 por Linha*/
+            @media (max-width: 800px) {table.Card > tbody > tr {width: calc(33.333% - 8px); }/* 3 por linha */
+            @media (max-width: 500px) {table.Card > tbody > tr {width: 100%}}                /* 1 por linha */
+            }
+            table.Card > tbody > tr > td{padding: 5px; height: auto !important;}
+            table.Card > tbody > tr > td:nth-child(1) { grid-area: Id   }table.Card > tbody > tr > td:nth-child(1) > div > .P-P {color:#780096; font-weight:bold}
+            table.Card > tbody > tr > td:nth-child(2) { grid-area: lin  ; display: none;}
+            table.Card > tbody > tr > td:nth-child(3) { grid-area: Data }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#666666; text-align:right}
+            table.Card > tbody > tr > td:nth-child(4) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#666666; font-size: 20px }
+            table.Card > tbody > tr > td:nth-child(5) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#000000                  }
+            table.Card > tbody > tr > td:nth-child(6) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold}
+            table.Card > tbody > tr > td:nth-child(7) { grid-area: Pgmt }table.Card > tbody > tr > td:nth-child(7) > div > .P-P {color:#000000; }
+            table.Card > tbody > tr > td:nth-child(8) { grid-area: Cust }table.Card > tbody > tr > td:nth-child(8) > div > .P-P {color:#c7380c; font-size: 12px}
+            table.Card > tbody > tr > td:nth-child(9) { grid-area: Lucro; display: none;}
+            table.Card > tbody > tr > td:nth-child(10){ grid-area: Stts }table.Card > tbody > tr > td:nth-child(10) > div > .P-P{color:#999999;}
+            table.Card > tbody > tr > td:nth-child(11){ grid-area: Obs  ; display: none; color:#757575; font-size: 12px}
+            table.Card > tbody > tr > td:nth-child(12){ grid-area: Lixo ; display: none;}
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
@@ -1330,6 +1369,82 @@
 
         <div id="Pag_HOME">
             <div class="Cl"></div><!--NÃO TEM NADA AQUI-->
+                        <div><!--Arte-->
+                <style>
+                    .container {
+                        max-width: 300px;
+                        margin: auto;
+                        padding: 20px;
+                        border: 1px solid #ccc;
+                        border-radius: 10px;
+                        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+                    }
+                    .tootal, .tootal span {
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: #00df00;
+                    }
+                    .Pcntalmt{
+                        margin-top: 15px;
+                        color: gray;
+                    }
+                </style>
+
+                <div class="container" style="margin-bottom: 150px;margin-top: 50px;">
+                    <h3>Orçamento de Arte:</h3>
+
+                    <select id="designOptions" onchange="EscolheARTE()" class="w100">
+                        <option value="20" data-extra="0">Post Digital - R$ 20,00</option>
+                        <option value="20" data-extra="4">Carrossel - R$ 20,00 (+R$ 4,00 por unidade)</option>
+                        <option value="25" data-extra="0">Banner Digital - R$ 25,00</option>
+                        <option value="25" data-extra="0">Cartão de Visita - R$ 25,00</option>
+                        <option value="50" data-extra="0">Flyer - R$ 50,00</option>
+                        <option value="30" data-extra="0">Panfleto - R$ 30,00</option>
+                        <option value="20" data-extra="0">Wing Banner - R$ 20,00</option>
+                        <option value="50" data-extra="10">Cardápio - R$ 50,00 (+R$ 10,00 por página)</option>
+                        <option value="25" data-extra="3">Backdrop Simples - R$ 25,00 (+R$ 3,00 por patrocinador)</option>
+                        <option value="100" data-extra="0">Logo - R$ 100,00</option>
+                        <option value="400" data-extra="0">Identidade - R$ 400,00</option>
+                        <option value="40" data-extra="0">Manipulação/Tratamento - R$ 40,00</option>
+                        <option value="25" data-extra="0">Vetorização - R$ 25,00</option>
+                        <option value="5" data-extra="0">Banner Simples Texto - R$ 5,00</option>
+                        <option value="30" data-extra="3">Arte para Camisa - R$ 30,00 (+R$ 3,00 por variação)</option>
+                    </select>
+                    
+                    <label for="quantidade">Quantidade:</label><input type="number" id="quantidade" value="1" min="1" oninput="EscolheARTE()">
+
+                    </select>
+                    <div id="Bruxos">
+                        <label><input type="checkbox" value="20" onchange="EscolheARTE()"> Identidade Visual (20%)</label><br>
+                        <label><input type="checkbox" value="15" onchange="EscolheARTE()"> Roteirizar (15%)</label><br>
+                        <label><input type="checkbox" value="25" onchange="EscolheARTE()"> Criar Logomarca (25%)</label><br>
+                        <label><input type="checkbox" value="8"  onchange="EscolheARTE()"> Digitação (8%)</label><br>
+                        <label><input type="checkbox" value="7"  onchange="EscolheARTE()"> Escolha de Imagens (7%)</label><br>
+                        <label><input type="checkbox" value="5"  onchange="EscolheARTE()"> Montagem (5%)</label><br>
+                    </div>
+
+                    <div class="Pcntalmt"></div>
+                    <div class="tootal">Total: R$ <span id="total">0.00</span></div>
+                </div>
+
+                <script>
+                    function EscolheARTE(){
+                        const Slt = $("#designOptions")
+                        const Qnt = $("#quantidade").value
+                        const Val = parseFloat(Slt.value)
+                        const Ext = parseFloat(Slt.options[Slt.selectedIndex].getAttribute("data-extra")) || 0
+                        let Porcent = 0
+                        $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{console.log(e) ; Porcent += parseFloat(e.value)})
+                        const Pcnt = Porcent.toFixed(2)/100
+                        const Total = Val+(Ext*(Qnt-1))
+                        const Total2 = Total+(Total*Pcnt)
+
+                        $(".Pcntalmt").innerHTML = `Porcentagem: R$ ${parseFloat(Pcnt)*100}%`
+                        $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
+                    }
+
+                </script>
+            </div>
         </div>
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
@@ -1339,6 +1454,7 @@
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
+                <button onclick="Tog($('#H_PDDS'),'Card')">CARD</button>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
@@ -1826,7 +1942,7 @@
 
         <div id="Pag_ORC" class="none Cl">
 
-            <div class="Pesq_ORC PagPEsq" style="display: none;">
+            <div class="Pesq_ORC PagPEsq" style="display:none">
                 <input id="PesqPROD" type="text" oninput="Pesq(this,'ORC')" placeholder="Pesquisar Produto..."> <!--Pesquisa PROD-->
             </div>
 
@@ -2208,17 +2324,16 @@
                     ValidOpts()
                 </script>
 
-                <div class="w100 Ct" style="margin-top: 80px"> <!--Informações Extras-->
+                <div class="w100 Ct none" style="margin-top: 80px"> <!--Informações Extras-->
                     <div class="Cl"><label>Nome</label><input placeholder="Nome"></div>
                     <div class="Cl"><label>Contato</label><input placeholder="Contato"></div>
                     <div class="Cl"><label>Endereço</label><input placeholder="Endereço"></div>
                     <div class="Cl"><label>Comentário</label><input placeholder="Comentário"></div>
                 </div>
                 <button onclick="VerNota()">Ver Nota</button>
-                </form>
             </div>
 
-            <div id="G_Cores" class="Ct"> <!--AJEITAR-->
+            <div id="G_Cores" class="Ct none"> <!--AJEITAR-->
                 <!-- Ajeitar  
                     isso ficará disponível apenas para coisas com cores sólidas como Recorte e Router
                     deverá ser transformado em um Menu suspenso, uma Bandeija, pra n atrapalhar
@@ -2266,83 +2381,6 @@
                         Redimensionar canva 3D com base na altura se passar do preview (como no drop img do GBRT)
                     -->
                 </div>
-            </div>
-
-            <div><!--Arte-->
-                <style>
-                    .container {
-                        max-width: 300px;
-                        margin: auto;
-                        padding: 20px;
-                        border: 1px solid #ccc;
-                        border-radius: 10px;
-                        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-                    }
-                    .tootal, .tootal span {
-                        font-size: 18px;
-                        font-weight: bold;
-                        color: #00df00;
-                    }
-                    .Pcntalmt{
-                        margin-top: 15px;
-                        color: gray;
-                    }
-                </style>
-
-                <div class="container" style="margin-bottom: 150px;margin-top: 50px;">
-                    <h3>Orçamento de Arte:</h3>
-
-                    <select id="designOptions" onchange="EscolheARTE()" class="w100">
-                        <option value="20" data-extra="0">Post Digital - R$ 20,00</option>
-                        <option value="20" data-extra="4">Carrossel - R$ 20,00 (+R$ 4,00 por unidade)</option>
-                        <option value="25" data-extra="0">Banner Digital - R$ 25,00</option>
-                        <option value="25" data-extra="0">Cartão de Visita - R$ 25,00</option>
-                        <option value="50" data-extra="0">Flyer - R$ 50,00</option>
-                        <option value="30" data-extra="0">Panfleto - R$ 30,00</option>
-                        <option value="20" data-extra="0">Wing Banner - R$ 20,00</option>
-                        <option value="50" data-extra="10">Cardápio - R$ 50,00 (+R$ 10,00 por página)</option>
-                        <option value="25" data-extra="3">Backdrop Simples - R$ 25,00 (+R$ 3,00 por patrocinador)</option>
-                        <option value="100" data-extra="0">Logo - R$ 100,00</option>
-                        <option value="400" data-extra="0">Identidade - R$ 400,00</option>
-                        <option value="40" data-extra="0">Manipulação/Tratamento - R$ 40,00</option>
-                        <option value="25" data-extra="0">Vetorização - R$ 25,00</option>
-                        <option value="5" data-extra="0">Banner Simples Texto - R$ 5,00</option>
-                        <option value="30" data-extra="3">Arte para Camisa - R$ 30,00 (+R$ 3,00 por variação)</option>
-                    </select>
-                    
-                    <label for="quantidade">Quantidade:</label><input type="number" id="quantidade" value="1" min="1" oninput="EscolheARTE()">
-
-                    </select>
-                    <div id="Bruxos">
-                        <label><input type="checkbox" value="20" onchange="EscolheARTE()"> Identidade Visual (20%)</label><br>
-                        <label><input type="checkbox" value="15" onchange="EscolheARTE()"> Roteirizar (15%)</label><br>
-                        <label><input type="checkbox" value="25" onchange="EscolheARTE()"> Criar Logomarca (25%)</label><br>
-                        <label><input type="checkbox" value="8"  onchange="EscolheARTE()"> Digitação (8%)</label><br>
-                        <label><input type="checkbox" value="7"  onchange="EscolheARTE()"> Escolha de Imagens (7%)</label><br>
-                        <label><input type="checkbox" value="5"  onchange="EscolheARTE()"> Montagem (5%)</label><br>
-                    </div>
-
-                    <div class="Pcntalmt"></div>
-                    <div class="tootal">Total: R$ <span id="total">0.00</span></div>
-                </div>
-
-                <script>
-                    function EscolheARTE(){
-                        const Slt = $("#designOptions")
-                        const Qnt = $("#quantidade").value
-                        const Val = parseFloat(Slt.value)
-                        const Ext = parseFloat(Slt.options[Slt.selectedIndex].getAttribute("data-extra")) || 0
-                        let Porcent = 0
-                        $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{console.log(e) ; Porcent += parseFloat(e.value)})
-                        const Pcnt = Porcent.toFixed(2)/100
-                        const Total = Val+(Ext*(Qnt-1))
-                        const Total2 = Total+(Total*Pcnt)
-
-                        $(".Pcntalmt").innerHTML = `Porcentagem: R$ ${parseFloat(Pcnt)*100}%`
-                        $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
-                    }
-
-                </script>
             </div>
         </div>
     </div>
