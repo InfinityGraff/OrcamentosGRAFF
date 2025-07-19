@@ -82,6 +82,8 @@
       .CSS1 .TBLAA .hMin td select,.hMin td input{height: 17px !important}
           .CSS1 .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
           .CSS1 .TBLAA td img{height:17px; width: auto;}
+          .CSS2 .TBLAA td img{height:17px; width: auto;}
+          .CSS3 .TBLAA td img{height:17px; width: auto;}
       
       .CSS1 .TBLAA .AutoComp    {background: #94949473}
       .CSS1 .TBLAA .AutoComp.Cor{background: #ffffff00}
@@ -108,3 +110,38 @@ select.Error{background:red}
                 .Body2 .DivConf{top:0px  ; height: 40px}
                 .Body2 thead   {top:39px}
                 .Body2 .PagPEsq{display:block}
+
+
+.Dark *::-webkit-scrollbar             {width: 10px;height:10px}
+.Dark *::-webkit-scrollbar-track       {background: #0000006a}
+.Dark *::-webkit-scrollbar-thumb       {background: #5d5d5da5; border-radius:500px}
+.Dark *::-webkit-scrollbar-thumb:hover {background: #555555}
+
+.Lite *::-webkit-scrollbar             {width: 10px;height:10px}
+.Lite *::-webkit-scrollbar-track       {background: #af839e3d}
+.Lite *::-webkit-scrollbar-thumb       {background: #6d0b4748; border-radius:500px}
+.Lite *::-webkit-scrollbar-thumb:hover {background: #7a067e}
+
+
+/*Basicamente são CSS de cores dos Suggs e Links e Bandeijas*/
+    .CSS1 .BndjSUG,.CSS1 .BndjCLT,.CSS1 .BndjTBL
+                        {background:#bb0092; border-radius:10px}
+    .CSS1 .BNdj         {border:3px #bb0092 solid}
+    .CSS1 .BNdj > a     {      fill:#bb0092}
+    .CSS1 .BjConf       {background:#bb0092;}
+    .CSS2 .BndjSUG,.CSS2 .BndjCLT,.CSS2 .BndjTBL
+                        {background:#ee6e19; border-radius:10px}
+    .CSS2 .BNdj         {border:3px #ee6e19 solid}
+    .CSS2 .BNdj > a     {      fill:#ee6e19}
+    .CSS2 .BjConf       {background:#ee6e19;}
+    .CSS3 .BndjSUG,.CSS3 .BndjCLT,.CSS3 .BndjTBL
+                        {background:#ce3782; border-radius:24px}
+    .CSS3 .BNdj         {border:3px #ce3782 solid}
+    .CSS3 .BNdj > a     {      fill:#ce3782}
+    .CSS3 .BjConf       {background:#ce3782;}
+
+        .Lite .Sugg{background: #ffffff;color:#000000}
+        .Dark .Sugg{background: #585858;color:#ffffff}
+        .CSS3 .Sugg{background: var(--CSS3TblLt)}
+    .Lite .Sugg > *:hover {background: #aa009c; color:#ffffff}
+    .Dark .Sugg > *:hover {background: #757575}

@@ -65,16 +65,16 @@ function ShowBndj(div){
 function DarVAL(td,v,A){const dR = ['Rastr',...D_Rastr(td)] ; Inn(td,Tm_Tm[dR[4]](v,dR,A))}
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
-    const R = D_Rastr(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-    const val = ['Edit','Fixo','Sugg','Auto','SVG','Soma'].includes(R[3]) ? $('.P-P',td).textContent.trim()
-            : R[3]==='Data' ? Nm($('.P-P',td)).trim()
-            : R[3]==='Bndj' ? $('.P-P',td).textContent.trim()
-            : R[3]==='Valr' ? Num2($('.P-P',td).textContent.trim())
-            : R[3]==='Slct' ? $('select',td).value
-            : R[3]==='Inpt' ? $('input' ,td).value
-            : R[3]==='Chek' ? $('input' ,td).checked
+    const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
+    const val = ['Edit','Fixo','Sugg','Auto','SVG','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
+            : R.Tm==='Data' ? Nm($('.P-P',td)).trim()
+            : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
+            : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
+            : R.Tm==='Slct' ? $('select',td).value
+            : R.Tm==='Inpt' ? $('input' ,td).value
+            : R.Tm==='Chek' ? $('input' ,td).checked
             : is(td,'input')? td.value
-            : R[3]==='Lixo' ? '-'
+            : R.Tm==='Lixo' ? '-'
             : null
     return val
     // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
