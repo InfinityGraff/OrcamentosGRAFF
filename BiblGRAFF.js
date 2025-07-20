@@ -482,3 +482,40 @@ const RmvPlural = Stg => {
   if (Stg.endsWith('s') && Stg.length > 2) return Stg.slice(0, -1)
   return Stg
 }
+
+
+function Tempo(data) {
+  const agora = new Date();
+  const d = new Date(data);
+  const ms = agora - d;
+  const min = 60 * 1000;
+  const hora = 60 * min;
+  const dia = 24 * hora;
+
+  if(isNaN(d.getTime())){return '-'}
+
+  if (ms < min) return 'agora mesmo';
+  if (ms < hora) {
+    const qtd = Math.floor(ms / min);
+    return `há ${qtd} minuto${qtd > 1 ? 's' : ''}`;
+  }
+  if (ms < dia) {
+    const qtd = Math.floor(ms / hora);
+    return `há ${qtd} hora${qtd > 1 ? 's' : ''}`;
+  }
+
+  const dias = Math.floor(ms / dia);
+  if (dias === 1) return 'ontem';
+  if (dias < 7) return `há ${dias} dia${dias > 1 ? 's' : ''}`;
+
+  const semanas = Math.floor(dias / 7);
+  if (dias < 30) return `há ${semanas} semana${semanas > 1 ? 's' : ''}`;
+
+  const meses = Math.floor(dias / 30);
+  if (dias < 365) return `há ${meses} mês${meses > 1 ? 'es' : ''}`;
+
+  const anos = Math.floor(dias / 365);
+  return `há ${anos} ano${anos > 1 ? 's' : ''}`;
+}
+
+

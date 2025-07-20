@@ -354,8 +354,8 @@
             .BndjFOT,.BndjFLT{overflow: hidden}
             .BndjSUG .Sugg,.BndjCLT .Sugg,.BndjTBL .Sugg{border-radius:10px}
             .BndjSUG .Sugg > *,.BndjFOT .Sugg > *,.BndjCLT .Sugg > *{padding: 4px}
-            .BndjSUG{width: 390px !important;}
-            .BndjTBL{padding:5px ; width: auto !important; height: auto !important}
+            .BndjSUG{width:390px !important}
+            .BndjTBL{padding:5px ; width:auto !important; height:auto !important}
             .BndjFOT{border-radius:10px 10px 0 0; bottom:0px}
             .BndjFLT{border-radius:0 0 10px 10px}
             .BjConf         {color:#ffffff; height:24px}
@@ -412,32 +412,39 @@
             table.Card > tbody > tr {
                 display: grid;
                 grid-template-areas:
-                    "Id    Id  Data"
+                    " Id   Id  Data"
                     "Clnt Clnt Stts"
-                    "Serv Serv Stts"
+                    "Serv Serv Serv"
                     "Valr Cust Pgmt"
                     "Obs  Obs  Obs ";
                 grid-template-columns: 1fr auto auto;
                 gap: 4px 4px
             }
+            table.Card > tbody > tr[class^="n"]{display: none;}
             table.Card .AutoComp,table.Card .CorID{background: transparent !important;}
                                        table.Card > tbody > tr{width:calc(25% - 9px)}        /*Largura dos Cards 4 por Linha*/
-            @media (max-width: 800px) {table.Card > tbody > tr {width: calc(33.333% - 8px); }/* 3 por linha */
+            @media (max-width: 800px) {table.Card > tbody > tr {width: calc(33.333% - 8px)}} /* 3 por linha */
             @media (max-width: 500px) {table.Card > tbody > tr {width: 100%}}                /* 1 por linha */
-            }
-            table.Card > tbody > tr > td{padding: 5px; height: auto !important;}
-            table.Card > tbody > tr > td:nth-child(1) { grid-area: Id   }table.Card > tbody > tr > td:nth-child(1) > div > .P-P {color:#780096; font-weight:bold}
+            
+            table.Card > tbody > tr > td{padding: 5px; height: auto !important; } /*border: 1px solid red;*/
+            table.Card > tbody > tr > td:nth-child(1) { grid-area: Id   }table.Card > tbody > tr > td:nth-child(1) > div > .P-P {color:#780096; font-size: 10px ; font-weight:bold}
             table.Card > tbody > tr > td:nth-child(2) { grid-area: lin  ; display: none;}
-            table.Card > tbody > tr > td:nth-child(3) { grid-area: Data }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#666666; text-align:right}
-            table.Card > tbody > tr > td:nth-child(4) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#666666; font-size: 20px }
-            table.Card > tbody > tr > td:nth-child(5) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#000000                  }
-            table.Card > tbody > tr > td:nth-child(6) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold}
+            table.Card > tbody > tr > td:nth-child(3) { grid-area: Data }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#666666; text-align:right                        } table.Card > tbody > tr > td:nth-child(3) > div > .P-P > img{height:11px; margin-right:3px ; display: block;}
+            table.Card > tbody > tr > td:nth-child(4) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#666666; font-size: 17px ;                       } table.Card > tbody > tr > td:nth-child(4) > .Ct{justify-content:start}
+            table.Card > tbody > tr > td:nth-child(5) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#000000;                 ;                       } table.Card > tbody > tr > td:nth-child(5) > .Ct{justify-content:start}
+            table.Card > tbody > tr > td:nth-child(6) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold      } table.Card > tbody > tr > td:nth-child(6) > .Ct{justify-content:start}
             table.Card > tbody > tr > td:nth-child(7) { grid-area: Pgmt }table.Card > tbody > tr > td:nth-child(7) > div > .P-P {color:#000000; }
             table.Card > tbody > tr > td:nth-child(8) { grid-area: Cust }table.Card > tbody > tr > td:nth-child(8) > div > .P-P {color:#c7380c; font-size: 12px}
             table.Card > tbody > tr > td:nth-child(9) { grid-area: Lucro; display: none;}
-            table.Card > tbody > tr > td:nth-child(10){ grid-area: Stts }table.Card > tbody > tr > td:nth-child(10) > div > .P-P{color:#999999;}
+            table.Card > tbody > tr > td:nth-child(10){ grid-area: Stts }table.Card > tbody > tr > td:nth-child(10) > div > .P-P{color:#999999; width: 50px;}
             table.Card > tbody > tr > td:nth-child(11){ grid-area: Obs  ; display: none; color:#757575; font-size: 12px}
             table.Card > tbody > tr > td:nth-child(12){ grid-area: Lixo ; display: none;}
+
+            table.Tbla td[class*="Data"] a:nth-child(2){display: none}
+            table.Tbla td[class*="Data"] a:nth-child(3){display: flex}
+            table.Card td[class*="Data"] a:nth-child(2){display: flex}
+            table.Card td[class*="Data"] a:nth-child(3){display: none}
+            
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
@@ -454,7 +461,7 @@
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
-                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
@@ -1183,6 +1190,12 @@
             .Ubuiaxik{width: 800px; height: 500px}
         </style>
         <script> // Previews
+
+            function Tog_Card(Typ){
+                console.log('Asus')
+                //Tempo()
+            }
+
             function AbrirImg(img){MdalShow('#FormIMG')
                 Inn($('#FormIMG'),`<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}"><span>aquificara fica Os<span><div>`)
             }
@@ -1454,11 +1467,11 @@
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
-                <button onclick="Tog($('#H_PDDS'),'Card')">CARD</button>
+                <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
             <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
-            <table id="H_PDDS" class="hMin">
+            <table id="H_PDDS" class="hMin Tbla">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ExtObj(BS.PDDS)[2],'PDDS'))"></tr></tfoot>
