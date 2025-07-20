@@ -66,10 +66,10 @@
       .CSS1.Dark .TBLAA tr{border:1px solid #cccccc27}
       .CSS1.Lite .TBLAA tr{border:1px solid #00000027}
       .TBLAA th{padding:4px 6px}
-      .CSS1.Dark .TBLAA th{background: #161616;color:#ffffff}
-      .CSS1.Lite .TBLAA th{background: #8b0085;color:#ffffff}
-      .CSS1.Dark .TBLAA tfoot{background:#111111;color:white}
-      .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:white}
+      .CSS1.Dark .TBLAA thead{background:#8b0085;color:#ffffff}
+      .CSS1.Lite .TBLAA thead{background:#8b0085;color:#ffffff}
+      .CSS1.Dark .TBLAA tfoot{background:#8b0085;color:#ffffff}
+      .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:#ffffff}
       .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px}
     /*Tbody*/
       .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
@@ -145,3 +145,12 @@ select.Error{background:red}
         .CSS3 .Sugg{background: var(--CSS3TblLt)}
     .Lite .Sugg > *:hover {background: #aa009c; color:#ffffff}
     .Dark .Sugg > *:hover {background: #757575}
+
+/* Skeleton box */
+  @keyframes shimmer {0%{background-position: 200% 0}100%{background-position:-200% 0}}
+  .Sklt{
+    height: 16px !important;border-radius: 4px; margin: 3px;
+    background: linear-gradient(90deg,#e0e0e0 25%,#f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear
+  }

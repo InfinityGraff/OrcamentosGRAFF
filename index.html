@@ -39,6 +39,9 @@
         <script src="https://threejs.org/build/three.js"></script>-->
         <script src="./AchaMdd.js"></script>
         <script src="./Gera3D.js"></script>
+        <style>
+            .Fixed{position: fixed;}
+        </style>
 </head>
 
 <script> // Base de Dados
@@ -47,7 +50,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 10
+    const LimitLin = 1000
     const Atual = {Pag:'#Pag_ORC'}
     const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
@@ -55,6 +58,7 @@
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let scrollPosition = [0,0]
+    const Mnsg = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
@@ -277,7 +281,8 @@
     const ALL = {CLNT:[]}
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
-        
+
+    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário"}
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
@@ -334,7 +339,7 @@
         const isBdj   =e=>!!e.closest('.BndjTBL')
         const Sib     =e=>$(e,Pai(event.target))     
     // Epecíficas (as q Executa)
-        const ALERT =e=>{Inn('#ALERT span',JSON.parse(e).Dados.map(e=>`<div style="margin:3px">"${e}"</div>`).join(''));ShowTime('#ALERT',3)}
+        const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
         function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
         function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
@@ -477,6 +482,10 @@
                 // Adicionar um Input de pesquisa no SuggLink também igual o de Clnt
             }
 
+            const Tm_Loade=(Typ)=>{
+                return For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('')
+            }
+
             const Tm_Table=(typ,arry)=>{ const IN = performance.now()
 
                 const Tm_Bndj=(arr,Typ)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
@@ -530,7 +539,7 @@
                 }).join('')
 
                 const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Table(${typ}): ${Perform}ms`)
+                Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Tables(${typ}): ${Perform}ms`)
                 return Retorno
                 // acredito q posso simplificar exitando a pesquisa do nome do Clnt, em cada Bndj, pois ta procurando 3 vezes em cada Linha! uma pra PDDS, ai uma na Bndj Serv e PGMT
             }
@@ -620,7 +629,7 @@
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                     `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
-                            <p class="ppt">${e}</p>
+                            <p class="ppt">${dbCol[e]}</p>
                             <i onclick="Orden(this,'${x}','p')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
@@ -1263,10 +1272,12 @@
                     .Body2 #DivNav          {width:90%}
                     .Body2 #BdjLogin        {width: 100% ; justify-content: flex-end; background: #38003fa6}
                     .Body2 #Login-Top       {display: flex; margin-right: 7px; font-size: 14px;}
-                    .NavAtv                 {background: #da00aa}
-                    .NavAtv:hover           {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
+                    nav > *.Atv             {background: #da00aa}
+                    nav > *.Atv:hover       {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
 
-            #ALERT{right:0px;top:0px;margin:10px;padding:10px;background:#696969}
+            #ALERT{right:0px;bottom:0px;margin:10px;padding:10px;background:#696969; display: none;
+                    opacity: 0;transform: translateY(20px);transition: opacity 0.4s ease, transform 0.4s ease}
+            #ALERT.show {display: flex;opacity: 1;transform: translateY(0)}
 
             /*.TBLAA tbody > tr       {background:transparent;transition:background 0.5s ease-out} /*  Saída lenta   */
             /*.TBLAA tbody > tr:hover {background:#8000a0a6;transition:background 0.02s ease-in} /* Entrada rápida */
@@ -1326,18 +1337,15 @@
         <div id="DivNav"> <!--Nav-->
             <nav id="H_Nav" class="Ct"></nav>
             <script>
-            function NAVPAG(Typ,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
-                NavPag(`#Pag_${Typ}`,Eu)
-                Atual['Pag']=`#Pag_${Typ}`
-                Rmv($$('.NavAtv',Pai(Eu)),'NavAtv') ; Add(Eu,'NavAtv')
-                NavPesq(`.Pesq_${Typ}`)
-                if(ObjKey(J).includes(Typ)){
-                         if(Typ=='PGMT'){getSupaBS(Typ);getSupaBS('MPAG')                  } // tem 2 Tabelas na #PagPGMT
-                    else if(Typ=='GRAD'){getSupaBS(Typ);getSupaBS('OOSS');getSupaBS('UBER')} // tem 3 Tabelas na #PagGRAD
-                    else{getSupaBS(Typ)}                                                     // os demais tem só 1 tabela
+                function NAVPAG(Typ,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
+                    NavPag(`#Pag_${Typ}`,Eu)                                  // Trocar a Página
+                    Atual['Pag']=`#Pag_${Typ}`                                // Dizer quem é a Página Atual
+                    Rmv($$('.Atv',Pai(Eu)),'Atv') ; Add(Eu,'Atv')             // Acho q isso deve ser só pra os Icones
+                    NavPesq(`.Pesq_${Typ}`)                                   // Trocar a Pesquisa
+                    setTimeout(()=>loadtmtable(Typ),0)                        // 100% Assíncrono
                 }
-            }
-            Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))</script>
+                Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))
+            </script>
         </div>  
 
         <div id="BdjLogin" class="Ct"> <!--Perfil-->
@@ -1372,7 +1380,7 @@
             </div>
         </div>
         
-        <div id="ALERT" class="Abslt rd none">
+        <div id="ALERT" class="Fixed rd none">
             <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
             <span class="w100 Ct" style="height: 30px"></span>
         </div>
@@ -2607,7 +2615,7 @@
             function AddRowPratic(Typ,obj,Pose){
                 let tbody =  $(`#H_${Typ} > tbody`)
                 let Clone =  $('tr',tbody).cloneNode(true)
-                ClearRow(Clone) // isso poderia recarregar chamando Tm_Table apenas pra essa Linha (Limpará rapidinho)
+                ClearRow(Clone) // isso poderia recarregar chamando Tm_Tables apenas pra essa Linha (Limpará rapidinho)
                 Pose === "<" ? tbody.prepend(Clone) : tbody.appendChild(Clone)
             }
 
@@ -2673,34 +2681,49 @@
         // Adicionar e trocar Cliente
         // Editar elementos por dentro da Bndj
         // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
+
+        function loadtmtable(Typ){
+            const LOAD = ()=>{
+                const tbody = $(`#H_${Typ} > tbody`)
+                Add($(`#H_${Typ}`),'w90')
+                Inn(tbody,Tm_Loade(Typ)) // mostrar um Load Carregando até completar
+                // settimeout aqui
+                Inn(tbody,Tm_Table(Typ,J[Typ]));RealTime(Typ)
+                Rmv($(`#H_${Typ}`),'w90')
+            }
+
+            if(ObjKey(J).includes(Typ)){
+                if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](N_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
+                     if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
+                else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
+                else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
+                PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
+            }
+        }
 </script>
 
 <script> // SupaBASE ⭐_ _ _ _
-    async function getSupaBS(Typ){
-        function loadtmtable(Typ){Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,J[Typ]));RealTime(Typ)}
-        if(PreTable[Typ]==true){return}// Conferir se essa Aba já foi Aberta!
-        const Tabelas = ['CLNT','UBER','MPAG','OOSS','GRAD','PDDS','SERV','PGMT'] // Tabelas Disponíveis no SupaBase!
-        const Pedidos = ['PDDS','SERV','PGMT']
-        const TYP = Pedidos.includes(Typ)?'PDDS':Typ
-        if(TYP=='PDDS'&&(PreTable['PDDS']==true||PreTable['SERV']==true||PreTable['PGMT']==true)){
-            loadtmtable(Typ) // Só carega a tabela pois o Json já Existe na const!
-        }else if(Tabelas.includes(Typ)){ // Tabelas Disponíveis no SupaBase!
+
+    function getSB(){
+        async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
             let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supabase.from(TYP).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+            do{({data}=await supabase.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
                 if (!data) return console.error('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
             
-            if(Pedidos.includes(Typ)){
-                J[TYP] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
+            if(Typ=='PDDS'){
+                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 J['SERV']=J['PDDS'].flatMap(obj=>obj.Serv)
                 J['PGMT']=J['PDDS'].flatMap(obj=>obj.Pgmt)
-            }else{J[TYP] = NULL__(todas.map(e=>PDDSconverterJSON(e))) ; if(TYP=='CLNT'){Listagem('CLNT')}}
-            loadtmtable(Typ)
+            }else{
+                J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
+                if(Typ=='CLNT'){Listagem('CLNT')}
+            }
+            console.log(`${Typ} já ta na Const`) 
         }
-        PreTable[Typ]=true // Deixar aba aberta após rodar tudo!
-        // depois tentar mostrar um Load Carregando até completar todas pra saber q ta carregando
-    }
+        ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
+    }getSB()
 
     function configurarRealtime(){
         return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},(payload)=>{

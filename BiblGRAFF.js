@@ -518,4 +518,11 @@ function Tempo(data) {
   return `há ${anos} ano${anos > 1 ? 's' : ''}`;
 }
 
-
+const ShowTime2=(e,sec)=>{
+    Show(e)
+    requestAnimationFrame(()=>{Add($(e),"show")})
+    setTimeout(()=>{
+        Rmv($(e),"show")
+        setTimeout(()=>{None(e)},400) // espera a transição terminar
+    }, sec*1000)
+}
