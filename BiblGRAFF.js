@@ -526,3 +526,91 @@ const ShowTime2=(e,sec)=>{
         setTimeout(()=>{None(e)},400) // espera a transição terminar
     }, sec*1000)
 }
+
+// comparar objetos se são iguais
+
+const saoIguaisProfundamente = (a, b) => {
+  if (a === b) return true;
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    return a.every((item, i) => saoIguaisProfundamente(item, b[i]));
+  }
+
+  if (typeof a === 'object' && typeof b === 'object' && a && b) {
+    const chavesA = Object.keys(a);
+    const chavesB = Object.keys(b);
+    if (chavesA.length !== chavesB.length) return false;
+
+    return chavesA.every(k => saoIguaisProfundamente(a[k], b[k]));
+  }
+
+  return false;
+};
+
+const extrairDiferencas = (a, b) => {
+  if (typeof a !== 'object' || typeof b !== 'object' || !a || !b)
+    return a !== b ? a : undefined;
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.map((item, i) => {
+      const diffs = extrairDiferencas(item, b[i]);
+      if (diffs && Object.keys(diffs).length) {
+        const id = item.Id ?? item.id;
+        return id !== undefined ? { ...(id !== undefined ? { Id: id } : {}), ...diffs } : diffs;
+      }
+    }).filter(Boolean);
+  }
+
+  const diffs = {};
+  for (const chave in a) {
+    if (!saoIguaisProfundamente(a[chave], b[chave])) {
+      const d = extrairDiferencas(a[chave], b[chave]);
+      if (d !== undefined) diffs[chave] = d;
+    }
+  }
+
+  // Se tiver Id/id, adiciona
+  if ((a.Id ?? a.id) !== undefined) {
+    diffs.Id = a.Id ?? a.id;
+  }
+
+  return diffs;
+};
+
+const Diferentes = (New, Atual) => {
+  return Object.fromEntries(
+    ObjEtr(New).map(([k, v]) => {
+      const vAtual = Atual[k];
+      const diferenca = extrairDiferencas(v, vAtual);
+      return diferenca && Object.keys(diferenca).length ? [k, diferenca] : null;
+    }).filter(Boolean)
+  );
+};
+
+
+function flatenObject(obj, prefix) {
+  const result = [];
+
+  const idPai = obj.Id || '';
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (key === 'Id') continue; // Já usamos o ID do pai
+
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        const idFilho = item.Id || '';
+        for (const [k, v] of Object.entries(item)) {
+          if (k === 'Id') continue;
+          result.push([key, idFilho, k, String(v)]);
+        }
+      }
+    } else if (typeof value === 'object' && value !== null) {
+      // Suporte futuro para objetos aninhados se quiser
+    } else {
+      result.push([[prefix], idPai, key, String(value)]);
+    }
+  }
+
+  return result;
+}

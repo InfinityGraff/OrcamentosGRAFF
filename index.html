@@ -50,7 +50,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 1000
+    const LimitLin = 100
     const Atual = {Pag:'#Pag_ORC'}
     const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
@@ -282,7 +282,7 @@
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
-    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário"}
+    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário"}
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
@@ -294,7 +294,7 @@
 
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
         GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Stts:['E',''],Lixo:['X','']},
-        ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AsStts:['E','A'],Lixo:['X','']},
+        ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E','' ],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
@@ -347,6 +347,8 @@
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
+        const LOG=(stg)=>console.log(stg)
+        //const Diferentes=(New,Atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==Atual[k]))
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -2548,29 +2550,28 @@
 
 <script> // Manipulações de Dados
         function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
-            const[Typ,Lin2,col,Cry]=D_Rastr(_td(e))
+            const[ras,Typ,Lin2,col,Cry]=D_Rastr(_td(e))
             R_Color(_tr(e),Typ)
             const Val = vall===""?"":VAL(e)
-            if(Val===Nm(e)){console.log('Não foi Alterado...') ; return}
-            const IsBdj  = isBdj(e) // !!e.closest('.BndjTBL') // antes tava isso
+            if(Val===Nm(e)){return} // quando não foi Aterado
+            const IsBdj  = isBdj(e)
             const Lin    = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
             const NewVal = vall===""?"":vall?vall:Val
             const Antg   = Nm(e)
             const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
             Nm(e,e.textContent.trim()) // Mudar o Name
             
-            // console.log('NovoArray:',Arr)
-            const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'} // o Importante é saber, se estou Editando a Primeira camada, Segunda camada ou Terceira (por enquanto só essas 3)
+            const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',Abcd:'GRAD'} // em qual camada a linha está
 
             // de fato o Ato de Editar
             if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
             else{
-                const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin) // Achar o Index da tabela de pedidos
+                const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin)                // Achar o Index da tabela de pedidos
                 const Idxbdj = J[Camada[Typ]][Idx][Aa(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
                 J[Camada[Typ]][Idx][Aa(Typ)][Idxbdj][col] = NewVal
                 //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
             }
-            console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
+            //console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
 
             UpdateSupa(Typ,col,Lin,NewVal)
         }
@@ -2683,13 +2684,15 @@
         // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
 
         function loadtmtable(Typ){
-            const LOAD = ()=>{
-                const tbody = $(`#H_${Typ} > tbody`)
-                Add($(`#H_${Typ}`),'w90')
-                Inn(tbody,Tm_Loade(Typ)) // mostrar um Load Carregando até completar
+            const LOAD = (TYP)=>{
+                const tbody = $(`#H_${TYP} > tbody`)
+                Add($(`#H_${TYP}`),'w90')
+                Inn(tbody,Tm_Loade(TYP)) // mostrar um Load Carregando até completar
                 // settimeout aqui
-                Inn(tbody,Tm_Table(Typ,J[Typ]));RealTime(Typ)
-                Rmv($(`#H_${Typ}`),'w90')
+                setTimeout(()=>{
+                    Inn(tbody,Tm_Table(TYP,J[TYP]));RealTime(TYP)
+                    Rmv($(`#H_${TYP}`),'w90')
+                },0)
             }
 
             if(ObjKey(J).includes(Typ)){
@@ -2734,21 +2737,52 @@
 
     function Supa_RealTime(crud,novo,Typ){
         if(crud==='UPDATE'){
-            const tr = $(`#H_${Typ} tbody tr[class*="tr-${novo.Id}"]`)
-            if(!tr){return} // se não existe ela já foi foi Excluida! ou não foi Carregada
-            const tm = Tm_Table(Typ,NULL__([novo])).replace(/^<tr[^>]*>/,'').replace(/<\/tr>$/,'')
-            tr.innerHTML = tm
-        }
-    }
+            const NOVOO = NULL__([novo])[0]
+            const Atual = J[Typ].find(e=>e.Id==novo.Id)
+            const Difff = Diferentes(NOVOO,Atual,Typ)
+            console.log('Diferenças',Difff)
 
-    async function UpdateSupa(Typ,coluna,id,valor){
-        try {const { error } = await supabase.from(Typ).update({[coluna]:valor}).eq('Id',id)
-            if (error) {console.error('Erro ao atualizar:', error);//showToast('Erro ao atualizar serviço','error')
-            } else {console.log('Atualizado')  //showToast('Atualizado com sucesso!')
+            const InnAvanc=(P_P,Vlr)=>{
+                if(Array.isArray(Vlr)){
+                    Vlr.forEach(lin=>{ // Percorrer cada Linha
+                        ObjEtr(lin).forEach(([k,v])=>{ // Percorrer cada Coluna
+                            const p_p = k
+                            const New = v
+                            Inn(p_p,New);Nm(p_p,New) // Edita Novo Valor
+                        })
+                    })
+                }else{Inn(P_P,Vlr);Nm(P_P,Vlr)} // Edita Primitivo
             }
-        } catch (err){console.error('Erro:',err);//showToast('Erro ao atualizar serviço', 'error')
-        } finally {console.log('Salvo')}
-        // Conferir se a Edição foi de Remover Linha ou Adicionar Linha
+
+            ObjEtr(Difff).forEach(([col,Vlr])=>Atual[col]=Vlr) // Atualiza a Const primeiro
+            console.log('FLAT: ',flatenObject(Difff,Typ))
+            flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
+                console.log(AA(TYP),col,ID)
+                const dadoos = $$(Rx2([`${AA(TYP)}-${ID}-${col}`]))
+                LOG(dadoos)
+            })
+                
+            //     //const AllTd = 
+            //     const PPs = $$(`:is(.Bdj_${Typ},#H_${Typ}) > tbody > tr[class*="tr-${novo.Id}"] > ${Col(Typ,col)} > div > .P-P`)
+            //     PPs.forEach(P_P=>{ // agora passa por todos P-P Primario e em Bandeijas
+            //         if(!P_P)         {LOG('⚠️ RealTime() P-P não Existe'   ) ; return} // não Carregou ou foi Excluida!
+            //         if(Inn(P_P)==Vlr){LOG('⚠️ RealTime() P-P ja Tava Igual') ; return} // se já for igual!
+            //                           LOG('✏️ RealTime() P-P foi Editado'  ) ; InnAvanc(P_P,Vlr) // da um Inner Personalizado
+            //     })
+            // })
+        }
+        // provavelmente vou ter q usar tm_tm
+        // e n sei se Json deve ser mudado assim
+        // o Inner deve vir Mascarado se Precisar!
+        // na Data a é só com o P_P Pois Data tem um <a> dentro
+        // talvez deva corrigir usando mascarara de Data
+    }LOG('Rebolo')
+
+    async function UpdateSupa(Typ,col,id,valor){
+        try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
+            if (error){console.error('Erro ao atualizar:',error)}
+            else  {    console.log('💾 UpdateSupa(✏️) Atualizado') ; ALERT(`"${valor}" Atualziado no SubaBase! (${Typ},${id},${col})`)}
+        } catch (err){ console.error('Erro:',err                  ) ; ALERT('Erro ao atualizar serviço')}
     }
 
     async function CREATESupa(Typ,coluna,id,valor){
