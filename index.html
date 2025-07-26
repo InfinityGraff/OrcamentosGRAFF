@@ -293,7 +293,7 @@
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
 
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],ABCD:['B',''],Stts:['E',''],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E','' ],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
@@ -347,7 +347,7 @@
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
-        const LOG=(stg)=>console.log(stg)
+        const LOG=(...stg)=>console.log(...stg)
         //const Diferentes=(New,Atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==Atual[k]))
 </script>
 
@@ -499,7 +499,7 @@
                 function Tratamento(Arr,R){
                     const col   = R.Col
                     const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr)].filter(Boolean) : Arr
-                    const Title = col==='ABCD' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
+                    const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
                                   col==='Pgmt' ? Find.map(e=>`${e['Valr']} ${e['Form']}`).join(' | ') :
                                   col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
                                   col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
@@ -509,7 +509,7 @@
                     if(Title!=''){if(['Cust','Finc','Calc'].includes(col)){todoTitle[col].push(Title)}}
                     col=='Serv' ? Find.map(e=>`${todoTitle[col].push(e['Serv'])}`) : null
                     
-                    const Reordem =()=>{if(col=='Serv'||col=='Pgmt'){ // Reordenar se Precisar ou seja se o Usuário quiser!
+                    const Reordem =()=>{if(col=='Serv'||col=='Pgmt'||col=='Cust'||col=='Abcd'){ // Reordenar se Precisar ou seja se o Usuário quiser!
                         return OrdnCol(ArrObj_ArrArr(Find),ObjKey(BS[col.toUpperCase()]))
                         }else{return ArrObj_ArrArr(Find)}} // as demais permanecem iguais
 
@@ -2550,50 +2550,45 @@
 </body>
 
 <script> // Manipulações de Dados
-        function EditCell(e,vall=null){ // Permitir q Funcione em Todas as Tabelas
-            const[ras,Typ,Lin2,col,Cry]=D_Rastr(_td(e))
-            R_Color(_tr(e),Typ)
+        function EditCell(e,vall=null){ // ⭐⭐⭐⭐_
+            const[ras,Typ,ID2,col,Cry]=D_Rastr(_td(e))
+            // R_Color(_tr(e),Typ)
             const Val = vall===""?"":VAL(e)
             if(Val===Nm(e)){return} // quando não foi Aterado
             const IsBdj  = isBdj(e)
-            const Lin    = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? Lin2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : Lin2
+            const ID     = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? ID2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : ID2
             const NewVal = vall===""?"":vall?vall:Val
             const Antg   = Nm(e)
-            const Arr    = [Typ,Lin,col,NewVal,Antg,Lin2] // [Tabela, Linha, Coluna, NovoValor, ValorAntigo, LinhaDentro]
             Nm(e,e.textContent.trim()) // Mudar o Name
-            
-            const Camada = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',Abcd:'GRAD'} // em qual camada a linha está
-
-            // de fato o Ato de Editar
-            if(Camada[Typ]==1){J[Typ][col] = NewVal} // Apenas Trocar o Valor Simples!
+            $$(Rx2([`${Typ}-${ID2}-${col}`])).forEach(td=>{if(td!==_td(e)){if(VAL(td)!==NewVal){DarVAL(td,NewVal)}}}) // Editar Cópias em outra Tabela
+            const Nv = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'} // em qual camada a linha está
+            //O Ato de Editar
+            if(Nv[Typ]==1){J[Typ][col] = NewVal ; UpdateSupa(Typ,col,ID,NewVal)} // Edição de Valor Simples
             else{
-                const Idx    = J[Camada[Typ]].findIndex(obj=>obj['Id']==Lin)                // Achar o Index da tabela de pedidos
-                const Idxbdj = J[Camada[Typ]][Idx][Aa(Typ)].findIndex(obj=>obj['Id']==Lin2) // Achar o Index da Bandeija 
-                J[Camada[Typ]][Idx][Aa(Typ)][Idxbdj][col] = NewVal
-                //console.log(J[Camada[Typ]].find(obj=>obj['Id']==Lin))
+                const X = J[Nv[Typ]].find(e=>e.Id==ID)  // encontra a Linha nivel 1
+                const x = X[Aa(Typ)].find(e=>e.Id==ID2) // encotnra a linha nivel 2
+                x[col] = NewVal
+                UpdateSupa(Nv[Typ],Aa(Typ),ID,X[Aa(Typ)])
             }
-            //console.log(0,Typ,Lin,col,Lin2,`Editado: ${Antg} >> ${NewVal}`)
-
-            UpdateSupa(Typ,col,Lin,NewVal)
         }
 
         function NewLinBdj(Eu){ // Nova LInha na Bandeija
             const R = D_R(_td(Eu))
-            if(['Pgmt','Serv','Cust'].includes(R.Col)){ // por enquanto só funciona pra essas 3
+            if(['Pgmt','Serv','Cust','Abcd'].includes(R.Col)){ // Só funciona pra essas
                 const obj = J[R.Typ].find(e=>e.Id==R.Row) // mostra oq tem dentro
-                const Srvs= obj[R.Col]
+                const vall= obj[R.Col]
                 const tbl = $('table',_td(Eu))
-                if(Srvs.length==1 && Srvs[0].Id==''){Rmv_N(tbl) ; /*Edita o ID*/ ; return} // se tiver um Default apenas exibe ele
+                if(vall.length==1 && vall[0].Id==''){Rmv_N(tbl) ; /*Edita o ID*/ ; return} // se tiver um Default apenas exibe ele
                 else{
                     console.log('Já tem Linha dentro')
                     const Def    = Dfut[AA(R.Col)]
-                    const NewDef = Def   // novo Id:45_1 e repassa o Id do Cliente
-                    Srvs.push(NewDef)                               // Nova linha no Json
+                    const NewDef = Def   // Replica 'ID','Data','Clnt'
+                    vall.push(NewDef)                               // Nova linha no Json
                     Befor($('tbody',tbl),Tm_Table(AA(R.Col),[Def])) // Nova linha na Prática 
-                    //UpdateSupa(R.Typ,R.Col,R.Row,Srvs)            // Edita o SupaBase (Srvs pois vai mudar pra o Json Completo) e faz a mesma coisa toda vez q for editar um Json
+                    UpdateSupa(R.Typ,R.Col,R.Row,vall)              // Edita o SupaBase (vall sempre vai ser um Json)
                 }
             }
-        }
+        }LOG('Marts')
 
         function TesteClnt(inpt){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
             // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
@@ -2677,12 +2672,10 @@
             // quando terminar Limpa o Filtro
         }
 
-        // Adicionar Novo PDDS
-        // Botão de Nova Linha (SERV,PGMT,CUST)
-        // Remover PDDS
-
+        // Nova Linha na Tabela
+        // Nova Linha Bandeija (SERV,PGMT,CUST,ABCD)
+        // Remover Linhas
         // Adicionar e trocar Cliente
-        
         
 
         function loadtmtable(Typ){
@@ -2735,16 +2728,22 @@
             .channel('SuBs-CLNT')
             .on('postgres_changes', { event: '*', schema: 'public', table: '*' }, (payload) => {
                 const [crud,nEw,old,Typ] = [payload.eventType, payload.new, payload.old, payload.table]
-                Supa_RealTime(crud,nEw,Typ)
+                Supa_RealTime(crud,nEw,Typ,old)
             })
             .subscribe()
     }
 
-    function Supa_RealTime(crud,nEw,Typ){
+    function Supa_RealTime(crud,nEw,Typ,old){
         if(crud==='UPDATE'){
+            // antes de mais nada conferir se essa edição é uma edição de
+                // Editou valor              (esse q já tenho!)
+                // botou ou tirou da Lixeira (Lixo==true) (dentro e fora da bandeija) // conferir se a edição foi na Coluna de Lixo
+                // Add ou Rmv Linha da Bndj  (aqui é fácil só conferir o .length do atual e do novo!)
+                // este Realtime() tbm deve chamar R_Color()
             const NOVOO = NULL__([nEw])[0]
             const Atual = J[Typ].find(e=>e.Id==nEw.Id)
             const Difff = Diferentes(NOVOO,Atual,Typ)
+            if(Difff==null){LOG(`⚠️ RealTime() J[${Typ}] ja Tava Igual`) ; return}
             ObjEtr(Difff).forEach(([col,Vlr])=>{if(col!=='Id'){Atual[col]=NOVOO[col]}})// Atualiza a Const primeiro           
             flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
                 $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
@@ -2754,6 +2753,14 @@
                     else{LOG('⚠️ RealTime() P-P não Existe')}
                 })
             })
+        }else if(crud==='DELETE'){// Linha foi Exluida de Verdade
+            const Antigo = old // comparar com quem ela é igual! pra poder remover
+            // remove da Const, e o Prático!
+        }else if(crud==='INSERT'){// Linha foi Adicionada de Verdade
+            const novaLin = nEw
+            // dar Push na Const
+            // insertbefore, e tm_Table() para criar tr novo!
+
         }
     }
 

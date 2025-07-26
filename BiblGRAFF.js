@@ -435,7 +435,7 @@ function CopyGRAFF(e,btn){
 
 
 function PDDSconverterJSON(obj) {
-    const camposParaConverter = ["Serv", "Pgmt", "Cust","ABCD"];
+    const camposParaConverter = ["Serv", "Pgmt", "Cust","Abcd"];
     for (const campo of camposParaConverter) {
         const valor = obj[campo];
         if (
