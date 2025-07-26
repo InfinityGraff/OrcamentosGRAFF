@@ -321,8 +321,9 @@
     // Epecíficas (as q Retorna)
         const Prvn    =()=>event.preventDefault()
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
+        const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
-        const daClass =R=>BS[R.Typ][R.Col][1].split('').map(e=>CRYCLS[e]).join(' ') // Aplica as Casses q estão no BS
+        const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ')} // Aplica as Casses q estão no BS
         const tr_ID   =tr =>getClas(tr,'tr-').split('-')[1]
         const tr_X    =tr =>getClas(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
@@ -330,14 +331,16 @@
         const D_Rastr =e=>Extrat_Clss(e,'Rastr-').split('-')
         const D_R     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
         const Coll    =x=>`td:nth-child(${x})`
-        const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
+        //const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
+        const Col     =(Typ,col)=>`td:nth-child(${Colx(Typ,col)})`
         const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
         const H_Col_p =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
         const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
         const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
         const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
         const isBdj   =e=>!!e.closest('.BndjTBL')
-        const Sib     =e=>$(e,Pai(event.target))     
+        const Sib     =e=>$(e,Pai(event.target))
+        const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
     // Epecíficas (as q Executa)
         const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
@@ -526,7 +529,6 @@
                 
                 function Tm_Td(v,e,x,Typ,dado){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r)
                     const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && dado!=="vemBndj"
-
                     return valid        ? `<td class="${r} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
                            R.Tm=='Bndj' ? `<td class="${r} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,R)}</td>` :
                            R.Tm=='Sugg' ? `<td class="${r} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
@@ -616,9 +618,9 @@
 
     <div>   <!--FILTROS  - ⭐⭐⭐⭐_ -->
         <style> /*FILTROS - CSS*/
-            /*a idéia aqui é q todas as ocorencias desses CSS estejam só aqui em FILTROS*/
             /*Particularidades da BndjFLT*/
-            .ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%)}
+            .ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%);opacity:0.5}
+            .ThFilt > i.Atv{opacity:1}
             .ThFilt > b    {position:absolute; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; }
             .ThFilt > b.Atv{background:#0c8f00; right:29px}
             .ThFilt > b.Rtv{background:#ff0000; right:10px}   
@@ -632,7 +634,7 @@
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${e}</p></th>`:
                     `<th class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
-                            <p class="ppt">${dbCol[e]}</p>
+                            <p class="ppt" name="${e}">${dbCol[e]}</p>
                             <i onclick="Orden(this,'${x}','p')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
@@ -827,10 +829,10 @@
             
             function Orden(e,x,Cntd=null,order=null){// ✔️ se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
                 function AtualizaSetas(e,asc){
-                    $$('th',e.closest('table')).forEach(th=>{const seta = $('i',th);if(seta){seta.style.opacity=0.5;seta.textContent='▼'}})
-                    const Atual = SibQSl(e,'i') ; if(Atual){Atual.style.opacity=1;Atual.textContent=asc?'▼':'▲'}
+                    AllI(_table(e)).forEach(i=>{DTV(i);i.textContent='▼'})
+                    const Atual = SibQSl(e,'i') ; ATV(Atual) ; Atual.textContent = asc?'▼':'▲'
                 }
-                const table = e.closest('table')
+                const table = _table(e)
                 const cOl = $('p',_th(e))
                 const tbody = $('tbody',table)
                 const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
@@ -2572,6 +2574,20 @@
             }
         }
 
+        function insertOrden(Typ,arr){  // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem)
+            const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
+            const tbody= $(`#H_${Typ} > tbody`)
+            const trs = [...tbody.rows]
+            const Ordn= AllI(_table(tbody),'Atv')                    // Orden Ativa
+            const asc = Ordn.length==0?true:Ordn[0].innerText == '▼' // Conferir se é Desc ou Asec
+            const col = Ordn.length==0?'Id':Nm(SibQSl(Ordn[0],'p'))  // Nome da Coluna
+            const colX= Colx(Typ,col)                                // index da coluna
+            const vall= arr[0][col]
+            const compare=(a,b)=> asc ? b.localeCompare(a)<0 : a.localeCompare(b)<0
+            const Alvo= trs.find(tr=>{const a = VAL($(Rx2([Typ,col]),tr)) ; return compare(a,vall)}) //(a,b)=>b<+a, quando é Valor
+            tbody.insertBefore(NEWtr,Alvo||null)
+        }
+
         function NewLinBdj(Eu){ // Nova LInha na Bandeija
             const R = D_R(_td(Eu))
             if(['Pgmt','Serv','Cust','Abcd'].includes(R.Col)){ // Só funciona pra essas
@@ -2588,21 +2604,7 @@
                     UpdateSupa(R.Typ,R.Col,R.Row,vall)              // Edita o SupaBase (vall sempre vai ser um Json)
                 }
             }
-        }LOG('Marts')
-
-        function TesteClnt(inpt){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
-            // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
-            if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
-                if(Nmame(inpt)){return Nmame(inpt)
-                }else{
-                    AddROW('CLNT',{Clnt:inpt.value}) // Adiciona Nova Linha já com Novo Valor
-                    // dentro do AddRow terá os 3 (Prático, Const, SupaBase)
-                    // Reload nesta Célula
-                    }
-            }
-        }
-        // encontrar o ultimo id de uma coluna
-        const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
+        }LOG('nova Linha Bandeija')
 
         function AddROW(Typ,obj=null){ // um Obj no segundo argumento se Tiver
             if(Typ=='PGMT'||Typ=="CUST"||Typ=="SERV"){
@@ -2676,7 +2678,21 @@
         // Nova Linha Bandeija (SERV,PGMT,CUST,ABCD)
         // Remover Linhas
         // Adicionar e trocar Cliente
-        
+
+        function TesteClnt(inpt){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
+            // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
+            if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
+                if(Nmame(inpt)){return Nmame(inpt)
+                }else{
+                    AddROW('CLNT',{Clnt:inpt.value}) // Adiciona Nova Linha já com Novo Valor
+                    // dentro do AddRow terá os 3 (Prático, Const, SupaBase)
+                    // Reload nesta Célula
+                    }
+            }
+        }
+        // encontrar o ultimo id de uma coluna
+        const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
+
 
         function loadtmtable(Typ){
             const LOAD = (TYP)=>{
@@ -2688,6 +2704,7 @@
                     Inn(tbody,Tm_Table(TYP,J[TYP]));RealTime(TYP)
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
+                
             }
 
             if(ObjKey(J).includes(Typ)){
@@ -2724,31 +2741,29 @@
     }getSB()
 
     function configurarRealtime() {
-        return supabase
-            .channel('SuBs-CLNT')
-            .on('postgres_changes', { event: '*', schema: 'public', table: '*' }, (payload) => {
-                const [crud,nEw,old,Typ] = [payload.eventType, payload.new, payload.old, payload.table]
-                Supa_RealTime(crud,nEw,Typ,old)
-            })
-            .subscribe()
+        return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
+            const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table]
+            Supa_RealTime(crud,nEw,Typ,old)
+        }).subscribe()
     }
 
     function Supa_RealTime(crud,nEw,Typ,old){
         if(crud==='UPDATE'){
-            // antes de mais nada conferir se essa edição é uma edição de
-                // Editou valor              (esse q já tenho!)
-                // botou ou tirou da Lixeira (Lixo==true) (dentro e fora da bandeija) // conferir se a edição foi na Coluna de Lixo
-                // Add ou Rmv Linha da Bndj  (aqui é fácil só conferir o .length do atual e do novo!)
-                // este Realtime() tbm deve chamar R_Color()
             const NOVOO = NULL__([nEw])[0]
             const Atual = J[Typ].find(e=>e.Id==nEw.Id)
             const Difff = Diferentes(NOVOO,Atual,Typ)
             if(Difff==null){LOG(`⚠️ RealTime() J[${Typ}] ja Tava Igual`) ; return}
+            LOG(Difff)
             ObjEtr(Difff).forEach(([col,Vlr])=>{if(col!=='Id'){Atual[col]=NOVOO[col]}})// Atualiza a Const primeiro           
             flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
                 $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
-                    if(td){if(VAL(td)!==Vlr){DarVAL(td,Vlr)
-                         LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)}
+                    // Add ou Rmv Linha da Bndj  (aqui é fácil só conferir o .length do atual e do novo!)
+                    if(col=='Lixo'){if(Vlr){_tr(td).remove()}else{
+                       // Descobrir qual ordem está
+                    }} // dentro e fora da bandeija
+                    
+                    if(td){if(VAL(td)!==Vlr){DarVAL(td,Vlr) // Editou valor
+                         LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
                     else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
                     else{LOG('⚠️ RealTime() P-P não Existe')}
                 })
@@ -2763,6 +2778,12 @@
 
         }
     }
+    
+
+
+    const NOVALINHA = [{Cat:"Adesivo", Clnt:"João Pereira", Cmpt:"Recorte eletrônico", Cntt:"(11) 91234-5678", CtLj:"Whatsapp", Id:"0052", Lcal:"Loja Física - SP", Link:"", Lixo:"", Loja:"Infinity Graff", Stts:""}]
+    //insertOrden('CLNT',NOVALINHA)
+    
 
     async function UpdateSupa(Typ,col,id,valor){
         try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
