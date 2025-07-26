@@ -545,6 +545,7 @@
                 return Retorno
                 // acredito q posso simplificar exitando a pesquisa do nome do Clnt, em cada Bndj, pois ta procurando 3 vezes em cada Linha! uma pra PDDS, ai uma na Bndj Serv e PGMT
             }
+            // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
         </script>
     </div>
 
@@ -2679,9 +2680,10 @@
         // Adicionar Novo PDDS
         // Botão de Nova Linha (SERV,PGMT,CUST)
         // Remover PDDS
+
         // Adicionar e trocar Cliente
-        // Editar elementos por dentro da Bndj
-        // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
+        
+        
 
         function loadtmtable(Typ){
             const LOAD = (TYP)=>{
@@ -2728,55 +2730,32 @@
         ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
     }getSB()
 
-    function configurarRealtime(){
-        return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},(payload)=>{
-            const [crud,novo,Typ] = [payload.eventType,payload.new,payload.table]
-            Supa_RealTime(crud,novo,Typ)
-        }).subscribe()
+    function configurarRealtime() {
+        return supabase
+            .channel('SuBs-CLNT')
+            .on('postgres_changes', { event: '*', schema: 'public', table: '*' }, (payload) => {
+                const [crud,nEw,old,Typ] = [payload.eventType, payload.new, payload.old, payload.table]
+                Supa_RealTime(crud,nEw,Typ)
+            })
+            .subscribe()
     }
 
-    function Supa_RealTime(crud,novo,Typ){
+    function Supa_RealTime(crud,nEw,Typ){
         if(crud==='UPDATE'){
-            const NOVOO = NULL__([novo])[0]
-            const Atual = J[Typ].find(e=>e.Id==novo.Id)
+            const NOVOO = NULL__([nEw])[0]
+            const Atual = J[Typ].find(e=>e.Id==nEw.Id)
             const Difff = Diferentes(NOVOO,Atual,Typ)
-            console.log('Diferenças',Difff)
-
-            const InnAvanc=(P_P,Vlr)=>{
-                if(Array.isArray(Vlr)){
-                    Vlr.forEach(lin=>{ // Percorrer cada Linha
-                        ObjEtr(lin).forEach(([k,v])=>{ // Percorrer cada Coluna
-                            const p_p = k
-                            const New = v
-                            Inn(p_p,New);Nm(p_p,New) // Edita Novo Valor
-                        })
-                    })
-                }else{Inn(P_P,Vlr);Nm(P_P,Vlr)} // Edita Primitivo
-            }
-
-            ObjEtr(Difff).forEach(([col,Vlr])=>Atual[col]=Vlr) // Atualiza a Const primeiro
-            console.log('FLAT: ',flatenObject(Difff,Typ))
+            ObjEtr(Difff).forEach(([col,Vlr])=>{if(col!=='Id'){Atual[col]=NOVOO[col]}})// Atualiza a Const primeiro           
             flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
-                console.log(AA(TYP),col,ID)
-                const dadoos = $$(Rx2([`${AA(TYP)}-${ID}-${col}`]))
-                LOG(dadoos)
+                $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
+                    if(td){if(VAL(td)!==Vlr){DarVAL(td,Vlr)
+                         LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)}
+                    else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
+                    else{LOG('⚠️ RealTime() P-P não Existe')}
+                })
             })
-                
-            //     //const AllTd = 
-            //     const PPs = $$(`:is(.Bdj_${Typ},#H_${Typ}) > tbody > tr[class*="tr-${novo.Id}"] > ${Col(Typ,col)} > div > .P-P`)
-            //     PPs.forEach(P_P=>{ // agora passa por todos P-P Primario e em Bandeijas
-            //         if(!P_P)         {LOG('⚠️ RealTime() P-P não Existe'   ) ; return} // não Carregou ou foi Excluida!
-            //         if(Inn(P_P)==Vlr){LOG('⚠️ RealTime() P-P ja Tava Igual') ; return} // se já for igual!
-            //                           LOG('✏️ RealTime() P-P foi Editado'  ) ; InnAvanc(P_P,Vlr) // da um Inner Personalizado
-            //     })
-            // })
         }
-        // provavelmente vou ter q usar tm_tm
-        // e n sei se Json deve ser mudado assim
-        // o Inner deve vir Mascarado se Precisar!
-        // na Data a é só com o P_P Pois Data tem um <a> dentro
-        // talvez deva corrigir usando mascarara de Data
-    }LOG('Rebolo')
+    }
 
     async function UpdateSupa(Typ,col,id,valor){
         try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
@@ -2784,6 +2763,7 @@
             else  {    console.log('💾 UpdateSupa(✏️) Atualizado') ; ALERT(`"${valor}" Atualziado no SubaBase! (${Typ},${id},${col})`)}
         } catch (err){ console.error('Erro:',err                  ) ; ALERT('Erro ao atualizar serviço')}
     }
+    // Editar elementos por dentro da Bndj
 
     async function CREATESupa(Typ,coluna,id,valor){
         try {const { error } = await supabase.from(Typ).update({[coluna]:valor}).eq('Id',id)
