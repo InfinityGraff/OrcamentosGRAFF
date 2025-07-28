@@ -50,13 +50,15 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const LimitLin = 100
+    const Limit = {PDDS:{INN:546,OUT:3000}}
     const Atual = {Pag:'#Pag_ORC'}
     const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
     const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
     const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
+    const TypBndj = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
+    const LocSecund = {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
     let scrollPosition = [0,0]
     const Mnsg = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
     const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
@@ -323,13 +325,15 @@
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
         const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
-        const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ')} // Aplica as Casses q estão no BS
+        const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no BS
         const tr_ID   =tr =>getClas(tr,'tr-').split('-')[1]
         const tr_X    =tr =>getClas(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
         const Rx2     =arry=>Rx(['Rastr',...arry])
         const D_Rastr =e=>Extrat_Clss(e,'Rastr-').split('-')
         const D_R     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+        const D_P     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+        const DrPai   =R=>R.replace('Rastr','Rpai')
         const Coll    =x=>`td:nth-child(${x})`
         //const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
         const Col     =(Typ,col)=>`td:nth-child(${Colx(Typ,col)})`
@@ -475,7 +479,7 @@
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
-                Lixo:(e,R,A)=>`<a onclick="RmvROW('${R.Typ}','${R.Row}',this)" name="${e}">${SVG.Lixo}</a>`,
+                Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
@@ -485,6 +489,7 @@
                 // se o Suggs tiver vazio deixar pelomenos uma mensagem avisando
                 // Suggs e Links terão opções de "Troca" e de "Adição"
                 // Adicionar um Input de pesquisa no SuggLink também igual o de Clnt
+                // ocultar o botão de Lixo, quando tiver Link de PDDS no 'CLNT'
             }
 
             const Tm_Loade=(Typ)=>{
@@ -493,17 +498,18 @@
 
             const Tm_Table=(typ,arry)=>{ const IN = performance.now()
 
-                const Tm_Bndj=(arr,Typ)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
+                const Tm_Bndj=(arr,Typ,RPai)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
                                             <thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                            <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,'vemBndj')).join('')}</tr>`).join('')}</tbody>
+                                            <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,RPai)).join('')}</tr>`).join('')}</tbody>
                                           </table>
                                         <button class="Mini" onclick="NewLinBdj(this)">+ Novo ${RmvPlural(N_Brev[Typ])}</button>`
 
-                function Tratamento(Arr,R){
+                function Tratamento(Arr,r){
+                    const R     = D_R(r)
                     const col   = R.Col
-                    const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr)].filter(Boolean) : Arr
+                    const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr)].filter(Boolean) : Arr||[]
                     const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
-                                  col==='Pgmt' ? Find.map(e=>`${e['Valr']} ${e['Form']}`).join(' | ') :
+                                  col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
                                   col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
                                   col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
                                   col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
@@ -516,7 +522,7 @@
                         return OrdnCol(ArrObj_ArrArr(Find),ObjKey(BS[col.toUpperCase()]))
                         }else{return ArrObj_ArrArr(Find)}} // as demais permanecem iguais
 
-                    const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col)) : '').join('')
+                    const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
                     const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                     const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
                     const Grifo     = `<i class="grifoo RD"></i>`
@@ -527,27 +533,27 @@
                                 </div>`
                 }
                 
-                function Tm_Td(v,e,x,Typ,dado){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r)
-                    const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && dado!=="vemBndj"
-                    return valid        ? `<td class="${r} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
-                           R.Tm=='Bndj' ? `<td class="${r} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,R)}</td>` :
-                           R.Tm=='Sugg' ? `<td class="${r} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
-                                        : `<td class="${r} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                function Tm_Td(v,e,x,Typ,RPai=''){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
+                    const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
+                    return valid        ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
+                           R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
+                           R.Tm=='Sugg' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                                        : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                 }
 
                 const Retorno = arry.map((e,X)=>{
-                    if(X > LimitLin)       {return} // Reduzir o Limit de linhas pra Exibir!
+                    if ((X < Limit[typ]?.INN || X > Limit[typ]?.OUT)) return; // Reduzir o Limit de linhas pra Exibir!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as Concluidas
-                    return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,'',X)).join('')}</tr>`
+                    return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ)).join('')}</tr>`
                 }).join('')
 
                 const Perform = (performance.now()-IN).toFixed(2)
                 Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Tables(${typ}): ${Perform}ms`)
                 return Retorno
                 // acredito q posso simplificar exitando a pesquisa do nome do Clnt, em cada Bndj, pois ta procurando 3 vezes em cada Linha! uma pra PDDS, ai uma na Bndj Serv e PGMT
+                // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
             }
-            // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
         </script>
     </div>
 
@@ -1044,9 +1050,8 @@
                 const PddsLink = J['PDDS'].filter(e=>e.Clnt==ID).map(e=>e.Id).join(',')
                 const Cell = $(Rx2(['CLNT','Link']),tr)
                 Cell.innerHTML = PddsLink
-                _td(Cell).onclick = _td(Cell).onclick = function(event){
-                    if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}
-                }
+                _td(Cell).onclick = _td(Cell).onclick = function(event){if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}}
+                if(PddsLink!==''){$(Rx2(['CLNT','Lixo']),tr).innerHTML = ""} // se tiver pedidos Atrelados Oculta Lixeira
             })
         }
     </script>
@@ -1067,7 +1072,7 @@
         }
 
         function Rfresh_Foot(typ){  // Deixei ASYNC
-            if(typ=='CLNT'||typ=='MPAG'||typ=='UBER'||typ=='OOSS'){return} // sair por q ainda n tem tfoot
+            if(typ=='CLNT'||typ=='MPAG'||typ=='UBER'||typ=='OOSS'||typ=='GRAD'){return} // sair por q ainda n tem tfoot
             setTimeout(() => {
                 let IN = performance.now()
                 const IIN = performance.now()
@@ -1081,20 +1086,20 @@
                         Colls(typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
                         : Colls(typ,'Serv',true).map(e=>VAL(e))
 
-                //console.log(`⏱️ Rfresh_Foot:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now() // manter em quanto Melhora
+                //console.log(`⏱️ Rfresh_Foots:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now() // manter em quanto Melhora
 
                 IN = performance.now()
                 // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
+                // ai o Plano é o seguinte, fazer um objeto com os q tem e percorrer cada Tfoot da Tabela, se tiver faz a soma, se n tiver retorna "--"
                 $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objClnt.length}         </div>`
                 $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k} - ${NovoOBJClnt[k]}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
                 $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k}: ${v}</a>`                    ).join('')}</span><div class="BjConf Stky2 w100 Ct">${        objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
-                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
-                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
-                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
-                Array.of($(Rx2([typ,'Foot','Finc']))).forEach(e=>{const R=D_R(e) ; e.innerHTML = `Lucro: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
+                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{ LOG('1',e) ; const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{ LOG('2',e) ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
+                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{ LOG('3',e) ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
 
-                //console.log(`⏱️ Rfresh_Foot:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
-                console.log(`⏱️ Rfresh_Foot:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
+                //console.log(`⏱️ Rfresh_Foots:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
+                console.log(`⏱️ Rfresh_Foots:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
             },0)
         }
 
@@ -1124,10 +1129,6 @@
             p.forEach(e=>Rmv_N(Pai(e)))
         }
 
-        function RealTime(Typ){
-            Rfresh_Foot(Typ)
-            // Rfresh_Color()
-        } // aqui fica todos os refresh q não afetam a tabela, são só coisas visuais // tentar tornar esse realtime mais rapido
     </script>
 
     <div>     <!--LINKS  - ⭐⭐_ _ _ -->
@@ -1579,7 +1580,6 @@
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('CLNT')">+ Nova Linha</button>
                 <h1>Tabela de Pagamentos</h1>
-                <button onclick="AutoClntPDDS()">Link PDDS</button>
                 <button onclick="MesclarContato()">Mesclar</button>
                 <div id="PagPesq_CLNT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                 <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
@@ -2557,8 +2557,7 @@
             // R_Color(_tr(e),Typ)
             const Val = vall===""?"":VAL(e)
             if(Val===Nm(e)){return} // quando não foi Aterado
-            const IsBdj  = isBdj(e)
-            const ID     = IsBdj ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? ID2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : ID2
+            const ID     = isBdj(e) ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? ID2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : ID2
             const NewVal = vall===""?"":vall?vall:Val
             const Antg   = Nm(e)
             Nm(e,e.textContent.trim()) // Mudar o Name
@@ -2574,7 +2573,7 @@
             }
         }
 
-        function insertOrden(Typ,arr){  // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem)
+        function insertOrden(Typ,arr){  // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID)
             const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
             const tbody= $(`#H_${Typ} > tbody`)
             const trs = [...tbody.rows]
@@ -2588,7 +2587,7 @@
             tbody.insertBefore(NEWtr,Alvo||null)
         }
 
-        function NewLinBdj(Eu){ // Nova LInha na Bandeija
+        function NewLinBdj(Eu){         // ⭐⭐_ _ _ (SERV,PGMT,CUST,ABCD)
             const R = D_R(_td(Eu))
             if(['Pgmt','Serv','Cust','Abcd'].includes(R.Col)){ // Só funciona pra essas
                 const obj = J[R.Typ].find(e=>e.Id==R.Row) // mostra oq tem dentro
@@ -2598,13 +2597,50 @@
                 else{
                     console.log('Já tem Linha dentro')
                     const Def    = Dfut[AA(R.Col)]
-                    const NewDef = Def   // Replica 'ID','Data','Clnt'
-                    vall.push(NewDef)                               // Nova linha no Json
+                    Def.Id   = `${obj.Id}_${vall.length+1}`
+                    Def.Data = obj.Data
+                    Def.Clnt = obj.Clnt
+                    LOG(Def)
+                    vall.push(Def)                               // Nova linha no Json
                     Befor($('tbody',tbl),Tm_Table(AA(R.Col),[Def])) // Nova linha na Prática 
                     UpdateSupa(R.Typ,R.Col,R.Row,vall)              // Edita o SupaBase (vall sempre vai ser um Json)
                 }
             }
-        }LOG('nova Linha Bandeija')
+        }
+
+        function RmvROW(eu,SuB){ // ⭐⭐_ _ _
+            // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
+            const Lxra = true
+            const IsBdj = isBdj(eu)
+            const R=D_R(_td(eu)), P= IsBdj ? D_P(_td(eu)) : null
+            const [Typ,col,id] = IsBdj ? [P.Typ,P.Col,P.Row] : [R.Typ,R.Col,R.Row]
+            const Secund = _td(eu).classList.contains('Secund')
+            
+            function Poxuca(r,p){
+                const X = tr_X(_tr(eu))      // encontra o Index da Linha da Tabela 'Typ'
+                const ID= tr_ID(_tr(eu))     // encontra o ID    da Linha da Tabela 'Typ'
+                const F = J[r.Typ][X]||null  // encontra a linha do J[Typ] Principal
+                if(!Secund && p==null){return {TYP:[X,F]}} // se não for uma tbela secundária nem está em uma Bandeija retorna apenas o TYP
+                if( Secund && p==null){
+                    
+                    const idddd = r.Typ=='SERV' ? ID.split('_')[0]
+                                 :r.Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e)))
+                                 :null
+                    
+                        const XOrig = (i=>i>=0?i:false)(J[LocSecund[r.Typ]].findIndex(e=>e.Id==ID))
+                    return {TYP:[,],Bndj:[X,F]}}
+
+                const x  = IsBdj ?(i=>i>=0?i:false)(F[P.col].findIndex(o=>o.Id==R.Row)):null // encontra o Index a linha dentro da Bndj do J[Typ] Principal
+                const find = IsBdj && x!==false ? F[P.col][x] : null                       // encontra a linha dentro da Bndj do J[Typ] Principal
+                return {TYP:[X,F],Bndj:[x,find]}
+            }
+            LOG(Poxuca(R,P))
+            
+            return
+            
+            if(Lin && Lxra){J[R.Typ][Lin]['Lixo']=true}else{J[R.Typ].splice(Lin,1)} 
+            const vall = IsBdj ? JsonEditado : true
+        }LOG('RatsAAs')
 
         function AddROW(Typ,obj=null){ // um Obj no segundo argumento se Tiver
             if(Typ=='PGMT'||Typ=="CUST"||Typ=="SERV"){
@@ -2640,23 +2676,9 @@
             }
             // Ao adicionar uma linha tanto em PGMT ou em SERV, estarei fazendo nada mais nada menos
             // que adicionando uma linha em PDDS
-        }
-
-        function RmvROW(Typ,id,eu){
-            if(Typ=='CLNT' && 'Link!==""'==true){return} // não pode apagar se tiver CLNT vinculado
-            eu.closest('tr').remove()      // Remove Prático
-            const i = J[Typ].findIndex(o=>o.Id==id)
-            if(i!==-1)J[Typ].splice(i,1)   // Remove do Obj
-            UpdateSupa(Typ,'Lixo',id,true) // Remove SupaBase
-            //ALERT(e)
-        }
-
-        function ExcROW(Typ,id,eu){
-            // repito todo processo q fiz em adicionar, Pratico, const, Supa
-            eu.closest('tr').remove() ; ALERT(e)
-        }
+        }LOG('Existes')
         
-        function MesclarContato(){ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+        function MesclarContato(){ // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){console.log('Faltou o Link Final') ; return}
@@ -2665,7 +2687,7 @@
                 const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
                 const Ids_PDDS = td.innerText.split(',')
                 Ids_PDDS.forEach(ID=>{UpdateSupa('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
-                RmvROW('CLNT',dR[1],td) // remove a Linha
+                RmvROW(td) // remove a Linha
                 
                 // Editar Pedidos Prático e Const
                 //const Obj_PDDS   = J['PDDS'].filter(e=>e.Clnt==dR[1])
@@ -2673,11 +2695,6 @@
             })
             // quando terminar Limpa o Filtro
         }
-
-        // Nova Linha na Tabela
-        // Nova Linha Bandeija (SERV,PGMT,CUST,ABCD)
-        // Remover Linhas
-        // Adicionar e trocar Cliente
 
         function TesteClnt(inpt){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
             // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
@@ -2690,9 +2707,6 @@
                     }
             }
         }
-        // encontrar o ultimo id de uma coluna
-        const LrOrden=Typ=>Math.floor(MaxNum($$(H_Col_p(Typ,'Stts')).map(e=>Inn(e)))+1)
-
 
         function loadtmtable(Typ){
             const LOAD = (TYP)=>{
@@ -2701,7 +2715,7 @@
                 Inn(tbody,Tm_Loade(TYP)) // mostrar um Load Carregando até completar
                 // settimeout aqui
                 setTimeout(()=>{
-                    Inn(tbody,Tm_Table(TYP,J[TYP]));RealTime(TYP)
+                    Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
                 
@@ -2715,6 +2729,16 @@
                 PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
             }
         }
+
+        // Adicionar e trocar Cliente
+</script>
+
+<script> // ececução especial
+
+    function TRIG(){
+        $()
+    }
+
 </script>
 
 <script> // SupaBASE ⭐_ _ _ _
@@ -2748,9 +2772,11 @@
     }
 
     function Supa_RealTime(crud,nEw,Typ,old){
+        LOG('realTIME foi Ativado')
         if(crud==='UPDATE'){
             const NOVOO = NULL__([nEw])[0]
             const Atual = J[Typ].find(e=>e.Id==nEw.Id)
+            LOG(Atual)
             const Difff = Diferentes(NOVOO,Atual,Typ)
             if(Difff==null){LOG(`⚠️ RealTime() J[${Typ}] ja Tava Igual`) ; return}
             LOG(Difff)
@@ -2758,7 +2784,8 @@
             flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
                 $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
                     // Add ou Rmv Linha da Bndj  (aqui é fácil só conferir o .length do atual e do novo!)
-                    if(col=='Lixo'){if(Vlr){_tr(td).remove()}else{
+                    if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{
+                        return
                        // Descobrir qual ordem está
                     }} // dentro e fora da bandeija
                     
@@ -2777,8 +2804,19 @@
             // insertbefore, e tm_Table() para criar tr novo!
 
         }
+        // antes de qualquer ação descobrir se o efeito foi feito por mim ou por outra pessoa
+        // se foi feito por mim, então não precisa seguir com o RealTime!
+        // RealTime deve execultar as coisas Chamando as Próprias funções Pre-estabelecidas! em Manipulações de Dados
+        // insertOrden()
+        // NewLinBdj()
+        // RmvROW()
+
     }
     
+    async function Sb_DELETE(Typ,id){
+        const {err} = await supabase.from(Typ).delete().eq("Id",id)
+        err ? console.error("Erro ao excluir:",err) : console.log(`Linha ${id} excluída da Tabela ${Typ}!`)
+    }
 
 
     const NOVALINHA = [{Cat:"Adesivo", Clnt:"João Pereira", Cmpt:"Recorte eletrônico", Cntt:"(11) 91234-5678", CtLj:"Whatsapp", Id:"0052", Lcal:"Loja Física - SP", Link:"", Lixo:"", Loja:"Infinity Graff", Stts:""}]
@@ -2933,7 +2971,6 @@
     function PosGet(){
         Onloads('body')
         NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
-      RealTime(Atual['Pag'].replace('#Pag_',''))
         console.log('✅ Página Carregada!')
     }
     PosGet()

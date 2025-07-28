@@ -435,7 +435,7 @@ function CopyGRAFF(e,btn){
 
 
 function PDDSconverterJSON(obj) {
-    const camposParaConverter = ["Serv", "Pgmt", "Cust","Abcd"];
+    const camposParaConverter = ["Serv","Pgmt","Cust","Abcd"];
     for (const campo of camposParaConverter) {
         const valor = obj[campo];
         if (
@@ -450,28 +450,6 @@ function PDDSconverterJSON(obj) {
         }
     }
     return obj;
-}
-
-
-
-function exportToCSV(data) {
-    const headers = ["Id","Lin","Rg","Data","Clnt","Serv","Valr","Pgmt","Cust","Lcro","Stts","OFF","Lixo"]
-
-    const linhas = data.map(item => {
-        return headers.map(h => {
-            let val = h==="Serv"||h==='Pgmt'||h==='Cust' ? JSON.stringify(item[h] || []) : (item[h] || "");
-            // Escapa aspas duplas para o formato CSV
-            val = val.toString().replace(/"/g, '""');
-            return `"${val}"`;
-        });
-    });
-
-    const csv = [
-        headers.join(","),
-        ...linhas
-    ].join("\n");
-
-    return csv;
 }
 
 const RmvPlural = Stg => {
