@@ -50,7 +50,7 @@
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
-    const Limit = {PDDS:{INN:546,OUT:3000}}
+    const Limit = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
     const Atual = {Pag:'#Pag_ORC'}
     const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
@@ -270,13 +270,13 @@
 
     const O = {
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
-        Serv:['','Adesivo','Banner','...'],
+        Serv:['',...AllProd],
+        Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))],
         Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
-        Stts:['','Devendo','Entregue','JaFeito','Produção'],
-        Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))],
+        Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG']
     }
     const AllList = ObjKey(O)
@@ -284,12 +284,12 @@
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
-    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário"}
+    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt"}
     const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -319,7 +319,8 @@
     const supabase = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
 
-<script> // Bibliotecas  
+<script> // Bibliotecas
+        const Bool = e => typeof e === 'boolean' ? e : e === 'true';
     // Epecíficas (as q Retorna)
         const Prvn    =()=>event.preventDefault()
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
@@ -345,12 +346,16 @@
         const isBdj   =e=>!!e.closest('.BndjTBL')
         const Sib     =e=>$(e,Pai(event.target))
         const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
-    // Epecíficas (as q Executa)
+        function criaCol_Typ(New,Typ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                          // criaCol_Typ('Qnt','PDDS') // pra quando for Fora!
+        function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // criaCol_Col('Qnt','PDDS','Serv') // pra quando for Dentro!
+        
+        // Epecíficas (as q Executa)
         const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
         function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
         function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
-    //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
+        
+        //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
@@ -476,8 +481,8 @@
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(['Serviços',...AllProd],e) : Tm_Opts(O[R.Col],e)}</select>`,
-                Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${e===true?'checked':''}>`,            
+                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opts(O[R.Col],e)}</select>`,
+                Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
@@ -541,8 +546,10 @@
                                         : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                 }
 
-                const Retorno = arry.map((e,X)=>{
-                    if ((X < Limit[typ]?.INN || X > Limit[typ]?.OUT)) return; // Reduzir o Limit de linhas pra Exibir!
+                const Retorno = arry.reverse().map((e,X)=>{ // Aplico Reverse se quero começar reverso
+                    
+                    const oID = Num(`${e.Id}`.split('_')[0])
+                    if ((oID < Limit[typ]?.INN || oID > Limit[typ]?.OUT)) return; // Reduzir o Limit de linhas pra Exibir!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as Concluidas
                     return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ)).join('')}</tr>`
@@ -927,6 +934,25 @@
             // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
             // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
         }
+
+        function RecolorBasico(tr){
+            if(tr){
+                const cor = {
+                    'Orçamento'  :'#ffffff'
+                    ,'Arte'      :'#b4a7d6'
+                    ,'Impressão' :'#ffe599'
+                    ,'Acabamento':'#ffe599'
+                    ,'Pronto'    :'#a4c2f4'
+                    ,'Entregue'  :'#93c47d'
+                    ,'Devendo'   :'#ea9999'
+                    ,'Concluído' :'#93c47d'
+                }
+                const td = $(Rx2(['Rastr-PDDS','Stts']),tr)
+                $('select',td).addEventListener('change',function(){RecolorBasico(_tr(this))})
+                const Val = VAL(td)
+                tr.style.background = cor[Val]
+            }
+        }
     </script>
     
     <script> // AUTOCOMP - ⭐⭐_ _ _
@@ -1054,6 +1080,13 @@
                 if(PddsLink!==''){$(Rx2(['CLNT','Lixo']),tr).innerHTML = ""} // se tiver pedidos Atrelados Oculta Lixeira
             })
         }
+    
+        function EdicoesAgregadas(){ // seria basicamente ao editar uma célula
+         // conferir se outras células da mesma linha também não precisam de edição
+         // ou até da Linha Pai com (Valr em PDDS e Stts em Pedidos)
+         // todos 2 devem ser modificados automáticamente conforme eu manipulo os dados dentro de 'Serv'
+        }
+    
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _
@@ -2716,6 +2749,7 @@
                 // settimeout aqui
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
+                    $$('#H_PDDS > tbody > tr').forEach(tr=>RecolorBasico(tr)) // depois remover isso pq é Gambiarra!
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
                 
@@ -2733,15 +2767,11 @@
         // Adicionar e trocar Cliente
 </script>
 
-<script> // ececução especial
-
-    function TRIG(){
-        $()
-    }
-
-</script>
-
 <script> // SupaBASE ⭐_ _ _ _
+
+
+    
+
 
     function getSB(){
         async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
@@ -2753,13 +2783,14 @@
             
             if(Typ=='PDDS'){
                 J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
+                criaCol_Col('Qnt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 J['SERV']=J['PDDS'].flatMap(obj=>obj.Serv)
                 J['PGMT']=J['PDDS'].flatMap(obj=>obj.Pgmt)
             }else{
                 J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT')}
             }
-            console.log(`${Typ} já ta na Const`) 
+            console.log(`✔️ ${Typ}`) 
         }
         ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
     }getSB()
