@@ -52,16 +52,16 @@
     const Link  = 'http://localhost:3000'
     const Limit = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
     const Atual = {Pag:'#Pag_ORC'}
-    const J = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
+    const J     = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
-    const N_Brev={HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
+    const Mnsg  = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
+    const N_Brev= {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
     const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
-    const PreTable={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
-    const TypBndj = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
-    const LocSecund = {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
+    const D_brev= {Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
+    const PreTable ={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
+    const TypBndj  = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
+    const LocSecund= {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
     let scrollPosition = [0,0]
-    const Mnsg = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
-    const D_brev={Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -267,29 +267,34 @@
     const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
     const AllForn = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.Forn  ||[]]))
     const Vari=e=>ObjKey(Prod[e].Variantes)
+    const TiposArtes=[]
 
     const O = {
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
         Serv:['',...AllProd],
-        Tipo:['',...Uniq(AllProd.flatMap(e=>Vari(e)))],
+        Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
         Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
-        Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG']
+        Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
+        TArt:['','Criação','Recriação','Vetorização','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento'],
+       TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
+        
+
     }
     const AllList = ObjKey(O)
     const ALL = {CLNT:[]}
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
-    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt"}
-    const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo'}
+    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
+    const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],TArt:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
@@ -479,7 +484,8 @@
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-                Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${RS(e)}</p>`,
+                Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
+                Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opts(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
@@ -564,7 +570,7 @@
         </script>
     </div>
 
-    <script> // CONFIGS  - ⭐_ _ _ _ botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela 
+    <script> // CONFIGS  - ⭐_ _ _ _ Botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela 
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
 
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
@@ -2641,7 +2647,7 @@
             }
         }
 
-        function RmvROW(eu,SuB){ // ⭐⭐_ _ _
+        function RmvROW(eu,SuB){        // ⭐⭐_ _ _
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxra = true
             const IsBdj = isBdj(eu)
@@ -2675,7 +2681,7 @@
             const vall = IsBdj ? JsonEditado : true
         }LOG('RatsAAs')
 
-        function AddROW(Typ,obj=null){ // um Obj no segundo argumento se Tiver
+        function AddROW(Typ,obj=null){  // um Obj no segundo argumento se Tiver
             if(Typ=='PGMT'||Typ=="CUST"||Typ=="SERV"){
                 // Modal pedindo pra Escolher em quam "PDDS" vai querer Linkar, inclusive criar um Novo
             }
@@ -2711,7 +2717,7 @@
             // que adicionando uma linha em PDDS
         }LOG('Existes')
         
-        function MesclarContato(){ // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+        function MesclarContato(){      // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){console.log('Faltou o Link Final') ; return}
@@ -2729,7 +2735,7 @@
             // quando terminar Limpa o Filtro
         }
 
-        function TesteClnt(inpt){ // isso é pra Saber se o Cliente existe na Tabela de CLNT
+        function TesteClnt(inpt){       // isso é pra Saber se o Cliente existe na Tabela de CLNT
             // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
                 if(Nmame(inpt)){return Nmame(inpt)
@@ -2769,10 +2775,6 @@
 
 <script> // SupaBASE ⭐_ _ _ _
 
-
-    
-
-
     function getSB(){
         async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
             let todas = [], lim = 1000, ofs = 0, data
@@ -2783,14 +2785,17 @@
             
             if(Typ=='PDDS'){
                 J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
-                criaCol_Col('Qnt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('Qnt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('Lag' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('Alt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 J['SERV']=J['PDDS'].flatMap(obj=>obj.Serv)
                 J['PGMT']=J['PDDS'].flatMap(obj=>obj.Pgmt)
             }else{
                 J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT')}
             }
-            console.log(`✔️ ${Typ}`) 
+            console.log(`✔️ ${Typ}`)
         }
         ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
     }getSB()

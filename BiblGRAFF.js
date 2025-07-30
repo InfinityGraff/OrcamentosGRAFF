@@ -560,3 +560,19 @@ function flatenObject(obj,prefix) {
 
   return result;
 }
+
+
+// para a Biblioteca
+
+function MaskNumI(Div){ // Funciona Muito bem e não pretendo me Livrar dela tão Fácil
+    var Vlr = Div.innerHTML.replace(/\D/g, '').replace(/^0+(?=[1-9])/, '')
+    var Mask = '' ; const VLR = Vlr.length
+    var Mask = VLR === 1 ? '0,0'+Vlr :
+                VLR === 2 ? '0,'+Vlr :
+                VLR === 3 ? Vlr.charAt(0)+','+Vlr.substring(1) :
+                VLR === 4 ? Vlr.substring(0, 2)+','+Vlr.substring(2) :
+                VLR > 4 ? Vlr.substring(0, 2)+','+Vlr.substring(2, 4) : ''
+        if (VLR > 5) {Mask = Mask.substring(0, 5)}
+        Div.innerHTML = Mask
+        CurEnd(Div)
+}
