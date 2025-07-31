@@ -576,3 +576,5 @@ function MaskNumI(Div){ // Funciona Muito bem e não pretendo me Livrar dela tã
         Div.innerHTML = Mask
         CurEnd(Div)
 }
+
+const SOMA_Obj2 = (ArrObj, Key) => Array.isArray(ArrObj) ? ArrObj.reduce((soma, obj) => Number(soma) + Number(obj[Key] || 0), 0) : 0;  // ESSA JÁ TAVA LÁ ANTES
