@@ -308,11 +308,6 @@
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
-    const Dfut = {
-        SERV:{Id:"",Data:"",Clnt:"",Serv:"",Tipo:"",Calc:"",Desc:"",Valr:"",Dsng:"",Arte:"",Forn:"",OK:false,Entg:false,Detg:"",Grad:"",Gimg:"",Abcd:"",OS:"",Uber:"",Cmnt:"",SStts:"",Lixo:""},
-        PGMT:'',
-        CUST:'',        
-    }
 
     const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira']
     const ListaKits=['Zebu','Zimaz']
@@ -352,7 +347,7 @@
         const Sib     =e=>$(e,Pai(event.target))
         const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
         function criaCol_Typ(New,Typ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                          // criaCol_Typ('Qnt','PDDS') // pra quando for Fora!
-        function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // criaCol_Col('Qnt','PDDS','Serv') // pra quando for Dentro!
+        function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // criaCol_Col('Qnt','PDDS','Serv') // pra quando for Dentro!
         
         // Epecíficas (as q Executa)
         const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
@@ -507,51 +502,51 @@
                 return For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('')
             }
 
-            const Tm_Table=(typ,arry)=>{ const IN = performance.now()
+            const Tm_Bndj=(arr,Typ,RPai)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
+                <thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,RPai)).join('')}</tr>`).join('')}</tbody>
+                </table>`
 
-                const Tm_Bndj=(arr,Typ,RPai)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
-                                            <thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                            <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,RPai)).join('')}</tr>`).join('')}</tbody>
-                                          </table>`
+            function Tm_Td(v,e,x,Typ,RPai=''){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
+                const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
+                return valid        ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
+                        R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
+                        R.Tm=='Sugg' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                                    : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+            }
 
-                function Tratamento(Arr,r){
-                    const R     = D_R(r)
-                    const col   = R.Col
-                    const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr.trim())].filter(Boolean) : Arr||[]
-                    const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
-                                  col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
-                                  col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                                  col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
-                                  col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
-                                                 Find.map(e=>`${e[  col ]}`             ).join(' | ')
+            function Tratamento(Arr,r){
+                const R     = D_R(r)
+                const col   = R.Col
+                const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr.trim())].filter(Boolean) : Arr||[]
+                const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
+                                col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
+                                col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                                col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
+                                col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
+                                                Find.map(e=>`${e[  col ]}`             ).join(' | ')
 
-                    if(Title!=''){if(['Cust','Finc','Calc'].includes(col)){todoTitle[col].push(Title)}}
-                    col=='Serv' ? Find.map(e=>`${todoTitle[col].push(e['Serv'])}`) : null
-                    
-                    const Reordem =()=>{if(col=='Serv'||col=='Pgmt'||col=='Cust'||col=='Abcd'){ // Reordenar se Precisar ou seja se o Usuário quiser!
-                        return OrdnCol(ArrObj_ArrArr(Find),ObjKey(BS[col.toUpperCase()]))
-                        }else{return ArrObj_ArrArr(Find)}} // as demais permanecem iguais
-
-                    const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
-                    const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
-                    const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
-                    const Grifo     = `<i class="grifoo RD"></i>`
-
-                    return `<div class="Ct"><p class="P-P" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
-                                <div class="Rltv w100">
-                                    <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
-                                        <button class="Mini" onclick="NewLinBdj(this)">+ Novo ${RmvPlural(N_Brev[AA(col)])}</button>
-                                    </div>
-                                </div>`
-                }
+                if(Title!=''){if(['Cust','Finc','Calc'].includes(col)){todoTitle[col].push(Title)}}
+                col=='Serv' ? Find.map(e=>`${todoTitle[col].push(e['Serv'])}`) : null
                 
-                function Tm_Td(v,e,x,Typ,RPai=''){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
-                    const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
-                    return valid        ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
-                           R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
-                           R.Tm=='Sugg' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
-                                        : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
-                }
+                const Reordem =()=>{if(col=='Serv'||col=='Pgmt'||col=='Cust'||col=='Abcd'){ // Reordenar se Precisar ou seja se o Usuário quiser!
+                    return OrdnCol(ArrObj_ArrArr(Find),ObjKey(BS[col.toUpperCase()]))
+                    }else{return ArrObj_ArrArr(Find)}} // as demais permanecem iguais
+
+                const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
+                const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
+                const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
+                const Grifo     = `<i class="grifoo RD"></i>`
+
+                return `<div class="Ct"><p class="P-P" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
+                            <div class="Rltv w100">
+                                <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
+                                    <button class="Mini" onclick="NewLinBdj(this)">+ Novo ${RmvPlural(N_Brev[AA(col)])}</button>
+                                </div>
+                            </div>`
+            }
+
+            const Tm_Table=(typ,arry)=>{ const IN = performance.now()
 
                 const Retorno = arry.reverse().map((e,X)=>{ // Aplico Reverse se quero começar reverso
                     
@@ -2604,6 +2599,11 @@
 </body>
 
 <script> // Manipulações de Dados
+    // MiniLib pra ser usada principalmente por essas Func de manipulações
+        const LocLinId=(Typ,ID)=>J[Typ].find(e=>e.Id==ID)
+        const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
+        const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
+
         function EditCell(e,vall=null){ // ⭐⭐⭐⭐_
             const[ras,Typ,ID2,col,Cry]=D_Rastr(_td(e))
             // R_Color(_tr(e),Typ)
@@ -2638,27 +2638,24 @@
             const Alvo= trs.find(tr=>{const a = VAL($(Rx2([Typ,col]),tr)) ; return compare(a,vall)}) //(a,b)=>b<+a, quando é Valor
             tbody.insertBefore(NEWtr,Alvo||null)
         }
-
-        function NewLinBdj(Eu){         // ⭐⭐_ _ _ (SERV,PGMT,CUST,ABCD)
-            const R = D_R(_td(Eu))
-            if(['Pgmt','Serv','Cust','Abcd'].includes(R.Col)){ // Só funciona pra essas
-                const obj = J[R.Typ].find(e=>e.Id==R.Row) // mostra oq tem dentro
-                const vall= obj[R.Col]
-                const tbl = $('table',_td(Eu))
-                //if(vall.length==1 && vall[0].Id==''){Rmv_N(tbl) ; /*Edita o ID*/ ; return} // se tiver um Default apenas exibe ele
-                //else{
-                    console.log('Nova Linha sendo Criada')
-                    const Def    = Dfut[AA(R.Col)] // tentar usar o próprio DB pra fazer o Default
-                    Def.Id   = `${obj.Id}_${vall.length+1}`
-                    Def.Data = obj.Data
-                    Def.Clnt = obj.Clnt
-                    LOG(Def)
-                    vall.push(Def)                               // Nova linha no Json
-                    Befor($('tbody',tbl),Tm_Table(AA(R.Col),[Def])) // Nova linha na Prática 
-                    UpdateSupa(R.Typ,R.Col,R.Row,vall)              // Edita o SupaBase (vall sempre vai ser um Json)
-                //}
+        
+        function NewLinBdj(Eu){         // ⭐⭐⭐⭐_ (Ta bem BOA!)
+            const R = D_R(_td(Eu)) ; const col = AA(R.Col)
+            if(TypBndj.includes(col)){            // só pra col q tem bndj
+                const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id' LocLinId()
+                const arr = orArr(row[R.Col])     // se n for um array, return []
+                const lngh= l0(arr)               // conferir se é a Primeira vez!
+                const Def = ClrObj(BS[col])       // Cria um Default Baseado na bndj
+                if(['Serv','Pgmt']){
+                    Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id
+                    Def.Data = row.Data                   // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
+                    Def.Clnt = row.Clnt                   // Clona Cliente
+                }
+                /*Obj*/ arr.push(Def)
+                /*DOM*/ lngh ? Inn(_td(Eu),Tratamento(arr,Extrat_Clss(_td(Eu),'Rastr-'))) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def]))
+                /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
-        }
+        }LOG('Fome')
 
         function RmvROW(eu,SuB){        // ⭐⭐_ _ _
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
@@ -2802,8 +2799,8 @@
                 criaCol_Col('Lag' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Alt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                J['SERV']=J['PDDS'].flatMap(obj=>obj.Serv)
-                J['PGMT']=J['PDDS'].flatMap(obj=>obj.Pgmt)
+                J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
+                J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)
             }else{
                 J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT')}
