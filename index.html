@@ -477,7 +477,7 @@
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opts(O[R.Col],e)}</select>`,
+                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
@@ -2238,17 +2238,17 @@
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                             <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllProd]))"></select></td>
-                            <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opts(['Tipo']))"></select></td>
+                            <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"></select></td>
                             <td width="10%">
-                                <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opts(['Acabamento']))"></select>
+                                <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"></select>
                                 <input class="ORC_INPT_Lrg" placeholder="Largura" oninput="MaskNum(this)">
                             </td>
                             <td width="10%">
-                                <select class="OrcGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opts(['Gramatura']))"></select>
+                                <select class="OrcGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"></select>
                                 <input class="ORC_INPT_Alt" placeholder="Altura" oninput="MaskNum(this)">
                             </td>
                             <td width="10%">
-                                <select class="OrcQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opts(['Qnt']))"></select>
+                                <select class="OrcQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"></select>
                                 <input class="ORC_INPT_Qnt" placeholder="Quantidade">
                             </td>
                             <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita RD"></td>
@@ -2259,10 +2259,10 @@
                 </table>
 
                 <script> // Funções do Tbody
-                    function SERVChang(e){const Lista = ObjKey(Prod[e.value].Variantes);Inn($('.OrcTipo',_tr(e)),Tm_Opts(['Tipo',...Lista])) ; Tog_M2_OFS_UND(e)}
-                    function TIPOChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcCbmt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
-                    function CBMTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcGram',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
-                    function GRAMChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcQntt',_tr(e)),Tm_Opts(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
+                    function SERVChang(e){const Lista = ObjKey(Prod[e.value].Variantes);Inn($('.OrcTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; Tog_M2_OFS_UND(e)}
+                    function TIPOChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
+                    function CBMTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
+                    function GRAMChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
                     function QNTTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}
 
                     function ORC_Calc(tr,Lista=null){
