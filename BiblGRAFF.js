@@ -1,3 +1,8 @@
+function NavPag(e,eu){Show(e,$$('#PAGES > div'));SS('#H_Nav a').Rmv('Atv');if(eu){S(eu).Add('Atv')}scrollToTop()}
+function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
+function MdalShow(e){ShowModal($('#FModal'),$(e))}
+
+
 function LocAno(Email){
     const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
     const id   = Email.match(/^(\d+)°/)?.[1] || 0
@@ -578,3 +583,27 @@ function MaskNumI(Div){ // Funciona Muito bem e não pretendo me Livrar dela tã
 }
 
 const SOMA_Obj2 = (ArrObj, Key) => Array.isArray(ArrObj) ? ArrObj.reduce((soma, obj) => Number(soma) + Number(obj[Key] || 0), 0) : 0;  // ESSA JÁ TAVA LÁ ANTES
+
+
+
+
+const IptFile=(div)=>// vc Cria a Função Upload(files) lá dentro do seu Index, e dentro execulta as Funções
+                      // esta Div, é o Lugar onde as Imanges vão ser inseridas
+   `<style>
+        .Upld {width:100%;max-width:400px;height:200px;margin: 0px 30%;border: 2px dashed #ccc; transition: border-color 0.3s, background-color 0.3s, transform 0.3s; }
+        .Upld:hover    {border-color:#7e7e7e; transform: scale(1.05)}
+        .Upld:active   {border-color:#7e7e7e; transform: scale(0.98)}
+        .Upld.dragover {border-color:#ff5e00; transform: scale(1.08); background: #af704c1a}
+        .Upld span    {font-size: 50px; color: #ccc; transition: color 0.3s; }
+        .Upld:hover span,.Upld.dragover span,.Upld.filled span{color:#ff5e00}
+        .Upld:hover p,.Upld.dragover p{color:#ff5e00}
+        .Upld p        {color:#aaa;margin:0; font-size:16px; transition:color 0.3s}
+    </style>
+    <div class="Upld rd Cl Ct ppt Rltv"
+        ondragover="event.preventDefault(); Add(this,'dragover')"
+        ondragleave="Rmv(this,'dragover')"
+        ondrop="event.preventDefault();Rmv(this,'dragover');Promss_Src(event.dataTransfer.files).then(srcList=>{Upload('${div}',srcList)})">
+        <span>+</span><p>Arraste arquivos ou clique aqui</p>
+        <input class="Abslt w100 h100 ppt Opacy" type="file" id="imagem" accept="image/*" multiple onchange="Rmv(Pai(this),'dragover');Promss_Src(this.files).then(srcList=>{Upload('${div}',srcList)})">
+    </div>
+`
