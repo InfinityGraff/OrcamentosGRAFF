@@ -14,6 +14,12 @@ const User={
   '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
 }
 
+const TM = {
+    Edi :'contenteditable="true"'
+    ,Err :`onerror="this.src='./SVG/placeholder.svg'"`
+}
+const Mnsg  = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
+
 // todos tem q ter pre e pos
 // 'Pre' : 'https://www.mercadopago.com.br/activities/detail/'
 // 'pos' : '?from=activities-frontend'

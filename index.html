@@ -8,19 +8,14 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
-
     
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
  --> 
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
-        <script src="../MyBiblioteca/Templates.js"      ></script>
-   
 
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
@@ -42,18 +37,22 @@
 </head>
 
 <script> // Base de Dados
-    const Edi   = 'contenteditable="true"'
-    const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
-    const Link  = 'http://localhost:3000'
-    const Limit = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
-    const Atual = {Pag:'#Pag_ORC'}
-    const J     = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
-    const Navv  = ['Pedidos','Servicos','Pagamentos','Grades','MPago','Clientes']
-    const Mnsg  = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
-    const N_Brev= {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca',LIN:'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
-    const NavImg= ['HOME','LIN','ORC','LOJA','GBRT','BBTC','LIN','PDDS','SERV','LIN','PGMT','GRAD','CLNT','LIN','CONF']
-    const D_brev= {Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
-    const PreTable ={PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
+
+    const N_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
+    const Nav    = {
+        Admn: ['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
+        Eqip: ['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'],
+        Clnt: ['HOME','|','ORC','|','CONF'],
+    }
+    const U = {
+        body:['Lite','Body2','CSS3'] // Lista de CSS do Body
+        ,nav:'Eqip'                  // Páginas Disponíveis
+    }
+    const Limit    = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
+    const Atual    = {Pag:'#Pag_ORC'} // n sei se ainda quero isso!
+    const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
+    const D_brev   = {Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
+    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     const TypBndj  = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
     const LocSecund= {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
     let scrollPosition = [0,0]
@@ -276,8 +275,6 @@
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
         TArt:['','Criação','Recriação','Vetorização','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento'],
        TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
-        
-
     }
     const AllList = ObjKey(O)
     const ALL = {CLNT:[]}
@@ -303,21 +300,18 @@
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
-
     const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira']
-    const ListaKits=['Zebu','Zimaz']
-    let todoTitle = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
+    const ListaKits = ['Zebu','Zimaz']
+    let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 
     // Configuração do Supabase
-    const SUPABASE_URL = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-    const supabase = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
 
 <script> // Bibliotecas
-        const Bool = e => typeof e === 'boolean' ? e : e === 'true';
     // Epecíficas (as q Retorna)
-        const Prvn    =()=>event.preventDefault()
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
         const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
@@ -354,7 +348,6 @@
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
-        const LOG=(...stg)=>console.log(...stg)
         //const Diferentes=(New,Atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==Atual[k]))
 </script>
 
@@ -473,13 +466,13 @@
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
-                Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
-                Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
-                Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
+                Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
+                Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
+                Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
-                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${Err}>`,
+                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${TM.Err}>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
@@ -1265,7 +1258,7 @@
             }
 
             function LimparNomeSVG(Clss){
-                const Edit=e=>`<p class="Ct" ${Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
+                const Edit=e=>`<p class="Ct" ${TM.Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
                 const td = $(`td[class="${Clss}"]`)
                 EditCell(td,'')
             }
@@ -1273,7 +1266,7 @@
     </div>
 </div>
 
-<body class="Dark Body1 CSS1 Ct" onclick="NoneBndj()">
+<body class="Ct" onclick="NoneBndj()">
 
     <header class="Bt"> <!--HEADER-->
         <style>
@@ -1345,12 +1338,9 @@
             <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.5</h1>
             <img id="recolhe" src="./SVG/Recolhe.svg" onclick="Recolher()">
             <script>
-                function TrocaBody() {
+                function TrocaBody(){
                     if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')
-                    }else{
-                        console.log("Tela pequena")
-                    }
-                }
+                    }else{console.log("Tela pequena")}}
                 function Recolher(){Tog($('body'),'recolhe')}
                 function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
             </script>
@@ -1378,11 +1368,11 @@
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
                     </div>`
                 }
-                Inn('#Div-Pesq',NavImg.map(Typ=>Load_Pesq(Typ)).join(''))
+                Inn('#Div-Pesq',Nav[U.nav].map(Typ=>Load_Pesq(Typ)).join(''))
             </script>
         </div>
 
-        <div id="DivNav"> <!--Nav-->
+        <div id="DivNav"> <!--nav-->
             <nav id="H_Nav" class="Ct"></nav>
             <script>
                 function NAVPAG(Typ,Eu){ // Tudo que Acontece ao Navegar entre as Páginas
@@ -1392,7 +1382,7 @@
                     NavPesq(`.Pesq_${Typ}`)                                   // Trocar a Pesquisa
                     setTimeout(()=>loadtmtable(Typ),0)                        // 100% Assíncrono
                 }
-                Inn('#H_Nav',NavImg.map(e=>`<div id="HNVDv_${e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))
+                Inn('#H_Nav',Nav[U.nav].map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NAVPAG('${e}',this)"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))
             </script>
         </div>  
 
@@ -3004,10 +2994,11 @@
     // AtivaEventos()
     function Disparos(e){/*console.log('Dispoaro >')*/ ; e.dispatchEvent(new Event('change')); /* console.log('< Dispoaro') */}
     function SaveConfig(e){StogeSet(e.id,Vll(e)) ; /* console.log('Save',e.id,Vll(e)) */ }
-    function GetConfig(){$$('.GETConfig').forEach(e=>{
-        const Valor = StogeGet(e.id)
-        if(Valor){ llv(e,Valor);Disparos(e)  }})}
-    window.onload = () => {GetConfig()}
+    function GetConfig(){$$('.GETConfig').forEach(e=>{const Valor = StogeGet(e.id);if(Valor){ llv(e,Valor);Disparos(e)  }})}
+    
+    
+    window.onload = () => {/*GetConfig()*/} // só vai chamar isso se não tiver ninguem Logado
+
     // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
     // function savecoifigTABLE(){StogeSet('Orden',x)}
     // Save para MenuNav
@@ -3017,6 +3008,8 @@
 
     function PosGet(){
         Onloads('body')
+        U.body.forEach(e=>Add($('body'),e))
+
         NavPag(Atual['Pag']);NavPesq(Atual['Pag'].replace('#Pag_','.Pesq_'))
         console.log('✅ Página Carregada!')
     }
