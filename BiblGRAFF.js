@@ -607,3 +607,24 @@ const IptFile=(div)=>// vc Cria a Função Upload(files) lá dentro do seu Index
         <input class="Abslt w100 h100 ppt Opacy" type="file" id="imagem" accept="image/*" multiple onchange="Rmv(Pai(this),'dragover');Promss_Src(this.files).then(srcList=>{Upload('${div}',srcList)})">
     </div>
 `
+
+
+// Quando eu Upo Várias Imagens dentro de um input
+function Promss_Imgs2(files,div){
+  const arry = []
+  for (const file of files) {
+      const reader = new FileReader()
+      const promise = new Promise(r => {
+          reader.onload = e => {
+              const Div = document.createElement('div')
+              const img = document.createElement('img')
+              Div.classList.add('DivImgRsut','Ct','Rltv')
+              img.src = e.target.result
+              img.name = file.name
+              Div.appendChild(img)
+              $(div).appendChild(Div)
+              r()
+          };reader.readAsDataURL(file)
+      });arry.push(promise)
+  };return Promise.all(arry)
+}

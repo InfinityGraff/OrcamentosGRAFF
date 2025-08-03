@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
-
+<!-- 
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
 
-    <!-- 
+    
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/Templates.js"      ></script>
-
+ --> 
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
         <script src="../MyBiblioteca/Templates.js"      ></script>
-    --> 
+   
 
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
@@ -322,13 +322,13 @@
         const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
         const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no BS
-        const tr_ID   =tr =>getClas(tr,'tr-').split('-')[1]
-        const tr_X    =tr =>getClas(tr,'tr-').split('-')[2]
+        const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
+        const tr_X    =tr =>getClss(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
         const Rx2     =arry=>Rx(['Rastr',...arry])
-        const D_Rastr =e=>Extrat_Clss(e,'Rastr-').split('-')
-        const D_R     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
-        const D_P     =R=>{const v = (typeof R === "string" ? R : Extrat_Clss(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+        const D_Rastr =e=>getClssIN(e,'Rastr-').split('-')
+        const D_R     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+        const D_P     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
         const DrPai   =R=>R.replace('Rastr','Rpai')
         const Coll    =x=>`td:nth-child(${x})`
         //const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
@@ -1774,6 +1774,7 @@
                 #Config > div {background:#50505025; border-radius:15px; margin:3px; width:97%; padding:20px}
                 #Config input[type="range"]{width:50%}
                 #IconsCofng{top:-10px; right:-10px}
+                #IconsCofng svg{width: 20px;}
                 #CropedID{top:5px; right:5px}
                 .Close{border-radius:5px; background:#ff3232; padding:1px; width:16px; height:16px; opacity: 0;top: 0; right: 0}
                 .Moldura{padding: 2px;border: 1px solid #ff480000}
@@ -1893,7 +1894,7 @@
 
                 <div class="Ct Rltv">      <!--CONFIGURAÇÕES DE TAMANHO-->
                     <div id="CropedID" class="Ct DivCrop Abslt"> <!--Da pra Simplificar isso pra um Unico SVG-->
-                        <div onclick="$('#Crop').click()" id="CropSvg" onload="Inn(this,IcoCrop('fil0','Opacy'))"></div>
+                        <div onclick="$('#Crop').click()" id="CropSvg" onload="Inn(this,SVG.Crop('fil0','Opacy'))"></div>
                         <input id="Crop" type="checkbox" class="none" onchange="Tog('.Croped','Opacy');Read_Canvs()">
                     </div>
       
@@ -1925,8 +1926,8 @@
                             <input class="Opacy noClk" type="color" id="colorPicker1" style="display: none;">
                             <input class="Opacy noClk" type="color" id="colorPicker2" style="display: none;">
                             <div class="Cl">
-                                <div class="ClickCanv" id="alignX" onload="Inn(this,IconAling('fil1'    ,'white','white'))">X</div>
-                                <div class="ClickCanv" id="alignY" onload="Inn(this,IconAling('fil1 g90','white','white'))">Y</div>
+                                <div class="ClickCanv" id="alignX" onload="Inn(this,SVG.Aling('fil1'    ,'white','white'))">X</div>
+                                <div class="ClickCanv" id="alignY" onload="Inn(this,SVG.Aling('fil1 g90','white','white'))">Y</div>
                             </div>
                         </div>
                     </div>
@@ -1939,8 +1940,8 @@
                         <button onclick="Mdal_Area('#Area')">Editar Inputs</button>
 
                         <div id="IconsCofng" class="Ct Abslt">
-                            <div onload="Inn(this,IcoMais('fil0'))" onclick="AddRoW()"          ></div>
-                            <div onload="Inn(this,IcoClen('fil0'))" onclick="Limpar();LimpObj()"></div>
+                            <div onload="Inn(this,SVG.Mais)" onclick="AddRoW()"          ></div>
+                            <div onload="Inn(this,SVG.Cler)" onclick="Limpar();LimpObj()"></div>
                         </div>
 
                         <table id="Lista-001">
@@ -2647,7 +2648,7 @@
                     Def.Clnt = row.Clnt                   // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def)
-                /*DOM*/ lngh ? Inn(_td(Eu),Tratamento(arr,Extrat_Clss(_td(Eu),'Rastr-'))) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def]))
+                /*DOM*/ lngh ? Inn(_td(Eu),Tratamento(arr,getClssIN(_td(Eu),'Rastr-'))) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def]))
                 /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
         }LOG('Fome')
