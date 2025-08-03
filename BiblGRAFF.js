@@ -1,4 +1,4 @@
-function NavPag(e,eu){Show(e,$$('#PAGES > div'));SS('#H_Nav a').Rmv('Atv');if(eu){S(eu).Add('Atv')}scrollToTop()}
+
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
