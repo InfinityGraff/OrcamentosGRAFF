@@ -9,6 +9,7 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/Templates.js"      ></script>
+
     <!-- 
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
@@ -35,18 +36,12 @@
         <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
         <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-        <!--
-        <script src="https://threejs.org/build/three.js"></script>-->
+        <!--<script src="https://threejs.org/build/three.js"></script>-->
         <script src="./AchaMdd.js"></script>
         <script src="./Gera3D.js"></script>
-        <style>
-            .Fixed{position: fixed;}
-        </style>
 </head>
 
 <script> // Base de Dados
-    // mostrar pedidos aberto e pedidos concluido
-    // a tabela vai ficar muito mais leve se exibir apenas os pedidos em aberto
     const Edi   = 'contenteditable="true"'
     const Err   = `onerror="this.src='./SVG/placeholder.svg'"`
     const Link  = 'http://localhost:3000'
@@ -2686,7 +2681,12 @@
             LOG(Poxuca(R,P))
             
             return
-            
+
+            /*DOM*/ _tr(eu).remove()                                                               // sempre Remover do DOM
+            /*Obj*/ if(!IsBdj&&!Lxra){J[Typ].splice(Lin,1)}else{J[Typ][Fdx][col] = vall}           // no OBJ Move para Lixeira ou Exclui
+            /*Sub*/ if(!SuB){if(!IsBdj&&!Lxra){Sb_DELETE(Typ,id)}else{UpdateSupa(Typ,col,id,vall)}}// se n tiver vindo do RealTime, não é 'Bndj' nem 'Lixeira', então DELETA, else{só Edita}
+            /*Alr*/ ALERT(`a Linha ${id} foi removido da tabela ${IsBdj?col:Typ}`)                 // Alert Simples
+                        
             if(Lin && Lxra){J[R.Typ][Lin]['Lixo']=true}else{J[R.Typ].splice(Lin,1)} 
             const vall = IsBdj ? JsonEditado : true
         }LOG('RatsAAs')
