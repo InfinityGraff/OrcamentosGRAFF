@@ -7,16 +7,18 @@ const CopyPresset = {
   Nome: Alan Ferreira da Silva`
 }
 
-const User={
+const UsEr={
   '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
-  '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
-  '31$r1-31&-4eV49@4K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
-  '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
+  '31$r1-31&-4eV49@4K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
+  '32$r2-32&-6eV69@6K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
+  '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png'],
+  'Login'             :[''      ,'Login'         ,'./Img/LogOff.png']
 }
 
 const TM = {
-    Edi :'contenteditable="true"'
+     Edi :'contenteditable="true"'
     ,Err :`onerror="this.src='./SVG/placeholder.svg'"`
+    ,Pss:'Senha Inválida'
 }
 const Mnsg  = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
 

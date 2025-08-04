@@ -37,44 +37,19 @@
 </head>
 
 <script> // Base de Dados
-
-    const N_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD'}
-    const D_brev = {Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
     const Nav    = {
         Admn: ['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
         Eqip: ['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'],
         Clnt: ['HOME','|','ORC','|','CONF'],
     }
-    const U = {
-        body:['Dark','Body2','CSS1'], // Lista de CSS do Body
-        nav:'Eqip',                  // Páginas Disponíveis
-
-        nome:"Allan MacLovin",
-        Cnta:"Administrador",
-        Fone:"81 98726.5401",
-        Emal:"allanmaclovin@gmail.com",
-        Lcal:"São Lourenço da Mata",
-        Foto:"./img/Perfil_Allan.png",
-        TTEntrda: "28",
-        TTComiss: "R$ 58,45",
-        clientes: 56,
-        pendentes: 5,
-        tarefas:[
-        {chk:false , texto:"Validar Compra com Cliente"},
-        {chk:false , texto:"Comprar Placa de PS"},
-        {chk:false , texto:"Enviar produtos"},
-        {chk:false , texto:"Elaborar pop up"},
-        {chk:false , texto:"Realizar Tiragem de Banners para Açaí Tutti Frutti" }
-        ],
-        rascunhos: [
-        { Alt: 100,Lag:200, Qnt:3 },
-        { Alt: 50, Lag: 70, Qnt:10 }
-        ]
+    const U={
+        '32$r2-32&-6eV69@6K':{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',nav:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K':{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,nav:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        'Login'             :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,nav:'Admn', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
     }
-
-    const Atual    = {Pag:'CONF'} // n sei se ainda quero isso!
-    //const Atual    = {Pag:'#Pag_ORC'} // n sei se ainda quero isso!
-    
+    let Passs = StogeGet('SenhaCryp') || 'Login' 
+    const Atual    = {Pag:'CONF'}
     const Limit    = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
@@ -306,8 +281,8 @@
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
-    const dbCol = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
-    const CRYPP = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
+    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'], Lin:['E','' ],Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
@@ -371,7 +346,7 @@
         
         //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-    // conferir se essa é realmente nessesária
+        // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
         //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
 </script>
@@ -509,6 +484,14 @@
                 // Suggs e Links terão opções de "Troca" e de "Adição"
                 // Adicionar um Input de pesquisa no SuggLink também igual o de Clnt
                 // ocultar o botão de Lixo, quando tiver Link de PDDS no 'CLNT'
+
+                // Tabelas
+                // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
+                // fica ruim pra clicar na célula quando n tem Nada
+                // Mover-se nas células com as Setas
+                // Mostrar a Soma do valor na Barra de Config
+                // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
+                // Ocultar uma Coluna pelo thead
             }
 
             const Tm_Loade=(Typ)=>{
@@ -554,7 +537,7 @@
                 return `<div class="Ct"><p class="P-P" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
                             <div class="Rltv w100">
                                 <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
-                                    <button class="Mini" onclick="NewLinBdj(this)">+ Novo ${RmvPlural(N_Brev[AA(col)])}</button>
+                                    <button class="Mini" onclick="NewLinBdj(this)">+ Novo ${RmvPlural(D_Brev[AA(col)])}</button>
                                 </div>
                             </div>`
             }
@@ -579,7 +562,7 @@
         </script>
     </div>
 
-    <script> // CONFIGS  - ⭐_ _ _ _ Botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela 
+    <script> // CONFIGS  - ⭐_ _ _ _  (Barra de Configurações das Tabelas) (tudo aqui tbm salvará no usuário!)
         const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()"> <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');SaveConfig()">`
 
         function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
@@ -591,6 +574,7 @@
                     else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
                 }// F_Clen(Atual.Pag) // se for outro botão
         })})
+        // Botão pra Ocultar ID e Ocultar outras coisas tbm na Tabela
     </script>
 
     <script> // PESQUISA - ⭐⭐⭐⭐_
@@ -1294,8 +1278,8 @@
             /*Fixos*/
                 header{padding:0px ; z-index:999 ; transition: width ease-in-out 0.2s}
                 #PAGES{transition: width ease-in-out 0.2s}
-                #Login-Top      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
-                #Login-Top:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+                #LgNome      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
+                #LgNome:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
             /*Body1*/
                 .Body1{justify-content: flex-start}
                 .Body1 > header{height:8vh  ; width:100vw ; position:sticky; top:0}
@@ -1310,7 +1294,8 @@
                     .Body1 > header nav p   {display:none}
                     .Body1 > header nav div {border-radius:5px ; margin: 0px 2px;}
                     .Body1 #NavPerf         {flex-direction:row}
-                    .Body1 #Login-Top       {display:none}
+                    .Body1 #LgNome          {display:none}
+                    .Body1 #LgMORE          {display:none}
             /*Body2*/
                 .Body2{justify-content: flex-start}
                 .Body2 > header{height:100vh ; width:18% ; display:flex ; flex-direction: column}
@@ -1332,8 +1317,9 @@
                     .Body2 #NavPerf         {flex-direction:column; width: 90%}
                     .Body2 #Div-Pesq        {display:none}
                     .Body2 #DivNav          {width:90%}
-                    .Body2 #H_Login        {width: 100% ; justify-content: flex-end; background: #38003fa6}
-                    .Body2 #Login-Top       {display: flex; margin-right: 7px; font-size: 14px;}
+                    .Body2 #H_Login         {width: 100% ; justify-content: flex-end; background: #38003fa6}
+                    .Body2 #LgNome          {display: flex; margin-right: 7px; font-size: 14px;}
+                    .Body2 #LgMORE          {display: flex}
                     nav > *.Atv             {background: #da00aa}
                     nav > *.Atv:hover       {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
 
@@ -1347,12 +1333,6 @@
             .TBLAA tbody > tr:hover    {background:#8000a0a6 !important} /* Entrada rápida */
             .TBLAA tbody > tr td:hover {background:#dd56ffea !important} /* Entrada rápida */
         </style>
-        <script>
-            const OFF =()=> 'OFF'
-            const    ArryMais=()=> OFF() ? ['Cnfg','Help','LOff','Term'] : ['Troc','Edit','Cnfg','Help','LOff','Term'] // fazer isso simplesmente só ocultar e mostrar oq tem abaixo do mais
-            function ExieMais2(E,Off){Prvn();if(false/*Off*/){MdalShow('#ModalLogin')}else{TogShow('#H_Mais')}}
-            function AbreLogin(){MdalShow('#ModalLogin');Inn('#Span-Login','');Foco('#Inpt-Senha')}
-        </script>
 
         <div id="Title" class="Ct"> <!--Titulo-->
             <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
@@ -1380,14 +1360,14 @@
             <script>
                 function Load_Pesq(Typ){
                     return `<div class="pPesq Pesq_${Typ}" class="none">
-                        <input class="w100 H_Pesq" placeholder="Pesquisar em ${N_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
+                        <input class="w100 H_Pesq" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
                         <a class="Abslt HOV Pesq-Aa" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Aa</a>
                         <a class="Abslt HOV Pesq-A_" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">A]</a>
                         <a class="Abslt HOV Pesq-Bj" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Bj</a>
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
                     </div>`
                 }
-                Inn('#Div-Pesq',Nav[U.nav].map(Typ=>Load_Pesq(Typ)).join(''))
+                
             </script>
         </div>
 
@@ -1397,24 +1377,18 @@
                 function NavPag(Typ){//ao Navegar
                     Atual.Pag=Typ
                     Show(`#Pag_${Typ}`,$$('#PAGES > *'))     // Troca Página
+                    if(!Nav.Admn.includes(Typ)){DTV($$('#H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no Nav
                     ATV($(`#HNVDv_${Typ}`),$$('#H_Nav > *')) // Troca Nav.Atv
                     Show($$(`.Pesq_${Typ}`),$$('.pPesq'))    // Troca Pesquisa
                     setTimeout(()=>loadtmtable(Typ),0)       // 100% Assíncrono
                 }
-                Inn('#H_Nav',Nav[U.nav].map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${N_Brev[e]}</p></div>`).join(''))
             </script>
         </div>  
 
         <div id="H_Login" class="Ct"> <!--Perfil-->
-            <style>#Img-Perfil,#IMG-PerfiL{width:42px; height:42px; margin:4px 4px; top:3px}</style>
-            <div id="Login-Top" class="Ct LgTp2 none"  onclick="AbreLogin()"> Login </div>
-            <div class="Rltv">
-                <img id="LoginVazio" draggable="false" src="./Img/FundoLogo.png" class="ppt NObj" height="56px" top="0px"  onclick="AbreLogin()">
-                <img id="IMG-PerfiL" draggable="false" src="./Img/LogOff.png"    class="Abslt NObj none"           onclick="AbreLogin()" oncontextmenu="ExieMais2($('#MAIS'),true)">
-                <img id="Img-Perfil" draggable="false"                           class="ImgPerfil Abslt NObj none" onclick="ExieMais2($('#MAIS'),true)">
-            </div>
-            
             <style>
+                #_LgFoto{background:url(./Img/FundoLogo.png); background-size:cover ; height: 100%; width: auto;}
+                #LgFoto {width:42px; height:42px; margin:4px 4px}
                 .Body1 #H_Mais{top:55px; right:0px}
                 .Body2 #H_Mais{bottom: 0%; left:170px}
                 #MAIS{background:#4e4e4e; width:250px ; color:white}
@@ -1424,21 +1398,42 @@
                 #MAIS img{height:25px;margin-right:10px}
                 #MAIS p,#MAIS p a{font-size:10px}
             </style>
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov" style="width:18px" onclick="ShowMore()" oncontextmenu="Prvn();ShowMore()">
+            <div id="LgNome" class="Ct ppt"  onclick="AbreLogin(true)">Login</div>
+            <div id="_LgFoto"><img id="LgFoto" draggable="false" class="NObj" onclick="AbreLogin(true)" oncontextmenu="Prvn();ShowMore()"></div>
+
+            <script>
+                function ShowMore(){TogShow('#H_Mais')}
+                function AbreLogin(valid){if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')}
+                function TestSenha(tipo,p){
+                    const nome = $('#LgNome'),foto = $('#LgFoto')
+                    const storg=e=>{StogeRmv('SenhaCryp');if(e){StogeSet('SenhaCryp',e)}}
+                    const logaa=e=>{Inn(nome,U[e].Nome);foto.src=U[e].Foto;storg(e);SairMdal();Passs=e;LoadPerfil();PosLogin()}
+                    if(tipo=='Dslog'){logaa('Login')}
+                    if(tipo=='Storg'){if(p){logaa(p)}}
+                    if(tipo=='Modal'){const P = CrypPass(p.value) ; if(U[P]){logaa(P)}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
+                }
+                function PosLogin(){
+                    $('body').className="" ; ['Ct',...U[Passs].body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
+                    Inn('#H_Nav'   ,Nav[U[Passs].nav].map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+                    Inn('#Div-Pesq',Nav[U[Passs].nav].map(Typ=>Load_Pesq(Typ)).join(''))
+                }
+            </script>
 
             <div id="H_Mais" class="Abslt none bndj">
                 <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="NavPag('PRFL')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-                    <div class="Start" onclick="AbreLogin()">   <img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-                    <div class="Start" onclick="NavPag('CONF')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="NavPag('SPRT')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-                    <div class="Start" onclick="LogOff()">      <img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div class="Start" onclick="NavPag('PRFL');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+                    <div class="Start" onclick="AbreLogin()   ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="NavPag('CONF');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="NavPag('SPRT');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="TestSenha('Dslog');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
                     <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
                 </div>
             </div>
         </div>
         
         <div id="ALERT" class="Fixed rd none">
-            <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left: 5px;">Salvo com Sucesso</p></div>
+            <div class="Ct"><img draggable="false" src="./SVG/Plan.png" height="30px"><p style="margin-left:5px">Salvo com Sucesso</p></div>
             <span class="w100 Ct" style="height: 30px"></span>
         </div>
     </header>
@@ -1449,28 +1444,13 @@
             <div class="Cl"></div><!--NÃO TEM NADA AQUI-->
                         <div><!--Arte-->
                 <style>
-                    .container {
-                        max-width: 300px;
-                        margin: auto;
-                        padding: 20px;
-                        border: 1px solid #ccc;
-                        border-radius: 10px;
-                        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-                    }
-                    .tootal, .tootal span {
-                        font-size: 18px;
-                        font-weight: bold;
-                        color: #00df00;
-                    }
-                    .Pcntalmt{
-                        margin-top: 15px;
-                        color: gray;
-                    }
+                    .container{max-width: 300px; margin: auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1);}
+                    .tootal, .tootal span {font-size: 18px;font-weight: bold;color: #00df00;}
+                    .Pcntalmt{margin-top: 15px;color: gray}
                 </style>
 
                 <div class="container" style="margin-bottom: 150px;margin-top: 50px;">
                     <h3>Orçamento de Arte:</h3>
-
                     <select id="designOptions" onchange="EscolheARTE()" class="w100">
                         <option value="20" data-extra="0">Post Digital - R$ 20,00</option>
                         <option value="20" data-extra="4">Carrossel - R$ 20,00 (+R$ 4,00 por unidade)</option>
@@ -1481,16 +1461,14 @@
                         <option value="20" data-extra="0">Wing Banner - R$ 20,00</option>
                         <option value="50" data-extra="10">Cardápio - R$ 50,00 (+R$ 10,00 por página)</option>
                         <option value="25" data-extra="3">Backdrop Simples - R$ 25,00 (+R$ 3,00 por patrocinador)</option>
-                        <option value="100" data-extra="0">Logo - R$ 100,00</option>
-                        <option value="400" data-extra="0">Identidade - R$ 400,00</option>
+                        <option value="100"data-extra="0">Logo - R$ 100,00</option>
+                        <option value="400"data-extra="0">Identidade - R$ 400,00</option>
                         <option value="40" data-extra="0">Manipulação/Tratamento - R$ 40,00</option>
                         <option value="25" data-extra="0">Vetorização - R$ 25,00</option>
-                        <option value="5" data-extra="0">Banner Simples Texto - R$ 5,00</option>
+                        <option value="5"  data-extra="0">Banner Simples Texto - R$ 5,00</option>
                         <option value="30" data-extra="3">Arte para Camisa - R$ 30,00 (+R$ 3,00 por variação)</option>
                     </select>
-                    
                     <label for="quantidade">Quantidade:</label><input type="number" id="quantidade" value="1" min="1" oninput="EscolheARTE()">
-
                     </select>
                     <div id="Bruxos">
                         <label><input type="checkbox" value="20" onchange="EscolheARTE()"> Identidade Visual (20%)</label><br>
@@ -1500,7 +1478,6 @@
                         <label><input type="checkbox" value="7"  onchange="EscolheARTE()"> Escolha de Imagens (7%)</label><br>
                         <label><input type="checkbox" value="5"  onchange="EscolheARTE()"> Montagem (5%)</label><br>
                     </div>
-
                     <div class="Pcntalmt"></div>
                     <div class="tootal">Total: R$ <span id="total">0.00</span></div>
                 </div>
@@ -1516,11 +1493,9 @@
                         const Pcnt = Porcent.toFixed(2)/100
                         const Total = Val+(Ext*(Qnt-1))
                         const Total2 = Total+(Total*Pcnt)
-
                         $(".Pcntalmt").innerHTML = `Porcentagem: R$ ${parseFloat(Pcnt)*100}%`
                         $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
                     }
-
                 </script>
             </div>
         </div>
@@ -1655,9 +1630,7 @@
             <img src="./Fotos/006_Talão 2.webp"> -->
 
             <div id="DivListaKits"></div>
-            <script>
-                $('#DivListaKits')
-            </script>
+            <script>$('#DivListaKits')</script>
 
             <input type="file" id="svgInput" accept=".svg">
             <input id="SVGLarg" type="text" placeholder="Largura"><input id="SvgAlt" type="text" placeholder="Altura"><input id="SvgQnt" type="text" placeholder="Qnt">
@@ -1665,72 +1638,29 @@
             <p id="resultadoSVG"></p>
 
             <script> // Render SVG
-
                 function contarNos(d) {
-                const comandos = d.match(/[a-zA-Z]|-?\d*\.?\d+/g);
-                if (!comandos) return 0;
-
-                let totalNos = 0;
-                let i = 0;
-
-                while (i < comandos.length) {
-                    const cmd = comandos[i++].toUpperCase();
-
-                    switch (cmd) {
-                    case 'M':
-                    case 'L':
-                    case 'T':
-                        while (i + 1 < comandos.length && !isNaN(Number(comandos[i])) && !isNaN(Number(comandos[i + 1]))) {
-                        totalNos++;
-                        i += 2;
-                        }
-                        break;
-
-                    case 'H':
-                    case 'V':
-                        while (i < comandos.length && !isNaN(Number(comandos[i]))) {
-                        totalNos++;
-                        i++;
-                        }
-                        break;
-
-                    case 'C':
-                        while (i + 5 < comandos.length) {
-                        totalNos++; // conta só o ponto final
-                        i += 6;
-                        }
-                        break;
-
-                    case 'S':
-                    case 'Q':
-                        while (i + 3 < comandos.length) {
-                        totalNos++;
-                        i += 4;
-                        }
-                        break;
-
-                    case 'A':
-                        while (i + 6 < comandos.length) {
-                        totalNos++;
-                        i += 7;
-                        }
-                        break;
-
-                    case 'Z':
-                        // não conta nó
-                        break;
-
-                    default:
-                        if (!isNaN(Number(cmd))) {
-                        i++;
-                        }
-                    }
+                    const comandos = d.match(/[a-zA-Z]|-?\d*\.?\d+/g);
+                    if (!comandos) return 0;
+                    let totalNos = 0;
+                    let i = 0;
+                    while (i < comandos.length) {
+                        const cmd = comandos[i++].toUpperCase();
+                        switch (cmd) {
+                        case 'M':
+                        case 'L':
+                        case 'T': while (i + 1 < comandos.length && !isNaN(Number(comandos[i])) && !isNaN(Number(comandos[i + 1]))) {
+                            totalNos++;i += 2;}break;
+                        case 'H':
+                        case 'V': while (i < comandos.length && !isNaN(Number(comandos[i]))){totalNos++;i++;}break;
+                        case 'C': while (i + 5 < comandos.length) {totalNos++; // conta só o ponto final
+                            i += 6;} break;
+                        case 'S':
+                        case 'Q':while (i + 3 < comandos.length) { totalNos++; i += 4; } break;
+                        case 'A': while (i + 6 < comandos.length) {totalNos++; i += 7; }break;
+                        case 'Z': /*não conta nó*/break;
+                        default:if (!isNaN(Number(cmd))) {i++;}}
+                    }return totalNos;
                 }
-
-                return totalNos;
-                }
-
-
                 const ContPoly=p=>p?Math.floor(p.trim().split(/[\s,]+/).length/2):0
 
                 $('#svgInput').addEventListener('change',function(event){
@@ -1755,7 +1685,6 @@
                     $('#resultadoSVG').textContent = `${TotalNos} Nós, R$ ${Cm(valor+(valor*Porcent))} - Porcent ${valor*Porcent}`
                     $('#RsultsImgSvg').innerHTML = svgText
                   }
-
                   reader.readAsText(file)
                 })
             </script>
@@ -1965,8 +1894,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
@@ -2043,8 +1970,7 @@
                     #Div-Prod span img     {margin:5px; height:30px; width:30px}
                     #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
                     #Div-Prod .DivVrnts    {margin-top:20px}
-                    
-
+ 
                     #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
                     #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
                     #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:all 0.1s ease-in-out; color: #000000;}
@@ -2160,7 +2086,6 @@
                         }else if(Prod[serv].Prvw=='Canva3D'){Show($('#NewCanvas'))
                         }
                     }
-
                     // Inventar o Add Folhas
                     // Adicionar as quantidade mínima
                     // Aumenta 15 pra talões 2 Vias
@@ -2191,7 +2116,7 @@
                     </script>
                     <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
                     <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
-                        <div class="Ct"><input id="Hdd-Cbclh" class="GETConfig" type="checkbox" onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
+                        <div class="Ct"><input id="Hdd-Cbclh" type="checkbox" onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
                         <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"><label>Exibir Crescente</label></div>
                         <div class="Ct"><input type="checkbox" id="TrocaDetalheE"><label>Trocar Detalhes</label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
@@ -2205,7 +2130,7 @@
                         const InNa_RS=(e,val)=>{Inn(e,Tm_RS(val)) ; Nm(e,val)}
                         const ClrSlct=(arry)=>arry.forEach(e=>e.selectedIndex=0) // Deixar Junto com o Clear e Levar pra Biblioteca const Clear = e=>[e].flat().forEach(el=>$(el).value='')
                     // Templates
-                        const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_brev[e]}</p>`}</th>`).join('')
+                        const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
                         const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
                         const Tm_ClrAll=()=>Inn($('#ORC thead th:nth-child(10)'),`<div class="ppt HOV O_All" onclick="ClrAll()">🧹</div>`)
                         const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
@@ -2460,6 +2385,18 @@
                     -->
                 </div>
             </div>
+
+            <script>// Comentários Orçamento
+                // Mostrar o Valor por M2 ao Lado do Option
+                // Permitir Drag nas Linhas
+                // imitar Bureal no Futuro (deixando todas bandeijas Aberta)
+                // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
+                // selecionar option automaticamente caso tenha apeans 1
+                // Proibir Drag em Imagens
+                // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
+                // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
+                // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
+            </script>
         </div>
 
         <div id="Pag_PRFL" class="none Cl">
@@ -2471,7 +2408,10 @@
                 .info a  { color: #ccc}
                 .info .Start2{margin-top: 5px;}
                 .profile .box{height: 100px;}
-                .box   {background: #6d6d6d3f; border-radius: 10px; padding: 15px}
+                .box {border-radius: 10px; padding: 15px}
+                .CSS1 .box   {background: #6d6d6d3f}
+                .CSS2 .box   {background: #6d6d6d3f}
+                .CSS3 .box   {background: #ffffff71}
                 .box p {font-size: 1.2rem; margin-bottom: 10px}
                 .box a {color: #e600ac; font-weight: bold ; font-size: 28px;}
 
@@ -2482,52 +2422,71 @@
             </style>
             <div id="PerfilUser" class="w100 Cl"></div>
             <script>
+             const rascunhos = [
+                { Alt: 100,Lag:200, Qnt:3 },
+                { Alt: 50, Lag: 70, Qnt:10 }
+            ]
+
             function LoadPerfil(){
                 $("#PerfilUser").innerHTML = `
                     <div class="profile Ct w100">
-                        <img src="${U.Foto}">
+                        <img class="Hov" src="${U[Passs].Foto}">
                         <div class="info">
-                            <h2>${U.nome}</h2><a>${U.Cnta}</a>
-                            <div class="Start2"><p>${U.Fone}</p><p>${U.Emal}</p><p>${U.Lcal}</p></div>
+                            <h2>${U[Passs].Nome}</h2><a>${U[Passs].Nav}</a>
+                            <div class="Start2"><p>${U[Passs].Fone}</p><p>${U[Passs].Emal}</p><p>${U[Passs].Lcal}</p></div>
                         </div>
-                        <div class="box Cl"><p>TOTAL DE VENDAS  </p><a>${U.TTEntrda}</a></div>
-                        <div class="box Cl"><p>TOTAL DE COMISSÃO</p><a>${U.TTComiss}</a><button>Sacar Agora!</button></div>
+                        <div class="box Hov Cl"><p>TOTAL DE VENDAS  </p><a>${'28'}</a></div>
+                        <div class="box Hov Cl"><p>TOTAL DE COMISSÃO</p><a>${'R$ 58,45'}</a><button>Sacar Agora!</button></div>
                     </div>
 
-                    <div class="task-list box w80"><p>Lista de Tarefas</p>
+                    <div class="task-list box Hov w80"><p>Lista de Tarefas</p>
                         <div id="tarefas"></div>
                         <a href="#">+ Adicionar Tarefa</a>
                     </div>
 
                     <div class="st-mais w100 Ct gap">
-                        <div class="box"><p>Total de Clientes </p><a>${U.clientes }</a></div>
-                        <div class="box"><p>Status Pendente   </p><a>${U.pendentes}</a></div>
-                        <div class="box"><p>Outra coisa       </p><a>${'4545'}</a></div>
+                        <div class="box Hov"><p>Total de Clientes </p><a>${'45'}</a></div>
+                        <div class="box Hov"><p>Status Pendente   </p><a>${'155'}</a></div>
+                        <div class="box Hov"><p>Outra coisa       </p><a>${'4545'}</a></div>
                     </div>
 
                     <div class="box w80">
                     <p>Meus Rascunhos</p>
                     <table class="TBLAA w100">
                         <thead><tr><th>Altura</th><th>Largura</th><th>Quantidade</th></tr></thead>
-                        <tbody>${U.rascunhos.map(r=>`<tr><td>${r.Alt}</td><td>${r.Lag}</td><td>${r.Qnt}</td></tr>`).join('')}</tbody>
+                        <tbody>${rascunhos.map(r=>`<tr><td>${r.Alt}</td><td>${r.Lag}</td><td>${r.Qnt}</td></tr>`).join('')}</tbody>
                     </table>
                     </div>
                 `
 
-                U.tarefas.forEach(t=>{
+                const tarefass=[
+                    {chk:false , texto:"Validar Compra com Cliente"},
+                    {chk:false , texto:"Comprar Placa de PS"},
+                    {chk:false , texto:"Enviar produtos"},
+                    {chk:false , texto:"Elaborar pop up"},
+                    {chk:false , texto:"Realizar Tiragem de Banners para Açaí Tutti Frutti" }
+                ]
+
+                tarefass.forEach(t=>{
                     $("#tarefas").appendChild(Object.assign(NewTag("div"),{
                         className: "task-item" + (t.chk?"":"pendente"),
                         innerHTML: `<input type="checkbox" disabled ${t.chk?"checked":""}> ${t.texto}`
                     }))
                 })
             }
-            LoadPerfil()
-
             </script>
         </div>
 
         <div id="Pag_CONF">
             <h1>Configurações</h1>
+            <div id="ConfigPag" class="Cl Rltv Rd">
+                <div class="Ct Close" onclick="SairMdal()">X</div>
+                <div><input id="DarkLite" type="checkbox" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
+                <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
+                <button onclick="TrocaCSS('CSS1')">CSS1</button>
+                <button onclick="TrocaCSS('CSS2')">CSS2</button>
+                <button onclick="TrocaCSS('CSS3')">CSS3</button>
+            </div>
         </div>
     </div>
 
@@ -2570,12 +2529,12 @@
             <div class="Bt Loginn">Login</div>
               <div class="Ct Start">
                 <label for="Senha">Senha</label>
-                <input id="Inpt-Senha" class="Inputss" type="password" onkeyup="TestSenha(event,this)">
+                <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
               </div>
-              <span id="Span-Login" class="erro"></span>
+              <span id="errPass" class="erro"></span>
               <div class="Bt">
-                <button class="Ct w40" onclick="TestSenha('','#Inpt-Senha')">Logar</button>
-                <button class="Ct w40" onclick="Deslogar();SairMdal()">Sair</button>
+                <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
+                <button class="Ct w40" onclick="TestSenha('Dslog')">Sair</button>
               </div>
         </div>
 
@@ -2640,26 +2599,6 @@
             <button class="BTNota Ct RD magem" onclick="SairMdal()">Cancelar</button>
             <button class="BTNota Ct RD magem" onclick="NewPDF()">Imprimir<div id="imgnotta" class="Ct"></div></button>
             </div>
-        </div>
-
-        <div id="EditarPerfil" class="Cl Rltv Rd">
-            <div class="Close Ct" onclick="SairMdal()">X</div>
-            <div>Foto</div>
-            <img src="./Img/Perfil_Allan.png" width="100">
-            <div>Nome do Usuário</div>
-            <input type="text" placeholder="Senha Atual">
-            <input type="text" placeholder="Nova Senha">
-            <input type="text" placeholder="Repetir Senha">
-        </div>
-
-        <div id="ConfigPag" class="Cl Rltv Rd">
-            <div class="Ct Close" onclick="SairMdal()">X</div>
-            <div><input id="DarkLite" type="checkbox" class="GETConfig" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
-            <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
-            <button onclick="TrocaCSS('CSS1')">CSS1</button>
-            <button onclick="TrocaCSS('CSS2')">CSS2</button>
-            <button onclick="TrocaCSS('CSS3')">CSS3</button>
-            
         </div>
 
         <div id="PagSUPORTE" class="Cl Rltv Rd">
@@ -2850,7 +2789,7 @@
             }
 
             if(ObjKey(J).includes(Typ)){
-                if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](N_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
+                if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                      if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
                 else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
                 else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
@@ -2858,6 +2797,7 @@
             }
         }
 
+        function SaveConfig(e){LOG('Salva no SB',e.id,Vll(e))}
         // Adicionar e trocar Cliente
 </script>
 
@@ -2942,11 +2882,9 @@
         err ? console.error("Erro ao excluir:",err) : console.log(`Linha ${id} excluída da Tabela ${Typ}!`)
     }
 
-
     const NOVALINHA = [{Cat:"Adesivo", Clnt:"João Pereira", Cmpt:"Recorte eletrônico", Cntt:"(11) 91234-5678", CtLj:"Whatsapp", Id:"0052", Lcal:"Loja Física - SP", Link:"", Lixo:"", Loja:"Infinity Graff", Stts:""}]
     //insertOrden('CLNT',NOVALINHA)
     
-
     async function UpdateSupa(Typ,col,id,valor){
         try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
             if (error){console.error('Erro ao atualizar:',error)}
@@ -2990,81 +2928,7 @@
         }
     }
 
-</script>
-
-<script> // Login ⭐_ _ _ _
-    let LgTp = {'Nome':'','Cod':'','Img':''}
-    function TestSenha(e,ipt=null){
-
-        function CrypPass(senha){
-            const Cryp = senha.split('').map((c,idx)=>{
-                if(/[0-9]/.test(c)){let N=parseInt(c)
-                N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
-                else if(/[A-Za-z]/.test(c)){
-                let L=c.charCodeAt(0)+(idx%2===1?5:1)
-                if(L>90&&L<97)L-=26
-                else if(L>122)L-=26
-                return String.fromCharCode(L)}else{return c}})
-            var par = [] ; var imp = []
-            Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
-            const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
-            const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
-            return Par.concat(Imp).join('')
-        }
-        
-        const User={
-            '31$r1-31&-4eV49@4K':['(Baby)','Baby Massia'   ,'Img/Perfil_Baby.png'   ],
-            '32$r2-32&-6eV69@6K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'  ],
-            '34$r4-34&-7eV79@7K':['(Lisa)','Lisa Caramelo' ,'Img/Perfil_Lisa.png'   ],
-            '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png']
-        }
-
-        if(e==='Deslog'){
-            Nm($('#Login-Top'),'')
-            Inn('.LgTp2',IconLogin)
-            Show('.LgTp')
-            None('.ImgPerfil')
-            $('.ImgPerfil').src=''
-        
-        }else if(e==='Storage'){ if(User[ipt] === undefined || User[ipt] === null){return}
-            else{
-                // localStorage.removeItem('SenhaCryp')
-                // localStorage.setItem('SenhaCryp',input)
-                Nm($('#Login-Top'),'Logado')
-                Inn('.LgTp2',User[ipt][1])
-                Show('.ImgPerfil')
-                $('.ImgPerfil').src=User[ipt][2]
-            }
-        }
-        else{
-            let inpt=e==='' ? $(ipt) : ipt
-            if(KeyEnter(e)||e===''){
-                const Cryp = CrypPass(inpt.value)
-                if(User[Cryp]){
-
-                    None($('#IMG-PerfiL'))
-                    SairMdal()
-                    localStorage.removeItem('SenhaCryp')
-                    localStorage.setItem('SenhaCryp',Cryp)
-                    Nm($('#Login-Top'),"Logado")
-                    Inn('.LgTp2',User[Cryp][1])
-                    Show('.ImgPerfil')
-                    Show('.ImgPerfil2')
-                    $('.ImgPerfil').src=User[Cryp][2]
-
-                }else{Inn('#Span-Login','Senha Inválida') ; inpt.placeholder='Senha Inválida'}
-                inpt.value='';inpt.focus()
-                console.log('Logou')
-            }
-        }
-    }
-    
-    function SemLogin(){return LgTp.Cod===''}
-    function LoginStorage(){const Pass = localStorage.getItem('SenhaCryp');if(Pass===null){return};TestSenha('Storage',Pass)}
-    function Deslogar()    {localStorage.removeItem('SenhaCryp');TestSenha('Deslog','')}
-    LoginStorage()
-    // deixar o CryPass() na BaseDados da Biblioteca
-    // levas as config do Usuáio para o SupaBase
+    configurarRealtime()
 </script>
 
 <script> // Nota  ⭐_ _ _ _
@@ -3072,109 +2936,36 @@
     function VerNota(){
         MdalShow('#ModalNota')
         const dados = $$('#ORC tbody tr').map(tr=>$$('td input, td select',tr).map(e=>{if(estaOculta(e)){return}else{return e.value}}))
+        $('#DescrNota').innerHTML = dados.join('')
         console.log(dados)
     }
 </script>
 
-<script> // Storage
-    function AtivaEventos(){window.addEventListener("scroll",()=>{scrollPosition=[window.scrollX,window.scrollY]})}
-    // AtivaEventos()
-    function Disparos(e){/*console.log('Dispoaro >')*/ ; e.dispatchEvent(new Event('change')); /* console.log('< Dispoaro') */}
-    function SaveConfig(e){StogeSet(e.id,Vll(e)) ; /* console.log('Save',e.id,Vll(e)) */ }
-    function GetConfig(){$$('.GETConfig').forEach(e=>{const Valor = StogeGet(e.id);if(Valor){ llv(e,Valor);Disparos(e)  }})}
-    
-    
-    window.onload = () => {/*GetConfig()*/} // só vai chamar isso se não tiver ninguem Logado
-
-    // function GetConfigOrdem(){OrdenarRows($(`#H_PDDS thead tr th:nth-child(${8}) a`),7,'p','desc')}
-    // function savecoifigTABLE(){StogeSet('Orden',x)}
-    // Save para MenuNav
-</script>
-
 <script>// Iniciação
-
-    function PosGet(){Onloads('body');NavPag(Atual.Pag)
-        U.body.forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
-        LOG('✅ Página Carregada!')
-    };PosGet()
+    TestSenha('Storg',StogeGet('SenhaCryp'))
+    PosLogin()
+    function PosGet(){Onloads('body');NavPag(Atual.Pag);LOG('✅ Página Carregada!')} PosGet()
     
-    document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
-        // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
+    document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
-        if($('#ORC').contains(targ)){
-            ATV(_tr(targ));ReloadDetalhes()
-        } 
+        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes()} 
+        // isso Deve virar Padão tipo algo genético, pra usar em varios
+        // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
     })
-
     document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
         Rmv('.Moldura','Atv')
         if(S(targ).Coten('ClickCanv')||targ.closest('.ClickCanv')){ATV('.Moldura.ClickCanv')}
         else{DTV('.Moldura.ClickCanv')}
     })
     // Atalhos C e E
-    document.addEventListener('keydown',e=>{
-        if($('.Moldura.ClickCanv.Atv')){
-            if(e.key==='c'){$('#alignX').click()}
-            if(e.key==='e'){$('#alignY').click()}
-        }
-    })   
-    
-
-    // Trexo relacionado a Mover os Botões das Fotinhas
-    let alvo,dx,dy
-    document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop});
-    document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
-    document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
-
-
-    configurarRealtime()
+    document.addEventListener('keydown',e=>{if($('.Moldura.ClickCanv.Atv')){if(e.key==='c'){$('#alignX').click()};if(e.key==='e'){$('#alignY').click()}}})
 </script>
 
 <script> // comentários ⏳ ❌ ✔️
-    // Orçamento
-        // Mostrar o Valor por M2 ao Lado do Option
-        // Permitir Drag nas Linhas
-        // imitar Bureal no Futuro (deixando todas bandeijas Aberta)
-        // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
-        // selecionar option automaticamente caso tenha apeans 1
-        // Proibir Drag em Imagens
-        // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
-        // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-        // qual foi o PC q deu a entrada, precisa registrar tbm, Adicionar RG tbm em Pedidos, e em Clientes e Pagamento
-        // Poder Diferenciar oq foi preenchido Automatico, e o q foi preenchido Manualmente
-        // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
         // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
         // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
         // como impedir q a página dê zoom, pelo celular
-        // No preview podia ser um Gif
-        // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
-        // ID cria Sozinho no BackEnd na PLanilha
         // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
 
-    // Tabelas
-        // Dica pra mover Linha igual Movimenta as Linhas na Planilha, aparece só o contorno e o grad bem simplifciado
-        // ao exibir o SVG grande, mostra o tamanho das coisas
-        // remover Abreviação dos Thead se precisar
-        // se a bandeijinha quebrar Linha então aumenta ela se não fica tamanho da Div
-        // Mostrar a Soma do valor na Barra de Config
-        // fica ruim pra clicar na célula quando n tem Nada
-        // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
-        // Poder trocar o nome do Cliente
-        // Selecionar Várias Células e Colar uma coisa só
-        // o Hover precisa ta por cima das cores verde
-        // ter uma opção no thead na qual eu possa Ocultar a coluna e deiaxar apenas um Icone, e quando clicar q exibe uma Bandeja, ou voltar pra o normal
-        // isso vai ser bem igual aquela troca de bandeija que tem dentro de ABCD grad, só q funcionando também com um unico valor
-
-    // Modos de Preview da Tabela (Pra Variar)
-        // bandeja{
-        //     Modo1 = Bandeija Flutiante, o modelo q já tem
-        //     Modo2 = Bandeija Dentro da tabela Misturada
-        // }
-        // conteúdo{
-        //     Modo1 = Formato de Tabela, (com ou sem Cabeçalho)
-        //     Modo2 = Formato de Lista , igual oq já tem no Suggs
-        //     Modo3 = Formato de Card  , ficará dentro será várias tags montando com tudo junto
-        // }
 </script>
-
 </html>

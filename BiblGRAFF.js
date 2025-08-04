@@ -628,3 +628,27 @@ function Promss_Imgs2(files,div){
       });arry.push(promise)
   };return Promise.all(arry)
 }
+
+
+function CrypPass(senha){
+    const Cryp = senha.split('').map((c,idx)=>{
+        if(/[0-9]/.test(c)){let N=parseInt(c)
+        N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
+        else if(/[A-Za-z]/.test(c)){
+        let L=c.charCodeAt(0)+(idx%2===1?5:1)
+        if(L>90&&L<97)L-=26
+        else if(L>122)L-=26
+        return String.fromCharCode(L)}else{return c}})
+    var par = [] ; var imp = []
+    Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
+    const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
+    const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
+    return Par.concat(Imp).join('')
+}
+
+
+// Trexo relacionado a Mover os Botões das Fotinhas
+let alvo,dx,dy
+document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop});
+document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
+document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
