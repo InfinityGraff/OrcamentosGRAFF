@@ -118,6 +118,22 @@ const ListARQ = [
     "280_1",
     "281_1",
     "81_1",
+    "939_1",
+    "938_1",
+    "929_1",
+    "930_1",
+    "907_1",
+    "881_1",
+    "880_1",
+    "835_1",
+    "837_1",
+    "864_1",
+    "909_1",
+    "828_1",
+    "804_1",
+    "826_1",
+    "842_1",
+
 ]
 
 const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
