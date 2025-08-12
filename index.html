@@ -1504,7 +1504,7 @@
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="AddROW('PDDS')">+ Novo Pedido</button>
+                <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
                 <button onclick="RfreshJson('PDDS')">Recolor</button>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
@@ -1562,7 +1562,7 @@
             </table>
 
             <div class="Ct Bt">
-                <button onclick="AddROW('MPAG')">Nova Linha +</button>
+                <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                 <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
                 <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
             </div>
@@ -1577,9 +1577,9 @@
 
             <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('GRAD')">Rfresh</button>
-                <button onclick="AddROW('GRAD')">Grad +</button>
-                <button onclick="AddROW('OOSS')">OS +</button>
-                <button onclick="AddROW('UBER')">Uber +</button>
+                <button onclick="AddROW('GRAD','<')">Grad +</button>
+                <button onclick="AddROW('OOSS','<')">OS +</button>
+                <button onclick="AddROW('UBER','<')">Uber +</button>
                 <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
                 <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
                 <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
@@ -1606,7 +1606,7 @@
 
         <div id="Pag_CLNT" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="AddROW('CLNT')">+ Nova Linha</button>
+                <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
                 <h1>Tabela de Pagamentos</h1>
                 <button onclick="MesclarContato()">Mesclar</button>
                 <div id="PagPesq_CLNT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
@@ -2679,28 +2679,17 @@
             }
         }
 
-        function AddROW(Typ,obj=null){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
-            function AddROWConst(Typ,obj=null){ // depois mudar pra inserir no Inicio ou no Final
-                const LastRow=(obj,id)=>obj.reduce((max,e)=>Math.max(max,e[id]),0)
-                const Arq = J[Typ]
-                const Novo = {...Arq[Arq.length-1]}                    // Clona Nova Linha
-                ObjKey(Novo).forEach(k=>(Novo[k]=''))                  // Limpa tudo
-                Novo['ID'] = LastRow(Arq,'ID') + 1                     // Muda Id para um Novo
-                if(obj){ObjEtr(obj).forEach((K)=>{Novo[K[0]] = K[1]})} // Atualizar o Restante dos Dados
-                J[Typ].push(Novo)
-                console.log(Novo)
-            }
-            const Pose  = "<"
+        function AddROW(Typ,Ps,obj={}){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
             const Def   = ClrObj(BS[Typ])        // Cria um Default Baseado na bndj
             const Tbody = $(`#H_${Typ} > tbody`)
-            Def.Id = NewID(J[Typ])
+            Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
+            ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
             const Clone = Tm_Table(Typ,[Def])
-            /*DOM*/ Pose == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
-            /*Obj*/ //AddROWConst(Typ,obj)      // Depois Atualiza a Const adicionando o novo pedido a ela
+            /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
+            /*Obj*/ J[Typ].push(Def)
             /*Sub*/ Sb_CREATE(Typ,{Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`})
-        }LOG('AddROW(agoras)')
+        }LOG('AddROWs(agoras)')
         
-
         function RmvROW(eu,SuB){        // ⭐⭐_ _ _
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = true
@@ -2770,7 +2759,7 @@
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
                 if(Nmame(inpt)){return Nmame(inpt)
                 }else{
-                    AddROW('CLNT',{Clnt:inpt.value}) // Adiciona Nova Linha já com Novo Valor
+                    AddROW('CLNT','<',{Clnt:inpt.value}) // Adiciona Nova Linha já com Novo Valor
                     // dentro do AddRow terá os 3 (Prático, Const, SupaBase)
                     // Reload nesta Célula
                     }
