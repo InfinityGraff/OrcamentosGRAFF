@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orcamento</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-<!--     
+    
+    <!--     
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
@@ -16,47 +19,39 @@
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"      ></script>
- --> 
+    --> 
+
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
-    
-        <script src="./JSON/DadosPDDS.js"></script>
-        <script src="./JSON/DadosGRAD.js"></script>
-        <script src="./JSON/DadosMPAG.js"></script>
-        <script src="./JSON/DadosOOSS.js"></script>
-        <script src="./JSON/DadosUBER.js"></script>
-        <script src="./JSON/DadosCLNT.js"></script>
+    <script src="./AchaMdd.js"></script>
+    <script src="./Gera3D.js"></script>
 
-        <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
-        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-        <!--<script src="https://threejs.org/build/three.js"></script>-->
-        <script src="./AchaMdd.js"></script>
-        <script src="./Gera3D.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
+    <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
 <script> // Base de Dados
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',}
     const Nav    = {
         Admn: ['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
         Eqip: ['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'],
         Clnt: ['HOME','|','ORC','|','CONF'],
     }
     const U={
-        '32$r2-32&-6eV69@6K':{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',nav:'Admn', body:['Lite','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K':{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,nav:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        'Login'             :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,nav:'Admn', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',nav:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,nav:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',nav:'Eqip', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,nav:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
     }
     let Passs = StogeGet('SenhaCryp') || 'Login' 
     const Atual    = {Pag:'ORC'}
     const Limit    = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
-    //const Limit    = {PDDS:{INN:1,OUT:3000},SERV:{INN:1,OUT:3000},PGMT:{INN:1,OUT:3000}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     const TypBndj  = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
     const LocSecund= {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
-    let scrollPosition = [0,0]
+
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -71,36 +66,38 @@
             }},
         'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Recorte'                            ] , Extra:[            ] , HotKey:["rótulo", "identificação", "label", "tag"] ,
                         Variantes:{
+                            'Todos'           :{},
                             'Refilada'        :{item:'6',Grad:'Ads(Blh)',Tipo:'',Valr:70 ,Cust:20},
                             'Redonda'         :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:75 ,Cust:30},
                             'Personalizada'   :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:80 ,Cust:30},
             }},
         'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte'                                      ] , Extra:[            ] , HotKey:["painel"                                 ] ,
                         Variantes:{
-                            'Banner'          :{item:'8' ,Grad:'Lon(Bnn)',Tipo:''                              ,Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
-                            'Faixa'           :{item:'9' ,Grad:'Lon(Fax)',Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:['0,00 x 1,20'] , Mdds:['2,00 x 0,50']}, 
-                            'com ilhós'       :{item:'11',Grad:'Lon(Ilh)',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:['0,00 x 3,20'] , Mdds:['1,00 x 1,00']},
-                            'Sem Acabamento'  :{item:'13',Grad:'Lon(Sem)',Tipo:''                              ,Valr:60,Cust:20 , Limit:['0,00 x 3,20'] , Mdds:[]},
+                            'Todos'           :{},
+                            'Banner'          :{item:'8' ,Grad:'Lon(Bnn)',Tipo:''                              ,Valr:70,Cust:22 , Limit:{Max:{L:1.20,A:0},Min:{L:0.40,A:0.60}} , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
+                            'Faixa'           :{item:'9' ,Grad:'Lon(Fax)',Tipo:['Só Madeira','Madeira e ilhós'],Valr:70,Cust:22 , Limit:{Max:{L:0,A:1.20},Min:{L:0.60,A:0.40}} , Mdds:['2,00 x 0,50']}, 
+                            'com ilhós'       :{item:'11',Grad:'Lon(Ilh)',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:{Max:{x:3.20,X:0},Min:{L:0.40,A:0.40}} , Mdds:['1,00 x 1,00']},
+                            'Sem Acabamento'  :{item:'13',Grad:'Lon(Sem)',Tipo:''                              ,Valr:60,Cust:20 , Limit:{Max:{x:3.20,X:0},Min:{L:0.30,A:0.30}} , Mdds:[]},
             }},
         'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
                         Variantes:{  
-                            'PS 1mm'          :{item:'17',Grad:'Ads(Blh)',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
-                            'PS 2mm'          :{item:'18',Grad:'Ads(Blh)',Tipo:'',Valr:130,Cust:'        ', Limit:['2,00 x 1,00'] , Mdds:['0,30 x 0,20']},  
-                            'PVC 2mm'         :{item:'14',Grad:'Ads(Blh)',Tipo:'',Valr:150,Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
-                            'PVC 3mm'         :{item:'15',Grad:'Ads(Blh)',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
-                            'PVC 5mm'         :{item:'16',Grad:'Ads(Blh)',Tipo:'',Valr:' ',Cust:'        ', Limit:['2,44 x 1,22'] , Mdds:['0,30 x 0,20']},
+                            'PS 1mm'          :{item:'17',Grad:'Ads(Blh)',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
+                            'PS 2mm'          :{item:'18',Grad:'Ads(Blh)',Tipo:'',Valr:130,Cust:'        ', Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20']},  
+                            'PVC 2mm'         :{item:'14',Grad:'Ads(Blh)',Tipo:'',Valr:150,Cust:'        ', Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20']},
+                            'PVC 3mm'         :{item:'15',Grad:'Ads(Blh)',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
+                            'PVC 5mm'         :{item:'16',Grad:'Ads(Blh)',Tipo:'',Valr:' ',Cust:'        ', Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20']},
             }},
         'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:['Manta'     ] , HotKey:["magneto", 'manta magnética'             ] ,
                         Variantes:{ // Adicional de Calendário (Acima de 500 UND)
-                            '0.3 - Geladeira' :{item:'19',Grad:'Ads(Blh)',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.4 - Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:['0,00 x 0,60'] , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-                            '0.8 - Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:['0,00 x 0,60'] , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.3 - Geladeira' :{item:'19',Grad:'Ads(Blh)',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.4 - Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
+                            '0.8 - Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
-                        Variantes:{
-                            'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-                            'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-        }},
+        'Plaqueta' :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
+                        Variantes:{  
+
+            }},
+
         // Offset
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
@@ -223,6 +220,11 @@
                         Variantes:{
                             'Sinalização' :{}}
         },
+        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
+                        Variantes:{
+                            'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                            'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+        }},
         // Serviços
         'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']      ,
                         Variantes:{
@@ -301,7 +303,7 @@
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
-    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira']
+    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta']
     const ListaKits = ['Zebu','Zimaz']
     let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 
@@ -310,6 +312,11 @@
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
     const supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
+
+<style>
+    input.Error:focus{background:red}
+    input.Error:hover{background:red}
+</style>
 
 <script> // Bibliotecas
     // Epecíficas (as q Retorna)
@@ -1419,6 +1426,7 @@
                     $('body').className="" ; ['Ct',...U[Passs].body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
                     Inn('#H_Nav'   ,Nav[U[Passs].nav].map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
                     Inn('#Div-Pesq',Nav[U[Passs].nav].map(Typ=>Load_Pesq(Typ)).join(''))
+                    tmplt_Prod()
                 }
             </script>
 
@@ -1972,6 +1980,9 @@
                     #Div-Prod span img     {margin:5px; height:30px; width:30px}
                     #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
                     #Div-Prod .DivVrnts    {margin-top:20px}
+                    .DivVrnts .vlM2  {margin-top: 5px;}
+                    .DivVrnts .vlM2 a{font-size: 15px;}
+                    .DivVrnts .vlM2 p{margin: 1px 2px;}
  
                     #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
                     #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
@@ -1983,8 +1994,11 @@
 
                     #Div-Prod .Conteudo{padding-top:10px; z-index:999}
                     #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b3,#ffffff); color:#575757;}
-                    .offf{ top: 40px; background: #808080d7; color: #ffffff;font-size: 20px;}
-                    #Div-Prod .Conteudo .fotO{height:160px; width:150px}
+                    .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
+                    #Div-Prod .Conteudo .fotO {height:160px; width:150px}
+                    #Div-Prod .Conteudo .fotO3{height:53px ; width:150px}
+                    #Div-Prod .Conteudo .fotO4{height:80px ; width:80px}
+                    #Div-Prod .Conteudo .fotO6{height:53px ; width:150px}
                     .tec2 { z-index: 999; top: 310px; left: 20%; width: 60%;}
 
                     /*esse Basicalmente é o Modal das Fotinahs q aparece a clicar na foto do Protudo*/
@@ -2005,47 +2019,48 @@
                         if(x===IdxDe(e)){Show(E)}else{None(E)}
                     })}
 
-                    function ReOrdenar(){Inn('#Div-Prod',AllProd.map(e=>tmplt_Prod(e)).join(''))} ; ReOrdenar()
+                    function tmplt_Prod(){ //GRANDE
+                        Inn('#Div-Prod',AllProd.map(e=>{
+                            const Fora = ListaFora.includes(e) ? './SVG/placeholder.svg' : null
+                            const onck = `onclick="ExibeFotinha('${e}')"`
+                            const vari = Prod[e].Variantes
+                            if(U[Passs].nav !== 'Admn' && Fora !== null){return}
+                             
+                            return `<div class="Rltv Start2">
+                                <span class="Start"><img src="${Fora || `./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
+                                <div class="KeyInn none">...</div>
 
-                    function tmplt_Prod(e){ //GRANDE
-                        const Fora = ListaFora.includes(e)
-                        return `<div class="Rltv Start2">
-                            <span class="Start"><img src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
-                            <div class="KeyInn none">...</div>
-                                <div class="Ct w100 Opts Abslt">${
+                                <div class="Ct w100 Opts Abslt">${ // Faz o Menusiho de opções de cima
                                     Vari(e).map((vv,x,l)=>{
                                         const pose = `left:${(x*(200/l.length))-(x===0?0:15)}px;`
                                         const Larg = `width:${(200/l.length)+15}px;`
                                         const Zidx = `z-index:${(l.length-x)+10};`
-                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora?'./SVG/placeholder.svg':`./Prod/IconProd/${e}_${vv}.svg`}"></div>`
-                                }).join('')}</div>
-                            <div class="Ct DivVrnts">
-                            ${Vari(e).map((V,x)=>{ const OBJ = Prod[e].Variantes[V]
-                                return `<div class="Conteudo Cl ${x===0?'':'none'}">
-                                            ${Prod[e].Stts==="Offff"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
-                                            <div class="KeyVariants rgx">${V}</div>
-                                            <img class="fotO" src="${Fora?'./SVG/placeholder.svg':`./Prod/${e}_${V}.webp`}" onclick="ExibeFotinha('${e}')">
-                                            <div class="Ct w100 ${OBJ.Calc==="QNT" || OBJ.Calc==="OFS"?'none':''}">${''}</div>
-                                            <div class="Ct">${RS_HTML(OBJ.Valr)}</div>
-                                            <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
-                                            <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
-                                            <img class="Abslt tec2 HOV" onclick="AddCarrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
-                                </div>`
-                            }).join('')}
-                            </div>
-                        </div>`
-                    }
+                                        return `<div style="${pose+Larg+Zidx}" onclick="ShowVrnts(this)" class="Ct Abslt ppt Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora || `./Prod/IconProd/${vv=='Todos'?`${vv}`:`${e}_${vv}`}.svg`}"></div>`
+                                    }).join('')}
+                                </div>
 
-                    function AddCarrinho(Serv,Tipo,Cbmt,Gram,Qntt){ // ta dando erro quando n tem Cbmnt, ou tipo ou outros
-                        const  ult = $$('#ORC .OrcAdd').slice(-1)[0]
-                        if($('#ORC .OrcServ').value!==""){DispClick(ult)}
-                        const SERV = $$('#ORC .OrcServ').slice(-1)[0] ; SERV.value = Serv ; SERVChang(SERV) // Delay(0.2)
-                        const TIPO = $$('#ORC .OrcTipo').slice(-1)[0] ; TIPO.value = Tipo ; TIPOChang(TIPO) 
-                        const CBMT = $$('#ORC .OrcCbmt').slice(-1)[0] ; CBMT.value = Cbmt ; CBMTChang(TIPO)
-                        const GRAM = $$('#ORC .OrcGram').slice(-1)[0] ; GRAM.value = Gram ; GRAMChang(TIPO)
-                        const QNTT = $$('#ORC .OrcQntt').slice(-1)[0] ; QNTT.value = Qntt ; QNTTChang(TIPO)
+                                <div class="Ct DivVrnts">${
+                                    Vari(e).map((V,x)=>{const obj = vari[V]
+                                        return `<div class="Conteudo Cl ${x===0?'':'none'}">
+                                        ${Prod[e].Stts==="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
+                                        <div class="KeyVariants rgx">${V}</div>
+                                        
+                                        ${V == "Todos" ?
+                                            `<div class="Ct">${ObjKey(vari).map((vV,x,l)=>vV=='Todos'?'':`<img class="fotO${l.length-1} Hov" src="${Fora || `./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarrinho('${e}','${vV}')">`).join('')}</div>`
+                                            : `<img class="fotO Hov" src="${Fora || `./Prod/${e}_${V}.webp`}" ${onck}>`
+                                        }
+                                        ${Prod[e].Calc=='M2' && V !== "Todos" ? `<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr)}<p>m²</p></div>` : ''}
+                                        <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
+                                        <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
+                                        <img class="Abslt tec2 HOV" onclick="AddCarrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
+                                        </div>`
+                                    }).join('')}
+                                </div>
+
+                            </div>`
+                        }).join(''))
                     }
-                    
+                                        
                     function ExibeFotinha(Serv){
                         const valid = $('#TrocaDetalheE').checked
                         console.log('check: ',valid)
@@ -2077,8 +2092,8 @@
 
                     function ReloadDetalhes(){
                         None($$('#Div-Detalhes .canvi'))
-                        const serv = $('#ORC tr.Atv .OrcServ')?.value || ""
-                        console.log('ReloadDetalhes',serv,Prod[serv].Prvw)
+                        const serv = $('#ORC tr.Atv .oServ')?.value || ""
+                        //console.log('ReloadDetalhes',serv,Prod[serv].Prvw)
                         if(serv==""){// n exibe nada
                         }else if(Prod[serv].Prvw=='CanvMdd'){Show($('#CanvasMedidas'))
                         }else if(Prod[serv].Prvw=='Fotinha'){Show($('#DetalheFotinha'));ExibeFotinha(serv)
@@ -2090,9 +2105,9 @@
                     }
                     // Inventar o Add Folhas
                     // Adicionar as quantidade mínima
-                    // Aumenta 15 pra talões 2 Vias
+                    // Aumenta 15 pra Talões 2 Vias
                     // Criar os Limites de Medidas
-                    // Mostrar Valor por UND de Cartões tbm
+                    // Mostrar Valor por UND de Cartões Tbm
                     // o Modal agora n precisa se restringir a 500 x 500
                 </script>
                 
@@ -2106,9 +2121,11 @@
                 </div>
             </div>
             
-            <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:10px">
-
-                <div id="CONFIG" class="Abslt" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
+            <div id="NovoForm" class="Cl w90 Rltv Rd" style="background:#ffffff0a;padding:20px 10px">
+                
+                <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
+                    <div class="ppt HOV O_All" onclick="ClrAll()">🧹</div><script></script>
+                    <div class="ppt HOV O_All" onclick="RmvAll()">❌</div><script></script>
                     <img draggable="false" src="./SVG/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
                         function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
@@ -2118,10 +2135,10 @@
                     </script>
                     <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
                     <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
-                        <div class="Ct"><input id="Hdd-Cbclh" type="checkbox" onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
-                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"><label>Exibir Custo</label></div>
-                        <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"><label>Exibir Crescente</label></div>
-                        <div class="Ct"><input type="checkbox" id="TrocaDetalheE"><label>Trocar Detalhes</label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
+                        <div class="Ct"><input id="Hdd-Cbclh" type="checkbox" checked onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"> <label>Exibir Custo    </label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"> <label>Exibir Crescente</label></div>
+                        <div class="Ct"><input type="checkbox" id="TrocaDetalheE">    <label>Trocar Detalhes </label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
                     </div>
                 </div>
 
@@ -2133,31 +2150,32 @@
                         const ClrSlct=(arry)=>arry.forEach(e=>e.selectedIndex=0) // Deixar Junto com o Clear e Levar pra Biblioteca const Clear = e=>[e].flat().forEach(el=>$(el).value='')
                     // Templates
                         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
-                        const Tm_RmvAll=()=>Inn($('#ORC thead th:nth-child(1 )'),`<div class="ppt HOV O_All" onclick="RmvAll()">❌</div>`)
-                        const Tm_ClrAll=()=>Inn($('#ORC thead th:nth-child(10)'),`<div class="ppt HOV O_All" onclick="ClrAll()">🧹</div>`)
                         const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
-                    // Ações
-                        function Check_W_Pag(){
-                            if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
-                            if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
+                        const Tm_Extra=()=>{
+                            return `<input type="checkbox">`
                         }
-                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',(e)=>Nm(e)==0)
-                        const Zerar=tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
+                    // Ações
+                        const Check_W_Pag=()=>{
+                                if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
+                                if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}
+                            };window.addEventListener("resize",Check_W_Pag)
+                        const RecolorVlr=()=>AddTrue($$(cla),'Branc',e=>Nm(e)==0)
+                        const Zerar =tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
                         const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                     // Clean e Remove
                         const RmvAll=()=>{$$(`#ORC tbody td:nth-child(1 ) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
-                        const ClrAll=()=>{$$(`#ORC tbody td:nth-child(10) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
+                        const ClrAll=()=>{$$(`#ORC tbody td:nth-child(11) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
                         const ClrRow=tr=>{Clear($$('input',tr)) ; ClrSlct($$('select',tr)) ; Zerar(tr)}
                         const RmvRow=tr=>tr.remove()
-                    
-                    // Objetivo aqui é remover o Tamanho dessas Strings (Principalmente os Querys)
                 </script>
+
                 <style>  /*CSS da Tabela de Orçamento*/
                     #ORC input,#ORC select{width:100% !important ; margin:0}
                     #ORC .RS{font-size:7px}
                     #ORC td{padding: 1px}
                     #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center;}
-                    #ORC .Atv{border: solid 2px #ff008c;}
+                    #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
+                    #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
                     .Branc{color: #ffffff5d !important}
                     .imita{height: 30px !important; background: #ffffff11}
                     .Final a{font-size:20px ; font-family:var(--Medi)}
@@ -2166,74 +2184,100 @@
                     [class^="ORC_CUST_"]{color:#ff6565}
                     [class^="ORC_CRCT_"]{color:#65b5ff}
                     [class^="ORC_RSUT_"]{color:#48ff00}
+                    #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
+                    #G_Cores p  {width:30px; height:30px; margin:2px}
+                    #ORC :is(td,th):nth-child(8){display: none;}
+                    .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
                 </style>
 
                 <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
-                    <thead class="none"><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Und','SbTt','']));Tm_RmvAll();Tm_ClrAll()"></tr></thead>
+                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Aplic','Und','SbTt','']))"></tr></thead>
                     <tbody>
                         <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                             <td width="15px" style="fill:#ff0000"><div class="ppt OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                            <td><select class="OrcServ" onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllProd]))"></select></td>
-                            <td><select class="OrcTipo" onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"></select></td>
-                            <td width="10%">
-                                <select class="OrcCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"></select>
-                                <input class="ORC_INPT_Lrg" placeholder="Largura" oninput="MaskNum(this)">
-                            </td>
-                            <td width="10%">
-                                <select class="OrcGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"></select>
-                                <input class="ORC_INPT_Alt" placeholder="Altura" oninput="MaskNum(this)">
-                            </td>
-                            <td width="10%">
-                                <select class="OrcQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"></select>
-                                <input class="ORC_INPT_Qnt" placeholder="Quantidade">
-                            </td>
-                            <td width="10%"  onload="Inn(this,Tm_Total('Vund' ))" class="imita RD"></td>
-                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt' ))" class="imita RD"></td>
+                            <td            ><select class="oServ"      onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllProd]))"></select></td>
+                            <td            ><select class="oTipo"      onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"                     ></select></td>
+                            <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura"      oninput="MaskNum(this)"><span class="Abslt AvisoInpt none RD"></span></td>
+                            <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"       oninput="MaskNum(this)"><span class="Abslt AvisoInpt none RD"></span></td>
+                            <td width="10%"><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Quantidade"></td>
+                            <td width="10%" onload="Inn(this,Tm_Extra())"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('Vund'))" class="imita RD"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Total('SbTt'))" class="imita RD"></td>
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
                         </tr>
                     </tbody>
                 </table>
 
                 <script> // Funções do Tbody
-                    function SERVChang(e){const Lista = ObjKey(Prod[e.value].Variantes);Inn($('.OrcTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; Tog_M2_OFS_UND(e)}
-                    function TIPOChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
-                    function CBMTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
-                    function GRAMChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;Inn($('.OrcQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
-                    function QNTTChang(e){const Lista = Prod[$('.OrcServ',_tr(e)).value].Variantes[$('.OrcTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}
+                    // selecionar option automaticamente caso tenha apeans 1
+                    // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
+
+                    function AddCarrinho(Serv,Tipo,Cbmt,Gram,Qntt){ // ta dando erro quando n tem Cbmnt, ou tipo ou outros
+                        const  ult = $$('#ORC .OrcAdd').slice(-1)[0]
+                        if($('#ORC .oServ').value!==""){DispClick(ult)}
+                        const SERV = $$('.oServ').slice(-1)[0] ; SERV.value = Serv ; SERVChang(SERV) // Delay(0.2)
+                        const TIPO = $$('.oTipo').slice(-1)[0] ; TIPO.value = Tipo ; TIPOChang(TIPO) 
+                        const CBMT = $$('.oCbmt').slice(-1)[0] ; CBMT.value = Cbmt ; CBMTChang(TIPO)
+                        const GRAM = $$('.oGram').slice(-1)[0] ; GRAM.value = Gram ; GRAMChang(TIPO)
+                        const QNTT = $$('.oQntt').slice(-1)[0] ; QNTT.value = Qntt ; QNTTChang(TIPO)
+                    }
+
+                    function SERVChang(e){const Lista = ObjKey(Prod[e.value].Variantes);Inn($('.oTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; Tog_M2_OFS_UND(e)}
+                    function TIPOChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
+                    function CBMTChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
+                    function GRAMChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
+                    function QNTTChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}
+
+                    function Tog_M2_OFS_UND(e){
+                        if(Prod[e.value].Calc === 'M2' ){None($$('.oCbmt,.oGram,.oQntt',_tr(e)));Show($$('.oLrg,.oAlt,.oQnt',_tr(e)))}
+                        if(Prod[e.value].Calc === 'OFS'){Show($$('.oCbmt,.oGram,.oQntt',_tr(e)));None($$('.oLrg,.oAlt,.oQnt',_tr(e)))}
+                        if(Prod[e.value].Calc === 'UND'){None($$('.oCbmt,.oGram'       ,_tr(e)));Show($$('.oQnt'            ,_tr(e)))}
+                    }
 
                     function ORC_Calc(tr,Lista=null){
                         const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
-
-                        const Serv = $('.OrcServ',tr).value
-                        const Tipo = $('.OrcTipo',tr).value
-                        const Cbmt = $('.OrcCbmt',tr).value
-                        const Gram = $('.OrcGram',tr).value
-                        const Qntt = $('.OrcQntt',tr).value
-                        const Lrg = Num($('.ORC_INPT_Lrg',tr).value)
-                        const Alt = Num($('.ORC_INPT_Alt',tr).value)
-                        const Qnt = Num($('.ORC_INPT_Qnt',tr).value)
+                        const Colet =arr=>arr.map(e=> ['Lrg','Alt','Qnt'].includes(e) ? (Num($(`.o${e}`,tr).value)||0) : $(`.o${e}`,tr).value)
+                        let [Serv,Tipo,Cbmt,Gram,Qntt,Lrg,Alt,Qnt] = Colet(['Serv','Tipo','Cbmt','Gram','Qntt','Lrg','Alt','Qnt'])
 
                         const Calc = Prod[Serv].Calc
-                        const M2 = Prod[Serv]['Variantes'][Tipo]
-                        const QNT = Num(Qntt.replace('.',''))
-
-                        let F_Cust = 0
-                        let F_Valr = 0
-                        // Só pra OFS
-                        if(Calc=='OFS'){
+                        const M2   = Prod[Serv]['Variantes'][Tipo]
+                        const QNT  = Num(Qntt.replace('.',''))
+                        let F_Cust = 0 ; let F_Valr = 0
+                        
+                        if(Calc=='OFS'){ // Só pra OFS
                             const filt   = Lista.filter(e=>e[0]===Cbmt && e[1]===Gram)
                             const filt2  = filt [0][2].filter(e=>e[0]===Qntt)
                             F_Cust = filt2[0][2]
                             F_Valr = filt2[0][1]
                         }
 
-                        const Adicional = Serv=='Trofeu' ? 1*Qnt : 0
+                        if(Calc=='M2'){ // Se for M² então Determina Limite Maximo e Mínimo e Zera o Resultado Final
+
+                            function AddAviso(Val,Inpt,MinMax){Rmv_N($('span',Pai(Inpt))) ; Inn($('span',Pai(Inpt)),`${MinMax}: ${Cm(Val)}`)}
+
+                            function CheckLimit(La,Al){
+                                const Zerar=(inp)=>{ if(inp===La) Lrg=0 ; if(inp===Al) Alt=0 }
+                                /*Limpeza*/ Rmv(La,'Error') ; Rmv(Al,'Error') ; Add_N($('span',Pai(La))) ; Add_N($('span',Pai(Al)))
+                                const limits = Prod[Serv].Variantes[Tipo].Limit || {}
+                                const Min = limits.Min || {} ; const Max = limits.Max || {}
+                                const map = {L:La,A:Al,x:La,X:Al};// mapa para saber qual input mexer
+                                ["L","A","x","X"].forEach(k=>{    // percorre todas as chaves possíveis
+                                    let min = Min[k] || 0 ; let max = Max[k] || 0
+                                    let val = (k === "L" || k === "x") ? Lrg : Alt // decide se é largura ou altura
+                                    let input = map[k]
+                                    if (val == '' || val == 0){return} // não vazer nada caso esteja vazio ainda!
+                                    if (min && val < min){Add(input,"Error")  ; AddAviso(min,input,'Min') ; Zerar(input)}
+                                    if (max && val > max){Add(input,"Error")  ; AddAviso(max,input,'Max') ; Zerar(input)} })
+                            }
+                            CheckLimit($('.oLrg',tr),$('.oAlt',tr))
+                        }
 
                         const oMetro  = Lrg*Alt*Qnt
                         const DESCt   = oMetro <= 5 ? 0 : oMetro >= 15 ? 0.15 : oMetro/100  // Melhorar Progressivo
                         const DescQtn = (oMetro <= 1 ? 0 : (Qnt/100))/2
-
+                        
+                        const Adicional = Serv=='Trofeu' ? 1*Qnt : 0
                         const Cust = M2?.Cust ?? 0
                         const Valr = M2?.Valr ?? 0
                         const CUSTO = Calc=='M2' ? Cust*Lrg*Alt*Qnt                       : F_Cust
@@ -2242,33 +2286,18 @@
                         
                         const VALOR_D = Math.floor(VALOR-(VALOR*(DESCt-(DescQtn))))
                         
-                        console.log(`${oMetro}m² - `,'Desc1:',DESCt,' - Desc2:',DescQtn)
+                        //console.log(`${oMetro}m² - `,'Desc1:',DESCt,' - Desc2:',DescQtn)
 
-                        InNa_RS($('.ORC_CUST_Vund',tr),CUSTO/Qnt)
+                        InNa_RS($('.ORC_CUST_Vund',tr),(CUSTO/Qnt || 0))
                         InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
-                        InNa_RS($('.ORC_CRCT_Vund',tr),CRCT/Qnt)
+                        InNa_RS($('.ORC_CRCT_Vund',tr),(CRCT/Qnt || 0))
                         InNa_RS($('.ORC_CRCT_SbTt',tr),CRCT)
-                        InNa_RS($('.ORC_RSUT_Vund',tr),VALOR_D/Qnt)
+                        InNa_RS($('.ORC_RSUT_Vund',tr),(VALOR_D/Qnt || 0))
                         InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR_D)
 
                         ReloadTotal()
-                    }
-                    
-                    function Tog_M2_OFS_UND(e){
-                        if(Prod[e.value].Calc === 'M2'){console.log('M2')
-                            None($$('.OrcCbmt,.OrcGram,.OrcQntt',_tr(e)))
-                            Show($$('.ORC_INPT_Lrg,.ORC_INPT_Alt,.ORC_INPT_Qnt',_tr(e)))
-                        }
-                        if(Prod[e.value].Calc === 'OFS'){console.log('OFS')
-                            Show($$('.OrcCbmt,.OrcGram,.OrcQntt',_tr(e)))
-                            None($$('.ORC_INPT_Lrg,.ORC_INPT_Alt,.ORC_INPT_Qnt',_tr(e)))
-                        }
-                        if(Prod[e.value].Calc === 'UND'){console.log('UND')
-                            None($$('.OrcCbmt,.OrcGram',_tr(e)))
-                            Show($$('.ORC_INPT_Qnt',_tr(e)))
-                        }
-                    }
-
+                    }LOG('Molejo')
+                
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
                     function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentro dos Grupos
@@ -2279,7 +2308,8 @@
                             ${Object.entries(Ary.slice(1).reduce((a,e)=>{
                                 (a[GpIt[e]]||=[]).push(`<option value=\"${e}\" ${Stg === e ? 'selected' : ''} ${GpOF[e] === 'Offf' ? 'style=\"color:red;\"' : ''}>${e}</option>`);return a
                             },{})).map(([g,o]) => `<optgroup label=\"${g}\">${o.join('')}</optgroup>`).join('')}
-                        `}
+                        `
+                    }
                 </script>
 
                 <div> <!--Valores TOTAL-->
@@ -2289,9 +2319,10 @@
                     <div class="ORC_RSUT_FINAL Final"     ></div>
                     <script>
                         function ReloadTotal(){
-                            Inn($('.ORC_CUST_FINAL'),Tm_RS(SOMA($$('.ORC_CUST_SbTt').map(e=>Nm(e)))))
-                            Inn($('.ORC_CRCT_FINAL'),Tm_RS(SOMA($$('.ORC_CRCT_SbTt').map(e=>Nm(e)))))
-                            Inn($('.ORC_RSUT_FINAL'),Tm_RS(SOMA($$('.ORC_RSUT_SbTt').map(e=>Nm(e)))))}
+                            const S1 = SOMA($$('.ORC_CUST_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_CUST_FINAL'),Tm_RS(S1)) ; Nm($('.ORC_CUST_FINAL'),S1)
+                            const S2 = SOMA($$('.ORC_CRCT_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_CRCT_FINAL'),Tm_RS(S2)) ; Nm($('.ORC_CRCT_FINAL'),S2)
+                            const S3 = SOMA($$('.ORC_RSUT_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_RSUT_FINAL'),Tm_RS(S3)) ; Nm($('.ORC_RSUT_FINAL'),S3)
+                        }
                     </script>
                 </div>
 
@@ -2323,9 +2354,6 @@
                         if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
                         if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
                     }
-
-                    window.addEventListener("resize",Check_W_Pag)
-                    Check_W_Pag()
                     ValidOpts()
                 </script>
 
@@ -2348,8 +2376,7 @@
                     se for Placa, Plotagem o extra será comprimento
                 -->
                 <style>
-                    #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
-                    #G_Cores p  {width:30px; height:30px; margin:2px}
+
                 </style>
                 <script>  
                     const Load_Cor =()=>StockjVinil.map(e=>`<p class="RD ppt" style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></p>`).join('')
@@ -2389,16 +2416,12 @@
             </div>
 
             <script>// Comentários Orçamento
+                // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
+                // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
+
                 // Mostrar o Valor por M2 ao Lado do Option
                 // Permitir Drag nas Linhas
                 // imitar Bureal no Futuro (deixando todas bandeijas Aberta)
-                // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
-                // selecionar option automaticamente caso tenha apeans 1
-                // Proibir Drag em Imagens
-                // a soma de metros de produtos do mesmo tipo tem q resultar na Diminuição da Crescente
-                // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-                // deixar maior os botões de Limpar tudo, e excluir tudo (CSS mobile)
-                // Adicionar um Botão pra Limpar os ta imcompleto, deixando apenas os orçamentos Certinhos
                 // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
                 // como impedir q a página dê zoom, pelo celular
                 // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
@@ -2908,7 +2931,7 @@
 <script>// Iniciação
     TestSenha('Storg',StogeGet('SenhaCryp'))
     PosLogin()
-    function PosGet(){Onloads('body');NavPag(Atual.Pag);LOG('✅ Página Carregada!')} PosGet()
+    function PosGet(){Onloads('body');NavPag(Atual.Pag);Check_W_Pag();LOG('✅ Página Carregada!')} PosGet()
     
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
