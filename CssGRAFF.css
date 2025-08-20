@@ -57,7 +57,7 @@
       .CSS3 header{color:#ffffff;background:#c027b3}
     /*Table*/ 
       table{text-align:center;border-collapse:collapse}
-          .CSS1.Dark .TBLAA table{background: #222222}
+          .CSS1.Dark .TBLAA table{background: #ffffff ; color: #000000 !important;}
           .CSS1.Lite .TBLAA table{background: #ffffff}
           .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; border-radius: 20px; overflow: hidden;box-shadow:0 5px 10px #a700a72f}
     /*thead e tfoot*/ 
@@ -73,6 +73,7 @@
       .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px}
     /*Tbody*/
       .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
+      .CSS1.Dark .TBLAA select{color: #000000 !important;}
 
     /*Outros Tabela*/
       .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
@@ -89,6 +90,8 @@
       .CSS1 .TBLAA .AutoComp.Cor{background: #ffffff00}
       .CSS3 .TBLAA .AutoComp    {background: #f08cb64f}
       .CSS3 .TBLAA .AutoComp.Cor{background: #ffffff00}
+
+      .CSS1 .TBLAA {background: #ffffff;}
 
 
 
