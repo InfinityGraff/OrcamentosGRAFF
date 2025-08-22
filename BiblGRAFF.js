@@ -1,4 +1,6 @@
 
+const isObj=e=>(typeof e === "object" && e !== null && !Array.isArray(e) && e.constructor === Object)
+
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
@@ -73,9 +75,9 @@ function VAL(e){
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
     const val = ['Edit','Fixo','Sugg','Auto','SVG','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
-            : R.Tm==='Data' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
             : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
+            : R.Tm==='Data' ? $('input' ,td).value
             : R.Tm==='Slct' ? $('select',td).value
             : R.Tm==='Inpt' ? $('input' ,td).value
             : R.Tm==='Chek' ? $('input' ,td).checked

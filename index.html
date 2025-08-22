@@ -485,7 +485,7 @@
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
-                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`
+                Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`
                 
                 // Quando o Clnt em PDDS vem vazio ele vira Link
                 // se o Suggs tiver vazio deixar pelomenos uma mensagem avisando
@@ -513,9 +513,9 @@
 
             function Tm_Td(v,e,x,Typ,RPai=''){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
-                return valid         ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link'](v,R)}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
-                        R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
-                        R.Tm=='Sugg' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)}     " onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                return valid         ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
+                        R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
+                        R.Tm=='Sugg' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                                      : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
             }
 
@@ -524,11 +524,11 @@
                 const col   = R.Col
                 const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr.trim())].filter(Boolean) : Arr||[]
                 const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
-                                col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
-                                col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                                col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
-                                col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
-                                                Find.map(e=>`${e[  col ]}`             ).join(' | ')
+                              col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
+                              col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
+                              col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
+                              col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
+                                             Find.map(e=>`${e[  col ]}`             ).join(' | ')
 
                 if(Title!=''){if(['Cust','Finc','Calc'].includes(col)){todoTitle[col].push(Title)}}
                 col=='Serv' ? Find.map(e=>`${todoTitle[col].push(e['Serv'])}`) : null
@@ -545,7 +545,10 @@
                 return `<div class="Ct"><p class="P-P" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
                             <div class="Rltv w100">
                                 <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
-                                    <button class="Mini" onclick="AddRowBdj(this)">+ Novo ${RmvPlural(D_Brev[AA(col)])}</button>
+                                    <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
+                                    <div class="DivTrcCLNT none">
+                                        <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span>
+                                    </div>
                                 </div>
                             </div>`
             }
@@ -1197,7 +1200,7 @@
                     .map(e=>{
                         const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
                         const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
-                        return `<a class="ppt w100 Ct" onclick="${Func}(this,'${e[Aa(Typ)]}',${e['Id']});None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
+                        return `<a class="ppt w100 Ct" onclick="${Func}(this,'${ID}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
                     }).join('')
                 }else{None(list);Inn(list,'')}
                 // esta é a função q carrega o Link de Clientes
@@ -1246,6 +1249,11 @@
                     }else{EditCell(Eu,[...ArryAntg,...NovoArry])} 
                 }else{console.log($('span',Pai(Eu)))}
             }
+
+            function TrocaClnt(Eu){
+                Tog($('.DivTrcCLNT',Pai(Eu)),'none')
+            }
+
         </script>
     </div>
 
@@ -2657,11 +2665,12 @@
             const NewVal = vall===""?"":vall?vall:Val
             const Antg   = Nm(e)
             Nm(e,e.textContent.trim()) // Mudar o Name
-            $$(Rx2([`${Typ}-${ID2}-${col}`])).forEach(td=>{if(td!==_td(e)){if(VAL(td)!==NewVal){DarVAL(td,NewVal)}}}) // Editar Cópias em outra Tabela
-            const Nv = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'} // em qual camada a linha está
+            $$(Rx2([`${Typ}-${ID2}-${col}`])).forEach(td=>{LOG('achei',td) ; if(td!==_td(e)){if(VAL(td)!==NewVal){DarVAL(td,NewVal)}}}) // Editar Cópias em outra Tabela
+            const Nv = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}    // em qual camada a linha está
+            if(col=='Data'){Inn(_td(e),Tm_Tm[col](NewVal))} // se for Data Reescreve a Célula
             //O Ato de Editar
-            if(Nv[Typ]==1){J[Typ][col] = NewVal ; UpdateSupa(Typ,col,ID,NewVal)} // Edição de Valor Simples
-            else{
+            if(Nv[Typ]==1){J[Typ][col] = NewVal ; UpdateSupa(Typ,col,ID,NewVal)} // Edição de Valor na Camada1
+            else{                                                                // Edição de Valor na Camada2
                 const X = J[Nv[Typ]].find(e=>e.Id==ID)  // encontra a Linha nivel 1
                 const x = X[Aa(Typ)].find(e=>e.Id==ID2) // encotnra a linha nivel 2
                 x[col] = NewVal
@@ -2669,7 +2678,15 @@
             }
         }
 
-        function insertOrden(Typ,arr){  // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID)
+        function LinkCLnt(Eu,val){
+            const td = _td(Eu)
+            const R  = D_R(td)
+            /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
+            /*DOM*/ Inn(td,Tratamento(`${val}`,getClssIN(td,'Rastr-')))
+            /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,val)
+        }
+
+        function insertOrden(Typ,arr){   // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID)
             const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
             const tbody= $(`#H_${Typ} > tbody`)
             const trs = [...tbody.rows]
@@ -2683,7 +2700,7 @@
             tbody.insertBefore(NEWtr,Alvo||null)
         }
         
-        function AddRowBdj(Eu){         // ⭐⭐⭐⭐_ (Ta bem BOA!)
+        function AddRowBdj(Eu){          // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(TypBndj.includes(col)){            // só pra col q tem bndj
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
@@ -2702,18 +2719,21 @@
             }
         }
 
-        function AddROW(Typ,Ps,obj={}){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
+        function AddROW(Typ,Ps,obj={},inpt){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
             const Def   = ClrObj(BS[Typ])        // Cria um Default Baseado na bndj
             const Tbody = $(`#H_${Typ} > tbody`)
             Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
             ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
             const Clone = Tm_Table(Typ,[Def])
+            const Arry = Typ=='PDDS' ? {Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`} :
+                         Typ=='CLNT' ? {Id:`${Def.Id}`} : {}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
             /*Obj*/ J[Typ].push(Def)
-            /*Sub*/ Sb_CREATE(Typ,{Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`})
-        }LOG('AddROWs(agoras)')
+            /*Sub*/ Sb_CREATE(Typ,Arry)
+            if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)}
+        }
         
-        function RmvROW(eu,SuB){        // ⭐⭐_ _ _
+        function RmvROW(eu,SuB){         // ⭐⭐_ _ _
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = true
             const R   = D_R(_td(eu))                    // R é o atual Editado
@@ -2759,7 +2779,7 @@
             //if(Lin && Lxr){J[R.Typ][Lin]['Lixo']=true}else{J[R.Typ].splice(Lin,1)} 
         }LOG('RmvROW')
 
-        function MesclarContato(){      // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+        function MesclarContato(){       // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){console.log('Faltou o Link Final') ; return}
@@ -2777,15 +2797,10 @@
             // quando terminar Limpa o Filtro
         }
 
-        function TesteClnt(inpt){       // isso é pra Saber se o Cliente existe na Tabela de CLNT
-            // if($('#ConfirCliente').checked){console.log('Perguntar')} // Ativar ou não o ato de Perguntar pra confirmar
+        function TesteClnt(inpt){        // isso é pra Saber se o Cliente existe na Tabela de CLNT
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
-                if(Nmame(inpt)){return Nmame(inpt)
-                }else{
-                    AddROW('CLNT','<',{Clnt:inpt.value}) // Adiciona Nova Linha já com Novo Valor
-                    // dentro do AddRow terá os 3 (Prático, Const, SupaBase)
-                    // Reload nesta Célula
-                    }
+                if(Nm(inpt)){return Nm(inpt)}
+                else{AddROW('CLNT','<',{Clnt:inpt.value},inpt)} // Adiciona Nova Linha já com Novo Valor
             }
         }
 
@@ -2812,7 +2827,9 @@
             }
         }
 
-        function SaveConfig(e){LOG('Salva no SB',e.id,Vll(e))}
+        function SaveConfig(e){
+            LOG('Salva no SB',e.id,Vll(e))
+        }
         // Adicionar e trocar Cliente
 </script>
 
@@ -2911,7 +2928,7 @@
     async function Sb_CREATE(Typ,dados){
         try {const { error } = await supabase.from(Typ).insert([dados])
             if (error) console.error('Erro ao criar:', error)
-            else console.log('Linha criada')
+            else{LOG('Linha criada')}
         } catch (err) {console.error('Erro:', err)}
     }
 
