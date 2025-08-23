@@ -287,6 +287,12 @@
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
     const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
+    const tipBS = {
+        'Eqip':{'PDDS':['Cust','Lcro'],
+                'SERV':['Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt','SStts'],
+                'PGMT':['Stts','Link','Mpag']
+        }
+    }
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'],/* Lin:['E','' ],*/Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],TArt:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
@@ -303,6 +309,11 @@
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
     }
+
+    const limparBS = tipo => { if(tipo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c] }
+    limparBS(U[Passs].nav)
+
+
     const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta']
     const ListaKits = ['Zebu','Zimaz']
     let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
@@ -511,7 +522,8 @@
                 <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,Typ,RPai)).join('')}</tr>`).join('')}</tbody>
                 </table>`
 
-            function Tm_Td(v,e,x,Typ,RPai=''){const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
+            function Tm_Td(v,e,x,Typ,RPai=''){
+                const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
                 return valid         ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
                         R.Tm=='Bndj' ? `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
@@ -2655,7 +2667,6 @@
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
 
-
         function EditCell(e,vall=null){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const[ras,Typ,ID2,col,Cry]=D_Rastr(_td(e))
             // R_Color(_tr(e),Typ)
@@ -2949,7 +2960,8 @@
     TestSenha('Storg',StogeGet('SenhaCryp'))
     PosLogin()
     function PosGet(){Onloads('body');NavPag(Atual.Pag);Check_W_Pag();LOG('✅ Página Carregada!')} PosGet()
-    
+
+
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
         if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes()} 
