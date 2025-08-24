@@ -11,47 +11,49 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     
-    <!--     
-        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <!--<link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
 
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
-        <script src="../MyBiblioteca/PreScript.js"      ></script>
-    --> 
+        <script src="../MyBiblioteca/PreScript.js"      ></script>--> 
 
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
     <script src="./AchaMdd.js"></script>
     <script src="./Gera3D.js"></script>
-
+    
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
 <script> // Base de Dados
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',}
-    const Nav    = {
-        Admn: ['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
-        Eqip: ['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'],
-        Clnt: ['HOME','|','ORC','|','CONF'],
+    const USER = {
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',cgo:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',cgo:'Eqip', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
     }
-    const U={
-        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',nav:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,nav:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',nav:'Eqip', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
-        'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,nav:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
+    const Cgo    = { // Cargo
+        Admn: {nav:['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
+                orc:[]},
+        Eqip: { nav:['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'] ,
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta']},
+        Clnt: { nav:['HOME','|','ORC','|','CONF'],
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta']},
     }
-    let Passs = StogeGet('SenhaCryp') || 'Login' 
+    
+    let U = {} ; let UCgo = {} ; let Passs = ''
     const Atual    = {Pag:'ORC'}
     const Limit    = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
+    
     const TypBndj  = ['SERV','PGMT','CUST','ABCD'] // Tabelas Secundárias ACHO Q DESNESSESÁRIO  ❌❌❌❌
     const LocSecund= {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}
-
+    
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -93,11 +95,9 @@
                             '0.4 - Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '0.8 - Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
-        'Plaqueta' :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
+        'Plaqueta' :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,img:'Place' ,
                         Variantes:{  
-
             }},
-
         // Offset
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
@@ -162,32 +162,32 @@
                     ['F.Verso','170g',[['1',35,17.50,'left:68.6%;top:36.2%']]],
                 ]},
         }},
-        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
+        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'     ,
                         Variantes:{
                             'Topo de Bolo' :{}}
         },
-        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
+        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'      ,
                         Variantes:{
                             'Crachá' :{}}
         },
-        'Carteira' :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint']      ,
+        'Carteira' :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'      ,
                     Variantes:{
                             'Carteira' :{}}
         },
         // Tecido
-        'Camisa'   :{Calc:'QNT', Stts:'Offf' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+        'Camisa'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
                         Variantes:{
-                            'M.Curta'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
-                            Regata     :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
-                            Polo       :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['                        '],Valor:0,},
-                            'M.Longa'  :{Tipo:'',Tamn:['PP','P','M','G','GG'],Valr:['Helanquinha','Dry Furado'],Valor:0,},
+                            'M.Curta'  :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':50,'10':39},Cust:{'1':25}},
+                            'Regata'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':40,'10':29},Cust:{'1':25}},
+                            'Polo'     :{Tipo:['Manchaster'              ],Tamn:['PP','P','M','G','GG'],Valr:{'1':80,'10':69},Cust:{'1':25}},
+                            'M.Longa'  :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':60,'10':49},Cust:{'1':25}},
         }},
-        'Calção'   :{Calc:'QNT', Stts:'Offf' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Short','Sublimação','roupa','pano'] ,
+        'Calção'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Short','Sublimação','roupa','pano'] ,
                         Variantes:{
                             'Bermuda' :{},
                             'Short'   :{},
         }},  
-        'WindFlag' :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
+        'WindFlag' :{Calc:'QNT', Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
                         Variantes:{
                             Faca :{Tipo:['P','M','G'],Valr:0,Cust:0},
                             Vela :{Tipo:['P','M','G'],Valr:0,Cust:0},
@@ -200,13 +200,13 @@
                             M  :{Tipo:[''],Valr:0,Cust:0},
                             G  :{Tipo:[''],Valr:0,Cust:0},
             }},   
-        'Bandeira' :{Calc:'M2' , Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'Bandeira' :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Sublimação',"Pano","Tecido"] ,
                         Variantes:{
-                            'Oxford' :{},
-                            'Cettin' :{},
+                            'Oxford' :{Tipo:'',Valr:75,Cust:0},
+                            'Cettin' :{Tipo:'',Valr:75,Cust:0},
         }},    
         // Cortes
-        'Router'   :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']  ,
+        'Router'   :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson'] ,img:'Place' ,
                         Variantes:{
                             'PVC'      :{},
                             'Acrilico' :{}}
@@ -216,7 +216,7 @@
                             'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
         }},
-      'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:'' , Forn:['-']      ,
+      'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:'' , Forn:['-'] ,img:'Place'     ,
                         Variantes:{
                             'Sinalização' :{}}
         },
@@ -226,33 +226,33 @@
                             'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
         // Serviços
-        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']      ,
+        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação',img:'Place'  , Forn:['Arte']      ,
                         Variantes:{
                     'Arte' :{}}
         },
-        'Plotagem' :{Calc:'M2v', Stts:'Offf' , Prvw:''        , Forn:['Stock']              ,
+        'Plotagem' :{Calc:'M2v', Stts:'Offf' , Prvw:''        , Forn:['Stock'],img:'Place'   , HotKey:['Plotagem']           ,
                         Variantes:{
                     'Plotagem' :{}}
         },
         // Produtos
-        'Figurinha':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+        'Figurinha':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
                         Variantes:{
                             'Figurinha' :{}}
         },
-        'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+        'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
                         Variantes:{
                             'Vendas' :{}}
         },
-        'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+        'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
                         Variantes:{
                             'Cartela' :{}}
         },
         // Ferragem
-        'Placa'    :{Calc:'UND', Stts:'Offf' , Prvw:'Canva3D' , Forn:['-']      ,
+        'Placa'    :{Calc:'UND', Stts:'Offf' , Prvw:'Canva3D' , Forn:['-'],img:'Place'      ,
                     Variantes:{
                         'Placa' :{}}
         }, 
-       'Serigrafia':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock']      ,
+       'Serigrafia':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
                         Variantes:{
                             'Serigrafia' :{}}
         },
@@ -260,7 +260,7 @@
 
     // Const Importante pra Compilar a Tabela pra deixa o Load Mais Rápido
     const EtrProd = ObjEtr(Prod)
-    const AllProd = ObjKey(Prod)
+    const AllProd = [...ObjEtr(Prod).filter(([,v])=>v.Stts=="Disp"), ...ObjEtr(Prod).filter(([,v])=>v.Stts=="Offf")].map(([k])=>k) // Antes tava : ObjKey(Prod) // agora ta isso tudo pq agora ta reordenando
     const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
     const AllForn = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.Forn  ||[]]))
     const Vari=e=>ObjKey(Prod[e].Variantes)
@@ -284,6 +284,7 @@
     const Listagem=(Typ)=>ALL[Typ] = Uniq(J.CLNT.map(E=>E['Clnt'])) // pegar todos itens de uma determinada coluna no Json e botar na const acima
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
     const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
@@ -310,11 +311,11 @@
         CALC:{}
     }
 
-    const limparBS = tipo => { if(tipo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c] }
-    limparBS(U[Passs].nav)
+    //const limparBS = tipo => { if(tipo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c] }
+    //limparBS(uU[Passs].nav)
 
 
-    const ListaFora = ['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta']
+    
     const ListaKits = ['Zebu','Zimaz']
     let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 
@@ -580,7 +581,7 @@
                 Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Tables(${typ}): ${Perform}ms`)
                 return Retorno
                 // acredito q posso simplificar exitando a pesquisa do nome do Clnt, em cada Bndj, pois ta procurando 3 vezes em cada Linha! uma pra PDDS, ai uma na Bndj Serv e PGMT
-                // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,USER) 'usuário basicamente é o responsavel'
+                // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,uUSER) 'usuário basicamente é o responsavel'
             }
         </script>
     </div>
@@ -1365,7 +1366,7 @@
 
         <div id="Title" class="Ct"> <!--Titulo-->
             <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
-            <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.5</h1>
+            <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.6</h1>
             <img id="recolhe" src="./SVG/Recolhe.svg" onclick="Recolher()">
             <script>
                 function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{console.log("Tela pequena")}}
@@ -1406,8 +1407,8 @@
                 function NavPag(Typ){//ao Navegar
                     Atual.Pag=Typ
                     Show(`#Pag_${Typ}`,$$('#PAGES > *'))     // Troca Página
-                    if(!Nav.Admn.includes(Typ)){DTV($$('#H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no Nav
-                    ATV($(`#HNVDv_${Typ}`),$$('#H_Nav > *')) // Troca Nav.Atv
+                    if(!Cgo.Admn.nav.includes(Typ)){DTV($$('#H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no nNav
+                    ATV($(`#HNVDv_${Typ}`),$$('#H_Nav > *')) // Troca nNav.Atv
                     Show($$(`.Pesq_${Typ}`),$$('.pPesq'))    // Troca Pesquisa
                     setTimeout(()=>loadtmtable(Typ),0)       // 100% Assíncrono
                 }
@@ -1437,16 +1438,19 @@
                 function TestSenha(tipo,p){
                     const nome = $('#LgNome'),foto = $('#LgFoto')
                     const storg=e=>{StogeRmv('SenhaCryp');if(e){StogeSet('SenhaCryp',e)}}
-                    const logaa=e=>{Inn(nome,U[e].Nome);foto.src=U[e].Foto;storg(e);SairMdal();Passs=e;LoadPerfil();PosLogin()}
+                    const logaa=e=>{Inn(nome,USER[e].Nome);foto.src=USER[e].Foto;storg(e);SairMdal();Passs=e;PosLogin();LoadPerfil()}
                     if(tipo=='Dslog'){logaa('Login')}
                     if(tipo=='Storg'){if(p){logaa(p)}}
-                    if(tipo=='Modal'){const P = CrypPass(p.value) ; if(U[P]){logaa(P)}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
+                    if(tipo=='Modal'){const P = CrypPass(p.value) ; if(USER[P]){logaa(P)}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
                 }
                 function PosLogin(){
-                    $('body').className="" ; ['Ct',...U[Passs].body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
-                    Inn('#H_Nav'   ,Nav[U[Passs].nav].map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-                    Inn('#Div-Pesq',Nav[U[Passs].nav].map(Typ=>Load_Pesq(Typ)).join(''))
+                    U = USER[Passs] ; UCgo = Cgo[U.cgo]
+                    $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
+                    Inn('#H_Nav'   ,UCgo.nav.map(e=>`<div id="HNVDv_${e=='|'?'LIN':e}" class="Ct ppt HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+                    Inn('#Div-Pesq',UCgo.nav.map(Typ=>Load_Pesq(Typ)).join(''))
+                    NavPag(Atual.Pag)
                     tmplt_Prod()
+                    LOG('✅ Perfil Logado!')
                 }
             </script>
 
@@ -2041,10 +2045,12 @@
 
                     function tmplt_Prod(){ //GRANDE
                         Inn('#Div-Prod',AllProd.map(e=>{
-                            const Fora = ListaFora.includes(e) ? './SVG/placeholder.svg' : null
+                            const Fora = Prod[e].img=='Place' ? './SVG/placeholder.svg' : null
+                            if(UCgo.orc.includes(e)) return
+                            //if(U.cgo !== 'Admn' && Fora !== null){return}
+
                             const onck = `onclick="ExibeFotinha('${e}')"`
                             const vari = Prod[e].Variantes
-                            if(U[Passs].nav !== 'Admn' && Fora !== null){return}
                              
                             return `<div class="Rltv Start2">
                                 <span class="Start"><img src="${Fora || `./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
@@ -2069,7 +2075,8 @@
                                             `<div class="Ct">${ObjKey(vari).map((vV,x,l)=>vV=='Todos'?'':`<img class="fotO${l.length-1} Hov" src="${Fora || `./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarrinho('${e}','${vV}')">`).join('')}</div>`
                                             : `<img class="fotO Hov" src="${Fora || `./Prod/${e}_${V}.webp`}" ${onck}>`
                                         }
-                                        ${Prod[e].Calc=='M2' && V !== "Todos" ? `<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr)}<p>m²</p></div>` : ''}
+                                        ${Prod[e].Calc=='M2'  && V !== "Todos" ? `<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr)}<p>m²</p></div>` : ''}
+                                        ${Prod[e].Calc=='QNT' && V !== "Todos" && e=='Camisa' ? `<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr['1'])}</div>` : ''}
                                         <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
                                         <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
                                         <img class="Abslt tec2 HOV" onclick="AddCarrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
@@ -2146,7 +2153,7 @@
                 <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
                     <div class="ppt HOV O_All" onclick="ClrAll()">🧹</div><script></script>
                     <div class="ppt HOV O_All" onclick="RmvAll()">❌</div><script></script>
-                    <img draggable="false" src="./SVG/CONFIG.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
+                    <img draggable="false" src="./SVG/More.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
                     <script>
                         function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
@@ -2316,7 +2323,7 @@
                         InNa_RS($('.ORC_RSUT_SbTt',tr),VALOR_D)
 
                         ReloadTotal()
-                    }LOG('Molejo')
+                    }
                 
                     function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
@@ -2479,10 +2486,10 @@
             function LoadPerfil(){
                 $("#PerfilUser").innerHTML = `
                     <div class="profile Ct w100">
-                        <img class="Hov" src="${U[Passs].Foto}">
+                        <img class="Hov" src="${U.Foto}">
                         <div class="info">
-                            <h2>${U[Passs].Nome}</h2><a>${U[Passs].Nav}</a>
-                            <div class="Start2"><p>${U[Passs].Fone}</p><p>${U[Passs].Emal}</p><p>${U[Passs].Lcal}</p></div>
+                            <h2>${U.Nome}</h2><a>${U.cgo}</a>
+                            <div class="Start2"><p>${U.Fone}</p><p>${U.Emal}</p><p>${U.Lcal}</p></div>
                         </div>
                         <div class="box Hov Cl"><p>TOTAL DE VENDAS  </p><a>${'28'}</a></div>
                         <div class="box Hov Cl"><p>TOTAL DE COMISSÃO</p><a>${'R$ 58,45'}</a><button>Sacar Agora!</button></div>
@@ -2788,7 +2795,7 @@
             /*Alr*/ ALERT(`a Linha ${id} foi removido da tabela ${IsBdj?col:Typ}`)                 // Alert Simples
             
             //if(Lin && Lxr){J[R.Typ][Lin]['Lixo']=true}else{J[R.Typ].splice(Lin,1)} 
-        }LOG('RmvROW')
+        }
 
         function MesclarContato(){       // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
@@ -2957,10 +2964,8 @@
 </script>
 
 <script>// Iniciação
+    function PosGet(){Onloads('body');Check_W_Pag();LOG('✅ Página Carregada!')}  ;PosGet()
     TestSenha('Storg',StogeGet('SenhaCryp'))
-    PosLogin()
-    function PosGet(){Onloads('body');NavPag(Atual.Pag);Check_W_Pag();LOG('✅ Página Carregada!')} PosGet()
-
 
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
