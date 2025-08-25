@@ -2744,7 +2744,7 @@
             ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
             const Clone = Tm_Table(Typ,[Def])
             const Arry = Typ=='PDDS' ? {Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`} :
-                         Typ=='CLNT' ? {Id:`${Def.Id}`} : {}
+                         Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
             /*Obj*/ J[Typ].push(Def)
             /*Sub*/ Sb_CREATE(Typ,Arry)
