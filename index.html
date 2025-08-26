@@ -32,7 +32,7 @@
 <script> // Base de Dados
     const USER = {
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',cgo:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'Eqip', body:['Lite','Body2','CSS3'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'Eqip', body:['Lite','Body2','CSS1'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',cgo:'Eqip', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
         'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
     }
@@ -94,9 +94,6 @@
                             '03 Geladeira' :{item:'19',Grad:'Ads(Blh)',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
                             '04 Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '08 Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
-            }},
-        'Plaqueta' :{Calc:'M2' , Stts:'Offf' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,img:'Place' ,
-                        Variantes:{  
             }},
         // Offset
         'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
@@ -166,7 +163,7 @@
                         Variantes:{
                             'Topo de Bolo' :{}}
         },
-        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'      ,
+        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'     ,
                         Variantes:{
                             'Crachá' :{}}
         },
@@ -313,8 +310,6 @@
 
     //const limparBS = tipo => { if(tipo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c] }
     //limparBS(uU[Passs].nav)
-
-
     
     const ListaKits = ['Zebu','Zimaz']
     let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
@@ -495,7 +490,7 @@
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img class="P-P" onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${TM.Err} name="${ListARQ.includes(R.Row)?'True':'False'}">`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
-                Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(e=>e.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+                Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`
                 
@@ -532,16 +527,20 @@
                                      : `<td class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
             }
 
+            function FazerTitle(col,Find){ // fazer os Titulos para as Bandeijas
+                return  col==='Serv' ? Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)}x${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ') :
+                        col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
+                        col==='Abcd' ? Find.map(e=>`${e.Id}`            ).join(''   ) :     
+                        col==='Cust' ? Find.map(e=>`${e.Valr}`          ).join(''   ) :
+                        col==='Finc' ? Find.map(e=>`${e.Lcro}`          ).join(''   ) :
+                                       Find.map(e=>`${e[col]}`          ).join(' | ')
+            }
+            
             function Tratamento(Arr,r){
                 const R     = D_R(r)
                 const col   = R.Col
                 const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==Arr.trim())].filter(Boolean) : Arr||[]
-                const Title = col==='Abcd' ? Find.map(e=>`${e[ 'Id' ]}`             ).join(''   ) :
-                              col==='Pgmt' ? Find.map(e=>`${e['Valr']}${e['Form']}` ).join(' | ') :
-                              col==='Serv' ? Find.map(e=>`${e['Serv']} ${e['Desc']}`).join(' | ') :
-                              col==='Cust' ? Find.map(e=>`${e['Valr']}`             ).join(''   ) :
-                              col==='Finc' ? Find.map(e=>`${e['Lcro']}`             ).join(''   ) :
-                                             Find.map(e=>`${e[  col ]}`             ).join(' | ')
+                const Title = FazerTitle(col,Find)
 
                 if(Title!=''){if(['Cust','Finc','Calc'].includes(col)){todoTitle[col].push(Title)}}
                 col=='Serv' ? Find.map(e=>`${todoTitle[col].push(e['Serv'])}`) : null
@@ -555,7 +554,7 @@
                 const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
                 const Grifo     = `<i class="grifoo RD"></i>`
 
-                return `<div class="Ct"><p class="P-P" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
+                return `<div class="Ct"><p class="P-P T-T" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
                             <div class="Rltv w100">
                                 <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
                                     <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
@@ -1253,13 +1252,13 @@
             }
 
             function Linkar(Eu){
-                if(_table(Eu).id == 'H_MPAG'){EditCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
+                if(_table(Eu).id == 'H_MPAG'){editCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
                 if(_table(Eu).id == 'H_GRAD'){
                     const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
                     const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
                     if(Inn($('p',Eu.closest('td')))=='-'){
-                        EditCell(Eu,NovoArry)
-                    }else{EditCell(Eu,[...ArryAntg,...NovoArry])} 
+                        editCell(Eu,NovoArry)
+                    }else{editCell(Eu,[...ArryAntg,...NovoArry])} 
                 }else{console.log($('span',Pai(Eu)))}
             }
 
@@ -1293,9 +1292,9 @@
             }
 
             function LimparNomeSVG(Clss){
-                const Edit=e=>`<p class="Ct" ${TM.Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');EditCell(this)">${Inn(e)}</p>`
+                const Edit=e=>`<p class="Ct" ${TM.Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');editCell(this)">${Inn(e)}</p>`
                 const td = $(`td[class="${Clss}"]`)
-                EditCell(td,'')
+                editCell(td)
             }
         </script>
     </div>
@@ -2674,29 +2673,32 @@
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
 
-        function EditCell(e,vall=null){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
-            const[ras,Typ,ID2,col,Cry]=D_Rastr(_td(e))
-            // R_Color(_tr(e),Typ)
-            const Val = vall===""?"":VAL(e)
-            if(Val===Nm(e)){return} // quando não foi Aterado
-            const ID     = isBdj(e) ? tr_ID(Pai(_td(Pai(_td(e))))) : Typ=='SERV' ? ID2.split('_')[0] : Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : ID2
-            const NewVal = vall===""?"":vall?vall:Val
+        function EditCell(e,vall=null){ // ⭐⭐⭐⭐⭐ (Muito Boa!)
+            const R      = D_R(_td(e))                     // R é o atual Editado
+            const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
+            const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
+            const Nval   = vall==""?"":vall||VAL(e)
             const Antg   = Nm(e)
-            Nm(e,e.textContent.trim()) // Mudar o Name
-            $$(Rx2([`${Typ}-${ID2}-${col}`])).forEach(td=>{LOG('achei',td) ; if(td!==_td(e)){if(VAL(td)!==NewVal){DarVAL(td,NewVal)}}}) // Editar Cópias em outra Tabela
-            const Nv = {PDDS:1,CLNT:1,MPAG:1,OOSS:1,UBER:1,GRAD:1,SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS',ABCD:'GRAD'}    // em qual camada a linha está
-            if(col=='Data'){Inn(_td(e),Tm_Tm[col](NewVal))} // se for Data Reescreve a Célula
-            //O Ato de Editar
-            if(Nv[Typ]==1){J[Typ][col] = NewVal ; UpdateSupa(Typ,col,ID,NewVal)} // Edição de Valor na Camada1
-            else{                                                                // Edição de Valor na Camada2
-                const X = J[Nv[Typ]].find(e=>e.Id==ID)  // encontra a Linha nivel 1
-                const x = X[Aa(Typ)].find(e=>e.Id==ID2) // encotnra a linha nivel 2
-                x[col] = NewVal
-                UpdateSupa(Nv[Typ],Aa(Typ),ID,X[Aa(Typ)])
+            if(Nval==Nm(e)){return} // quando não foi Aterado
+            let Find     = []
+            /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
+                /*Obj*/ J[R.Typ][R.Col] = Nval
+                /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,Nval)   
+            /*Lv2*/}else{
+                /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
+                /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
+                /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
+                /*Sub*/ UpdateSupa(P.Typ,P.Col,P.Row,X[P.Col])
             }
-        }
+            /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
+                /*Edit td   */ DarVAL(td,Nval)
+                /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
+                /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
+                /*R_Color(_tr(e),R.Typ)*/
+            }}) 
+        }LOG('EditCell(Arriver)')
 
-        function LinkCLnt(Eu,val){
+        function LinkCLnt(Eu,val){      // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
             const R  = D_R(td)
             /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
@@ -2704,7 +2706,7 @@
             /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,val)
         }
 
-        function insertOrden(Typ,arr){   // ⭐⭐⭐_ _ (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID)
+        function insertOrden(Typ,arr){   // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
             const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
             const tbody= $(`#H_${Typ} > tbody`)
             const trs = [...tbody.rows]

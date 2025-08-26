@@ -77,6 +77,7 @@ function VAL(e){
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
             : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
+            : R.Tm==='Mdds' ? Num2($('.P-P',td).textContent.trim())
             : R.Tm==='Data' ? $('input' ,td).value
             : R.Tm==='Slct' ? $('select',td).value
             : R.Tm==='Inpt' ? $('input' ,td).value
