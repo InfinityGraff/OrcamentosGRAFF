@@ -32,7 +32,7 @@
 <script> // Base de Dados
     const USER = {
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',cgo:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'Eqip', body:['Lite','Body2','CSS1'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'Eqip', body:['Lite','Body1','CSS1'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',cgo:'Eqip', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
         'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
     }
@@ -47,7 +47,7 @@
     
     let U = {} ; let UCgo = {} ; let Passs = ''
     const Atual    = {Pag:'ORC'}
-    const Limit    = {PDDS:{INN:547,OUT:3000},SERV:{INN:547,OUT:3000},PGMT:{INN:547,OUT:3000}}
+    const Limit    = {PDDS:{INN:951,OUT:3000},SERV:{INN:951,OUT:3000},PGMT:{INN:951,OUT:3000}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     
@@ -287,10 +287,11 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const tipBS = {
         'Eqip':{'PDDS':['Cust','Lcro'],
-                'SERV':['Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt','SStts'],
+                'SERV':['Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt','SStts'],
                 'PGMT':['Stts','Link','Mpag']
         }
     }
+
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'],/* Lin:['E','' ],*/Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],TArt:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
@@ -308,9 +309,10 @@
         CALC:{}
     }
 
-    //const limparBS = tipo => { if(tipo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c] }
-    //limparBS(uU[Passs].nav)
-    
+    let BASE = BS
+    const limparBS=cgo=>{if(cgo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c]}
+    limparBS(USER[StogeGet('SenhaCryp')].cgo)
+
     const ListaKits = ['Zebu','Zimaz']
     let todoTitle   = {Serv:[],Cust:[],Finc:[],Soma:[],Calc:[]}
 
@@ -330,7 +332,7 @@
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
         const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const ExtObj  =Obj=>[0,1,2].map(i=>ObjVal(Obj).map(arr=>arr[i])) // não sei a necessidade
-        const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no BS
+        const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no 'bs'
         const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
         const tr_X    =tr =>getClss(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
@@ -467,6 +469,7 @@
             table.Card td[class*="Data"] a:nth-child(2){display: flex}
             table.Card td[class*="Data"] a:nth-child(3){display: none}
             
+            .TBLAA table tr > :is(td,th):nth-child(1){display:none}
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
@@ -528,7 +531,7 @@
             }
 
             function FazerTitle(col,Find){ // fazer os Titulos para as Bandeijas
-                return  col==='Serv' ? Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)}x${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ') :
+                return  col==='Serv' ? Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ') :
                         col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                         col==='Abcd' ? Find.map(e=>`${e.Id}`            ).join(''   ) :     
                         col==='Cust' ? Find.map(e=>`${e.Valr}`          ).join(''   ) :
@@ -2696,7 +2699,7 @@
                 /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
                 /*R_Color(_tr(e),R.Typ)*/
             }}) 
-        }LOG('EditCell(Arriver)')
+        }
 
         function LinkCLnt(Eu,val){      // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
@@ -2726,7 +2729,7 @@
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
                 const arr = orArr(row[R.Col])     // se n for um array, return []
                 const lngh= l0(arr)               // conferir se é a Primeira vez!
-                const Def = ClrObj(BS[col])       // Cria um Default Baseado na bndj
+                const Def = ClrObj(BASE[col])       // Cria um Default Baseado na bndj
                 const get = getClssIN(_td(Eu),'Rastr-')
                 if(['Serv','Pgmt']){
                     Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id
@@ -2740,7 +2743,7 @@
         }
 
         function AddROW(Typ,Ps,obj={},inpt){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
-            const Def   = ClrObj(BS[Typ])        // Cria um Default Baseado na bndj
+            const Def   = ClrObj(BASE[Typ])        // Cria um Default Baseado na bndj
             const Tbody = $(`#H_${Typ} > tbody`)
             Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
             ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
