@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload com Supabase</title>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .upload { margin-bottom: 20px; }
+    #galeria {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+    }
+    #galeria img {
+      width: 150px; height: 150px; object-fit: cover;
+      border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload com Supabase</h2>
+
+  <div class="upload">
+    <label>Selecionar Imagem:</label>
+    <input type="file" id="inputImagem" accept="image/*"><br><br>
+
+    <label>Selecionar Arquivo:</label>
+    <input type="file" id="inputArquivo"><br><br>
+
+    <button onclick="upload()">Enviar</button>
+  </div>
+
+  <h3>Galeria</h3>
+  <div id="galeria"></div>
+
+  <script>
+    // 🔹 Configure suas credenciais do Supabase
+    const SUPABASE_URL = "https://xxxx.supabase.co";
+    const SUPABASE_KEY = "coloque_sua_chave_anon_aqui";
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const bucketName = "uploads"; // bucket criado no Supabase
+
+    // Upload dos arquivos
+    async function upload() {
+      const imgFile = document.getElementById("inputImagem").files[0];
+      const file = document.getElementById("inputArquivo").files[0];
+
+      if (imgFile) await enviarArquivo(imgFile, "imagens/");
+      if (file) await enviarArquivo(file, "arquivos/");
+
+      carregarGaleria();
+    }
+
+    // Envia arquivo para Supabase Storage
+    async function enviarArquivo(file, pasta) {
+      const filePath = `${pasta}${Date.now()}_${file.name}`;
+
+      let { error } = await supabase.storage
+        .from(bucketName)
+        .upload(filePath, file, { upsert: false });
+
+      if (error) {
+        console.error("Erro no upload:", error.message);
+        alert("Erro ao enviar: " + error.message);
+      }
+    }
+
+    // Carregar imagens na galeria
+    async function carregarGaleria() {
+      const { data, error } = await supabase.storage
+        .from(bucketName)
+        .list("imagens", { limit: 50 });
+
+      if (error) {
+        console.error("Erro ao listar:", error.message);
+        return;
+      }
+
+      const galeria = document.getElementById("galeria");
+      galeria.innerHTML = "";
+
+      for (let item of data) {
+        const { data: urlData } = await supabase.storage
+          .from(bucketName)
+          .getPublicUrl("imagens/" + item.name);
+
+        const img = document.createElement("img");
+        img.src = urlData.publicUrl;
+        galeria.appendChild(img);
+      }
+    }
+
+    // Carrega ao abrir
+    carregarGaleria();
+  </script>
+</body>
+</html>
