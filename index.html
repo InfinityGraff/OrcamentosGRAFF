@@ -47,7 +47,7 @@
     
     let U = {} ; let UCgo = {} ; let Passs = ''
     const Atual    = {Pag:'ORC'}
-    const Limit    = {PDDS:{INN:951,OUT:3000},SERV:{INN:951,OUT:3000},PGMT:{INN:951,OUT:3000}}
+    const Limit    = {PDDS:{INN:951,OUT:1055},SERV:{INN:951,OUT:1055},PGMT:{INN:951,OUT:1055}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     
@@ -929,7 +929,6 @@
             SERV:['Forn==Grad']
         }
 
-        // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
         const R_Cor=(e,opacy,Cor)=>{
             e.style.background   = `rgba(${Cor},${(opacy).toFixed(2)})`             // Colore o Fundo
             e.style.color        = `rgb(${Cor.split(',').map(e=>e/2).join(',')})`   // Colore o Fundo
@@ -938,21 +937,25 @@
         }
 
         function Re_colrAll(Typ){                // ✔️ Muda a cor de Todas 
-            TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})
-            // Depois fazer Apenas para as Visiveis
-            // Também seria bom Limpar tudo antes de Recolorir
+            if(Typ==='SERV'){TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})}
+            if(Typ==='PDDS'){TRs(Typ).forEach(tr=>{
+                $$(`.Bdj_SERV > table > tbody > tr`,tr).forEach(tr2=>{LOG(tr2);R_Color(tr2,'SERV')})
+            })}
         } 
 
         function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
+            LOG('sd')
             if(Typ==='SERV'){
                 const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
                 const newobj = zipObj(OjKy(Typ),Arr)
                 const atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
                 const opacy  = MinMax(atual.length,OB[Typ].length)
                 const Coclui = atual.length === OB[Typ].length
-                const Cor    = $(`#${Typ}_Color`).value
-                const [Atv1,Atv2] = [$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
-                //Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
+                const Cor    =  '#00ff00'// $(`#${Typ}_Color`).value
+                const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
+                
+                LOG(Arr,newobj)
+
                 atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
                     td.style.background = ''                      // Zera Fundo
                     td.style.border = ''                          // Zera Brorder
@@ -964,9 +967,13 @@
                     if(Atv2){R_Cor(tr,opacy/2,hexToRGB2(Cor))}
                     if(Coclui){R_Cor(tr,opacy,hexToRGB2(Cor))}
             }
+        }
             // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
             // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
-        }
+            // Depois fazer Apenas para as Visiveis
+            // Também seria bom Limpar tudo antes de Recolorir
+            // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
+            // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
 
         function RecolorBasico(tr){
             if(tr){
@@ -1539,7 +1546,7 @@
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
-                <button onclick="RfreshJson('PDDS')">Recolor</button>
+                <button onclick="Re_colrAll('PDDS')">Recolor</button>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
@@ -2835,7 +2842,7 @@
                 // settimeout aqui
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
-                    $$('#H_PDDS > tbody > tr').forEach(tr=>RecolorBasico(tr)) // depois remover isso pq é Gambiarra!
+                    //$$('#H_PDDS > tbody > tr').forEach(tr=>RecolorBasico(tr)) // depois remover isso pq é Gambiarra!
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
                 
