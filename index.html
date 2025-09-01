@@ -47,7 +47,7 @@
     
     let U = {} ; let UCgo = {} ; let Passs = ''
     const Atual    = {Pag:'ORC'}
-    const Limit    = {PDDS:{INN:951,OUT:1055},SERV:{INN:951,OUT:1055},PGMT:{INN:951,OUT:1055}}
+    const Limit    = {PDDS:{INN:951,OUT:3000},SERV:{INN:951,OUT:3000},PGMT:{INN:951,OUT:3000}}
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     
@@ -273,7 +273,7 @@
         Dstn:['','Serv1','Serv2'],
         Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
-        TArt:['','Criação','Recriação','Vetorização','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento'],
+        TArt:['','Criação','Recriação','Vetorização','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n precisa'],
        TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
     }
     const AllList = ObjKey(O)
@@ -293,11 +293,11 @@
     }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],/* Lin:['E','' ],*/Data:['D','' ],Clnt:['B',''],Serv:['B',''],Valr:['O','A'],Pgmt:['B','' ],Cust:['B',''],Lcro:['E','A'],Stts:['S','A'],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O','A'],Pgmt:['B',''],Cust:['B',''],Lcro:['E',''],Stts:['E','A'],Lixo:['X','']},
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],Dsng:['S',''],TArt:['S',''],Arte:['M','' ],Forn:['S','A'],OK:  ['C',''],Entg:['C',''],Detg:['E',''],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
-        FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','']},
+        FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
 
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
         GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
@@ -922,77 +922,78 @@
     <script> // RECOLOR  - ⭐⭐_ _ _
         const NoVazi=v=>v!=='' && v!==false && v!==undefined // isso pode virar Biblioteca
         const MinMax=(Atual,Lista)=>Math.min(Math.max(Atual/Lista,0),1) // Entre 0 e 1 
-        const OB = { // Criterio 1 é Obrigaório
-            SERV:['Serv','Tipo','Dsng','Forn','OK','Entg','Detg','Grad']
+        const OB = { // Criterio 1  é Obrigaório existir
+            CLNT:['Clnt','Cmpt','Cntt'],
+            SERV:['Serv','TArt','Dsng','Grad','Uber','OK','Entg'],
+            PGMT:['Data','Valr','Form'],
         }
-        const OC = { // mas tbm terá outro critério de Comparação
+        const OC = { // Criterio 2 de Comparação
             SERV:['Forn==Grad']
         }
+        const EtpSERV = {
+             'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b':['Concluído'  ,'#93c47d']
+            ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg-a':['Devendo'    ,'#ea9999']
+            ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg'  :['Entregue'   ,'#93c47d']
+            ,'Serv-TArt-Dsng-Grad-Uber-OK'       :['Pronto'     ,'#a4c2f4']
+            ,'Serv-TArt-Dsng-Grad-Uber'          :['Acabamento' ,'#ffe599']
+            ,'Serv-TArt-Dsng-OK-Entg'            :['Grad Uber'  ,'#f1c232'] // desnessesário pq o q eu queria era só omitir Grad Uber
+            ,'Serv-TArt-Dsng-OK'                 :['Grad Uber'  ,'#f1c232'] // desnessesário pq o q eu queria era só omitir Grad Uber
+            ,'Serv-TArt-Dsng-Grad'               :['Impressão'  ,'#ffe599']
+            ,'Serv-TArt-Dsng'                    :['Analise Art','#b4a7d6']
+            ,'Serv-Dsng'                         :['Analise Art','#b4a7d6'] // desnessesário pq o q eu queria era só omitir o TArt
+            ,'Serv-TArt'                         :[,'Arte'      ,'#b4a7d6'] 
+            ,'Serv'                              :['orçamento'  ,'#b4a7d6']
+        }
 
-        const R_Cor=(e,opacy,Cor)=>{
+        function Re_colrAll(Typ,All){                // ✔️ Muda a cor de Todas
+            const trs = All=='All' ? TRs(Typ) : [All]
+            if(Typ==='SERV'){trs.forEach(tr=>{R_Color(tr,Typ)})}
+            if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
+                    const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
+                    const Exec=typ=>{const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ)) ; if(typ=='SERV'){ss=s} ; $$(`.Bdj_${typ}`,tr).forEach(e=>R_Cor(_td(e),opc(s),ss[0][1]))}
+                    Exec('SERV') ; Exec('CLNT') ; Exec('PGMT')
+                    // Rodando agora na Linha tr
+                    if(ss.length==0){return}
+                    R_Cor(tr,opc(ss),ss[0][1])
+                    Inn($(`:scope > ${Rx2([Typ,'Stts'])} .P-P`,tr),ss[0][2]) // mostra apenas o Status do 1º serv
+        })}}
+
+        function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
+            const tipo   = $('#PDDSETATA').value
+            const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
+            const newobj = zipObj(OjKy(Typ),Arr)
+            const atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
+            const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
+            const Coclui = atual.length === OB[Typ].length
+            const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
+            
+            const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
+            if(Typ=='SERV'){Inn($(`${Rx2([Typ,'SStts'])} .P-P`,tr),Etapa[0])}
+            // se eu tiver usando modo de Etapa, então faz isso, senão usa opacidde 
+            const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value
+
+            atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
+                td.style.background = ''                      // Zera Fundo
+                td.style.border = ''                          // Zera Brorder
+                if(Atv1){R_Cor(td,opacy/2,Cor)}
+                if(Coclui){R_Cor(td,opacy,Cor)}
+            })
+                tr.style.background = ''                      // Zera Fundo
+                $$('td',tr).forEach(e=>e.style.border = '')   // Zera Borda
+                if(Atv2){R_Cor(tr,tipo=='Etapa'&&Typ=='SERV' ? 1 : opacy/2,Cor)}
+                if(Coclui){R_Cor(tr,opacy,Cor)}
+            
+            return [opacy,Cor,Etapa[0]]
+        }
+
+        function R_Cor(e,opacy,Cor){
             e.style.background   = `rgba(${Cor},${(opacy).toFixed(2)})`             // Colore o Fundo
-            e.style.color        = `rgb(${Cor.split(',').map(e=>e/2).join(',')})`   // Colore o Fundo
+            e.style.color        = `rgb(${Cor.split(',').map(e=>e/4).join(',')})`   // Colore o Fundo
             e.style.borderBottom = `1px solid rgba(${Cor},${(opacy).toFixed(2)})`   // Colore a Borda
             $$('select',e).forEach(E=>E.style.background = '#00000000')
         }
 
-        function Re_colrAll(Typ){                // ✔️ Muda a cor de Todas 
-            if(Typ==='SERV'){TRs(Typ).forEach(tr=>{R_Color(tr,Typ)})}
-            if(Typ==='PDDS'){TRs(Typ).forEach(tr=>{
-                $$(`.Bdj_SERV > table > tbody > tr`,tr).forEach(tr2=>{LOG(tr2);R_Color(tr2,'SERV')})
-            })}
-        } 
-
-        function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
-            LOG('sd')
-            if(Typ==='SERV'){
-                const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')
-                const newobj = zipObj(OjKy(Typ),Arr)
-                const atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
-                const opacy  = MinMax(atual.length,OB[Typ].length)
-                const Coclui = atual.length === OB[Typ].length
-                const Cor    =  '#00ff00'// $(`#${Typ}_Color`).value
-                const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
-                
-                LOG(Arr,newobj)
-
-                atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
-                    td.style.background = ''                      // Zera Fundo
-                    td.style.border = ''                          // Zera Brorder
-                    if(Atv1){R_Cor(td,opacy/2,hexToRGB2(Cor))}
-                    if(Coclui){R_Cor(td,opacy,hexToRGB2(Cor))}
-                })
-                    tr.style.background = ''                      // Zera Fundo
-                    $$('td',tr).forEach(e=>e.style.border = '')   // Zera Borda
-                    if(Atv2){R_Cor(tr,opacy/2,hexToRGB2(Cor))}
-                    if(Coclui){R_Cor(tr,opacy,hexToRGB2(Cor))}
-            }
-        }
-            // Poder escolher a Cor do RGB por alguns critérios, q seria usar a cor do Random
-            // ou usar uma cor predefinida q seria (Stock: Azul e Grads Verde) (Permitir poder escolher isso Livremente)
-            // Depois fazer Apenas para as Visiveis
-            // Também seria bom Limpar tudo antes de Recolorir
-            // Opção de Permitir isso ou não (pq fica parecendo um Xadrez)
-            // Degrader de 2 cores formato de Matiz, do vermelho ao Verde
-
-        function RecolorBasico(tr){
-            if(tr){
-                const cor = {
-                    'Orçamento'  :'#ffffff'
-                    ,'Arte'      :'#b4a7d6'
-                    ,'Impressão' :'#ffe599'
-                    ,'Acabamento':'#ffe599'
-                    ,'Pronto'    :'#a4c2f4'
-                    ,'Entregue'  :'#93c47d'
-                    ,'Devendo'   :'#ea9999'
-                    ,'Concluído' :'#93c47d'
-                }
-                const td = $(Rx2(['Rastr-PDDS','Stts']),tr)
-                $('select',td).addEventListener('change',function(){RecolorBasico(_tr(this))})
-                const Val = VAL(td)
-                tr.style.background = cor[Val]
-            }
-        }
+            // Menu de Opções (Tipo de cores:['Etapas','Temperatura','Opacidade']) | aplicar ou Remover o Xadrez
     </script>
     
     <script> // AUTOCOMP - ⭐⭐_ _ _
@@ -1546,7 +1547,16 @@
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
                 <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
-                <button onclick="Re_colrAll('PDDS')">Recolor</button>
+                <div onchange="Re_colrAll('PDDS','All')">
+                    <select name="" id="PDDSETATA">
+                        <option value="temperatura">temperatura<option>
+                        <option value="Etapas" selected>Etapas</option>
+                        <option value="Opacidade">Opacidade</option>
+                    </select>
+                    <input id="PDDS_Color" type="color">
+                    <input id="PDDS_tdCor" type="checkbox" checked>
+                    <input id="PDDS_trCor" type="checkbox" checked>
+                </div>
                 <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                 <button onclick="IMGENS()">FiltSoIMG</button>
@@ -1565,10 +1575,10 @@
             <div class="DivConf Ct Bt Stky">
                 <button onclick="RfreshJson('SERV')">Rfresh </button>
 
-                <div onchange="Re_colrAll('SERV')">
+                <div onchange="Re_colrAll('SERV','All')">
                     <input id="SERV_Color" type="color">
-                    <input id="SERV_tdCor" type="checkbox">
-                    <input id="SERV_trCor" type="checkbox">
+                    <input id="SERV_tdCor" type="checkbox" checked>
+                    <input id="SERV_trCor" type="checkbox" checked>
                 </div>
 
                 <button onclick="AddRowBdj('SERV')">Nova Linha +</button>
@@ -2684,6 +2694,7 @@
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
 
         function EditCell(e,vall=null){ // ⭐⭐⭐⭐⭐ (Muito Boa!)
+            const tR     = _tr(Pai(_tr(e)))
             const R      = D_R(_td(e))                     // R é o atual Editado
             const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
             const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
@@ -2704,8 +2715,8 @@
                 /*Edit td   */ DarVAL(td,Nval)
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
                 /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
-                /*R_Color(_tr(e),R.Typ)*/
             }}) 
+            Re_colrAll(P.Typ,tR)
         }
 
         function LinkCLnt(Eu,val){      // ⭐⭐⭐⭐_  (Faz o Básico)
@@ -2842,7 +2853,7 @@
                 // settimeout aqui
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
-                    //$$('#H_PDDS > tbody > tr').forEach(tr=>RecolorBasico(tr)) // depois remover isso pq é Gambiarra!
+                    Re_colrAll('PDDS','All')
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
                 
