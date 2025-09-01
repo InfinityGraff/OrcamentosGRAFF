@@ -322,11 +322,6 @@
     const supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 </script>
 
-<style>
-    input.Error:focus{background:red}
-    input.Error:hover{background:red}
-</style>
-
 <script> // Bibliotecas
     // Epecíficas (as q Retorna)
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
@@ -342,7 +337,6 @@
         const D_P     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
         const DrPai   =R=>R.replace('Rastr','Rpai')
         const Coll    =x=>`td:nth-child(${x})`
-        //const Col     =(Typ,col)=>`td:nth-child(${FIdx(OjKy(Typ),col)+1})`
         const Col     =(Typ,col)=>`td:nth-child(${Colx(Typ,col)})`
         const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
         const H_Col_p =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
@@ -364,7 +358,7 @@
         //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
         // conferir se essa é realmente nessesária
-        const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; console.log('Chamou DarkLite',e,Chk)}
+        const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)}
         //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
 </script>
 
@@ -387,7 +381,6 @@
             .BjConf span.Atv{fill:#ffff00; background:#00df00}
             .BndjFLT input  {height:18px ; width:80px}
             .Sugg {overflow-x: hidden; overflow-y: auto; max-height: 200px; width: 100%;}
-            
                 th .Sugg div:hover div{opacity:1}
                 th .Sugg div div      {opacity:0;font-size:15px; background:#d822ab; color:#ffffff; width:18px; height:18px; text-align: center; margin-left:10px ;} /*Bolinhas + e -*/
     
@@ -501,15 +494,13 @@
                 // se o Suggs tiver vazio deixar pelomenos uma mensagem avisando
                 // Suggs e Links terão opções de "Troca" e de "Adição"
                 // Adicionar um Input de pesquisa no SuggLink também igual o de Clnt
-                // ocultar o botão de Lixo, quando tiver Link de PDDS no 'CLNT'
+                // impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
 
                 // Tabelas
-                // RG:[Login,Data,Hora,Origem,Dispositivo,Pontuação]
-                // fica ruim pra clicar na célula quando n tem Nada
-                // Mover-se nas células com as Setas
-                // Mostrar a Soma do valor na Barra de Config
-                // do Jeito q o Recolor acontece idivudual o Rfresh poderia tbm
-                // Ocultar uma Coluna pelo thead
+                    // RG:[User,PC,Data,Hora]
+                    // fica ruim pra clicar na célula quando n tem Nada
+                    // Mover-se nas células com as Setas
+                    // Mostrar a Soma do valor na Barra de Config
             }
 
             const Tm_Loade=(Typ)=>{
@@ -553,7 +544,7 @@
                     }else{return ArrObj_ArrArr(Find)}} // as demais permanecem iguais
 
                 const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
-                const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="console.log('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
+                const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="LOG('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
                 const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
                 const Grifo     = `<i class="grifoo RD"></i>`
 
@@ -569,9 +560,7 @@
             }
 
             const Tm_Table=(typ,arry,Rpai='')=>{ const IN = performance.now()
-
                 const Retorno = arry.reverse().map((e,X)=>{ // Aplico Reverse se quero começar reverso
-                    
                     const oID = Num(`${e.Id}`.split('_')[0])
                     if ((oID < Limit[typ]?.INN || oID > Limit[typ]?.OUT)) return; // Reduzir o Limit de linhas pra Exibir!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
@@ -579,11 +568,11 @@
                     return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,Rpai)).join('')}</tr>`
                 }).join('')
 
-                const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 0.5 ? null : console.log(`⏱️🔴 Tm_Tables(${typ}): ${Perform}ms`)
+                const  Perform = (performance.now()-IN).toFixed(2)
+                       Perform < 0.5 ? null : LOG(`⏱️🔴 Tm_Tables(${typ}): ${Perform}ms`)
                 return Retorno
                 // acredito q posso simplificar exitando a pesquisa do nome do Clnt, em cada Bndj, pois ta procurando 3 vezes em cada Linha! uma pra PDDS, ai uma na Bndj Serv e PGMT
-                // ao Clicar no ID, exibirá uma Bndj com um Relatório de (RG,uUSER) 'usuário basicamente é o responsavel'
+                // ao Clicar no ID, exibirá uma Bndj com o 'Rg' usuário basicamente é o responsavel!
             }
         </script>
     </div>
@@ -719,7 +708,7 @@
                                     Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
 
                     const Perform = (performance.now()-IN).toFixed(2)
-                    Perform < 0.5 ? null : console.log(`⏱️🟡 Palavras:(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
+                    Perform < 0.5 ? null : LOG(`⏱️🟡 Palavras:(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
                     return Valls
             }
 
@@ -751,7 +740,7 @@
                                                     </div>`).join('')
                 
                 const Perform = (performance.now()-IN).toFixed(2)
-                Perform < 0.5 ? null : console.log(`⏱️🔵 Tm_Filt:(${Typ},${col}): ${Perform}ms`)
+                Perform < 0.5 ? null : LOG(`⏱️🔵 Tm_Filt:(${Typ},${col}): ${Perform}ms`)
             }
 
             function F_Filt(btn,Typ,cOl,Qry,Col){    // ✔️ Filtra o Filter (descobrir pq n funciona com Numeros)
@@ -1108,7 +1097,7 @@
             // Depois q terminar fazer isso atualizar a Const (se possível)
             // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
             
-            const FIM = performance.now() ; console.log(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
+            const FIM = performance.now() ; LOG(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
         }
     
         function AutoClntPDDS(){
@@ -1132,7 +1121,7 @@
 
     <script> // REALTIME - ⭐⭐_ _ _
         function Load_ThFilt(Eu,Typ,Col){ // Acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
-            if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; console.log(BS[Typ])
+            if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; LOG(BS[Typ])
             Tm_Filt(Eu,Typ,Col)
         }
 
@@ -1161,7 +1150,7 @@
                         Colls(typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv','Slct']),f).map(t=>$('select',t).value))
                         : Colls(typ,'Serv',true).map(e=>VAL(e))
 
-                //console.log(`⏱️ Rfresh_Foots:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now() // manter em quanto Melhora
+                //LOG(`⏱️ Rfresh_Foots:(OBJ): ${(performance.now()-IN).toFixed(2)}ms`) ; IN = performance.now() // manter em quanto Melhora
 
                 IN = performance.now()
                 // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
@@ -1173,8 +1162,8 @@
                 Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{ LOG('2',e) ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
                 Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{ LOG('3',e) ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
 
-                //console.log(`⏱️ Rfresh_Foots:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
-                console.log(`⏱️ Rfresh_Foots:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
+                //LOG(`⏱️ Rfresh_Foots:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
+                LOG(`⏱️ Rfresh_Foots:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
             },0)
         }
 
@@ -1253,8 +1242,8 @@
                 }
 
                 if(col=='Mpag'){
-                    // console.log(Eu,Typ)
-                    // console.log(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
+                    // LOG(Eu,Typ)
+                    // LOG(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
                     $('span',Pai(Eu)).innerHTML = J[col.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
                         col=='Mpag' ? Tm_Exib[col](e) :``
                     }</a></div>`).join('')
@@ -1270,7 +1259,7 @@
                     if(Inn($('p',Eu.closest('td')))=='-'){
                         editCell(Eu,NovoArry)
                     }else{editCell(Eu,[...ArryAntg,...NovoArry])} 
-                }else{console.log($('span',Pai(Eu)))}
+                }else{LOG($('span',Pai(Eu)))}
             }
 
             function TrocaClnt(Eu){
@@ -1287,7 +1276,7 @@
         <script> // Previews
 
             function Tog_Card(Typ){
-                console.log('Asus')
+                LOG('Asus')
                 //Tempo()
             }
 
@@ -1379,7 +1368,7 @@
             <h1 class="noslt ppt" onclick="TrocaBody()">InfinityAPP 7.6</h1>
             <img id="recolhe" src="./SVG/Recolhe.svg" onclick="Recolher()">
             <script>
-                function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{console.log("Tela pequena")}}
+                function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{LOG("Tela pequena")}}
                 function Recolher(){Tog($('body'),'recolhe')}
                 function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
             </script>
@@ -1533,7 +1522,7 @@
                         const Val = parseFloat(Slt.value)
                         const Ext = parseFloat(Slt.options[Slt.selectedIndex].getAttribute("data-extra")) || 0
                         let Porcent = 0
-                        $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{console.log(e) ; Porcent += parseFloat(e.value)})
+                        $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{LOG(e) ; Porcent += parseFloat(e.value)})
                         const Pcnt = Porcent.toFixed(2)/100
                         const Total = Val+(Ext*(Qnt-1))
                         const Total2 = Total+(Total*Pcnt)
@@ -1827,7 +1816,7 @@
                     ObjFundo['F'] = $('#DropsF img')?.src || ''
                     ObjFundo['V'] = $('#DropsV img')?.src || ''
                     
-                    console.log('OBJ_IMG',ObjFundo)
+                    LOG('OBJ_IMG',ObjFundo)
                     /*
                     if(Imgss.length==0){Imgss.map(e=>{
                             const {Nome,Qnt,Tamn} = SplitAvanc(e.name)
@@ -1872,9 +1861,9 @@
 
                         ObjCanvs.push({qnt:Number(qnt),tamn,nome,src,org})
 
-                    //if(qnt&&tamn&&nome){console.log('tem tudo');}else{}
+                    //if(qnt&&tamn&&nome){LOG('tem tudo');}else{}
                     })
-                    console.log('Objeto Atualizado',ObjCanvs)
+                    LOG('Objeto Atualizado',ObjCanvs)
                 }
             </script>
 
@@ -2109,7 +2098,7 @@
                                         
                     function ExibeFotinha(Serv){
                         const valid = $('#TrocaDetalheE').checked
-                        console.log('check: ',valid)
+                        LOG('check: ',valid)
                         const Exib  = valid ? '#Mdal-Prod' : '#DetalheFotinha'
                         if(valid){MdalShow('#Mdal-Prod')}
                         if(Prod[Serv].Prvw !== 'Fotinha'){Inn(Exib,`<div>${Prod[Serv].Prvw}</div>`)}
@@ -2139,7 +2128,7 @@
                     function ReloadDetalhes(){
                         None($$('#Div-Detalhes .canvi'))
                         const serv = $('#ORC tr.Atv .oServ')?.value || ""
-                        //console.log('ReloadDetalhes',serv,Prod[serv].Prvw)
+                        //LOG('ReloadDetalhes',serv,Prod[serv].Prvw)
                         if(serv==""){// n exibe nada
                         }else if(Prod[serv].Prvw=='CanvMdd'){Show($('#CanvasMedidas'))
                         }else if(Prod[serv].Prvw=='Fotinha'){Show($('#DetalheFotinha'));ExibeFotinha(serv)
@@ -2332,7 +2321,7 @@
                         
                         const VALOR_D = Math.floor(VALOR-(VALOR*(DESCt-(DescQtn))))
                         
-                        //console.log(`${oMetro}m² - `,'Desc1:',DESCt,' - Desc2:',DescQtn)
+                        //LOG(`${oMetro}m² - `,'Desc1:',DESCt,' - Desc2:',DescQtn)
 
                         InNa_RS($('.ORC_CUST_Vund',tr),(CUSTO/Qnt || 0))
                         InNa_RS($('.ORC_CUST_SbTt',tr),CUSTO)
@@ -2823,7 +2812,7 @@
         function MesclarContato(){       // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
-            if(!Fim){console.log('Faltou o Link Final') ; return}
+            if(!Fim){LOG('Faltou o Link Final') ; return}
             // também da erro se tiver mais de uma Selecioanda
             $$('#H_CLNT .LinkAtv').forEach(td=>{
                 const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
@@ -2896,27 +2885,21 @@
                 J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT')}
             }
-            console.log(`✔️ ${Typ}`)
+            LOG(`✔️ ${Typ}`)
         }
         ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
     }getSB()
 
-    function configurarRealtime() {
-        return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
-            const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table]
-            Supa_RealTime(crud,nEw,Typ,old)
-        }).subscribe()
-    }
+
 
     function Supa_RealTime(crud,nEw,Typ,old){
-        LOG('realTIME foi Ativado')
         if(crud==='UPDATE'){
             const NOVOO = NULL__([nEw])[0]
             const atual = J[Typ].find(e=>e.Id==nEw.Id)
-            LOG(atual)
+            //LOG(atual)
             const Difff = Diferentes(NOVOO,atual,Typ)
             if(Difff==null){LOG(`⚠️ RealTime() J[${Typ}] ja Tava Igual`) ; return}
-            LOG(Difff)
+            //LOG(Difff)
             ObjEtr(Difff).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro           
             flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
                 $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
@@ -2939,7 +2922,6 @@
             const novaLin = nEw
             // dar Push na Const
             // insertbefore, e tm_Table() para criar tr novo!
-
         }
         // antes de qualquer ação descobrir se o efeito foi feito por mim ou por outra pessoa
         // se foi feito por mim, então não precisa seguir com o RealTime!
@@ -2947,33 +2929,30 @@
         // insertOrden()
         // AddRowBdj()
         // RmvROW()
-
     }
     
     async function Sb_DELETE(Typ,id){
         const {err} = await supabase.from(Typ).delete().eq("Id",id)
-        err ? console.error("Erro ao excluir:",err) : console.log(`Linha ${id} excluída da Tabela ${Typ}!`)
+        err ? console.error("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
     }
-
-    const NOVALINHA = [{Cat:"Adesivo", Clnt:"João Pereira", Cmpt:"Recorte eletrônico", Cntt:"(11) 91234-5678", CtLj:"Whatsapp", Id:"0052", Lcal:"Loja Física - SP", Link:"", Lixo:"", Loja:"Infinity Graff", Stts:""}]
-    //insertOrden('CLNT',NOVALINHA)
     
     async function UpdateSupa(Typ,col,id,valor){
         try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
             if (error){console.error('Erro ao atualizar:',error)}
-            else  {    console.log('💾 UpdateSupa(✏️) Atualizado') ; ALERT(`"${valor}" Atualziado no SubaBase! (${Typ},${id},${col})`)}
+            else  {    LOG('💾 UpdateSupa(✏️) Atualizado') ; ALERT(`"${valor}" Atualziado no SubaBase! (${Typ},${id},${col})`)}
         } catch (err){ console.error('Erro:',err                  ) ; ALERT('Erro ao atualizar serviço')}
     }
-    // Editar elementos por dentro da Bndj
 
     async function Sb_CREATE(Typ,dados){
-        try {const { error } = await supabase.from(Typ).insert([dados])
-            if (error) console.error('Erro ao criar:', error)
-            else{LOG('Linha criada')}
-        } catch (err) {console.error('Erro:', err)}
+        try {const {error} = await supabase.from(Typ).insert([dados])
+            if(error){console.error('Erro ao criar:',error)}else{LOG('Linha criada')}
+        } catch (err){console.error('Erro:',err)}
     }
 
-    configurarRealtime()
+    function PlayRealTime(){
+        return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
+            const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
+    };PlayRealTime()
 </script>
 
 <script> // Nota  ⭐_ _ _ _
@@ -2982,7 +2961,7 @@
         MdalShow('#ModalNota')
         const dados = $$('#ORC tbody tr').map(tr=>$$('td input, td select',tr).map(e=>{if(estaOculta(e)){return}else{return e.value}}))
         $('#DescrNota').innerHTML = dados.join('')
-        console.log(dados)
+        LOG(dados)
     }
 </script>
 

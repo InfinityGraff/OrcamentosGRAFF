@@ -104,6 +104,8 @@
 
 input.Error {background:red}
 select.Error{background:red}
+input.Error:focus{background:red}
+input.Error:hover{background:red}
 
     /*DivConfig*/
         .DivConf{background:#d6d6d6}
