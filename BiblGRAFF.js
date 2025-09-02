@@ -69,6 +69,34 @@ function ShowBndj(div){
     else{ClickFora(div,()=>{Add_N(e)})}
 }
 
+const BrevTitle = str => {
+  try {
+    const data = str.split(" | ").map(item => {
+      let [q, ...rest] = item.split(" - ");
+      if (isNaN(+q)) throw "NaN"; // se não for número, aborta
+      let [nome, ...mdd] = rest.join(" - ").split(" ");
+      return { q: +q, nome, mdd: mdd.join(" ") };
+    });
+
+    const agrupado = data.reduce((acc, { q, nome, mdd }) => {
+      acc[nome] ??= { qtd: 0, mdd: new Set() };
+      acc[nome].qtd += q;
+      acc[nome].mdd.add(mdd);
+      return acc;
+    }, {});
+
+    return Object.entries(agrupado)
+      .map(([n, { qtd, mdd }]) =>
+        `${qtd} - ${n}${mdd.size > 1 ? ` (${[...mdd].join(" / ")})` : " " + [...mdd][0]}`
+      )
+      .join(" | ");
+  } catch {
+    return str; // se der erro ou NaN, retorna string original
+  }
+};
+
+
+
 function DarVAL(td,v,A){const R = D_R(td) ; Inn(td,Tm_Tm[R.Tm](v,R,A))}
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
@@ -632,6 +660,8 @@ function Promss_Imgs2(files,div){
       });arry.push(promise)
   };return Promise.all(arry)
 }
+
+
 
 
 // Trexo relacionado a Mover os Botões das Fotinhas

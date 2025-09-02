@@ -287,9 +287,8 @@
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const tipBS = {
         'Eqip':{'PDDS':['Cust','Lcro'],
-                'SERV':['Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt','SStts'],
-                'PGMT':['Stts','Link','Mpag']
-        }
+                'SERV':['Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt'],
+                'PGMT':['Stts','Link','Mpag'] }
     }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
@@ -309,7 +308,7 @@
         CALC:{}
     }
 
-    let BASE = BS
+    const BASE = JSON.parse(JSON.stringify(BS))
     const limparBS=cgo=>{if(cgo==='Eqip') for(const t in tipBS.Eqip) if(BS[t]) for(const c of tipBS.Eqip[t]) delete BS[t][c]}
     limparBS(USER[StogeGet('SenhaCryp')].cgo)
 
@@ -462,7 +461,8 @@
             table.Card td[class*="Data"] a:nth-child(2){display: flex}
             table.Card td[class*="Data"] a:nth-child(3){display: none}
             
-            .TBLAA table tr > :is(td,th):nth-child(1){display:none}
+            .TBLAA.Admn table tr > :is(td,th):nth-child(1){display:flex}
+            .TBLAA.Eqip table tr > :is(td,th):nth-child(1){display:none}
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
@@ -522,7 +522,7 @@
             }
 
             function FazerTitle(col,Find){ // fazer os Titulos para as Bandeijas
-                return  col==='Serv' ? Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ') :
+                return  col==='Serv' ? BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
                         col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                         col==='Abcd' ? Find.map(e=>`${e.Id}`            ).join(''   ) :     
                         col==='Cust' ? Find.map(e=>`${e.Valr}`          ).join(''   ) :
@@ -983,6 +983,8 @@
         }
 
             // Menu de Opções (Tipo de cores:['Etapas','Temperatura','Opacidade']) | aplicar ou Remover o Xadrez
+            // Fazer o Hover ficar da cor do Elemento, só que mais Saturado
+            // Abreviar o Titulo quando der pra Abreviar!
     </script>
     
     <script> // AUTOCOMP - ⭐⭐_ _ _
@@ -1450,6 +1452,7 @@
                     NavPag(Atual.Pag)
                     tmplt_Prod()
                     LOG('✅ Perfil Logado!')
+                    $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando Cargo do Usuário a todas as Tabelas (com objetivo apenas de Ocultar ou não os ID)
                 }
             </script>
 
@@ -1570,7 +1573,7 @@
                     <input id="SERV_trCor" type="checkbox" checked>
                 </div>
 
-                <button onclick="AddRowBdj('SERV')">Nova Linha +</button>
+                <!-- <button onclick="AddRowBdj('SERV')">Nova Linha +</button> -->
                 
                 <div><!--Exibir cor coluna automaica-->
                     <input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label>
@@ -2675,15 +2678,16 @@
     </div>
 </body>
 
-<script> // Manipulações de Dados
+<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _
     // MiniLib pra ser usada principalmente por essas Func de manipulações
         const LocLinId=(Typ,ID)=>J[Typ].find(e=>e.Id==ID)
         const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
+        const RmvById=(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
 
-        function EditCell(e,vall=null){ // ⭐⭐⭐⭐⭐ (Muito Boa!)
-            const tR     = _tr(Pai(_tr(e)))
+        function EditCell(e,vall=null){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
+            const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
             const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
             const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
@@ -2692,51 +2696,68 @@
             if(Nval==Nm(e)){return} // quando não foi Aterado
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
-                /*Obj*/ J[R.Typ][R.Col] = Nval
-                /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,Nval)   
+                /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
+                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)   
             /*Lv2*/}else{
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
                 /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
-                /*Sub*/ UpdateSupa(P.Typ,P.Col,P.Row,X[P.Col])
+                /*Sub*/ Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])
             }
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
                 /*Edit td   */ DarVAL(td,Nval)
+                if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
                 /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
-            }}) 
-            Re_colrAll(P.Typ,tR)
+                /*Edit Cor  */ Re_colrAll(P.Typ,tR)
+                }else{
+                    /*Edit Cor  */ Re_colrAll(R.Typ,_tr(td)) // edita quando é fora da Bandeija
+                }
+            }})
         }
 
-        function LinkCLnt(Eu,val){      // ⭐⭐⭐⭐_  (Faz o Básico)
-            const td = _td(Eu)
-            const R  = D_R(td)
-            /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
-            /*DOM*/ Inn(td,Tratamento(`${val}`,getClssIN(td,'Rastr-')))
-            /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,val)
+        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com EditCell() ⚠️ Não Há Nessecidade de Fechar a Bndj
+            // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
+            const Lxr = false
+            const tR     = _tr(Pai(_tr(Eu)))                // esse é o Tr do Typ Pai
+            const R      = D_R(_td(Eu))                     // R é o atual Editado
+            const P      = isBdj(Eu) ? D_P(_td(Eu)) : null   // Extrair RPai se Estiver na Bndj
+            const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
+            const Nval   = true
+            let Find     = []
+            /*Lv1*/if(!IsBdj){
+                    if(Lxr){
+                        /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval // if Move para Lixeira
+                        /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)             // if Move para Lixeira
+                    }else{
+                        /*Obj*/ RmvById(J[R.Typ],R.Row)                  // else Deleta na Tora
+                        /*Sub*/ if(!SB){Sb_DELETE(R.Typ,R.Row)}          // else Deleta na Tora
+                    }
+            /*Lv2*/}else{ // para os da Bandeija estou com Preguiça de Mover pra Lixeira, ai por enquanto vou usar só Deletando na Tora
+                /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
+                /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
+                if(Lxr){/*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]}
+                   else{/*Obj*/ RmvById(X[P.Col],R.Row) ; Find = X[P.Col]}
+                        /*Sub*/ if(!SB){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}
+            }
+            /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{  // Editar todas as Cópias
+                if(IsBdj){
+                /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
+                /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
+                /*Edit Cor  */ Re_colrAll(P.Typ,tR)
+                }
+                /*Edit td   */ _tr(td).remove() // não precisa de Recolor Individual pois a Linha n existe mais!
+                /*Alerta    */ if(SB){LOG('Deletado pelo SupaBase')}
+            })
         }
 
-        function insertOrden(Typ,arr){   // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
-            const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
-            const tbody= $(`#H_${Typ} > tbody`)
-            const trs = [...tbody.rows]
-            const Ordn= AllI(_table(tbody),'Atv')                    // orden Ativa
-            const asc = Ordn.length==0?true:Ordn[0].innerText == '▼' // Conferir se é Desc ou Asec
-            const col = Ordn.length==0?'Id':Nm(SibQSl(Ordn[0],'p'))  // Nome da Coluna
-            const colX= Colx(Typ,col)                                // index da coluna
-            const vall= arr[0][col]
-            const compare=(a,b)=> asc ? b.localeCompare(a)<0 : a.localeCompare(b)<0
-            const Alvo= trs.find(tr=>{const a = VAL($(Rx2([Typ,col]),tr)) ; return compare(a,vall)}) //(a,b)=>b<+a, quando é Valor
-            tbody.insertBefore(NEWtr,Alvo||null)
-        }
-        
-        function AddRowBdj(Eu){          // ⭐⭐⭐⭐_ (Ta bem BOA!)
+        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!) ⚠️ (Pgmt) ⚠️ Não Há Nessecidade de Fechar a Bndj
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(TypBndj.includes(col)){            // só pra col q tem bndj
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
                 const arr = orArr(row[R.Col])     // se n for um array, return []
                 const lngh= l0(arr)               // conferir se é a Primeira vez!
-                const Def = ClrObj(BASE[col])       // Cria um Default Baseado na bndj
+                const Def = ClrObj(BASE[col])     // Cria um Default Baseado na bndj
                 const get = getClssIN(_td(Eu),'Rastr-')
                 if(['Serv','Pgmt']){
                     Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id
@@ -2745,11 +2766,11 @@
                 }
                 /*Obj*/ arr.push(Def)
                 /*DOM*/ lngh ? Inn(_td(Eu),Tratamento(arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
-                /*Sub*/ UpdateSupa(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
+                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
         }
 
-        function AddROW(Typ,Ps,obj={},inpt){  // ⭐_ _ _ _ (Adicionar um OBJ se tiver!)
+        function AddROW(Typ,Ps,obj={},inpt){ // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
             const Def   = ClrObj(BASE[Typ])        // Cria um Default Baseado na bndj
             const Tbody = $(`#H_${Typ} > tbody`)
             Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
@@ -2762,54 +2783,30 @@
             /*Sub*/ Sb_CREATE(Typ,Arry)
             if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)}
         }
-        
-        function RmvROW(eu,SuB){         // ⭐⭐_ _ _
-            // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
-            const Lxr = true
-            const R   = D_R(_td(eu))                    // R é o atual Editado
-            const P   = isBdj(eu) ? D_P(_td(eu)) : null // extrair raster do Pai, se Estiver na Bndj
-            const IsBdj = P!==null                      // se 'p' existir então tem Bandeija
-            const [Typ,col,id] = IsBdj ? [P.Typ,P.Col,P.Row] : [R.Typ,R.Col,R.Row]
 
-            function Poxuca(r,p){ // isso é pra Retornar o Index e o OBJ da tabela principal e secundária
-                const X     = tr_X(_tr(eu))            // encontra o Index da Linha da Tabela 'Typ'
-                const ID    = tr_ID(_tr(eu))           // encontra o ID    da Linha da Tabela 'Typ'
-                const Scnd  = Contem(_td(eu),'Secund') // Tabela Secundária Fora ou dentro da Bandeija
-                const F     = J[r.Typ][X] || null      // encontra a linha do J[Typ] Principal
-
-                if(!Scnd && !IsBdj){return {TYP:[X,F]}} // Não é Secundária nem está numa Bandeja (Então é uma Principal)
-                if( Scnd && !IsBdj){ // é uma Tabela Secundária fora da Bandeija (pode ser 'SERV' ou 'PGMT')
-                    const idddd = r.Typ=='SERV' ? ID.split('_')[0]
-                                 :r.Typ=='PGMT' ? VAL($(`${Rx2(['Link'])}`,_tr(e))) : null
-                        const XOrig = (i=>i>=0?i:false)(J[LocSecund[r.Typ]].findIndex(e=>e.Id==idddd))
-                        const FOrig = J[LocSecund[r.Typ]][XOrig] || null
-                    return {TYP:[XOrig,FOrig],Bndj:[X,F]}
-                }
-                if( Scnd &&  IsBdj){ // É Secundária e está numa Bandeja (Então precisa rastrear o 'p')
-                    LOG('nabndj')
-                }
-                // aqui embaixo é quando ela é uma Tabela Dentro da Bandeija
-                // const x = IsBdj ? (i=>i>=0?i:false)(F[P.Col].findIndex(o=>o.Id==R.Row)):null // encontra o Index a linha dentro da Bndj do J[Typ] Principal
-                // const f = IsBdj && x!==false ? F[P.Col][x] : null                         // encontra a linha dentro da Bndj do J[Typ] Principal
-                // return {TYP:[X,F],Bndj:[x,f]} // aqui é pra retornar tabela principal e tabela secundária
-            }
-
-            const poxx = Poxuca(R,P)
-            LOG(poxx)
-            
-            return
-
-            const vall = IsBdj ? JsonEditado : true // por isso eu preciso do Find pra poder trazer o Json Editado
-            
-            /*DOM*/ _tr(eu).remove()                                                               // sempre Remover do DOM (mas tem q Remover dos 2 se ele tiver em 2 Lugares)
-            /*Obj*/ // if(!IsBdj&&!Lxr){J[Typ].splice(Lin,1)}else{J[Typ][Fdx][col] = vall}         // no OBJ Move para Lixeira ou Exclui
-            /*Sub*/ if(!SuB){if(!IsBdj&&!Lxr){Sb_DELETE(Typ,id)}else{UpdateSupa(Typ,col,id,vall)}} // se n veio do RealTime, não é 'Bndj' nem 'Lixeira', então DELETA ; se não só Edita
-            /*Alr*/ ALERT(`a Linha ${id} foi removido da tabela ${IsBdj?col:Typ}`)                 // Alert Simples
-            
-            //if(Lin && Lxr){J[R.Typ][Lin]['Lixo']=true}else{J[R.Typ].splice(Lin,1)} 
+        function insertOrden(Typ,arr){       // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
+            const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
+            const tbody= $(`#H_${Typ} > tbody`)
+            const trs = [...tbody.rows]
+            const Ordn= AllI(_table(tbody),'Atv')                    // orden Ativa
+            const asc = Ordn.length==0?true:Ordn[0].innerText == '▼' // Conferir se é Desc ou Asec
+            const col = Ordn.length==0?'Id':Nm(SibQSl(Ordn[0],'p'))  // Nome da Coluna
+            const colX= Colx(Typ,col)                                // index da coluna
+            const vall= arr[0][col]
+            const compare=(a,b)=> asc ? b.localeCompare(a)<0 : a.localeCompare(b)<0
+            const Alvo= trs.find(tr=>{const a = VAL($(Rx2([Typ,col]),tr)) ; return compare(a,vall)}) //(a,b)=>b<+a, quando é Valor
+            tbody.insertBefore(NEWtr,Alvo||null)
         }
 
-        function MesclarContato(){       // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+        function LinkCLnt(Eu,val){           // ⭐⭐⭐⭐_  (Faz o Básico)
+            const td = _td(Eu)
+            const R  = D_R(td)
+            /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
+            /*DOM*/ Inn(td,Tratamento(`${val}`,getClssIN(td,'Rastr-')))
+            /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,val)
+        }
+  
+        function MesclarContato(){           // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){LOG('Faltou o Link Final') ; return}
@@ -2817,7 +2814,7 @@
             $$('#H_CLNT .LinkAtv').forEach(td=>{
                 const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
                 const Ids_PDDS = td.innerText.split(',')
-                Ids_PDDS.forEach(ID=>{UpdateSupa('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
+                Ids_PDDS.forEach(ID=>{Sb_EDIT('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
                 RmvROW(td) // remove a Linha
                 
                 // Editar Pedidos Prático e Const
@@ -2827,7 +2824,7 @@
             // quando terminar Limpa o Filtro
         }
 
-        function TesteClnt(inpt){        // isso é pra Saber se o Cliente existe na Tabela de CLNT
+        function TesteClnt(inpt){            // isso é pra Saber se o Cliente existe na Tabela de CLNT
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
                 if(Nm(inpt)){return Nm(inpt)}
                 else{AddROW('CLNT','<',{Clnt:inpt.value},inpt)} // Adiciona Nova Linha já com Novo Valor
@@ -2845,9 +2842,7 @@
                     Re_colrAll('PDDS','All')
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
-                
             }
-
             if(ObjKey(J).includes(Typ)){
                 if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                      if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
@@ -2863,8 +2858,7 @@
         // Adicionar e trocar Cliente
 </script>
 
-<script> // SupaBASE ⭐_ _ _ _
-
+<script> // SupaBASE ⭐⭐⭐⭐_
     function getSB(){
         async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
             let todas = [], lim = 1000, ofs = 0, data
@@ -2884,15 +2878,30 @@
             }else{
                 J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT')}
-            }
-            LOG(`✔️ ${Typ}`)
+            }LOG(`✔️ ${Typ}`)
         }
         ['PDDS','CLNT','MPAG','GRAD','UBER','OOSS'].forEach(Typ=>{gett(Typ)}) // Tabelas Disponíveis no SB!
     }getSB()
 
+    async function Sb_DELETE(Typ,id){
+        const {err} = await supabase.from(Typ).delete().eq("Id",id)
+        err ? console.error("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
+    }
+    
+    async function Sb_CREATE(Typ,Array){
+        try {const {error} = await supabase.from(Typ).insert([Array])
+            if(error){console.error('Erro ao criar:',error)}else{LOG('Linha criada')}
+        } catch (err){console.error('Erro:',err)}
+    }
 
+    async function Sb_EDIT(Typ,col,id,Val){
+        try {const {error} = await supabase.from(Typ).update({[col]:Val}).eq('Id',id)
+            if (error){console.error('Erro ao atualizar:',error)}
+            else  {    LOG('💾 SB_EDIT(✏️) Atualizado') ; ALERT(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
+        } catch (err){ console.error('Erro:',err)        ; ALERT('Erro ao atualizar serviço')}
+    }
 
-    function Supa_RealTime(crud,nEw,Typ,old){
+    function Supa_RealTime(crud,nEw,Typ,old){ // ❌ ⚠️ continuar o Crud no RealTime
         if(crud==='UPDATE'){
             const NOVOO = NULL__([nEw])[0]
             const atual = J[Typ].find(e=>e.Id==nEw.Id)
@@ -2915,40 +2924,21 @@
                     else{LOG('⚠️ RealTime() P-P não Existe')}
                 })
             })
-        }else if(crud==='DELETE'){// Linha foi Exluida de Verdade
-            const Antigo = old // comparar com quem ela é igual! pra poder remover
-            // remove da Const, e o Prático!
-        }else if(crud==='INSERT'){// Linha foi Adicionada de Verdade
+        }
+        else if(crud==='DELETE'){// Linha foi Exluida de Verdade
+            RmvROW($(`${Rx2([Typ,old.Id,'Lixo'])} a`),true) // Encontra o Botão pra Simular o Click, True é pra dizer q veio do RealTime
+        }
+        else if(crud==='INSERT'){// Linha foi Adicionada de Verdade
+            // Abortar caso a Mudança tenha sido feita por mim mesmo
             const novaLin = nEw
             // dar Push na Const
-            // insertbefore, e tm_Table() para criar tr novo!
+            // insertbefore() ou // AddROW(com obj) q Pra mim são a mesma coisa (mas é bom Analisar as Diferenças e Fundi-las) q quase nunca vai ter nada!
+            // caso o Insert seja em uma Bndj, então o Disparo vai ser de 'UPDATE' ai é só Chamar AddRowBdj(com obj) q quase nunca vai ter nada!
+            // Outro Usuário dar um Insert, e após isso, começa as Edições!
+            // Se a Linha Não Existir, não tenta Editar nada (Pra o caso de ela ainda n ter sigo Carregada!)
         }
-        // antes de qualquer ação descobrir se o efeito foi feito por mim ou por outra pessoa
-        // se foi feito por mim, então não precisa seguir com o RealTime!
-        // RealTime deve execultar as coisas Chamando as Próprias funções Pre-estabelecidas! em Manipulações de Dados
-        // insertOrden()
-        // AddRowBdj()
-        // RmvROW()
     }
     
-    async function Sb_DELETE(Typ,id){
-        const {err} = await supabase.from(Typ).delete().eq("Id",id)
-        err ? console.error("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
-    }
-    
-    async function UpdateSupa(Typ,col,id,valor){
-        try {const {error} = await supabase.from(Typ).update({[col]:valor}).eq('Id',id)
-            if (error){console.error('Erro ao atualizar:',error)}
-            else  {    LOG('💾 UpdateSupa(✏️) Atualizado') ; ALERT(`"${valor}" Atualziado no SubaBase! (${Typ},${id},${col})`)}
-        } catch (err){ console.error('Erro:',err                  ) ; ALERT('Erro ao atualizar serviço')}
-    }
-
-    async function Sb_CREATE(Typ,dados){
-        try {const {error} = await supabase.from(Typ).insert([dados])
-            if(error){console.error('Erro ao criar:',error)}else{LOG('Linha criada')}
-        } catch (err){console.error('Erro:',err)}
-    }
-
     function PlayRealTime(){
         return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
             const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
@@ -2961,8 +2951,7 @@
         MdalShow('#ModalNota')
         const dados = $$('#ORC tbody tr').map(tr=>$$('td input, td select',tr).map(e=>{if(estaOculta(e)){return}else{return e.value}}))
         $('#DescrNota').innerHTML = dados.join('')
-        LOG(dados)
-    }
+        LOG(dados)}
 </script>
 
 <script>// Iniciação
@@ -2984,5 +2973,5 @@
     document.addEventListener('keydown',e=>{if($('.Moldura.ClickCanv.Atv')){if(e.key==='c'){$('#alignX').click()};if(e.key==='e'){$('#alignY').click()}}})
 </script>
 
-<script> // comentários ⏳ ❌ ✔️</script>
+<script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝</script>
 </html>
