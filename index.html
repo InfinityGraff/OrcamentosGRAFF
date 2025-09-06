@@ -269,7 +269,7 @@
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
         Serv:['',...AllProd],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Ja Tinha','n tem',''],
+        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
@@ -285,7 +285,7 @@
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
-    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds'}
+    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
 
     const tipBS = {
@@ -301,8 +301,8 @@
         }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O','A'],Pgmt:['B',''],Cust:['B',''],Lcro:['E',''],Stts:['E','A'],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['E','A'],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Lcro:['E',''],Stts:['W',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
@@ -407,7 +407,7 @@
                 .LinkULT   {background:#1900ff; color:#ffffff}
                 
             /*Cria as Linahs de Divisórias de Serv*/ /*Algo assim também pode ser Aplicado pra as Larguras das Colunas*/
-            :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(9),:nth-child(13),:nth-child(18)){border-right:4px solid #bb0092}
+            :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(10),:nth-child(13),:nth-child(19),:nth-child(23)){border-right:4px solid #bb0092}
 
             /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
             .bnDJ .Bdj_ABCD td:nth-child(1){width: 23px;}
@@ -471,7 +471,7 @@
                 const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx]
                 return `Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}`
             }
-            const NoneCol=(Typ,col,hi)=>{if(hi=='Foot'){LOG(Typ,col,'Foot') ; return} ; return tipBS[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''}
+            const NoneCol=(Typ,col)=>tipBS[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
             const Tm_Loade=(Typ)=>For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td style="${NoneCol(Typ,e)}" class="${Tm_R('Foot',x,Typ,'')} Rltv"></td>`).join('')
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
@@ -491,8 +491,9 @@
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
-                Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`
-                
+                Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
+                Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`
+
                 // Quando o Clnt em PDDS vem vazio ele vira Link
                 // se o Suggs tiver vazio deixar pelomenos uma mensagem avisando
                 // Suggs e Links terão opções de "Troca" e de "Adição"
@@ -911,6 +912,7 @@
 
     <div> <!--RECOLOR  - ⭐⭐_ _ _ -->
         <style> /*RECOLOR - CSS*/
+            .EtpSVG{height: 20px; width: 20px;}
         </style>
 
         <script> // RECOLOR  - SCRIPT
@@ -925,36 +927,41 @@
                 SERV:['Forn==Grad']
             }
             const EtpSERV = {
-                'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b':['Concluído'  ,'#93c47d']
-                ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg-a':['Devendo'    ,'#ea9999']
-                ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg'  :['Entregue'   ,'#93c47d']
-                ,'Serv-TArt-Dsng-Grad-Uber-OK'       :['Pronto'     ,'#a4c2f4']
-                ,'Serv-TArt-Dsng-Grad-Uber'          :['Acabamento' ,'#ffe599']
-                ,'Serv-TArt-Dsng-OK-Entg'            :['Grad Uber'  ,'#f1c232'] // desnessesário pq o q eu queria era só omitir Grad Uber
-                ,'Serv-TArt-Dsng-OK'                 :['Grad Uber'  ,'#f1c232'] // desnessesário pq o q eu queria era só omitir Grad Uber
-                ,'Serv-TArt-Dsng-Grad'               :['Impressão'  ,'#ffe599']
-                ,'Serv-TArt-Dsng'                    :['Analise Art','#b4a7d6']
-                ,'Serv-Dsng'                         :['Analise Art','#b4a7d6'] // desnessesário pq o q eu queria era só omitir o TArt
-                ,'Serv-TArt'                         :[,'Arte'      ,'#b4a7d6'] 
-                ,'Serv'                              :['orçamento'  ,'#b4a7d6']
+                 'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b':['Concluído'  ,'#93c47d','#27500c']
+                ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg-a':['Devendo'    ,'#ea9999','#860000']
+                ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg'  :['Entregue'   ,'#93c47d','#27500c']
+                ,'Serv-TArt-Dsng-Grad-Uber-OK'       :['Pronto'     ,'#a4c2f4','#003692']
+                ,'Serv-TArt-Dsng-Grad-Uber'          :['Acabamento' ,'#ffe599','#856300']
+                ,'Serv-TArt-Dsng-OK-Entg'            :['Grad Uber'  ,'#f1c232','#856300'] // desnessesário pq o q eu queria era só omitir Grad Uber
+                ,'Serv-TArt-Dsng-OK'                 :['Grad Uber'  ,'#f1c232','#856300'] // desnessesário pq o q eu queria era só omitir Grad Uber
+                ,'Serv-TArt-Dsng-Grad'               :['Impressão'  ,'#ffe599','#856300']
+                ,'Serv-TArt-Dsng'                    :['Analise Art','#b4a7d6','#500092']
+                ,'Serv-Dsng'                         :['Analise Art','#b4a7d6','#500092'] // desnessesário pq o q eu queria era só omitir o TArt
+                ,'Serv-TArt'                         :[,'Arte'      ,'#b4a7d6','#500092'] 
+                ,'Serv'                              :['Orçamento'  ,'#b4a7d6','#500092']
             }
+            const OrdEtp = ['Orçamento','Arte','Analise Art','Impressão','Grad Uber','Acabamento','Pronto','Entregue','Devendo','Concluído']
 
             function Re_colrAll(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
                 const trs = All=='All' ? TRs(Typ) : [All]
                 if(Typ==='SERV'){trs.forEach(tr=>{R_Color(tr,Typ)})}
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
                     const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
-                    const Exec=typ=>{const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ)) ; if(typ=='SERV'){ss=s} ; $$(`.Bdj_${typ}`,tr).forEach(e=>R_Cor(_td(e),opc(s),ss[0][1]))}
+                    const Menor =arr=> arr?.length ? arr.reduce((m,a) => OrdEtp.indexOf(a[2]) < OrdEtp.indexOf(m[2]) ? a : m) : null
+
+                    const Exec=typ=>{const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ)) ; if(typ=='SERV'){ss=s} ; $$(`.Bdj_${typ}`,tr).forEach(e=>R_Cor(_td(e),opc(s),Menor(ss)[1]))}
                     Exec('SERV') ; Exec('CLNT') ; Exec('PGMT')
                     // Rodando agora na Linha tr
+                    
                     if(ss.length==0){return}
-                    R_Cor(tr,opc(ss),ss[0][1])
-                    Inn($(`:scope > ${Rx2([Typ,'Stts'])} .P-P`,tr),ss[0][2]) // mostra apenas o Status do 1º serv
+
+                    R_Cor(tr,opc(ss),Menor(ss)[1])
+                    Inn($(`:scope > ${Rx2([Typ,'Stts'])}`,tr),Menor(ss)[3]) // mostra apenas o Status do 1º serv
             })}}
 
             function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
                 const tipo   = $('#PDDSETATA').value
-                const Arr   = $$(':scope > td',tr).map(td=>VAL(td)||'')  // Array Baseado no DOM
+                const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')  // Array Baseado no DOM
                 const newobj = zipObj(ObjKey(BS[Typ]),Arr)
                 const atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
                 const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
@@ -962,9 +969,8 @@
                 const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
 
                 const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
-                if(Typ=='SERV'){Inn($(`${Rx2([Typ,'SStts'])} .P-P`,tr),Etapa[0])}
-                // se eu tiver usando modo de Etapa, então faz isso, senão usa opacidde 
-                const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value
+                const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value // Receber a cor por um Input!
+                if(Typ=='SERV'){stt = $(`${Rx2([Typ,'SStts'])}`,tr) ; Inn(stt,SVGEtapas[Etapa[0]]) ; $$('svg',stt).forEach(e=>{e.style.fill = Etapa[2]})}
 
                 atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
                     td.style.background = ''                      // Zera Fundo
@@ -977,8 +983,8 @@
                     if(Atv2){R_Cor(tr,tipo=='Etapa'&&Typ=='SERV' ? 1 : opacy/2,Cor)}
                     if(Coclui){R_Cor(tr,opacy,Cor)}
                 
-                return [opacy,Cor,Etapa[0]]
-            }LOG('Color')
+                return [opacy,Cor,Etapa[0],SVGEtapas[Etapa[0]]]
+            }
 
             function R_Cor(e,opacy,Cor){
                 e.style.background   = `rgba(${Cor},${(opacy).toFixed(2)})`             // Colore o Fundo
