@@ -284,7 +284,7 @@
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Status",Lixo:"Lixo",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
     const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
 
@@ -293,16 +293,16 @@
                 'SERV':[],
                 'PGMT':[] },
         'DSgn':{'PDDS':['Id','Cust','Lcro'],
-                'SERV':['Id','Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt'],
+                'SERV':['Id','Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cbmt','VCbt','Cmnt'],
                 'PGMT':['Id','Stts','Link','Mpag'] },
         'Atnd':{'PDDS':['Id','Cust','Lcro'],
-                'SERV':['Id','Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cmnt'],
+                'SERV':['Id','Arte','Forn','Detg','Grad','Gimg','Abcd','OS','Uber','Cbmt','VCbt','Cmnt'],
                 'PGMT':['Id','Stts','Link','Mpag'] }
         }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Lcro:['E',''],Stts:['W',''],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cbmt:['E',''],VCbt:['E',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
@@ -659,7 +659,7 @@
         </style>
         <script> // FILTROS - SCRIPT
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
-                return arr.map((e,x)=>e=='Lixo'?`<th style="${NoneCol(Typ,e)}"><p>${e}</p></th>`:
+                return arr.map((e,x)=>e=='Lixo'?`<th style="${NoneCol(Typ,e)}"><p>${''}</p></th>`:
                     `<th style="${NoneCol(Typ,e)}" class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                             <p class="ppt" name="${e}">${dbCol[e]}</p>
                             <i onclick="Orden(this,'${x}','p')">▼</i>
@@ -912,7 +912,12 @@
 
     <div> <!--RECOLOR  - ⭐⭐_ _ _ -->
         <style> /*RECOLOR - CSS*/
-            .EtpSVG{height: 20px; width: 20px;}
+            .EtpSVG{height: 25px; width: 25px}
+            .usadoW{border-radius: 255px ; color: #ffffff}
+            .usadoB{border-radius: 255px ; color: #000000}
+            #H_PDDS > tbody > tr > td:nth-child(5) > div > .P-P{font-size:13px}
+            #H_PDDS > tbody > tr > td:nth-child(6) > div > .P-P{font-size:13px}
+            #H_PDDS > tbody > tr > td:nth-child(10) > div svg{margin: 0px 5px;}
         </style>
 
         <script> // RECOLOR  - SCRIPT
@@ -930,6 +935,7 @@
                  'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b':['Concluído'  ,'#93c47d','#27500c']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg-a':['Devendo'    ,'#ea9999','#860000']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg'  :['Entregue'   ,'#93c47d','#27500c']
+                ,'Serv-TArt-Dsng-Grad-OK-Entg'       :['Entregue'   ,'#f1c232','#856300']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK'       :['Pronto'     ,'#a4c2f4','#003692']
                 ,'Serv-TArt-Dsng-Grad-Uber'          :['Acabamento' ,'#ffe599','#856300']
                 ,'Serv-TArt-Dsng-OK-Entg'            :['Grad Uber'  ,'#f1c232','#856300'] // desnessesário pq o q eu queria era só omitir Grad Uber
@@ -941,22 +947,39 @@
                 ,'Serv'                              :['Orçamento'  ,'#b4a7d6','#500092']
             }
             const OrdEtp = ['Orçamento','Arte','Analise Art','Impressão','Grad Uber','Acabamento','Pronto','Entregue','Devendo','Concluído']
+            
+            function IconsEtapas(Typ,tr,Etapa,concat){
+                const objj = {'PDDS':'Stts','SERV':'SStts'}
+                stt = $(`:scope > ${Rx2([Typ,objj[Typ]])}`,tr)
+                if(concat){Nm(stt,concat)}
+                Inn(stt,SVGEtapas[Etapa[0]])
+                $$('svg',stt).forEach(e=>e.style.fill = Etapa[2])
+                if(Typ=='PDDS'){$$(`:scope > ${Rx2(['PDDS','Valr'])} .P-P`,tr).forEach(e=>{
+                    const Pag = $(`:scope > ${Rx2([Typ,'Pgmt'])} .P-P`,tr)
+                    const Devendo = Etapa[0]=='Entregue' && Nm(e) > Nm(Pag)
+                    if(Etapa[0]=='Orçamento'){Add(e,'usadoB')}else{
+                        Add(e,'usadoW')
+                        if(Devendo){
+                            e.style.background  = '#740000'
+                            tr.style.background = '#ff000069'
+                            Inn(stt,SVGEtapas['Devendo'])
+                            $$('td',tr).forEach(d=>d.style.background = '')
+                        }else{e.style.background = Etapa[2]}}
+                })}
+            }
 
             function Re_colrAll(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
                 const trs = All=='All' ? TRs(Typ) : [All]
                 if(Typ==='SERV'){trs.forEach(tr=>{R_Color(tr,Typ)})}
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
                     const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
-                    const Menor =arr=> arr?.length ? arr.reduce((m,a) => OrdEtp.indexOf(a[2]) < OrdEtp.indexOf(m[2]) ? a : m) : null
-
+                    const Menor =arr=> arr?.length ? arr.reduce((m,a) => OrdEtp.indexOf(a[2][0]) < OrdEtp.indexOf(m[2][0]) ? a : m) : null
                     const Exec=typ=>{const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ)) ; if(typ=='SERV'){ss=s} ; $$(`.Bdj_${typ}`,tr).forEach(e=>R_Cor(_td(e),opc(s),Menor(ss)[1]))}
                     Exec('SERV') ; Exec('CLNT') ; Exec('PGMT')
                     // Rodando agora na Linha tr
-                    
                     if(ss.length==0){return}
-
                     R_Cor(tr,opc(ss),Menor(ss)[1])
-                    Inn($(`:scope > ${Rx2([Typ,'Stts'])}`,tr),Menor(ss)[3]) // mostra apenas o Status do 1º serv
+                    IconsEtapas(Typ,tr,Menor(ss)[2])
             })}}
 
             function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
@@ -970,7 +993,7 @@
 
                 const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
                 const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value // Receber a cor por um Input!
-                if(Typ=='SERV'){stt = $(`${Rx2([Typ,'SStts'])}`,tr) ; Inn(stt,SVGEtapas[Etapa[0]]) ; $$('svg',stt).forEach(e=>{e.style.fill = Etapa[2]})}
+                if(Typ=='SERV'){IconsEtapas(Typ,tr,Etapa,atual.join('-'))}
 
                 atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
                     td.style.background = ''                      // Zera Fundo
@@ -982,8 +1005,7 @@
                     $$('td',tr).forEach(e=>e.style.border = '')   // Zera Borda
                     if(Atv2){R_Cor(tr,tipo=='Etapa'&&Typ=='SERV' ? 1 : opacy/2,Cor)}
                     if(Coclui){R_Cor(tr,opacy,Cor)}
-                
-                return [opacy,Cor,Etapa[0],SVGEtapas[Etapa[0]]]
+                return [opacy,Cor,Etapa]
             }
 
             function R_Cor(e,opacy,Cor){
@@ -2883,6 +2905,8 @@
                 criaCol_Col('Lag' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Alt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
                 J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)
             }else{
