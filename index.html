@@ -58,7 +58,7 @@
     
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
-        'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Refile',{'Aplicação':10}            ] , Extra:[            ] , HotKey:["colar", "adesivar", "autocolante"       ] ,
+        'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
                         Variantes:{
                             'Brilho'          :{item:'1',Grad:'Ads(Blh)',Tipo:'',Valr:60 ,Cust:20},
                             'Fosco'           :{item:'2',Grad:'Ads(Fos)',Tipo:'',Valr:60 ,Cust:20},
@@ -68,14 +68,14 @@
                             'Espelhado'       :{item:'7',Grad:'Ads(Trp)',Tipo:'',Valr:80 ,Cust:20},
                             'Perfurado'       :{item:'5',Grad:'Ads(Prf)',Tipo:'',Valr:100,Cust:35},
             }},
-        'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Recorte'                            ] , Extra:[            ] , HotKey:["rótulo", "identificação", "label", "tag"] ,
+        'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:[]             , HotKey:["rótulo", "identificação", "label", "tag"] ,
                         Variantes:{
                             'Todos'           :{},
                             'Refilada'        :{item:'6',Grad:'Ads(Blh)',Tipo:'',Valr:70 ,Cust:20},
                             'Redonda'         :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:75 ,Cust:30},
                             'Personalizada'   :{item:'7',Grad:'Ads(Rct)',Tipo:'',Valr:80 ,Cust:30},
             }},
-        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte'                                      ] , Extra:[            ] , HotKey:["painel"                                 ] ,
+        'Lona'     :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Instal']        , Extra:[]             , HotKey:["painel"                                 ] ,
                         Variantes:{
                             'Todos'           :{},
                             'Banner'          :{item:'8' ,Grad:'Lon(Bnn)',Tipo:''                              ,Valr:70,Cust:22 , Limit:{Max:{L:1.20,A:0},Min:{L:0.40,A:0.60}} , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
@@ -83,7 +83,7 @@
                             'com ilhós'       :{item:'11',Grad:'Lon(Ilh)',Tipo:['Completo'  ,     'nas Pontas'],Valr:70,Cust:22 , Limit:{Max:{x:3.20,X:0},Min:{L:0.40,A:0.40}} , Mdds:['1,00 x 1,00']},
                             'Sem Acabamento'  :{item:'13',Grad:'Lon(Sem)',Tipo:''                              ,Valr:60,Cust:20 , Limit:{Max:{x:3.20,X:0},Min:{L:0.30,A:0.30}} , Mdds:[]},
             }},
-        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação',{'Laminação':10},'Reflie'] , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
+        'Quadro'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Aplic','Cbmt']  , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
                         Variantes:{  
                             'PS 1mm'          :{item:'17',Grad:'Ads(Blh)',Tipo:'',Valr:100,Cust:21.25 + 20, Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,00 x 1,00) R$ 42,50
                             'PS 2mm'          :{item:'18',Grad:'Ads(Blh)',Tipo:'',Valr:130,Cust:'        ', Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20']},  
@@ -91,14 +91,14 @@
                             'PVC 3mm'         :{item:'15',Grad:'Ads(Blh)',Tipo:'',Valr:170,Cust:43.00 + 20, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
                             'PVC 5mm'         :{item:'16',Grad:'Ads(Blh)',Tipo:'',Valr:' ',Cust:'        ', Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20']},
             }},
-        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'  ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:['Manta'     ] , HotKey:["magneto", 'manta magnética'             ] ,
+        'ímã'      :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Aplic','Cbmt']  , Extra:['Manta']      , HotKey:["magneto", 'manta magnética'             ] ,
                         Variantes:{ // Adicional de Calendário (Acima de 500 UND)
                             '03 Geladeira' :{item:'19',Grad:'Ads(Blh)',Tipo:'',Valr: 70.00+60,Cust:35.00 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: 
                             '04 Geladeira' :{item:'20',Grad:'Ads(Blh)',Tipo:'',Valr: 95.00+60,Cust:48.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06']}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
                             '08 Carro'     :{item:'21',Grad:'Ads(Blh)',Tipo:'',Valr:180.00+60,Cust:98.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,60 x 0,30']}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
             }},
         // Offset
-        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal'] , Prdc:[] , Extra:[] , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
+        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
                         Variantes:{
                     'Brilho'      :{Table:[
                         ['Frente' ,'250g',[['500', 90,31,'left:7.6% ;top:33.4%'],['1.000',135,45,'left:26.8%;top:33.4%']]],
@@ -109,7 +109,7 @@
                         ['Frente' ,'300g',[['500',155,62,'left:7.6% ;top:66%  '],['1.000',190,78,'left:26.8%;top:66%  ']]],
                         ['F.Verso','300g',[['500',190,80,'left:52.4%;top:66%  '],['1.000',230,99,'left:72.2%;top:66%  ']]],]},
                     }},
-        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["folheto", "papel", "informativo",'folha'] , 
+        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
                         Variantes:{
                     '10 x 15':{Table:[
                         ['Frente' ,'90g',[['1.000',130, 67,'left:25.2%;top:25.2%'],['2.500',180, 85,'left:25.2%;top:34.4%'],['5.000',270,170],['10.000',650,340 ]]],
@@ -118,7 +118,7 @@
                         ['Frente' ,'90g',[['1.000',190,127,'left:25.2%;top:56.4%'],['2.500',340,170,'left:25.2%;top:65.8%'],['5.000',650,340],['10.000',900,600 ]]],
                         ['F.Verso','90g',                                         [['2.500',500,270,'left:69.4%;top:65.8%'],['5.000',700,440],['10.000',1200,800]]],]},
                     }},
-        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['JLTal']           , Prdc:[] , Extra:[] , HotKey:[] , 
+        'Talão'    :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['JLTal']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:[] , 
                         Variantes:{
                     '10 x 15':{Table:[
                         ['Preto e Branco','1 Via',[['4',60,30,'left:22.2%;top:26.8%'],['8', 90,45],['12',130,65],['20',170, 85,'left:22.2%;top:36.8%']]],
@@ -139,7 +139,7 @@
                         ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],
                     ]},
         }},
-        'Tag'      :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['Bureal'         ] , Prdc:[] , Extra:[] , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
+        'Tag'      :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['Bureal']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
                         Variantes:{
                     '4 x 5':{Table:[
                         ['Reto' ,'250g',[['1.000',130,73,'left:26.8%;top:31%' ]]],
@@ -150,7 +150,7 @@
                         ['Curva','250g',[['500',120,67,'left:69.2%;top:54%'  ],['1.000',150,79,'left:69.2%;top:64.4%']]]
                     ]},
             }},
-        'Cardápio' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'Gramatura: 90g'       , Forn:['BPrint']          , Prdc:[] , Extra:[] , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
+        'Cardápio' :{Calc:'OFS', Stts:'Disp' , Prvw:'Fotinha' , Desc:'LAZER, Plastificado'  , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
                         Variantes:{
                 'A4':{Table:[
                     ['Frente' ,'170g',[['1',15,6.90,'left:23% ;top:26.2%']]],
@@ -161,97 +161,97 @@
                     ['F.Verso','170g',[['1',35,17.50,'left:68.6%;top:36.2%']]],
                 ]},
         }},
-        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'     ,
+        'Topo Bolo':{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Desc:'Folha 300g Cortado'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:[] , img:'Place',
                         Variantes:{
                             'Topo de Bolo' :{}}
         },
-        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'     ,
+        'Crachá'   :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Desc:'Tamanho Padrão 9x5'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt']          , Extra:['Acrilico']   , HotKey:[] , img:'Place',
                         Variantes:{
                             'Crachá' :{}}
         },
-        'Carteira' :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Forn:['BPrint'] ,img:'Place'      ,
+        'Carteira' :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Desc:'Tamanho Padrão 9x5'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:['PVC']        , HotKey:[] , img:'Place',
                     Variantes:{
                             'Carteira' :{}}
         },
         // Tecido
-        'Camisa'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+        'Camisa'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
                         Variantes:{
                             'M.Curta'  :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':50,'10':39},Cust:{'1':25}},
                             'Regata'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':40,'10':29},Cust:{'1':25}},
                             'Polo'     :{Tipo:['Manchaster'              ],Tamn:['PP','P','M','G','GG'],Valr:{'1':80,'10':69},Cust:{'1':25}},
                             'M.Longa'  :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':60,'10':49},Cust:{'1':25}},
         }},
-        'Calção'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Short','Sublimação','roupa','pano'] ,
+        'Calção'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Short','Sublimação','roupa','pano'] ,
                         Variantes:{
                             'Bermuda' :{},
                             'Short'   :{},
         }},  
-        'WindFlag' :{Calc:'QNT', Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
+        'WindFlag' :{Calc:'QNT', Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
                         Variantes:{
                             Faca :{Tipo:['P','M','G'],Valr:0,Cust:0},
                             Vela :{Tipo:['P','M','G'],Valr:0,Cust:0},
                             Pena :{Tipo:['P','M','G'],Valr:0,Cust:0},
                             Gota :{Tipo:['P','M','G'],Valr:0,Cust:0},
             }},
-        'BigBall'  :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['NovaImp'] , Prdc:[] , Extra:[{'Base':80}] , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'BigBall'  :{Calc:'QNT', Stts:'Offf' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
                         Variantes:{
                             P  :{Tipo:[''],Valr:0,Cust:0},
                             M  :{Tipo:[''],Valr:0,Cust:0},
                             G  :{Tipo:[''],Valr:0,Cust:0},
             }},   
-        'Bandeira' :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']   , Prdc:[] , Extra:[           ] , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'Bandeira' :{Calc:'M2' , Stts:'Disp' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Sublimação',"Pano","Tecido"] ,
                         Variantes:{
                             'Oxford' :{Tipo:'',Valr:75,Cust:0},
                             'Cettin' :{Tipo:'',Valr:75,Cust:0},
         }},    
         // Cortes
-        'Router'   :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson'] ,img:'Place' ,
+        'Router'   :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']         , Etpa:['Arte','Corte','Cbmt']          , Extra:[]             , HotKey:[]          , img:'Place',
                         Variantes:{
                             'PVC'      :{},
                             'Acrilico' :{}}
         },
-        'Recorte'  :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Adesivo Recortado'    , Forn:['Stock'                      ] , Prdc:['Arte','Aplicação','Reflie'                 ] , Extra:[            ] , HotKey:["Ploter",'Lamina','Siluet','Vetor'       ] ,
+        'Recorte'  :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Adesivo Recortado'    , Forn:['Stock']                     , Etpa:['Arte','Corte','Cbmt','Aplic']  , Extra:[]             , HotKey:["Ploter",'Lamina','Siluet','Vetor'] ,
                         Variantes:{
                             'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
         }},
-      'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:'' , Forn:['-'] ,img:'Place'     ,
+      'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:''        , Desc:'Chapa de PVC ou Zinco', Forn:['Stock']                     , Etpa:['Arte','Corte','Aplic','Cbmt']  , Extra:['PVC']        , HotKey:[]           , img:'Place',
                         Variantes:{
                             'Sinalização' :{}}
         },
-        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Stock','Barraca'            ] , Prdc:['Arte'                                      ] , Extra:['Acrilico'  ] , HotKey:['acrilico'                               ] ,
+        'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:['Acrilico']   , HotKey:['acrilico'] ,
                         Variantes:{
                             'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
                             'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
         // Serviços
-        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação',img:'Place'  , Forn:['Arte']      ,
+        'Arte'     :{Calc:'UND', Stts:'Offf' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']                      , Etpa:['Arte']                         , Extra:[]             , HotKey:[]           , img:'Place',
                         Variantes:{
                     'Arte' :{}}
         },
-        'Plotagem' :{Calc:'M2v', Stts:'Offf' , Prvw:''        , Forn:['Stock'],img:'Place'   , HotKey:['Plotagem']           ,
+        'Plotagem' :{Calc:'M2v', Stts:'Offf' , Prvw:''        , Desc:'Aplciação de Adesivo' , Forn:['Stock','WM']                , Etpa:['Aplic']                        , Extra:[]             , HotKey:['Plotagem'] , img:'Place',
                         Variantes:{
                     'Plotagem' :{}}
         },
         // Produtos
-        'Figurinha':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
+        'Figurinha':{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Adesivos Pequenos'    , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
                             'Figurinha' :{}}
         },
-        'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
+        'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
                             'Vendas' :{}}
         },
-        'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
+        'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Cartelas de Adesivo'  , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
                             'Cartela' :{}}
         },
         // Ferragem
-        'Placa'    :{Calc:'UND', Stts:'Offf' , Prvw:'Canva3D' , Forn:['-'],img:'Place'      ,
+        'Placa'    :{Calc:'UND', Stts:'Offf' , Prvw:'Canva3D' , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                     Variantes:{
                         'Placa' :{}}
         }, 
-       'Serigrafia':{Calc:'UND', Stts:'Offf' , Prvw:'' , Forn:['Stock'],img:'Place'      ,
+       'Serigrafia':{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Estampa de Camisa'    , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
                             'Serigrafia' :{}}
         },
@@ -261,7 +261,7 @@
     const EtrProd = ObjEtr(Prod)
     const AllProd = [...ObjEtr(Prod).filter(([,v])=>v.Stts=="Disp"), ...ObjEtr(Prod).filter(([,v])=>v.Stts=="Offf")].map(([k])=>k) // Antes tava : ObjKey(Prod) // agora ta isso tudo pq agora ta reordenando
     const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
-    const AllForn = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.Forn  ||[]]))
+    const AllAll=stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg] || []]))
     const Vari=e=>ObjKey(Prod[e].Variantes)
     const TiposArtes=[]
 
@@ -269,7 +269,7 @@
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
         Serv:['',...AllProd],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem',''],
+        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem','n precisa',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
@@ -285,7 +285,7 @@
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
-    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg'}
+    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Lcro'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
 
     const tipBS = {
@@ -301,8 +301,8 @@
         }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Lcro:['E',''],Stts:['W',''],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Uber:['E','A'],Cbmt:['E',''],VCbt:['E',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Lcro:['Y',''],Stts:['W',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Oimg:['M','A'],CuOS:['V',''],Uber:['E','A'],CuUb:['V',''],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
@@ -475,7 +475,17 @@
             const Tm_Loade=(Typ)=>For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td style="${NoneCol(Typ,e)}" class="${Tm_R('Foot',x,Typ,'')} Rltv"></td>`).join('')
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
-            const BrevSrc={Grad:'Grad',Gimg:'Grad'}
+            const BrevSrc={Grad:'Grad',Gimg:'Grad',Oimg:'OS'}
+            const ExtnArt=e=>ListARQ.includes(e) ? "svg" : ListIMG.includes(e) ? "webp" : null
+
+            const SrcsIMG=(e,R)=>{
+                const Past  = BrevSrc[R.Col]||R.Col
+                const NGrad = J['SERV'].find(e=>e.Id==R.Row) // PEZADO 🤯
+                const Arq   = Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
+                              Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`         : 
+                              Past=='Arte' && ExtnArt(R.Row)          ? `./Base/${Past}/${R.Row}.${ExtnArt(R.Row)}` : "" // Arquivo pelo ID
+                return Arq
+            }
 
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
@@ -484,12 +494,13 @@
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
+                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="HanddleEdit(this);EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
-                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img class="P-P" onclick="AbrirImg(this)" draggable="false" src="./Base/${BrevSrc[R.Col]||R.Col}/${R.Col=='Arte'&&ListARQ.includes(R.Row)?`${R.Row}.svg`:e}" ${TM.Err} name="${ListARQ.includes(R.Row)?'True':'False'}">`,
+                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img class="P-P" onclick="AbrirImg(this)" draggable="false" src="${SrcsIMG(e,R)}" ${TM.Err} name="${ListARQ.includes(R.Row)?'True':'False'}">`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
+                Lcro:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e==""?'':`R$ ${Cm(e)}`}</p>`, // da pra fazer aqui imitando 
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`
@@ -523,7 +534,7 @@
             }
 
             function FazerTitle(col,Find){ // fazer os Titulos para as Bandeijas
-                return  col==='Serv' ? BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
+                return  col==='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
                         col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                         col==='Abcd' ? Find.map(e=>`${e.Id}`            ).join(''   ) :     
                         col==='Cust' ? Find.map(e=>`${e.Valr}`          ).join(''   ) :
@@ -546,7 +557,7 @@
 
                 const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
                 const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="LOG('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
-                const ConcatIMG = col==='Serv'? Find.map(e=>`${ListARQ.includes(e['Id']) ? `<img onclick="AbrirImg(this)" src="./Base/Arte/${e['Id']}.svg">` : ''}`).join('|') : ''
+                const ConcatIMG = col==='Serv'? Find.map(e =>ExtnArt(e.Id)?`<img onclick="AbrirImg(this)" src="./Base/Arte/${e.Id}.${ExtnArt(e.Id)}">`:"").join('') : ''
                 const Grifo     = `<i class="grifoo RD"></i>`
 
                 return `<div class="Ct"><p class="P-P T-T" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
@@ -771,10 +782,10 @@
 
             function Ex_Filt(Typ,col){               // ✔️ Executa o Filto na Tabela (Adicioanr Maior < Menor >)
                 const thh    = TH(Typ,col)
-                const cOR = $(`#icnFilt_${Nm($('p',thh))}.Atv`)
+                const cOR    = $(`#icnFilt_${Nm($('p',thh))}.Atv`)
                 const Front  = $(`#icnFront_${col}.Atv`)
-                const aTV = $$('.ThFilt_Atv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxAtv = new RegExp(aTV,'i')
-                const rTV = $$('.ThFilt_Rtv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxRtv = new RegExp(rTV,'i')
+                const aTV    = $$('.ThFilt_Atv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxAtv = new RegExp(aTV,'i')
+                const rTV    = $$('.ThFilt_Rtv',thh).map(e=>Front?`\\b${Inn(e)}\\b`:Inn(e)).join('|') ; const RxRtv = new RegExp(rTV,'i')
                 const x      = IdxDe(thh)+1
                 const Add_C  = e=>Add(e,'filtTrue') ; const Add_F=e=>Add(e,'filtFals')
                 const Rmv_C  = e=>Rmv(e,'filtTrue') ; const Rmv_F=e=>Rmv(e,'filtFals')
@@ -952,7 +963,7 @@
                 const objj = {'PDDS':'Stts','SERV':'SStts'}
                 stt = $(`:scope > ${Rx2([Typ,objj[Typ]])}`,tr)
                 if(concat){Nm(stt,concat)}
-                Inn(stt,SVGEtapas[Etapa[0]])
+                Inn(stt,`<div>${SVGEtapas[Etapa[0]]}</div>`)
                 $$('svg',stt).forEach(e=>e.style.fill = Etapa[2])
                 if(Typ=='PDDS'){$$(`:scope > ${Rx2(['PDDS','Valr'])} .P-P`,tr).forEach(e=>{
                     const Pag = $(`:scope > ${Rx2([Typ,'Pgmt'])} .P-P`,tr)
@@ -962,7 +973,7 @@
                         if(Devendo){
                             e.style.background  = '#740000'
                             tr.style.background = '#ff000069'
-                            Inn(stt,SVGEtapas['Devendo'])
+                            Inn(stt,`<div>${SVGEtapas['Devendo']}</div>`)
                             $$('td',tr).forEach(d=>d.style.background = '')
                         }else{e.style.background = Etapa[2]}}
                 })}
@@ -1110,10 +1121,11 @@
 
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
                     if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada
-                    // Ação para o Forn
-                        const Forn = $(Rx(['Forn','Slct']),_tr(e))
-                        if(AllForn[VAL(e)].length==1){$('select',Forn).value = AllForn[VAL(e)][0]} // mudar pra o Unico q tem, se tiver
-                        $$('option',Forn).forEach(o=>{Add_N(o);if(AllForn[VAL(e)].includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
+                    
+                        // ReOpt('Forn',AllAll('Forn')[VAL(e)]) // Ação para o Forn
+                        // ReOpt('TArt',AllAll('Forn')[VAL(e)]) // Ação para o Forn
+                        // ReOpt('Dsng',AllAll('Forn')[VAL(e)]) // Ação para o Forn
+
                     // Ação para o Tipo
                         const Tipo = $(Rx(['Tipo','Slct']),_tr(e))
                         if(Vari(VAL(e)).length==1){$('select',Forn).value = Vari(VAL(e))[0]} // mudar pra o Unico q tem, se tiver
@@ -1152,7 +1164,43 @@
          // ou até da Linha Pai com (Valr em PDDS e Stts em Pedidos)
          // todos 2 devem ser modificados automáticamente conforme eu manipulo os dados dentro de 'Serv'
         }
+
+        function ReOpt(col,Lista,e){ // tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
+            const Slct = $(Rx([col,'Slct']),_tr(e))
+            const Sel  = $('select',Slct)
+            if(Lista.length==1)           {LOG('tem só 1',Lista,VAL(Slct))   ; EditCell(Sel,Lista[0])}     // Troca pra o Unico option, se Tiver
+            if(!Lista.includes(VAL(Slct))){LOG('não Existe',Lista,VAL(Slct)) ; EditCell(Sel,"")}        // se o valor atual não Existir dar valor "Vazio"
+            $$('option',Slct).forEach(o=>{Add_N(o);if(Lista.includes(o.value)){Rmv_N(o)}}) // Ocultar os Options Ausentes
+        }
+
+        function HanddleEdit(e){ // Isso ta acontecendo antes de Editar o Serv (mas deveria ser Depois)
+            const R = D_R(_td(e))
+            if(R.Col=='Serv' && R.Typ=='SERV'){
+                ReOpt('Forn',Prod[VAL(e)].Forn,e)
+
+                // LOG(_tr(e))
+                // LOG(Prod[VAL(e)].Forn)
+                // LOG(Prod[VAL(e)].Etpa)
+            }
+            
+            // Se for Serv dentro de SERV
+                // ReOpt('Tipo')
+                // Edita e Oculta Arte!
+            // se for Tipo
+        }
     
+        function Re_Lucro(Typ,All){
+            const trs = All=='All' ? TRs(Typ) : [All]
+            if(Typ==='PDDS'){trs.forEach(tr=>{
+                const V = VAL($(`${Rx2(['Valr','PDDS'])}`,tr))
+                const C = Num(Nm($(`${Rx2(['Cust','PDDS'])} .T-T`,tr))) // Custo Extra
+                const Serv = $(`${Rx2(['Serv','PDDS'])}`,tr)
+                const SumCust = [$$(Rx2(['CArt','SERV']),Serv),$$(Rx2(['CuOS','SERV']),Serv),$$(Rx2(['VCbt','SERV']),Serv),$$(Rx2(['CuUb','SERV']),Serv)]
+                const soma = SumCust.flat().reduce((acc, el) => acc + (+VAL(el) || 0), 0)
+                const L = $(Rx2(['Lcro']),tr)
+                if(soma!==0){DarVAL(L,V-soma)}
+            })}
+        }
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _
@@ -2272,7 +2320,7 @@
                             <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura"      oninput="MaskNum(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                             <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"       oninput="MaskNum(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                             <td width="10%"><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Quantidade"></td>
-                            <td width="10%" onload="Inn(this,Tm_Extra())"></td>
+                            <td width="10%"  onload="Inn(this,Tm_Extra())"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('Vund'))" class="imita RD"></td>
                             <td width="10%"  onload="Inn(this,Tm_Total('SbTt'))" class="imita RD"></td>
                             <td width="15px" style="fill:#ffa500"><div class="ppt OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
@@ -2743,13 +2791,15 @@
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
                 /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
                 /*Edit Cor  */ Re_colrAll(P.Typ,tR)
+                /*Edit Lucro*/ Re_Lucro(P.Typ,tR)
                 }else{
                     /*Edit Cor  */ Re_colrAll(R.Typ,_tr(td)) // edita quando é fora da Bandeija
+                    /*Edit Lucro*/ Re_Lucro(R.Typ,_tr(td))   // edita quando é fora da Bandeija
                 }
             }})
         }
 
-        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com EditCell() ⚠️ Não Há Nessecidade de Fechar a Bndj
+        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com editCell() ⚠️ Não Há Nessecidade de Fechar a Bndj
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
             const tR     = _tr(Pai(_tr(Eu)))                // esse é o Tr do Typ Pai
@@ -2872,6 +2922,7 @@
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
                     Re_colrAll('PDDS','All')
+                    Re_Lucro('PDDS','All')
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
             }
@@ -2907,6 +2958,11 @@
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('Oimg','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('CuOS','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('CuUb','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+
                 J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
                 J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)
             }else{
