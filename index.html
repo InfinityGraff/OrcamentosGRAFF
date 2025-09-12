@@ -481,6 +481,7 @@
             const SrcsIMG=(e,R)=>{
                 const Past  = BrevSrc[R.Col]||R.Col
                 const NGrad = J['SERV'].find(e=>e.Id==R.Row) // PEZADO 🤯
+                if(NGrad==undefined){return}
                 const Arq   = Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
                               Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`         : 
                               Past=='Arte' && ExtnArt(R.Row)          ? `./Base/${Past}/${R.Row}.${ExtnArt(R.Row)}` : "" // Arquivo pelo ID
@@ -985,7 +986,11 @@
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
                     const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=> arr?.length ? arr.reduce((m,a) => OrdEtp.indexOf(a[2][0]) < OrdEtp.indexOf(m[2][0]) ? a : m) : null
-                    const Exec=typ=>{const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ)) ; if(typ=='SERV'){ss=s} ; $$(`.Bdj_${typ}`,tr).forEach(e=>R_Cor(_td(e),opc(s),Menor(ss)[1]))}
+                    const Exec=typ=>{
+                        const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ))
+                        if(typ=='SERV'){ss=s}
+                        $$(`.Bdj_${typ}`,tr).forEach(e=>{if(Menor(ss)==null){return} ; R_Cor(_td(e),opc(s),Menor(ss)[1])})
+                    }
                     Exec('SERV') ; Exec('CLNT') ; Exec('PGMT')
                     // Rodando agora na Linha tr
                     if(ss.length==0){return}
@@ -1241,9 +1246,9 @@
                 $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objClnt.length}         </div>`
                 $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k} - ${NovoOBJClnt[k]}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
                 $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k}: ${v}</a>`                    ).join('')}</span><div class="BjConf Stky2 w100 Ct">${        objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
-                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{ LOG('1',e) ; const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
-                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{ LOG('2',e) ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
-                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{ LOG('3',e) ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
+                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{ /*LOG('1',e)*/ ; const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{ /*LOG('2',e)*/ ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
+                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{ /*LOG('3',e)*/ ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
 
                 //LOG(`⏱️ Rfresh_Foots:(ATRIBUI): ${(performance.now()-IN ).toFixed(2)}ms`) // manter em quanto Melhora
                 LOG(`⏱️ Rfresh_Foots:(FINAL):   ${(performance.now()-IIN).toFixed(2)}ms`)
