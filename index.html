@@ -1146,6 +1146,7 @@
             }
             // Já fazer o Calculo baseado na medida
             // conferir se Pagou certinho
+            // select deveria ter name pra n ser afetado pelo Realtime
             const FIM = performance.now() ; LOG(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
         }
     
@@ -1170,27 +1171,20 @@
             const Slct = $(Rx([col,'Slct']),tr)
             const Sel  = $('select',Slct)
             if(arr.length==1)           {LOG('tem só 1',arr,VAL(Slct))   ; EditCell(Sel,arr[0])}     // Troca pra o Unico option, se Tiver
-            if(!arr.includes(VAL(Slct))){LOG('não Existe',arr,VAL(Slct)) ; EditCell(Sel,"")}        // se o valor atual não Existir dar valor "Vazio"
+            if(!arr.includes(VAL(Slct))){LOG('não Existe',arr,VAL(Slct)) ; EditCell(Sel,"")}         // se o valor atual não Existir dar valor "Vazio"
             $$('option',Slct).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}}) // Ocultar os Options Ausentes
         
             // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
 
-        function HanddleEdit(e){ // Isso ta acontecendo antes de Editar o Serv (mas deveria ser Depois)
+        function HanddleEdit(e){ // Isso ta acontecendo antes de Editar o Serv (mas Deveria ser Depois)
             const R = D_R(_td(e))
             if(R.Col=='Serv' && R.Typ=='SERV'){
                 ReOpt(_tr(e),'Forn',Prod[VAL(e)].Forn)
-                                
-                // LOG(_tr(e))
-                // LOG(Prod[VAL(e)].Forn)
-                // LOG(Prod[VAL(e)].Etpa)
+                // LOG(Prod[VAL(e)].Forn) // outra coisa q edita Junto
+                // LOG(Prod[VAL(e)].Etpa) // outra coisa q edita Junto
             }
             if(R.Col=='Forn' && R.Typ=='GRAD'){AutoComp(R.Typ,_tr(e))}
-            
-            // Se for Serv dentro de SERV
-                // reOpt('Tipo')
-                // Edita e Oculta Arte!
-            // se for Tipo
         }
     
         function Re_Lucro(Typ,All){
