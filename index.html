@@ -284,9 +284,10 @@
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg'}
     const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Lcro'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
+ 
 
     const tipBS = {
         'Admn':{'PDDS':[],
@@ -306,12 +307,13 @@
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
-
+        
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['E',''],Nome:['E','' ], Qnt:['E','' ],Lag:['E',''], Alt:['E','' ],Valr:['E',''],ImgG:['E',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
+       GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E','' ],Valr:['E','' ],Hora:['E','' ],Form:['E',''],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
@@ -922,7 +924,7 @@
         </script>
     </div>
 
-    <div> <!--RECOLOR  - ⭐⭐_ _ _ -->
+    <div>   <!--RECOLOR  - ⭐⭐_ _ _ -->
         <style> /*RECOLOR - CSS*/
             .EtpSVG{height: 25px; width: 25px}
             .usadoW{border-radius: 255px ; color: #ffffff}
