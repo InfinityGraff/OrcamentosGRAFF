@@ -265,9 +265,28 @@
     const Vari=e=>ObjKey(Prod[e].Variantes)
     const TiposArtes=[]
 
+    const ValForn = {
+        Grafit:{
+            'Adesivo'  :[{val: 20.00, data:"2025-01-01"}],
+            'Perfurado':[{val: 35.00, data:"2025-01-01"}],
+            'Banner'   :[{val: 22.00, data:"2025-01-01"}],
+            'Faixa'    :[{val: 22.00, data:"2025-01-01"}],
+            'L.ilhos'  :[{val: 22.50, data:"2025-01-01"}]
+        },BPrint:{
+            'Adesivo'  :[{val: 20.00, data:"2025-01-01"}],
+            'Perfurado':[{val: 33.00, data:"2025-01-01"}],
+            'Banner'   :[{val: 24.00, data:"2025-02-01"}],
+            'Faixa'    :[{val: 24.00, data:"2025-01-15"}],
+            'L.ilhos'  :[{val: 24.00, data:"2025-02-05"}]
+        },'Inová':{
+            'Camisa'   :[{val: 25.00, data:"2025-02-05"}],
+        }
+    }
+
     const O = {
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
         Serv:['',...AllProd],
+        SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
         Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem','n precisa',''],
         Form:['','Pix','Av','Card'],
@@ -284,11 +303,10 @@
     const D = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto'}
     const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Lcro'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
  
-
     const tipBS = {
         'Admn':{'PDDS':[],
                 'SERV':[],
@@ -308,12 +326,12 @@
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
         
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ],Cat: ['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['E',''],Nome:['E','' ], Qnt:['E','' ],Lag:['E',''], Alt:['E','' ],Valr:['E',''],ImgG:['E',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
-       GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],OS  :['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['E',''],ImgG:['E',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
+       GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],  OS:['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
-        MPAG:{Id:['F','I'],Cpvt:['E',''],Data:['E','' ],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
         
         OOSS:{Id:['F','I'],Nome:['E',''],Link:['E',''],Desc:['E',''],Lixo:['X','']},
         CALC:{}
@@ -1040,21 +1058,23 @@
     </div>
     
     <script> // AUTOCOMP - ⭐⭐_ _ _
-        function RfreshJson(Typ){const IN = performance.now()
 
-            // Virar Biblioteca
-                const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
-                const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
+        // Virar Biblioteca
+        const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
+        const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
+        const arrayss = {
+            GRAD:['Id'  ,'Data','Forn','Grad','Cont'],
+            SERV:['Forn','Abcd','OS','Gimg'],
+            ABCD:['Valr']
+        }
+        const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
+        const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || ""
+        const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
 
-            const arrayss = {
-                GRAD:['Id'  ,'Data','Forn','Grad','Cont'],
-                SERV:['Forn','Abcd','OS','Gimg'],
-                ABCD:['Valr']
-            }
-            const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
-            const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
-            const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || "";
 
+
+        function AutoComp(Typ,All){const IN = performance.now()
+            const trs = All=='All' ? TRs(Typ) : [All]
 
             const Func = {
                  G_Id  :e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
@@ -1102,56 +1122,30 @@
                 DarVAL($(Rx2([c]),tr),v,Cor)
             }
 
-            // Separar a função que chama o Exec ajuda a reutilizar em várias tabelas e camadas
-            // O Pre-AutoComplete é necessário para autocompletar tabelas que consultam outras (Mas antes, é preciso garantir que ele armazene o valor anterior)
-
             if(Typ=='GRAD'){
-                TRs(Typ).forEach(tr=>{ // Camada1
-                    const e = J[Typ][tr_X(tr)] // Encontrar pelo Idx
-                        arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
-                        $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
-                            const a = e['ABCD'][tr_X(tr2)] // Encontrar pelo Idx
-                            arrayss['ABCD'].forEach(c=>Exec(a,c,tr2,'GA'))
-                    })
+                trs.forEach(tr=>{
+                    ReOpt(tr,'SrvF',ObjKey(ValForn[VAL($(Rx2(['Forn']),tr))]||{}))
+
+                    // const e = J[Typ][tr_X(tr)] // Encontrar pelo Idx
+                    //     arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
+                    //     $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
+                    //         const a = e['ABCD'][tr_X(tr2)] // Encontrar pelo Idx
+                    //         arrayss['ABCD'].forEach(c=>Exec(a,c,tr2,'GA'))
+                    // })
                 })
-                Re_color(Typ)
+                // Re_color(Typ)
             }
 
-            if(Typ=='SERV'){
-                TRs(Typ).forEach(tr=>{
-                    const e = J[Typ][tr_X(tr)] // Encontrar pelo Idx
-                        arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
-                        // Camada 2
-                            // camada 2
-                            // camada 1
-                })
-
+            if(Typ=='SERV'){ return
                 $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
-                    if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada
-                    
-                        // ReOpt('Forn',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-                        // ReOpt('TArt',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-                        // ReOpt('Dsng',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-
-                    // Ação para o Tipo
-                        const Tipo = $(Rx(['Tipo','Slct']),_tr(e))
-                        if(Vari(VAL(e)).length==1){$('select',Forn).value = Vari(VAL(e))[0]} // mudar pra o Unico q tem, se tiver
-                        $$('option',Tipo).forEach(o=>{Add_N(o);if(Vari(VAL(e)).includes(o.value)){Rmv_N(o)}}) // Ocultar os Options
+                    if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada (INTERESSANTE)       
+                        // reOpt('Forn',AllAll('Forn')[VAL(e)]) // Ação para o Forn
+                        // reOpt('TArt',AllAll('Forn')[VAL(e)]) // Ação para o Forn
+                        // reOpt('Dsng',AllAll('Forn')[VAL(e)]) // Ação para o Forn
                 })
-            }           
-
-            // Escolher para Todos ou Apenas 1 unica Linha! (Aplica na Linha ao Editar uma Célula)
-            // Escolher a cor livremente por Fora!
-            // Se Tiver Entregue Preenche OK Automatico
-
-            // Fazer o Calculo automático da medida
-            // Fazer a Soma dos Serv na tabela de Pedido (esse aqui já está dentro do Tm_Tm() mas se pá traz pra cá q é mais certo!) (pois ele tem q ser dinamico e mudar conforme altero valor)
-            // se Pagamento é == ao Valor
-            // atualiza o Finc pra Mostrar o Lucro
-            // Atualiza o Status completo da Linha
-            // Depois q terminar fazer isso atualizar a Const (se possível)
-            // Cor e Intensidade de Serv (Forn, OK, Entregue, DataEntreg,  Grad, OS, Uber) de 0 á 7   |   no data-set a cor vai ser um concat de cor com Opacidade 'Blue-7'
-            
+            }
+            // Já fazer o Calculo baseado na medida
+            // conferir se Pagou certinho
             const FIM = performance.now() ; LOG(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
         }
     
@@ -1172,26 +1166,29 @@
          // todos 2 devem ser modificados automáticamente conforme eu manipulo os dados dentro de 'Serv'
         }
 
-        function ReOpt(col,Lista,e){ // tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
-            const Slct = $(Rx([col,'Slct']),_tr(e))
+        function ReOpt(tr,col,arr){ // tr = a Linha,  col = quem quero editar, arr = valores disponiveis  tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
+            const Slct = $(Rx([col,'Slct']),tr)
             const Sel  = $('select',Slct)
-            if(Lista.length==1)           {LOG('tem só 1',Lista,VAL(Slct))   ; EditCell(Sel,Lista[0])}     // Troca pra o Unico option, se Tiver
-            if(!Lista.includes(VAL(Slct))){LOG('não Existe',Lista,VAL(Slct)) ; EditCell(Sel,"")}        // se o valor atual não Existir dar valor "Vazio"
-            $$('option',Slct).forEach(o=>{Add_N(o);if(Lista.includes(o.value)){Rmv_N(o)}}) // Ocultar os Options Ausentes
+            if(arr.length==1)           {LOG('tem só 1',arr,VAL(Slct))   ; EditCell(Sel,arr[0])}     // Troca pra o Unico option, se Tiver
+            if(!arr.includes(VAL(Slct))){LOG('não Existe',arr,VAL(Slct)) ; EditCell(Sel,"")}        // se o valor atual não Existir dar valor "Vazio"
+            $$('option',Slct).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}}) // Ocultar os Options Ausentes
+        
+            // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
 
         function HanddleEdit(e){ // Isso ta acontecendo antes de Editar o Serv (mas deveria ser Depois)
             const R = D_R(_td(e))
             if(R.Col=='Serv' && R.Typ=='SERV'){
-                ReOpt('Forn',Prod[VAL(e)].Forn,e)
-
+                ReOpt(_tr(e),'Forn',Prod[VAL(e)].Forn)
+                                
                 // LOG(_tr(e))
                 // LOG(Prod[VAL(e)].Forn)
                 // LOG(Prod[VAL(e)].Etpa)
             }
+            if(R.Col=='Forn' && R.Typ=='GRAD'){AutoComp(R.Typ,_tr(e))}
             
             // Se for Serv dentro de SERV
-                // ReOpt('Tipo')
+                // reOpt('Tipo')
                 // Edita e Oculta Arte!
             // se for Tipo
         }
@@ -1208,6 +1205,7 @@
                 if(soma!==0){DarVAL(L,V-soma)}
             })}
         }
+
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _
@@ -1653,7 +1651,6 @@
 
         <div id="Pag_SERV" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="RfreshJson('SERV')">Rfresh </button>
 
                 <div onchange="Re_colrAll('SERV','All')">
                     <input id="SERV_Color" type="color">
@@ -1707,7 +1704,6 @@
         <div id="Pag_GRAD" class="TBLAA none Cl">
 
             <div class="DivConf Ct Bt Stky">
-                <button onclick="RfreshJson('GRAD')">Rfresh</button>
                 <button onclick="AddROW('GRAD','<')">Grad +</button>
                 <button onclick="AddROW('OOSS','<')">OS +</button>
                 <button onclick="AddROW('UBER','<')">Uber +</button>
@@ -2929,6 +2925,7 @@
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
                     Re_colrAll('PDDS','All')
+                    AutoComp(TYP,'All')
                     Re_Lucro('PDDS','All')
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
