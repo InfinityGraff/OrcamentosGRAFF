@@ -117,6 +117,8 @@ const Ramos = {
 const ListGRD = [
     "CBG_004",
     "B_248",
+    "B_250",
+    "B_251"
 ]
 
 const ListOS = [
@@ -130,6 +132,13 @@ const ListIMG = [
     "1067_1",
     "1059_1",
     "1130_1",
+    "1152_1",
+    "1151_1",
+    "1146_1",
+    "1143_1",
+    "1147_1",
+    "1149_1",
+    "1153_1",
 ]
 
 const ListARQ = [
@@ -207,7 +216,9 @@ const ListARQ = [
     "1034_1",
     "980_1",
     "997_1",
-
+    "1148_2",
+    "1150_1",
+    "1137_1",
 ]
 
 const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]

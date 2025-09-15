@@ -294,7 +294,7 @@
         Dstn:['','Serv1','Serv2'],
         Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
-        TArt:['','Criação','Recriação','Vetorização','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n precisa'],
+        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n precisa'],
        TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
     }
     const AllList = ObjKey(O)
@@ -515,8 +515,8 @@
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
-                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" onchange="HanddleEdit(this);EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
-                Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
+                Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
+                Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}<img class="P-P" onclick="AbrirImg(this)" draggable="false" src="${SrcsIMG(e,R)}" ${TM.Err} name="${ListARQ.includes(R.Row)?'True':'False'}">`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
@@ -1062,88 +1062,88 @@
         // Virar Biblioteca
         const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
         const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
-        const arrayss = {
-            GRAD:['Id'  ,'Data','Forn','Grad','Cont'],
-            SERV:['Forn','Abcd','OS','Gimg'],
-            ABCD:['Valr']
-        }
         const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
         const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || ""
         const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
 
+        function AutoAntig(obj,col,tr,v){
+            const A = obj[col]                       // Valor Antigo
+            const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
+            if(A=="" && v==""){return}
+            DarVAL($(Rx2([col]),tr),v,Cor)
+        }
 
+        function ReOpt(tr,col,arr){ // tr = a Linha,  col = quem quero editar, arr = valores disponiveis  tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
+            const td = $(Rx([col,'Slct']),tr)
+            const Sel  = $('select',td)
+            if(arr.length==1)           {LOG('ReOpt(tem só 1)'  ,arr,VAL(td)) ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
+            if(!arr.includes(VAL(td))){LOG('ReOpt(não Existe)',arr,VAL(td)) ; EditCell(Sel,""    ,'Auto')}     // se o valor atual não Existir dar valor "Vazio"
+            LOG('Existe?',td,$$('option',td))
+            setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
+            // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
+        }
 
-        function AutoComp(Typ,All){const IN = performance.now()
+        function ReEdt(tr,col,val){
+            const Slct = $(Rx([col,'Edit']),tr)
+            const Sel  = $('.P-P',Slct)
+            EditCell(Sel,val,'Auto')
+        }
+
+        function ReTmT(tr,col,val){ // Edição sem Afetar o 'SupaBase'
+            const td = $(Rx([col,'Imgs']),tr)
+            DarVAL(td,val)
+        }
+
+        // MiniBiblioteca pra passar a Usar!
+        const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
+        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
+        const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
+
+        const Splii = { // Retorna Array ou String
+             Serv_Tipo:v=>Vari(v)                                               // Arr
+            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?O['TArt']:['n Precisa'] // Arr
+            ,Serv_Dsng:v=>Prod[v].Etpa.includes('Arte')?O['Dsng']:['n Precisa'] // Arr
+            ,Serv_Dsng:v=>Prod[v].Forn                                          // Arr
+            ,Grad_Forn:v=>[Dbbrev[v[0]]]                                        // Arr
+            ,Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                // Arr
+            ,SrvF_Valr:tr=>`${TDv(tr,'Qnt')*TDv(tr,'Alt')*TDv(tr,'Lag')}`       // Stg
+            ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
+        }
+
+        function AutoComp(Typ,All){
+            const IN = performance.now()
             const trs = All=='All' ? TRs(Typ) : [All]
 
-            const Func = {
-                 G_Id  :e=>(e.Emal.match(/(\d{3})°\s+(\w)/)||[]).slice(1,3).reverse().map((v,i)=>i?v:v.toUpperCase()).join('_')
-                ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)
-                ,G_Forn:e=>e.Emal.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
-                ,G_Grad:e=>`${e.Emal}.webp`
-                ,G_Cont:e=>`${e.ABCD.length}`
-                ,GA_Valr:a=>{const [v1,v2]=SplitNome(a.Nome) ; return v1&&v2 ? Num(v1)*Num(v2)*20 : 0 } // Melhorar pra (Banner, Adesivo, Transp)
-                ,S_Forn:e=>{
-                    const buxu = Prod[e.Serv]?.Forn ?? []
-                    return e.Grad ? Dbbrev[e.Grad.split('_')[0]]||'' : buxu.length == 1 ?  buxu[0] : '' }
-                ,S_Abcd:e=>{
-                    if(!e.Grad){return ''} // se n tem dados return Vazio
-                    else{ // também conferir o valor que já tem antes!
-                        const ItenSERV = LocIten(e.Serv,e.Tipo)
-                        const LinGrad = J.GRAD?.find(x=>x.Id==e.Grad)?.ABCD||'' // Consulta
-                        if(isArr(LinGrad)){
-                            const Linfilt = LinGrad.filter(G=>G.Nome!=="")
-                                const Filtrado = Linfilt.filter(G=>ItenSERV == extrairNomeSigla(G.Nome))
-                                if(Linfilt.length==1){return 'A'}
-                                if(Linfilt.length==0){return 'Falta Nome'}
-                                else if(Filtrado.length==1){return Filtrado[0].Id}
-                                else{ return `${Linfilt.length}...`}
-                                return ItenSERV
-                        //    }
-                        }else{return 'sem ID'}
+            const AutoEdit=(c1,c2,tr)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
 
-                    } // Levar a Imagem da Grad pra dentro da Tabela de SERV
-                }             
-                ,S_OS  :e=>J.GRAD?.find(x=>x.Id==e.Grad)?.OS||'' // Consulta
-                ,S_Gimg:e=>`${J.GRAD?.find(x=>x.Id==e.Grad)?.Emal||''}.webp`
+                const td  = $(`:scope > ${Rx2([c1])}`,tr)
+                const td2 = $(`:scope > ${Rx2([c2])}`,tr)
+                const R = D_R(td2)
+                if(R.Tm=='Slct'){LOG('foi Select') ; ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))}
+                if(R.Tm=='Edit'){LOG('foi Edit'  ) ; ReEdt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))} // Opção de tbm Editar apenas no DOM
+                if(R.Tm=='Imgs'){LOG('foi Imgs'  ) ; ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
             }
 
-            function Exec2(e,c,tr,Tag){ // 'c' de Col // neste exec2 os dados são editados lá na const principal J[typ]
-                const A = e[c] ; e[c] = Func[`${Tag}_${c}`](e)
-                const Cor = A==""&&e[c]!==''?["Blu",'']:A==e[c]?['Grn','']:['Red',A]
-                if(A=="" && e[c]==""){return}
-                DarVAL($(Rx2([c]),tr),e[c],Cor)
-            }
+            trs.forEach(tr=>{
+                if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
+                    if(All=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
+                    [['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
 
-            function Exec(e,c,tr,Tag){ // 'c' de Col
-                const A = e[c] ; const v = Func[`${Tag}_${c}`](e)
-                const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
-                if(A=="" && v==""){return}
-                DarVAL($(Rx2([c]),tr),v,Cor)
-            }
-
-            if(Typ=='GRAD'){
-                trs.forEach(tr=>{
-                    ReOpt(tr,'SrvF',ObjKey(ValForn[VAL($(Rx2(['Forn']),tr))]||{}))
-
-                    // const e = J[Typ][tr_X(tr)] // Encontrar pelo Idx
-                    //     arrayss[Typ].forEach(c=>Exec(e,c,tr,Typ[0]))
-                    //     $$('.Bdj_ABCD > tbody > tr',tr).forEach(tr2=>{ // Camada2
-                    //         const a = e['ABCD'][tr_X(tr2)] // Encontrar pelo Idx
-                    //         arrayss['ABCD'].forEach(c=>Exec(a,c,tr2,'GA'))
+                    // ['Forn'].forEach(col=>{
+                    //     const obj = J[Typ][tr_X(tr)]
+                    //     const newval = Splii[`${Typ[0]}_${col}`](obj)
+                    //     AutoAntig(obj,col,tr,newval)
                     // })
-                })
-                // Re_color(Typ)
-            }
-
-            if(Typ=='SERV'){ return
-                $$(Rx(['SERV','Serv','Slct'])).forEach(e=>{ // seleção automática do forn baseada no serv select
-                    if(Pai(_tr(e)).tagName=='TFOOT'){return} ; if(VAL(e)==''){return} // se for Tfoot ou tiver vazio n faz nada (INTERESSANTE)       
-                        // reOpt('Forn',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-                        // reOpt('TArt',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-                        // reOpt('Dsng',AllAll('Forn')[VAL(e)]) // Ação para o Forn
-                })
-            }
+                }
+                if(Typ=='SERV'){
+                    return
+                    if(All=='All'){LOG('sair pois ainda n da pra rodar pra todo') ; return }
+                    ['Tipo','TArt','Dsng','Forn'].forEach(col=>{AutoEdit('Serv',col,tr)}) // Rodar todas que faz autoComp com Serv
+                    
+                    // Rodar todas as que são editadas e Ocultadas com Serv
+                }
+            })
+            
             // Já fazer o Calculo baseado na medida
             // conferir se Pagou certinho
             // select deveria ter name pra n ser afetado pelo Realtime
@@ -1166,27 +1166,7 @@
          // ou até da Linha Pai com (Valr em PDDS e Stts em Pedidos)
          // todos 2 devem ser modificados automáticamente conforme eu manipulo os dados dentro de 'Serv'
         }
-
-        function ReOpt(tr,col,arr){ // tr = a Linha,  col = quem quero editar, arr = valores disponiveis  tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
-            const Slct = $(Rx([col,'Slct']),tr)
-            const Sel  = $('select',Slct)
-            if(arr.length==1)           {LOG('tem só 1',arr,VAL(Slct))   ; EditCell(Sel,arr[0])}     // Troca pra o Unico option, se Tiver
-            if(!arr.includes(VAL(Slct))){LOG('não Existe',arr,VAL(Slct)) ; EditCell(Sel,"")}         // se o valor atual não Existir dar valor "Vazio"
-            $$('option',Slct).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}}) // Ocultar os Options Ausentes
-        
-            // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
-        }
-
-        function HanddleEdit(e){ // Isso ta acontecendo antes de Editar o Serv (mas Deveria ser Depois)
-            const R = D_R(_td(e))
-            if(R.Col=='Serv' && R.Typ=='SERV'){
-                ReOpt(_tr(e),'Forn',Prod[VAL(e)].Forn)
-                // LOG(Prod[VAL(e)].Forn) // outra coisa q edita Junto
-                // LOG(Prod[VAL(e)].Etpa) // outra coisa q edita Junto
-            }
-            if(R.Col=='Forn' && R.Typ=='GRAD'){AutoComp(R.Typ,_tr(e))}
-        }
-    
+   
         function Re_Lucro(Typ,All){
             const trs = All=='All' ? TRs(Typ) : [All]
             if(Typ==='PDDS'){trs.forEach(tr=>{
@@ -2764,7 +2744,7 @@
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
         const RmvById=(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
 
-        function EditCell(e,vall=null){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
+        function EditCell(e,vall=null,Auto){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
             const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
@@ -2775,14 +2755,16 @@
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
                 /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
-                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)   
+                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)
             /*Lv2*/}else{
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
                 /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
                 /*Sub*/ Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])
             }
+            
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
+                /*Edit outro*/ if(Auto!=='Auto'){AutoComp(R.Typ,_tr(e))} // antes de editar eu msm devo Editar os dependentes nessa Linha
                 /*Edit td   */ DarVAL(td,Nval)
                 if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
@@ -2793,6 +2775,7 @@
                     /*Edit Cor  */ Re_colrAll(R.Typ,_tr(td)) // edita quando é fora da Bandeija
                     /*Edit Lucro*/ Re_Lucro(R.Typ,_tr(td))   // edita quando é fora da Bandeija
                 }
+
             }})
         }
 
@@ -2976,11 +2959,23 @@
         err ? console.error("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
     }
     
-    async function Sb_CREATE(Typ,Array){
+    async function Sb_CREATE2(Typ,Array){
         try {const {error} = await supabase.from(Typ).insert([Array])
             if(error){console.error('Erro ao criar:',error)}else{LOG('Linha criada')}
         } catch (err){console.error('Erro:',err)}
     }
+
+    async function Sb_CREATE(Typ,row){
+        let baseId = Number(row.Id) || 0
+        let tentativas = 0
+        while (true) {
+            const Id = baseId + tentativas
+            const { error } = await supabase.from(Typ).insert([{ ...row, Id }])
+            if (!error) {console.log("Linha criada:", Id) ; return Id }
+            if (error.code !== "23505") {console.error("Erro:", error) ; return null }
+            tentativas++ }
+    }LOG('ComTentativas')
+
 
     async function Sb_EDIT(Typ,col,id,Val){
         try {const {error} = await supabase.from(Typ).update({[col]:Val}).eq('Id',id)

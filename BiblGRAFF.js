@@ -98,6 +98,7 @@ const BrevTitle = str => {
 
 
 function DarVAL(td,v,A){const R = D_R(td) ; Inn(td,Tm_Tm[R.Tm](v,R,A))}
+
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
