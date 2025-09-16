@@ -280,6 +280,8 @@
             'L.ilhos'  :[{val: 24.00, data:"2025-02-05"}]
         },'Inová':{
             'Camisa'   :[{val: 25.00, data:"2025-02-05"}],
+        },Bureal:{
+            'Cartão'   :[{val: 20.00}]
         }
     }
 
@@ -1063,7 +1065,7 @@
     <script> // AUTOCOMP - ⭐⭐_ _ _
 
         // Virar Biblioteca
-        const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová'}    
+        const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal'}
         const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
         const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
         const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || ""
