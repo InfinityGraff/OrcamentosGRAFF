@@ -327,7 +327,7 @@
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
         
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['E',''],ImgG:['E',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
+        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['A',''],Cont:['E',''],ImgG:['M',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
        GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],  OS:['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
@@ -495,16 +495,19 @@
             const Tm_Loade=(Typ)=>For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td style="${NoneCol(Typ,e)}" class="${Tm_R('Foot',x,Typ,'')} Rltv"></td>`).join('')
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
-            const BrevSrc={Grad:'Grad',Gimg:'Grad',Oimg:'OS'}
+            const BrevSrc={Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'}
             const ExtnArt=e=>ListARQ.includes(e) ? "svg" : ListIMG.includes(e) ? "webp" : null
 
             const SrcsIMG=(e,R)=>{
                 const Past  = BrevSrc[R.Col]||R.Col
                 const NGrad = J['SERV'].find(e=>e.Id==R.Row) // PEZADO 🤯
-                if(NGrad==undefined){return}
-                const Arq   = Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
-                              Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`         : 
-                              Past=='Arte' && ExtnArt(R.Row)          ? `./Base/${Past}/${R.Row}.${ExtnArt(R.Row)}` : "" // Arquivo pelo ID
+
+                if(NGrad==undefined && R.Col!=='ImgU' && R.Col!=='ImgG'){return} // 'ImgU' é apenas um Escape, funciona pra todas menos pra ImgU
+                const Arq   = Past=="Grad" && R.Col=='ImgG'                ? `./Base/${Past}/${e}.webp`                  :
+                              Past=="Grad" && R.Col=='ImgU'                ? `./Base/${Past}/${e}.webp`                  :
+                              Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
+                              Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`           : 
+                              Past=='Arte' && ExtnArt(R.Row)               ? `./Base/${Past}/${R.Row}.${ExtnArt(R.Row)}` : "" // Arquivo pelo ID
                 return Arq
             }
 
@@ -1082,11 +1085,12 @@
             // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
 
-        function ReEdt(tr,col,val){
-            LOG(col,val)
-            const Slct = $(Rx([col,'Edit']),tr)
+        function ReAut(tr,col,val){ // Edita Cells que não São Editaveis as Cells Automaticas
+            LOG(`ReEdt()`,col,val)
+            const Slct = $(Rx([col,'Auto']),tr)
             const Sel  = $('.P-P',Slct)
-            //EditCell(Sel,val,'Auto')
+            // EditCell(Sel,val,'Auto',true) se eu n quiser q interaja com SB
+            EditCell(Sel,val,'Auto',true)
         }
 
         function ReTmT(tr,col,val){ // Edição sem Afetar o 'SupaBase'
@@ -1096,7 +1100,7 @@
 
         // MiniBiblioteca pra passar a Usar!
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
-        const TDv=(tr,col)=>{LOG('aqui>',tr,col) ; VAL($(`:scope > ${Rx2([col])}`,tr))}
+        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
 
         const Splii = { // Retorna Array ou String
@@ -1104,9 +1108,12 @@
             ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?O['TArt']:['n Precisa'] // Arr
             ,Serv_Dsng:v=>Prod[v].Etpa.includes('Arte')?O['Dsng']:['n Precisa'] // Arr
             ,Serv_Dsng:v=>Prod[v].Forn                                          // Arr
+
+            ,Grad_ImgU:tr=>TDv(tr,'Grad')
+            ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
             ,Grad_Forn:v=>[Dbbrev[v[0]]]                                        // Arr
             ,Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                // Arr
-            ,SrvF_Valr:tr=>`${TDv(tr,'Qnt')}${TDv(tr,'Alt')}${TDv(tr,'Lag')}`   // Stg
+            ,SrvF_Valr:tr=>`${RS(Num(TDv(tr,'Qnt')) * Num(TDv(tr,'Lag')) * Num(TDv(tr,'Alt')) * ValForn[TDv(tr,'Forn')][TDv(tr,'SrvF')][0].val)}`   // Stg
             ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
         }
 
@@ -1118,15 +1125,15 @@
                 const td  = $(`:scope > ${Rx2([c1])}`,tr)
                 const td2 = $(`:scope > ${Rx2([c2])}`,tr)
                 const R = D_R(td2)
-                if(R.Tm=='Slct'){LOG('foi Select') ; ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))}
-                if(R.Tm=='Edit'){LOG('foi Edit'  ) ; ReEdt(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
-                if(R.Tm=='Imgs'){LOG('foi Imgs'  ) ; ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
+                if(R.Tm=='Slct'){ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))}
+                if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
+                if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
             }
 
             trs.forEach(tr=>{
                 if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
                     if(All=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
-                    [['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
+                    [['Grad','ImgU'],['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr'],['Grad','ImgG']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
 
                     // ['Forn'].forEach(col=>{
                     //     const obj = J[Typ][tr_X(tr)]
@@ -2742,7 +2749,7 @@
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
         const RmvById=(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
 
-        function EditCell(e,vall=null,Auto){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
+        function EditCell(e,vall=null,Auto,not){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
             const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
@@ -2753,12 +2760,12 @@
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
                 /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
-                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)
+                /*Sub*/ if(not!==true){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
             /*Lv2*/}else{
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
                 /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
-                /*Sub*/ Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])
+                /*Sub*/ if(not!==true){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
             }
             
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
@@ -2999,7 +3006,9 @@
                        // Descobrir qual ordem está
                     }} // dentro e fora da bandeija
                     
-                    if(td){if(VAL(td)!==Vlr){DarVAL(td,Vlr) // Editou valor
+                    if(td){if(VAL(td)!==Vlr){
+                        if(D_R(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
+                        DarVAL(td,Vlr) // Editou valor
                          LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
                     else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
                     else{LOG('⚠️ RealTime() P-P não Existe')}
