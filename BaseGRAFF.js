@@ -122,6 +122,9 @@ const ListGRD = [
     "G_540","G_540_1",
     "U_025","U_025_1",
     "U_026","U_026_1",
+    "B_252","B_252_1","B_252_2",
+    "J_016","J_016_1","J_016_2",
+
 ]
 
 const ListOS = [
@@ -145,6 +148,11 @@ const ListIMG = [
 
     "1155_1",
     "1154_1",
+    "1153_3",
+
+    "1161_1",
+    "1160_1",
+    "1162_1",
 ]
 
 const ListARQ = [
@@ -225,6 +233,14 @@ const ListARQ = [
     "1148_2",
     "1150_1",
     "1137_1",
+
+    "1159_1",
+    "1159_2",
+    "1158_1",
+
+    "1104_1",
+    "1104_2",
+
 ]
 
 const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
