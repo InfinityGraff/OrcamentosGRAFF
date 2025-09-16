@@ -1078,15 +1078,15 @@
             const Sel  = $('select',td)
             if(arr.length==1)           {LOG('ReOpt(tem só 1)'  ,arr,VAL(td)) ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
             if(!arr.includes(VAL(td))){LOG('ReOpt(não Existe)',arr,VAL(td)) ; EditCell(Sel,""    ,'Auto')}     // se o valor atual não Existir dar valor "Vazio"
-            LOG('Existe?',td,$$('option',td))
             setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
             // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
 
         function ReEdt(tr,col,val){
+            LOG(col,val)
             const Slct = $(Rx([col,'Edit']),tr)
             const Sel  = $('.P-P',Slct)
-            EditCell(Sel,val,'Auto')
+            //EditCell(Sel,val,'Auto')
         }
 
         function ReTmT(tr,col,val){ // Edição sem Afetar o 'SupaBase'
@@ -1096,7 +1096,7 @@
 
         // MiniBiblioteca pra passar a Usar!
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
-        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
+        const TDv=(tr,col)=>{LOG('aqui>',tr,col) ; VAL($(`:scope > ${Rx2([col])}`,tr))}
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
 
         const Splii = { // Retorna Array ou String
@@ -1106,7 +1106,7 @@
             ,Serv_Dsng:v=>Prod[v].Forn                                          // Arr
             ,Grad_Forn:v=>[Dbbrev[v[0]]]                                        // Arr
             ,Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                // Arr
-            ,SrvF_Valr:tr=>`${TDv(tr,'Qnt')*TDv(tr,'Alt')*TDv(tr,'Lag')}`       // Stg
+            ,SrvF_Valr:tr=>`${TDv(tr,'Qnt')}${TDv(tr,'Alt')}${TDv(tr,'Lag')}`   // Stg
             ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
         }
 
@@ -1115,12 +1115,11 @@
             const trs = All=='All' ? TRs(Typ) : [All]
 
             const AutoEdit=(c1,c2,tr)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
-
                 const td  = $(`:scope > ${Rx2([c1])}`,tr)
                 const td2 = $(`:scope > ${Rx2([c2])}`,tr)
                 const R = D_R(td2)
                 if(R.Tm=='Slct'){LOG('foi Select') ; ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))}
-                if(R.Tm=='Edit'){LOG('foi Edit'  ) ; ReEdt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))} // Opção de tbm Editar apenas no DOM
+                if(R.Tm=='Edit'){LOG('foi Edit'  ) ; ReEdt(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
                 if(R.Tm=='Imgs'){LOG('foi Imgs'  ) ; ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
             }
 
@@ -1139,7 +1138,6 @@
                     return
                     if(All=='All'){LOG('sair pois ainda n da pra rodar pra todo') ; return }
                     ['Tipo','TArt','Dsng','Forn'].forEach(col=>{AutoEdit('Serv',col,tr)}) // Rodar todas que faz autoComp com Serv
-                    
                     // Rodar todas as que são editadas e Ocultadas com Serv
                 }
             })
