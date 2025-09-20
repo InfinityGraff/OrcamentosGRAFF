@@ -507,6 +507,7 @@
             const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null
 
             const SrcsIMG=(e,R)=>{
+                if(e.includes('blob:')){return e}
                 const Past  = BrevSrc[R.Col]||R.Col
                 const NGrad = J['SERV'].find(e=>e.Id==R.Row) // PEZADO 🤯
 
@@ -515,10 +516,9 @@
                               Past=="Grad" && R.Col=='ImgU'                ? `./Base/${Past}/${e}.webp`                  :
                               Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
                               Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`           : 
-                              Past=='Arte' && ExtnArt(R.Row)               ? `${BASE_URL}Img/${ExtnArt(R.Row)}`          : ""
+                              Past=='Arte' && ExtnArt(R.Row)               ? `${BASE_URL}Img/${ExtnArt(R.Row)}`          : "./SVG/placeholder.svg"
                 return Arq
             }
-
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -528,7 +528,7 @@
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
-                Imgs:(e,R,A)=>`${Tm_Antg(A)}<img class="P-P" onclick="AbrirImg(this)" draggable="false" src="${SrcsIMG(e,R)}" ${TM.Err} name="${ExtnArt(R.Row)?'True':'False'}">`,
+                Imgs:(e,R,A)=>`${Tm_Antg(A)}${`<img class="P-P" name="False" draggable="false" src="${ExtnArt(R.Row) ? SrcsIMG(e,R) : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`}`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
@@ -589,7 +589,7 @@
 
                 const Lista     = Find.map((e,x)=>x===0 ? Tm_Bndj(Reordem(),AA(col),DrPai(r)) : '').join('')
                 const iconFone  = col==='Clnt'? Find[0] ? Find[0].Cntt==='' ? '' : `<img class="icoFone HOV" onclick="LOG('FONE')" src="./SVG/Icon_Fone.svg">`:'' : ''
-                const ConcatIMG = col==='Serv'? Find.map(e =>ExtnArt(e.Id)?`<img onclick="AbrirImg(this)" src="${BASE_URL}/Img/${ExtnArt(e.Id)}">`:"").join('') : ''
+                const ConcatIMG = col==='Serv'? Find.map(e=>ExtnArt(e.Id)?`<img class="Img_T-T" onclick="AbrirImg('${e.Id}',this)" src="${BASE_URL}/Img/${ExtnArt(e.Id)}">`:'<img class="Img_T-T" src="">').join('') : ''
                 const Grifo     = `<i class="grifoo RD"></i>`
 
                 return `<div class="Ct"><p class="P-P T-T" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
@@ -1346,31 +1346,43 @@
 
     <div>  <!--PREVIEWS  - ⭐_ _ _ _ -->
         <style> /*Preview*/
-            .Ubuiaxik{width: 800px; height: 500px}
+            .MdalIMG{width: 800px; height: 500px}
+            .MdalIMG img{max-width: 100%;max-height: 100%;
+                        object-fit: contain; background: #474747; border-radius: 10px; padding: 5px;}
+            .casusa{flex: 1 1 auto}
+            
         </style>
         <script> // Previews
-
-            function Tog_Card(Typ){
-                LOG('Asus')
-                //Tempo()
+            function Tog_Card(Typ){LOG('Asus')}
+            
+            // virar Biblioteca
+            function SelectFiles(Inpt,Call){ // serve pra garantir a compatibilidade da imagem, se corresponde ao q deve ser entrado
+                if(Inpt.files.length > 0 && typeof Call === "function"){Call(Inpt)}
             }
 
-            function AbrirImg(img){MdalShow('#FormIMG')
-                Inn($('#FormIMG'),`<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}"><span>aquificara fica Os<span><div>`)
+            function AbrirImg(Nome,img,X){
+                if(X=='Place'){return}
+                MdalShow('#FormIMG')
+                const W = img.naturalWidth>img.naturalHeight
+                const Stg =`<div class="MdalIMG ${W?'Cl':'Ct'}">
+                                <img src="${img.src}">
+                                <div class="casusa Cl ${W?'w100':'h100'}">
+                                    <span>Nome</span>
+                                    <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
+                                    <button onclick="SairMdal();ImgUPP($('input',Pai(this)),'${Nome}')">Enviar</button>
+                                </div>
+                            <div>`
+                Inn($('#FormIMG'),Stg)
+                if(X=='X'){$('#FormIMG input').click()}
+                
             }
 
-            function AbrirSVG(img,Nome){MdalShow('#FormIMG')
-                $('#FormIMG').innerHTML = `<div class="Ubuiaxik Ct"><img class="h100" src="${img.src}">
-                    <span>Nome: ${Nome}<span>
-                    <button onclick="LimparNomeSVG('${_td(img).className.trim()}')">Limpar</button>
-                <div>`
+            function SellFilesIMG(Inpt) {
+                const file = Inpt.files[0]
+                $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file)
+                $('span',Pai(Inpt)).textContent = file.name
             }
 
-            function LimparNomeSVG(Clss){
-                const Edit=e=>`<p class="Ct" ${TM.Edi} onfocus="Add(Pai(this),'Foco')" name="${Inn(e)}" onkeydown="EntBlr(this)" onblur="Rmv(Pai(this),'Foco');editCell(this)">${Inn(e)}</p>`
-                const td = $(`td[class="${Clss}"]`)
-                editCell(td)
-            }
         </script>
     </div>
 </div>
@@ -1553,8 +1565,8 @@
             <div class="Cl"></div><!--NÃO TEM NADA AQUI-->
                         <div><!--Arte-->
                 <style>
-                    .container{max-width: 300px; margin: auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1);}
-                    .tootal, .tootal span {font-size: 18px;font-weight: bold;color: #00df00;}
+                    .container{max-width: 300px; margin: auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1)}
+                    .tootal, .tootal span {font-size: 18px;font-weight: bold;color: #00df00}
                     .Pcntalmt{margin-top: 15px;color: gray}
                 </style>
 
@@ -1606,12 +1618,6 @@
                         $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
                     }
                 </script>
-            </div>
-
-            <div class="upload">
-                <div class="oIDd">1175_1</div>
-                <input type="file" id="I_Arqv">
-                <button onclick="upload(this)">Enviar</button>
             </div>
         </div>
 
@@ -2683,7 +2689,7 @@
               </div>
         </div>
 
-        <div id="FormIMG"></div>
+        <div id="FormIMG" class="Ct Rltv Rd"></div>
 
         <div id="Mdal-Prod">
             fotrinhas
@@ -2761,7 +2767,7 @@
         const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
-        const RmvById=(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
+        const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
 
         function EditCell(e,vall=null,Auto,not){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
@@ -2880,6 +2886,17 @@
             tbody.insertBefore(NEWtr,Alvo||null)
         }
 
+        function ImgUPP(Inpt,Nome){          // ⭐⭐⭐_ _  analisando com calma
+            const f = Inpt.files[0] // pega o único arquivo
+            const Past = Eximg.includes(RxExt(f.name)) ? "Img/" : "Arq/"
+            const Src  = URL.createObjectURL(f)
+            const td   = $(Rx2([`${Nome}-Arte`]))
+            ListIMG.push(Nome)
+            DarVAL(td,Src)
+            //$('.Img_T-T') // pegar o de traz
+            Sb_UPLOAD(f,`${Past}${Nome}`)
+        }
+
         function LinkCLnt(Eu,val){           // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
             const R  = D_R(td)
@@ -2978,13 +2995,13 @@
         err ? console.error("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
     }
     
-    async function Sb_CREATE2(Typ,Array){
+    async function Sb_CREATE2(Typ,Array){ // esse é o antigo que não analisa antes de salvar!
         try {const {error} = await supabase.from(Typ).insert([Array])
             if(error){console.error('Erro ao criar:',error)}else{LOG('Linha criada')}
         } catch (err){console.error('Erro:',err)}
     }
 
-    async function Sb_CREATE(Typ,row){
+    async function Sb_CREATE(Typ,row){ // ⚠️⚠️⚠️⚠️⚠️⚠️⚠️ Analizar pois ainda ta dando erro!
         let baseId = Number(row.Id) || 0
         let tentativas = 0
         while (true) {
@@ -2993,14 +3010,19 @@
             if (!error) {console.log("Linha criada:", Id) ; return Id }
             if (error.code !== "23505") {console.error("Erro:", error) ; return null }
             tentativas++ }
-    }LOG('ComTentativas')
-
+    }
 
     async function Sb_EDIT(Typ,col,id,Val){
         try {const {error} = await supabase.from(Typ).update({[col]:Val}).eq('Id',id)
             if (error){console.error('Erro ao atualizar:',error)}
             else  {    LOG('💾 SB_EDIT(✏️) Atualizado') ; ALERT(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
         } catch (err){ console.error('Erro:',err)        ; ALERT('Erro ao atualizar serviço')}
+    }
+
+    async function Sb_UPLOAD(file,nome){ // Envia arquivo para Supabase Storage
+      let {error} = await supabase.storage.from('uploads').upload(nome,file,{upsert:false})
+      if  (error) {console.error("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
+      else{LOG('✔️ Arquivo enviado!',nome)}
     }
 
     function Supa_RealTime(crud,nEw,Typ,old){ // ❌ ⚠️ continuar o Crud no RealTime
@@ -3047,19 +3069,6 @@
         return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
             const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
     };PlayRealTime()
-
-    async function upload(btn){ // Upload dos arquivos
-        const files = $('input',Pai(btn)).files
-        const Nome  = Inn($('.oIDd',Pai(btn)))
-        for (let f of files){ const Past = Eximg.includes(RxExt(f.name)) ? "Img/" : "Arq/"
-            await EnviaArq(f,`${Past}${Nome}`)
-        };LOG('Arquivo enviado!')
-    }
-
-    async function EnviaArq(file,nome){ // Envia arquivo para Supabase Storage
-      let {error} = await supabase.storage.from('uploads').upload(nome,file,{upsert:false})
-      if  (error) {console.error("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
-    }
 
     async function listarNomesImagens(){
         const {data,error} = await supabase.storage.from("uploads").list("Img",{limit:1000})
