@@ -290,13 +290,13 @@
         Serv:['',...AllProd],
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem','n precisa',''],
+        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem','n Precisa',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
-        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n precisa'],
+        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n Precisa'],
        TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
     }
     const AllList = ObjKey(O)
@@ -560,7 +560,7 @@
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
                 
                 return valid         ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
-                        R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)">${Tratamento(v,r)}</td>` :
+                        R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);AutoComp('${AA(R.Col)}','Bdj',this)">${Tratamento(v,r)}</td>` :
                         R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                                      : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
             }
@@ -986,7 +986,7 @@
                 ,'Serv-TArt-Dsng-Grad'               :['Impressão'  ,'#ffe599','#856300']
                 ,'Serv-TArt-Dsng'                    :['Analise Art','#b4a7d6','#500092']
                 ,'Serv-Dsng'                         :['Analise Art','#b4a7d6','#500092'] // desnessesário pq o q eu queria era só omitir o TArt
-                ,'Serv-TArt'                         :[,'Arte'      ,'#b4a7d6','#500092'] 
+                ,'Serv-TArt'                         :['Arte'       ,'#b4a7d6','#500092'] 
                 ,'Serv'                              :['Orçamento'  ,'#b4a7d6','#500092']
             }
             const OrdEtp = ['Orçamento','Arte','Analise Art','Impressão','Grad Uber','Acabamento','Pronto','Entregue','Devendo','Concluído']
@@ -1037,7 +1037,6 @@
                 const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
                 const Coclui = atual.length === OB[Typ].length
                 const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
-
                 const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
                 const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value // Receber a cor por um Input!
                 if(Typ=='SERV'){IconsEtapas(Typ,tr,Etapa,atual.join('-'))}
@@ -1087,9 +1086,9 @@
         function ReOpt(tr,col,arr){ // tr = a Linha,  col = quem quero editar, arr = valores disponiveis  tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
             const td = $(Rx([col,'Slct']),tr)
             const Sel  = $('select',td)
-            if(arr.length==1)           {LOG('ReOpt(tem só 1)'  ,arr,VAL(td)) ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
+            if(arr.length==1)         {LOG('ReOpt(tem só 1)'  ,arr,VAL(td)) ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
             if(!arr.includes(VAL(td))){LOG('ReOpt(não Existe)',arr,VAL(td)) ; EditCell(Sel,""    ,'Auto')}     // se o valor atual não Existir dar valor "Vazio"
-            setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
+            setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
             // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
 
@@ -1115,7 +1114,7 @@
              Serv_Tipo:v=>Vari(v)                                               // Arr
             ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?O['TArt']:['n Precisa'] // Arr
             ,Serv_Dsng:v=>Prod[v].Etpa.includes('Arte')?O['Dsng']:['n Precisa'] // Arr
-            ,Serv_Dsng:v=>Prod[v].Forn                                          // Arr
+            ,Serv_Forn:v=>Prod[v].Forn                                          // Arr
 
             ,Grad_ImgU:tr=>TDv(tr,'Grad')
             ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1125,22 +1124,31 @@
             ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
         }
 
-        function AutoComp(Typ,All){
+        function AutoComp(Typ,Modo,Eu){
+            
             const IN = performance.now()
-            const trs = All=='All' ? TRs(Typ) : [All]
+            const trs = Modo=='All' ? TRs(Typ)                          : 
+                        Modo=='Bdj' ? $$(`.Bdj_${Typ} > tbody > tr`,Eu) :
+                        Modo=='UND' ? [_tr(Eu)]                         : ''
 
-            const AutoEdit=(c1,c2,tr)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
-                const td  = $(`:scope > ${Rx2([c1])}`,tr)
-                const td2 = $(`:scope > ${Rx2([c2])}`,tr)
+            const AutoEdit=(c1,c2,tr,Typ)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
+                // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
+                if(Modo=='UND' && Typ=='SERV' && D_R(_td(Eu)).Col!==c1){return} // se for Modo UND na Bndj de SERV, e a edição não foi no Primario, ent Return
+                const td1 = $(`:scope > ${Rx2([Typ,`${c1}-Slct`])}`,tr) // não queria precisar botar o '-Slct' mas por enquanto ta nessesário
+                const td2 = $(`:scope > ${Rx2([Typ,c2])}`,tr)
+                LOG(c1,'>>',c2)
                 const R = D_R(td2)
-                if(R.Tm=='Slct'){ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td)))}
+                if(R.Tm=='Slct'){ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td1)))}
                 if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
                 if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
             }
 
+            if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
+            if(                Modo =='Bdj'){if(event.target.closest('.BndjTBL')){return}else{LOG('Auto Bandeija')}}
+
             trs.forEach(tr=>{
                 if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
-                    if(All=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
+                    if(Modo=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
                     [['Grad','ImgU'],['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr'],['Grad','ImgG']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
 
                     // ['Forn'].forEach(col=>{
@@ -1150,10 +1158,11 @@
                     // })
                 }
                 if(Typ=='SERV'){
-                    return
-                    if(All=='All'){LOG('sair pois ainda n da pra rodar pra todo') ; return }
-                    ['Tipo','TArt','Dsng','Forn'].forEach(col=>{AutoEdit('Serv',col,tr)}) // Rodar todas que faz autoComp com Serv
+                    if(Modo=='All'){LOG('sair, pq n quero q rode pra todo Agora!') ; return }
+                    ['Tipo','TArt','Dsng','Forn'].forEach(col=>{AutoEdit('Serv',col,tr,Typ)}) // Rodar todas que faz autoComp com Serv
                     // Rodar todas as que são editadas e Ocultadas com Serv
+                    // quando tem q ocultar, caso exista só ele! então oculta td com th, se existir mais de um
+                    // então não oculta, mas troca o tm, e deixa ele sem poder editar com apenas um '-'
                 }
             })
             
@@ -2789,7 +2798,7 @@
             }
             
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
-                /*Edit outro*/ if(Auto!=='Auto'){AutoComp(R.Typ,_tr(e))} // antes de editar eu msm devo Editar os dependentes nessa Linha
+                /*Edit outro*/ if(Auto!=='Auto'){AutoComp(R.Typ,'UND',e)} // antes de editar eu msm devo Editar os dependentes nessa Linha
                 /*Edit td   */ DarVAL(td,Nval)
                 if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
@@ -2938,7 +2947,7 @@
                 setTimeout(()=>{
                     Inn(tbody,Tm_Table(TYP,J[TYP]));Rfresh_Foot(TYP);AutoClntPDDS()
                     Re_colrAll('PDDS','All')
-                    AutoComp(TYP,'All')
+                    AutoComp(TYP,'All') // por enquanto isso serve só pra GRAD (chegando lá se for PDDS,All então return) (pois n quero rodar isso pra pedidos de uma só vez, quero ao clicar na bandeija)
                     Re_Lucro('PDDS','All')
                     Rmv($(`#H_${TYP}`),'w90')
                 },0)
