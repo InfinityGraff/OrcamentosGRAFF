@@ -1111,10 +1111,10 @@
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
         const FiM=(arr)=>arr.slice(0, -1)
 
-        const Splii = { // Retorna Array ou String
+        const Splii = { // Retorna Array ou String (isso aqui tbm tem q retornar o Negativo pra poder ocultar)
              Serv_Tipo:v=>Vari(v)                                                                 // Arr
-            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa']              // Arr
-            ,TArt_Dsng:v=>['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) // Arr
+            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa']              // Arr 'n precisa' == none
+            ,TArt_Dsng:v=>['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) // Arr '--'  == none
             ,Serv_Forn:v=>Prod[v].Forn                                                            // Arr
 
             ,Grad_ImgU:tr=>TDv(tr,'Grad')
@@ -1139,8 +1139,9 @@
                 LOG(c1,'>>',c2, VAL(td1))
                 
                 if(R.Tm=='Slct'){LOG('é um Slct ><',`${c1}_${c2}`);ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td1)))}
+                if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))} // vai servir pra 'Arte','Gimg' 
+                // OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com conteudo de outra Tabela, de forma Dinamica!)
                 if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
-                if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
                 // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
             }
 
