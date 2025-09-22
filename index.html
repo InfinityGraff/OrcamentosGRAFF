@@ -290,14 +290,13 @@
         Serv:['',...AllProd],
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','Ja Tinha','n tem','n Precisa',''],
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
         Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n Precisa'],
-       TArt2:['','Layout','CGI'], // aqui mais interessada nos Fins
+        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','--'],
     }
     const AllList = ObjKey(O)
     const ALL = {CLNT:[]}
@@ -324,9 +323,9 @@
         }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B',''],Cust:['B',''],Lcro:['Y',''],Stts:['W',''],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z',''],Desc:['E','']/*,Calc:['E','' ]*/,Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Forn:['S','A'],Grad:['E',''],Gimg:['M','A'],Abcd:['E','A'],OS:['E','A'],Oimg:['M','A'],CuOS:['V',''],Uber:['E','A'],CuUb:['V',''],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G','' ],Lixo:['X','' ]},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B','' ],Cust:['B','' ],Lcro:['Y',''],Stts:['W',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['E','A'],Uber:['E','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G',''],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
         
@@ -435,7 +434,7 @@
                 .LinkULT   {background:#1900ff; color:#ffffff}
                 
             /*Cria as Linahs de Divisórias de Serv*/ /*Algo assim também pode ser Aplicado pra as Larguras das Colunas*/
-            :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(10),:nth-child(13),:nth-child(19),:nth-child(23)){border-right:4px solid #bb0092}
+            :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(10),:nth-child(14),:nth-child(19),:nth-child(24)){border-right:4px solid #bb0092}
 
             /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
             .bnDJ .Bdj_ABCD td:nth-child(1){width: 23px;}
@@ -519,6 +518,7 @@
                               Past=='Arte' && ExtnArt(R.Row)               ? `${BASE_URL}Img/${ExtnArt(R.Row)}`          : "./SVG/placeholder.svg"
                 return Arq
             }
+
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -1109,12 +1109,13 @@
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
         const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
+        const FiM=(arr)=>arr.slice(0, -1)
 
         const Splii = { // Retorna Array ou String
-             Serv_Tipo:v=>Vari(v)                                               // Arr
-            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?O['TArt']:['n Precisa'] // Arr
-            ,Serv_Dsng:v=>Prod[v].Etpa.includes('Arte')?O['Dsng']:['n Precisa'] // Arr
-            ,Serv_Forn:v=>Prod[v].Forn                                          // Arr
+             Serv_Tipo:v=>Vari(v)                                                                 // Arr
+            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa']              // Arr
+            ,TArt_Dsng:v=>['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) // Arr
+            ,Serv_Forn:v=>Prod[v].Forn                                                            // Arr
 
             ,Grad_ImgU:tr=>TDv(tr,'Grad')
             ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1132,15 +1133,15 @@
                         Modo=='UND' ? [_tr(Eu)]                         : ''
 
             const AutoEdit=(c1,c2,tr,Typ)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
-                // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
-                if(Modo=='UND' && Typ=='SERV' && D_R(_td(Eu)).Col!==c1){return} // se for Modo UND na Bndj de SERV, e a edição não foi no Primario, ent Return
+                if(!['Serv','TArt'].includes(D_R(_td(Eu)).Col)){return} // Se não for um Primário então return
                 const td1 = $(`:scope > ${Rx2([Typ,`${c1}-Slct`])}`,tr) // não queria precisar botar o '-Slct' mas por enquanto ta nessesário
-                const td2 = $(`:scope > ${Rx2([Typ,c2])}`,tr)
-                LOG(c1,'>>',c2)
-                const R = D_R(td2)
-                if(R.Tm=='Slct'){ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td1)))}
+                const td2 = $(`:scope > ${Rx2([Typ,c2])}`,tr) ; const R = D_R(td2)
+                LOG(c1,'>>',c2, VAL(td1))
+                
+                if(R.Tm=='Slct'){LOG('é um Slct ><',`${c1}_${c2}`);ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td1)))}
                 if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
                 if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))}
+                // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
             }
 
             if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
@@ -1159,10 +1160,9 @@
                 }
                 if(Typ=='SERV'){
                     if(Modo=='All'){LOG('sair, pq n quero q rode pra todo Agora!') ; return }
-                    ['Tipo','TArt','Dsng','Forn'].forEach(col=>{AutoEdit('Serv',col,tr,Typ)}) // Rodar todas que faz autoComp com Serv
-                    // Rodar todas as que são editadas e Ocultadas com Serv
-                    // quando tem q ocultar, caso exista só ele! então oculta td com th, se existir mais de um
-                    // então não oculta, mas troca o tm, e deixa ele sem poder editar com apenas um '-'
+                    ['Tipo','TArt'].forEach(col=>{AutoEdit('Serv',col,tr,Typ)});       // Afetados pelo Serv
+                    ['Dsng','Arte','CArt'].forEach(col=>{AutoEdit('TArt',col,tr,Typ)}) // Afetados pelo TArt
+
                 }
             })
             
@@ -2985,8 +2985,6 @@
                 criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Oimg','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                criaCol_Col('CuOS','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                criaCol_Col('CuUb','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
 
                 J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
@@ -3060,6 +3058,7 @@
                 })
             })
         }
+
         else if(crud==='DELETE'){// Linha foi Exluida de Verdade
             RmvROW($(`${Rx2([Typ,old.Id,'Lixo'])} a`),true) // Encontra o Botão pra Simular o Click, True é pra dizer q veio do RealTime
         }
