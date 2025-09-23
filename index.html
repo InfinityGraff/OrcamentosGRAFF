@@ -286,7 +286,7 @@
     }
 
     const O = {
-        Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','-'], // 'WM SilkSing','Casas leo'
+        Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','--'], // 'WM SilkSing','Casas leo'
         Serv:['',...AllProd],
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
@@ -435,6 +435,7 @@
                 
             /*Cria as Linahs de Divisórias de Serv*/ /*Algo assim também pode ser Aplicado pra as Larguras das Colunas*/
             :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(10),:nth-child(14),:nth-child(19),:nth-child(24)){border-right:4px solid #bb0092}
+            :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(4),:nth-child(11),:nth-child(15),:nth-child(20),:nth-child(25)){border-left :4px solid #bb0092}
 
             /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
             .bnDJ .Bdj_ABCD td:nth-child(1){width: 23px;}
@@ -1075,6 +1076,7 @@
         const SplitNome=e=>(e.match(/(\d+,\d+)\s*x\s*(\d+,\d+)/) || []).slice(1)
         const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || ""
         const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
+        const todosIguais = arr => arr.every(v => v === arr[0]);
 
         function AutoAntig(obj,col,tr,v){
             const A = obj[col]                       // Valor Antigo
@@ -1083,11 +1085,10 @@
             DarVAL($(Rx2([col]),tr),v,Cor)
         }
 
-        function ReOpt(tr,col,arr){ // tr = a Linha,  col = quem quero editar, arr = valores disponiveis  tenho q fazer isso só visual quando rodar pra todos (e quando for ao Editar, ai chama o EditaCell())
-            const td = $(Rx([col,'Slct']),tr)
+        function ReOpt(td,arr){ // arr = valores disponiveis
             const Sel  = $('select',td)
-            if(arr.length==1)         {LOG('ReOpt(tem só 1)'  ,arr,VAL(td)) ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
-            if(!arr.includes(VAL(td))){LOG('ReOpt(não Existe)',arr,VAL(td)) ; EditCell(Sel,""    ,'Auto')}     // se o valor atual não Existir dar valor "Vazio"
+            if(arr.length==1)         {/*LOG('Reopt(tem só 1)'  ,arr,VAL(td))*/ ; EditCell(Sel,arr[0],'Auto')}     // Troca pra o Unico option, se Tiver
+            if(!arr.includes(VAL(td))){/*LOG('Reopt(não Existe)',arr,VAL(td))*/ ; EditCell(Sel,""    ,'Auto')}     // se o valor atual não Existir dar valor "Vazio"
             setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
             // Evoluir isso pra Conciderar o Valor Antigo q tava lá!
         }
@@ -1100,22 +1101,20 @@
             EditCell(Sel,val,'Auto',true)
         }
 
-        function ReTmT(tr,col,val){ // Edição sem Afetar o 'SupaBase'
-            const td = $(Rx([col,'Imgs']),tr)
-            DarVAL(td,val)
-        }
-
         // MiniBiblioteca pra passar a Usar!
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
+        const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
         const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
         const FiM=(arr)=>arr.slice(0, -1)
 
         const Splii = { // Retorna Array ou String (isso aqui tbm tem q retornar o Negativo pra poder ocultar)
-             Serv_Tipo:v=>Vari(v)                                                                 // Arr
-            ,Serv_TArt:v=>Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa']              // Arr 'n precisa' == none
-            ,TArt_Dsng:v=>['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) // Arr '--'  == none
-            ,Serv_Forn:v=>Prod[v].Forn                                                            // Arr
+             Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Arr
+            ,Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Arr 'n precisa' == none
+            ,TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Arr '--'  == none
+            ,TArt_Arte:tr=>TDv(tr,'Id')
+            ,TArt_CArt:tr=>''
+            ,Serv_Forn:v=>Prod[v].Forn                                                                // Arr
 
             ,Grad_ImgU:tr=>TDv(tr,'Grad')
             ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1125,28 +1124,37 @@
             ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
         }
 
-        function AutoComp(Typ,Modo,Eu){
-            
+        function AutoComp(Typ,Modo,Eu){         // ✔️✔️_ _ _ (// chamar essa função também ao Clicar em Nova Linha)
             const IN = performance.now()
-            const trs = Modo=='All' ? TRs(Typ)                          : 
-                        Modo=='Bdj' ? $$(`.Bdj_${Typ} > tbody > tr`,Eu) :
-                        Modo=='UND' ? [_tr(Eu)]                         : ''
+            if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
+            if(Modo =='Bdj'){if(event.target.closest('.BndjTBL')){return}else{LOG('Auto Bandeija')}} // Provavelmente sumir quando essa função for chamada assimq abrir a bandeiaj, não toda vez q rolar o Click
+            
+            const trs = Modo=='All' ? TRs(Typ)                             : 
+                        Modo=='Bdj' ? $$(`.Bdj_${Typ} > tbody > tr`,Eu)    :
+                        Modo=='UND' ? $$(':scope > tbody > tr',_table(Eu)) : '' // quando era UND mesmo é assim [_tr(Eu)]
 
-            const AutoEdit=(c1,c2,tr,Typ)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
-                if(!['Serv','TArt'].includes(D_R(_td(Eu)).Col)){return} // Se não for um Primário então return
-                const td1 = $(`:scope > ${Rx2([Typ,`${c1}-Slct`])}`,tr) // não queria precisar botar o '-Slct' mas por enquanto ta nessesário
-                const td2 = $(`:scope > ${Rx2([Typ,c2])}`,tr) ; const R = D_R(td2)
-                LOG(c1,'>>',c2, VAL(td1))
+            const AutoEdit=(c1,c2,Mod,tr,Typ)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
+                if(!['Serv','TArt'].includes(D_R(_td(Eu)).Col)){LOG('n é primaria') ; return} // Se não for um Primário então return
+                const [td1,td2] = [TDd2(tr,c1),TDd(tr,c2)]
+                const Arg = {'O':VAL(td1),'T':tr}
+                const th  = $(`thead > tr > th:nth-child(${Colx(Typ,c2)})`,_table(td2))
+
+                //LOG(`${c1}_${c2}`,Mod)
+                if(Mod.includes('O')){ ReOpt(td2,Splii[`${c1}_${c2}`](Arg['O']))}
+                if(Mod.includes('T')){DarVAL(td2,Splii[`${c1}_${c2}`](Arg['T']))} // essa não afeta o Supabase!
+
+                if(Mod.includes('N')){ // aqui é onde vai Ocultar se Precisar!                   
+                    const AllServ = $$(`:scope > tr ${Rx2([`Serv-Slct`])}`,Pai(tr)).map(e=>VAL(e))
+                    if(todosIguais(AllServ)){
+                        if(Typ=='SERV' && c1=='TArt' && VAL(td1)=='n Precisa'){Add_N([td2,th])}else{Rmv_N([td2,th])} // Ocultar todos os Artes
+                        //if(Typ=='SERV' && c1=='Forn' && VAL('Prdc')!==['Corte','Print','Stock','Arte','--']){} // eu poderia adicionar etapa de produção (Primária, igual ao Tipo de Arte) ela que vai Julgar se tem grade Uber e os Demais!
+                    }else{Rmv_N([td2,th])}
+                }
                 
-                if(R.Tm=='Slct'){LOG('é um Slct ><',`${c1}_${c2}`);ReOpt(tr,c2,Splii[`${c1}_${c2}`](VAL(td1)))}
-                if(R.Tm=='Imgs'){ReTmT(tr,c2,Splii[`${c1}_${c2}`](tr))} // vai servir pra 'Arte','Gimg' 
                 // OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com conteudo de outra Tabela, de forma Dinamica!)
-                if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
+                //if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
                 // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
             }
-
-            if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
-            if(                Modo =='Bdj'){if(event.target.closest('.BndjTBL')){return}else{LOG('Auto Bandeija')}}
 
             trs.forEach(tr=>{
                 if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
@@ -1160,10 +1168,9 @@
                     // })
                 }
                 if(Typ=='SERV'){
-                    if(Modo=='All'){LOG('sair, pq n quero q rode pra todo Agora!') ; return }
-                    ['Tipo','TArt'].forEach(col=>{AutoEdit('Serv',col,tr,Typ)});       // Afetados pelo Serv
-                    ['Dsng','Arte','CArt'].forEach(col=>{AutoEdit('TArt',col,tr,Typ)}) // Afetados pelo TArt
-
+                    if(Modo=='All'){LOG('Sair, pq n quero q rode pra todo Agora!');return}
+                    ;[['Tipo','ON'],['TArt','ON']             ].forEach(col=>{AutoEdit('Serv',col[0],col[1],tr,Typ)}) // Afetados pelo Serv
+                    ;[['Dsng','ON'],['Arte','TN'],['CArt','N']].forEach(col=>{AutoEdit('TArt',col[0],col[1],tr,Typ)}) // Afetados pelo TArt
                 }
             })
             
@@ -1171,7 +1178,9 @@
             // conferir se Pagou certinho
             // select deveria ter name pra n ser afetado pelo Realtime
             const FIM = performance.now() ; LOG(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
-        }
+            // o ato de a bandeija fechar sozinha ao Excluir ou adicionar o pedido pela primeira vez, deve está relacionado com
+            // o ShowNone da Bandeija, enão com os botões!
+        }LOG('amaterazo')
     
         function AutoClntPDDS(){
             $$(`#H_CLNT > tbody > tr`).forEach(tr=>{
@@ -2799,7 +2808,7 @@
             }
             
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
-                /*Edit outro*/ if(Auto!=='Auto'){AutoComp(R.Typ,'UND',e)} // antes de editar eu msm devo Editar os dependentes nessa Linha
+                /*Edit outro*/ if(Auto!=='Auto'){LOG('Depois q editou chama');AutoComp(R.Typ,'UND',e)} // antes de editar eu msm devo Editar os dependentes nessa Linha
                 /*Edit td   */ DarVAL(td,Nval)
                 if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
@@ -2849,7 +2858,7 @@
             })
         }
 
-        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!) ⚠️ (Pgmt) ⚠️ Não Há Nessecidade de Fechar a Bndj
+        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(TypBndj.includes(col)){            // só pra col q tem bndj
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
@@ -2858,7 +2867,7 @@
                 const Def = ClrObj(BS[col])     // Cria um Default Baseado na bndj
                 const get = getClssIN(_td(Eu),'Rastr-')
                 if(['Serv','Pgmt']){
-                    Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id
+                    Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id    ⚠️⚠️ (Não pode fazer arr.lenth pois se eu remover o _1 e sobrear o _2 e eu chamar lenth, vai da 1 e vai ficar com 2 vezes repetido o _2) ⚠️⚠️
                     Def.Data = row.Data                   // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
                     Def.Clnt = row.Clnt                   // Clona Cliente
                 }
