@@ -293,7 +293,7 @@
         Form:['','Pix','Av','Card'],
         Pgmt:['','Pix','Av','Card'],
         Dstn:['','Serv1','Serv2'],
-        Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
+        Stts:['','Orçamento','Arte','Analise Art','Impressão','Grad Uber','Falta Uber','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Finalização','Ajustes','Mockup','Restauração','Tratamento','do Cliente','Ja Tinha','n Precisa'],
         Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','--'],
@@ -560,10 +560,10 @@
                 const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = TypBndj.includes(Typ) ? 'Secund' : ''
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai==''
                 
-                return valid         ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
-                        R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);AutoComp('${AA(R.Col)}','Bdj',this)">${Tratamento(v,r)}</td>` :
-                        R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
-                                     : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                return valid     ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` : // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
+                    R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);AutoComp('${AA(R.Col)}','Bdj',this)">${Tratamento(v,r)}</td>` :
+                    R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                                 : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
             }
 
             function FazerTitle(col,Find){ // fazer os Titulos para as Bandeijas
@@ -594,14 +594,14 @@
                 const Grifo     = `<i class="grifoo RD"></i>`
 
                 return `<div class="Ct"><p class="P-P T-T" ${col==='Pgmt'?`name="${SunPix(Title)}"`:`name="${Title}"`}>${Title}</p>${iconFone}${ConcatIMG}${Grifo}</div>
-                            <div class="Rltv w100">
-                                <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
-                                    <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
-                                    <div class="DivTrcCLNT none">
-                                        <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span>
-                                    </div>
+                        <div class="Rltv w100">
+                            <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>${Lista}
+                                <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
+                                <div class="DivTrcCLNT none">
+                                    <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span>
                                 </div>
-                            </div>`
+                            </div>
+                        </div>`
             }
 
             const Tm_Table=(typ,arry,Rpai='')=>{ const IN = performance.now()
@@ -721,13 +721,13 @@
                     </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Suggs
             }
 
-            const Trato=(Arr,col)=>{                 // ❌ Corrige Palavras
+            const Trato=(Arr,col)=>{                 // ❌ Corrige palavras
                 return col==='Valr' ?  FazArry(Arr).map(e=>Cm(e.replace('R$','').trim()))     // Remove os R$ (não tão nessesário caso os dados venham certinhos)
                     : col==='Pgmt' ?      Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | ')) // Pega apenas os ['Pix','Av'...]
                     : Arr
             }
 
-            function Palavras(Typ,Col,n,Brute){      // ✔️ Encontra e Modifica as Palavras q vai Exibir no Filtro
+            function Palavras(Typ,Col,n,Brute){      // ✔️ Encontra e Modifica as palavras q vai Exibir no Filtro
                 const IN = performance.now()                                
                     const Clientes = ['Id','Clnt','Cmpt','Cntt','Lcal','Loja','CtLj','Cat','Stts','Lin','Link']
                     const Servicos = ['Id','Serv','Desc','Data','Valr','Detg','Grad','OS','Uber','Cmnt']
@@ -753,7 +753,7 @@
                                     Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
 
                     const Perform = (performance.now()-IN).toFixed(2)
-                    Perform < 0.5 ? null : LOG(`⏱️🟡 Palavras:(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
+                    Perform < 0.5 ? null : LOG(`⏱️🟡 palavras:(${Typ},${Col}): ${Perform}ms`) // quando eu venho por F_Filt() não precisa do Typ
                     return Valls
             }
 
@@ -773,7 +773,7 @@
                     <span id="icnFront_${col}" class="HOV ppt Ct" onclick="TOV(this);${Ex}"             ><img src="./SVG/Icon_Lin.svg">                                      </span> 
                     <span class="HOV ppt Ct" onclick="F_Rndn(this,'${Qry_N}')"                          ><img src="./SVG/Icon_Randomizar.svg"><p class="none">Randomizar</p> </span>
                     <span id="icnFilt_${col}"  class="HOV ppt Ct" onclick="TOV(this);${Ex}"             ><img src="./SVG/Icon_Destacar.svg">  <p class="none">Destacar  </p> </span>
-                `// no icon Linha ta afunção Ativa ou Desativa Frontira de Palavras
+                `// no icon Linha ta afunção Ativa ou Desativa Frontira de palavras
 
                 const Lista = Palavras(Typ,col)
                 const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
@@ -972,14 +972,12 @@
                 SERV:['Serv','TArt','Dsng','Grad','Uber','OK','Entg'],
                 PGMT:['Data','Valr','Form'],
             }
-            const OC = { // Criterio 2 de Comparação
-                SERV:['Forn==Grad']
-            }
+
             const EtpSERV = {
-                 'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b':['Concluído'  ,'#93c47d','#27500c']
+                'Serv-TArt-Dsng-Grad-Uber-OK-Entg-b' :['Concluído'  ,'#93c47d','#27500c']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg-a':['Devendo'    ,'#ea9999','#860000']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK-Entg'  :['Entregue'   ,'#93c47d','#27500c']
-                ,'Serv-TArt-Dsng-Grad-OK-Entg'       :['Entregue'   ,'#f1c232','#856300']
+                ,'Serv-TArt-Dsng-Grad-OK-Entg'       :['Falta Uber' ,'#f1c232','#856300']
                 ,'Serv-TArt-Dsng-Grad-Uber-OK'       :['Pronto'     ,'#a4c2f4','#003692']
                 ,'Serv-TArt-Dsng-Grad-Uber'          :['Acabamento' ,'#ffe599','#856300']
                 ,'Serv-TArt-Dsng-OK-Entg'            :['Grad Uber'  ,'#f1c232','#856300'] // desnessesário pq o q eu queria era só omitir Grad Uber
@@ -990,8 +988,7 @@
                 ,'Serv-TArt'                         :['Arte'       ,'#b4a7d6','#500092'] 
                 ,'Serv'                              :['Orçamento'  ,'#b4a7d6','#500092']
             }
-            const OrdEtp = ['Orçamento','Arte','Analise Art','Impressão','Grad Uber','Acabamento','Pronto','Entregue','Devendo','Concluído']
-            
+
             function IconsEtapas(Typ,tr,Etapa,concat){
                 const objj = {'PDDS':'Stts','SERV':'SStts'}
                 stt = $(`:scope > ${Rx2([Typ,objj[Typ]])}`,tr)
@@ -1017,7 +1014,7 @@
                 if(Typ==='SERV'){trs.forEach(tr=>{R_Color(tr,Typ)})}
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
                     const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
-                    const Menor =arr=> arr?.length ? arr.reduce((m,a) => OrdEtp.indexOf(a[2][0]) < OrdEtp.indexOf(m[2][0]) ? a : m) : null
+                    const Menor =arr=> arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
                     const Exec=typ=>{
                         const s = $$(`.Bdj_${typ} > tbody > tr`,tr).map(tr2=>R_Color(tr2,typ))
                         if(typ=='SERV'){ss=s}
@@ -1038,6 +1035,7 @@
                 const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
                 const Coclui = atual.length === OB[Typ].length
                 const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
+                LOG(atual.join('-'))
                 const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
                 const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value // Receber a cor por um Input!
                 if(Typ=='SERV'){IconsEtapas(Typ,tr,Etapa,atual.join('-'))}
