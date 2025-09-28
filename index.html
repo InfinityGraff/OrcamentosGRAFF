@@ -305,7 +305,7 @@
 
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',ABCD:'ABCD',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",Abcd:"Abcd",ABCD:"Abcd",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto'}
-    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Lcro'}
+    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',L:'Lcro',Y:'Sync'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const Eximg  = ["jpg","jpeg","png","gif","webp","svg"]
 
@@ -323,14 +323,14 @@
         }
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B','' ],Cust:['B','' ],Lcro:['Y',''],Stts:['W',''],Lixo:['X','']},
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['E','A'],Uber:['E','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B','' ],Cust:['B','' ],Lcro:['L',''],Stts:['W',''],Lixo:['X','']},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G',''],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
         
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['A',''],Cont:['E',''],ImgG:['M',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
+        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['E',''],Cont:['E',''],ImgG:['M',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
        GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],  OS:['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
@@ -377,6 +377,8 @@
         const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
         function criaCol_Typ(New,Typ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                          // criaCol_Typ('Qnt','PDDS') // pra quando for Fora!
         function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // criaCol_Col('Qnt','PDDS','Serv') // pra quando for Dentro!
+        function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}
+
         const RxExt=e=>e.split(".").pop().toLowerCase() // pegar a Extensão do nome de um arquivo .webp
         
         // Epecíficas (as q Executa)
@@ -503,20 +505,19 @@
             const Tm_Loade=(Typ)=>For(8).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td style="${NoneCol(Typ,e)}" class="${Tm_R('Foot',x,Typ,'')} Rltv"></td>`).join('')
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
-            const BrevSrc={Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'}
             const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null
+            const BrevSrc={Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'}
 
             const SrcsIMG=(e,R)=>{
                 if(e.includes('blob:')){return e}
                 const Past  = BrevSrc[R.Col]||R.Col
-                const NGrad = J['SERV'].find(e=>e.Id==R.Row) // PEZADO 🤯
+                const F = J[R.Typ].find(e=>e.Id==R.Row) // PEZADO 🤯 (Futuramente o src quero deixar escrito dentro da própria imagem, ou seja no seu Objeto terá Img:"G_150")
 
-                if(NGrad==undefined && R.Col!=='ImgU' && R.Col!=='ImgG'){return} // 'ImgU' é apenas um Escape, funciona pra todas menos pra ImgU
-                const Arq   = Past=="Grad" && R.Col=='ImgG'                ? `./Base/${Past}/${e}.webp`                  :
-                              Past=="Grad" && R.Col=='ImgU'                ? `./Base/${Past}/${e}.webp`                  :
-                              Past=="Grad" && ListGRD.includes(NGrad.Grad) ? `./Base/${Past}/${NGrad.Grad}.webp`         :    // Arquivo pelo nome da Grad
-                              Past=="OS"   &&  ListOS.includes(NGrad.OS  ) ? `./Base/${Past}/${NGrad.OS}.webp`           : 
-                              Past=='Arte' && ExtnArt(R.Row)               ? `${BASE_URL}Img/${ExtnArt(R.Row)}`          : "./SVG/placeholder.svg"
+                if(F==undefined){return} // isso quer dizer q ainda não adicionei a bandeija de Serviços, por isso ela não existe e da Undefined
+                const Arq   = R.Typ=="GRAD" && R.Col=='ImgU'    ? `${BASE_URL}Img/${ExtnArt(F.Grad)}`  :
+                              R.Typ=="GRAD" && R.Col=='ImgG'    ? `${BASE_URL}Img/${ExtnArt(F.Grad.replace(/_[^_]*$/, ""))}`  :
+                              R.Col=="Gimg" && ExtnArt(F.Grad)  ? `${BASE_URL}Img/${ExtnArt(F.Grad)}`  :
+                              R.Col=='Arte' && ExtnArt(R.Row)   ? `${BASE_URL}Img/${ExtnArt(R.Row)}`   : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`
                 return Arq
             }
 
@@ -529,14 +530,17 @@
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
-                Imgs:(e,R,A)=>`${Tm_Antg(A)}${`<img class="P-P" name="False" draggable="false" src="${ExtnArt(R.Row) ? SrcsIMG(e,R) : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`}`,
+                
+                Imgs:(e,R,A)=>`${Tm_Antg(A)}${`<img class="P-P" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`}`,
+                
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
                 Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
                 Lcro:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e==""?'':`R$ ${Cm(e)}`}</p>`, // da pra fazer aqui imitando 
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
-                Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`
+                Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
+                Sync:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`
 
                 // Quando o Clnt em PDDS vem vazio ele vira Link
                 // se o Suggs tiver vazio deixar pelomenos uma mensagem avisando
@@ -1035,7 +1039,6 @@
                 const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
                 const Coclui = atual.length === OB[Typ].length
                 const [Atv1,Atv2] = [true,true] //[$(`#${Typ}_tdCor`).checked,$(`#${Typ}_trCor`).checked]
-                LOG(atual.join('-'))
                 const Etapa  = EtpSERV[atual.join('-')] ?? ['Orçamento','#b4a7d6']
                 const Cor = Typ=='SERV' ? hexToRGB2(Etapa[1]) : hexToRGB2('#93c47d')  // $(`#${Typ}_Color`).value // Receber a cor por um Input!
                 if(Typ=='SERV'){IconsEtapas(Typ,tr,Etapa,atual.join('-'))}
@@ -1106,13 +1109,36 @@
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
         const FiM=(arr)=>arr.slice(0, -1)
 
+        const distribuirFrete = (arr,VUbr) => {
+            const total = arr.reduce((s,v)=>s+v,0)
+            return arr.map(v=>({
+                valorProduto: v, // valor original do produto
+                freteProduto: +(v / total * VUbr).toFixed(2), // parte do frete proporcional
+                totalProduto: +(v + v / total * VUbr).toFixed(2) // valor + frete
+            }));
+        };
+
+
         const Splii = { // Retorna Array ou String (isso aqui tbm tem q retornar o Negativo pra poder ocultar)
              Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Arr
             ,Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Arr 'n precisa' == none
             ,TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Arr '--'  == none
             ,TArt_Arte:tr=>TDv(tr,'Id')
             ,TArt_CArt:tr=>''
-            ,Serv_Forn:v=>Prod[v].Forn                                                                // Arr
+            ,Serv_Forn:v=>Prod[v].Forn                                                                            // Arr
+            
+            // pra essas 2, devo percorrer quantas vezes sua Grad ocorre, e cria um array só com os Valroes
+            // os valores de 'Valr' da tabela "SERV" quanto ter esse Array, chamo a Função distribuirFrete(arr,VUbr)
+            // preciso facilitar essa função, pq quando eu roar o All, vai passar por todos, e não pode ta fazendo isso demais...
+            // nesse caso seria bom fazer um array Inicial, pra Juntar tudo! global, assim q a tabela carregar
+            // eu Chamo a função ListaUber, ela percorre todo Mundo, e criando o Seguinte!
+            // ListUber = {
+            // 'B_254_1':{Qnt:4,Sun:87} // quantidade de vezes q ela apareceu, e a soma do Valor, de toda a Lista
+            // }
+            // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição!
+            
+            ,Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return  `R$ ${Cm(Num(F.Valr) / Num(F.Cont))}`}else{return ''}}
+            ,Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return F.VUbr}else{return ''}}
 
             ,Grad_ImgU:tr=>TDv(tr,'Grad')
             ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1145,7 +1171,7 @@
                     const AllServ = $$(`:scope > tr ${Rx2([`Serv-Slct`])}`,Pai(tr)).map(e=>VAL(e))
                     if(todosIguais(AllServ)){
                         if(Typ=='SERV' && c1=='TArt' && VAL(td1)=='n Precisa'){Add_N([td2,th])}else{Rmv_N([td2,th])} // Ocultar todos os Artes
-                        //if(Typ=='SERV' && c1=='Forn' && VAL('Prdc')!==['Corte','Print','Stock','Arte','--']){} // eu poderia adicionar etapa de produção (Primária, igual ao Tipo de Arte) ela que vai Julgar se tem grade Uber e os Demais!
+                        if(Typ=='SERV' && c1=='Grad' && VAL(td1)=='--'       ){Add_N([td2,th])}else{Rmv_N([td2,th])} // 
                     }else{Rmv_N([td2,th])}
                 }
                 
@@ -1157,6 +1183,7 @@
             trs.forEach(tr=>{
                 if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
                     if(Modo=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
+                    return
                     [['Grad','ImgU'],['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr'],['Grad','ImgG']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
 
                     // ['Forn'].forEach(col=>{
@@ -1167,8 +1194,9 @@
                 }
                 if(Typ=='SERV'){
                     if(Modo=='All'){LOG('Sair, pq n quero q rode pra todo Agora!');return}
-                    ;[['Tipo','ON'],['TArt','ON']             ].forEach(col=>{AutoEdit('Serv',col[0],col[1],tr,Typ)}) // Afetados pelo Serv
-                    ;[['Dsng','ON'],['Arte','TN'],['CArt','N']].forEach(col=>{AutoEdit('TArt',col[0],col[1],tr,Typ)}) // Afetados pelo TArt
+                    ;[['Tipo','ON'],['TArt','ON']             ].forEach(c=>{AutoEdit('Serv',c[0],c[1],tr,Typ)}) // Afetados pelo Serv
+                    ;[['Dsng','ON'],['Arte','TN'],['CArt','N']].forEach(c=>{AutoEdit('TArt',c[0],c[1],tr,Typ)}) // Afetados pelo TArt
+                    ;[['OS'  ,'TN'],['Uber','TN']             ].forEach(c=>{AutoEdit('Grad',c[0],c[1],tr,Typ)}) // Afetados pelo Grad
                 }
             })
             
@@ -1378,7 +1406,7 @@
             }
 
             function AbrirImg(Nome,img,X){
-                if(X=='Place'){return}
+                // if(X=='Place'){return} // isso deve só acontecer se for Placeholder de vdd, depois analizar pra ver q ter errinho lá em cima
                 MdalShow('#FormIMG')
                 const W = img.naturalWidth>img.naturalHeight
                 const Stg =`<div class="MdalIMG ${W?'Cl':'Ct'}">
@@ -2963,7 +2991,7 @@
             if(ObjKey(J).includes(Typ)){
                 if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                      if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
-                else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
+                else if(Typ=='GRAD'){LOAD(Typ);/*LOAD('OOSS');LOAD('UBER')*/     } // tem 3 Tabelas na #PagGRAD
                 else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
                 PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
             }
@@ -2992,8 +3020,12 @@
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                criaCol_Col('Oimg','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+
+                exclCol_Col('Abcd','PDDS','Serv')
+                exclCol_Col('CuUb','PDDS','Serv')
+                exclCol_Col('CuOS','PDDS','Serv')
+                exclCol_Col('Oimg','PDDS','Serv')
 
                 J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
                 J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)

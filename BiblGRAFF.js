@@ -103,6 +103,7 @@ function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
     const val = ['Edit','Fixo','Sugg','Auto','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
+            : R.Tm==='Sync' ? $('.P-P',td).textContent.trim() // mas vai ser Diferente!
             : R.Tm==='Ssvg' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
