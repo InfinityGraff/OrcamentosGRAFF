@@ -31,10 +31,12 @@
 
 <script> // Base de Dados
     const USER = {
-        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png',cgo:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png' ,cgo:'DSgn', body:['Lite','Body1','CSS1'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png',cgo:'Atnd', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
-        'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'      ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan MacLovin',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby Massia'   ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'DSgn', body:['Lite','Body1','CSS1'], Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol'         ,Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk'         ,Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""},
+        'Login'                                                 :{Nome:'Login'         ,Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Fone:""             ,Emal:""                       ,Lcal:""}
+        
     }
     const Cgo    = { // Cargo
         Admn: {nav:['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
@@ -2625,7 +2627,7 @@
             function LoadPerfil(){
                 $("#PerfilUser").innerHTML = `
                     <div class="profile Ct w100">
-                        <img class="Hov" src="${U.Foto}">
+                        <img class="Hov" src="${U.Foto}" onclick="RfreshPerfil()">
                         <div class="info">
                             <h2>${U.Nome}</h2><a>${U.cgo}</a>
                             <div class="Start2"><p>${U.Fone}</p><p>${U.Emal}</p><p>${U.Lcal}</p></div>
@@ -2636,16 +2638,15 @@
 
                     <div class="task-list box Hov w80"><p>Lista de Tarefas</p>
                         <div id="tarefas"></div>
-                        <a href="#">+ Adicionar Tarefa</a>
                     </div>
 
-                    <div class="st-mais w100 Ct gap">
+                    <div class="st-mais w100 Ct gap none">
                         <div class="box Hov"><p>Total de Clientes </p><a>${'45'}</a></div>
                         <div class="box Hov"><p>Status Pendente   </p><a>${'155'}</a></div>
                         <div class="box Hov"><p>Outra coisa       </p><a>${'4545'}</a></div>
                     </div>
 
-                    <div class="box w80">
+                    <div class="box w80 none">
                     <p>Meus Rascunhos</p>
                     <table class="TBLAA w100">
                         <thead><tr><th>Altura</th><th>Largura</th><th>Quantidade</th></tr></thead>
@@ -2653,21 +2654,15 @@
                     </table>
                     </div>
                 `
+            }
 
-                const tarefass=[
-                    {chk:false , texto:"Validar Compra com Cliente"},
-                    {chk:false , texto:"Comprar Placa de PS"},
-                    {chk:false , texto:"Enviar produtos"},
-                    {chk:false , texto:"Elaborar pop up"},
-                    {chk:false , texto:"Realizar Tiragem de Banners para Açaí Tutti Frutti" }
-                ]
-
-                tarefass.forEach(t=>{
-                    $("#tarefas").appendChild(Object.assign(NewTag("div"),{
-                        className: "task-item" + (t.chk?"":"pendente"),
-                        innerHTML: `<input type="checkbox" disabled ${t.chk?"checked":""}> ${t.texto}`
-                    }))
-                })
+            function RfreshPerfil(){
+                $('#tarefas').innerHTML = J['SERV'].map(e=>{
+                                            const DSNG = e.Dsng == 'Euryk' ? `<a>Arte:    </a><a>${e.Id}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
+                                            const CBMT = e.Cbmt == 'Euryk' ? `<a>Produção:</a><a>${e.Id}</a><a>${e.VCbt}</a>` : ''
+                                            return DSNG == '' && CBMT == '' ? '' : `<div class="Ct"><input type="checkbox" ${true?"checked":""}>
+                                                    <div class="Ct">${DSNG}${CBMT}</div>
+                                            </div>`}).join('')
             }
             </script>
         </div>
@@ -3013,15 +3008,15 @@
             }while(data.length===lim)
             
             if(Typ=='PDDS'){
-                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
+                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e))) // depois Aplicar isso a todas, pra
                 criaCol_Col('Qnt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Lag' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Alt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
+                criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-
                 exclCol_Col('Abcd','PDDS','Serv')
                 exclCol_Col('CuUb','PDDS','Serv')
                 exclCol_Col('CuOS','PDDS','Serv')
