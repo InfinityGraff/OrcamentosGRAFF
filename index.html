@@ -269,17 +269,21 @@
 
     const ValForn = {
         Grafit:{
-            'Adesivo'  :[{val: 20.00, data:"2025-01-01"}],
-            'Perfurado':[{val: 35.00, data:"2025-01-01"}],
-            'Banner'   :[{val: 22.00, data:"2025-01-01"}],
-            'Faixa'    :[{val: 22.00, data:"2025-01-01"}],
-            'L.ilhos'  :[{val: 22.50, data:"2025-01-01"}]
+            'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
+            'Transparente':[{val: 25.00, data:"2025-01-01"}],
+            'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
+            'Perfurado'   :[{val: 35.00, data:"2025-01-01"}],
+            'Banner'      :[{val: 22.00, data:"2025-01-01"}],
+            'Faixa'       :[{val: 22.00, data:"2025-01-01"}],
+            'L.ilhos'     :[{val: 22.50, data:"2025-01-01"}]
         },BPrint:{
-            'Adesivo'  :[{val: 20.00, data:"2025-01-01"}],
-            'Perfurado':[{val: 33.00, data:"2025-01-01"}],
-            'Banner'   :[{val: 24.00, data:"2025-02-01"}],
-            'Faixa'    :[{val: 24.00, data:"2025-01-15"}],
-            'L.ilhos'  :[{val: 24.00, data:"2025-02-05"}]
+            'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
+            'Transparente':[{val: 25.00, data:"2025-01-01"}],
+            'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
+            'Perfurado'   :[{val: 33.00, data:"2025-01-01"}],
+            'Banner'      :[{val: 24.00, data:"2025-02-01"}],
+            'Faixa'       :[{val: 24.00, data:"2025-01-15"}],
+            'L.ilhos'     :[{val: 24.00, data:"2025-02-05"}]
         },'Inová':{
             'Camisa'   :[{val: 25.00, data:"2025-02-05"}],
         },Bureal:{
@@ -332,7 +336,7 @@
         FINC:{Valr:['F',''],Cust:['F',''],Lcro:['F','' ]},
         
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
-        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['E',''],Cont:['E',''],ImgG:['M',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
+        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Data:['D','' ],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['E',''],Cont:['E',''],ImgG:['M',''],OS:['E',''],Oimg:['E',''],Uber:['E',''],VUbr:['E','']},                                              
        GRAD2:{Id:['F','I'],Data:['D','A'],Emal:['E',''],Forn:['S','A'],Grad:['M','A'],  OS:['E',''],Cont:['E','A'],Abcd:['B',''],Stts:['E',''],Lixo:['X','']},
         ABCD:{Id:['E','I'],Nome:['E','' ],Desc:['E',''],QntS:['E','A'],Valr:['V','A'],Uber:['E',''],VUbr:['V','A'],Link:['E',''],AStts:['E','A'],Lixo:['X','']},
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
@@ -555,6 +559,11 @@
                     // fica ruim pra clicar na célula quando n tem Nada
                     // Mover-se nas células com as Setas
                     // Mostrar a Soma do valor na Barra de Config
+
+                    // Opção de mais de 1 Designer
+
+                // select deveria ter name pra n ser afetado pelo Realtime
+                // o ato de a bandeija fechar sozinha ao Excluir ou adicionar o pedido pela primeira vez, deve está relacionado com o ShowNone da Bandeija, e não com os botões!
             }
 
             const Tm_Bndj=(arr,Typ,RPai)=>`<table class="Bdj_${Typ} ${arr[1][0]==""?'none':''}">
@@ -712,7 +721,7 @@
                 return arr.map((e,x)=>e=='Lixo'?`<th style="${NoneCol(Typ,e)}"><p>${''}</p></th>`:
                     `<th style="${NoneCol(Typ,e)}" class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Load_ThFilt(this,'${Typ}','${e}')">
                             <p class="ppt" name="${e}">${dbCol[e]}</p>
-                            <i onclick="Orden(this,'${x}','p')">▼</i>
+                            <i onclick="Orden(this,event,'${x}','p')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
 
@@ -904,7 +913,7 @@
                 // Adicionar Botão de Todo Período (oq seria Remover todos os Filtros)
             }
 
-            function Orden(e,x,Cntd=null,order=null){// ✔️ se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
+            function Orden(e,ev,x,Cntd=null,order=null){// ✔️ se tiver 'Cntd' é conteudo, é por que o texto a ser coletado esta dentro de alguma tag especifica dentro do td, se não tiver ta no próprio td
                 function TogSeta(e,asc){
                     AllI(_table(e)).forEach(i=>{DTV(i);i.textContent='▼'})
                     const atual = SibQSl(e,'i') ; ATV(atual) ; atual.textContent = asc?'▼':'▲'
@@ -917,7 +926,7 @@
                 const caracteres = true
 
                 const Ordn = [...tbody.rows].sort((a,b)=>{
-                    if(caracteres){
+                    if(Ctrl(ev)){ // se tiver com Cntrl Selecionado faz o Filtro por Caracteres
                         const lenA = (VAL(Get(a)) || '').length
                         const lenB = (VAL(Get(b)) || '').length
                         return asc ? lenA - lenB : lenB - lenA
@@ -943,9 +952,7 @@
                 Ordn.forEach(r=>tbody.appendChild(r))
                 TogSeta(e,asc)
 
-                // Opção de Ordenar pelo q tem mais caractére (textos maiores em cima textos menores em baixo)
                 // orden n pega em Selcts e parece q tbm n ta pegando Numero!
-                // Opção de mais de 1 Designer   
             }
 
             function IMGENS(){ // função q filtra linhas se existir imagem (e também opção de fazer o inverso!)
@@ -1080,8 +1087,14 @@
         const extrairNomeSigla = e => (e.match(/-\s*([^\s]+\([^)]+\))/) || [])[1] || ""
         const LocIten=(Serv,Tipo)=>Prod[Serv]?.Variantes[Tipo]?.Grad || ""
         const todosIguais = arr => arr.every(v => v === arr[0]);
+        // MiniBiblioteca pra passar a Usar!
+        const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
+        const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
+        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
+        const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
+        const FiM=(arr)=>arr.slice(0, -1)
 
-        function AutoAntig(obj,col,tr,v){
+        function AutoAntig(obj,col,tr,v){ // (Como Chamar!) AutoAntig(obj,'Forn',tr,'NovoValor') // const obj = J[Typ][tr_X(tr)]
             const A = obj[col]                       // Valor Antigo
             const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
             if(A=="" && v==""){return}
@@ -1104,13 +1117,6 @@
             EditCell(Sel,val,'Auto',true)
         }
 
-        // MiniBiblioteca pra passar a Usar!
-        const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
-        const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
-        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
-        const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
-        const FiM=(arr)=>arr.slice(0, -1)
-
         const distribuirFrete = (arr,VUbr) => {
             const total = arr.reduce((s,v)=>s+v,0)
             return arr.map(v=>({
@@ -1120,94 +1126,69 @@
             }));
         };
 
-
         const Splii = { // Retorna Array ou String (isso aqui tbm tem q retornar o Negativo pra poder ocultar)
-             Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Arr
-            ,Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Arr 'n precisa' == none
-            ,TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Arr '--'  == none
-            ,TArt_Arte:tr=>TDv(tr,'Id')
-            ,TArt_CArt:tr=>''
-            ,Serv_Forn:v=>Prod[v].Forn                                                                            // Arr
-            
-            // pra essas 2, devo percorrer quantas vezes sua Grad ocorre, e cria um array só com os Valroes
-            // os valores de 'Valr' da tabela "SERV" quanto ter esse Array, chamo a Função distribuirFrete(arr,VUbr)
-            // preciso facilitar essa função, pq quando eu roar o All, vai passar por todos, e não pode ta fazendo isso demais...
-            // nesse caso seria bom fazer um array Inicial, pra Juntar tudo! global, assim q a tabela carregar
-            // eu Chamo a função ListaUber, ela percorre todo Mundo, e criando o Seguinte!
-            // ListUber = {
-            // 'B_254_1':{Qnt:4,Sun:87} // quantidade de vezes q ela apareceu, e a soma do Valor, de toda a Lista
-            // }
-            // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição!
-            
-            ,Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return  `R$ ${Cm(Num(F.Valr) / Num(F.Cont))}`}else{return ''}}
-            ,Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return F.VUbr}else{return ''}}
+             S_Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Arr
+            ,S_Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Arr 'n precisa' == none
+            ,S_TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Arr '--'  == none
+            ,S_TArt_Arte:tr=>TDv(tr,'Id')
+            ,S_TArt_CArt:tr=>''
+            ,S_Serv_Forn:v=>Prod[v].Forn                                                                            // Arr
 
-            ,Grad_ImgU:tr=>TDv(tr,'Grad')
-            ,Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
-            ,Grad_Forn:v=>[Dbbrev[v[0]]]                                        // Arr
-            ,Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                // Arr
-            ,SrvF_Valr:tr=>`${RS(Num(TDv(tr,'Qnt')) * Num(TDv(tr,'Lag')) * Num(TDv(tr,'Alt')) * ValForn[TDv(tr,'Forn')][TDv(tr,'SrvF')][0].val)}`   // Stg
-            ,G_Data:e=>YMD(`${e.Emal.match(/(\d{2})(\d{2})$/)?.slice(1).join('/')||""}/${LocAno(e.Emal)}`)           
+                ,S_Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return  `R$ ${Cm(Num(F.Valr) / Num(F.Cont))}`}else{return ''}}
+                ,S_Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return F.VUbr}else{return ''}}
+                // Fazer um array Global, assim q a tabela carregar Percore todos os Pedidos e Cria
+                // ListUber = {'B_254_1':{Qnt:4,Sun:87}} // quantidade de vezes q ela apareceu, e a soma do Valor, de toda a Lista
+                // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição! chamo a Função distribuirFrete(arr,VUbr)
+                // outra coisa é q: OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com mais informações da outra Tabela, de forma Dinamica!)
+
+            //-----------------------------------------------------------------------------------------------------------
+            ,G_Grad_ImgU:tr=>TDv(tr,'Grad')
+            ,G_Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
+            ,G_Grad_Forn:v=>[Dbbrev[v[0]]]                                          // Arr
+            ,G_Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                  // Arr
+            ,G_SrvF_Valr:tr=>`${RS(Num(TDv(tr,'Qnt')) * Num(TDv(tr,'Lag')) * Num(TDv(tr,'Alt')) * ValForn[TDv(tr,'Forn')][TDv(tr,'SrvF')][0].val)}`   // Stg
         }
 
         function AutoComp(Typ,Modo,Eu){         // ✔️✔️_ _ _ (// chamar essa função também ao Clicar em Nova Linha)
             const IN = performance.now()
             if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
             if(Modo =='Bdj'){if(event.target.closest('.BndjTBL')){return}else{LOG('Auto Bandeija')}} // Provavelmente sumir quando essa função for chamada assimq abrir a bandeiaj, não toda vez q rolar o Click
-            
+            if(Modo=='All'){LOG('Sair, pq n quero q rode pra todo Agora!');return}
+            if(Typ=='SERV' && !['Serv','TArt'].includes(D_R(_td(Eu)).Col)){LOG('n é primaria') ; return} // Se não for um Primário então return
+
             const trs = Modo=='All' ? TRs(Typ)                             : 
                         Modo=='Bdj' ? $$(`.Bdj_${Typ} > tbody > tr`,Eu)    :
                         Modo=='UND' ? $$(':scope > tbody > tr',_table(Eu)) : '' // quando era UND mesmo é assim [_tr(Eu)]
 
-            const AutoEdit=(c1,c2,Mod,tr,Typ)=>{ // c1 é a Coluna que Controla // c2 é a q vai ser Controlada
-                if(!['Serv','TArt'].includes(D_R(_td(Eu)).Col)){LOG('n é primaria') ; return} // Se não for um Primário então return
+            const AutoEdit=(c1,c2,Mod,tr,Pre)=>{ // c1 Controla // c2 Controlada
                 const [td1,td2] = [TDd2(tr,c1),TDd(tr,c2)]
                 const Arg = {'O':VAL(td1),'T':tr}
                 const th  = $(`thead > tr > th:nth-child(${Colx(Typ,c2)})`,_table(td2))
 
-                //LOG(`${c1}_${c2}`,Mod)
-                if(Mod.includes('O')){ ReOpt(td2,Splii[`${c1}_${c2}`](Arg['O']))}
-                if(Mod.includes('T')){DarVAL(td2,Splii[`${c1}_${c2}`](Arg['T']))} // essa não afeta o Supabase!
-
-                if(Mod.includes('N')){ // aqui é onde vai Ocultar se Precisar!                   
+                if(Mod.includes('O')){ ReOpt(td2,Splii[`${Pre}_${c1}_${c2}`](Arg['O']))}
+                if(Mod.includes('T')){DarVAL(td2,Splii[`${Pre}_${c1}_${c2}`](Arg['T']))} // essa não afeta o Supabase!
+                if(Mod.includes('N')){                                                   // aqui é onde vai Ocultar se Precisar!                   
                     const AllServ = $$(`:scope > tr ${Rx2([`Serv-Slct`])}`,Pai(tr)).map(e=>VAL(e))
                     if(todosIguais(AllServ)){
                         if(Typ=='SERV' && c1=='TArt' && VAL(td1)=='n Precisa'){Add_N([td2,th])}else{Rmv_N([td2,th])} // Ocultar todos os Artes
                         if(Typ=='SERV' && c1=='Grad' && VAL(td1)=='--'       ){Add_N([td2,th])}else{Rmv_N([td2,th])} // 
                     }else{Rmv_N([td2,th])}
                 }
-                
-                // OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com conteudo de outra Tabela, de forma Dinamica!)
-                //if(R.Tm=='Auto'){ReAut(tr,c2,Splii[`${c1}_${c2}`](tr))} // Opção de tbm Editar apenas no DOM
-                // por enquanto ainda não ta acontecendo Edição Unica pq o tempo todo a bandeija pensa q ta sendo clicada
             }
 
             trs.forEach(tr=>{
                 if(Typ=='GRAD'){ // a cada edição todos dentro do tr que tem autoComp serão atualizados!
-                    if(Modo=='All'){LOG('Rodando GRAD pra Todos')}else{LOG('Rodando Individual')}
-                    return
-                    [['Grad','ImgU'],['Grad','Forn'],['Forn','SrvF'],['SrvF','Valr'],['Grad','ImgG']].forEach(c=>{AutoEdit(c[0],c[1],tr)})
-
-                    // ['Forn'].forEach(col=>{
-                    //     const obj = J[Typ][tr_X(tr)]
-                    //     const newval = Splii[`${Typ[0]}_${col}`](obj)
-                    //     AutoAntig(obj,col,tr,newval)
-                    // })
+                    [['ImgU','T'],['Forn','O'],['ImgG','T']].forEach(c=>{AutoEdit('Grad',c[0],c[1],tr,'G')})
+                    [['SrvF','O']                          ].forEach(c=>{AutoEdit('Forn',c[0],c[1],tr,'G')})
+                    [['Valr','T']                          ].forEach(c=>{AutoEdit('SrvF',c[0],c[1],tr,'G')}) // pra dar o valor
                 }
                 if(Typ=='SERV'){
-                    if(Modo=='All'){LOG('Sair, pq n quero q rode pra todo Agora!');return}
-                    ;[['Tipo','ON'],['TArt','ON']             ].forEach(c=>{AutoEdit('Serv',c[0],c[1],tr,Typ)}) // Afetados pelo Serv
-                    ;[['Dsng','ON'],['Arte','TN'],['CArt','N']].forEach(c=>{AutoEdit('TArt',c[0],c[1],tr,Typ)}) // Afetados pelo TArt
-                    ;[['OS'  ,'TN'],['Uber','TN']             ].forEach(c=>{AutoEdit('Grad',c[0],c[1],tr,Typ)}) // Afetados pelo Grad
+                    ;[['Tipo','ON'],['TArt','ON']             ].forEach(c=>{AutoEdit('Serv',c[0],c[1],tr,'S')}) // Afetados pelo Serv
+                    ;[['Dsng','ON'],['Arte','TN'],['CArt','N']].forEach(c=>{AutoEdit('TArt',c[0],c[1],tr,'S')}) // Afetados pelo TArt
+                    ;[['OS'  ,'TN'],['Uber','TN']             ].forEach(c=>{AutoEdit('Grad',c[0],c[1],tr,'S')}) // Afetados pelo Grad
                 }
             })
-            
-            // Já fazer o Calculo baseado na medida
-            // conferir se Pagou certinho
-            // select deveria ter name pra n ser afetado pelo Realtime
             const FIM = performance.now() ; LOG(`⏱️ Autocompletation(): ${(FIM-IN).toFixed(2)}ms`)
-            // o ato de a bandeija fechar sozinha ao Excluir ou adicionar o pedido pela primeira vez, deve está relacionado com
-            // o ShowNone da Bandeija, enão com os botões!
         }LOG('amaterazo')
     
         function AutoClntPDDS(){
@@ -1972,7 +1953,7 @@
                     })
                 }
                 
-                function Read_Ipt_Lin(inpt,obj){   // Atualiza Inputs Baseado no CntrlV Unico
+                function Read_Ipt_Lin(inpt,obj){   // Atualiza Inputs Baseado no ctrlV Unico
                     const {Nome,Tamn,Qnt} = SplitAvanc(obj)
                     const RowAtual = $('#Lista-001').rows[IdxDe(Avo(inpt))+1]
                     $('.qnt',RowAtual).value = Qnt
@@ -3008,16 +2989,16 @@
             }while(data.length===lim)
             
             if(Typ=='PDDS'){
-                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e))) // depois Aplicar isso a todas, pra
+                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e))) // depois Aplicar isso a todas, pra não precisar mais passar por isso!
                 criaCol_Col('Qnt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Lag' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Alt' ,'PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('TArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('Cbmt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('VCbt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
                 criaCol_Col('CArt','PDDS','Serv') // Adicionar Coluna Qnt dentro de 'Serv' q n tem por Padrão!
-                exclCol_Col('Abcd','PDDS','Serv')
+
+                exclCol_Col('Abcd','PDDS','Serv') // se eu não criar um Serv tiver [] então isso vai dar erro!
                 exclCol_Col('CuUb','PDDS','Serv')
                 exclCol_Col('CuOS','PDDS','Serv')
                 exclCol_Col('Oimg','PDDS','Serv')
