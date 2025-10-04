@@ -1,18 +1,11 @@
-const ValidEmail=["@gmail.com","@yahoo.com","@yahoo.co.uk","@outlook.com","@hotmail.com","@live.com","@icloud.com","@me.com","@aol.com","@protonmail.com","@zoho.com","@mail.com","@gmx.com","@yandex.com"]
+const ValidEmail  = ["@gmail.com","@yahoo.com","@yahoo.co.uk","@outlook.com","@hotmail.com","@live.com","@icloud.com","@me.com","@aol.com","@protonmail.com","@zoho.com","@mail.com","@gmx.com","@yandex.com"]
 const StockjVinil = ["#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#A52A2A","#800080","#000000","#FFFFFF","#808080"]
+const Eximg       = ["jpg","jpeg","png","gif","webp","svg"]
 
 const CopyPresset = {
     Pix:`
   Chave: 81987265401
   Nome: Alan Ferreira da Silva`
-}
-
-const UsEr={
-  '34$r4-34&-7eV79@7K':['(Baby)','Baby Massia','Img/Perfil_Baby.png'],
-  '31$r1-31&-4eV49@4K':['(Alan)','Allan MacLovin','Img/Perfil_Allan.png'],
-  '32$r2-32&-6eV69@6K':['(Lisa)','Lisa Caramelo','Img/Perfil_Lisa.png'],
-  '36$r6-36&-9eV99@9K':['(Segu)','Segunda Hippie','Img/Perfil_Segunda.png'],
-  'Login'             :[''      ,'Login'         ,'./Img/LogOff.png']
 }
 
 const TM = {
@@ -23,8 +16,6 @@ const TM = {
 const Mnsg  = {PreTbl:(Typ)=>`A Tabela ${Typ} já estava Carregada...`}
 
 const SVGEtapas = {
-
-
 
     'Orçamento'  :`<svg name="Orçamento"   class="EtpSVG P-P" viewBox="0 0 397.77 408.68">
         <path class="fil0" d="M99.19 84.48c0,-3 0.91,-3.91 3.91,-3.91l151.17 0 0 37.78c0,20.7 44.31,2.44 44.31,14.33l0 192.82c0,3 -0.91,3.91 -3.91,3.91l-191.56 0c-4.99,0 -2.7,-0.77 -3.3,-3.01 -1.57,-5.9 0.69,-42.64 0.71,-50.41 0.01,-9.1 -1.27,-13.05 -1.37,-20.79l0.05 -170.72zm36.49 192.82c0,5.35 5.23,11.73 11.73,11.73l67.76 0c20.75,0 21.09,-24.75 -1.3,-24.75l-65.16 0c-6.67,0 -13.03,6.85 -13.03,13.03zm0 -58.63c0,6.1 6.4,11.73 13.03,11.73l97.74 0c24.88,0 21.86,-24.75 5.21,-24.75l-104.25 0c-7.21,0 -11.73,5.87 -11.73,13.03zm-1.3 -61.23c0,5.35 5.23,11.73 11.73,11.73l102.95 0c21.42,0 20.78,-24.75 -1.3,-24.75l-100.34 0c-6.67,0 -13.03,6.85 -13.03,13.03zm-58.64 -82.08l0 256.66c0,6.68 2.36,9.47 5.14,13.1 1.81,2.37 6.89,7.75 10.49,7.75l213.72 0c8.79,0 16.94,-11.43 16.94,-20.84l0 -218.88c0,-7 -7.37,-11.94 -11.4,-15.96 -5.42,-5.42 -37.97,-41.36 -43.33,-41.36l-172.02 0c-7.85,0 -19.55,11.69 -19.55,19.54z"/>

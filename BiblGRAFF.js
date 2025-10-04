@@ -672,3 +672,14 @@ let alvo,dx,dy
 document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop});
 document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
 document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
+
+// Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
+function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
+function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
+function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
+
+
+function MS(IN){const ms = (performance.now()-IN) ; if(ms<0.5) ; if(ms<1000){return ms.toFixed(2)+'ms'} ; return (ms/1000).toFixed(2)+'s'}
+const MSRX = stg => Number(stg.replace('ms','').trim())
+
+const ERR = (...stg) => console.error(...stg)
