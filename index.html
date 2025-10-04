@@ -76,6 +76,7 @@
     let todoTitle  = {Serv:[],Cust:[],Soma:[]}
     const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
     let   ListIMG  = []
+    let  ListFrete = {}
     
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
@@ -590,16 +591,16 @@
                         </div>`
             }
 
-            const Tm_Table=(typ,arry,Rpai='')=>{
+            const Tm_Table=(Typ,arry,Rpai='')=>{
                 const IN = performance.now()
                 const Retorno = arry.reverse().map((e,X)=>{ // Reverso deve ser Opcional
                     const oID = Num(`${e.Id}`.split('_')[0]) // talvez isso deva virar biblioteca depois!
-                    if(['PDDS','SERV','PGMT'].includes(typ) && oID < U.Limt.INN || oID > U.Limt.OUT){return} // limitar as linhas a ser Exibida!
+                    if(['PDDS','SERV','PGMT'].includes(Typ) && oID < U.Limt.INN || oID > U.Limt.OUT){return} // limitar as linhas a ser Exibida!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as Concluidas
-                    return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(typ)).map((v,x)=>Tm_Td(v,e,x,typ,Rpai)).join('')}</tr>`
+                    return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>`
                 }).join('')
-                LOG(`⏱️🔴 Tm_Table(${typ}): ${MS(IN)}`)
+                LOG(`⏱️🔴 Tm_Table(${Typ}): ${MS(IN)}`)
                 return Retorno
             }
 
@@ -608,7 +609,7 @@
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
                         Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP,J[TYP]))
-                        /*isso tudo Junto é pra ta num Rfresh Geral*/ Rfresh_Foot(TYP) ; AutoClntPDDS() ; Re_colrAll('PDDS','All') ; AutoComp(TYP,'All') ; Re_Lucro('PDDS','All')
+                        RFresh(TYP)
                         Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
                         Add_N($(`#SKLT_${TYP}`)) // Ocultar o Esqueleto
                 },0)}
@@ -621,6 +622,7 @@
                     PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
                 }
             }
+    
         </script>
     </div>
 
@@ -1014,7 +1016,9 @@
                     if(ss.length==0){return}
                     R_Cor(tr,opc(ss),Menor(ss)[1])
                     IconsEtapas(Typ,tr,Menor(ss)[2])
-            })}}
+                })}
+                LOG(`🔄 Re_colrAll(${Typ},'All')`)
+            }
 
             function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
                 const tipo   = $('#PDDSETATA').value
@@ -1099,16 +1103,15 @@
             ,S_TArt_Arte:tr=>TDv(tr,'Id')
             ,S_TArt_CArt:tr=>''
 
-                ,S_Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return  `R$ ${Cm(Num(F.Valr) / Num(F.Cont))}`}else{return ''}}
-                ,S_Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; if(F){return F.VUbr}else{return ''}}
-                // Fazer um array Global, assim q a tabela carregar Percore todos os Pedidos e Cria
-                // ListUber = {'B_254_1':{Qnt:4,Sun:87}} // quantidade de vezes q ela apareceu, e a soma do Valor, de toda a Lista
-                // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição! chamo a Função distribuirFrete(arr,VUbr)
-                // outra coisa é q: OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com mais informações da outra Tabela, de forma Dinamica!)
-                ,S_Grad_Gimg:tr=>TDv(tr,'Grad')
-                // ,S_Serv_Forn:v=>Prod[v].Forn  // ver se seria o caso disso aqui pra quando não tiver Grad!
-                ,S_Grad_Forn:v=>[Dbbrev[v[0]]]    
+            ,S_Grad_Gimg:tr=>TDv(tr,'Grad')
+            ,S_Grad_Forn:v=>[Dbbrev[v[0]]]    
+            ,S_Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; const L = ListFrete[TDv(tr,'Grad')] ; return F ? RS(Num(F.Valr)/Num(F.Cont)) : ''}
+            ,S_Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; const L = ListFrete[TDv(tr,'Grad')] ; return F ? F.VUbr : ''}
 
+            // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição! chamo a Função distribuirFrete(arr,VUbr)
+            // outra coisa é q: OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com mais informações da outra Tabela, de forma Dinamica!)
+            // ,S_Serv_Forn:v=>Prod[v].Forn  // ver se seria o caso disso aqui pra quando não tiver Grad!
+            
             //-----------------------------------------------------------------------------------------------------------
             ,G_Grad_ImgU:tr=>TDv(tr,'Grad')
             ,G_Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1117,11 +1120,14 @@
             ,G_SrvF_Valr:tr=>`${RS(Num(TDv(tr,'Qnt')) * Num(TDv(tr,'Lag')) * Num(TDv(tr,'Alt')) * ValForn[TDv(tr,'Forn')][TDv(tr,'SrvF')][0].val)}`   // Stg
         }
 
+        
+
+
         function AutoComp(Typ,Modo,Eu){         // ✔️✔️_ _ _ (// chamar essa função também ao Clicar em Nova Linha)
             const IN = performance.now()
+            if(Modo=='All'){LOG('❌ Sair AutoComp(All)');return}
             if(Modo!=='All' && Modo!=='Bdj'){LOG('Edição de Unica')}
             if(Modo =='Bdj'){if(event.target.closest('.BndjTBL')){return}else{LOG('Auto Bandeija')}} // Provavelmente sumir quando essa função for chamada assimq abrir a bandeiaj, não toda vez q rolar o Click
-            if(Modo=='All'){LOG('Sair, pq n quero q rode pra todo Agora!');return}
             if(Typ=='SERV' && !['Serv','TArt','Grad'].includes(D_R(_td(Eu)).Col)){LOG('n é primaria') ; return} // Se não for um Primário então return
 
             const trs = Modo=='All' ? TRs(Typ)                             : 
@@ -1139,7 +1145,7 @@
                 if(Mod.includes('N')){// aqui é onde vai Ocultar se Precisar!     
                     const th      = $(`thead > tr > th:nth-child(${Colx(Typ,c2)})`,_table(td2))              
                     const AllServ = $$(`:scope > tr ${Rx2([`Serv-Slct`])}`,Pai(tr)).map(e=>VAL(e))
-                    if(todosIguais(AllServ)){
+                    if(todosIguais(AllServ)){ // dar o return quando não precisar fazer nada!
                         if(Typ=='SERV' && c1=='Serv' && (c2=='Cbmt' || c2=='VCbt')){if(!(Prod[VAL(td1)]?.Etpa||[]).includes('Cbmt')){Add_N([td2,th]) ; return}else{Rmv_N([td2,th]) ; return}} 
                         if(Typ=='SERV' && c1=='TArt' && VAL(td1)=='n Precisa'){Add_N([td2,th])}else{Rmv_N([td2,th])} // Ocultar todos os Artes
                         if(Typ=='SERV' && c1=='Grad' && VAL(td1)=='--'       ){Add_N([td2,th])}else{Rmv_N([td2,th])} // 
@@ -1171,9 +1177,11 @@
                 _td(Cell).onclick = _td(Cell).onclick = function(event){if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}}
                 if(PddsLink!==''){$(Rx2(['CLNT','Lixo']),tr).innerHTML = ""} // se tiver pedidos Atrelados Oculta Lixeira
             })
+            LOG(`🔄 AutoClntPDDS()`)
         }
     
         function Re_Lucro(Typ,All){ // não lembro como usa, tem q estudar denovo!
+            LOG('🔄 Re_Lucro()')
             const trs = All=='All' ? TRs(Typ) : [All]
             if(Typ==='PDDS'){trs.forEach(tr=>{
                 const V = VAL($(`${Rx2(['Valr','PDDS'])}`,tr))
@@ -1189,6 +1197,25 @@
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _   (LIMPAR, Peformace)
+
+        function RFresh(Typ){
+            AutoClntPDDS()
+            if(Typ=='PDDS'){Re_Frete()}
+            AutoComp(Typ,'All')
+            Re_Lucro(Typ,'All')
+            Re_colrAll(Typ,'All')
+            Rfresh_Foot(Typ)
+        }
+
+        function Re_Frete(){ // Faz a Lista de Fretes
+            J['SERV'].forEach(({Grad,Valr})=>{
+                if (!Grad || Grad === "" || Grad === "--") return
+                ListFrete[Grad] ??= { Qnt: 0, Sum: 0 }
+                ListFrete[Grad].Qnt++
+                ListFrete[Grad].Sum += Number(Valr)
+            })
+            LOG('🔄 Re_Frete(PDDS)')
+        }
         
         function Load_ThFilt(Eu,Typ,Col){ // Acho q serve pra evitar q carregue novamente // Da um jeito de Remover daqui e Fundir dentro da Propria função
             if(BS[Typ][Col][1]==true){return} ; BS[Typ][Col][1]=true // ; LOG(BS[Typ])
@@ -1205,36 +1232,30 @@
             return Tm_PixAv(ArrPix,ArrAv)
         }
 
-        function Rfresh_Foot(typ){  // Deixei ASYNC // TFOOT é meio Fraco, (melhorar pra ele ficar um pouco mais Leve e mais Dinâmico)
-            if(typ=='CLNT'||typ=='MPAG'||typ=='UBER'||typ=='OOSS'||typ=='GRAD'){return} // sair por q ainda n tem tfoot
-            setTimeout(() => {
+        function Rfresh_Foot(Typ){  // tfoot fica ASYNC
+            if(Typ=='PDDS'||Typ=='SERV'||Typ=='PGMT'){setTimeout(()=>{ // Tavelas Disponiveis com Tfoot
                 let IN = performance.now()
-                const IIN = performance.now()
                 // Tentar usar esses Obj em Filter também pra carregar apenas 1 Vez
-                    const IDclass = (p)=>{ const tr = $(`tbody > tr`,_td(p)) ; if(tr){return tr_ID(tr)}}
-                    const objClnt = Colls(typ,'Clnt',true).map(p=>{const ID=IDclass(p) ; return {nome:Inn(p),Id:ID}})
+                    const IDclass     = (p)=>{ const tr = $(`tbody > tr`,_td(p)) ; if(tr){return tr_ID(tr)}}
+                    const objClnt     = Colls(Typ,'Clnt',true).map(p=>{const ID=IDclass(p) ; return {nome:Inn(p),Id:ID}})
                     const NovoOBJClnt = objClnt.reduce((acc,e)=>{acc[e.Id] = e.nome ; return acc},{})
-                    const objClntID = objClnt.map(e=>e.Id)
+                    const objClntID   = objClnt.map(e=>e.Id)
 
-                    const objServ = typ=="PDDS" ?
-                          Colls(typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv-Slct']),f).map(t=>$('select',t).value)) // da pra melhorar posso uar VAL()
-                        : Colls(typ,'Serv',true).map(e=>VAL(e))
+                    const objServ = Typ=="PDDS" ?
+                          Colls(Typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv-Slct']),f).map(t=>$('select',t).value)) // da pra melhorar posso uar VAL()
+                        : Colls(Typ,'Serv',true).map(e=>VAL(e))
 
-                //LOG(`⏱️ Rfresh_Foots:(OBJ): ${MS(IN)}`) ; IN = performance.now() // manter em quanto Melhora
-
-                IN = performance.now()
                 // corrigir as condições para quando não existe deternimado foot no Typ ('ORC' não te nenhum) ('SERV' não tem 'Cust')
                 // ai o Plano é o seguinte, fazer um objeto com os q tem e percorrer cada Tfoot da Tabela, se tiver faz a soma, se n tiver retorna "--"
-                $(Rx2([typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objClnt.length}         </div>`
-                $(Rx2([typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k} - ${NovoOBJClnt[k]}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
-                $(Rx2([typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k}: ${v}</a>`                    ).join('')}</span><div class="BjConf Stky2 w100 Ct">${        objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
-                Array.of($(Rx2([typ,'Foot','Valr']))).forEach(e=>{ /*LOG('1',e)*/ ; const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
-                Array.of($(Rx2([typ,'Foot','Pgmt']))).forEach(e=>{ /*LOG('2',e)*/ ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
-                Array.of($(Rx2([typ,'Foot','Cust']))).forEach(e=>{ /*LOG('3',e)*/ ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
+                $(Rx2([Typ,'Foot','Id'  ])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objClnt.length}         </div>`
+                $(Rx2([Typ,'Foot','Clnt'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Uniq(objClntID).length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k} - ${NovoOBJClnt[k]}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${Uniq(objClntID).length} Clientes</div></div>` // o Sort é só pra reordenar
+                $(Rx2([Typ,'Foot','Serv'])).innerHTML = `<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${        objServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k}: ${v}</a>`                    ).join('')}</span><div class="BjConf Stky2 w100 Ct">${        objServ.length} Clientes</div></div>` // o Sort é só pra reordenar
+                Array.of($(Rx2([Typ,'Foot','Valr']))).forEach(e=>{ /*LOG('1',e)*/ ; const R=D_R(e) ; e.innerHTML = `<div>Total: R$ ${Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}</div><div id="Sommma">Soma: 00,00</div>`})
+                Array.of($(Rx2([Typ,'Foot','Pgmt']))).forEach(e=>{ /*LOG('2',e)*/ ; const R=D_R(e) ; e.innerHTML = `${              SOMAPgmt(Colls(R.Typ,R.Col,true))}`})
+                Array.of($(Rx2([Typ,'Foot','Cust']))).forEach(e=>{ /*LOG('3',e)*/ ; const R=D_R(e) ; e.innerHTML = `Custo: R$ ${     Cm(SOMA(Colls(R.Typ,R.Col,true),s=>Num(Inn(s))))}`})
 
-                //LOG(`⏱️ Rfresh_Foots:(ATRIBUI): ${MS(IN)}`) // manter em quanto Melhora
-                LOG(`⏱️ Rfresh_Foots:(FINAL):   ${MS(IIN)}`)
-            },0)
+                LOG(`🔄 Rfresh_Foots:(FINAL):   ${MS(IN)}`)
+            },0)}
         }
 
     </script>
