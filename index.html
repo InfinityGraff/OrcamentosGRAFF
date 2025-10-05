@@ -73,7 +73,7 @@
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     const Secund   = {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'}
     const ALL      = {CLNT:[]}
-    let todoTitle  = {Serv:[],Cust:[],Soma:[]}
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[]}
     const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
     let   ListIMG  = []
     let  ListFrete = {}
@@ -326,11 +326,11 @@
     const AllList= ObjKey(O)
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto'}
-    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',L:'Lcro',Y:'Sync'}
+    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',T:'Grds',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Sync'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['O',''],Pgmt:['B','' ],Cust:['B','' ],Lcro:['L',''],Stts:['W',''],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['A',''],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A',''],Stts:['W',''],Lixo:['X','']},
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']},
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G',''],Lixo:['X','' ]},
         CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
@@ -510,7 +510,8 @@
 
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-                Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`,
+                Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${Num3(e)}">${e}</p>`,
+                Sync:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${Num3(e)}">${e}</p>`,
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
@@ -520,12 +521,11 @@
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}${`<img class="P-P" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`}`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Grds:(e,R,A)=>`${e}`,
-                Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),'Valr') ;todoTitle['Soma'].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">R$ ${Cm(soma)}</p>`},
-                Lcro:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e==""?'':`R$ ${Cm(e)}`}</p>`, // da pra fazer aqui imitando 
+                //Soma:(e,R,A)=>{const FiltID=id=>J['PDDS'].find(f=>f.Id==id)?.Serv??null ; const soma = SOMA_Obj2(FiltID(R.Row),SUMM[R.Col]) ; todoTitle[`Sum_${R.Col}`].push(soma) ; return `<p class="P-P Ct" onclick="CtrlSoma(this)" name="${soma}">${RS(soma)}</p>`},
+                //Lcro:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e==""?'':`R$ ${Cm(e)}`}</p>`, // da pra fazer aqui imitando 
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-                Sync:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`
             }
 
             // Sugg e Link talvez sejam a mesma coisa a difereça é a opções de "Apenas Troca" ou de "Adição"
@@ -534,7 +534,7 @@
             // RG:[User,PC,Data,Hora]
             // fica ruim pra clicar na célula quando n tem Nada
             // Mover-se nas células com as Setas
-            // Mostrar a Soma do valor na Barra de Config
+            // Mostrar a soma do valor na Barra de Config
             // Opção de mais de 1 Designer
             // select deveria ter name pra n ser afetado pelo Realtime
             // o ato de a bandeija fechar sozinha ao Excluir ou adicionar o pedido pela primeira vez, deve está relacionado com o ShowNone da Bandeija, e não com os botões!
@@ -736,7 +736,7 @@
                                     Col=='Clnt' ? ALL['CLNT'] :
                                     Typ=="PDDS" && ['Cust'].includes(Col) ? Uniq(todoTitle[Col]) :
                                     Typ=="PDDS" && Col==="Serv"                         ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col==='Valr'                         ? Uniq(todoTitle['Soma'].map(e=>Cm(e))) :
+                                    Typ=="PDDS" && Col==='Valr'                         ? Uniq(todoTitle[`Sum_${Col}`].map(e=>Cm(e))) :
                                     AllList.includes(Col) ? O[Col] :
                                     // o Obigetivo central da Função é Evitar isso!
                                     Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
@@ -1022,7 +1022,7 @@
 
             function R_Color(tr,Typ){ // Muda a cor apenas de 1 linha tr
                 const tipo   = $('#PDDSETATA').value
-                const Arr    = $$(':scope > td',tr).map(td=>VAL(td)||'')  // Array Baseado no DOM
+                const Arr    = $$(':scope > td',tr).map(td=>VAL(td)??'')  // Array Baseado no DOM
                 const newobj = zipObj(ObjKey(BS[Typ]),Arr)
                 const atual  = OB[Typ].filter(k=>NoVazi(newobj[k]))
                 const opacy  = Number(MinMax(atual.length,OB[Typ].length).toFixed(2))
@@ -1087,31 +1087,16 @@
             setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
         }
 
-        const distribuirFrete = (arr,VUbr) => {
-            const total = arr.reduce((s,v)=>s+v,0)
-            return arr.map(v=>({
-                valorProduto: v, // valor original do produto
-                freteProduto: +(v / total * VUbr).toFixed(2), // parte do frete proporcional
-                totalProduto: +(v + v / total * VUbr).toFixed(2) // valor + frete
-            }));
-        };
-
         const Splii = { // Retorna Array ou String (isso aqui tbm tem q retornar o Negativo pra poder ocultar)
              S_Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Options
             ,S_Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Options
             ,S_TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Options
             ,S_TArt_Arte:tr=>TDv(tr,'Id')
             ,S_TArt_CArt:tr=>''
-
             ,S_Grad_Gimg:tr=>TDv(tr,'Grad')
             ,S_Grad_Forn:v=>[Dbbrev[v[0]]]    
-            ,S_Grad_OS  :tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; const L = ListFrete[TDv(tr,'Grad')] ; return F ? RS(Num(F.Valr)/Num(F.Cont)) : ''}
-            ,S_Grad_Uber:tr=>{const F = J['GRAD'].find(e=>e.Grad==TDv(tr,'Grad')) ; const L = ListFrete[TDv(tr,'Grad')] ; return F ? F.VUbr : ''}
-
-            // após isso! eu só preciso ir no Objeto ListUber['B_254_1'].Sun  quando quiser pegar o Total pra fazer a distribuição! chamo a Função distribuirFrete(arr,VUbr)
-            // outra coisa é q: OS e Uber será chamado de Tm.Sync (q abre a bandeijinha com mais informações da outra Tabela, de forma Dinamica!)
-            // ,S_Serv_Forn:v=>Prod[v].Forn  // ver se seria o caso disso aqui pra quando não tiver Grad!
-            
+            ,S_Grad_OS  :tr=>{const G = TDv(tr,'Grad') ; if(G=='--'){return '--'} ;const F = J['GRAD'].find(e=>e.Grad==G) ; const L = ListFrete[G] ; return F && L ? RS(Num(F.Valr) * (TDv(tr,'Valr') / L.Sum)) : ''} // Pega uma Porcentagem do Valor do Uber
+            ,S_Grad_Uber:tr=>{const G = TDv(tr,'Grad') ; if(G=='--'){return '--'} ;const F = J['GRAD'].find(e=>e.Grad==G) ; const L = ListFrete[G] ; return F && L ? RS(Num(F.VUbr) * (TDv(tr,'Valr') / L.Sum)) : ''} // Pega uma Porcentagem do Valor do Uber
             //-----------------------------------------------------------------------------------------------------------
             ,G_Grad_ImgU:tr=>TDv(tr,'Grad')
             ,G_Grad_ImgG:tr=>TDv(tr,'Grad').replace(/_\d*$/,"")
@@ -1119,9 +1104,6 @@
             ,G_Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                  // Arr
             ,G_SrvF_Valr:tr=>`${RS(Num(TDv(tr,'Qnt')) * Num(TDv(tr,'Lag')) * Num(TDv(tr,'Alt')) * ValForn[TDv(tr,'Forn')][TDv(tr,'SrvF')][0].val)}`   // Stg
         }
-
-        
-
 
         function AutoComp(Typ,Modo,Eu){         // ✔️✔️_ _ _ (// chamar essa função também ao Clicar em Nova Linha)
             const IN = performance.now()
@@ -1180,20 +1162,20 @@
             LOG(`🔄 AutoClntPDDS()`)
         }
     
-        function Re_Lucro(Typ,All){ // não lembro como usa, tem q estudar denovo!
-            LOG('🔄 Re_Lucro()')
+        function Re_Soma(Typ,All){
             const trs = All=='All' ? TRs(Typ) : [All]
             if(Typ==='PDDS'){trs.forEach(tr=>{
-                const V = VAL($(`${Rx2(['Valr','PDDS'])}`,tr))
-                const C = Num(Nm($(`${Rx2(['Cust','PDDS'])} .T-T`,tr))) // Custo Extra
-                const Serv = $(`${Rx2(['Serv','PDDS'])}`,tr)
-                const SumCust = [$$(Rx2(['CArt','SERV']),Serv),$$(Rx2(['CuOS','SERV']),Serv),$$(Rx2(['VCbt','SERV']),Serv),$$(Rx2(['CuUb','SERV']),Serv)]
-                const soma = SumCust.flat().reduce((acc, el) => acc + (+VAL(el) || 0), 0)
-                const L = $(Rx2(['Lcro']),tr)
-                if(soma!==0){DarVAL(L,V-soma)}
-            })}
+                const get=col=>     $(`:scope > ${Rx2([col,'PDDS'])}`,tr)
+                const ges=arr=>arr.map(col=>$$(`${Rx2([col,'SERV'])}`,get('Serv')))
+                const Vll=arr=>arr.flat().map(el=>Nm($('.P-P',el))??'') // isso é pra eu pegar todos os que são apenas Vazio pra poder deixar Cust Lucr Vazio tbm
+                const sum=arr=>arr.flat().reduce((acc,el)=>acc+(+VAL(el)||0),0)
+                /*Somas*/ const SumV = sum(ges(['Valr-Valr']))               ; DarVAL(get('Valr'),RS(SumV)) // tenho q usar Valr-Valr pra n dar erro se não eu pego mais do q deveria
+                          const VllC = Vll(ges(['CArt','OS','Uber','VCbt']))
+                /*Custo*/ const SumC = sum(ges(['CArt','OS','Uber','VCbt'])) ; DarVAL(get('Cust'),VllC.join('')==''?'':RS(SumC))
+                                                                               DarVAL(get('Lcro'),VllC.join('')==''?'':RS(SumV-SumC))
+            })} 
+            LOG('🔄 Re_Soma()') // só mostrar esse Log se for All
         }
-
     </script>
 
     <script> // REALTIME - ⭐⭐_ _ _   (LIMPAR, Peformace)
@@ -1202,7 +1184,7 @@
             AutoClntPDDS()
             if(Typ=='PDDS'){Re_Frete()}
             AutoComp(Typ,'All')
-            Re_Lucro(Typ,'All')
+            Re_Soma(Typ,'All')
             Re_colrAll(Typ,'All')
             Rfresh_Foot(Typ)
         }
@@ -2792,12 +2774,11 @@
                 /*Edit td   */ DarVAL(td,Nval)
                 if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
-                /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
+                /*Edit Soma*/ Re_Soma(P.Typ,tR)
                 /*Edit Cor  */ Re_colrAll(P.Typ,tR)
-                /*Edit Lucro*/ Re_Lucro(P.Typ,tR)
                 }else{
+                    /*Edit Soma*/ Re_Soma(R.Typ,_tr(td))   // edita quando é fora da Bandeija
                     /*Edit Cor  */ Re_colrAll(R.Typ,_tr(td)) // edita quando é fora da Bandeija
-                    /*Edit Lucro*/ Re_Lucro(R.Typ,_tr(td))   // edita quando é fora da Bandeija
                 }
 
             }})
@@ -2830,7 +2811,7 @@
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{  // Editar todas as Cópias
                 if(IsBdj){
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
-                /*Edit Soma */ if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
+                /*Edit Soma */ Re_Soma(P.Typ,tR) //if(P.Col=='Serv'){Inn($(Rx2(['Soma']),_tr(T_T)),Tm_Tm['Soma']('',P,''))} // se a bandeoja for um Serv Editar Total de Fora
                 /*Edit Cor  */ Re_colrAll(P.Typ,tR)
                 }
                 /*Edit td   */ _tr(td).remove() // não precisa de Recolor Individual pois a Linha n existe mais!

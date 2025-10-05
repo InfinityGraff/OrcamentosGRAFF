@@ -97,18 +97,19 @@ const BrevTitle = str => {
 
 
 
-function DarVAL(td,v,A){const R = D_R(td) ; Inn(td,Tm_Tm[R.Tm](v,R,A))}
+function DarVAL(td,v,A){const R = D_R(td) ; Inn(td,Tm_Tm[R.Tm](v,R,A))} // fazer o DarVAL não Precisar reescrever o Tm
 
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-    const val = ['Edit','Fixo','Sugg','Auto','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
-            : R.Tm==='Sync' ? $('.P-P',td).textContent.trim() // mas vai ser Diferente!
+    const val = ['Edit','Fixo','Sugg','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
             : R.Tm==='Ssvg' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
-            : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
-            : R.Tm==='Mdds' ? Num2($('.P-P',td).textContent.trim())
+                : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
+                : R.Tm==='Mdds' ? Num2($('.P-P',td).textContent.trim())
+                : R.Tm==='Auto' ? Num2($('.P-P',td).textContent.trim())
+                : R.Tm==='Sync' ? Num3($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
             : R.Tm==='Data' ? $('input' ,td).value
             : R.Tm==='Slct' ? $('select',td).value
             : R.Tm==='Inpt' ? $('input' ,td).value
@@ -131,6 +132,16 @@ const SplitAvanc=(Stg)=>{
     })
     return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
 }
+
+const Num3 = e =>
+  typeof e === 'number' ? e :
+  typeof e !== 'string' ? "" :
+  e.trim() === "--" ? 0 :
+  e.includes('R$') ? (+e.replace('R$','').replace(/\./g,'').replace(',','.').trim()||0) :
+  /^[\d.,]+$/.test(e) ? (+e.replace(/\./g,'').replace(',','.').trim()||0) :
+  e;
+
+
 
 // DEGRADE================================================================================================
 // DEGRADE================================================================================================
