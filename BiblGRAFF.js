@@ -58,7 +58,7 @@ function CrypPass(senha){
   return Par.concat(Imp).join('')
 }
 
-function ShowBndj(div){
+function ShowBndj(div,call){
     if(event.target.tagName=='IMG'){return}
     if(event.target.tagName== 'I' ){return}
     const e = $('.BNdj',div)
@@ -93,11 +93,20 @@ const BrevTitle = str => {
   } catch {
     return str; // se der erro ou NaN, retorna string original
   }
-};
+}
 
+function DarVAL(td,v,A){
+    const R = D_R(td)
+    const PP = $(':scope > div > .P-P',td)
+    if(['Edit','Fixo'  ].includes(R.Tm)){Nm(PP,v)       ; Inn(PP,v)}
+    if(['Auto','Sync'  ].includes(R.Tm)){Nm(PP,Num3(v)) ; Inn(PP,v)}
+    if(['Valr'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?RS(v):'R$ -')}
+    if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
+    if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
+    if(['Data','Sugg','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(PP,Tm_Tm[R.Tm](v,R,A))}
+}
 
-
-function DarVAL(td,v,A){const R = D_R(td) ; Inn(td,Tm_Tm[R.Tm](v,R,A))} // fazer o DarVAL não Precisar reescrever o Tm
+function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))}
 
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
