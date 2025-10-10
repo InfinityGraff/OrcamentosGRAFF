@@ -703,3 +703,9 @@ function MS(IN){const ms = (performance.now()-IN) ; if(ms<0.5) ; if(ms<1000){ret
 const MSRX = stg => Number(stg.replace('ms','').trim())
 
 const ERR = (...stg) => console.error(...stg)
+
+
+function calcSeguro(X, Y, A){const r = X * (Y / A) ; return (isFinite(r) && !isNaN(r)) ? r : 0}
+
+const Seguro=v=>(isFinite(v) && !Number.isNaN(v)) ? v : 0
+

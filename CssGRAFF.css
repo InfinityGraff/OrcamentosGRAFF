@@ -82,9 +82,9 @@
       .CSS1 .TBLAA .hMin td{height:10px}
       .CSS1 .TBLAA .hMin td select,.hMin td input{height: 17px !important}
           .CSS1 .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
-          .CSS1 .TBLAA td img{height:17px; width: auto;}
-          .CSS2 .TBLAA td img{height:17px; width: auto;}
-          .CSS3 .TBLAA td img{height:17px; width: auto;}
+          .CSS1 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+          .CSS2 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+          .CSS3 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
       
       .CSS1 .TBLAA .AutoComp    {background: #94949473}
       .CSS1 .TBLAA .AutoComp.Cor{background: #ffffff00}
