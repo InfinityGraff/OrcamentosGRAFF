@@ -143,6 +143,7 @@ const SplitAvanc=(Stg)=>{
 }
 
 const Num3 = e =>
+  e == undefined ? 0 :  
   typeof e === 'number' ? e :
   typeof e !== 'string' ? "" :
   e.trim() === "--" ? 0 :
