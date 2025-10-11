@@ -285,7 +285,7 @@
     const AllProd = [...ObjEtr(Prod).filter(([,v])=>v.Stts=="Disp"), ...ObjEtr(Prod).filter(([,v])=>v.Stts=="Offf")].map(([k])=>k) // Antes tava : ObjKey(Prod) // agora ta isso tudo pq agora ta reordenando
     const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
     const AllAll=stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg] || []]))
-    const Vari=e=>ObjKey(Prod[e].Variantes)
+    const Vari=e=>Prod[e] ? ObjKey(Prod[e].Variantes) : ''
 
     const ValForn = {
         Grafit:{
@@ -340,10 +340,9 @@
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['A',''],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A',''],Stts:['W',''],Lixo:['X','']}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Surg:['A',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G',''],Lixo:['X','' ]},
-        CUST:{Id:['F','I'],Data:['D','' ],Item:['E','' ],Valr:['V',''],Forn:['S',''],Dstn:['E','' ],Pcnt:['A','' ],Lixo:['X','']},
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''],Cntt:['E','' ],Lcal:['E','' ],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
         
-        GRAD:{Id:['F','I'],Grad:['E','' ],ImgU:['M',''],Data:['D','' ],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['A',''],Manu:['E',''],Cont:['E',''],Cnt2:['F',''],ImgG:['M',''],OS:['E',''],VlrO:['E',''],Summ:['F',''],Oimg:['M',''],Uber:['E',''],VUbr:['E','']},                                              
+        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D',''],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['A','A'],/*Manu:['E',''],*/Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['E','A'],Summ:['F','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['E','A']},
         
         UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
@@ -450,6 +449,9 @@
             /*Cria as Linahs de Divisórias de Serv*/ /*Algo assim também pode ser Aplicado pra as Larguras das Colunas*/
             :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(09),:nth-child(15),:nth-child(20),:nth-child(22),:nth-child(25)){border-right:4px solid #bb0092}
             :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(4),:nth-child(10),:nth-child(16),:nth-child(21),:nth-child(23),:nth-child(26)){border-left :4px solid #bb0092}
+
+            :is(#H_GRAD) > * > tr > :is(td,th):is(:nth-child(13),:nth-child(17)){border-right:4px solid #bb0092}
+            :is(#H_GRAD) > * > tr > :is(td,th):is(:nth-child(44),:nth-child(18)){border-left :4px solid #bb0092}
 
             /*.TBLAA p.P-P{display: inline-block; white-space: nowrap; }*/
 
@@ -633,7 +635,7 @@
                 if(ObjKey(J).includes(Typ)){
                     if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                          if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
-                    else if(Typ=='GRAD'){LOAD(Typ);/*LOAD('OOSS');LOAD('UBER')*/     } // tem 3 Tabelas na #PagGRAD
+                    else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
                     else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
                     PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
                 }
@@ -1115,32 +1117,28 @@
             setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
         }
 
-        const Splii = { // não preciso mais passar o v q antes era valor, prefiro passar a Referência da tr, e dentro eu Chamo o tr.Serv q é o V
-            // ir aos Poucos Evitando de isso aqui interagir no DOM, q fique apenas no Objeto!
-            // aos Poucos ir removendo as Mascaras dos Valores daqui, pra que sejam apenas Numeros sempre!
-             S_Serv_Tipo:v=>v ? Vari(v) : []                                                                        // Options
-            ,S_Serv_TArt:v=>v ? Prod[v].Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']              // Options
-            ,S_TArt_Dsng:v=>v ? ['do Cliente','Ja Tinha','n Precisa'].includes(v)?['--']:FiM(O['Dsng']) : O['Dsng'] // Options
-            ,S_TArt_Arte:tr=>TDv(tr,'Id')
-            ,S_TArt_CArt:tr=>''
-            ,S_Grad_Gimg:tr=>TDv(tr,'Grad')
-            ,S_Grad_Forn:v=>[Dbbrev[v[0]]]    
-                ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Variantes[j.Tipo]?.Valr).toFixed(2)}
-                ,S_OS  :j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero          
-                ,S_Uber:j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-
+        const Splii = {
+             S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // Options
+            ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // Options
+            ,S_Arte:j=>j.Id
+            ,S_CArt:j=>''
+            ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // Options
+            ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Variantes[j.Tipo]?.Valr).toFixed(2)}
+            ,S_Forn:j=>[Dbbrev[j.Grad[0]]]
+            ,S_Gimg:j=>j.Grad
+            ,S_OS  :j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            ,S_Uber:j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
             //-----------------------------------------------------------------------------------------------------------           
-                //,G_Forn:j => // São Options
-                //,G_SrvF:j => // São Options
-                ,G_Valr:j =>`${Regra(RS(Num(j.Qnt) * Num(j.Lag) * Num(j.Alt) * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)).replace('R$ NaN','')}`   // Stg
-                ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
-                ,G_Summ:j=>{if(j.OS==''){return ''} ; const V = J['GRAD'].filter(e=>e.OS==j.OS).map(e=>Num(e.Valr)) ; return RS(sum(V))}
-                ,G_ImgU:j=>j.Grad ?? ''
-                ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
-                ,G_Oimg:j=>j.OS ?? ''
-                
-            ,G_Grad_Forn:v=>[Dbbrev[v[0]]]                                          // Arr
-            ,G_Forn_SrvF:v=>ObjKey(ValForn[v]||{})                                  // Arr
+            ,G_Forn:j=>[Dbbrev[j.Grad[0]]]         // Options
+            ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{}) // Options
+            ,G_Valr:j=>Regra(RS(Num(j.Qnt) * Num(j.Lag) * Num(j.Alt) * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)).replace('R$ NaN','')
+            ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
+            ,G_Summ:j=>j.OS=='' ? '' : RS(sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>Num(e.Valr))))
+            ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
+            ,G_ImgU:j=>j.Grad ?? ''
+            ,G_Oimg:j=>j.OS   ?? ''
+
+            // aos Poucos ir removendo as Mascaras dos Valores daqui, pra que sejam apenas Numeros sempre!
         }
 
         function Re_Fret(Typ,All){  // ⭐⭐⭐_ _ Sempre é All
@@ -1160,8 +1158,6 @@
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // o segundo argumento é facil pq é sempre quando é 1 só! (mas bandeija eu já não sei, talves pego todas dentro dela, e passo no segundo argumento) até por que o recomp é bom ser feito, em todas as Linhas dentro do Serv
 
-            return
-
             if(All!=='All'){LOG('Por enquanto sair até Firmar bem') ; return}
 
             const Edit=(Pre,col,Mod,tr)=>{
@@ -1173,10 +1169,11 @@
             }
 
             if(Typ=="GRAD"){ // Por enquanto nenhum aqui precisa de SB
+                // incluir VlrO VUbr de forma Automática!
                 trs.forEach(tr=>[['Forn','O'],['Valr','V'],['Cnt2','V'],['ImgU','V'],['ImgG','V'],['Oimg','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                 trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                    ].forEach(c=>Edit('G',c[0],c[1],tr))) // SrvF depende de Forn, Summ depende de Valr
             }if(Typ=="PDDS"){ // Por enquanto nenhum aqui precisa de SB
-                trs.forEach(TR=>TR.Serv.forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],['Grad','V'],['Cbmt','N' ],['VCbt','N']              ].forEach(c=>Edit('S',c[0],c[1],tr))))
+                trs.forEach(TR=>TR.Serv.forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
                 trs.forEach(TR=>TR.Serv.forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
             }
 
