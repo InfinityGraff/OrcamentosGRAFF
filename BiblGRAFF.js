@@ -710,3 +710,19 @@ function calcSeguro(X, Y, A){const r = X * (Y / A) ; return (isFinite(r) && !isN
 
 const Seguro=v=>(isFinite(v) && !Number.isNaN(v)) ? v : 0
 
+
+const criarThumbnail = (file, pixel) =>
+  new Promise((res, rej) => {
+    const img = new Image()
+    img.onload = () => {
+      let [w, h] = [img.width, img.height]
+      if (w > h) h = Math.round((h / w) * pixel), w = pixel
+      else w = Math.round((w / h) * pixel), h = pixel
+      const canvas = Object.assign(document.createElement('canvas'), { width: w, height: h })
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h)
+      canvas.toBlob(res, file.type)
+    }
+    img.onerror = rej
+    img.src = URL.createObjectURL(file)
+  })
+
