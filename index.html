@@ -32,7 +32,7 @@
 <script> // Base de Dados
     const USER = { // Falta Sincronizar com SB
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'DSgn', body:['Lite','Body1','CSS1'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'DSgn', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
         '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""},
         'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""}
@@ -331,22 +331,22 @@
     const AllList= ObjKey(O)
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Produtos",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu'}
-    const CRYPP  = {F:'Fixo',B:'Bndj',S:'Slct',A:'Auto',C:'Chek',G:'Sugg',M:'Imgs',E:'Edit',V:'Valr',D:'Data',O:'Soma',X:'Lixo',Z:'Mdds',W:'Ssvg',Y:'Sync'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
+    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg'}
 
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B',''],Valr:['A',''],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A',''],Stts:['W',''],Lixo:['X','']}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S',''],Tipo:['S',''],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E',''],Desc:['E',''],Surg:['A',''],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V',''],Form:['S',''],Desc:['E','' ],Stts:['E','' ],Link:['E',''],Mpag:['G',''],Lixo:['X','' ]},
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E',''],Lcal:['E',''],Loja:['E',''],CtLj:['E','' ], Cat:['E',''],Stts:['E',''],Link: ['E',''],Lixo:['X','']},
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Stts:['E','' ],Link:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lixo:['X','']},
         
-        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D',''],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E',''], Lag:['E','' ], Alt:['E',''],Valr:['A','A'],/*Manu:['E',''],*/Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['E','A'],Summ:['F','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['E','A']},
+        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
+        OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         
-        UBER:{Id:['F','I'],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
-        OOSS:{Id:['F','I'],Nome:['E','' ],Link:['E',''],Desc:['E','' ],Lixo:['X','' ]},
     }
 
     // Configuração do SupaBase
@@ -499,6 +499,10 @@
             table.Tbla td[class*="Data"] a:nth-child(3){display: flex}
             table.Card td[class*="Data"] a:nth-child(2){display: flex}
             table.Card td[class*="Data"] a:nth-child(3){display: none}
+
+            .TBLAA tbody td:not([class*="-Bndj-"]) > div:not(.Sklt){width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
+            .BndjTBL tbody td                      > div:not(.Sklt){width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
+            
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
@@ -521,7 +525,8 @@
                 const F = J[R.Typ].find(e=>e.Id==R.Row) // PEZADO 🤯 (Futuramente o src quero deixar escrito dentro da própria imagem, ou seja no seu Objeto terá Img:"G_150")
 
                 if(F==undefined){return} // isso quer dizer q ainda não adicionei a bandeija de Serviços, por isso ela não existe e da Undefined
-                const Arq   = R.Typ=="GRAD"                     ? `${BASE_URL}Img/${ExtnArt(e)}`       :
+                
+                const Arq   = R.Typ=="GRAD" || R.Typ=='OOSS'    ? `${BASE_URL}Img/${ExtnArt(e)}`       :
                               R.Col=="Gimg" && ExtnArt(F.Grad)  ? `${BASE_URL}Img/${ExtnArt(F.Grad)}`  :
                               R.Col=='Arte' && ExtnArt(R.Row)   ? `${BASE_URL}Img/${ExtnArt(R.Row )}`  : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`
                 return Arq
@@ -531,11 +536,11 @@
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${Num3(e)}" onclick="CtrlSoma(this)">${e}</p>`,
-                Sync:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${Num3(e)}" onclick="CtrlSoma(this)">${e}</p>`,
+                Sync:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" onclick="CtrlSoma(this)">${e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
-                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${Tempo(YMD(e))}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${/*Tempo(YMD(e))*/''}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`${Tm_Antg(A)}<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A)=>`${Tm_Antg(A)}${`<img class="P-P" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`}`,
@@ -644,10 +649,9 @@
             function PreTratamento(Typ,Arr){
                 const IN = performance.now()
                 JJ[Typ] = arrayParaObjeto(Arr)
-                Re_Fret('PDDS','All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
+                // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
                 Re_Comp(Typ,'All')     // ✔️
                 Re_Soma(Typ,'All')     // ✔️
-                LOG(`🔄 Pre_Trat:(${Typ}) ${MS(IN)}`)
             }
         </script>
     </div>
@@ -1098,16 +1102,17 @@
         const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
         const Num4=(e)=>e==undefined ? 0 : e=='' ? '' : Num(e)
         const arrayParaObjeto = (arr) => {return arr.reduce((acc, el) => {acc[el.Id] = el;return acc;}, {});};
-        const Regra=(e)=>{if(Num(e)<10){return 'R$ 10,00'}else{return e}}
+        const Regra=e=>  e==0 ? 0 : e<10?10:e
+        const NAN=e=>isNaN(e) ? 0 : e
 
         function RFresh(Typ,All,Auto,e){
             if(Typ=='GRAD' && Auto=='Auto'){return}
-            LOG('🔄 Rfresh Geral')
-            Re_Fret(Typ,All)
-            if(Auto!=='Auto'){Re_Comp(Typ,All,e)} // ta com essa agonia toda mas vou ajeitar!
-            Re_Soma(Typ,All)
+            //Re_Fret(Typ,All)
+            if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All,e)}} // ta com essa agonia toda mas vou ajeitar!
+            if(All!=='All'){Re_Soma(Typ,All)}
             Re_Colr(Typ,All)
             Re_Foot(Typ,All)
+            LOG('🔄 Rfresh Geral')
         }
 
         function ReOpt(td,arr){ // arr = valores disponiveis
@@ -1127,22 +1132,26 @@
             ,S_Forn:j=>[Dbbrev[j.Grad[0]]]
             ,S_Gimg:j=>j.Grad
             ,S_OS  :j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            //-----------------------------------------------------------------------------------------------------------           
+            ,S_Uber:j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            //-----------------------------------------------------------------------------------------------------------
+            ,G_ImgU:j=>j.Grad ?? ''
+            ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
             ,G_Forn:j=>[Dbbrev[j.Grad[0]]]         // Options
             ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{}) // Options
-            ,G_Valr:j=>Regra(RS(Num(j.Qnt) * Num(j.Lag) * Num(j.Alt) * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)).replace('R$ NaN','')
+            ,G_Valr:j=>Regra(NAN(j.Qnt * j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val))
             ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
-            ,G_Summ:j=>j.OS=='' ? '' : RS(sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>Num(e.Valr))))
-            ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
-            ,G_ImgU:j=>j.Grad ?? ''
+            ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr))
             ,G_Oimg:j=>j.OS   ?? ''
-
-            // aos Poucos ir removendo as Mascaras dos Valores daqui, pra que sejam apenas Numeros sempre!
+            ,G_VlrO:j=>J['OOSS'].find(e=>e.OS==j.OS)?.Valr
+            ,G_VUbr:j=>(J['UBER'].find(e=>e.Uber==j.Uber)?.Valr / J['GRAD'].filter(e=>e.Uber==j.Uber).length).toFixed(2)
+            //-----------------------------------------------------------------------------------------------------------
+            ,O_Oimg:j=>j.OS ?? ''
+            ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
         }
 
         function Re_Fret(Typ,All){  // ⭐⭐⭐_ _ Sempre é All
             const IN = performance.now()
+            if(Typ!=='PDDS'){return}
             if(Typ=='PDDS'){
                 J['SERV'].forEach(({Grad,Valr})=>{
                     if (!Grad || Grad === "" || Grad === "--") return
@@ -1168,13 +1177,17 @@
                 if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
             }
 
+            if(Typ=='OOSS'){
+                trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr))) 
+            }
             if(Typ=="GRAD"){ // Por enquanto nenhum aqui precisa de SB
                 // incluir VlrO VUbr de forma Automática!
-                trs.forEach(tr=>[['Forn','O'],['Valr','V'],['Cnt2','V'],['ImgU','V'],['ImgG','V'],['Oimg','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
-                trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                    ].forEach(c=>Edit('G',c[0],c[1],tr))) // SrvF depende de Forn, Summ depende de Valr
+                trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
+                trs.forEach(tr=>[['SrvF','O'],['Summ','V']  /*SrvF-(Forn), Summ-(Valr,VlrO)*/                                           ].forEach(c=>Edit('G',c[0],c[1],tr)))
             }if(Typ=="PDDS"){ // Por enquanto nenhum aqui precisa de SB
                 trs.forEach(TR=>TR.Serv.forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
                 trs.forEach(TR=>TR.Serv.forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
+                //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
             }
 
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
@@ -1204,6 +1217,7 @@
 
         function Re_Soma(Typ,All){ // ⭐⭐⭐_ _ All faz com Const, UND faz com tr no DOM
             const IN = performance.now()
+            if(Typ!=='PDDS'){return}
             if(Typ==='PDDS'){
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
@@ -1641,7 +1655,7 @@
 
         <div id="Pag_PDDS" class="TBLAA none Cl">
             <div class="DivConf Ct Bt Stky">
-                <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
+                
                 <div onchange="Re_Colr('PDDS','All')">
                     <select name="" id="PDDSETATA">
                         <option value="temperatura">temperatura<option>
@@ -1652,14 +1666,22 @@
                     <input id="PDDS_tdCor" type="checkbox" checked>
                     <input id="PDDS_trCor" type="checkbox" checked>
                 </div>
-                <h1>Tabela de Pedidos</h1>
                 <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
-                <button onclick="IMGENS()">FiltSoIMG</button>
                 <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
                 <div id="Sommma">Soma: 00,00</div>
+                
+            </div>
+
+            <div class="Ct">
+                <button>Pedidos</button>
+                <button>Serviços</button>
+                <button>Pagamentos</button>
+            </div>
+
+            <div>
+                <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
                 <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
             </div>
-            <style>#H_PDDS > tbody > tr > td:nth-child(1){width:0%;color:#4b4b4b}</style>
             
             <table id="SKLT_PDDS" class="hMin Tbla w90">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
@@ -1719,7 +1741,7 @@
                 <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
                 <button onclick="F_Clen('MPAG')">Limpar Filtro</button>
             </div>
-            <table id="H_MPAG" class="w100 hMax">
+            <table id="H_MPAG" class="w100 hMin">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
                 <tbody></tbody>
             </table>
@@ -1738,17 +1760,17 @@
                 <button onclick="MudarFormatBndj1('GRAD')">Bndj1</button>
                 <button onclick="MudarFormatBndj2('GRAD')">Bndj2</button>
             </div>
-            <table id="H_GRAD" class="w100 hMax">
+            <table id="H_GRAD" class="w100 hMin">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
             </table>
-            <table id="H_OOSS" class="w100 hMax">
+            <table id="H_OOSS" class="w100 hMin">
                 <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
             </table>
-            <table id="H_UBER" class="w100 hMax">
+            <table id="H_UBER" class="w100 hMin">
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
                 <tbody></tbody>
                 <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
@@ -2976,8 +2998,12 @@
           LOG(`✅ SB Carregado: ${MS(INNN)}`)
         ALERT(`✅ SB Carregado: ${MS(INNN)}`)
         //Liberar uma coisa Nova
+        const INNNN = performance.now()
+        Re_Fret('PDDS','All')
+        PreTratamento('OOSS',J['OOSS'])
         PreTratamento('GRAD',J['GRAD'])
         PreTratamento('PDDS',J['PDDS'])
+        LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 
     async function Sb_DELETE(Typ,id){

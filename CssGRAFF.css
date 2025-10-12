@@ -24,9 +24,9 @@
 
     /*Button, Input e Select*/
       input,select,button,.button{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s ease-in-out}      
-      button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/  
-        .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
-        .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
+      button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/
+      .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
+      .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
       .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
       .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
@@ -57,6 +57,7 @@
       .CSS3 header{color:#ffffff;background:#c027b3}
     /*Table*/ 
       table{text-align:center;border-collapse:collapse}
+          .CSS1 .TBLAA {background: #ffffff;} /*Não sei a Necessidade! mas acho q é pra deixar o background da tabela sempre branco mesmo q esteja no Dark*/
           .CSS1.Dark .TBLAA table{background: #ffffff ; color: #000000 !important;}
           .CSS1.Lite .TBLAA table{background: #ffffff}
           .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; border-radius: 20px; overflow: hidden;box-shadow:0 5px 10px #a700a72f}
@@ -70,28 +71,29 @@
       .CSS1.Lite .TBLAA thead{background:#8b0085;color:#ffffff}
       .CSS1.Dark .TBLAA tfoot{background:#8b0085;color:#ffffff}
       .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:#ffffff}
-      .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px}
+      .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px} /*Não sei a Necessidade*/
     /*Tbody*/
       .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
       .CSS1.Dark .TBLAA select{color: #000000 !important;}
 
     /*Outros Tabela*/
+      .TBLAA td p        {height:100%; width: 100%; padding:2px 6px; text-align:center}
+      .TBLAA td img      {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+      .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
+      
+      
+
       .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
       .CSS1.Dark .TBLAA td.Foco{background:#ffffff18}     
-      .CSS1 .TBLAA td p{height:100%; padding:2px 6px; text-align:center}
-      .CSS1 .TBLAA .hMin td{height:10px}
-      .CSS1 .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-          .CSS1 .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
-          .CSS1 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
-          .CSS2 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
-          .CSS3 .TBLAA td img{max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+      .TBLAA .hMin td{height:10px}
+      .TBLAA .hMin td select,.hMin td input{height: 17px !important}
       
+      /*Depois Analisar esse AutoCom*/
       .CSS1 .TBLAA .AutoComp    {background: #94949473}
       .CSS1 .TBLAA .AutoComp.Cor{background: #ffffff00}
       .CSS3 .TBLAA .AutoComp    {background: #f08cb64f}
       .CSS3 .TBLAA .AutoComp.Cor{background: #ffffff00}
 
-      .CSS1 .TBLAA {background: #ffffff;}
 
 
 
@@ -108,7 +110,6 @@ input.Error:focus{background:red}
 input.Error:hover{background:red}
 
     /*DivConfig*/
-        .DivConf{background:#d6d6d6}
         .DivConf h1{font-size: 25px;}
             .Body1 .DivConf{height: 40px}
             .Body1 .PagPEsq{display:none}
@@ -163,7 +164,7 @@ input.Error:hover{background:red}
 
 
 
-  .Fixed{position: fixed}
+.Fixed{position: fixed}
 
 
 .n21,.n22,.n23,.n24,.n25,.n26{ display: none; }
