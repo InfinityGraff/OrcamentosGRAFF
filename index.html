@@ -387,6 +387,12 @@
         const ArrObj_OrdnCol=(Obj,Ordn)=>{const K = Object.keys(Obj[0]) ; const x = Ordn.map(col=>K.indexOf(col)) ; return [Ordn,...Obj.map(obj => x.map(i => obj[K[i]]))]}
         const NoneCol=(Typ,col)=>Cgo[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
         const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
+        const arrayParaObjeto=arr=>{return arr.reduce((acc, el) => {acc[el.Id] = el;return acc;}, {})}
+        const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
+        const Num4=e=>e==undefined ? 0 : e=='' ? '' : Num(e)
+        const NAN=e=>isNaN(e) ? 0 : e
+        const RmvLinByID=(arr,id)=>{const x = arr.findIndex(e => e.Id === id);if (x !== -1) arr.splice(x, 1)}
+
 
         // MiniBiblioteca pra passar a Usar!
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
@@ -406,6 +412,9 @@
         // conferir se essa é realmente nessesária
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)}
         //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
+
+        
+
         
 </script>
 
@@ -612,9 +621,9 @@
                 }
             }
     
-            function PreTratamento(Typ,Arr){
+            function PreTratamento(Typ,All,Arr){
                 const IN = performance.now()
-                JJ[Typ] = arrayParaObjeto(Arr)
+                if(All=='All'){JJ[Typ] = arrayParaObjeto(Arr)}
                 // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
                 Re_Comp(Typ,'All')     // ✔️
                 Re_Soma(Typ,'All')     // ✔️
@@ -650,34 +659,44 @@
                     const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'
                     const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''
                     const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)
+                    const rx=$(`.Pesq_${Typ} .Pesq-Rx.Atv`)
                     const CleaVal = Inpt.value.replace(/\[[^\]]*\]/g,' ').replace(/\s+/g,' ').trim()
-                    const regex = new RegExp(`${A_}${EscpRgx(CleaVal)}${A_}`,Aa)
+                    const regex = new RegExp(`${A_}${rx ? Inpt.value : EscpRgx(CleaVal)}${A_}`,Aa)
                         const mtch = [...Inpt.value.matchAll(/\[([^\]]*)\]/g)]
                         const COL1 = mtch[0]?.[1] || false // Primeiro valor dentro de []
                         const COL2 = mtch[1]?.[1] || false // Segundo  valor dentro de []
-                    TRs(Typ).forEach(tr=>{                                   
-                        const P_P2  = !COL2 ? $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} .P-P`,tr)                                        // Fora ou Fora e Dentro
-                                            : $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col((COL1||'').toUpperCase(),COL2):'td'} .P-P`,tr)  // Apenas Dentro da Bandeja
 
-                        const Cnct = P_P2.map(Rx=>VAL(Rx)).join('#')
-                        P_P2.forEach(Rx=>{if(Rx.tagName=='P'){Inn(Rx,Grifar(Rx.textContent,regex))}else{regex.source!==''&&regex.test(VAL(Rx))&&Inpt.value!=='' ? Add(Rx,'Psq') : Rmv(Rx,'Psq')}})  // Grifar o Texto encontrado // o else é se n for tag p, provavelmente é um Select
-                        $$(Rx2([Typ,'Bndj']),tr).forEach(e=>{                    // Cria a Bolinha
-                            const Camada1_p = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
-                            const Camada1_s = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
-                            const Camada2_p = $$(               '.BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
-                            const Camada2_s = $$(               '.BndjTBL > table > tbody > tr > td > div > .Psq'       ,e).some(E=>VAL(E)!=='')
-                            if(Camada1_p||Camada1_s){Add(e,'Grifo1')}else{Rmv(e,'Grifo1')}
-                            if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
-                        })                       
-                        if(regex.test(Cnct)){Rmv(tr,'n0')}else{Add(tr,'n0')}      // Ocultar (Aplica None)
+                TRs(Typ).forEach(tr=>{
+                    const P_P2  = !COL2 
+                        ? $$(`:scope > ${COL1?Col(Typ,COL1):'td'} ${Bj?'':'> div >'} .P-P`,tr)
+                        : $$(`:scope > ${COL1?Col(Typ,COL1):'td'} .BndjTBL ${COL2?Col((COL1||'').toUpperCase(),COL2):'td'} .P-P`,tr)
+
+                    // Mantém a mesma lógica de grifar cada elemento
+                    P_P2.forEach(Rx=>{
+                        if(Rx.tagName=='P'){Inn(Rx,Grifar(Rx.textContent,regex))}
+                        else{regex.source!=='' && regex.test(VAL(Rx)) && Inpt.value!=='' ? Add(Rx,'Psq') : Rmv(Rx,'Psq')}
                     })
-                    Re_Foot(Typ)
-                }
+
+                    $$(Rx2([Typ,'Bndj']),tr).forEach(e=>{
+                        const Camada1_p = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                        const Camada1_s = $$(':scope > div > .BndjTBL > table > tbody > tr > td > div > .Psq',e).some(E=>VAL(E)!=='')
+                        const Camada2_p = $$('.BndjTBL > table > tbody > tr > td > div > .P-P strong',e).some(E=>E.innerText!=='')
+                        const Camada2_s = $$('.BndjTBL > table > tbody > tr > td > div > .Psq',e).some(E=>VAL(E)!=='')
+                        if(Camada1_p||Camada1_s){Add(e,'Grifo1')}else{Rmv(e,'Grifo1')}
+                        if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
+                    })
+                    
+                    const linhaMatch = P_P2.some(Rx=>{const val = VAL(Rx).trim()
+                        if(CleaVal === '""'){return val === ''}
+                        else {return regex.test(val)}
+                    })
+
+                    if(linhaMatch){Rmv(tr,'n0')} else {Add(tr,'n0')}
+                })
+                Re_Foot(Typ)}
             },100)
         }
-        // Encontrar mais de 1 Correpondência na mesma Linha
-        // Aplicar Regex na Pesquisa
-        // Opção de pesquisar com Enter
+        // mais de um:'^(?=.*Fraco)(?=.*Lutar).*$'
     </script>
 
     <div>   <!--FILTROS  - ⭐⭐⭐⭐_  (só correções) -->
@@ -950,7 +969,7 @@
         </script>
     </div>
 
-    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (só UPGRADES ) -->
+    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (só UPGRADES ) (Desempenho PEZADO: ⏳) -->
         <style> /*RECOLOR - CSS*/
             .EtpSVG{height: 25px; width: 25px}
             .usadoW{border-radius: 255px ; color: #ffffff}
@@ -1071,14 +1090,17 @@
         </script>
     </div>
     
-    <script> // AUTOCOMP - ⭐⭐_ _ _   (ainda falta Muito...)
+    <script> // AUTOCOMP - ⭐⭐⭐ _ _   (ainda falta Muito...)
 
         // Vira Biblioterca
-        const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
-        const Num4=(e)=>e==undefined ? 0 : e=='' ? '' : Num(e)
-        const arrayParaObjeto = (arr) => {return arr.reduce((acc, el) => {acc[el.Id] = el;return acc;}, {});};
-        const NAN=e=>isNaN(e) ? 0 : e
-        const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
+        const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit)
+        
+        function ReOpt(td,arr){ // arr = valores disponiveis
+            const Sel  = $('select',td)
+            if(arr.length==1)         {EditCell(Sel,arr[0],'Auto')} // Troca pra o Unico option, se Tiver
+            if(!arr.includes(VAL(td))){EditCell(Sel,""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
+            setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
+        }
 
         function RFresh(Typ,All,Auto,e){
             // Adicionar as Colunas Faltando
@@ -1092,19 +1114,24 @@
             LOG('🔄 Rfresh Geral')
         }
 
-        function ReOpt(td,arr){ // arr = valores disponiveis
-            const Sel  = $('select',td)
-            if(arr.length==1)         {EditCell(Sel,arr[0],'Auto')} // Troca pra o Unico option, se Tiver
-            if(!arr.includes(VAL(td))){EditCell(Sel,""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
-            setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
+        function Re_Fret(Typ,All){  // ⭐⭐⭐⭐ _ Sempre é All
+            const IN = performance.now()
+            if(Typ!=='PDDS'){return}
+            if(Typ=='PDDS'){J['SERV'].forEach(({Grad,Valr})=>{if (!Grad || Grad === "" || Grad === "--"){return}
+                    ListFrete[Grad] ??= { Qnt: 0, Sum: 0 }
+                    ListFrete[Grad].Qnt++
+                    ListFrete[Grad].Sum += Number(Valr)
+                })
+            }
+            if(All=="All"){LOG(`🔄 Re_Fret:(${Typ}) ${MS(IN)}`)}
         }
 
         const Splii = {
-             S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // Options
-            ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // Options
+    /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []
+    /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']
             ,S_Arte:j=>j.Id
             ,S_CArt:j=>''
-            ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // Options
+    /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Variantes[j.Tipo]?.Valr).toFixed(2)}
             ,S_Forn:j=>[Dbbrev[j.Grad[0]]]
             ,S_Gimg:j=>j.Grad
@@ -1113,8 +1140,8 @@
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>j.Grad ?? ''
             ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
-            ,G_Forn:j=>[Dbbrev[j.Grad[0]]]         // Options
-            ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{}) // Options
+    /*Opt*/ ,G_Forn:j=>[Dbbrev[j.Grad[0]]]
+    /*Opt*/ ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
             ,G_Valr:j=>Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
             ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
             ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr))
@@ -1126,25 +1153,9 @@
             ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
         }
 
-        function Re_Fret(Typ,All){  // ⭐⭐⭐_ _ Sempre é All
+        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
             const IN = performance.now()
-            if(Typ!=='PDDS'){return}
-            if(Typ=='PDDS'){
-                J['SERV'].forEach(({Grad,Valr})=>{
-                    if (!Grad || Grad === "" || Grad === "--") return
-                    ListFrete[Grad] ??= { Qnt: 0, Sum: 0 }
-                    ListFrete[Grad].Qnt++
-                    ListFrete[Grad].Sum += Number(Valr)
-                })
-            }
-            if(All=="All"){LOG(`🔄 Re_Fret:(${Typ}) ${MS(IN)}`)}
-        }
-
-        function Re_Comp(Typ,All){ // chamar quando fechar e abrir a bandeija é nenhuma! (// chamar essa função também ao Clicar em Nova Linha)
-            const IN = performance.now()
-            const trs = All=='All' ? J[Typ] : [All] // o segundo argumento é facil pq é sempre quando é 1 só! (mas bandeija eu já não sei, talves pego todas dentro dela, e passo no segundo argumento) até por que o recomp é bom ser feito, em todas as Linhas dentro do Serv
-
-            if(All!=='All'){LOG('Por enquanto sair até Firmar bem') ; return}
+            const trs = All=='All' ? J[Typ] : [All] // se for Bandeija então roda pra toas Linhas, se não for bandeja Roda apenas pra aquela Linha!
 
             const Edit=(Pre,col,Mod,tr)=>{
                 const oID = All=='All' ? tr.Id : tr_ID(tr)    // Numeração do ID
@@ -1154,30 +1165,25 @@
                 if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
             }
 
+            if(All!=='All'){LOG('Edição Unica',Typ)}
+
+            // Por enquanto nenhum aqui precisa de SB
             if(Typ=='OOSS'){
-                trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr))) 
-            }
-            if(Typ=="GRAD"){ // Por enquanto nenhum aqui precisa de SB
-                // incluir VlrO VUbr de forma Automática!
+                trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr)))
+            }if(Typ=="GRAD"){
                 trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
-                trs.forEach(tr=>[['SrvF','O'],['Summ','V']  /*SrvF-(Forn), Summ-(Valr,VlrO)*/                                           ].forEach(c=>Edit('G',c[0],c[1],tr)))
-            }if(Typ=="PDDS"){ // Por enquanto nenhum aqui precisa de SB
+                trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
+            }if(Typ=="PDDS"){
                 trs.forEach(TR=>TR.Serv.forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
                 trs.forEach(TR=>TR.Serv.forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
                 //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
             }
-
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
             // se for vazio ou apenas 1, já insere na const já antes! (claro, talvez se possivel deixar uma mensagem pedindo SB)
-            // e o ato de refazer a bandeija será feito realmente pelo DOM, aqui mesmo porem, só quando for de UND
-            // Crecer essa até Absorver a debaixo // tudo aqui sem SB
-            // quero q apenas alguns Re_Comps especificos sejam capaz de alterar o SB, e vão ser Poucos!
-
             if(All=="All"){LOG(`🔄 Re_Comp:(${Typ}) ${MS(IN)}`)}
         }
 
-
-        function Re_Comp_Antigo(Typ,All,Eu){ // EXTRAIR
+        function Re_Comp_Antigo(Typ,All,Eu){ // EXTRAIR apenas os Oculta Coluna
             const Edit=(c1,c2,Mod,tr,Pre)=>{ // Critério pra Ocultar, só Disponivel no 'SERV'
                 const [td1,td2] = [TDd2(tr,c1),TDd(tr,c2)]
                 if(Mod.includes('N')){
@@ -1479,9 +1485,8 @@
                 #Div-Pesq .H_Pesq::placeholder{color: #ffffff;opacity:0.5}
                 #Lupa{top:8px; right:6px; width:17px; opacity:0.5}
                 #Lupa:hover{opacity:1}
-                .Pesq-Aa{top:8px; right:50px ; color:#ffffff} .Pesq-Aa.Atv{color:#00ff0d !important}
-                .Pesq-A_{top:8px; right:30px ; color:#ffffff} .Pesq-A_.Atv{color:#00ff0d !important}
-                .Pesq-Bj{top:8px; right:70px ; color:#ffffff} .Pesq-Bj.Atv{color:#00ff0d !important}
+                .pPesq a{color:#ffffff ; top:8px} .pPesq a.Atv{color:#00ff0d !important}
+                .Pesq-A_{right:30px}.Pesq-Aa{right:50px}.Pesq-Bj{right:70px}.Pesq-Rx{right:90px}
                 @media(max-width:500px){#Div-Pesq{width:50%}}
             </style>
             <div id="Div-Pesq" class="Rltv w100 hov"></div><!--Pesquisa-->
@@ -1492,6 +1497,7 @@
                         <a class="Abslt HOV Pesq-Aa" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Aa</a>
                         <a class="Abslt HOV Pesq-A_" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">A]</a>
                         <a class="Abslt HOV Pesq-Bj" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Bj</a>
+                        <a class="Abslt HOV Pesq-Rx" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">Rx</a>
                         <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
                     </div>`
                 }
@@ -1730,32 +1736,70 @@
 
         <div id="Pag_GRAD" class="TBLAA none Cl">
 
+            <style>
+                .Wrapper {overflow-X: hidden; width: 100%;position: relative}
+                #sliderTables {display: flex;transition: transform 0.4s ease;}
+                #sliderTables > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box;}
+
+            </style>
+
+            <script>
+                let iindex = 0
+                function slideTo(i){
+                    iindex = Math.max(0,Math.min(2,i))
+                    $('#sliderTables').style.transform = `translateX(-${iindex * 100}%)`
+                }
+            </script>
+
             <div class="DivConf Ct Bt Stky">
-                <button onclick="AddROW('GRAD','<')">Grad +</button>
-                <button onclick="AddROW('OOSS','<')">OS +</button>
-                <button onclick="AddROW('UBER','<')">Uber +</button>
+                <button onclick="slideTo(0)">Grad</button>
+                <button onclick="slideTo(1)">OS</button>
+                <button onclick="slideTo(2)">Uber</button>
+
                 <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
                 <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
                 <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
-                <button onclick="MudarFormatBndj1('GRAD')">Bndj1</button>
-                <button onclick="MudarFormatBndj2('GRAD')">Bndj2</button>
             </div>
-            <table id="H_GRAD" class="w100 hMin">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
-            </table>
-            <table id="H_OOSS" class="w100 hMin">
-                <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
-            </table>
-            <table id="H_UBER" class="w100 hMin">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
-            </table>
-            
+
+            <div class="Wrapper">
+                <div id="sliderTables">
+                    <div>
+                        <div class="Bt">
+                            <button onclick="AddROW('GRAD','<')">Grad +</button>
+                            <button>Limpar Filter</button>
+                        </div>
+                        <table id="H_GRAD" class="w80 hMin">
+                            <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
+                            <tbody></tbody>
+                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
+                        </table>
+                    </div>
+
+                    <div>
+                        <div class="Bt">
+                            <button onclick="AddROW('OOSS','<')">OS +</button>
+                            <button>Limpar Filter</button>
+                        </div>
+                        <table id="H_OOSS" class="w80 hMin">
+                            <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
+                            <tbody></tbody>
+                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
+                        </table>
+                    </div>
+
+                    <div>
+                        <div class="Bt">
+                            <button onclick="AddROW('UBER','<')">Uber +</button>
+                            <button>Limpar Filter</button>
+                        </div>
+                        <table id="H_UBER" class="w80 hMin">
+                            <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
+                            <tbody></tbody>
+                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="Pag_CLNT" class="TBLAA none Cl">
@@ -2872,18 +2916,19 @@
             }
         }
 
-        function AddROW(Typ,Ps,obj={},inpt){ // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
+        function AddROW(Typ,Ps,obj={},inpt,SB){ // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
             const Def   = ClrObj(BS[Typ])        // Cria um Default Baseado na bndj
             const Tbody = $(`#H_${Typ} > tbody`)
             Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
             ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
             const Clone = Tm_Table(Typ,[Def])
             const Arry = Typ=='PDDS' ? {Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`} :
-                         Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {}
+                         Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {Id:`${Def.Id}`}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
             /*Obj*/ J[Typ].push(Def)
-            /*Sub*/ Sb_CREATE(Typ,Arry)
-            if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)}
+            /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
+            if(SB){LOG('Linha Adicionada pelo SB')}
+            if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)} // não acho q seria o caso de usar isso!
         }
 
         function insertOrden(Typ,arr){       // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
@@ -2940,7 +2985,7 @@
         function TesteClnt(inpt){            // isso é pra Saber se o Cliente existe na Tabela de CLNT
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
                 if(Nm(inpt)){return Nm(inpt)}
-                else{AddROW('CLNT','<',{Clnt:inpt.value},inpt)} // Adiciona Nova Linha já com Novo Valor
+                else{AddROW('CLNT','<',{Clnt:inpt.value},inpt)} // Adiciona Novo Cliente
             }
         }
 
@@ -2980,24 +3025,18 @@
         //Liberar uma coisa Nova
         const INNNN = performance.now()
         Re_Fret('PDDS','All')
-        PreTratamento('OOSS',J['OOSS'])
-        PreTratamento('GRAD',J['GRAD'])
-        PreTratamento('PDDS',J['PDDS'])
+        PreTratamento('OOSS','All',J['OOSS'])
+        PreTratamento('GRAD','All',J['GRAD'])
+        PreTratamento('PDDS','All',J['PDDS'])
         LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 
     async function Sb_DELETE(Typ,id){
         const {err} = await supabase.from(Typ).delete().eq("Id",id)
-        err ? ERR("Erro ao excluir:",err) : LOG(`Linha ${id} excluída da Tabela ${Typ}!`)
+        if(err){ERR("Erro ao excluir:",err)}else{LOG(`SB_DELETE(${Typ},${id})`) ; ALERT(`SB_DELETE(${Typ},${id})`)}
     }
     
-    async function Sb_CREATE2(Typ,Array){ // esse é o antigo que não analisa antes de salvar!
-        try {const {error} = await supabase.from(Typ).insert([Array])
-            if(error){ERR('Erro ao criar:',error)}else{LOG('Linha criada')}
-        } catch (err){ERR('Erro:',err)}
-    }
-
-    async function Sb_CREATE(Typ,row){ // ⚠️⚠️⚠️⚠️⚠️⚠️⚠️ Analizar pois ainda ta dando erro!
+    async function Sb_CREATE(Typ,row){ // ⭐⭐⭐_ _ (Aparentemente ta boa)
         let baseId = Number(row.Id) || 0
         let tentativas = 0
         while (true) {
@@ -3021,22 +3060,19 @@
       else{LOG('✔️ Arquivo enviado!',nome)}
     }
 
-    function Supa_RealTime(crud,nEw,Typ,old){ // ❌ ⚠️ continuar o Crud no RealTime
+    function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
         if(crud==='UPDATE'){
             const NOVOO = NULL__([nEw])[0]
             const atual = J[Typ].find(e=>e.Id==nEw.Id)
-            //LOG(atual)
-            const Difff = Diferentes(NOVOO,atual,Typ)
-            if(Difff==null){LOG(`⚠️ RealTime() J[${Typ}] ja Tava Igual`) ; return}
-            //LOG(Difff)
-            ObjEtr(Difff).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro           
-            flatenObject(Difff,Typ).forEach(([TYP,ID,col,Vlr])=>{
-                $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{ // Atualiza na Prática cada td
-                    // Add ou Rmv Linha da Bndj  (aqui é fácil só conferir o .length do atual e do novo!)
-                    if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{
-                        return
-                       // Descobrir qual ordem está
-                    }} // dentro e fora da bandeija
+            const Limparr = j => j ? Object.keys(j).length ? Object.fromEntries(Object.entries(j).filter(([k,v])=>BS[Typ][k]?.[1]!=='A')) : null : null
+            const DiF = Limparr(Diferentes(NOVOO,atual,Typ))
+            if(!DiF || (Object.keys(DiF).length === 1 && 'Id' in DiF)){LOG(`🌐 EDIT RealTime(${Typ},${nEw.Id}) OK👍`) ; return}
+
+            /*Obj*/ ObjEtr(DiF).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro
+            /*DOM*/ flatenObject(DiF,Typ).forEach(([TYP,ID,col,Vlr])=>{
+                $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
+                    // Add ou Rmv Linha da Bndj AddRowBdj(com obj)
+                    if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{return}}
                     
                     if(td){if(VAL(td)!==Vlr){
                         if(D_R(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
@@ -3047,20 +3083,16 @@
                 })
             })
         }
-
-        else if(crud==='DELETE'){// Linha foi Exluida de Verdade
-            RmvROW($(`${Rx2([Typ,old.Id,'Lixo'])} a`),true) // Encontra o Botão pra Simular o Click, True é pra dizer q veio do RealTime
+        else if(crud==='DELETE'){
+            if(!J[Typ].some(e=>e.Id==old.Id)){LOG(`🌐 DELETE RealTime(${Typ},${old.Id}) OK👍`) ; return}
+            /*Obj*/ // RmvLinByID(J[Typ],old.Id)
+            RmvROW($(`${Rx2([Typ,old.Id,'Lixo'])} a`),true) //Simular o Click, true veio do SB 🌐
         }
-        else if(crud==='INSERT'){// Linha foi Adicionada de Verdade
-            // Abortar caso a Mudança tenha sido feita por mim mesmo
-            const novaLin = nEw
-            // dar Push na Const
-            // insertbefore() ou // AddROW(com obj) q Pra mim são a mesma coisa (mas é bom Analisar as Diferenças e Fundi-las) q quase nunca vai ter nada!
-            // caso o Insert seja em uma Bndj, então o Disparo vai ser de 'UPDATE' ai é só Chamar AddRowBdj(com obj) q quase nunca vai ter nada!
-            // Outro Usuário dar um Insert, e após isso, começa as Edições!
-            // Se a Linha Não Existir, não tenta Editar nada (Pra o caso de ela ainda n ter sigo Carregada!)
+        else if(crud==='INSERT'){
+            if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
+            AddROW(Typ,'<',NULL__([nEw]),'',true) // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
         }
-    }
+    }LOG('Movedissa')
     
     function PlayRealTime(){
         return supabase.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{

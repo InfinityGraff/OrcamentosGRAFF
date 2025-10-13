@@ -103,7 +103,7 @@ function DarVAL(td,v,A){
     if(['Valr'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?RS(v):'R$ -')}
     if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
     if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
-    if(['Data','Sugg','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(PP,Tm_Tm[R.Tm](v,R,A))}
+    if(['Data','Sugg','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
 }
 
 function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))}
