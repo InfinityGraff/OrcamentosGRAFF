@@ -99,8 +99,8 @@ function DarVAL(td,v,A){
     const R = D_R(td)
     const PP = $(':scope > div > .P-P',td)
     if(['Edit','Fixo'  ].includes(R.Tm)){Nm(PP,v)       ; Inn(PP,v)}
-    if(['Auto','Sync'  ].includes(R.Tm)){Nm(PP,Num3(v)) ; Inn(PP,v)}
-    if(['Valr'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?RS(v):'R$ -')}
+    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num3(v)) ; Inn(PP,v)}
+    if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?RS(v):'R$ -')}
     if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
     if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
     if(['Data','Sugg','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
