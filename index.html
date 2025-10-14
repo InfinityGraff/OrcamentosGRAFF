@@ -2928,7 +2928,7 @@
                     Def.Clnt = row.Clnt                   // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def)
-                /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
+                /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
                 /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
         }
@@ -2976,8 +2976,9 @@
         function LinkCLnt(Eu,val){           // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
             const R  = D_R(td)
+            const get = getClssIN(_td(Eu),'Rastr-')
             /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
-            /*DOM*/ Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`))
+            /*DOM*/ Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get))
             /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,val)
         }
   
