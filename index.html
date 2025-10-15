@@ -533,6 +533,7 @@
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
 
             const SrcsIMG=(e,R)=>{ //carregam usando seu próprio valor (Pois eu sempre Atribuo antes de chamar isso)
+                LOG('entrou aqui!')
                 if(e.includes('blob:')){return e} // quando eu Acabei de Importar! ela vem assim!
                 const Past = 'Img' // BrevSrc[R.Col]||R.Col (Depois trocar de Pasta pra pegar versão Thumb)
                 const Src  = ExtnArt(e) ; return Src ? `${BASE_URL}${Past}/${Src}` : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`
@@ -692,7 +693,7 @@
                         if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
                     })
                     
-                    const linhaMatch = P_P2.some(Rx=>{const val = VAL(Rx).trim()
+                    const linhaMatch = P_P2.some(Rx=>{const val = `${VAL(Rx)}`.trim()
                         if(CleaVal === '""'){return val === ''}
                         else {return regex.test(val)}
                     })
@@ -1741,7 +1742,7 @@
 
         </div>
 
-        <div id="Pag_GRAD" class="TBLAA none Cl">
+        <div id="Pag_GRAD" class="TBLAA none Cl"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
 
             <style>
                 .DivConf {padding: 7px;}
@@ -1837,14 +1838,6 @@
             <style>
                 #Pag_LOJA img {width: 50%;margin: 15px}
             </style>
-            <!--
-            <img src="./Fotos/001_Camisa.webp">
-            <img src="./Fotos/002_Calão.webp">
-            <img src="./Fotos/003_WindFlag.webp">
-            <img src="./Fotos/004_Cartão.webp">
-            <img src="./Fotos/005_Panfleto.webp">
-            <img src="./Fotos/005_Panfleto.webp">
-            <img src="./Fotos/006_Talão 2.webp"> -->
 
             <div id="DivListaKits"></div>
             <script>$('#DivListaKits')</script>
@@ -1872,7 +1865,7 @@
                         case 'C': while (i + 5 < comandos.length) {totalNos++; // conta só o ponto final
                             i += 6;} break;
                         case 'S':
-                        case 'Q':while (i + 3 < comandos.length) { totalNos++; i += 4; } break;
+                        case 'Q': while (i + 3 < comandos.length) { totalNos++; i += 4; } break;
                         case 'A': while (i + 6 < comandos.length) {totalNos++; i += 7; }break;
                         case 'Z': /*não conta nó*/break;
                         default:if (!isNaN(Number(cmd))) {i++;}}
@@ -2653,7 +2646,6 @@
                 .CSS3 .box   {background: #ffffff71}
                 .box p {font-size: 1.2rem; margin-bottom: 10px}
                 .box a {color: #e600ac; font-weight: bold ; font-size: 28px;}
-
                 .task-item { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
                 .task-item input[type="checkbox"] { transform: scale(1.2); }
                 .task-item.pendente::before { content: '\25CF'; color: magenta; font-size: 12px; margin-right: 6px; }
@@ -2669,13 +2661,14 @@
             function LoadPerfil(){
                 $("#PerfilUser").innerHTML = `
                     <div class="profile Ct w100">
-                        <img class="Hov" src="${U.Foto}" onclick="RfreshPerfil()">
+                        <img class="Hov" src="${U.Foto}" onclick="RfreshPerfil('${U.Nome}')">
                         <div class="info">
                             <h2>${U.Nome}</h2><a>${U.cgo}</a>
                             <div class="Start2"><p>${U.Fone}</p><p>${U.Emal}</p><p>${U.Lcal}</p></div>
                         </div>
-                        <div class="box Hov Cl"><p>TOTAL DE VENDAS  </p><a>${'28'}</a></div>
-                        <div class="box Hov Cl"><p>TOTAL DE COMISSÃO</p><a>${'R$ 58,45'}</a><button>Sacar Agora!</button></div>
+                        <div class="box Hov Cl Taranty1"><p>TOTAL DE PARTICIAÇÃO </p><a></a></div>
+                        <div class="box Hov Cl Taranty1"><p>TOTAL DE REJEITADOS  </p><a></a></div>
+                        <div class="box Hov Cl Taranty2"><p>TOTAL DE COMISSÃO    </p><a></a><button>Sacar Agora!</button></div>
                     </div>
 
                     <div class="task-list box Hov w80"><p>Lista de Tarefas</p>
@@ -2698,13 +2691,20 @@
                 `
             }
 
-            function RfreshPerfil(){
+            function RfreshPerfil(User){
+                let Partic = 0
+                let Comiss = 0
                 $('#tarefas').innerHTML = J['SERV'].map(e=>{
-                                            const DSNG = e.Dsng == 'Euryk' ? `<a>Arte:    </a><a>${e.Id}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
-                                            const CBMT = e.Cbmt == 'Euryk' ? `<a>Produção:</a><a>${e.Id}</a><a>${e.VCbt}</a>` : ''
+                                            if(e.Dsng == User){Partic+=1 ; Comiss+=e.CArt}
+                                            if(e.Cbmt == User){Partic+=1 ; Comiss+=e.VCbt}
+                                            const DSNG = e.Dsng == User ? `<a>Arte:    </a><a>${e.Cmnt}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
+                                            const CBMT = e.Cbmt == User ? `<a>Produção:</a><a>${e.Cmnt}</a><a>${e.VCbt}</a>` : ''
                                             return DSNG == '' && CBMT == '' ? '' : `<div class="Ct"><input type="checkbox" ${true?"checked":""}>
                                                     <div class="Ct">${DSNG}${CBMT}</div>
                                             </div>`}).join('')
+
+                Inn($('.Taranty1'),Partic)
+                Inn($('.Taranty2'),RS(Comiss))
             }
             </script>
         </div>
@@ -3157,6 +3157,8 @@
     // ERROS pra corrigir
     // Pesquisa em tabela de GRAD, da erro em VAL(...).trim is not a function
     // ver se consigo a Possibilidade de botar mais de um Uber!
+    // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
+    // na Soma lá em baixo dar o . quando passar de mil
 
 </script>
 </html>
