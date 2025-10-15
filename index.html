@@ -32,7 +32,7 @@
 <script> // Base de Dados
     const USER = { // Falta Sincronizar com SB
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'DSgn', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
         '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""},
         'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""}
@@ -40,6 +40,12 @@
 
     const Cgo  = { // Cargo
         Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
+                orc :[],
+                PDDS:[],
+                PGMT:[],
+                SERV:[]},
+
+        Grnt: { nav :['HOME','|','ORC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :[],
                 PDDS:[],
                 PGMT:[],
@@ -529,6 +535,7 @@
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
 
             const SrcsIMG=(e,R)=>{ //carregam usando seu próprio valor (Pois eu sempre Atribuo antes de chamar isso)
+                LOG('entrou aqui!')
                 if(e.includes('blob:')){return e} // quando eu Acabei de Importar! ela vem assim!
                 const Past = 'Img' // BrevSrc[R.Col]||R.Col (Depois trocar de Pasta pra pegar versão Thumb)
                 const Src  = ExtnArt(e) ; return Src ? `${BASE_URL}${Past}/${Src}` : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`
@@ -688,7 +695,7 @@
                         if(Camada2_p||Camada2_s){Add(e,'Grifo2')}else{Rmv(e,'Grifo2')}
                     })
                     
-                    const linhaMatch = P_P2.some(Rx=>{const val = VAL(Rx).trim()
+                    const linhaMatch = P_P2.some(Rx=>{const val = `${VAL(Rx)}`.trim()
                         if(CleaVal === '""'){return val === ''}
                         else {return regex.test(val)}
                     })
@@ -1176,8 +1183,8 @@
                 trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                 trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
             }if(Typ=="PDDS"){
-                trs.forEach(TR=>TR.Serv.forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
-                trs.forEach(TR=>TR.Serv.forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
+                trs.forEach(TR=>(Array.isArray(TR.Serv) ? TR.Serv : []).forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
+                trs.forEach(TR=>(Array.isArray(TR.Serv) ? TR.Serv : []).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
                 //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
             }
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
@@ -1220,6 +1227,7 @@
                 })
             }
             if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
+            // o valor do Uber não atualiza correto ao Recomp individual (ele vai diminuindo a cada um)
         }
 
         function Re_Foot(Typ,All){ // Async ⚠️ Ainda está só no DOM
@@ -1363,7 +1371,7 @@
             function Tog_Card(Typ){LOG('Asus')}
 
             const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()">  
-                                  <input type="checkbox" onchange="   Tog($('#H_${Typ}'),'w100')       ;SaveConfig()">` // ver pq isso n ta funcionando, pq é legal
+                                  <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');Tog($('.Confy_${Typ}'),'w100');SaveConfig()">`
 
             // virar Biblioteca
             function SelectFiles(Inpt,Call){ // serve pra garantir a compatibilidade da imagem, se corresponde ao q deve ser entrado
@@ -1736,69 +1744,79 @@
 
         </div>
 
-        <div id="Pag_GRAD" class="TBLAA none Cl">
+        <div id="Pag_GRAD" class="TBLAA none Cl"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
 
             <style>
+                .DivConf {padding: 7px;}
                 .Wrapper {overflow-X: hidden; width: 100%;position: relative}
                 #sliderTables {display: flex;transition: transform 0.4s ease;}
-                #sliderTables > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box;}
-
+                #sliderTables > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box}
+                #sliderTables > div > div{transition: width 0.4s ease-in-out}
+                .NavInter {background:#0000003f; border-radius: 20px 20px 0 0}
+                .BtnDois  {background:#543155  ; border-radius: 20px 20px 0 0; height: 30px;transition: transform 0.2s ease, background-color 0.2s ease;transform-origin: bottom; color: white; margin: 0px 2px;}
+                .BtnDois:hover{background: #bf00c5;transform: scaleY(1.13)}
+                .whrapper {border-radius: 20px;overflow: hidden;position: relative;}
             </style>
 
             <script>
-                let iindex = 0
-                function slideTo(i){
-                    iindex = Math.max(0,Math.min(2,i))
-                    $('#sliderTables').style.transform = `translateX(-${iindex * 100}%)`
-                }
+                let iindex = 0 // deixa-lo Dinamico Funcionando para todas!
+                function slideTo(i){iindex = Math.max(0,Math.min(2,i));$('#sliderTables').style.transform = `translateX(-${iindex * 100}%)`}
             </script>
 
-            <div class="DivConf Ct Bt Stky">
-                <button onclick="slideTo(0)">Grad</button>
-                <button onclick="slideTo(1)">OS</button>
-                <button onclick="slideTo(2)">Uber</button>
-
-                <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
-                <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
-                <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
+            <div class="DivConf Ct Stky w100">
+                <div class="Ct NavInter">
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(0)">GRAD</a>    
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(1)">OS  </a>
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2)">UBER</a>
+                </div>
             </div>
 
             <div class="Wrapper">
                 <div id="sliderTables">
-                    <div>
-                        <div class="Bt">
-                            <button onclick="AddROW('GRAD','<')">Grad +</button>
-                            <button>Limpar Filter</button>
+                    <div class="Cl">
+                        <div class="Confy_GRAD">
+                            <div class="Bt">
+                                <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
+                                <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_GRAD" class="hMin">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
+                            </table>
                         </div>
-                        <table id="H_GRAD" class="w80 hMin">
-                            <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
-                            <tbody></tbody>
-                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
-                        </table>
                     </div>
 
-                    <div>
-                        <div class="Bt">
-                            <button onclick="AddROW('OOSS','<')">OS +</button>
-                            <button>Limpar Filter</button>
+                    <div class="Cl">
+                        <div class="Confy_OOSS">
+                            <div class="Bt">
+                                <button onclick="AddROW('OOSS','<')">Nova Linha +</button>
+                                <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
+                                <button>Limpar</button>
+                            </div>
+
+                            <table id="H_OOSS" class="hMin">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
+                            </table>
                         </div>
-                        <table id="H_OOSS" class="w80 hMin">
-                            <thead class="Stky" style="top: 60px;z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
-                            <tbody></tbody>
-                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
-                        </table>
                     </div>
 
-                    <div>
-                        <div class="Bt">
-                            <button onclick="AddROW('UBER','<')">Uber +</button>
-                            <button>Limpar Filter</button>
+                    <div class="Cl">
+                        <div class="Confy_UBER">
+                            <div class="Bt">
+                                <button onclick="AddROW('UBER','<')">Nova Linha +</button>
+                                <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_UBER" class="hMin">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
+                            </table>
                         </div>
-                        <table id="H_UBER" class="w80 hMin">
-                            <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
-                            <tbody></tbody>
-                            <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -1822,14 +1840,6 @@
             <style>
                 #Pag_LOJA img {width: 50%;margin: 15px}
             </style>
-            <!--
-            <img src="./Fotos/001_Camisa.webp">
-            <img src="./Fotos/002_Calão.webp">
-            <img src="./Fotos/003_WindFlag.webp">
-            <img src="./Fotos/004_Cartão.webp">
-            <img src="./Fotos/005_Panfleto.webp">
-            <img src="./Fotos/005_Panfleto.webp">
-            <img src="./Fotos/006_Talão 2.webp"> -->
 
             <div id="DivListaKits"></div>
             <script>$('#DivListaKits')</script>
@@ -1857,7 +1867,7 @@
                         case 'C': while (i + 5 < comandos.length) {totalNos++; // conta só o ponto final
                             i += 6;} break;
                         case 'S':
-                        case 'Q':while (i + 3 < comandos.length) { totalNos++; i += 4; } break;
+                        case 'Q': while (i + 3 < comandos.length) { totalNos++; i += 4; } break;
                         case 'A': while (i + 6 < comandos.length) {totalNos++; i += 7; }break;
                         case 'Z': /*não conta nó*/break;
                         default:if (!isNaN(Number(cmd))) {i++;}}
@@ -2638,7 +2648,6 @@
                 .CSS3 .box   {background: #ffffff71}
                 .box p {font-size: 1.2rem; margin-bottom: 10px}
                 .box a {color: #e600ac; font-weight: bold ; font-size: 28px;}
-
                 .task-item { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
                 .task-item input[type="checkbox"] { transform: scale(1.2); }
                 .task-item.pendente::before { content: '\25CF'; color: magenta; font-size: 12px; margin-right: 6px; }
@@ -2654,13 +2663,14 @@
             function LoadPerfil(){
                 $("#PerfilUser").innerHTML = `
                     <div class="profile Ct w100">
-                        <img class="Hov" src="${U.Foto}" onclick="RfreshPerfil()">
+                        <img class="Hov" src="${U.Foto}" onclick="RfreshPerfil('${U.Nome}')">
                         <div class="info">
                             <h2>${U.Nome}</h2><a>${U.cgo}</a>
                             <div class="Start2"><p>${U.Fone}</p><p>${U.Emal}</p><p>${U.Lcal}</p></div>
                         </div>
-                        <div class="box Hov Cl"><p>TOTAL DE VENDAS  </p><a>${'28'}</a></div>
-                        <div class="box Hov Cl"><p>TOTAL DE COMISSÃO</p><a>${'R$ 58,45'}</a><button>Sacar Agora!</button></div>
+                        <div class="box Hov Cl Taranty1"><p>TOTAL DE PARTICIAÇÃO </p><a></a></div>
+                        <div class="box Hov Cl Taranty1"><p>TOTAL DE REJEITADOS  </p><a></a></div>
+                        <div class="box Hov Cl Taranty2"><p>TOTAL DE COMISSÃO    </p><a></a><button>Sacar Agora!</button></div>
                     </div>
 
                     <div class="task-list box Hov w80"><p>Lista de Tarefas</p>
@@ -2683,13 +2693,20 @@
                 `
             }
 
-            function RfreshPerfil(){
+            function RfreshPerfil(User){
+                let Partic = 0
+                let Comiss = 0
                 $('#tarefas').innerHTML = J['SERV'].map(e=>{
-                                            const DSNG = e.Dsng == 'Euryk' ? `<a>Arte:    </a><a>${e.Id}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
-                                            const CBMT = e.Cbmt == 'Euryk' ? `<a>Produção:</a><a>${e.Id}</a><a>${e.VCbt}</a>` : ''
+                                            if(e.Dsng == User){Partic+=1 ; Comiss+=e.CArt}
+                                            if(e.Cbmt == User){Partic+=1 ; Comiss+=e.VCbt}
+                                            const DSNG = e.Dsng == User ? `<a>Arte:    </a><a>${e.Cmnt}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
+                                            const CBMT = e.Cbmt == User ? `<a>Produção:</a><a>${e.Cmnt}</a><a>${e.VCbt}</a>` : ''
                                             return DSNG == '' && CBMT == '' ? '' : `<div class="Ct"><input type="checkbox" ${true?"checked":""}>
                                                     <div class="Ct">${DSNG}${CBMT}</div>
                                             </div>`}).join('')
+
+                Inn($('.Taranty1'),Partic)
+                Inn($('.Taranty2'),RS(Comiss))
             }
             </script>
         </div>
@@ -2913,7 +2930,7 @@
                     Def.Clnt = row.Clnt                   // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def)
-                /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
+                /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
                 /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
         }
@@ -2961,8 +2978,9 @@
         function LinkCLnt(Eu,val){           // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
             const R  = D_R(td)
+            const get = getClssIN(_td(Eu),'Rastr-')
             /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
-            /*DOM*/ Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`))
+            /*DOM*/ Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get))
             /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,val)
         }
   
@@ -2992,7 +3010,7 @@
         }
 
         function SaveConfig(e){
-            LOG('Salva no SB',e.id,Vll(e))
+            LOG('Salva no SB',e) //Vll(e)
         }
         // Adicionar e trocar Cliente
 </script>
@@ -3014,6 +3032,7 @@
             
             if(Typ=='PDDS'){
                 J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
+                J['PDDS'].forEach(TR=>TR.Serv = Array.isArray(TR.Serv) ? TR.Serv : [])
                 criaCol_Col('Surg','PDDS','Serv')
                 J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
                 J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)
@@ -3136,5 +3155,12 @@
     document.addEventListener('keydown',e=>{if($('.Moldura.ClickCanv.Atv')){if(e.key==='c'){$('#alignX').click()};if(e.key==='e'){$('#alignY').click()}}})
 </script>
 
-<script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡</script>
+<script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡
+    // ERROS pra corrigir
+    // Pesquisa em tabela de GRAD, da erro em VAL(...).trim is not a function
+    // ver se consigo a Possibilidade de botar mais de um Uber!
+    // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
+    // na Soma lá em baixo dar o . quando passar de mil
+
+</script>
 </html>
