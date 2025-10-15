@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Operador - Placar</title>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+</head>
+
+<style>
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Arial', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 200px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74,144,226,0.5);
+  outline: none;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #357ABD;
+  transform: scale(1.05);
+}
+</style>
+
+<body>
+  <h1>Operador</h1>
+
+  <label>Time A:</label>
+  <input id="time_a" value="Time Azul"><br>
+  <label>Gols A:</label>
+  <input type="number" id="gols_a" value="0"><br><br>
+
+  <label>Time B:</label>
+  <input id="time_b" value="Time Vermelho"><br>
+  <label>Gols B:</label>
+  <input type="number" id="gols_b" value="0"><br><br>
+
+  <label>Tempo:</label>
+  <input id="tempo" value="1º Tempo"><br><br>
+
+  <button onclick="atualizar()">Atualizar Placar</button>
+
+  <script>
+    // --- sua conexão Supabase ---
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supabase          = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+    const atualizar=async()=>{
+    const d={
+      time_a:time_a.value,
+      time_b:time_b.value,
+      gols_a:+gols_a.value,
+      gols_b:+gols_b.value,
+      tempo:tempo.value
+    };
+    const {error}=await supabase.from('placar').update(d).eq('id',1);
+  }
+
+  </script>
+</body>
+</html>
