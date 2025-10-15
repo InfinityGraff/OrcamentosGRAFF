@@ -44,7 +44,6 @@
 
     footer{margin-top:18px;color:var(--muted);font-size:13px}
 
-    /* responsive */
     @media (max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}.main{grid-template-columns:1fr}}
     @media (max-width:520px){.kpis{grid-template-columns:1fr}}
   </style>
@@ -56,7 +55,7 @@
         <h1>Dashboard — Perfil do Designer</h1>
         <div class="sub">Visão geral de desempenho e qualidade</div>
       </div>
-      <div class="sub">Exemplo interativo • Salve como <code>.html</code> e abra no navegador</div>
+      <div class="sub">Exemplo interativo • Simulação de base local</div>
     </header>
 
     <section class="grid">
@@ -131,55 +130,108 @@
           </div>
 
           <div style="margin-top:12px;text-align:center">
-            <button id="export-csv" class="small" style="padding:8px 10px;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer">Exportar CSV (exemplo)</button>
+            <button id="export-csv" class="small" style="padding:8px 10px;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer">Exportar CSV</button>
           </div>
         </aside>
       </div>
-
     </section>
 
     <footer>
-      Dica: substitua o array <code>data</code> no final do arquivo pelo seu JSON vindo do servidor. O dashboard recalcula tudo automaticamente.
+      Dados simulados localmente a partir da constante <code>FakeDB</code>. Substitua depois pelo retorno real da API.
     </footer>
   </div>
 
-  <!-- Chart.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // ----- Exemplo de dataset (substitua com seu endpoint/backend) -----
-    const data = [
-      {designer:'João',client:'Acme',category:'Logo',value:250,status:'approved',revisions:0,date:'2025-09-10'},
-      {designer:'João',client:'Beta',category:'Banner',value:120,status:'rejected',revisions:2,date:'2025-09-12'},
-      {designer:'João',client:'Acme',category:'Social',value:90,status:'approved',revisions:1,date:'2025-09-15'},
-      {designer:'João',client:'Delta',category:'Logo',value:400,status:'approved',revisions:0,date:'2025-10-01'},
-      {designer:'João',client:'Gamma',category:'Flyer',value:80,status:'rejected',revisions:3,date:'2025-10-06'},
-      {designer:'João',client:'Beta',category:'Banner',value:150,status:'approved',revisions:1,date:'2025-10-10'},
-      {designer:'João',client:'Acme',category:'Social',value:75,status:'approved',revisions:0,date:'2025-10-12'}
-    ];
+    // ----- Simulação de uma "base de dados" local -----
+    const FakeDB = {
+      designers: [
+        {
+          nome: 'João',
+          artes: [
+            {cliente:'Acme', categoria:'Logo', valor:250, status:'approved', revisoes:0, data:'2025-09-10'},
+            {cliente:'Beta', categoria:'Banner', valor:120, status:'rejected', revisoes:2, data:'2025-09-12'},
+            {cliente:'Acme', categoria:'Social', valor:90, status:'approved', revisoes:1, data:'2025-09-15'},
+            {cliente:'Delta', categoria:'Logo', valor:400, status:'approved', revisoes:0, data:'2025-10-01'},
+            {cliente:'Gamma', categoria:'Flyer', valor:80, status:'rejected', revisoes:3, data:'2025-10-06'},
+            {cliente:'Beta', categoria:'Banner', valor:150, status:'approved', revisoes:1, data:'2025-10-10'},
+            {cliente:'Acme', categoria:'Social', valor:75, status:'approved', revisoes:0, data:'2025-10-12'}
+          ]
+        },
+        {
+          nome: 'Maria',
+          artes: [
+            {cliente:'Zeta', categoria:'Flyer', valor:200, status:'approved', revisoes:1, data:'2025-09-20'},
+            {cliente:'Omega', categoria:'Logo', valor:350, status:'approved', revisoes:0, data:'2025-09-25'},
+            {cliente:'Alpha', categoria:'Banner', valor:180, status:'rejected', revisoes:2, data:'2025-10-05'}
+          ]
+        }
+      ]
+    };
 
-    // Config: quem é o designer na página — normalmente vem da rota/profile
+    // ----- Função de leitura simulada -----
+    function getDesignerData(nome){
+      const designer = FakeDB.designers.find(d => d.nome === nome);
+      if(!designer) return [];
+      return designer.artes.map(a => ({...a, designer: designer.nome}));
+    }
+
+    // ----- Configuração do dashboard -----
     const designerName = 'João';
+    const data = getDesignerData(designerName);
 
-    // Utility helpers
     const fmt = v => typeof v === 'number' ? v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) : v;
+
+    const el = id => document.getElementById(id);
     const parseDate = s => new Date(s);
 
     function computeMetrics(records){
-      const recs = records.filter(r => r.designer === designerName);
-      const interactions = recs.length;
-      const totalValue = recs.reduce((s,r)=>s + (Number(r.value)||0),0);
-      const approved = recs.filter(r => r.status === 'approved').length;
-      const rejected = recs.filter(r => r.status === 'rejected').length;
-      const avgRevisions = recs.length ? (recs.reduce((s,r)=>s + (r.revisions||0),0)/recs.length) : 0;
-      const approvalRate = recs.length ? Math.round((approved/recs.length)*100) : 0;
-      const last = recs.length ? recs.reduce((a,b)=> parseDate(a.date) > parseDate(b.date) ? a : b).date : '—';
-      return {recs,interactions,totalValue,approved,rejected,avgRevisions,approvalRate,last};
+      const interactions = records.length;
+      const totalValue = records.reduce((s,r)=>s + (Number(r.valor)||0),0);
+      const approved = records.filter(r => r.status === 'approved').length;
+      const rejected = records.filter(r => r.status === 'rejected').length;
+      const avgRevisions = records.length ? (records.reduce((s,r)=>s + (r.revisoes||0),0)/records.length) : 0;
+      const approvalRate = records.length ? Math.round((approved/records.length)*100) : 0;
+      const last = records.length ? records.reduce((a,b)=> parseDate(a.data) > parseDate(b.data) ? a : b).data : '—';
+      return {records,interactions,totalValue,approved,rejected,avgRevisions,approvalRate,last};
     }
 
-    // DOM wiring
-    const el = id => document.getElementById(id);
+    let earningsChart, approvalChart;
+    function createCharts(){
+      const ctxE = document.getElementById('chart-earnings').getContext('2d');
+      earningsChart = new Chart(ctxE, {
+        type:'bar',
+        data:{labels:[],datasets:[{label:'Ganhos (R$)',data:[],backgroundColor:'#7c3aed'}]},
+        options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5e1'}},y:{ticks:{color:'#cbd5e1'}}}}
+      });
+
+      const ctxA = document.getElementById('chart-approval').getContext('2d');
+      approvalChart = new Chart(ctxA, {
+        type:'doughnut',
+        data:{labels:['Aprovadas','Rejeitadas'],datasets:[{data:[0,0],backgroundColor:['#06b6a4','#ef4444']}]},
+        options:{plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1'}}}}
+      });
+    }
+
+    function updateCharts(records){
+      const byDay = {};
+      records.forEach(r=>{
+        const key = new Date(r.data).toLocaleDateString();
+        byDay[key] = (byDay[key]||0) + Number(r.valor||0);
+      });
+      const labels = Object.keys(byDay).sort((a,b)=> new Date(a)-new Date(b));
+      earningsChart.data.labels = labels;
+      earningsChart.data.datasets[0].data = labels.map(l=>byDay[l]);
+      earningsChart.update();
+
+      const approved = records.filter(r=> r.status==='approved').length;
+      const rejected = records.filter(r=> r.status==='rejected').length;
+      approvalChart.data.datasets[0].data = [approved,rejected];
+      approvalChart.update();
+    }
+
     function render(records){
-      const {recs,interactions,totalValue,approved,rejected,avgRevisions,approvalRate,last} = computeMetrics(records);
+      const {records:recs,interactions,totalValue,approved,rejected,avgRevisions,approvalRate,last} = computeMetrics(records);
       el('kpi-interactions').textContent = interactions;
       el('kpi-last').textContent = 'Última: ' + (last === '—' ? '—' : new Date(last).toLocaleDateString());
       el('kpi-value').textContent = 'R$ ' + fmt(totalValue);
@@ -189,103 +241,83 @@
       el('kpi-approval').textContent = approvalRate + '%';
       el('kpi-rev').textContent = avgRevisions.toFixed(2);
 
-      // Recent list
-      const recent = recs.slice().sort((a,b)=> new Date(b.date) - new Date(a.date)).slice(0,8);
       const list = el('recent-list'); list.innerHTML = '';
-      recent.forEach(r => {
+      recs.slice().sort((a,b)=> new Date(b.data) - new Date(a.data)).slice(0,8).forEach(r => {
         const div = document.createElement('div'); div.className='item';
-        div.innerHTML = `<div><strong>${r.category}</strong><div class="muted small">${r.client} • ${new Date(r.date).toLocaleDateString()}</div></div><div style="text-align:right"><div>R$ ${fmt(r.value)}</div><div class="small">${r.status==='approved'?'<span class="tag success">Aprovado</span>':'<span class="tag danger">Rejeitado</span>'}</div></div>`;
+        div.innerHTML = `<div><strong>${r.categoria}</strong><div class="muted small">${r.cliente} • ${new Date(r.data).toLocaleDateString()}</div></div><div style="text-align:right"><div>R$ ${fmt(r.valor)}</div><div class="small">${r.status==='approved'?'<span class="tag success">Aprovado</span>':'<span class="tag danger">Rejeitado</span>'}</div></div>`;
         list.appendChild(div);
       });
 
-      // Top clients
       const clients = {};
-      recs.forEach(r=> clients[r.client] = (clients[r.client]||0) + 1);
-      const topClients = Object.entries(clients).sort((a,b)=>b[1]-a[1]).slice(0,3);
-      el('top-clients').innerHTML = topClients.map(t=> `<div class="small">${t[0]} <span class="muted">(${t[1]} jobs)</span></div>`).join('') || '<div class="muted small">—</div>';
+      recs.forEach(r=> clients[r.cliente] = (clients[r.cliente]||0) + 1);
+      el('top-clients').innerHTML = Object.entries(clients).sort((a,b)=>b[1]-a[1]).slice(0,3).map(t=> `<div class="small">${t[0]} <span class="muted">(${t[1]} jobs)</span></div>`).join('') || '<div class="muted small">—</div>';
 
-      // Top categories
       const cats = {};
-      recs.forEach(r=> cats[r.category] = (cats[r.category]||0) + 1);
-      const topCats = Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5);
-      el('top-categories').innerHTML = topCats.map(t=> `<div class="small">${t[0]} <span class="muted">(${t[1]})</span></div>`).join('') || '<div class="muted small">—</div>';
+      recs.forEach(r=> cats[r.categoria] = (cats[r.categoria]||0) + 1);
+      el('top-categories').innerHTML = Object.entries(cats).sort((a,b)=>b[1]-a[1]).slice(0,5).map(t=> `<div class="small">${t[0]} <span class="muted">(${t[1]})</span></div>`).join('') || '<div class="muted small">—</div>';
 
-      // Rejected table
       const tbody = document.querySelector('#rejected-table tbody'); tbody.innerHTML = '';
-      recs.filter(r=> r.status==='rejected').sort((a,b)=> new Date(b.date)-new Date(a.date)).slice(0,6).forEach(r=>{
+      recs.filter(r=> r.status==='rejected').sort((a,b)=> new Date(b.data)-new Date(a.data)).slice(0,6).forEach(r=>{
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${new Date(r.date).toLocaleDateString()}</td><td>${r.client}</td><td>R$ ${fmt(r.value)}</td>`;
+        tr.innerHTML = `<td>${new Date(r.data).toLocaleDateString()}</td><td>${r.cliente}</td><td>R$ ${fmt(r.valor)}</td>`;
         tbody.appendChild(tr);
       });
 
-      // Charts
       updateCharts(recs);
     }
 
-    // Chart instances
-    let earningsChart, approvalChart;
-    function createCharts(){
-      const ctxE = document.getElementById('chart-earnings').getContext('2d');
-      earningsChart = new Chart(ctxE, {
-        type:'bar',
-        data:{labels:[],datasets:[{label:'Ganhos por dia (R$)',data:[],tension:0.3}]},
-        options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#cbd5e1'}},y:{ticks:{color:'#cbd5e1'}}}
-      });
-
-      const ctxA = document.getElementById('chart-approval').getContext('2d');
-      approvalChart = new Chart(ctxA, {
-        type:'doughnut',
-        data:{labels:['Aprovadas','Rejeitadas'],datasets:[{data:[0,0]}]},
-        options:{plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1'}}}}
-      });
-    }
-
-    function updateCharts(recs){
-      // Earnings by day (last 30 days cap)
-      const byDay = {};
-      recs.forEach(r=>{
-        const d = new Date(r.date); const key = d.toLocaleDateString();
-        byDay[key] = (byDay[key]||0) + Number(r.value||0);
-      });
-      const labels = Object.keys(byDay).sort((a,b)=> new Date(a)-new Date(b));
-      const values = labels.map(l=> byDay[l]);
-      earningsChart.data.labels = labels;
-      earningsChart.data.datasets[0].data = values;
-      earningsChart.update();
-
-      const approved = recs.filter(r=> r.status==='approved').length;
-      const rejected = recs.filter(r=> r.status==='rejected').length;
-      approvalChart.data.datasets[0].data = [approved,rejected];
-      approvalChart.update();
-    }
-
-    // CSV export example
-    function exportCSV(recs){
-      const headers = ['designer','client','category','value','status','revisions','date'];
-      const rows = recs.map(r=> headers.map(h=> JSON.stringify(r[h]||'')).join(','));
-      const csv = [headers.join(','), ...rows].join('\n');
-      const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `${designerName}-report.csv`; a.click(); URL.revokeObjectURL(url);
-    }
-
-    // Init
     createCharts();
     render(data);
 
-    document.getElementById('refresh').addEventListener('click', ()=>{
-      const period = document.getElementById('period').value;
-      if(period === 'all'){ render(data); return }
-      const days = Number(period);
-      const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
-      render(data.filter(r=> new Date(r.date) >= cutoff));
-    });
+    document.getElementById('refresh').addEventListener('click', () => {
+  const period = document.getElementById('period').value;
+  if (period === 'all') { render(data); return; }
+  const days = Number(period);
+  const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+  render(data.filter(r => new Date(r.data) >= cutoff));
+});
 
-    document.getElementById('export-csv').addEventListener('click', ()=> exportCSV(data));
+document.getElementById('export-csv').addEventListener('click', () => exportCSV(data));
 
-    // Exemplo: função que seu backend chamaria ao carregar a página
-    // function loadFromServer(apiResponse){ render(apiResponse) }
+// Export CSV util
+function exportCSV(records) {
+  const headers = ['designer','cliente','categoria','valor','status','revisoes','data'];
+  const rows = records.map(r =>
+    headers.map(h => {
+      // tentar mapear chaves alternativas (por causa da simulação)
+      const val = h === 'designer' ? (r.designer || designerName) : (r[h] ?? r[h === 'revisoes' ? 'revisoes' : h] ?? '');
+      return `"${String(val).replace(/"/g, '""')}"`;
+    }).join(',')
+  );
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${designerName}-report.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
 
-  </script>
+// Função auxiliar: simula adicionar nova arte à FakeDB e re-renderiza
+function simulateAddArt(newArt) {
+  const d = FakeDB.designers.find(x => x.nome === designerName);
+  if (!d) return;
+  d.artes.push(newArt);
+  // atualizar a variável 'data' usada pelo dashboard
+  const updated = getDesignerData(designerName);
+  // sobrescreve a referência global 'data' e re-render
+  window.data = updated;
+  render(updated);
+}
+
+// Exemplo de uso da simulateAddArt (descomente para testar):
+// simulateAddArt({cliente:'NovaCo', categoria:'Poster', valor:120, status:'approved', revisoes:0, data: new Date().toISOString().slice(0,10)});
+
+// fecha o script e o HTML (se necessário no arquivo original)
+</script>
 </body>
 </html>
+
