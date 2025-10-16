@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Parcelamento Mercado Pago</title>
+<style>
+  body{font-family:Arial;padding:20px;background:#f5f5f5}
+  input,button{font-size:16px;padding:8px;margin:5px 0;width:100%}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{border-bottom:1px solid #ddd;padding:6px;text-align:right}
+  th{background:#0070f3;color:#fff}
+</style>
+</head>
+<body>
+
+<h2>💳 Parcelamento Mercado Pago</h2>
+<input id="valor" type="number" placeholder="Valor em R$">
+<button onclick="simular()">Simular</button>
+
+<table>
+  <thead><tr><th>Parcelas</th><th>Taxa</th><th>Total (R$)</th><th>Parcela (R$)</th></tr></thead>
+  <tbody id="res"></tbody>
+</table>
+
+<script>
+const taxas=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
+function simular(){
+  const v=+valor.value;if(!v)return alert("Digite um valor!")
+  res.innerHTML=taxas.map((t,i)=>{
+    const tot=v*(1+t),parc=tot/(i+1)
+    return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`
+  }).join('')
+}
+</script>
+
+</body>
+</html>

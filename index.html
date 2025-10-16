@@ -24,6 +24,8 @@
     <script src="./BiblGRAFF.js"></script>
     <script src="./AchaMdd.js"></script>
     <script src="./Gera3D.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
@@ -332,7 +334,7 @@
         Stts:['','Orçamento','Arte','Analise Art','Impressão','Grad Uber','Falta Uber','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação',,'Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
-        Dsng:['','Allan','Baby','Fexta','Italo','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
+        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
     }
     const AllList= ObjKey(O)
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
@@ -421,9 +423,6 @@
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)}
         //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
 
-        
-
-        
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -535,7 +534,6 @@
             const Tm_Antg=(A)=>A ? `<div class="Abslt Antig Ant-${A[0]} ${A[1]==''?'Ant-Bol':''}">${A[1]}</div>` : ''
 
             const SrcsIMG=(e,R)=>{ //carregam usando seu próprio valor (Pois eu sempre Atribuo antes de chamar isso)
-                LOG('entrou aqui!')
                 if(e.includes('blob:')){return e} // quando eu Acabei de Importar! ela vem assim!
                 const Past = 'Img' // BrevSrc[R.Col]||R.Col (Depois trocar de Pasta pra pegar versão Thumb)
                 const Src  = ExtnArt(e) ; return Src ? `${BASE_URL}${Past}/${Src}` : `./SVG/${R.Col=='Arte'?'Upload':'placeholder'}.svg`
@@ -557,7 +555,7 @@
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${/*Tempo(YMD(e))*/''}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
-                Imgs:(e,R,A,pai)=>pai?`<p class="P-P Ct" name="${e}">${e}</p>`:`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
+                Imgs:(e,R,A,pai)=>/*pai?`<p class="P-P Ct" name="${e}">${e}</p>`:*/`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
@@ -633,6 +631,7 @@
             function PreTratamento(Typ,All,Arr){
                 const IN = performance.now()
                 if(All=='All'){JJ[Typ] = arrayParaObjeto(Arr)}
+                if(Typ=='CLNT'){return} // não aplica essas outras coisas pra clientes
                 // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
                 Re_Comp(Typ,'All')     // ✔️
                 Re_Soma(Typ,'All')     // ✔️
@@ -706,6 +705,9 @@
             },100)
         }
         // mais de um:'^(?=.*Fraco)(?=.*Lutar).*$'
+
+        // 💡 a pesquisa q fica dentro do filter, pode ser igual a pesquisa geral q fica em cima, porem restrita apenas a uma Coluna
+        // 💡 e ela deve funcionar nos 2, tanto na tabela, quando na minilista q fica dentro do Filter
     </script>
 
     <div>   <!--FILTROS  - ⭐⭐⭐⭐_  (só correções) -->
@@ -1214,7 +1216,7 @@
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
                     const oID=All=='All'? tr.Id : tr_ID(tr)                                    // Numeração do ID
-                    const get=col=>     $(`${Rx2([Typ,oID,col])}`)                             // Concatenado é mais Preciso PDDS-oID-col
+                    const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                  // Concatenado é mais Preciso PDDS-oID-col
                     const ges=arr=>arr.map(col=>JJ[Typ][oID].Serv.map(e=>Num4(e[col]))).flat() // pega todos os Valores dessas Colunas
                     const Vll=arr=>arr.map(e=>e??'').join('')                                  // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
 
@@ -1239,6 +1241,10 @@
                     const NovoOBJClnt = objClnt.reduce((acc,e)=>{acc[e.Id] = e.nome ; return acc},{})
                     const objClntID   = Uniq(objClnt.map(e=>e.Id))
 
+                    // ao Filtrar ou Pesquisar, criarei uma Variavel Global q dirá todos os que estão visíveis const RowViews = ['150_1','1542_2']
+                    // q será atualizada em tempo real conforme pesquisa!
+                    // essa função abaixo vai percorrer J['PDDS'] e vai fazer a contagem, eliminando os que não contem na const RowViews
+                    // vai aumentar a peformance
                     const objServ = Typ=="PDDS" ?
                           Colls(Typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv-Slct']),f).map(t=>$('select',t).value)) // da pra melhorar posso uar VAL()
                         : Colls(Typ,'Serv',true).map(e=>VAL(e))
@@ -1590,62 +1596,164 @@
     <div id="PAGES">
 
         <div id="Pag_HOME">
-            <div class="Cl"></div><!--NÃO TEM NADA AQUI-->
-                        <div><!--Arte-->
-                <style>
-                    .container{max-width: 300px; margin: auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1)}
-                    .tootal, .tootal span {font-size: 18px;font-weight: bold;color: #00df00}
-                    .Pcntalmt{margin-top: 15px;color: gray}
-                </style>
+            <div class="Cl w100">
+                <div><!--Arte-->
+                    <style>
+                        .container{max-width: 300px; margin: auto;padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1)}
+                        .tootal, .tootal span {font-size: 18px;font-weight: bold;color: #00df00}
+                        .Pcntalmt{margin-top: 15px;color: gray}
 
-                <div class="container" style="margin-bottom: 150px;margin-top: 50px;">
-                    <h3>Orçamento de Arte:</h3>
-                    <select id="designOptions" onchange="EscolheARTE()" class="w100">
-                        <option value="20" data-extra="0">Post Digital - R$ 20,00</option>
-                        <option value="20" data-extra="4">Carrossel - R$ 20,00 (+R$ 4,00 por unidade)</option>
-                        <option value="25" data-extra="0">Banner Digital - R$ 25,00</option>
-                        <option value="25" data-extra="0">Cartão de Visita - R$ 25,00</option>
-                        <option value="50" data-extra="0">Flyer - R$ 50,00</option>
-                        <option value="30" data-extra="0">Panfleto - R$ 30,00</option>
-                        <option value="20" data-extra="0">Wing Banner - R$ 20,00</option>
-                        <option value="50" data-extra="10">Cardápio - R$ 50,00 (+R$ 10,00 por página)</option>
-                        <option value="25" data-extra="3">Backdrop Simples - R$ 25,00 (+R$ 3,00 por patrocinador)</option>
-                        <option value="100"data-extra="0">Logo - R$ 100,00</option>
-                        <option value="400"data-extra="0">Identidade - R$ 400,00</option>
-                        <option value="40" data-extra="0">Manipulação/Tratamentos - R$ 40,00</option>
-                        <option value="25" data-extra="0">Vetorização - R$ 25,00</option>
-                        <option value="5"  data-extra="0">Banner Simples Texto - R$ 5,00</option>
-                        <option value="30" data-extra="3">Arte para Camisa - R$ 30,00 (+R$ 3,00 por variação)</option>
-                    </select>
-                    <label for="quantidade">Quantidade:</label><input type="number" id="quantidade" value="1" min="1" oninput="EscolheARTE()">
-                    </select>
-                    <div id="Bruxos">
-                        <label><input type="checkbox" value="20" onchange="EscolheARTE()"> Identidade Visual (20%)</label><br>
-                        <label><input type="checkbox" value="15" onchange="EscolheARTE()"> Roteirizar (15%)</label><br>
-                        <label><input type="checkbox" value="25" onchange="EscolheARTE()"> Criar Logomarca (25%)</label><br>
-                        <label><input type="checkbox" value="8"  onchange="EscolheARTE()"> Digitação (8%)</label><br>
-                        <label><input type="checkbox" value="7"  onchange="EscolheARTE()"> Escolha de Imagens (7%)</label><br>
-                        <label><input type="checkbox" value="5"  onchange="EscolheARTE()"> Montagem (5%)</label><br>
+
+                    </style>
+
+                    <div class="container" style="margin-bottom: 150px;margin-top: 50px;">
+                        <h3>Orçamento de Arte:</h3>
+                        <select id="designOptions" onchange="EscolheARTE()" class="w100">
+                            <option value="20" data-extra="0">Post Digital - R$ 20,00</option>
+                            <option value="20" data-extra="4">Carrossel - R$ 20,00 (+R$ 4,00 por unidade)</option>
+                            <option value="25" data-extra="0">Banner Digital - R$ 25,00</option>
+                            <option value="25" data-extra="0">Cartão de Visita - R$ 25,00</option>
+                            <option value="50" data-extra="0">Flyer - R$ 50,00</option>
+                            <option value="30" data-extra="0">Panfleto - R$ 30,00</option>
+                            <option value="20" data-extra="0">Wing Banner - R$ 20,00</option>
+                            <option value="50" data-extra="10">Cardápio - R$ 50,00 (+R$ 10,00 por página)</option>
+                            <option value="25" data-extra="3">Backdrop Simples - R$ 25,00 (+R$ 3,00 por patrocinador)</option>
+                            <option value="100"data-extra="0">Logo - R$ 100,00</option>
+                            <option value="400"data-extra="0">Identidade - R$ 400,00</option>
+                            <option value="40" data-extra="0">Manipulação/Tratamentos - R$ 40,00</option>
+                            <option value="25" data-extra="0">Vetorização - R$ 25,00</option>
+                            <option value="5"  data-extra="0">Banner Simples Texto - R$ 5,00</option>
+                            <option value="30" data-extra="3">Arte para Camisa - R$ 30,00 (+R$ 3,00 por variação)</option>
+                        </select>
+                        <label for="quantidade">Quantidade:</label><input type="number" id="quantidade" value="1" min="1" oninput="EscolheARTE()">
+                        </select>
+                        <div id="Bruxos">
+                            <label><input type="checkbox" value="20" onchange="EscolheARTE()"> Identidade Visual (20%)</label><br>
+                            <label><input type="checkbox" value="15" onchange="EscolheARTE()"> Roteirizar (15%)</label><br>
+                            <label><input type="checkbox" value="25" onchange="EscolheARTE()"> Criar Logomarca (25%)</label><br>
+                            <label><input type="checkbox" value="8"  onchange="EscolheARTE()"> Digitação (8%)</label><br>
+                            <label><input type="checkbox" value="7"  onchange="EscolheARTE()"> Escolha de Imagens (7%)</label><br>
+                            <label><input type="checkbox" value="5"  onchange="EscolheARTE()"> Montagem (5%)</label><br>
+                        </div>
+                        <div class="Pcntalmt"></div>
+                        <div class="tootal">Total: R$ <span id="total">0.00</span></div>
                     </div>
-                    <div class="Pcntalmt"></div>
-                    <div class="tootal">Total: R$ <span id="total">0.00</span></div>
+
+                    <script>
+                        function EscolheARTE(){
+                            const Slt = $("#designOptions")
+                            const Qnt = $("#quantidade").value
+                            const Val = parseFloat(Slt.value)
+                            const Ext = parseFloat(Slt.options[Slt.selectedIndex].getAttribute("data-extra")) || 0
+                            let Porcent = 0
+                            $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{LOG(e) ; Porcent += parseFloat(e.value)})
+                            const Pcnt = Porcent.toFixed(2)/100
+                            const Total = Val+(Ext*(Qnt-1))
+                            const Total2 = Total+(Total*Pcnt)
+                            $(".Pcntalmt").innerHTML = `Porcentagem: R$ ${parseFloat(Pcnt)*100}%`
+                            $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
+                        }
+
+                    </script>
                 </div>
 
-                <script>
-                    function EscolheARTE(){
-                        const Slt = $("#designOptions")
-                        const Qnt = $("#quantidade").value
-                        const Val = parseFloat(Slt.value)
-                        const Ext = parseFloat(Slt.options[Slt.selectedIndex].getAttribute("data-extra")) || 0
-                        let Porcent = 0
-                        $$('#Bruxos input[type="checkbox"]:checked').forEach(e=>{LOG(e) ; Porcent += parseFloat(e.value)})
-                        const Pcnt = Porcent.toFixed(2)/100
-                        const Total = Val+(Ext*(Qnt-1))
-                        const Total2 = Total+(Total*Pcnt)
-                        $(".Pcntalmt").innerHTML = `Porcentagem: R$ ${parseFloat(Pcnt)*100}%`
-                        $(".tootal").innerHTML = `R$ ${Total2.toFixed(2).replace('.', ',')}`
-                    }
-                </script>
+                <div class="Cl w100"> <!--GRAFICO-->
+
+                    <style>
+                        .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;
+                            box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
+                        #Grfc_Ftura{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                        #Grfc_Servs{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                        #Grfc_PixAv{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                    </style>
+
+                    <button onclick="RfreshGrafic()">Refresh</button>
+                    <div class="Ct">
+                        <canvas id="Grfc_Ftura" class="Graficos"></canvas>
+                        <canvas id="Grfc_Servs"  class="Graficos"></canvas>
+                        <canvas id="Grfc_PixAv"  class="Graficos"></canvas>
+                    </div>
+                    <script>
+                        const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
+
+                        function RfreshGrafic(){
+                            Load_Grfc('Barra',Grfc_Ftura(J['PGMT']),$('#Grfc_Ftura'))
+                            Load_Grfc('Pizza',Grfc_PixAv(J['PGMT']),$('#Grfc_PixAv'))
+                            Load_Grfc('Barra',Grfc_Servs(J['SERV']),$('#Grfc_Servs'))
+                        }
+                        function Grfc_Servs(arr) {return ContFreq(arr,'Serv','Quantidade de Serviços')} // aqui ordenar do maior pra o Menor!
+                        function Grfc_PixAv(arr) {return ContFreq(arr,'Form','Quantidade de Pagamentos')}
+
+                        function Load_Grfc(tipo,base,ctx){
+                            const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
+                            ctx.chartInstance?.destroy() // limpa gráfico anterior
+                            ctx.chartInstance = new Chart(ctx,{
+                                type: mapa[tipo], data: base,
+                                options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
+                                    plugins: {
+                                    legend: { labels: { color: '#fff' } },
+                                    title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
+                                    scales: {
+                                    x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
+                                    y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
+                            })
+                        }
+
+                        // Função genérica que cria o objeto Chart.js
+                        function criarBaseChart(labels, data, labelGrafico, cor = coresGrafic[0]) {
+                            return {
+                                labels,
+                                datasets: [{
+                                label: labelGrafico,
+                                data,
+                                backgroundColor: Array.isArray(cor) ? cor : [cor],
+                                borderColor: '#fff',
+                                borderWidth: 1,
+                                tension: 0.4
+                                }]
+                            };
+                        }
+
+                            // Faturamento Diário
+                        function Grfc_Ftura(dados) {
+                            const SemDATA = true;
+                            const Intervalo = ['2025-10-01','Hoje'];
+                            const hoje = new Date();
+                            const inicio = new Date(Intervalo[0]);
+                            const fim = Intervalo[1] === 'Hoje' ? hoje : new Date(Intervalo[1]);
+
+                            const somaPorData = {};
+
+                            const DADOS = dados
+                                .filter(e => e.Data?.trim() || !SemDATA)
+                                .map(e => ({ ...e, Data: e.Data ? YMD(e.Data) : "" }))
+                                .sort((a,b) => new Date(a.Data) - new Date(b.Data));
+
+                            DADOS.forEach(e => {
+                                const data = e.Data?.trim();
+                                if (!data) return;
+                                const dataObj = new Date(data);
+                                if (dataObj < inicio || dataObj > fim) return;
+                                const chave = DMY(data);
+                                somaPorData[chave] = (somaPorData[chave] || 0) + Number(e.Valr || 0);
+                            });
+
+                            return criarBaseChart(Object.keys(somaPorData),Object.values(somaPorData),'Faturamento Diário (R$)',coresGrafic[0])
+                        }
+
+                        // Frequência de qualquer chave
+                        function ContFreq(dados, chave, labelGrafico) {
+                            const contagem = {};
+                            dados.forEach(e => {const val = e[chave]?.trim();if (!val) return;contagem[val] = (contagem[val] || 0) + 1;});
+                            const cores = Object.keys(contagem).map((_, i) => coresGrafic[i % coresGrafic.length]);
+                            return criarBaseChart(Object.keys(contagem), Object.values(contagem), labelGrafico, cores);
+                        }
+
+
+
+
+                    </script>
+                </div>
             </div>
         </div>
 
@@ -2652,6 +2760,15 @@
                 .task-item input[type="checkbox"] { transform: scale(1.2); }
                 .task-item.pendente::before { content: '\25CF'; color: magenta; font-size: 12px; margin-right: 6px; }
                 .gap {gap: 10px }
+
+                #tarefas table { width:100%; border-collapse:collapse; font-family:Arial,sans-serif; font-size:14px; color:#eee; background-color:#222; }
+                #tarefas th, #tarefas td { border:1px solid #444; padding:8px 12px; text-align:left; }
+                #tarefas th { background-color:#333; font-weight:bold; }
+                #tarefas tr:hover { background-color:#444; }
+                #tarefas input[type="checkbox"] { transform:scale(1.2); cursor:pointer; accent-color:#1e90ff; }
+                #tarefas td:first-child { text-align:center; width:50px; }
+
+
             </style>
             <div id="PerfilUser" class="w100 Cl"></div>
             <script>
@@ -2673,7 +2790,7 @@
                         <div class="box Hov Cl Taranty2"><p>TOTAL DE COMISSÃO    </p><a></a><button>Sacar Agora!</button></div>
                     </div>
 
-                    <div class="task-list box Hov w80"><p>Lista de Tarefas</p>
+                    <div class="task-list box w80"><p>Lista de Tarefas</p>
                         <div id="tarefas"></div>
                     </div>
 
@@ -2699,8 +2816,8 @@
                 $('#tarefas').innerHTML = J['SERV'].map(e=>{
                                             if(e.Dsng == User){Partic+=1 ; Comiss+=e.CArt}
                                             if(e.Cbmt == User){Partic+=1 ; Comiss+=e.VCbt}
-                                            const DSNG = e.Dsng == User ? `<a>Arte:    </a><a>${e.Cmnt}</a><a>${e.TArt}</a><a>${e.CArt}</a>` : ''
-                                            const CBMT = e.Cbmt == User ? `<a>Produção:</a><a>${e.Cmnt}</a><a>${e.VCbt}</a>` : ''
+                                            const DSNG = e.Dsng == User ? `<a>${JJ['CLNT'][`${e.Clnt}`]?.Clnt}</a><a>${e.Serv}</a><a>Arte:    </a><a>${e.TArt  }</a><a>${e.CArt}</a>` : ''
+                                            const CBMT = e.Cbmt == User ? `<a>${JJ['CLNT'][`${e.Clnt}`]?.Clnt}</a><a>${e.Serv}</a><a>Produção:</a><a>${'o Cbmt'}</a><a>${e.VCbt}</a>` : ''
                                             return DSNG == '' && CBMT == '' ? '' : `<div class="Ct"><input type="checkbox" ${true?"checked":""}>
                                                     <div class="Ct">${DSNG}${CBMT}</div>
                                             </div>`}).join('')
@@ -2708,6 +2825,44 @@
                 Inn($('.Taranty1'),Partic)
                 Inn($('.Taranty2'),RS(Comiss))
             }
+
+
+            function RfreshPerfil(User){
+                const rows = J['SERV'].flatMap(e => {
+                    if(e.Dsng=='Euryk'){LOG(e.Dsng,User)}
+                    const tipos = [
+                        { cond: e.Dsng == User, label: 'Arte:', vals: [e.TArt, e.CArt] },
+                        { cond: e.Cbmt == User, label: 'Produção:', vals: ['o Cbmt', e.VCbt] }
+                    ].filter(t => t.cond);
+
+                    return tipos.map(t => `<tr>
+                        <td><input type="checkbox" checked></td>
+                        <td>${JJ['CLNT'][`${e.Clnt}`]?.Clnt}</td>
+                        <td>${e.Serv}</td>
+                        <td>${t.label}</td>
+                        ${t.vals.map(v => `<td>${v}</td>`).join('')}
+                    </tr>`);
+                }).join('');
+
+                $('#tarefas').innerHTML = `
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th>Selecionar</th>
+                                <th>Cliente</th>
+                                <th>Serviço</th>
+                                <th>Tipo</th>
+                                <th>Valor 1</th>
+                                <th>Valor 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                `;
+            }
+
             </script>
         </div>
 
@@ -3049,6 +3204,7 @@
         PreTratamento('OOSS','All',J['OOSS'])
         PreTratamento('GRAD','All',J['GRAD'])
         PreTratamento('PDDS','All',J['PDDS'])
+        PreTratamento('CLNT','All',J['CLNT'])
         LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 
@@ -3155,12 +3311,13 @@
     document.addEventListener('keydown',e=>{if($('.Moldura.ClickCanv.Atv')){if(e.key==='c'){$('#alignX').click()};if(e.key==='e'){$('#alignY').click()}}})
 </script>
 
-<script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡
+<script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡ 💡
     // ERROS pra corrigir
     // Pesquisa em tabela de GRAD, da erro em VAL(...).trim is not a function
     // ver se consigo a Possibilidade de botar mais de um Uber!
     // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
     // na Soma lá em baixo dar o . quando passar de mil
+    // 💡 Pesquisar dentro da bandeija de Serv, pra Localizar o Pedido
 
 </script>
 </html>
