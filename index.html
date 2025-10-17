@@ -33,33 +33,33 @@
 
 <script> // Base de Dados
     const USER = { // Falta Sincronizar com SB
-        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000 }, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
         '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
-        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""},
-        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""}
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""},
+        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:3000}, Fone:""             ,Emal:""                       ,Lcal:""}
     }
 
     const Cgo  = { // Cargo
-        Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
+        Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :[],
                 PDDS:[],
                 PGMT:[],
-                SERV:[]},
+                SERV:['Detg']},
 
-        Grnt: { nav :['HOME','|','ORC','|','PDDS','SERV','|','PGMT','GRAD','CLNT','|','CONF'],
+        Grnt: { nav :['HOME','|','ORC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :[],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]},
+                PDDS:['Id'],
+                PGMT:['Id'],
+                SERV:['Id','Data','Detg']},
 
-        DSgn: { nav:['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'] ,
+        DSgn: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
                 PDDS:['Id','Cust','Lcro'],
                 PGMT:['Id','Stts','Link','Mpag'],
                 SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"Oimg"]},
 
-        Atnd: { nav:['HOME','|','ORC','|','PDDS','SERV','|','PGMT','|','CONF'] ,
+        Atnd: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
                 PDDS:['Id','Cust','Lcro'],
                 PGMT:['Id','Stts','Link','Mpag'],
@@ -80,10 +80,12 @@
     const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const JJ       = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[]}
     const Secund   = {SERV:'PDDS',PGMT:'PDDS',CUST:'PDDS'}
     const ALL      = {CLNT:[]}
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[]}
-    const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0,CUST:0}
+    let SlideTable = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
+    const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
+    const Primary  = {OOSS:'OS',GRAD:'Grad',PDDS:'Id',CLNT:'Id',UBER:'Id'}
     let   ListIMG  = []
     let  ListFrete = {}
     
@@ -336,6 +338,7 @@
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação',,'Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
         Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
     }
+
     const AllList= ObjKey(O)
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
@@ -348,17 +351,15 @@
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Stts:['E','' ],Link:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
-        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ],Dest:['E',''],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         
         MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
     }
-
-
 
     // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
@@ -390,27 +391,13 @@
         const isBdj   =e=>!!e.closest('.BndjTBL')
         const Sib     =e=>$(e,Pai(event.target))
         const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
-        const RxExt   =e=>e.split(".").pop().toLowerCase() // pegar a Extensão do nome de um arquivo .webp
         const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const ALL
-        const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
-        const todosIguais = arr => arr.every(v => v === arr[0])
         const ArrObj_OrdnCol=(Obj,Ordn)=>{const K = Object.keys(Obj[0]) ; const x = Ordn.map(col=>K.indexOf(col)) ; return [Ordn,...Obj.map(obj => x.map(i => obj[K[i]]))]}
         const NoneCol=(Typ,col)=>Cgo[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
         const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
-        const arrayParaObjeto=arr=>{return arr.reduce((acc, el) => {acc[el.Id] = el;return acc;}, {})}
-        const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
-        const Num4=e=>e==undefined ? 0 : e=='' ? '' : Num(e)
-        const NAN=e=>isNaN(e) ? 0 : e
-        const RmvLinByID=(arr,id)=>{const x = arr.findIndex(e => e.Id === id);if (x !== -1) arr.splice(x, 1)}
-
-
-        // MiniBiblioteca pra passar a Usar!
-        const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
-        const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
-        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
-        const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
-        const FiM=(arr)=>arr.slice(0, -1)
-
+        const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc, el) => {acc[el[col]] = el;return acc;}, {})}
+        function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
+        
         // Epecíficas (as q Executa)
         const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
@@ -423,6 +410,20 @@
         const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)}
         //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
 
+        // pra ir pra PreScript
+        const RxExt   =e=>e.split(".").pop().toLowerCase() // pegar a Extensão do nome de um arquivo tipo .webp
+        const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
+        const todosIguais = arr => arr.every(v => v === arr[0])
+        const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
+        const Num4=e=>e==undefined ? 0 : e=='' ? '' : Num(e)
+        const NAN=e=>isNaN(e) ? 0 : e
+        const RmvLinByID=(arr,id)=>{const x = arr.findIndex(e => e.Id === id);if (x !== -1) arr.splice(x, 1)}
+        // MiniBiblioteca pra passar a Usar!
+        const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
+        const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
+        const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
+        const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
+        const FiM=(arr)=>arr.slice(0,-1)
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -565,7 +566,7 @@
             function Tm_Bndj(Typ,col,Arr,r){
                 if((Typ=='SERV' || Typ=='PGMT') && col=='Clnt'){return Tm_Tm['Fixo']('')} // Retornar Vazio quando for Bandeija Cliente
                 const Ordem = ObjKey(BS[col.toUpperCase()])
-                const Find  = col==='Clnt' ? [J[AA(col)].find(E=>E.Id==`${Arr}`.trim())].filter(Boolean) : Arr||[]
+                const Find  = col==='Clnt' ? [JJ[AA(col)][`${Arr}`]] : Arr||[]
                             
                 const Bandeija=(arr,TYP,RPai)=>`<table class="Bdj_${TYP} ${arr[1][0]==""?'none':''}">
                         <thead><tr>${arr[0].map(t=>`<th style="${NoneCol(TYP,t)}">${t}</th>`).join('')}</tr></thead>
@@ -621,7 +622,8 @@
 
                 if(ObjKey(J).includes(Typ)){
                     if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
-                         if(Typ=='PGMT'){LOAD(Typ);LOAD('MPAG')                      } // tem 2 Tabelas na #PagPGMT
+                         if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')         } // tem 3 Tabelas na #PagPDDS
+                         if(Typ=='PGMT'){LOAD('MPAG')                                } // tem 2 Tabelas na #PagPGMT
                     else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
                     else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
                     PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
@@ -630,14 +632,14 @@
     
             function PreTratamento(Typ,All,Arr){
                 const IN = performance.now()
-                if(All=='All'){JJ[Typ] = arrayParaObjeto(Arr)}
+                if(All=='All'){JJ[Typ] = ArrtoOBJ(Arr,Primary[Typ])}
                 if(Typ=='CLNT'){return} // não aplica essas outras coisas pra clientes
                 // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
                 Re_Comp(Typ,'All')     // ✔️
                 Re_Soma(Typ,'All')     // ✔️
             }
         
-            // ⚡ Desempenho Fodah, só Carregar as imagens internas quando clicar na Bandeija (alem das imagens Outras coisas mais Banais também)
+            // ⚡ Desempenho Fodah, só Carregar as imagens internas quando clicar na Bandeija (e Outras coisas mais Banais também)
             // Sugg e Link talvez sejam a mesma coisa a difereça é a opções de "Apenas Troca" ou de "Adição"
             // impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
             // ao Clicar no ID, exibirá RG:[User,PC,Data,Hora]
@@ -728,7 +730,7 @@
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th style="${NoneCol(Typ,e)}"><p>${''}</p></th>`:
                     `<th style="${NoneCol(Typ,e)}" class="ThFilt Rltv noslt" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
-                            <p class="ppt" name="${e}">${dbCol[e]}</p>
+                            <p class="ppt" name="${e}">${Typ=="SERV"?e:dbCol[e] /*Gambiarra pra remvoer o DbCol*/}</p>
                             <i onclick="Orden(this,event,'${x}','p')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
@@ -1153,12 +1155,13 @@
             ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
     /*Opt*/ ,G_Forn:j=>[Dbbrev[j.Grad[0]]]
     /*Opt*/ ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
-            ,G_Valr:j=>Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+            ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
             ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
+            ,G_VlrO:j=> JJ['OOSS'][j.OS]?.Valr || 0
             ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr))
             ,G_Oimg:j=>j.OS   ?? ''
-            ,G_VlrO:j=>J['OOSS'].find(e=>e.OS==j.OS)?.Valr
-            ,G_VUbr:j=>(J['UBER'].find(e=>e.Uber==j.Uber)?.Valr / J['GRAD'].filter(e=>e.Uber==j.Uber).length).toFixed(2)
+            ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
+
             //-----------------------------------------------------------------------------------------------------------
             ,O_Oimg:j=>j.OS ?? ''
             ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
@@ -1168,10 +1171,11 @@
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija então roda pra toas Linhas, se não for bandeja Roda apenas pra aquela Linha!
 
-            const Edit=(Pre,col,Mod,tr)=>{
-                const oID = All=='All' ? tr.Id : tr_ID(tr)    // Numeração do ID
-                const arg = All=='All' ? tr : JJ[Typ][oID]
-                const Val = Splii[`${Pre}_${col}`](arg)       // no Argumento deve sempre ser o Objeto!
+            const Edit=(Pre,col,Mod,tr)=>{                
+                const Key = All=='All' ? tr[Primary[Typ]] : VAL($(`:scope > ${Rx2([`${Typ}-${tr_ID(tr)}-${Primary[Typ]}`])}`,tr)) // Pegando a Chave Primaria
+                
+                const arg = All=='All' ? tr : JJ[Typ][Key]
+                const Val = Splii[`${Pre}_${col}`](arg)   // no Argumento deve sempre ser o Objeto!
                 //if(Mod.includes('O')){   ReOpt(         td2 ,Splii[Cnct](VAL(td1))      )}
                 if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
             }
@@ -1191,6 +1195,7 @@
             }
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
             // se for vazio ou apenas 1, já insere na const já antes! (claro, talvez se possivel deixar uma mensagem pedindo SB)
+            // a Linha da GRAD ficará vermelha caso eu tenha digitado UBER ou OS, q ainda não exista na sua respectiva tabela
             if(All=="All"){LOG(`🔄 Re_Comp:(${Typ}) ${MS(IN)}`)}
         }
 
@@ -1249,7 +1254,6 @@
                           Colls(Typ,'Serv',true).map(e=>_td(e)).flatMap(f=>$$(Rx2(['Serv-Slct']),f).map(t=>$('select',t).value)) // da pra melhorar posso uar VAL()
                         : Colls(Typ,'Serv',true).map(e=>VAL(e))
 
-                // corrigir as condições para quando não existe a Coluna
                 Inn($(Rx2([Typ,'Foot','Id'  ])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${objClnt.length  }         </div>`)
                 Inn($(Rx2([Typ,'Foot','Clnt'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${objClntID.length} Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cRepetID(objClnt)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k} - ${NovoOBJClnt[k]}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${objClntID.length} Clientes</div></div>`)
                 Inn($(Rx2([Typ,'Foot','Serv'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${objServ.length  } Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(  cRepet(objServ)).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 ppt">${k}: ${v}</a>`                    ).join('')}</span><div class="BjConf Stky2 w100 Ct">${objServ.length  } Serviços</div></div>`)
@@ -1257,6 +1261,7 @@
                 Inn($(Rx2([Typ,'Foot','Pgmt'])),`${SOMAPgmt(Colls(Typ,'Pgmt',true))}`)
                 Inn($(Rx2([Typ,'Foot','Cust'])),` ${RS(SOMA(Colls(Typ,'Cust',true),s=>VAL(s)))}`)
                 Inn($(Rx2([Typ,'Foot','Lcro'])),` ${RS(SOMA(Colls(Typ,'Lcro',true),s=>VAL(s)))}`)
+
                 if(All=="All"){LOG(`🔄 Re_Foot:(${Typ}): ${MS(IN)}`)}
             },0)}
         }
@@ -1757,10 +1762,23 @@
             </div>
         </div>
 
+        <style>
+            .DivConf {padding: 7px;}
+            .Wrapper {overflow-X: hidden; width: 100%;position: relative}
+            .Slide_Table {display: flex;transition: transform 0.4s ease;}
+            .Slide_Table > div > div{transition: width 0.4s ease-in-out}
+            .Slide_Table > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box}
+            .NavInter {background:#0000003f; border-radius: 20px 20px 0 0}
+            .BtnDois  {background:#543155  ; border-radius: 20px 20px 0 0; height: 30px;transition: transform 0.2s ease, background-color 0.2s ease;transform-origin: bottom; color: white; margin: 0px 2px;}
+            .BtnDois:hover{background: #bf00c5;transform: scaleY(1.13)}
+            .whrapper {border-radius: 20px;overflow: hidden;position: relative;}
+            #H_SERV{font-size: 10px;}
+        </style>
+
         <div id="Pag_PDDS" class="TBLAA none Cl">
-            <div class="DivConf Ct Bt Stky">
+            <div class="DivConf Ct Bt Stky none">
                 
-                <div onchange="Re_Colr('PDDS','All')">
+                <div onchange="Re_Colr('PDDS','All')" class="none">
                     <select name="" id="PDDSETATA">
                         <option value="temperatura">temperatura<option>
                         <option value="Etapas" selected>Etapas</option>
@@ -1770,38 +1788,11 @@
                     <input id="PDDS_tdCor" type="checkbox" checked>
                     <input id="PDDS_trCor" type="checkbox" checked>
                 </div>
-                <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
-                <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
-                <div id="Sommma">Soma: 00,00</div>
                 
-            </div>
-
-            <div class="Ct">
-                <button>Pedidos</button>
-                <button>Serviços</button>
-                <button>Pagamentos</button>
-            </div>
-
-            <div>
-                <button onclick="AddROW('PDDS','<')">+ Novo Pedido</button>
-                <button onclick="F_Clen('PDDS')">Limpar Filtro</button>
-            </div>
-            
-            <table id="SKLT_PDDS" class="hMin Tbla w90">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
-                <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
-                <tfoot class="Stky2"><tr></tr></tfoot>
-            </table>
-
-            <table id="H_PDDS" class="hMin Tbla">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PDDS),'PDDS'))"></tr></tfoot>
-            </table>
-        </div>
-
-        <div id="Pag_SERV" class="TBLAA none Cl">
-            <div class="DivConf Ct Bt Stky">
+                <!--
+                    <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
+                    <div id="Sommma">Soma: 00,00</div>
+                -->
 
                 <div onchange="Re_Colr('SERV','All')">
                     <input id="SERV_Color" type="color">
@@ -1809,37 +1800,76 @@
                     <input id="SERV_trCor" type="checkbox" checked>
                 </div>
 
-                <!-- <button onclick="AddRowBdj('SERV')">Nova Linha +</button> -->
-                
-                <div><!--Exibir cor coluna automaica-->
-                    <input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label>
-                </div>
-                <h1>Tabela de Serviço</h1>
-                <div id="PagPesq_SERV" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
-                <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
-                <button onclick="F_Clen('SERV')">Limpar Filtro</button>
+                <div><input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label></div> <!--Pintar Colunas Automaticas-->
             </div>
-            <table id="H_SERV" class="hMin">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.SERV),'SERV'))"></tr></tfoot>
-            </table>
+
+            <div class="DivConf Ct Stky w100">
+                <div class="Ct NavInter">
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(0,'PDDS')">Pedidos   </a>    
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(1,'PDDS')">Serviços  </a>
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2,'PDDS')">Pagamentos</a>
+                </div>
+            </div>
+
+            <div class="Wrapper">
+                <div id="Slide_PDDS" class="Slide_Table">
+                    <div class="Cl">
+                        <div class="Confy_PDDS">
+                            <div class="Bt">
+                                <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
+                                <div id="PagPesq_PDDS" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
+                                <div id="COnf_PDDS" class="Configs Ct"></div><script>Inn($('#COnf_PDDS'),Tm_Config('PDDS'))</script>
+                                <button onclick="F_Clen('PDDS')">Limpar</button>
+                            </div>
+                            <table id="SKLT_PDDS" class="hMin Tbla w90">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                                <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
+                                <tfoot class="Stky2"><tr></tr></tfoot>
+                            </table>
+                            <table id="H_PDDS" class="hMin Tbla">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PDDS),'PDDS'))"></tr></tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="Cl">
+                        <div class="Confy_SERV">
+                            <div class="Bt">
+                                <button onclick="AddROW('SERV','<')">Nova Linha +</button>
+                                <div id="PagPesq_SERV" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
+                                <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
+                                <button onclick="F_Clen('SERV')">Limpar</button>
+                            </div>
+                            <table id="H_SERV" class="hMin">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.SERV),'SERV'))"></tr></tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="Cl">
+                        <div class="Confy_PGMT">
+                            <div class="Bt">
+                                <button onclick="AddRowBdj('PGMT')">Nova Linha +</button>
+                                <div id="PagPesq_PGMT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
+                                <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
+                                <button onclick="F_Clen('PGMT')">Limpar</button>
+                            </div>
+                            <table id="H_PGMT" class="hMin">
+                                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
+                                <tbody></tbody>
+                                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PGMT),'PGMT'))"></tr></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="Pag_PGMT" class="TBLAA none Cl">
-            <div class="DivConf Ct Bt Stky">
-                <button onclick="AddRowBdj('PGMT')">Nova Linha +</button>
-                <h1>Tabela de Pagamentos</h1>
-                <div id="PagPesq_PGMT" class="Rltv PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
-                <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
-                <button onclick="F_Clen('PGMT')">Limpar Filtro</button>
-            </div>
-            <table id="H_PGMT" class="hMin">
-                <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
-                <tbody></tbody>
-                <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PGMT),'PGMT'))"></tr></tfoot>
-            </table>
-
             <div class="Ct Bt">
                 <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                 <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
@@ -1849,38 +1879,20 @@
                 <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
                 <tbody></tbody>
             </table>
-
         </div>
 
         <div id="Pag_GRAD" class="TBLAA none Cl"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
 
-            <style>
-                .DivConf {padding: 7px;}
-                .Wrapper {overflow-X: hidden; width: 100%;position: relative}
-                #sliderTables {display: flex;transition: transform 0.4s ease;}
-                #sliderTables > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box}
-                #sliderTables > div > div{transition: width 0.4s ease-in-out}
-                .NavInter {background:#0000003f; border-radius: 20px 20px 0 0}
-                .BtnDois  {background:#543155  ; border-radius: 20px 20px 0 0; height: 30px;transition: transform 0.2s ease, background-color 0.2s ease;transform-origin: bottom; color: white; margin: 0px 2px;}
-                .BtnDois:hover{background: #bf00c5;transform: scaleY(1.13)}
-                .whrapper {border-radius: 20px;overflow: hidden;position: relative;}
-            </style>
-
-            <script>
-                let iindex = 0 // deixa-lo Dinamico Funcionando para todas!
-                function slideTo(i){iindex = Math.max(0,Math.min(2,i));$('#sliderTables').style.transform = `translateX(-${iindex * 100}%)`}
-            </script>
-
             <div class="DivConf Ct Stky w100">
                 <div class="Ct NavInter">
-                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(0)">GRAD</a>    
-                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(1)">OS  </a>
-                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2)">UBER</a>
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(0,'GRAD')">GRAD</a>    
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(1,'GRAD')">OS  </a>
+                    <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2,'GRAD')">UBER</a>
                 </div>
             </div>
 
             <div class="Wrapper">
-                <div id="sliderTables">
+                <div id="Slide_GRAD" class="Slide_Table">
                     <div class="Cl">
                         <div class="Confy_GRAD">
                             <div class="Bt">
@@ -3205,6 +3217,7 @@
         PreTratamento('GRAD','All',J['GRAD'])
         PreTratamento('PDDS','All',J['PDDS'])
         PreTratamento('CLNT','All',J['CLNT'])
+        PreTratamento('UBER','All',J['UBER'])
         LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 
