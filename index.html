@@ -623,7 +623,7 @@
                 if(ObjKey(J).includes(Typ)){
                     if(PreTable[Typ]==true){ALERT(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                          if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')         } // tem 3 Tabelas na #PagPDDS
-                         if(Typ=='PGMT'){LOAD('MPAG')                                } // tem 2 Tabelas na #PagPGMT
+                    else if(Typ=='PGMT'){LOAD('MPAG')                                } // tem 2 Tabelas na #PagPGMT
                     else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
                     else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
                     PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
