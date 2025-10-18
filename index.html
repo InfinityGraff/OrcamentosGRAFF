@@ -3035,7 +3035,7 @@
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
                 /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
-                /*Obj*/ J[R.Typ][R.Row][R.Col] = Nval
+                /*Ojj*/ JJ[R.Typ][R.Row][R.Col] = Nval
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
             /*Lv2*/}else{
                 /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row)
