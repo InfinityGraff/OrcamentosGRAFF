@@ -397,7 +397,8 @@
         const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
         const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc, el) => {acc[el[col]] = el;return acc;}, {})}
         function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
-        
+        const Bkg = (e,bg,txt,rd) =>{(e.style.backgroundColor = bg, txt && (e.style.color = txt), rd && (e.style.borderColor = rd))}
+
         // Epecíficas (as q Executa)
         const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
         function Drag() {event.dataTransfer.setData("text",    event.target.id)}
@@ -561,6 +562,7 @@
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
+                Mdal:(e,R,A)=>``
             }
 
             function Tm_Bndj(Typ,col,Arr,r){
@@ -881,13 +883,13 @@
                     }
                 })
                 $$(QRY).forEach(e=>{
-                    _tr(e).style.background = NewObj[Inn(e)]
+                    Bkg(_tr(e),NewObj[Inn(e)])
                     if(PermitOculta && NewObj[Inn(e)]==undefined){Add(_tr(e),'none')}
                 })
             }
             
             function F_Clen(Typ){                    // ✔️ Limpa todos os Filtros
-                TRs(Typ).forEach(e=>{For(20).forEach(E=>Rmv(e,`n${E}`)) ; e.style.background = ''}) // Exibe todas as Linhas e Limpa o Random
+                TRs(Typ).forEach(e=>{For(20).forEach(E=>Rmv(e,`n${E}`)) ; Bkg(e,'')}) // Exibe todas as Linhas e Limpa o Random
                 $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
                 const Class = ['ThFilt_Atv','ThFilt_Rtv','filtTrue','filtFals','SelectSoma']
                 Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
@@ -982,14 +984,12 @@
         </script>
     </div>
 
-    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (só UPGRADES ) (Desempenho PEZADO: ⏳) -->
+    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (só UPGRADES ) (Desempenho PEZADO: ⏳) (All usa Const Obj, e o individual que faz pelo DOM) -->
         <style> /*RECOLOR - CSS*/
             .EtpSVG{height: 25px; width: 25px}
-            .usadoW{border-radius: 255px ; color: #ffffff}
-            .usadoB{border-radius: 255px ; color: #000000}
-            #H_PDDS > tbody > tr > td:nth-child(5) > div > .P-P{font-size:13px}
-            #H_PDDS > tbody > tr > td:nth-child(6) > div > .P-P{font-size:13px}
-            #H_PDDS > tbody > tr > td:nth-child(10) > div svg{margin: 0px 5px}
+            #H_PDDS > tbody > tr > td:nth-child(5) > div > .P-P{font-size:13px ; border-radius: 255px} /*Valr*/
+            #H_PDDS > tbody > tr > td:nth-child(6) > div > .P-P{font-size:13px} /*Pgmt*/
+            #H_PDDS > tbody > tr > td:nth-child(10) > div svg{margin: 0px 5px}  /*Lixo*/
         </style>
 
         <script> // RECOLOR  - SCRIPT
@@ -1024,23 +1024,24 @@
                 Inn(stt,`<div>${SVGEtapas[Etapa[0]]}</div>`)
                 $$('svg',stt).forEach(e=>e.style.fill = `rgb(${Etapa[2]})`)
                 if(Typ=='PDDS'){$$(`:scope > ${Rx2(['PDDS','Valr'])} .P-P`,tr).forEach(e=>{
-                    const Pag = $(`:scope > ${Rx2([Typ,'Pgmt'])} .P-P`,tr)
-                    const Devendo = Etapa[0]=='Entregue' && Nm(e) > Nm(Pag)
-                    if(Etapa[0]=='Orçamento'){Add(e,'usadoB')}else{
-                        Add(e,'usadoW')
-                        if(Devendo){
-                            e.style.background  = '#740000'
-                            tr.style.background = '#ff000069'
+                    const Pag  = $(`:scope > ${Rx2([Typ,'Pgmt'])} .P-P`,tr)
+                    const Deve = Etapa[0]=='Entregue' && Nm(e) > Nm(Pag)
+                    if(Etapa[0]=='Orçamento'){Bkg(e,'#00000000','black')}else{
+                        if(Deve){
+                            Bkg(e,'#740000','white')
+                            Bkg(tr,'#ff000069')
                             Inn(stt,`<div>${SVGEtapas['Devendo']}</div>`)
-                            $$('td',tr).forEach(d=>d.style.background = '')
-                        }else{e.style.background = `rgb(${Etapa[2]})`}}
+                            $$('td',tr).forEach(d=>Bkg(d,''))
+                        }else{Bkg(e,`rgb(${Etapa[2]})`,'white')}}
                 })}
             }
 
             function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
                 const IN = performance.now()
                 const trs = All=='All' ? TRs(Typ) : [All]
+
                 if(Typ==='SERV'){trs.forEach(tr=>{R_Color(tr,Typ)})}
+
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''
                     const opc=e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=> arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
@@ -1055,6 +1056,7 @@
                     R_Cor(tr,opc(ss),Menor(ss)[1])
                     IconsEtapas(Typ,tr,Menor(ss)[2])
                 })}
+                
                 if(Typ=='GRAD'){
                     trs.forEach(tr=>{
                         const Crit1 = TDv(tr,'VlrO')==TDv(tr,'Summ') && TDv(tr,'VlrO') !== ''
@@ -1079,12 +1081,13 @@
                 if(Typ=='SERV'){IconsEtapas(Typ,tr,Etapa,atual.join('-'))}
 
                 atual.map(e=>$(Rx2([Typ,e]),tr)).forEach(td=>{
-                    td.style.background = ''                      // Zera Fundo
+                    Bkg(td,'')                                    // Zera Fundo
                     td.style.border = ''                          // Zera Brorder
                     if(Atv1){R_Cor(td,opacy/2,Cor)}
                     if(Coclui){R_Cor(td,opacy,Cor)}
                 })
-                    tr.style.background = ''                      // Zera Fundo
+                    Bkg(tr,'')    
+                                                                  // Zera Fundo
                     $$('td',tr).forEach(e=>e.style.border = '')   // Zera Borda
                     if(Atv2){R_Cor(tr,tipo=='Etapa'&&Typ=='SERV' ? 1 : opacy/2,Cor)}
                     if(Coclui){R_Cor(tr,opacy,Cor)}
@@ -1092,12 +1095,11 @@
             }
 
             function R_Cor(e,opacy,Cor){
-                e.style.background   = `rgba(${Cor},${(opacy).toFixed(2)})`             // Colore o Fundo
+                Bkg(e,`rgba(${Cor},${(opacy).toFixed(2)})`)                             // Colore o Fundo
                 e.style.color        = `rgb(${Cor.split(',').map(e=>e/4).join(',')})`   // Colore o Fundo
                 e.style.borderBottom = `1px solid rgba(${Cor},${(opacy).toFixed(2)})`   // Colore a Borda
-                $$('select',e).forEach(E=>E.style.background = '#00000000')
+                $$('select',e).forEach(E=>Bkg(E,'#00000000'))
             }
-
             // Menu de Opções (Tipo de cores:['Etapas','Temperatura','Opacidade']) | aplicar ou Remover o Xadrez
             // Fazer o Hover ficar da cor do Elemento, só que mais Saturado
         </script>
@@ -1220,10 +1222,10 @@
             if(Typ==='PDDS'){
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
-                    const oID=All=='All'? tr.Id : tr_ID(tr)                                    // Numeração do ID
-                    const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                  // Concatenado é mais Preciso PDDS-oID-col
-                    const ges=arr=>arr.map(col=>JJ[Typ][oID].Serv.map(e=>Num4(e[col]))).flat() // pega todos os Valores dessas Colunas
-                    const Vll=arr=>arr.map(e=>e??'').join('')                                  // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
+                    const oID=All=='All'? tr.Id : tr_ID(tr)                                            // Numeração do ID
+                    const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                          // Concatenado é mais Preciso PDDS-oID-col
+                    const ges=arr=>arr.map(col=>JJ[Typ][oID]?.Serv.map(e=>Num4(e?.[col] ?? 0))).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
+                    const Vll=arr=>arr.map(e=>e??'').join('')                                          // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
 
                     /*Somas*/ const SumV = sum(ges(['Valr']))               ; if(All=='All'){tr.Valr = RS(SumV)                      }else{DarVAL(get('Valr'),RS(SumV))}
                               const VllC = ges(['CArt','OS','Uber','VCbt'])
@@ -2705,7 +2707,7 @@
                 </style>
                 <script>  
                     const Load_Cor =()=>StockjVinil.map(e=>`<p class="RD ppt" style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></p>`).join('')
-                    const mudarCor =cor=>$('#I_Cor').style.backgroundColor=cor
+                    const mudarCor =cor=>Bkg($('#I_Cor'),cor)
                     const VariasCor=Cor=>{Cor.innerHTML = Cor.innerHTML==='1'?'':'1';Tog(Cor,'Atv')}
                 </script>
                 <div id="I_Cor" class="Ct Rd ppt" onclick="Tog_N(Sib('a'))">Escolha uma Cor</div>
@@ -3020,6 +3022,8 @@
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
         const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
 
+        // Criar uma Global pra mecher no Obj,Sub,DOM eu passarei os argumentos e o Tipo, Delete, NewLinha, EditCell
+
         function EditCell(e,vall=null,Auto,SB){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
@@ -3031,6 +3035,7 @@
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
                 /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
+                /*Obj*/ J[R.Typ][R.Row][R.Col] = Nval
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
             /*Lv2*/}else{
                 /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row)
@@ -3038,16 +3043,18 @@
                 /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
                 /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
             }
-            /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
+            /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{
+                if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
                     if(Auto=='Auto'){DarVAL_Tm(td,Nval)}else{DarVAL(td,Nval)}
-                if(IsBdj){
-                    const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
-                    RFresh(P.Typ,tR,Auto,e)
-                }else{// Edita quando é fora da Bandeija
-                    RFresh(R.Typ,_tr(td),Auto,e)
-                }
-            }})
+                    if(IsBdj && _td(Pai(td)) !== null){ // pra entrar tem que ser Bndj e .T-T tem que Existir
+                        const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
+                        RFresh(P.Typ,tR,Auto,e)
+                    }else{// Edita quando é fora da Bandeija
+                        RFresh(R.Typ,_tr(td),Auto,e)
+                    }
+                }})
         }
+        
 
         function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 ⚠️ Não Há Nessecidade de Fechar a Bndj
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
@@ -3061,16 +3068,18 @@
             /*Lv1*/if(!IsBdj){
                     if(Lxr){
                         /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval // if Move para Lixeira
+                        /*Ojj*/ delete JJ[R.Typ][R.Row]
                         /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)             // if Move para Lixeira
                     }else{
                         /*Obj*/ RmvById(J[R.Typ],R.Row)                  // else Deleta na Tora
+                        /*Ojj*/ delete JJ[R.Typ][R.Row]
                         /*Sub*/ if(!SB){Sb_DELETE(R.Typ,R.Row)}          // else Deleta na Tora
                     }
             /*Lv2*/}else{ // para os da Bandeija estou com Preguiça de Mover pra Lixeira, ai por enquanto vou usar só Deletando na Tora
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
-                if(Lxr){/*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]}
-                   else{/*Obj*/ RmvById(X[P.Col],R.Row) ; Find = X[P.Col]}
+                if(Lxr){/*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
+                }else{  /*Obj*/ RmvById(X[P.Col],R.Row) ; Find = X[P.Col]}
                         /*Sub*/ if(!SB){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}
             }
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{  // Editar todas as Cópias
@@ -3096,7 +3105,7 @@
                     Def.Data = row.Data                   // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
                     Def.Clnt = row.Clnt                   // Clona Cliente
                 }
-                /*Obj*/ arr.push(Def)
+                /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
                 /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
             }
@@ -3111,7 +3120,8 @@
             const Arry = Typ=='PDDS' ? {Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`} :
                          Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {Id:`${Def.Id}`}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
-            /*Obj*/ J[Typ].push(Def)
+            /*Obj*/ J[Typ].push(Def) // (Lembrando que ao dar push() eu jogo ela pra o final, e não pra o inicio se estiver no reverso) 
+            /*Ojj*/ JJ[Typ][Def.Id] = Def
             /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
             if(SB){LOG('Linha Adicionada pelo SB')}
             if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)} // não acho q seria o caso de usar isso!
