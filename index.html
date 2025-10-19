@@ -85,7 +85,7 @@
     const ALL      = {CLNT:[]}
     let SlideTable = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
-    const Primary  = {OOSS:'OS',GRAD:'Grad',PDDS:'Id',CLNT:'Id',UBER:'Id'}
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OOSS:'OS',UBER:'Id',MPAG:'Id'}
     let   ListIMG  = []
     let  ListFrete = {}
     
@@ -550,7 +550,7 @@
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
                 Auto:(e,R,A)=>`<p class="P-P Ct" name="${Num3(e)}" onclick="CtrlSoma(this)">${e}</p>`,
-                Sync:(e,R,A)=>`<p class="P-P Ct" name="${e}" onclick="CtrlSoma(this)">${e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
+                Sync:(e,R,A)=>`<p class="P-P Ct" name="${e}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
@@ -595,7 +595,7 @@
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai=='' // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
                 
                 return valid     ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` :
-                    R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);Re_Comp('${AA(R.Col)}','Bdj',this)">${Tm_Bndj(Typ,R.Col,v,r)}</td>` :
+                    R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)">${Tm_Bndj(Typ,R.Col,v,r)}</td>` :
                     R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                                  : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R,'',RPai)}</div></td>`
             }
@@ -634,7 +634,6 @@
     
             function PreTratamento(Typ,All,Arr){
                 const IN = performance.now()
-                if(All=='All'){JJ[Typ] = ArrtoOBJ(Arr,Primary[Typ])}
                 if(Typ=='CLNT'){return} // não aplica essas outras coisas pra clientes
                 // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
                 Re_Comp(Typ,'All')     // ✔️
@@ -1118,6 +1117,7 @@
         }
 
         function RFresh(Typ,All,Auto,e){
+
             // Adicionar as Colunas Faltando
             // fazer o tratamento de Reorden se tiver
             if(Typ=='GRAD' && Auto=='Auto'){return}
@@ -1148,10 +1148,10 @@
             ,S_CArt:j=>''
     /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Variantes[j.Tipo]?.Valr).toFixed(2)}
-            ,S_Forn:j=>[Dbbrev[j.Grad[0]]]
+            ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
             ,S_Gimg:j=>j.Grad
-            ,S_OS  :j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>j.Grad ?? ''
             ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
@@ -1169,30 +1169,30 @@
             ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
         }
 
-        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
+        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)            
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija então roda pra toas Linhas, se não for bandeja Roda apenas pra aquela Linha!
 
-            const Edit=(Pre,col,Mod,tr)=>{                
+            const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
                 const Key = All=='All' ? tr[Primary[Typ]] : VAL($(`:scope > ${Rx2([`${Typ}-${tr_ID(tr)}-${Primary[Typ]}`])}`,tr)) // Pegando a Chave Primaria
-                
-                const arg = All=='All' ? tr : JJ[Typ][Key]
+                const arg = All=='All' ? tr : Typ=='PDDS' ? JJ[Typ][Key].Serv : JJ[Typ][Key]
                 const Val = Splii[`${Pre}_${col}`](arg)   // no Argumento deve sempre ser o Objeto!
+                //if(All!=='All'){'Chegou',`${Pre}_${col}`,Val}
                 //if(Mod.includes('O')){   ReOpt(         td2 ,Splii[Cnct](VAL(td1))      )}
-                if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
+
+                if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{LOG('TDd',tr,col) ; DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
             }
 
             if(All!=='All'){LOG('Edição Unica',Typ)}
 
-            // Por enquanto nenhum aqui precisa de SB
             if(Typ=='OOSS'){
                 trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr)))
             }if(Typ=="GRAD"){
                 trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                 trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
             }if(Typ=="PDDS"){
-                trs.forEach(TR=>(Array.isArray(TR.Serv) ? TR.Serv : []).forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
-                trs.forEach(TR=>(Array.isArray(TR.Serv) ? TR.Serv : []).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
+                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : [TR]).forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
+                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : [TR]).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
                 //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
             }
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
@@ -1222,10 +1222,10 @@
             if(Typ==='PDDS'){
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
-                    const oID=All=='All'? tr.Id : tr_ID(tr)                                            // Numeração do ID
-                    const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                          // Concatenado é mais Preciso PDDS-oID-col
-                    const ges=arr=>arr.map(col=>JJ[Typ][oID]?.Serv.map(e=>Num4(e?.[col] ?? 0))).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
-                    const Vll=arr=>arr.map(e=>e??'').join('')                                          // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
+                    const oID=All=='All'? tr.Id : tr_ID(tr)                                             // Numeração do ID
+                    const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                           // Concatenado é mais Preciso PDDS-oID-col
+                    const ges=arr=>arr.map(col=>{return JJ[Typ][oID].Serv == '' ? 0 :JJ[Typ][oID].Serv.map(e=>Num4(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
+                    const Vll=arr=>arr.map(e=>e??'').join('')                                           // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
 
                     /*Somas*/ const SumV = sum(ges(['Valr']))               ; if(All=='All'){tr.Valr = RS(SumV)                      }else{DarVAL(get('Valr'),RS(SumV))}
                               const VllC = ges(['CArt','OS','Uber','VCbt'])
@@ -3020,9 +3020,39 @@
         const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
-        const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
-
+        
         // Criar uma Global pra mecher no Obj,Sub,DOM eu passarei os argumentos e o Tipo, Delete, NewLinha, EditCell
+
+        const DarJJ = (M,T,R,C,V,Lv2=null)=>{
+            const j = J[T], k = JJ[T]; if (!j || !k) return
+            let o, jL, jjL, parent
+            if (Lv2){
+                parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
+                if (!parent) return
+                jL   = parent[Lv2.pC]?.find(e => e.Id == R)
+                jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
+            } else o = j.find(e => e.Id == R)
+
+            switch(M){
+                case 'Add':{
+                    const n = typeof V=='object'?V:{Id:R,[C]:V}
+                    if(Lv2) { parent[Lv2.pC].push(n); if(!JJ[Lv2.pC]) JJ[Lv2.pC]={}; JJ[Lv2.pC][R]=n}
+                    else { j.push(n); k[R]=n}
+                    break;
+                }
+                case 'Edt':
+                    if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
+                    else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
+                    break;
+                case 'Del':
+                    if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
+                    else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
+            }
+            const LOG1 = Lv2 ? jL : o
+            const LOG2 = Lv2 ? jjL : k[R]
+            const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
+            LOG(`Const Atualizadas! ${M}, ${iguais}`)
+        }
 
         function EditCell(e,vall=null,Auto,SB){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
@@ -3030,17 +3060,15 @@
             const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
             const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
             const Nval   = vall==""?"":vall||VAL(e)
-            if(Nval==Nm(e)){return} // quando não foi Aterado
+            if(Nval==Nm(e)   ){return} // quando não foi Aterado
             if(Nm(e)=='False'){return} // quando é uma imagem
             let Find     = []
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
-                /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval
-                /*Ojj*/ JJ[R.Typ][R.Row][R.Col] = Nval
+                /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval)
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
-            /*Lv2*/}else{
-                /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row)
-                /*Lv2*/ const x  = X[P.Col].find(e=>e.Id==R.Row)
-                /*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
+            /*Lv2*/}else{        
+                /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval,{pT:P.Typ,pR:P.Row,pC:P.Col}) // aqui como a função não precisa retornar nada, seria bom ela retornar esse X, pra eu usar logo abaixo no SupaBase
+                /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row) ; Find = X[P.Col] // adquie o valor Alterado
                 /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
             }
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{
@@ -3055,7 +3083,6 @@
                 }})
         }
         
-
         function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 ⚠️ Não Há Nessecidade de Fechar a Bndj
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
@@ -3065,16 +3092,10 @@
             const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
             const Nval   = true
             let Find     = []
+            const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
             /*Lv1*/if(!IsBdj){
-                    if(Lxr){
-                        /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)[R.Col] = Nval // if Move para Lixeira
-                        /*Ojj*/ delete JJ[R.Typ][R.Row]
-                        /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,Nval)             // if Move para Lixeira
-                    }else{
-                        /*Obj*/ RmvById(J[R.Typ],R.Row)                  // else Deleta na Tora
-                        /*Ojj*/ delete JJ[R.Typ][R.Row]
-                        /*Sub*/ if(!SB){Sb_DELETE(R.Typ,R.Row)}          // else Deleta na Tora
-                    }
+                    /*Obj*/ DarJJ('Del',R.Typ,R.Row)
+                    /*Sub*/ if(Lxr){if(!SB){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}}else{if(!SB){Sb_DELETE(R.Typ,R.Row)}}
             /*Lv2*/}else{ // para os da Bandeija estou com Preguiça de Mover pra Lixeira, ai por enquanto vou usar só Deletando na Tora
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
@@ -3120,8 +3141,7 @@
             const Arry = Typ=='PDDS' ? {Id:`${Def.Id}`,Rg:`${HOJE()} ${Inn($('#LgNome'))}`} :
                          Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {Id:`${Def.Id}`}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
-            /*Obj*/ J[Typ].push(Def) // (Lembrando que ao dar push() eu jogo ela pra o final, e não pra o inicio se estiver no reverso) 
-            /*Ojj*/ JJ[Typ][Def.Id] = Def
+            /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
             /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
             if(SB){LOG('Linha Adicionada pelo SB')}
             if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)} // não acho q seria o caso de usar isso!
@@ -3211,11 +3231,14 @@
                 J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 J['PDDS'].forEach(TR=>TR.Serv = Array.isArray(TR.Serv) ? TR.Serv : [])
                 criaCol_Col('Surg','PDDS','Serv')
-                J['SERV']=J['PDDS'].flatMap(e=>e.Serv)
-                J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt)
+                J['SERV']=J['PDDS'].flatMap(e=>e.Serv) ; JJ['SERV'] = ArrtoOBJ(J['SERV'],Primary['SERV']) // Cria a Segunda Const
+                J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt) ; JJ['PGMT'] = ArrtoOBJ(J['PGMT'],Primary['PGMT']) // Cria a Segunda Const
             }else{J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 if(Typ=='CLNT'){Listagem('CLNT','Clnt')}
-            }LOG(`✔️ ${Typ}`)
+            }
+            JJ[Typ] = ArrtoOBJ(J[Typ],Primary[Typ]) // Cria a Segunda Const
+            LOG(`✔️ ${Typ}`)
+            
         }
         await Promise.all(['PDDS','CLNT','MPAG','GRAD','UBER','OOSS','IMGS'].map(Typ=>Typ=='IMGS'?getIMG():gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
           LOG(`✅ SB Carregado: ${MS(INNN)}`)
@@ -3228,6 +3251,7 @@
         PreTratamento('PDDS','All',J['PDDS'])
         PreTratamento('CLNT','All',J['CLNT'])
         PreTratamento('UBER','All',J['UBER'])
+
         LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 
@@ -3269,13 +3293,16 @@
             if(!DiF || (Object.keys(DiF).length === 1 && 'Id' in DiF)){LOG(`🌐 EDIT RealTime(${Typ},${nEw.Id}) OK👍`) ; return}
 
             /*Obj*/ ObjEtr(DiF).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro
+            /*Obj*/ // falta atualziar o JJ[Typ]
             /*DOM*/ flatenObject(DiF,Typ).forEach(([TYP,ID,col,Vlr])=>{
                 $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
                     // Add ou Rmv Linha da Bndj AddRowBdj(com obj)
+                    if(col=='Clnt'){return}
                     if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{return}}
                     
                     if(td){if(VAL(td)!==Vlr){
                         if(D_R(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
+                        if(D_R(td).Tm=='Sync'){return}
                         DarVAL(td,Vlr) // Editou valor
                          LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
                     else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
@@ -3341,6 +3368,5 @@
     // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
     // na Soma lá em baixo dar o . quando passar de mil
     // 💡 Pesquisar dentro da bandeija de Serv, pra Localizar o Pedido
-
 </script>
 </html>
