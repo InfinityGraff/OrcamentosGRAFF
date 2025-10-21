@@ -87,7 +87,8 @@
     const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OOSS:'OS',UBER:'Id',MPAG:'Id'}
     let   ListIMG  = []
-    let  ListFrete = {}
+    let  ContGrad  = {}
+    let  ContCLNT  = {}
     
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // Por M2
@@ -206,6 +207,12 @@
                     Variantes:{
                             'Carteira' :{}}
         },
+        'Folha'    :{Calc:'OFS', Stts:'Offf' , Prvw:'Fotinha' , Desc:'Tamanho Padrão 9x5'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:['PVC']        , HotKey:[] , img:'Place',
+                        Variantes:{
+                            'Colchê  300g' :{},
+                            'Triplex 300g' :{},
+                        }
+        },
         // Tecido
         'Camisa'   :{Calc:'QNT', Stts:'Disp' , Prvw:'PrevCAM' , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
                         Variantes:{
@@ -273,7 +280,14 @@
         },
         'Vendas'   :{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
-                            'Vendas' :{}}
+                            'Tanque'   :{},
+                            'Quadros'  :{},
+                            'Acrilico' :{},
+                            'Figurinha':{},
+                            'Recorte'  :{},
+                            'Cartela'  :{},
+                            'Rodagem'  :{},
+                        }
         },
         'Cartela'  :{Calc:'UND', Stts:'Offf' , Prvw:''        , Desc:'Cartelas de Adesivo'  , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Variantes:{
@@ -343,7 +357,7 @@
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg'}
 
@@ -352,7 +366,7 @@
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lixo:['X','']},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
@@ -632,22 +646,16 @@
                 }
             }
     
-            function PreTratamento(Typ,All,Arr){
-                const IN = performance.now()
-                if(Typ=='CLNT'){return} // não aplica essas outras coisas pra clientes
-                // Re_Fret(Typ,'All')  // ✔️ // isso tem que ser chamado antes de Rodar a Grade, é interessante q ele fosse independente aqui! pra n chamar 2 Vezes
-                Re_Comp(Typ,'All')     // ✔️
-                Re_Soma(Typ,'All')     // ✔️
-            }
-        
+            // 💡 Criar um Tm pra Cont, q seria tipo uma Bandeija igual de Sugg, ContGrad e ContCLNT q mostrará uma Minitabelinha igual a um Sugg, vai ser feita na hora, com informações sobre oq tem ali
+            // 👀 Sugg e Link talvez sejam a mesma coisa a difereça é a opções de "Apenas Troca" ou de "Adição"
+            // 💡 ao Clicar no ID, exibirá RG:[User,PC,Data,Hora]
+
+            // 🚫 select deveria ter name pra n ser afetado pelo Realtime
+            // 🚫 ao Excluir e Adicioanr linha na Bandeija ela está Fechando Sozinha
             // ⚡ Desempenho Fodah, só Carregar as imagens internas quando clicar na Bandeija (e Outras coisas mais Banais também)
-            // Sugg e Link talvez sejam a mesma coisa a difereça é a opções de "Apenas Troca" ou de "Adição"
-            // impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
-            // ao Clicar no ID, exibirá RG:[User,PC,Data,Hora]
-            // Mover-se nas células com as Setas
-            // Opção de mais de 1 Designer
-            // select deveria ter name pra n ser afetado pelo Realtime
-            // o ato de a bandeija fechar sozinha ao Excluir ou adicionar o pedido pela primeira vez, deve está relacionado com o ShowNone da Bandeija, e não com os botões!
+            // ⚡ impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
+            // 💡 Opção de mais de 1 Designer
+            // 💡 Mover-se nas células com as Setas
         </script>
     </div>
 
@@ -1111,34 +1119,52 @@
         
         function ReOpt(td,arr){ // arr = valores disponiveis
             const Sel  = $('select',td)
-            if(arr.length==1)         {EditCell(Sel,arr[0],'Auto')} // Troca pra o Unico option, se Tiver
-            if(!arr.includes(VAL(td))){EditCell(Sel,""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
+            if(arr.length==1)         {DarVAL(td,arr[0],'Auto')} // Troca pra o Unico option, se Tiver
+            if(!arr.includes(VAL(td))){DarVAL(td,""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
             setTimeout(()=>{$$('option',td).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500)   // Ocultar os Options Ausentes
         }
 
-        function RFresh(Typ,All,Auto,e){
+        function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
+            ;['PDDS','CLNT'].forEach(Typ=>{Re_Cont(Typ,'All')}) // tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
+            
+            ;['PDDS','CLNT','GRAD','OOSS','UBER'].forEach(Typ=>{
+                // fazer o tratamento de Reorden se quiser
+                if(Typ=='CLNT'){criaCol_Typ('Lcro','CLNT');criaCol_Typ('Medi','CLNT')} // Depois dar um jeito de fundir dentro de uma Função Geral
 
-            // Adicionar as Colunas Faltando
-            // fazer o tratamento de Reorden se tiver
+                Re_Comp(Typ,'All')
+                Re_Soma(Typ,'All')
+            })
+            
+        }
+
+        function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
             if(Typ=='GRAD' && Auto=='Auto'){return}
-            //Re_Fret(Typ,All)
-            if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All,e)}} // ta com essa agonia toda mas vou ajeitar!
+            //Re_Cont(Typ,All)
+            if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All,e)}} // ta com essa agonia toda mas vou ajeitar! (Provavelmente só o IF de All fica) (esse if de auto vai sair!)
             if(All!=='All'){Re_Soma(Typ,All)}
             Re_Colr(Typ,All)
             Re_Foot(Typ,All)
             LOG('🔄 Rfresh Geral')
         }
 
-        function Re_Fret(Typ,All){  // ⭐⭐⭐⭐ _ Sempre é All
+        function Re_Cont(Typ,All){  // ⭐⭐⭐_ _ Sempre é All contar quantas vezes algo aparece dentro e agrupar valores
             const IN = performance.now()
-            if(Typ!=='PDDS'){return}
-            if(Typ=='PDDS'){J['SERV'].forEach(({Grad,Valr})=>{if (!Grad || Grad === "" || Grad === "--"){return}
-                    ListFrete[Grad] ??= { Qnt: 0, Sum: 0 }
-                    ListFrete[Grad].Qnt++
-                    ListFrete[Grad].Sum += Number(Valr)
+                 if(Typ=='PDDS'){J['SERV'].forEach(({Grad,Id,Valr})=>{if (!Grad || Grad === "" || Grad === "--"){return}
+                    ContGrad[Grad]??={Qnt:0,Sum:0,List:[]}
+                    ContGrad[Grad].Qnt++
+                    ContGrad[Grad].Sum += Number(Valr)
+                    ContGrad[Grad].List.push(Id)
                 })
             }
-            if(All=="All"){LOG(`🔄 Re_Fret:(${Typ}) ${MS(IN)}`)}
+            else if(Typ=='CLNT'){J['PDDS'].forEach(({Clnt,Id,Serv})=>{if (!Clnt || Clnt === "" || Clnt === "--"){return}
+                    ContCLNT[Clnt]??={Qnt:0,Sum:0,List:[]}
+                    ContCLNT[Clnt].Qnt++
+                    ContCLNT[Clnt].Sum += Serv.reduce((acc,e)=>acc+Number(e.Valr),0)
+                    ContCLNT[Clnt].List.push(Id)
+                })
+            }
+            else{return}
+            if(All=="All"){LOG(`🔄 Re_Cont:(${Typ}) ${MS(IN)}`)}
         }
 
         const Splii = {
@@ -1150,15 +1176,15 @@
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Variantes[j.Tipo]?.Valr).toFixed(2)}
             ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
             ,S_Gimg:j=>j.Grad
-            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ListFrete[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>j.Grad ?? ''
             ,G_ImgG:j=>j.Grad.replace(/_\d*$/,"") ?? ''
     /*Opt*/ ,G_Forn:j=>[Dbbrev[j.Grad[0]]]
     /*Opt*/ ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
             ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
-            ,G_Cnt2:j=>ListFrete[j.Grad]?.Qnt ?? ''
+            ,G_Cnt2:j=>ContGrad[j.Grad]?.Qnt ?? ''
             ,G_VlrO:j=> JJ['OOSS'][j.OS]?.Valr || 0
             ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr))
             ,G_Oimg:j=>j.OS   ?? ''
@@ -1167,41 +1193,48 @@
             //-----------------------------------------------------------------------------------------------------------
             ,O_Oimg:j=>j.OS ?? ''
             ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
+            //-----------------------------------------------------------------------------------------------------------
+            ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
+            ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
+            ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
         }
 
-        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)            
+        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
             const IN = performance.now()
-            const trs = All=='All' ? J[Typ] : [All] // se for Bandeija então roda pra toas Linhas, se não for bandeja Roda apenas pra aquela Linha!
+            const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
 
             const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
-                const Key = All=='All' ? tr[Primary[Typ]] : VAL($(`:scope > ${Rx2([`${Typ}-${tr_ID(tr)}-${Primary[Typ]}`])}`,tr)) // Pegando a Chave Primaria
-                const arg = All=='All' ? tr : Typ=='PDDS' ? JJ[Typ][Key].Serv : JJ[Typ][Key]
-                const Val = Splii[`${Pre}_${col}`](arg)   // no Argumento deve sempre ser o Objeto!
-                //if(All!=='All'){'Chegou',`${Pre}_${col}`,Val}
-                //if(Mod.includes('O')){   ReOpt(         td2 ,Splii[Cnct](VAL(td1))      )}
-
-                if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{LOG('TDd',tr,col) ; DarVAL(TDd(tr,col),Val)}} // depois vejo como fazer caso precise dar 
+                const Coa = {S:'SERV',P:'PGMT'}
+                const TYP = Coa[Pre]||Typ
+                const Key = All=='All' ? tr[Primary[TYP]] : VAL($(`:scope > ${Rx2([`${TYP}-${tr_ID(tr)}-${Primary[TYP]}`])}`,tr)) // Pegando a Chave Primaria
+                const arg = All=='All' ? tr : JJ[TYP][Key]
+                const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
+                if(Mod.includes('O') && All!=='All'){ReOpt(TDd(tr,col),Val)}
+                if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}}
             }
 
-            if(All!=='All'){LOG('Edição Unica',Typ)}
+            if(All!=='All'){LOG(`Edição Unica: ${Typ}`)}
 
-            if(Typ=='OOSS'){
-                trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr)))
-            }if(Typ=="GRAD"){
+            if(Typ=="PDDS"){
+                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : $$('.Bdj_SERV > tbody > tr',TR)).forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
+                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : $$('.Bdj_SERV > tbody > tr',TR)).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
+                //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
+            }else if(Typ=="CLNT"){
+                trs.forEach(tr=>[['Link','V'],['Lcro','V'],['Medi','V']].forEach(c=>Edit('C',c[0],c[1],tr)))
+            }else if(Typ=="GRAD"){
                 trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                 trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
-            }if(Typ=="PDDS"){
-                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : [TR]).forEach(tr=>[['Surg','VN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
-                trs.forEach(TR=>(All=='All' ? Array.isArray(TR.Serv) ? TR.Serv : [] : [TR]).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
-                //trs.forEach(tr=>[ aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual
-            }
+            }else if(Typ=='OOSS'){
+                trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']].forEach(c=>Edit('O',c[0],c[1],tr)))
+            }else{return}
+
             // Lá no ReOption tem a opção de analisar se tem apenas 1, se for o caso, ao Rodar Todos, talvez de pra analisar antes
             // se for vazio ou apenas 1, já insere na const já antes! (claro, talvez se possivel deixar uma mensagem pedindo SB)
             // a Linha da GRAD ficará vermelha caso eu tenha digitado UBER ou OS, q ainda não exista na sua respectiva tabela
             if(All=="All"){LOG(`🔄 Re_Comp:(${Typ}) ${MS(IN)}`)}
         }
 
-        function Re_Comp_Antigo(Typ,All,Eu){ // EXTRAIR apenas os Oculta Coluna
+        function Re_Comp_Antigo(Typ,All,Eu){ // EXTRAIR apenas os Oculta Coluna e o lance de valor antigo!
             const Edit=(c1,c2,Mod,tr,Pre)=>{ // Critério pra Ocultar, só Disponivel no 'SERV'
                 const [td1,td2] = [TDd2(tr,c1),TDd(tr,c2)]
                 if(Mod.includes('N')){
@@ -1214,11 +1247,18 @@
                     }else{Rmv_N([td2,th])}
                 }
             }
+
+            // Feito Principalmente pra áreas onde ta diferente no Supabase pra poder adicionar lá, pois não quero adicionar de forma automatica
+            function AutoAntig(obj,col,tr,v){ // (Como Chamar!) AutoAntig(obj,'Forn',tr,'NovoValor') // const obj = J[Typ][tr_X(tr)]
+                const A = obj[col]                       // Valor Antigo
+                const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
+                if(A=="" && v==""){return}
+                DarVAL($(Rx2([col]),tr),v,Cor)
+            }
         }
 
-        function Re_Soma(Typ,All){ // ⭐⭐⭐_ _ All faz com Const, UND faz com tr no DOM
+        function Re_Soma(Typ,All){ // ⭐⭐⭐_ _ (Usado apenas em PDDS por enquanto!) ⚠️⚠️
             const IN = performance.now()
-            if(Typ!=='PDDS'){return}
             if(Typ==='PDDS'){
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
@@ -1234,9 +1274,9 @@
                     // se CArt e VCbt for '--' representa Zero.
                     // Evoluir pra adicionar alguns Critérios de Proteção pra saber se o Custo foi definido corretamente! ai só pinta msm se tiver realmente tudo certinho!
                 })
-            }
+            }else{return}
             if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
-            // o valor do Uber não atualiza correto ao Recomp individual (ele vai diminuindo a cada um)
+            // ⚠️ o valor do Uber não atualiza correto ao Recomp individual (ele vai diminuindo a cada um)
         }
 
         function Re_Foot(Typ,All){ // Async ⚠️ Ainda está só no DOM
@@ -1276,26 +1316,13 @@
                     else if (RgxPixAV(I)[2]==='Av' ){ ArrAv.push(Num(RgxPixAV(I)[1]))} }) })
             return Tm_PixAv(ArrPix,ArrAv)
         }
-        
-        function AutoClntPDDS(){
-            $$(`#H_CLNT > tbody > tr`).forEach(tr=>{
-                const ID = VAL($(Rx2(['CLNT','Id']),tr))
-                const PddsLink = J['PDDS'].filter(e=>e.Clnt==ID).map(e=>e.Id).join(',')
-                const Cell = $(Rx2(['CLNT','Link']),tr)
-                Cell.innerHTML = PddsLink
-                _td(Cell).onclick = _td(Cell).onclick = function(event){if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}}
-                if(PddsLink!==''){$(Rx2(['CLNT','Lixo']),tr).innerHTML = ""} // se tiver pedidos Atrelados Oculta Lixeira
-            })
-            LOG(`🔄 AutoClntPDDS()`)
-        }
-
-        function AutoAntig(obj,col,tr,v){ // (Como Chamar!) AutoAntig(obj,'Forn',tr,'NovoValor') // const obj = J[Typ][tr_X(tr)]
-            const A = obj[col]                       // Valor Antigo
-            const Cor = A==""&&v!==''?["Blu",'']:A==v?['Grn','']:['Red',A]
-            if(A=="" && v==""){return}
-            DarVAL($(Rx2([col]),tr),v,Cor)
-        }
     
+        /*
+            // adiciona o evento de Click na coluna de Lunk de Pedidos na Tabela de Clientes
+                _td(Cell).onclick = _td(Cell).onclick = function(event){if(event.ctrlKey){Tog(this,'LinkULT')}else{Tog(this,'LinkAtv')}}
+            // Ocultar a Lixeira nas Linhas que tem pedidos atrelado, pra evitar de excluir clientes que tão em Uso
+                if(PddsLink!==''){$(Rx2(['CLNT','Lixo']),tr).innerHTML = ""}
+        */
     </script>
 
     <div>     <!--LINKS  - ⭐⭐_ _ _ -->
@@ -3014,45 +3041,12 @@
     </div>
 </body>
 
-<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _
+<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️⚠️ajeitar o DarJJ() nas Outras⚠️⚠️
     // MiniLib pra ser usada principalmente por essas Func de manipulações
         const LocLinId=(Typ,ID)=>J[Typ].find(e=>e.Id==ID)
         const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
-        
-        // Criar uma Global pra mecher no Obj,Sub,DOM eu passarei os argumentos e o Tipo, Delete, NewLinha, EditCell
-
-        const DarJJ = (M,T,R,C,V,Lv2=null)=>{
-            const j = J[T], k = JJ[T]; if (!j || !k) return
-            let o, jL, jjL, parent
-            if (Lv2){
-                parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
-                if (!parent) return
-                jL   = parent[Lv2.pC]?.find(e => e.Id == R)
-                jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
-            } else o = j.find(e => e.Id == R)
-
-            switch(M){
-                case 'Add':{
-                    const n = typeof V=='object'?V:{Id:R,[C]:V}
-                    if(Lv2) { parent[Lv2.pC].push(n); if(!JJ[Lv2.pC]) JJ[Lv2.pC]={}; JJ[Lv2.pC][R]=n}
-                    else { j.push(n); k[R]=n}
-                    break;
-                }
-                case 'Edt':
-                    if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
-                    else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
-                    break;
-                case 'Del':
-                    if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
-                    else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
-            }
-            const LOG1 = Lv2 ? jL : o
-            const LOG2 = Lv2 ? jjL : k[R]
-            const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
-            LOG(`Const Atualizadas! ${M}, ${iguais}`)
-        }
 
         function EditCell(e,vall=null,Auto,SB){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
@@ -3245,13 +3239,7 @@
         ALERT(`✅ SB Carregado: ${MS(INNN)}`)
         //Liberar uma coisa Nova
         const INNNN = performance.now()
-        Re_Fret('PDDS','All')
-        PreTratamento('OOSS','All',J['OOSS'])
-        PreTratamento('GRAD','All',J['GRAD'])
-        PreTratamento('PDDS','All',J['PDDS'])
-        PreTratamento('CLNT','All',J['CLNT'])
-        PreTratamento('UBER','All',J['UBER'])
-
+        Tratamento()
         LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
     };const getSBPromise = getSB()
 

@@ -130,6 +130,38 @@ function VAL(e){
     // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
 }
 
+const DarJJ = (M,T,R,C,V,Lv2=null)=>{
+    const j = J[T], k = JJ[T]; if (!j || !k) return
+    let o, jL, jjL, parent
+    if (Lv2){
+        parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
+        if (!parent) return
+        jL   = parent[Lv2.pC]?.find(e => e.Id == R)
+        jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
+    } else o = j.find(e => e.Id == R)
+
+    switch(M){
+        case 'Add':{
+            const n = typeof V=='object'?V:{Id:R,[C]:V}
+            if(Lv2) { parent[Lv2.pC].push(n); if(!JJ[Lv2.pC]) JJ[Lv2.pC]={}; JJ[Lv2.pC][R]=n}
+            else { j.push(n); k[R]=n}
+            break;
+        }
+        case 'Edt':
+            if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
+            else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
+            break;
+        case 'Del':
+            if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
+            else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
+    }
+    const LOG1 = Lv2 ? jL : o
+    const LOG2 = Lv2 ? jjL : k[R]
+    const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
+    LOG(`Const Atualizadas! ${M}, ${iguais}`)
+}
+
+
 const SplitAvanc=(Stg)=>{
     const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
     let [nome,qnt,tamn] = ['','','']
@@ -684,9 +716,6 @@ function Promss_Imgs2(files,div){
       });arry.push(promise)
   };return Promise.all(arry)
 }
-
-
-
 
 // Trexo relacionado a Mover os Botões das Fotinhas
 let alvo,dx,dy
