@@ -1208,6 +1208,7 @@
                 const TYP = Coa[Pre]||Typ
                 const Key = All=='All' ? tr[Primary[TYP]] : VAL($(`:scope > ${Rx2([`${TYP}-${tr_ID(tr)}-${Primary[TYP]}`])}`,tr)) // Pegando a Chave Primaria
                 const arg = All=='All' ? tr : JJ[TYP][Key]
+                if(!arg){LOG('⚠️ o Objeto Não Existe') ; return}
                 const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
                 if(Mod.includes('O') && All!=='All'){ReOpt(TDd(tr,col),Val)}
                 if(Mod.includes('V')){if(All=='All'){tr[col] = Val}else{DarVAL(TDd(tr,col),Val)}}
