@@ -366,20 +366,20 @@
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Likk'}
 
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
-    const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
-        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
+    const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
+        PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grde:['K','' ],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
-        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E',''],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         
         MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
     }
@@ -1145,6 +1145,9 @@
                 // fazer o tratamento de Reorden se quiser
                 if(Typ=='CLNT'){criaCol_Typ('Lcro','CLNT');criaCol_Typ('Medi','CLNT')} // Depois dar um jeito de fundir dentro de uma Função Geral
                 if(Typ=='PDDS'){criaCol_Col('Grde','PDDS','Serv')}
+
+                if(Typ=='PDDS'){criaCol_Typ('Deve','PDDS')}
+                if(Typ=='UBER'){criaCol_Typ('Img','PDDS')}
                 
                 Re_Comp(Typ,'All')
                 Re_Soma(Typ,'All')
@@ -1281,12 +1284,16 @@
                     const oID=All=='All'? tr.Id : tr_ID(tr)                                             // Numeração do ID
                     const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                           // Concatenado é mais Preciso PDDS-oID-col
                     const ges=arr=>arr.map(col=>{return JJ[Typ][oID].Serv == '' ? 0 :JJ[Typ][oID].Serv.map(e=>Num4(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
+                    const gee=arr=>arr.map(col=>{return JJ[Typ][oID].Pgmt == '' ? 0 :JJ[Typ][oID].Pgmt.map(e=>Num4(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
                     const Vll=arr=>arr.map(e=>e??'').join('')                                           // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
 
                     /*Somas*/ const SumV = sum(ges(['Valr']))               ; if(All=='All'){tr.Valr = RS(SumV)                      }else{DarVAL(get('Valr'),RS(SumV))}
                               const VllC = ges(['CArt','OS','Uber','VCbt'])
+                              const VllP = gee(['Valr'])
+                              const SumP = sum(VllP.map(e=>e==''?0:e))
                     /*Custo*/ const SumC = sum(VllC.map(e=>e==''?0:e))      ; if(All=='All'){tr.Cust = Vll(VllC)==''?'':RS(SumC)     }else{DarVAL(get('Cust'),Vll(VllC)==''?'':RS(SumC     ))} ; 
                                                                             ; if(All=='All'){tr.Lcro = Vll(VllC)==''?'':RS(SumV-SumC)}else{DarVAL(get('Lcro'),Vll(VllC)==''?'':RS(SumV-SumC))}
+                                                                            ; if(All=='All'){tr.Deve = Vll(VllP)==''?'':SumV-SumP==0?'':RS(SumV-SumP)}else{DarVAL(get('Deve'),Vll(VllP)==''?'':SumV-SumP==0?'':RS(SumV-SumP))}
                     // se CArt e VCbt for '--' representa Zero.
                     // Evoluir pra adicionar alguns Critérios de Proteção pra saber se o Custo foi definido corretamente! ai só pinta msm se tiver realmente tudo certinho!
                 })
