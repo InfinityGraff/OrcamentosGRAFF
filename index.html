@@ -3057,7 +3057,7 @@
     </div>
 </body>
 
-<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️⚠️ajeitar o DarJJ() nas Outras⚠️⚠️
+<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
     // MiniLib pra ser usada principalmente por essas Func de manipulações
         const LocLinId=(Typ,ID)=>J[Typ].find(e=>e.Id==ID)
         const orArr   =(e,fallback=[])=>Array.isArray(e) ? e : fallback
@@ -3067,8 +3067,8 @@
         function EditCell(e,vall=null,Auto,SB){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
-            const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj
-            const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
+            const P      = isBdj(e) ? D_P(_td(e)) : null   // Extrair RPai se Estiver na Bndj   ⚠️   (Mas também Conciderar Tabelas Secund)
+            const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija ⚠️   (isso vai ser true quando for Secundario)
             const Nval   = vall==""?"":vall||VAL(e)
             if(Nval==Nm(e)   ){return} // quando não foi Aterado
             if(Nm(e)=='False'){return} // quando é uma imagem
@@ -3077,7 +3077,7 @@
                 /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval)
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
             /*Lv2*/}else{
-                // ⚠️⚠️ tem que entrar nesse Else tbm quando o Asunto for tabelas Secundarias como SERV e PGMT ⚠️⚠️
+                // ⚠️tem que entrar nesse Else tbm quando o Asunto for tabelas Secundarias como SERV e PGMT
                 /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval,{pT:P.Typ,pR:P.Row,pC:P.Col}) // aqui como a função não precisa retornar nada, seria bom ela retornar esse X, pra eu usar logo abaixo no SupaBase
                 /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row) ; Find = X[P.Col] // adquie o valor Alterado
                 /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
@@ -3085,7 +3085,7 @@
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{
                 if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
                     if(Auto=='Auto'){DarVAL_Tm(td,Nval)}else{DarVAL(td,Nval)}
-                    if(IsBdj && _td(Pai(td)) !== null){ // pra entrar tem que ser Bndj e .T-T tem que Existir
+                    if(IsBdj && _td(Pai(td)) !== null){ // pra entrar tem que ser Bndj e .T-T tem que Existir ⚠️ (esse primeiro IsBdj vai ser true masm quando for tabela Secund, ai vai da errado então a pesquisa correta é 'isBdj(e)' essa!)
                         const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
                         RFresh(P.Typ,tR,Auto,e)
                     }else{// Edita quando é fora da Bandeija
@@ -3094,7 +3094,7 @@
                 }})
         }
         
-        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 ⚠️ Não Há Nessecidade de Fechar a Bndj
+        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
             const tR     = _tr(Pai(_tr(Eu)))                 // esse é o Tr do Typ Pai
@@ -3136,7 +3136,7 @@
                 const NewID = lngh ? 1 : Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
                 if(['Serv','Pgmt']){
                     Def.Id   = `${row.Id}_${NewID}`// Novo Id
-                    Def.Data = row.Data            // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
+                    if(R.Col=='Serv'){Def.Data = row.Data} // Clona Data só pra Serv
                     Def.Clnt = row.Clnt            // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
