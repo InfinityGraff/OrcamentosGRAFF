@@ -58,16 +58,28 @@ function CrypPass(senha){
   return Par.concat(Imp).join('')
 }
 
-function ShowBndj(div,call){
-    if(event.target.tagName=='IMG'){return}
-    if(event.target.tagName== 'I' ){return}
-    const e = $('.BNdj',div)
-    if(e.contains(event.target)){return}else{ // esse IF ta dando erro se não existir eu acho (este if tem que seguir em frente caso seja o Svg da Seta)
-        e.style.zIndex = $$('.BNdj:not(.none)').length + 500
-        if(Tecla('ctrl')){Tog_N(e)}else{$$('.BNdj:not(.none)').forEach(E=>{if(E==e){return}else{Add_N(E)}});Tog_N(e)}}
-    if(Tecla('ctrl')){return}
-    else{ClickFora(div,()=>{Add_N(e)})}
+function ShowBndj(div){                                                // Função que exibe/oculta o painel .BNdj dentro da div recebida
+    if(!document.contains(event.target)){LOG('não ta mais no DOM') ; return} // interrompe se o target não estiver mais no DOM
+    if(['IMG','I','BUTTON'].includes(event.target.tagName)){return}
+    if(event.target.closest('svg')){return}
+    const e = $('.BNdj',div)                                           // Seleciona o elemento .BNdj dentro da div Passada
+    if(e.contains(event.target)){
+        LOG('Click Dentro de BNdj')
+        return} // Se o clique for dentro do .BNdj, interrompe (não fecha nem altera)
+    else{                                                         // Caso contrário (clique fora do conteúdo interno)
+        e.style.zIndex = $$('.BNdj:not(.none)').length + 500      // Define o z-index dinamicamente com base na quantidade de painéis visíveis
+        if(Tecla('ctrl')){Tog_N(e)}                               // Se a tecla CTRL estiver pressionada, apenas alterna o estado (mostra/oculta)
+        else{                                                     // Caso não esteja com CTRL
+            $$('.BNdj:not(.none)').forEach(E=>{                   // Percorre todos os painéis .BNdj que estão visíveis
+                if(E==e){return}else{Add_N(E)}                    // Fecha (adiciona .none) em todos, exceto o atual
+            })
+            Tog_N(e)                                              // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
+        }
+    }
+    if(Tecla('ctrl')){return}                                     // Se CTRL estiver pressionado, interrompe (não aplica o fechamento automático)
+    else{ClickFora(div,()=>{Add_N(e)})}                           // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
 }
+
 
 const BrevTitle = str => {
   try {

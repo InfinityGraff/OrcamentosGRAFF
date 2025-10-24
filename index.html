@@ -51,7 +51,7 @@
                 orc :[],
                 PDDS:['Id'],
                 PGMT:['Id'],
-                SERV:['Id','Data','Detg']},
+                SERV:['Data','Detg']},
 
         DSgn: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
@@ -252,7 +252,16 @@
         },
         'Recorte'  :{Calc:'M2v', Stts:'Offf' , Prvw:'CnvEcut' , Desc:'Adesivo Recortado'    , Forn:['Stock']                     , Etpa:['Arte','Corte','Cbmt','Aplic']  , Extra:[]             , HotKey:["Ploter",'Lamina','Siluet','Vetor'] ,
                         Variantes:{
-                            'Vinil'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Preto'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Branco'          :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Prata'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Vermelho'        :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Azul'            :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Verde'           :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Amarelo'         :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Laranja'         :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Rosa'            :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
+                            'Roxo'            :{item:'22',Calc:'M2',Tipo:'',Valr:150,Valor:70  , Limit:[] , Mdds:[]},
                             'Holografico'     :{item:'23',Calc:'M2',Tipo:'',Valr:200,Valor:100 , Limit:[] , Mdds:[]},
         }},
       'Sinalização':{Calc:'M2v', Stts:'Offf' , Prvw:''        , Desc:'Chapa de PVC ou Zinco', Forn:['Stock']                     , Etpa:['Arte','Corte','Aplic','Cbmt']  , Extra:['PVC']        , HotKey:[]           , img:'Place',
@@ -359,12 +368,12 @@
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
-    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg'}
+    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Likk'}
 
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Lag :['Z','' ],Alt :['Z','' ],Qnt :['E','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grde:['K','' ],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
@@ -573,7 +582,12 @@
                 Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A,pai)=>/*pai?`<p class="P-P Ct" name="${e}">${e}</p>`:*/`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
+                
+                // esse Link é pra Linkar uma ou Mais Linhas de Outra Tabela
                 Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
+
+                Likk:(     )=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
+                
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Mdal:(e,R,A)=>``
@@ -1130,7 +1144,8 @@
             ;['PDDS','CLNT','GRAD','OOSS','UBER'].forEach(Typ=>{
                 // fazer o tratamento de Reorden se quiser
                 if(Typ=='CLNT'){criaCol_Typ('Lcro','CLNT');criaCol_Typ('Medi','CLNT')} // Depois dar um jeito de fundir dentro de uma Função Geral
-
+                if(Typ=='PDDS'){criaCol_Col('Grde','PDDS','Serv')}
+                
                 Re_Comp(Typ,'All')
                 Re_Soma(Typ,'All')
             })
@@ -3061,7 +3076,8 @@
             /*Lv1*/if(!IsBdj || R.Typ=='CLNT'){
                 /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval)
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
-            /*Lv2*/}else{        
+            /*Lv2*/}else{
+                // ⚠️⚠️ tem que entrar nesse Else tbm quando o Asunto for tabelas Secundarias como SERV e PGMT ⚠️⚠️
                 /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval,{pT:P.Typ,pR:P.Row,pC:P.Col}) // aqui como a função não precisa retornar nada, seria bom ela retornar esse X, pra eu usar logo abaixo no SupaBase
                 /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row) ; Find = X[P.Col] // adquie o valor Alterado
                 /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
@@ -3081,10 +3097,10 @@
         function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 ⚠️ Não Há Nessecidade de Fechar a Bndj
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
-            const tR     = _tr(Pai(_tr(Eu)))                // esse é o Tr do Typ Pai
-            const R      = D_R(_td(Eu))                     // R é o atual Editado
+            const tR     = _tr(Pai(_tr(Eu)))                 // esse é o Tr do Typ Pai
+            const R      = D_R(_td(Eu))                      // R é o atual Editado
             const P      = isBdj(Eu) ? D_P(_td(Eu)) : null   // Extrair RPai se Estiver na Bndj
-            const IsBdj  = P!==null                        // se 'p' existir então tem Bandeija
+            const IsBdj  = P!==null                          // se 'p' existir então tem Bandeija
             const Nval   = true
             let Find     = []
             const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
@@ -3098,17 +3114,18 @@
                 }else{  /*Obj*/ RmvById(X[P.Col],R.Row) ; Find = X[P.Col]}
                         /*Sub*/ if(!SB){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}
             }
+            
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{  // Editar todas as Cópias
                 if(IsBdj){
+                    Add_N(_tr(td)) // não consigo Remover dentro de Bandeija pois removendo ela oculta a bandeija
                 /*Edit Title*/ const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
                     RFresh(P.Typ,tR)
-                }
-                /*Edit td   */ _tr(td).remove() // não precisa de Recolor Individual pois a Linha n existe mais!
+                }else{_tr(td).remove()}
                 /*Alerta    */ if(SB){LOG('Deletado pelo SupaBase')}
             })
         }
-
-        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!)
+ 
+        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!) // Evitar Reescrever o DOM quando tiver VAZIO, isso evita ocultar bandeija quando clicar
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(ObjKey(Secund).includes(col)){            // só pra col q tem bndj
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
@@ -3116,14 +3133,17 @@
                 const lngh= l0(arr)               // conferir se é a Primeira vez!
                 const Def = ClrObj(BS[col])     // Cria um Default Baseado na bndj
                 const get = getClssIN(_td(Eu),'Rastr-')
+                const NewID = lngh ? 1 : Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
                 if(['Serv','Pgmt']){
-                    Def.Id   = `${row.Id}_${arr.length+1}`// Novo Id    ⚠️⚠️ (Não pode fazer arr.lenth pois se eu remover o _1 e sobrear o _2 e eu chamar lenth, vai da 1 e vai ficar com 2 vezes repetido o _2) ⚠️⚠️
-                    Def.Data = row.Data                   // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
-                    Def.Clnt = row.Clnt                   // Clona Cliente
+                    Def.Id   = `${row.Id}_${NewID}`// Novo Id
+                    Def.Data = row.Data            // Clona Data ⚠️⚠️(Pgmt não pode clonar Data)⚠️⚠️
+                    Def.Clnt = row.Clnt            // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
                 /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
+                Rmv_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) /*Exibir bandeija denovo*/
+                
             }
         }
 
