@@ -4,68 +4,54 @@
   <meta charset="UTF-8">
   <title>Telão - Placar</title>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"></script>
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script> // Base de Dados
-      const SUPABASE_URL = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+      const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
       const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      const supabase          =  window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/Jogo/imgs/`
     </script>
 </head>
 
 <style>
-  body {height:100vh;margin:0;color:#fff;font-family:'Arial Black',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
-  .times {display:flex;align-items:center;margin-bottom:50px}
-  .box {background:#ffffff1a;padding:30px 50px;border-radius:20px;box-shadow:0 0 30px #00000080;transition:transform 0.2s;min-width:200px;text-align:center;}
+  body       {height:100vh;margin:0;color:#fff;font-family:'Arial Black',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
+  .times     {display:flex;align-items:center;margin-bottom:50px}
+  .box       {background:#ffffff1a;padding:30px 50px;border-radius:20px;box-shadow:0 0 30px #00000080;transition:transform 0.2s;min-width:200px;text-align:center;}
   .box:hover {transform:scale(1.05)}
-  .box img {width:100px;height:100px;object-fit:contain;margin-bottom:10px;}
-  .box p {font-size:2.5rem;margin-bottom:10px;text-shadow:1px 1px #000;}
-  .box a {font-size:5rem;font-weight:bold;text-shadow:2px 2px #000;}
-  .vs {font-size:4rem;margin:0 40px;color:#ffeb3b;text-shadow:2px 2px #000;}
-  #Tempo {font-size:3rem;padding:10px 20px;border-radius:15px;background:#0000004d;text-shadow:1px 1px #000;}
+  .box img   {width:100px;height:100px;object-fit:contain;margin-bottom:10px;}
+  .box p     {font-size:2.5rem;margin-bottom:10px;text-shadow:1px 1px #000;}
+  .box a     {font-size:5rem;font-weight:bold;text-shadow:2px 2px #000;}
+  .vs        {font-size:4rem;margin:0 40px;color:#ffeb3b;text-shadow:2px 2px #000;}
+  #Tempo     {font-size:3rem;padding:10px 20px;border-radius:15px;background:#0000004d;text-shadow:1px 1px #000;}
 </style>
 
 <body class="Ct">
   <div class="Cl">
     <div class="times">
-      <div class="box Cl" id="T_A">
-        <img id="Img_A" src="" alt="">
-        <p>Time A</p><a>0</a>
-      </div>
+      <div class="box Cl" id="T_A"><div id="Img_A"></div><p>Time A</p><a>0</a></div>
       <div class="vs">🆚</div>
-      <div class="box Cl" id="T_B">
-        <img id="Img_B" src="" alt="">
-        <p>Time B</p><a>0</a>
-      </div>
+      <div class="box Cl" id="T_B"><div id="Img_B"></div><p>Time B</p><a>0</a></div>
     </div>
     <div id="Tempo">1° Tempo</div>
   </div>
 </body>
 
 <script>
-  const exibir = p => {
-    Inn('#T_A p', p.time_a)
-    Inn('#T_B p', p.time_b)
-    Inn('#T_A a', p.gols_a)
-    Inn('#T_B a', p.gols_b)
-    Inn('#Tempo', p.tempo)
-
-    const imgA = document.querySelector('#Img_A')
-    const imgB = document.querySelector('#Img_B')
-    imgA.src = p.img_a || ''
-    imgA.style.display = p.img_a ? 'block' : 'none'
-    imgB.src = p.img_b || ''
-    imgB.style.display = p.img_b ? 'block' : 'none'
+  const Exibir=e=>{
+    Inn('#T_A p', e.Tim_A)
+    Inn('#T_B p', e.Tim_B)
+    Inn('#T_A a', e.Gol_A)
+    Inn('#T_B a', e.Gol_B)
+    Inn('#Tempo', e.Tempo)
+    Inn('#Img_A',e.Img_A ? `<img src="${e.Img_A}">` : '')
+    Inn('#Img_B',e.Img_B ? `<img src="${e.Img_B}">` : '')
+  
+    //`${BASE_URL}${Src}`
   }
 
-  supabase.channel('placar').on('postgres_changes', { event: '*', schema: 'public', table: 'placar' }, e => exibir(e.new)).subscribe()
-  async function carregar() {
-    let { data } = await supabase.from('placar').select('*').eq('id', 1).maybeSingle()
-    if (data) exibir(data)
-  }
+  supabase.channel('placar').on('postgres_changes',{event:'*',schema:'public',table:'placar'},e=>Exibir(e.new)).subscribe()
+  async function carregar(){let {data} = await supabase.from('placar').select('*').eq('id',1).maybeSingle() ; if(data){Exibir(data)}}
   carregar()
 </script>
-
-
-
 </html>
