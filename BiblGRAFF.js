@@ -71,12 +71,13 @@ function ShowBndj(div){                                                // Funç�
         if(Tecla('ctrl')){Tog_N(e)}                               // Se a tecla CTRL estiver pressionada, apenas alterna o estado (mostra/oculta)
         else{                                                     // Caso não esteja com CTRL
             $$('.BNdj:not(.none)').forEach(E=>{                   // Percorre todos os painéis .BNdj que estão visíveis
-                if(E==e){return}else{Add_N(E)}                    // Fecha (adiciona .none) em todos, exceto o atual
+            //    if(E==e){return}else{Add_N(E)}                    // Fecha (adiciona .none) em todos, exceto o atual
             })
             Tog_N(e)                                              // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
         }
     }
     if(Tecla('ctrl')){return}                                     // Se CTRL estiver pressionado, interrompe (não aplica o fechamento automático)
+    else if(e.contains(event.target)){LOG('Sair na TORa') ; return}
     else{ClickFora(div,()=>{Add_N(e)})}                           // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
 }
 
@@ -115,7 +116,7 @@ function DarVAL(td,v,A){
     if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,v==''?'':Num(v))  ; Inn(PP,v==''?'':RS(v))}
     if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
     if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
-    if(['Data','Sugg','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
+    if(['Data','Sugg','Link','Ssvg','Imgs','Chek','Likk'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
 }
 
 function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))}
@@ -126,6 +127,7 @@ function VAL(e){
     const val = ['Edit','Fixo','Sugg','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
             : R.Tm==='Ssvg' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
+            : R.Tm==='Link' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
                 : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
                 : R.Tm==='Mdds' ? Num2($('.P-P',td).textContent.trim())

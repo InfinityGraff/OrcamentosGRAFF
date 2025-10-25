@@ -3,111 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Telão - Placar</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      font-family: 'Arial Black', sans-serif;
-      text-align: center;
-    }
-
-    .times {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 80%;
-      margin-bottom: 50px;
-    }
-
-    .time-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px 50px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
-      min-width: 200px;
-    }
-
-    .time-box:hover {
-      transform: scale(1.05);
-    }
-
-    .time-name {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px #000;
-    }
-
-    .time-score {
-      font-size: 5rem;
-      font-weight: bold;
-      text-shadow: 2px 2px #000;
-    }
-
-    .vs {
-      font-size: 4rem;
-      margin: 0 40px;
-      color: #ffeb3b;
-      text-shadow: 2px 2px #000;
-    }
-
-    .tempo {
-      font-size: 3rem;
-      padding: 10px 20px;
-      border-radius: 15px;
-      background: rgba(0,0,0,0.3);
-      text-shadow: 1px 1px #000;
-    }
-  </style>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script> // Base de Dados
+      const SUPABASE_URL = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    </script>
 </head>
-<body>
-  <div class="times">
-    <div class="time-box" id="time_a">
-      <div class="time-name"></div>
-      <div class="time-score"></div>
+
+<style>
+  body {height:100vh;margin:0;color:#fff;font-family:'Arial Black',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
+  .times {display:flex;align-items:center;margin-bottom:50px}
+  .box {background:#ffffff1a;padding:30px 50px;border-radius:20px;box-shadow:0 0 30px #00000080;transition:transform 0.2s;min-width:200px;text-align:center;}
+  .box:hover {transform:scale(1.05)}
+  .box img {width:100px;height:100px;object-fit:contain;margin-bottom:10px;}
+  .box p {font-size:2.5rem;margin-bottom:10px;text-shadow:1px 1px #000;}
+  .box a {font-size:5rem;font-weight:bold;text-shadow:2px 2px #000;}
+  .vs {font-size:4rem;margin:0 40px;color:#ffeb3b;text-shadow:2px 2px #000;}
+  #Tempo {font-size:3rem;padding:10px 20px;border-radius:15px;background:#0000004d;text-shadow:1px 1px #000;}
+</style>
+
+<body class="Ct">
+  <div class="Cl">
+    <div class="times">
+      <div class="box Cl" id="T_A">
+        <img id="Img_A" src="" alt="">
+        <p>Time A</p><a>0</a>
+      </div>
+      <div class="vs">🆚</div>
+      <div class="box Cl" id="T_B">
+        <img id="Img_B" src="" alt="">
+        <p>Time B</p><a>0</a>
+      </div>
     </div>
-    <div class="vs">🆚</div>
-    <div class="time-box" id="time_b">
-      <div class="time-name"></div>
-      <div class="time-score"></div>
-    </div>
+    <div id="Tempo">1° Tempo</div>
   </div>
-  <div class="tempo" id="tempo"></div>
-
-  <script>
-    const SUPABASE_URL = "https://adxigvfxtafvlmpvwwvb.supabase.co"
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-    async function carregar() {
-      let {data} = await supabase.from('placar').select('*').limit(1).maybeSingle()
-      if(data) exibir(data)
-    }
-
-    const exibir = p => {
-      document.querySelector('#time_a .time-name').textContent = p.time_a
-      document.querySelector('#time_a .time-score').textContent = p.gols_a
-      document.querySelector('#time_b .time-name').textContent = p.time_b
-      document.querySelector('#time_b .time-score').textContent = p.gols_b
-      tempo.textContent = p.tempo
-    }
-
-    supabase.channel('placar')
-      .on('postgres_changes',{event:'*',schema:'public',table:'placar'}, e => exibir(e.new))
-      .subscribe()
-
-    carregar()
-  </script>
 </body>
+
+<script>
+  const exibir = p => {
+    Inn('#T_A p', p.time_a)
+    Inn('#T_B p', p.time_b)
+    Inn('#T_A a', p.gols_a)
+    Inn('#T_B a', p.gols_b)
+    Inn('#Tempo', p.tempo)
+
+    const imgA = document.querySelector('#Img_A')
+    const imgB = document.querySelector('#Img_B')
+    imgA.src = p.img_a || ''
+    imgA.style.display = p.img_a ? 'block' : 'none'
+    imgB.src = p.img_b || ''
+    imgB.style.display = p.img_b ? 'block' : 'none'
+  }
+
+  supabase.channel('placar').on('postgres_changes', { event: '*', schema: 'public', table: 'placar' }, e => exibir(e.new)).subscribe()
+  async function carregar() {
+    let { data } = await supabase.from('placar').select('*').eq('id', 1).maybeSingle()
+    if (data) exibir(data)
+  }
+  carregar()
+</script>
+
+
+
 </html>

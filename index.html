@@ -32,7 +32,7 @@
 </head>
 
 <script> // Base de Dados
-    const USER = { // Falta Sincronizar com SB
+    const USER = { // isso vai FICAR no SupaBase
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000 }, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
         '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
@@ -368,12 +368,12 @@
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
-    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Likk'}
+    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Link'}
 
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grde:['K','' ],Grad:['E',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['K',''],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
@@ -581,13 +581,15 @@
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A,pai)=>/*pai?`<p class="P-P Ct" name="${e}">${e}</p>`:*/`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
-                Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`,
+                Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`, // daqui eu quero só o Botão
                 
-                // esse Link é pra Linkar uma ou Mais Linhas de Outra Tabela
-                Link:(     )=>`<div class="Rltv"><p class="P-P">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
-
-                Likk:(     )=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))">  - </p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div></div>`,
-                
+                // esse Link é pra Linkar uma ou Mais Linhas de Outra Tabela opções de "Apenas Troca" ou de "Adição"
+                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                    
+                    <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
+                    
+                    </div></div>`,
+               
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
                 Mdal:(e,R,A)=>``
@@ -613,7 +615,11 @@
                         <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                                 ${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,Ordem),AA(col),DrPai(r)) : '').join('') /*Tabela*/}
                                 <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
-                                ${col=='Clnt'?`<div class="DivTrcCLNT none"><input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this,$('.Sugg',Pai(this)),'LinkCLnt')" onkeydown="KeyEntr(()=>TesteClnt(this))"><span class="Sugg Cl"></span></div>`:''}
+                                ${col=='Clnt'?`<div class="DivTrcCLNT none">
+                                    ${/* Aqui Chamar, Tm_Tm['Link'](??,R,'')  é importante q isso esteja aqui dentro pra evitar problemas Futuros */''}
+                                    <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this)" onkeydown="KeyEntr(()=>TestRow(this))"><span class="Sugg Cl"></span>
+                                    
+                                    </div>`:''}
                             </div>
                         </div>`
             }
@@ -622,7 +628,7 @@
                 const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = ObjKey(Secund).includes(Typ) ? 'Secund' : ''
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai=='' // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
                 
-                return valid     ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)"><div class="Ct">${Tm_Tm['Link']()}</div></td>` :
+                return valid     ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm['Link'](v,R,'',RPai)}</div></td>` :
                     R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this)">${Tm_Bndj(Typ,R.Col,v,r)}</td>` :
                     R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                                  : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R,'',RPai)}</div></td>`
@@ -659,15 +665,15 @@
                     PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
                 }
             }
-    
+            
+            // Grad OS e Uber terá sua própria Bndj, q será 
             // 💡 Criar um Tm pra Cont, q seria tipo uma Bandeija igual de Sugg, ContGrad e ContCLNT q mostrará uma Minitabelinha igual a um Sugg, vai ser feita na hora, com informações sobre oq tem ali
-            // 👀 Sugg e Link talvez sejam a mesma coisa a difereça é a opções de "Apenas Troca" ou de "Adição"
-            // 💡 ao Clicar no ID, exibirá RG:[User,PC,Data,Hora]
-
+            // 💡 ao Clicar no ID, exibirá RG:[User,PC,Data,Hora] como Bandeija
             // 🚫 select deveria ter name pra n ser afetado pelo Realtime
             // 🚫 ao Excluir e Adicioanr linha na Bandeija ela está Fechando Sozinha
+            // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
             // ⚡ Desempenho Fodah, só Carregar as imagens internas quando clicar na Bandeija (e Outras coisas mais Banais também)
-            // ⚡ impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
+            // ⚡ só Carregar a Bandeija de Clnt, quando clicar em Clnt, caso contrário ela n precisa existir (fazer algo parecido com as mini Bndj q ficará)
             // 💡 Opção de mais de 1 Designer
             // 💡 Mover-se nas células com as Setas
         </script>
@@ -1291,8 +1297,8 @@
                               const VllC = ges(['CArt','OS','Uber','VCbt'])
                               const VllP = gee(['Valr'])
                               const SumP = sum(VllP.map(e=>e==''?0:e))
-                    /*Custo*/ const SumC = sum(VllC.map(e=>e==''?0:e))      ; if(All=='All'){tr.Cust = Vll(VllC)==''?'':RS(SumC)     }else{DarVAL(get('Cust'),Vll(VllC)==''?'':RS(SumC     ))} ; 
-                                                                            ; if(All=='All'){tr.Lcro = Vll(VllC)==''?'':RS(SumV-SumC)}else{DarVAL(get('Lcro'),Vll(VllC)==''?'':RS(SumV-SumC))}
+                    /*Custo*/ const SumC = sum(VllC.map(e=>e==''?0:e))      ; if(All=='All'){tr.Cust = Vll(VllC)==''?'':SumC     ==0?'':RS(SumC)     }else{DarVAL(get('Cust'),Vll(VllC)==''?'':SumC     ==0?'':RS(SumC     ))} ; 
+                                                                            ; if(All=='All'){tr.Lcro = Vll(VllC)==''?'':SumV-SumC==0?'':RS(SumV-SumC)}else{DarVAL(get('Lcro'),Vll(VllC)==''?'':SumV-SumC==0?'':RS(SumV-SumC))}
                                                                             ; if(All=='All'){tr.Deve = Vll(VllP)==''?'':SumV-SumP==0?'':RS(SumV-SumP)}else{DarVAL(get('Deve'),Vll(VllP)==''?'':SumV-SumP==0?'':RS(SumV-SumP))}
                     // se CArt e VCbt for '--' representa Zero.
                     // Evoluir pra adicionar alguns Critérios de Proteção pra saber se o Custo foi definido corretamente! ai só pinta msm se tiver realmente tudo certinho!
@@ -1353,70 +1359,44 @@
             .Sugg_Atv  {background: #d822ab; color: #ffffff}
         </style>
 
-        <script> // LINK (Voltar a Analizar ela!)
-            function LinkSug(Typ,inpt,list,Func){
-                if (inpt.value){
-                    Show(list)
-                    const Val   = inpt.value
-                    const regex = new RegExp(`(${aa(Val)})`, 'gi'); // Cria um regex que ignora maiúsculas e minúsculas
-
-                    list.innerHTML = J[Typ]
-                    .filter(e=>aa(e[Aa(Typ)]).includes(aa(Val)) || String(e['Id']).includes(Val))
-                    .map(e=>{
-                        const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
-                        const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
-                        return `<a class="ppt w100 Ct" onclick="${Func}(this,'${ID}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
-                    }).join('')
-                }else{None(list);Inn(list,'')}
-                // esta é a função q carrega o Link de Clientes
-                // desejo Fundir ela com os outros Suggs (pra q os outros também tenha campo de Pesquisa!)
-            }
+        <script> // LINK
+            function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
             const Tm_Exib = {
                  Mpag:(e)=> `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`
                 ,Pgmt:(e)=> `${e.Id} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}`
                 ,Serv:(e)=> `${e.Id} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}`
-                // por enquanto isso aqui tá só uma Lista, mas quero deixar tipo uma tabela...
-                // ...pra facilitar a visualização e separação das colunas
-                // Trazer o de Clientes pra cá também, 
+                // Deve Virar Tabela (e pra os que tem Imagem, exibir a imagem bem grande tipo uma Pasta)
             }
 
-            function SuggLink(Eu,R){ // será Exibido no Span todas as Linhas de uma determinada Tabela 
-                // (deve servir pra achar:
-                // Clnt em PDDS | MPag em PGMT | Grad em SERV | OS em GRAD | Uber em GRAD
+            function LinkSug(Typ,inpt){
+                const list = $('.Sugg',Pai(inpt))
+                if (inpt.value){
+                    Show(list)
+                    const Val   = inpt.value
+                    const regex = new RegExp(`(${aa(Val)})`, 'gi') // ignora maiúsculas
+
+                    list.innerHTML = J[Typ]
+                    .filter(e=>aa(e[Aa(Typ)]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
+                    .map(e=>{
+                        const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
+                        const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
+                        return `<a class="ppt w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
+                    }).join('')
+                }else{None(list);Inn(list,'')}
+                // Adicionar a Opção de Mostrar todos, com um determinado filtro q posso escolher por exeplo: os que Faltam!
+                // Opção pra Selecionar mais de 1
+                // Encontrar GRAD Dentro de SERV (Visse Verse)
+                // Encontrar CLNT Dentro de PDDS
+                // Encontrar MPAG Dentro de PGMT (Visse Verse)
+                // Encontrar  OS  dentro de GRAD (Visse Verse)
+                // Encontrar UBER dentro de GRAD (Visse Verse)
+            }
+
+            function SuggLink(Eu,R){ // ❌ Pretendo REMOVER pq o de cima já faz isso.
                 const r = D_R(R)
                 const col = r.Col
-
-                const Fillt=e=>{
-                    return  col=='Serv' ? e.Grad=='' && !['Stock','Arte','-'].includes(e.Forn) :
-                            col=='Pgmt' ? e.Mpag=='' && e.Form!='Av' :
-                            col=='Grad' ? Dat(e.Data) <= Dat(VAL($(`${Col('UBER','Data')}`,_tr(Eu)))) && VAL($(`${Col('UBER','Prds')}`,_tr(Eu))).split(',').includes(e.Forn) :
-                            true
-                }
-
-                if(col=='Mpag'){
-                    // LOG(Eu,Typ)
-                    // LOG(J[Typ.toUpperCase()].filter(e=>Fillt(e)))
-                    $('span',Pai(Eu)).innerHTML = J[col.toUpperCase()].filter(e=>Fillt(e)).map(e=>`<div><a onclick="Tog(this,'Sugg_Atv')">${
-                        col=='Mpag' ? Tm_Exib[col](e) :``
-                    }</a></div>`).join('')
-                    // deixar disponivel os que eu Permito selecionar mais de 1
-                }
-            }
-
-            function Linkar(Eu){
-                if(_table(Eu).id == 'H_MPAG'){editCell(Eu,$$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim()))}
-                if(_table(Eu).id == 'H_GRAD'){
-                    const ArryAntg = Inn($('p',Eu.closest('td'))).split(',')
-                    const NovoArry = $$('.Sugg_Atv',Pai(Eu)).map(e=>Inn(e).split('-')[0].trim())
-                    if(Inn($('p',Eu.closest('td')))=='-'){
-                        editCell(Eu,NovoArry)
-                    }else{editCell(Eu,[...ArryAntg,...NovoArry])} 
-                }else{LOG($('span',Pai(Eu)))}
-            }
-
-            function TrocaClnt(Eu){
-                Tog($('.DivTrcCLNT',Pai(Eu)),'none')
+                if(col=='Mpag'){ Inn($('span',Pai(Eu)),J[AA(col)].map(e=>`<div><a>${Tm_Exib[col](e)}</a></div>`).join(''))}
             }
 
         </script>
@@ -3099,9 +3079,10 @@
                         RFresh(R.Typ,_tr(td),Auto,e)
                     }
                 }})
+                // Melhorar ela pra o caso de eu precisar fazer um TM, e não um DarVal, no DOM por exeplo
         }
         
-        function RmvROW(Eu,SB){              // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝
+        function RmvROW(Eu,SB){                 // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
             const tR     = _tr(Pai(_tr(Eu)))                 // esse é o Tr do Typ Pai
@@ -3132,7 +3113,7 @@
             })
         }
  
-        function AddRowBdj(Eu){              // ⭐⭐⭐⭐_ (Ta bem BOA!) // Evitar Reescrever o DOM quando tiver VAZIO, isso evita ocultar bandeija quando clicar
+        function AddRowBdj(Eu){                 // ⭐⭐⭐⭐_ (Ta bem BOA!) // Evitar Reescrever o DOM quando tiver VAZIO, isso evita ocultar bandeija quando clicar
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(ObjKey(Secund).includes(col)){            // só pra col q tem bndj
                 const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
@@ -3166,10 +3147,10 @@
             /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
             /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
             if(SB){LOG('Linha Adicionada pelo SB')}
-            if(Typ=='CLNT'){LinkCLnt(inpt,Def.Id)} // não acho q seria o caso de usar isso!
+            if(Typ=='CLNT'){LinkLink(inpt,Def.Id)} // não acho q seria o caso de usar isso!
         }
 
-        function insertOrden(Typ,arr){       // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
+        function insertOrden(Typ,arr){          // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 
             const NEWtr = NewTag('tr') ; Inn(NEWtr,Tm_Table(Typ,arr))
             const tbody= $(`#H_${Typ} > tbody`)
             const trs = [...tbody.rows]
@@ -3183,7 +3164,7 @@
             tbody.insertBefore(NEWtr,Alvo||null)
         }
 
-        function ImgUPP(Inpt,Nome){          // ⭐⭐⭐_ _  analisando com calma
+        function ImgUPP(Inpt,Nome){             // ⭐⭐⭐_ _  analisando com calma
             const f = Inpt.files[0] // pega o único arquivo
             const Past = Eximg.includes(RxExt(f.name)) ? "Img/" : "Arq/"
             const Src  = URL.createObjectURL(f)
@@ -3194,13 +3175,14 @@
             if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG
         }
 
-        function LinkCLnt(Eu,val){           // ⭐⭐⭐⭐_  (Faz o Básico)
+        function LinkLink(Eu,val){              // ⭐⭐⭐⭐_  (Faz o Básico)
             const td = _td(Eu)
             const R  = D_R(td)
             const get = getClssIN(_td(Eu),'Rastr-')
-            /*Obj*/ J[R.Typ].find(e=>e.Id==R.Row)['Clnt'] = val
-            /*DOM*/ Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get))
-            /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,val)
+            EditCell(Eu,val)
+            if(R.Col=='Clnt'){
+                Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) // isso só pra Cliente
+            }
         }
   
         function MesclarContato(){           // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
@@ -3221,10 +3203,9 @@
             // quando terminar Limpa o Filtro
         }
 
-        function TesteClnt(inpt){            // isso é pra Saber se o Cliente existe na Tabela de CLNT
-            if(confirm(`Tem Certeza que quer salvar: ${inpt.value} como Cliente?`)){
-                if(Nm(inpt)){return Nm(inpt)}
-                else{AddROW('CLNT','<',{Clnt:inpt.value},inpt)} // Adiciona Novo Cliente
+        function TestRow(inpt,col){            // isso é pra Saber se o Cliente existe na Tabela de Extra
+            if(confirm(`Tem Certeza que quer salvar: ${inpt.value} em ${col}?`)){
+                if(Nm(inpt)){return Nm(inpt)}else{AddROW(AA(col),'<',{col:inpt.value},inpt)}
             }
         }
 
