@@ -9,8 +9,8 @@
     <script> // Base de Dados
       const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
       const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-      const supabase          = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-      const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+      const supabase          =  window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/Jogo/Imgs`
     </script>
 </head>
 
@@ -22,30 +22,30 @@
   input:focus { border-color: #4a90e2; box-shadow: 0 0 5px rgba(74,144,226,0.5); outline: none; }
   button { margin-top: 30px; padding: 12px 25px; font-size: 1.2rem; background: #4a90e2; color: #fff; border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s, transform 0.1s; }
   button:hover { background: #357ABD; transform: scale(1.05); }
-  .dropzone { border: 2px dashed #fff; padding: 20px; text-align: center; border-radius: 10px; background: #ffffff1a; cursor: pointer; }
-  .dropzone.hover { background: #ffffff33; }
+  .Drop       { border: 2px dashed #fff; border-radius: 10px; padding: 20px; text-align: center; background: #ffffff1a; cursor: pointer; position: relative; overflow: hidden; }
+  .Drop.hover { background: #3860e633; }
+  .Drop img   { width: auto ; height: 30px; border-radius: 10px; }
+
 </style>
+
+<script> // Biblioteca
+  const Prvn2 = ev=>(ev||event).preventDefault()
+</script>
 
 <body>
   <h1>Operador do Placar</h1>
 
   <div class="Ct">
     <div class="Cl T_A">
-      <div id="dropA" class="dropzone">
-        Adicionar Imagem
-        <input type="file" id="fileA" accept="image/*" style="display:none;">
-      </div>
+      <div class="Drop" onload="PrepDrop(this,'Time_A')"></div>
       <label>Time A:</label><input class="Nome" placeholder="Nome do Time A...">
-      <label>Gols A:</label><input type="number" id="Gol_A" value="0">
+      <label>Gols A:</label><input class="Gols" type="number" value="0">
     </div>
 
     <div class="Cl T_B">
-      <div id="dropB" class="dropzone">
-        Adicionar Imagem
-        <input type="file" id="fileB" accept="image/*" style="display:none;">
-      </div>
+      <div class="Drop" onload="PrepDrop(this,'Time_B')"></div>
       <label>Time B:</label><input class="Nome" placeholder="Nome do Time B...">
-      <label>Gols B:</label><input type="number" id="Gol_B" value="0">
+      <label>Gols B:</label><input class="Gols" type="number" value="0">
     </div>
   </div>
 
@@ -60,52 +60,50 @@
     <option>Encerrado</option>
   </select>
 
-  <button onclick="atualizar()">Atualizar Placar</button>
+  <button onclick="Atualizar()">Atualizar Placar</button>
 </body>
 
 <script>
-  async function uploadImagem(file, nomeTime) {
-    const ext = file.name.split('.').pop()
-    const path = `Imgs/${nomeTime.replace(/\s+/g,'_')}.${ext}`
-    const { error } = await supabase.storage.from('Jogo').upload(path, file, { upsert:true })
-    if (error) return alert('❌ Erro ao enviar imagem'), null
-    return supabase.storage.from('Jogo').getPublicUrl(path).publicUrl
-  }
-
-  async function atualizar(){
+  async function Atualizar(){
     const obj = {
-      Tim_A: $('.T_A .Nome').value,
-      Tim_B: $('.T_B .Nome').value,
-      Img_A: ImgA_URL || '',
-      Img_B: ImgB_URL || '',
-      Gol_A: +$('#Gol_A'   ).value,
-      Gol_B: +$('#Gol_B'   ).value,
-      Tempo: $('#Tempo'    ).value,
+      Tim_A:  $Vl('.T_A .Nome'),
+      Tim_B:  $Vl('.T_B .Nome'),
+      Gol_A: +$Vl('.T_A .Gols'),
+      Gol_B: +$Vl('.T_B .Gols'),
+      Tempo:  $Vl('#Tempo'    ),
+      Img_A:  Nm($('.T_A img')),
+      Img_B:  Nm($('.T_B img')),
     }
     const {err}=await supabase.from('placar').update(obj).eq('id',1)
     if(err){console.error(err)}
     else{alert('✅ Placar atualizado!')}
   }
 
-  // ==================== Drag & Drop ====================
-
-  let ImgA_URL = '', ImgB_URL = ''
-
-  function PrepDrop(dropId,fileId,containerClass,tipo) {
-    const z = $(dropId), f = $(fileId)
-    const setURL = u => (tipo=='A'? ImgA_URL=u:ImgB_URL=u , z.textContent='✅ Imagem enviada!')
-    const enviar = async file => file && setURL(await uploadImagem(file,$(`.${containerClass} .Nome`).value || 'time'))
-
-    z.onclick     =()=> f.click()
-    f.onchange    =e=>  enviar(e.target.files[0])
-    z.ondragover  =e=> (e.preventDefault(), z.classList.add('hover'))
-    z.ondragleave =_=>  z.classList.remove('hover')
-    z.ondrop      =e=> (e.preventDefault(), z.classList.remove('hover'), enviar(e.dataTransfer.files[0]))
+  async function UPPImg(file,nome){
+    const path = `Imgs/${nome}`
+    const { err } = await supabase.storage.from('Jogo').upload(path, file, { upsert:true })
+    if (err) return alert('❌ Erro ao enviar imagem'), null
+    return supabase.storage.from('Jogo').getPublicUrl(path).publicUrl
   }
 
-  PrepDrop('#dropA','#fileA','T_A','A')
-  PrepDrop('#dropB','#fileB','T_B','B')
+  function PrepDrop(Eu,nome){
+    Inn(Eu,'<a>Adicionar Imagem</a><input type="file" accept="image/*" class="none">')
+    const f=$('input',Eu),d=$('a',Eu)
 
+    const Enviar = async F=>{
+      if (!F) return
+      const ext  = F.name.split('.').pop()
+      const Nome = `${nome}.${ext}`
+      Inn(d, `<img src="${URL.createObjectURL(F)}"`)
+      await UPPImg(F,`${Nome}`)
+      Inn(d,`<img src="${BASE_URL}/${Nome}" name="${Nome}">`)
+    }
+    Eu.onclick=()   => f.click(),f.onchange=e=>Enviar(e.target.files[0]),
+    Eu.ondragover =e=>(Prvn2(e),Add(Eu,'hover')),
+    Eu.ondragleave=_=> Rmv(Eu,'hover'),
+    Eu.ondrop     =e=>(Prvn2(e),Rmv(Eu,'hover'),Enviar(e.dataTransfer.files[0]))
+  }
+  Onloads('body')
 </script>
 
 </html>
