@@ -25,7 +25,6 @@
   .Drop       { border: 2px dashed #fff; border-radius: 10px; padding: 20px; text-align: center; background: #ffffff1a; cursor: pointer; position: relative; overflow: hidden; }
   .Drop.hover { background: #3860e633; }
   .Drop img   { width: auto ; height: 30px; border-radius: 10px; }
-
 </style>
 
 <script> // Biblioteca
@@ -81,11 +80,12 @@
 
   async function UPPImg(file,nome){
     const path = `Imgs/${nome}`
-    const {error} = await supabase.storage.from('Jogo').upload(path, file, { upsert:true })
-    if (error) return alert('❌ Erro ao enviar imagem'), null
+    const {error} = await supabase.storage.from('Jogo').upload(path,file,{upsert:true})
+    if (error) return alert('❌ Erro ao enviar imagem'),null
     return supabase.storage.from('Jogo').getPublicUrl(path).publicUrl
   }
 
+  // Virar Biblioteca
   function PrepDrop(Eu,nome){
     Inn(Eu,'<a>Adicionar Imagem</a><input type="file" accept="image/*" class="none">')
     const f=$('input',Eu),d=$('a',Eu)

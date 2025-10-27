@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Telão - Placar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"></script>
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
@@ -15,7 +16,19 @@
 </head>
 
 <style>
-  body       {height:100vh;margin:0;color:#fff;font-family:'Arial Black',sans-serif;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
+  :root{--accent:#0ea5e9;--panel:#071b33b2;--panel-2:#102a4a;--glass:rgba(255,255,255,0.04);--muted:rgba(255,255,255,0.7);}
+  *          {margin:0;padding:0;font-family:Montserrat,system-ui,Arial}
+  html,body  {height:100%;width:100%}
+  body       {background-image:url(./Fundo.webp); background-size: 100% 100%;background-repeat: no-repeat;background-position: top left;padding: 8%;}
+  header     {gap:12px; z-index: 2;}
+  .Live      {color: white; padding: 8px; font-size: 15px; background: red; font-weight:700}
+  .tab{flex:1 1 0;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;font-weight:700;letter-spacing:1px;border-radius:8px;position:relative;text-transform:uppercase;box-shadow:0 6px 18px #02061773; font-size: 18px;}
+  .tab.left::before,.tab.right::after{content:'';position:absolute;top:0;width:18px;height:100%;border-radius:6px;transform:translateY(0);}
+  .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
+  .tab.right::after{right:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
+
+  .Painel    {z-index: 2 ;background:linear-gradient(180deg,#0a07ad00,#07003000);border-radius:12px;padding:26px 28px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
+
   .times     {display:flex;align-items:center;margin-bottom:50px}
   .box       {background:#ffffff1a;padding:30px 50px;border-radius:20px;box-shadow:0 0 30px #00000080;transition:transform 0.2s;min-width:200px;text-align:center;}
   .box:hover {transform:scale(1.05)}
@@ -23,30 +36,56 @@
   .box p     {font-size:2.5rem;margin-bottom:10px;text-shadow:1px 1px #000;}
   .box a     {font-size:5rem;font-weight:bold;text-shadow:2px 2px #000;}
   .vs        {font-size:4rem;margin:0 40px;color:#ffeb3b;text-shadow:2px 2px #000;}
-  #Tempo     {font-size:3rem;padding:10px 20px;border-radius:15px;background:#0000004d;text-shadow:1px 1px #000;}
+  #Tempo     {font-size: 3rem; padding: 10px 20px; border-radius: 15px; background: #0000004d; text-shadow: 1px 1px #000; display:inline-flex; align-items:center; gap:12px; }
+  #Tempo a   {font-weight:600;}
+  #Clock     {font-family: 'Arial Black',sans-serif; font-size:2.2rem; color:#ffeb3b; text-shadow:1px 1px #000; min-width:70px; text-align:center; }
+
 </style>
 
-<body class="Ct">
-  <div class="Cl">
+<body class="Ct Rltv">
+
+  <div style="top:15px" class="Abslt Rd Live">Ao Vivo</div>
+
+  <header class="Bt">
+    <a class="tab left">Time A</a>
+    <p style="width:18px"></p>
+    <a class="tab right">Time B</a>
+  </header>
+
+  <div class="Painel Cl w100">
     <div class="times">
       <div class="box Cl" id="T_A"><div id="Img_A"></div><p>Time A</p><a>0</a></div>
       <div class="vs">🆚</div>
       <div class="box Cl" id="T_B"><div id="Img_B"></div><p>Time B</p><a>0</a></div>
     </div>
-    <div id="Tempo">1° Tempo</div>
   </div>
+
+  <div id="Tempo"><a>1° Tempo</a> <span id="Clock">00:00</span></div>
+
+  <div style="bottom:15px" class="Abslt"><img src="./Bolas.webp"></div>
 </body>
 
 <script>
+
+  let Crono,Ini=0,Seg=0
+  const Rodando=['1º Tempo','1° Tempo','2º Tempo','Prorrogação','Acréscimos']
+
+  const Fmt=s=>`${(s/60|0).toString().padStart(2,'0')}:${(s%60|0).toString().padStart(2,'0')}`
+  const Tic =()=>Inn('#Clock',Fmt(Seg+((Date.now()-Ini)/1000|0)))
+  const Play=s=>(Stop(),Seg=+s||0,Ini=Date.now(),Crono=setInterval(Tic,250),Tic())
+  const Stop=r=>(clearInterval(Crono),r||Inn('#Clock',Fmt(Seg)))
+
   const Exibir=e=>{
-    Inn('#T_A p', e.Tim_A)
-    Inn('#T_B p', e.Tim_B)
+    Inn('header .left', e.Tim_A)
+    Inn('header .right', e.Tim_B)
+
     Inn('#T_A a', e.Gol_A)
     Inn('#T_B a', e.Gol_B)
-    Inn('#Tempo', e.Tempo)
+    Inn('#Tempo a', e.Tempo)
     Inn('#Img_A', e.Img_A ? `<img src="${BASE_URL}/${e.Img_A}?v=${Date.now()}">` : '')
     Inn('#Img_B', e.Img_B ? `<img src="${BASE_URL}/${e.Img_B}?v=${Date.now()}">` : '')
-
+    const s=e.TimeSeconds??e.time_seconds??e.seconds??0
+    Rodando.includes(e.Tempo)?Play(s):Stop(1)
   }
 
   supabase.channel('placar').on('postgres_changes',{event:'*',schema:'public',table:'placar'},e=>Exibir(e.new)).subscribe()
