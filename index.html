@@ -3219,8 +3219,8 @@
     async function getSB(){
         const INNN = performance.now()
         async function getIMG(){
-            const {data,err} = await supabase.storage.from("uploads").list("Img",{limit:1000})
-            if (err) {ERR("Erro ao listar:", err.message);return []}
+            const {data,error} = await supabase.storage.from("uploads").list("Img",{limit:1000})
+            if (error) {ERR("Erro ao listar:", error.message);return []}
             ListIMG = data.map(e=>e.name) ; LOG(`🖼️ IMGS`)
         }
         async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
@@ -3253,8 +3253,8 @@
     };const getSBPromise = getSB()
 
     async function Sb_DELETE(Typ,id){
-        const {err} = await supabase.from(Typ).delete().eq("Id",id)
-        if(err){ERR("Erro ao excluir:",err)}else{LOG(`SB_DELETE(${Typ},${id})`) ; ALERT(`SB_DELETE(${Typ},${id})`)}
+        const {error} = await supabase.from(Typ).delete().eq("Id",id)
+        if(error){ERR("Erro ao excluir:",error)}else{LOG(`SB_DELETE(${Typ},${id})`) ; ALERT(`SB_DELETE(${Typ},${id})`)}
     }
     
     async function Sb_CREATE(Typ,row){ // ⭐⭐⭐_ _ (Aparentemente ta boa)

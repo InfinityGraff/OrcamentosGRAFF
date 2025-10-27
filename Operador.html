@@ -74,15 +74,15 @@
       Img_A:  Nm($('.T_A img')),
       Img_B:  Nm($('.T_B img')),
     }
-    const {err}=await supabase.from('placar').update(obj).eq('id',1)
-    if(err){console.error(err)}
+    const {error}=await supabase.from('placar').update(obj).eq('id',1)
+    if(error){console.error(error)}
     else{alert('✅ Placar atualizado!')}
   }
 
   async function UPPImg(file,nome){
     const path = `Imgs/${nome}`
-    const { err } = await supabase.storage.from('Jogo').upload(path, file, { upsert:true })
-    if (err) return alert('❌ Erro ao enviar imagem'), null
+    const {error} = await supabase.storage.from('Jogo').upload(path, file, { upsert:true })
+    if (error) return alert('❌ Erro ao enviar imagem'), null
     return supabase.storage.from('Jogo').getPublicUrl(path).publicUrl
   }
 
@@ -94,9 +94,9 @@
       if (!F) return
       const ext  = F.name.split('.').pop()
       const Nome = `${nome}.${ext}`
-      Inn(d, `<img src="${URL.createObjectURL(F)}"`)
+      Inn(d, `<img src="${URL.createObjectURL(F)}?v=${Date.now()}"`)
       await UPPImg(F,`${Nome}`)
-      Inn(d,`<img src="${BASE_URL}/${Nome}" name="${Nome}">`)
+      Inn(d,`<img src="${BASE_URL}/${Nome}?v=${Date.now()}" name="${Nome}">`)
     }
     Eu.onclick=()   => f.click(),f.onchange=e=>Enviar(e.target.files[0]),
     Eu.ondragover =e=>(Prvn2(e),Add(Eu,'hover')),
