@@ -19,50 +19,67 @@
   :root{--accent:#0ea5e9;--panel:#071b33b2;--panel-2:#102a4a;--glass:rgba(255,255,255,0.04);--muted:rgba(255,255,255,0.7);}
   *          {margin:0;padding:0;font-family:Montserrat,system-ui,Arial}
   html,body  {height:100%;width:100%}
-  body       {background-image:url(./Fundo.webp); background-size: 100% 100%;background-repeat: no-repeat;background-position: top left;padding: 8%;}
+  body       {background-image:url(./Fundo.webp); background-size: 100% 100%;background-repeat: no-repeat;background-position: top left;padding: 8% 8% 15% 8%;}
+  .Live p    {color: #ffffff; font-size: 1.4rem; font-weight:700}
+  .Live a    {background: red; width: 15px; height: 15px; margin-right: 5px;}
   header     {gap:12px; z-index: 2;}
-  .Live      {color: white; padding: 8px; font-size: 15px; background: red; font-weight:700}
-  .tab{flex:1 1 0;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;font-weight:700;letter-spacing:1px;border-radius:8px;position:relative;text-transform:uppercase;box-shadow:0 6px 18px #02061773; font-size: 18px;}
-  .tab.left::before,.tab.right::after{content:'';position:absolute;top:0;width:18px;height:100%;border-radius:6px;transform:translateY(0);}
-  .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
-  .tab.right::after{right:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
+    .tab{flex:1 1 0;font-size: 2rem;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;font-weight:700;letter-spacing:1px;border-radius:8px;position:relative;text-transform:uppercase;box-shadow:0 6px 18px #02061773;}
+    .tab.left::before,.tab.right::after{content:'';position:absolute;top:0;width:18px;height:100%;border-radius:6px;transform:translateY(0);}
+    .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
+    .tab.right::after{right:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
+  
+  .Painel    {z-index:2; background:linear-gradient(180deg,#ffffff08,#ffffff03);border-radius:12px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
+  .Painel    {padding: 60px 20px;}
 
-  .Painel    {z-index: 2 ;background:linear-gradient(180deg,#0a07ad00,#07003000);border-radius:12px;padding:26px 28px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
+  #T_A {flex:1 1 150px; order:1}
+  .Score{order: 2;}
+  #T_B {flex:1 1 150px; order:3}
 
-  .times     {display:flex;align-items:center;margin-bottom:50px}
-  .box       {background:#ffffff1a;padding:30px 50px;border-radius:20px;box-shadow:0 0 30px #00000080;transition:transform 0.2s;min-width:200px;text-align:center;}
-  .box:hover {transform:scale(1.05)}
-  .box img   {width:100px;height:100px;object-fit:contain;margin-bottom:10px;}
-  .box p     {font-size:2.5rem;margin-bottom:10px;text-shadow:1px 1px #000;}
-  .box a     {font-size:5rem;font-weight:bold;text-shadow:2px 2px #000;}
-  .vs        {font-size:4rem;margin:0 40px;color:#ffeb3b;text-shadow:2px 2px #000;}
-  #Tempo     {font-size: 3rem; padding: 10px 20px; border-radius: 15px; background: #0000004d; text-shadow: 1px 1px #000; display:inline-flex; align-items:center; gap:12px; }
-  #Tempo a   {font-weight:600;}
-  #Clock     {font-family: 'Arial Black',sans-serif; font-size:2.2rem; color:#ffeb3b; text-shadow:1px 1px #000; min-width:70px; text-align:center; }
+  .box          {padding:30px 50px;transition:transform 0.2s;min-width:200px;text-align:center;}
+  .box img      {width:100px;height:100px;object-fit:contain;margin: 8px;}
+  .box p        {font-size:2.5rem;text-shadow:0 5px 5px #0000009c;color: #ffffff;font-weight:700}
+  #Gol_A,#Gol_B,.vs {font-size:7rem;font-weight:bold;text-shadow:0 5px 5px #0000009c;color: #ffffff;font-weight:700}
+  .vs           {opacity: 0.7;text-shadow:0 0px 0px #00000000;margin: 0px 10px;}
+  #Tempo        {z-index: 2 ;font-size: 3rem; padding: 10px 20px; border-radius: 15px; text-shadow: 1px 1px #000; display:inline-flex; align-items:center; gap:12px; }
+  #Tempo a      {font-weight:600;}
+  #Clock        {font-family: 'Arial Black',sans-serif; font-size:2.2rem; color:#ffbb00; text-shadow:1px 1px #000; min-width:70px; text-align:center; }
+
+  @media (max-width:750px){.Painel{flex-direction: column ; padding:30px 10px 60px 10px;}.box{padding: 10px 10px}}
+  @media (max-width:550px){
+    .Painel{padding:30px 10px 60px 10px;}
+    .tab{font-size: 4vw}
+    .box{padding: 30px 10px}
+    .box img{width:80px;height:80px}
+    .imgFund img{width: 70%;}
+  }
 
 </style>
 
 <body class="Ct Rltv">
 
-  <div style="top:15px" class="Abslt Rd Live">Ao Vivo</div>
+  <div style="top:15px" class="Abslt Rd Live Hov Ct"><a class="Rd"></a><p>Ao Vivo</p></div>
 
   <header class="Bt">
-    <a class="tab left">Time A</a>
-    <p style="width:18px"></p>
-    <a class="tab right">Time B</a>
+    <a class="tab left Hov">Time A</a>
+    <p style="font-size: 2rem">🆚</p>
+    <a class="tab right Hov">Time B</a>
   </header>
 
-  <div class="Painel Cl w100">
-    <div class="times">
-      <div class="box Cl" id="T_A"><div id="Img_A"></div><p>Time A</p><a>0</a></div>
-      <div class="vs">🆚</div>
-      <div class="box Cl" id="T_B"><div id="Img_B"></div><p>Time B</p><a>0</a></div>
-    </div>
+  <div class="Painel Ct w100 Rltv">
+      <div class="box Hov Ct" id="T_A"><div id="Img_A"></div><p>Time A</p></div>
+      <div class="Ev Score">
+        <a id="Gol_A">0</a>
+        <div class="vs">-</div>
+        <a id="Gol_B">0</a>
+      </div>
+      <div class="box Hov Ct" id="T_B"><div id="Img_B"></div><p>Time B</p></div>
+
+      <div id="Tempo" style="bottom:15px" class="Abslt"><a>1° Tempo</a> <span id="Clock">00:00</span></div>
   </div>
 
-  <div id="Tempo"><a>1° Tempo</a> <span id="Clock">00:00</span></div>
+  
 
-  <div style="bottom:15px" class="Abslt"><img src="./Bolas.webp"></div>
+  <div style="bottom:15px" class="Abslt imgFund"><img src="./Bolas.webp"></div>
 </body>
 
 <script>
@@ -76,11 +93,11 @@
   const Stop=r=>(clearInterval(Crono),r||Inn('#Clock',Fmt(Seg)))
 
   const Exibir=e=>{
-    Inn('header .left', e.Tim_A)
-    Inn('header .right', e.Tim_B)
+    Inn('header .left', e.Tim_A)  ; Inn('#T_A p', e.Tim_A)
+    Inn('header .right', e.Tim_B) ; Inn('#T_B p', e.Tim_B)
 
-    Inn('#T_A a', e.Gol_A)
-    Inn('#T_B a', e.Gol_B)
+    Inn('#Gol_A', e.Gol_A)
+    Inn('#Gol_B', e.Gol_B)
     Inn('#Tempo a', e.Tempo)
     Inn('#Img_A', e.Img_A ? `<img src="${BASE_URL}/${e.Img_A}?v=${Date.now()}">` : '')
     Inn('#Img_B', e.Img_B ? `<img src="${BASE_URL}/${e.Img_B}?v=${Date.now()}">` : '')
