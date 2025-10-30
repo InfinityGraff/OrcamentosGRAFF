@@ -19,10 +19,10 @@
   :root{--accent:#0ea5e9;--panel:#071b33b2;--panel-2:#102a4a;--glass:#ffffff0a;--muted:#ffffffb3}
   *          {margin:0;padding:0;font-family:Montserrat,system-ui,Arial;font-weight:bold}
   html,body  {height:100%;width:100%}
-  body       {padding:5% 3% 10% 3%;background-image:url(./Fundo.webp); background-size:100% 100%;background-repeat:no-repeat;background-position:top left}
+  body       {padding:3%;background-image:url(./Fundo.webp); background-size:100% 100%;background-repeat:no-repeat;background-position:top left}
   .Live p    {color:#ffffff; font-size:3rem}
   .Live a    {background:red; width:15px; height:15px; margin-right:5px}
-  header     {gap:12px; z-index:2} header > *{font-size:5rem}
+  header     {gap:12px; z-index:2} header > *{font-size:8rem}
     .tab             {flex:1 1 0;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;letter-spacing:1px;border-radius:8px;position:relative;box-shadow:0 6px 18px #02061773}
     .tab.left::before,.tab.right::after{content:'';position:absolute;top:0;width:18px;height:100%;border-radius:6px;transform:translateY(0)}
     .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
@@ -35,11 +35,11 @@
   .box          {padding:30px 50px;transition:transform 0.2s;min-width:200px;text-align:center}
   .Score        {margin-bottom:100px}
   #Tempo        {bottom:15px}
-  .box img      {width:300px;height:300px;object-fit:contain;margin:8px}
+  .box img      {width:400px;height:400px;object-fit:contain;margin:8px}
   .box > div >p {font-size:8rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff}
-  .Score > *    {font-size:20rem; text-shadow:0 5px 5px #0000009c; color:#ffffff ; margin:0px 10px}  .vs{opacity:0.7}
-  #Tempo > *    {font-size:4rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ;z-index:2 ; padding:10px 20px; border-radius:15px; display:inline-flex; align-items:center; gap:12px}
-  #Clock        {font-size:7rem ; color:#ffbb00}
+  .Score > *    {font-size:25rem; text-shadow:0 5px 5px #0000009c; color:#ffffff ; margin:0px 10px}  .vs{opacity:0.7}
+  #Tempo > *    {font-size:5rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ;z-index:2 ; padding:10px 20px; border-radius:15px; display:inline-flex; align-items:center; gap:12px}
+  #Clock        {font-size:8rem ; color:#ffbb00}
 
   .Evn{display:none;gap:8px;font-size:14px;color:#ffffffbf;max-width:360px;margin-top:15px}
   .Evn a{display:flex;gap:10px;align-items:center}
@@ -65,7 +65,7 @@
 </style>
 
 <body class="Ct Rltv">
-  <div style="top:15px" class="Abslt Rd Live Hov Ct"><a class="Rd"></a><p>Ao Vivo</p></div>
+  <div style="top:15px" class="Abslt Rd Live Hov Ct none"><a class="Rd"></a><p>Ao Vivo</p></div>
   <header class="Bt"><a class="tab left Hov">Time A</a><p>🆚</p><a class="tab right Hov">Time B</a></header>
   <div class="Painel Ct w100 Rltv">
       <div class="box Hov Cl" id="T_A"><div class="Ct"><div id="Img_A"></div><p>Time A</p></div><div class="Evn Start2"></div></div>
