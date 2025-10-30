@@ -113,9 +113,25 @@
     }
   }
   // RealTime deve analisar se eu estou Configurando o Jogo, Dando Pausa, Retomando, Trocando Tempo, Atualizando Placar!
-  supabase.channel('placar').on('postgres_changes',{event:'*',schema:'public',table:'placar'},e=>{Anima(e.new);Exibir(e.new)}).subscribe()
+  supabase.channel('placar').on('postgres_changes',{event:'*',schema:'public',table:'placar'},e=>{
+    const novo = e.new
+    const antigo = e.old
+    if (
+      (novo.Gol_A !== antigo.Gol_A && novo.Gol_A != 0) ||
+      (novo.Gol_B !== antigo.Gol_B && novo.Gol_B != 0)
+    ) {
+      Anima(novo)
+    }else{LOG('⚙️ Jogo Reconfigurado')}
+    Exibir(novo)
+  }).subscribe()
+
   async function carregar(){let {data} = await supabase.from('placar').select('*').eq('id',1).maybeSingle() ; if(data){Exibir(data);RodaTempo(data)}}
   carregar()
+
+
+  // Integrar o Timer Avançado
+  // Adicionar um Gatilho de Resync pra o timer, caso o lado da Tela seja Reatualizado
+  // Separar Configuração de Jogo, de atualizações (cada uma Faz uma coisa Diferente)
 </script>
 
 </html>
