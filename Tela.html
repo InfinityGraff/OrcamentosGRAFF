@@ -28,17 +28,18 @@
     .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
     .tab.right::after{right:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
   
-  .Painel    {z-index:2;padding:40px 20px;background:linear-gradient(180deg,#ffffff08,#ffffff03);border-radius:12px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
+  .Painel    {z-index:2;padding:10px 10px;background:linear-gradient(180deg,#ffffff08,#ffffff03);border-radius:12px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
 
   #T_A {flex:1 1 150px; order:1}.Score{order:2}#T_B {flex:1 1 150px; order:3}
 
   .box          {padding:30px 50px;transition:transform 0.2s;min-width:200px;text-align:center}
+  .Score        {margin-bottom:100px}
+  #Tempo        {bottom:15px}
   .box img      {width:300px;height:300px;object-fit:contain;margin:8px}
-  .box > div >p {font-size:8rem  ;text-shadow:0 5px 5px #0000009c;color:#ffffff}
-  .Score {margin-bottom: 100px;}
-  .Score > *    {font-size:20rem ;text-shadow:0 5px 5px #0000009c;color:#ffffff}.vs{opacity:0.7;margin:0px 10px}
-  #Tempo > *    {font-size:4rem  ;text-shadow:0 5px 5px #0000009c;color:#ffffff;z-index:2 ; padding:10px 20px; border-radius:15px; display:inline-flex; align-items:center; gap:12px; }
-  #Clock        {font-size:7rem  ;color:#ffbb00;  min-width:70px; text-align:center}
+  .box > div >p {font-size:8rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff}
+  .Score > *    {font-size:20rem; text-shadow:0 5px 5px #0000009c; color:#ffffff ; margin:0px 10px}  .vs{opacity:0.7}
+  #Tempo > *    {font-size:4rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ;z-index:2 ; padding:10px 20px; border-radius:15px; display:inline-flex; align-items:center; gap:12px}
+  #Clock        {font-size:7rem ; color:#ffbb00}
 
   .Evn{display:none;gap:8px;font-size:14px;color:#ffffffbf;max-width:360px;margin-top:15px}
   .Evn a{display:flex;gap:10px;align-items:center}
@@ -70,7 +71,7 @@
       <div class="box Hov Cl" id="T_A"><div class="Ct"><div id="Img_A"></div><p>Time A</p></div><div class="Evn Start2"></div></div>
       <div class="Ev Score"><a id="Gol_A">0</a><div class="vs">-</div><a id="Gol_B">0</a></div>
       <div class="box Hov Cl" id="T_B"><div class="Ct"><div id="Img_B"></div><p>Time B</p></div><div class="Evn Start2"></div></div>
-      <div id="Tempo" style="bottom:15px" class="Abslt"><a>1° Tempo</a> <span id="Clock">00:00</span></div>
+      <div id="Tempo" class="Abslt Ct"><a>1° Tempo</a> <span id="Clock">00:00</span></div>
   </div>
   <div style="bottom:15px" class="Abslt imgFund"><img src="./Campo.webp"></div>
 </body>
@@ -106,7 +107,7 @@
     function AnimaR(nome){
       const d=NewTag('div')
       d.className='gol-anim'
-      d.textContent=`GOL DO ${nome.toUpperCase()}!`
+      d.textContent=`⚽️ GOOOOL DO ${nome.toUpperCase()}!`
       document.body.appendChild(d)
       setTimeout(()=>d.remove(),3000)
     }
