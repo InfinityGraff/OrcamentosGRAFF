@@ -25,13 +25,13 @@
     <script src="./AchaMdd.js"></script>
     <script src="./Gera3D.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
 <script> // Base de Dados
+
     const USER = { // isso vai FICAR no SupaBase
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:3000 }, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
         '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1220,OUT:3000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
@@ -439,7 +439,7 @@
         const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
         const todosIguais = arr => arr.every(v => v === arr[0])
         const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
-        const Num4=e=>e==undefined ? 0 : e=='' ? '' : Num(e)
+        
         const NAN=e=>isNaN(e) ? 0 : e
         const RmvLinByID=(arr,id)=>{const x = arr.findIndex(e => e.Id === id);if (x !== -1) arr.splice(x, 1)}
         // MiniBiblioteca pra passar a Usar!
@@ -515,7 +515,7 @@
                     " Id   Id  Data"
                     "Clnt Clnt Stts"
                     "Serv Serv Serv"
-                    "Valr Cust Pgmt"
+                    "Valr Pgmt Deve"
                     "Obs  Obs  Obs ";
                 grid-template-columns: 1fr auto auto;
                 gap: 4px 4px
@@ -528,22 +528,22 @@
             
             table.Card > tbody > tr > td{padding: 5px; height: auto !important; } /*border: 1px solid red;*/
             table.Card > tbody > tr > td:nth-child(1) { grid-area: Id   }table.Card > tbody > tr > td:nth-child(1) > div > .P-P {color:#780096; font-size: 10px ; font-weight:bold}
-            table.Card > tbody > tr > td:nth-child(2) { grid-area: lin  ; display: none;}
-            table.Card > tbody > tr > td:nth-child(3) { grid-area: Data }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#666666; text-align:right                        } table.Card > tbody > tr > td:nth-child(3) > div > .P-P > img{height:11px; margin-right:3px ; display: block;}
-            table.Card > tbody > tr > td:nth-child(4) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#666666; font-size: 17px ;                       } table.Card > tbody > tr > td:nth-child(4) > .Ct{justify-content:start}
-            table.Card > tbody > tr > td:nth-child(5) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#000000;                 ;                       } table.Card > tbody > tr > td:nth-child(5) > .Ct{justify-content:start}
-            table.Card > tbody > tr > td:nth-child(6) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold      } table.Card > tbody > tr > td:nth-child(6) > .Ct{justify-content:start}
-            table.Card > tbody > tr > td:nth-child(7) { grid-area: Pgmt }table.Card > tbody > tr > td:nth-child(7) > div > .P-P {color:#000000; }
-            table.Card > tbody > tr > td:nth-child(8) { grid-area: Cust }table.Card > tbody > tr > td:nth-child(8) > div > .P-P {color:#c7380c; font-size: 12px}
-            table.Card > tbody > tr > td:nth-child(9) { grid-area: Lucro; display: none;}
+            table.Card > tbody > tr > td:nth-child(2) { grid-area: Data }table.Card > tbody > tr > td:nth-child(2) > div > .P-P {color:#666666; text-align:right                        } table.Card > tbody > tr > td:nth-child(2) > div > .P-P > img{height:11px; margin-right:3px ; display: block;}
+            table.Card > tbody > tr > td:nth-child(3) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#666666; font-size: 17px ;                       } table.Card > tbody > tr > td:nth-child(3) > .Ct{justify-content:start}
+            table.Card > tbody > tr > td:nth-child(4) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#000000;                 ;                       } table.Card > tbody > tr > td:nth-child(4) > .Ct{justify-content:start}
+            table.Card > tbody > tr > td:nth-child(5) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold      } table.Card > tbody > tr > td:nth-child(5) > .Ct{justify-content:start}
+            table.Card > tbody > tr > td:nth-child(6) { grid-area: Pgmt }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#000000; }
+            table.Card > tbody > tr > td:nth-child(7) { grid-area: Deve }table.Card > tbody > tr > td:nth-child(7) > div > .P-P {color:#c7380c; font-size: 12px}
+            table.Card > tbody > tr > td:nth-child(8) { grid-area: Cust ;display: none}table.Card > tbody > tr > td:nth-child(8) > div > .P-P {color:#c7380c; font-size: 12px}
+            table.Card > tbody > tr > td:nth-child(9) { grid-area: Lcro; display: none;}
             table.Card > tbody > tr > td:nth-child(10){ grid-area: Stts }table.Card > tbody > tr > td:nth-child(10) > div > .P-P{color:#999999; width: 50px;}
             table.Card > tbody > tr > td:nth-child(11){ grid-area: Obs  ; display: none; color:#757575; font-size: 12px}
             table.Card > tbody > tr > td:nth-child(12){ grid-area: Lixo ; display: none;}
 
-            table.Tbla td[class*="Data"] a:nth-child(2){display: none}
-            table.Tbla td[class*="Data"] a:nth-child(3){display: flex}
-            table.Card td[class*="Data"] a:nth-child(2){display: flex}
-            table.Card td[class*="Data"] a:nth-child(3){display: none}
+            table.Tbla td[class*="Data"] a{display: none}
+            table.Tbla td[class*="Data"] p{display: flex}
+            table.Card td[class*="Data"] a{display: flex}
+            table.Card td[class*="Data"] p{display: none}
 
             .TBLAA tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)        {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
             .BndjTBL tbody td                      > div:not(.Sklt)        {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
@@ -570,14 +570,17 @@
                                        Find.map(e=>`${e[col]}`          ).join(' | ')
             }
 
+            // Passar pra PreScript removendo o 2
+            const TrcFih2 = (e, showChild) => Filh(Pai(e)).forEach(f => (f === e ? None(f) : (showChild ? (f === showChild ? Show(f) : None(f)) : Show(f)))) || (showChild && showChild.focus());
+
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`, // o Fixo também tem Data por isso tinha informação de data aqui
-                Auto:(e,R,A)=>`<p class="P-P Ct" name="${Num3(e)}" onclick="CtrlSoma(this)">${e}</p>`,
+                Auto:(e,R,A)=>`<p class="P-P Ct" name="${Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
                 Sync:(e,R,A)=>`<p class="P-P Ct" name="${e}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskR$(this)">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="MaskNumI(this)">${e?Cm(e):''}</p>`,
-                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this)"><img class="none" src="./SVG/Tempo.svg"><a>${/*Tempo(YMD(e))*/''}</a><a>${BrevData(DMY(e))}</a></p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this)">`,
+                Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><a><img src="./SVG/Tempo.svg">${QntTempo(YMD(e))}</a><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A,pai)=>/*pai?`<p class="P-P Ct" name="${e}">${e}</p>`:*/`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
@@ -860,8 +863,8 @@
                 Prvn()
                 const [r,a]=['ThFilt_Rtv','ThFilt_Atv']
                 const PP = $('p',Pai(Eu)) // Valor Clicado
-                if(Inn(Eu)=='+'){ LOG(Inn(Eu)) ; if(Contem(PP,r)){Rmv(PP,r)}else{Tog(PP,a)}}
-                if(Inn(Eu)=='-'){ LOG(Inn(Eu)) ; if(Contem(PP,a)){Rmv(PP,a)}else{Tog(PP,r)}}
+                if(Inn(Eu)=='+'){ LOG(Inn(Eu)) ; if(Coten(PP,r)){Rmv(PP,r)}else{Tog(PP,a)}}
+                if(Inn(Eu)=='-'){ LOG(Inn(Eu)) ; if(Coten(PP,a)){Rmv(PP,a)}else{Tog(PP,r)}}
                 const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
                 Notifi('Atv') ; Notifi('Rtv')
             }
@@ -911,7 +914,7 @@
                 })
                 $$(QRY).forEach(e=>{
                     Bkg(_tr(e),NewObj[Inn(e)])
-                    if(PermitOculta && NewObj[Inn(e)]==undefined){Add(_tr(e),'none')}
+                    if(PermitOculta && NewObj[Inn(e)]==undefined){Add(_tr(e),'none')} // tentar mudar pra UndfNull(NewObj[Inn(e)]) // pra usar a biblioteca
                 })
             }
             
@@ -964,7 +967,7 @@
                 const caracteres = true
 
                 const Ordn = [...tbody.rows].sort((a,b)=>{
-                    if(Ctrl(ev)){ // se tiver com Cntrl Selecionado faz o Filtro por Caracteres
+                    if(KeyCtrl(ev)){ // se tiver com Cntrl Selecionado faz o Filtro por Caracteres
                         const lenA = (VAL(Get(a)) || '').length
                         const lenB = (VAL(Get(b)) || '').length
                         return asc ? lenA - lenB : lenB - lenA
@@ -997,7 +1000,7 @@
                 $$(`#H_PDDS > tbody > tr`).forEach(tr=>{ //TRs(Typ)
                     const TD=(stg)=>$(`:scope > ${Col('PDDS',stg)}`,tr)
                     const ArryImg = $$(':scope > div > img',TD('Serv'))
-                    const tem1 = ArryImg.some(e=>isImageLoaded(e))
+                    const tem1 = ArryImg.some(e=>IsImgLod(e))
                     if(tem1){Rmv_N(tr )}else{Add_N(tr)}
                 })
             }
@@ -1020,7 +1023,7 @@
         </style>
 
         <script> // RECOLOR  - SCRIPT
-            const NoVazi=v=>v!=='' && v!==false && v!==undefined // isso pode virar Biblioteca
+            
             const MinMax=(Atual,Lista)=>Math.min(Math.max(Atual/Lista,0),1) // Entre 0 e 1 
             const OB = { // Criterio 1  é Obrigaório existir
                 CLNT:['Clnt','Cmpt','Cntt'],
@@ -1289,8 +1292,8 @@
                 trs.forEach(tr=>{
                     const oID=All=='All'? tr.Id : tr_ID(tr)                                             // Numeração do ID
                     const get=col=>     $(`${Rx2([`${Typ}-${oID}-${col}`])}`)                           // Concatenado é mais Preciso PDDS-oID-col
-                    const ges=arr=>arr.map(col=>{return JJ[Typ][oID].Serv == '' ? 0 :JJ[Typ][oID].Serv.map(e=>Num4(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
-                    const gee=arr=>arr.map(col=>{return JJ[Typ][oID].Pgmt == '' ? 0 :JJ[Typ][oID].Pgmt.map(e=>Num4(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
+                    const ges=arr=>arr.map(col=>{return JJ[Typ][oID].Serv == '' ? 0 :JJ[Typ][oID].Serv.map(e=>Num(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
+                    const gee=arr=>arr.map(col=>{return JJ[Typ][oID].Pgmt == '' ? 0 :JJ[Typ][oID].Pgmt.map(e=>Num(e?.[col] ?? 0))}).flat() // pega todos os Valores dessas Colunas (esses moi de proteção talvez nem precise tanto) (depois analisa pra proteger realmente só quando precisar!)
                     const Vll=arr=>arr.map(e=>e??'').join('')                                           // Muda pra Const // se todos os Custos de cada linha do Serv for "Vazio", então Custo e Lucro fica "Vazio"
 
                     /*Somas*/ const SumV = sum(ges(['Valr']))               ; if(All=='All'){tr.Valr = RS(SumV)                      }else{DarVAL(get('Valr'),RS(SumV))}
@@ -1821,10 +1824,9 @@
                     <input id="PDDS_trCor" type="checkbox" checked>
                 </div>
                 
-                <!--
-                    <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
-                    <div id="Sommma">Soma: 00,00</div>
-                -->
+                
+
+                
 
                 <div onchange="Re_Colr('SERV','All')">
                     <input id="SERV_Color" type="color">
@@ -1842,6 +1844,9 @@
                     <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2,'PDDS')">Pagamentos</a>
                 </div>
             </div>
+
+                    <!--    <button onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')">CARD</button>
+                    <div id="Sommma">Soma: 00,00</div>-->
 
             <div class="Wrapper">
                 <div id="Slide_PDDS" class="Slide_Table">
@@ -2027,7 +2032,7 @@
                 }
                 const ContPoly=p=>p?Math.floor(p.trim().split(/[\s,]+/).length/2):0
 
-                $('#svgInput').addEventListener('change',function(event){
+                EvtChng($('#svgInput'),function(event){
                   const file = event.target.files[0]
                   if (!file) {return}
 
@@ -3351,7 +3356,7 @@
     })
     document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
         Rmv('.Moldura','Atv')
-        if(S(targ).Coten('ClickCanv')||targ.closest('.ClickCanv')){ATV('.Moldura.ClickCanv')}
+        if(Coten(targ,'ClickCanv')||targ.closest('.ClickCanv')){ATV('.Moldura.ClickCanv')}
         else{DTV('.Moldura.ClickCanv')}
     })
     // Atalhos C e E

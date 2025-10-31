@@ -1,9 +1,10 @@
-
-const isObj=e=>(typeof e === "object" && e !== null && !Array.isArray(e) && e.constructor === Object)
-
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
+// Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
+function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
+function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
+function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
 
 function LocAno(Email){
     const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
@@ -20,7 +21,7 @@ function LocAno(Email){
     return ""
 }
 
-function Crecent(MM2){
+function CrecentAntigo(MM2){
   /*Crescente:*/ var M = MM2
     var D = {Min:0.06,Med:0.25,Max:1.00}
     var V = {Min:1.70,Med:0.70,Max:0.00}
@@ -31,18 +32,15 @@ function Crecent(MM2){
   return crecent
 }
 
-function Crecent2(MM2){
-  /*Crescente:*/ var M = MM2
-    var D = {Min:0.05,Med:0.20,Max:0.50}
-    var V = {Min:2.10,Med:0.70,Max:0.00}
-      var crecent = M> D.Med? M>=D.Max? V.Max:
-      M< D.Med? V.Med: V.Med-((V.Med-V.Max)*((M-0.001)/D.Max)):
-      M<=D.Min? V.Min: V.Min-((V.Min-V.Med)*((M-0.001)/D.Med))
-
-  return crecent
+const Crecent=(M,F=0.5,F2=1.8)=>{ // Mudar as Forças de Acordo com cada Produto
+  if (M <= 0) return (F + F2) * 2
+  if (M >= 1) return 0
+  const t1 = 1 - Math.pow(M, F * 1.2);
+  const gradual = F2 * Math.pow(Math.max(0, 0.25 - M) / 0.25, 2)
+  return +(t1 * (F + 0.7) + gradual).toFixed(3);
 }
 
-function CrypPass(senha){
+function CrypPass(senha){ // Obsoleta
   const Cryp = senha.split('').map((c,idx)=>{
     if(/[0-9]/.test(c)){let N=parseInt(c)
       N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
@@ -62,7 +60,7 @@ function ShowBndj(div){                                                // Funç�
     if(!document.contains(event.target)){LOG('não ta mais no DOM') ; return} // interrompe se o target não estiver mais no DOM
     if(['IMG','I','BUTTON'].includes(event.target.tagName)){return}
     if(event.target.closest('svg')){return}
-    const e = $('.BNdj',div)                                           // Seleciona o elemento .BNdj dentro da div Passada
+    const e = $('.BNdj',div)                                      // Seleciona o elemento .BNdj dentro da div Passada
     if(e.contains(event.target)){
         LOG('Click Dentro de BNdj')
         return} // Se o clique for dentro do .BNdj, interrompe (não fecha nem altera)
@@ -80,7 +78,6 @@ function ShowBndj(div){                                                // Funç�
     else if(e.contains(event.target)){LOG('Sair na TORa') ; return}
     else{ClickFora(div,()=>{Add_N(e)})}                           // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
 }
-
 
 const BrevTitle = str => {
   try {
@@ -112,14 +109,13 @@ function DarVAL(td,v,A){
     const R = D_R(td)
     const PP = $(':scope > div > .P-P',td)
     if(['Edit','Fixo'  ].includes(R.Tm)){Nm(PP,v)       ; Inn(PP,v)}
-    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num3(v)) ; Inn(PP,v)}
+    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num(v)) ; Inn(PP,v)}
     if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,v==''?'':Num(v))  ; Inn(PP,v==''?'':RS(v))}
     if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
     if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
     if(['Data','Sugg','Link','Ssvg','Imgs','Chek','Likk'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
 }
-
-function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))}
+function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))} // Parece q ela só é nessesária quando o valor é uma Bandeija, mas se n for Xuva, só a de cima Resolve
 
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
@@ -129,15 +125,15 @@ function VAL(e){
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Link' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
-                : R.Tm==='Valr' ? Num2($('.P-P',td).textContent.trim())
-                : R.Tm==='Mdds' ? Num2($('.P-P',td).textContent.trim())
-                : R.Tm==='Auto' ? Num2($('.P-P',td).textContent.trim())
-                : R.Tm==='Sync' ? Num3($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
+                : R.Tm==='Valr' ? Num($('.P-P',td).textContent.trim())
+                : R.Tm==='Mdds' ? Num($('.P-P',td).textContent.trim())
+                : R.Tm==='Auto' ? Num($('.P-P',td).textContent.trim())
+                : R.Tm==='Sync' ? Num($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
             : R.Tm==='Data' ? $('input' ,td).value
             : R.Tm==='Slct' ? $('select',td).value
             : R.Tm==='Inpt' ? $('input' ,td).value
             : R.Tm==='Chek' ? $('input' ,td).checked
-            : is(td,'input')? td.value
+            : Is(td,'input')? td.value
             : R.Tm==='Lixo' ? '-'
             : null
     return val
@@ -175,8 +171,7 @@ const DarJJ = (M,T,R,C,V,Lv2=null)=>{
     LOG(`Const Atualizadas! ${M}, ${iguais}`)
 }
 
-
-const SplitAvanc=(Stg)=>{
+const SplitAvanc=(Stg)=>{ // Funciona Apenas pra GABARITO
     const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
     let [nome,qnt,tamn] = ['','','']
     partes.forEach(e=>{
@@ -188,24 +183,7 @@ const SplitAvanc=(Stg)=>{
     return {Nome:nome.trim(),Tamn:tamn,Qnt:qnt}
 }
 
-const Num3 = e =>
-  e == undefined ? 0 :  
-  typeof e === 'number' ? e :
-  typeof e !== 'string' ? "" :
-  e.trim() === "--" ? 0 :
-  e.includes('R$') ? (+e.replace('R$','').replace(/\./g,'').replace(',','.').trim()||0) :
-  /^[\d.,]+$/.test(e) ? (+e.replace(/\./g,'').replace(',','.').trim()||0) :
-  e;
-
-
-
-// DEGRADE================================================================================================
-// DEGRADE================================================================================================
-// DEGRADE================================================================================================
-// DEGRADE================================================================================================
-
 let GlobDegrade = null; // Variável global para armazenar a cor do degradê
-
 function LoadDegade(CCnvs) {
     const gCnvs = $('#gradientCanvas'),
         gCtx = gCnvs.getContext('2d')
@@ -352,12 +330,6 @@ function LoadDegade(CCnvs) {
     
 }
 
-
-// GABARITO================================================================================================
-// GABARITO================================================================================================
-// GABARITO================================================================================================
-// GABARITO================================================================================================
-
 function Promss_Src(files){
   const srcList = []
   const promises = Array.from(files).map(File=>{
@@ -392,7 +364,6 @@ function Load_Cnvs(div){
             }).join('')
     Read_Canvs()
 }
-
 // Atualizar a Parte Interna do Canvas
 function Read_Canvs(){
     ObjCanvs.forEach(({qnt,tamn,nome,src},x)=>{
@@ -504,12 +475,9 @@ function JuntarCanvas(C1,C2){
     return newCanvas
 }
 
-function Nome_Bxar(C1,und){
-    return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`
-}
+function Nome_Bxar(C1,und){return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`}
 
 function Baixar_Cnvs(C1,C2,und){
-    console.log(C1,C2)
     if($Vl('#NomeCliente')===''){ alert('Falta Nome do Pedido');return}
     const link = document.createElement('a')
     link.href = JuntarCanvas(C1,C2).toDataURL('image/jpeg')
@@ -529,7 +497,6 @@ function saveCanvasAsZip(){
     zip.generateAsync({type:'blob'}).then(e=>saveAs(e,'CAMISAS.zip'))
 }
 
-
 function CopyGRAFF(e,btn){
     var temp = document.createElement('textarea')
     temp.value = CopyPresset[e] ?? e.split('/').join('\n') // (Primeiro aceita o obj, segundo se for array)
@@ -539,7 +506,6 @@ function CopyGRAFF(e,btn){
     document.body.removeChild(temp)
     btn.innerText = 'Texto copiado!'
 }
-
 
 function PDDSconverterJSON(obj) {
     const camposParaConverter = ["Serv","Pgmt","Cust","Abcd"];
@@ -559,65 +525,7 @@ function PDDSconverterJSON(obj) {
     return obj;
 }
 
-const RmvPlural = Stg => {
-  if (Stg.endsWith('ões')) return Stg.slice(0, -3) + 'ão'
-  if (Stg.endsWith('ães')) return Stg.slice(0, -3) + 'ão'
-  if (Stg.endsWith('is' )) return Stg.slice(0, -2) + 'l'
-  if (Stg.endsWith('res')) return Stg.slice(0, -1)
-  if (Stg.endsWith('s') && Stg.length > 2) return Stg.slice(0, -1)
-  return Stg
-}
-
-
-function Tempo(data) {
-  const agora = new Date();
-  const d = new Date(data);
-  const ms = agora - d;
-  const min = 60 * 1000;
-  const hora = 60 * min;
-  const dia = 24 * hora;
-
-  if(isNaN(d.getTime())){return '-'}
-
-  if (ms < min) return 'agora mesmo';
-  if (ms < hora) {
-    const qtd = Math.floor(ms / min);
-    return `há ${qtd} minuto${qtd > 1 ? 's' : ''}`;
-  }
-  if (ms < dia) {
-    const qtd = Math.floor(ms / hora);
-    return `há ${qtd} hora${qtd > 1 ? 's' : ''}`;
-  }
-
-  const dias = Math.floor(ms / dia);
-  if (dias === 1) return 'ontem';
-  if (dias < 7) return `há ${dias} dia${dias > 1 ? 's' : ''}`;
-
-  const semanas = Math.floor(dias / 7);
-  if (dias < 30) return `há ${semanas} semana${semanas > 1 ? 's' : ''}`;
-
-  const meses = Math.floor(dias / 30);
-  if (dias < 365) return `há ${meses} mês${meses > 1 ? 'es' : ''}`;
-
-  const anos = Math.floor(dias / 365);
-  return `há ${anos} ano${anos > 1 ? 's' : ''}`;
-}
-
-const ShowTime2=(e,sec)=>{
-    Show(e)
-    requestAnimationFrame(()=>{Add($(e),"show")})
-    setTimeout(()=>{
-        Rmv($(e),"show")
-        setTimeout(()=>{None(e)},400) // espera a transição terminar
-    }, sec*1000)
-}
-
-// comparar objetos se são iguais
-//=========================================================================================================
-//=========================================================================================================
-
-
-function Diferentes(b,a){
+function Diferentes(b,a){ // REALTIME do SUPABASE comparar objetos se são iguais Usado
   const r = { Id: b.Id}
   for (const k in b) {
     if (k === 'Id') continue;
@@ -640,14 +548,7 @@ function Diferentes(b,a){
   return Object.keys(r).length > 1 ? r : null;
 }
 
-
-
-
-//=========================================================================================================
-//=========================================================================================================
-
-
-function flatenObject(obj,prefix) {
+function flatenObject(obj,prefix){ // REALTIME do SUPABASE
   const result = []
   const idPai = obj.Id || ''
 
@@ -667,49 +568,6 @@ function flatenObject(obj,prefix) {
 
   return result;
 }
-
-
-// para a Biblioteca
-
-function MaskNumI(Div){ // Funciona Muito bem e não pretendo me Livrar dela tão Fácil
-    var Vlr = Div.innerHTML.replace(/\D/g, '').replace(/^0+(?=[1-9])/, '')
-    var Mask = '' ; const VLR = Vlr.length
-    var Mask = VLR === 1 ? '0,0'+Vlr :
-                VLR === 2 ? '0,'+Vlr :
-                VLR === 3 ? Vlr.charAt(0)+','+Vlr.substring(1) :
-                VLR === 4 ? Vlr.substring(0, 2)+','+Vlr.substring(2) :
-                VLR > 4 ? Vlr.substring(0, 2)+','+Vlr.substring(2, 4) : ''
-        if (VLR > 5) {Mask = Mask.substring(0, 5)}
-        Div.innerHTML = Mask
-        CurEnd(Div)
-}
-
-const SOMA_Obj2 = (ArrObj, Key) => Array.isArray(ArrObj) ? ArrObj.reduce((soma, obj) => Number(soma) + Number(obj[Key] || 0), 0) : 0;  // ESSA JÁ TAVA LÁ ANTES
-
-
-
-
-const IptFile=(div)=>// vc Cria a Função Upload(files) lá dentro do seu Index, e dentro execulta as Funções
-                      // esta Div, é o Lugar onde as Imanges vão ser inseridas
-   `<style>
-        .Upld {width:100%;max-width:400px;height:200px;margin: 0px 30%;border: 2px dashed #ccc; transition: border-color 0.3s, background-color 0.3s, transform 0.3s; }
-        .Upld:hover    {border-color:#7e7e7e; transform: scale(1.05)}
-        .Upld:active   {border-color:#7e7e7e; transform: scale(0.98)}
-        .Upld.dragover {border-color:#ff5e00; transform: scale(1.08); background: #af704c1a}
-        .Upld span    {font-size: 50px; color: #ccc; transition: color 0.3s; }
-        .Upld:hover span,.Upld.dragover span,.Upld.filled span{color:#ff5e00}
-        .Upld:hover p,.Upld.dragover p{color:#ff5e00}
-        .Upld p        {color:#aaa;margin:0; font-size:16px; transition:color 0.3s}
-    </style>
-    <div class="Upld rd Cl Ct ppt Rltv"
-        ondragover="event.preventDefault(); Add(this,'dragover')"
-        ondragleave="Rmv(this,'dragover')"
-        ondrop="event.preventDefault();Rmv(this,'dragover');Promss_Src(event.dataTransfer.files).then(srcList=>{Upload('${div}',srcList)})">
-        <span>+</span><p>Arraste arquivos ou clique aqui</p>
-        <input class="Abslt w100 h100 ppt Opacy" type="file" id="imagem" accept="image/*" multiple onchange="Rmv(Pai(this),'dragover');Promss_Src(this.files).then(srcList=>{Upload('${div}',srcList)})">
-    </div>
-`
-
 
 // Quando eu Upo Várias Imagens dentro de um input
 function Promss_Imgs2(files,div){
@@ -731,29 +589,6 @@ function Promss_Imgs2(files,div){
   };return Promise.all(arry)
 }
 
-// Trexo relacionado a Mover os Botões das Fotinhas
-let alvo,dx,dy
-document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop});
-document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}};
-document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}};
-
-// Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
-function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
-function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
-function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
-
-
-function MS(IN){const ms = (performance.now()-IN) ; if(ms<0.5) ; if(ms<1000){return ms.toFixed(2)+'ms'} ; return (ms/1000).toFixed(2)+'s'}
-const MSRX = stg => Number(stg.replace('ms','').trim())
-
-const ERR = (...stg) => console.error(...stg)
-
-
-function calcSeguro(X, Y, A){const r = X * (Y / A) ; return (isFinite(r) && !isNaN(r)) ? r : 0}
-
-const Seguro=v=>(isFinite(v) && !Number.isNaN(v)) ? v : 0
-
-
 const criarThumbnail = (file, pixel) =>
   new Promise((res, rej) => {
     const img = new Image()
@@ -767,5 +602,12 @@ const criarThumbnail = (file, pixel) =>
     }
     img.onerror = rej
     img.src = URL.createObjectURL(file)
-  })
+})
+
+// Trexo relacionado a Mover os Botões das Fotinhas
+let alvo,dx,dy
+document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop})
+document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}}
+document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}}
+
 

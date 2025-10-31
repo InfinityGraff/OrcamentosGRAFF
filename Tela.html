@@ -23,12 +23,12 @@
   .Live p    {color:#ffffff; font-size:3rem}
   .Live a    {background:red; width:15px; height:15px; margin-right:5px}
   header     {gap:12px; z-index:2} header > *{font-size:9rem}
-    .tab             {flex:1 1 0;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;letter-spacing:1px;border-radius:8px;position:relative;box-shadow:0 6px 18px #02061773}
+    .tab             {flex:1 1 0;background:linear-gradient(0deg,var(--panel),var(--panel-2));color:#fff;padding:14px 18px;text-align:center;letter-spacing:1px;position:relative;box-shadow:0 6px 18px #02061773}
     .tab.left::before,.tab.right::after{content:'';position:absolute;top:0;width:18px;height:100%;border-radius:6px;transform:translateY(0)}
     .tab.left::before{ left:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
     .tab.right::after{right:-10px;background:linear-gradient(180deg,#ff9b2b,#ff5a5a)}
 
-  .Painel    {z-index:2;height: 650px ; padding:10px 10px;background:linear-gradient(180deg,#ffffff08,#ffffff03);border-radius:12px;gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
+  .Painel    {z-index:2;height: 650px ; padding:10px 10px;background:linear-gradient(180deg,#ffffff08,#ffffff03);gap:18px;box-shadow:0 14px 30px #040c1e80;color:var(--muted);backdrop-filter:blur(6px)}
 
   #T_A {flex:1 1 150px; order:1}.Score{order:2}#T_B {flex:1 1 150px; order:3}
 
@@ -38,7 +38,7 @@
   .box img      {width:450px;height:450px;object-fit:contain;margin:8px}
   .box > div >p {font-size:8rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ; display: none;}
   .Score > *    {font-size:25rem; text-shadow:0 5px 5px #0000009c; color:#ffffff ; margin:0px 10px}  .vs{opacity:0.7}
-  #Tempo > *    {font-size:8rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ;z-index:2 ; padding:10px 20px; border-radius:15px; display:inline-flex; align-items:center; gap:12px}
+  #Tempo > *    {font-size:8rem ; text-shadow:0 5px 5px #0000009c; color:#ffffff ;z-index:2 ; padding:10px 20px; display:inline-flex; align-items:center; gap:12px}
   #Clock        {font-size:8rem ; color:#ffbb00}
 
   .Evn{display:none;gap:8px;font-size:14px;color:#ffffffbf;max-width:360px;margin-top:15px}
@@ -66,8 +66,8 @@
 
 <body class="Ct Rltv">
   <div style="top:15px" class="Abslt Rd Live Hov Ct none"><a class="Rd"></a><p>Ao Vivo</p></div>
-  <header class="Bt"><a class="tab left Hov">Time A</a><p>🆚</p><a class="tab right Hov">Time B</a></header>
-  <div class="Painel Ct w100 Rltv">
+  <header class="Bt"><a class="tab left Hov rd">Time A</a><p>🆚</p><a class="tab right Hov rd">Time B</a></header>
+  <div class="Painel Ct w100 Rltv rd">
       <div class="box Hov Cl" id="T_A"><div class="Ct"><div id="Img_A"></div><p>Time A</p></div><div class="Evn Start2"></div></div>
       <div class="Ev Score"><a id="Gol_A">0</a><div class="vs">-</div><a id="Gol_B">0</a></div>
       <div class="box Hov Cl" id="T_B"><div class="Ct"><div id="Img_B"></div><p>Time B</p></div><div class="Evn Start2"></div></div>
