@@ -408,46 +408,30 @@
         const Col     =(Typ,col)=>`td:nth-child(${Colx(Typ,col)})`
         const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${Col(Typ,col)} > div > .P-P`)
         const H_Col_p =(Typ,col)=>`#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
-        const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
-        const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
-        const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
-        const isBdj   =e=>!!e.closest('.BndjTBL')
-        const Sib     =e=>$(e,Pai(event.target))
-        const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
-        const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const ALL
-        const ArrObj_OrdnCol=(Obj,Ordn)=>{const K = Object.keys(Obj[0]) ; const x = Ordn.map(col=>K.indexOf(col)) ; return [Ordn,...Obj.map(obj => x.map(i => obj[K[i]]))]}
-        const NoneCol=(Typ,col)=>Cgo[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
-        const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
-        const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc, el) => {acc[el[col]] = el;return acc;}, {})}
-        function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
-        const Bkg = (e,bg,txt,rd) =>{(e.style.backgroundColor = bg, txt && (e.style.color = txt), rd && (e.style.borderColor = rd))}
-
-        // Epecíficas (as q Executa)
-        const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
-        function Drag() {event.dataTransfer.setData("text",    event.target.id)}
-        function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
-        function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
-        
-        //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
-        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-        // conferir se essa é realmente nessesária
-        const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)}
-        //const Diferentes=(New,atual)=>Object.fromEntries(ObjEtr(New).filter(([k,v])=>v!==atual[k]))
-
-        // pra ir pra PreScript
-        const RxExt   =e=>e.split(".").pop().toLowerCase() // pegar a Extensão do nome de um arquivo tipo .webp
-        const Includ=(e,arr)=>arr.some(v=>e.includes(v)) // como usar Includ(e,['BPrint','Grafit'])
-        const todosIguais = arr => arr.every(v => v === arr[0])
-        const sum=arr=>arr.reduce((acc,el)=>acc+el,0)
-        
-        const NAN=e=>isNaN(e) ? 0 : e
-        const RmvLinByID=(arr,id)=>{const x = arr.findIndex(e => e.Id === id);if (x !== -1) arr.splice(x, 1)}
-        // MiniBiblioteca pra passar a Usar!
         const TDd=(tr,col)=>    $(`:scope > ${Rx2([col])}`,tr)
         const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
         const TDv=(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
         const TDp=(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
         const FiM=(arr)=>arr.slice(0,-1)
+        const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${Col(Typ,col).replace('td:','th:')}`)
+        const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || []
+        const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
+        const isBdj   =e=>!!e.closest('.BndjTBL')
+        const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
+        const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const ALL
+        const NoneCol=(Typ,col)=>Cgo[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
+        const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
+        function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
+            
+        // provavelmente vou tiar tudo isso daqui (Tornarão-se inutil, quando eu trouxer o novo Drag)
+            const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
+            function Drag() {event.dataTransfer.setData("text",    event.target.id)}
+            function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
+            function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
+            const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
+        
+        //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
+        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
