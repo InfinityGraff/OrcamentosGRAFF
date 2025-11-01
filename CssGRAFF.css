@@ -28,12 +28,13 @@
       .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
+        
       .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
       .CSS1 :is(button,.button):hover                           {transform:scale(1.10); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
       .CSS1 :is(button,.button):active                          {transform:scale(0.95)}
       .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
       .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS3btn);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
-      .CSS3 :is(button,.button):hover                           {transform:scale(1.03);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);}
+      .CSS3 :is(button,.button):hover                           {transform:scale(1.03);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);} /*essa n t afuncionando por conflito com a de cima*/
       .CSS3 :is(button,.button):active                          {transform:scale(0.95);box-shadow: 0 0 5px #ff5c7d, 0 0 10px #ff5c7d;filter: drop-shadow(0 0 5px #ff5c7d);}
       .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}

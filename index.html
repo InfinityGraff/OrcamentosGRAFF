@@ -423,8 +423,8 @@
         const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
         function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
 
-        const ReszH=(Eu,Typ)=>{const C=$('input',Eu);C.checked = !C.checked;TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
-        const ReszW=(Eu,Typ)=>{const C=$('input',Eu);C.checked = !C.checked;Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+        const ReszH=(Eu,Typ)=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
+        const ReszW=(Eu,Typ)=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
 
         // provavelmente vou tiar tudo isso daqui (Tornarão-se inutil, quando eu trouxer o novo Drag)
             const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
@@ -1793,31 +1793,15 @@
                 #H_SERV{font-size: 10px;}
             </style>
 
-            <div id="Pag_PDDS" class="TBLAA none Cl">
-                <div class="DivConf Ct Bt Stky none">
-                    
-                    <div onchange="Re_Colr('PDDS','All')" class="none">
-                        <select name="" id="PDDSETATA">
-                            <option value="temperatura">temperatura<option>
-                            <option value="Etapas" selected>Etapas</option>
-                            <option value="Opacidade">Opacidade</option>
+            <div id="Pag_PDDS" class="TBLAA Cl">
+                <div class="DivConf Ct Bt Stky">  
+                    <div onchange="Re_Colr('PDDS','All')" class="Ct none">
+                        <select id="PDDSETATA">
+                            <option value="Etapas" selected >Etapas</option>
+                            <option value="temperatura">temperatura</option>
+                            <option value="Opacidade"    >Opacidade</option>
                         </select>
-                        <input id="PDDS_Color" type="color">
-                        <input id="PDDS_tdCor" type="checkbox" checked>
-                        <input id="PDDS_trCor" type="checkbox" checked>
                     </div>
-                    
-                    
-
-                    
-
-                    <div onchange="Re_Colr('SERV','All')">
-                        <input id="SERV_Color" type="color">
-                        <input id="SERV_tdCor" type="checkbox" checked>
-                        <input id="SERV_trCor" type="checkbox" checked>
-                    </div>
-
-                    <div><input type="checkbox" checked onchange="Tog($$('#H_SERV .AutoComp'),'Cor')"><label>Auto</label></div> <!--Pintar Colunas Automaticas-->
                 </div>
 
                 <div class="DivConf Ct Stky w100">
@@ -1843,9 +1827,13 @@
                                     <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
                                     <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                                     <div id="COnf_PDDS"    class="Configs Ct">
-                                        <div onclick="ReszH(this,'PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
-                                        <div onclick="ReszW(this,'PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
+                                        <div onclick="ReszH('PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
+                                        <div onclick="ReszW('PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
                                     </div>
+                                        <div onclick="Tog($$('#H_PDDS .AutoComp'),'Cor')" onload="Tm_Check(this,`Auto`,'')"></div>
+                                    
+                                    
+                                    
                                     <div onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
                                     <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
                                 </div>  
