@@ -41,20 +41,20 @@
       button.Mini                {height: 20px;}
       button                     {white-space: nowrap} /*Evitar quebra de Linha para todos Botões*/
     /*Interruptores*/
-      .Interup,.Chek{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
-      .Interup     i{position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
-      .Interup.Atv i{left:50%}
-      .Interup     a:nth-child(2){opacity:0.5}
-      .Interup.Atv a:nth-child(1){opacity:0.5}
-      .Interup.Atv a:nth-child(2){opacity:1.0}
+      .Interup,.Chek a{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
+      .Interup       i{position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
+      .Interup.Atv   i{left:50%}
+      .Interup       a:nth-child(2){opacity:0.5}
+      .Interup.Atv   a:nth-child(1){opacity:0.5}
+      .Interup.Atv   a:nth-child(2){opacity:1.0}
       .CSS3 .Interup  {border-radius:255px}
       .CSS3 .Interup a{flex:1;text-align:center;color:#ffffff;z-index:2;transition:all 0.3s}
       .CSS3 .Interup a svg{width: 18px; height: 18px; fill: white; margin: 0px 10px;}
       .CSS3 .Interup i{border-radius:255px}
     /*Check*/
       .Chek{gap:8px}
-      .Chek a{width:26px;height:26px;border:1px solid #ccc;border-radius:8px;transition:.3s;padding:0px !important}
-      .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.3s}
+      .Chek a{width:26px;height:26px;border:1px solid #e298c663;border-radius:8px;transition:.1s;padding:0px !important}
+      .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
       .Chek input:checked + a svg{opacity:1;transform:scale(1);fill: #ffffff;}
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}

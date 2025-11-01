@@ -422,7 +422,10 @@
         const NoneCol=(Typ,col)=>Cgo[U?.cgo]?.[Typ]?.includes(col) ? `display:none` : ''
         const ExtnArt=e=>ListIMG.find(l=>l.split(".")[0]===e) || null // isso é um LOOP q ta sendo Chamado Várias vezes, não Pode!
         function slideTo(i,Typ){SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
-            
+
+        const ReszH=(Eu,Typ)=>{const C=$('input',Eu);C.checked = !C.checked;TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
+        const ReszW=(Eu,Typ)=>{const C=$('input',Eu);C.checked = !C.checked;Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+
         // provavelmente vou tiar tudo isso daqui (Tornarão-se inutil, quando eu trouxer o novo Drag)
             const ALERT=Stg=>{Inn('#ALERT span',Stg);ShowTime2('#ALERT',5)}
             function Drag() {event.dataTransfer.setData("text",    event.target.id)}
@@ -1406,8 +1409,6 @@
         <script> // Previews
             function Tog_Card(Typ){LOG('Modo Card')}
 
-            const Tm_Config=Typ=>`<input type="checkbox" onchange="TrcTog($('#H_${Typ}'),'hMin','hMax');SaveConfig()">  
-                                  <input type="checkbox" onchange="Tog($('#H_${Typ}'),'w100');Tog($('.Confy_${Typ}'),'w100');SaveConfig()">`
 
             // virar Biblioteca
             function SelectFiles(Inpt,Call){ // serve pra garantir a compatibilidade da imagem, se corresponde ao q deve ser entrado
@@ -1826,13 +1827,12 @@
                         <a class="BtnDois Ct" style="width:100px" onclick="slideTo(2,'PDDS')">Pagamentos</a>
                     </div>
                 </div>
+                    <script>
 
-                    <style>
-                        #MCard_PDDS{width:130px}
-                    </style>
 
-                    <label class="Chek Ct"><input class="none" type="checkbox"><a class="Ct"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/></svg></a><p>Opção personalizada</p></label>
-                    
+
+                    </script>
+
                     <div id="Sommma">Soma: 00,00</div>
 
                 <div class="Wrapper">
@@ -1842,8 +1842,11 @@
                                 <div class="Bt">
                                     <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
                                     <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
-                                    <div id="COnf_PDDS"    class="Configs Ct"></div><script>Inn($('#COnf_PDDS'),Tm_Config('PDDS'))</script>
-                                    <div class="MCard_PDDS" onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
+                                    <div id="COnf_PDDS"    class="Configs Ct">
+                                        <div onclick="ReszH(this,'PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
+                                        <div onclick="ReszW(this,'PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
+                                    </div>
+                                    <div onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
                                     <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
                                 </div>  
                                 <table id="SKLT_PDDS" class="hMin Tbla w90">
@@ -1864,7 +1867,7 @@
                                 <div class="Bt">
                                     <button onclick="AddROW('SERV','<')">Nova Linha +</button>
                                     <div id="PagPesq_SERV" class="PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
-                                    <div id="COnf_SERV" class="Configs Ct"></div><script>Inn($('#COnf_SERV'),Tm_Config('SERV'))</script>
+                                    <div id="COnf_SERV" class="Configs Ct"></div>
                                     <button onclick="F_Clen('SERV')">Limpar</button>
                                 </div>
                                 <table id="H_SERV" class="hMin">
@@ -1880,7 +1883,7 @@
                                 <div class="Bt">
                                     <button onclick="AddRowBdj('PGMT')">Nova Linha +</button>
                                     <div id="PagPesq_PGMT" class="PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
-                                    <div id="COnf_PGMT" class="Configs Ct"></div><script>Inn($('#COnf_PGMT'),Tm_Config('PGMT'))</script>
+                                    <div id="COnf_PGMT" class="Configs Ct"></div>
                                     <button onclick="F_Clen('PGMT')">Limpar</button>
                                 </div>
                                 <table id="H_PGMT" class="hMin">
@@ -1898,7 +1901,7 @@
                 <div class="Ct Bt">
                     <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                     <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
-                    <div id="COnf_MPAG" class="Configs Ct"></div><script>Inn($('#COnf_MPAG'),Tm_Config('MPAG'))</script>
+                    <div id="COnf_MPAG" class="Configs Ct"></div>
                     <button onclick="F_Clen('MPAG')">Limpar</button>
                 </div>
                 <table id="H_MPAG" class="w100 hMin">
@@ -1923,7 +1926,7 @@
                             <div class="Confy_GRAD">
                                 <div class="Bt">
                                     <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
-                                    <div id="COnf_GRAD" class="Configs Ct"></div><script>Inn($('#COnf_GRAD'),Tm_Config('GRAD'))</script>
+                                    <div id="COnf_GRAD" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
                                 <table id="H_GRAD" class="hMin">
@@ -1938,7 +1941,7 @@
                             <div class="Confy_OOSS">
                                 <div class="Bt">
                                     <button onclick="AddROW('OOSS','<')">Nova Linha +</button>
-                                    <div id="COnf_OOSS" class="Configs Ct"></div><script>Inn($('#COnf_OOSS'),Tm_Config('OOSS'))</script>
+                                    <div id="COnf_OOSS" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
 
@@ -1954,7 +1957,7 @@
                             <div class="Confy_UBER">
                                 <div class="Bt">
                                     <button onclick="AddROW('UBER','<')">Nova Linha +</button>
-                                    <div id="COnf_UBER" class="Configs Ct"></div><script>Inn($('#COnf_UBER'),Tm_Config('UBER'))</script>
+                                    <div id="COnf_UBER" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
                                 <table id="H_UBER" class="hMin">
@@ -3214,9 +3217,7 @@
             }
         }
 
-        function SaveConfig(e){
-            LOG('Salva no SB',e)
-        }
+        function SaveConfig(e){LOG('Salva Config no SB')}
         // Adicionar e trocar Cliente
 </script>
 
