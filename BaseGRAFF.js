@@ -1,4 +1,3 @@
-const ValidEmail  = ["@gmail.com","@yahoo.com","@yahoo.co.uk","@outlook.com","@hotmail.com","@live.com","@icloud.com","@me.com","@aol.com","@protonmail.com","@zoho.com","@mail.com","@gmx.com","@yandex.com"]
 const StockjVinil = ["#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#A52A2A","#800080","#000000","#FFFFFF","#808080"]
 const Eximg       = ["jpg","jpeg","png","gif","webp","svg"]
 
@@ -109,28 +108,6 @@ const Ramos = {
       Serv:['Estacionamentos','limpeza','Ecologia','Agricultura','Festas & Eventos','Mecânico','Costureira','Serviços Gráficos','Pet Shop']
   }
 }
-
-const ListGRD = [
-    "CBG_004",
-    
-    "G_540","G_540_1",
-    
-    "U_025","U_025_1",
-    "U_026","U_026_1",
-    
-    "B_248","B_248_1",
-    "B_250","B_250_1",
-    "B_251","B_251_1",
-    "B_252","B_252_1","B_252_2",
-    "B_253","B_253_1","B_253_2","B_253_3",
-
-    "J_016","J_016_1","J_016_2",
-
-]
-
-const ListOS = [
-    "B_003476",
-]
 
 const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
 const KitFonts = [

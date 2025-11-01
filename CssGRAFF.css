@@ -23,21 +23,39 @@
       body.Dark.CSS3{background: var(--CSS3btnDk);color:#ffffff}
 
     /*Button, Input e Select*/
-      input,select,button,.button{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s ease-in-out}      
-      button>img, .button>img, input>img, select>img{margin:0px 5px} /*Não tem nenhum Botão com Imagem dentro! mas tbm pode ser SVG*/
+      input,select,button,.button,.Interup{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px;}
+      :is(button,.button,input,select)>:is(img,svg){height: 18px;fill: white}
       .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
     /*Botões*/
-      .CSS1 button       ,.CSS1 .button{color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
-      .CSS1 button:hover ,.CSS1 .button:hover {transform:scale(1.1 ); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
-      .CSS1 button:active,.CSS1 .button:active{transform:scale(0.95)}
-      .CSS2 button       ,.CSS2 .button{color: #ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
-      .CSS3 button       ,.CSS3 .button{color: #ffffff; background:var(--CSS3btn);border: 2px solid #F0A8B2; padding:0px 10px; font-family:Almarose-Medium}
+      .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
+      .CSS1 :is(button,.button):hover                           {transform:scale(1.10); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+      .CSS1 :is(button,.button):active                          {transform:scale(0.95)}
+      .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
+      .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS3btn);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
+      .CSS3 :is(button,.button):hover                           {transform:scale(1.03);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);}
+      .CSS3 :is(button,.button):active                          {transform:scale(0.95);box-shadow: 0 0 5px #ff5c7d, 0 0 10px #ff5c7d;filter: drop-shadow(0 0 5px #ff5c7d);}
       .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
       button.Block               {background: #797979 !important;border:1px solid #414141 !important}
       button.Mini                {height: 20px;}
       button                     {white-space: nowrap} /*Evitar quebra de Linha para todos Botões*/
+    /*Interruptores*/
+      .Interup,.Chek{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
+      .Interup     i{position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
+      .Interup.Atv i{left:50%}
+      .Interup     a:nth-child(2){opacity:0.5}
+      .Interup.Atv a:nth-child(1){opacity:0.5}
+      .Interup.Atv a:nth-child(2){opacity:1.0}
+      .CSS3 .Interup  {border-radius:255px}
+      .CSS3 .Interup a{flex:1;text-align:center;color:#ffffff;z-index:2;transition:all 0.3s}
+      .CSS3 .Interup a svg{width: 18px; height: 18px; fill: white; margin: 0px 10px;}
+      .CSS3 .Interup i{border-radius:255px}
+    /*Check*/
+      .Chek{gap:8px}
+      .Chek a{width:26px;height:26px;border:1px solid #ccc;border-radius:8px;transition:.3s;padding:0px !important}
+      .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.3s}
+      .Chek input:checked + a svg{opacity:1;transform:scale(1);fill: #ffffff;}
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -110,15 +128,15 @@ select.Error{background:red}
 input.Error:focus{background:red}
 input.Error:hover{background:red}
 
-    /*DivConfig*/
-        .DivConf h1{font-size: 25px;}
-            .Body1 .DivConf{height: 40px}
-            .Body1 .PagPEsq{display:none}
-                .Body2 .DivConf{top:0px  ; height: 40px}
+  /*DivConfig*/
+  .Body1 .DivConf{        height:50px}
+  .Body2 .DivConf{top:0px;height:40px}
+  .PagPEsq             {transition: all ease-in-out 0.3s}
+  .PagPEsq   :is(a,img){transition: all ease-in-out 0.3s}
+  .Body1 .PagPEsq input{border: none}
+  .Body1 .PagPEsq{width:0px;pointer-events:none}.Body1 .PagPEsq :is(a,img){opacity:0 !important}
+  .Body2 .PagPEsq{width:450px                  }.Body2 .PagPEsq :is(a,img){opacity:1}
                 
-                .Body2 .PagPEsq{display:block}
-
-
 .Dark *::-webkit-scrollbar             {width: 10px;height:10px}
 .Dark *::-webkit-scrollbar-track       {background: #0000006a}
 .Dark *::-webkit-scrollbar-thumb       {background: #5d5d5da5; border-radius:500px}
