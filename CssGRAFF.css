@@ -27,13 +27,12 @@
       :is(button,.button,input,select)>:is(img,svg){height: 18px;fill: white}
       .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
       .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
-    /*Botões*/
-        
-      .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
+    /*Botões*/   
+      .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
       .CSS1 :is(button,.button):hover                           {transform:scale(1.10); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
       .CSS1 :is(button,.button):active                          {transform:scale(0.95)}
-      .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
-      .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a){color:#ffffff; background:var(--CSS3btn);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
+      .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
+      .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:var(--CSS3btn);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
       .CSS3 :is(button,.button):hover                           {transform:scale(1.03);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);} /*essa n t afuncionando por conflito com a de cima*/
       .CSS3 :is(button,.button):active                          {transform:scale(0.95);box-shadow: 0 0 5px #ff5c7d, 0 0 10px #ff5c7d;filter: drop-shadow(0 0 5px #ff5c7d);}
       .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
@@ -42,8 +41,8 @@
       button.Mini                {height: 20px;}
       button                     {white-space: nowrap} /*Evitar quebra de Linha para todos Botões*/
     /*Interruptores*/
-      .Interup,.Chek a{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
-      .Interup       i{position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
+      .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
+      .Interup i, .Switch i   {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
       .Interup.Atv   i{left:50%}
       .Interup       a:nth-child(2){opacity:0.5}
       .Interup.Atv   a:nth-child(1){opacity:0.5}
@@ -57,6 +56,12 @@
       .Chek a{width:26px;height:26px;border:1px solid #e298c663;border-radius:8px;transition:.1s;padding:0px !important}
       .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
       .Chek input:checked + a svg{opacity:1;transform:scale(1);fill: #ffffff;}
+      .Chek p{color: #ffffff}
+    /*Switch*/  
+      .Switch{border-radius: 50px;width: 300px}
+      .Switch label {flex: 1;z-index: 2;color: #aaa;transition: color 0.3s ease; line-height: 30px}
+      .Switch label:hover {color: #fff}
+      .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
     /*Select*/
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
@@ -65,6 +70,9 @@
       .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272}
         .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
         .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
+      .CSS3 :is(input,select,.imita){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
+      .CSS3 :is(input,select,.imita)::placeholder{color:#612d4ba8}
+      .CSS3 .imita{border: none !important; color: #008000;} /*Gambiarra*/
     /*Options*/ 
       .CSS1.Dark option  {color:#ffffff  ; background:#3d3d3d}
       .CSS1.Lite option  {color:#000000  ; background:#ffffff}
@@ -74,6 +82,7 @@
       .CSS1 header{color:#ffffff;background:url(./SVG/Fundo.png); background-size:cover}
       .CSS2 header{color:#ffffff;background:url(./SVG/Fundo.png); background-size:cover}
       .CSS3 header{color:#ffffff;background:#c027b3}
+      .CSS3 header{color:#ffffff;background:linear-gradient(116deg, #f570be, #c027b3)}
     /*Table*/ 
       table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
       
