@@ -56,6 +56,8 @@ function CrypPass(senha){ // Obsoleta
   return Par.concat(Imp).join('')
 }
 
+function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar!
+
 function ShowBndj(div){                                                // Função que exibe/oculta o painel .BNdj dentro da div recebida
     if(!document.contains(event.target)){LOG('não ta mais no DOM') ; return} // interrompe se o target não estiver mais no DOM
     if(['IMG','I','BUTTON'].includes(event.target.tagName)){return}
@@ -66,18 +68,20 @@ function ShowBndj(div){                                                // Funç�
         return} // Se o clique for dentro do .BNdj, interrompe (não fecha nem altera)
     else{                                                         // Caso contrário (clique fora do conteúdo interno)
         e.style.zIndex = $$('.BNdj:not(.none)').length + 500      // Define o z-index dinamicamente com base na quantidade de painéis visíveis
-        if(Tecla('ctrl')){Tog_N(e)}                               // Se a tecla CTRL estiver pressionada, apenas alterna o estado (mostra/oculta)
+        if(Tecla('ctrl')){
+            Tog_N(e);GambiarraAdd(div)}   // Se a tecla CTRL estiver pressionada, apenas alterna o estado (mostra/oculta)
         else{                                                     // Caso não esteja com CTRL
             $$('.BNdj:not(.none)').forEach(E=>{                   // Percorre todos os painéis .BNdj que estão visíveis
-            //    if(E==e){return}else{Add_N(E)}                    // Fecha (adiciona .none) em todos, exceto o atual
+            //    if(E==e){return}else{Add_N(E)}                  // Fecha (adiciona .none) em todos, exceto o atual
             })
-            Tog_N(e)                                              // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
+            Tog_N(e);GambiarraAdd(div);    // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
         }
     }
     if(Tecla('ctrl')){return}                                     // Se CTRL estiver pressionado, interrompe (não aplica o fechamento automático)
     else if(e.contains(event.target)){LOG('Sair na TORa') ; return}
-    else{ClickFora(div,()=>{Add_N(e)})}                           // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
+    else{ClickFora(div,()=>{Add_N(e)})}      // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
 }
+
 
 const BrevTitle = str => {
   try {
