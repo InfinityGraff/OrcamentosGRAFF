@@ -1456,7 +1456,8 @@
             })})
 
             const Mechenela=arr=>arr.map(e=>{
-                e.Serv = `${e.Serv} (${e.Tipo})` ; delete e.Tipo
+                e.Serv = `${e.Serv} (${e.Tipo})`.replace('Lona (Banner)','Banner') // Fazer um Padrão com isso aqui
+                delete e.Tipo
                 e.Vund  ? e.Vund   = `R$ ${e.Vund}`  : null
                 e.SbTt  ? e.SbTt   = `R$ ${e.SbTt}`  : null
                 e._ = '-' ; e.X = 'x'
@@ -2553,7 +2554,7 @@
                         :is(.CSS1,.CSS2) [class^="ORC_CUST_"]{color:#ff6565}.CSS3 [class^="ORC_CUST_"]{color:#c42929}
                         :is(.CSS1,.CSS2) [class^="ORC_CRCT_"]{color:#65b5ff}.CSS3 [class^="ORC_CRCT_"]{color:#146bbd}
                         :is(.CSS1,.CSS2) [class^="ORC_RSUT_"]{color:#48ff00}.CSS3 [class^="ORC_RSUT_"]{color:#2c9402}
-                        .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
+                        .CSS3 .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
                         #ORC td{padding: 1px}
                         #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center; opacity: 0.8;}
                         #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
@@ -2582,8 +2583,8 @@
                                 <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                                 <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'-',['Serviços',...AllProd])">       </div></td>
                                 <td                         ><select class="oTipo"      onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"                     ></select></td>
-                                <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura"      oninput="Mask.Num(this)"><span class="Abslt AvisoInpt none RD"></span></td>
-                                <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"       oninput="Mask.Num(this)"><span class="Abslt AvisoInpt none RD"></span></td>
+                                <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura"      oninput="Mask.Num(this);RodaCanvMdds()"><span class="Abslt AvisoInpt none RD"></span></td>
+                                <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"       oninput="Mask.Num(this);RodaCanvMdds()"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%"             ><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Quantidade"></td>
                                 <td width="10px"><div onload="Tm_Check(this,`${SVG.Chek}`)"></div>     </td>
                                 <td width="10%" ><div onload="Inn(this,Tm_Total('Vund'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
@@ -2772,12 +2773,6 @@
                     </script>
                     <div id="I_Cor" class="Ct Rd PT" onclick="Tog_N(Sib('a'))">Escolha uma Cor</div>
                     <a class="Ct none" onload="Inn(this,Load_Cor())"></a>
-                </div>
-
-                <div class="Ct none">
-                    <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="Mask.Num(this);RodaCanvMdds()"></div>
-                    <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="Mask.Num(this);RodaCanvMdds()"></div>
-                    <div id="Div-Inpt-Qnt"> <input placeholder="Qnt"></div>
                 </div>
 
                 <div class="Cl">
@@ -2976,8 +2971,9 @@
         #TabelaNotinha th{padding:3px ; font-size: 13px;}
         #TabelaNotinha thead tr{background:#5F009E; color:#ffffff}
         #TabelaNotinha tbody td:nth-child(3){text-align:start}
+        #TabelaNotinha tbody td:nth-child(4){text-align:end}
         #TabelaNotinha tbody td:nth-child(5){color:#4f4f4f}
-        #TabelaNotinha tbody td:nth-child(6){margin-right: 6px}
+        #TabelaNotinha tbody td:nth-child(6){margin-right: 6px ; text-align: start;}
         #TabelaNotinha tbody td:nth-child(7){color:#00000093 ; font-size: 13px;}
         #TabelaNotinha tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja);}
     </style>

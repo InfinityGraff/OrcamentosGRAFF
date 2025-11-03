@@ -15,8 +15,9 @@ function CalcAreaQnt(Lag,Alt,A_Lag,A_Alt){
 }
 
 function RodaCanvMdds(){
-    const Qnt = $('#Div-Inpt-Qnt input')
-    const [Alt  ,Lag  ] = [ParsMil('#Div-Inpt-Alt input'),ParsMil('#Div-Inpt-Larg input')]
+    const Qnt = $('.oQnt')
+    const [Alt  ,Lag  ] = [ParsMil('.oAlt'),ParsMil('.oLrg')]
+    LOG(Alt,Lag)
     const [A_Lag,A_Alt] = [ParsMil('#I_AreaX'),ParsMil('#I_AreaY')]
     const BtnBlock=(Stg)=> `<button class="Block">🔒 ${Stg}</button>`
 
