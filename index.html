@@ -365,7 +365,7 @@
     const AllList= ObjKey(O)
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:''}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Link'}
@@ -445,9 +445,8 @@
             .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
             /*Particularidades*/
             .BndjFOT,.BndjFLT{overflow: hidden}
-            .BndjSUG .Sugg,.BndjCLT .Sugg,.BndjTBL .Sugg{border-radius:10px}
-            .BndjSUG .Sugg > *,.BndjFOT .Sugg > *,.BndjCLT .Sugg > *{padding: 4px}
-            .BndjSUG{width:390px !important}
+            .BndjSUG .Sugg    ,.BndjTBL .Sugg    ,.MySelect .Sugg    {border-radius:10px}
+            .BndjSUG .Sugg > *,.BndjFOT .Sugg > *,.MySelect .Sugg > *{padding: 4px}
             .BndjTBL{padding:5px ; width:auto !important; height:auto !important}
             .BndjFOT{border-radius:10px 10px 0 0; bottom:0px}
             .BndjFLT{border-radius:0 0 10px 10px}
@@ -582,7 +581,7 @@
                 Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`, // daqui eu quero só o Botão
                 
                 // esse Link é pra Linkar uma ou Mais Linhas de Outra Tabela opções de "Apenas Troca" ou de "Adição"
-                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjCLT BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                     
                     <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this)" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
                     
@@ -1362,23 +1361,36 @@
                 // Deve Virar Tabela (e pra os que tem Imagem, exibir a imagem bem grande tipo uma Pasta)
             }
 
-            function LinkSug(Typ,inpt){
-                LOG('Reboll')
+            function LinkSug(Typ,inpt,MySelect,Lista){
                 const list = $('.Sugg',Pai(inpt))
-                if (inpt.value){
-                    Show(list)
+                    
                     const Val   = inpt.value
                     const regex = new RegExp(`(${aa(Val)})`, 'gi') // ignora maiúsculas
-
-                    list.innerHTML = J[Typ]
-                    .filter(e=>aa(e[Aa(Typ)]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
-                    .map(e=>{
-                        const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
-                        const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
-                        return `<a class="PT w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
-                    }).join('')
-                }else{None(list);Inn(list,'')}
+                    if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
+                        const TipoFilt = {
+                            Proc:(e,Val)=>aa(e).includes(aa(Val)),
+                            Rest:(e,Val)=>aa(e).includes(aa(Val)), // Exibir só os que não estão Linkados
+                            List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),
+                        }
+                        list.innerHTML = Lista.split(',').filter(e=>TipoFilt['List'](e,Val))
+                        .map(e=>{
+                        const Nome =  aa(e).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
+                        return `<a class="PT w100 Ct" onclick="Selecty(this);None(Pai(this))"><p>${Nome}</p></a>`
+                        }).join('')
+                    }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
+                        Show(list)
+                        if (inpt.value){
+                            list.innerHTML = J[Typ]
+                            .filter(e=>aa(e[Aa(Typ)]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
+                            .map(e=>{
+                                const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
+                                const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
+                                return `<a class="PT w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
+                            }).join('')
+                        }else{None(list);Inn(list,'')}
+                    }  
                 // Adicionar a Opção de Mostrar todos, com um determinado filtro q posso escolher por exeplo: os que Faltam!
+                // Adicionar Opção de Adicionar uma Nova Linha quando for pra LinkTABELA
                 // Opção pra Selecionar mais de 1
                 // Encontrar GRAD Dentro de SERV (Visse Verse)
                 // Encontrar CLNT Dentro de PDDS
@@ -1386,13 +1398,6 @@
                 // Encontrar  OS  dentro de GRAD (Visse Verse)
                 // Encontrar UBER dentro de GRAD (Visse Verse)
             }
-
-            function SuggLink(Eu,R){ // ❌ Pretendo REMOVER pq o de cima já faz isso.
-                const r = D_R(R)
-                const col = r.Col
-                if(col=='Mpag'){ Inn($('span',Pai(Eu)),J[AA(col)].map(e=>`<div><a>${Tm_Exib[col](e)}</a></div>`).join(''))}
-            }
-
         </script>
     </div>
 
@@ -1450,42 +1455,49 @@
                     }// F_Clen(Atual.Pag) // se for outro botão
             })})
 
+            const Mechenela=arr=>arr.map(e=>{
+                e.Serv = `${e.Serv} (${e.Tipo})` ; delete e.Tipo
+                e.Vund  ? e.Vund   = `R$ ${e.Vund}`  : null
+                e.SbTt  ? e.SbTt   = `R$ ${e.SbTt}`  : null
+                e._ = '-' ; e.X = 'x'
+                return e
+            })
+
             function VerNota(Typ){
                 MdalShow('#ModalNota')
-                
-                if (Typ == 'ORC') {
-                const dados = $$('#ORC tbody tr').map(tr => {
-                    const NewObj = {}
-                    const tipo = Array.from(tr.classList).find(c=>c.startsWith('Calc_'))
-
-                    const arr = tipo === 'Calc_M2'  ? '.oServ,.oTipo,.oLrg,.oAlt,.oQnt'    // também pegar valor UNT e SubTotal
-                              : tipo === 'Calc_OFS' ? '.oServ,.oTipo,.oCbmt,.oGram,.oQntt' // também pegar valor UNT e SubTotal
-                              : tipo === 'Calc_QNT' ? '.oServ,.oTipo,.oLrg,.oAlt,.oQntt'   // também pegar valor UNT e SubTotal
-                              : ''
-
-                    $$(arr,tr).map(e=>{
-                        const resto = Array.from(e.classList).find(c=>c.startsWith('o')).slice(1)
-                        LOG('Entrou',resto,e.value)
-                        NewObj[resto] = e.value
-                    })
-                    return NewObj
-                })
-
-            const cabecalho = Object.keys(dados[0] || {}) // pega as chaves do primeiro objeto
-            const corpo = dados.map(obj => Object.values(obj)) // pega os valores de cada objeto
-
-            $('#ConteudoNota').innerHTML = `
-                <table id="TabelaNotinha" class="w100">
-                <thead>
-                    <tr>${cabecalho.map(key => `<th>${key}</th>`).join('')}</tr>
-                </thead>
-                <tbody>
-                    ${corpo.map(linha => `<tr>${linha.map(val => `<td>${val}</td>`).join('')}</tr>`).join('')}
-                </tbody>
-                </table>
-                <h2 id="TotalNotta" class="Hr Ct"></h2>
-            `
-            }
+                let dados = []
+                if (Typ == 'ORC'){
+                    dados = $$('#ORC tbody tr').map(tr=>{
+                        const NewObj = {}
+                        const tipo = Array.from(tr.classList).find(c=>c.startsWith('Calc_'))
+                        const Rsut = ',.ORC_RSUT_Vund,.ORC_RSUT_SbTt'
+                        const arr  = tipo === 'Calc_M2'  ? '.oQnt ,.oServ,.oTipo,.oLrg ,.oAlt '
+                                   : tipo === 'Calc_OFS' ? '.oQntt,.oServ,.oTipo,.oCbmt,.oGram'
+                                   : tipo === 'Calc_QNT' ? '.oQntt,.oServ,.oTipo,.oLrg ,.oAlt ' : ''
+                        $$(arr + Rsut, tr).map(e => {
+                            const cls_o   = Array.from(e.classList).find(c => c.startsWith('o'))
+                            const cls_orc = Array.from(e.classList).find(c => c.startsWith('ORC_'))
+                            const resto1  = cls_o   ? cls_o.slice(1)           : null
+                            const resto2  = cls_orc ? cls_orc.split('_').pop() : null
+                            const key   = resto1 || resto2
+                            if (key) NewObj[key] = cls_o ? VAAL(e) : Inn($('a',e))
+                        })
+                        return NewObj})
+                }
+                // Deve Virar Biblioteca a diferença pra o outro é que esse filtra só as existentes
+                const ArrObj_OrdnCol2 = (Obj,Ordn)=>{
+                    const K = Object.keys(Obj[0])
+                    const x = Ordn.filter(col => K.includes(col))
+                    return [x, ...Obj.map(obj => x.map(col=>obj[col]))]
+                }
+                const dadosFmt = ArrObj_OrdnCol2(Mechenela(dados),['Qnt','Qntt','_','Serv','Cbmt','Gram','Lrg','X','Alt','Vund','SbTt'])
+                const [head,...rows] = dadosFmt
+                $('#ConteudoNota').innerHTML = `
+                    <table id="TabelaNotinha" class="w100">
+                        <thead><tr>${head.map(c=>`<th>${D_Brev[c]??c}</th>`).join('')}</tr></thead>
+                        <tbody>    ${rows.map(r=>`<tr>${r.map(v=>`<td>${v??''}</td>`).join('')}</tr>`).join('')}</tbody>
+                    </table>
+                    <h2 id="TotalNotta" class="Hr Ct">${RS(dados.reduce((a,e)=>a+Num(e.SbTt),0))}</h2>`
             }
         </script>
     </div>
@@ -2446,8 +2458,9 @@
 
                         function ReloadDetalhes(){
                             None($$('#Div-Detalhes .canvi'))
-                            const serv = $('#ORC tr.Atv .oServ')?.value || ""
-                            //LOG('ReloadDetalhes',serv,Prod[serv].Prvw)
+                            const serv = VAAL($('#ORC tr.Atv .oServ')) || ""
+                            
+                            if(!Prod[serv]){return}
                             if(serv==""){// n exibe nada
                             }else if(Prod[serv].Prvw=='CanvMdd'){Show($('#CanvasMedidas'))
                             }else if(Prod[serv].Prvw=='Fotinha'){Show($('#DetalheFotinha'));ExibeFotinha(serv)
@@ -2456,6 +2469,7 @@
                             }else if(Prod[serv].Prvw=='MdalArt'){
                             }else if(Prod[serv].Prvw=='Canva3D'){Show($('#NewCanvas'))
                             }
+                            // Estou Ocultando o Sugg do meu MySelect aqui por uma GAMBIARRA mas depois tentar tirar daquui
                         }
                         // Inventar o Add Folhas
                         // Adicionar as quantidade mínima
@@ -2505,7 +2519,6 @@
                         // Templates
                             const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
                             const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
-                            const Tm_Extra=()=>{return `<input type="checkbox">`}
                         // Ações
                             const Check_W_Pag=()=>{if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
                                                    if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
@@ -2513,14 +2526,24 @@
                             const Zerar =tr=>$$(cla,tr).forEach(e=>InNa_RS(e,0))
                             const AddRow=tr=>{const a = tr.cloneNode(true) ; $$('input',a).forEach(e=>e.value='') ; Zerar(a) ; Insert(Pai(tr)).After(a,tr)}
                         // Clean e Remove
-                            const RmvAll=()=>{$$(`#ORC tbody td:nth-child(1 ) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
-                            const ClrAll=()=>{$$(`#ORC tbody td:nth-child(11) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
+                            const ClrAll=()=>{$$(`#ORC tbody td:nth-child(10) > div`).forEach(E=>DispClick(E)) ; ReloadTotal()}
+                            const RmvAll=()=>{$$(`#ORC tbody td:nth-child(11) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
                             const ClrRow=tr=>{Clear($$('input',tr)) ; ClrSlct($$('select',tr)) ; Zerar(tr)}
                             const RmvRow=tr=>tr.remove()
+                        
+                            const Tm_Select=(Eu,e,lista)=>{
+                                Eu.classList.add('Rltv','MySelect','Rltv','w100')
+                                Inn(Eu,`<input class="Stky" placeholder="Clientes" onfocus="Rolada(this);LinkSug('ORC',this,'MySelect','${lista}')" oninput="LinkSug('ORC',this,'MySelect','${lista}')"><span class="Abslt Sugg Cl"></span>`)
+                            // Antes de Tirar daqui fazer ele transitar com as SETAS
+                            }
+                            // As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
+                            function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu)))}
+                            function Rolada(Eu){Show($('.Sugg',Pai(Eu)))}
+                            
                     </script>
 
                     <style>  /*CSS da Tabela de Orçamento*/
-                        :is(.CSS1,.CSS2){padding:20px 10px;background:#ffffff0a}
+                        :is(.CSS1,.CSS2) #NovoForm{padding:20px 10px;background:#ffffff0a}
                         .CSS3 #NovoForm{padding:20px 10px;background:linear-gradient(to top,#ffffff5d,#ffffff09);box-shadow:inset 0 0 8px #fdfdfd6e;margin-bottom: 5px;}
                         #ORC input,#ORC select{width:100% !important ; margin:0}
                         #ORC   .RS    {font-size:9px  ; margin-right: 3px}
@@ -2536,16 +2559,16 @@
                         #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
                         #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
                         .Branc{color: #ffffff5d !important}
-                        .imita{height: 30px !important; background: #ffffff11}
+                        .imita{height: 30px; background: #ffffff11}
                         .sOFF{opacity:0.3}
                         #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
                         #G_Cores p  {width:30px; height:30px; margin:2px}
-                        #ORC :is(td,th):nth-child(8){display: none;}
                         .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
-                        
-                        .CSS3 .OrcAdd{fill:#6900569c !important} .OrcAdd svg{width: 18px;}
-                        .CSS3 .OrcClr{fill:#6900569c !important} .OrcClr svg{width: 18px;}
-                        .CSS3 .OrcRmv{fill:#ff0000e7 !important} .OrcRmv svg{width: 15px;}
+
+                        .CSS1 :is(.OrcAdd,.OrcClr){fill:#ffa500 !important}
+                        .CSS2 :is(.OrcAdd,.OrcClr){fill:#ffa500 !important}
+                        .CSS3 :is(.OrcAdd,.OrcClr){fill:#6900569c !important} :is(.OrcAdd,.OrcClr) svg{width: 18px;}
+                        .OrcRmv{fill:#ff0000e7 !important} .OrcRmv svg{width:15px}
 
                         .Calc_M2  :is(.oCbmt,.oGram,.oQntt){display:none}.Calc_M2  :is(.oLrg,.oAlt,.oQnt){display: flex}
                         .Calc_OFS :is(.oCbmt,.oGram,.oQntt){display:flex}.Calc_OFS :is(.oLrg,.oAlt,.oQnt){display: none}
@@ -2553,20 +2576,20 @@
                     </style>
 
                     <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
-                        <thead><tr onload="Inn(this,Tm_ORC_Th(['','','Serv','Tipo','Lrg','Alt','Qnt','Aplic','Und','SbTt','']))"></tr></thead>
+                        <thead><tr onload="Inn(this,Tm_ORC_Th(['','Serv','Tipo','Lrg','Alt','Qnt','Aplic','Und','SbTt','','']))"></tr></thead>
                         <tbody>
                             <tr class="TrRow" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
-                                <td width="15px" style="fill:#ff0000"><div class="PT Ct OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
-                                <td width="15px" style="fill:#ffa500"><div class="PT Ct OrcAdd" onclick="AddRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                                <td                         ><select class="oServ"      onchange="SERVChang(this)" onload="Inn(this,Tm_OptsGraff(['Serviços',...AllProd]))"></select></td>
+                                <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
+                                <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'-',['Serviços',...AllProd])">       </div></td>
                                 <td                         ><select class="oTipo"      onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"                     ></select></td>
                                 <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura"      oninput="Mask.Num(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"       oninput="Mask.Num(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%"             ><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Quantidade"></td>
-                                <td width="10%"  onload="Inn(this,Tm_Extra())"></td>
-                                <td width="10%"  onload="Inn(this,Tm_Total('Vund'))" class="imita RD"></td>
-                                <td width="10%"  onload="Inn(this,Tm_Total('SbTt'))" class="imita RD"></td>
-                                <td width="15px" style="fill:#ffa500"><div class="PT Ct OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl('#ORC');ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                                <td width="10px"><div onload="Tm_Check(this,`${SVG.Chek}`)"></div>     </td>
+                                <td width="10%" ><div onload="Inn(this,Tm_Total('Vund'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
+                                <td width="10%" ><div onload="Inn(this,Tm_Total('SbTt'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
+                                <td width="15px"><div class="PT Ct OrcClr" onclick="ClrRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Cler)"></div></td><!--🧹-->
+                                <td width="15px"><div class="PT Ct OrcRmv" onclick="RmvRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Fexa)"></div></td><!--❌-->
                             </tr>
                         </tbody>
                     </table>
@@ -2576,27 +2599,33 @@
                         // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
 
                         function AddCarrinho(Serv,Tipo,Cbmt,Gram,Qntt){ // ta dando erro quando n tem Cbmnt, ou tipo ou outros
-                            const  ult = $$('#ORC .OrcAdd').slice(-1)[0]
-                            if($('#ORC .oServ').value!==""){DispClick(ult)}
-                            const SERV = $$('.oServ').slice(-1)[0] ; SERV.value = Serv ; SERVChang(SERV) // Delay(0.2)
-                            const TIPO = $$('.oTipo').slice(-1)[0] ; TIPO.value = Tipo ; TIPOChang(TIPO) 
-                            const CBMT = $$('.oCbmt').slice(-1)[0] ; CBMT.value = Cbmt ; CBMTChang(TIPO)
-                            const GRAM = $$('.oGram').slice(-1)[0] ; GRAM.value = Gram ; GRAMChang(TIPO)
-                            const QNTT = $$('.oQntt').slice(-1)[0] ; QNTT.value = Qntt ; QNTTChang(TIPO)
+                            const  ult = $$('.OrcAdd').slice(-1)[0]
+                            if(VAAL($('.oServ'))!==""){DispClick(ult)}
+                            const SERV = $$('.oServ input').slice(-1)[0] ; SERV.value = Serv ; SERVChang(SERV) // Delay(0.2)
+                            const TIPO = $$('.oTipo'      ).slice(-1)[0] ; TIPO.value = Tipo ; TIPOChang(TIPO) 
+                            const CBMT = $$('.oCbmt'      ).slice(-1)[0] ; CBMT.value = Cbmt ; CBMTChang(TIPO)
+                            const GRAM = $$('.oGram'      ).slice(-1)[0] ; GRAM.value = Gram ; GRAMChang(TIPO)
+                            const QNTT = $$('.oQntt'      ).slice(-1)[0] ; QNTT.value = Qntt ; QNTTChang(TIPO)
                         }
 
-                        const Tog_M2_OFS_UND=e=>['M2','OFS','UND'].forEach(t=>Prod[e.value].Calc===t ? Add(_tr(e),'Calc_'+t) : Rmv(_tr(e),'Calc_'+t))
+                        const TipoCalc=(e)=>{
+                            ['M2','OFS','UND'].forEach(t=>{Prod[VAAL(e)].Calc===t ? Add(_tr(e),'Calc_'+t) : Rmv(_tr(e),'Calc_'+t)}) // Tog_M2_OFS_UND
+                            Prod[VAAL(e)].Etpa.includes('Aplic') ? Rmv_N($$(':is(td,th):nth-child(7)',_table(e))) : Add_N($$(':is(td,th):nth-child(7)',_table(e))) // se tem Aplicação ou Não
+                        }
 
-                        function SERVChang(e){const Lista = ObjKey(Prod[e.value].Variantes);Inn($('.oTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; Tog_M2_OFS_UND(e)}
-                        function TIPOChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[0]))]))}
-                        function CBMTChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[1]))]))}
-                        function GRAMChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;Inn($('.oQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista.map(e=>e[2])[0].map(e=>e[0]))]))}
-                        function QNTTChang(e){const Lista = Prod[$('.oServ',_tr(e)).value].Variantes[$('.oTipo',_tr(e)).value].Table;ORC_Calc(_tr(e),Lista)}                       
+                        const cP=(Stg,e)=>VAAL($(Stg,_tr(e)))
+                        function SERVChang(e){if(!Prod[VAAL(e)]){return} ; const Lista = ObjKey(Prod[VAAL(e)].Variantes) ; Inn($('.oTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; TipoCalc(e)}
+                        function TIPOChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[0]))]))}
+                        function CBMTChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[1]))]))}
+                        function GRAMChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[2])[0].map(e=>e[0]))]))}
+                        function QNTTChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; ORC_Calc(_tr(e),Lista)}                       
 
                         function ORC_Calc(tr,Lista=null){
                             const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
-                            const Colet =arr=>arr.map(e=> ['Lrg','Alt','Qnt'].includes(e) ? (Num($(`.o${e}`,tr).value)||0) : $(`.o${e}`,tr).value)
+                            const Colet =arr=>arr.map(e=> ['Lrg','Alt','Qnt'].includes(e) ? (Num($(`.o${e}`,tr).value)||0) : VAAL($(`.o${e}`,tr)))
                             let [Serv,Tipo,Cbmt,Gram,Qntt,Lrg,Alt,Qnt] = Colet(['Serv','Tipo','Cbmt','Gram','Qntt','Lrg','Alt','Qnt'])
+                            
+                            if(!Prod[Serv]){return}
 
                             const Calc = Prod[Serv].Calc
                             const M2   = Prod[Serv]['Variantes'][Tipo]
@@ -2617,7 +2646,7 @@
                                 function CheckLimit(La,Al){
                                     const Zerar=(inp)=>{ if(inp===La) Lrg=0 ; if(inp===Al) Alt=0 }
                                     /*Limpeza*/ Rmv(La,'Error') ; Rmv(Al,'Error') ; Add_N($('span',Pai(La))) ; Add_N($('span',Pai(Al)))
-                                    const limits = Prod[Serv].Variantes[Tipo].Limit || {} // tem um erro aqui !!!!!!!!!!!!!!!!!!! alguns n tem Limit acho q é isso
+                                    const limits = Prod[Serv]?.Variantes[Tipo]?.Limit || {} // tem um erro aqui !!!!!!!!!!!!!!!!!!! alguns n tem Limit acho q é isso
                                     const Min = limits.Min || {} ; const Max = limits.Max || {}
                                     const map = {L:La,A:Al,x:La,X:Al};// mapa para saber qual input mexer
                                     ["L","A","x","X"].forEach(k=>{    // percorre todas as chaves possíveis
@@ -2685,7 +2714,7 @@
                     </div>
 
                     <script> // Funções Dedicadas a Tabelas de ORÇAMENTO
-                        function Rload_Tbl(Tbl){Upp_Tabela(Tbl) ; Upp_RowCol(Tbl) ; RecolorVlr(Tbl) ; RecolorVlr()} ; Rload_Tbl('#ORC')
+                        function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; RecolorVlr('#ORC') ; RecolorVlr()} ; Rload_Tbl()
                         function Upp_Tabela(Tbl){
                             $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
                             $$(`${Tbl} tbody tr`).length == 1 ? None($$('.O_All')) : Show($$('.O_All'))
@@ -2745,12 +2774,10 @@
                     <a class="Ct none" onload="Inn(this,Load_Cor())"></a>
                 </div>
 
-                <div class="Ct">
+                <div class="Ct none">
                     <div id="Div-Inpt-Larg"><input placeholder="Larg" oninput="Mask.Num(this);RodaCanvMdds()"></div>
                     <div id="Div-Inpt-Alt"> <input placeholder="Alt"  oninput="Mask.Num(this);RodaCanvMdds()"></div>
                     <div id="Div-Inpt-Qnt"> <input placeholder="Qnt"></div>
-                    <!--Comprimento n precisa ser Value 0 aqui, se for Vazio então da Zero no Gera3D-->
-                    <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
                 </div>
 
                 <div class="Cl">
@@ -2758,12 +2785,12 @@
                         <div id="AreaX" class="Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="Mask.Num(this);RodaCanvMdds()"></div>
                         <div id="AreaY" class="Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="Mask.Num(this);RodaCanvMdds()"></div>
                     </div>
-                    
-                    <!--Não preciso de um Input aqui pra receber 0 ou 1, isso pode fica diretamente na class do Button q deveria ser um CheckBox e Xuva-->
-                    <div class="Cl"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
-
                     <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
-                    <button onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
+                    
+                    <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div> <!--Comprimento n precisa ser Value 0 aqui, se for Vazio então da Zero no Gera3D-->
+                    <!--Não preciso de um Input aqui pra receber 0 ou 1, isso pode fica diretamente na class do Button q deveria ser um CheckBox e Xuva-->
+                    <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
+                    <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
                     <div>
                         <!--
                             Permitir q cada linha Gere seu Canvas
@@ -2806,7 +2833,7 @@
                     .task-item.pendente::before { content: '\25CF'; color: magenta; font-size: 12px; margin-right: 6px; }
                     .gap {gap: 10px }
 
-                    #tarefas table { width:100%; border-collapse:collapse; font-family:Arial,sans-serif; font-size:14px; color:#eee; background-color:#222; }
+                    #tarefas table { width:100%; font-family:Arial,sans-serif; font-size:14px; color:#eee; background-color:#222; }
                     #tarefas th, #tarefas td { border:1px solid #444; padding:8px 12px; text-align:left; }
                     #tarefas th { background-color:#333; font-weight:bold; }
                     #tarefas tr:hover { background-color:#444; }
@@ -2939,18 +2966,20 @@
         #Modal-Info1,#Modal-Info2{padding:30px}
         #InnerVazio input{position:absolute;width:200px}
 
+        #ModalNota{color:#000000}
         #ModalNota>div{padding:5px 0px}
         #Nota-Clnt>div>div>div{margin:0px 5px}
         #ModalNota img{width:50px;height:50px}
-        .Start2 p{margin:1px 5px}
+        #ModalNota .Start2 p{margin:1px 5px}
         #LugarFotoNotta{margin-right:3px}
-
-        #TabelaNotinha{text-align: center;border-collapse: collapse;border: #d8d8d8 solid 1px;}
-        #TabelaNotinha tr{background: #5F009E;color: white;font-size: 13px;}
-        #TabelaNotinha td{background: #ffffff;color: black; padding: 3px;font-size: 13px;}
-        #TabelaNotinha tfoot > tr > th {background: #575757}
-        #TabelaNotinha td:nth-child(5){font-size: 13px;color:#4f4f4f;}
-        #TabelaNotinha td:nth-child(6){font-weight: bold}
+        #TabelaNotinha td{padding:3px ; font-size: 15px;}
+        #TabelaNotinha th{padding:3px ; font-size: 13px;}
+        #TabelaNotinha thead tr{background:#5F009E; color:#ffffff}
+        #TabelaNotinha tbody td:nth-child(3){text-align:start}
+        #TabelaNotinha tbody td:nth-child(5){color:#4f4f4f}
+        #TabelaNotinha tbody td:nth-child(6){margin-right: 6px}
+        #TabelaNotinha tbody td:nth-child(7){color:#00000093 ; font-size: 13px;}
+        #TabelaNotinha tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja);}
     </style>
 
     <div id="FModal" class="Ct">
@@ -3339,7 +3368,8 @@
 
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
-        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes()} 
+        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes()}
+        if(targ.closest('.Sugg')){return}{None($$('#ORC tr:not(.Atv) .Sugg'))} // LINDO TREXO é uma Gambiarra mais ta BOM (Fazer a Cascata igual Bureal Usando este metodo aqui!)
         // isso Deve virar Padão tipo algo genético, pra usar em varios
         // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
     })

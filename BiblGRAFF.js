@@ -121,6 +121,8 @@ function DarVAL(td,v,A){
 }
 function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))} // Parece q ela só é nessesária quando o valor é uma Bandeija, mas se n for Xuva, só a de cima Resolve
 
+const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null
+
 function VAL(e){
     const td = e.tagName === 'TD' ? e : _td(e)
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
