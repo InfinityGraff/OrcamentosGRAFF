@@ -1,60 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Visualizador</title>
-<style>
-    :root{--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff;--m:#666}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#111}
-    .a{max-width:1200px;margin:20px auto;padding:18px}
-    .c{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
-    .c .b,select{padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer}
-    .c .b.act{box-shadow:0 2px 8px rgba(10,10,10,.06);border-color:#bbb}
-    .s{flex:1;min-width:180px}
-    input[type=search]{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #ddd}
-    .st{font-size:13px;color:var(--m)}
-    .gy{display:grid;gap:var(--g)}
-    .m-b{grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
-    .it{background:var(--cb);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04)}
-    .iw{display:flex;align-items:center;justify-content:center;padding:8px;background:linear-gradient(180deg,rgba(0,0,0,.02),transparent)}
-    .iw img{display:block;width:100%;height:auto;max-width:100%;border-radius:6px;transition:object-fit .3s ease}
-    .mt{padding:10px 12px;font-size:14px}
-    .mt .n{font-weight:600}
-    .mt .t{font-size:13px;color:var(--m);margin-top:6px}
-    .ms{column-width:var(--w);column-gap:var(--g)}
-    .ms .mi{display:inline-block;width:100%;margin:0 0 var(--g) 0;background:var(--cb);border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.04)}
-    .ms .mi .iw{padding:8px}
-    .stg{position:absolute;left:8px;top:8px}
-    .ic{position:relative;width:100%}
-    .stg svg{pointer-events:none}
-    .cr img{object-fit:cover;width:100%;height:200px}
-    .fd{margin-bottom:20px;background:#fff;border-radius:10px;border:1px solid #ddd;overflow:hidden}
-    .fh{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;background:#f0f0f5;font-weight:600}
-    .fh:hover{background:#e9e9ef}
-    .fh svg{width:20px;height:20px;transition:transform .3s ease}
-    .fd.cl .fh svg{transform:rotate(-90deg)}
-    .fc{padding:12px;display:none}
-    .fd.op .fc{display:block;animation:fIn .3s ease}
-    @keyframes fIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:600px){:root{--w:140px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Visualizador</title>
+
+  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+  <link  href="./CssGRAFF.css" rel="stylesheet">
+
+  <style>
+      :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff;--m:#666}
+      .Tudoo {max-width:1200px;margin:20px auto;padding:18px}
+      .Config{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+      .st    {font-size:13px;color:var(--m)}
+      .gy    {display:grid;gap:var(--g)}
+      .m-b   {grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
+      .it    {background:var(--cb);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04)}
+      .iw    {display:flex;align-items:center;justify-content:center;padding:8px;background:linear-gradient(180deg,rgba(0,0,0,.02),transparent)}
+      .iw img{display:block;width:100%;height:auto;max-width:100%;border-radius:6px;transition:object-fit .3s ease}
+      .mt    {padding:10px 12px;font-size:14px}
+      .mt p  {font-weight:600}
+      .mt a  {font-size:13px;color:var(--m);margin-top:6px}
+      .ms    {column-width:var(--w);column-gap:var(--g)}
+      .ms .mi{display:inline-block;width:100%;margin:0 0 var(--g) 0;background:var(--cb);border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.04)}
+      .ms .mi .iw{padding:8px}
+      
+      .ic      {position:relative;width:100%}
+      .stg     {position: absolute;top: 6px;left: 6px;background: #00000073;color: #fff;font-size: 11px;padding: 4px 8px;border-radius: 6px;white-space: nowrap;pointer-events: none;}
+      .stg svg {pointer-events:none}
+
+      .cr img  {object-fit:cover;width:100%;height:200px}
+      .fd      {margin-bottom:20px;background:#fff;border-radius:10px;border:1px solid #ddd;overflow:hidden}
+      .fh      {display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;background:#f0f0f5;font-weight:600}
+      .fh:hover{background:#e9e9ef}
+      .fh svg  {width:20px;height:20px;transition:transform .3s ease}
+      .fd.cl .fh svg{transform:rotate(-90deg)}
+      .fc      {padding:12px;display:none}
+      .fd.op .fc{display:block;animation:fIn .3s ease}
+      @keyframes fIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+      @media(max-width:600px){:root{--w:140px}}
+  </style>
 </head>
-<body>
-<div class="a">
-  <div class="c">
-    <div>
-      <button class="b vb act" data-v="b">Blocos</button>
-      <button class="b vb" data-v="m">Alvenaria</button>
+
+<script>
+  function Grid(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='grid'}else{E.style.display='grid'}})}
+  function Blok(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='block'}else{E.style.display='block'}})}
+
+  const imgs=[
+    {Nome:'GatoFofo',Tipo:'Figurinha',u:'https://picsum.photos/id/237/800/600'},
+    {Nome:'Praia',Tipo:'Paisagem',u:'https://picsum.photos/id/1016/1200/800'},
+    {Nome:'Montanha',Tipo:'Paisagem',u:'https://picsum.photos/id/1003/600/900'},
+    {Nome:'Cachorro',Tipo:'Figurinha',u:'https://picsum.photos/id/1025/600/450'},
+    {Nome:'Cidade',Tipo:'Urbano',u:'https://picsum.photos/id/1011/900/600'},
+    {Nome:'Flores',Tipo:'Macro',u:'https://picsum.photos/id/1020/700/1000'},
+    {Nome:'Carro',Tipo:'Objeto',u:'https://picsum.photos/id/1071/900/500'},
+    {Nome:'Praça',Tipo:'Urbano',u:'https://picsum.photos/id/1031/700/500'},
+    {Nome:'Lago',Tipo:'Paisagem',u:'https://picsum.photos/id/1043/1200/800'}
+  ]
+</script>
+
+<body class="CSS3">
+
+<div class="Tudoo">
+  <div class="Config">
+    <div id="BlockAlvena">
+      <button class="act" data-v="b" onclick="vbs_click(this)">Blocos   </button>
+      <button class=""    data-v="g" onclick="vbs_click(this)">Alvenaria</button>
     </div>
-    <div><button class="b" id="cr">Cortar</button></div>
-    <div>
-      <select id="gp">
-        <option value="n">Por Nome</option>
-        <option value="t">Por Tipo</option>
-      </select>
-    </div>
-    <div class="s"><input id="q" type="search" placeholder="Buscar..."></div>
+    <div><button id="cr" onclick="cr_click()">Cortar</button></div>
+    <div><select onchange="change(event)"><option value="n">Por Nome</option><option value="t">Por Tipo</option></select></div>
+    <div><input id="q" placeholder="Buscar..." oninput="q_input(event)"></div>
     <div class="st" id="stc">0 imgs</div>
   </div>
 
@@ -63,74 +80,68 @@
 </div>
 
 <script>
-    function   $(s){return document.querySelector(s)}
-    function  $$(s){return document.querySelectorAll(s)}
+    // evita erro de XSS
     function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#39;")}
-    
-    const imgs=[
-    {n:'GatoFofo',t:'Figurinha',u:'https://picsum.photos/id/237/800/600'},
-    {n:'Praia',t:'Paisagem',u:'https://picsum.photos/id/1016/1200/800'},
-    {n:'Montanha',t:'Paisagem',u:'https://picsum.photos/id/1003/600/900'},
-    {n:'Cachorro',t:'Figurinha',u:'https://picsum.photos/id/1025/600/450'},
-    {n:'Cidade',t:'Urbano',u:'https://picsum.photos/id/1011/900/600'},
-    {n:'Flores',t:'Macro',u:'https://picsum.photos/id/1020/700/1000'},
-    {n:'Carro',t:'Objeto',u:'https://picsum.photos/id/1071/900/500'},
-    {n:'Praça',t:'Urbano',u:'https://picsum.photos/id/1031/700/500'},
-    {n:'Lago',t:'Paisagem',u:'https://picsum.photos/id/1043/1200/800'}
-    ];
-
-    const gb=$('#gb'),gm=$('#gm'),q=$('#q'),stc=$('#stc'),vbs=$$('.vb'),cr=$('#cr'),gp=$('#gp');
-    let st={v:'b',q:'',c:false,g:'n'};
-
-    function mkB(i){
-        const c=el('article','it');
-        const iw=el('div','iw'+(st.c?' cr':'')),ic=el('div','ic'),im=img(i.u,i.n);
-        const sv=el('div','stg');
-        sv.innerHTML=`<svg width="140" height="28"><rect rx="6" ry="6" width="140" height="28" fill="rgba(0,0,0,.45)"/><text x="8" y="18" font-family="Arial" font-size="12" fill="#fff">${esc(i.n)}</text></svg>`;
-        ic.append(sv,im);iw.append(ic);
-        const m=el('div','mt');m.innerHTML=`<div class="n">${esc(i.n)}</div><div class="t">${esc(i.t)}</div>`;
-        c.append(iw,m);return c;
-    }
-
-    function mkM(i){
-        const c=el('div','mi');
-        const iw=el('div','iw'+(st.c?' cr':'')),ic=el('div','ic'),im=img(i.u,i.n);
-        const sv=el('div','stg');
-        sv.innerHTML=`<svg width="120" height="26"><rect rx="6" ry="6" width="120" height="26" fill="rgba(0,0,0,.45)"/><text x="8" y="17" font-family="Arial" font-size="11" fill="#fff">${esc(i.n)}</text></svg>`;
-        ic.append(sv,im);iw.append(ic);
-        const m=el('div','mt');m.innerHTML=`<div class="n">${esc(i.n)}</div><div class="t">${esc(i.t)}</div>`;
-        c.append(iw,m);return c;
-    }
-
     function  el(t,c){const e=document.createElement(t);if(c)e.className=c;return e}
     function img(u,a){const i=new Image();i.loading='lazy';i.src=u;i.alt=a;return i}
 
-    function ren(){
-        const qq=st.q.trim().toLowerCase();gb.innerHTML='';gm.innerHTML='';
-        const f=imgs.filter(i=>i.n.toLowerCase().includes(qq)||i.t.toLowerCase().includes(qq));
-        stc.textContent=f.length+' img'+(f.length!=1?'s':'');
-        if(st.g==='t'){
-            const g={};f.forEach(i=>{(g[i.t]??=[]).push(i)});
-            for(const[k,v]of Object.entries(g)){
-            const fd=el('div','fd op'),fh=el('div','fh');
-            fh.innerHTML=`<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4h5l2 3h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/></svg> ${esc(k)}`;
-            const fc=el('div','fc'),gy=el('div',st.v==='b'?'gy m-b':'gy ms');
-            v.forEach(i=>gy.append(st.v==='b'?mkB(i):mkM(i)));
-            fh.onclick=()=>fd.classList.toggle('op'),fd.classList.toggle('cl');
-            fc.append(gy);fd.append(fh,fc);gb.append(fd);
-            }
-            gm.style.display='none';gb.style.display='block';
-        }else{
-            f.forEach(i=>{gb.append(mkB(i));gm.append(mkM(i))});
-            if(st.v==='b'){gb.style.display='grid';gm.style.display='none'}else{gb.style.display='none';gm.style.display='block'}
-        }
+    const gb=$('#gb')
+         ,gm=$('#gm')
+          ,q=$('#q')
+        ,stc=$('#stc')
+        ,cr=$('#cr')
+
+    let st={v:'b',q:'',c:false,g:'n'}
+
+    function mkItemHTML(i,cls){
+      const cut = st.c ? ' cr' : ''
+      return `<div class="${cls}">
+        <div class="iw${cut}"><div class="ic"><div class="stg">${i.Nome}</div><img src="${i.u}" loading="lazy"></div></div>
+        <div class="mt"><p>${i.Nome}</p><a>${i.Tipo}</a></div>
+      </div>`
     }
 
-    q.oninput=e=>{st.q=e.target.value;ren()}
-    vbs.forEach(b=>b.onclick=()=>{vbs.forEach(x=>x.classList.remove('act'));b.classList.add('act');st.v=b.dataset.v;ren()})
-    cr.onclick=()=>{st.c=!st.c;cr.classList.toggle('act',st.c);cr.textContent=st.c?'Sem corte':'Cortar';ren()}
-    gp.onchange=e=>{st.g=e.target.value;ren()}
+    function ren() {
+      LOG(st)
+      const qq = aa(st.q.trim())
+      const f = imgs.filter(i=>aa(i.Nome).includes(qq) || aa(i.Tipo).includes(qq))
+      stc.textContent = f.length + ' img' + (f.length !== 1 ? 's' : '')
 
+      // caso agrupado por tipo
+      if (st.g === 't') {
+        const g = {};
+        f.forEach(i => (g[i.Tipo] ??= []).push(i));
+
+        let html = '';
+        for (const [k, v] of Object.entries(g)) {
+          const itemsHTML = v.map(i=>mkItemHTML(i,st.v==='b'?'it':'mi')).join('')
+          html += `
+          <div class="fd op">
+            <div class="fh" onclick="Tog(this.parentElement,'op');Tog(this.parentElement,'cl')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h5l2 3h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+              </svg> ${k}
+            </div>
+            <div class="fc">
+              <div class="${st.v === 'b' ? 'gy m-b' : 'gy ms'}">${itemsHTML}</div>
+            </div>
+          </div>`
+        }
+        Inn(gb,html) ; None(gm) ; Blok(gb)
+      }
+
+      else{ // modo simples (sem agrupamento)
+        Inn(gb, f.map(i=>mkItemHTML(i,'it')).join('')) // blocos
+        Inn(gm, f.map(i=>mkItemHTML(i,'mi')).join('')) // Listas
+        if(st.v=='b'){Grid(gb);None(gm)}else{None(gb);Blok(gm)}
+      }
+    }
+
+    function vbs_click(b){$$('#BlockAlvena button').forEach(x=>Rmv(x,'act'));Add(b,'act');st.v=b.dataset.v ;ren()}
+    function cr_click()  {st.c = !st.c;cr.classList.toggle('act', st.c);cr.textContent = st.c ? 'Sem corte' : 'Cortar';ren();}
+    function change(e)   {st.g = e.target.value ; ren()}
+    function q_input(e)  {st.q = e.target.value ; ren()}
     ren()
 </script>
 </body>
