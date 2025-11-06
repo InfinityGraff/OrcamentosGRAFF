@@ -3029,18 +3029,24 @@
                 <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>${id}</p></div>
                 <div class="Ct"><p class="FtBd">Data:</p><p>00/00/2023</p></div>
             </div>
+
+            <script> // GAMBIARRA
+                const Mask2 = {
+                    fone  :i=>{if(i.innerHTML.length > 15) i.innerHTML = i.innerHTML.substring(0,15); i.innerHTML = i.innerHTML.replace(/\D/g,'').replace(/(\d{2})(\d)/,'($1) $2').replace(/(\d{5})(\d)/,'$1-$2') ; CurEnd(i)},
+                } 
+            </script>
         
             <div id="Nota-Clnt" class="Row w100 Ev">
                 <div>
-                <div class="Ct FtLt">Nome:     <div data="Clnt"></div> </div>
-                <div class="Ct FtLt">Fone:     <div data="Cntt"></div> </div>
+                <div class="Ct FtLt">Nome:     <div data="Clnt" spellcheck="false" contenteditable="true">-</div> </div>
+                <div class="Ct FtLt">Fone:     <div data="Cntt" spellcheck="false" contenteditable="true" oninput="Mask2.fone(this)">-</div> </div>
                 </div>
                 <div>
-                <div class="Ct FtLt">Endereço: <div data="Local"></div></div>
-                <div class="Ct FtLt">Cidade:   <div data="City"></div> </div>
+                <div class="Ct FtLt">Endereço: <div data="Local" spellcheck="false" contenteditable="true">-</div></div>
+                <div class="Ct FtLt">Cidade:   <div data="City"  spellcheck="false" contenteditable="true">-</div> </div>
                 </div>
                 <div>
-                <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ"></div> </div>
+                <!-- <div class="Ct FtLt">CPF/CNPJ: <div data="CNPJ" spellcheck="false" contenteditable="true">-</div> </div> -->
                 </div>
             </div>
         
