@@ -13,25 +13,25 @@
   <style>
       :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff;--m:#666}
       .Tudoo {max-width:1200px;margin:20px auto;padding:18px}
-      .Config{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
-      .st    {font-size:13px;color:var(--m)}
+      .Config{gap:12px;margin-bottom:14px}
+      #PesqImgs p {font-size:13px;color:#ffffff}
       .gy    {display:grid;gap:var(--g)}
       .m-b   {grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
-      .it    {background:var(--cb);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04)}
+      .it    {background:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #0000000a}
+
       .iw    {display:flex;align-items:center;justify-content:center;padding:8px;background:linear-gradient(180deg,rgba(0,0,0,.02),transparent)}
       .iw img{display:block;width:100%;height:auto;max-width:100%;border-radius:6px;transition:object-fit .3s ease}
       .mt    {padding:10px 12px;font-size:14px}
       .mt p  {font-weight:600}
       .mt a  {font-size:13px;color:var(--m);margin-top:6px}
       .ms    {column-width:var(--w);column-gap:var(--g)}
-      .ms .mi{display:inline-block;width:100%;margin:0 0 var(--g) 0;background:var(--cb);border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.04)}
+      .ms .mi{display:inline-block;width:100%;margin:0 0 var(--g) 0;background:#ffffff;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.04)}
       .ms .mi .iw{padding:8px}
-      
+      .cr img  {object-fit:cover;width:100%;height:200px}
       .ic      {position:relative;width:100%}
-      .stg     {position: absolute;top: 6px;left: 6px;background: #00000073;color: #fff;font-size: 11px;padding: 4px 8px;border-radius: 6px;white-space: nowrap;pointer-events: none;}
+      .stg     {position: absolute;top: 6px;left: 6px;background: #00000073;color: #ffffff;font-size: 11px;padding: 4px 8px;border-radius: 6px;white-space: nowrap;pointer-events: none;}
       .stg svg {pointer-events:none}
 
-      .cr img  {object-fit:cover;width:100%;height:200px}
       .fd      {margin-bottom:20px;background:#fff;border-radius:10px;border:1px solid #ddd;overflow:hidden}
       .fh      {display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;background:#f0f0f5;font-weight:600}
       .fh:hover{background:#e9e9ef}
@@ -47,6 +47,7 @@
 <script>
   function Grid(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='grid'}else{E.style.display='grid'}})}
   function Blok(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='block'}else{E.style.display='block'}})}
+  const isAtv=e=>e.classList.contains('Atv')
 
   const imgs=[
     {Nome:'GatoFofo',Tipo:'Figurinha',u:'https://picsum.photos/id/237/800/600'},
@@ -59,24 +60,22 @@
     {Nome:'Praça',Tipo:'Urbano',u:'https://picsum.photos/id/1031/700/500'},
     {Nome:'Lago',Tipo:'Paisagem',u:'https://picsum.photos/id/1043/1200/800'}
   ]
+  const SvgPast = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>`
+
 </script>
 
 <body class="CSS3">
 
 <div class="Tudoo">
-  <div class="Config">
-    <div id="BlockAlvena">
-      <button class="act" data-v="b" onclick="vbs_click(this)">Blocos   </button>
-      <button class=""    data-v="g" onclick="vbs_click(this)">Alvenaria</button>
-    </div>
-    <div><button id="cr" onclick="cr_click()">Cortar</button></div>
+  <div class="Config Ct">
+    <div id="BlockAlvena" onclick="          ren()" onload="Tm_Interup(this,'Blocos','Alvenaria')"></div>
+    <div id="Cropar"      onclick="TOV(this);ren()" onload="Tm_Check(this,SVG.Crop('',''))"       ></div>
     <div><select onchange="change(event)"><option value="n">Por Nome</option><option value="t">Por Tipo</option></select></div>
-    <div><input id="q" placeholder="Buscar..." oninput="q_input(event)"></div>
-    <div class="st" id="stc">0 imgs</div>
+    <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="q_input(this,event)"><p>0 imgs</p></div>
   </div>
 
-  <div id="gb" class="gy m-b"></div>
-  <div id="gm" class="gy ms" style="display:none"></div>
+  <div id="gb" class="gy m-b"></div> <!--CARREGA em Bloc-->
+  <div id="gm" class="gy ms"></div>  <!--CARREGA em Grid-->
 </div>
 
 <script>
@@ -85,64 +84,55 @@
     function  el(t,c){const e=document.createElement(t);if(c)e.className=c;return e}
     function img(u,a){const i=new Image();i.loading='lazy';i.src=u;i.alt=a;return i}
 
-    const gb=$('#gb')
-         ,gm=$('#gm')
-          ,q=$('#q')
-        ,stc=$('#stc')
-        ,cr=$('#cr')
+    let st={q:'',g:'n'}
 
-    let st={v:'b',q:'',c:false,g:'n'}
+    function ren(){
+      const Find = imgs
+      const gb=$('#gb'),gm=$('#gm')
+      const Modo = isAtv($('#BlockAlvena')) // ?'Bloc':'Grid'
+      const Crop = isAtv($('#Cropar'))
 
-    function mkItemHTML(i,cls){
-      const cut = st.c ? ' cr' : ''
-      return `<div class="${cls}">
-        <div class="iw${cut}"><div class="ic"><div class="stg">${i.Nome}</div><img src="${i.u}" loading="lazy"></div></div>
+      LOG('Modo:',Modo?'Bloco':'Grid',$('#BlockAlvena'))
+
+      const mkItemHTML=(i,cls)=>`<div class="${cls} Cl">
+        <div class="iw${Crop?' cr' : ''}"><div class="ic"><div class="stg">${i.Nome}</div><img src="${i.u}" loading="lazy"></div></div>
         <div class="mt"><p>${i.Nome}</p><a>${i.Tipo}</a></div>
       </div>`
-    }
 
-    function ren() {
-      LOG(st)
-      const qq = aa(st.q.trim())
-      const f = imgs.filter(i=>aa(i.Nome).includes(qq) || aa(i.Tipo).includes(qq))
-      stc.textContent = f.length + ' img' + (f.length !== 1 ? 's' : '')
-
-      // caso agrupado por tipo
-      if (st.g === 't') {
-        const g = {};
-        f.forEach(i => (g[i.Tipo] ??= []).push(i));
-
-        let html = '';
-        for (const [k, v] of Object.entries(g)) {
-          const itemsHTML = v.map(i=>mkItemHTML(i,st.v==='b'?'it':'mi')).join('')
-          html += `
+      if (st.g === 't') { // Modo Agrupado
+        const g = Find.reduce((acc, i) => {(acc[i.Tipo] ??= []).push(i);return acc}, {})
+        const html = ObjEtr(g).map(([k,v]) =>`
           <div class="fd op">
-            <div class="fh" onclick="Tog(this.parentElement,'op');Tog(this.parentElement,'cl')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h5l2 3h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-              </svg> ${k}
-            </div>
-            <div class="fc">
-              <div class="${st.v === 'b' ? 'gy m-b' : 'gy ms'}">${itemsHTML}</div>
-            </div>
+            <div class="fh" onclick="Tog(Pai(this),'op');Tog(Pai(this),'cl')">${SvgPast}${k}</div>
+            <div class="fc"><div class="${Modo ? 'gy m-b' : 'gy ms' }">${v.map(i=>mkItemHTML(i,Modo?'mi':'it')).join('')}</div></div>
           </div>`
-        }
+        ).join('')
         Inn(gb,html) ; None(gm) ; Blok(gb)
       }
 
-      else{ // modo simples (sem agrupamento)
-        Inn(gb, f.map(i=>mkItemHTML(i,'it')).join('')) // blocos
-        Inn(gm, f.map(i=>mkItemHTML(i,'mi')).join('')) // Listas
-        if(st.v=='b'){Grid(gb);None(gm)}else{None(gb);Blok(gm)}
+      else{ // Mod Sem Agrupamento
+        Inn(gb,Find.map(i=>mkItemHTML(i,'it')).join('')) // blocos
+        Inn(gm,Find.map(i=>mkItemHTML(i,'mi')).join('')) // Listas
+        if(Modo){Grid(gb);None(gm)}else{None(gb);Blok(gm)}
       }
     }
 
-    function vbs_click(b){$$('#BlockAlvena button').forEach(x=>Rmv(x,'act'));Add(b,'act');st.v=b.dataset.v ;ren()}
-    function cr_click()  {st.c = !st.c;cr.classList.toggle('act', st.c);cr.textContent = st.c ? 'Sem corte' : 'Cortar';ren();}
-    function change(e)   {st.g = e.target.value ; ren()}
-    function q_input(e)  {st.q = e.target.value ; ren()}
+
+    function change(e){st.g = e.target.value ; ren()} 
+    function q_input(Eu,Ev){
+      const q  = $('#q')
+      const qq = aa(Vll(Eu).trim())
+      let Cont = 0
+      const f = $$('#gb .it').forEach(e=>{ Rmv_N(e)
+        if(aa(Inn($('.mt p',e))).includes(qq) || aa(Inn($('.mt a',e))).includes(qq)){
+          Rmv_N(e) ; Cont+=1
+        }else{Add_N(e)}
+      })
+      Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
+    }
+
+    Onloads('body')
     ren()
-</script>
+  </script>
 </body>
 </html>
