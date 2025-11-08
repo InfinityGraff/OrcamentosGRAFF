@@ -374,14 +374,14 @@
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['G','' ],Lixo:['X','' ]},
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
         UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
         
-        MPAG:{Id:['F','I'],Cpvt:['E','' ],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
     }
 
     // Configuração do SupaBase
@@ -1354,41 +1354,38 @@
         <script> // LINK
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
-            const Tm_Exib = {
-                 Mpag:(e)=> `${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}`
-                ,Pgmt:(e)=> `${e.Id} - ${FindClnt(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}`
-                ,Serv:(e)=> `${e.Id} - ${SERV_Find_CLNT(e)} ${e.Serv} ${e.Desc}`
-                // Deve Virar Tabela (e pra os que tem Imagem, exibir a imagem bem grande tipo uma Pasta)
-            }
+
 
             function LinkSug(Typ,inpt,MySelect,Lista){
                 const list = $('.Sugg',Pai(inpt))
-                    
-                    const Val   = inpt.value
-                    const regex = new RegExp(`(${aa(Val)})`, 'gi') // ignora maiúsculas
-                    if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
-                        const TipoFilt = {
-                            Proc:(e,Val)=>aa(e).includes(aa(Val)),
-                            Rest:(e,Val)=>aa(e).includes(aa(Val)), // Exibir só os que não estão Linkados
-                            List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),
-                        }
-                        list.innerHTML = Lista.split(',').filter(e=>TipoFilt['List'](e,Val))
-                        .map(e=>{
-                        const Nome =  aa(e).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
-                        return `<a class="PT w100 Ct" onclick="Selecty(this);None(Pai(this))"><p>${Nome}</p></a>`
-                        }).join('')
-                    }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
-                        Show(list)
-                        if (inpt.value){
-                            list.innerHTML = J[Typ]
-                            .filter(e=>aa(e[Aa(Typ)]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
-                            .map(e=>{
-                                const ID   = String(e['Id']).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Id
-                                const Nome =  aa(e[Aa(Typ)]).replace(regex,'<span style="background: #8f007c;color:white">$1</span>') // Destaca no Nome
-                                return `<a class="PT w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))"><p>${ID}</p><p>${Nome}</p></a>`
-                            }).join('')
-                        }else{None(list);Inn(list,'')}
-                    }  
+                const Val   = inpt.value
+                const regex = new RegExp(`(${aa(Val)})`, 'gi') // ignora maiúsculas
+                const Griff =e=>aa(`${e}`).replace(regex,'<b style="background:#8f007c; color:white">$1</b>')
+
+                const TipoFilt = {
+                    Proc:(e,Val)=>aa(e).includes(aa(Val)),
+                    Rest:(e,Val)=>aa(e).includes(aa(Val)), // Exibir só os que não estão Linkados
+                    List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),
+                }
+
+                const Tm_Exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
+                     MPAG:e=> Griff(`<p>${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)
+                    ,PGMT:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`)
+                    ,SERV:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} ${e.Serv} ${e.Desc}</p>`)
+                    ,CLNT:e=> Griff(`<p>${e.Id} - ${e.Clnt}</p>`)
+                }
+
+                if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
+                    list.innerHTML = Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this);None(Pai(this))"><p>${aa(e).replace(regex,Grif)}</p></a>`).join('')
+                }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
+                    Show(list)
+                    if (inpt.value){
+                        const Coluna = Typ == 'MPAG' ? 'Clnt' : Aa(Typ) // encontrar a coluna que eu quero pesquisar e Exibir
+                        LOG(Typ)
+                        list.innerHTML = J[Typ].filter(e=>aa(e[Coluna]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
+                        .map(e=>{return `<a class="PT w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))">${Tm_Exib[Typ](e)}</a>`}).join('')
+                    }else{None(list);Inn(list,'')}
+                }  
                 // Adicionar a Opção de Mostrar todos, com um determinado filtro q posso escolher por exeplo: os que Faltam!
                 // Adicionar Opção de Adicionar uma Nova Linha quando for pra LinkTABELA
                 // Opção pra Selecionar mais de 1
@@ -3205,12 +3202,15 @@
         function ImgUPP(Inpt,Nome){             // ⭐⭐⭐_ _  analisando com calma
             const f = Inpt.files[0] // pega o único arquivo
             const Past = Eximg.includes(RxExt(f.name)) ? "Img/" : "Arq/"
-            const Src  = URL.createObjectURL(f)
+            const Src  = URL.createObjectURL(f) // src temporário
             const td   = $(Rx2([`${Nome}-Arte`]))
             ListIMG.push(Nome)
             DarVAL(td,Src)
+            const R = D_R(td)
+            const Cimg = `<img class="Img_T-T" onclick="AbrirImg('${R.Row}',this)" loading="lazy" src="${Src}">` // src temporário
+                if(isBdj(td)){Pai($('.T-T',_td(Pai(td)))).innerHTML+= Cimg} // se for bandeija então tem Title
             Sb_UPLOAD(f,`${Past}${Nome}`)
-            if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG
+            // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
         function LinkLink(Eu,val){              // ⭐⭐⭐⭐_  (Faz o Básico)
