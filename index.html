@@ -2377,8 +2377,8 @@
 
                         .BtnGrid{width: 20px; height: 20px; bottom: 10px; right: 16px; fill: #4d004d93}
 
-                        #CanvasMedidas.Hmax{width: auto ; height: 100%;}
-                        #CanvasMedidas.Wmax{width: 100% ; height: auto;}
+                        .CanvasMedidas.Hmax{width: auto ; height: 100%;}
+                        .CanvasMedidas.Wmax{width: 100% ; height: auto;}
                     </style>
                     <div id="Div-Prod" class="Start"></div>
                     <script>
@@ -2465,14 +2465,14 @@
                         //FotinhaMove('Cardápio') // só pode chamar ela no final, pq tem q esperar o Modal Carregar! mas se pá eu jogue os Modais pra antes do Page
 
                         function ReloadDetalhes(){
-                            None($$('#Div-Detalhes .canvi'))
+                            //None($$('#Div-Detalhes .canvi'))
                             const serv = VAAL($('#ORC tr.Atv .oServ')) || ""
                             
                             if(!Prod[serv]){return}
                             if(serv==""){// n exibe nada
-                            }else if(Prod[serv].Prvw=='CanvMdd'){Show($('#CanvasMedidas'))
+                            //}else if(Prod[serv].Prvw=='CanvMdd'){Show($('#CanvasMedidas' ))
                             }else if(Prod[serv].Prvw=='Fotinha'){Show($('#DetalheFotinha'));ExibeFotinha(serv)
-                            }else if(Prod[serv].Prvw=='Canva3D'){Show($('#NewCanvas'))
+                            }else if(Prod[serv].Prvw=='Canva3D'){Show($('#NewCanvas'     ))
                             }
                             // Estou Ocultando o Sugg do meu MySelect aqui por uma GAMBIARRA mas depois tentar tirar daquui
                         }
@@ -2491,26 +2491,28 @@
                             tr.classList.forEach(c=>c.startsWith('ORC_tr-') && tr.classList.remove(c))
                             const max = Math.max(0,...[...$$('tr',Pai(tr))].map(e=>[...e.classList].find(c=>c.startsWith('ORC_tr-'))).filter(Boolean).map(c=>+c.split('-')[1]||0))
                             Add(tr,`ORC_tr-${max+1}`)
-
+                            const detalhe = $('#Div-Detalhes .ORC_tr')
+                            const clone = detalhe.cloneNode(true)
+                            clone.classList.forEach(c=>c.startsWith('ORC_tr-') && clone.classList.remove(c))
+                            Add(clone,`ORC_tr-${max+1}`)
+                            Insert(Pai(detalhe)).After(clone,detalhe)
                         }
-
                     </script>
                     
                     <div id="Div-Detalhes" class="Rltv">
                         <a class="IconDtlh Ct PT Start" onclick="TOV($('#DivIMGProd'))"><h3>⭐</h3><p>Detalhes</p></a>
 
-                        <div id="DetalheFotinha"   class="canvi Ct"></div>
+                        <div id="DetalheFotinha"   class="canvi Ct none"></div>
 
-                        <div id="NewCanvas"        class="canvi Ct Cnvs"></div>
+                        <div id="NewCanvas"        class="canvi Ct Cnvs none"></div>
 
-                        <div class="DetalheCanvMdds DtlhCnvs-1" class="Cl">
-                            <div class="DivCanvMdd Rd Ct Boxy"><canvas id="CanvasMedidas" class="canvi Cnvs Wmax"></canvas></div>
+                        <div class="DetalheCanvMdds ORC_tr ORC_tr-1" class="Cl">
+                            <div class="DivCanvMdd Rd Ct Boxy"><canvas class="CanvasMedidas canvi Cnvs Wmax"></canvas></div>
                             <div class="Ct w100" style="margin-top:5px">  <!--// Criar um pra cada linha--> 
                                 <div class="Cl"><label>Largura Area</label><input class="I_AreaX" placeholder="Largura Area" value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
                                 <div class="Cl"><label>Altura Area </label><input class="I_AreaY" placeholder="Altura Area"  value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 
@@ -2603,7 +2605,7 @@
                     <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
                         <thead><tr onload="Inn(this,Tm_ORC_Th(['','Serv','Tipo','Lrg','Alt','Qnt','Aplic','Und','SbTt','','']))"></tr></thead>
                         <tbody>
-                            <tr class="ORC_tr-1" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
+                            <tr class="ORC_tr ORC_tr-1" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                                 <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
                                 <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'-',['Serviços',...AllProd])">       </div></td>
                                 <td                         ><select class="oTipo"      onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"                     ></select></td>

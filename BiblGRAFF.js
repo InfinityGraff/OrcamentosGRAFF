@@ -621,26 +621,32 @@ function RodaCanvMdds(Eu){ // Conciderar que eu as vezes pode ser a área
         else if(SobraV>Alt){for(let i=0;i<Ared(A_Alt/Lag);i++){for(let j=0;j<Ared(SobraV/Alt);j++){Invert.push(1)}}}
         return Origen.length+Invert.length
     }
-    const tr = _tr(Eu)
-    const TrID = tr.className.split('ORC_tr-')[1]
-    const Detalhe = $(`.DtlhCnvs-${TrID}`)
-    if(!tr.classList.contains('CanvMddsATV')){return}
-    const Qnt = $('.oQnt',tr)
     const Pars = e=>parseFloat(Num(e.value))*200
-    const [Alt  ,Lag  ] = [Pars($('.oAlt',tr)),Pars($('.oLrg',tr))]   
-    const [A_Lag,A_Alt] = [Pars($('.I_AreaX')),Pars($('.I_AreaY'))]
+    const TrID = Array.from(Eu.closest('.ORC_tr').classList).find(c => c.startsWith('ORC_tr-'))?.replace('ORC_tr-','') // Pega o ID independente se é no ORC ou se é no Detalhe
+    const tr   = $(`#ORC .ORC_tr-${TrID}`)
+    const Dtlhe= $(`#Div-Detalhes .ORC_tr-${TrID}`)
+
+    LOG(TrID)
+
+    if(!tr.classList.contains('CanvMddsATV')){return}
+    const Qnt  = $('.oQnt',tr)
+    const [Alt  ,Lag  ] = [Pars($('.oAlt',tr)),Pars($('.oLrg',tr))]
+    const [A_Lag,A_Alt] = [Pars($('.I_AreaX',Dtlhe)),Pars($('.I_AreaY',Dtlhe))]
     
     const C1 = !Lag||!Alt ? 0 : CalcAreaQnt(Lag,Alt,A_Lag,A_Alt)
     const C2 = !Lag||!Alt ? 0 : CalcAreaQnt(Alt,Lag,A_Lag,A_Alt)
     Qnt.value = C1===0?'':C1>C2?C1:C2
     const dad = C1>C2? [Lag,Alt] : [Alt,Lag]
     
-    GeraCanvMdds(dad[0],dad[1],A_Lag,A_Alt)
+    const Cnvs = $(`.CanvasMedidas`,Dtlhe)
+    Show(Cnvs)
+    LOG('Wisermyn',Cnvs)
+
+    GeraCanvMdds(Cnvs,dad[0],dad[1],A_Lag,A_Alt)
 }
 
-function GeraCanvMdds(Lag,Alt,A_Lag,A_Alt){
-    const Cnvs = $('#CanvasMedidas')
-
+function GeraCanvMdds(Cnvs,Lag,Alt,A_Lag,A_Alt){
+    
     function mostrarAviso(msg){
         Cnvs.width = 200; Cnvs.height = 200
         const ctx = Cnvs.getContext('2d')
@@ -659,8 +665,6 @@ function GeraCanvMdds(Lag,Alt,A_Lag,A_Alt){
     if(!Alt  || !Lag   ){mostrarAviso('Insira as Medidas do Item') ; return}
     if(!A_Lag|| !A_Alt ){mostrarAviso('Insira as Medidas da àrea') ; return}
     if(!Cabe1 && !Cabe2){mostrarAviso('Não cabe na Área'         ) ; return}
-
-
 
     if(A_Lag>A_Alt){Trc(Cnvs,'Wmax','Hmax')}else{Trc(Cnvs,'Hmax','Wmax')} // Trocar Modo de Exibição
 
@@ -684,11 +688,8 @@ function GeraCanvMdds(Lag,Alt,A_Lag,A_Alt){
     }
 }
 
-
 // Trexo relacionado a Mover os Botões das Fotinhas
 let alvo,dx,dy
 document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop})
 document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}}
 document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}}
-
-
