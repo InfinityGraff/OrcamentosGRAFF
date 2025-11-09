@@ -610,6 +610,81 @@ const criarThumbnail = (file, pixel) =>
     img.src = URL.createObjectURL(file)
 })
 
+function RodaCanvMdds(Eu){ // Conciderar que eu as vezes pode ser a área
+
+    function CalcAreaQnt(Lag,Alt,A_Lag,A_Alt){
+        const QntLag = Ared(A_Lag/Lag)  ; const QntAlt = Ared(A_Alt/Alt)
+        const SobraV = A_Lag-QntLag*Lag ; const SobraH = A_Alt-QntAlt*Alt
+        const Origen = [] ; const Invert = []
+        for(let i=0;i<QntLag;i++){for(let j=0;j<QntAlt;j++){Origen.push(1)}}
+        if(SobraH>SobraV && SobraH>Lag){for(let i=0;i<Ared(A_Lag/Alt);i++){for(let j=0;j<Ared(SobraH/Lag);j++){Invert.push(1)}}}
+        else if(SobraV>Alt){for(let i=0;i<Ared(A_Alt/Lag);i++){for(let j=0;j<Ared(SobraV/Alt);j++){Invert.push(1)}}}
+        return Origen.length+Invert.length
+    }
+    const tr = _tr(Eu)
+    const TrID = tr.className.split('ORC_tr-')[1]
+    const Detalhe = $(`.DtlhCnvs-${TrID}`)
+    if(!tr.classList.contains('CanvMddsATV')){return}
+    const Qnt = $('.oQnt',tr)
+    const Pars = e=>parseFloat(Num(e.value))*200
+    const [Alt  ,Lag  ] = [Pars($('.oAlt',tr)),Pars($('.oLrg',tr))]   
+    const [A_Lag,A_Alt] = [Pars($('.I_AreaX')),Pars($('.I_AreaY'))]
+    
+    const C1 = !Lag||!Alt ? 0 : CalcAreaQnt(Lag,Alt,A_Lag,A_Alt)
+    const C2 = !Lag||!Alt ? 0 : CalcAreaQnt(Alt,Lag,A_Lag,A_Alt)
+    Qnt.value = C1===0?'':C1>C2?C1:C2
+    const dad = C1>C2? [Lag,Alt] : [Alt,Lag]
+    
+    GeraCanvMdds(dad[0],dad[1],A_Lag,A_Alt)
+}
+
+function GeraCanvMdds(Lag,Alt,A_Lag,A_Alt){
+    const Cnvs = $('#CanvasMedidas')
+
+    function mostrarAviso(msg){
+        Cnvs.width = 200; Cnvs.height = 200
+        const ctx = Cnvs.getContext('2d')
+        ctx.clearRect(0, 0, Cnvs.width, Cnvs.height)
+        ctx.fillStyle = '#000'
+        ctx.font = '16px Arial'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillText(msg, Cnvs.width / 2, Cnvs.height / 2)
+    }
+
+    // Retornar quando tiver fora dos Limites
+    const Cabe1 = (Alt <= A_Alt && Lag <= A_Lag) // só pra conferir se cabe pelomenos 1
+    const Cabe2 = (Lag <= A_Alt && Alt <= A_Lag) // só pra conferir se cabe pelomenos 1
+    if(Alt==2|| Lag==2 ){mostrarAviso('1cm não permitido'        ) ; return}
+    if(!Alt  || !Lag   ){mostrarAviso('Insira as Medidas do Item') ; return}
+    if(!A_Lag|| !A_Alt ){mostrarAviso('Insira as Medidas da àrea') ; return}
+    if(!Cabe1 && !Cabe2){mostrarAviso('Não cabe na Área'         ) ; return}
+
+
+
+    if(A_Lag>A_Alt){Trc(Cnvs,'Wmax','Hmax')}else{Trc(Cnvs,'Hmax','Wmax')} // Trocar Modo de Exibição
+
+    const QntLag = Ared(A_Lag/Lag)  ; const QntAlt = Ared(A_Alt/Alt)
+    const SobraV = A_Lag-QntLag*Lag ; const SobraH = A_Alt-QntAlt*Alt
+    const StrX = QntLag*Lag         ; const StrY = QntAlt*Alt
+
+    Cnvs.width = A_Lag ; Cnvs.height = A_Alt
+    Cnvs.style.width = A_Lag/3 ; Cnvs.style.height = A_Alt/3
+
+    const ctx = Cnvs.getContext('2d')
+    ctx.strokeStyle = 'white'
+    ctx.fillStyle = 'purple'
+    ctx.lineWidth = 1
+
+    for(let i=0;i<QntLag;i++){for(let j=0;j<QntAlt;j++){const[x,y]=[i*Lag,j*Alt] ; ctx.fillRect(x,y,Lag,Alt) ; ctx.strokeRect(x,y,Lag,Alt)}}
+    if(SobraH>SobraV && SobraH>Lag){for(let i=0;i<Ared(A_Lag/Alt);i++){for(let j=0;j<Ared(SobraH/Lag);j++){const[Xv,Yv]=[i*Alt,j*Lag]
+        ctx.fillRect(Xv,Yv+StrY,Alt,Lag);ctx.strokeRect(Xv,Yv+StrY,Alt,Lag)}}
+    }else if(SobraV>Alt){for(let i=0;i<Ared(A_Alt/Lag);i++){for(let j=0;j<Ared(SobraV/Alt);j++){const[Xv,Yv]=[j*Alt,i*Lag]
+        ctx.fillRect(Xv+StrX,Yv,Alt,Lag);ctx.strokeRect(Xv+StrX,Yv,Alt,Lag)}}
+    }
+}
+
+
 // Trexo relacionado a Mover os Botões das Fotinhas
 let alvo,dx,dy
 document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop})
