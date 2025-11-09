@@ -1,4 +1,3 @@
- 
 function CalcAreaQnt(Lag,Alt,A_Lag,A_Alt){
     const QntLag = Ared(A_Lag/Lag)
     const QntAlt = Ared(A_Alt/Alt)

@@ -1495,7 +1495,7 @@
     </div>
 </div>
 
-<body class="Ct" onclick="NoneBndj()">
+<body class="Cl" onclick="NoneBndj()">
 
     <style> /*CSS do Header*/
         /*Fixos*/
@@ -1503,14 +1503,16 @@
             header > *{transition: all ease-in-out 0.3s}
             #LgNome      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
             #LgNome:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
-            #PAGES{flex:1 ; height:100vh ; overflow-y:scroll}
+            #PAGES{flex:1 ; height:100% ; overflow-y:hidden}
             .ConfigOrc{transition: all ease-in-out 0.3s}
             .Body1 .ConfigOrc{height: 0px}
             .Body2 .ConfigOrc{height: 40px}
+            .Body1 .Content{height:92vh;}
+            .Body2 .Content{height:100vh;}
         /*Body1*/
             .BBody1{height:8vh  ; width:100vw ; position:sticky; top:0}
             .Body2 .BBody1{height: 0vh; pointer-events: none;}.Body2 .BBody1 > *{opacity: 0}
-            .Body1 #PAGES > div{height:100% ; overflow-y:scroll} /*Aqui são as Páginas de Fato*/
+            .Body1 #PAGES > div{height:100%} /*Aqui são as Páginas de Fato*/
                 .BBody1 #Title      {margin-left:15px}                @media(max-width:500px){.BBody1 #Title    {margin-left:3px}}
                 .BBody1 #Title #Logo{margin:5px; height:30px}         
                 .BBody1 #Title h1   {font-size:3vw}                   @media(max-width:500px){.BBody1 #Title h1 {display:none}}   
@@ -1522,7 +1524,7 @@
                 .Body1 #LgNome      {display:none}
                 .Body1 #LgMORE      {display:none}
         /*Body2*/
-            .BBody2{height:100vh ; width:18% ; flex-direction: column}
+            .BBody2{height:100%;width:18% ; flex-direction: column}
             .Body1 .BBody2{width:0% ; pointer-events: none;}.Body1 .BBody2 > *{opacity: 0}
             .BBody2.recolhe{width:5% } @media(max-width:500px){.BBody2.recolhe{width:50% }}
             .BBody2.recolhe #Logo   {display: none}
@@ -1654,7 +1656,7 @@
         </div>
     </header>
 
-    <div class="Ct w100">
+    <div class="Ct w100 Content"> <!--q é descontando a altura do Head-->
         <header class="BBody2 Bt"> <!--Body2-->
             <div id="Title" class="Ct"> <!--Titulo-->
                 <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
@@ -1827,7 +1829,8 @@
 
             <style>
                 /*Coisas que tem aver com a Página e não com a Tabela*/
-                .Wrapper {overflow-X: hidden; width: 100%;position: relative}
+                .Wrapper {overflow-X: hidden; overflow-y: scroll; width: 100%;position: relative}
+                .inherit {background: inherit;} /*Copiar a cor do Pai*/
                 .Slide_Table {display: flex;transition: all 0.4s ease}
                 .Slide_Table > div > div{transition: all 0.4s ease-in-out}
                 .Slide_Table > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box}
@@ -1841,10 +1844,10 @@
                 <div onload="Tm_Switch(this,['Pedidos','Serviços','Pagamento'],`slideTo(x,'PDDS')`,'PPDS')"></div>
 
                 <div class="Wrapper">
-                    <div id="Slide_PDDS" class="Slide_Table" style="height:650px">
+                    <div id="Slide_PDDS" class="Slide_Table">
                         <div class="Cl">
                             <div class="Confy_PDDS">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
                                     <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                                     <div id="COnf_PDDS"    class="Configs Ct">
@@ -1857,12 +1860,12 @@
                                     <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
                                 </div>  
                                 <table id="SKLT_PDDS" class="hMin Tbla w90">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px;"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                                     <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
                                     <tfoot class="Stky2"><tr></tr></tfoot>
                                 </table>
                                 <table id="H_PDDS" class="hMin Tbla">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PDDS),'PDDS'))"></tr></tfoot>
                                 </table>
@@ -1871,14 +1874,14 @@
 
                         <div class="Cl">
                             <div class="Confy_SERV">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('SERV','<')">Nova Linha +</button>
                                     <div id="PagPesq_SERV" class="PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
                                     <div id="COnf_SERV" class="Configs Ct"></div>
                                     <button onclick="F_Clen('SERV')">Limpar</button>
                                 </div>
                                 <table id="H_SERV" class="hMin">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.SERV),'SERV'))"></tr></tfoot>
                                 </table>
@@ -1887,14 +1890,14 @@
 
                         <div class="Cl">
                             <div class="Confy_PGMT">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddRowBdj('PGMT')">Nova Linha +</button>
                                     <div id="PagPesq_PGMT" class="PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
                                     <div id="COnf_PGMT" class="Configs Ct"></div>
                                     <button onclick="F_Clen('PGMT')">Limpar</button>
                                 </div>
                                 <table id="H_PGMT" class="hMin">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PGMT),'PGMT'))"></tr></tfoot>
                                 </table>
@@ -1905,14 +1908,14 @@
             </div>
 
             <div id="Pag_PGMT" class="TBLAA none Cl">
-                <div class="Ct Bt">
+                <div class="Bt Stky copybody" style="height: 40px;">
                     <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                     <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
                     <div id="COnf_MPAG" class="Configs Ct"></div>
                     <button onclick="F_Clen('MPAG')">Limpar</button>
                 </div>
                 <table id="H_MPAG" class="w100 hMin">
-                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
+                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -1925,13 +1928,13 @@
                     <div id="Slide_GRAD" class="Slide_Table">
                         <div class="Cl">
                             <div class="Confy_GRAD">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
                                     <div id="COnf_GRAD" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
                                 <table id="H_GRAD" class="hMin">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
                                 </table>
@@ -1940,14 +1943,14 @@
 
                         <div class="Cl">
                             <div class="Confy_OOSS">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('OOSS','<')">Nova Linha +</button>
                                     <div id="COnf_OOSS" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
 
                                 <table id="H_OOSS" class="hMin">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OOSS),'OOSS'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OOSS),'OOSS'))"></tr></tfoot>
                                 </table>
@@ -1956,13 +1959,13 @@
 
                         <div class="Cl">
                             <div class="Confy_UBER">
-                                <div class="Bt">
+                                <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('UBER','<')">Nova Linha +</button>
                                     <div id="COnf_UBER" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
                                 <table id="H_UBER" class="hMin">
-                                    <thead class="Stky" style="z-index: 510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
                                 </table>
@@ -1973,7 +1976,7 @@
             </div>
 
             <div id="Pag_CLNT" class="TBLAA none Cl">
-                <div class="DivConf Ct Bt Stky">
+                <div class="Bt Stky copybody" style="height: 40px;">
                     <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
                     <h1>Tabela de Pagamentos</h1>
                     <button onclick="MesclarContato()">Mesclar</button>
@@ -1981,7 +1984,7 @@
                     <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
                 </div>
                 <table id="H_CLNT" class="hMin">
-                    <thead class="Stky" style="z-index:510"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
+                    <thead class="Stky" style="z-index:510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -2309,12 +2312,12 @@
 
             <div id="Pag_ORC" class="none Cl">
 
-                <div class="ConfigOrc w100 Ct">
-                    <div id="PagPesq_ORC" class="PagPEsq" onload="Inn(this,Load_Pesq('ORC'))"></div>
-                </div>
+                <div class="ConfigOrc w100 Ct"><div id="PagPesq_ORC" class="PagPEsq" onload="Inn(this,Load_Pesq('ORC'))"></div></div>
 
                 <div id="DivIMGProd" class="Bt w90"> <!--IMAGENS dos PRODUTOS-->
                     <style>
+                        .CSS1 .Boxy {background:#ffffff0a}
+                        .CSS3 .Boxy {background:linear-gradient(to top,#ffffff5d,#ffffff09);box-shadow:inset 0 0 8px #fdfdfd6e}
                         #Div-Prod              {overflow-x:scroll; flex-wrap:nowrap}
                         #Div-Prod, #Div-Detalhes {transition: width 0.2s ease-in-out ; height:360px ; margin-bottom:12px}
                         #DivIMGProd     #Div-Prod {width: 100%}
@@ -2324,6 +2327,7 @@
                         #IconDtlh                     {top: 0px; left: 0px;}
                         #Div-Detalhes h3              {height: 10% ; font-size: 20px;}
                         #DetalheFotinha               {height: 90%}
+                        .DivCanvMdd{background: #ffffff4f;height: 80%;width: 100%;}
 
                         #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
                         #Div-Prod span         {margin-left:10px; margin-bottom:10px}
@@ -2362,10 +2366,11 @@
                         .FotinhAA .Fotnh         {background:#00df00f8; width:18%; height:8%}
                         .FotinhAA .Fotnh2        {background:#00df0000; width:18%; height:8%}
                         .FotinhAA .Fotnh2:hover  {background:#f586ff63; border: 2px solid #ff00b3;}
+
+                        .BtnGrid{width: 20px; height: 20px; bottom: 10px; right: 16px; fill: #4d004d93}
                     </style>
                     <div id="Div-Prod" class="Start"></div>
                     <script>
-
                         function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
                             $$('div',Pai(e)).forEach((B,x,l)=>{Rmv(B,'Atv')
                                 if(x < IdxDe(e)){Add(B,'Pre');Rmv(B,'Pos') ; B.style.zIndex = (l.length+x)-IdxDe(e)+10}
@@ -2410,11 +2415,11 @@
                                             ${Prod[e].Calc=='QNT' && V !== "Todos" && e=='Camisa' ? `<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr['1'])}</div>` : ''}
                                             <div class="rgx none">${(HotKy[e] || []).map(e => e).join(',')}</div>
                                             <div class="RsutProduto w100 Ev">${/*OBJ.Valr.map((e,idx)=>{return tmplt_VlrTtl(OBJ.Valor[idx],e)}).join('')*/''}</div>
+                                            <a class="Abslt BtnGrid">${SVG.List}</a>
                                             <img class="Abslt tec2 HOV" onclick="AddCarrinho('${e}','${V}')" src="./SVG/Adicionar.svg">
                                             </div>`
                                         }).join('')}
                                     </div>
-
                                 </div>`
                             }).join(''))
                         }
@@ -2476,12 +2481,19 @@
                         <div id="IconDtlh" class="Abslt PT" onclick="TOV($('#DivIMGProd'))">⭐</div>
                         <div id="DetalheFotinha"   class="canvi Ct"></div>
                         <div id="NewCanvas"        class="canvi Ct Cnvs"></div>
-                        <canvas id="CanvasMedidas" class="canvi Cnvs"></canvas>
+                        <div class="DivCanvMdd Rd Ct Boxy">
+                            <canvas id="CanvasMedidas" class="canvi Cnvs"></canvas>
+                            <div class="Ct w100">    
+                                <div id="AreaX" class="Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="Mask.Num(this);RodaCanvMdds()"></div>
+                                <div id="AreaY" class="Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="Mask.Num(this);RodaCanvMdds()"></div>
+                            </div>
+                            <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
+                        </div>
                         <div id="ResutArea"></div>
                     </div>
                 </div>
                 
-                <div id="NovoForm" class="Cl w90 Rltv Rd">
+                <div id="NovoForm" class="Cl w90 Rltv Rd Boxy">
                     
                     <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
                         <div class="PT HOV O_All" onclick="ClrAll()">🧹</div><script></script>
@@ -2535,8 +2547,7 @@
                     </script>
 
                     <style>  /*CSS da Tabela de Orçamento*/
-                        :is(.CSS1,.CSS2) #NovoForm{padding:20px 10px;background:#ffffff0a}
-                        .CSS3 #NovoForm{padding:20px 10px;background:linear-gradient(to top,#ffffff5d,#ffffff09);box-shadow:inset 0 0 8px #fdfdfd6e;margin-bottom: 5px;}
+                        #NovoForm{padding:20px 10px;margin-bottom: 5px;}
                         #ORC input,#ORC select{width:100% !important ; margin:0}
                         #ORC   .RS    {font-size:9px  ; margin-right: 3px}
                         #ORC   .RS + a{font-size:15px ; font-weight: bold;}
@@ -2697,10 +2708,8 @@
                         <div class="ORC_CRCT_FINAL Final none"></div>
                         <div class="ORC_RSUT_FINAL Final"     ></div>
                         <script>
-                            function ReloadTotal(){
-                                const S1 = SOMA($$('.ORC_CUST_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_CUST_FINAL'),Tm_RS(S1)) ; Nm($('.ORC_CUST_FINAL'),S1)
-                                const S2 = SOMA($$('.ORC_CRCT_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_CRCT_FINAL'),Tm_RS(S2)) ; Nm($('.ORC_CRCT_FINAL'),S2)
-                                const S3 = SOMA($$('.ORC_RSUT_SbTt').map(e=>Nm(e))) ; Inn($('.ORC_RSUT_FINAL'),Tm_RS(S3)) ; Nm($('.ORC_RSUT_FINAL'),S3)
+                            function ReloadTotal() {
+                                ['CUST','CRCT','RSUT'].forEach(E=>{const T = SOMA($$(`.ORC_${E}_SbTt`).map(e=>Nm(e))) ; const S = $(`.ORC_${E}_FINAL`) ; Inn(S,Tm_RS(T)) ; Nm(S,T)})
                             }
                         </script>
                     </div>
@@ -2745,18 +2754,9 @@
                     <button onclick="VerNota('ORC')">Ver Nota</button>
                 </div>
 
-                <div id="G_Cores" class="Ct none"> <!--AJEITAR-->
-                    <!-- Ajeitar  
-                        isso ficará disponível apenas para coisas com cores sólidas como Recorte e Router
-                        deverá ser transformado em um Menu suspenso, uma Bandeija, pra n atrapalhar
-                        pois ele vai ficar dentro da tabela
-                        essa tabela terá uma Coluna Extra, [Serv, Tipo, Larg, Alt, Qnt, Extra]
-                        esse extra quando for algo q tenha cor, será a Cor o extra
-                        se for Placa, Plotagem o extra será comprimento
-                    -->
-                    <style>
 
-                    </style>
+
+                <div id="G_Cores" class="Ct"> <!--AJEITAR-->
                     <script>  
                         const Load_Cor =()=>StockjVinil.map(e=>`<p class="RD PT" style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></p>`).join('')
                         const mudarCor =cor=>Bkg($('#I_Cor'),cor)
@@ -2766,13 +2766,7 @@
                     <a class="Ct none" onload="Inn(this,Load_Cor())"></a>
                 </div>
 
-                <div class="Cl">
-                    <div class="Ct w100">    
-                        <div id="AreaX" class="Cl"><label for="I_AreaX">Largura Area</label><input id="I_AreaX" placeholder="Largura Area" oninput="Mask.Num(this);RodaCanvMdds()"></div>
-                        <div id="AreaY" class="Cl"><label for="I_AreaY">Altura Area </label><input id="I_AreaY" placeholder="Altura Area"  oninput="Mask.Num(this);RodaCanvMdds()"></div>
-                    </div>
-                    <div id="LoadCanvaaas">Lugar do Botão ShowCanvas</div>
-                    
+                <div class="Cl">                   
                     <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div> <!--Comprimento n precisa ser Value 0 aqui, se for Vazio então da Zero no Gera3D-->
                     <!--Não preciso de um Input aqui pra receber 0 ou 1, isso pode fica diretamente na class do Button q deveria ser um CheckBox e Xuva-->
                     <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
@@ -2788,13 +2782,9 @@
 
                 <script>// Comentários Orçamento
                     // a soma de metros de produtos do mesmo tipo tem q resultar na soma da Diminuição da Crescente
-                    // o Valor Crescente deve ficar verde, se ele for igual ao valor Final
-                    // Criar meu Próprio Select (igual pesquisa de Cliente na Tabela) Mostrar o Valor por M2 ao Lado do Option
-                    // imitar Bureal no Futuro (deixando todas bandeijas Aberta) (com meu Próprio Select eu Talvez Consiga)
-                    // Permitir Drag nas Linhas
-
+                    // no MySelect Mostrar o Valor por M2 ao Lado do Option
+                    // imitar Bureal
                     // quero criar meu próprio Teclado Numerico, com Opções de cm, m, e mm (Oculpando espaço nessesário na Tela, sem mover o Scroll)
-                    // como impedir q a página dê zoom, pelo celular
                     // Tipos de Aplicação: Plana, Irregular, Alto e Baixo
                 </script>
             </div>
@@ -3389,5 +3379,6 @@
     // 💡 Pesquisar dentro da bandeija de Serv, pra Localizar o Pedido
     // Adicionar o DROP, e no Drop CnltrV de imagem,
     // adicionar o novo ALERT
+    // como impedir q a página dê zoom, pelo celular
 </script>
 </html>

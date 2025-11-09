@@ -22,6 +22,19 @@
       body.Lite.CSS3{background: var(--CSS3btnLt);color:#3a0027}
       body.Dark.CSS3{background: var(--CSS3btnDk);color:#ffffff}
 
+    .copybody {
+      background: var(--CSS1Fnd);
+      background-repeat: no-repeat;
+      background-size: 100vw 100vh;
+      background-position: 0 -106px; /* "recorte" do degradê */
+    }
+    .CSS3 .copybody {
+      background: var(--CSS3btnLt);
+      background-repeat: no-repeat;
+      background-size: 100vw 100vh;
+      background-position: 0 -106px; /* "recorte" do degradê */
+    }
+
     /*Button, Input e Select*/
       input,select,button,.button,.Interup{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px;}
       :is(button,.button,input,select)>:is(img,svg){height: 18px;fill: white}
@@ -159,17 +172,17 @@ input.Error:hover{background:red}
 
 
 /*Basicamente são CSS de cores dos Suggs e Links e Bandeijas*/
-    .CSS1 .BndjSUG,.CSS1,.CSS1 .BndjTBL
+    .CSS1 .BndjSUG,.CSS1 .BndjTBL
                         {background:#bb0092; border-radius:10px}
     .CSS1 .BNdj         {border:3px #bb0092 solid}
     .CSS1 .BNdj > a     {      fill:#bb0092}
     .CSS1 .BjConf       {background:#bb0092;}
-    .CSS2 .BndjSUG,.CSS2,.CSS2 .BndjTBL
+    .CSS2 .BndjSUG,.CSS2 .BndjTBL
                         {background:#ee6e19; border-radius:10px}
     .CSS2 .BNdj         {border:3px #ee6e19 solid}
     .CSS2 .BNdj > a     {      fill:#ee6e19}
     .CSS2 .BjConf       {background:#ee6e19;}
-    .CSS3 .BndjSUG,.CSS3,.CSS3 .BndjTBL
+    .CSS3 .BndjSUG,.CSS3 .BndjTBL
                         {background:#ce3783e1; border-radius:24px ; backdrop-filter:blur(6px) ; box-shadow:inset 0 0 4px #ce3782, 3px 3px 8px #3b0529b6 }
     .CSS3 .BNdj         {border:2px #f05da6 solid}
     .CSS3 .BNdj > a     {      fill:#ce3782}
