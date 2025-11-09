@@ -592,7 +592,6 @@
                 Mdal:(e,R,A)=>``
             }
             
-
             function Tm_Bndj(Typ,col,Arr,r){
                 const Ordem = ObjKey(BS[col.toUpperCase()])
                 const Find  = col==='Clnt' ? [JJ[AA(col)][`${Arr}`]] : Arr||[]
@@ -616,7 +615,6 @@
                                 ${col=='Clnt'?`<div class="DivTrcCLNT none">
                                     ${/* Aqui Chamar, Tm_Tm['Link'](??,R,'')  é importante q isso esteja aqui dentro pra evitar problemas Futuros */''}
                                     <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this)" onkeydown="KeyEntr(()=>TestRow(this))"><span class="Sugg Cl"></span>
-                                    
                                     </div>`:''}
                             </div>
                         </div>`
@@ -1150,7 +1148,6 @@
                 Re_Comp(Typ,'All')
                 Re_Soma(Typ,'All')
             })
-            
         }
 
         function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
@@ -1354,18 +1351,16 @@
         <script> // LINK
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
-
-
             function LinkSug(Typ,inpt,MySelect,Lista){
                 const list = $('.Sugg',Pai(inpt))
                 const Val   = inpt.value
-                const regex = new RegExp(`(${aa(Val)})`, 'gi') // ignora maiúsculas
-                const Griff =e=>aa(`${e}`).replace(regex,'<b style="background:#8f007c; color:white">$1</b>')
+                const regex = new RegExp(`(${aa(Val)})`,'gi') // ignora maiúsculas
+                const Griff =e=>`${e}`.replace(regex,'<b style="background:#8f007c; color:white">$1</b>')
 
                 const TipoFilt = {
-                    Proc:(e,Val)=>aa(e).includes(aa(Val)),
-                    Rest:(e,Val)=>aa(e).includes(aa(Val)), // Exibir só os que não estão Linkados
-                    List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),
+                    Proc:(e,Val)=>ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))),                                     // serve pra Cliente exibir procurando na Tora!
+                    Rest:(e,Val)=>aa(Val)=="" ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))) && e.Link=='-', // Exibir os que Resta Linkar
+                    List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
                 }
 
                 const Tm_Exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
@@ -1376,17 +1371,16 @@
                 }
 
                 if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
-                    list.innerHTML = Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this);None(Pai(this))"><p>${aa(e).replace(regex,Grif)}</p></a>`).join('')
+                    Inn(list,Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)"><p>${aa(e).replace(regex,Grif)}</p></a>`).join(''))
                 }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
                     Show(list)
                     if (inpt.value){
-                        const Coluna = Typ == 'MPAG' ? 'Clnt' : Aa(Typ) // encontrar a coluna que eu quero pesquisar e Exibir
-                        LOG(Typ)
-                        list.innerHTML = J[Typ].filter(e=>aa(e[Coluna]).includes(aa(Val)) || String(e['Id']).includes(Val)) // Adicionar outras Formas de Filtro (oq ta Faltando)
-                        .map(e=>{return `<a class="PT w100 Ct" onclick="LinkLink(this,'${e[Primary[Typ]]}');None(Pai(this))">${Tm_Exib[Typ](e)}</a>`}).join('')
+                        const Tipo  = AA(Typ) == 'MPAG' ? 'Rest' : 'Proc' // encontrar a coluna que eu quero pesquisar e Exibir
+                        const Duplo = AA(Typ) == 'MPAG' ? tr_ID(_tr(inpt)) : ''    // Quando é Duplo ele atualiza ambos os Links de lá pra cá e de cá pra lá
+                        const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${Duplo}') ; None(Pai(this))`
+                        list.innerHTML = J[Typ].filter(e=>TipoFilt[Tipo](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
                     }else{None(list);Inn(list,'')}
                 }  
-                // Adicionar a Opção de Mostrar todos, com um determinado filtro q posso escolher por exeplo: os que Faltam!
                 // Adicionar Opção de Adicionar uma Nova Linha quando for pra LinkTABELA
                 // Opção pra Selecionar mais de 1
                 // Encontrar GRAD Dentro de SERV (Visse Verse)
@@ -2535,7 +2529,7 @@
                             // Antes de Tirar daqui fazer ele transitar com as SETAS
                             }
                             // As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
-                            function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu)))}
+                            function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu))) ; None(Pai(Eu))}
                             function Rolada(Eu){Show($('.Sugg',Pai(Eu)))}
                             
                     </script>
@@ -3103,7 +3097,7 @@
                 /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
             }
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{
-                LOG(`${R.Typ}-${R.Row}-${R.Col}`,td)
+                //LOG(`${R.Typ}-${R.Row}-${R.Col}`,td)
                 if(R.Col=='Clnt' && R.Typ=='PDDS' && isBdj(td)){return} // Condição especídica só pra escapar um erro q acontece ao trocar cliente
                 if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
                     if(Auto=='Auto'){DarVAL_Tm(td,Nval)}else{DarVAL(td,Nval)}
@@ -3213,12 +3207,14 @@
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
-        function LinkLink(Eu,val){              // ⭐⭐⭐⭐_  (Faz o Básico)
+        function LinkLink(Eu,val,Duplo){              // ⭐⭐⭐⭐_  (Faz o Básico)
+            
             const td = _td(Eu)
             const R  = D_R(td)
             const get = getClssIN(_td(Eu),'Rastr-')
+            if(Duplo){LOG(Duplo,td,R,get)}
             EditCell(Eu,val)
-            if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click', function(){ShowBndj(this)}) }
+            if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
         }
          
         function MesclarContato(){           // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
@@ -3391,12 +3387,7 @@
     // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
     // na Soma lá em baixo dar o . quando passar de mil
     // 💡 Pesquisar dentro da bandeija de Serv, pra Localizar o Pedido
-
-
     // Adicionar o DROP, e no Drop CnltrV de imagem,
     // adicionar o novo ALERT
-
-    
-
 </script>
 </html>
