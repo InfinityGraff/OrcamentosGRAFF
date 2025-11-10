@@ -1355,7 +1355,21 @@
         <script> // LINK
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
-            function LinkSug(Typ,inpt,MySelect,Lista){
+            const GetycCores = {
+                'Preto'       : '#000000',
+                'Branco'      : '#FFFFFF',
+                'Prata'       : '#C0C0C0',
+                'Vermelho'    : '#FF0000',
+                'Azul'        : '#0000FF',
+                'Verde'       : '#008000',
+                'Amarelo'     : '#FFFF00',
+                'Laranja'     : '#FFA500',
+                'Rosa'        : '#FFC0CB',
+                'Roxo'        : '#800080',
+                'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
+            }
+
+            function LinkSug(Typ,inpt,MySelect,Lista,servv){
                 const list = $('.Sugg',Pai(inpt))
                 const Val   = inpt.value
                 const regex = new RegExp(`(${aa(Val)})`,'gi') // ignora maiúsculas
@@ -1363,8 +1377,8 @@
 
                 const TipoFilt = {
                     Proc:(e,Val)=>ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))),                                     // serve pra Cliente exibir procurando na Tora!
-                    Rest:(e,Val)=>aa(Val)=="" ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))) && e.Link=='-', // Exibir os que Resta Linkar
-                    List:(e,Val)=>aa(Val)=="" ? true : aa(e).includes(aa(Val)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
+                    Rest:(e,Val)=>Val=='' ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))) && e.Link=='-', // Exibir os que Resta Linkar
+                    List:(e,Val)=>Val=='' ? true : aa(e).includes(aa(Val)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
                 }
 
                 const Tm_Exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
@@ -1374,8 +1388,14 @@
                     ,CLNT:e=> Griff(`<p>${e.Id} - ${e.Clnt}</p>`)
                 }
 
+                const Tm_ExibList =(Servy,e)=> Servy=='Recorte' ? `<p class="RD" style="background:${GetycCores[e]}">${Griff(e)}</p>` : `<p>${Griff(e)}</p>`
+
                 if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
-                    Inn(list,Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)"><p>${Griff(e)}</p></a>`).join(''))
+                    if(Typ=='Pesq'){
+                        $$('a',list).forEach(a=>TipoFilt['List'](a.innerText,Val) ? Rmv_N(a) : Add_N(a))
+                    }else{
+                        Inn(list,Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)">${Tm_ExibList(servv,e)}</a>`).join(''))
+                    }
                 }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
                     Show(list)
                     if (inpt.value){
@@ -2560,8 +2580,11 @@
                         
                             const Tm_Select=(Eu,e,lista)=>{
                                 Eu.classList.add('Rltv','MySelect','Rltv','w100')
-                                Inn(Eu,`<input class="Stky" placeholder="Clientes" onfocus="Rolada(this);LinkSug('ORC',this,'MySelect','${lista}')" oninput="LinkSug('ORC',this,'MySelect','${lista}')"><span class="Abslt Sugg Cl"></span>`)
+                                const func = e=='Serv' ? `LinkSug('ORC',this,'MySelect','${lista}')` : `LinkSug('Pesq',this,'MySelect','${lista}')`
+                                Inn(Eu,`<input class="Stky" placeholder="${D_Brev[e]}" onfocus="Rolada(this);${func}" oninput="${func}"><span class="Abslt Sugg Cl" style="z-index:10"></span>`)
                             // Antes de Tirar daqui fazer ele transitar com as SETAS
+                            // em LinkSug() passar de quem é o select na qual o seelct atual é dependente
+                            // dessa forma isso funcionará em outras situações
                             }
                             // As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
                             function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu))) ; None(Pai(Eu))}
@@ -2606,9 +2629,9 @@
                         <thead><tr onload="Inn(this,Tm_ORC_Th(['','Serv','Tipo','Lrg','Alt','Qnt','Aplic','Und','SbTt','','']))"></tr></thead>
                         <tbody>
                             <tr class="ORC_tr ORC_tr-1" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
-                                <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)"></div></td><!--➕-->
-                                <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'-',['Serviços',...AllProd])">       </div></td>
-                                <td                         ><select class="oTipo"      onchange="TIPOChang(this)" onload="Inn(this,Tm_Opt(['Tipo']))"                     ></select></td>
+                                <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)" ></div></td><!--➕-->
+                                <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'Serv',['Serviços',...AllProd])"    ></div></td>
+                                <td                         ><div    class="oTipo"       oninput="TIPOChang(this)" onload="Tm_Select(this,'Tipo',['Tipo'])"                   ></div></td>
                                 <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura" oninput="Mask.Num(this);RodaCanvMdds(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"  oninput="Mask.Num(this);RodaCanvMdds(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%" class="Rltv"><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Qnt"    > <div class="BtnoQnt Abslt" onclick="AtvMyMdds(this)" onload="Inn(this,SVVG.Gemn)"></div></td>
@@ -2641,7 +2664,8 @@
                         }
 
                         const cP=(Stg,e)=>VAAL($(Stg,_tr(e)))
-                        function SERVChang(e){if(!Prod[VAAL(e)]){return} ; const Lista = ObjKey(Prod[VAAL(e)].Variantes) ; Inn($('.oTipo',_tr(e)),Tm_Opt(['Tipo',...Lista])) ; TipoCalc(e)}
+                        function SERVChang(e){if(!Prod[VAAL(e)]){return} ; 
+                                              const Lista = ObjKey(Prod[VAAL(e)].Variantes) ; LinkSug('ORC',$('.oTipo input',_tr(e)),'MySelect',Lista.join(','),VAAL(e)) ; TipoCalc(e)}
                         function TIPOChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[0]))]))}
                         function CBMTChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[1]))]))}
                         function GRAMChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[2])[0].map(e=>e[0]))]))}
@@ -2769,19 +2793,7 @@
                     <button onclick="VerNota('ORC')">Ver Nota</button>
                 </div>
 
-
-
-                <div id="G_Cores" class="Ct"> <!--AJEITAR-->
-                    <script>  
-                        const Load_Cor =()=>StockjVinil.map(e=>`<p class="RD PT" style="background:${e}" onclick="mudarCor('${e}');VariasCor(this,'${e}')"></p>`).join('')
-                        const mudarCor =cor=>Bkg($('#I_Cor'),cor)
-                        const VariasCor=Cor=>{Cor.innerHTML = Cor.innerHTML==='1'?'':'1';Tog(Cor,'Atv')}
-                    </script>
-                    <div id="I_Cor" class="Ct Rd PT" onclick="Tog_N(Sib('a'))">Escolha uma Cor</div>
-                    <a class="Ct none" onload="Inn(this,Load_Cor())"></a>
-                </div>
-
-                <div class="Cl">                   
+                <div class="Cl none">                   
                     <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div> <!--Comprimento n precisa ser Value 0 aqui, se for Vazio então da Zero no Gera3D-->
                     <!--Não preciso de um Input aqui pra receber 0 ou 1, isso pode fica diretamente na class do Button q deveria ser um CheckBox e Xuva-->
                     <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
