@@ -5,7 +5,7 @@
   <title>Operador - Placar</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"             ></script>
 
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script> // Base de Dados
@@ -61,24 +61,20 @@
 </style>
 
 <script> // Biblioteca
-  function PrepDrop(Eu,nome,SB){
+  let VarDropImg = {} // uma Váriavel Global q talvez possa ficar dentro do PreScript Destinada a Receber os Files pra serem usados Depois
+  function PrepDrop(Eu,nome,Call=null){
     Inn(Eu,'<a>Adicionar Imagem</a><input type="file" accept="image/*" class="none">')
     const f=$('input',Eu),d=$('a',Eu)
-
-    const Enviar = async F=>{
-      if (!F) return
+    const Import=F=>{if (!F) return
       const ext  = F.name.split('.').pop()
       const Nome = `${nome}.${ext}`
-      Inn(d, `<img src="${URL.createObjectURL(F)}?v=${Date.now()}"`)
-      await UPPImg(F,`${Nome}`)
-      Inn(d,`<img src="${BASE_URL}/${Nome}?v=${Date.now()}" name="${Nome}">`)
+      Inn(d,`<img Name="${Nome}" src="${URL.createObjectURL(F)}">`)
+      VarDropImg[Nome]=F
     }
-    if(SB){Inn(d,`<img src="${BASE_URL}/${nome}?v=${Date.now()}" name="${nome}">`);return}// Se tiver vindo do SupaBase
-
-    Eu.onclick   =()=> f.click(),f.onchange=e=>Enviar(e.target.files[0]),
+    Eu.onclick   =()=> f.click(),f.onchange=e=>Import(e.target.files[0]),
     Eu.ondragover =e=>(Prvn2(e),Add(Eu,'hover')),
     Eu.ondragleave=_=> Rmv(Eu,'hover'),
-    Eu.ondrop     =e=>(Prvn2(e),Rmv(Eu,'hover'),Enviar(e.dataTransfer.files[0]))
+    Eu.ondrop     =e=>(Prvn2(e),Rmv(Eu,'hover'),Import(e.dataTransfer.files[0]))
   }
 </script>
 
@@ -166,12 +162,11 @@
     Inn(Eu,Typ.map(b=>`<button class="C_${b.t} Hov" onclick="AddEvento('${AB}','${b.t}',this)">${b.l}</button>`).join(''))
   }
 
-  const Exibir=e=>{
-    //Veio do SUPABASE
+  const Exibir=e=>{ //Veio do SUPABASE
       $('.T_A .Nome').value = e.Tim_A
       $('.T_B .Nome').value = e.Tim_B
-      PrepDrop($('.T_A .Drop'),e.Img_A,true) // Inseir Imagem
-      PrepDrop($('.T_B .Drop'),e.Img_B,true) // Inseir Imagem
+      Inn($('.T_A .Drop a'),`<img src="${BASE_URL}/${e.Img_A}?v=${Date.now()}" name="${e.Img_A}">`) // Inseir Imagem
+      Inn($('.T_B .Drop a'),`<img src="${BASE_URL}/${e.Img_B}?v=${Date.now()}" name="${e.Img_B}">`) // Inseir Imagem
   }
 
   async function UPPImg(file,nome){ // Supabase
@@ -192,6 +187,10 @@
       Img_A:  Nm($('.T_A img')),
       Img_B:  Nm($('.T_B img')),
     }
+    const NomeA = Nm($('.T_A .Drop img')) ; const F_A = VarDropImg[Nm($('.T_A .Drop img'))] // Pega o Arquivo Files
+    const NomeB = Nm($('.T_B .Drop img')) ; const F_B = VarDropImg[Nm($('.T_B .Drop img'))] // Pega o Arquivo Files
+    UPPImg(F_A,NomeA) ; UPPImg(F_B,NomeB)
+    LOG('Foi Upado',NomeA,NomeB)
     const {error}=await supabase.from('placar').update(obj).eq('id',1)
     if(error){console.error(error)}
     else{MyAlert('✅ Jogo Configurado!') ; ATV($$('.botoes,.DivStars,.DivTime')) ; Inn($('#Config button'),'Reconfigurar Jogo 🔄')}
@@ -221,8 +220,10 @@
 <script>
   // usuario com Senha
   // Botão de Iniciar Começa a Contagem
+  // Corrigir a Questão das Imagens
   // Botão de Pausa exibe na tela que está em um Intervalo () // Talvez tenha Pausa para Subistituição
   // Botão de Limpar(Dados do SB) é Fácil
   // Correção de Eventos (será um X no Histórico)
+  // Deixar o Link da Tela dentro da Página do Operador
 </script>
 </html>
