@@ -204,7 +204,7 @@ input.Error:hover{background:red}
     animation: shimmer 1.2s infinite linear
   }
 
-
+.MyAlert{background:#28a745;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 4px 12px #0000004d}
 
 
 .Fixed{position: fixed}
