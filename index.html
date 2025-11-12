@@ -10,6 +10,7 @@
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+        <script src="./PrescriptTeste.js"></script>
     <!--
         <script src="../MyBiblioteca/PreScript.js"      ></script>
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
@@ -38,11 +39,11 @@
     }
 
     const USER = { // isso vai FICAR no SupaBase
-        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:951,OUT:8000 }, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.png' ,cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:1325,OUT:8000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
         '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.png'  ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1325,OUT:8000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:8000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
-        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""},
-        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:1220,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""}
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.png' ,cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1325,OUT:8000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1325,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""},
+        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:1325,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""}
     }
 
     const Cgo  = { // Cargo
@@ -373,7 +374,7 @@
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:''}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
-    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',G:'Sugg',K:'Link'}
+    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link'}
 
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
@@ -384,9 +385,23 @@
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
-        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['G',''],Lixo:['X','']},
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['K',''],Lixo:['X','']},
         
-        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['G',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['K',''],Lixo:['X','']}, // Removi 'Cpvt'
+    }
+
+    const GetycCores = {
+        'Preto'       : '#000000',
+        'Branco'      : '#FFFFFF',
+        'Prata'       : '#C0C0C0',
+        'Vermelho'    : '#FF0000',
+        'Azul'        : '#0000FF',
+        'Verde'       : '#008000',
+        'Amarelo'     : '#FFFF00',
+        'Laranja'     : '#FFA500',
+        'Rosa'        : '#FFC0CB',
+        'Roxo'        : '#800080',
+        'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
     }
 
     // Configuração do SupaBase
@@ -430,15 +445,10 @@
 
         const ReszH=(Typ)=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
         const ReszW=(Typ)=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
-
-        // provavelmente vou tiar tudo isso daqui (Tornarão-se inutil, quando eu trouxer o novo Drag)
-            function Drag() {event.dataTransfer.setData("text",    event.target.id)}
-            function Drag2(){event.dataTransfer.setData("text",Pai(event.target).id)}
-            function Drop() {Prvn();event.target.appendChild($(`#${event.dataTransfer.getData("text")}`))}
-            const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
         
         //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+        const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
@@ -582,18 +592,12 @@
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,            
                 Imgs:(e,R,A,pai)=>/*pai?`<p class="P-P Ct" name="${e}">${e}</p>`:*/`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${R.Row}',this,'${ExtnArt(R.Row)?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
-                Sugg:(e,R,A)=>`<div class="Rltv"><p class="P-P">${e}</p><div class="BndjSUG BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Sugg Cl"></span><button class="Mini Stky2" onclick="Linkar(this)">Linkar</button></div></div>`, // daqui eu quero só o Botão
-                
-                // esse Link é pra Linkar uma ou Mais Linhas de Outra Tabela opções de "Apenas Troca" ou de "Adição"
-                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
-                    
-                    <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this)" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
-                    
-                    </div></div>`,
-               
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<a onclick="RmvROW(this)" name="${e}">${SVG.Lixo}</a>`,
-                Mdal:(e,R,A)=>``
+                Mdal:(e,R,A)=>``,
+                Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>    
+                    <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this)" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
+                    </div></div>`, // opções de "Apenas Troca" ou de "Adição"
             }
             
             function Tm_Bndj(Typ,col,Arr,r){
@@ -1355,20 +1359,6 @@
         <script> // LINK
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
-            const GetycCores = {
-                'Preto'       : '#000000',
-                'Branco'      : '#FFFFFF',
-                'Prata'       : '#C0C0C0',
-                'Vermelho'    : '#FF0000',
-                'Azul'        : '#0000FF',
-                'Verde'       : '#008000',
-                'Amarelo'     : '#FFFF00',
-                'Laranja'     : '#FFA500',
-                'Rosa'        : '#FFC0CB',
-                'Roxo'        : '#800080',
-                'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
-            }
-
             function LinkSug(Typ,inpt,MySelect,Lista,servv){
                 const list = $('.Sugg',Pai(inpt))
                 const Val   = inpt.value
@@ -1419,10 +1409,8 @@
     <div>  <!--INTERAÇÕES- ⭐_ _ _ _ -->
         <style> /*Preview*/
             .MdalIMG{width: 800px; height: 500px}
-            .MdalIMG img{max-width: 100%;max-height: 100%;
-                        object-fit: contain; background: #474747; border-radius: 10px; padding: 5px;}
+            .MdalIMG img{max-width: 100%;max-height: 100%;object-fit: contain; background: #474747; border-radius: 10px; padding: 5px;}
             .casusa{flex: 1 1 auto}
-            
         </style>
         <script> // Previews
             function Tog_Card(Typ){
@@ -2080,13 +2068,6 @@
             </div>
 
             <div id="Pag_GBRT" class=" none Ct" style="overflow: hidden">
-                <!--
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-                -->
                 <style> /*CSS da Aba de Config*/
                     #Config svg {cursor: pointer}
                     #Config .fil0{fill: #ff7300; width: 20px; margin: 5px; height: 20px}
@@ -2324,13 +2305,6 @@
                 <script>     
                     LoadDegade($('#controlCanvas'))   
                     const FMdal = $('#FModal')
-
-    
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
-    //______________________________________________________________________________________________________________________________________________________________________________________________________
                 </script>
             </div>
 
@@ -2577,23 +2551,6 @@
                             const RmvAll=()=>{$$(`#ORC tbody td:nth-child(11) > div`).forEach((E,X)=>{if(X==0){return}else{DispClick(E)}}) ; ReloadTotal()}
                             const ClrRow=tr=>{Clear($$('input',tr)) ; ClrSlct($$('select',tr)) ; Zerar(tr)}
                             const RmvRow=tr=>tr.remove()
-                        
-                            // Rodar o Tm_Select CConciderando várias opções de Select
-                            // q são os Tipos de Selects que vou querer
-                            // Condicional
-                            // Link
-                            // Restante
-                            const Tm_Select=(Eu,e,lista)=>{
-                                Eu.classList.add('Rltv','MySelect','Rltv','w100')
-                                const func = e=='Serv' ? `LinkSug('ORC',this,'MySelect','${lista}')` : `LinkSug('Pesq',this,'MySelect','${lista}')`
-                                Inn(Eu,`<input class="Stky" placeholder="${D_Brev[e]}" onfocus="Rolada(this);${func}" oninput="${func}"><span class="Abslt Sugg Cl" style="z-index:10"></span>`)
-                            // Antes de Tirar daqui fazer ele transitar com as SETAS
-                            // em LinkSug() passar de quem é o select na qual o seelct atual é dependente
-                            // dessa forma isso funcionará em outras situações
-                            }
-                            // As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
-                            function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu))) ; None(Pai(Eu))}
-                            function Rolada(Eu){Show($('.Sugg',Pai(Eu)))}
                     </script>
 
                     <style>  /*CSS do ORC NovoForm*/
@@ -2635,8 +2592,8 @@
                         <tbody>
                             <tr class="ORC_tr ORC_tr-1" oninput="ORC_Calc(this);RecolorVlr()" onchange="ValidOpts()">
                                 <td width="15px"            ><div class="PT Ct OrcAdd"   onclick="AddRow(_tr(this));Rload_Tbl();ReloadTotal()" onload="Inn(this,SVG.Mais)" ></div></td><!--➕-->
-                                <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'Serv',['Serviços',...AllProd])"    ></div></td>
-                                <td                         ><div    class="oTipo"       oninput="TIPOChang(this)" onload="Tm_Select(this,'Tipo',['Tipo'])"                   ></div></td>
+                                <td                         ><div    class="oServ"       oninput="SERVChang(this)" onload="Tm_Select(this,'Serv',['Serviços',...AllProd])" ></div></td>
+                                <td                         ><div    class="oTipo"       oninput="TIPOChang(this)" onload="Tm_Select(this,'Tipo',['Tipo'])"                ></div></td>
                                 <td width="10%" class="Rltv"><select class="oCbmt none" onchange="CBMTChang(this)" onload="Inn(this,Tm_Opt(['Acabamento']))"               ></select><input  class="oLrg" placeholder="Largura" oninput="Mask.Num(this);RodaCanvMdds(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%" class="Rltv"><select class="oGram none" onchange="GRAMChang(this)" onload="Inn(this,Tm_Opt(['Gramatura']))"                ></select><input  class="oAlt" placeholder="Altura"  oninput="Mask.Num(this);RodaCanvMdds(this)"><span class="Abslt AvisoInpt none RD"></span></td>
                                 <td width="10%" class="Rltv"><select class="oQntt none" onchange="QNTTChang(this)" onload="Inn(this,Tm_Opt(['Qnt']))"                      ></select><input  class="oQnt" placeholder="Qnt"    > <div class="BtnoQnt Abslt" onclick="AtvMyMdds(this)" onload="Inn(this,SVVG.Gemn)"></div></td>
@@ -2650,9 +2607,6 @@
                     </table>
 
                     <script> // Funções do Tbody
-                        // selecionar option automaticamente caso tenha apeans 1
-                        // no Select se oq está atualmente selecionado, existir no option da próxima rodada, então mantem ele
-
                         function AddCarrinho(Serv,Tipo,Cbmt,Gram,Qntt){ // ta dando erro quando n tem Cbmnt, ou tipo ou outros
                             const  ult = $$('.OrcAdd').slice(-1)[0]
                             if(VAAL($('.oServ'))!==""){DispClick(ult)}
@@ -2668,13 +2622,20 @@
                             Prod[VAAL(e)].Etpa.includes('Aplic') ? Rmv_N($$(':is(td,th):nth-child(7)',_table(e))) : Add_N($$(':is(td,th):nth-child(7)',_table(e))) // se tem Aplicação ou Não
                         }
 
-                        const cP=(Stg,e)=>VAAL($(Stg,_tr(e)))
-                        function SERVChang(e){if(!Prod[VAAL(e)]){return} ; 
-                                              const Lista = ObjKey(Prod[VAAL(e)].Variantes) ; LinkSug('ORC',$('.oTipo input',_tr(e)),'MySelect',Lista.join(','),VAAL(e)) ; TipoCalc(e)}
-                        function TIPOChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[0]))]))}
-                        function CBMTChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oGram',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[1]))]))}
-                        function GRAMChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; Inn($('.oQntt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[2])[0].map(e=>e[0]))]))}
-                        function QNTTChang(e){const Lista = Prod[cP('.oServ',e)].Variantes[cP('.oTipo',e)].Table; ORC_Calc(_tr(e),Lista)}                       
+                        const cP =e=>Prod[VAAL($('.oServ',_tr(e)))].Variantes[VAAL($('.oTipo',_tr(e)))].Table
+
+                        function SERVChang(e){if(!Prod[VAAL(e)]){return}
+                                              const NewLista = ObjKey(Prod[VAAL(e)].Variantes)
+                                              // Antes de Reatualziar o Options, eu quero saber aqui quais são as Mudanças q ele vai Sofrer!
+                                              // é aqui que eu Decido que se for Recorte vai Renderizar as cores, e assim Sucessivamente
+                                              // e aqui de preferência seria mais Bizu eu Reescrever o Tm_Select Novamente, pra economizar função
+                                              // O modo de Exibição do Select Tipo e outros pode está Diretamente pressetado lá na const Prod[]
+                                              Inn($('.oTipo span',_tr(e)),Tm_MyOpts(NewLista,'List')) ; TipoCalc(e)}
+
+                        function TIPOChang(e){const Lista = cP(e) ; Inn($('.oCbmt',_tr(e)),Tm_Opt(['Acabamento',...Uniq(Lista?.map(e=>e[0]))]))}
+                        function CBMTChang(e){const Lista = cP(e) ; Inn($('.oGram',_tr(e)),Tm_Opt(['Gramatura' ,...Uniq(Lista?.map(e=>e[1]))]))}
+                        function GRAMChang(e){const Lista = cP(e) ; Inn($('.oQntt',_tr(e)),Tm_Opt(['Quantidade',...Uniq(Lista?.map(e=>e[2])[0].map(e=>e[0]))]))}
+                        function QNTTChang(e){const Lista = cP(e) ; ORC_Calc(_tr(e),Lista)}
 
                         function ORC_Calc(tr,Lista=null){
                             const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
@@ -2741,9 +2702,6 @@
                             ReloadTotal()
                         }
                     
-                        function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
-
-
                     </script>
 
                     <div> <!--Valores TOTAL-->
@@ -2786,7 +2744,6 @@
                             if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
                             if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
                         }
-                        ValidOpts()
                     </script>
 
                     <div class="w100 Ct none" style="margin-top: 80px"> <!--Informações Extras-->

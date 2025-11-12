@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"             ></script>
+    <script src="./PrescriptTeste.js"></script>
 
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script> // Base de Dados
@@ -59,24 +60,6 @@
   /*Particular*/
   .MyAlert{background:#28a745;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 4px 12px #0000004d}
 </style>
-
-<script> // Biblioteca
-  let VarDropImg = {} // uma Váriavel Global q talvez possa ficar dentro do PreScript Destinada a Receber os Files pra serem usados Depois
-  function PrepDrop(Eu,nome,Call=null){
-    Inn(Eu,'<a>Adicionar Imagem</a><input type="file" accept="image/*" class="none">')
-    const f=$('input',Eu),d=$('a',Eu)
-    const Import=F=>{if (!F) return
-      const ext  = F.name.split('.').pop()
-      const Nome = `${nome}.${ext}`
-      Inn(d,`<img Name="${Nome}" src="${URL.createObjectURL(F)}">`)
-      VarDropImg[Nome]=F
-    }
-    Eu.onclick   =()=> f.click(),f.onchange=e=>Import(e.target.files[0]),
-    Eu.ondragover =e=>(Prvn2(e),Add(Eu,'hover')),
-    Eu.ondragleave=_=> Rmv(Eu,'hover'),
-    Eu.ondrop     =e=>(Prvn2(e),Rmv(Eu,'hover'),Import(e.dataTransfer.files[0]))
-  }
-</script>
 
 <body class="Cl">
   <h1>Operador do Placar</h1>
@@ -151,7 +134,6 @@
     Inn($('#Config button'),'Falta Campos Obrigatórios')
     Requireds=true
   }
-
 </script>
 
 <script>
