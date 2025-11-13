@@ -209,4 +209,7 @@ input.Error:hover{background:red}
 
 .Fixed{position: fixed}
 
+.CSS1 .Boxy {background:#ffffff0a}
+.CSS3 .Boxy {background:linear-gradient(to top,#ffffff5d,#ffffff09);box-shadow:inset 0 0 8px #fdfdfd6e}
+
 

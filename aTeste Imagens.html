@@ -5,134 +5,107 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visualizador</title>
 
+  <!--
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> -->
+
+  <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+  <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+  <script src="../MyBiblioteca/PreScript.js"      ></script>
+
   <link  href="./CssGRAFF.css" rel="stylesheet">
-
-  <style>
-      :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff;--m:#666}
-      .Tudoo {max-width:1200px;margin:20px auto;padding:18px}
-      .Config{gap:12px;margin-bottom:14px}
-      #PesqImgs p {font-size:13px;color:#ffffff}
-      .gy    {display:grid;gap:var(--g)}
-      .m-b   {grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
-      .it    {background:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #0000000a}
-
-      .iw    {display:flex;align-items:center;justify-content:center;padding:8px;background:linear-gradient(180deg,rgba(0,0,0,.02),transparent)}
-      .iw img{display:block;width:100%;height:auto;max-width:100%;border-radius:6px;transition:object-fit .3s ease}
-      .mt    {padding:10px 12px;font-size:14px}
-      .mt p  {font-weight:600}
-      .mt a  {font-size:13px;color:var(--m);margin-top:6px}
-      .ms    {column-width:var(--w);column-gap:var(--g)}
-      .ms .mi{display:inline-block;width:100%;margin:0 0 var(--g) 0;background:#ffffff;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.04)}
-      .ms .mi .iw{padding:8px}
-      .cr img  {object-fit:cover;width:100%;height:200px}
-      .ic      {position:relative;width:100%}
-      .stg     {position: absolute;top: 6px;left: 6px;background: #00000073;color: #ffffff;font-size: 11px;padding: 4px 8px;border-radius: 6px;white-space: nowrap;pointer-events: none;}
-      .stg svg {pointer-events:none}
-
-      .fd      {margin-bottom:20px;background:#fff;border-radius:10px;border:1px solid #ddd;overflow:hidden}
-      .fh      {display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;background:#f0f0f5;font-weight:600}
-      .fh:hover{background:#e9e9ef}
-      .fh svg  {width:20px;height:20px;transition:transform .3s ease}
-      .fd.cl .fh svg{transform:rotate(-90deg)}
-      .fc      {padding:12px;display:none}
-      .fd.op .fc{display:block;animation:fIn .3s ease}
-      @keyframes fIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-      @media(max-width:600px){:root{--w:140px}}
-  </style>
 </head>
 
+<style>
+    :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff}
+    .Tudoo {width: 100vw;height: 100vh;padding:18px}
+    .Config{gap:12px;margin-bottom:14px}
+    #PesqImgs p {font-size:13px;color:#ffffff;margin-left: 10px;}
+    .Bloco {display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
+    .Alven {display:block;column-width:var(--w)}
+    .Boxyy {display:inline-block;width:100%;overflow:hidden ; border-radius:10px}
+    .Alven .Boxyy{margin:0 0 var(--g) 0}
+    .Pasta .Boxyy{display:block}
+    :is(#Galery,#Pastas).Crop .Boxyy img{object-fit:cover;width:100%;height:200px}
+    #Galery[name="Pasta"].Bloco{display:block}
+    #Galery[name="Pasta"].Alven{display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))} /*Depois ver se eu quero msm isso*/
+
+    .Boxyy .iw    {padding:8px}
+    .Boxyy .iw a  {top:15px;left:15px;background:#00000073;color:#ffffff;font-size:11px;padding:4px;pointer-events:none ; border-radius:5px}
+    .Boxyy .iw img{width:100%;height:auto;max-width:100%;transition:object-fit .3s ease ; border-radius:6px}
+    .Boxyy .mt    {padding:12px} .mt p{font-size:14px;font-weight:bold} .mt a{font-size:13px;color:#666}
+
+    .Pasta {margin-bottom:20px;border-radius:10px;overflow:hidden}
+    .Pasta     > a      {gap:8px;padding:10px 14px;cursor:pointer;background:#e9e9ef57;font-weight:bold}
+    .Pasta     > a:hover{background:#e9e9ef7a}
+    .Pasta     > a svg  {width:20px;height:20px;transition:transform .3s ease}
+    .Pasta.Atv > a svg  {transform:rotate(-90deg)}
+    .Pasta     > div{padding:12px} /*Fazer isso acontecer com uma animação*/
+    .Pasta.Atv > div{display: none}
+    @media(max-width:600px){:root{--w:140px}}
+</style>
+
 <script>
-  function Grid(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='grid'}else{E.style.display='grid'}})}
-  function Blok(e,b){if(b){None(b)};FazArry(e).forEach(E=>{if(typeof E==='string'){const EE=$(E);EE.style.display='block'}else{E.style.display='block'}})}
-  const isAtv=e=>e.classList.contains('Atv')
-
   const imgs=[
-    {Nome:'GatoFofo',Tipo:'Figurinha',u:'https://picsum.photos/id/237/800/600'},
-    {Nome:'Praia',Tipo:'Paisagem',u:'https://picsum.photos/id/1016/1200/800'},
-    {Nome:'Montanha',Tipo:'Paisagem',u:'https://picsum.photos/id/1003/600/900'},
-    {Nome:'Cachorro',Tipo:'Figurinha',u:'https://picsum.photos/id/1025/600/450'},
-    {Nome:'Cidade',Tipo:'Urbano',u:'https://picsum.photos/id/1011/900/600'},
-    {Nome:'Flores',Tipo:'Macro',u:'https://picsum.photos/id/1020/700/1000'},
-    {Nome:'Carro',Tipo:'Objeto',u:'https://picsum.photos/id/1071/900/500'},
-    {Nome:'Praça',Tipo:'Urbano',u:'https://picsum.photos/id/1031/700/500'},
-    {Nome:'Lago',Tipo:'Paisagem',u:'https://picsum.photos/id/1043/1200/800'}
-  ]
-  const SvgPast = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>`
+    {Nome:'Pizza Karlas',Tipo:'Figurinha',u:'./Kits/Kit_Logo (Clientes)/Pizza Karlas.svg'},//'https://picsum.photos/id/237/800/600'},
+    {Nome:'Qsl Net'   ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Qsl Net.svg'},
+    {Nome:'Saúde Estetica',Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Saúde Estetica.svg'},
+    {Nome:'Tapioca do Berg',Tipo:'Figurinha',u:'./Kits/Kit_Logo (Clientes)/Tapioca do Berg.svg'},
+    {Nome:'The Best'  ,Tipo:'Urbano'   ,u:'./Kits/Kit_Logo (Clientes)/The Best.svg'},
+    {Nome:'Timbi ótica'  ,Tipo:'Macro'    ,u:'./Kits/Kit_Logo (Clientes)/Timbi ótica.svg'},
+    {Nome:'ULA ULA'   ,Tipo:'Objeto'   ,u:'./Kits/Kit_Logo (Clientes)/ULA ULA.svg'},
+    {Nome:'URPE'   ,Tipo:'Urbano'   ,u:'./Kits/Kit_Logo (Clientes)/URPE.svg'},
+    {Nome:'Yasmim'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Yasmim.svg'},
+    {Nome:'Zebu'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Zebu.svg'},
+    {Nome:'Zimaz'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Zimaz.svg'},
 
+  ]
 </script>
 
-<body class="CSS3">
-
-<div class="Tudoo">
-  <div class="Config Ct">
-    <div id="BlockAlvena" onclick="          ren()" onload="Tm_Interup(this,'Blocos','Alvenaria')"></div>
-    <div id="Cropar"      onclick="TOV(this);ren()" onload="Tm_Check(this,SVG.Crop('',''))"       ></div>
-    <div><select onchange="change(event)"><option value="n">Por Nome</option><option value="t">Por Tipo</option></select></div>
-    <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="q_input(this,event)"><p>0 imgs</p></div>
+<body class="CSS3 Lite">
+  <div class="Tudoo">
+    <div class="Config Ct">
+      <div onclick="TrcTog($('#Galery'),'Bloco','Alven')"              onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
+      <div onclick="Tog($('#Galery'),'Crop');Tog($('#Pastas'),'Crop')" onload="  Tm_Check(this,SVG.Crop('',''))  "></div>
+      <div><select onchange="Nm($('#Galery'),this.value);ren(imgs,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
+      <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
+    </div>
+    <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
   </div>
-
-  <div id="gb" class="gy m-b"></div> <!--CARREGA em Bloc-->
-  <div id="gm" class="gy ms"></div>  <!--CARREGA em Grid-->
-</div>
+</body>
 
 <script>
-    // evita erro de XSS
-    function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#39;")}
-    function  el(t,c){const e=document.createElement(t);if(c)e.className=c;return e}
-    function img(u,a){const i=new Image();i.loading='lazy';i.src=u;i.alt=a;return i}
+  const Tm_Boxyy=arr=>arr.map(i=>`<div class="Boxyy Boxy">
+      <div class="iw Rltv"><a class="Abslt">${i.Nome}</a><img src="${i.u}" loading="lazy"></div>
+      <div class="mt"><p>${i.Nome}</p><a>${i.Tipo}</a></div>
+  </div>`).join('')
 
-    let st={q:'',g:'n'}
+  function ren(Find,Modo){
+    const Grup = 'Tipo'
+    const Tm_Past = ObjEtr(Find.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
+      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a><div class="Alven">${Tm_Boxyy(v)}</div></div>`
+    ).join('')
+    Inn($('#Galery'),Modo=='Nome'?Tm_Boxyy(Find):Tm_Past)
+  }
 
-    function ren(){
-      const Find = imgs
-      const gb=$('#gb'),gm=$('#gm')
-      const Modo = isAtv($('#BlockAlvena')) // ?'Bloc':'Grid'
-      const Crop = isAtv($('#Cropar'))
+  function Pesq(Eu,Ev){
+    let Cont = 0
+    const qq = aa(Vll(Eu).trim())
+    $$('.Boxyy').forEach(e=>{Rmv_N(e);if(aa(Inn($('.mt p',e))).includes(qq)||aa(Inn($('.mt a',e))).includes(qq)){Rmv_N(e);Cont+=1}else{Add_N(e)}})
+    $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add_N(e) : Rmv_N(e))
+    Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
+  }
+  Onloads('body')
+  ren(imgs,'Nome')
 
-      LOG('Modo:',Modo?'Bloco':'Grid',$('#BlockAlvena'))
-
-      const mkItemHTML=(i,cls)=>`<div class="${cls} Cl">
-        <div class="iw${Crop?' cr' : ''}"><div class="ic"><div class="stg">${i.Nome}</div><img src="${i.u}" loading="lazy"></div></div>
-        <div class="mt"><p>${i.Nome}</p><a>${i.Tipo}</a></div>
-      </div>`
-
-      if (st.g === 't') { // Modo Agrupado
-        const g = Find.reduce((acc, i) => {(acc[i.Tipo] ??= []).push(i);return acc}, {})
-        const html = ObjEtr(g).map(([k,v]) =>`
-          <div class="fd op">
-            <div class="fh" onclick="Tog(Pai(this),'op');Tog(Pai(this),'cl')">${SvgPast}${k}</div>
-            <div class="fc"><div class="${Modo ? 'gy m-b' : 'gy ms' }">${v.map(i=>mkItemHTML(i,Modo?'mi':'it')).join('')}</div></div>
-          </div>`
-        ).join('')
-        Inn(gb,html) ; None(gm) ; Blok(gb)
-      }
-
-      else{ // Mod Sem Agrupamento
-        Inn(gb,Find.map(i=>mkItemHTML(i,'it')).join('')) // blocos
-        Inn(gm,Find.map(i=>mkItemHTML(i,'mi')).join('')) // Listas
-        if(Modo){Grid(gb);None(gm)}else{None(gb);Blok(gm)}
-      }
-    }
-
-
-    function change(e){st.g = e.target.value ; ren()} 
-    function q_input(Eu,Ev){
-      const q  = $('#q')
-      const qq = aa(Vll(Eu).trim())
-      let Cont = 0
-      const f = $$('#gb .it').forEach(e=>{ Rmv_N(e)
-        if(aa(Inn($('.mt p',e))).includes(qq) || aa(Inn($('.mt a',e))).includes(qq)){
-          Rmv_N(e) ; Cont+=1
-        }else{Add_N(e)}
-      })
-      Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
-    }
-
-    Onloads('body')
-    ren()
-  </script>
-</body>
+  // Adicionar os Scroll se eu quiser! pra rolar para os lados igual efeito q eu tinha antes nas tampa do Tanque
+  // Adicionar Scroll Vertical para as pastas Alvenaria
+  // Modo de Resize de imagem
+  // Mudar o CSS se precisar pra remover Border e gap se eu quser!
+  // Opção de Modo Crop com rezise interno só remover o "object-fit:cover"
+  // Agora criar o Organizador de Pastas
+  // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, mas as imagens são sempre as Mesmas
+  // Pra Localizar as imagens dentro da PastaRaiz mesmo, fica melhor todos os SVG já estarem aqui!
+</script>
 </html>
