@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visualizador</title>
 
-  <!--
-  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
-  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> -->
+  <!--<link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+      <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> -->
 
   <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
   <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
   <script src="../MyBiblioteca/PreScript.js"      ></script>
-
   <link  href="./CssGRAFF.css" rel="stylesheet">
+  <script src="./BaseIMG.js"      ></script>
 </head>
 
 <style>
@@ -46,29 +45,13 @@
     @media(max-width:600px){:root{--w:140px}}
 </style>
 
-<script>
-  const imgs=[
-    {Nome:'Pizza Karlas',Tipo:'Figurinha',u:'./Kits/Kit_Logo (Clientes)/Pizza Karlas.svg'},//'https://picsum.photos/id/237/800/600'},
-    {Nome:'Qsl Net'   ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Qsl Net.svg'},
-    {Nome:'Saúde Estetica',Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Saúde Estetica.svg'},
-    {Nome:'Tapioca do Berg',Tipo:'Figurinha',u:'./Kits/Kit_Logo (Clientes)/Tapioca do Berg.svg'},
-    {Nome:'The Best'  ,Tipo:'Urbano'   ,u:'./Kits/Kit_Logo (Clientes)/The Best.svg'},
-    {Nome:'Timbi ótica'  ,Tipo:'Macro'    ,u:'./Kits/Kit_Logo (Clientes)/Timbi ótica.svg'},
-    {Nome:'ULA ULA'   ,Tipo:'Objeto'   ,u:'./Kits/Kit_Logo (Clientes)/ULA ULA.svg'},
-    {Nome:'URPE'   ,Tipo:'Urbano'   ,u:'./Kits/Kit_Logo (Clientes)/URPE.svg'},
-    {Nome:'Yasmim'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Yasmim.svg'},
-    {Nome:'Zebu'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Zebu.svg'},
-    {Nome:'Zimaz'    ,Tipo:'Paisagem' ,u:'./Kits/Kit_Logo (Clientes)/Zimaz.svg'},
-
-  ]
-</script>
-
 <body class="CSS3 Lite">
+  <div id="saida"></div>
   <div class="Tudoo">
     <div class="Config Ct">
       <div onclick="TrcTog($('#Galery'),'Bloco','Alven')"              onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
       <div onclick="Tog($('#Galery'),'Crop');Tog($('#Pastas'),'Crop')" onload="  Tm_Check(this,SVG.Crop('',''))  "></div>
-      <div><select onchange="Nm($('#Galery'),this.value);ren(imgs,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
+      <div><select onchange="Nm($('#Galery'),this.value);ren(BaseIMG,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
       <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
     </div>
     <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
@@ -77,12 +60,12 @@
 
 <script>
   const Tm_Boxyy=arr=>arr.map(i=>`<div class="Boxyy Boxy">
-      <div class="iw Rltv"><a class="Abslt">${i.Nome}</a><img src="${i.u}" loading="lazy"></div>
-      <div class="mt"><p>${i.Nome}</p><a>${i.Tipo}</a></div>
+      <div class="iw Rltv"><a class="Abslt none">${i.src}</a><img src="./Kits/${i.src}" loading="lazy"></div>
+      <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a></div>
   </div>`).join('')
 
   function ren(Find,Modo){
-    const Grup = 'Tipo'
+    const Grup = 'Cat'
     const Tm_Past = ObjEtr(Find.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
       `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a><div class="Alven">${Tm_Boxyy(v)}</div></div>`
     ).join('')
@@ -92,20 +75,33 @@
   function Pesq(Eu,Ev){
     let Cont = 0
     const qq = aa(Vll(Eu).trim())
-    $$('.Boxyy').forEach(e=>{Rmv_N(e);if(aa(Inn($('.mt p',e))).includes(qq)||aa(Inn($('.mt a',e))).includes(qq)){Rmv_N(e);Cont+=1}else{Add_N(e)}})
+    $$('.Boxyy').forEach(e=>{Rmv_N(e);if(aa(Inn($('.mt',e))).includes(qq)){Rmv_N(e);Cont+=1}else{Add_N(e)}})
     $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add_N(e) : Rmv_N(e))
     Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
   }
+  
   Onloads('body')
-  ren(imgs,'Nome')
+  ren(BaseIMG,'Nome')
 
-  // Adicionar os Scroll se eu quiser! pra rolar para os lados igual efeito q eu tinha antes nas tampa do Tanque
-  // Adicionar Scroll Vertical para as pastas Alvenaria
-  // Modo de Resize de imagem
+  function exibirObjeto() {
+    function adicionaID(arr) {
+      return arr.map((obj, i) => ({ id: i, ...obj }));
+  }
+  const saida = document.getElementById("saida");
+  saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`;
+}
+
+
+  // Adicionar os Scroll se eu quiser! pra rolar para os lados igual efeito q eu tinha antes nas tampa do Tanque Horizontal e Vertical
+  // Alterar a LarguraMaxima das imagens, um Slide com Stop="5"
   // Mudar o CSS se precisar pra remover Border e gap se eu quser!
-  // Opção de Modo Crop com rezise interno só remover o "object-fit:cover"
-  // Agora criar o Organizador de Pastas
+  // Opção de Modo Crop se, o "object-fit:cover" (posso usar um Swith de 3 Radios)
+  // Botão de Renderização Mini (pra melhorar a Peformance)
   // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, mas as imagens são sempre as Mesmas
-  // Pra Localizar as imagens dentro da PastaRaiz mesmo, fica melhor todos os SVG já estarem aqui!
+  // Opção de Poder Editar Nome e todos os MetaDados de cada imagem, e atualizar diretamente no SupaBase!
+  // Agora criar o Organizador de Pastas
+    // lá em Cima eu escolho uma Categoria, ou até uma Chave nova se eu quiser!
+    // e abaixo eu seleciono as imagens que estarão dentro dela
+  
 </script>
 </html>
