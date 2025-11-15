@@ -5,30 +5,36 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Visualizador</title>
 
-  <!--<link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
       <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> -->
+      <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> 
 
-  <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+  <!-- <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
   <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
-  <script src="../MyBiblioteca/PreScript.js"      ></script>
+  <script src="../MyBiblioteca/PreScript.js"      ></script>-->
   <link  href="./CssGRAFF.css" rel="stylesheet">
   <script src="./BaseIMG.js"      ></script>
 </head>
 
 <style>
     :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff}
-    .Tudoo {width: 100vw;height: 100vh;padding:18px}
-    .Config{gap:12px;margin-bottom:14px}
+    .Config{gap:12px;margin-bottom:14px ; z-index: 100;}
+    .Tudo {width: 100vw;}
     #PesqImgs p {font-size:13px;color:#ffffff;margin-left: 10px;}
     .Bloco {display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
     .Alven {display:block;column-width:var(--w)}
     .Boxyy {display:inline-block;width:100%;overflow:hidden ; border-radius:10px}
     .Alven .Boxyy{margin:0 0 var(--g) 0}
     .Pasta .Boxyy{display:block}
-    :is(#Galery,#Pastas).Crop .Boxyy img{object-fit:cover;width:100%;height:200px}
+    #Galery{padding: 0px 30px;}
+    #Galery.Crop .Boxyy img       {object-fit:cover  ;width:100%;height:200px}
+    #Galery.Crop.cover .Boxyy img {object-fit:contain;width:100%;height:200px}
+    #Galery.Alven.cover img       {max-width: var(--w);max-height: var(--w);}
+    #Galery.Gap .Boxyy     {border-radius:0px;margin:0px;background:transparent;box-shadow:none}
+    #Galery.Gap .Boxyy .iw {padding:0px;}
+    #Galery.Txt .mt   {display: none}
     #Galery[name="Pasta"].Bloco{display:block}
-    #Galery[name="Pasta"].Alven{display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))} /*Depois ver se eu quero msm isso*/
+    #Galery[name="Pasta"].Alven{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))} /*Depois ver se eu quero msm isso*/
 
     .Boxyy .iw    {padding:8px}
     .Boxyy .iw a  {top:15px;left:15px;background:#00000073;color:#ffffff;font-size:11px;padding:4px;pointer-events:none ; border-radius:5px}
@@ -42,32 +48,67 @@
     .Pasta.Atv > a svg  {transform:rotate(-90deg)}
     .Pasta     > div{padding:12px} /*Fazer isso acontecer com uma animação*/
     .Pasta.Atv > div{display: none}
+
+    .RolImg       {overflow: hidden; margin: 10px 0px;}
+    .RolImg .Grup {overflow-x:scroll;flex-wrap:nowrap ; margin-top: 20px;}
+    .RolImg h3    {left: 50%;transform: translateX(-50%) ; top: 8px; font-size: 20px}
+    .RolImg .Seta     {top: 50%;transform: translateY(-50%);z-index:5;background:#cfcfcfc7;padding:5px;} .Seta.St1{left :5px} .Seta.St2{right:5px}
+    .RolImg .Seta svg {width:20px;height:20px}
+    .RolImg::before   {position: absolute; content: "";top: 0;left: 0;right: 0;bottom: 0;pointer-events: none;z-index: 2;box-shadow:inset 15px 0 20px -15px rgba(0,0,0,0.6),inset -15px 0 20px -15px rgba(0,0,0,0.6);}
+    .RolImg .Boxyyy             {margin: 20px 8px ; transition: all 0.1s ease-in-out}
+    .RolImg .Boxyyy:hover       {transform: scale(1.05) rotate(1deg)}
+    .RolImg .Boxyyy canvas      {border: 1px solid #ffffff00}
+    .RolImg .Boxyyy:hover canvas{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
     @media(max-width:600px){:root{--w:140px}}
+    .NONE{display: none !important;}
 </style>
+
+<script> // Biblioteca
+  const Topic = [
+    {'ParalamaP'  :{'Qnt':46,'Lag':170,'Alt':170}}, // Paralama mesmo
+    {'ParalamaP_T':{'Qnt':46,'Lag':170,'Alt':170}}, // Tampa do Tanque
+    {'ParalamaP_G':{'Qnt':46,'Lag':123,'Alt':300}}, // Gravata
+    {'TampaTanque':{'Qnt':8 ,'Lag':170,'Alt':170}}, // Artes que são só pra Tampa do Tanque
+    {'GeladeiraP' :{'Qnt':6 ,'Lag':170,'Alt':300}}, // Galeria de Geladeiras
+    {'Status'     :{'Qnt':13,'Lag':170,'Alt':300}}, // Usar mas em Outro Lugar Diferente daqui! pois isso não serve como Galeria isso é u Serviço
+    {'Wind'       :{'Qnt':6 ,'Lag':143,'Alt':300}}, // Usar mas em Outro Lugar Diferente daqui! pois isso não serve como Galeria isso é u Serviço
+    {'Camisa'     :{'Qnt':6 ,'Lag':280,'Alt':170}}, // Usar mas em Outro Lugar Diferente daqui! pois isso não serve como Galeria isso é u Serviço
+    {'PersonagemP':{'Qnt':3 ,'Lag':170,'Alt':170}}, // Viagem isso é mais Portifólio
+  ]
+  const For2=e=>Array.from({length:e},(_,x)=>x+1)
+</script>
 
 <body class="CSS3 Lite">
   <div id="saida"></div>
-  <div class="Tudoo">
-    <div class="Config Ct">
-      <div onclick="TrcTog($('#Galery'),'Bloco','Alven')"              onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
-      <div onclick="Tog($('#Galery'),'Crop');Tog($('#Pastas'),'Crop')" onload="  Tm_Check(this,SVG.Crop('',''))  "></div>
-      <div><select onchange="Nm($('#Galery'),this.value);ren(BaseIMG,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
-      <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
-    </div>
-    <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
-  </div>
+      <div class="Config Ct Stky copybody">
+        <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
+        <div onclick="Tog($('#Galery'),'Crop' )" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+        <div onclick="Tog($('#Galery'),'cover')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+        <div><select onchange="Nm($('#Galery'),this.value);ren(BaseIMG,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
+        <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
+        <div onclick="Tog($('#Galery'),'Gap')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+        <div onclick="Tog($('#Galery'),'Txt')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+        <input type="text" placeholder="Novo Metta Dados"> <!--Usar meu MySelect-->
+      </div>
+      <div id="RoloTopHome" class="Ct"></div>
+      <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
 </body>
 
 <script>
   const Tm_Boxyy=arr=>arr.map(i=>`<div class="Boxyy Boxy">
-      <div class="iw Rltv"><a class="Abslt none">${i.src}</a><img src="./Kits/${i.src}" loading="lazy"></div>
+      <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
+        ${true // se for 
+          ? `<img src="./Kits/${i.src}" loading="lazy"></div>`
+          : `` // Tm_Canvas aqui! pra cada imagem Gera 3 Canvas Diferentes Tanque, Paralama e Gravata
+        }
       <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a></div>
   </div>`).join('')
 
   function ren(Find,Modo){
     const Grup = 'Cat'
     const Tm_Past = ObjEtr(Find.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
-      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a><div class="Alven">${Tm_Boxyy(v)}</div></div>`
+      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
+        <div class="Alven">${Tm_Boxyy(v)}</div></div>`
     ).join('')
     Inn($('#Galery'),Modo=='Nome'?Tm_Boxyy(Find):Tm_Past)
   }
@@ -75,33 +116,69 @@
   function Pesq(Eu,Ev){
     let Cont = 0
     const qq = aa(Vll(Eu).trim())
-    $$('.Boxyy').forEach(e=>{Rmv_N(e);if(aa(Inn($('.mt',e))).includes(qq)){Rmv_N(e);Cont+=1}else{Add_N(e)}})
-    $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add_N(e) : Rmv_N(e))
+    $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
+    $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
     Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
   }
   
   Onloads('body')
   ren(BaseIMG,'Nome')
 
+  function Tm_Canvs(){
+    Topic.forEach(e=>{const [Top,Dt] = Object.entries(e)[0]
+      const Template = `
+        <div class="RolImg Rltv Rd Rw w90">
+          <a class="Abslt Ct RD Seta St1">${SVG.Mais}</a>
+          <a class="Abslt Ct RD Seta St2">${SVG.Mais}</a>
+          <h3 class="Abslt">${Top}</h3>
+          <div class="Grup w100 Ct">${For2(Dt.Qnt).map(e=>`
+            <div class="Boxyyy Cl PT">
+              <canvas id="Canv_${Top}_${Zero(e)}" class="Rd PT Cnvs"></canvas>
+              <a>Adesivo</a>
+              <p>R$ 10,00</p>
+            </div>`).join('')}
+          <div>
+      </div>`
+      $('#RoloTopHome').insertAdjacentHTML('beforeend',Template)
+
+      For2(Dt.Qnt).map(e=>{ 
+        const canvas = $(`#Canv_${Top}_${Zero(e)}`)
+        const img1 = new Image()
+        const img2 = new Image()
+        
+        const Toop = Top.replace('_G','').replace('_T','') // LimpaCopias
+
+        img1.src = `Moldes/Molde_${Top}_1-min.png`
+        img2.src = `Portifolio/${Toop}_${Zero(e)}-min.png`
+
+        img1.onload = ()=>{
+          canvas.width = Dt.Lag; canvas.height = Dt.Alt
+          const ctx = canvas.getContext('2d')
+          ctx.drawImage(img2,0,0,Dt.Lag,Dt.Alt)
+          ctx.drawImage(img1,0,0,Dt.Lag,Dt.Alt)
+        }
+      })
+    })
+  }
+  Tm_Canvs()
+
   function exibirObjeto() {
     function adicionaID(arr) {
       return arr.map((obj, i) => ({ id: i, ...obj }));
+    }
+    const saida = document.getElementById("saida");
+    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`;
   }
-  const saida = document.getElementById("saida");
-  saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`;
-}
 
-
-  // Adicionar os Scroll se eu quiser! pra rolar para os lados igual efeito q eu tinha antes nas tampa do Tanque Horizontal e Vertical
+  
   // Alterar a LarguraMaxima das imagens, um Slide com Stop="5"
-  // Mudar o CSS se precisar pra remover Border e gap se eu quser!
-  // Opção de Modo Crop se, o "object-fit:cover" (posso usar um Swith de 3 Radios)
+  // Desmembrar as tampa do Tanque pra ficarem Soltas
+  // Ativar a Opção do Scroll, o mesmo usado nas tampa do Tanque
+  // Fazer uma Compressão pra que tudo isso Rode com Webp Minusculos
+  
   // Botão de Renderização Mini (pra melhorar a Peformance)
-  // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, mas as imagens são sempre as Mesmas
-  // Opção de Poder Editar Nome e todos os MetaDados de cada imagem, e atualizar diretamente no SupaBase!
-  // Agora criar o Organizador de Pastas
-    // lá em Cima eu escolho uma Categoria, ou até uma Chave nova se eu quiser!
-    // e abaixo eu seleciono as imagens que estarão dentro dela
+  // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, só não pode Alterar o src da imagem
+  // Agora criar o Organizador de Pastas lá em Cima eu escolho uma Categoria, ou até uma Chave nova se eu quiser! e abaixo eu seleciono as imagens que estarão dentro dela
   
 </script>
 </html>

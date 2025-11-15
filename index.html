@@ -3047,7 +3047,7 @@
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
 
-        function EditCell(e,vall=null,Auto,SB){      // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
+        function EditCell(e,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
             const isScnd = Secund[R.Typ]!==undefined       // Conferir se é uma Typ Secundária
@@ -3178,7 +3178,7 @@
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
-        function LinkLink(Eu,val,Duplo){              // ⭐⭐⭐⭐_  (Faz o Básico)
+        function LinkLink(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)
             
             const td = _td(Eu)
             const R  = D_R(td)
@@ -3188,7 +3188,7 @@
             if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
         }
          
-        function MesclarContato(){           // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
+        function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
             if(!Fim){LOG('Faltou o Link Final') ; return}
@@ -3206,7 +3206,7 @@
             // quando terminar Limpa o Filtro
         }
 
-        function TestRow(inpt,col){            // isso é pra Saber se o Cliente existe na Tabela de Extra
+        function TestRow(inpt,col){             // isso é pra Saber se o Cliente existe na Tabela de Extra
             if(confirm(`Tem Certeza que quer salvar: ${inpt.value} em ${col}?`)){
                 if(Nm(inpt)){return Nm(inpt)}else{AddROW(AA(col),'<',{[col]:inpt.value},inpt)}
             }

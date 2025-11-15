@@ -8,8 +8,8 @@
   --CSS1btn:   linear-gradient(to right,#434343,#73008A,#FF5900);
   --CSS3btn:   linear-gradient(135deg, #E8778D, #C151A8);
   --CSS3btnDk: linear-gradient(135deg, #810483, #b8636e);
-  --CSS3btnLt: linear-gradient(135deg  ,#B654B8,#F0A8B2);
-  --CSS3TblLt: linear-gradient(135deg  ,#ECD1EA,#ffffff);
+  --CSS3btnLt: linear-gradient(135deg, #B654B8,#F0A8B2);
+  --CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);
   --CSS1Fnd:   linear-gradient(#1f1f1f,#101010) center center no-repeat fixed;
 }
 
@@ -19,7 +19,11 @@
       body.Dark.CSS1{background: var(--CSS1Fnd)  ;color:#ffffff}
       body.Lite.CSS2{background: #ffffff       ;color:#000000}
       body.Dark.CSS2{background: #120c16       ;color:#ffffff}
-      body.Lite.CSS3{background: var(--CSS3btnLt);color:#3a0027}
+      body.Lite.CSS3{background: var(--CSS3btnLt);color:#3a0027;
+            background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      }
       body.Dark.CSS3{background: var(--CSS3btnDk);color:#ffffff}
 
     .copybody {
@@ -63,6 +67,7 @@
       .CSS3 .Interup  {border-radius:255px}
       .CSS3 .Interup a{flex:1;text-align:center;color:#ffffff;z-index:2;transition:all 0.3s}
       .CSS3 .Interup a svg{width: 18px; height: 18px; fill: white; margin: 0px 10px;}
+      .CSS3 .Switch  svg  {width: 18px; height: 18px; fill: white; margin: 0px 10px;}
       .CSS3 .Interup i{border-radius:255px}
     /*Check*/
       .Chek{gap:8px}
@@ -71,7 +76,7 @@
       .Chek input:checked + a svg{opacity:1;transform:scale(1);fill: #ffffff;}
       .Chek p{color: #ffffff}
     /*Switch*/  
-      .Switch{border-radius: 50px;width: 300px}
+      .Switch{border-radius: 50px}
       .Switch label {flex: 1;z-index: 2;color: #aaa;transition: color 0.3s ease; line-height: 30px}
       .Switch label:hover {color: #fff}
       .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
