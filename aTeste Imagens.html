@@ -97,7 +97,7 @@
 <script>
   const Tm_Boxyy=arr=>arr.map(i=>`<div class="Boxyy Boxy">
       <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
-        ${true // se for 
+        ${true // se for canvas
           ? `<img src="./Kits/${i.src}" loading="lazy"></div>`
           : `` // Tm_Canvas aqui! pra cada imagem Gera 3 Canvas Diferentes Tanque, Paralama e Gravata
         }
@@ -133,15 +133,14 @@
           <h3 class="Abslt">${Top}</h3>
           <div class="Grup w100 Ct">${For2(Dt.Qnt).map(e=>`
             <div class="Boxyyy Cl PT">
-              <canvas id="Canv_${Top}_${Zero(e)}" class="Rd PT Cnvs"></canvas>
-              <a>Adesivo</a>
-              <p>R$ 10,00</p>
+              <canvas id="Canv_${Top}_${Zero(e)}" class="Rd PT Cnvs"></canvas> <a>Adesivo</a> <p>R$ 10,00</p>
             </div>`).join('')}
           <div>
       </div>`
+
       $('#RoloTopHome').insertAdjacentHTML('beforeend',Template)
 
-      For2(Dt.Qnt).map(e=>{ 
+      For2(Dt.Qnt).map(e=>{
         const canvas = $(`#Canv_${Top}_${Zero(e)}`)
         const img1 = new Image()
         const img2 = new Image()
@@ -151,7 +150,7 @@
         img1.src = `Moldes/Molde_${Top}_1-min.png`
         img2.src = `Portifolio/${Toop}_${Zero(e)}-min.png`
 
-        img1.onload = ()=>{
+        img1.onload=()=>{
           canvas.width = Dt.Lag; canvas.height = Dt.Alt
           const ctx = canvas.getContext('2d')
           ctx.drawImage(img2,0,0,Dt.Lag,Dt.Alt)
@@ -163,13 +162,10 @@
   Tm_Canvs()
 
   function exibirObjeto() {
-    function adicionaID(arr) {
-      return arr.map((obj, i) => ({ id: i, ...obj }));
-    }
-    const saida = document.getElementById("saida");
-    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`;
+    function adicionaID(arr) {return arr.map((obj, i) => ({ id: i, ...obj }))}
+    const saida = document.getElementById("saida")
+    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`
   }
-
   
   // Alterar a LarguraMaxima das imagens, um Slide com Stop="5"
   // Desmembrar as tampa do Tanque pra ficarem Soltas
@@ -187,7 +183,8 @@
   //   tipo: ["Logotipo", "Fundo Transparente"],
   //   qualidade: ["Alta Qualidade"],
   //   tema: ["Corporativa", "Criativa"]
-  // },
+  // }
 
 </script>
+
 </html>
