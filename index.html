@@ -418,7 +418,6 @@
         const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
         const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no 'bs'
         const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
-        const tr_X    =tr =>getClss(tr,'tr-').split('-')[2]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
         const Rx2     =arry=>Rx(['Rastr',...arry])
         const D_Rastr =e=>getClssIN(e,'Rastr-').split('-')
@@ -604,6 +603,7 @@
             function Tm_Bndj(Typ,col,Arr,r){
                 const Ordem = ObjKey(BS[col.toUpperCase()])
                 const Find  = col==='Clnt' ? [JJ[AA(col)][`${Arr}`]] : Arr||[]
+
                 if((Typ=='SERV' || Typ=='PGMT') && col=='Clnt'){return Tm_Tm['Fixo'](Find[0]?.Clnt)} // Retornar Vazio quando for Bandeija Cliente
                             
                 const Bandeija=(arr,TYP,RPai)=>`<table class="Bdj_${TYP} ${arr[1][0]==""?'none':''}">
@@ -641,12 +641,12 @@
 
             function Tm_Table(Typ,arry,Rpai=''){ // Achava interessante ela mesmo aqui dar o Inner!
                 const IN = performance.now()
-                const Retorno = arry.map((e,X)=>{ // Reverso deve ser Opcional
+                const Retorno = arry.map(e=>{ // Reverso deve ser Opcional
                     const oID = Num(`${e.Id}`.split('_')[0]) // talvez isso deva virar biblioteca depois!
                     if(['PDDS','SERV','PGMT'].includes(Typ) && oID < U.Limt.INN || oID > U.Limt.OUT){return} // limitar as linhas a ser Exibida!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as Concluidas
-                    return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>`}).join('')
+                    return `<tr class="tr-${e.Id}">${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>`}).join('')
                 LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
                 return Retorno
             }
@@ -656,6 +656,16 @@
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
                         Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP,J[TYP].reverse()))
+
+                        // TENTAR USAR isso pq o LoadLazy é interessante
+                        // Arry = J[TYP].reverse()
+                        // let i = 0
+                        // const Tbody = $(`#H_${TYP} > tbody`)
+                        // function RenderNext(){
+                        //     Tbody.insertAdjacentHTML("beforeend",Tm_Table(TYP,[Arry[i]]))
+                        //     i++ ; if(i < Arry.length){requestAnimationFrame(RenderNext)}
+                        // }RenderNext()
+
                         RFresh(TYP,'All')
                         Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
                         if($(`#SKLT_${TYP}`)){Add_N($(`#SKLT_${TYP}`))} // Ocultar o Esqueleto
