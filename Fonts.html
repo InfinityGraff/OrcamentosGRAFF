@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+    <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="../MyBiblioteca/PreScript.js"      ></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseIMG.js"      ></script>
+    <script src="./BaseGRAFF.js"></script>
+    <title>Visualizador de Fontes</title>
+</head>
+
+<style>
+  body {font-family:Arial;padding:20px;background:#f3f3f3}
+  .inp {margin-bottom:10px;display:flex;gap:10px}
+  input{padding:8px;font-size:16px;width:120px}
+  .Font-Itn    {background:#fff;margin:10px 0;padding:15px;border-radius:6px;box-shadow:0 0 4px #0002}
+  .Font-Itn a  {position:relative;overflow:hidden;display:block}
+  .Font-Itn a p{white-space:nowrap;display:inline-block;position:absolute;left:50%;top:50%;transform-origin:center;will-change:transform}
+</style>
+
+<body>
+    <h2>Visualizador de Fontes</h2>
+    <div class="inp">
+        <input id="alt" type="number" placeholder="Altura (px)"  value="30">
+        <input id="lar" type="number" placeholder="Largura (px)" value="300">
+        <input id="txt" type="text"   placeholder="Texto"        value="Robertinho.Faax">
+        <button onclick="Atualiza()">Rodar</button>
+    </div>
+    <div id="Lista"></div>
+</body>
+
+<script>
+function Atualiza(){
+    const h = +$('#alt').value
+    const w = +$('#lar').value
+    const t = $('#txt').value.trim()
+    const Lista = $('#Lista')
+    Inn(Lista,"")
+    if(!t) return
+
+    const newL = 700
+    const NewA = (h / w) * newL
+
+    let i = 0
+
+    function RenderNext(){
+        const f = KitFonts[i]
+        const id = "fit" + Math.random().toString(36).slice(2)
+
+        Lista.insertAdjacentHTML("beforeend",
+        `<div class="Font-Itn Cl">
+            <p>${f}</p>
+            <a style="width:${newL}px;height:${NewA}px">
+                <p id="${id}" style="font-family:${f}">${t}</p>
+            </a>
+        </div>`)
+
+        const el = $('#'+id)
+        el.style.fontSize = "100px"
+        el.style.transform = ""
+
+        const bw = el.offsetWidth
+        const bh = el.offsetHeight
+        const sx = bw ? (newL/bw) : 1
+        const sy = bh ? (NewA/bh) : 1
+
+        el.style.transform = `translate(-50%,-50%) scale(${sx},${sy})`
+
+        i++
+        if(i < KitFonts.length){
+            requestAnimationFrame(RenderNext)  // 🔥 Lazy Load real
+        }
+    }
+
+    RenderNext()
+}
+
+</script>
+
+
+</html>

@@ -641,13 +641,13 @@
 
             function Tm_Table(Typ,arry,Rpai=''){ // Achava interessante ela mesmo aqui dar o Inner!
                 const IN = performance.now()
-                const Retorno = arry.reverse().map((e,X)=>{ // Reverso deve ser Opcional
+                const Retorno = arry.map((e,X)=>{ // Reverso deve ser Opcional
                     const oID = Num(`${e.Id}`.split('_')[0]) // talvez isso deva virar biblioteca depois!
                     if(['PDDS','SERV','PGMT'].includes(Typ) && oID < U.Limt.INN || oID > U.Limt.OUT){return} // limitar as linhas a ser Exibida!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
                     if(e.Stts=='Concluido'){return} // Remover as Concluidas
                     return `<tr class="tr-${e.Id}-${X}">${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>`}).join('')
-                LOG(`⏱️🔴 Tm_Table(${Typ}): ${MS(IN)}`)
+                LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
                 return Retorno
             }
 
@@ -655,7 +655,7 @@
                 const LOAD=(TYP)=>{
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
-                        Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP,J[TYP]))
+                        Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP,J[TYP].reverse()))
                         RFresh(TYP,'All')
                         Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
                         if($(`#SKLT_${TYP}`)){Add_N($(`#SKLT_${TYP}`))} // Ocultar o Esqueleto
@@ -3035,10 +3035,6 @@
             <button onclick="CopyGRAFF('Pix',this)">Copiar Pix</button>
         </div>
     </div>
-
-    <style>
-        
-    </style>
 </body>
 
 <script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
