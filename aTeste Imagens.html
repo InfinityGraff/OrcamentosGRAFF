@@ -76,6 +76,11 @@
     {'PersonagemP':{'Qnt':3 ,'Lag':170,'Alt':170}}, // Viagem isso é mais Portifólio
   ]
   const For2=e=>Array.from({length:e},(_,x)=>x+1)
+  const Dt = {
+    'Gvt' :{'Lag':123,'Alt':300},
+    'Prlm':{'Lag':170,'Alt':170},
+    'Tnq' :{'Lag':170,'Alt':170},
+  }
 </script>
 
 <body class="CSS3 Lite">
@@ -84,7 +89,7 @@
         <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
         <div onclick="Tog($('#Galery'),'Crop' )" onload="Tm_Check(this,SVG.Crop('',''))"></div>
         <div onclick="Tog($('#Galery'),'cover')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <div><select onchange="Nm($('#Galery'),this.value);ren(BaseIMG,this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
+        <div><select onchange="Nm($('#Galery'),this.value);ren(this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
         <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
         <div onclick="Tog($('#Galery'),'Gap')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
         <div onclick="Tog($('#Galery'),'Txt')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
@@ -95,34 +100,77 @@
 </body>
 
 <script>
-  const Tm_Boxyy=arr=>arr.map(i=>`<div class="Boxyy Boxy">
-      <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
-        ${true // se for canvas
-          ? `<img src="./Kits/${i.src}" loading="lazy"></div>`
-          : `` // Tm_Canvas aqui! pra cada imagem Gera 3 Canvas Diferentes Tanque, Paralama e Gravata
-        }
-      <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a></div>
-  </div>`).join('')
-
-  function ren(Find,Modo){
-    const Grup = 'Cat'
-    const Tm_Past = ObjEtr(Find.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
-      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
-        <div class="Alven">${Tm_Boxyy(v)}</div></div>`
-    ).join('')
-    Inn($('#Galery'),Modo=='Nome'?Tm_Boxyy(Find):Tm_Past)
-  }
-
-  function Pesq(Eu,Ev){
+    function Pesq(Eu,Ev){
     let Cont = 0
     const qq = aa(Vll(Eu).trim())
     $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
     $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
     Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
   }
+</script>
+
+<script>
+  const Grup = 'Cat'
+
+  function GearCanv(e,Top,Dt){
+    const Canv = $(`#${`Canv_${Top}_${Zero(e)}`}`)
+    const i1 = new Image() ; const i2 = new Image()
+    const Toop = Top.replace('_G','').replace('_T','') //Limpa Copias
+
+    i1.src = `Moldes/Molde_${Top}_1-min.png`
+    i2.src = `Kits/Portifolio/${Toop}_${Zero(e)}-min.png`
+
+    i1.onload=()=>{
+      Canv.width = Dt.Lag; Canv.height = Dt.Alt
+      const ctx = Canv.getContext('2d')
+      ctx.drawImage(i2,0,0,Dt.Lag,Dt.Alt)
+      ctx.drawImage(i1,0,0,Dt.Lag,Dt.Alt)
+    }
+  }
+
+  function GearCanv2(e){
+    const i1 = new Image() ; const i2 = new Image()
+    const [Tip,ID] = e.id.split('_')
+    i1.src = `Kits/Mokup/${Tip}.png`
+    i2.src = `Kits/Estampas/${ID}.webp`
+    i1.onload=()=>{
+      e.width = Dt[Tip].Lag; e.height = Dt[Tip].Alt
+      const ctx = e.getContext('2d')
+      ctx.drawImage(i2,0,0,Dt[Tip].Lag,Dt[Tip].Alt)
+      ctx.drawImage(i1,0,0,Dt[Tip].Lag,Dt[Tip].Alt)
+    }
+  }
+
+  const Tm_Boxyy=(i,Pre)=>`<div class="Boxyy Boxy">
+      <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
+        ${['Prlm','Tnq','Gvt'].includes(Pre) ? `<canvas id="${Pre}_${i.id}" class="Rd PT Cnvs"></canvas>` : `<img src="./Kits/${i.src}" loading="lazy">`}
+      </div>
+      <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a><a>${Pre}</a></div>
+  </div>`
+
+  function ren(Modo){
+    const Tm_Past = ObjEtr(BaseIMG.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
+      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
+        <div class="Alven">${v.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join('')}</div></div>`).join('')
+
+    Inn($('#Galery'),'')
+    $('#Galery').insertAdjacentHTML("beforeend",Modo=='Nome'?BaseIMG.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join(''):Tm_Past) // Aqui Dentro eu tenho que chamar Tm_Boxyy 3 vezes um pra cada tanque,Prlm e Gvt
+    
+    $$('.Cnvs').forEach(e=>GearCanv2(e))
+  }
+
+
   
   Onloads('body')
-  ren(BaseIMG,'Nome')
+  ren('Nome')
+
+  function Tm_Canvs2(){
+    Topic.forEach(e=>{const [Top,Dt] = Object.entries(e)[0]
+      const Template = For2(Dt.Qnt).map(E=>Tm_Boxyy({id:`Canv_${Top}_${Zero(E)}`,src:Zero(E),Cat:Top},false)).join('')
+      $('#Galery').insertAdjacentHTML('beforeend',Template)
+      For2(Dt.Qnt).map(R=>GearCanv(R,Top,Dt))
+    })
+  }
 
   function Tm_Canvs(){
     Topic.forEach(e=>{const [Top,Dt] = Object.entries(e)[0]
@@ -140,32 +188,12 @@
 
       $('#RoloTopHome').insertAdjacentHTML('beforeend',Template)
 
-      For2(Dt.Qnt).map(e=>{
-        const canvas = $(`#Canv_${Top}_${Zero(e)}`)
-        const img1 = new Image()
-        const img2 = new Image()
-        
-        const Toop = Top.replace('_G','').replace('_T','') // LimpaCopias
-
-        img1.src = `Moldes/Molde_${Top}_1-min.png`
-        img2.src = `Portifolio/${Toop}_${Zero(e)}-min.png`
-
-        img1.onload=()=>{
-          canvas.width = Dt.Lag; canvas.height = Dt.Alt
-          const ctx = canvas.getContext('2d')
-          ctx.drawImage(img2,0,0,Dt.Lag,Dt.Alt)
-          ctx.drawImage(img1,0,0,Dt.Lag,Dt.Alt)
-        }
-      })
+      For2(Dt.Qnt).map(e=>GearCanv(e,Top,Dt))
     })
   }
-  Tm_Canvs()
+  //Tm_Canvs()
 
-  function exibirObjeto() {
-    function adicionaID(arr) {return arr.map((obj, i) => ({ id: i, ...obj }))}
-    const saida = document.getElementById("saida")
-    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`
-  }
+  //Tm_Canvs2()
   
   // Alterar a LarguraMaxima das imagens, um Slide com Stop="5"
   // Desmembrar as tampa do Tanque pra ficarem Soltas
@@ -178,8 +206,8 @@
   
 
   // {
-  // "logo_graff.png": {
-  //   estilo: ["Coloridas", "Moderna", "Vetorial"],
+  // "Metadados": {
+  //   estilo:["Coloridas","Moderna", "Vetorial"],
   //   tipo: ["Logotipo", "Fundo Transparente"],
   //   qualidade: ["Alta Qualidade"],
   //   tema: ["Corporativa", "Criativa"]

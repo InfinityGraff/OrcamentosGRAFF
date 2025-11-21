@@ -59,3 +59,9 @@ function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('inp
 
 // dexia os Selects Cinza caso não tenha nada
 function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
+
+function exibirObjeto() {
+    function adicionaID(arr) {return arr.map((obj, i) => ({ id: i, ...obj }))}
+    const saida = document.getElementById("saida")
+    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`
+}

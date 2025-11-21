@@ -11180,4 +11180,476 @@ const BaseIMG =
     "Cat": "Bandeira",
     "Uso": "Print"
   },
+  //____________________________________________________________________________________________________________
+  //____________________________________________________________________________________________________________
+  //____________________________________________________________________________________________________________
+    {
+    "src": "Estampas/A1.webp",
+    "id": "A1",
+    "Pezo": "51.83kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A2.webp",
+    "id": "A2",
+    "Pezo": "24.77kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A3.webp",
+    "id": "A3",
+    "Pezo": "31.45kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A4.webp",
+    "id": "A4",
+    "Pezo": "41.04kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A5.webp",
+    "id": "A5",
+    "Pezo": "29.29kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A6.webp",
+    "id": "A6",
+    "Pezo": "25.75kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/A7.webp",
+    "id": "A7",
+    "Pezo": "33.09kb",
+    "Cat": "Simpson",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+    {
+    "src": "Estampas/I1.webp",
+    "id": "I1",
+    "Pezo": "24.38kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I10.webp",
+    "id": "I10",
+    "Pezo": "32.03kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I11.webp",
+    "id": "I11",
+    "Pezo": "37.47kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I12.webp",
+    "id": "I12",
+    "Pezo": "32.40kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I13.webp",
+    "id": "I13",
+    "Pezo": "30.83kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I14.webp",
+    "id": "I14",
+    "Pezo": "36.51kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I15.webp",
+    "id": "I15",
+    "Pezo": "19.98kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I16.webp",
+    "id": "I16",
+    "Pezo": "31.43kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I2.webp",
+    "id": "I2",
+    "Pezo": "32.93kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I3.webp",
+    "id": "I3",
+    "Pezo": "41.08kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I4.webp",
+    "id": "I4",
+    "Pezo": "26.97kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I5.webp",
+    "id": "I5",
+    "Pezo": "27.44kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I6.webp",
+    "id": "I6",
+    "Pezo": "45.39kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I7.webp",
+    "id": "I7",
+    "Pezo": "39.34kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I8.webp",
+    "id": "I8",
+    "Pezo": "20.45kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/I9.webp",
+    "id": "I9",
+    "Pezo": "29.43kb",
+    "Cat": "Patinhas",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+    {
+    "src": "Estampas/J1.webp",
+    "id": "J1",
+    "Pezo": "25.21kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J10.webp",
+    "id": "J10",
+    "Pezo": "31.67kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J11.webp",
+    "id": "J11",
+    "Pezo": "43.91kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J12.webp",
+    "id": "J12",
+    "Pezo": "31.77kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J13.webp",
+    "id": "J13",
+    "Pezo": "32.44kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J14.webp",
+    "id": "J14",
+    "Pezo": "32.85kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J15.webp",
+    "id": "J15",
+    "Pezo": "31.34kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J16.webp",
+    "id": "J16",
+    "Pezo": "37.13kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J17.webp",
+    "id": "J17",
+    "Pezo": "26.59kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J18.webp",
+    "id": "J18",
+    "Pezo": "33.50kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J19.webp",
+    "id": "J19",
+    "Pezo": "36.74kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J2.webp",
+    "id": "J2",
+    "Pezo": "25.38kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J20.webp",
+    "id": "J20",
+    "Pezo": "42.94kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J21.webp",
+    "id": "J21",
+    "Pezo": "42.56kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J22.webp",
+    "id": "J22",
+    "Pezo": "19.60kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J23.webp",
+    "id": "J23",
+    "Pezo": "23.17kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J3.webp",
+    "id": "J3",
+    "Pezo": "20.54kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J4.webp",
+    "id": "J4",
+    "Pezo": "22.17kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J5.webp",
+    "id": "J5",
+    "Pezo": "17.66kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J6.webp",
+    "id": "J6",
+    "Pezo": "30.14kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J7.webp",
+    "id": "J7",
+    "Pezo": "24.58kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J8.webp",
+    "id": "J8",
+    "Pezo": "15.43kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/J9.webp",
+    "id": "J9",
+    "Pezo": "40.15kb",
+    "Cat": "Palhaço",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+    {
+    "src": "Estampas/Z1.webp",
+    "id": "Z1",
+    "Pezo": "8.46kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z10.webp",
+    "id": "Z10",
+    "Pezo": "6.51kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z11.webp",
+    "id": "Z11",
+    "Pezo": "15.81kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z12.webp",
+    "id": "Z12",
+    "Pezo": "20.25kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z13.webp",
+    "id": "Z13",
+    "Pezo": "18.50kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z14.webp",
+    "id": "Z14",
+    "Pezo": "10.05kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z15.webp",
+    "id": "Z15",
+    "Pezo": "32.64kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z16.webp",
+    "id": "Z16",
+    "Pezo": "42.09kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z17.webp",
+    "id": "Z17",
+    "Pezo": "54.42kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z18.webp",
+    "id": "Z18",
+    "Pezo": "35.42kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z19.webp",
+    "id": "Z19",
+    "Pezo": "26.30kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z2.webp",
+    "id": "Z2",
+    "Pezo": "12.96kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z20.webp",
+    "id": "Z20",
+    "Pezo": "42.75kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z21.webp",
+    "id": "Z21",
+    "Pezo": "11.98kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z3.webp",
+    "id": "Z3",
+    "Pezo": "14.67kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z4.webp",
+    "id": "Z4",
+    "Pezo": "16.12kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z5.webp",
+    "id": "Z5",
+    "Pezo": "52.44kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z6.webp",
+    "id": "Z6",
+    "Pezo": "18.26kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z7.webp",
+    "id": "Z7",
+    "Pezo": "17.40kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z8.webp",
+    "id": "Z8",
+    "Pezo": "13.58kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  },
+  {
+    "src": "Estampas/Z9.webp",
+    "id": "Z9",
+    "Pezo": "3.70kb",
+    "Cat": "Outros",
+    "Uso": "Prlm,Tnq,Gvt"
+  }
 ]
