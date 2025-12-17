@@ -377,7 +377,7 @@
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:''}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link'}
 
@@ -392,7 +392,7 @@
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
         UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['K',''],Lixo:['X','']},
         
-        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Link:['K',''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Pgmt:['K',''],Vlpg:['Y','A'],Lixo:['X','']}, // Removi 'Cpvt'
     }
 
     const GetycCores = {
@@ -600,11 +600,10 @@
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="Mask.Num(this)">${e?Cm(e):''    }</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
-                Chek:(e,R,A)=>`<input  class="P-P"      name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,
+                Chek:(e,R,A)=>`<input  class="P-P" name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,
                 Imgs:(e,R,A)=>`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${e}',this,'${e?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<img class="PT" onclick="RmvROW(this)" name="${e}" src="./SVG/I_Lixo.webp"><i class="Abslt GrifFora"></i>`,
-                Mdal:(e,R,A)=>``,
                 Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                     <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this)" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
                     </div></div>`, // opções de "Apenas Troca" ou de "Adição"
@@ -691,8 +690,8 @@
             }
             
             // 🚫 select deveria ter name pra n ser afetado pelo Realtime
-            // 🚫 ao Excluir e Adicioanr linha na Bandeija ela está Fechando Sozinha
             // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
+            // 🚫 ao Editar Clnt dentrod a Bndj ele ta ficando Branco
             // 💡 ao Clicar no ID, exibirá RG:[User,PC,Data,Hora] como Bandeija
             // 💡 Ao Clicar no SVG Etapas exibirá oq ele é!
             // 💡 Opção de mais de 1 Designer
@@ -1357,19 +1356,20 @@
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
             function LinkSug(Typ,inpt,MySelect,Lista,servv){
-                const list = $('.Sugg',Pai(inpt))
                 const Val   = inpt.value
-                const regex = new RegExp(`(${aa(Val)})`,'gi') // ignora maiúsculas
-                const Griff =e=>`${e}`.replace(regex,'<b style="background:#8f007c; color:white">$1</b>')
+                const list = $('.Sugg',Pai(inpt))
+                const oID  = tr_ID(_tr(inpt))
+                const regex = new RegExp(`(${aa(Val)})`,'gi') // usar todos os Critérios de Pesquisa
+                const Griff =e=>`${e}`.replace(regex,'<b style="background:#8f007c; color:white">$1</b>') // fazer o msm Griff de Pesquisa lá em Cima
 
                 const TipoFilt = {
-                    Proc:(e,Val)=>ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))),                                 // serve pra Cliente exibir procurando na Tora!
-                    Rest:(e,Val)=>Val=='' ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(Val))) && e.Link=='-', // Exibir os que Resta Linkar
-                    List:(e,Val)=>Val=='' ? true : aa(e).includes(aa(Val)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
+                    Proc:(e,V)=>ObjVal(e).some(v=>aa(`${v}`).includes(aa(V))),                               // serve pra Cliente exibir procurando na Tora!
+                    Rest:(e,V,c)=>V=='' ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(V))) && e[c]=='-', // Exibir os que Resta Linkar
+                    List:(e,V)=>V=='' ? true : aa(e).includes(aa(V)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
                 }
 
                 const Tm_Exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
-                     MPAG:e=> Griff(`<p>${e.Id} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)
+                     MPAG:e=> Griff(`<p>${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)
                     ,PGMT:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`)
                     ,SERV:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} ${e.Serv} ${e.Desc}</p>`)
                     ,CLNT:e=> Griff(`<p>${e.Id} - ${e.Clnt}</p>`)
@@ -1383,15 +1383,30 @@
                     }else{
                         Inn(list,Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)">${Tm_ExibList(servv,e)}</a>`).join(''))
                     }
-                }else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
+                }
+                else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
                     Show(list)
-                    if (inpt.value){
-                        const Tipo  = AA(Typ) == 'MPAG' ? 'Rest' : 'Proc' // encontrar a coluna que eu quero pesquisar e Exibir
-                        const Duplo = AA(Typ) == 'MPAG' ? tr_ID(_tr(inpt)) : ''    // Quando é Duplo ele atualiza ambos os Links de lá pra cá e de cá pra lá
-                        const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${Duplo}') ; None(Pai(this))`
-                        list.innerHTML = J[Typ].filter(e=>TipoFilt[Tipo](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
+                    if (Val){
+                        if(Typ=='MPAG'){
+                            const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${oID}') ; None(Pai(this))` // Quando tem oID é por que é "Duplo"
+                            list.innerHTML = J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Pgmt')).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
+                        }
+                        if(Typ=='PGMT'){
+                            LOG('chegou em PGMT',J[Typ],J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Mpag')))
+                            const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${oID}') ; None(Pai(this))` // Quando tem oID é por que é "Duplo"
+                            list.innerHTML = J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Mpag')).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
+                        }
                     }else{None(list);Inn(list,'')}
                 }
+            }
+
+            function LinkLink(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)
+                const td = _td(Eu)
+                const R  = D_R(td)
+                const get = getClssIN(_td(Eu),'Rastr-')
+                if(Duplo){LOG(Duplo,td,R,get)}
+                EditCell(Eu,val)
+                if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
             }
             // Todos os Links tem que ter opção de Trocar | e os que puderem terão adicionar mais de 1 | e Opção de Criar um Novo
             // usando Bandeija em formato de Card
@@ -1914,16 +1929,24 @@
             </div>
 
             <div id="Pag_PGMT" class="TBLAA none Cl">
-                <div class="Bt Stky copybody" style="height: 40px;">
-                    <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
-                    <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
-                    <div id="COnf_MPAG" class="Configs Ct"></div>
-                    <button onclick="F_Clen('MPAG')">Limpar</button>
+                <div class="Wrapper">
+                    <div id="Slide_GRAD" class="Slide_Table">
+                        <div class="Cl">
+                            <div class="Confy_GRAD">
+                                <div class="Bt Stky copybody" style="height: 40px;">
+                                    <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
+                                    <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
+                                    <div id="COnf_MPAG" class="Configs Ct"></div>
+                                    <button onclick="F_Clen('MPAG')">Limpar</button>
+                                </div>
+                                <table id="H_MPAG" class="w100 hMin">
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table id="H_MPAG" class="w100 hMin">
-                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
-                    <tbody></tbody>
-                </table>
             </div>
 
             <div id="Pag_GRAD" class="TBLAA none Cl"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
@@ -3168,16 +3191,6 @@
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
-        function LinkLink(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)
-            
-            const td = _td(Eu)
-            const R  = D_R(td)
-            const get = getClssIN(_td(Eu),'Rastr-')
-            if(Duplo){LOG(Duplo,td,R,get)}
-            EditCell(Eu,val)
-            if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
-        }
-         
         function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
             // se for a mesma quantidade então escolhe qualquer um
