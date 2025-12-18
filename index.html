@@ -605,7 +605,7 @@
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<img class="PT" onclick="RmvROW(this)" name="${e}" src="./SVG/I_Lixo.webp"><i class="Abslt GrifFora"></i>`,
                 Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
-                    <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug('${AA(R.Col)}',this)" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
+                    <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug(this,'${AA(R.Col)}')" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
                     </div></div>`, // opções de "Apenas Troca" ou de "Adição"
             }
             
@@ -631,7 +631,7 @@
                                 <button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':'AddRowBdj(this)'}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[AA(col)])}</button>
                                 ${col=='Clnt'?`<div class="DivTrcCLNT none">
                                     ${/* Aqui Chamar, Tm_Tm['Link'](??,R,'')  é importante q isso esteja aqui dentro pra evitar problemas Futuros */''}
-                                    <input class="Stky" placeholder="Clientes" oninput="LinkSug('CLNT',this)" onkeydown="KeyEntr(()=>TestRow(this))"><span class="Sugg Cl"></span>
+                                    <input class="Stky" placeholder="Clientes" oninput="LinkSug(this,'CLNT')" onkeydown="KeyEntr(()=>TestRow(this))"><span class="Sugg Cl"></span>
                                     </div>`:''}
                             </div>
                         </div>`
@@ -1355,67 +1355,52 @@
         <script> // LINK
             function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
 
-            function LinkSug(Typ,inpt,MySelect,Lista,servv){
+            function LinkSug(inpt,Typ,MySelect,Lista,servv){
                 const Val   = inpt.value
-                const list = $('.Sugg',Pai(inpt))
-                const oID  = tr_ID(_tr(inpt))
-                const regex = new RegExp(`(${aa(Val)})`,'gi') // usar todos os Critérios de Pesquisa
-                const Griff =e=>`${e}`.replace(regex,'<b style="background:#8f007c; color:white">$1</b>') // fazer o msm Griff de Pesquisa lá em Cima
+                const list  = $('.Sugg',Pai(inpt))
+                const oID   = tr_ID(_tr(inpt))
+                const regex = new RegExp(`(${aa(Val)})`,'gi')                                              // Depois usar todos os Critérios de Pesquisa
+                const Griff = e=>`${e}`.replace(regex,'<b style="background:#8f007c; color:white">$1</b>') // fazer o msm Griff de Pesquisa lá em Cima
 
-                const TipoFilt = {
-                    Proc:(e,V)=>ObjVal(e).some(v=>aa(`${v}`).includes(aa(V))),                               // serve pra Cliente exibir procurando na Tora!
-                    Rest:(e,V,c)=>V=='' ? true : ObjVal(e).some(v=>aa(`${v}`).includes(aa(V))) && e[c]=='-', // Exibir os que Resta Linkar
-                    List:(e,V)=>V=='' ? true : aa(e).includes(aa(V)),                                        // Modo de Lista que serve pra cosias Simples como Serv Select
+                const tipo = { // não vou precisar chamar JJ clnt aqui pois farei um novo Objeto antes de tudo começar pra evitar isso!
+                    Proc:(e,V)=>               ObjVal(e).some(v=>aa(`${v}`).includes(aa(V))),                                                 // serve pra Cliente exibir procurando na Tora!
+                    Rest:(e,V)=>V=='' ? true : ObjEtr(e).some(([k,v])=>(k=='Clnt'?JJ['CLNT'][e.Clnt]?.Clnt??'' :aa(`${v}`)).includes(aa(V))), // Exibir os que Resta linkar
                 }
 
-                const Tm_Exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
-                     MPAG:e=> Griff(`<p>${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)
-                    ,PGMT:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`)
-                    ,SERV:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]} ${e.Serv} ${e.Desc}</p>`)
-                    ,CLNT:e=> Griff(`<p>${e.Id} - ${e.Clnt}</p>`)
+                const exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
+                     CLNT:e=> Griff(`<p>${e.Id} - ${e.Clnt}</p>`)                                                            // Pra Pesquisar dentro de PDDS
+                    ,MPAG:e=> Griff(`<p>${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)                                     // Pra Pesquisar dentro de PGMT
+                    ,PGMT:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]?.Clnt??''} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`) // Pra Pesquisar dentro de MPAG
+                    ,GRAD:e=> Griff(`<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`) // usando Bandeija em formato de Card
+                    //,SERV:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]?.Clnt??''} ${e.Serv} ${e.Desc}</p>`)
                 }
 
-                const Tm_ExibList =(Servy,e)=> Servy=='Recorte' ? `<p class="RD" style="background:${GetycCores[e]}">${Griff(e)}</p>` : `<p>${Griff(e)}</p>`
-
-                if(MySelect){ // Funciona pra quando eu tenho uma Lista de Options
-                    if(Typ=='Pesq'){
-                        $$('a',list).forEach(a=>TipoFilt['List'](a.innerText,Val) ? Rmv_N(a) : Add_N(a))
-                    }else{
-                        Inn(list,Lista.split(',').filter(e=>TipoFilt['List'](e,Val)).map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)">${Tm_ExibList(servv,e)}</a>`).join(''))
-                    }
-                }
-                else{ // Funciona pra quando eu tenho uma array de objetos da Tabela
-                    Show(list)
-                    if (Val){
-                        if(Typ=='MPAG'){
-                            const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${oID}') ; None(Pai(this))` // Quando tem oID é por que é "Duplo"
-                            list.innerHTML = J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Pgmt')).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
-                        }
-                        if(Typ=='PGMT'){
-                            LOG('chegou em PGMT',J[Typ],J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Mpag')))
-                            const LinkDuplo=e=> `LinkLink(this,'${e[Primary[Typ]]}','${oID}') ; None(Pai(this))` // Quando tem oID é por que é "Duplo"
-                            list.innerHTML = J[Typ].filter(e=>TipoFilt['Rest'](e,Val,'Mpag')).map(e=>`<a class="PT w100 Ct" onclick="${LinkDuplo(e)}">${Tm_Exib[Typ](e)}</a>`).join('')
-                        }
-                    }else{None(list);Inn(list,'')}
-                }
+                Show(list)
+                if(Val){// dentro desse if é onde eu faço a idéia de ter vazio e mostrar tudo
+                    // tentar tratar de trazer o nome do cliente pra dentro bem Antes
+                    const filt = Typ=='CLNT' ? J[Typ].filter(e=>tipo['Proc'](e,Val)) :
+                                 Typ=='MPAG' ? J[Typ].filter(e=>tipo['Rest'](e,Val) && (!NoVazi(e['Pgmt'])||e['Pgmt']=='-')                 ) :
+                                 Typ=='PGMT' ? J[Typ].filter(e=>tipo['Rest'](e,Val) && (!NoVazi(e['Mpag'])||e['Mpag']=='-') && e.Form=='Pix') : []
+                    
+                    Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Ex_Link(this,'${e[Primary[Typ]]}','${oID}')">${exib[Typ](e)}</a>`).join('')) // Quando tem oID é por que é "Duplo"
+                }else{None(list);Inn(list,'')}
+            
             }
 
-            function LinkLink(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)
-                const td = _td(Eu)
-                const R  = D_R(td)
+            function Ex_Link(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)
+                const td  = _td(Eu)
+                const R   = D_R(td)
                 const get = getClssIN(_td(Eu),'Rastr-')
                 if(Duplo){LOG(Duplo,td,R,get)}
                 EditCell(Eu,val)
                 if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
+                None(Pai(Eu)) // por fim ocultar a bandeiija de sujestão
             }
             // Todos os Links tem que ter opção de Trocar | e os que puderem terão adicionar mais de 1 | e Opção de Criar um Novo
-            // usando Bandeija em formato de Card
-            // 1 Link - em "PDDS" > Linkar "CLNT"
-            // 1 Link - em "SERV" > Linkar "Grad"
-            // 1 Link - em "PGMT" > Linkar "MPAG"
-            // 3 Link - em "GRAD" > Linkar Cont q é "PDDS", "OS" e "UBER"
-            // 2 Link - em "OOSS" > Linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
-            // 2 Link - em "UBER" > Linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
+            // 1 Link - em "SERV" > linkar "Grad"
+            // 3 Link - em "GRAD" > linkar Cont q é "PDDS", "OS" e "UBER"
+            // 2 Link - em "OOSS" > linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
+            // 2 Link - em "UBER" > linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
         </script>
     </div>
 
@@ -3160,7 +3145,7 @@
             /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
             /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
             if(SB){LOG('Linha Adicionada pelo SB')}
-            if(Typ=='CLNT'){LinkLink(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
+            if(Typ=='CLNT'){Linkar(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
         }
 
         function insertOrden(Typ,arr){          // ⭐⭐⭐_ _ (Ativar ela) (ainda não testei dentro da Bndj | bndj não tem ordem ent sempre vai ser ID) 

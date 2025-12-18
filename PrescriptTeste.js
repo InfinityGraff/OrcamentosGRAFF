@@ -52,8 +52,6 @@ const PesqOpt=(Inpt,Modo)=>{ // Essa função de Pesquisa Pode ser Util em Todos
     // selecionar option automaticamente caso tenha apeans 1
 }
 
-
-
 // As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
 function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu))) ; None(Pai(Eu))}
 
