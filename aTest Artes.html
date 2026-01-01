@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTE</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="./PrescriptTeste.js"></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>/* ==== LAYOUT ==== */
+    .container{gap:10px ; width: 80%;}
+    canvas{margin:10px 0;}
+    #canvasRascunho{border:1px solid #555;}
+    svg{width:26px;height:26px;}
+    svg circle{cx:13;cy:13;r:12;fill:none;stroke:#777;}
+    .BOX        {padding:18px;border-radius:14px;background:#111;border:1px solid #222}
+    .BOX {width: 100%;}
+</style>
+
+<script> // ==== BASE DE DADOS ====
+    const DB = {
+        Tipo : ["Tipo de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
+        Catg : ["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
+        Dest : ["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
+        Presset:["Livre","1:1","4:5","9:16","16:9"],
+    }
+</script>
+
+<body class="Dark CSS1 Cl">
+
+    <div id="Form" class="container Cl">
+        <h1>Solicitação de Arte</h1>
+        <div class="Ct BOX">
+            <div><label>Tipo de Arte</label><select id="tipoArte" onload="load_Opts(this,DB.Tipo)" onchange="mudaTipo()"></select></div>
+            <div><label>Categoria   </label><select id="segmento" onload="load_Opts(this,DB.Catg)" onchange="mudaTipo()"></select></div>
+            <div><label>Destino     </label><select id="destino"  onload="load_Opts(this,DB.Dest)" onchange="mudaTipo()"></select></div>
+        </div>
+
+        <div class="BOX">
+            <canvas id="canvasRascunho" width="260" height="160"></canvas>
+            
+            <div class="Ct">
+                <div><label>Largura</label><input id="largura" placeholder="Largura"></div>
+                <div><label>altura </label><input id="altura"  placeholder="Altura" ></div>
+                <div><label>Presset</label><select id="proporcao" onload="load_Opts(this,DB.Presset)" onchange="desenhaProporcao()"></select></div>
+                <div><label>Qnt    </label><input id="variacoes" type="number" value="1"></div>
+            </div>
+        </div>
+        
+        <div class="BOX Cl">
+            <div class="Ct">
+                <div><label>Título</label><input id="empresa"></div>
+                <div><label>Slogan</label><input id="Slogan" ></div>
+                <div id="produtos" class="Cl"><label>Lista de Produtos</label><textarea id="listaProdutos"></textarea></div>
+            </div>
+            
+            <div class="Ct"> <!--Opção pra mais de um Insta Zap ou Endereço-->
+                <div class="Ct"><svg><circle/></svg><input id="instagram" placeholder="Instagram"></div>
+                <div class="Ct"><svg><circle/></svg><input id="whatsapp"  placeholder="WhatsApp" ></div>
+                <div class="Ct"><svg><circle/></svg><input id="endereco"  placeholder="Endereço" ></div>
+            </div>
+        </div>
+
+
+        <div class="BOX Ct">
+            <div><label>Cor de Fundo   </label><input id="fundo" type="color"></div>
+            <div><label>Referências    </label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+        </div>
+
+        <div class="Cl"><label>Observações</label><textarea id="obs"></textarea></div>
+        <button onclick="Ger_SOliArt()">Solicitar Arte</button>
+    </div>
+</body>
+
+<script> // ==== FUNÇÕES VISUAIS ====
+    let ctx, drag=false, sx=0, sy=0;
+    const initCanvas=()=>{ctx=$("#canvasRascunho").getContext("2d");desenhaRetangulo()}
+
+    const desenhaRetangulo = (w=+largura.value, h=+altura.value)=>{
+        ctx.clearRect(0,0,260,160);
+        if(w && h) ctx.strokeRect(10,10, w*Math.min(240/w,140/h), h*Math.min(240/w,140/h));
+    }
+
+    const desenhaProporcao = ()=>{
+        if(proporcao.value=="Livre") return;
+        const [w,h] = proporcao.value.split(':').map(Number);
+        largura.value = w*10;
+        altura.value  = h*10;
+        desenhaRetangulo();
+    }
+
+    // desenho manual no canvas
+    canvasRascunho.onmousedown = e => (drag=true, sx=e.offsetX, sy=e.offsetY);
+    canvasRascunho.onmouseup = e => {
+        if(!drag) return; drag=false;
+        largura.value = Math.abs(e.offsetX-sx);
+        altura.value  = Math.abs(e.offsetY-sy);
+        desenhaRetangulo();
+    }
+
+    // sincroniza inputs
+    [largura, altura].forEach(e=>e.oninput=desenhaRetangulo)
+
+    // tipo de arte
+    const mudaTipo = ()=>{
+        return
+        Form.className = `container tipo-${tipoArte.value.replace(/\s/g,'')}`;
+        $("#produtos").style.display = tipoArte.value=="Cardápio" ? "block" : "none";
+    }
+
+</script>
+
+<script>
+    /* ==== GERAR SOLICITAÇÃO ==== */
+    function Ger_SOliArt(){
+        LOG(`SOLICITAÇÃO DE ARTE
+            Tipo: ${tipoArte.value}
+            Segmento: ${segmento.value}
+            Destino: ${destino.value}
+            Tamanho: ${altura.value} x ${largura.value}
+            Fundo: ${fundo.value}
+            Produtos:${listaProdutos.value||"-"}
+            Empresa: ${empresa.value}
+            Instagram: ${instagram.value}
+            WhatsApp: ${whatsapp.value}
+            Endereço: ${endereco.value}
+            Observações:
+            ${obs.value}`
+        )
+    }
+</script>
+
+<script>initCanvas() ; Onloads('body')
+    // em Titulo opção pra botar imagem
+    // Lista pode ter texto ou Imagens
+    // Lugar pra botar o PRAZO
+
+    // Adicionar um valor Base pra o Tipo de Arte
+    // a Categoria n muda nada
+    // o Destino também aparentemente n muda nada
+
+    //  Logomarca         (25%) // Inserir uma Foto ou Arquivo
+    //  Identidade Visual (20%) // Inserir uma Foto ou Arquivo
+    //  Digitação         (8%)  // Basicamente é preencher tudo
+    //  Escolha de Imagens(7%)  // Campo pra adicionar as imagens
+
+</script>
+</html>

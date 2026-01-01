@@ -14,48 +14,44 @@ function PrepDrop(Eu,nome,Call=null){
     Eu.ondrop     =e=>(Prvn2(e),Rmv(Eu,'hover'),Import(e.dataTransfer.files[0]))
 }
 
-// Fazer ele transitar com as SETAS
+const Dispinput=e=>e.dispatchEvent(new Event('input', { bubbles: true }))
+function Selecty(Eu){const I = $('input',_td(Eu)) ; Vll(I,Eu.innerText) ; Dispinput(I) ; /*Add_N(Pai(Eu))*/}
 
-const Tm_Select=(Eu,e,lista,Modo)=>{
+// Fazer ele transitar com as SETAS
+const Tm_Select=(Eu,e,lista)=>{
     Eu.classList.add('Rltv','MySelect','Rltv','w100')
     // Atualizar span Baseado na Lista
-    const ExibSpan = `Show($('span',Pai(this)))` 
+    const ExibSpan = `Rmv_N($('span',Pai(this)))`
     Inn(Eu,`<input class="Stky" placeholder="${D_Brev[e]}" onfocus="${ExibSpan}" oninput="PesqOpt(this,'List')">
         <span class="Abslt Cl Sugg" style="z-index:10">${Tm_MyOpts(lista,'List')}</span>`
     )
 }
-
-function Tm_MyOpts(Arr,Modo){
+function Tm_MyOpts(List,Modo){
     const Previw = {
-        List   :e=>`<p>${e}</p>`,
-        LstClr :e=>`<p class="RD" style="background:${GetycCores[e]}">${e}</p>`,
-        Table  :e=>'',
-        Card   :e=>''}
-    return Arr.map(e=>`<a class="PT w100 Ct" onclick="Selecty(this)">${Previw[Modo](e)}</a>`).join('')
-    // se esta função Receber algum ajuste, conferir o Select pai pra ver se o Texto Digitado pertence ao q tem aqui!
-    // se não pertence, então Apaga, se pertencer mantem
+        List :e=>`<p style="pointer-events: none">${e}</p>`,
+        Cors :e=>`<p class="RD" style="background:${GetycCores[e]}">${e}</p>`,
+        Table:e=>``,
+        Card :e=>``}
+    return List.map(e=>`<a class="PT w100 Ct" style="display:flex" onclick="Selecty(this)">${Previw[Modo](e)}</a>`).join('')
 }
 
-const PesqOpt=(Inpt,Modo)=>{ // Essa função de Pesquisa Pode ser Util em Todos os Tipos de Campos de Pesquisas (Basta eu Passar o Input e o Conteudo a ser Grifado)
-    const Span = $('span',Pai(Inpt))
-    const Val  = Inpt.value
-    const Regx = new RegExp(`(${aa(Val)})`,'gi')
-    const Griff=e=>`${e}`.replace(Regx,'<b class="My-Griff" style="background:#8f007c;color:white">$1</b>')
-    const TipoFilt = {List:(e,Val)=>aa(e).includes(aa(Val))}
-    $$('a', Span).forEach(a=>{
-        Inn(a,a.innerHTML.replace(/<b[^>]*class=["']My-Griff["'][^>]*>|<\/b>/gi,''))// remove os Grifs Anteiriores
-        if(Val==''){Rmv_N(a);return}                                                // Exibe tudo se o campo for Vazio
-        if (TipoFilt[Modo](a.innerText,Val)){Rmv_N(a);Inn(a,Griff(a.innerHTML))}    // Exibe se der Regex
-        else{Add_N(a)}                                                              // Oculta
-    })
+const PesqOpt = (Inpt, Modo) => { // Essa função de Pesquisa Pode ser Util em Todos os Tipos de Campos de Pesquisas (Basta eu Passar o Input e o Conteudo a ser Grifado)
+    const Span = $('span', Pai(Inpt)), Val = Inpt.value, Regx = new RegExp(`(${aa(Val)})`, 'gi'),
+          Griff = e => e.textContent.replace(Regx, '<b class="My-Griff" style="background:#8f007c;color:white">$1</b>'),
+          TipoFilt = { List: (e, Val) => aa(e).includes(aa(Val)) };
+    $$('a', Span).forEach(a => {
+        Inn(a, a.textContent);                                    // Remove grifs anteriores
+        if (Val == '') { Rmv_N(a); return }                       // Exibe tudo se campo vazio
+        if (TipoFilt[Modo](a.textContent, Val)) { Rmv_N(a); Inn(a, Griff(a)) } else { Add_N(a) } // Grifado ou oculta
+    });
     // Preenchimento automatico e auto correção na hora de Digitar
     // selecionar option automaticamente caso tenha apeans 1
+    // quando pesquiso um nome como "Brilho" em "brilho Local" grifa o brilho e acaba perdendo o espaço
+    // quando vai inserir o valor fica 'BrilhoLocal'
 }
 
-// As Gambiarra pra fazer o MySelect Funcionar, depois Imbutir tudo dentro dele msm
-function Selecty(Eu){Vll($('input',_td(Eu)),Aa(Eu.innerText)) ; SERVChang($('input',_td(Eu))) ; None(Pai(Eu))}
 
-// dexia os Selects Cinza caso não tenha nada
+// dexia os Selects Cinza caso não tenha nada (Mudar isso pra o INPUT)
 function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
 function exibirObjeto() {

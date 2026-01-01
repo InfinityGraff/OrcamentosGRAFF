@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="./PrescriptTeste.js"></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    <script src="./Base.js"></script>
+</head>
+
+<script>
+    // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
+
+<style>
+    *{box-sizing:border-box}
+    .Dsg{border:1px solid #222;padding:18px;border-radius:10px;width:760px;height:280px;gap:18px}
+    .St{width:12px;height:12px;border-radius:50%}
+    .On{background:#4caf50}
+    .Off{background:#555}
+    .Pic{width:90px;border-radius:8px}
+    .Tag{padding:5px 10px;background:#333;border-radius:12px;font-size:13px}
+    .Art{width:120px;gap:8px}
+    .Art img{width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+    .BlocoPortif{width:100%;gap:14px;padding:6px 0;overflow-x:hidden}
+    .ESQUERDA{height:100%;width:30%;gap:12px}
+    .DIREITA{height:100%;width:70%;gap:14px}
+    small{opacity:.8;font-size:13px}
+</style>
+
+
+<body class="Dark CSS1">
+    <header class="request-bar">
+    <h2>Solicitar Nova Arte</h2>
+    <input placeholder="Nome do Projeto">
+    <input placeholder="Tema / Estilo desejado">
+    <input type="date">
+    <button>Enviar Solicitação</button>
+    </header>
+
+    <main class="Cl">
+    <aside class="Cl Start2" id="Roo"></aside>
+    </main>
+</body>
+
+<script>
+    DSG.forEach(d=>{
+    $("#Roo").innerHTML+=`
+    <div class="Dsg Bt">
+
+    <div class="ESQUERDA Cl Start2">
+    <div class="Ct"><strong>${d.Rank}° - ${d.Nome}</strong><span class="St ${d.On?"On":"Off"}"></span></div>
+    <img class="Pic" src="./DSG/Perfil_${d.Nome}.webp">
+    <div class="Cl Start2"><small>informações</small><small>contato</small><small>outras coisas</small></div>
+    </div>
+
+    <div class="DIREITA Cl">
+    <div class="Rw BlocoPortif">${
+        ART.filter(a=>a.Dsng==d.Nome).map(a=>`<div class="Art Cl"><img src="./ART/${a.Img}"><small>${a.Nome}</small></div>`).join("")}</div>
+    <div class="Ct">${d.Class.map(t=>`<span class="Tag">${t}</span>`).join("")}</div>
+    </div>
+
+    </div>`
+    })
+</script>
+
+</html>

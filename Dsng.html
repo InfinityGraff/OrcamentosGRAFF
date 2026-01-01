@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desing</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="./PrescriptTeste.js"></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    <script src="./Base.js"></script>
+    <script src="./JSON/JSON.js"></script>
+</head>
+
+<script> // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const Supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
+
+<script> // BASE DE DADOS
+    const D_Brev = {Clnt:'Cliente',Admn:'Administrador',Grnt:'Gerente',Atnd:'Atendente',DSgn:'Designer'}
+    const  Tm_RS2 = e=>`<div class="RS Ct"><i class="rs">R$</i><b class="rs">${Cm(e).split(',')[0]}</b><i class="rs">,${Cm(e).split(',')[1]}</i></div>`
+</script>
+
+<style>
+    .Gap        {gap:14px} .gap{gap: 8px}
+    body        {padding: 14px}
+    *           {box-sizing:border-box}
+    .rs         {color:#8dff57}
+    h2,h3       {font-size: 25px}
+    .Box .rs    {font-size: 25px}
+    .Art .rs    {font-size: 25px}
+    .BOX        {padding:18px;border-radius:14px;background:#111;border:1px solid #222}
+    .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
+    .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
+    #Perf .Box a{width: 40px; height: 40px}
+    .Desc a     {width: 15px; height: 15px}
+    .Pic        {width:120px;border-radius:50%}
+    .Art        {gap:3px}
+    .Art img    {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+</style>
+
+<body class="Dark CSS1 Cl Gap">
+    <div id="Perf" class="BOX Ev Gap w80"></div>
+    <div id="Soli" class="BOX Cl Gap w80"></div>
+    <div id="Andm" class="BOX Cl Gap w80"></div>
+    <div id="Hist" class="BOX Cl Gap w80"></div>
+    <div id="Trfs" class="BOX Cl Gap w80"></div>
+</body>
+
+<script>
+    const U=new URLSearchParams(location.search).get("u")
+    let [A,M,D,S]=['','','','']
+    const Tm_SOliArt=E=>`<h3>Solicitações      </h3><div class="Start w100 Gap">${E.map(e=>`<div class="    Ct Bt Hov BOX" onclick="Unyc('${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="Aceitar(${e.Id})">Aceitar</button></div>`).join("")}</div>`
+    const Tm_ListArt=E=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${e.Id}')"><img src="./ART/${e.Img}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+    const View=Md=>MODAL(Tm_ListArt(Md=='Dslk'?D:A))        // ao rodar o Modal Excluir o Antigo
+    const Unyc=ID=>MODAL(Tm_ListArt(A.filter(e=>e.Id==ID))) // ao rodar o Modal Excluir o Antigo
+
+    async function LoadByName(){
+        if(!U) return          null ; const {data:USER,error:e1} = await Supabase.from("USER").select("*").eq("Nome",U).single()
+        if(e1) return ERR(e1), null ; const {data:ARTE         } = await Supabase.from("ARTE").select("*")
+        return {USER,ARTE}
+    };LoadByName().then(r=>{if(!r)return;InitPage(r.USER,r.ARTE)})
+
+    function InitPage(u,a){
+        A = a.filter(o=>o.Dsng==U && o.Stts=='Ok')
+        M = a.filter(o=>o.Dsng==U && o.Stts=='Aceita')
+        D = a.filter(o=>o.Dslk?.includes(U))
+        S = a.filter(o=>o.Dsng==null||o.Dsng=="")
+
+        Inn(Perf,`<img class="Pic" src="${u.Foto}">
+                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${u.Nome}</h2><p>${D_Brev[u.cgo]}</p></div>
+                    ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="f-Lrnj">${SVVG[e]}</a><p>${u[e]}</p></div>`).join('')}
+                </div>
+                <div class="Ct Gap">
+                    <div class="BOX Cl Box" onclick="View('Okay')"><a class="f-gren">${SVVG['Okay']}</a><p>Total de Artes    </p><h3>${A.length         }</h3></div>
+                    <div class="BOX Cl Box" onclick="View('Dslk')"><a class="f-redd">${SVVG['Dslk']}</a><p>Total de rejeições</p><h3>${D.length         }</h3></div>
+                    <div class="BOX Cl Box" onclick="View('Coin')"><a class="f-gren">${SVVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(A,'Valr'))}</div>
+                </div>`)
+        Inn(Soli,Tm_SOliArt(S)) ; Inn(Andm,Tm_SOliArt(M)) ; Inn(Hist,Tm_ListArt(A)) // U.On?"Online":"Offline"
+    }
+    async function Aceitar(Id){const{error}=await Supabase.from("ARTE").update({Stts:"Aceita",Dsng:U}).eq("Id",Id)
+        if(!error){alert("Solicitação aceita") ; location.reload()}
+    }
+</script>
+
+<style>
+    #Trfs table { width:100%; font-family:Arial,sans-serif; font-size:14px; color:#eee; background-color:#222; }
+    #Trfs th, #Trfs td { border:1px solid #444; padding:8px 12px; text-align:left; }
+    #Trfs th { background-color:#333; font-weight:bold; }
+    #Trfs tr:hover { background-color:#444; }
+    #Trfs input[type="checkbox"] { transform:scale(1.2); cursor:pointer; accent-color:#1e90ff; }
+    #Trfs td:first-child { text-align:center; width:50px; }
+</style>
+
+<script> // EXTRAIR todo o Funcionamento que isso tem a me oferecer!
+    // Função que Extrai o Conteúdo 
+    function RfreshPerfil(){
+        // let Partic = 0 ; let Comiss = 0
+        // J['SERV'].forEach(e=>{
+        //     if(e.Dsng == U){Partic+=1 ; Comiss+=e.CArt}
+        //     if(e.Cbmt == U){Partic+=1 ; Comiss+=e.VCbt}
+        // })
+
+        const rows = J['SERV'].flatMap(e=>{
+            const tipos = [
+                { cond: e.Dsng == U, label: 'Arte:', vals: [e.TArt, e.CArt] },
+                { cond: e.Cbmt == U, label: 'Produção:', vals: ['o Cbmt', e.VCbt] }].filter(t => t.cond)
+            return tipos.map(t=>`<tr>
+                <td>${JJ['CLNT'][`${e.Clnt}`]?.Clnt}</td>
+                <td>${e.Serv}</td>
+                <td>${t.label}</td>
+                ${t.vals.map(v=>`<td>${v}</td>`).join('')}
+            </tr>`)
+        }).join('')
+
+        Inn(Trfs,`<table><thead><tr>${['Cliente','Serviço','Tipo','Valor 1','Valor 2'].map(e=>`<th>${e}</th>`).join('')}</tr></thead>
+                        <tbody>${rows}</tbody></table>`)
+    }
+    RfreshPerfil()
+</script>
+
+
+
+</html>

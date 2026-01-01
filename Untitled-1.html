@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orcamento</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script> 
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="./PrescriptTeste.js"></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>
+    .bord{border: solid 1px #ffffff48 ; border-radius: 20px ; padding: 5px; margin: 10px;}
+    #TestyBox{width: 80%}
+    #TestyBox svg{width: 100%;height: 100%;}
+    #CalcSVGGG table :is(td,th){width:100px ; border: solid 1px #ffffff48; padding: 4px;}
+
+    .oImgs{width:150px;height:150px}
+    .oImgs svg{width: 100%;height: 100%;}
+    .BOxxxxxxx{margin-bottom: 20px;}
+</style>
+
+<script>
+    let SVG_FILES = []
+</script>
+
+<body class="Dark CSS1 Cl">
+    <div id="CalcSVGGG" class="Cl bord w80">
+        <h1>1° - Calculo SVG</h1>
+        <input type="file" id="svgInput" accept=".svg" multiple onchange="SVG_FILES=[...this.files].filter(f=>f.type==='image/svg+xml')">
+        <div class="bord w90 Cl">
+            <h2>Usuario</h2>
+            <button onclick="User_CalcSVG()">User_CalcSVG</button>
+            <table class="w100">
+                <thead><tr><th>SVG</th><th>Larg</th><th>Alt</th><th>Qnt</th><th>Corte</th><th>Material</th><th>Total</th></tr></thead>
+                <tbody id="TB_SVG">
+                    <tr>
+                        <td><div   class="oImgs"></div></td>
+                        <td><input class="oLrg" placeholder="Largura" oninput="Mask.Num(this),Calc_SVG(_tr(this))"></td>
+                        <td><input class="oAlt" placeholder="Altura"  oninput="Mask.Num(this),Calc_SVG(_tr(this))"></td>
+                        <td><input class="oQnt" placeholder="Qnt"     oninput="Calc_SVG(_tr(this))"               ></td>
+                        <td class="svg-corte">0</td>
+                        <td class="svg-mtrl" >0</td>
+                        <td class="svg-total">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="bord w90 Cl"><h2>Admin</h2>
+            <button onclick="Admn_CalcSVG()">Admn_CalcSVG</button>
+            <div id="TestyBox"></div>
+        </div> 
+    </div>
+</body>
+
+<script> // Render SVG
+    const getVals=tr=>[Num(Vll($('.oLrg',tr))),Num(Vll($('.oAlt',tr))),Num(Vll($('.oQnt',tr)))]
+
+    function Calc_SVG(tr){
+        const svg = $('.oImgs svg',tr).outerHTML
+        const R   = CalcSVG(svg,getVals(tr),BS_Mtras['Vinil'])
+        Inn($('.svg-corte',tr),RS(R.Cort))
+        Inn($('.svg-mtrl' ,tr),RS(R.Mtrl))
+        Inn($('.svg-total',tr),RS(R.Cort + R.Mtrl))
+    }
+
+    function LoadSVGUser(svg){
+        const tr = $('#TB_SVG tr').cloneNode(true)
+        Inn($('.oImgs',tr),svg)
+        $('#TB_SVG').appendChild(tr)
+    }
+
+    function LoadSVGAdmn(svg){
+        $('#TestyBox').insertAdjacentHTML('beforeend',`<div class="Bt w100 BOxxxxxxx">
+            <div class="lugarsSVG Ct">${svg}</div>
+            <table><thead><tr>${['cm','Nós','Path','Tempo','Corte','Material','Total'].map(e=>`<th>${e}</th>`).join('')}</tr></thead>
+            <tbody>${[0.1,0.2,0.3,0.4,0.5].map(m=>{
+                const R = CalcSVG(svg,[m,m,1],BS_Mtras['Vinil'])
+                const arr = [m.toFixed(2),R.Nos,R.Path,R.Temp+'s',RS(R.Cort),RS(R.Mtrl),RS(R.Cort+R.Mtrl)]
+                return `<tr>${arr.map(e=>`<td>${e}</td>`).join('')}</tr>`}).join('')}
+            </tbody></table></div>`
+        )
+    }
+
+    function User_CalcSVG(){readSVGFiles(SVG_FILES,LoadSVGUser)}
+    function Admn_CalcSVG(){readSVGFiles(SVG_FILES,LoadSVGAdmn)}
+
+    // Buscar SVG de dentro do banco de Dados
+    // ao ajustar o Tamanho Modificar o SVG também
+    // Mudar a cor
+
+</script>
+
+
+
+
+</html>

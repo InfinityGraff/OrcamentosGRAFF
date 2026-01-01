@@ -143,6 +143,17 @@ function VAL(e){
     // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
 }
 
+const vAL=(s,e)=>
+    s=='Imgs' ?     VAAL($('.oImgs',_tr(e)))  :
+    s=='Serv' ?     VAAL($('.oServ',_tr(e)))  :
+    s=='Tipo' ?     VAAL($('.oTipo',_tr(e)))  :
+    s=='Matr' ?     VAAL($('.oMatr',_tr(e)))  : 
+    s=='Cbmt' ?     VAAL($('.oCbmt',_tr(e)))  :
+    s=='Lrg'  ? Num(VAAL($('.oLrg' ,_tr(e)))) :
+    s=='Alt'  ? Num(VAAL($('.oAlt' ,_tr(e)))) :
+    s=='Qnt'  ? Num(VAAL($('.oQnt' ,_tr(e)))) :
+    s=='Qntt' ?     VAAL($('.oQnt' ,_tr(e)))  : null
+
 const DarJJ = (M,T,R,C,V,Lv2=null)=>{
     const j = J[T], k = JJ[T]; if (!j || !k) return
     let o, jL, jjL, parent
@@ -608,7 +619,6 @@ const criarThumbnail = (file, pixel) =>
 })
 
 function RodaCanvMdds(Eu){ // Conciderar que eu as vezes pode ser a área
-
     function CalcAreaQnt(Lag,Alt,A_Lag,A_Alt){
         const QntLag = Ared(A_Lag/Lag)  ; const QntAlt = Ared(A_Alt/Alt)
         const SobraV = A_Lag-QntLag*Lag ; const SobraH = A_Alt-QntAlt*Alt
@@ -623,10 +633,8 @@ function RodaCanvMdds(Eu){ // Conciderar que eu as vezes pode ser a área
     const tr   = $(`#ORC .ORC_tr-${TrID}`)
     const Dtlhe= $(`#Div-Detalhes .ORC_tr-${TrID}`)
 
-    LOG(TrID)
-
     if(!tr.classList.contains('CanvMddsATV')){return}
-    const Qnt  = $('.oQnt',tr)
+    const Qnt  = $('.oQnt input',tr)
     const [Alt  ,Lag  ] = [Pars($('.oAlt',tr)),Pars($('.oLrg',tr))]
     const [A_Lag,A_Alt] = [Pars($('.I_AreaX',Dtlhe)),Pars($('.I_AreaY',Dtlhe))]
     
@@ -637,8 +645,6 @@ function RodaCanvMdds(Eu){ // Conciderar que eu as vezes pode ser a área
     
     const Cnvs = $(`.CanvasMedidas`,Dtlhe)
     Show(Cnvs)
-    LOG('Wisermyn',Cnvs)
-
     GeraCanvMdds(Cnvs,dad[0],dad[1],A_Lag,A_Alt)
 }
 
@@ -685,8 +691,74 @@ function GeraCanvMdds(Cnvs,Lag,Alt,A_Lag,A_Alt){
     }
 }
 
+// Calculo do SVG
+const readSVGFiles=(Arr,Call)=>Arr.forEach(file=>{const r=new FileReader();r.onload=({target:{result:svg}})=>{Call(svg)};r.readAsText(file)})
+const InvRoot=(v,d=0.07,k=1)=>Math.sqrt(v)*k/(1+d*Math.sqrt(v))
+const ContPth=p=>((p.getAttribute('d') || '').match(/[Mm]/g) || []).length
+const ContPly=p=>p?Math.floor(p.trim().split(/[\s,]+/).length/2):0
+const contNos=d=>{
+    const cmds = d.match(/[a-zA-Z]|-?\d*\.?\d+/g)
+    if (!cmds) return 0
+    let totalNos = 0 ; let i = 0
+    while (i < cmds.length) {const cmd = AA(cmds[i++]);switch (cmd) {
+        case 'M':
+        case 'L':
+        case 'T': while (i + 1 < cmds.length && !isNaN(Number(cmds[i])) && !isNaN(Number(cmds[i + 1]))) {totalNos++;i += 2;}break;
+        case 'H':
+        case 'V': while (i < cmds.length && !isNaN(Number(cmds[i]))){totalNos++;i++;}break;
+        case 'C': while (i + 5 < cmds.length) {totalNos++;i += 6;} break;
+        case 'S':
+        case 'Q': while (i + 3 < cmds.length) { totalNos++; i += 4; } break;
+        case 'A': while (i + 6 < cmds.length) {totalNos++; i += 7; }break;
+        case 'Z': break; /*não conta nó*/
+        default : if (!isNaN(Number(cmd))) {i++;}}
+    }return totalNos
+}
+function CalcSVG(svgTxt,Mdds,mat){
+    const svg = new DOMParser().parseFromString(svgTxt,'image/svg+xml')
+    const [path,poly] = [$$('path',svg),$$('polygon',svg)]
+    const nos = path.reduce((s,p)=>s+contNos(p.getAttribute('d'     )||''),0) +
+                poly.reduce((s,p)=>s+ContPly(p.getAttribute('points')||''),0)
+    const Pth = path.reduce((s,e)=>s+ContPth(e),0)+poly.length
+    const m2  = Mdds[0]*Mdds[1]*Mdds[2]
+    const tmp = nos*m2*Pth*mat.Maq
+    return {Nos:nos,Path:Pth,Temp:tmp.toFixed(2),
+        Cort : InvRoot(tmp*mat.Val,0.03),                       // Corte com a distorção do seu Proprio Crecent
+        Mtrl : ((m2*mat.Mat)+(m2*mat.Mat*Crecent(m2,0.5,1.8))), // Material + a % do Crecent
+    }
+}
+
+function CheckLimit(Variant,La,Al,Lrg,Alt){ // ⚠️ Da pra SIMPLIFICAR a parte do DOM
+    const AVISO = (v,i,t) => {Add(i,'Error');Rmv_N($('span',Pai(i)));Inn($('span',Pai(i)),`${t}: ${Cm(v)}`)}
+    [La, Al].forEach(i => { Rmv(i,'Error'); Add_N($('span',Pai(i))) }) // Limpeza
+    const { Min={}, Max={} } = Variant?.Limit || {}
+    const chk = (v,min,max,i) => {if(!v) return
+        if(min && v<min) AVISO(min,i,'Min')
+        if(max && v>max) AVISO(max,i,'Max')}
+    chk(Lrg, Min.L, Max.L, La) ; chk(Alt, Min.A, Max.A, Al) // Limites individuais
+    const x = Max.x || 0 ; const X = Max.X || 0             // Limite compartilhado x / X
+    if(x && X){if(!((Lrg <= x && Alt <= X) || (Lrg <= X && Alt <= x))){[La, Al].forEach(i => AVISO(i===La ? x : X, i, 'Max'))}} // Caso específico: limite separado para cada lado, mas orientação não importa
+    else if(x && !X){if(Lrg && Alt && Lrg > x && Alt > x) [La, Al].forEach(i => AVISO(x, i, 'Max'))} // Caso compartilhado: apenas um lado precisa obedecer
+}
+
+// Aparentemente Jogar o gráfico na Biblioteca
+
+
 // Trexo relacionado a Mover os Botões das Fotinhas
 let alvo,dx,dy
 document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop})
 document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}}
 document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}}
+
+
+//  PREPARAR pra o DESMANCHE
+function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentro dos Grupos
+    const GpIt={}, GpOF={}
+    ObjEtr(Prod).forEach(([k,v])=>{GpIt[k] = v.Calc ; GpOF[k] = v.Stts})
+
+    return `<option value="" disabled selected>${Ary[0]}</option>
+        ${Object.entries(Ary.slice(1).reduce((a,e)=>{
+            (a[GpIt[e]]||=[]).push(`<option value=\"${e}\" ${Stg === e ? 'selected' : ''} ${GpOF[e] === 'Offf' ? 'style=\"color:red;\"' : ''}>${e}</option>`);return a
+        },{})).map(([g,o]) => `<optgroup label=\"${g}\">${o.join('')}</optgroup>`).join('')}
+    `
+}
