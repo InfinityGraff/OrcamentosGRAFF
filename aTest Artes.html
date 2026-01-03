@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARTE</title>
     <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <!--
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    -->
+    <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+    <script src="../MyBiblioteca/PreScript.js"      ></script>
+
     <script src="./PrescriptTeste.js"></script>
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
@@ -19,11 +25,15 @@
 <style>/* ==== LAYOUT ==== */
     .container{gap:10px ; width: 80%;}
     canvas{margin:10px 0;}
-    #canvasRascunho{border:1px solid #555;}
-    svg{width:26px;height:26px;}
-    svg circle{cx:13;cy:13;r:12;fill:none;stroke:#777;}
+    .UNIDADE canvas{border:1px solid #555 ; width:260px ; height:160px ; padding: 5px;}
+    .Infos img{width:26px;height:26px;}
+    .Gap{gap: 15px;}
     .BOX        {padding:18px;border-radius:14px;background:#111;border:1px solid #222}
-    .BOX {width: 100%;}
+    .box        {padding:18px;border-radius:14px;background:#6363631a;border:1px solid #494949}
+    .BOX        {width: 100%;}
+    .UNDD       {width: 360px; height: 450px;}
+    #UND_CONTAINER{overflow-x: scroll;}
+    .CanvasFake{background-color: wheat;}
 </style>
 
 <script> // ==== BASE DE DADOS ====
@@ -33,83 +43,11 @@
         Dest : ["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
         Presset:["Livre","1:1","4:5","9:16","16:9"],
     }
+    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
+    // <div><label>Presset</label><select id="proporcao" onload="load_Opts(this,DB.Presset)" onchange="desenhaProporcao()"></select></div>
 </script>
 
-<body class="Dark CSS1 Cl">
-
-    <div id="Form" class="container Cl">
-        <h1>Solicitação de Arte</h1>
-        <div class="Ct BOX">
-            <div><label>Tipo de Arte</label><select id="tipoArte" onload="load_Opts(this,DB.Tipo)" onchange="mudaTipo()"></select></div>
-            <div><label>Categoria   </label><select id="segmento" onload="load_Opts(this,DB.Catg)" onchange="mudaTipo()"></select></div>
-            <div><label>Destino     </label><select id="destino"  onload="load_Opts(this,DB.Dest)" onchange="mudaTipo()"></select></div>
-        </div>
-
-        <div class="BOX">
-            <canvas id="canvasRascunho" width="260" height="160"></canvas>
-            
-            <div class="Ct">
-                <div><label>Largura</label><input id="largura" placeholder="Largura"></div>
-                <div><label>altura </label><input id="altura"  placeholder="Altura" ></div>
-                <div><label>Presset</label><select id="proporcao" onload="load_Opts(this,DB.Presset)" onchange="desenhaProporcao()"></select></div>
-                <div><label>Qnt    </label><input id="variacoes" type="number" value="1"></div>
-            </div>
-        </div>
-        
-        <div class="BOX Cl">
-            <div class="Ct">
-                <div><label>Título</label><input id="empresa"></div>
-                <div><label>Slogan</label><input id="Slogan" ></div>
-                <div id="produtos" class="Cl"><label>Lista de Produtos</label><textarea id="listaProdutos"></textarea></div>
-            </div>
-            
-            <div class="Ct"> <!--Opção pra mais de um Insta Zap ou Endereço-->
-                <div class="Ct"><svg><circle/></svg><input id="instagram" placeholder="Instagram"></div>
-                <div class="Ct"><svg><circle/></svg><input id="whatsapp"  placeholder="WhatsApp" ></div>
-                <div class="Ct"><svg><circle/></svg><input id="endereco"  placeholder="Endereço" ></div>
-            </div>
-        </div>
-
-
-        <div class="BOX Ct">
-            <div><label>Cor de Fundo   </label><input id="fundo" type="color"></div>
-            <div><label>Referências    </label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
-        </div>
-
-        <div class="Cl"><label>Observações</label><textarea id="obs"></textarea></div>
-        <button onclick="Ger_SOliArt()">Solicitar Arte</button>
-    </div>
-</body>
-
-<script> // ==== FUNÇÕES VISUAIS ====
-    let ctx, drag=false, sx=0, sy=0;
-    const initCanvas=()=>{ctx=$("#canvasRascunho").getContext("2d");desenhaRetangulo()}
-
-    const desenhaRetangulo = (w=+largura.value, h=+altura.value)=>{
-        ctx.clearRect(0,0,260,160);
-        if(w && h) ctx.strokeRect(10,10, w*Math.min(240/w,140/h), h*Math.min(240/w,140/h));
-    }
-
-    const desenhaProporcao = ()=>{
-        if(proporcao.value=="Livre") return;
-        const [w,h] = proporcao.value.split(':').map(Number);
-        largura.value = w*10;
-        altura.value  = h*10;
-        desenhaRetangulo();
-    }
-
-    // desenho manual no canvas
-    canvasRascunho.onmousedown = e => (drag=true, sx=e.offsetX, sy=e.offsetY);
-    canvasRascunho.onmouseup = e => {
-        if(!drag) return; drag=false;
-        largura.value = Math.abs(e.offsetX-sx);
-        altura.value  = Math.abs(e.offsetY-sy);
-        desenhaRetangulo();
-    }
-
-    // sincroniza inputs
-    [largura, altura].forEach(e=>e.oninput=desenhaRetangulo)
-
+<script>
     // tipo de arte
     const mudaTipo = ()=>{
         return
@@ -139,7 +77,88 @@
     }
 </script>
 
-<script>initCanvas() ; Onloads('body')
+<body class="Dark CSS1 Cl">
+
+    <div id="Form" class="container Cl">
+        <h1>Solicitação de Arte</h1>
+        <div class="Ct BOX">
+            <div><label>Tipo de Arte</label><select id="tipoArte" onload="load_Opts(this,DB.Tipo)" onchange="mudaTipo()"></select></div>
+            <div><label>Categoria   </label><select id="segmento" onload="load_Opts(this,DB.Catg)" onchange="mudaTipo()"></select></div>
+        </div>
+
+        <div class="BOX Gap Start" id="UND_CONTAINER">
+            <div class="box UNDD UNIDADE Cl Rltv">
+                <div class="XX Ct PT" onclick="Pai(this).remove()">X</div>
+                <div><label>Destino</label><select class="Dest" onload="load_Opts(this,ObjKey(Preset))"></select></div>
+                <div class="Ct">
+                    <div><label>Título </label><input id="empresa"></div>
+                    <div><label>Slogan </label><input id="Slogan" ></div>
+                </div>
+                <div class="Ct containerLimite" style="width:100%;height:200px;overflow:hidden;border:1px solid #000;">
+                  <div class="CanvasFake" style="background:#eee;"></div>
+                </div>
+                <div class="Mdd Ct none">
+                    <div><label>Largura</label><input class="Lag" placeholder="Largura"></div>
+                    <div><label>Altura </label><input class="Alt" placeholder="Altura" ></div>
+                </div>
+                <div class="Ct">
+                    <div><label>Cor de Fundo   </label><input id="fundo" type="color"></div>
+                    <div><label>Img de Fundo   </label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+                </div>
+                    <div><label>Referências    </label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+            </div>
+            <div class="box UNDD AddButton Ct" onclick="AddUND()"><button>+ Adicionar Variação</button></div>
+        </div>
+
+        <div class="BOX Cl">
+            <div class="Ct">
+                <div id="produtos" class="Cl"><label>Lista de Produtos</label><textarea id="listaProdutos"></textarea></div>
+            </div>
+            <div class="Ct Infos"> <!--Opção pra mais de um Insta Zap ou Endereço-->
+                <div class="Ct"><img src="./SVG/Insta.svg"><input id="instagram" placeholder="Instagram"></div>
+                <div class="Ct"><img src="./SVG/Zap.svg"  ><input id="whatsapp"  placeholder="WhatsApp" ></div>
+                <div class="Ct"><img src="./SVG/Lcal.svg" ><input id="endereco"  placeholder="Endereço" ></div>
+            </div>
+        </div>
+        <div class="Cl"><label>Observações</label><textarea id="obs"></textarea></div>
+        <button onclick="Ger_SOliArt()">Solicitar Arte</button>
+    </div>
+</body>
+
+<script>
+    const initUND = u => {
+        const [Dest, Cnvs, Mdds, Lag, Alt] = [$('.Dest', u), $('.CanvasFake', u), $('.Mdd', u), $('.Lag', u), $('.Alt', u)];
+        if (!Dest || !Cnvs || !Lag || !Alt) return;
+        const Container = Cnvs.parentElement, MAX_H = 200;
+        let dr=false, sx=0, sy=0, selBox;
+
+        const Draw = () => { let w=+Lag.value,h=+Alt.value;if(!w||!h) return; let scale=Math.min(Container.clientWidth/w,MAX_H/h); Cnvs.style.width=w*scale+'px'; Cnvs.style.height=h*scale+'px'; };
+
+        Dest.onchange = () => { const p=Preset[Dest.value]; if(!p){Rmv_N($(Mdds));return;} const [w,h]=p.split(':').map(Number); Lag.value=w*10; Alt.value=h*10; Draw(); };
+
+        Container.onmousedown = e => (dr=true, sx=e.offsetX, sy=e.offsetY, selBox=document.createElement('div'), Object.assign(selBox.style,{position:'absolute',border:'1px dashed #000',pointerEvents:'none'}), Container.appendChild(selBox));
+        Container.onmousemove = e => { if(!dr) return; Object.assign(selBox.style,{left:Math.min(e.offsetX,sx)+'px',top:Math.min(e.offsetY,sy)+'px',width:Math.abs(e.offsetX-sx)+'px',height:Math.abs(e.offsetY-sy)+'px'}); };
+        Container.onmouseup = e => { if(!dr) return; dr=false; Lag.value=Math.abs(e.offsetX-sx); Alt.value=Math.abs(e.offsetY-sy); Draw(); selBox.remove(); };
+
+        [Lag, Alt].forEach(i=>i.oninput=Draw);
+        Draw();
+    };
+
+
+    const AddUND=()=>{
+        const base  = $('.UNIDADE')
+        const clone = base.cloneNode(true)
+        $$('input',clone).forEach(i=>i.value='')
+        Rmv_N($('.Mdd',clone))
+        $('canvas',clone).getContext('2d').clearRect(0,0,CANV.w,CANV.h)
+        $('#UND_CONTAINER').insertBefore(clone, $('.AddButton'))
+        initUND(clone)
+    }
+    Onloads('body')
+    initUND($('.UNIDADE'))
+</script>
+
+<script>
     // em Titulo opção pra botar imagem
     // Lista pode ter texto ou Imagens
     // Lugar pra botar o PRAZO

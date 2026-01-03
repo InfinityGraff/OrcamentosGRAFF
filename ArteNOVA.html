@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor de Rascunho</title>
+
+    <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+    <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="../MyBiblioteca/PreScript.js"      ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+</head>
+
+<style>
+    body{margin:0;background:#111;color:#fff;font:14px Arial;display:flex;justify-content:center;padding:10px}
+    #wrap{position:relative}
+    #s{position:relative;width:794px;height:1123px;background:#eee;box-shadow:0 0 20px #000;overflow:hidden}
+    .e{position:absolute;cursor:move}
+    .c{transform-origin:center ; font-size: 50px;}
+    .h{width:10px;height:10px;background:#000;position:absolute;z-index:10;display:none;}
+    .e.Atv .c{outline:1px dashed #000}
+    .e.Atv .h{display: block;}
+    .sc{right:-5px;bottom:-5px;cursor:nwse-resize}
+    .rt{left:50%;top:-18px;cursor:grab}
+    .topbar{position:fixed;top:10px;left:50%;transform:translateX(-50%);background:#222;padding:6px;border-radius:4px;display:none;gap:4px;z-index:9999}
+    .topbar input,.topbar select,.topbar button{font-size:12px}
+    .menu{position:absolute;background:#222;padding:4px;border-radius:4px;display:flex;gap:4px;z-index:9999}
+    #pagebar{position:fixed;right:10px;top:10px;background:#222;padding:6px;border-radius:4px;display:flex;gap:6px;z-index:9999}
+</style>
+
+<script> // Helper
+    let A=null,M=0,ox=0,oy=0,rs=1,rr=0,ED=0
+    const gID=(Eu)=>$(`.e[name="${Nm(Pai(Eu))}"]`)
+</script>
+
+<body>
+    <div id="topbar" class="topbar"> <!-- TOOLBAR TEXTO -->
+        <div class="idTop Ct" name="1">
+            <input type="color"oninput="gID(this) && ($('.c',gID(this)).style.color = this.value)">
+            <input id="txtInput" type="text" oninput="gID(this) && ($('.c',gID(this)).innerText = this.value)">
+            <select onload="Tm_OptFnt(this,KitFonts)" onchange="gID(this) && ($('.c',gID(this)).style.fontFamily = this.value)"></select>
+            <button onclick="gID(this) && (gID(this).style.zIndex = (+gID(this).style.zIndex || 0) + 1)">⬆</button>
+            <button onclick="gID(this) && (gID(this).style.zIndex = (+gID(this).style.zIndex || 0) - 1)">⬇</button>
+        </div>
+    </div>
+    <div id="wrap"><div id="s"></div></div>
+    <div id="pagebar"><input type="color" id="bg"><button onclick="pdf()">PDF</button></div> <!-- FUNDO / PDF -->
+</body>
+
+<script>
+    const Sand=$("#s"),bg=$("#bg")
+    const tope=$("#topbar")
+    const txt = $("#txtInput")
+    const tf = () => A && ($(".EE",A).style.transform =`scale(${A.dataset.s}) rotate(${A.dataset.r}deg)`)
+    const C    = _=>A&&$(".c",A)
+    const IsTxt=e=>C()&&!C().querySelector("img")
+</script>
+
+<script>
+    /* ===== SELECT ===== */
+    const SEL=e=>{
+        DTV($$(".e"))
+        ShowTrue(tope,e);if(!e) return                                    // Exibe o Topbar
+        ATV(e)                                                            // Desativa Todos e // Ativa o elemento Selecionado
+        A=e
+        Add_N($$('.idTop')) ; Rmv_N($(`:scope > [name="${Nm(e)}"]`,tope)) // Ocultar todos topBar // Exibe o TopBar selecionado
+    }
+
+    txt.onfocus=_=>ED=1 ; txt.onblur =_=>ED=0
+
+    /* ===== MOUSE ===== */
+    Sand.onmousedown=e=>{
+        if(e.target==Sand) return SEL(null)
+        const el=e.target.closest(".e");if(!el) return
+        SEL(el)
+        ox=e.clientX;oy=e.clientY
+        rs=+el.dataset.s;rr=+el.dataset.r
+        M=Coten(e.target,"sc")?2:Coten(e.target,"rt")?3:1
+    }
+
+    document.onmousemove=e=>{
+        if(!A||!M||ED) return
+        if(M==1){
+            A.style.left=parseFloat(A.style.left)+e.movementX+"px"
+            A.style.top =parseFloat(A.style.top )+e.movementY+"px"
+        }
+        if(M==2){A.dataset.s=Math.max(.1,rs+(e.clientX-ox)/200);tf()}
+        if(M==3){A.dataset.r=rr+(e.clientX-ox);tf()}
+    }
+    document.onmouseup=_=>M=0
+
+</script>
+
+<script>
+    const adD=(h,x,y)=>{ /* ===== ADD ===== */
+        const Idx = $$('.idTop',tope).length+1
+        const T=$('.idTop',tope).cloneNode(true) ; T.setAttribute('name',Idx) ; tope.appendChild(T)
+        const e=NewTag('div') ; e.className='e'  ; e.setAttribute('name',Idx)
+        e.style.cssText=`left:${x}px;top:${y}px`
+        e.dataset.s=1;e.dataset.r=0
+        Inn(e,`<div class="EE"><div class="c noslt">${h}</div><div class="h sc"></div><div class="h rt"></div></div>`)
+        Sand.appendChild(e);SEL(e)
+        const c=$(".c",e)
+        c.onmousedown=x=>ED&&x.stopPropagation()
+        c.ondblclick=x=>{x.stopPropagation() ; ED=1 ; tope.style.display="none"}
+        // é aqui no Add onde eu devo ocultar os Input desnessesário caso seja uma imagem
+    }
+
+    /* ===== DUPLO CLICK FUNDO ===== */
+    Sand.ondblclick=e=>{
+        const [x,y] = [e.offsetX,e.offsetY]
+        if(e.target!==Sand||ED) return
+        Sand.insertAdjacentHTML("beforeend",`<div class="menu" style="left:${x}px;top:${y}px">
+            <button onclick="adD('Texto','${x}','${y}') ; Pai(this).remove()">Texto</button>
+            <button>Imagem</button>
+        </div>`)
+        const m=$(".menu")
+        //m.children[0].onclick=_=>{adD('Texto',x,y) ; Pai(this).remove()}
+        m.children[1].onclick=_=>{selectImage(url=>{adD(`<img src="${url}" style="width:150px">`, x, y);}); Pai(this).remove()}
+
+    }
+
+    /* ===== FUNDO  ===== */  bg.oninput=e=>Sand.style.background=e.target.value
+    /* ===== DELETE ===== */  document.addEventListener("keydown", e => {if (e.target.tagName === "INPUT") return ; if (!ED && e.key === "Delete" && A) A.remove()})
+</script>
+
+<script>
+    /* ===== PDF ===== */
+    const pdf=async()=>{
+        const {jsPDF}=window.jspdf
+        const p=new jsPDF("p","pt","a4")
+        await p.html(Sand,{callback:_=>p.save("rascunho.pdf")})
+    }
+
+    Onloads('body')
+</script>
+
+</html>
