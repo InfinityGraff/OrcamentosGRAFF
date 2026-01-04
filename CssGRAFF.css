@@ -84,8 +84,8 @@
       .Dark select:has(option:checked:disabled){color:#ffffff4b}
       .Lite select:has(option:checked:disabled){color:#00000083}
     /*Input*/      
-      .Dark input,.Dark select{background:#ffffff21; color:#ffffff; border:0px solid #b4b4b4}
-      .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272}
+      .Dark input,.Dark select{background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
+      .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272ee}
       .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
       .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
       input.Pcy,select.Pcy,.Interup.Pcy   {background:#00000018; color:#ffffff; border:1px solid #ef3aff}
@@ -248,3 +248,8 @@ input.Error:hover{background:red}
 .Drop       { border:2px dashed #a1c2d8; border-radius:10px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden;  -height:60px}
 .Drop:hover { background:#63a6dd33}.Drop.hover { background:#63a6dd33}
 .Drop img   { width:auto ; height:80px; border-radius:10px}
+
+
+.BOX {padding:18px;border-radius:15px;background:#111111f8;border:1px solid #222222}
+.box {padding:18px;border-radius:15px;background:#6363631a;border:1px solid #494949}
+.Box {padding:6px ;border-radius:15px;background:#272727ce;border:1px solid #929292 ; z-index:9999 ; backdrop-filter: blur(10px)}

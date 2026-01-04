@@ -6,75 +6,374 @@
     <title>Cliente</title>
     <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
-    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+    <script src="../MyBiblioteca/PreScript.js"      ></script>
     <script src="./PrescriptTeste.js"></script>
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
     <script src="./Gera3D.js"></script>
     <script src="./Base.js"></script>
+    <script src="TemplatePresset.js"></script>
 </head>
 
-<script>
-    // Configuração do SupaBase
+<script> // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-    const supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const Supabase          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
     const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
 </script>
 
-<style>
-    *{box-sizing:border-box}
-    .Dsg{border:1px solid #222;padding:18px;border-radius:10px;width:760px;height:280px;gap:18px}
-    .St{width:12px;height:12px;border-radius:50%}
-    .On{background:#4caf50}
-    .Off{background:#555}
-    .Pic{width:90px;border-radius:8px}
-    .Tag{padding:5px 10px;background:#333;border-radius:12px;font-size:13px}
-    .Art{width:120px;gap:8px}
-    .Art img{width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
-    .BlocoPortif{width:100%;gap:14px;padding:6px 0;overflow-x:hidden}
-    .ESQUERDA{height:100%;width:30%;gap:12px}
-    .DIREITA{height:100%;width:70%;gap:14px}
-    small{opacity:.8;font-size:13px}
+<style> /*O CSS Geral*/
+    #DivFormArt .LA{width:68%}
+    #DivFormArt .LB{width:28%}
+    
+    #FormArt>*{width: 100%}
+    .Infos img  {width:26px;height:26px}
+    #UNDDD      {overflow:auto}
+    .UNDD,.UNDBTN {width: 360px;height: 360px;flex: 0 0 auto;min-width: 360px;min-height: 360px}
+    .idTop > *{width: 15%}
+    .s{width:500px;height:500px ; background:#eee ; box-shadow:0 0 20px #000 ; overflow:hidden}
+    .e{position:absolute;cursor:move}
+    .e a{width:10px;height:10px;background:#000;position:absolute;z-index:10;display:none} /*Controladores*/
+    .e.Atv .c{outline:1px dashed #000}
+    .e.Atv  a{display: block}
+    .sc{right:-5px;bottom:-5px;cursor:nwse-resize} /*Controlador Escala */
+    .rt{left :50% ;top:-18px  ;cursor:grab}        /*Controlador Rotação*/
+    .idTop.Img > :nth-child(-n+3){display:none}
+    .c{color: black;}
+    #Resultss .rs    {color:#8dff57}
+    #Resultss .rs    {font-size: 25px}
+
+    #List_Desng{overflow: auto;}
+    #List_Desng > .BOX{height: 260px ; width: 100%}
+    #List_Desng .LA{width:30%} #List_Desng .LB{width:70%}
+    #List_Desng .LA .Head p{font-size: 20px}
+    .St{width:12px;height:12px;border-radius:255px}
+    .St.On{background:#4caf50} .St.Of{background:#575757}
+    .Perf{width:90px;height:90px;border-radius:255px}
+    .Prtf{width: 100%;overflow:auto}
+    .Prtf a{width:120px;gap:8px;padding:8px;margin-bottom:8px}
+    .Prtf a img{width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+    .Tags p{padding:5px 10px;background:#333;border-radius:12px;font-size:13px}
+
+    /*GAMBIARRA*/
+    .UNDD .Mdd input {width: 150px;}             /*GAMBIARRA*/
+    .ConfUND :is(input,select,.Drop){width:75px ; margin: 0px;} /*GAMBIARRA*/
+    select.vigem{color:#ffffff79 !important}   /*GAMBIARRA*/
+    #DivFormArt {height: 680px;}
+    #List_Desng {height: 400px;}
 </style>
 
+<script> // ==== BASE DE DADOS ====
+    const DB = {
+        Tipo : ["Tipo de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
+        Catg : ["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
+        Dest : ["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
+        Presset:["Livre","1:1","4:5","9:16","16:9"],
+        template:['1','2','3']
+    }
 
-<body class="Dark CSS1">
-    <header class="request-bar">
-    <h2>Solicitar Nova Arte</h2>
-    <input placeholder="Nome do Projeto">
-    <input placeholder="Tema / Estilo desejado">
-    <input type="date">
-    <button>Enviar Solicitação</button>
-    </header>
+    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
+    // <div><label>Presset</label><select id="proporcao" onload="load_Opts(this,DB.Presset)" onchange="desenhaProporcao()"></select></div>
+</script>
 
-    <main class="Cl">
-        <aside class="Cl Start2" id="Roo"></aside>
-    </main>
+<script> // ==== GERAR SOLICITAÇÃO ==== 
+    function Ger_SOliArt(){
+        LOG(`SOLICITAÇÃO DE ARTE:
+            Tipo: ${tipoArte.value}
+            Segmento: ${segmento.value}
+            Destino: ${destino.value}
+            Tamanho: ${altura.value} x ${largura.value}
+            Fundo: ${fundo.value}
+            Produtos:${listaProdutos.value||"-"}
+            Empresa: ${empresa.value}
+            Instagram: ${instagram.value}
+            WhatsApp: ${whatsapp.value}
+            Endereço: ${endereco.value}
+            Observações:
+            ${obs.value}`)
+    }
+    const gID =e=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${Nm(Pai(e))}"]`)
+    const gID2=(e,x)=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${x}"]`)
+    const gID3=(e,x)=>$(`.UNDD[name="${1}"] .e[name="${x}"]`)
+</script>
+
+<body class="Dark CSS1 Cl">
+    <h1>Solicitação de Arte</h1>
+    <div id="DivFormArt" class="w100 Ct Gap">
+        <div id="FormArt" class="LA Cl Gap h100" oninput="InnResult(Calc(this))">
+            <div class="Ct BOX">
+                <div><label>Tipo de Arte</label><select id="tipoArte" name="0" data-Nv="1" onload="load_Opts(this,DB.Tipo)" onchange="mudaTipo()"></select></div>
+                <div><label>Categoria   </label><select id="segmento" name="3" data-Nv="2" onload="load_Opts(this,DB.Catg)" onchange="mudaTipo()"></select></div>
+                <div><label>Título      </label><input  id="empresa"  name="2" data-Nv="1" placeholder="Nome da Empresa"   oninput="Inn($('.c',gID2(this,2)),this.value)"></div>
+                <div><label>Slogan      </label><input  id="Slogan"   name="2" data-Nv="1" placeholder="Slogan da Empresa" oninput="Inn($('.c',gID2(this,3)),this.value)"></div>
+            </div>
+
+            <div id="UNDDD" class="BOX Gap CT">
+                <div class="box UNDD Cl Rltv" name="1">
+                    <div class="XX Ct PT" onclick="Pai(this).remove()">X</div>
+                    <div class="Ct ConfUND gap">
+                        <div><label>Destino</label><select class="Dest" name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
+                        <div><label>Presset</label><select class="Tmpt" name="8" data-Nv="2" onload="load_Opts(this,DB.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
+                        <div><label>Fundo  </label><input name="4" data-Nv="2" class="Fundo" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
+                        <div><label>Referências </label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+                    </div>
+
+                    <div class="Box topbar Abslt none">
+                        <div class="idTop Ct" name="1">
+                            <input  data-Nv="3" oninput="$('.c',gID(this)).style.color = this.value" type="color">
+                            <input  data-Nv="3" oninput="Inn($('.c',gID(this)),this.value)">
+                            <select data-Nv="3" onload="Tm_OptFnt(this,KitFonts)" onchange="$('.c',gID(this)).style.fontFamily = this.value"></select>
+                            <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) + 1">⬆</button>
+                            <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) - 1">⬇</button>
+                        </div>
+                    </div>
+
+                    <div class="Ct containerLimite" style="width:100%;height:200px;overflow:hidden;border:1px solid #000">
+                        <div class="s Rltv" onmousedown="Disppp(this,event)" onclick="xMenu(this,event)" ondblclick="ClickDuplo(this,event)"></div>
+                    </div>
+
+                    <div class="Mdd Ct none">
+                        <div><label>Largura</label><input name="4" data-Nv="2" class="Lag" placeholder="Largura"></div>
+                        <div><label>Altura </label><input name="4" data-Nv="2" class="Alt" placeholder="Altura" ></div>
+                    </div>
+                    <button onclick="SaveTemplate($('.s',Pai(this)),'Template 1')">Salvar Template</button>
+                </div>
+                <div class="UNDBTN box Ct"><button onclick="AddUND()">+ Adicionar Variação</button></div>
+            </div>
+
+            <div class="BOX Ct">
+                <div class="Cl Infos">
+                    <div class="Ct"><img src="./SVG/Insta.svg"><input name="3" data-Nv="1" id="instagram" placeholder="Instagram" oninput="Inn($('.c',gID3(this,4)),this.value)"></div>
+                    <div class="Ct"><img src="./SVG/Zap.svg"  ><input name="3" data-Nv="1" id="whatsapp"  placeholder="WhatsApp"  oninput="Inn($('.c',gID3(this,5)),this.value)"></div>
+                    <div class="Ct"><img src="./SVG/Lcal.svg" ><input name="3" data-Nv="1" id="endereco"  placeholder="Endereço"  oninput="Inn($('.c',gID3(this,6)),this.value)"></div>
+                </div>
+                <div class="Ct">
+                    <div class="Cl"><label>Lista de Produtos</label><textarea id="listaProdutos"></textarea></div>
+                </div>
+                <div class="Ct">
+                    <div class="Cl"><label>Observações</label><textarea id="obs"></textarea></div>
+                </div>
+            </div>
+        </div>
+        <div class="Cl LB BOX h100 GAP">
+            <div id="Resultss" class="w100 Box Ct"></div>
+            <div class="Box w100">
+                <div class="Ct"><label>Prazo</label><select></select></div>
+            </div>
+            <aside id="List_Desng" class="Cl Gap w100"></aside>
+            <div class="Box Ct w100">
+                <button onclick="Ger_SOliArt()">Solicitar Arte</button>
+                <button onclick="SavePDF($('.s',Avo(this)))">PDF</button> <!--Não tenho que pegar 1 só tenho que salvar cada um em uma Página-->
+            </div>
+        </div>
+    </div>
+    
 </body>
 
-<script>
-    DSG.forEach(d=>{
-    $("#Roo").innerHTML+=`
-    <div class="Dsg Bt">
+<script> // ==== INTERFACE ====
+    const mudaTipo = ()=>{
+        Tog($('#FormArt'), `tipo-${tipoArte.value.replace(/\s/g,'')}` )
+        ShowTrue($("#produtos"),tipoArte.value=="Cardápio")
+    }
 
-    <div class="ESQUERDA Cl Start2">
-    <div class="Ct"><strong>${d.Rank}° - ${d.Nome}</strong><span class="St ${d.On?"On":"Off"}"></span></div>
-    <img class="Pic" src="./DSG/Perfil_${d.Nome}.webp">
-    <div class="Cl Start2"><small>informações</small><small>contato</small><small>outras coisas</small></div>
-    </div>
+    const initUND=u=>{
+        const [Dest,Cnvs,Mdds,Lag,Alt]=[$('.Dest',u),$('.s',u),$('.Mdd',u),$('.Lag',u),$('.Alt',u)];
+        if(!Dest||!Cnvs||!Lag||!Alt)return;
+        const Container=Cnvs.parentElement,MAX_H=200; let dr=false,sx=0,sy=0,selBox;
+        const Draw=()=>{let w=+Lag.value,h=+Alt.value;if(!w||!h)return;let scale=Math.min(Container.clientWidth/w,MAX_H/h);Cnvs.style.width=w*scale+'px';Cnvs.style.height=h*scale+'px';};
+        Dest.onchange=()=>{const p=Preset[Dest.value];if(!p){Rmv_N($(Mdds));return;}const [w,h]=p.split(':').map(Number);Lag.value=w*10;Alt.value=h*10;Draw();};
+        [Lag,Alt].forEach(i=>i.oninput=Draw);Draw()
+    }
 
-    <div class="DIREITA Cl">
-    <div class="Rw BlocoPortif">${
-        ART.filter(a=>a.Dsng==d.Nome).map(a=>`<div class="Art Cl"><img src="./ART/${a.Img}"><small>${a.Nome}</small></div>`).join("")}</div>
-    <div class="Ct">${d.Class.map(t=>`<span class="Tag">${t}</span>`).join("")}</div>
-    </div>
+    const AddUND=()=>{
+        const base  = $('.UNDD')
+        const clone = base.cloneNode(true)
+        Clen_Alls(clone)
+        const S = $('.s',clone) ; S.innerHTML=''
+        Rmv_N($('.Mdd', clone))
+        Nm(clone,$$('#UNDDD .UNDD').length+1)
+        $('#UNDDD').insertBefore(clone,$('.UNDBTN'))
+        initUND(clone)
+    }
+</script>
 
-    </div>`
-    })
+<script> // ==== RASCUNHO ====
+    let ZZ={A:null,M:0,ox:0,oy:0,rs:1,rr:0,ED:0,dragged:false}
+    function xMenu(Eu,e){if(!e.target.closest('.menu')){Dlt($$('.menu',Eu))}} // Fecha menus ao clicar fora deles
+    
+    const SELY=e=>{ // ===== SELECT ===== 
+        DTV($$('.e')) ; ShowTrue($$('.topbar'),e) ; Add_N($$('.idTop')) ; if(!e){return}  // Desativa e Oculta e retorna caso n seja nada
+        ATV(e);ZZ.A=e ; Rmv_N($(`.topbar > [name="${Nm(e)}"]`,e.closest('.UNDD')))        // Ativa as Coisas do Item Selecionado
+    }
+
+    const adD=(Mod,x,y,S,Iner)=>{ // ===== ADD Canvas Fake =====
+        const TOP = $(".topbar",Avo(S))
+        const Idx = $$('.idTop',TOP).length+1
+        const T   = $('.idTop',TOP).cloneNode(true)       ; Nm(T,Idx) ; Add(T,Mod=='Txt'?null:'Img') ; TOP.appendChild(T)
+        const e   = NewTag('div') ; e.className=`${Mod=='Fnd'?'noClk':'e'} noDrg` ; Nm(e,Idx) ; e.style.cssText=`left:${x}px;top:${y}px` ; e.dataset.s=1;e.dataset.r=0
+        const Cntu= e=>`<div class="EE noDrg"><div class="c noslt Ct gap">${e}</div><a class="sc"></a><a class="rt"></a></div>`
+        if (Mod === 'Txt') {              Inn(e,Cntu(`${Iner}`))}
+        if (Mod === 'Img') {InptImg(url=>{Inn(e,Cntu(`<img draggable="false" src="${url}" style="width:150px">`))})}
+        if (Mod === 'Fnd') {InptImg(url=>{Inn(e,`<img class="noClk" draggable="false" src="${url}" style="width:100%;height:100%">`)})}
+        S.appendChild(e);SELY(e)
+    }
+
+    function ClickDuplo(Eu,e){ // ===== DUPLO CLICK FUNDO =====
+        const [x,y]=[e.offsetX,e.offsetY] ; if (e.target!==Eu) return
+        Eu.insertAdjacentHTML("beforeend",`<div class="menu Box Abslt Ct" style="left:${x}px;top:${y}px">
+            <button onclick="adD('Txt',${x},${y},Avo(this),'Texto') ; Dlt(Pai(this))">+ Texto  </button>
+            <button onclick="adD('Img',${x},${y},Avo(this))         ; Dlt(Pai(this))">+ Imagem </button>
+            <button onclick="adD('Fnd',${x},${y},Avo(this))         ; Dlt(Pai(this))">Img Fundo</button>
+        </div>`)
+    }
+
+    function TituloSlogan(){  //  Carregar os Primeiros Itens Padrão
+        adD('Txt',0,0,$('.UNDD .s'),'Titulo')
+        adD('Txt',0,0,$('.UNDD .s'),'Slogan')
+
+        adD('Txt',0,0,$('.UNDD .s'),'Insta')
+        adD('Txt',0,0,$('.UNDD .s'),'Zap')
+        adD('Txt',0,0,$('.UNDD .s'),'Endereço')
+    }
+
+    function Disppp(Eu,e){ // ===== MOUSE =====
+        e.preventDefault()
+        if(e.target==Eu)                           return SELY(null)
+        const el = e.target.closest('.e');if (!el) return SELY(null) ; SELY(el)
+        ZZ.ox=  e.clientX    ; ZZ.oy=  e.clientY
+        ZZ.rs=+ el.dataset.s ; ZZ.rr=+ el.dataset.r
+        ZZ.M =  Coten(e.target,'sc')?2:Coten(e.target,'rt')?3:1
+    }
+
+    document.addEventListener('click', e => {if (ZZ.dragged) {ZZ.dragged = false ; return } ; if (e.target.closest('.e') ||e.target.closest('.menu') ||e.target.closest('.topbar')) return;SELY(null);Add_N($$('.menu'))})
+    document.addEventListener('keydown',e=>{if(e.target.tagName=='INPUT') return ; if(!ZZ.ED && e.key =='Delete'&&ZZ.A)ZZ.A.remove()}) // ===== DELETE =====
+    document.onmouseup  =_=>{ZZ.M=0 ; ZZ.ox=ZZ.oy=ZZ.rs=ZZ.rr=null}
+    document.onmousemove=e=>{
+        const tf = () => ZZ.A && (ZZ.A.style.transform =`scale(${ZZ.A.dataset.s}) rotate(${ZZ.A.dataset.r}deg)`)
+        if(!ZZ.A||!ZZ.M||ZZ.ED) return
+        ZZ.dragged = true
+        if(ZZ.M==1){ZZ.A.style.left=parseFloat(ZZ.A.style.left)+e.movementX+'px'
+                    ZZ.A.style.top =parseFloat(ZZ.A.style.top )+e.movementY+'px'}
+        if(ZZ.M==2){ZZ.A.dataset.s=Math.max(.1,ZZ.rs+(e.clientX-ZZ.ox)/200);tf()}
+        if(ZZ.M==3){ZZ.A.dataset.r=ZZ.rr+(e.clientX-ZZ.ox);tf()}}
+</script>
+
+<script> // ==== CALCULAR VALOR DA ARTE ====
+    const NoVazio=(e)=>(e.tagName=='INPUT' && e.value.trim()) || (e.tagName=='SELECT' && e.selectedIndex)
+    const Calc = () => {
+        const Tipo  = Vll($('#tipoArte'))
+        const vBase = TIPOS_ARTES.find(a => a.Nome == Tipo)?.Valr ?? 0
+        const Soma  = arr => arr.reduce((s,e)=>s+(NoVazio(e)?+Nm(e):0),0)
+        const UNDD  = $$('.UNDD')
+        const Pct1  = Soma($$('[data-Nv="1"]')) // % desconto Nv1
+        const adUND = UNDD.map((u,x)=>{const Nv2 = $$('[data-Nv="2"]',u) ; const Pct = (Nv2.length * 3) - Soma(Nv2) ; return { Und:x, Pct }})
+        const vUNDD = (vBase * (1 - Pct1/100)) * (1 + Math.max(UNDD.length - 1, 0) * 0.15)
+        const Nv3   = $$('[data-Nv="3"]')
+        const pNv3  = Nv3.length ? Nv3.filter(NoVazio).length / Nv3.length : 0
+        const Desc  = pNv3 * 20
+        return { vBase, Final: (vUNDD * (1 - Desc/100)).toFixed(2)}
+    }
+
+    function InnResult(r){
+        Inn($('#Resultss'),`${Tm_RS2(r.vBase)}${Tm_RS2(r.Final)}`)
+    }InnResult({vBase:0,Final:0})
+</script>
+
+<script> // === TEMPLATES PRESSES ====
+    const SaveTemplate=(c,name="Template")=>{
+        const t={
+            name,canvas:{w:c.offsetWidth,h:c.offsetHeight,b:c.style.background||c.style.backgroundColor||null},
+            items:$$('.e',c).map(e=>{const C=$('.c',e)
+            return{
+                id:Nm(e),
+                type:Coten(e,'Img')?'Img':'Txt',
+                x:parseFloat(e.style.left)||0,
+                y:parseFloat(e.style.top )||0,
+                scale:+e.dataset.s||1,
+                rotate:+e.dataset.r||0,
+                z:+e.style.zIndex||0,
+                color:C?.style.color||null,
+                font:C?.style.fontFamily||null
+            }})
+        }
+        console.log(JSON.stringify(t,null,2))
+        return t
+    }
+
+    const ApplyTemplate=(c,p)=>{
+        p.canvas&&(p.canvas.w&&(c.style.width=p.canvas.w+'px'),
+                    p.canvas.h&&(c.style.height=p.canvas.h+'px'),
+                    p.canvas.b&&(c.style.background=p.canvas.b))
+        $$('.e',c).forEach((e,i)=>{
+            const o=p.items[i],C=$('.c',e); if(!o)return
+            Object.assign(e.style,{
+            left:o.x+'px',top:o.y+'px',zIndex:o.z,
+            transform:`scale(${o.scale}) rotate(${o.rotate}deg)`
+            })
+            e.dataset.s=o.scale; e.dataset.r=o.rotate
+            C&&o.color&&(C.style.color=o.color)
+            C&&o.font &&(C.style.fontFamily=o.font)
+        })
+    }
+</script>
+
+<script> // === LOCAL LIST DESIGNER ====
+    const U = true
+    async function LoadByName(){
+        if(!U) return          null ; const {data:USER,error:e1} = await Supabase.from("USER").select("*")
+        if(e1) return ERR(e1), null ; const {data:ARTE         } = await Supabase.from("ARTE").select("*")
+        return {USER,ARTE}
+    };LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
+    
+    function Load_Page(DSG,ART){
+        Inn($("#List_Desng"),DSG.map(d=>{
+            if(d.Nome=='Login'){return}
+            const Arts = ART.filter(a=>a.Dsng==d.Nome && a.Stts=='Ok')
+            const Tags = Uniq(Arts.map(e=>e.Tema))
+            const Rank = Arts.length + Tags.length
+            
+            // Critério Velocidade, Quantidade de Arte, Complexidade da Arte, Quantidade de variações diferentes, Tempo de Aceitação
+            return `<div class="BOX Ct">
+                <div class="LA h100 Start2 gap">
+                    <div class="Head Ct gap"><p>${Rank}° - ${d.Nome}</p><a class="St ${d.On?'On':'Of'}"></a></div>
+                    <img class="Perf" src="./Img/Perfil_${d.Nome}.webp">
+                    <div class="Cl Start2">
+                        <p>informações</p>
+                        <p>contato</p>
+                        <p>outras</p>
+                    </div>
+                </div>
+                <div class="LB h100 Cl Gap Start2">
+                    <div class="Prtf CT Gap">${Arts.map(a=>`<a class="Cl box"><img src="./ART/${a.Img}"><p>${a.Nome}</p></a>`).join("")}</div>
+                    <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
+                </div>
+            </div>`}).join(''))
+    }
+</script>
+
+<script> // ==== Comentários ====
+
+    // em Titulo opção pra botar imagem
+    // Lista pode ter texto ou Imagens
+    
+
+    // Botar as Mascaras nos Inputs | Proteção pra não Digitar errado (como Endereço por Exemplo)
+    
+    // Insistir no SVG pelomenso se eu tiver ele Interno Escrito no HTML sem ser importado
+
+    // Titulo, Slogan, Insta e Zap, tem que Editar em Todos
+
+    // Lista de Produtos Carregará uma Tabela
+    // Carregar Minha Lista de SVG e Minha Bando de Imagens PNG's
+    // se o Cliente não tem uma Referência carregar uma Lista de Referência pra ele Escolher! (claro de acordo do o template que ele escolheu!)
+
+    Add($$('select'),'vigem')                                /*GAMBIARRA*/ // só pra mudar a cor do placeholder Select
+    $$('select').forEach(s=>s.addEventListener('change',()=>Rmv(s,'vigem')))  /*GAMBIARRA*/
+
+    Onloads('body') ; initUND($('.UNDD')) ; TituloSlogan()
 </script>
 
 </html>

@@ -37,9 +37,9 @@
     body        {padding: 14px}
     *           {box-sizing:border-box}
     .rs         {color:#8dff57}
-    h2,h3       {font-size: 25px}
     .Box .rs    {font-size: 25px}
     .Art .rs    {font-size: 25px}
+    h2,h3       {font-size: 25px}
     .BOX        {padding:18px;border-radius:14px;background:#111;border:1px solid #222}
     .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
     .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
@@ -78,16 +78,16 @@
         if(!U) return          null ; const {data:USER,error:e1} = await Supabase.from("USER").select("*").eq("Nome",U).single()
         if(e1) return ERR(e1), null ; const {data:ARTE         } = await Supabase.from("ARTE").select("*")
         return {USER,ARTE}
-    };LoadByName().then(r=>{if(!r)return;InitPage(r.USER,r.ARTE)})
+    };LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
 
-    function InitPage(u,a){
+    function Load_Page(u,a){
         A = a.filter(o=>o.Dsng==U && o.Stts=='Ok')
         M = a.filter(o=>o.Dsng==U && o.Stts=='Aceita')
         D = a.filter(o=>o.Dslk?.includes(U))
         S = a.filter(o=>o.Dsng==null||o.Dsng=="")
 
         Inn(Perf,`<img class="Pic" src="${u.Foto}">
-                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${u.Nome}</h2><p>${D_Brev[u.cgo]}</p></div>
+                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${u.Nome}</h2><p>${D_Brev2[u.cgo]}</p></div>
                     ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="f-Lrnj">${SVG[e]}</a><p>${u[e]}</p></div>`).join('')}
                 </div>
                 <div class="Ct Gap">

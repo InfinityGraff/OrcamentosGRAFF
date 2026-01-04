@@ -762,3 +762,30 @@ function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentr
         },{})).map(([g,o]) => `<optgroup label=\"${g}\">${o.join('')}</optgroup>`).join('')}
     `
 }
+
+
+// SavePDF
+const SavePDF = async (Div, Nome="download.pdf") => {
+    const { jsPDF } = window.jspdf;
+
+    // 1️⃣ Renderiza a Div em canvas
+    const canvas = await html2canvas(Div, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+
+    // 2️⃣ Cria o PDF
+    const pdf = new jsPDF("p", "pt", "a4");
+
+    // 3️⃣ Adiciona a imagem como fundo
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+
+    // 4️⃣ Adiciona o conteúdo editável por cima
+    await pdf.html(Div, {
+        x: 0,
+        y: 0,
+        html2canvas: { scale: 0.5 }, // captura menor para performance
+        callback: () => pdf.save(Nome)
+    });
+}
+
