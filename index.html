@@ -18,8 +18,8 @@
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-        <script src="./PrescriptTeste.js"></script>
-    -->
+        -->
+    <script src="./PrescriptTeste.js"></script>
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
@@ -334,10 +334,11 @@
                         Tipos:{
                     'Arte' :{}}
         },
-        'Plotagem' :{Calc:'MAO', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Aplciação de Adesivo' , Forn:['Stock','WM']                , Etpa:['Aplic']                        , Extra:[]             , HotKey:['Plotagem'] , img:'Place',
-                        Tipos:{
-                    'Plotagem' :{}}
-        },
+        // 'Plotagem' :{Calc:'MAO', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Aplciação de Adesivo' , Forn:['Stock','WM']                , Etpa:['Aplic']                        , Extra:[]             , HotKey:['Plotagem'] , img:'Place',
+        //                 Tipos:{
+        //             'Plotagem' :{}}
+        // },
+
         // Produtos
         'Vendas'   :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
                         Tipos:{
@@ -351,10 +352,10 @@
                         }
         },
         // Ferragem
-        'Placa'    :{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:'Canv3D'  , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-                    Tipos:{
-                        'Placa' :{}}
-        }, 
+        // 'Placa'    :{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:'Canv3D'  , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
+        //             Tipos:{
+        //                 'Placa' :{}}
+        // }, 
         // Lombras
         // 'Topo Bolo' :{Calc:'OFS', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Folha 300g Cortado'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:[] , img:'Place',
         //                 Tipos:{
@@ -446,9 +447,6 @@
         'Roxo'        : '#800080',
         'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
     }
-
-    const meses = ["Todos","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-    const mesesObj = {"ALL":"Todos","01":"Janeiro","02":"Fevereiro","03":"Março","04":"Abril","05":"Maio","06":"Junho","07":"Julho","08":"Agosto","09":"Setembro","10":"Outubro","11":"Novembro","12":"Dezembro"};
 
     // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
@@ -1641,7 +1639,7 @@
                 function TestSenha(tipo,p){
                     const nome = $('#LgNome'),foto = $('#LgFoto')
                     const storg=e=>{StogeRmv('SenhaCryp');if(e){StogeSet('SenhaCryp',e)}}
-                    const logaa=e=>{Inn(nome,USER[e].Nome);foto.src=USER[e].Foto;storg(e);SairMdal();Passs=e;PosLogin();LoadPerfil()}
+                    const logaa=e=>{Inn(nome,USER[e].Nome);foto.src=USER[e].Foto;storg(e);SairMdal();Passs=e;PosLogin()}
                     if(tipo=='Dslog'){logaa('Login')}
                     if(tipo=='Storg'){if(p){logaa(p)}}
                     if(tipo=='Modal'){const P = CrypPass(p.value) ; if(USER[P]){logaa(P)}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
@@ -1817,10 +1815,7 @@
                         #Div-Prod .Conteudo.Pecq{width:200px}
                         #Div-Prod .Conteudo.Grnd{width:270px}
                         .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
-                        #Div-Prod .Conteudo .fotO {width:150px ; height:160px}
-                        #Div-Prod .Conteudo .fotO3{width:150px ; height:53px }
-                        #Div-Prod .Conteudo .fotO4{width:80px  ; height:80px }
-                        #Div-Prod .Conteudo .fotO6{width:150px ; height:53px }
+
                         #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
                         #Div-Prod .BtnCarr        {width: 120px; top:310px   }
                     </style>
@@ -1844,6 +1839,15 @@
 
                         .CanvasMedidas.Hmax{width: auto ; height: 100%}
                         .CanvasMedidas.Wmax{width: 100% ; height: auto}
+                    </style>
+
+                    <style> /*GAMBIARRA FEIOSA*/
+                        .Conteudo .fotO {width:150px ; height:160px}
+                        .Conteudo .fotO1{width:150px ; height:160px}
+                        .Conteudo .fotO3{width: 75px ; height:96px } .Conteudo .fotO3:last-child{width:150px ; height:95px }
+                        .Conteudo .fotO4{width:80px  ; height:80px }
+                        .Conteudo .fotO5{width:80px  ; height:80px } .Conteudo .fotO5:last-child{display: none}
+                        .Conteudo .fotO6{width:150px ; height:53px }
                     </style>
                     <div id="Div-Prod" class="Start"></div>
 
@@ -1922,6 +1926,11 @@
                                         Vari(e).map((V,x)=>{
                                             const obj = vari[V]
                                             const Al  = V=='Todos'
+
+                                            const RenderTodos=()=>ObjKey(vari).flatMap(v=>{return e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v}).map((vV,x,l)=>{
+                                                return vV=='Todos'?'':`<img class="fotO${l.length-1} Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr('${e}','${vV}')">`
+                                            }).join('')
+
                                             return `<div class="Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
                                             <div class="KeyVari rgx">${V}</div>
@@ -1929,11 +1938,11 @@
                                             ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[2])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${Brvv[s]||s}</a>`).join('')}</div>` : ``}
                                             ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[3])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${s         }</a>`).join('')}</div>` : ``}
 
-                                            ${Al&&iSVG  ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
-                                             :Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                                             :!Al&&TblA ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>{LOG(s,'>',`${e}_${V}_`) ; return s.includes(`${e}_${V}_`)}).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                                             :Al        ? `<div class="Ct">${ObjKey(vari).map((vV,x,l)=>vV=='Todos'?'':`<img class="fotO${l.length-1} Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr('${e}','${vV}')">`).join('')}</div>`
-                                             /*de UND*/ : `<img class="fotO Hov" src="${Fora||`./Prod/${e}_${V}.webp`}" ${onck}>`
+                                             ${Al&&iSVG  ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
+                                              :Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
+                                             :!Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>{return s.includes(`${e}_${V}_`)}).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
+                                             :Al         ? `<div class="Ct">${RenderTodos()}</div>`
+                                             /*de UND*/  : `<img class="fotO Hov" src="${Fora||`./Prod/${e}_${V}.webp`}" ${onck}>`
                                             }
                                             ${!Al&&CalC=='M2'?`<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr)}<p>m²</p></div>`:''}
                                             <div class="rgx none">${(HotKy[e]||[]).join(',')}</div>
@@ -2759,7 +2768,7 @@
             if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
             AddROW(Typ,'<',NULL__([nEw]),'',true) // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
         }
-    }LOG('Movedissa')
+    }
     
     function PlayRealTime(){
         return supaBASE.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
