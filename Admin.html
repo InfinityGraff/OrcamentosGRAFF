@@ -9,7 +9,6 @@
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-    <script src="./PrescriptTeste.js"></script>
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
@@ -26,6 +25,8 @@
     .oImgs{width:150px;height:150px}
     .oImgs svg{width: 100%;height: 100%;}
     .BOxxxxxxx{margin-bottom: 20px;}
+
+    canvas { max-width: 700px; margin-top: 30px; }
 </style>
 
 <script>
@@ -59,7 +60,91 @@
             <div id="TestyBox"></div>
         </div> 
     </div>
+
+    <canvas id="myChart"></canvas>
 </body>
+
+<script>
+    // Função original
+    function Crecent1(MM2){
+    var M = MM2;
+    var D = {Min:0.06, Med:0.25, Max:1.00};
+    var V = {Min:1.70, Med:0.70, Max:0.00};
+    var crecent = M > D.Med ? 
+        M >= D.Max ? V.Max :
+        M < D.Med ? V.Med : V.Med - ((V.Med - V.Max) * ((M - 0.001)/D.Max)) :
+        M <= D.Min ? V.Min : V.Min - ((V.Min - V.Med) * ((M - 0.001)/D.Med));
+    return crecent;
+    }
+
+    // Função nova com força extra
+    const Crecent2 = (M,F=0.5,F2=2)=>{
+    if (M <= 0) return (F + F2) * 2;
+    if (M >= 1) return 0;
+    const t1 = 1 - Math.pow(M, F * 1.2);
+    const gradual = F2 * Math.pow(Math.max(0,0.25-M)/0.25,2);
+    return +(t1 * (F + 0.7) + gradual).toFixed(3);
+    }
+
+    // Arrays de valores
+    const steps = 100;
+    const xValues = [];
+    const yOriginal = [];
+    const yNew = [];
+    const yBase = [];
+
+    for(let i=0; i<=steps; i++){
+    const val = 1 - i/steps; // de 1 até 0
+    xValues.push(val.toFixed(3));
+    yOriginal.push(Math.round(val * (60 + 60 * Crecent1(val))));
+    yNew.push(Math.round(val * (60 + 60 * Crecent2(val))));
+    yBase.push(Math.round(val * 60)); // Linha base sem Crecent
+    }
+
+    // Cria o gráfico
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: xValues,
+            datasets: [
+            {
+                label: 'Base (R$)',
+                data: yBase,
+                borderColor: 'gray',
+                borderDash: [5,5],
+                fill: false
+            },
+            {
+                label: 'Crecent Original (R$)',
+                data: yOriginal,
+                borderColor: 'red',
+                fill: false
+            },
+            {
+                label: 'Crecent Nova (R$)',
+                data: yNew,
+                borderColor: 'blue',
+                fill: false
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: { title: { display: true, text: 'Valor de entrada (M)' }},
+                y: { title: { display: true, text: 'Valor calculado (R$)' }}
+            },
+            plugins: {
+            tooltip: {
+                callbacks: {
+                label: context => "R$ " + context.raw
+                }
+            }
+            }
+        }
+    });
+</script>
 
 <script> // Render SVG
     const getVals=tr=>[Num(Vll($('.oLrg',tr))),Num(Vll($('.oAlt',tr))),Num(Vll($('.oQnt',tr)))]

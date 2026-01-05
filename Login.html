@@ -10,8 +10,6 @@
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-    <script src="./PrescriptTeste.js"></script>
-
     <link  href="./CssGRAFF.css" rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
@@ -35,10 +33,30 @@
 
 <body class="Dark CSS1 Ct">
     <div class="Box Cl">
-    <h3>Login</h3>
-    <input id="L" placeholder="Login">
-    <input id="S" placeholder="Senha" type="password">
-    <button onclick="Go()">Entrar</button>
+        <h3>Login</h3>
+        <input id="L" placeholder="Login">
+        <input id="S" placeholder="Senha" type="password">
+        <button onclick="Go()">Entrar</button>
+    </div>
+
+    <div>
+        <h2>Cadastro SUPABASE</h2>
+        <form id="signup-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input id="password" placeholder="Senha" required>
+            <button type="submit">Criar Conta</button>
+        </form>
+
+        <h2>Login SUPABASE</h2>
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input id="login-password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+
+        <button id="logout-btn">Logout</button>
+
+        <div id="msg"></div>
     </div>
 </body>
 
@@ -56,4 +74,32 @@ function Go(){
     location.href=u.Tipo=="Cliente"?"cliente.html":"Dsng.html?u="+u.Login
 }
 </script>
+
+
+<script>
+    const msg = document.getElementById('msg');
+
+    document.getElementById('signup-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const { error } = await supabase.auth.signUp({ email, password });
+      msg.textContent = error ? error.message : 'Conta criada! Confirme seu email.';
+    });
+
+    document.getElementById('login-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      msg.textContent = error ? error.message : `Login bem-sucedido! Usuário: ${data.user.email}`;
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      msg.textContent = 'Logout feito!';
+    });
+</script>
+
+
 </html>
