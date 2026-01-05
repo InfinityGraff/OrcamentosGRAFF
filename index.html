@@ -115,6 +115,7 @@
     }
 
     // Dentro de Adesivo tem sim Acabamento q pode ser Laminação e Aplicação
+    const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte']
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // m2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -302,7 +303,7 @@
                     'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
                     'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
             }},
-        'BigBall'  :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'BigBall'  :{Calc:'UND', Stts:'Disp' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
             Tipos:{'Todos':{},
                 P   :{Valr:0,Cust:0},
                 M   :{Valr:0,Cust:0},
@@ -310,47 +311,45 @@
             }},   
         // Cortes
         'Letreiro' :{Calc:'M2v', Stts:'Disp' , Opts:'List' , Prvw:'IptSVG'  , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']         , Etpa:['Arte','Corte','Cbmt']          , Extra:[]             , HotKey:[]          , img:'Place',
-                        Tipos:{
-                            'PVC'      :{},
-                            'Acrilico' :{}}
-        },
-        'Recorte'  :{Calc:'M2v', Stts:'Disp' , Opts:'Cors' , Prvw:'IptSVG'  , Desc:'Adesivo Recortado'    , Forn:['Stock']                     , Etpa:['Arte','Corte','Cbmt','Aplic']  , Extra:[]             , HotKey:["Ploter",'Lamina','Siluet','Vetor'] ,
-            Tipos:{
-                'Todos'          :{},
-                'Vinil'          :{Calc:'M2',Valr:150,Valor:70  , matr:['Preto','Branco','Prata','Vermelho','Azul','Verde','Amarelo','Laranja','Rosa','Roxo']},
-                'Holografico'    :{Calc:'M2',Valr:200,Valor:100 , matr:['Holografico']},
+            Tipos:{'Todos' :{},
+                'PVC'      :{},
+                'Acrilico' :{}
         }},
-      'Sinalização':{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Chapa de PVC ou Zinco', Forn:['Stock']                     , Etpa:['Arte','Corte','Aplic','Cbmt']  , Extra:['PVC']        , HotKey:[]           , img:'Place',
-                        Tipos:{
-                            'Sinalização' :{}}
-        },
+        'Recorte'  :{Calc:'M2v', Stts:'Disp' , Opts:'Cors' , Prvw:'IptSVG'  , Desc:'Adesivo Recortado'    , Forn:['Stock']                     , Etpa:['Arte','Corte','Cbmt','Aplic']  , Extra:[]             , HotKey:["Ploter",'Lamina','Siluet','Vetor'] ,
+            Tipos:{'Todos'   :{},
+                'Vinil'      :{Calc:'M2',Valr:150,Valor:70  , matr:['Preto','Branco','Prata','Vermelho','Azul','Verde','Amarelo','Laranja','Rosa','Roxo']},
+                'Holografico':{Calc:'M2',Valr:200,Valor:100 , matr:['Holografico']},
+        }},
+    //   'Sinalização':{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Chapa de PVC ou Zinco', Forn:['Stock']                     , Etpa:['Arte','Corte','Aplic','Cbmt']  , Extra:['PVC']        , HotKey:[]           , img:'Place',
+    //         Tipos:{
+    //             'Sinalização' :{}
+    //     }},
         'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:['Acrilico']   , HotKey:['acrilico'] ,
-                        Tipos:{
-                            'Virado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-                            'Colado'          :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+            Tipos:{'Todos':{},
+                'Virado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                'Colado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
         }},
         // Serviços
         'Arte'     :{Calc:'MAO', Stts:'Offf' , Opts:'List' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']                      , Etpa:['Arte']                         , Extra:[]             , HotKey:[]           , img:'Place',
-                        Tipos:{
-                    'Arte' :{}}
-        },
+            Tipos:{
+                'Artes'     :{}
+        }},
         // 'Plotagem' :{Calc:'MAO', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Aplciação de Adesivo' , Forn:['Stock','WM']                , Etpa:['Aplic']                        , Extra:[]             , HotKey:['Plotagem'] , img:'Place',
         //                 Tipos:{
         //             'Plotagem' :{}}
         // },
 
         // Produtos
-        'Vendas'   :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-                        Tipos:{
-                            'Tanque'   :{},
-                            'Quadros'  :{},
-                            'Acrilico' :{},
-                            'Figurinha':{},
-                            'Recorte'  :{},
-                            'Cartela'  :{},
-                            'Rodagem'  :{},
-                        }
-        },
+        // 'Vendas'   :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
+        //     Tipos:{
+        //         'Tanque'   :{},
+        //         'Quadros'  :{},
+        //         'Acrilico' :{},
+        //         'Figurinha':{},
+        //         'Recorte'  :{},
+        //         'Cartela'  :{},
+        //         'Rodagem'  :{},
+        // }},
         // Ferragem
         // 'Placa'    :{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:'Canv3D'  , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
         //             Tipos:{
@@ -387,14 +386,13 @@
         //         Tipos:{
         //             'Figurinha' :{}}
         // },
-
     }
 
     // Const Importante pra Compilar a Tabela de produtos pra deixa o Load Mais Rápido
     const EtrProd = ObjEtr(Prod)
-    const AllProd = [...ObjEtr(Prod).filter(([,v])=>v.Stts=="Disp"), ...ObjEtr(Prod).filter(([,v])=>v.Stts=="Offf")].map(([k])=>k) // Antes tava : ObjKey(Prod) // agora ta isso tudo pq agora ta reordenando
-    const HotKy   = Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
-    const AllAll  = stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg] || []]))
+    const AllProd = ObjEtr(Prod).map(([k])=>k).sort((a,b)=>ORDEM.indexOf(a)-ORDEM.indexOf(b))
+    const HotKy   =      Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
+    const AllAll  = stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg]  ||[]]))
     const Vari    = e=>Prod[e] ? ObjKey(Prod[e].Tipos) : ''
     const FiltOn  = E=>Object.entries(Prod[E]?.Tipos||{}).flatMap(([n,o])=>(o.Table||[]).flatMap(([l,g,q])=>q.filter(e=>e[3]=='on').map(e=>[[...e,g],`${E}_${n}_${l}`.replace(/\./g,'')])))
 
@@ -1841,14 +1839,18 @@
                         .CanvasMedidas.Wmax{width: 100% ; height: auto}
                     </style>
 
-                    <style> /*GAMBIARRA FEIOSA*/
-                        .Conteudo .fotO {width:150px ; height:160px}
-                        .Conteudo .fotO1{width:150px ; height:160px}
-                        .Conteudo .fotO3{width: 75px ; height:96px } .Conteudo .fotO3:last-child{width:150px ; height:95px }
-                        .Conteudo .fotO4{width:80px  ; height:80px }
-                        .Conteudo .fotO5{width:80px  ; height:80px } .Conteudo .fotO5:last-child{display: none}
-                        .Conteudo .fotO6{width:150px ; height:53px }
+                    <style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
+                        .fotO      {width:150px ; height:160px}
+                        .fotO1 img {width:150px ; height:160px}
+                        .fotO2 img {width:120px ; height:90px }
+                        .fotO2T img{width:75px  ; height:90px }
+                        .fotO3 img {width: 150px; height: 53px}
+                        .fotO3I img{width: 75px ; height:96px } .fotO3I img:last-child{width:150px ; height:95px }
+                        .fotO4 img {width:80px  ; height:80px }
+                        .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
+                        .fotO6 img {width:150px ; height:53px }
                     </style>
+
                     <div id="Div-Prod" class="Start"></div>
 
                     <div id="Div-Detalhes" class="Rltv">
@@ -1908,14 +1910,20 @@
                                 const CalC = Prod[e].Calc
                                 const Brvv = {Masculino:'Masc',Feminino:'Femi'}
                                 const onck = `onclick="ExibeFotinha('${e}')"`
-                                const novo=(arr)=>arr.map(u => u?.[1] ?? null)
+                                const novo = (arr)=>arr.map(u=>u?.[1] ?? null)
+                                const Flts = ObjKey(vari).flatMap(v=>e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v)
+                                const VVV  = Vari(e)
+                                const VARI = (VVV.length === 2 &&VVV[0] === 'Todos' &&VVV[1] === e) ? [...Flts] : VVV
+
 
                                 return `<div class="Rltv Start2">
                                     <span class="Start"><img ${TblA ? `class="PT" onclick="TOV(this);Gmbrr(this)"` : ''}  src="${Fora||`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
                                     <div class="KeyInn none">...</div>
 
                                     <div class="Ct w100 Opts Abslt">${ // Faz o Menusiho de opções de cima
-                                        Vari(e).map((vv,x,l)=>{const L = l.length ; const U = L==1 ? 0 : 15
+                                        // Quando só tem 2 Tipos Todos e Repete o Prod então deve carregar todos os itens de dentro desse Prod
+                                        //
+                                        VARI.map((vv,x,l)=>{const L = l.length ; const U = L==1 ? 0 : 15
                                             const CS1 = `left:${(x*(200/L))-(x==0?0:U)}px ; width:${(200/L)+U}px ; z-index:${(L-x)+10}`
                                             const CS2 = `left:${(x*(270/L))-(x==0?0:U)}px ; width:${(270/L)+U}px ; z-index:${(L-x)+10}`
                                             return `<div style="${CS1}" name="${CS2}" onclick="ShowVrnts(this)" class="Ct Abslt PT Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora || `./Prod/IconProd/${vv=='Todos'?`${vv}`:`${e}_${vv}`}.svg`}"></div>`
@@ -1923,13 +1931,10 @@
                                     </div>
 
                                     <div class="Ct DivVrnts">${
-                                        Vari(e).map((V,x)=>{
-                                            const obj = vari[V]
-                                            const Al  = V=='Todos'
-
-                                            const RenderTodos=()=>ObjKey(vari).flatMap(v=>{return e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v}).map((vV,x,l)=>{
-                                                return vV=='Todos'?'':`<img class="fotO${l.length-1} Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr('${e}','${vV}')">`
-                                            }).join('')
+                                        VARI.map((V,x)=>{
+                                            const obj  = vari[V]
+                                            const Al   = V=='Todos'
+                                            const Xo   = {'ímã':'I','Trofeu':'T'}
 
                                             return `<div class="Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
@@ -1941,10 +1946,10 @@
                                              ${Al&&iSVG  ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
                                               :Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
                                              :!Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>{return s.includes(`${e}_${V}_`)}).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                                             :Al         ? `<div class="Ct">${RenderTodos()}</div>`
+                                             :Al         ? `<div class="Ct fotO${Flts.length-1}${Xo[e]||''}">${Flts.map((vV)=>vV=='Todos'?'':`<img class="Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr('${e}','${vV}')">`).join('')}</div>`
                                              /*de UND*/  : `<img class="fotO Hov" src="${Fora||`./Prod/${e}_${V}.webp`}" ${onck}>`
                                             }
-                                            ${!Al&&CalC=='M2'?`<div class="Ct vlM2" ${onck}>${Tm_RS(obj.Valr)}<p>m²</p></div>`:''}
+                                            ${!Al&&CalC=='M2'?`<div class="Ct vlM2" ${onck}>${'Tm_RS(obj.Valr)'}<p>m²</p></div>`:''}
                                             <div class="rgx none">${(HotKy[e]||[]).join(',')}</div>
                                             <a class="Abslt BtnGrid">${SVG.Gemn}</a>
                                             <div>Prazo 3 dias</div>
