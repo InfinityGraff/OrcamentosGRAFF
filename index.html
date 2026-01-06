@@ -31,7 +31,7 @@
 
 <script> // aBase de Dados
     const USER = { // isso vai FICAR no SupaBase
-        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.webp',cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
+        '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.webp',cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:1657,OUT:8000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
         '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.webp' ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1635,OUT:8000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
         '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.webp',cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
         '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""},
@@ -115,7 +115,7 @@
     }
 
     // Dentro de Adesivo tem sim Acabamento q pode ser Laminação e Aplicação
-    const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte']
+    const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte','Vendas']
     const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
         // m2
         'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -340,52 +340,27 @@
         // },
 
         // Produtos
-        // 'Vendas'   :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-        //     Tipos:{
-        //         'Tanque'   :{},
-        //         'Quadros'  :{},
-        //         'Acrilico' :{},
-        //         'Figurinha':{},
-        //         'Recorte'  :{},
-        //         'Cartela'  :{},
-        //         'Rodagem'  :{},
-        // }},
+        'Vendas'   :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
+            Tipos:{
+                'Tanque'   :{},
+                'Quadros'  :{},
+                'Acrilico' :{},
+                'Figurinha':{},
+                'Recorte'  :{},
+                'Cartela'  :{},
+                'Rodagem'  :{},
+        }},
         // Ferragem
         // 'Placa'    :{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:'Canv3D'  , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
         //             Tipos:{
         //                 'Placa' :{}}
         // }, 
         // Lombras
-        // 'Topo Bolo' :{Calc:'OFS', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Folha 300g Cortado'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:[] , img:'Place',
-        //                 Tipos:{
-        //                     'Topo de Bolo' :{}}
-        // },
-        // 'Crachá'    :{Calc:'OFS', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tamanho Padrão 9x5'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt']          , Extra:['Acrilico']   , HotKey:[] , img:'Place',
-        //                 Tipos:{
-        //                     'Crachá' :{}}
-        // },
-        // 'Carteira'  :{Calc:'OFS', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tamanho Padrão 9x5'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:['PVC']        , HotKey:[] , img:'Place',
-        //             Tipos:{
-        //                     'Carteira' :{}}
-        // },
-        // 'Folha'     :{Calc:'OFS', Stts:'Offf' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tamanho Padrão 9x5'   , Forn:['BPrint']                    , Etpa:['Arte','Print','Cbmt']          , Extra:['PVC']        , HotKey:[] , img:'Place',
-        //                 Tipos:{
-        //                     'Colchê  300g' :{},
-        //                     'Triplex 300g' :{},
-        //                 }
-        // },
         // 'Serigrafia':{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Estampa de Camisa'    , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
         //         Tipos:{
         //             'Serigrafia' :{}}
         // },  
-        // 'Cartela'  :{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Cartelas de Adesivo'  , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-        //         Tipos:{
-        //             'Cartela' :{}}
-        // },
-        // 'Figurinha':{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Adesivos Pequenos'    , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-        //         Tipos:{
-        //             'Figurinha' :{}}
-        // },
+
     }
 
     // Const Importante pra Compilar a Tabela de produtos pra deixa o Load Mais Rápido
@@ -425,7 +400,7 @@
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
-        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
         UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['E','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['K',''],Lixo:['X','']},
         
@@ -485,6 +460,7 @@
         const slideTo=(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
         const ReszH=(Typ)=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
         const ReszW=(Typ)=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+        const getArr = v => Array.isArray(v) ? v : [] // ir pra Biblioteca
 
         //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
@@ -632,7 +608,7 @@
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this,$('p',Pai(this)))">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P" name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,
-                Imgs:(e,R,A)=>`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${e}',this,'${e?'':R.Col=='Arte'?'X':'Place'}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
+                Imgs:(e,R,A)=>`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${e}',this,'${e?'':R.Col=='Arte'?'X':'Place'}','${R.Row}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<img class="PT" onclick="RmvROW(this)" name="${e}" src="./SVG/I_Lixo.webp"><i class="Abslt GrifFora"></i>`,
                 Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
@@ -686,25 +662,24 @@
                     const oID = Num(`${e.Id}`.split('_')[0]) // talvez isso deva virar biblioteca depois!
                     if(['PDDS','SERV','PGMT'].includes(Typ) && oID < U.Limt.INN || oID > U.Limt.OUT){return} // limitar as linhas a ser Exibida!
                     if(e.Lixo==true)       {return} // Remover os que estão Na Lixeira!
-                    if(e.Stts=='Concluido'){return} // Remover as Concluidas
 
                     return `<tr class="tr-${e[Primary[Typ]]}">${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>`}).join('')
                 LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
                 return Retorno
             }
 
-            function loadtmtable(Typ){
+            function loadtmtable(Typ,GAMBIARRA){
                 const LOAD=(TYP)=>{
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
-                        Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP,J[TYP].reverse()))
+                        Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP, !GAMBIARRA ? J[TYP].reverse() : J[TYP]))
                         RFresh(TYP,'All')
                         Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
                         if($(`#SKLT_${TYP}`)){Add_N($(`#SKLT_${TYP}`))} // Ocultar o Esqueleto
                 },0)}
 
                 if(ObjKey(J).includes(Typ)){
-                    if(PreTable[Typ]==true){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
+                    if(PreTable[Typ]==true&&!GAMBIARRA){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                          if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')         } // tem 3 Tabelas na #PagPDDS
                     else if(Typ=='PGMT'){LOAD('MPAG')                                } // tem 2 Tabelas na #PagPGMT
                     else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
@@ -1178,7 +1153,7 @@
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = '' // Traz pra cá alem do ss todas as info importantes
                     const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
-                    const Exec  =(typ,Mod)=>{const s = JJ[Typ][tr_ID(tr)][Aa(typ)].map(tr2=>R_Colr(tr2.Id,typ,Mod)) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
+                    const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod)) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
                     Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ; // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
                     
                     if(ss.length==0){return} // Rodando agora na Linha tr
@@ -1263,9 +1238,9 @@
     /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
             ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
-            ,S_Gimg:j=>j.Grad
-            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro(Num(F.Valr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro(Num(F.VUbr) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            ,S_Gimg:j=>`${j.Grad}.webp`
+            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+Number(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( Num(F.VUbr                ) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>ListIMG[j.Grad] ?? ''
             ,G_ImgG:j=>ListIMG[j.Grad.replace(/_\d*$/,"")] ?? ''
@@ -1325,7 +1300,7 @@
                 trs.forEach(tr=>{
                     const oID=All=='All'? tr.Id : tr_ID(tr)                                        // coleta Id
                     const Vai=(col,val)=>DarVAL($(`${Rx2([`${Typ}-${oID}-${col}`])}`),val)         // pega o td onde inserirei o valor da Soma
-                    const ges=(typ,arr)=>sum(arr.flatMap(c=>JJ[Typ][oID][typ].map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
+                    const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
                     const vzz=e=>e==0?'':RS(e)                                                     // conferir se ta tudo vazio
                     /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
                     /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
@@ -1349,7 +1324,7 @@
                     SUM.Lcro += Num(j.Lcro) || 0
                     SUM.Deve += Num(j.Deve) || 0
                     const c = JJ['CLNT'][j.Clnt];if(c){const x=c.Clnt;const nm=c.Id;see.add(nm);cnt[x]=(cnt[x]||0)+1;NM[x]=nm}
-                    for (const s of j.Serv) SUM.Serv.push(s.Serv)
+                    for (const s of (j?.Serv ?? [])) SUM.Serv.push(s.Serv)
                     if(j.Pgmt){for(const p of j.Pgmt){const v=p.Valr||0 ; if(p.Form=='Pix'){SUM.PgPX+=v}else if(p.Form=='Av'){SUM.PgAV+=v}}}
                 }
                 const cLnth = see.size
@@ -1460,7 +1435,7 @@
                 $('span',Pai(Inpt)).textContent = file.name
             }
 
-            function AbrirImg(Nome,img,X){
+            function AbrirImg(Nome,img,X,Id){
                 // if(X=='Place'){return} // isso deve só acontecer se for Placeholder de vdd, depois analizar pra ver q ter errinho lá em cima
                 MdalShow('#FormIMG')
                 const W = img.naturalWidth>img.naturalHeight
@@ -1469,7 +1444,7 @@
                                 <div class="casusa Cl ${W?'w100':'h100'}">
                                     <span>Nome</span>
                                     <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                                    <button onclick="SairMdal();ImgUPP($('input',Pai(this)),'${Nome}')">Enviar</button>
+                                    <button onclick="SairMdal();ImgUPP($('input',Pai(this)),'${Id}')">Enviar</button>
                                 </div>
                             <div>`
                 Inn($('#FormIMG'),Stg)
@@ -2252,8 +2227,8 @@
                 <div class="Wrapper">
                     <div id="Slide_PDDS" class="Slide_Table">
                         <div class="Cl"> <!--PDDS-->
-                            <div class="Confy_PDDS">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                            <div class="Confy_PDDS Cl">
+                                <div class="Bt Stky copybody w100" style="height: 40px;">
                                     <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
                                     <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                                     <div id="COnf_PDDS"    class="Configs Ct">
@@ -2277,7 +2252,7 @@
                                     <tbody></tbody>
                                     <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PDDS),'PDDS'))"></tr></tfoot>
                                 </table>
-                                <button>Carregar Tudo</button>
+                                <button onclick="USER[Passs].Limt.INN=0;loadtmtable('PDDS',true)">Carregar Tudo</button>
                             </div>
                         </div>
 
@@ -2581,21 +2556,21 @@
         function AddRowBdj(Eu){                 // ⭐⭐⭐⭐_ (Ta bem BOA!) // Evitar Reescrever o DOM quando tiver VAZIO, isso evita ocultar bandeija quando clicar
             const R = D_R(_td(Eu)) ; const col = AA(R.Col)
             if(ObjKey(Secund).includes(col)){            // só pra col q tem bndj
-                const row = LocLinId(R.Typ,R.Row) // Localizar Linha pelo 'Id'
-                const arr = orArr(row[R.Col])     // se n for um array, return []
-                const lngh= l0(arr)               // conferir se é a Primeira vez!
-                const Def = ClrObj(BS[col])     // Cria um Default Baseado na bndj
+                const row = LocLinId(R.Typ,R.Row)        // Localizar Linha pelo 'Id'
+                const arr = orArr(row[R.Col])            // se n for um array, return []
+                const lngh= l0(arr)                      // conferir se é a Primeira vez!
+                const Def = ClrObj(BS[col])              // Cria um Default Baseado na bndj
                 const get = getClssIN(_td(Eu),'Rastr-')
                 const NewID = lngh ? 1 : Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
                 if(['Serv','Pgmt']){
-                    Def.Id   = `${row.Id}_${NewID}`// Novo Id
-                    if(R.Col=='Serv'){Def.Data = row.Data} // Clona Data só pra Serv
-                    Def.Clnt = row.Clnt            // Clona Cliente
+                    Def.Id   = `${row.Id}_${NewID}`       // Novo Id
+                    if(R.Col=='Serv'){Def.Data = row.Data}// Clona Data só pra Serv
+                    Def.Clnt = row.Clnt                   // Clona Cliente
                 }
                 /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
-                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr) // da um jeito de informar o Alert q é NewLin
-                Rmv_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) /*Exibir bandeija denovo*/
+                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr)          // da um jeito de informar o Alert q é NewLin
+                Add_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) /*Exibir bandeija denovo*/
                 
             }
         }
@@ -2638,9 +2613,18 @@
             DarVAL(td,Src)
             const R = D_R(td)
             const Cimg = `<img class="Img_T-T" onclick="AbrirImg('${R.Row}',this)" loading="lazy" src="${Src}">` // src temporário
-                if(isBdj(td)){Pai($('.T-T',_td(Pai(td)))).innerHTML+= Cimg} // se for bandeija então tem Title
+            if(isBdj(td)){Pai($('.T-T',_td(Pai(td)))).innerHTML+= Cimg} // se for bandeija então tem Title
             Sb_UPLOAD(f,`${Past}${Nome}`)
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
+        }
+
+        function Linkar(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)    
+            const td = _td(Eu)
+            const R  = D_R(td)
+            const get = getClssIN(_td(Eu),'Rastr-')
+            if(Duplo){LOG(Duplo,td,R,get)}
+            EditCell(Eu,val)
+            if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
         }
 
         function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
@@ -2798,13 +2782,7 @@
         // isso Deve virar Padão tipo algo genético, pra usar em varios
         // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
     })
-    document.addEventListener('click',e=>{const targ = e.target // isso Deve virar Padão tipo algo genético, pra usar em varios
-        Rmv('.Moldura','Atv')
-        if(Coten(targ,'ClickCanv')||targ.closest('.ClickCanv')){ATV('.Moldura.ClickCanv')}
-        else{DTV('.Moldura.ClickCanv')}
-    })
-    // Atalhos C e E
-    document.addEventListener('keydown',e=>{if($('.Moldura.ClickCanv.Atv')){if(e.key==='c'){$('#alignX').click()};if(e.key==='e'){$('#alignY').click()}}})
+
 </script>
 
 <script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡ 💡
