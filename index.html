@@ -1275,7 +1275,7 @@
             ,G_Cnt2:j=>ContGrad[j.Grad]?.Qnt ?? ''
             ,G_VlrO:j=> JJ['OOSS'][j.OS]?.Valr || 0
             ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr))
-            ,G_Oimg:j=>j.OS   ?? ''
+            ,G_Oimg:j=>`${j.OS}.webp`  ?? ''
             ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
             //-----------------------------------------------------------------------------------------------------------
             ,O_Oimg:j=>ListIMG[j.OS] ?? ''
