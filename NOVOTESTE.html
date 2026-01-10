@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Porcentagem de Cores</title>
+<style>
+body{font-family:sans-serif;background:#111;color:#0f0;padding:20px}
+input{margin-bottom:10px}
+pre{background:#000;padding:10px}
+</style>
+</head>
+<body>
+
+<input type="file" accept="image/*">
+<pre id="out"></pre>
+
+<script>
+const CORES={
+  Vermelho:[255,0,0], Verde:[0,255,0], Azul:[0,0,255],
+  Amarelo:[255,255,0], Ciano:[0,255,255], Magenta:[255,0,255],
+  Preto:[0,0,0], Branco:[255,255,255]
+}
+
+const calc=img=>{
+  const c=document.createElement('canvas'),x=c.getContext('2d')
+  c.width=img.width; c.height=img.height
+  x.drawImage(img,0,0)
+  const d=x.getImageData(0,0,c.width,c.height).data
+  const r=Object.fromEntries(Object.keys(CORES).map(k=>[k,0]))
+  const px=c.width*c.height
+
+  for(let i=0;i<d.length;i+=4){
+    if(d[i+3]<10) continue
+    let m=1e9,k
+    for(const n in CORES){
+      const v=Math.abs(d[i]-CORES[n][0])+
+              Math.abs(d[i+1]-CORES[n][1])+
+              Math.abs(d[i+2]-CORES[n][2])
+      if(v<m){m=v;k=n}
+    }
+    r[k]++
+  }
+
+  const out={}
+  for(const k in r){
+    const v=+(r[k]/px*100).toFixed(2)
+    if(v>0.1) out[k]=v
+  }
+  return out
+}
+
+document.querySelector('input').onchange=e=>{
+  const img=new Image()
+  img.onload=()=>out.textContent=JSON.stringify(calc(img),null,2)
+  img.src=URL.createObjectURL(e.target.files[0])
+}
+</script>
+
+</body>
+</html>
