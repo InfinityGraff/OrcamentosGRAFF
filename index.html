@@ -615,6 +615,12 @@
                     <input class="Stky" placeholder="${dbCol[R.Col]}" oninput="LinkSug(this,'${AA(R.Col)}')" onkeydown="KeyEntr(()=>TestRow(this,'${R.Col}'))"><span class="Sugg Cl"></span>
                     </div></div>`, // opções de "Apenas Troca" ou de "Adição"
             }
+
+            function ConvertR(e,Rpai){
+                // TYP - Row - Col - Bandeija ou Fora - Secundario
+                const E = e.split('-')
+                return `${E[1]}-${E[2]}-${E[3]}${Rpai?'-Bj':''}${['SERV','PGNT'].includes(E[1])?'-Sec':''}`
+            }
             
             function Tm_Bndj(Typ,col,Arr,r,DOM){
                 const Ordem = ObjKey(BS[AA(col)])
@@ -650,10 +656,10 @@
                 const r = Tm_R(e,x,Typ,'Id') ; const R = D_R(r) ; const Scd = ObjKey(Secund).includes(Typ) ? 'Secund' : ''
                 const valid = Typ!=='CLNT' && R.Tm=='Bndj' && R.Col=='Clnt' && v=="" && RPai=='' // se for uma Bndj de Clnt e tiver vazio então chama SuggClnt
                 
-                return valid     ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm['Link'](v,R,'',RPai)}</div></td>` :
-                    R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="LoadBndj(this,'${Typ}','${R.Col}','${R.Row}','${r}');ShowBndj(this)">${Tm_Bndj(Typ,R.Col,v,r)}</td>` :
-                    R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
-                                 : `<td style="${NoneCol(Typ,R.Col)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R,'')}</div></td>`
+                return valid     ? `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertR(RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm['Link'](v,R,'',RPai)}</div></td>` :
+                    R.Tm=='Bndj' ? `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertR(RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="LoadBndj(this,'${Typ}','${R.Col}','${R.Row}','${r}');ShowBndj(this)">${Tm_Bndj(Typ,R.Col,v,r)}</td>` :
+                    R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertR(RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
+                                 : `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertR(RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R,'')}</div></td>`
             }
 
             function Tm_Table(Typ,arry,Rpai=''){ // Achava interessante ela mesmo aqui dar o Inner!
@@ -2487,7 +2493,44 @@
         const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
 
+        const RR=(r,p)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
+        const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
+
+        function TestEdit(){
+            rr(['PDDS','Data'])
+            rr(['PDDS','Data','1690'])
+
+        }
+
+
+
+        function EditCellNovo(e,vall=null,Auto,SB){// e:Celula | Val: Valor | Auto: se veio de preenchimento automatico | SB se precisa ou não ir pra o SB
+            // pode vir sem o SB quando vem do RealTime, ou sem SB quando é uma edição Automática
+            const R = (([Ty,Id,Cl,Bj,Sc])=>({Ty,Id,Cl,Bj,Sc}))(_td(e).dataset.r.split('-'))
+            LOG(R.Ty,R.Id,R.Cl,R.Bj,R.Sc)
+            if(R.Bj){ // Toda Edição dentro da Bndj
+                if(R.Sc){LOG('Bandeija Secundária')} // Edita o atual agora!
+                    else{LOG('Bandeija Linkada')}
+                /*OBJ*/
+                /*SUB*/
+                /*DOM*/
+            }else{    // Toda Edição Fora da Bndj
+                LOG('Tabela Principal')
+                /*OBJ*/
+                /*SUB*/
+                /*DOM*/
+            }
+            // Editar os Objetos J e JJ
+            // Editar o Supabase
+            // Editar o DOM
+            // Chama Refresh (se não for um Automático)
+            if(!Auto){RFresh()}
+        }
+
         function EditCell(e,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
+            
+            EditCellNovo(e,vall=null,Auto,SB) ; return
+
             const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
             const R      = D_R(_td(e))                     // R é o atual Editado
             const isScnd = Secund[R.Typ]!==undefined       // Conferir se é uma Typ Secundária
@@ -2499,7 +2542,7 @@
             if(Nm(e)=='False'){return} // quando é uma imagem
             let Find     = []
 
-            /*Lv1*/if(P==null || R.Typ == 'CLNT'){
+            /*Lv1*/if(P==null||R.Typ=='CLNT'){
                 /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval)
                 /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
             /*Lv2*/}else{
