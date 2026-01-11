@@ -142,6 +142,18 @@ const Tmplts = [
 
 ]
 
+const Nyme = {
+  true : {
+    true  : 'Ta na Bndj & é Secundária',
+    false : 'Ta na Bndj & é Linkada'
+  },
+  false: {
+    true  : 'é uma Tabela Principal & é Secundária',
+    false : 'é uma Tabela Principal Primaria'
+  }
+}
+
+
 
 const Ramos = {
   'Alimentos e Bebidas': {

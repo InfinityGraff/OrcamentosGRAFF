@@ -1,6 +1,16 @@
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
+const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)} 
+
+const _Bol=v=> v !== '_'
+const _par=s=>(([Ty,Id,Cl,Bj,Sc]) => ({ Ty,Id,Cl, Bj:_Bol(Bj), Sc:_Bol(Sc) }))(s.split('-'))
+const d_r =e=>_par(_td(e).dataset.r)
+const d_p =e=>_td(e).dataset.p === 'SemPai' ? null : _par(_td(e).dataset.p)
+const RR=(r,p)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
+const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
+
+
 // Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
 function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
 function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
@@ -58,7 +68,7 @@ function CrypPass(senha){ // Obsoleta
 
 function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar!
 
-function ShowBndj(div){                                                // Função que exibe/oculta o painel .BNdj dentro da div recebida
+function ShowBndj(div,Typ){                                                // Função que exibe/oculta o painel .BNdj dentro da div recebida
     if(!document.contains(event.target)){LOG('não ta mais no DOM') ; return} // interrompe se o target não estiver mais no DOM
     if(['IMG','I','BUTTON'].includes(event.target.tagName)){return}
     if(event.target.closest('svg')){return}
@@ -73,6 +83,7 @@ function ShowBndj(div){                                                // Funç�
             //    if(E==e){return}else{Add_N(E)}                  // Fecha (adiciona .none) em todos, exceto o atual
             })
             Tog_N(e);GambiarraAdd(div);                           // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
+            Typ ? RFresh(Typ,_tr(div)) : null
         }
     }
     if(Tecla('ctrl')){return}                                     // Se CTRL estiver pressionado, interrompe (não aplica o fechamento automático)
@@ -110,8 +121,8 @@ function DarVAL(td,v,A){
     const R = D_R(td)
     const PP = $(':scope > div > .P-P',td)
     if(['Edit','Fixo'  ].includes(R.Tm)){Nm(PP,v)       ; Inn(PP,v)}
-    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num(v)) ; Inn(PP,v)}
-    if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,v==''?'':Num(v))  ; Inn(PP,v==''?'':RS(v))}
+    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v)}
+    if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,v==''?'':Num(v)) ; Inn(PP,v==''?'':RS(v))}
     if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
     if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
     if(['Data','Sugg','Link','Ssvg','Imgs','Chek','Likk'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
@@ -154,7 +165,8 @@ const vAL=(s,e)=>
     s=='Qnt'  ? Num(VAAL($('.oQnt' ,_tr(e)))) :
     s=='Qntt' ?     VAAL($('.oQnt' ,_tr(e)))  : null
 
-const DarJJ = (M,T,R,C,V,Lv2=null)=>{
+const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
+    const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
     const j = J[T], k = JJ[T]; if (!j || !k) return
     let o, jL, jjL, parent
     if (Lv2){
@@ -182,7 +194,7 @@ const DarJJ = (M,T,R,C,V,Lv2=null)=>{
     const LOG1 = Lv2 ? jL : o
     const LOG2 = Lv2 ? jjL : k[R]
     const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
-    LOG(`Const Atualizadas! ${M}, ${iguais}`)
+    //LOG(`Const Atualizadas! ${M}, ${iguais}`)
 }
 
 const SplitAvanc=(Stg)=>{ // Funciona Apenas pra GABARITO
