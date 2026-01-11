@@ -621,12 +621,12 @@
             function ConvertR(e,Rpai){// TYP - Row - Col - Bandeija ou Fora - Secundario
                 if(e==''){return 'SemPai'}
                 const E = e.split('-')
-                return `${E[1]}-${E[2]}-${E[3]}-${Rpai?'Bj':'_'}-${['SERV','PGNT'].includes(E[1])?'Sc':'_'}`
+                return `${E[1]}-${E[2]}-${E[3]}-${Rpai?'Bj':'_'}-${['SERV','PGMT'].includes(E[1])?'Sc':'_'}`
             }
             function ConvertP(e,Rpai){// TYP - Row - Col - Bandeija ou Fora - Secundario
-                if(Rpai==''){const EE = e.split('-') ; if(['SERV','PGNT'].includes(EE[1])){return DescobrePai(EE)}else{return 'SemPai'}}
+                if(Rpai==''){const EE = e.split('-') ; if(['SERV','PGMT'].includes(EE[1])){return DescobrePai(EE)}else{return 'SemPai'}}
                 const E = Rpai.split('-')  
-                return `${E[1]}-${E[2]}-${E[3]}-_-${['SERV','PGNT'].includes(E[1])?'Sc':'_'}`
+                return `${E[1]}-${E[2]}-${E[3]}-_-${['SERV','PGMT'].includes(E[1])?'Sc':'_'}`
             }
             
             function Tm_Bndj(Typ,col,Arr,r,DOM){
@@ -2532,7 +2532,7 @@
 
         function EditCell(e,vall=null,Auto,SB){// e:Celula | Val: Valor | Auto: veio Automatica | SB: tem SupaBase
             const V  = vall==""?"":vall||VAL(e) ; if(V==Nm(e) || Nm(e)=='False'){return} // não foi Aterado || é uma img
-            const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; // LOG(Nyme[R.Bj][R.Sc])
+            const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
             const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
 
             /*OBJ*/ DarJJ('Edt',..._R,R.Sc?_P:null)   // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai
@@ -2884,5 +2884,15 @@
     // Trabalhar em todos os Input Files daqui -- (type="file")
 
     // da pra pegar do Twitter com thumb https://x.com/JadeBabii/media
+
+    // o que eu tenho que melhorar pra voltar a ficar BEM
+        // Filtrar os que Falta imagens
+        // Filtrar as Etapas
+        // Custo de Recorte e de Vendas
+        // Custo de Router
+        // Sincronizar os PIX
+        // Adicionar RR como Barraca
+        // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
+        // Pesquisar mais de uma ocorrência ou seja uma Lista de Itens tipo (B_343_2)(B_343_1)(G_533)
 </script>
 </html>
