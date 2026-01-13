@@ -32,10 +32,10 @@
 <script> // aBase de Dados
     const USER = { // isso vai FICAR no SupaBase
         '32$r2-32&-6eV69@6K'                                    :{Nome:'Allan',Foto:'./Img/Perfil_Allan.webp',cgo:'Admn', body:['Dark','Body1','CSS1'], Limt:{INN:1657,OUT:8000}, Fone:"81 98726.5401",Emal:"allanmaclovin@gmail.com",Lcal:"São Lourenço da Mata"},
-        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.webp' ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1635,OUT:8000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
-        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.webp',cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
-        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""},
-        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:1635,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""}
+        '31$r1-31&-4eV49@4K'                                    :{Nome:'Baby' ,Foto:'./Img/Perfil_Baby.webp' ,cgo:'Grnt', body:['Lite','Body1','CSS3'], Limt:{INN:1657,OUT:8000}, Fone:"81 00000.0000",Emal:"babydocegosto@gmail.com",Lcal:"São Lourenço da Mata"},
+        '33$r3-33&3d$rd-3d&3p$rp-3p&-4eV49@4K-feVf9@fK-weVw9@wK':{Nome:'Karol',Foto:'./Img/Perfil_Karol.webp',cgo:'Atnd', body:['Dark','Body1','CSS1'], Limt:{INN:1657,OUT:8000}, Fone:"81 00000.0000",Emal:"karolinelllll@gmail.com",Lcal:"São Lourenço da Mata"},
+        '3l$rl-3l&3s$rs-3s&3F$rF-3F&-deVd9@dK-zeVz9@zK'         :{Nome:'Euryk',Foto:'./Img/Perfil_Euryk.webp',cgo:'DSgn', body:['Dark','Body1','CSS1'], Limt:{INN:1657,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""},
+        'Login'                                                 :{Nome:'Login',Foto:'./Img/LogOff.png'       ,cgo:'Clnt', body:['Dark','Body1','CSS1'], Limt:{INN:1657,OUT:8000}, Fone:""             ,Emal:""                       ,Lcal:""}
     }
 
     const Cgo  = { // Cargo
@@ -43,13 +43,13 @@
                 orc :['Serigrafia','Figurinha','Cartela'],
                 PDDS:[],
                 PGMT:[],
-                SERV:['Detg']},
+                SERV:[]},
 
         Grnt: { nav :['HOME','|','ORC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :[],
                 PDDS:[],
                 PGMT:[],
-                SERV:['Data','Detg']},
+                SERV:[]},
 
         DSgn: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
@@ -396,7 +396,7 @@
     // Algumas dessas ficam aqui mesmo, elas não guardam valor no Supabase!
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PDDS:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['E',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['B','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['B','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
@@ -430,6 +430,7 @@
 
 <script> // Bibliotecas
     // Epecíficas (as q Retorna)
+        const NUMM    =e=>parseFloat(e).toFixed(2)
         const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
         const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no 'bs'
         const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
@@ -600,15 +601,15 @@
 
             const Tm_Tm = {
                 Fixo:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
-                Auto:(e,R,A)=>`<p class="P-P Ct" name="${Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
-                Sync:(e,R,A)=>`<p class="P-P Ct" name="${e     }" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
+                Auto:(e,R,A)=>`<p class="P-P Ct" name="${Num(e) }" onclick="CtrlSoma(this)">${e}</p>`,
+                Sync:(e,R,A)=>`<p class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
                 Edit:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`,
                 Valr:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="Mask.RS(this) ">${e?RS(e):'R$ -'}</p>`,
                 Mdds:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${e}" ${TM.Edi} onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco');CurAll(this)" oninput="Mask.Num(this)">${e?Cm(e):''    }</p>`,
                 Data:(e,R,A)=>`${Tm_Antg(A)}<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" class="none" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih(this,$('p',Pai(this)))">`,
                 Slct:(e,R,A)=>`${Tm_Antg(A)}<select class="P-P w100" name="${e}" onchange="EditCell(this)">${R.Col==='Serv' ? Tm_OptsGraff(O[R.Col],e) : Tm_Opt(O[R.Col],e)}</select>`,
                 Chek:(e,R,A)=>`<input  class="P-P" name="${e}" onchange="EditCell(this)" type="checkbox" ${Bool(e)?'checked':''}>`,
-                Imgs:(e,R,A)=>`<img class="P-P" loading="lazy" name="False" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${e}',this,'${e?'':R.Col=='Arte'?'X':'Place'}','${R.Row}')">`, // esse Pai ta aqui pra impedir q as imagens internas carregem (pra que sejam só carregadas quando Abrir a Bandeija)
+                Imgs:(e,R,A)=>`<img class="P-P" loading="lazy" name="${e?'True':'False'}" draggable="false" src="${SrcsIMG(e,R)}" onclick="AbrirImg('${e}',this,'${e?'':R.Col=='Arte'?'X':'Place'}','${R.Row}')">`,
                 Ssvg:(e,R,A)=>`<p class="P-P Ct" name="${e}">${e}</p>`,
                 Lixo:(e,R,A)=>`<img class="PT" onclick="RmvROW(this)" name="${e}" src="./SVG/I_Lixo.webp"><i class="Abslt GrifFora"></i>`,
                 Link:(e,R,A)=>`<div class="Rltv"><p class="P-P" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p><div class="BndjSUG MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
@@ -1117,8 +1118,8 @@
             function IcnEtp(Typ,tr,Etp,cct){ // acho q da pra Remover isso! de OBJ
                 const objj = {'PDDS':'Stts','SERV':'SStts'} // Provavelmente já n sei usa mais
                 stt = $(`:scope > ${Rx2([Typ,'Stts'])}`,tr)
-                if(cct){Nm(stt,cct)}                                               // Joga o Concate no Name do td Stts
-                Inn(stt,`<a style="fill:rgb(${Etp[2]})">${SVGEtapas[Etp[0]]}</a>`) // Dar o Inner do SVG dentro do Stts
+                if(cct){Nm(stt,cct)}                                                   // Joga o Concate no Name do td Stts
+                Inn(stt,`<div style="fill:rgb(${Etp[2]})">${SVGEtapas[Etp[0]]}</div>`) // Dar o Inner do SVG dentro do Stts
             }
 
             function R_Cor(e,opc,Cor){ // nesta função dar apeans o Retorno caso "e" não seja DOM
@@ -1213,7 +1214,6 @@
         }
 
         function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
-            if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
             if(Typ=='GRAD' && Auto=='Auto'){return}
             //Re_Cont(Typ,All)
             if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All)}} // ta com essa agonia toda mas vou ajeitar! (Provavelmente só o IF de All fica) (esse if de auto vai sair!)
@@ -1253,8 +1253,8 @@
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
             ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
             ,S_Gimg:j=>`${j.Grad}.webp`
-            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+Number(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( Num(F.VUbr                ) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( Num(F.VUbr          ) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>ListIMG[j.Grad] ?? ''
             ,G_ImgG:j=>ListIMG[j.Grad.replace(/_\d*$/,"")] ?? ''
@@ -1276,6 +1276,8 @@
         }
 
         function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
+            if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
+
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
 
@@ -1673,79 +1675,37 @@
                             #Grfc_Ftura{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
                             #Grfc_Servs{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
                             #Grfc_PixAv{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                            #Grfc_Forne{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
                         </style>
-                        <button onclick="RfreshGrafic()">Refresh</button>
+                        <button onclick="RfreshGrafic()">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                         <div class="Ct">
                             <canvas id="Grfc_Ftura" class="Graficos"></canvas> <!--Grafico de Fatura-->
                             <canvas id="Grfc_Servs" class="Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
                             <canvas id="Grfc_PixAv" class="Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas id="Grfc_Outro" class="Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                            <canvas id="Grfc_Forne" class="Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
                         </div>
                         <script>
                             const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
-                            const gG = (c,l)=>Chart(ObjKey(c),ObjVal(c),l,ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]))
+                            const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
+                            const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
+                            const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
+                            const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
+                            const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
+                            const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
+                            const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
+                            
 
-                            const Grfc_Servs=a=>gG(ContFreq(a,'Serv'),'Quantidade de Serviços'  )
-                            const Grfc_PixAv=a=>gG(ContFreq(a,'Form'),'Quantidade de Pagamentos')
-
-                            function RfreshGrafic(){
-                                Load_Grfc('Barra',Grfc_Ftura(J['PGMT']),$('#Grfc_Ftura'))
-                                Load_Grfc('Pizza',Grfc_PixAv(J['PGMT']),$('#Grfc_PixAv'))
-                                Load_Grfc('Barra',Grfc_Servs(J['SERV']),$('#Grfc_Servs'))
+                            function RfreshGrafic(){ // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+                                const Filt=Typ=>IntrvlData(J[Typ],...Semana(1))
+                                LOG(ContForn(Filt('GRAD')))
+                                Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('#Grfc_Ftura'))
+                                Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('#Grfc_Servs'))
+                                Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('#Grfc_PixAv'))
+                                Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn',1),$('#Grfc_Forne'))
                             }
 
-                            function Load_Grfc(tipo,base,ctx){
-                                const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
-                                ctx.chartInstance?.destroy() // limpa gráfico anterior
-                                ctx.chartInstance = new Chart(ctx,{
-                                    type: mapa[tipo], data: base,
-                                    options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
-                                        plugins: {
-                                        legend: { labels: { color: '#fff' } },
-                                        title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
-                                        scales: {
-                                        x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
-                                        y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
-                                })
-                            }
-
-                            // Função genérica que cria o objeto Chart.js
-                            function Chart(labels,data, labelGrafico, cor = coresGrafic[0]){
-                                return {labels,data,datasets: [{
-                                    label: labelGrafico,
-                                    backgroundColor: isArr(cor) ? cor : [cor],
-                                    borderColor: '#fff',
-                                    borderWidth: 1,
-                                    tension: 0.4
-                                    }]}
-                            }
-
-                            // Faturamento Diário
-                            function Grfc_Ftura(dados){
-                                const SemDATA = true;
-                                const Intervalo = ['2025-10-01','Hoje'];
-                                const hoje = new Date();
-                                const inicio = new Date(Intervalo[0]);
-                                const fim = Intervalo[1] === 'Hoje' ? hoje : new Date(Intervalo[1]);
-
-                                const somaPorData = {};
-
-                                const DADOS = dados
-                                    .filter(e => e.Data?.trim() || !SemDATA)
-                                    .map(e => ({ ...e, Data: e.Data ? YMD(e.Data) : "" }))
-                                    .sort((a,b) => new Date(a.Data) - new Date(b.Data));
-
-                                DADOS.forEach(e => {
-                                    const data = e.Data?.trim();
-                                    if (!data) return;
-                                    const dataObj = new Date(data);
-                                    if (dataObj < inicio || dataObj > fim) return;
-                                    const chave = DMY(data);
-                                    somaPorData[chave] = (somaPorData[chave] || 0) + Number(e.Valr || 0);
-                                });
-
-                                return Chart(ObjKey(somaPorData),ObjVal(somaPorData),'Faturamento Diário (R$)',coresGrafic[0])
-                            }
+                            // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
+                            // as Grades que mais Demoraram, Pedidos que mais Demoraram
                         </script>
                     </div>
                 </div>
@@ -2530,7 +2490,7 @@
         }
 
 
-        function EditCell(e,vall=null,Auto,SB){// e:Celula | Val: Valor | Auto: veio Automatica | SB: tem SupaBase
+        function EditCell(e,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()   // e:Celula | Val: Valor | Auto: veio Automatica | SB: tem SupaBase
             const V  = vall==""?"":vall||VAL(e) ; if(V==Nm(e) || Nm(e)=='False'){return} // não foi Aterado || é uma img
             const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
             const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
@@ -2551,43 +2511,7 @@
             // tem um ERRO, quano o problema é só com String passa tranquilo, mas com Numeros ai complica
             // não consigo Comparar V==Nm(e) pois o 60.00 == 6000 tem que corrigir a mascara!
         }
-
-        function EditCell0(e,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝 Fundir com RmvROW()
-            const tR     = _tr(Pai(_tr(e)))                // esse é o Tr do Typ Pai
-            const R      = D_R(_td(e))                     // R é o atual Editado
-            const isScnd = Secund[R.Typ]!==undefined       // Conferir se é uma Typ Secundária
-            const d_p    = isScnd ? {Typ:Secund[R.Typ],Col:Aa(R.Typ),Row:R.Row.split('_')[0]} : {}
-            const IsBdj  = isBdj(e)                        // se 'p' existir então tem Bandeija ⚠️   (isso vai ser true quando for Secundario)
-            const P      = IsBdj && R.Typ!='PDDS' ? D_P(_td(e)) : isScnd ? d_p : null   // Extrair RPai se Estiver na Bndj ou da Tabela Secund
-            const Nval   = vall==""?"":vall||VAL(e)
-            if(Nval==Nm(e)   ){return} // quando não foi Aterado
-            if(Nm(e)=='False'){return} // quando é uma imagem
-            let Find     = []
-
-            /*Lv1*/if(P==null||R.Typ=='CLNT'){
-                /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval)
-                /*Sub*/ if(SB==null){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}else{LOG('sem SB')}
-            /*Lv2*/}else{
-                /*Obj*/ DarJJ('Edt',R.Typ,R.Row,R.Col,Nval,{pT:P.Typ,pR:P.Row,pC:P.Col}) // aqui como a função não precisa retornar nada, seria bom ela retornar esse X, pra eu usar logo abaixo no SupaBase
-                /*Lv1*/ const X  = J[P.Typ].find(e=>e.Id==P.Row) ; Find = X[P.Col] // adquie o valor Alterado
-                /*Sub*/ if(SB==null){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}else{LOG('sem SB')}
-            }
-
-            /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{
-                //LOG(`${R.Typ}-${R.Row}-${R.Col}`,td)
-                if(R.Col=='Clnt' && R.Typ=='PDDS' && isBdj(td)){return} // Condição especídica só pra escapar um erro q acontece ao trocar cliente
-                if(Nm($('.P-P',td))!==Nval){ // Editar todas as Cópias
-                    if(Auto=='Auto'){DarVAL_Tm(td,Nval)}else{DarVAL(td,Nval)}
-                    if(IsBdj && _td(Pai(td)) !== null){ // pra entrar tem que ser Bndj e .T-T tem que Existir ⚠️ (esse primeiro IsBdj vai ser true masm quando for tabela Secund, ai vai da errado então a pesquisa correta é 'isBdj(e)' essa!)
-                        const T_T  = $('.T-T',_td(Pai(td))) ; Nm(T_T,FazerTitle(P.Col,Find)) ; Inn(T_T,FazerTitle(P.Col,Find))
-                        RFresh(P.Typ,tR,Auto,e)
-                    }else{// Edita quando é fora da Bandeija
-                        RFresh(R.Typ,_tr(td),Auto,e)
-                    }
-                }})
-                // Melhorar ela pra o caso de eu precisar fazer um TM, e não um DarVal, no DOM por exeplo
-        }
-        
+       
         function RmvROW(Eu,SB){                 // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) 🔝
             // se vier do supabase então não tem acesso a 'eu' então deve procurar ele antes de começar com tudo!
             const Lxr = false
@@ -2636,8 +2560,7 @@
                 /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
                 /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr)          // da um jeito de informar o Alert q é NewLin
-                Add_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) /*Exibir bandeija denovo*/
-                
+                Add_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) // Exibir bandeija denovo
             }
         }
 
@@ -2684,7 +2607,7 @@
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
-        function Linkar(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico)    
+        function Linkar(Eu,val,Duplo){          // ⭐⭐⭐⭐_  (Faz o Básico)    
             const td = _td(Eu)
             const R  = D_R(td)
             const get = getClssIN(_td(Eu),'Rastr-')
@@ -2878,6 +2801,7 @@
     // Dia 01 - Ressaka ano Novo | StregenThing final | Limpeza no Código | Downloads novos Fapelo | Granja de Vado
     // Dia 02 - acordei na Granja de Vado | Cheguei a Noite | Criei o Download PDF
     // Dia 03 - Limpeza Graff (Trouxe as mesas noamente) | Melhorei Download PDF | imbuti PDF nas pagina de arte
+    // Dia 11 - Roteiro Cachorro | Foto da Placa do Tubarão | Trabalhei no COD | Limpeza no JS aqui msm
 
     // Fazer o Verdadeiro Login do Usuário
     // remover os MdalShow e trocar pra o NOVO -- (MdalShow)
@@ -2886,13 +2810,14 @@
     // da pra pegar do Twitter com thumb https://x.com/JadeBabii/media
 
     // o que eu tenho que melhorar pra voltar a ficar BEM
-        // Filtrar os que Falta imagens
-        // Filtrar as Etapas
+        // Por que a Tabela de SERV e PGMT não ta mais Recolorindo
         // Custo de Recorte e de Vendas
         // Custo de Router
         // Sincronizar os PIX
         // Adicionar RR como Barraca
         // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
         // Pesquisar mais de uma ocorrência ou seja uma Lista de Itens tipo (B_343_2)(B_343_1)(G_533)
+    // Criar uma Nova Tabela pra Finanças que são os Resultados dos Meses Todos
+        
 </script>
 </html>

@@ -847,3 +847,48 @@ function exibirObjeto() {
     const saida = document.getElementById("saida")
     saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`
 }
+
+
+// GRAFICOS VISUAIS de ANALISES
+
+function Load_Grfc(tipo,base,div){
+    const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
+    div.chartInstance?.destroy() // limpa gráfico anterior
+    div.chartInstance = new Chart(div,{
+        type: mapa[tipo], data: base,
+        options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
+            plugins: {
+            legend: { labels: { color: '#fff' } },
+            title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
+            scales: {
+            x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
+            y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
+    })
+}
+function Charte(labels,data,labelGrafico,cor='#c084fc'){ 
+    return {labels,datasets: [{
+            label: labelGrafico,
+            data,
+            backgroundColor: isArr(cor) ? cor : [cor],
+            borderColor: '#fff',
+            borderWidth: 1,
+            tension: 0.4
+        }]
+    }
+}
+
+const CharteGrup = (obj,labelGrafico,cores)=>{
+    const labels = ObjKey(obj)
+    const grupos = [...new Set(ObjVal(obj).flatMap(e=>ObjKey(e)))]
+    return {
+        labels,
+        datasets: grupos.map((g,i)=>({
+            label: `${labelGrafico} — ${g}`,
+            data: labels.map(l=>obj[l]?.[g] || 0),
+            backgroundColor: cores[i % cores.length],
+            borderColor: '#fff',
+            borderWidth: 1
+        }))
+    }
+}
+
