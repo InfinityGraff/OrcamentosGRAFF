@@ -1272,6 +1272,8 @@
             ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
             ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
             ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
+            //-----------------------------------------------------------------------------------------------------------
+            ,U_Img:j=>ListIMG[j.Uber] ?? ''
         }
 
         function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
@@ -1301,6 +1303,7 @@
             }else if(Typ=="GRAD"){trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                                   trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
             }else if(Typ=='OOSS'){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                              ].forEach(c=>Edit('O',c[0],c[1],tr)))
+            }else if(Typ=='UBER'){trs.forEach(tr=>[['Img' ,'V']                                                                                           ].forEach(c=>Edit('U',c[0],c[1],tr)))
             }else{return}
             if(All=="All"){LOG(`🔄 Re_comp:(${Typ}) ${MS(IN)}`)}
         }
