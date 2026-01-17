@@ -892,3 +892,20 @@ const CharteGrup = (obj,labelGrafico,cores)=>{
     }
 }
 
+function BtnOff(btn,stg,Tru){AddTrue(btn,'BrnOff',Tru) ; btn.textContent=stg}
+
+function CopyTagImg(btn,div,scale=1) { // btn=Botão q clikei , e=Div  s= Escala 1 ou eu escolho
+  if (!btn || !div) return ; if (!document.hasFocus()) return
+  BtnOff(btn,'Copiando...',true)
+  html2canvas(div, {scale,backgroundColor: null,useCORS: true})
+  .then(c => new Promise(r => c.toBlob(r)))
+  .then(b => navigator.clipboard.write([new ClipboardItem({'image/png':b})]))
+  .then(()=> {BtnOff(btn,'Copiado!',false)})
+  .catch(()=>{BtnOff(btn,'Erro',false)})
+}
+
+const SavePDF2 = async (Div, Nome = "download.pdf") => {
+    const { jsPDF } = window.jspdf
+    const pdf = new jsPDF("p", "pt", "a4")
+    await pdf.html(Div,{x: 20,y: 20,autoPaging: "text",callback: (doc) => doc.save(Nome)});
+}

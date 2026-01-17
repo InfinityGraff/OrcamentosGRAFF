@@ -251,3 +251,6 @@ input.Error:hover{background:red}
 .BOX {padding:18px;border-radius:15px;background:#111111f8;border:1px solid #222222}
 .box {padding:18px;border-radius:15px;background:#6363631a;border:1px solid #494949}
 .Box {padding:6px ;border-radius:15px;background:#272727ce;border:1px solid #929292 ; z-index:9999 ; backdrop-filter: blur(10px)}
+
+.BtnRed{background: #ff4343 !important;}
+.BrnOff{background: #acacac !important; pointer-events:none}

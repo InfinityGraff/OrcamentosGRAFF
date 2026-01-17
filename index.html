@@ -10,6 +10,10 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <!--
         <script src="../MyBiblioteca/PreScript.js"      ></script>
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
@@ -24,7 +28,7 @@
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
     <script src="./Gera3D.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
@@ -2404,54 +2408,64 @@
         <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
             <div class="Close Ct" onclick="SairMdal()">X</div>
             <div class="Bt Loginn">Login</div>
-              <div class="Ct Start">
+            <div class="Ct Start">
                 <label for="Senha">Senha</label>
                 <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
-              </div>
-              <span id="errPass" class="erro"></span>
-              <div class="Bt">
+            </div>
+            <span id="errPass" class="erro"></span>
+            <div class="Bt">
                 <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
                 <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
-              </div>
+            </div>
         </div>
 
         <div id="FormIMG" class="Ct Rltv Rd"></div>
-    
+
         <div id="ModalNota" class="Cl Rltv Rd media30">
             <div class="Close Ct" onclick="SairMdal()">X</div>
-            <div id="Titulo-Nota" class="w100 Bt Hr"></div>
-            <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
-                <div class="Ct">
-                    <div id="LugarFotoNotta"><img src="Img/Logo2.png"></div>
-                    <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
+            <div id="NOTA" class="w100" style="background: white;padding: 10px;color: black;">
+                <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+                <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
+                    <div class="Ct">
+                        <div id="LugarFotoNotta"><img src="./Img/Logo2.png"></div>
+                        
+                        <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
+                    </div>
+                    <div class="Start2">
+                        <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A   </p></div>
+                        <div class="FtBd Ct">Cidade:   <p>SÃO LOURENÇO DA MATA     </p></div>
+                        <div class="FtBd Ct">Email:    <p>infinitygraff@outlook.com</p></div>
+                        <div class="FtBd Ct">Contato:  <p>(81) 98726.5401          </p></div>
+                    </div>
                 </div>
-                <div class="Start2">
-                    <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A   </p></div>
-                    <div class="FtBd Ct">Cidade:   <p>SÃO LOURENÇO DA MATA     </p></div>
-                    <div class="FtBd Ct">Email:    <p>infinitygraff@outlook.com</p></div>
-                    <div class="FtBd Ct">Contato:  <p>(81) 98726.5401          </p></div>
+                <div class="Ct Cl Hr"><h2>CUPOM FISCAL</h2><div id="DataNota"></div></div>
+                <div class="Start2 Hr">
+                    <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>   ${id}   </p></div>
+                    <div class="Ct"><p class="FtBd">      Data:      </p><p>00/00/2023</p></div>
                 </div>
+                <div id="Nota-Clnt" class="Row w100 Ev">
+                    <div><div class="Ct FtLt">Nome:     <div data="Clnt"  spellcheck="false" contenteditable="true">-</div></div>
+                         <div class="Ct FtLt">Fone:     <div data="Cntt"  spellcheck="false" contenteditable="true" oninput="Mask2.fone(this)">-</div> </div></div>
+                    <div><div class="Ct FtLt">Endereço: <div data="Local" spellcheck="false" contenteditable="true">-</div></div>
+                         <div class="Ct FtLt">Cidade:   <div data="City"  spellcheck="false" contenteditable="true">-</div></div></div>
+                </div>
+                <div id="ConteudoNota" class="w100"></div>
             </div>
-            <div class="Ct Cl Hr"><h2>CUPOM FISCAL</h2><div id="DataNota"></div></div>
-            <div class="Start2 Hr">
-                <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>   ${id}   </p></div>
-                <div class="Ct"><p class="FtBd">      Data:      </p><p>00/00/2023</p></div>
+            <style>  /*isso é pra ser Biblioteca q são Propiriedades de Botões com SVG dentro*/
+                .BtnNota button  {gap: 5px; padding: 0px 8px !important;}
+                .BtnNota button a{width: 15px; height: 15px; fill: white}
+            </style>
+            <div class="BtnNota w100 Ct">
+                <button  class="Ct"     onclick="SavePDF2($('#NOTA'),'Nota')"   >PDF <a onload="Inn(this,SVVG.PDFs)"></a></button>
+                <button  class="Ct"     onclick="CopyTagImg(this,$('#NOTA'),2)">Print<a onload="Inn(this,SVVG.Prnt)"></a></button>
+                <button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a onload="Inn(this,SVVG.Copy)"></a></button>
+                <button  class="BtnRed" onclick="SairMdal()"                   >Sair</button>
             </div>
-            <div id="Nota-Clnt" class="Row w100 Ev">
-                <div><div class="Ct FtLt">Nome:     <div data="Clnt"  spellcheck="false" contenteditable="true">-</div> </div>
-                     <div class="Ct FtLt">Fone:     <div data="Cntt"  spellcheck="false" contenteditable="true" oninput="Mask2.fone(this)">-</div> </div></div>
-                <div><div class="Ct FtLt">Endereço: <div data="Local" spellcheck="false" contenteditable="true">-</div></div>
-                     <div class="Ct FtLt">Cidade:   <div data="City"  spellcheck="false" contenteditable="true">-</div></div></div>
-            </div>
-            <div id="ConteudoNota" class="w100"></div>
-            <div class="w100 Ct">
-                <button id="trocatroca" class="BTNota Ct RD magem" onclick="troctroc()">Troca-Troca</button>
-                <button class="BTNota Ct RD magem" onclick="SairMdal()">Cancelar</button>
-                <button class="BTNota Ct RD magem" onclick="NewPDF()  ">Imprimir<div id="imgnotta" class="Ct"></div></button>
-            </div>
+            
         </div>
     </div>
 </body>
+
 
 <script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
     // MiniLib pra ser usada principalmente por essas Func de manipulações
@@ -2820,6 +2834,14 @@
         // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
         // Pesquisar mais de uma ocorrência ou seja uma Lista de Itens tipo (B_343_2)(B_343_1)(G_533)
     // Criar uma Nova Tabela pra Finanças que são os Resultados dos Meses Todos
-        
+
+        // Musicas
+        // https://www.youtube.com/watch?v=1VM1qsawtJA&list=RDubAiNW5SXfE&index=2
+        // https://www.youtube.com/watch?v=CsqALB1no40&list=RDubAiNW5SXfE&index=6
+        // https://www.youtube.com/watch?v=OS4W_Zn6YPI&list=RDubAiNW5SXfE&index=27
+        // https://www.youtube.com/watch?v=gZPSuwvz4ro&list=RDubAiNW5SXfE&index=27 (beat pra usar flow arianda com verso de A noite é Pouca)
+        // https://www.youtube.com/watch?v=-afmD1rsXE4&list=RDubAiNW5SXfE&index=27
+        // https://www.youtube.com/watch?v=27ZmFJTY5Vc&list=RDubAiNW5SXfE&index=1
+        // https://www.youtube.com/watch?v=eydrQ1fwoK8&list=RDubAiNW5SXfE&index=27
 </script>
 </html>
