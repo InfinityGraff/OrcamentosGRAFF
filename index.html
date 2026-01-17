@@ -1675,21 +1675,34 @@
 
             <div id="Pag_HOME">
                 <div class="Cl w100">
-                    <div class="Cl w100"> <!--GRAFICO-->
+                    <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
                         <style>
                             .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
-                            #Grfc_Ftura{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
-                            #Grfc_Servs{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
-                            #Grfc_PixAv{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
-                            #Grfc_Forne{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                            .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
                         </style>
-                        <button onclick="RfreshGrafic()">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas id="Grfc_Ftura" class="Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas id="Grfc_Servs" class="Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas id="Grfc_PixAv" class="Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas id="Grfc_Forne" class="Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        
+                        <div class="Cl">
+                            <h1>Semana1</h1>
+                            <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                            <div class="Ct">
+                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                            </div>
                         </div>
+
+                        <div class="Cl">
+                            <h1>Semana2</h1>
+                            <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                            <div class="Ct">
+                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                            </div>
+                        </div>
+
                         <script>
                             const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
                             const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
@@ -1701,17 +1714,18 @@
                             const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
                             
 
-                            function RfreshGrafic(){ // 0 e 1 siguinifica Randomizar cores ou 1 cor só
-                                const Filt=Typ=>IntrvlData(J[Typ],...Semana(1))
+                            function RfreshGrafic(Div,Semn){ 
+                                const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
                                 LOG(ContForn(Filt('GRAD')))
-                                Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('#Grfc_Ftura'))
-                                Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('#Grfc_Servs'))
-                                Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('#Grfc_PixAv'))
-                                Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn',1),$('#Grfc_Forne'))
+                                Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+                                Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
+                                Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
+                                Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
                             }
 
                             // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
                             // as Grades que mais Demoraram, Pedidos que mais Demoraram
+                            // Mostrar mesmo quando tiver Zero
                         </script>
                     </div>
                 </div>
@@ -1866,7 +1880,6 @@
                                 const Flts = ObjKey(vari).flatMap(v=>e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v)
                                 const VVV  = Vari(e)
                                 const VARI = (VVV.length === 2 &&VVV[0] === 'Todos' &&VVV[1] === e) ? [...Flts] : VVV
-
 
                                 return `<div class="Rltv Start2">
                                     <span class="Start"><img ${TblA ? `class="PT" onclick="TOV(this);Gmbrr(this)"` : ''}  src="${Fora||`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
@@ -2427,7 +2440,7 @@
                 <div id="Titulo-Nota" class="w100 Bt Hr"></div>
                 <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
                     <div class="Ct">
-                        <div id="LugarFotoNotta"><img src="./Img/Logo2.png"></div>
+                        <div id="LugarFotoNotta"><img src="./Img/Logo2.png" style="width: 50px;height: 50px;"></div>
                         
                         <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
                     </div>
@@ -2843,5 +2856,11 @@
         // https://www.youtube.com/watch?v=-afmD1rsXE4&list=RDubAiNW5SXfE&index=27
         // https://www.youtube.com/watch?v=27ZmFJTY5Vc&list=RDubAiNW5SXfE&index=1
         // https://www.youtube.com/watch?v=eydrQ1fwoK8&list=RDubAiNW5SXfE&index=27
+        // https://www.youtube.com/watch?v=tKAOeaxnZ9c&list=RDjBLWMd5lV3o&index=24
+
+
+        // Musica de IA
+        // https://www.youtube.com/watch?v=X1J7yW60RaU&list=RDjBLWMd5lV3o&index=27
+
 </script>
 </html>
