@@ -909,3 +909,17 @@ const SavePDF2 = async (Div, Nome = "download.pdf") => {
     const pdf = new jsPDF("p", "pt", "a4")
     await pdf.html(Div,{x: 20,y: 20,autoPaging: "text",callback: (doc) => doc.save(Nome)});
 }
+
+
+const GetPC = () => {
+    const L = ['Balcão','Allan','Render','Baby','Outro']
+    let PC = localStorage.PC_NAME
+
+    if (!L.includes(PC)) {
+        PC = prompt('Nome do PC:\n\n'+L.join('\n'))
+        if (!L.includes(PC)) throw 'PC inválido'
+        localStorage.PC_NAME = PC
+    }
+    const ua = navigator.userAgent
+    return {PC,Navgd:ua.includes('Edg')    ? 'Edge'   : ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox')? 'Firefox': ua.includes('Safari') ? 'Safari' : 'Outro'}
+}
