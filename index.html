@@ -1654,7 +1654,28 @@
 
             <script>
                 function ShowMore(){TogShow('#H_Mais')}
-                function AbreLogin(valid){if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')}
+
+                function AbreLogin(valid){
+                
+                    if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; //MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')
+                    
+                    MODAL(`
+                        <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
+                        <div class="Bt Loginn">Login</div>
+                        <div class="Ct Start">
+                            <label for="Senha">Senha</label>
+                            <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
+                        </div>
+                        <span id="errPass" class="erro"></span>
+                        <div class="Bt">
+                            <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
+                            <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
+                            </div>
+                        </div>
+                    `)
+            
+                }
+
                 function TestSenha(tipo,p){
                     const nome = $('#LgNome'),foto = $('#LgFoto')
                     const storg=e=>{StogeRmv('SenhaCryp');if(e){StogeSet('SenhaCryp',e)}}
@@ -2446,20 +2467,6 @@
 
         <script>function SairMdal(){None('#FModal')}</script>
 
-        <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
-            <div class="Close Ct" onclick="SairMdal()">X</div>
-            <div class="Bt Loginn">Login</div>
-            <div class="Ct Start">
-                <label for="Senha">Senha</label>
-                <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
-            </div>
-            <span id="errPass" class="erro"></span>
-            <div class="Bt">
-                <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
-                <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
-            </div>
-        </div>
-
         <div id="ModalNota" class="Cl Rltv Rd media30">
             <div id="NOTA" class="w100" style="background: white;padding: 10px;color: black;">
                 <div id="Titulo-Nota" class="w100 Bt Hr"></div>
@@ -2846,7 +2853,6 @@
     // como impedir q a página dê zoom, pelo celular
 
     // Fazer o Verdadeiro Login do Usuário
-    // remover os MdalShow e trocar pra o NOVO -- (MdalShow)
     // Trabalhar em todos os Input Files daqui -- (type="file")
 
     // o que eu tenho que melhorar pra voltar a ficar BEM
