@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseIMG.js"      ></script>
+    <script src="./BaseGRAFF.js"></script>
+    <title>Visualizador de Fontes</title>
+</head>
+
+<style>
+  body {font-family:Arial;padding:20px;background:#f0f0f0}
+  input{font-size:16px;width:40%}
+  .Font-Itn    {background:#fff;margin:10px 0;padding:15px;border-radius:6px;box-shadow:0 0 4px #0002}
+  .Font-Itn a  {position:relative;overflow:hidden;display:block}
+  .Font-Itn a p{white-space:nowrap;display:inline-block;position:absolute;left:50%;top:50%;transform-origin:center;will-change:transform}
+
+  @media (max-width:500px){
+    h2{font-size: 28px;}
+    .Font-Itn > p{font-size: 15px; color: #a3a3a3;}
+  }
+</style>
+
+<body class="CSS1">
+    <h2>Visualizador de Fontes</h2>
+    <div class="Ct w100">
+        <input id="alt" type="number" placeholder="Altura (px)"  value="30">
+        <input id="lar" type="number" placeholder="Largura (px)" value="300">
+    </div>
+    <div class="w100 Cl">
+        <input id="txt" type="text" class="w100"   placeholder="Texto"        value="Robertinho.Faax">
+        <button onclick="Atualiza()" style="width: 50%;">Rodar</button>
+    </div>
+    <div id="Lista"></div>
+</body>
+
+<script>
+
+    function Atualiza(){
+        const h = +$('#alt').value ; const w = +$('#lar').value
+        const t = $('#txt').value.trim() ; const Lista = $('#Lista')
+        Inn(Lista,"") ; if(!t) return
+        const Size = window.innerWidth <= 500 ? 300 : 700
+        const newL = Size
+        const NewA = (h / w) * newL
+        let i = 0
+        function RenderNext(){
+            const f = KitFonts[i]
+            const id = "fit" + Math.random().toString(36).slice(2)
+            Lista.insertAdjacentHTML("beforeend",`<div class="Font-Itn Cl" onclick="Escolher(this)"><p>${f}</p><a style="width:${newL}px;height:${NewA}px"><p id="${id}" style="font-family:${f}">${t}</p></a></div>`)
+            const el = $('#'+id)
+            el.style.fontSize = "100px"
+            el.style.transform = ""
+            const bw = el.offsetWidth      ; const bh = el.offsetHeight
+            const sx = bw ? (newL/bw) : 1  ; const sy = bh ? (NewA/bh) : 1
+            el.style.transform = `translate(-50%,-50%) scale(${sx},${sy})`
+            i++ ; if(i < KitFonts.length){requestAnimationFrame(RenderNext)}
+        }RenderNext()
+    }Atualiza()
+
+    function Escolher(Eu){
+        alert('Você escolheu '+Inn($('p',Eu)))
+    }
+
+</script>
+</html>
