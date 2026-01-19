@@ -1489,8 +1489,8 @@
         </style>
         <script>
             function VerNota(Typ){
-                //MdalShow('#ModalNota')
-                const Clone = $('#ModalNota').cloneNode(true)
+                MdalShow('#ModalNota')
+                //const Clone = $('#ModalNota').cloneNode(true)
                 let dados = []
                 if (Typ == 'ORC'){
                     dados = $$('#ORC tbody tr').map(tr=>{
@@ -1518,13 +1518,13 @@
                 }
                 const dadosFmt = ArrObj_OrdnCol2(AbrevServs(dados),['Qnt','_','Serv','Cbmt','Matr','Lrg','X','Alt','Vund','SbTt'])
                 const [head,...rows] = dadosFmt
-                $('#ConteudoNota',Clone).innerHTML = `
+                $('#ConteudoNota'/*,Clone*/).innerHTML = `
                     <table id="TabelaNotinha" class="w100">
                         <thead><tr>${head.map(c=>`<th>${D_Brev[c]??c}</th>`).join('')}</tr></thead>
                         <tbody>    ${rows.map(r=>`<tr>${r.map(v=>`<td>${v??''}</td>`).join('')}</tr>`).join('')}</tbody>
                     </table>
                     <h2 id="TotalNotta" class="Hr Ct">${RS(dados.reduce((a,e)=>a+Num(e.SbTt),0))}</h2>`
-                MODAL(Clone.innerHTML)
+                //MODAL(Clone.innerHTML)
             }
             
             function SellFilesIMG(Inpt){ // Fazer isso Ficar imbutido dentro da Função do input Files
@@ -2426,9 +2426,8 @@
         <style> /*CSS dos Modais*/
             .Dark #FModal>div{background:#1b1b1b}
             .Lite #FModal>div{background:#ffffff}
-            .Dark #FModal > #ModalNota{background:#ffffff;color:black}
-                #FModal h1{font-size:25px}
-            #ModalNota{color:#000000}
+            #FModal h1{font-size:25px}
+            
             #ModalNota>div{padding:5px 0px}
             #Nota-Clnt>div>div>div{margin:0px 5px}
             #ModalNota img{width:50px;height:50px}
@@ -2497,7 +2496,7 @@
             <div class="BtnNota w100 Ct">
                 <button  class="Ct"     onclick="SavePDF2($('#NOTA'),'Nota')"   >PDF <a onload="Inn(this,SVVG.PDFs)"></a></button>
                 <button  class="Ct"     onclick="CopyTagImg(this,$('#NOTA'),2)">Print<a onload="Inn(this,SVVG.Prnt)"></a></button>
-                <button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a onload="Inn(this,SVVG.Copy)"></a></button>
+                <!--<button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a onload="Inn(this,SVVG.Copy)"></a></button>-->
                 <button  class="BtnRed" onclick="SairMdal()"                   >Sair</button>
             </div>
             
