@@ -43,31 +43,31 @@
     }
 
     const Cgo  = { // Cargo
-        Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
+        Admn: { nav :['HOME','|','ORC','LOJA','ARTE','GBRT','BBTC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :['Serigrafia','Figurinha','Cartela'],
                 PDDS:[],
                 PGMT:[],
                 SERV:[]},
 
-        Grnt: { nav :['HOME','|','ORC','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
+        Grnt: { nav :['HOME','|','ORC','ARTE','|','PDDS','|','PGMT','GRAD','CLNT','|','CONF'],
                 orc :[],
                 PDDS:[],
                 PGMT:[],
                 SERV:[]},
 
-        DSgn: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
+        DSgn: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
                 PDDS:['Id','Cust','Lcro'],
                 PGMT:['Id','Stts','Link','Mpag'],
                 SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"Oimg"]},
 
-        Atnd: { nav:['HOME','|','ORC','|','PDDS','|','PGMT','|','CONF'] ,
+        Atnd: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','PGMT','|','CONF'] ,
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
                 PDDS:['Id','Cust','Lcro'],
                 PGMT:['Id','Stts','Link','Mpag'],
                 SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"CArt","Oimg"]},
 
-        Clnt: { nav:['HOME','|','ORC','|','CONF'],
+        Clnt: { nav:['HOME','|','ORC','ARTE','|','CONF'],
                 orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
                 PDDS:[],
                 PGMT:[],
@@ -400,7 +400,7 @@
     const BrevSrc= {Grad:'Grad',Gimg:'Grad',ImgU:'Grad',ImgG:'Grad',Oimg:'OS'} // Usar Depois pra Separar Imagens por Pastas
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome'}
     const CRYCLS = {A:'AutoComp',I:'CorID'}
     const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link'}
 
@@ -417,8 +417,10 @@
         
         MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E','' ],Valr:['E','' ],Hora:['E',''],Form:['E','' ],User:['E','' ],Pgmt:['K',''],Vlpg:['Y','A'],Lixo:['X','']}, // Removi 'Cpvt'
 
-        INFO:{Data:['F',''],Hora:['F',''],User:['F',''],PC:['F',''],Navgd:['F','']}
+        INFO:{Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']},
+        ARTE:{ Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']}
     }
+    
 
     const GetycCores = {
         'Preto'       : '#000000',
@@ -1230,7 +1232,7 @@
 
         function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
             ;['PDDS','CLNT'].forEach(Typ=>{Re_Cont(Typ,'All')}) // tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
-            ;['OOSS','UBER','GRAD','PDDS','CLNT'].forEach(Typ=>{
+            ;['OOSS','UBER','GRAD','PDDS','CLNT','ARTE'].forEach(Typ=>{
                 // fazer o tratamento de Reorden se quiser
                 if(Typ=='CLNT'){criaCol_Typ('Lcro','CLNT');criaCol_Typ('Medi','CLNT')} // Depois dar um jeito de fundir dentro de uma Função Geral
                 if(Typ=='PDDS'){criaCol_Col('Grde','PDDS','Serv')}
@@ -1303,11 +1305,11 @@
             ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
             //-----------------------------------------------------------------------------------------------------------
             ,U_Img:j=>ListIMG[j.Uber] ?? ''
+            ,A_Img:j=>ListIMG[j.Nome] ?? ''
         }
 
         function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
             if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
-
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
 
@@ -1333,6 +1335,7 @@
                                   trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
             }else if(Typ=='OOSS'){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                              ].forEach(c=>Edit('O',c[0],c[1],tr)))
             }else if(Typ=='UBER'){trs.forEach(tr=>[['Img' ,'V']                                                                                           ].forEach(c=>Edit('U',c[0],c[1],tr)))
+            }else if(Typ=='ARTE'){trs.forEach(tr=>[['Img' ,'E']                                                                                           ].forEach(c=>Edit('A',c[0],c[1],tr)))
             }else{return}
             if(All=="All"){LOG(`🔄 Re_comp:(${Typ}) ${MS(IN)}`)}
         }
@@ -2333,9 +2336,9 @@
 
             <div id="Pag_PGMT" class="none Cl TBLAA">
                 <div class="Wrapper">
-                    <div id="Slide_PGMT" class="Slide_Table">
+                    <div id="Slide_MPAG" class="Slide_Table">
                         <div class="Cl">
-                            <div class="Confy_GRAD">
+                            <div class="Confy_MPAG">
                                 <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                                     <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
@@ -2418,7 +2421,7 @@
                 </table>
             </div>
 
-            <div id="Pag_GBRT" class="none Ct" style="overflow-y: scroll;">
+            <div id="Pag_GBRT" class="none Ct" style="overflow-y: scroll;"> <!--VIROU AGENDA-->
                 <style>
                     #Agnda{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
                     #Agnda .box{padding: 3px; min-height: 100px ; min-width: 150px}
@@ -2568,9 +2571,30 @@
                 </script>
 
             </div>
-            
+
             <div id="Pag_LOJA" class="none Cl"></div>
+            
+            <div id="Pag_ARTE" class="none Cl TBLAA">
+                <div class="Wrapper">
+                    <div id="Slide_ARTE" class="Slide_Table">
+                        <div class="Cl">
+                            <div class="Confy_ARTE">
+                                <div class="Bt Stky copybody" style="height: 40px;">
+                                    <button onclick="AddROW('ARTE','<')">Nova Linha +</button>
+                                    <div id="PagPesq_ARTE" class="PagPEsq" onload="Inn(this,Load_Pesq('ARTE'))"></div>
+                                    <div id="COnf_ARTE" class="Configs Ct"></div>
+                                    <button onclick="F_Clen('ARTE')">Limpar</button>
+                                </div>
+                                <table id="H_ARTE" class="w100 hMin">
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.ARTE),'ARTE'))"></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                </div></div></div></div>
+            </div>
+
             <div id="Pag_PRFL" class="none Cl"></div>
+
+            <div id="Pag_BBTC" class="none Cl"></div>
 
             <div id="Pag_SPRT" class="none Cl">
                 <div>informações de Suporte</div>
@@ -2883,8 +2907,8 @@
             LOG(`✔️ ${Typ}`)
             
         }
-        await Promise.all(['PDDS','CLNT','MPAG','GRAD','UBER','OOSS','IMGS'].map(Typ=>Typ=='IMGS'?getIMG():gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
-          LOG(`✅ SB Carregado: ${MS(INNN)}`)
+        await Promise.all(['PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','IMGS'].map(Typ=>Typ=='IMGS'?getIMG():gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
+            LOG(`✅ SB Carregado: ${MS(INNN)}`)
         MyAlert(`✅ SB Carregado: ${MS(INNN)}`)
         //Liberar uma coisa Nova
         const INNNN = performance.now()

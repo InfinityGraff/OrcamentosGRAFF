@@ -55,30 +55,33 @@
     #Trfs td:first-child { text-align:center; width:50px; }
 </style>
 
-<body class="Dark CSS1 Cl Gap">
-    <div id="Perf" class="BOX Ev Gap w80"></div>
-    <div id="Soli" class="BOX Cl Gap w80"></div>
-    <div id="Andm" class="BOX Cl Gap w80"></div>
-    <div id="Hist" class="BOX Cl Gap w80"></div>
-    <div id="Trfs" class="BOX Cl Gap w80"></div>
+<body class="Dark CSS1">
+    <div class="Cl Gap">
+        <div id="Perf" class="BOX Ev Gap w80"></div>
+        <div id="Soli" class="BOX Cl Gap w80"></div>
+        <div id="Andm" class="BOX Cl Gap w80"></div>
+        <div id="Hist" class="BOX Cl Gap w80"></div>
+        <div id="Trfs" class="BOX Cl Gap w80"></div>
+    </div>
 </body>
 
 <script>
-    const U=new URLSearchParams(location.search).get("u")
+    const U='Fexta' //new URLSearchParams(location.search).get("u")
     let [A,M,D,S]=['','','','']
     const Tm_SOliArt=E=>`<h3>Solicitações      </h3><div class="Start w100 Gap">${E.map(e=>`<div class="    Ct Bt Hov BOX" onclick="Unyc('${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="Aceitar(${e.Id})">Aceitar</button></div>`).join("")}</div>`
-    const Tm_ListArt=E=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${e.Id}')"><img src="./ART/${e.Img}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+    const Tm_ListArt=E=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${e.Id}')"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
     const View=Md=>MODAL(Tm_ListArt(Md=='Dslk'?D:A))        // ao rodar o Modal Excluir o Antigo
     const Unyc=ID=>MODAL(Tm_ListArt(A.filter(e=>e.Id==ID))) // ao rodar o Modal Excluir o Antigo
 
     async function LoadByName(){
         if(!U) return          null ; const {data:USER,error:e1} = await Supabase.from("USER").select("*").eq("Nome",U).single()
         if(e1) return ERR(e1), null ; const {data:ARTE         } = await Supabase.from("ARTE").select("*")
+
         return {USER,ARTE}
-    };LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
+    }
 
     function Load_Page(u,a){
-        A = a.filter(o=>o.Dsng==U && o.Stts=='Ok')
+        A = a.filter(o=>o.Dsng==U && o.Stts=='Ok' && !o.Dslk?.includes(U))
         M = a.filter(o=>o.Dsng==U && o.Stts=='Aceita')
         D = a.filter(o=>o.Dslk?.includes(U))
         S = a.filter(o=>o.Dsng==null||o.Dsng=="")
@@ -108,7 +111,7 @@
 
     // isso aqui é só uma ajuda pra saber se as coisas que vc fez estão Sincronizadas com a Tabela, no caso se Rolou Impressão
     function Rload_Tabela(){
-        const rows = J.SERV.filter(e=>e.Dsng==U).map(e=>`<tr>
+        const rows = J.SERV.reverse().filter(e=>e.Dsng==U).map(e=>`<tr>
             <td>${JJ.CLNT[e.Clnt]?.Clnt}</td>
             <td>${e.Serv}</td><td>${e.TArt}</td><td>${e.CArt}</td><td>${e.Dsng}</td>
             <td><img class="Fotoz" src="${BASE_URL}Img/${e.Id}"></td>
@@ -117,6 +120,10 @@
                   <tbody>${rows}</tbody></table>`)
     }
     Rload_Tabela()
+</script>
+
+<script> // Iniciação
+    LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
 </script>
 
 </html>
