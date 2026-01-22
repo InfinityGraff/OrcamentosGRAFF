@@ -4,73 +4,245 @@
     <meta charset="UTF-8">
     <title>Nuvinil</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet"> -->
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
 </head>
     
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial }
-    body{background:radial-gradient(circle at center, rgba(255,255,255,.05), rgba(0,0,0,.7)),linear-gradient(rgba(47,50,54,.8), rgba(47,50,54,.8)), center / cover no-repeat fixed;color:#fff;}
-    header { background:#2b2f3594; display:flex; justify-content:space-between; padding:20px 40px; }
-    nav button { background:none; border:0; color:#ccc; margin-left:20px; cursor:pointer; }
-    nav button.Atv { color:#fff; border-bottom:3px solid #ffd400; }
-    main { height:calc(100vh - 120px); position:relative; }
-    .page { position:absolute; inset:0; padding:60px; opacity:0; pointer-events:none; transition:.3s; }
-    .page.Atv { opacity:1; pointer-events:auto; }
-    h1 { font-size:48px; line-height:1.3; }
-    .g { border-bottom:4px solid #2fff00; }
-    .r { border-bottom:4px solid #ff3b3b; }
-    .y { border-bottom:4px solid #ffd400; }
+    /*Fontes______________________________________________________________ */
+    @font-face {font-family:'Tommy_Regular'; src:url('FontGRAFF/MADE TOMMY Regular_PERSONAL USE.otf') format('opentype')}
+    @font-face {font-family:'Tommy_Ligth'  ; src:url('FontGRAFF/MADE TOMMY Thin_PERSONAL USE.otf')    format('opentype')}
+    @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
+    @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
+
+    body     {background:radial-gradient(circle at center, rgba(255,255,255,.05), rgba(0,0,0,.7)),linear-gradient(rgba(47,50,54,.8), rgba(47,50,54,.8)), center / cover no-repeat fixed;color:#fff;}
+    header   {    height:100px ; background:#2b2f35; padding:20px 40px; z-index: 3}
+    main     {margin-top:100px}
+    .Logo    {width:200px}
+    nav a    {background:none; border:0; color:#cccccc; font-size: 20px;}
+    nav a.Atv{color:#ffffff; border-bottom:3px solid #ffd400}
+    nav a img{width: 25px; height: 25px;}
+    input    {height:30px;border-radius: 255px;background: #3f424c;border: 1px solid #71737b; font-size: 15px}
+
+    .Titulos span{ font-size:48px !important; font-family:'Tommy_Bold' ; line-height:1.3; }.g { border-bottom:6px solid #2fff00; }.r { border-bottom:6px solid #ff3b3b; }.y { border-bottom:6px solid #ffd400; }
+
+    
+
     .actions { margin-top:30px; }
     .actions button { padding:14px 24px; margin-right:15px; background:#2b2d31; color:#fff; border:0; border-radius:8px; cursor:pointer; }
-    .hero-img { position:absolute; right:60px; bottom:100px; width:580px; }
+    .hero-img {right:60px; bottom:100px; width:580px; }
     footer { position:fixed; right:30px; bottom:20px; background:#ffd400; color:#000; padding:12px 20px; border-radius:30px; }
     #produtos { padding:40px 60px; }
     #produtos .title { text-align:center; font-size:36px; margin-bottom:40px; }
-    .products { display:grid; grid-template-columns:repeat(2,1fr); gap:30px; }
+    #Div-Prod { display:grid; grid-template-columns:repeat(2,1fr); gap:30px;  padding: 60px;}
     .product { background:rgba(255,255,255,.08); border-radius:16px; padding:24px; display:flex; gap:20px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08); }
     .product img { width:90px; flex-shrink:0; }
     .product .info { flex:1; }
     .product h3 { font-size:20px; margin-bottom:6px; }
     .product .price { color:#ffd400; font-weight:bold; font-size:20px; margin-bottom:10px; }
-    .product p { font-size:14px; line-height:1.4; opacity:.9; }
+    .product p { font-size:14px; line-height:1.4; opacity:0.9}
     .product button { margin-top:14px; padding:10px 18px; background:#2b2d31; border:none; border-radius:8px; color:#fff; cursor:pointer; }
-    button.Hov { transition:all .2s ease-in-out}
-    button.Hov:hover { transform:scale(1.1)}
 </style>
 
-<body>
-    <header>
-        <div class="logo"><img src="./TINTAS/Logo.webp" width="200px"></div>
-        <nav>
-            <button data-page="inicio"   class="Atv" onclick="NAVe(this)">Início</button>
-            <button data-page="produtos" onclick="NAVe(this)">Produtos</button>
-            <button data-page="suporte"  onclick="NAVe(this)">Suporte</button>
+<script>
+    const DEPOIMENTOS = [
+        {
+            nome: "Higor maclovin",
+            texto: "Atendimento ágil e atencioso. Grato!",
+            estrelas: 3,
+            img: "Higor-Maclovin"
+        },
+        {
+            nome: "Paulo Sérgio",
+            texto: "Ótimo produto e atendimento!",
+            estrelas: 5,
+            img: "paulo-sergio"
+        },
+        {
+            nome: "Sonia Maria",
+            texto: "Atendimento rápido, eficiente e excelente explicação.",
+            estrelas: 5,
+            img: "sonia-maria"
+        },
+        {
+            nome: "Leon Martins",
+            texto: "Atendimento ágil e atencioso. Grato!",
+            estrelas: 5,
+            img: "leon-martins"
+        }
+    ]
+
+    const PRODUTOS = [
+        {
+            Nome: 'Tinta Acrílica Premium',
+            Valr: 'R$ 199,90',
+            Desc: 'Tinta acrílica de alta qualidade com excelente cobertura e durabilidade.',
+            img: 'Tinta1.webp'
+        },
+        {
+            Nome: 'Tinta Acrílica Econômica',
+            Valr: 'R$ 129,90',
+            Desc: 'Linha econômica com boa cobertura e ótimo rendimento.',
+            img: 'Tinta2.webp'
+        },
+        {
+            Nome: 'Tinta Fosca Super Lavável',
+            Valr: 'R$ 159,90',
+            Desc: 'Acabamento fosco super lavável, resistente a manchas.',
+            img: 'Tinta3.webp'
+        },
+        {
+            Nome: 'Tinta Esmalte Sintético',
+            Valr: 'R$ 69,90',
+            Desc: 'Alta durabilidade e brilho. Ideal para madeira e metal.',
+            img: 'Tinta4.webp'
+        }
+    ]
+</script>
+
+<body class="Cl">
+    <header class="w100 Bt Fx">
+        <div><img class="Logo PT" src="./TINTAS/Logo.webp" onclick="Nav('Home')"></div>
+        <div class="w50"><input class="w80" type="text" placeholder="Pesquisar..."></div>
+        <nav class="Ct Gap">
+            <a data-Nav="Home" class="Hov PT Atv" onclick="Nav('Home')">Início  </a>
+            <a data-Nav="Prod" class="Hov PT"     onclick="Nav('Prod')">Produtos</a>
+            <a data-Nav="Sprt" class="Hov PT"     onclick="Nav('Sprt')">Suporte </a>
+            <a data-Nav="Carr" class="Hov PT"     onclick="Nav('Carr')"><img src="./TINTAS/Carrinho.svg"></a>
+            <script>const Nav=b=>{Add_N($$('.page'),'Atv');Rmv($$('nav a'),'Atv');Rmv_N($(`section#${b}`),'Atv');Add($(`nav a[data-nav='${b}']`),'Atv')};</script>
         </nav>
     </header>
 
-    <main>
-        <section class="page Atv" id="inicio">
-            <h1>
-                <span class="g">NUVINIL:</span><br>
-                <span class="r">ONDE CADA COR</span><br>
-                <span class="y">VIRA HISTÓRIA.</span>
-            </h1>
-            <div class="actions">
-                <button data-page="produtos" class="Hov">Cadastre-se</button>
-                <button data-page="suporte" class="Hov">Conecte-se</button>
+    <main class="w100">
+        <section id="Home" class="page w100">
+            <div class="Ev">
+                <div class="Titulos Start2">
+                    <span class="g">NUVINIL</span><br>
+                    <span class="r">ONDE CADA COR</span><br>
+                    <span class="y">VIRA HISTÓRIA.</span>
+                </div>
+                <img src="./TINTAS/Lata.webp" class="hero-img">
             </div>
-            <img src="./TINTAS/Lata.webp" class="hero-img">
+
+
+            <div class="Cl w100 Pddn-Y Gap" style="background:#f5f6f8">
+                <style>.Star{width: 18px;}</style>
+                <div class="Cl Gap"><h2>DEPOIMENTOS</h2><h1 class="Blk">O que nossos clientes dizem</h1></div>
+                <div id="Depoimentos" class="Rw Gap w90 Mg"></div>
+                <script>
+                    Inn($("#Depoimentos"),DEPOIMENTOS.map(d=> `
+                    <article class="Start2 Gap w30 Pddn-XY Rd Shdw Blk" style="background:#fff;min-width:280px">
+                        <div class="Bt Gap w100">
+                            <img src="./TINTAS/${d.img}.webp" class="RD WH40" alt="${d.nome}">
+                            <div class="Start2">
+                                <div class="B">${d.nome}</div>
+                                <div style="color:gray">á 5 Dias Atrás</div>
+                            </div>
+                            <img src="./TINTAS/google.webp" class="WH15" title="Avaliação Google">
+                        </div>
+                        <div class="Ct gap">${For(d.estrelas).map(e=>`<img class="Star" src="./TINTAS/Estrela.svg">`).join('')}</div>
+                        <p>${d.texto}</p>
+                    </article>`).join(""))
+                </script>
+            </div>
+
+            <div class="Ct w100 Pddn-Y Gap">
+                <div class="Cl w40 Gap Start2">
+                    <h1>Entre em contato ou faça uma visita a nossa Loja</h1>
+                    <style>.Coluninha img{width: 20px}</style>
+                    <div class="Coluninha Start2 Gap">
+                        <span class="Ct gap"><img src="./TINTAS/Zap.webp"> (11) 96714-1923  -  Televendas</span>
+                        <span class="Ct gap"><img src="./TINTAS/Zap.webp"> (11) 94906-6656  -  Assistência técnica</span>
+                        <span class="Ct gap"><img src="./TINTAS/Insta.webp"> @decorcolors.oficial</span>
+                        <span>Horário de segunda a sexta das 8 as 16 hrs</span>
+                        <span>Endereço: Av Pedro Mendes 2478 Bairro montanhão Cidade: São Bernardo do Campo</span>
+                    </div>
+                    <button class="Grn Wht Rd Pddn-XY hov">Entre em contato</button>
+                </div>
+
+                <div class="w40 Rd Hddn Shdw">
+                    <iframe src="https://www.google.com/maps?q=Av.%20Conselheiro%20Aguiar%20122%20Recife&output=embed" class="w100"
+                    style="height:300px;border:0;">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="w100 Pddn-Y Wht" style="background:#0b2a6f">
+                <div class="Ct w90 Gap">
+                    <div class="Cl Start2 Gap w20">
+                    <div class="B">Sobre a marca</div>
+                    <a class="Wht">Sobre nós</a>
+                    <a class="Wht">Contato</a>
+                    <a class="Wht">Mapa do site</a>
+                    </div>
+
+                    <div class="Cl Start2 Gap w20">
+                    <div class="B">Categorias</div>
+                    <a class="Wht">Encontre uma cor</a>
+                    <a class="Wht">Produtos</a>
+                    <a class="Wht">Inspiração</a>
+                    </div>
+
+                    <div class="Cl Start2 Gap w20">
+                    <div class="B">Acesso</div>
+                    <a class="Wht">Acessibilidade</a>
+                    <a class="Wht">Privacidade</a>
+                    <a class="Wht">Cookies</a>
+                    </div>
+
+                    <div class="Cl Start2 Gap w20">
+                    <div class="B">Outros sites</div>
+                    <a class="Wht">Profissionais</a>
+                    <a class="Wht">Carreiras</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Ct w100 Pddn-Y Gap"> <!--FOOTER-->
+                <div class="Cl Gap">
+                    <span>Formas de pagamento</span>
+                    <img src="./TINTAS/Cartão.webp" width="200px">
+                </div>
+                <div class="Cl Gap">
+                    <span>© 2026 - Todos os direitos reservados</span>
+                    <span>Nuvinil Tintas</span>
+                </div>
+            </div>
         </section>
 
-        <section class="page" id="produtos">
+        <section id="Prod" class="page none w100">
             <h2 class="title">Nossos Produtos</h2>
-            <div class="products" id="products"></div>
+            <div id="Div-Prod"></div>
+            <script>
+                Inn($('#Div-Prod'),PRODUTOS.map(e=>`
+                    <div class="product">
+                        <img class="Hov" src="./TINTAS/${e.img}">
+                        <div class="info">
+                            <h3>${e.Nome}</h3>
+                            <div class="price">${e.Valr}</div>
+                            <p>${e.Desc}</p>
+                            <button class="Hov">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                `).join(''))
+            </script>
         </section>
 
-        <section class="page" id="suporte">
+        <section id="Sprt" class="page none w100">
             <h2>Suporte</h2>
             <p>aqui vc escreve o que vai querer no Suporte</p>
+            <div>
+                Biografia Institucional — Nuvinil Tintas
+                A Nuvinil Tintas é uma empresa brasileira comprometida com a qualidade, a inovação e a excelência em soluções para pintura residencial, comercial e industrial. Fundada com o propósito de transformar ambientes por meio de cores vibrantes e serviços especializados, a Nuvinil destaca-se por oferecer um portfólio completo de tintas premium e serviços profissionais de aplicação, unindo produtos de alto desempenho à prática de mão de obra qualificada.
+                Desde o começo, nossa missão tem sido facilitar a experiência de renovação dos nossos clientes, garantindo resultados duradouros, estética impecável e total satisfação. Sabemos que a escolha da tinta certa e a aplicação correta fazem toda a diferença — por isso investimos continuamente em tecnologia, treinamento de profissionais e atendimento próximo aos nossos clientes.
+                Com foco na sustentabilidade, na segurança e nas tendências de mercado, a Nuvinil Tintas oferece soluções para todos os tipos de superfícies, sempre com suporte especializado para orientar cada etapa do processo de pintura — da escolha da cor ao acabamento perfeito.
+                Acreditamos que cada espaço tem uma história para contar, e estamos aqui para ajudar a colorir esses momentos com confiança, profissionalismo e paixão pelo que fazemos.
+            </div>
+        </section>
+
+        <section id="Carr" class="page w100 none">
+            <h1>aqui fica a pagina de carrihnho</h1>
         </section>
     </main>
 
@@ -78,59 +250,4 @@
         📞 (11) 96714.1923
     </footer>
 </body>
-
-<script>
-    const NAVe = b => (
-        Rmv($$('.page'),'Atv'),
-        Rmv($$('[data-page]'),'Atv'),
-        Add($('#'+b.dataset.page),'Atv'),
-        Add(b,'Atv')
-    )
-</script>
-
-<script>
-
-    const PRODUTOS = [
-    {
-        nome: 'Tinta Acrílica Premium',
-        preco: 'R$199,90',
-        desc: 'Tinta acrílica de alta qualidade com excelente cobertura e durabilidade.',
-        img: 'Tinta1.webp'
-    },
-    {
-        nome: 'Tinta Acrílica Econômica',
-        preco: 'R$129,90',
-        desc: 'Linha econômica com boa cobertura e ótimo rendimento.',
-        img: 'Tinta2.webp'
-    },
-    {
-        nome: 'Tinta Fosca Super Lavável',
-        preco: 'R$159,90',
-        desc: 'Acabamento fosco super lavável, resistente a manchas.',
-        img: 'Tinta3.webp'
-    },
-    {
-        nome: 'Tinta Esmalte Sintético',
-        preco: 'R$69,90',
-        desc: 'Alta durabilidade e brilho. Ideal para madeira e metal.',
-        img: 'Tinta4.webp'
-    }
-]
-
-const box = document.getElementById('products')
-
-box.innerHTML = PRODUTOS.map(p=>`
-    <div class="product">
-        <img src="./TINTAS/${p.img}">
-        <div class="info">
-            <h3>${p.nome}</h3>
-            <div class="price">${p.preco}</div>
-            <p>${p.desc}</p>
-            <button>Saiba mais</button>
-        </div>
-    </div>
-`).join('')
-
-</script>
-
 </html>

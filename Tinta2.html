@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+</head>
+
+<script>
+    const DEPOIMENTOS = [
+        {
+            nome: "Higor maclovin",
+            texto: "Atendimento ágil e atencioso. Grato!",
+            estrelas: 3,
+            img: "Higor-Maclovin"
+        },
+        {
+            nome: "Paulo Sérgio",
+            texto: "Ótimo produto e atendimento!",
+            estrelas: 5,
+            img: "paulo-sergio"
+        },
+        {
+            nome: "Sonia Maria",
+            texto: "Atendimento rápido, eficiente e excelente explicação.",
+            estrelas: 5,
+            img: "sonia-maria"
+        },
+        {
+            nome: "Leon Martins",
+            texto: "Atendimento ágil e atencioso. Grato!",
+            estrelas: 5,
+            img: "leon-martins"
+        }
+    ]
+</script>
+
+<body class="Cl w100">
+
+<div class="Cl w100 Pddn-Y Gap" style="background:#f5f6f8">
+  <style>.Star{width: 18px;}</style>
+  <div class="Cl Gap"><h2>DEPOIMENTOS</h2><h1>O que nossos clientes dizem</h1></div>
+  <div id="Depoimentos" class="Rw Gap w90 Mg"></div>
+  <script>
+        Inn($("#Depoimentos"),DEPOIMENTOS.map(d=> `
+        <article class="Start2 Gap w30 Pddn-XY Rd Shdw Blk" style="background:#fff;min-width:280px">
+            <div class="Bt Gap w100">
+                <img src="./TINTAS/${d.img}.webp" class="RD WH40" alt="${d.nome}">
+                <div class="Start2">
+                    <div class="B">${d.nome}</div>
+                    <div style="color:gray">á 5 Dias Atrás</div>
+                </div>
+                <img src="./TINTAS/google.webp" class="WH15" title="Avaliação Google">
+            </div>
+            <div class="Ct gap">${For(d.estrelas).map(e=>`<img class="Star" src="./TINTAS/Estrela.svg">`).join('')}</div>
+            <p>${d.texto}</p>
+        </article>`).join(""))
+    </script>
+</div>
+
+<div class="Ct w100 Pddn-Y Gap">
+
+  <div class="Cl w40 Gap Start2">
+
+    <h1>Entre em contato ou faça uma visita a nossa Loja</h1>
+    <style>
+        .Coluninha img{width: 20px;}
+    </style>
+    <div class="Coluninha Start2 Gap">
+      <span class="Ct gap"><img src="./TINTAS/Zap.webp"> (81) 97316-0299</span>
+      <span class="Ct gap"><img src="./TINTAS/Insta.webp"> @decorcolors.oficial</span>
+      <span>Seg à Sex: 8h às 19h | Sáb: 9h às 13h</span>
+      <span>Av. Conselheiro Aguiar, 122 - Boa Viagem</span>
+    </div>
+    <button class="Grn Wht Rd Pddn-XY hov">Entre em contato</button>
+  </div>
+
+  <div class="w40 Rd Hddn Shdw">
+    <iframe src="https://www.google.com/maps?q=Av.%20Conselheiro%20Aguiar%20122%20Recife&output=embed" class="w100"
+      style="height:300px;border:0;">
+    </iframe>
+  </div>
+
+</div>
+
+<div class="w100 Pddn-Y Wht" style="background:#0b2a6f">
+
+  <div class="Ct w90 Gap">
+
+    <div class="Cl Start2 Gap w20">
+      <div class="B">Sobre a marca</div>
+      <a class="Wht">Sobre nós</a>
+      <a class="Wht">Contato</a>
+      <a class="Wht">Mapa do site</a>
+    </div>
+
+    <div class="Cl Start2 Gap w20">
+      <div class="B">Categorias</div>
+      <a class="Wht">Encontre uma cor</a>
+      <a class="Wht">Produtos</a>
+      <a class="Wht">Inspiração</a>
+    </div>
+
+    <div class="Cl Start2 Gap w20">
+      <div class="B">Acesso</div>
+      <a class="Wht">Acessibilidade</a>
+      <a class="Wht">Privacidade</a>
+      <a class="Wht">Cookies</a>
+    </div>
+
+    <div class="Cl Start2 Gap w20">
+      <div class="B">Outros sites</div>
+      <a class="Wht">Profissionais</a>
+      <a class="Wht">Carreiras</a>
+    </div>
+  </div>
+</div>
+
+<footer class="Ct w100 Pddn-Y Gap">
+
+  <div class="Cl Gap">
+    <span>Formas de pagamento</span>
+    <img src="./TINTAS/Cartão.webp" width="200px">
+  </div>
+
+  <div class="Cl Gap">
+    <span>© 2026 - Todos os direitos reservados</span>
+    <span>Nuvinil Tintas</span>
+  </div>
+
+</footer>
+
+</body>
+</html>
