@@ -1,7 +1,7 @@
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
-const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)} 
+const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
 const _Bol=v=> v !== '_'
 const _par=s=>(([Ty,Id,Cl,Bj,Sc]) => ({ Ty,Id,Cl, Bj:_Bol(Bj), Sc:_Bol(Sc) }))(s.split('-'))
@@ -15,6 +15,8 @@ const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p
 function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
 function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
 function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
+
+
 
 function LocAno(Email){
     const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
@@ -131,7 +133,7 @@ function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R
 
 const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null
 
-function VAL(e){
+function VAL_antigo(e){
     const td = e.tagName === 'TD' ? e : _td(e)
     const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
     const val = ['Edit','Fixo','Sugg','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
@@ -139,10 +141,10 @@ function VAL(e){
             : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Link' ? Nm($('.P-P',td)).trim()
             : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
-                : R.Tm==='Valr' ? Num($('.P-P',td).textContent.trim())
-                : R.Tm==='Mdds' ? Num($('.P-P',td).textContent.trim())
-                : R.Tm==='Auto' ? Num($('.P-P',td).textContent.trim())
-                : R.Tm==='Sync' ? Num($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
+            : R.Tm==='Valr' ? Num($('.P-P',td).textContent.trim())
+            : R.Tm==='Mdds' ? Num($('.P-P',td).textContent.trim())
+            : R.Tm==='Auto' ? Num($('.P-P',td).textContent.trim())
+            : R.Tm==='Sync' ? Num($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
             : R.Tm==='Data' ? $('input' ,td).value
             : R.Tm==='Slct' ? $('select',td).value
             : R.Tm==='Inpt' ? $('input' ,td).value
@@ -550,6 +552,18 @@ function PDDSconverterJSON(obj) {
     }
     return obj;
 }
+
+function normalizeObj(obj){
+  for (const k in obj) {
+    let v = obj[k] ?? ""
+    if(typeof v === "string" && v.length > 1 && (v[0] === "{" || v[0] === "[")){try { v = JSON.parse(v) } catch {}}
+    obj[k] = v
+  }
+  return obj
+}
+
+
+
 
 function Diferentes(b,a){ // REALTIME do SUPABASE comparar objetos se são iguais Usado
   const r = { Id: b.Id}

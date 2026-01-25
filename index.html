@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
 
     <!--
         <script src="../MyBiblioteca/PreScript.js"      ></script>
@@ -76,8 +77,8 @@
     const tipBS = {}
     const Atual    = {Pag:'ORC'}
     let U = {} ; let UCgo = {} ; let Passs = ''
-    const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
-    const JJ       = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[]}
+    const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[],IMGS:{}}
+    const JJ       = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[],IMGS:{}}
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[]}
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'}
@@ -85,7 +86,6 @@
     let SlideTable = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const D        = {PDDS:0,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0}
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OOSS:'OS',UBER:'Id',MPAG:'Id'}
-    let   ListIMG  = {}
     let  ContGrad  = {}
     let  ContCLNT  = {}
     let SVG_FILES = [] // esse é do de importar SVG pra calcular
@@ -420,7 +420,6 @@
         INFO:{Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']},
         ARTE:{ Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']}
     }
-    
 
     const GetycCores = {
         'Preto'       : '#000000',
@@ -449,8 +448,13 @@
 
 <script> // Bibliotecas
     // Epecíficas (as q Retorna)
+        // ir pra Biblioteca
+        const getArr  =v=>Array.isArray(v) ? v : []
+        const ArrToObj=(arr,keys)=>Object.fromEntries(keys.map((k,i)=>[k, arr[i]]))
         const NUMM    =e=>parseFloat(e).toFixed(2)
-        const OjKy    =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
+
+        
+        const OjKy    =Typ=>ObjKey(BS[Typ])
         const daClass =R=>{const bs = BS[R.Typ][R.Col][1] ; return (bs==true?'':bs).split('').map(e=>CRYCLS[e]).join(' ') || ''} // Aplica as Casses q estão no 'bs'
         const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
         const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
@@ -470,6 +474,7 @@
         const TDd2=(tr,col)=>   col=="Serv" ? $(`:scope > ${Rx2([`${col}-Slct`])}`,tr) : TDd(tr,col) // exessão apenas para o Serv de SERV
         const TDv =(tr,col)=>VAL($(`:scope > ${Rx2([col])}`,tr))
         const TDp =(tr,col)=>    $(`:scope > ${Rx2([col])} .P-P`,tr)
+
         const FiM =(arr   )=>arr.slice(0,-1)
         const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || [] // remover pois vai ficar "OBSOLETO"
         const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
@@ -480,8 +485,7 @@
         const slideTo=(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
         const ReszH=(Typ)=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
         const ReszW=(Typ)=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
-        const getArr = v => Array.isArray(v) ? v : [] // ir pra Biblioteca
-        const ArrToObj=(arr,keys)=>Object.fromEntries(keys.map((k,i)=>[k, arr[i]])) // deve virar Biblioteca
+
 
         //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
         function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
@@ -1277,7 +1281,7 @@
         const Splii = {
     /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []
     /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']
-            ,S_Arte:j=>ListIMG[j.Id] ?? ''
+            ,S_Arte:j=>J['IMGS'][j.Id] ?? ''
             ,S_CArt:j=>''
     /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
@@ -1286,8 +1290,8 @@
             ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
             ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
-            ,G_ImgU:j=>ListIMG[j.Grad] ?? ''
-            ,G_ImgG:j=>ListIMG[j.Grad.replace(/_\d*$/,"")] ?? ''
+            ,G_ImgU:j=>J['IMGS'][j.Grad] ?? ''
+            ,G_ImgG:j=>J['IMGS'][j.Grad.replace(/_\d*$/,"")] ?? ''
     /*Opt*/ ,G_Forn:j=>[Dbbrev[j.Grad[0]]]
     /*Opt*/ ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
             ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
@@ -1297,15 +1301,15 @@
             ,G_Oimg:j=>`${j.OS}.webp`  ?? ''
             ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
             //-----------------------------------------------------------------------------------------------------------
-            ,O_Oimg:j=>ListIMG[j.OS] ?? ''
+            ,O_Oimg:j=>J['IMGS'][j.OS] ?? ''
             ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
             //-----------------------------------------------------------------------------------------------------------
             ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
             ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
             ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
             //-----------------------------------------------------------------------------------------------------------
-            ,U_Img:j=>ListIMG[j.Uber] ?? ''
-            ,A_Img:j=>ListIMG[j.Nome] ?? ''
+            ,U_Img:j=>J['IMGS'][j.Uber] ?? ''
+            ,A_Img:j=>J['IMGS'][j.Nome] ?? ''
         }
 
         function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
@@ -2766,7 +2770,7 @@
 
             /*OBJ*/ DarJJ('Edt',..._R,R.Sc?_P:null)           // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai
             const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null    // Coleta o Objeto inteiro da Bndj >> depois passar pra a Let
-            /*SUB*/ SB==null ? Sb_EDIT2(...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
+            /*SUB*/ SB==null ? Sb_EDIT(supaBASE,...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
             /*DOM*/ RR(_R.slice(0,-1)).forEach(td=>{
                 const TD  = _td(Pai(td)) ; const T_T = TD ? $('.T-T',TD) : null
                 Auto ? DarVAL_Tm(td,V) : DarVAL(td,V)         // não sei qual a Necessidade diferença de AUTO (talvez seja só pra imagem)
@@ -2793,13 +2797,13 @@
             const RmvById =(arr,rowId)=>(arr.splice(arr.findIndex(e=>e.Id==rowId),1),arr)
             /*Lv1*/if(!IsBdj){
                     /*Obj*/ DarJJ('Del',R.Typ,R.Row)
-                    /*Sub*/ if(Lxr){if(!SB){Sb_EDIT(R.Typ,R.Col,R.Row,Nval)}}else{if(!SB){Sb_DELETE(R.Typ,R.Row)}}
+                    /*Sub*/ if(Lxr){if(!SB){Sb_EDIT(supaBASE,R.Typ,R.Row,R.Col,Nval)}}else{if(!SB){Sb_DELETE(supaBASE,R.Typ,R.Row)}}
             /*Lv2*/}else{ // para os da Bandeija estou com Preguiça de Mover pra Lixeira, ai por enquanto vou usar só Deletando na Tora
                 /*Lv1*/ const X = J[P.Typ].find(e=>e.Id==P.Row)
                 /*Lv2*/ const x = X[P.Col].find(e=>e.Id==R.Row)
                 if(Lxr){/*Obj*/ x[R.Col] = Nval ; Find = X[P.Col]
                 }else{  /*Obj*/ RmvById(X[P.Col],R.Row) ; Find = X[P.Col]}
-                        /*Sub*/ if(!SB){Sb_EDIT(P.Typ,P.Col,P.Row,X[P.Col])}
+                        /*Sub*/ if(!SB){Sb_EDIT(supaBASE,P.Typ,P.Row,P.Col,X[P.Col])}
             }
             /*DOM*/ $$(Rx2([`${R.Typ}-${R.Row}-${R.Col}`])).forEach(td=>{  // Editar todas as Cópias
                 if(IsBdj){
@@ -2827,7 +2831,7 @@
                 }
                 /*Obj*/ arr.push(Def) // Não Existe JJ['SERV'] então deixa pra lá n precisa botar nada
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(R.Typ,R.Col,arr,get)) : Befor($('table tbody',_td(Eu)),Tm_Table(col,[Def],get.replace('Rastr','Rpai')))
-                /*Sub*/ Sb_EDIT(R.Typ,R.Col,R.Row,arr)          // da um jeito de informar o Alert q é NewLin
+                /*Sub*/ Sb_EDIT(supaBASE,R.Typ,R.Row,R.Col,arr)          // da um jeito de informar o Alert q é NewLin
                 Add_N($('.BNdj',$(Rx2(['PDDS',row.Id,R.Col])))) // Exibir bandeija denovo
             }
         }
@@ -2843,7 +2847,7 @@
                          Typ=='CLNT' ? {Id:`${Def.Id}`,Clnt:`${obj.Clnt}`} : {Id:`${Def.Id}`}
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
             /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
-            /*Sub*/ if(!SB){Sb_CREATE(Typ,Arry)}
+            /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,Arry)}
             if(SB){LOG('Linha Adicionada pelo SB')}
             if(Typ=='CLNT'){Linkar(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
         }
@@ -2867,12 +2871,12 @@
             const Past = Eximg.includes(RxExt(f.name)) ? "Img/" : "Arq/"
             const Src  = URL.createObjectURL(f) // src temporário
             const td   = $(Rx2([`${Nome}-Arte`]))
-            ListIMG[Nome] = f.name
+            J['IMGS'][Nome] = f.name
             DarVAL(td,Src)
             const R = D_R(td)
             const Cimg = `<img class="Img_T-T" onclick="AbrirImg('${R.Row}',this)" loading="lazy" src="${Src}">` // src temporário
             if(isBdj(td)){Pai($('.T-T',_td(Pai(td)))).innerHTML+= Cimg} // se for bandeija então tem Title
-            Sb_UPLOAD(f,`${Past}${Nome}`)
+            Sb_UPLOAD(supaBASE,f,`${Past}${Nome}`)
             // if(RxExt(f.name)!=='svg'){CriaThumb(f,20).then(t=>{Sb_UPLOAD(t,`${'Thumb'}/${Nome}`)})} // Só chama se não for SVG (CRIA THUMB)
         }
 
@@ -2893,7 +2897,7 @@
             $$('#H_CLNT .LinkAtv').forEach(td=>{
                 const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
                 const Ids_PDDS = td.innerText.split(',')
-                Ids_PDDS.forEach(ID=>{Sb_EDIT('PDDS','Clnt',ID,dRf[1])}) // Editar PDDS
+                Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,'Clnt',dRf[1])}) // Editar PDDS
                 RmvROW(td) // remove a Linha
                 
                 // Editar Pedidos Prático e Const
@@ -2913,79 +2917,55 @@
         // Adicionar e trocar Cliente
 </script>
 
-<script> // SupaBASE ⭐⭐⭐⭐_
-    async function getSB(){
-        const INNN = performance.now()
-        async function getIMG(){
-            const {data,error} = await supaBASE.storage.from("uploads").list("Img",{limit:1000})
+<script> // SupaBASE
+    const getSBPromise = getSB(supaBASE,['PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','IMGS'])
+
+    async function getSB(SB,Typs){
+        const IN = performance.now()
+        async function getIMG(Typ){
+            const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
             if (error) {ERR("Erro ao listar:", error.message);return []}
-            ListIMG = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
+            J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
         }
+
         async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
             let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supaBASE.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+            do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
                 if (!data) return ERR('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
             
+            J[Typ] = todas.map(e=>normalizeObj(e))
+
+            function darvin(col){
+                 J['PDDS'].forEach(TR=>TR[col] = isArr(TR[col]) ? TR[col] : [])
+                 J[AA(col)]=J['PDDS'].flatMap(e=>e[col])
+                JJ[AA(col)]=ArrtoOBJ(J[AA(col)],Primary[AA(col)])
+            }
+
             if(Typ=='PDDS'){
-                J['PDDS']=NULL__(todas.map(e=>PDDSconverterJSON(e)))
                 J['PDDS'].forEach(TR=>TR.Serv = isArr(TR.Serv) ? TR.Serv : [])
                 J['PDDS'].forEach(TR=>TR.Pgmt = isArr(TR.Pgmt) ? TR.Pgmt : [])
-                criaCol_Col('Surg','PDDS','Serv')
-                J['SERV']=J['PDDS'].flatMap(e=>e.Serv) ; JJ['SERV'] = ArrtoOBJ(J['SERV'],Primary['SERV']) // Cria a Segunda Const
-                J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt) ; JJ['PGMT'] = ArrtoOBJ(J['PGMT'],Primary['PGMT']) // Cria a Segunda Const
-            }else{J[Typ] = NULL__(todas.map(e=>PDDSconverterJSON(e)))
-                if(Typ=='CLNT'){Listagem('CLNT','Clnt')}
+                J['SERV']=J['PDDS'].flatMap(e=>e.Serv) ; JJ['SERV'] = ArrtoOBJ(J['SERV'],Primary['SERV'])
+                J['PGMT']=J['PDDS'].flatMap(e=>e.Pgmt) ; JJ['PGMT'] = ArrtoOBJ(J['PGMT'],Primary['PGMT'])
             }
+
+            if(Typ=='CLNT'){Listagem('CLNT','Clnt')}
             JJ[Typ] = ArrtoOBJ(J[Typ],Primary[Typ]) // Cria a Segunda Const
             LOG(`✔️ ${Typ}`)
-            
+
         }
-        await Promise.all(['PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','IMGS'].map(Typ=>Typ=='IMGS'?getIMG():gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
-            LOG(`✅ SB Carregado: ${MS(INNN)}`)
-        MyAlert(`✅ SB Carregado: ${MS(INNN)}`)
-        //Liberar uma coisa Nova
-        const INNNN = performance.now()
+        await Promise.all(Typs.map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
+            LOG(`✅ SB Carregado: ${MS(IN)}`)
+        MyAlert(`✅ SB Carregado: ${MS(IN)}`)
+        const INN = performance.now()
         Tratamento()
-        LOG(`✅ Pre-Trat OK: ${MS(INNNN)}`)
-    };const getSBPromise = getSB()
-
-    async function Sb_DELETE(Typ,id){
-        const {error} = await supaBASE.from(Typ).delete().eq("Id",id)
-        if(error){ERR("Erro ao excluir:",error)}else{LOG(`SB_DELETE(${Typ},${id})`) ; MyAlert(`SB_DELETE(${Typ},${id})`)}
-    }
-    
-    async function Sb_CREATE(Typ,row){ // ⭐⭐⭐_ _ (Aparentemente ta boa)
-        let baseId = Number(row.Id) || 0
-        let tentativas = 0
-        while (true) {
-            const Id = baseId + tentativas
-            const { error } = await supaBASE.from(Typ).insert([{ ...row, Id }])
-            if (!error) {LOG("Linha criada:", Id) ; return Id }
-            if (error.code !== "23505") {ERR("Erro:", error) ; return null }
-            tentativas++ }
+        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
 
-    async function Sb_EDIT(Typ,col,id,Val){
-        try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-            if (error){ERR('Erro ao atualizar:',error)}
-            else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-        } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-    }
+    function PosGet(){
 
-    async function Sb_EDIT2(Typ,id,col,Val){ // A unica diferença do Outro é que aqui eu troquei a Ordem de ID com Col
-        try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-            if (error){ERR('Erro ao atualizar:',error)}
-            else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-        } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-    }
-
-    async function Sb_UPLOAD(file,nome){ // Envia arquivo para Supabase Storage
-      let {error} = await supaBASE.storage.from('uploads').upload(nome,file,{upsert:false})
-      if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
-      else{LOG('✔️ Arquivo enviado!',nome)}
-    }
+    }    
 
     function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
         if(crud==='UPDATE'){
