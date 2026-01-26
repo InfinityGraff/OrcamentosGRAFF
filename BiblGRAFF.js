@@ -3,12 +3,6 @@ function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
 const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
-const _Bol=v=> v !== '_'
-const _par=s=>(([Ty,Id,Cl,Bj,Sc]) => ({ Ty,Id,Cl, Bj:_Bol(Bj), Sc:_Bol(Sc) }))(s.split('-'))
-const d_r =e=>_par(_td(e).dataset.r)
-const d_p =e=>_td(e).dataset.p === 'SemPai' ? null : _par(_td(e).dataset.p)
-const RR=(r,p)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
-const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
 
 
 // Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
@@ -167,37 +161,7 @@ const vAL=(s,e)=>
     s=='Qnt'  ? Num(VAAL($('.oQnt' ,_tr(e)))) :
     s=='Qntt' ?     VAAL($('.oQnt' ,_tr(e)))  : null
 
-const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
-    const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
-    const j = J[T], k = JJ[T]; if (!j || !k) return
-    let o, jL, jjL, parent
-    if (Lv2){
-        parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
-        if (!parent) return
-        jL   = parent[Lv2.pC]?.find(e => e.Id == R)
-        jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
-    } else o = j.find(e => e.Id == R)
 
-    switch(M){
-        case 'Add':{
-            const n = typeof V=='object'?V:{Id:R,[C]:V}
-            if(Lv2) { parent[Lv2.pC].push(n); if(!JJ[Lv2.pC]) JJ[Lv2.pC]={}; JJ[Lv2.pC][R]=n}
-            else { j.push(n); k[R]=n}
-            break;
-        }
-        case 'Edt':
-            if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
-            else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
-            break;
-        case 'Del':
-            if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
-            else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
-    }
-    const LOG1 = Lv2 ? jL : o
-    const LOG2 = Lv2 ? jjL : k[R]
-    const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
-    //LOG(`Const Atualizadas! ${M}, ${iguais}`)
-}
 
 const SplitAvanc=(Stg)=>{ // Funciona Apenas pra GABARITO
     const partes = Stg.replace('.png','').split(/[\s]*[-_,\t][\s]*/).map(p=>p.trim())
@@ -535,32 +499,7 @@ function CopyGRAFF(e,btn){
     btn.innerText = 'Texto copiado!'
 }
 
-function PDDSconverterJSON(obj) {
-    const camposParaConverter = ["Serv","Pgmt","Cust","Abcd"];
-    for (const campo of camposParaConverter) {
-        const valor = obj[campo];
-        if (
-            typeof valor === "string" &&
-            (valor.trim().startsWith("{") || valor.trim().startsWith("["))
-        ) {
-            try {
-                obj[campo] = JSON.parse(valor);
-            } catch (e) {
-                console.warn(`Erro ao converter o campo ${campo}:`, e);
-            }
-        }
-    }
-    return obj;
-}
 
-function normalizeObj(obj){
-  for (const k in obj) {
-    let v = obj[k] ?? ""
-    if(typeof v === "string" && v.length > 1 && (v[0] === "{" || v[0] === "[")){try { v = JSON.parse(v) } catch {}}
-    obj[k] = v
-  }
-  return obj
-}
 
 
 

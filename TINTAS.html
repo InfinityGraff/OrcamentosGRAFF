@@ -8,7 +8,9 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"></script>
+
+    <!--<script src="../MyBiblioteca/SB_Crud.js"      ></script>-->
 </head>
 
 <script>// Configuração do SupaBase
@@ -63,27 +65,18 @@
     p:focus{background:#2563eb;color:#fff}
 </style>
 
-<script>
-    const J = {DPIM:[],PROD:[],IMGS:[]}
-    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link'}
+<script> // BASE DE DADOS
+    const J = {DPIM:[],PROD:[],IMGS:[]} // deve ser Criada pelo GetSB
+    const JJ= {DPIM:[],PROD:[],IMGS:[]} // deve ser Criada pelo GetSB
+    const Primary = {DPIM:'Id',PROD:'Id',PROD:'Id'} // deve ser Armazenado lá em BS
+    const BnddJ=[] // as que possuem bndj como ['SERV','PGMT'] // mais isso vai ser importado automárico
+
+    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link',G:'Fixy'}
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PROD:{Id:['F','I'],Nome:['E','' ],Valr:['E','' ],Desc:['E','' ],Img:['E','' ],Lixo:['X','' ]},
     }
-</script>
 
-<script>
-    const D_R =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
-    const _Bol=v=> v !== '_'
-    const _par=s=>(([Ty,Id,Cl,Bj,Sc]) => ({ Ty,Id,Cl, Bj:_Bol(Bj), Sc:_Bol(Sc) }))(s.split('-'))
-    const d_r =e=>_par(_td(e).dataset.r)
-    const Edit=e=>`<p class="P-P Ct" name="${e}" contenteditable="true" onkeydown="EntBlr(this)" onblur="Rmv(_td(this),'Foco');EditCell(this)" onfocus="Add(_td(this),'Foco')">${e}</p>`
-
-    function VAL(e){
-        const td = e.tagName === 'TD' ? e : _td(e)
-        const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-        const val = ['Edit'].includes(R.Tm) ? $('.P-P',td).textContent.trim() : null
-        return val
-    }
+    const Tm_thSort=(arr,Typ)=>arr.map(e=>`<th>${e}</th>`).join('')
 </script>
 
 <body class="Cl">
@@ -230,8 +223,9 @@
 
         <section id="Admn" class="page w100 none">
             <div id="DivTableADM" class="w100">
-                <table id="tbl" class="w100">
-                    <thead></thead>
+                <button onclick="AddROW('PROD','<')">Nova Linha +</button>
+                <table id="H_PROD" class="w100">
+                    <thead><tr onload="Inn(this,Tm_thSort(ObjKey(BS['PROD']),'PROD'))"></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -244,62 +238,36 @@
 </body>
 
 <script>
-    function ConvertR(e,Rpai){// TYP - Row - Col - Bandeija ou Fora - Secundario //(GAMBIARRA)
-        if(e==''){return 'SemPai'}
-        const E = e.split('-')
-        return `${E[1]}-${E[2]}-${E[3]}-${Rpai?'Bj':'_'}-${['SERV','PGMT'].includes(E[1])?'Sc':'_'}`
-    }
-    function ConvertP(e,Rpai){// TYP - Row - Col - Bandeija ou Fora - Secundario //(GAMBIARRA)
-        if(Rpai==''){const EE = e.split('-') ; if(['SERV','PGMT'].includes(EE[1])){return DescobrePai(EE)}else{return 'SemPai'}}
-        const E = Rpai.split('-')  
-        return `${E[1]}-${E[2]}-${E[3]}-_-${['SERV','PGMT'].includes(E[1])?'Sc':'_'}`
-    }
+    const Tm_R=(e,x,Typ,id)=>{const k=OjKy(Typ)[x] ; return `${Typ}-${e==='Foot'?'Foot':e[isArr(e)?0:id]}-${k}-${CRYPP[BS[Typ][k][0]]}`}
+    const GBRR=e=>['SERV','PGMT'].includes(e)
 
-    const Tm_R     =(e,x,Typ,id)=>{const BSBS=(typ,x,idx)=>BS[typ][OjKy(typ)[x]][idx] ; return `Rastr-${Typ}-${e=='Foot'?'Foot':e[isArr(e)?0:id]}-${OjKy(Typ)[x]}-${CRYPP[BSBS(Typ,x,0)]}-${x+1}`}
-    const OjKy     =Typ=>ObjKey(BS[Typ]) // o nome pode mudar pra algo mais Intuitivo
-
-    const Tm_Td    =(v,e,x,Typ,RPai='')=>{
-            const r = Tm_R(e,x,Typ,'Id')
-            return `<td data-R="${ConvertR(r,RPai)}" data-P="${ConvertP(r,RPai)}" class="${r}">${Edit(v)}</td>`
+    function ConvertR(R,Rpai){//(GAMBIARRA) // TYP - Row - Col - Tm - Bandeija ou Fora - Secundario //(GAMBIARRA)
+        const E = R.split('-')
+        return `${E[0]}-${E[1]}-${E[2]}-${E[3]}-${Rpai?'Bj':'_'}-${GBRR(E[0])?'Sc':'_'}`
+    }
+    function ConvertP(R,Rpai){//(GAMBIARRA) // TYP - Row - Col - Tm - Bandeija ou Fora - Secundario //(GAMBIARRA)
+        if(Rpai==''){const EE = R.split('-') ; if(GBRR(EE[0])){return DescobrePai(EE)}else{return 'SemPai'}}
+        const E = Rpai.split('-')
+        return `${E[0]}-${E[1]}-${E[2]}-${E[3]}-_-${GBRR(E[0])?'Sc':'_'}`
     }
 
-    function Load_Table(Typ){
-        const keys = Object.keys(J[Typ][0])
-        Inn($("#tbl thead"),`<tr>${keys.map(k=>`<th>${k}</th>`).join("")}</tr>`)
-        Inn($("#tbl tbody"),J[Typ].map((e,i)=>`<tr>${ObjOrdn(e,OjKy(Typ)).map((v,x)=>Tm_Td(v,e,x,Typ,'')).join('')}</tr>`).join(""))
+    function Tm_Td(v,e,x,Typ,RPai=''){
+        const r = Tm_R(e,x,Typ,'Id') ; const _R = ConvertR(r,RPai) ; const _P = ConvertP(r,RPai) ; const R = d_r(_R)
+        return `<td data-R="${_R}" data-P="${_P}" class="Rltv"><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>` // Colocar as Bndj dentro disso
+    }
+
+    function loadtmtable(Typ){
+       Inn($('#H_PROD tbody'),Tm_Table(Typ,J[Typ]))
     }
 </script>
 
 <script>
-    function PosGet(){
+    Onloads('body')
+    const getSBPromise = SB_Get(supaBASE,['DPIM','PROD','IMGS'])
+
+    function PosGET(){
         Tm_PROD()
-        Load_Table('PROD')
-    }
-
-
-    const getSBPromise = getSB(supaBASE)
-
-    async function getSB(SB){
-        const INNN = performance.now()
-        async function getIMG(Typ){
-            const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
-            if (error) {ERR("Erro ao listar:", error.message);return []}
-            J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{})
-            LOG(`🖼️ ${Typ}`)
-        }
-        async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
-            let Dados = [], lim = 1000, ofs = 0, data
-            do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
-                if (!data) return ERR('Erro ao carregar dados')
-                Dados.push(...data) ; ofs+=lim
-            }while(data.length===lim)
-            J[Typ] = NULL__(Dados)
-            LOG(`✔️ ${Typ}`)
-        }
-        await Promise.all(['DPIM','PROD','IMGS'].map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
-            LOG(`✅ SB Carregado: ${MS(INNN)}`)
-        MyAlert(`✅ SB Carregado: ${MS(INNN)}`)
-        PosGet()
+        loadtmtable('PROD')
     }
 
     function EditCell(e,vall=null){
@@ -308,6 +276,21 @@
         LOG(e,VAL(e))
         Sb_EDIT(supaBASE,...[R.Ty,R.Id,R.Cl,V])
     }
+
+    function AddROW(Typ,Ps,obj={},inpt,SB){ // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
+        const Def   = ClrObj(BS[Typ])        // Cria um Default Baseado na bndj
+        const Tbody = $(`#H_${Typ} > tbody`)
+        Def.Id = NewID(J[Typ])                // Atribuindo Novo Id
+        ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto doa argumento!
+        const Clone = Tm_Table(Typ,[Def])
+        const Arry = {Id:`${Def.Id}`} // devem vir seus respectivos Objetos de base já no argumento
+        /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
+        /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
+        /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,Arry)}
+        if(SB){LOG('Linha Adicionada pelo SB')}
+        if(Typ=='CLNT'){Linkar(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
+    }
+
 </script>
 
 </html>
