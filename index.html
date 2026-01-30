@@ -15,10 +15,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"></script>
-
-    <!--<script src="../MyBiblioteca/SB_Crud.js"      ></script>-->
-
+    
     <!--
+    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+
+    
         
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -670,8 +671,6 @@
                     R.Tm=='Sugg' ? `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertP(r,RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv" onclick="ShowBndj(this);SuggLink(this,'${r}')"                                        ><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
                                  : `<td style="${NoneCol(Typ,R.Col)}" data-R="${ConvertR(r,RPai)}" data-P="${ConvertP(r,RPai)}" class="${r} ${RPai} ${Scd} ${daClass(R)} Rltv"                                                                                       ><div class="Ct">${Tm_Tm[R.Tm](v,R)}</div></td>`
             }
-
-
 
             function loadtmtable(Typ,GAMBIARRA){
                 const LOAD=(TYP)=>{
@@ -1509,27 +1508,6 @@
                     </table>
                     <h2 id="TotalNotta" class="Hr Ct">${RS(dados.reduce((a,e)=>a+Num(e.SbTt),0))}</h2>`
                 //MODAL(Clone.innerHTML)
-            }
-            
-            function SellFilesIMG(Inpt){ // Fazer isso Ficar imbutido dentro da Função do input Files
-                const file = Inpt.files[0]
-                $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file)
-                $('span',Pai(Inpt)).textContent = file.name
-            }
-
-            function AbrirImg(Nome,img,X,Id){
-                // if(X=='Place'){return} // isso deve só acontecer se for Placeholder de vdd, depois analizar pra ver q ter errinho lá em cima
-                const W = img.naturalWidth>img.naturalHeight
-                const Stg =`<div class="MdalIMG ${W?'Cl':'Ct'}">
-                                <img src="${img.src}">
-                                <div class="casusa Cl ${W?'w100':'h100'}">
-                                    <span>Nome</span>
-                                    <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                                    <button onclick="SairMdal();ImgUPP($('input',Pai(this)),'${Id}')">Enviar</button>
-                                </div>
-                            <div>`
-                MODAL(Stg)
-                if(X=='X'){$('#FormIMG input').click()} 
             }
 
             // este Modal Novo já não funciona mais com "Esc"

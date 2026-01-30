@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alencar Serviços</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+body{background:#f5f5f5;color:#333}
+
+.container{max-width:1200px;margin:auto;padding:0 20px}
+
+.topo{background:linear-gradient(90deg,#0d3b2e,#1e6b4b);padding:20px 0;color:#fff}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:bold}
+.logo span{font-weight:300}
+nav a{color:#fff;margin-left:20px;text-decoration:none}
+
+.quem-somos{
+  background:linear-gradient(rgba(13,59,46,.9),rgba(13,59,46,.9)),
+  url('./GABY/fundo.webp') center/cover;
+  color:#fff;
+  padding:80px 0;
+  text-align:center
+}
+.quem-somos h1{margin-bottom:20px;font-size:32px}
+.quem-somos p{max-width:800px;margin:auto;line-height:1.6}
+
+.servicos{padding:60px 20px;text-align:center}
+.servicos h2{margin-bottom:40px;color:#1e6b4b}
+
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+
+.card{
+  background:#fff;
+  width:320px;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,.1)
+}
+.card img{width:80px;margin-bottom:15px}
+.card h3{color:#1e6b4b;margin-bottom:10px}
+.card p{font-size:14px;margin-bottom:20px}
+.card button{
+  background:linear-gradient(90deg,#1e6b4b,#2fa36a);
+  border:none;
+  padding:10px 25px;
+  color:#fff;
+  border-radius:5px;
+  cursor:pointer
+}
+
+.mapa{
+  background:#e9f3ee;
+  padding:50px 20px;
+  display:flex;
+  gap:30px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap
+}
+.mapa img{max-width:600px;width:100%;border-radius:10px}
+.info{background:#fff;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+
+footer{
+  background:#0d3b2e;
+  color:#fff;
+  text-align:center;
+  padding:20px
+}
+.logo img{width: 80px;}
+
+</style>
+
+<body>
+
+<header class="topo">
+  <div class="container nav">
+    <div class="logo"><img src="./GABY/Logo.png"> Alencar <span>Serviços</span></div>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Contato</a>
+      <a href="#">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<section class="quem-somos">
+  <div class="container">
+    <h1>QUEM SOMOS:</h1>
+    <p>
+      Alencar Serviços é uma empresa brasileira focada na prestação de
+      crédito pessoal, oferecendo soluções financeiras acessíveis,
+      seguras e transparentes para nossos clientes.
+    </p>
+  </div>
+</section>
+
+<section class="servicos">
+  <h2>SERVIÇOS AO CLIENTE:</h2>
+
+  <div class="cards">
+    <div class="card">
+      <img src="./GABY/emprestimo.webp">
+      <h3>NOVO EMPRÉSTIMO</h3>
+      <p>Facilitamos o acesso ao crédito pessoal de forma rápida e sem burocracia.</p>
+      <button>Saiba mais</button>
+    </div>
+
+    <div class="card">
+      <img src="./GABY/refinanciamento.webp">
+      <h3>REFINANCIAMENTO</h3>
+      <p>Ajudamos você a refinanciar sua dívida para condições melhores.</p>
+      <button>Saiba mais</button>
+    </div>
+
+    <div class="card">
+      <img src="./GABY/portabilidade.webp">
+      <h3>PORTABILIDADE</h3>
+      <p>Transfira sua dívida para outra instituição com vantagens.</p>
+      <button>Saiba mais</button>
+    </div>
+  </div>
+</section>
+
+<section class="mapa">
+  <div class="info">
+    <p><strong>📍 Rua das Flores, 123</strong><br>São Paulo / SP</p>
+    <p>📞 (11) 98765-4321</p>
+    <p>✉️ atendimento@alencarservicos.com.br</p>
+  </div>
+  <div class="mapa">
+  <iframe
+    src="https://www.google.com/maps?q=Boa+Viagem,+Recife,+PE&output=embed"
+    width="100%"
+    height="350"
+    style="border:0;border-radius:10px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+</section>
+
+<footer>
+  <p>© 2024 Alencar Serviços. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
