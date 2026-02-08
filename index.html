@@ -1364,6 +1364,15 @@
                 None(Pai(Eu)) // por fim ocultar a bandeiija de sujestão
             }
 
+            function Linkar(Eu,val,Duplo){          // ⭐⭐⭐⭐_  (Faz o Básico)    
+                const td = _td(Eu)
+                const R  = D_R(td)
+                const get = getClssIN(_td(Eu),'Rastr-')
+                if(Duplo){LOG(Duplo,td,R,get)}
+                EditCell(Eu,'Edt',val)
+                if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
+            }
+
             // Todos os Links tem que ter opção de Trocar | e os que puderem terão adicionar mais de 1 | e Opção de Criar um Novo
             // 1 Link - em "SERV" > linkar "Grad"
             // 3 Link - em "GRAD" > linkar Cont q é "PDDS", "OS" e "UBER"
@@ -2757,15 +2766,6 @@
             /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
             if(SB){LOG('Linha Adicionada pelo SB')}
             if(Typ=='CLNT'){Linkar(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
-        }
-
-        function Linkar(Eu,val,Duplo){          // ⭐⭐⭐⭐_  (Faz o Básico)    
-            const td = _td(Eu)
-            const R  = D_R(td)
-            const get = getClssIN(_td(Eu),'Rastr-')
-            if(Duplo){LOG(Duplo,td,R,get)}
-            EditCell(Eu,'Edt',val)
-            if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
         }
 
         function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
