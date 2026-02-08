@@ -1,5 +1,5 @@
 const StockjVinil = ["#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#A52A2A","#800080","#000000","#FFFFFF","#808080"]
-const Eximg       = ["jpg","jpeg","png","gif","webp","svg"]
+
 
 const BS_Mtras = { // Maq é quanto tempo dura pra percorrer cada Ponto
     'Vinil'      :{Mat:30 ,Maq:0.028,Val:20 },
@@ -35,7 +35,8 @@ const SVGEtapas = {
 'Orçamento','Arte','Analise Art','Impressão','Acabamento','Pronto','Entregue','Devendo'
 
 const meses = ["Todos","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
-const mesesObj = {"ALL":"Todos","01":"Janeiro","02":"Fevereiro","03":"Março","04":"Abril","05":"Maio","06":"Junho","07":"Julho","08":"Agosto","09":"Setembro","10":"Outubro","11":"Novembro","12":"Dezembro"}
+const mesesObj={"Todos":"","Janeiro":"01","Fevereiro":"02","Março":"03","Abril":"04","Maio":"05","Junho":"06","Julho":"07","Agosto":"08","Setembro":"09","Outubro":"10","Novembro":"11","Dezembro":"12"}
+
 
 const TIPOS_ARTES = [
     { Nome:"Arte Normal"      , Valr:20.00}, 

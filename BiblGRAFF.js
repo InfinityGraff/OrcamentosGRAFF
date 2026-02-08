@@ -3,6 +3,11 @@ function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
 const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
+function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
+
+// passar pra Biblioteca
+const RangeDat=(arr,In,Out)=> isArr(arr) ? arr.filter(o=>o.Data>=In&&o.Data<=Out) : arr>=In&&arr<=Out
+const RangeMes=(arr,Mes)=>{if(!Mes){return arr} ; return isArr(arr) ? arr.filter(o=>o.Data?.slice(5,7)==Mes):arr?.Data?.slice(5,7)==Mes}
 
 
 // Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
@@ -62,31 +67,6 @@ function CrypPass(senha){ // Obsoleta
   return Par.concat(Imp).join('')
 }
 
-function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar!
-
-function ShowBndj(div,Typ){                                                // Função que exibe/oculta o painel .BNdj dentro da div recebida
-    if(!document.contains(event.target)){LOG('não ta mais no DOM') ; return} // interrompe se o target não estiver mais no DOM
-    if(['IMG','I','BUTTON'].includes(event.target.tagName)){return}
-    if(event.target.closest('svg')){return}
-    const e = $('.BNdj',div)                                      // Seleciona o elemento .BNdj dentro da div Passada
-    if(event.target.closest('.BNdj')){return}                     // Se o clique for dentro do .BNdj, interrompe (não fecha nem altera)
-    else{                                                         // Caso contrário (clique fora do conteúdo interno)
-        e.style.zIndex = $$('.BNdj:not(.none)').length + 500      // Define o z-index dinamicamente com base na quantidade de painéis visíveis
-        if(Tecla('ctrl')){
-            Tog_N(e);GambiarraAdd(div)}                           // Se a tecla CTRL estiver pressionada, apenas alterna o estado (mostra/oculta)
-        else{                                                     // Caso não esteja com CTRL
-            $$('.BNdj:not(.none)').forEach(E=>{                   // Percorre todos os painéis .BNdj que estão visíveis
-            //    if(E==e){return}else{Add_N(E)}                  // Fecha (adiciona .none) em todos, exceto o atual
-            })
-            Tog_N(e);GambiarraAdd(div);                           // Alterna visibilidade do painel atual (mostra se estava oculto, e vice-versa)
-            Typ ? RFresh(Typ,_tr(div)) : null
-        }
-    }
-    if(Tecla('ctrl')){return}                                     // Se CTRL estiver pressionado, interrompe (não aplica o fechamento automático)
-    else if(e.contains(event.target)){return}                     // se o Click foi Interno
-    else{ClickFora(div,()=>{Add_N(e)})}                           // Caso contrário (clique fora da div), ativa função para fechar o painel ao clicar fora
-}
-
 const BrevTitle = str => {
   try {
     const data = str.split(" | ").map(item => {
@@ -113,42 +93,11 @@ const BrevTitle = str => {
   }
 }
 
-function DarVAL(td,v,A){
-    const R = D_R(td)
-    const PP = $(':scope > div > .P-P',td)
-    if(['Edit','Fixo'  ].includes(R.Tm)){Nm(PP,v)       ; Inn(PP,v)}
-    if(['Auto'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v)}
-    if(['Valr','Sync'  ].includes(R.Tm)){Nm(PP,v==''?'':Num(v)) ; Inn(PP,v==''?'':RS(v))}
-    if(['Mdds'         ].includes(R.Tm)){Nm(PP,Num(v))  ; Inn(PP,v?Cm(v):'')}
-    if(['Slct'         ].includes(R.Tm)){Nm(PP,v)       ; PP.value = v}
-    if(['Data','Sugg','Link','Ssvg','Imgs','Chek','Likk'].includes(R.Tm)){Inn(Pai(PP),Tm_Tm[R.Tm](v,R,A))}
-}
-function DarVAL_Tm(td,v,A){ const R = D_R(td) ; Inn($(':scope > div',td),Tm_Tm[R.Tm](v,R,A))} // Parece q ela só é nessesária quando o valor é uma Bandeija, mas se n for Xuva, só a de cima Resolve
+
+
 
 const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null
 
-function VAL_antigo(e){
-    const td = e.tagName === 'TD' ? e : _td(e)
-    const R = D_R(td) // se e for td entra 'e' se não for, faz o closeset('td') aqui dentro mesmo
-    const val = ['Edit','Fixo','Sugg','Soma'].includes(R.Tm) ? $('.P-P',td).textContent.trim()
-            : R.Tm==='Ssvg' ? Nm($('.P-P',td)).trim()
-            : R.Tm==='Imgs' ? Nm($('.P-P',td)).trim()
-            : R.Tm==='Link' ? Nm($('.P-P',td)).trim()
-            : R.Tm==='Bndj' ? $('.P-P',td).textContent.trim()
-            : R.Tm==='Valr' ? Num($('.P-P',td).textContent.trim())
-            : R.Tm==='Mdds' ? Num($('.P-P',td).textContent.trim())
-            : R.Tm==='Auto' ? Num($('.P-P',td).textContent.trim())
-            : R.Tm==='Sync' ? Num($('.P-P',td).textContent.trim()) // mas vai ser Diferente!
-            : R.Tm==='Data' ? $('input' ,td).value
-            : R.Tm==='Slct' ? $('select',td).value
-            : R.Tm==='Inpt' ? $('input' ,td).value
-            : R.Tm==='Chek' ? $('input' ,td).checked
-            : Is(td,'input')? td.value
-            : R.Tm==='Lixo' ? '-'
-            : null
-    return val
-    // a idéia é que esse argumento seja qualquer coisa q está dentro de um td q não seja uma tabela
-}
 
 const vAL=(s,e)=>
     s=='Imgs' ?     VAAL($('.oImgs',_tr(e)))  :
@@ -876,3 +825,7 @@ const GetPC = () => {
     const ua = navigator.userAgent
     return {PC,Navgd:ua.includes('Edg')    ? 'Edge'   : ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox')? 'Firefox': ua.includes('Safari') ? 'Safari' : 'Outro'}
 }
+
+
+
+
