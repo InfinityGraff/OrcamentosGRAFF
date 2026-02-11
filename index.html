@@ -13,13 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
-    
-     <!--
+    <!--
+        <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+        <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
+    -->
+     
     <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
-    <script src="../MyBiblioteca/SB_Crud.js"      ></script>-->
+    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -46,16 +46,14 @@
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const J        = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[],IMGS:{}}
-    const JJ       = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[],IMGS:{}}
-    const ALL      = {PDDS:[],SERV:[],PGMT:[],GRAD:[],MPAG:[],OOSS:[],UBER:[],CLNT:[],IMGS:{}} // aqui uso basicamente só 
-    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OOSS:0 ,UBER:0, CLNT:0 }
+    const J={},JJ={},ALL={} // nem sei se eu realmente to usando este ALL
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui
+    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OOSS:0 ,UBER:0, CLNT:0 }
     //const D        = {PDDS:0 ,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0} // (apresentará erro quando Tentar usar ai vou descobrir ela)
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OOSS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass'}
-    const Llmt     = {PDDS:['2026-02-05','2026-12-30'],SERV:['2026-02-05','2026-12-30'],PGMT:['2026-02-05','2026-12-30']}
+    const Llmt     = {PDDS:['2026-01-01','2026-12-30'],SERV:['2026-01-01','2026-12-30'],PGMT:['2026-01-01','2026-12-30']}
     let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
     let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
 
@@ -67,8 +65,8 @@
 
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PDDS:{Id:['F','N'],  Rg:['B','' ],Data:['D','' ],Clnt:['K','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['K','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['K','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['E','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['E','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
@@ -77,9 +75,10 @@
         
         MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['K',''],Vlpg:['Y','A'],Lixo:['X','']}, // Removi 'Cpvt'
         RG  :{Rg:['F','' ],Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']}, // isso aqui é o INFO
-        ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']}
+        ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']},
+        IMGS:{},
     }
-    const PassaDadosPrasConsts=()=>{ObjKey(BS).forEach(e=>{   J[e]=[] ; JJ[e]=[] ; ALL[e]=[]   })} // pra Garantir que sempre vai ter todas as Tabelas
+    const Deff = Object.fromEntries(ObjEtr(BS).map(([t,c])=>[t,Object.fromEntries(ObjKey(c).map(k=>[k,'']))]))
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -1205,7 +1204,7 @@
     /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
             ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
-            ,S_Gimg:j=>`${j.Grad}`
+            ,S_Gimg:j=>`${j.Grad}.webp`
             ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
             ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
             //-----------------------------------------------------------------------------------------------------------
@@ -1372,6 +1371,15 @@
                 if(Duplo){LOG(Duplo,td,R,get)}
                 EditCell(Eu,'Edt',val)
                 if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
+            }
+
+            function TestRow(inpt,col){             // isso é pra Saber se o Cliente existe na Tabela de Extra
+                if(confirm(`Tem Certeza que quer salvar: ${inpt.value} em ${col}?`)){
+                    if(Nm(inpt)){return Nm(inpt)}else{
+                        const df = AddROW(AA(col),'<',{[col]:inpt.value})
+                        if(AA(col)=='CLNT'){Linkar(inpt,df.Id)}
+                    }
+                }
             }
 
             // Todos os Links tem que ter opção de Trocar | e os que puderem terão adicionar mais de 1 | e Opção de Criar um Novo
@@ -2704,8 +2712,12 @@
 </body>
 
 <script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
+
+
+
         const orArr=(e,fallback=[])=>isArr(e) ? e : fallback
         const IdMaior=(arr)=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
+
 
         function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const P = d_r(_P) ; const COL = AA(P.Cl)
@@ -2714,7 +2726,7 @@
                 const Pj   = JJ[P.Ty][P.Id]         // Localizar Linha pelo 'Id'
                 const arr = orArr(Pj[P.Cl])         // se n for um array, return []
                 const lngh= l0(arr)                 // conferir se é a Primeira vez!
-                const Def = ClrObj(BS[COL])         // Cria um Default Baseado na bndj
+                const Def = Deff[COL]               // Cria um Default Baseado na bndj
                 const NId = lngh ? 1 : IdMaior(arr) // fazer isso só que procurando o Valor maior e não com Lenth
                 Def.Id    = `${Pj.Id}_${NId}`       // Novo Id
                 Def.Clnt  = Pj.Clnt                 // Clona Cliente
@@ -2752,22 +2764,8 @@
             })
         }
 
-        function AddROW(Typ,Ps,obj={},inpt,SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
-            const Def   = ClrObj(BS[Typ])         // Cria um Default Baseado na bndj
-            const Tbody = $(`#H_${Typ} > tbody`)
-            const pc    = GetPC()
-            const Ag    = AGORA().split(' ')
-            Def.Id      = NewID(J[Typ])                // Atribuindo Novo Id
-            if(Typ=='PDDS'){Def.Rg   = [{'Rg':Def.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]}                    
-            if(Typ=='CLNT'){Def.Clnt = obj.Clnt}  // Atribuindo nome do Cliente quando for Cliente!
-            ObjKey(obj).forEach(k=>Def[k]=obj[k]) // Atribuindo oq vem no Objeto dos argumento!
-            /*Obj*/ DarJJ('Add',Typ,Def.Id,null,Def)
-            /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,CleanObj(Def))}
-            const Clone = Tm_Table(Typ,[Def])
-            /*DOM*/ Ps == "<" ? After(Tbody,Clone) : Befor(Tbody,Clone)
-            if(SB){LOG('Linha Adicionada pelo SB')}
-            if(Typ=='CLNT'){Linkar(inpt,Def.Id)} // Parece q isso serve pra levar o nome do cliente pra T-T assim q adiciona
-        }
+
+
 
         function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const D_Rastr =e=>getClssIN(e,'Rastr-').split('-')
@@ -2786,12 +2784,6 @@
                 //Obj_PDDS['Clnt'] = linkFinal
             })
             // quando terminar Limpa o Filtro
-        }
-
-        function TestRow(inpt,col){             // isso é pra Saber se o Cliente existe na Tabela de Extra
-            if(confirm(`Tem Certeza que quer salvar: ${inpt.value} em ${col}?`)){
-                if(Nm(inpt)){return Nm(inpt)}else{AddROW(AA(col),'<',{[col]:inpt.value},inpt)}
-            }
         }
 
         function SaveConfig(e){LOG('Salva Config no SB')}
@@ -2846,7 +2838,7 @@
         }
         else if(crud==='INSERT'){
             if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
-            AddROW(Typ,'<',NULL__([nEw]),'',true) // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
+            AddROW(Typ,'<',NULL__([nEw]),'SB') // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
         }
     }
     
@@ -2857,8 +2849,7 @@
 
 </script>
 
-<script>// Iniciação
-    
+<script>// Iniciação 
     function PosGet(){Onloads('body');Check_W_Pag();LOG('✅ Página Carregada!')}  ;PosGet()
 
     document.addEventListener('click',e=>{const targ = e.target
