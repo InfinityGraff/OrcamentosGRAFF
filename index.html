@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-   
+    
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
     
     <!--
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-    -->
+   -->
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -587,7 +587,7 @@
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_R('Foot',x,Typ)} Rltv"></td>`).join('')
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
 
-            const ImgT_T=(col,e,R)=>  col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`'SERV-${e.Id}-Arte-Imgs-Bj-Sc'`) : ''
+            const ImgT_T=(col,e,R)=>  col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
                                     : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp"                              >`:''
                                     : ''
 
@@ -1367,11 +1367,12 @@
 
             function Linkar(Eu,val,Duplo){          // ⭐⭐⭐⭐_  (Faz o Básico)    
                 const td = _td(Eu)
-                const R  = D_R(td)
-                const get = getClssIN(_td(Eu),'Rastr-')
-                if(Duplo){LOG(Duplo,td,R,get)}
-                EditCell(Eu,'Edt',val)
-                if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R.Typ,R.Col,`${val}`,get)) ; td.addEventListener('click',function(){ShowBndj(this)})}
+                const PP = $('.P-P',td)
+                const R  = d_r(PP)
+                const _R = PP.dataset.r
+                //if(Duplo){LOG(Duplo,td,R,get)}
+                EditCell(PP,'Edt',val)
+                if(R.Cl=='Clnt'){Inn(td,Tm_Bndj(_R,`${val}`)) ; PP.addEventListener('click',function(){ShowBndj(this)})}
             }
 
             function TestRow(inpt,col){             // isso é pra Saber se o Cliente existe na Tabela de Extra
@@ -2713,16 +2714,11 @@
 </body>
 
 <script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
-
-
-
         const orArr=(e,fallback=[])=>isArr(e) ? e : fallback
         const IdMaior=(arr)=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
 
-
         function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const P = d_r(_P) ; const COL = AA(P.Cl)
-
             if(P.Tm=='Bndj'){
                 const Pj   = JJ[P.Ty][P.Id]         // Localizar Linha pelo 'Id'
                 const arr = orArr(Pj[P.Cl])         // se n for um array, return []
@@ -2758,15 +2754,12 @@
                 /*Edt/Add*/}else{
                     DarVAL(PP,V)
                     if(!Auto){if(R.Bj && T_T){
-                                if(R.Sc){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; RFresh(P.Ty,tR,Auto,e)}
-                              }else{RFresh(R.Ty,tr,Auto,e)}
+                            if(R.Sc){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; RFresh(P.Ty,tR,Auto,e)}
+                        }else{RFresh(R.Ty,tr,Auto,e)}
                     }
                 }
             })
         }
-
-
-
 
         function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
             const D_Rastr =e=>getClssIN(e,'Rastr-').split('-')
@@ -2793,6 +2786,7 @@
 
 <script> // SupaBASE
     const getSBPromise = SB_Get(supaBASE,['USER','PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','IMGS'])
+    
     function PosGET(){
         const INN = performance.now()
         TestSenha('Storg',StogeGet('Pass'))
