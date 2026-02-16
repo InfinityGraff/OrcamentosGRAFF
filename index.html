@@ -17,10 +17,10 @@
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
     
-    <!--
-        <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
-        <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-   -->
+        <!--
+            <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
+            <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+       -->
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OOSS:0 ,UBER:0, CLNT:0 }
     //const D        = {PDDS:0 ,SERV:0,CLNT:0,PGMT:0,GRAD:0,OOSS:0,UBER:0,MPAG:0} // (apresentará erro quando Tentar usar ai vou descobrir ela)
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OOSS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass'}
     const Llmt     = {PDDS:['2026-01-01','2026-12-30'],SERV:['2026-01-01','2026-12-30'],PGMT:['2026-01-01','2026-12-30']}
     let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
@@ -70,14 +70,18 @@
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['E','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['F','A'],Lcro:['F','A'],Medi:['F','A'],Lixo:['X','']},
         
-        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
+        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['K',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
-        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['V','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['K',''],Lixo:['X','']},
-        
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['V','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['E',''],Lixo:['X','']},
+
         MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['K',''],Vlpg:['Y','A'],Lixo:['X','']}, // Removi 'Cpvt'
         RG  :{Rg:['F','' ],Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']}, // isso aqui é o INFO
         ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']},
         IMGS:{},
+        GRD2:{Id:['E',''],Grafit:['E',''],Grafit_Cont:['E',''],BPrint:['E',''],BPrint_Cont:['E',''],Inová:['E',''],Inová_Cont:['E',''],Bureal:['E',''],Bureal_Cont:['E',''],Barraca:['E',''],Barraca_Cont:['E',''],Novalmp:['E',''],Novalmp_Cont:['E',''],JLTal:['E',''],JLTal_Cont:['E',''],Tatiane:['E',''],Tatiane_Cont:['E','']}
+
+
+        
     }
     const Deff = Object.fromEntries(ObjEtr(BS).map(([t,c])=>[t,Object.fromEntries(ObjKey(c).map(k=>[k,'']))]))
 </script>
@@ -460,7 +464,7 @@
         const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${COLLLL(Typ,col)} > div > .P-P`)
         const tr_Viw  =   Typ=>  $$(`#H_${Typ} > tbody > tr:not([class*=" n"])`)
         const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${COLLLL(Typ,col).replace('td:','th:')}`)        
-        const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0)
+        
         const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
         const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
         const slideTo=(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
@@ -585,6 +589,8 @@
             const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_R('Foot',x,Typ)} Rltv"></td>`).join('')
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
+            function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
+            function CopyFone(Fone,Eu){LOG(Fone)}
 
             const ImgT_T=(col,e,R)=>  col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
                                     : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp"                              >`:''
@@ -594,19 +600,18 @@
                 return  col==='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
                         col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                                        Find.map(e=>`${e[col]}`          ).join(' | ')
-            }           
-
-            function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
-            function CopyFone(Fone,Eu){LOG(Fone)}
-
+            }
+            
             function Tm_Bndj(R,Arr,DOM){
-                const r = d_r(R)
-                const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]
-                const COL   = AA(col)
+                const r = d_r(R)                              // Melhorar declarações
+                const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]   // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
+                const COL   = col=='OS' ? 'OOSS' : AA(col)    // GAMBIARRRRRRRRRRRA
                 const Ordem = ObjKey(BS[COL])
-                const dado  = JJ[Typ][Id][col]
-                const Find  = Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? [JJ[COL][dado]] : []
+                const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
+                const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? [JJ[COL][dado]] : []
+                if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
+                const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
                 const NmTle = col==='Pgmt'? SunPix(Title) : Title // (GAMBIARRA preparar pra RMV)
                 const Cimg  = Find.map(e=>ImgT_T(col,e,R)).join('')
                 Find.map(e=>`${todoTitle[col].push(e[col])}`)
@@ -617,19 +622,12 @@
                             <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
                             <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                                 <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
-                                ${COL=='RG'  ?'':`<button class="Mini" onclick="${col=='Clnt'?'TrocaClnt(this)':`AddRowBdj(this,'${R}')`}">${col=='Clnt'?'Trocar':'+ Novo'} ${RmvPlural(D_Brev[COL])}</button>`}
-                                ${col=='Clnt'?`<div class="DivTrcCLNT none">
-                                    ${/* Aqui Chamar, Tm_Tm['Link'](??,R,'')  é importante q isso esteja aqui dentro pra evitar problemas Futuros */''}
-                                    <input class="Stky" placeholder="Clientes" oninput="LinkSug(this,'CLNT')" onkeydown="KeyEntr(()=>TestRow(this))"><span class="Sugg Cl"></span>
-                                    </div>`:''}
+                                ${Tm=='Bndj'?`<button class="Mini" AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
+                                  Tm=='Link'?`<button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
                             </div>
                         </div>`
                 }
             }
-
-            // Permitir que todas as Imagens Possam ter Upload (separar das que não pode, pq são aquelas que vem dentro de um SYNK)
-            // o Click fora não está Ocultando a Bandeija
-            // não quero mais o Cntrl pra persistir BNDJ ngm nunca usou nem EU
 
             function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmt){
                 const LOAD=(TYP)=>{
@@ -648,14 +646,16 @@
 
                 if(ObjKey(J).includes(Typ)){
                     if(PreTable[Typ]==true&&!GAMBIARRRRRRRRRA){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
-                         if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')         } // tem 3 Tabelas na #PagPDDS
-                    else if(Typ=='PGMT'){LOAD('MPAG')                                } // tem 2 Tabelas na #PagPGMT
-                    else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER')         } // tem 3 Tabelas na #PagGRAD
-                    else{LOAD(Typ)}                                                    // os demais tem só 1 tabela
-                    PreTable[Typ]=true                                                 // Declarar que a Aba já foi Aberta!
+                         if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')             } // tem 3 Tabelas na #PagPDDS
+                    else if(Typ=='PGMT'){LOAD('MPAG')                                    } // tem 2 Tabelas na #PagPGMT
+                    else if(Typ=='GRAD'){LOAD(Typ);LOAD('OOSS');LOAD('UBER'),LOAD('GRD2')} // tem 3 Tabelas na #PagGRAD
+                    else{LOAD(Typ)}                                                        // os demais tem só 1 tabela
+                    PreTable[Typ]=true                                                     // Declarar que a Aba já foi Aberta!
                 }
             }
 
+            // Permitir que todas as Imagens Possam ter Upload (separar das que não pode, pq são aquelas que vem dentro de um SYNK)
+            // não quero mais o Cntrl pra persistir BNDJ ngm nunca usou nem EU
             // 🚫 select deveria ter name pra n ser afetado pelo Realtime
             // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
             // 💡 Opção de mais de 1 Designer
@@ -780,7 +780,7 @@
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
                     `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
-                            <p class="PT" name="${e}">${Typ=="SERV"?e:dbCol[e] /*Gambiarra pra remvoer o DbCol*/}</p>
+                            <p class="PT" name="${e}">${Typ=="SERV"?e:dbCol[e]||e /*Gambiarra pra remvoer o DbCol*/}</p>
                             <i onclick="Orden(this,event,'${x}')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
@@ -1320,9 +1320,8 @@
         </style>
 
         <script> // LINK
-            function TrocaClnt(Eu){Tog($('.DivTrcCLNT',Pai(Eu)),'none')}
-
-            function LinkSug(inpt,Typ,MySelect,Lista,servv){
+            function LinkSug(inpt,Typ){
+                if(Typ=='OS'){Typ='OOSS'}
                 const Val   = inpt.value
                 const list  = $('.Sugg',Pai(inpt))
                 const oID   = tr_ID(_tr(inpt))
@@ -1334,11 +1333,12 @@
                     Rest:(e,V)=>V=='' ? true : ObjEtr(e).some(([k,v])=>(k=='Clnt'?JJ['CLNT'][e.Clnt]?.Clnt??'' :aa(`${v}`)).includes(aa(V))), // Exibir os que Resta linkar
                 }
 
-                const exib = { // Fazer Várias formas de Templates Lista, Tabela, e Card
+                const exib = { // Fazer Várias formas de Templates lista, Tabela, e Card
                      CLNT:e=> Griff(`<p>  ${e.Id  } - ${e.Clnt}</p>`)                                                            // Pra Pesquisar dentro de PDDS
-                    ,MPAG:e=> Griff(`<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)                                     // Pra Pesquisar dentro de PGMT
+                    ,MPAG:e=> Griff(`<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`)                                       // Pra Pesquisar dentro de PGMT
                     ,PGMT:e=> Griff(`<p>  ${e.Id  } - ${JJ['CLNT'][e.Clnt]?.Clnt??''} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`) // Pra Pesquisar dentro de MPAG
-                    ,GRAD:e=> Griff(`<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`) // usando Bandeija em formato de Card
+                    ,GRAD:e=> Griff(`<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`)                                         // usando Bandeija em formato de Card
+                    ,OOSS:e=> Griff(`<p>  ${e.Id  } - ${e.OS}</p>`)
                     //,SERV:e=> Griff(`<p>${e.Id} - ${JJ['CLNT'][e.Clnt]?.Clnt??''} ${e.Serv} ${e.Desc}</p>`)
                 }
 
@@ -1347,47 +1347,19 @@
                     // tentar tratar de trazer o nome do cliente pra dentro bem Antes
                     const filt = Typ=='CLNT' ? J[Typ].filter(e=>tipo['Proc'](e,Val)) :
                                  Typ=='MPAG' ? J[Typ].filter(e=>tipo['Rest'](e,Val) && (!NoVazi(e['Pgmt'])||e['Pgmt']=='-')                 ) :
-                                 Typ=='PGMT' ? J[Typ].filter(e=>tipo['Rest'](e,Val) && (!NoVazi(e['Mpag'])||e['Mpag']=='-') && e.Form=='Pix') : []
+                                 Typ=='PGMT' ? J[Typ].filter(e=>tipo['Rest'](e,Val) && (!NoVazi(e['Mpag'])||e['Mpag']=='-') && e.Form=='Pix') :
+                                 Typ=='OOSS' ? J[Typ].filter(e=>tipo['Proc'](e,Val))                                                       : []
                     
-                    Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Ex_Link(this,'${e[Primary[Typ]]}','${oID}')">${exib[Typ](e)}</a>`).join('')) // Quando tem oID é por que é "Duplo"
+                    Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[Typ]]}','${oID}')">${exib[Typ](e)}</a>`).join('')) // Quando tem oID é por que é "Duplo" (não entendi a questão do Duplo)
                 }else{None(list);Inn(list,'')}
             
             }
-
-            function Ex_Link(Eu,val,Duplo){        // ⭐⭐⭐⭐_  (Faz o Básico) tornar isso Genérico (vai servir pra GRADE e tudo Mais)
-                const td  = _td(Eu)
-                const PP  = $('.P-P',td)
-                const R   = d_r(PP)
-                if(Duplo){LOG(Duplo,td,R)}  // nem sei oq quer dizer DUPLO
-                EditCell(PP,'Edt',val)
-                if(R.Col=='Clnt'){Inn(td,Tm_Bndj(R,`${val}`,'DOM')) ; td.addEventListener('click',function(){ShowBndj(this)})}
-                None(Pai(Eu)) // por fim ocultar a bandeiija de sujestão
-            }
-
-            function Linkar(Eu,val,Duplo){          // ⭐⭐⭐⭐_  (Faz o Básico)    
-                const td = _td(Eu)
-                const PP = $('.P-P',td)
-                const R  = d_r(PP)
-                const _R = PP.dataset.r
-                //if(Duplo){LOG(Duplo,td,R,get)}
-                EditCell(PP,'Edt',val)
-                if(R.Cl=='Clnt'){Inn(td,Tm_Bndj(_R,`${val}`)) ; PP.addEventListener('click',function(){ShowBndj(this)})}
-            }
-
-            function TestRow(inpt,col){             // isso é pra Saber se o Cliente existe na Tabela de Extra
-                if(confirm(`Tem Certeza que quer salvar: ${inpt.value} em ${col}?`)){
-                    if(Nm(inpt)){return Nm(inpt)}else{
-                        const df = AddROW(AA(col),'<',{[col]:inpt.value})
-                        if(AA(col)=='CLNT'){Linkar(inpt,df.Id)}
-                    }
-                }
-            }
-
-            // Todos os Links tem que ter opção de Trocar | e os que puderem terão adicionar mais de 1 | e Opção de Criar um Novo
-            // 1 Link - em "SERV" > linkar "Grad"
-            // 3 Link - em "GRAD" > linkar Cont q é "PDDS", "OS" e "UBER"
-            // 2 Link - em "OOSS" > linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
-            // 2 Link - em "UBER" > linkar Cont q é "GRAD", "MPAG" (apenas isso por enquanto)
+            
+            // Assim como Link Cliente tem que ter Opção de (Trocar,Add +1,Criar um Novo)
+            // 1 Link em "SERV" > linkar "Grad"
+            // 3 Link em "GRAD" > linkar Cont q é "PDDS", "OS" e "UBER"
+            // 2 Link em "OOSS" > linkar Cont q é "GRAD", "MPAG"
+            // 2 Link em "UBER" > linkar Cont q é "GRAD", "MPAG"
         </script>
     </div>
 
@@ -2133,7 +2105,7 @@
                             const Dados = cP(tr,Md)                                                         // eliminar este array, pra deixar tudo em Objetos
                             if(Dados==null){return}                                                         // só apliquei isso pra tirar um ERRO, mas n sei se eu deveria realmente fazer isso!
                             const Opt   = Md=='Tipo' ? Prod[e].Opts : 'List'                                // se não for Change em Serv todo resto fica List por enquanto (Melhorar isso!)
-                            Inn(sP(Md,tr),Tm_MyOpts(Dados||[],Opt))                                         // dar o Inner do MyOpts a (Lista,Forma de Exibire)
+                            Inn(sP(Md,tr),Tm_MyOpts(Dados||[],Opt))                                         // dar o Inner do MyOpts a (lista,Forma de Exibire)
                             if(Md=='Tipo'){TipoCalc(e,tr)}                                                  // Quando dou Change em Serv (Talvez n tem Problema Rodar toda Vez, vai Qui Né!)
                             if(!Dados.includes(vAL(Md,tr)||'')){Vll(sI(Md,tr),'')}                          // Analisar depois se precisa de Disparo
                             if(Dados.length==1            ){Vll(sI(Md,tr),Dados[0]) ; Dispinput(sI(Md,tr))} // se tiver apenas um Seleciona ele e dispara
@@ -2295,7 +2267,7 @@
 
             <div id="Pag_GRAD" class="none Cl TBLAA"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
 
-                <div onload="Tm_Switch(this,['GRAD','OS','UBER'],`slideTo(x,'GRAD')`,'GRAD')"></div>
+                <div onload="Tm_Switch(this,['GRAD','OS','UBER','GRD2'],`slideTo(x,'GRAD')`,'GRAD')"></div>
 
                 <div class="Wrapper">
                     <div id="Slide_GRAD" class="Slide_Table">
@@ -2330,6 +2302,21 @@
                             </div>
                         </div>
 
+                        <div class="Cl"> <!--GRD2-->
+                            <div class="Confy_GRD2">
+                                <div class="Bt Stky copybody" style="height: 40px;">
+                                    <button onclick="AddROW('GRD2','<')">Nova Linha +</button>
+                                    <div id="COnf_GRD2" class="Configs Ct"></div>
+                                    <button>Limpar</button>
+                                </div>
+                                <table id="H_GRD2" class="hMin">
+                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRD2),'GRD2'))"></tr></thead>
+                                    <tbody></tbody>
+                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRD2),'GRD2'))"></tr></tfoot>
+                                </table>
+                            </div>
+                        </div>
+
                         <div class="Cl"> <!--UBER-->
                             <div class="Confy_UBER">
                                 <div class="Bt Stky copybody" style="height: 40px;">
@@ -2344,6 +2331,8 @@
                                 </table>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -2654,7 +2643,6 @@
             .Dark #FModal>div{background:#1b1b1b}
             .Lite #FModal>div{background:#ffffff}
             #FModal h1{font-size:25px}
-            
             #ModalNota>div{padding:5px 0px}
             #Nota-Clnt>div>div>div{margin:0px 5px}
             #ModalNota img{width:50px;height:50px}
@@ -2768,7 +2756,7 @@
 </script>
 
 <script> // SupaBASE
-    const getSBPromise = SB_Get(supaBASE,['USER','PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','IMGS'])
+    const getSBPromise = SB_Get(supaBASE,['USER','PDDS','CLNT','MPAG','GRAD','UBER','OOSS','ARTE','GRD2','IMGS'])
     
     function PosGET(){
         const INN = performance.now()
@@ -2776,7 +2764,7 @@
         Listagem('CLNT','Clnt')
         Tratamento()    
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
-    }    
+    }
 
     function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
         if(crud==='UPDATE'){
@@ -2826,7 +2814,6 @@
     };PlayRealTime()
 
     function SaveConfig(e){LOG('Salva Config no SB')}
-    // Adicionar e trocar Cliente
 </script>
 
 <script>// Iniciação 
@@ -2852,61 +2839,20 @@
 <script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡ 💡
     // ERROS pra corrigir
     // Pesquisa em tabela de GRAD, da erro em VAL(...).trim is not a function
-    // ver se consigo a Possibilidade de botar mais de um Uber!
-    // Todas Tabelas pode ter Modo Card, então o Botão Card ele fica sempre no msm Lugarzinho
     // na Soma lá em baixo dar o . quando passar de mil
     // Adicionar o DROP, e no Drop CnltrV de imagem,
     // como impedir q a página dê zoom, pelo celular
-
-    // Fazer o Verdadeiro Login do Usuário
     // Melhorar CSS de Login, e Atualziar a Página ao Logar
     // Criar uma Página de Cadastro
     // Criar a Interface de Cliente
     // Trabalhar em todos os Input Files daqui -- (type="file")
 
-    // o que eu tenho que melhorar pra voltar a ficar BEM
-        // Sincronizar os PIX
-        // Adicionar RR como Barraca
-        // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
-        // Criar uma Nova Tabela pra Finanças que são os Resultados dos Meses Todos
-        // Melhorar a Página do Designer que fica aqui dentro mesmo
+
+    // Sincronizar os PIX
+    // Adicionar RR como Barraca
+    // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
+    // Criar uma Nova Tabela pra Finanças que são os Resultados dos Meses Todos
+    // Melhorar a Página do Designer que fica aqui dentro mesmo
 </script>
 
-<script>// Musicas
-        // https://www.youtube.com/watch?v=1VM1qsawtJA&list=RDubAiNW5SXfE&index=2
-        // https://www.youtube.com/watch?v=CsqALB1no40&list=RDubAiNW5SXfE&index=6
-        // https://www.youtube.com/watch?v=OS4W_Zn6YPI&list=RDubAiNW5SXfE&index=27
-        // https://www.youtube.com/watch?v=gZPSuwvz4ro&list=RDubAiNW5SXfE&index=27 (beat pra usar flow arianda com verso de A noite é Pouca)
-        // https://www.youtube.com/watch?v=-afmD1rsXE4&list=RDubAiNW5SXfE&index=27
-        // https://www.youtube.com/watch?v=27ZmFJTY5Vc&list=RDubAiNW5SXfE&index=1
-        // https://www.youtube.com/watch?v=eydrQ1fwoK8&list=RDubAiNW5SXfE&index=27
-        // https://www.youtube.com/watch?v=tKAOeaxnZ9c&list=RDjBLWMd5lV3o&index=24
-
-        // Musica de IA
-        // https://www.youtube.com/watch?v=X1J7yW60RaU&list=RDjBLWMd5lV3o&index=27
-        
-        // Gostei
-        // https://www.youtube.com/watch?v=_HhW9v_BQ3Q&list=RDXX5y7SlxMUg&index=27
-        // https://www.youtube.com/watch?v=aKpyDX4NPjI&list=RDScxlqs6kcCw&index=13
-        // https://www.youtube.com/watch?v=OsGpayqGA4o&list=RDScxlqs6kcCw&index=29
-
-        // da pra pegar do Twitter com thumb https://x.com/JadeBabii/media
-
-        // Dia 20 - Inicio     do "CalcSVG()" | Graf(Limpeza & RecorteStok & Colarborda Nivel)
-        // Dia 21 - Integração do "CalcSVG()" | Atualizaçoes do "Orcamento()"
-        // Dia 22 - Atualizaçoes do "ServChange()" | Inicio do "FiltOn()" q é a Tabela de Preço direto no TemplateProd   | Graf(Limpeza & PinteiNivel & Cortes PVC & SuporteLED)
-        // Dia 23 - Grade Adesivo & Transparente, Compra WM CasasLeo, Pintei interno Nivel, Ajeitei PVC's pra corte, | Natal Mágico com Festa e Nico  desenvolvimento da função "FiltOn()"
-        // Dia 24 - Adicionar a tabelas de Camisas | Casa de Fezxta Adesivo Geladeira | Natal com Simone
-        // Dia 25 - Atualizações em "FiltOn()" melhorando e adicionando camisas | Finalmente o HackRule34(Rebecca) | melhorei a estrutura de Orçamento (correção do AddCarr, InnResut,Zerar e Outros) Natal de Alyne Baby de Ressaka
-        // Dia 26 - Organização na Gráfica para a Festa quase nada de Programação
-        // Dia 27 - Festa da Infinity (apenas isso o dia Todo)
-        // Dia 28 - Ressaka até as 12:00h e casa de Talita, a Noite 2 Sexos Baby
-        // Dia 29 - Fundir o Change, melhorei cP e só foquei nos Options (ReEstruturando a Tabela de Produtos) | HackRuleVideos
-        // Dia 30 - Inicio VibeCoding | Fui pra gráfi | Baby fez Prezente | Fap | Papo com Landia | Pagina de Designer e Solicitação de Arte | Fap
-        // Dia 31 - Comprar Presente Netto | Papo furado com Fexta | UX baby | AnoNovo
-        // Dia 01 - Ressaka ano Novo | StregenThing final | Limpeza no Código | Downloads novos Fapelo | Granja de Vado
-        // Dia 02 - acordei na Granja de Vado | Cheguei a Noite | Criei o Download PDF
-        // Dia 03 - Limpeza Graff (Trouxe as mesas noamente) | Melhorei Download PDF | imbuti PDF nas pagina de arte
-        // Dia 11 - Roteiro Cachorro | Foto da Placa do Tubarão | Trabalhei no COD | Limpeza no JS aqui msm
-</script>
 </html>
