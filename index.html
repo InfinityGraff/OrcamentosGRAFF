@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+    <!--
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
+    -->
     
-    <!--
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-   -->
+   
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -68,7 +68,7 @@
         PDDS:{Id:['F','N'],  Rg:['B','' ],Data:['D','' ],Clnt:['K','' ],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['E','A'],Serv:['S','' ],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','' ],Surg:['A','' ],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V',''],Grad:['E','']/*Tava 'K'*/,Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A'],Cbmt:['E',''],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D',''],Cmnt:['E',''],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
         PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['E','' ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','' ],Lixo:['X','' ]},
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['E','' ],Lcro:['E','' ],Medi:['E',''],Lixo:['X','']},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E','' ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['F','A'],Lcro:['F','A'],Medi:['F','A'],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E',''],Cnt2:['F','A'],OS:['E',''],VlrO:['Y','A'],Summ:['Y','A'],Oimg:['M','A'],Uber:['E',''],VUbr:['Y','A'],Lixo:['X','']},
         OOSS:{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],Lixo:['X','' ]},
@@ -510,7 +510,6 @@
             /*Maneiras de Selecionar uma Célula*/
                 .SelectSoma{background:#ff0000; color:#ffffff}
                 .LinkAtv   {background:#028602; color:#ffffff}
-                .LinkULT   {background:#1900ff; color:#ffffff}
                 
             /*Cria as Linahs de Divisórias de Serv*/ /*Algo assim também pode ser Aplicado pra as Larguras das Colunas*/
             :is(.Bdj_SERV, #H_SERV) > * > tr > :is(td,th):is(:nth-child(3),:nth-child(09),:nth-child(15),:nth-child(20),:nth-child(22),:nth-child(25)){border-right:4px solid #bb0092}
@@ -2350,17 +2349,22 @@
             </div>
 
             <div id="Pag_CLNT" class="none Cl TBLAA">
-                <div class="Bt Stky copybody" style="height: 40px;">
-                    <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
-                    <h1>Tabela de Clientes</h1>
-                    <button onclick="MesclarContato()">Mesclar</button>
-                    <div id="PagPesq_CLNT" class="PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
-                    <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
-                </div>
-                <table id="H_CLNT" class="hMin">
-                    <thead class="Stky" style="z-index:510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
-                    <tbody></tbody>
-                </table>
+                <div class="Wrapper">
+                    <div id="Slide_CLNT" class="Slide_Table">
+                        <div class="Cl">
+                            <div class="Confy_CLNT">
+                                <div class="Bt Stky copybody" style="height: 40px;">
+                                    <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
+                                    <h1>Tabela de Clientes</h1>
+                                    <button onclick="MesclaRow('CLNT',BS['CLNT'])">Mesclar</button>
+                                    <div id="PagPesq_CLNT" class="PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
+                                    <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
+                                </div>
+                                <table id="H_CLNT" class="hMin">
+                                    <thead class="Stky" style="z-index:510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                </div></div></div></div>
             </div>
 
             <div id="Pag_GBRT" class="none Ct" style="overflow-y: scroll;"> <!--VIROU AGENDA-->
@@ -2713,9 +2717,9 @@
     </div>
 </body>
 
-<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ ⚠️ajeitar o DarJJ() nas Outras
+<script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ PASSAR tudo ISSO pra o SB_Crud.js
         const orArr=(e,fallback=[])=>isArr(e) ? e : fallback
-        const IdMaior=(arr)=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
+        const IdMaior=(arr)=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1   
 
         function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
             const P = d_r(_P) ; const COL = AA(P.Cl)
@@ -2761,27 +2765,6 @@
             })
         }
 
-        function MesclarContato(){              // ⭐_ _ _ _ // Não tem efeito Prático, ao fazer isso tem q atualizar a Página
-            const D_Rastr =e=>getClssIN(e,'Rastr-').split('-')
-            const Fim = $('#H_CLNT .LinkULT') // futuramente n precisar disso pois ele vai ser oq tiver mais pedidos atrelado
-            // se for a mesma quantidade então escolhe qualquer um
-            if(!Fim){LOG('Faltou o Link Final') ; return}
-            // também da erro se tiver mais de uma Selecioanda
-            $$('#H_CLNT .LinkAtv').forEach(td=>{
-                const [dR,dRf] = [D_Rastr(td),D_Rastr(Fim)]
-                const Ids_PDDS = td.innerText.split(',')
-                Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,'Clnt',dRf[1])}) // Editar PDDS
-                RmvROW(td) // remove a Linha
-                
-                // Editar Pedidos Prático e Const
-                //const Obj_PDDS   = J['PDDS'].filter(e=>e.Clnt==dR[1])
-                //Obj_PDDS['Clnt'] = linkFinal
-            })
-            // quando terminar Limpa o Filtro
-        }
-
-        function SaveConfig(e){LOG('Salva Config no SB')}
-        // Adicionar e trocar Cliente
 </script>
 
 <script> // SupaBASE
@@ -2842,6 +2825,8 @@
             const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
     };PlayRealTime()
 
+    function SaveConfig(e){LOG('Salva Config no SB')}
+    // Adicionar e trocar Cliente
 </script>
 
 <script>// Iniciação 

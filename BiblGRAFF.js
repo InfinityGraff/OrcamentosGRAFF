@@ -4,6 +4,17 @@ function MdalShow(e){ShowModal($('#FModal'),$(e))}
 const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
 function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
+const ObjValToArr = o =>Object.fromEntries(ObjEtr(o).map(([k,v]) => [k, [].concat(v)])) // Transforma todos os valores do objeto em array (ex: {a:1} → {a:[1]})
+
+const UniqSplit=Arry=>{
+  const    N = e=>RxAcento(RxRepeti(RxEspaco(e))).toLowerCase()
+  const  arr = [...new Map(Arry.map(e=>[N(e),e.trim()])).values()]
+  return arr.filter(a=>!arr.some(b=>{
+    if(a===b) return false ; const na=N(a), nb=N(b) ; if(nb.includes(na)) return true
+    if(Math.abs(nb.length-na.length)<=2 && nb.length>na.length) return true
+    return false
+  }))
+}
 
 // passar pra Biblioteca
 const RangeDat=(arr,In,Out)=> isArr(arr) ? arr.filter(o=>o.Data>=In&&o.Data<=Out) : arr>=In&&arr<=Out
