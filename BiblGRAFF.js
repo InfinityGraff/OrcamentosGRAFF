@@ -16,6 +16,11 @@ const UniqSplit=Arry=>{
   }))
 }
 
+const is_ArrStg = (vall)=>{
+    if (typeof vall !== 'string' || !vall.trim()) return null
+    try {const v = JSON.parse(decodeURIComponent(vall)) ; return Array.isArray(v) ? v : null} catch {return null}
+}
+
 // passar pra Biblioteca
 const RangeDat=(arr,In,Out)=> isArr(arr) ? arr.filter(o=>o.Data>=In&&o.Data<=Out) : arr>=In&&arr<=Out
 const RangeMes=(arr,Mes)=>{if(!Mes){return arr} ; return isArr(arr) ? arr.filter(o=>o.Data?.slice(5,7)==Mes):arr?.Data?.slice(5,7)==Mes}
