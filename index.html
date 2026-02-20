@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-        <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+      
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
-     
-<!--
+        <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+         
+<!--  
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-   --> 
+-->    
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -38,6 +38,11 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
+
+<style>
+    .BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; /*width:250px*/ ; max-height:250px;  box-shadow:0 0 9px #00000069}
+    .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
+</style>
 
 <script> // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
@@ -610,7 +615,7 @@
                             <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
                             <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                                 <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
-                                ${Tm=='Bndj'?`<button class="Mini" AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
+                                ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
                                   Tm=='Link'?`<button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
                             </div>
                         </div>`
@@ -1322,46 +1327,33 @@
 
     <div>     <!--LINKS  - ⭐⭐_ _ _    (⚡ Precisa Funcionar sem BNDJ) (mas acho q ele em Sí nem usa Bndj) -->
         <script> // LINKS
-            const Vazi2=v=>v=='-'||v==''||v==false||v==undefined||v==null // esta vazio (Biblioteca)
             const Griff =(e,Rgx)=>`${e}`.replace(Rgx,'<b style="background:#8f007c; color:white">$1</b>') // Unir todos os Gifs de Pesquisas e todos
-            
             const Getna =e=>JJ['CLNT'][e.Clnt]?.Clnt??''
 
-            function LinkSug(Ipt,Typ){
+            function LinkSug(Ipt,Typ,COL){
                 clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
-                debounceTimer = setTimeout(()=>{
+                debounceTimer = setTimeout(()=>{                   
+                    const [I,_C,RX] = Avnc_Pesq(Ipt,COL)
+                    const GMBRR =k=>k=='Clnt'&&(COL!=='MPAG'&&COL!=='CLNT')  // isso é só uma Gambiarra pra conseguir encontrar o nome correto quando é Link (pois se for true deve converter o nome mas isso só serve pra quem tem Link Cliente)
+                    const RgxOK =j=>ObjEtr(j).some(([k,v])=>(GMBRR(k)?aa(Getna(j)):aa(`${v}`)).includes(aa(I))) // aplicar o RX (subistituir o Includes) com o RX tbm remove aa()
+                    
+                    const list  = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list); return Inn(list,'')}
 
-                    const BsLnk = {CLNT:['P'],SERV:['R'],PGMT:['R'],MPAG:['R'],GRAD:['F'],OS:['F'],UBER:['F']} // P=='Proc' | R='Rest' | F='Falt'
+                    const EXTRA = {'PGMT':j.Form=='Pix'}
 
-                    const [I,_C,RX] = Avnc_Pesq(Ipt,Typ)
-                    const GMBRR =k=>k=='Clnt'&&(Typ!=='MPAG'&&Typ!=='CLNT')  // isso é só uma Gambiarra pra conseguir encontrar o nome correto quando é Link (pois se for true deve converter o nome mas isso só serve pra quem tem Link Cliente)
-                    const Filto =j=>ObjEtr(j).some(([k,v])=>(GMBRR(k)?aa(Getna(j)):aa(`${v}`)).includes(aa(I)))
-                    const tipo = {
-                        P:(j   )=>        Filto(j),                  // Exibe todos que baterem com o critério    - Pesq - Geralmente:(Clnt)
-                        R:(j,v2)=>(I==''||Filto(j)) && Vazi2(j[v2]), // Exibe os Restantes que ainda não tem Link - Rest - Geralmente:(Pgmt,Mpag)
-                        F:(j   )=>(I==''||Filto(j)) && !j['OKAY']    // Exibe se não tiver OK                     - falt - Geralmente:(OS,UBER,GRAD)
-                    }
-                    // o bagui é saber se dentro de OKAY q vai ser um array tem meu Typ
-                    // por exeplo a Tabela 'MPAG' tem uma coluna OKAY que dentro tem ['PGMT','CUST'] - isso quer dizer que foi Linkada com PGMT e Linkada com CUST
-                    // se a tabela PGMT estiver Pesquisando em 'MPAG' primeiro remove todos os tr de MPAG que tiverem 'PGMT' pra depois fazer o filtro
-                    // opção tra trocar com botão de correção dai Exibirá todos! caso eu tenha Linkado errado e queira Trocar
+                    const Filte=j=>RgxOK(j) && (!j.OKAY||!j.OKAY.includes(Typ)) // RgxOK(j) sempre obrigatório - Se OKAY não existir, passa - Se existir, precisa incluir Typ
 
-                    const list  = $('.Sugg',Pai(Ipt))
-                    Show(list) ; if(!I){None(list); return Inn(list,'')}
+                    const filt = (J[COL]||[]).filter(j=>Filte(j,EXTRA[Typ])) // a questão do Pix aqui será apenas um Critério Extra!
 
-                    const base =j=>tipo[BsLnk[Typ][0]](j,Typ=='MPAG'?'Pgmt':Typ=='PGMT'?'Mpag':null)                  // aqui tem GAMBIARRA
-                    const filt = Typ=='PGMT' ? J[Typ].filter(j=>base(j) && j.Form=='Pix') : (J[Typ]||[]).filter(base)
-
-                    // usar a opção de 2° Citério q vai ser o  =  j.Form=='Pix'
-
-                    if(Typ=='CLNT'){// Exibe Lista
-                        Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[Typ]]}')">${Griff(Tm_Suggs[Typ](e),RX)}</a>`).join(''))
+                    if(COL=='CLNT'){// Exibe Lista
+                        Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[COL]]}')">${Griff(Tm_Suggs[COL](e),RX)}</a>`).join(''))
                     }else{          // Exibe Tabela
-                        Inn(list,`<table><thead class="Stky" style="z-index: 510"><tr>${Tm_thSort(ObjKey(BS[Typ]),Typ)}</tr></thead><body>${Tm_Table(Typ,filt)}</body></table>`)
-                        Ex_Pesq($$('tbody > tr',list),Typ,RX,I,true,Ipt) // isso é só pra fazer os Grifos
+                        Inn(list,`<table><thead class="Stky" style="z-index: 510"><tr>${Tm_thSort(ObjKey(BS[COL]),COL)}</tr></thead><body>${Tm_Table(COL,filt)}</body></table>`)
+                        Ex_Pesq($$('tbody > tr',list),COL,RX,I,true,Ipt) // isso é só pra fazer os Grifos
                     } // outro if pra exibir Card
                 },100)
             }
+            // botão pra corrigir caso tenha Linkado errado!
             
         </script>
     </div>
@@ -1394,12 +1386,67 @@
     </div>
 
     <div>  <!--MODAIS    - ⭐_ _ _ _ -->
+        <style> /*CSS dos Modais*/
+            .Dark #FModal>div{background:#1b1b1b}
+            .Lite #FModal>div{background:#ffffff}
+            #FModal h1{font-size:25px}
+            #ModalNota>div      {padding:5px 0px}
+            #ModalNota img      {width:50px;height:50px}
+            #ModalNota .Start2 p{margin:1px 5px}
+            #LugarFotoNotta     {margin-right:3px}
+            #Tbl_Nota td        {padding:3px ; font-size: 15px}
+            #Tbl_Nota th        {padding:3px ; font-size: 13px}
+            #Tbl_Nota thead tr  {background:#5F009E; color:#ffffff}
+            #Tbl_Nota tbody td:nth-child(3){text-align:start}
+            #Tbl_Nota tbody td:nth-child(4){text-align:end}
+            #Tbl_Nota tbody td:nth-child(5){color:#4f4f4f}
+            #Tbl_Nota tbody td:nth-child(6){margin-right: 6px ; text-align: start}
+            #Tbl_Nota tbody td:nth-child(7){color:#00000093 ; font-size: 13px}
+            #Tbl_Nota tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja)}
+        </style>
+
         <script>
+            const Tm_Nota=e=>`
+                <div id="ModalNota" class="Cl Rltv Rd media30">
+                <div id="NOTA" class="w100" style="background: white;padding: 10px;color: black;">
+                    <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+                    <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
+                        <div class="Ct">
+                            <div id="LugarFotoNotta"><img src="./Img/Logo2.png" style="width:50px;height:50px"></div>
+                            <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
+                        </div>
+                        <div class="Start2">
+                            <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A   </p></div>
+                            <div class="FtBd Ct">Cidade:   <p>SÃO LOURENÇO DA MATA     </p></div>
+                            <div class="FtBd Ct">Email:    <p>infinitygraff@outlook.com</p></div>
+                            <div class="FtBd Ct">Contato:  <p>(81) 98726.5401          </p></div>
+                        </div>
+                    </div>
+                    <div class="Ct Cl Hr"><h2>CUPOM FISCAL</h2><div id="DataNota"></div></div>
+                    <div class="Start2 Hr">
+                        <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>   ${'id'}   </p></div>
+                        <div class="Ct"><p class="FtBd">      Data:      </p><p>00/00/2023</p></div>
+                    </div>
+                    <div id="Nota-Clnt" class="Row w100 Ev">
+                        <div><div class="Ct FtLt gap">Nome:     <div data="Clnt"  spellcheck="false" contenteditable="true">-</div></div>
+                             <div class="Ct FtLt gap">Fone:     <div data="Cntt"  spellcheck="false" contenteditable="true" oninput="Mask2.fone(this)">-</div> </div></div>
+                        <div><div class="Ct FtLt gap">Endereço: <div data="Local" spellcheck="false" contenteditable="true">-</div></div>
+                             <div class="Ct FtLt gap">Cidade:   <div data="City"  spellcheck="false" contenteditable="true">-</div></div></div>
+                    </div>
+                    <div id="ConteudoNota" class="w100">${e}</div>
+                </div>
+                <div class="BtnNota w100 Ct">
+                    <button  class="Ct"     onclick="SavePDF2($('#NOTA'),'Nota')"  > PDF <a>${SVVG.PDFs}</a></button>
+                    <button  class="Ct"     onclick="CopyTagImg(this,$('#NOTA'),2)">Print<a>${SVVG.Prnt}</a></button>
+                    <button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a>${SVVG.Copy}</a></button>
+                    <button  class="BtnRed" onclick="XModal(this)"                  >Sair</button>
+                </div>
+            </div>
+            `
+
             function VerNota(Typ){
-                MdalShow('#ModalNota')
-                //const Clone = $('#ModalNota').cloneNode(true)
                 let dados = []
-                if (Typ == 'ORC'){
+                if (Typ=='ORC'){
                     dados = $$('#ORC tbody tr').map(tr=>{
                         const NewObj = {}
                         const tipo = Array.from(tr.classList).find(c=>c.startsWith('Calc_'))
@@ -1407,35 +1454,29 @@
                         const arr  = tipo === 'Calc_M2'  ? '.oQnt ,.oServ,.oTipo,.oLrg ,.oAlt '
                                    : tipo === 'Calc_OFS' ? '.oQnt,.oServ,.oTipo,.oCbmt,.oMatr'
                                    : tipo === 'Calc_QNT' ? '.oQnt,.oServ,.oTipo,.oLrg ,.oAlt ' : ''
-                        $$(arr + Rsut, tr).map(e => {
-                            const cls_o   = Array.from(e.classList).find(c => c.startsWith('o'))
-                            const cls_orc = Array.from(e.classList).find(c => c.startsWith('ORC_'))
-                            const resto1  = cls_o   ? cls_o.slice(1)           : null
-                            const resto2  = cls_orc ? cls_orc.split('_').pop() : null
-                            const key   = resto1 || resto2
-                            if (key) NewObj[key] = cls_o ? VAAL(e) : Inn($('a',e))
-                        })
+                        
+                            $$(arr+Rsut,tr).map(e=>{
+                                const cls_o   = Array.from(e.classList).find(c => c.startsWith('o'))
+                                const cls_orc = Array.from(e.classList).find(c => c.startsWith('ORC_'))
+                                const resto1  = cls_o   ? cls_o.slice(1)           : null
+                                const resto2  = cls_orc ? cls_orc.split('_').pop() : null
+                                const key   = resto1 || resto2
+                                if (key) NewObj[key] = cls_o ? VAAL(e) : Inn($('a',e))
+                            })
                         return NewObj})
-                }
-                // Deve Virar Biblioteca a diferença pra o outro é que esse filtra só as existentes
-                const ArrObj_OrdnCol2 = (Obj,Ordn)=>{
-                    const K = Object.keys(Obj[0])
-                    const x = Ordn.filter(col => K.includes(col))
-                    return [x, ...Obj.map(obj => x.map(col=>obj[col]))]
                 }
                 const dadosFmt = ArrObj_OrdnCol2(AbrevServs(dados),['Qnt','_','Serv','Cbmt','Matr','Lrg','X','Alt','Vund','SbTt'])
                 const [head,...rows] = dadosFmt
-                $('#ConteudoNota'/*,Clone*/).innerHTML = `
-                    <table id="TabelaNotinha" class="w100">
+
+                const Enel = `
+                    <table id="Tbl_Nota" class="w100">
                         <thead><tr>${head.map(c=>`<th>${D_Brev[c]??c}</th>`).join('')}</tr></thead>
                         <tbody>    ${rows.map(r=>`<tr>${r.map(v=>`<td>${v??''}</td>`).join('')}</tr>`).join('')}</tbody>
                     </table>
                     <h2 id="TotalNotta" class="Hr Ct">${RS(dados.reduce((a,e)=>a+Num(e.SbTt),0))}</h2>`
-                //MODAL(Clone.innerHTML)
-            }
 
-            // este Modal Novo já não funciona mais com "Esc"
-            // Login, Notas e Imagens
+                MODAL(Tm_Nota(Enel))
+            }
         </script>
     </div>
 </div>
@@ -2620,7 +2661,6 @@
             <div id="Pag_CONF">
                 <h1>Configurações</h1>
                 <div id="ConfigPag" class="Cl Rltv Rd">
-                    <div class="Ct Close" onclick="SairMdal()">X</div>
                     <div><input id="DarkLite" type="checkbox" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
                     <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
                     <button onclick="TrocaCSS('CSS1')">CSS1</button>
@@ -2629,72 +2669,6 @@
                 </div>
                 <!--Tudo aqui será dependente do Login do Usuário-->
             </div>
-        </div>
-    </div>
-
-    <div id="FModal" class="Ct">
-        <style> /*CSS dos Modais*/
-            .Dark #FModal>div{background:#1b1b1b}
-            .Lite #FModal>div{background:#ffffff}
-            #FModal h1{font-size:25px}
-            #ModalNota>div{padding:5px 0px}
-            #Nota-Clnt>div>div>div{margin:0px 5px}
-            #ModalNota img{width:50px;height:50px}
-            #ModalNota .Start2 p{margin:1px 5px}
-            #LugarFotoNotta{margin-right:3px}
-            #TabelaNotinha td{padding:3px ; font-size: 15px;}
-            #TabelaNotinha th{padding:3px ; font-size: 13px;}
-            #TabelaNotinha thead tr{background:#5F009E; color:#ffffff}
-            #TabelaNotinha tbody td:nth-child(3){text-align:start}
-            #TabelaNotinha tbody td:nth-child(4){text-align:end}
-            #TabelaNotinha tbody td:nth-child(5){color:#4f4f4f}
-            #TabelaNotinha tbody td:nth-child(6){margin-right: 6px ; text-align: start;}
-            #TabelaNotinha tbody td:nth-child(7){color:#00000093 ; font-size: 13px;}
-            #TabelaNotinha tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja);}
-        </style>
-
-        <script>function SairMdal(){None('#FModal')}</script>
-
-        <div id="ModalNota" class="Cl Rltv Rd media30">
-            <div id="NOTA" class="w100" style="background: white;padding: 10px;color: black;">
-                <div id="Titulo-Nota" class="w100 Bt Hr"></div>
-                <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
-                    <div class="Ct">
-                        <div id="LugarFotoNotta"><img src="./Img/Logo2.png" style="width: 50px;height: 50px;"></div>
-                        
-                        <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
-                    </div>
-                    <div class="Start2">
-                        <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A   </p></div>
-                        <div class="FtBd Ct">Cidade:   <p>SÃO LOURENÇO DA MATA     </p></div>
-                        <div class="FtBd Ct">Email:    <p>infinitygraff@outlook.com</p></div>
-                        <div class="FtBd Ct">Contato:  <p>(81) 98726.5401          </p></div>
-                    </div>
-                </div>
-                <div class="Ct Cl Hr"><h2>CUPOM FISCAL</h2><div id="DataNota"></div></div>
-                <div class="Start2 Hr">
-                    <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>   ${id}   </p></div>
-                    <div class="Ct"><p class="FtBd">      Data:      </p><p>00/00/2023</p></div>
-                </div>
-                <div id="Nota-Clnt" class="Row w100 Ev">
-                    <div><div class="Ct FtLt">Nome:     <div data="Clnt"  spellcheck="false" contenteditable="true">-</div></div>
-                         <div class="Ct FtLt">Fone:     <div data="Cntt"  spellcheck="false" contenteditable="true" oninput="Mask2.fone(this)">-</div> </div></div>
-                    <div><div class="Ct FtLt">Endereço: <div data="Local" spellcheck="false" contenteditable="true">-</div></div>
-                         <div class="Ct FtLt">Cidade:   <div data="City"  spellcheck="false" contenteditable="true">-</div></div></div>
-                </div>
-                <div id="ConteudoNota" class="w100"></div>
-            </div>
-            <style>  /*isso é pra ser Biblioteca q são Propiriedades de Botões com SVG dentro*/
-                .BtnNota button  {gap: 5px; padding: 0px 8px !important;}
-                .BtnNota button a{width: 15px; height: 15px; fill: white}
-            </style>
-            <div class="BtnNota w100 Ct">
-                <button  class="Ct"     onclick="SavePDF2($('#NOTA'),'Nota')"   >PDF <a onload="Inn(this,SVVG.PDFs)"></a></button>
-                <button  class="Ct"     onclick="CopyTagImg(this,$('#NOTA'),2)">Print<a onload="Inn(this,SVVG.Prnt)"></a></button>
-                <!--<button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a onload="Inn(this,SVVG.Copy)"></a></button>-->
-                <button  class="BtnRed" onclick="SairMdal()"                   >Sair</button>
-            </div>
-            
         </div>
     </div>
 </body>
@@ -2850,6 +2824,9 @@
     // Descobrir pq o CSS ta feioso na hora de botar vários Itens na BNDJ
     // Criar uma Nova Tabela pra Finanças que são os Resultados dos Meses Todos
     // Melhorar a Página do Designer que fica aqui dentro mesmo
+
+    // Html-1 - seria Página de Orçamento (único SB q precisa carregar aqui é Produtos e Rascunho)
+    // Html-2 - Tabelas, onde fica todas as Tabelas pois todas tem que estarem Juntas
 </script>
 
 </html>

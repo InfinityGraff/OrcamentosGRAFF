@@ -16,20 +16,23 @@ const UniqSplit=Arry=>{
   }))
 }
 
+
+
 const is_ArrStg = (vall)=>{
     if (typeof vall !== 'string' || !vall.trim()) return null
     try {const v = JSON.parse(decodeURIComponent(vall)) ; return Array.isArray(v) ? v : null} catch {return null}
 }
 
 // passar pra Biblioteca
+const ArrObj_OrdnCol2 = (Obj,Ordn)=>{const K = Object.keys(Obj[0]) ; const x = Ordn.filter(col=>K.includes(col)) ; return [x, ...Obj.map(obj=>x.map(col=>obj[col]))]} // Cria uma tabela ordenada a partir de um array de objetos
 const RangeDat=(arr,In,Out)=> isArr(arr) ? arr.filter(o=>o.Data>=In&&o.Data<=Out) : arr>=In&&arr<=Out
 const RangeMes=(arr,Mes)=>{if(!Mes){return arr} ; return isArr(arr) ? arr.filter(o=>o.Data?.slice(5,7)==Mes):arr?.Data?.slice(5,7)==Mes}
-
+const Vazi2=v=>v=='-'||v==''||v==false||v==undefined||v==null // esta vazio (Biblioteca)
 
 // Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
 function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
 function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
-function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
+//function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
 
 
 
