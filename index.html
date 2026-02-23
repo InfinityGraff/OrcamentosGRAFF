@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-      
+       
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
          
-<!--  
+<!--    
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
--->    
+--> 
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -39,10 +39,12 @@
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
-<style>
-    .BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; /*width:250px*/ ; max-height:250px;  box-shadow:0 0 9px #00000069}
-    .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
-</style>
+<!--
+    <style>
+        .BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; /*width:250px*/ ; max-height:250px;  box-shadow:0 0 9px #00000069}
+        .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
+    </style>
+-->
 
 <script> // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
@@ -72,14 +74,14 @@
     const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
         PDDS:{Id:['F','N'],  Rg:['B','' ],Data:['D',''  ],Clnt:['K','K'],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
         SERV:{Id:['F','I'],Data:['D','A'],Clnt:['E','A>'],Serv:['S','<'],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','>'],Surg:['A','<'],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V','>'],Grad:['E','<'],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A>'],Cbmt:['E','<'],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D','>'],Cmnt:['E','<'],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['F','I'],Data:['D','' ],Clnt:['K',''  ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','K'],Lixo:['X','' ]},
+        PGMT:{Id:['E','I'],Data:['D','' ],Clnt:['K',''  ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Mpag:['K','K'],Lixo:['X','' ]},
         CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''  ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['F','A'],Lcro:['F','A'],Medi:['F','A'],Lixo:['X','']},
         
         GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E','>'],Cnt2:['F','A<'],OS:['K','K'],VlrO:['Y','A'],Summ:['Y','A>'],Oimg:['M','A<'],Uber:['K','K'],VUbr:['Y','A'],OKAY:['Q', ''],Lixo:['X','']},
         OS  :{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],OKAY:['Q', ''],Lixo:['X','' ]},
         UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['V','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['E',''],OKAY:['Q', ''],Lixo:['X','']},
 
-        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['K','K'],Vlpg:['Y','A'],OKAY:['Q', ''],Lixo:['X','']}, // Removi 'Cpvt'
+        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['E',''],Vlpg:['Y','A'],Link:['E',''],OKAY:['Q', ''],Lixo:['X','']}, // Removi 'Cpvt'
         RG  :{Rg:['F','' ],Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']}, // isso aqui é o INFO
         ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']},
         IMGS:{},
@@ -90,8 +92,8 @@
     const LINK = {GRAD:['SERV'],OS:['GRAD'],UBER:['GRAD'],MPAG:['PGMT','OS','UBER']} // esses são os Passivos que São Linkados (Serve para que se dentro de OKAY q é um JSON Existir a sua tabela Ativa, então não precisa exibir ele no LinkSugg) Talvez eu deva mudar de OKAY pra "Link"
 
     const Tm_Suggs = {
-         SERV:e=> `<p>  ${e.Id  } - ${Getna(e)} - ${e.Serv} ${e.Desc}</p>`
-        ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e)} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
+         SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
+        ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
         ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`                                                 
 
         ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`                                      
@@ -581,9 +583,10 @@
                                     : ''
 
             const FazerTitle=(col,Find)=>{ // fazer os Titulos para as Bandeijas
-                return  col==='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
-                        col==='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
-                                       Find.map(e=>`${e[col]}`          ).join(' | ')
+                return  col=='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
+                        col=='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
+                        col=='Mpag' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
+                                      Find.map(e=>`${e[col]}`          ).join(' | ')
             }
 
             const AbrevServs=arr=>arr.map(e=>{
@@ -599,9 +602,11 @@
                 const r = d_r(R)                              // Melhorar declarações
                 const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]   // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
                 const COL   = AA(col)
-                const Ordem = ObjKey(BS[COL])
+
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
-                const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? [JJ[COL][dado]] : []
+                const Dados2=dado=>{if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0]][E[1]]})}
+                const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
+
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
                 const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
@@ -610,6 +615,7 @@
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
 
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
+                const Ordem = ObjKey(BS[COL])
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,Ordem),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                             <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
@@ -698,7 +704,7 @@
                     </span>
                 </div>`
 
-            function Avnc_Pesq(Ipt,Typ){
+            function Avnc_Pesq(Ipt,Typ){ // isso faz o Regex de Pesquisa (Deve ter um Nome Melhor)
                 const I = Ipt.value.trim().replace(/\s+/g,' ')                  // Limpar exesso de Espaços
                 const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'               // Funcionando
                 const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''                // Funcionando
@@ -1311,6 +1317,7 @@
                 const cLnth = see.size
                 /*Serv*/ const JServ = SUM.Serv;const count = {};for(let i=0;i<JServ.length;i++){const k=JServ[i];count[k]=(count[k]||0)+1}
 
+                // onde cada coisinha vai ser colocada, poderia ser chamada em um BS especial, dai eu escolho como carregar seu TM ficaria Tm_Foot()
                 Inn($(Rx2([Typ,'Foot','Id'  ])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Ids.length  }         </div>`)
                 Inn($(Rx2([Typ,'Foot','Clnt'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${cLnth       } Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cnt).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${NM[k]} - ${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${cLnth} Clientes</div></div>`)
                 Inn($(Rx2([Typ,'Foot','Serv'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${JServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(count).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${JServ.length} Serviços</div></div>`)
@@ -1327,23 +1334,21 @@
 
     <div>     <!--LINKS  - ⭐⭐_ _ _    (⚡ Precisa Funcionar sem BNDJ) (mas acho q ele em Sí nem usa Bndj) -->
         <script> // LINKS
-            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,'<b style="background:#8f007c; color:white">$1</b>') // Unir todos os Gifs de Pesquisas e todos
-            const Getna =e=>JJ['CLNT'][e.Clnt]?.Clnt??''
+            //const Griff =(e,Rgx)=>`${e}`.replace(Rgx,'<b style="background:#8f007c; color:white">$1</b>') // Unir todos os Gifs de Pesquisas e todos
+            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
+            const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
 
             function LinkSug(Ipt,Typ,COL){
                 clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
-                debounceTimer = setTimeout(()=>{                   
+                debounceTimer = setTimeout(()=>{
                     const [I,_C,RX] = Avnc_Pesq(Ipt,COL)
-                    const GMBRR =k=>k=='Clnt'&&(COL!=='MPAG'&&COL!=='CLNT')  // isso é só uma Gambiarra pra conseguir encontrar o nome correto quando é Link (pois se for true deve converter o nome mas isso só serve pra quem tem Link Cliente)
-                    const RgxOK =j=>ObjEtr(j).some(([k,v])=>(GMBRR(k)?aa(Getna(j)):aa(`${v}`)).includes(aa(I))) // aplicar o RX (subistituir o Includes) com o RX tbm remove aa()
+                    const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BS[COL][k]?.[0]=='K' ? Getna(j,k) : v)) // tentar botar esa idéia de BS[COL] como um Helper
                     
                     const list  = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list); return Inn(list,'')}
-
-                    const EXTRA = {'PGMT':j.Form=='Pix'}
-
-                    const Filte=j=>RgxOK(j) && (!j.OKAY||!j.OKAY.includes(Typ)) // RgxOK(j) sempre obrigatório - Se OKAY não existir, passa - Se existir, precisa incluir Typ
-
-                    const filt = (J[COL]||[]).filter(j=>Filte(j,EXTRA[Typ])) // a questão do Pix aqui será apenas um Critério Extra!
+                    
+                    const EXTRA = {'PGMT':(j)=>j.Form=='Pix'}
+                    const Filte=(j,Extra)=>RgxOK(j) && (!j.OKAY||!j.OKAY.includes(Typ)) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
+                    const filt =(J[COL]||[]).filter(j=>Filte(j,EXTRA[COL]||null)) // Passar apenas a função Extra, não execulta ela agora!
 
                     if(COL=='CLNT'){// Exibe Lista
                         Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[COL]]}')">${Griff(Tm_Suggs[COL](e),RX)}</a>`).join(''))
@@ -2693,11 +2698,9 @@
                 /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(_P,'','DOM')) : Befor($('table tbody',_td(Eu)),Tm_Table(COL,[Def],_P))
                 /*Sub*/ Sb_EDIT(supaBASE,P.Ty,P.Id,P.Cl,arr)
             }
-        }
+        } // antes de tirar ele daqui, corrigir a questão do por que ele SOME! ao Clicar
 
         function EditCell(e,Mod,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) // e:Celula | Mod:'Edit/Add,Del' |  Val: Valor | Auto: veio Automatica | SB: tem SupaBase       
-            //is_ArrStg(vall)
-            //const V  = vall==""?"":vall||VAL(e)
             const V = is_ArrStg(vall) ?? (vall === "" ? "" : (vall || VAL(e))) // pega valor se for vazio ou string, ou array de String
 
             if(V==Nm(e)/* || Nm(e)=='False'*/){return} // não foi Aterado || é uma img (esse False precisa sair, Pois se for uma imagem deve receber aqui seu SRC)    
