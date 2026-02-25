@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-       
-        <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css">
+<!--           
+        <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
          
-<!--    
+--> 
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
---> 
+
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -40,10 +40,6 @@
 </head>
 
 
-    <style>
-        .BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; /*width:250px*/ ; max-height:250px;  box-shadow:0 0 9px #00000069}
-        .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
-    </style>
 
 
 <script> // Configuração do SupaBase
@@ -1347,7 +1343,7 @@
                     const list  = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list); return Inn(list,'')}
                     
                     const EXTRA = {'PGMT':(j)=>j.Form=='Pix'}
-                    const Filte=(j,Extra)=>RgxOK(j) && (!j.OKAY||!j.OKAY.includes(Typ)) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
+                    const Filte=(j,Extra)=>RgxOK(j) && (!j.OKAY) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
                     const filt =(J[COL]||[]).filter(j=>Filte(j,EXTRA[COL]||null)) // Passar apenas a função Extra, não execulta ela agora!
 
                     if(COL=='CLNT'){// Exibe Lista
