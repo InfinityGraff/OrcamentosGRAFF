@@ -1,0 +1,27 @@
+<script>
+    // coisas que eu apaguei do código Global q n tenho certeza ainda se pode ser completamente excluido
+    const D        = {PDDS:0 ,SERV:0,CLNT:0,PGMT:0,GRAD:0,OS:0,UBER:0,MPAG:0} // (apresentará erro quando Tentar usar ai vou descobrir ela)
+    const D_P     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+    const Coll    =x=>`td:nth-child(${x})`
+    const H_Col_p =(Typ,col)=>  `#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
+    const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || [] // remover pois vai ficar "OBSOLETO"
+    const Rx2     =arry=>Rx(['Rastr',...arry])
+    const D_R     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
+
+    const BBS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com autoComp
+        PDDS:{Id:['F','N'],  Rg:['B','' ],Data:['D',''  ],Clnt:['K','K'],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
+        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['E','A>'],Serv:['S','<'],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','>'],Surg:['A','<'],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V','>'],Grad:['E','<'],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A>'],Cbmt:['E','<'],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D','>'],Cmnt:['E','<'],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
+        PGMT:{Id:['E','I'],Mpag:['K','K'],Data:['D','' ],Clnt:['K',''  ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Lixo:['X','' ]},
+        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''  ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['F','A'],Lcro:['F','A'],Medi:['F','A'],Lixo:['X','']},
+        
+        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E','>'],Cnt2:['F','A<'],OS:['K','K'],VlrO:['Y','A'],Summ:['Y','A>'],Oimg:['M','A<'],Uber:['K','K'],VUbr:['Y','A'],OKAY:['Q', ''],Lixo:['X','']},
+        OS  :{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],OKAY:['Q', ''],Lixo:['X','' ]},
+        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['V','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['E',''],OKAY:['Q', ''],Lixo:['X','']},
+
+        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['E',''],Vlpg:['Y','A'],Link:['E',''],OKAY:['Q', ''],Lixo:['X','']}, // Removi 'Cpvt'
+        RG  :{Rg:['F','' ],Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']}, // isso aqui é o INFO
+        ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']},
+        IMGS:{},
+        GRD2:{Id:['E',''],Grafit:['E',''],Grafit_Cont:['E',''],BPrint:['E',''],BPrint_Cont:['E',''],Inová:['E',''],Inová_Cont:['E',''],Bureal:['E',''],Bureal_Cont:['E',''],Barraca:['E',''],Barraca_Cont:['E',''],Novalmp:['E',''],Novalmp_Cont:['E',''],JLTal:['E',''],JLTal_Cont:['E',''],Tatiane:['E',''],Tatiane_Cont:['E','']}
+    }
+</script>

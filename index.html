@@ -16,8 +16,8 @@
           
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
-         
-<!-- 
+<!--         
+
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
 --> 
@@ -39,9 +39,6 @@
     <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
-
-
-
 <script> // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
@@ -50,56 +47,31 @@
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const J={},JJ={},ALL={} // nem sei se eu realmente to usando este ALL
-    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui
-    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
-    //const D        = {PDDS:0 ,SERV:0,CLNT:0,PGMT:0,GRAD:0,OS:0,UBER:0,MPAG:0} // (apresentará erro quando Tentar usar ai vou descobrir ela)
-    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''}
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass'}
-    const Llmt     = {PDDS:['2026-02-12','2026-12-30'],SERV:['2026-02-12','2026-12-30'],PGMT:['2026-02-12','2026-12-30']}
-    let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
-    let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
-
-    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg'}
-    const CRYCLS = {A:'AutoComp',I:'CorID','>':'Fita1','<':'Fita2',K:'LnK'}
-    const CRYPP  = {F:'Fixo',E:'Edit',D:'Data',V:'Valr',S:'Slct',C:'Chek',M:'Imgs',Z:'Mdds',B:'Bndj',    A:'Auto',O:'Soma',X:'Lixo',W:'Ssvg',Y:'Sync',K:'Link',G:'BjIn',Q:'OKAY'}
-    
-    const BS = { // ['1º é Forma de Carregar', '2º são as Classes CSS // Pode ter um Terceiro q deva ter algo aver com AutoComp
-        PDDS:{Id:['F','N'],  Rg:['B','' ],Data:['D',''  ],Clnt:['K','K'],Serv:['B','' ],Valr:['A','' ],Pgmt:['B','' ],Deve:['A','' ],Cust:['A','' ],Lcro:['A','' ],Stts:['W','' ],Lixo:['X','' ]}, /*Valr - Cust - Lcro - Stts*/
-        SERV:{Id:['F','I'],Data:['D','A'],Clnt:['E','A>'],Serv:['S','<'],Tipo:['S','' ],Qnt :['E','' ],Lag :['Z','' ],Alt :['Z','' ],Desc:['E','>'],Surg:['A','<'],Valr:['V','A'],TArt:['S',''],Dsng:['S',''],Arte:['M','' ],CArt:['V','>'],Grad:['E','<'],Gimg:['M','A'],Forn:['S','A'],OS:['Y','A'],Uber:['Y','A>'],Cbmt:['E','<'],VCbt:['V',''],OK:['C',''],Entg:['C',''],Detg:['D','>'],Cmnt:['E','<'],SStts:['W','A'],Lixo:['X','']}, // Arte, Gimg, OS, Uber, SStts
-        PGMT:{Id:['E','I'],Mpag:['K','K'],Data:['D','' ],Clnt:['K',''  ],Valr:['V','' ],Form:['S','' ],Desc:['E','' ],Lixo:['X','' ]},
-        CLNT:{Id:['F','I'],Clnt:['E','' ],Cmpt:['E',''  ],Cntt:['E','' ],Lcal:['E','' ],Loja:['E','' ],CtLj:['E','' ], Cat:['E','' ],Stts:['E','' ],Link:['F','A'],Lcro:['F','A'],Medi:['F','A'],Lixo:['X','']},
-        
-        GRAD:{Id:['F','I'],Grad:['E','' ],Data:['D','' ],ImgU:['M','A'],ImgG:['M','A'],Forn:['S','A'],SrvF:['S','' ], Qnt:['E','' ], Lag:['Z','' ], Alt:['Z','' ],Val1:['V',''],Valr:['Y','A'],Cont:['E','>'],Cnt2:['F','A<'],OS:['K','K'],VlrO:['Y','A'],Summ:['Y','A>'],Oimg:['M','A<'],Uber:['K','K'],VUbr:['Y','A'],OKAY:['Q', ''],Lixo:['X','']},
-        OS  :{Id:['F','I'],OS  :['E','' ],Valr:['V','' ],Oimg:['M','A'],Cont:['E','' ],Cnt2:['A','A'],Desc:['E','' ],OKAY:['Q', ''],Lixo:['X','' ]},
-        UBER:{Id:['F','I'],Uber:['E','' ],Data:['D','' ], Img:['M','A'],Dest:['E','' ],Hora:['E','' ],Valr:['V','' ],Dirc:['E','' ],Prds:['E','' ],Desc:['E',''],Grad:['E',''],Link: ['E',''],OKAY:['Q', ''],Lixo:['X','']},
-
-        MPAG:{Id:['F','I'],Data:['E',''],Clnt:['E',''],Valr:['E',''],Hora:['E',''], Form:['E',''],User:['E','' ],Pgmt:['E',''],Vlpg:['Y','A'],Link:['E',''],OKAY:['Q', ''],Lixo:['X','']}, // Removi 'Cpvt'
-        RG  :{Rg:['F','' ],Data:['F',''],Hora:['F',''],User:['F',''],  PC:['F',''],Navgd:['F','']}, // isso aqui é o INFO
-        ARTE:{Id:['F','I'],Nome:['E',''],Clnt:['E',''],Dsng:['S',''],Tema:['E',''],Tempo:['E',''],Img:['M',''],Dslk:['E',''],Valr:['V',''],Prazo:['D',''],Stts:['E',''],Lixo:['X','']},
-        IMGS:{},
-        GRD2:{Id:['E',''],Grafit:['E',''],Grafit_Cont:['E',''],BPrint:['E',''],BPrint_Cont:['E',''],Inová:['E',''],Inová_Cont:['E',''],Bureal:['E',''],Bureal_Cont:['E',''],Barraca:['E',''],Barraca_Cont:['E',''],Novalmp:['E',''],Novalmp_Cont:['E',''],JLTal:['E',''],JLTal_Cont:['E',''],Tatiane:['E',''],Tatiane_Cont:['E','']}
-    }
-    const Deff = Object.fromEntries(ObjEtr(BS).map(([t,c])=>[t,Object.fromEntries(ObjKey(c).map(k=>[k,'']))]))
-
-    const LINK = {GRAD:['SERV'],OS:['GRAD'],UBER:['GRAD'],MPAG:['PGMT','OS','UBER']} // esses são os Passivos que São Linkados (Serve para que se dentro de OKAY q é um JSON Existir a sua tabela Ativa, então não precisa exibir ele no LinkSugg) Talvez eu deva mudar de OKAY pra "Link"
-
-    const Tm_Suggs = {
+    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass'} // Campo pra Imbutir dentro do BS
+    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
+    const Llmt     = {PDDS:['2026-02-12','2026-12-30'],SERV:['2026-02-12','2026-12-30'],PGMT:['2026-02-12','2026-12-30']}  // Campo pra Imbutir dentro do BS
+    const Tm_Suggs = {// Campo pra Imbutir dentro do BS
          SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
         ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
         ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`                                                 
-
         ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`                                      
         ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
         ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`                                                 
-
         ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`                              
     }
 
-    // Cliente em SERV e em PGMT deveria apenas Imitar o que tem no PDDS
+    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
+    let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
+    let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
+    
+    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg',MPAG:'Mpag'}
+
+
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -447,7 +419,7 @@
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação',,'Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
         Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
     }
-    const AllList= ObjKey(O)
+    
 
     const GetycCores = {
         'Preto'       : '#000000',
@@ -469,37 +441,21 @@
 </script>
 
 <script> // Bibliotecas
-    // Epecíficas (as q Retorna)
-        const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1])
-        const tr_ID   =tr =>getClss(tr,'tr-').split('-')[1]
-        const TRs     =Typ=>$$(`#H_${Typ} > tbody > tr`)
-        const Rx2     =arry=>Rx(['Rastr',...arry])
-        const D_R     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rastr-')).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
-        const Colx    =(Typ,col)=>FIdx(OjKy(Typ),col)+1
-        const COLLLL  =(Typ,col)=>{if (!Typ || !col) return "";return `td:nth-child(${Colx(Typ, col)})`}
-        const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${COLLLL(Typ,col)} > div > .P-P`)
-        const tr_Viw  =   Typ=>  $$(`#H_${Typ} > tbody > tr:not([class*=" n"])`)
-        const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${COLLLL(Typ,col).replace('td:','th:')}`)        
-        
-        const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
-        const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
-        const slideTo=(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
-        const ReszH=(Typ)=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
-        const ReszW=(Typ)=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
-
-        //const D_P     =R=>{const v = (typeof R === "string" ? R : getClssIN(R,'Rpai-' )).split('-') ; return {r:v[0],Typ:v[1],Row:v[2],Col:v[3],Tm:v[4],ColX:v[5]}}
-        //const Coll    =x=>`td:nth-child(${x})`
-        //const H_Col_p =(Typ,col)=>  `#H_${Typ} > tbody > tr > ${Col(Typ,col)} p` // analisar se é realmente nessesário
-        //const RgxPixAV=e=>e.trim().match(/(\d+[\.,]?\d*)([a-zA-Z]+)/) || [] // remover pois vai ficar "OBSOLETO"
-
-        //Evento de Click na Página inteira, com a intenção de Ocultar tudo que for Bandeijas
-        function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-        const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
+    const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1])
+    const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
+    const TRs      =Typ=>$$(`#H_${Typ} > tbody > tr`)
+    const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
+    const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
+    const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+    const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
     <div>   <!--TABELAS  - ⭐⭐⭐_ _ -->
         <style> /*CSS apenas da Tabela*/
+            #H_PGMT thead th:nth-child(7),#H_PGMT tbody td:nth-child(7){max-width: 100px !important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;justify-content: start;}
+
             /*Particularidades*/
             .BndjFOT,.BndjFLT{overflow: hidden}
             .BndjFLT{border-radius:0 0 10px 10px}
@@ -539,7 +495,7 @@
                     "Obs  Obs  Obs ";
             }
             table.Card > tbody > tr[class^="n"]{display: none;}
-            table.Card .AutoComp,table.Card .CorID{background: transparent !important;}
+            table.Card .Auto,table.Card .CorID{background: transparent !important;}
                                        table.Card > tbody > tr{width:calc(25% - 9px)}        /*Largura dos Cards 4 por Linha*/
             @media (max-width: 800px) {table.Card > tbody > tr {width: calc(33.333% - 8px)}} /* 3 por linha */
             @media (max-width: 500px) {table.Card > tbody > tr {width: 100%}}                /* 1 por linha */
@@ -568,8 +524,8 @@
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
-            const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${OjKy(Typ).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
-            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td class="${Tm_R('Foot',x,Typ)} Rltv"></td>`).join('')
+            const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
+            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" Rltv"></td>`).join('')
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
             function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
             function CopyFone(Fone,Eu){LOG(Fone)}
@@ -593,16 +549,14 @@
                 e._ = '-' ; e.X = 'x'
                 return e
             })
-            
+
             function Tm_Bndj(R,Arr,DOM){
                 const r = d_r(R)                              // Melhorar declarações
                 const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]   // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
                 const COL   = AA(col)
-
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
-                const Dados2=dado=>{if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0]][E[1]]})}
+                const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
                 const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
-
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
                 const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
@@ -611,8 +565,7 @@
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
 
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
-                const Ordem = ObjKey(BS[COL])
-                if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,Ordem),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
+                if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                             <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
                             <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
@@ -634,6 +587,8 @@
                             return true
                         })
                         Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))
+                        Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(BS[TYP].Orden,TYP)}</tr>`)
+                        Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(BS[TYP].Orden,TYP)}</tr>`)
                         RFresh(TYP,'All')
                         Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
                         if($(`#SKLT_${TYP}`)){Add_N($(`#SKLT_${TYP}`))} // Ocultar o Esqueleto
@@ -790,6 +745,12 @@
             .ThFilt_Rtv{color:#ffffff; background:#ff0000}            /*aplica no Filt*/
         </style>
         <script> // FILTROS - SCRIPT
+            const Colx    =(Typ,col)=>FIdx(BS[Typ].Orden,col)+1
+            const COLLLL  =(Typ,col)=>{if (!Typ || !col) return "";return `td:nth-child(${Colx(Typ, col)})`}
+            const Colls   =(Typ,col,n=null)=>$$(`#H_${Typ} > tbody > tr${n?':not([class*=" n"])':''} > ${COLLLL(Typ,col)} > div > .P-P`)
+            const TH      =(Typ,col)=>$(`#H_${Typ} > thead > tr ${COLLLL(Typ,col).replace('td:','th:')}`)
+            const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
+
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
                     `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
@@ -810,7 +771,7 @@
             }
 
             const Trato=(Arr,col)=>{                 // ❌ Corrige palavras (xDOM talvez já de pra eu Analisar isso!)
-                return col==='Valr' ?  FazArry(Arr).map(e=>Cm(e.replace('R$','').trim()))     // Remove os R$ (não tão nessesário caso os dados venham certinhos)
+                return  col==='Valr' ?  FazArry(Arr).map(e=>Cm(e.replace('R$','').trim()))     // Remove os R$ (não tão nessesário caso os dados venham certinhos)
                       : col==='Pgmt' ?      Arr.flatMap(e=>e.replace(/\d*/g,'').split(' | ')) // Pega apenas os ['Pix','Av'...]
                       : col==='Stts' ? ''
                       : Arr
@@ -823,22 +784,23 @@
                     const Pagament = ['Id','Desc','Data','Link','Mpag','Valr']
                     const Pedidoss = ['Id','Lin' ,'Data']
                     const Mercapag = ['Id','Valr','Data','Hora','Mpag','Link']
+                    const Bs       = BS[Typ].Json[Col].TH
+                    const ResolveBs=(bs)=>{try{return Function(`return ${bs}`)()}catch{return bs}}
+
+                    LOG(Bs,ResolveBs(Bs))
 
                     const Valls =   Brute=='Brute'                        ? Uniq(Colls(Typ,Col,n).map(e=>VAL(e)))             :
-                                    Typ=="SERV" && Col==='OK'             ? ['true','false']            :
-                                    Typ=="SERV" && Col==='Entg'           ? ['true','false']            : 
-                                    Typ=="SERV" && Col==='Arte'           ? ['true','false']            : 
+                                    Bs!==''                               ? ResolveBs(Bs) :
                                     Typ=="CLNT" && Clientes.includes(Col) ? Uniq(J.CLNT.map(E=>E[Col])) :
                                     Typ=="MPAG" && Mercapag.includes(Col) ? Uniq(J.MPAG.map(E=>E[Col])) :
                                     Typ=="SERV" && Servicos.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Serv'].map(E=>Trato(E[Col],Col)))) :
                                     Typ=="PGMT" && Pagament.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Pgmt'].map(E=>Trato(E[Col],Col)))) :
                                     Typ=="PDDS" && Pedidoss.includes(Col) ? Uniq(J.PDDS.map(e=>e[Col])) :
-                                    Col=='Clnt' ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && ['Cust'].includes(Col) ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col==="Serv"           ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col==='Valr'           ? Uniq(todoTitle[`Sum_${Col}`].map(e=>Cm(e))) :
+                                    Col=='Clnt'                           ? Uniq(todoTitle[Col]) :
+                                    Typ=="PDDS" && Col=='Cust'            ? Uniq(todoTitle[Col]) :
+                                    Typ=="PDDS" && Col=="Serv"            ? Uniq(todoTitle[Col]) :
+                                    Typ=="PDDS" && Col=='Valr'            ? Uniq(todoTitle[`Sum_${Col}`].map(e=>Cm(e))) :
                                     Typ=="PDDS" && Col==='Stts'           ? ListEtps.map(e=>`${e[0]} <a style="fill:rgb(${COR[e[1]]})">${SVGEtapas[e[0]]}</a>`) :
-                                    AllList.includes(Col) ? O[Col] :
                                     // o Obigetivo central da Função é Evitar isso!
                                     Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
 
@@ -847,7 +809,7 @@
             }
             
             function Tm_Filt(Eu,Typ,col){            // ✔️ Depende da Tabela Carregada
-                if(BS[Typ][col][1]==true){return} ; BS[Typ][col][1]=true // Evita q carregue 2 Vezes!
+                //if(BS[Typ].Json[col].TH==true){return} ; BS[Typ].Json[col].TH=true // Evita q carregue 2 Vezes! (Tentar usar isso em Outro Lugar q n seja TH, pois eu USO TH)
                 const IN = performance.now()
                 const ThSugg = $('.Sugg',Eu)
                 const X = IdxDe(_th(ThSugg))+1           
@@ -1039,26 +1001,14 @@
 
     <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (Recolorir ao Abrir Bndj) (Baixa Peformance)-->
         <style> /*RECOLOR - CSS*/
-            .EtpSVG{height:25px; width:25px;pointer-events: none;}
+            .EtpSVG{height:25px ; width:25px ; pointer-events: none}
             #H_PDDS > thead > tr > th:nth-child(1)      {display: none;}
             #H_PDDS > tbody > tr > td:nth-child(1)      {display: none;}
             #H_PDDS > tfoot > tr > td:nth-child(1)      {display: none;}
-            #H_PDDS > tbody > tr > td:nth-child(6)  .P-P{font-size:13px ; border-radius: 255px ; cursor: pointer;} /*Valr*/
-            #H_PDDS > tbody > tr > td:nth-child(7)  .T-T{font-size:13px}                                           /*Pgmt*/
-            #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px}                                           /*Lixo*/
+            #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
         </style>
 
         <script> // RECOLOR  - SCRIPT
-            const Igual2 =(j,a,_,b)=>{const x=j[a],y=j[b];if(!x) return false;return{'=':x==y,'>':x>y,'<':x<y,'!':x!=y}[_]||false}
-            
-            const CC = { // Criterio 1  é Obrigaório existir
-                SERV:{OB:['Serv','TArt','Dsng','Grad','Uber','OK','Entg'],OC:[]},
-                PGMT:{OB:['Data','Valr','Form']                          ,OC:[]},
-                GRAD:{OB:[]                                              ,OC:[['Cont','=','Cnt2'],['VlrO','=','Summ']]},
-                OS:{OB:[]                                              ,OC:[['Cont','=','Cnt2']]},
-                CLNT:{OB:['Clnt','Cmpt','Cntt']                          ,OC:[]}
-            }
-
             const LALEL = {
                 SERV:{Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
                       TArt: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
@@ -1080,7 +1030,7 @@
             }
 
             function IcnEtp(Typ,tr,Etp,cct){ // acho q da pra Remover isso! de OBJ
-                const objj = {'PDDS':'Stts','SERV':'SStts'} // Provavelmente já n sei usa mais
+                const objj = {'PDDS':'Stts','SERV':'SStts'} // fundir tudo em Stts
                 stt = $(`:scope ${Rx7(Typ,'Stts')}`,tr)
                 const Bndjj=(e)=>`${e}<div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
                 if(cct){Nm(stt,cct)}                                                   // Joga o Concate no Name do td Stts
@@ -1097,42 +1047,48 @@
                 return [opc,Cor]
             }
 
-            // tem como fazer isso sem Pintar?
-            function R_Colr(tr,Typ,Mod,TR){ // Mod TEmperatura :: // Ta Funcionando pra GRAD,OS,PGMT
-                const DOM = isDOM(tr)
-                const bjj = JJ[Typ][DOM?tr_ID(tr):tr] ; if(!bjj){return}      // ✔️ Pega o Objeto pelo Id do tr
-                const Atu = CC[Typ].OB.filter(e=>NoVazi(bjj[e]))              // ✔️ dos Obrigatórios retorna os Preenchidos
-                const Crt1= CC[Typ].OB.map(e=>NoVazi(bjj[e]))                 // ✔️ Crit Obrigatório
-                const Crt2= CC[Typ].OC.map(e=>Igual2(bjj,...e))               // ✔️ Crit Comparação
-                const Crt = [...Crt1,...Crt2]                                 // ✔️ Crit Concatenados
-                const opc = _0_1(Crt.filter(v=>v==true).length/Crt.length)    // ✔️ Part/Total == Porcentagem do que Falta
+            function LimpaCor(tr){Bkg(tr,'') ; $$('td',tr).forEach(e=>e.style.border='')} // Limpa cor de um tr
+            function PegaLink(Stg){const Spli = Stg.split('-') ; return JJ[Spli[0]][Spli[1]] }
+            const EvalCond = (expr,obj)=>{try {return Function('e','PegaLink',`return ${expr}`)(obj,PegaLink)}catch{return false}}
 
-                if(DOM){Bkg(tr,'');$$('td',tr).forEach(e=>e.style.border='')} // ✔️ Zera Fundo e Borda
-                if(Mod=='Etapa'&&Typ=="SERV"){
+            function R_Colr(tr,Typ,Mod,TR,CrBS){ // Mod TEmperatura :: // Ta Funcionando pra GRAD,OS,PGMT
+                const DOM = isDOM(tr)
+                const bjj = JJ[Typ][DOM?tr_ID(tr):tr] ; if(!bjj){return}       // ✔️ Pega o Objeto pelo Id do tr
+                const Atu = CrBS ? CrBS.filter(([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Filtro das Colunas que Passaram no Critério
+                const Crt = CrBS ? CrBS.map   (([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Lista de True False
+                const opc = _0_1(Crt.filter(v=>v==true).length/Crt.length)     // ✔️ Part/Total == Porcentagem do que Falta
+
+                if(DOM){LimpaCor(tr)} // ✔️ Zera Fundo e Borda
+                if(DOM){Atu.forEach(e=>R_Cor($(Rx7(e[0]),tr),1,COR['Gren']))} // Pintar os Td antes de Pintar as Tr
+
+                if(Mod=='Etapa'){
+                    const Atuu = Atu.map(e=>e[0])
                     const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
-                    const Etp = GetStts(Atu,LALEL[Typ],CC[Typ].OB) ; if(!Etp){return}
-                    if(!DOM && !TRR){return [opc,Etp[1],Etp]}              // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
+                    const LISTA= ['Serv','TArt','Dsng','Grad','Uber','OK','Entg'] // GAMBIARRRRRA
+                    const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
+                    if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
                     const trr = !DOM ? TRR : tr
-                    /*DOM*/ IcnEtp(Typ,trr,Etp,Atu.join('-'))       // Adiciona o Icone em Serv
-                    /*DOM*/ return [...R_Cor(trr,opc,Etp[1]),Etp]   // Pinta o Tr
-                }// da pra melhorar isso pra n precisar ficar com treta de !DOM só passar isso dentro de R_Cor()
-                else if(Crt.every(v=>v==true )){return R_Cor(tr,1,COR['Gren'])} // Todos os Crit são True Tentar usar o Próprio R_Cor pra dar Return tbm
-                else if(Crt.every(v=>v==false)){return [0,'']}                  // Todos os Crit são False
+                    /*DOM*/ IcnEtp(Typ,trr,Etp,Atuu.join('-'))                    // Adiciona o Icone em Serv
+                    /*DOM*/ return [...R_Cor(trr,opc,Etp[1]),Etp]                 // Pinta o Tr
+                }
+                else if(Crt.every(v=>v==true )){return R_Cor(tr,1,COR['Gren'])}   // Todos os Crit são True Tentar usar o Próprio R_Cor pra dar Return tbm
+                else if(Crt.every(v=>v==false)){return [0,'']}                    // Todos os Crit são False
                 else{return R_Cor(tr,opc,COR['Yelw'])}
-                // Após Colorir Confeir pra ver qual q vai se Destacas, e PDDS quem se Destaca é Valr (Fazer isso pra as Demais)
             }
 
             function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
                 const IN = performance.now()
                 const trs = All=='All' ? TRs(Typ) : [All]
-                if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa')})}
-                if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura')})}
-                if(Typ=='OS'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura')})}
-                if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura')})}
+                const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
+                if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa'      ,null,CrBS(Typ))})} // esta informação de etapa fica no BS tbm
+                if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+                if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+                if(Typ=='OS'  ){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = '' // Traz pra cá alem do ss todas as info importantes
                     const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
-                    const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr)) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
+                    const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
                     Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ; // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
                     if(ss.length==0){return} // Rodando agora na Linha tr
                     const Etp = Menor(ss)[2] // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
@@ -1147,17 +1103,14 @@
                 })}
                 if(All=="All"){LOG(`🔄 Re_Colr:(${Typ}) ${MS(IN)}`)}
             }
-
-            // Modo:['Etapas','Temperatura','Opacidade']
-            // Depois trabalhar na questão das Linhas border de Cada Tr tanto Pintado quando Sem cor
         </script>
     </div>
     
     <script> // AUTOCOMP - ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
-
         const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
         const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
         const FiM =(arr   )=>arr.slice(0,-1)
+        const tr_Viw=Typ=>$$(`#H_${Typ} > tbody > tr:not([class*=" n"])`)
 
         function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
             ;['PDDS','CLNT'].forEach(Typ=>{Re_Cont(Typ,'All')}) // tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
@@ -1294,6 +1247,9 @@
             }
         }
 
+
+
+
         function Re_Foot(Typ,All){ // ⭐⭐⭐ _ _ Async (Não Usa DOM) (Alta Peformance)
             if(Typ=='PDDS'||Typ=='SERV'||Typ=='PGMT'){setTimeout(()=>{
                 let IN = performance.now()
@@ -1313,44 +1269,52 @@
                 const cLnth = see.size
                 /*Serv*/ const JServ = SUM.Serv;const count = {};for(let i=0;i<JServ.length;i++){const k=JServ[i];count[k]=(count[k]||0)+1}
 
-                // onde cada coisinha vai ser colocada, poderia ser chamada em um BS especial, dai eu escolho como carregar seu TM ficaria Tm_Foot()
-                Inn($(Rx2([Typ,'Foot','Id'  ])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${Ids.length  }         </div>`)
-                Inn($(Rx2([Typ,'Foot','Clnt'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${cLnth       } Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cnt).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${NM[k]} - ${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${cLnth} Clientes</div></div>`)
-                Inn($(Rx2([Typ,'Foot','Serv'])),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${JServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(count).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${JServ.length} Serviços</div></div>`)
-                Inn($(Rx2([Typ,'Foot','Valr'])),RS_(SUM.Valr))
-                Inn($(Rx2([Typ,'Foot','Pgmt'])),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div> <div class="Ct">${Tm_RS(SUM.PgAV)}Av</div></div>`)
-                Inn($(Rx2([Typ,'Foot','Cust'])),RS_(SUM.Cust))
-                Inn($(Rx2([Typ,'Foot','Lcro'])),RS_(SUM.Lcro))
-                Inn($(Rx2([Typ,'Foot','Deve'])),RS_(SUM.Deve))
+                const Bs = ObjEtr(BS[Typ].Json).map(([k,v])=>v.FOOT!=''?[k,v.FOOT]:null).filter(Boolean) // tem um desse igualzinho em COLOR (fazer Helper)
+
+                const Tm_TFOOT={
+                     Cont:(e)=>`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${e.length}</div>`
+                    ,Soma:(e)=>RS_(SUM[e])
+                }
+
+                Bs.forEach(([k,v])=>{
+                    if(v=='Cont'){Inn($(Rx8(Typ,'Foot',k)),Tm_TFOOT[v](Ids))}
+                    if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),Tm_TFOOT[v](k  ))}
+                })
+
+                Inn($(Rx8(Typ,'Foot','Clnt')),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${cLnth       } Clientes</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(cnt).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${NM[k]} - ${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${cLnth} Clientes</div></div>`)
+                Inn($(Rx8(Typ,'Foot','Serv')),`<div onclick="Tog_N($('.BndjFOT',Pai(this)))">${JServ.length} Serviços</div> <div class="Abslt none Cl BndjFOT BNdj"><span class="Sugg Cl w100">${ObjEtr(count).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<a class="w100 PT">${k}: ${v}</a>`).join('')}</span><div class="BjConf Stky2 w100 Ct">${JServ.length} Serviços</div></div>`)
+                Inn($(Rx8(Typ,'Foot','Pgmt')),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div> <div class="Ct">${Tm_RS(SUM.PgAV)}Av</div></div>`)
+                
 
                 if(All=="All"){LOG(`🔄 Re_Foot:(${Typ}): ${MS(IN)}`)}
             },0)}
+            // Contar quantas Imagens tem
         }
     </script>
 
     <div>     <!--LINKS  - ⭐⭐_ _ _    (⚡ Precisa Funcionar sem BNDJ) (mas acho q ele em Sí nem usa Bndj) -->
         <script> // LINKS
-            //const Griff =(e,Rgx)=>`${e}`.replace(Rgx,'<b style="background:#8f007c; color:white">$1</b>') // Unir todos os Gifs de Pesquisas e todos
             const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
             const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
+            const LINK = {GRAD:['SERV'],OS:['GRAD'],UBER:['GRAD'],MPAG:['PGMT','OS','UBER']} // esses são os Passivos que São Linkados (Serve para que se dentro de OKAY q é um JSON Existir a sua tabela Ativa, então não precisa exibir ele no LinkSugg) Talvez eu deva mudar de OKAY pra "Link"
 
-            function LinkSug(Ipt,Typ,COL){
+            function LinkSug(Ipt,Typ,Typ2){
                 clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
                 debounceTimer = setTimeout(()=>{
-                    const [I,_C,RX] = Avnc_Pesq(Ipt,COL)
-                    const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BS[COL][k]?.[0]=='K' ? Getna(j,k) : v)) // tentar botar esa idéia de BS[COL] como um Helper
+                    const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
+                    const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BS[Typ2].Json[k]?.Tm=='Link' ? Getna(j,k) : v)) // tentar botar esa idéia de BSS[COL] como um Helper (Não existe mais esse 'K')
                     
                     const list  = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list); return Inn(list,'')}
                     
                     const EXTRA = {'PGMT':(j)=>j.Form=='Pix','MPAG':(j)=>j.Form=='Pix+'} // aqui as keys tem q concatenar Ativa e Passiva
-                    const Filte=(j,Extra)=>RgxOK(j) && (!j.OKAY) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
-                    const filt =(J[COL]||[]).filter(j=>Filte(j,EXTRA[COL]||null)) // Passar apenas a função Extra, não execulta ela agora!
+                    const Filte = (j,Extra)=>RgxOK(j) && (!j.OKAY) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
+                    const filt  = (J[Typ2]||[]).filter(j=>Filte(j,EXTRA[Typ2]||null))      // Passar apenas a função Extra, não execulta ela agora!
 
-                    if(COL=='CLNT'){// Exibe Lista
-                        Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[COL]]}')">${Griff(Tm_Suggs[COL](e),RX)}</a>`).join(''))
+                    if(Typ2=='CLNT'){// Exibe Lista
+                        Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
                     }else{          // Exibe Tabela
-                        Inn(list,`<table><thead class="Stky" style="z-index: 510"><tr>${Tm_thSort(ObjKey(BS[COL]),COL)}</tr></thead><body>${Tm_Table(COL,filt)}</body></table>`)
-                        Ex_Pesq($$('tbody > tr',list),COL,RX,I,true,Ipt) // isso é só pra fazer os Grifos
+                        Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><body>${Tm_Table(Typ2,filt)}</body></table>`)
+                        Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
                     } // outro if pra exibir Card
                 },100)
             }
@@ -1382,7 +1346,6 @@
             }
 
             function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
-
         </script>
     </div>
 
@@ -2228,22 +2191,18 @@
                                         <div onclick="ReszH('PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
                                         <div onclick="ReszW('PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
                                     </div>
-                                    <div onclick="Tog($$('#H_PDDS .AutoComp'),'Cor')" onload="Tm_Check(this,`${SVG.Chek}`,'Auto')"></div>
+                                    <div onclick="Tog($$('#H_PDDS .Auto'),'Cor')" onload="Tm_Check(this,`${SVG.Chek}`,'Auto')"></div>
                                     <div id="Sommma">Soma: 00,00</div>
                                     <div onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
                                     <select id="mesES" onload="Inn(this,Tm_Opt(meses))" onchange="FiltMes(this.value,'PDDS')"></select>
                                     <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
                                 </div>  
                                 <table id="SKLT_PDDS" class="hMin Tbla w90">
-                                    <thead class="Stky" style="z-index: 510;top:40px;"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
+                                    <thead class="Stky" style="z-index: 510;top:40px;"></thead>
                                     <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
                                     <tfoot class="Stky2"><tr></tr></tfoot>
                                 </table>
-                                <table id="H_PDDS" class="hMin Tbla">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PDDS),'PDDS'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PDDS),'PDDS'))"></tr></tfoot>
-                                </table>
+                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                                 <button onclick="loadtmtable('PDDS',true,false)">Carregar Tudo</button>
                             </div>
                         </div>
@@ -2256,11 +2215,7 @@
                                     <div id="COnf_SERV" class="Configs Ct"></div>
                                     <button onclick="F_Clen('SERV')">Limpar</button>
                                 </div>
-                                <table id="H_SERV" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.SERV),'SERV'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.SERV),'SERV'))"></tr></tfoot>
-                                </table>
+                                <table id="H_SERV" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2272,11 +2227,7 @@
                                     <div id="COnf_PGMT" class="Configs Ct"></div>
                                     <button onclick="F_Clen('PGMT')">Limpar</button>
                                 </div>
-                                <table id="H_PGMT" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.PGMT),'PGMT'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.PGMT),'PGMT'))"></tr></tfoot>
-                                </table>
+                                <table id="H_PGMT" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
                     </div>
@@ -2294,10 +2245,7 @@
                                     <div id="COnf_MPAG" class="Configs Ct"></div>
                                     <button onclick="F_Clen('MPAG')">Limpar</button>
                                 </div>
-                                <table id="H_MPAG" class="w100 hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.MPAG),'MPAG'))"></tr></thead>
-                                    <tbody></tbody>
-                                </table>
+                                <table id="H_MPAG" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody></table>
                 </div></div></div></div>
             </div>
 
@@ -2314,11 +2262,7 @@
                                     <div id="COnf_GRAD" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_GRAD" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRAD),'GRAD'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRAD),'GRAD'))"></tr></tfoot>
-                                </table>
+                                <table id="H_GRAD" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2329,12 +2273,7 @@
                                     <div id="COnf_OS" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-
-                                <table id="H_OS" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.OS),'OS'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.OS),'OS'))"></tr></tfoot>
-                                </table>
+                                <table id="H_OS" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2345,11 +2284,7 @@
                                     <div id="COnf_GRD2" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_GRD2" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.GRD2),'GRD2'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.GRD2),'GRD2'))"></tr></tfoot>
-                                </table>
+                                <table id="H_GRD2" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2360,11 +2295,7 @@
                                     <div id="COnf_UBER" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_UBER" class="hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.UBER),'UBER'))"></tr></thead>
-                                    <tbody></tbody>
-                                    <tfoot class="Stky2"><tr onload="Inn(this,Tm_tdFoot(ObjKey(BS.UBER),'UBER'))"></tr></tfoot>
-                                </table>
+                                <table id="H_UBER" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2381,14 +2312,11 @@
                                 <div class="Bt Stky copybody" style="height: 40px;">
                                     <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
                                     <h1>Tabela de Clientes</h1>
-                                    <button onclick="MesclaRow('CLNT',BS['CLNT'])">Mesclar</button>
+                                    <button onclick="MesclaRow('CLNT',BS['CLNT'].Json)">Mesclar</button>
                                     <div id="PagPesq_CLNT" class="PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                                     <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
                                 </div>
-                                <table id="H_CLNT" class="hMin">
-                                    <thead class="Stky" style="z-index:510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.CLNT),'CLNT'))"></tr></thead>
-                                    <tbody></tbody>
-                                </table>
+                                <table id="H_CLNT" class="hMin"><thead class="Stky" style="z-index:510;top:40px"></thead><tbody></tbody></table>
                 </div></div></div></div>
             </div>
 
@@ -2556,10 +2484,7 @@
                                     <div id="COnf_ARTE" class="Configs Ct"></div>
                                     <button onclick="F_Clen('ARTE')">Limpar</button>
                                 </div>
-                                <table id="H_ARTE" class="w100 hMin">
-                                    <thead class="Stky" style="z-index: 510;top:40px"><tr onload="Inn(this,Tm_thSort(ObjKey(BS.ARTE),'ARTE'))"></tr></thead>
-                                    <tbody></tbody>
-                                </table>
+                                <table id="H_ARTE" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody></table>
                 </div></div></div></div>
             </div>
 
@@ -2675,23 +2600,26 @@
 </body>
 
 <script> //CRUD das Tabelas com SupaBase ⭐⭐⭐_ _ PASSAR tudo ISSO pra o SB_Crud.js
-        const orArr=(e,fallback=[])=>isArr(e) ? e : fallback
-        const IdMaior=(arr)=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1   
+        function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
 
         function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
+            const orArr  =(e,fallback=[])=>isArr(e) ? e : fallback
+            const IdMaior=arr=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
+
             const P = d_r(_P) ; const COL = AA(P.Cl)
             if(P.Tm=='Bndj'){
                 const Pj   = JJ[P.Ty][P.Id]         // Localizar Linha pelo 'Id'
                 const arr = orArr(Pj[P.Cl])         // se n for um array, return []
                 const lngh= l0(arr)                 // conferir se é a Primeira vez!
-                const Def = Deff[COL]               // Cria um Default Baseado na bndj
+                const Def = Deff(COL)
                 const NId = lngh ? 1 : IdMaior(arr) // fazer isso só que procurando o Valor maior e não com Lenth
                 Def.Id    = `${Pj.Id}_${NId}`       // Novo Id
                 Def.Clnt  = Pj.Clnt                 // Clona Cliente
                 if(P.Cl=='Serv'){Def.Data = Pj.Data}// Clona Data só pra Serv
-                const _R = [COL,Def.Id,'Col',Def]
-                /*Obj*/ arr.push(Def) // isso era pra usar DarJJ() pra tbm adicionar push em (SERV ou PGMT) mas n sei usar DarJJ('Add')
-                /*DOM*/ lngh ? Inn(_td(Eu),Tm_Bndj(_P,'','DOM')) : Befor($('table tbody',_td(Eu)),Tm_Table(COL,[Def],_P))
+                newarr = [...arr].push(Def)
+                /*Obj*/ DarJJ('Add',COL,Def.Id,null,Def,[P.Ty,P.Id,P.Cl])
+                /*DOM*/ lngh ? Inn($('table',_td(Eu)),Tm_Bndj(_P,'','DOM')) : Befor($('table tbody',_td(Eu)),Tm_Table(COL,[Def],_P))
+                if(lngh){Rmv_N($('table',_td(Eu)))}
                 /*Sub*/ Sb_EDIT(supaBASE,P.Ty,P.Id,P.Cl,arr)
             }
         } // antes de tirar ele daqui, corrigir a questão do por que ele SOME! ao Clicar
@@ -2724,25 +2652,28 @@
                 }
             })
         }
-
 </script>
 
 <script> // SupaBASE
-    const getSBPromise = SB_Get(supaBASE,['USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
     
+    const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
+
     function PosGET(){
         const INN = performance.now()
+        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
         TestSenha('Storg',StogeGet('Pass'))
         Listagem('CLNT','Clnt')
-        Tratamento()    
+        Tratamento()
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
 
     function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
+        return
         if(crud==='UPDATE'){
             const NOVOO = NULL__([nEw])[0]
             const atual = JJ[Typ][nEw.Id]
-            const Limparr = j => j ? Object.keys(j).length ? Object.fromEntries(Object.entries(j).filter(([k,v])=>BS[Typ][k]?.[1]!=='A')) : null : null
+            const Limparr = j => j ? Object.keys(j).length ? Object.fromEntries(Object.entries(j).filter(([k,v])=>BS[Typ].Json[k]?.[1]!=='A')) : null : null
             const DiF = Limparr(Diferentes(NOVOO,atual,Typ))
             if(!DiF || (Object.keys(DiF).length == 1 && 'Id' in DiF)){LOG(`🌐 EDIT RealTime(${Typ},${nEw.Id}) OK👍`) ; return}
             function KeysSemId(obj){return Object.keys(obj).filter(k => k !== 'Id')}
@@ -2756,13 +2687,13 @@
             /*Obj*/ ObjEtr(DiF).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro
             /*Obj*/ // falta atualziar o JJ[Typ]
             /*DOM*/ flatenObject(DiF,Typ).forEach(([TYP,ID,col,Vlr])=>{
-                $$(Rx2([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
+                $$(Rx7([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
                     if(col=='Clnt'){return}
                     if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{return}}
                     
                     if(td){if(VAL(td)!==Vlr){
-                        if(D_R(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
-                        if(D_R(td).Tm=='Sync'){return}
+                        if(d_r(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
+                        if(d_r(td).Tm=='Sync'){return}
                         DarVAL(td,Vlr) // Editou valor
                          LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
                     else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
@@ -2772,7 +2703,7 @@
         }
         else if(crud==='DELETE'){
             if(!J[Typ].some(e=>e.Id==old.Id)){LOG(`🌐 DELETE RealTime(${Typ},${old.Id}) OK👍`) ; return}
-            RmvROW($(`${Rx2([Typ,old.Id,'Lixo'])} a`),true) //Simular o Click, true veio do SB 🌐
+            RmvROW($(`${Rx7([Typ,old.Id,'Lixo'])} a`),true) //Simular o Click, true veio do SB 🌐
         }
         else if(crud==='INSERT'){
             if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
