@@ -16,6 +16,12 @@ const UniqSplit=Arry=>{
   }))
 }
 
+function ClickForaa(el,div,fn){ // ir pra biblioteca PreScript
+    const handler = (e)=>{if(el.contains(e.target) || div.contains(e.target)) return
+        fn() ; document.removeEventListener('click', handler)}
+    setTimeout(()=>document.addEventListener('click', handler),0)
+}
+
 
 
 const is_ArrStg = (vall)=>{

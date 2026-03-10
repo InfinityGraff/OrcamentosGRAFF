@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIAGEEEEM</title>
+    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!--         
+          
+        <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
+        <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+        --> 
+
+        <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
+        <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+    <!--
+        <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+        <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+       
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    -->
+    
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
+    <!--<script src="https://threejs.org/build/three.js"></script>-->
+</head>
+
+<script> // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
+
+<style>
+    table{border-collapse:collapse;font-family:Arial}
+    td,th{border:1px solid #999;padding:4px 8px}
+    thead{background:#bbbbbb}
+    tfoot{background:#bbbbbb}
+    /*
+        tbody tr{display: none;}
+        tbody tr:has(td.Tyu){display: table-row}
+    */
+    .Tyu{background-color:#ff9595}
+</style>
+
+<body>
+    <div id="Tabela"></div>
+</body>
+
+<script>
+    // Id, Data, Clnt, Serv, Tipo, Qnt, Lag, Alt, Desc, Surg, Valr, TArt, Dsng, Arte, CArt, Grad, Gimg, Forn, OS, Uber, Cbmt, VCbt, OK, Entg, Detg, Cmnt, Stts, Lixo
+    let ValCount = {}
+
+    async function CarregaTabela(){
+        let dados=[]
+        for(let i=0;i<3000;i+=1000){
+            const {data,error}=await supaBASE.from("ARTE").select("*").order("Id",{ascending:true}).range(i,i+999)
+            if(error) return console.error(error)
+            dados=dados.concat(data)
+        }
+
+        console.log(dados)
+        
+
+        const cols=Object.keys(dados[0])
+        Tabela.innerHTML=`<table>
+            <thead class="Stky"><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead>
+            <tbody>${dados.map(r=>`<tr>${
+                cols.map(c=>`<td contenteditable="true" class="${ValidaCel(c,r[c])?"Tyu":""}" onblur="EditaCel(this,'${r.Id}','${c}')">${
+                typeof r[c]=="object" ? JSON.stringify(r[c]) : (r[c]??"")}</td>`).join("")}</tr>`).join("")}
+            </tbody>
+            <tfoot class="Stky2">${cols.map(c=>`<td>${ValCount[c]||0}</td>`).join("")}</tfoot>
+        </table>`
+    }
+
+    function ValidaCel(col,val){
+        let erro = false
+        if(["Stts","Lcro","Deve","Valr","Cust"].includes(col)) erro = val!==null && val!==""
+        else if(col=="Data") erro = !/^\d{4}-\d{2}-\d{2}$/.test(val) && val!==null && val!==""
+        else if(col=="Id") erro = isNaN(Number(val))
+        if(erro){ ValCount[col] = (ValCount[col]||0) + 1}
+        return erro
+    }
+
+    async function EditaCel(td,id,col){
+        let  val= td.innerText.trim()
+        try{ val= JSON.parse(val)}catch{}
+        const {error}=await supaBASE.from("PDDS").update({[col]:val}).eq("Id",id)
+        if(error){console.error(error)}else{LOG(`coluna ${col}-${id} - foi Editada`)}
+    }
+
+    CarregaTabela()
+
+
+
+
+    
+
+</script>
+
+</html>

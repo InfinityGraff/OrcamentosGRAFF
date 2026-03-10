@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!--         
           
         <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
         <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
-<!--         
+        --> 
 
         <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
         <script src="../MyBiblioteca/SB_Crud.js"      ></script>
---> 
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass'} // Campo pra Imbutir dentro do BS
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
     const Llmt     = {PDDS:['2026-02-12','2026-12-30'],SERV:['2026-02-12','2026-12-30'],PGMT:['2026-02-12','2026-12-30']}  // Campo pra Imbutir dentro do BS
     const Tm_Suggs = {// Campo pra Imbutir dentro do BS
@@ -70,8 +70,6 @@
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
     const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg',MPAG:'Mpag'}
-
-
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -524,8 +522,11 @@
         </style>
 
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
+            // Estão OK
             const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
             const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" Rltv"></td>`).join('')
+
+            // Ajeitar
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
             function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
             function CopyFone(Fone,Eu){LOG(Fone)}
@@ -541,21 +542,14 @@
                                       Find.map(e=>`${e[col]}`          ).join(' | ')
             }
 
-            const AbrevServs=arr=>arr.map(e=>{
-                e.Serv = `${e.Serv} (${e.Tipo})`.replace('Lona (Banner)','Banner') // Fazer um Padrão com isso aqui
-                delete e.Tipo
-                e.Vund  ? e.Vund   = `R$ ${e.Vund}`  : null
-                e.SbTt  ? e.SbTt   = `R$ ${e.SbTt}`  : null
-                e._ = '-' ; e.X = 'x'
-                return e
-            })
-
             function Tm_Bndj(R,Arr,DOM){
                 const r = d_r(R)                              // Melhorar declarações
                 const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]   // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
                 const COL   = AA(col)
+                if(Typ=='PGMT' && col=='Clnt'){return}
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
                 const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
+                if(COL=='ARTE'){LOG(Dados2(dado),dado.split('-'))}
                 const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
@@ -567,13 +561,13 @@
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
-                            <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
-                            <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
-                                <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
-                                ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
-                                  Tm=='Link'?`<button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
-                            </div>
-                        </div>`
+                        <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
+                        <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                            <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
+                            ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
+                                Tm=='Link'?`<button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
+                        </div>
+                    </div>`
                 }
             }
 
@@ -604,21 +598,9 @@
                 }
             }
 
-            // Permitir que todas as Imagens Possam ter Upload (separar das que não pode, pq são aquelas que vem dentro de um SYNK)
-            // não quero mais o Cntrl pra persistir BNDJ ngm nunca usou nem EU
-            // 🚫 select deveria ter name pra n ser afetado pelo Realtime
             // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
             // 💡 Opção de mais de 1 Designer
             // 💡 Mover-se nas células com as Setas
-
-            /*
-                "ARTE FEXTA 2026 - 001.webp"
-                "ARTE FEXTA 2026 - 002.webp"
-                "ARTE FEXTA 2026 - 003.webp"
-                "ARTE FEXTA 2026 - 004.webp"
-                "ARTE FEXTA 2026 - 006.webp"
-                "ARTE FEXTA 2026 - 009.webp"
-            */
         </script>
     </div>
 
@@ -1113,31 +1095,13 @@
         const tr_Viw=Typ=>$$(`#H_${Typ} > tbody > tr:not([class*=" n"])`)
 
         function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
-            ;['PDDS','CLNT'].forEach(Typ=>{Re_Cont(Typ,'All')}) // tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
+            ;['PDDS','CLNT'].forEach(Typ=>{// tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
+                Re_Cont(Typ,'All')
+            }) 
             ;['OS','UBER','GRAD','PDDS','CLNT','ARTE'].forEach(Typ=>{
-                // fazer o tratamento de Reorden se quiser
-
-                if(Typ=='CLNT'){criaCol_Typ('Lcro','CLNT');criaCol_Typ('Medi','CLNT')}
-                if(Typ=='UBER'){criaCol_Typ('Img','PDDS')}
-
-                
-                //if(Typ=='PDDS'){criaCol_Typ('Deve','PDDS')}
-                //if(Typ=='PDDS'){criaCol_Col('Grde','PDDS','Serv')}
-
-
                 Re_Comp(Typ,'All')
                 Re_Soma(Typ,'All')
             })
-        }
-
-        function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
-            if(Typ=='GRAD' && Auto=='Auto'){return}
-            //Re_Cont(Typ,All)
-            if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All)}} // ta com essa agonia toda mas vou ajeitar! (Provavelmente só o IF de All fica) (esse if de auto vai sair!)
-            if(All!=='All'){Re_Soma(Typ,All)}
-            Re_Colr(Typ,All)
-            Re_Foot(Typ,All)
-            LOG('🔄 Rfresh Geral')
         }
 
         function Re_Cont(Typ,All){  // ⭐⭐⭐_ _ Sempre é All contar quantas vezes algo aparece dentro e agrupar valores
@@ -1160,19 +1124,54 @@
             else{return}
             if(All=="All"){LOG(`🔄 Re_Cont:(${Typ}) ${MS(IN)}`)}
             // Fundir Informações Redundantes
+            // deixar esta contagem dentro de alguma coisa no BS ContGrad ou ContCLNT pode ser um BS
+            // alem do mais quem vai dizer se vai ter contagem ou não, não seria esssa função Tratamento nem esses ifs
+            // ficaria em algum lugar no BS
         }
 
+        function Re_Soma(Typ,All){ // ⭐⭐⭐⭐⭐ (Usado apenas em PDDS) (sem DOM) (Alta Peformance)
+            const IN = performance.now()
+            if(Typ==='PDDS'){
+                const trs = All=='All' ? J[Typ] : [All]
+                trs.forEach(tr=>{
+                    const oID=All=='All'? tr.Id : tr_ID(tr)                                        // coleta Id
+                    const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                // pega o td onde inserirei o valor da Soma
+                    const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
+                    const vzz=e=>e==0?'':RS(e)                                                     // conferir se ta tudo vazio
+                    /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
+                    /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
+                    /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
+                    /*Rest*/ const sD = sV-ges('Pgmt',['Valr'])                 ; All=='All' ? tr.Deve=vzz(sD) : Vai('Deve',vzz(sD))
+                })
+                if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
+            }
+        }
+
+
+        function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
+            if(Typ=='GRAD' && Auto=='Auto'){return}
+            //Re_Cont(Typ,All)
+            if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All)}} // ta com essa agonia toda mas vou ajeitar! (Provavelmente só o IF de All fica) (esse if de auto vai sair!)
+            if(All!=='All'){Re_Soma(Typ,All)}
+            Re_Colr(Typ,All)
+            Re_Foot(Typ,All)
+            LOG('🔄 Rfresh Geral')
+        }
+
+        // todas as imagens vão sair do Autocomp, pois elas são carregadas mediante ao tm usando o valor q está dentro de si
+
         const Splii = {
-    /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []
-    /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']
-            ,S_Arte:j=>J['IMGS'][j.Id] ?? ''
-            ,S_CArt:j=>''
-    /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng']
+    /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
+    /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
+    /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
+            ,S_Arte:j=>J['IMGS'][j.Id] ?? '' // não precisa
+            ,S_CArt:j=>''                    // não precisa
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
-            ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : ''
-            ,S_Gimg:j=>`${j.Grad}.webp`
+            ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : '' /*acho q esse vai sair*/
+            ,S_Gimg:j=>`${j.Grad}.webp`      // aqui sim Realmente é um AutoMatico Uber e OS também
             ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
             ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>J['IMGS'][j.Grad] ?? ''
             ,G_ImgG:j=>J['IMGS'][j.Grad.replace(/_\d*$/,"")] ?? ''
@@ -1197,6 +1196,7 @@
         }
 
         function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
+            return
             if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
@@ -1222,33 +1222,12 @@
             }else if(Typ=="CLNT"){trs.forEach(tr=>[['Link','V'],['Lcro','V'],['Medi','V']                                                                 ].forEach(c=>Edit('C',c[0],c[1],tr)))
             }else if(Typ=="GRAD"){trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                                   trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
-            }else if(Typ=='OS'){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                              ].forEach(c=>Edit('O',c[0],c[1],tr)))
+            }else if(Typ=='OS'){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                                ].forEach(c=>Edit('O',c[0],c[1],tr)))
             }else if(Typ=='UBER'){trs.forEach(tr=>[['Img' ,'V']                                                                                           ].forEach(c=>Edit('U',c[0],c[1],tr)))
             }else if(Typ=='ARTE'){trs.forEach(tr=>[['Img' ,'E']                                                                                           ].forEach(c=>Edit('A',c[0],c[1],tr)))
             }else{return}
             if(All=="All"){LOG(`🔄 Re_comp:(${Typ}) ${MS(IN)}`)}
         }
-
-        function Re_Soma(Typ,All){ // ⭐⭐⭐⭐⭐ (Usado apenas em PDDS) (sem DOM) (Alta Peformance)
-            const IN = performance.now()
-            if(Typ==='PDDS'){
-                const trs = All=='All' ? J[Typ] : [All]
-                trs.forEach(tr=>{
-                    const oID=All=='All'? tr.Id : tr_ID(tr)                                        // coleta Id
-                    const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                // pega o td onde inserirei o valor da Soma
-                    const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
-                    const vzz=e=>e==0?'':RS(e)                                                     // conferir se ta tudo vazio
-                    /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
-                    /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
-                    /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
-                    /*Rest*/ const sD = sV-ges('Pgmt',['Valr'])                 ; All=='All' ? tr.Deve=vzz(sD) : Vai('Deve',vzz(sD))
-                })
-                if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
-            }
-        }
-
-
-
 
         function Re_Foot(Typ,All){ // ⭐⭐⭐ _ _ Async (Não Usa DOM) (Alta Peformance)
             if(Typ=='PDDS'||Typ=='SERV'||Typ=='PGMT'){setTimeout(()=>{
@@ -1407,6 +1386,16 @@
                 </div>
             </div>
             `
+
+
+            const AbrevServs=arr=>arr.map(e=>{
+                e.Serv = `${e.Serv} (${e.Tipo})`.replace('Lona (Banner)','Banner') // Fazer um Padrão com isso aqui
+                delete e.Tipo
+                e.Vund  ? e.Vund   = `R$ ${e.Vund}`  : null
+                e.SbTt  ? e.SbTt   = `R$ ${e.SbTt}`  : null
+                e._ = '-' ; e.X = 'x'
+                return e
+            })
 
             function VerNota(Typ){
                 let dados = []
@@ -2641,8 +2630,9 @@
                 const TD  = _td(Pai(PP))
                 const T_T = TD && $('.T-T',TD)
                 /*Del*/ if(Mod =='Del'){
-                    tr.remove()
+                    Add_N(tr) //.remove() // Deveria remover mas isso faz a bandeija ocultar eu n sei pq
                     if(R.Bj && T_T && P && !Auto){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; RFresh(P.Ty,tR,Auto,e)}
+
                 /*Edt/Add*/}else{
                     DarVAL(PP,V)
                     if(!Auto){if(R.Bj && T_T){
@@ -2757,6 +2747,15 @@
 
     // Html-1 - seria Página de Orçamento (único SB q precisa carregar aqui é Produtos e Rascunho)
     // Html-2 - Tabelas, onde fica todas as Tabelas pois todas tem que estarem Juntas
+
+    /* imagens que faltam adicionar
+        "ARTE FEXTA 2026 - 001.webp"
+        "ARTE FEXTA 2026 - 002.webp"
+        "ARTE FEXTA 2026 - 003.webp"
+        "ARTE FEXTA 2026 - 004.webp"
+        "ARTE FEXTA 2026 - 006.webp"
+        "ARTE FEXTA 2026 - 009.webp"
+    */
 </script>
 
 </html>
