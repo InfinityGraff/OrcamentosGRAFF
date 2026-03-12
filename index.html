@@ -531,19 +531,20 @@
             function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
             function CopyFone(Fone,Eu){LOG(Fone)}
 
-            // JJ['ARTE'][e.Arte].Img
-
+            
             const ImgT_T=(col,e,R)=>{
-                return                col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
+                const ARTEE = col=='Serv' ? JJ['ARTE'][e.Arte.split('-')[1]]?.Img : ''
+                return                col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
                                     : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
                                     : ''
-
+            // isso daqui tem que ser, Pegar todas as Imagens que estão dentro da Bandeija, todas mesmo incluindo Bandeija de Bandeija e Links tbm
         }
 
             const FazerTitle=(col,Find)=>{ // fazer os Titulos para as Bandeijas
                 return  col=='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
-                        col=='Arte' ? Find.map(e=>`${e.Dsng} ${e.Tipo}`).join(' | ') :
+                
+                        col=='Arte' ? Find.map(e=>`${e.Dsng}`).join(' | ') :
                         col=='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                         col=='Mpag' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                                       Find.map(e=>`${e[col]}`          ).join(' | ')
@@ -556,7 +557,6 @@
                 if(Typ=='PGMT' && col=='Clnt'){return}
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
                 const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
-                //if(COL=='ARTE'){LOG(Dados2(dado),dado.split('-'))}
                 const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
@@ -579,7 +579,7 @@
                 }
             }
 
-            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmt){
+            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmt){ // ISSO é o VERDADEIRO Tm_Table o outro lá é um Tm_Trs
                 const LOAD=(TYP)=>{
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{NewTyp = J[TYP].filter(e=>{
