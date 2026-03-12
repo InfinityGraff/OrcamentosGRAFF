@@ -18,9 +18,9 @@
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
     
     <!--         
-        <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
-        <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-        --> 
+    <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
+    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+    --> 
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    const Llmt     = {PDDS:['2026-02-12','2026-12-30'],SERV:['2026-02-12','2026-12-30'],PGMT:['2026-02-12','2026-12-30']}  // Campo pra Imbutir dentro do BS
+    const Llmt     = {PDDS:['2026-01-01','2026-12-30'],SERV:['2026-01-01','2026-12-30'],PGMT:['2026-01-01','2026-12-30']}  // Campo pra Imbutir dentro do BS
     const Tm_Suggs = {// Campo pra Imbutir dentro do BS
          SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
         ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
@@ -531,12 +531,19 @@
             function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
             function CopyFone(Fone,Eu){LOG(Fone)}
 
-            const ImgT_T=(col,e,R)=>  col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp"                              >`:''
+            // JJ['ARTE'][e.Arte].Img
+
+            const ImgT_T=(col,e,R)=>{
+                return                col=='Serv' ? e.Arte ? Tm_Tm['Imgs'](e.Arte,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
+                                    : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
                                     : ''
+
+        }
 
             const FazerTitle=(col,Find)=>{ // fazer os Titulos para as Bandeijas
                 return  col=='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
+                        col=='Arte' ? Find.map(e=>`${e.Dsng} ${e.Tipo}`).join(' | ') :
                         col=='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                         col=='Mpag' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
                                       Find.map(e=>`${e[col]}`          ).join(' | ')
@@ -549,13 +556,14 @@
                 if(Typ=='PGMT' && col=='Clnt'){return}
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
                 const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
-                if(COL=='ARTE'){LOG(Dados2(dado),dado.split('-'))}
+                //if(COL=='ARTE'){LOG(Dados2(dado),dado.split('-'))}
                 const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
                 const Title = FazerTitle(col,Find)
                 const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
                 const NmTle = col==='Pgmt'? SunPix(Title) : Title // (GAMBIARRA preparar pra RMV)
                 const Cimg  = Find.map(e=>ImgT_T(col,e,R)).join('')
+                
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
 
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
@@ -993,10 +1001,8 @@
         <script> // RECOLOR  - SCRIPT
             const LALEL = {
                 SERV:{Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
-                      TArt: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
-                      Dsng: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
+                      Arte: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
                       Grad: ['Impressão'  ,COR['Yelw'],COR2['Yelw'],'white'],
-                      Uber: ['Acabamento' ,COR['Yelw'],COR2['Yelw'],'white'],
                       OK:   ['Pronto'     ,COR['Azul'],COR2['Azul'],'white'],
                       Entg: ['Entregue'   ,COR['Gren'],COR2['Gren'],'white'],
                       Deve: ['Devendo'    ,COR['Redd'],COR2['Redd'],'white'],
@@ -1046,7 +1052,7 @@
                 if(Mod=='Etapa'){
                     const Atuu = Atu.map(e=>e[0])
                     const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
-                    const LISTA= ['Serv','TArt','Dsng','Grad','Uber','OK','Entg'] // GAMBIARRRRRA
+                    const LISTA= ['Serv','Arte','Grad','OK','Entg'] // GAMBIARRRRRA
                     const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
                     if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
                     const trr = !DOM ? TRR : tr
@@ -1062,6 +1068,7 @@
                 const IN = performance.now()
                 const trs = All=='All' ? TRs(Typ) : [All]
                 const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
+                if(Typ=='SERV'){LOG('FUDEU',CrBS(Typ))}
                 if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa'      ,null,CrBS(Typ))})} // esta informação de etapa fica no BS tbm
                 if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
                 if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
@@ -1074,14 +1081,14 @@
                     Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ; // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
                     if(ss.length==0){return} // Rodando agora na Linha tr
                     const Etp = Menor(ss)[2] // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
-                    const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)  // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
-                    const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)  // pega o valor q foi pago q é a Soma dos Valr de PGMT
-                    const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)     // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
+                    const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)        // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
+                    const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)        // pega o valor q foi pago q é a Soma dos Valr de PGMT
+                    const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)  // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
                     const E = Dev ? LALEL['SERV']['Deve'] : Etp
-                    IcnEtp(Typ,tr,E)                           // Adicionar o Icone de Etapas
-                    R_Cor(tr,opc(ss),E[1])                     // Pintar o Tr
-                    Bkg(Vlr,`rgb(${E[2]})`,E[3])               // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
-                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))} // Quando Tiver Devendo Limpar as Cores dos Td
+                    IcnEtp(Typ,tr,E)                            // Adicionar o Icone de Etapas
+                    R_Cor(tr,opc(ss),E[1])                      // Pintar o Tr
+                    Bkg(Vlr,`rgb(${E[2]})`,E[3])                // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
+                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}  // Quando Tiver Devendo Limpar as Cores dos Td
                 })}
                 if(All=="All"){LOG(`🔄 Re_Colr:(${Typ}) ${MS(IN)}`)}
             }
