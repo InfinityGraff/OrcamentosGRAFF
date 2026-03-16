@@ -19,8 +19,8 @@
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
     --> 
     
-    <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
-    <script src="../MyBiblioteca/SB_Crud.js"      ></script>
+    <link href="./SB_Crud.css" rel="stylesheet">
+    <script src="./SB_Crud.js"      ></script>
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -541,7 +541,7 @@
                 
                 const String = BS[Typ].Title // essa String  contem apenas `${e.Serv}-${e.Qnt}-${e.Lag}-${e.Alt}-${e.Desc}`
 
-                const Fn = Function(`return ${String}`)()
+                const Fn = Function('e',`return ${String}`)
 
                 return  Typ=='SERV' ? BrevTitle(Typ,Find.map(e=>Fn(e)).join('|')) :
                         Typ=='ARTE' ? BrevTitle(Typ,Find.map(e=>`${e.Dsng}`         ).join(' | ')) :
