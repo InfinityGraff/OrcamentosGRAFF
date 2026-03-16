@@ -92,37 +92,25 @@ function CrypPass(senha){ // Obsoleta
   return Par.concat(Imp).join('')
 }
 
-const BrevTitle = str => {
-  try {
-    const data = str.split(" | ").map(item => {
-      let [q, ...rest] = item.split(" - ");
-      if (isNaN(+q)) throw "NaN"; // se não for número, aborta
-      let [nome, ...mdd] = rest.join(" - ").split(" ");
-      return { q: +q, nome, mdd: mdd.join(" ") };
-    });
-
-    const agrupado = data.reduce((acc, { q, nome, mdd }) => {
-      acc[nome] ??= { qtd: 0, mdd: new Set() };
-      acc[nome].qtd += q;
-      acc[nome].mdd.add(mdd);
-      return acc;
-    }, {});
-
-    return Object.entries(agrupado)
-      .map(([n, { qtd, mdd }]) =>
-        `${qtd} - ${n}${mdd.size > 1 ? ` (${[...mdd].join(" / ")})` : " " + [...mdd][0]}`
-      )
-      .join(" | ");
-  } catch {
-    return str; // se der erro ou NaN, retorna string original
-  }
+const BrevTitle = (Typ,Stg)=>{
+    if(!Stg) return `+ Novo ${Typ}` // usar isso como Botão Depois
+    if(Typ!='SERV') return Stg
+    try{const g={}
+        Stg.split('|').forEach(s=>{
+            let [Serv,Qnt,Lag,Alt,Desc]=s.split('-')
+            if(!Serv){g[Desc]??={q:0,m:new Set()};return g[Desc].q++}
+            let m=Lag&&Alt?`${Cm(Lag)} x ${Cm(Alt)}`:`${Lag||''}${Alt||''}`
+            g[Serv]??={q:0,m:new Set()}
+            g[Serv].q+=+Qnt
+            g[Serv].m.add(m)
+        })
+        let r = Object.entries(g).map(([n,{q,m}])=>`${q} - ${n}${m.size>1?` (${[...m].join(' / ')})`:" "+[...m][0]}`).join(' | ')
+        if(r.length<=80) return r
+        return Object.entries(g).map(([n,{q}])=>`${q} - ${n}`).join(' | ')
+    }catch{return Stg}
 }
 
-
-
-
 const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null
-
 
 const vAL=(s,e)=>
     s=='Imgs' ?     VAAL($('.oImgs',_tr(e)))  :
@@ -134,7 +122,6 @@ const vAL=(s,e)=>
     s=='Alt'  ? Num(VAAL($('.oAlt' ,_tr(e)))) :
     s=='Qnt'  ? Num(VAAL($('.oQnt' ,_tr(e)))) :
     s=='Qntt' ?     VAAL($('.oQnt' ,_tr(e)))  : null
-
 
 
 const SplitAvanc=(Stg)=>{ // Funciona Apenas pra GABARITO
@@ -854,3 +841,12 @@ const GetPC = () => {
 
 
 
+function RANGE_DATA(arr,LMT,Atv){ // Array de objetos | Limite ["2026-03-05","2026-12-30"] | Atv=Boolean (se permite isso ou não)
+    const has=LMT&&Atv
+    let idx0=0,idx1=arr.length-1
+    if(has){for(let i=0;i<arr.length   ;i++){const d=arr[i].Data;if(d&&d>=LMT[0]){idx0=i;break}}
+            for(let i=arr.length-1;i>=0;i--){const d=arr[i].Data;if(d&&d<=LMT[1]){idx1=i;break}}}
+    const out=[]
+    for(let i=idx0;i<=idx1;i++){const e=arr[i],d=e.Data ; if(!e.Lixo&&(d==""||!has||d>=LMT[0]&&d<=LMT[1])) out.push(e)}
+    return out
+}

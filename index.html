@@ -14,13 +14,13 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
+    <!--         
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+    --> 
     
-    <!--         
     <link href="../MyBiblioteca/SB_Crud.css" rel="stylesheet">
     <script src="../MyBiblioteca/SB_Crud.js"      ></script>
-    --> 
     <!--
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
         <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
@@ -51,7 +51,6 @@
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    const Llmt     = {PDDS:['2026-01-01','2026-12-30'],SERV:['2026-01-01','2026-12-30'],PGMT:['2026-01-01','2026-12-30']}  // Campo pra Imbutir dentro do BS
     const Tm_Suggs = {// Campo pra Imbutir dentro do BS
          SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
         ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
@@ -61,7 +60,6 @@
         ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`                                                 
         ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`                              
     }
-
     let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
     let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
@@ -439,7 +437,6 @@
 </script>
 
 <script> // Bibliotecas
-    const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1])
     const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
     const TRs      =Typ=>$$(`#H_${Typ} > tbody > tr`)
     const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
@@ -530,7 +527,6 @@
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
             function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
             function CopyFone(Fone,Eu){LOG(Fone)}
-
             
             const ImgT_T=(col,e,R)=>{
                 const ARTEE = col=='Serv' ? JJ['ARTE'][e.Arte.split('-')[1]]?.Img : ''
@@ -541,28 +537,32 @@
             // isso daqui tem que ser, Pegar todas as Imagens que estão dentro da Bandeija, todas mesmo incluindo Bandeija de Bandeija e Links tbm
         }
 
-            const FazerTitle=(col,Find)=>{ // fazer os Titulos para as Bandeijas
-                return  col=='Serv' ? Find.length>3 ? Find[0].Desc : BrevTitle(Find.map(e=>e.Serv ? `${e.Qnt} - ${e.Serv} ${e.Lag&&e.Alt?`${Cm(e.Lag)} x ${Cm(e.Alt)}`:`${e.Lag}${e.Alt}`}` : `${e.Desc}`).join(' | ')) :
+            const FazerTitle=(Typ,Find)=>{ // fazer os Titulos para as Bandeijas
                 
-                        col=='Arte' ? Find.map(e=>`${e.Dsng}`).join(' | ') :
-                        col=='Pgmt' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
-                        col=='Mpag' ? Find.map(e=>`${e.Valr}${e.Form}` ).join(' | ') :
-                                      Find.map(e=>`${e[col]}`          ).join(' | ')
+                const String = BS[Typ].Title // essa String  contem apenas `${e.Serv}-${e.Qnt}-${e.Lag}-${e.Alt}-${e.Desc}`
+
+                const Fn = Function(`return ${String}`)()
+
+                return  Typ=='SERV' ? BrevTitle(Typ,Find.map(e=>Fn(e)).join('|')) :
+                        Typ=='ARTE' ? BrevTitle(Typ,Find.map(e=>`${e.Dsng}`         ).join(' | ')) :
+                        Typ=='PGMT' ? BrevTitle(Typ,Find.map(e=>`${e.Valr}${e.Form}`).join(' | ')) :
+                        Typ=='MPAG' ? BrevTitle(Typ,Find.map(e=>`${e.Valr}${e.Form}`).join(' | ')) : 'Sem Titulo'
             }
 
             function Tm_Bndj(R,Arr,DOM){
-                const r = d_r(R)                              // Melhorar declarações
-                const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]   // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
-                const COL   = AA(col)
-                if(Typ=='PGMT' && col=='Clnt'){return}
+                const r = d_r(R)                                   // Melhorar declarações
+                const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]        // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
+                const COL   = Tm=='Bndj' ? AA(col) : BS[Typ].Json[col].LINK.split('-')[0] // isso serve pra acessar qual é a Tabela Passiva
+                if(Typ=='PGMT'&&col=='Clnt'){return}
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
                 const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
-                const Find  =  Tm=='Bndj' ? (dado||[]) : Tm=='Link'&&col=='Clnt' ? [JJ[COL][dado]] : Tm=='Link' ? Dados2(dado) : []
+
+                const Find   = Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? Dados2(dado) : []
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
-                const Title = FazerTitle(col,Find)
-                const SunPix  =Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
-                const NmTle = col==='Pgmt'? SunPix(Title) : Title // (GAMBIARRA preparar pra RMV)
-                const Cimg  = Find.map(e=>ImgT_T(col,e,R)).join('')
+                const Title  = FazerTitle(COL,Find)
+                const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
+                const NmTle  = col==='Pgmt'? SunPix(Title) : Title // (GAMBIARRA preparar pra RMV)
+                const Cimg   = Find.map(e=>ImgT_T(col,e,R)).join('')
                 
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
 
@@ -573,21 +573,17 @@
                         <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                             <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
                             ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
-                                Tm=='Link'?`<button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
+                              Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${col}')">Excluir ${ col }</button><button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
                         </div>
                     </div>`
                 }
             }
 
-            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmt){ // ISSO é o VERDADEIRO Tm_Table o outro lá é um Tm_Trs
+            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmtt){ // ISSO é o VERDADEIRO Tm_Table o outro lá é um Tm_Trs
                 const LOAD=(TYP)=>{
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
-                    setTimeout(()=>{NewTyp = J[TYP].filter(e=>{
-                            if (e.Lixo==true ) return false
-                            if (e.Data==''   ) return true
-                            if (ObjKey(Llmt).includes(TYP) && Lmt){return RangeDATA(e.Data,TYP)}
-                            return true
-                        })
+                    setTimeout(()=>{
+                        const NewTyp = RANGE_DATA(J[TYP],BS[TYP].Limit,Lmtt) // Limita por Data
                         Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))
                         Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(BS[TYP].Orden,TYP)}</tr>`)
                         Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(BS[TYP].Orden,TYP)}</tr>`)
@@ -1282,30 +1278,6 @@
         <script> // LINKS
             const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
             const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
-            const LINK = {GRAD:['SERV'],OS:['GRAD'],UBER:['GRAD'],MPAG:['PGMT','OS','UBER']} // esses são os Passivos que São Linkados (Serve para que se dentro de OKAY q é um JSON Existir a sua tabela Ativa, então não precisa exibir ele no LinkSugg) Talvez eu deva mudar de OKAY pra "Link"
-
-            function LinkSug(Ipt,Typ,Typ2){
-                clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
-                debounceTimer = setTimeout(()=>{
-                    const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
-                    const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BS[Typ2].Json[k]?.Tm=='Link' ? Getna(j,k) : v)) // tentar botar esa idéia de BSS[COL] como um Helper (Não existe mais esse 'K')
-                    
-                    const list  = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list); return Inn(list,'')}
-                    
-                    const EXTRA = {'PGMT':(j)=>j.Form=='Pix','MPAG':(j)=>j.Form=='Pix+'} // aqui as keys tem q concatenar Ativa e Passiva
-                    const Filte = (j,Extra)=>RgxOK(j) && (!j.OKAY) && (!Extra||Extra(j)) // RgxOK(j) [sempre obrigatório] | Se OKAY não Existir [passa] | Se existir [precisa faltar o Typ] | se Extra existir [chama ele]
-                    const filt  = (J[Typ2]||[]).filter(j=>Filte(j,EXTRA[Typ2]||null))      // Passar apenas a função Extra, não execulta ela agora!
-
-                    if(Typ2=='CLNT'){// Exibe Lista
-                        Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
-                    }else{          // Exibe Tabela
-                        Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><body>${Tm_Table(Typ2,filt)}</body></table>`)
-                        Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
-                    } // outro if pra exibir Card
-                },100)
-            }
-            // botão pra corrigir caso tenha Linkado errado!
-            
         </script>
     </div>
 
@@ -2525,14 +2497,17 @@
                 </div>
 
                 <script>
+                    const Llmt     = {PDDS:['2026-03-05','2026-12-30'],SERV:['2026-03-05','2026-12-30'],PGMT:['2026-03-05','2026-12-30']}  // Campo pra Imbutir dentro do BS
                     let [__A,__M,__D,__S]=['','','','']
                     const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Ct Bt Hov BOX" onclick="Unyc('${U}','${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART(${U},${e.Id})">AceitarART</button></div>`).join("")}</div>`
                     const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}')"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
-                    const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))        // ao rodar o Modal Excluir o Antigo
-                    const Unyc=(U,ID)=>MODAL(Tm_ListArt(U,__A.filter(e=>e.Id==ID))) // ao rodar o Modal Excluir o Antigo
+                    const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
+                    const Unyc=(U,ID)=>MODAL(Tm_ListArt(U,__A.filter(e=>e.Id==ID)))    // ao rodar o Modal Excluir o Antigo
+                    const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1]) // espero que der pra REMOVER
 
                     function Load_Perfil(U){
                         const u = U.Nome
+                        
                         const Fil = RangeDATA(J['SERV'],'SERV')
                         __A = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Ok' && !o.Dslk?.includes(u))
                         __M = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Aceita')
