@@ -218,13 +218,13 @@ function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha 
     // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
 
 function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
-    if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
-        LOG('pra que estew IF?',Nm(Ipt))
-        if(Nm(Ipt)){return Nm(Ipt)}else{
-            const df = AddROW(AA(Typ),'<',{[Typ]:Ipt.value})
-            Linkar(Ipt,df.Id) // só tem 2 formas de linkar ou pelo Input ou pelo LinkSugg
+    if(Ipt.value){
+        if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
+            const df = AddROW(AA(Typ),'<',{[Aa(Typ)]:Ipt.value})
+            Linkar(Ipt,`${AA(Typ)}-${df.Id}`)
         }
-    } // Permitir isso para os que Podem
+    }
+    // NewLink apenas para os que Permitem NewLink
 }
 
 function RmvLink(){
@@ -232,7 +232,7 @@ function RmvLink(){
 }
 
 // isso tem que servir pra ADICIONAR, REMOVER, TROCAR
-function Linkar2(Eu){ // esse Link é usado pra Linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
+function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
     const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
     const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
     const PP2 = $(Rx7(`${d_r(Eu).Id}-Link`),_tr(Eu))  // Passiva (isso deveria ser a td que recebe o valor do ativo dentro do passivo)
@@ -274,7 +274,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
         const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
 
         if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
+            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${TYP2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
         }
         if(Mod=='Table'){
             Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
