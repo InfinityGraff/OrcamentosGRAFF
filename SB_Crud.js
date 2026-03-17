@@ -274,7 +274,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
         const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
 
         if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${TYP2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
+            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
         }
         if(Mod=='Table'){
             Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
