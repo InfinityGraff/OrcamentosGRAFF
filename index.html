@@ -590,7 +590,7 @@
                     if(PreTable[Typ]==true&&!GAMBIARRRRRRRRRA){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                          if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')             } // tem 3 Tabelas na #PagPDDS
                     else if(Typ=='PGMT'){LOAD('MPAG')                                    } // tem 2 Tabelas na #PagPGMT
-                    else if(Typ=='GRAD'){LOAD(Typ);LOAD('OS');LOAD('UBER'),LOAD('GRD2')} // tem 3 Tabelas na #PagGRAD
+                    else if(Typ=='GRAD'){LOAD(Typ);LOAD('OS');LOAD('UBER'),LOAD('GRD2')  } // tem 3 Tabelas na #PagGRAD
                     else{LOAD(Typ)}                                                        // os demais tem só 1 tabela
                     PreTable[Typ]=true                                                     // Declarar que a Aba já foi Aberta!
                 }
@@ -989,6 +989,21 @@
         </style>
 
         <script> // RECOLOR  - SCRIPT
+
+            // como Funcionará o novo jeito de Recolor
+            // isso são 2 Coisas Fundidas, ReStatus e Recolor
+            // no BS terá uma Ordem de como o Status deve ser (ou por quantidade, ou por ordem) (este seria o Modelo de Exemplo)
+            // Para cada Tabela começa das Linhas Internas, e vai passando pra cima
+            // PDDS depende de SERV e de PGMT (más SERV depende de ARTE) (PGMT depende de MPAG)
+            // MPAG e ARTE se comporta e passa pra cima
+            // SERV e PGMT se comporta e passa pra cima
+            // Primeiro Antes de carregar o DOM Gera o Status das Linhas
+            // antes de Gerar o Status, tem que preparar os Dados
+            // então já faz todas as Contagens
+            // depois da contagem (si bem que a contagem poderia ser feita diretamente no msm Loop de importação dentro do GetSB, economizaria LOOP)
+            // depois disso os Autocomp!
+            // depoisentra o Re_soma, por enquanto só existe RESOMA em PDDS
+
             const LALEL = {
                 SERV:{Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
                       Arte: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
@@ -1008,10 +1023,10 @@
             }
 
             function IcnEtp(Typ,tr,Etp,cct){ // acho q da pra Remover isso! de OBJ
-                const objj = {'PDDS':'Stts','SERV':'SStts'} // fundir tudo em Stts
+                //const objj = {'PDDS':'Stts','SERV':'SStts'} // fundir tudo em Stts
                 stt = $(`:scope ${Rx7(Typ,'Stts')}`,tr)
+                if(cct){Nm(stt,cct)}                          // Joga o Concate no Name do td Stts
                 const Bndjj=(e)=>`${e}<div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
-                if(cct){Nm(stt,cct)}                                                   // Joga o Concate no Name do td Stts
                 Inn(stt,Bndjj(`<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp[2]})">${SVGEtapas[Etp[0]]}</div>`)) // Dar o Inner do SVG dentro do Stts
             }
 
@@ -1036,13 +1051,13 @@
                 const Crt = CrBS ? CrBS.map   (([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Lista de True False
                 const opc = _0_1(Crt.filter(v=>v==true).length/Crt.length)     // ✔️ Part/Total == Porcentagem do que Falta
 
-                if(DOM){LimpaCor(tr)} // ✔️ Zera Fundo e Borda
-                if(DOM){Atu.forEach(e=>R_Cor($(Rx7(e[0]),tr),1,COR['Gren']))} // Pintar os Td antes de Pintar as Tr
+                if(DOM){LimpaCor(tr)}                                          // ✔️ Zera Fundo e Borda
+                if(DOM){Atu.forEach(e=>R_Cor($(Rx7(e[0]),tr),1,COR['Gren']))}  // ✔️ Pintar os Td antes de Pintar as Tr
 
                 if(Mod=='Etapa'){
                     const Atuu = Atu.map(e=>e[0])
                     const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
-                    const LISTA= ['Serv','Arte','Grad','OK','Entg'] // GAMBIARRRRRA
+                    const LISTA= ['Serv','Arte','Grad','OK','Entg']               // GAMBIARRRRRA
                     const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
                     if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
                     const trr = !DOM ? TRR : tr
@@ -1058,27 +1073,29 @@
                 const IN = performance.now()
                 const trs = All=='All' ? TRs(Typ) : [All]
                 const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
+
                 if(Typ=='SERV'){LOG('FUDEU',CrBS(Typ))}
+
                 if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa'      ,null,CrBS(Typ))})} // esta informação de etapa fica no BS tbm
                 if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
                 if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
                 if(Typ=='OS'  ){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
 
-                if(Typ==='PDDS'){trs.forEach(tr=>{let ss = '' // Traz pra cá alem do ss todas as info importantes
+                if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''            // Traz pra cá alem do ss todas as info importantes
                     const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
                     const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
-                    Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ; // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
-                    if(ss.length==0){return} // Rodando agora na Linha tr
-                    const Etp = Menor(ss)[2] // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
+                    Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ;  // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
+                    if(ss.length==0){return}                             // Rodando agora na Linha tr
+                    const Etp = Menor(ss)[2]                             // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
                     const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)        // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
                     const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)        // pega o valor q foi pago q é a Soma dos Valr de PGMT
                     const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)  // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
                     const E = Dev ? LALEL['SERV']['Deve'] : Etp
-                    IcnEtp(Typ,tr,E)                            // Adicionar o Icone de Etapas
-                    R_Cor(tr,opc(ss),E[1])                      // Pintar o Tr
-                    Bkg(Vlr,`rgb(${E[2]})`,E[3])                // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
-                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}  // Quando Tiver Devendo Limpar as Cores dos Td
+                    IcnEtp(Typ,tr,E)                                     // Adicionar o Icone de Etapas
+                    R_Cor(tr,opc(ss),E[1])                               // Pintar o Tr
+                    Bkg(Vlr,`rgb(${E[2]})`,E[3])                         // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
+                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}           // Quando Tiver Devendo Limpar as Cores dos Td
                 })}
                 if(All=="All"){LOG(`🔄 Re_Colr:(${Typ}) ${MS(IN)}`)}
             }
@@ -1110,7 +1127,7 @@
                     ContGrad[Grad].List.push(Id)
                 })
             }
-            else if(Typ=='CLNT'){J['PDDS'].forEach(({Clnt,Id,Serv})=>{if (!Clnt || Clnt === "" || Clnt === "--"){return}
+            if(Typ=='CLNT'){J['PDDS'].forEach(({Clnt,Id,Serv})=>{if (!Clnt || Clnt === "" || Clnt === "--"){return}
                     if(Serv==''){return}
                     ContCLNT[Clnt]??={Qnt:0,Sum:0,List:[]}
                     ContCLNT[Clnt].Qnt++
@@ -1131,10 +1148,10 @@
             if(Typ==='PDDS'){
                 const trs = All=='All' ? J[Typ] : [All]
                 trs.forEach(tr=>{
-                    const oID=All=='All'? tr.Id : tr_ID(tr)                                        // coleta Id
-                    const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                // pega o td onde inserirei o valor da Soma
+                    const oID=All=='All'? tr.Id : tr_ID(tr)                                                  // coleta Id
+                    const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                          // pega o td onde inserirei o valor da Soma
                     const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
-                    const vzz=e=>e==0?'':RS(e)                                                     // conferir se ta tudo vazio
+                    const vzz=e=>e==0?'':RS(e)                                                               // conferir se ta tudo vazio
                     /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
                     /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
                     /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
@@ -1160,14 +1177,16 @@
         const Splii = {
     /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
     /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
-    /*Opt*/ ,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
-            ,S_Arte:j=>J['IMGS'][j.Id] ?? '' // não precisa
-            ,S_CArt:j=>''                    // não precisa
+    /*Opt*/ //,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
+            //,S_Arte:j=>J['IMGS'][j.Id] ?? '' // não precisa
+            //,S_CArt:j=>''                    // não precisa
             ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
-            ,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : '' /*acho q esse vai sair*/
-            ,S_Gimg:j=>`${j.Grad}.webp`      // aqui sim Realmente é um AutoMatico Uber e OS também
-            ,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
-            ,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+            //,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : '' /*acho q esse vai sair*/
+            //,S_Gimg:j=>`${j.Grad}.webp`      // aqui sim Realmente é um AutoMatico Uber e OS também
+            
+            // Localizar onde boto essas informações de OS e de UBER (pois agora que tem Bandeija fica dificil) (não quero ter que criar mais 2 colunas extras, só pra possuir esses valores)
+            //,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+            //,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
 
             //-----------------------------------------------------------------------------------------------------------
             ,G_ImgU:j=>J['IMGS'][j.Grad] ?? ''
@@ -1192,14 +1211,13 @@
             ,A_Img:j=>J['IMGS'][j.Nome] ?? ''
         }
 
-        function Re_Comp(Typ,All){ // Chama: Bndj , Nova Linha+ , Lixeira)
+        function Re_Comp(Typ,All){
             return
             if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
             const IN = performance.now()
             const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
 
             const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
-                
                 const Coa = {S:'SERV',P:'PGMT'}
                 const TYP = Coa[Pre]||Typ
                 const Key = All=='All' ? tr[Primary[TYP]] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${Primary[TYP]}`)}`,tr)) // Pegando a Chave Primaria
@@ -1219,7 +1237,7 @@
             }else if(Typ=="CLNT"){trs.forEach(tr=>[['Link','V'],['Lcro','V'],['Medi','V']                                                                 ].forEach(c=>Edit('C',c[0],c[1],tr)))
             }else if(Typ=="GRAD"){trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
                                   trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
-            }else if(Typ=='OS'){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                                ].forEach(c=>Edit('O',c[0],c[1],tr)))
+            }else if(Typ=='OS'  ){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                              ].forEach(c=>Edit('O',c[0],c[1],tr)))
             }else if(Typ=='UBER'){trs.forEach(tr=>[['Img' ,'V']                                                                                           ].forEach(c=>Edit('U',c[0],c[1],tr)))
             }else if(Typ=='ARTE'){trs.forEach(tr=>[['Img' ,'E']                                                                                           ].forEach(c=>Edit('A',c[0],c[1],tr)))
             }else{return}
