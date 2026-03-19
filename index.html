@@ -1042,7 +1042,7 @@
                 if(Mod=='Etapa'){
                     const Atuu = Atu.map(e=>e[0])
                     const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
-                    const LISTA= ['Serv','Arte','Grad','OK','Entg'] // GAMBIARRRRRA
+                    const LISTA= ['Serv','Grad','OK','Entg'] // GAMBIARRRRRA
                     const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
                     if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
                     const trr = !DOM ? TRR : tr
