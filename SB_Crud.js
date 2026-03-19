@@ -131,7 +131,8 @@ const Tm_Tm = {
     Auto:(e,R,P)=>`<p      data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
     Sync:(e,R,P)=>`<p      data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
     Lixo:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp"><i class="Abslt GrifFora"></i>`,
-    Imgs:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`,
+    Imgs:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
+    ImUP:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
     Link:(e,R,P)=>{ // aqui é o Link principal q aparece
         const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK ; const TYP2 = Typ2.split('-')
         return e!=''? Tm_Bndj(R,e)
@@ -140,7 +141,7 @@ const Tm_Tm = {
                 <div class="BndjSUG MySelect BNdj Abslt none Cl">
                     <a>${SVG.Ponta}</a>
                     <input class="Stky" placeholder="${dbCol[TYP2[0]]}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
-                    <span class="Sugg Cl"></span>
+                    <span class="Sugg Cl"></span>   
                 </div>
             </div>`
     },
@@ -186,12 +187,12 @@ function AbrirImg(img,Nome,R){
     const X   = Nome ? 'Plc' : 'Up'
     const _R  = d_r(R)
     const Pre = BS[_R.Ty].Json[_R.Cl].SRC ?? '' // Prefixo de Imagens se Tiver
-
     const W   = img.naturalWidth > img.naturalHeight
     MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
                 <img src="${BASE_URL}Img/${Nome}">
                 <div class="casusa Cl ${W ? 'w100':'h100'}">
                     <span>Nome: ${Nome}</span> <div>Id: ${_R.Id}</div>
+                    <span>SALVAR COM NOME: ${Pre}${_R.Id}</span>
                     <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
                     <button onclick="XModal(this);ImgUPP($('input',Pai(this)),'${Pre}${_R.Id}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
                 </div>
@@ -274,7 +275,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
         const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
 
         if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${TYP2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
+            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
         }
         if(Mod=='Table'){
             Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
