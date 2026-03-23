@@ -1,6 +1,8 @@
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
+const TagVoid = new Set(["AREA","BASE","BR","COL","EMBED","HR","IMG","INPUT","LINK","META","PARAM","SOURCE","TRACK","WBR","SELECT"])
+
 const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
 function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
@@ -93,7 +95,6 @@ function CrypPass(senha){ // Obsoleta
 }
 
 const BrevTitle = (Typ,Stg)=>{
-    if(!Stg) return `+ Novo ${Typ}` // usar isso como Botão Depois
     if(Typ!='SERV') return Stg
     try{const g={}
         Stg.split('|').forEach(s=>{

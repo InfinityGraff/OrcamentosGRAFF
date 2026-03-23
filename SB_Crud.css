@@ -16,6 +16,7 @@
 
 .LnK > div:first-child{background: #0000ff1a;border-radius: 255px;border: 1px solid #0000ff4f;}
 
+.Cropp{max-width: 100px !important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;justify-content: start;} /*Deixa a Coluna com Limite de 100px*/
 
 .Sugg.Atv  {background: #d822ab; color: #ffffff}
 .CorID     {background:#94949473}

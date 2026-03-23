@@ -438,7 +438,10 @@
 
 <script> // Bibliotecas
     const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
-    const TRs      =Typ=>$$(`#H_${Typ} > tbody > tr`)
+    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
+    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > #Bodd${n} > tr:not(.H_Tbody)`)
+    const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
+
     const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
@@ -449,8 +452,6 @@
 <div> <!--JS e CSS das Tabelas-->
     <div>   <!--TABELAS  - ⭐⭐⭐_ _ -->
         <style> /*CSS apenas da Tabela*/
-            #H_PGMT thead th:nth-child(7),#H_PGMT tbody td:nth-child(7){max-width: 100px !important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;justify-content: start;}
-
             /*Particularidades*/
             .BndjFOT,.BndjFLT{overflow: hidden}
             .BndjFLT{border-radius:0 0 10px 10px}
@@ -466,13 +467,18 @@
             .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
             .TBLAA tfoot .RS{color:#00df00; font-size:7px}
 
-            .TBLAA tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
-            .BndjTBL tbody td                      > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
-            .TBLAA tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
-            .TBLAA   tbody td p                                              {padding:2px 6px; text-align:center}
-            .BndjTBL tbody td p                                              {height:100%; width: 100%; padding:2px 6px; text-align:center}
-            .TBLAA tbody > tr:not([class*="Hoov"]):hover      {filter: saturate(1.6) brightness(1.05); z-index: 999999}
-            .TBLAA tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
+            .TBLAA   tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
+            .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
+            .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
+            .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
+            .BndjTBL tbody td p                                                {width: 100%;height:100%;padding:2px 6px; text-align:center}
+            .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter: saturate(1.6) brightness(1.05); z-index: 999999}
+            .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
+
+            .H_Tbody{height: 30px !important;}
+            .H_Tbody td{background: purple;}
+            .H_Tbody:hover {background: #ff0000}
+            tbody.closed tr:not(.H_Tbody) {display: none}
         </style>
 
         <style> /*CARD*/
@@ -480,7 +486,7 @@
             table.Card > thead{display: none}
             table.Card > tfoot{display: none}
             table.Card > tbody{display:flex; flex-wrap:wrap; gap:12px ; padding:10px}
-            table.Card > tbody > tr{padding: 8px;background:#ffffff;border-radius: 16px;box-shadow: 0 4px 12px #0000001a;}/*CARD*/
+            table.Card > tbody > tr {padding: 8px;background:#ffffff;border-radius: 16px;box-shadow: 0 4px 12px #0000001a;}/*CARD*/
             table.Card > tbody > tr {display: grid;grid-template-columns: 1fr auto auto;gap: 4px 4px;
                 grid-template-areas:
                     " Id   Id  Data"
@@ -537,10 +543,11 @@
             // isso daqui tem que ser, Pegar todas as Imagens que estão dentro da Bandeija, todas mesmo incluindo Bandeija de Bandeija e Links tbm
         }
 
-            const FazerTitle=(Typ,Find)=>{
+            const FazerTitle=(Typ,Find,Buttonn)=>{
                 const Stg = BS[Typ].Title
                 const Fn = Function('e',`return ${Stg}`)
-                return  Stg ? BrevTitle(Typ,Find.map(e=>Fn(e)).join('|')) : 'Sem Titulo'
+                const Join = Find.map(e=>Fn(e)).join('|')
+                return  Stg ? Join ? BrevTitle(Typ,Join) : Buttonn : 'Sem Titulo'
             }
 
             function Tm_Bndj(R,Arr,DOM){
@@ -553,9 +560,10 @@
 
                 const Find   = Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? Dados2(dado) : []
                 if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
-                const Title  = FazerTitle(COL,Find)
+                const Buttonn = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO ${RmvPlural(D_Brev[COL])}</button>` : ''
+                const Title  = FazerTitle(COL,Find,Buttonn)
                 const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
-                const NmTle  = col==='Pgmt'? SunPix(Title) : Title // (GAMBIARRA preparar pra RMV)
+                const NmTle  = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '' : Title // (GAMBIARRA preparar pra RMV)
                 const Cimg   = Find.map(e=>ImgT_T(col,e,R)).join('')
                 
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
@@ -573,12 +581,16 @@
                 }
             }
 
-            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmtt){ // ISSO é o VERDADEIRO Tm_Table o outro lá é um Tm_Trs
+            function TogTbody(e){Tog(e.closest('tbody'),'closed')}
+            const HeadGroupTR = `<tr class="H_Tbody" onclick="TogTbody(this)"><td></td><td colspan="3">📦 Grupo</td></tr>` // aqui terá um Breve Resumo do Mês Inteiro
+
+            function loadtmtable(Typ,GAMBIARRRRRRRRRA,Lmtt){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs
                 const LOAD=(TYP)=>{
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
                         const NewTyp = RANGE_DATA(J[TYP],BS[TYP].Limit,Lmtt) // Limita por Data
-                        Inn($(`#H_${TYP} > tbody`),Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))
+                        if(TYP=='PDDS'){Inn($(`#H_${TYP} > #Bodd1`), HeadGroupTR  + Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp)) /*TBODYID*/
+                                  }else{Inn($(`#H_${TYP} > tbody`), Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))} /*TBODYID*/
                         Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(BS[TYP].Orden,TYP)}</tr>`)
                         Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(BS[TYP].Orden,TYP)}</tr>`)
                         RFresh(TYP,'All')
@@ -613,12 +625,18 @@
         <script> // SCRIPT - PESQUISA
             let debounceTimer
             const Espelhar =(Org,Dst)=>{Dst.forEach(e=>{e.innerHTML = Org.innerHTML ; $('input',e) ? $('input',e).value = $('input',Org).value : null})}
-            const RmvGrifo =e=>Inn(e,Inn(e).replace(/<strong[^>]*>(.*?)<\/strong>/gi,"$1"))
+            
             const Acnto    =(s,Tru)=>Tru && s ? `${s}`.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : s
-            const GrifarAcc=(e,Rx,C)=>{
-                const t  = e.textContent ; const tn = C ? t.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : t
+
+            // FUNDIR os 2
+            const GrifarAcc=(e,val,Rx,C)=>{ // Provavelmente da pra passar o SELECT pra aqui pra dentro!
+                const t  = val ; const tn = C ? t.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : t
                 const m  = tn.match(Rx) ; if (!m) return ; const i = m.index
-                Inn(e,t.slice(0,i)+`<strong style="background:orange">${t.slice(i,i+m[0].length)}</strong>`+t.slice(i+m[0].length))
+                if(TagVoid.has(e.tagName)){
+                    Add(e,'Psq')
+                }else{
+                    Inn(e,t.slice(0,i)+`<strong style="background:orange">${t.slice(i,i+m[0].length)}</strong>`+t.slice(i+m[0].length))
+                }
             }
             
             const Load_Pesq=Typ=>
@@ -636,14 +654,83 @@
                 </div>`
 
             function Avnc_Pesq(Ipt,Typ){ // isso faz o Regex de Pesquisa (Deve ter um Nome Melhor)
-                const I = Ipt.value.trim().replace(/\s+/g,' ')                  // Limpar exesso de Espaços
-                const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'               // Funcionando
-                const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''                // Funcionando
-                const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)                         // Funcionando (n sei se ta funcionando)
-                const rx=$(`.Pesq_${Typ} .Pesq-Rx.Atv`)                         // Funcionando
-                const _C=$(`.Pesq_${Typ} .Pesq-_C.Atv`)?false:true              // Funcionando
+                const I = Ipt.value.trim().replace(/\s+/g,' ')                    // Limpar exesso de Espaços
+                const Aa=$(`.Pesq_${Typ} .Pesq-Aa.Atv`)?  '' :'i'                 // Maiusculo e Minusculo
+                const A_=$(`.Pesq_${Typ} .Pesq-A_.Atv`)?'\\b':''                  // Fronteiras de Palavras
+                const Bj=$(`.Pesq_${Typ} .Pesq-Bj.Atv`)                           // Pesquisa Internas
+                const rx=$(`.Pesq_${Typ} .Pesq-Rx.Atv`)                           // Pesquisa por Regex
+                const _C=$(`.Pesq_${Typ} .Pesq-_C.Atv`)?false:true                // Acentuação
                 const RX = new RegExp(`${A_}${rx?I:EscpRgx(Acnto(I,_C))}${A_}`,Aa)
                 return [I,_C,RX]
+            }
+
+            const LimpaGrifo=tr=>{
+                const RmvGrifo=e=>{Inn(e,Inn(e).replace(/<strong[^>]*>(.*?)<\/strong>/gi,"$1")) ; Rmv(e,'Psq')}
+                $$('.P-P',tr).forEach(p=>RmvGrifo(p))
+                $$('.GrifNot1',tr).forEach(e=>{Rmv(e,'GrifNot1')})              // 2° - Limpa todos os "grifNot" (é a Bolinha)
+            }
+            
+            const Grifar_Not=(tr,Typ,Val)=>{   // Tentar Fundir com de Cima!
+                const td = _td($(Rx7(Typ,Val[0]),tr))
+                Add(td,'GrifNot1')             // Dizer que a Div agora Possúi GrifNot do Tipo 1
+                Inn($('.grifoo i',td),Val[2])  // Atribuir o Valor pra dentro do GrifNot                                     
+            }
+
+            function grifooXX(){Tog_N($$('.grifoo i'))}
+
+            function Ex_Pesq_J(Arr,Typ,RX,I,_C,Ipt){
+                // Criar aqui as Condições que retorna um Erro, criado por mim mesmo, que vai dizer como os Argumentos tem que chegar aqui
+                // se todos tiverem Ok, então segue, se não, meu Erro entra em Ação
+                // Evoluir este Regex pra Aceitar Dados Literarios
+
+                const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
+
+                const PesqJJ=j=>{try{const has=v=>v&&RX.test(Acnto(v,_C)+""),ent=o=>ObjEtr(o).find(([k,v])=>has(v)),arr=a=>a&&a.map(ent).find(Boolean)
+                    if (C1) {const v1 = j[C1] ; if(r=arr(v1)) return[C1,r[0],r[1]]} else {;const r1 = ObjEtr(j).find(([k,v])=>isArr(v) && arr(v));if(r1){const r2=arr(r1[1]);return[r1[0],r2[0],r2[1]]}}   // MODO 4 - Pesquisa interna sempre ativa
+                        const v1 = j[C1] ; if (C1&&C2 && isArr(v1)) {const o2=v1.find(o=>o&&has(o[C2]));if(o2) return [C1,C2,o2[C2]]}                                                                      // MODO 3 - Pesquisa em duas camadas (C1+C2)
+                    return false}catch{return false}
+                }
+
+                const PesqJJ2 = j => {try{const has=v=>v&&RX.test(Acnto(v,_C)+"")
+                        for (const [k, v] of ObjEtr(j)) {if (has(v)) return true /*[k, v]*/}
+                        return false
+                    } catch { return false}
+                }
+                
+                const PesqLink=j=>{
+                    const TMs = ObjEtr(BS[Typ].Json).filter(([k,e])=>e.TM=='Link').map(e=>e[0])
+                    const Filtrado = TMs.map((col,x)=>{
+                        const [TYP,ID] = j[col].split('-')
+                        if(!TYP||!ID){return false}
+                        return PesqJJ2(JJ[TYP][ID])
+                    })
+                    return Filtrado.some(e=>e==true)
+                }
+
+                const Dados = Arr.map(j=>PesqJJ(j))
+                const OBJJJ = Arr.filter(j=>PesqJJ(j)||PesqLink(j))
+                return [OBJJJ,Dados[0]]
+                
+            }
+
+            function Ex_Pesq(TRS,Typ,RX,I,_C,Ipt){ // desnessesário essa quantidade de argumento, depois tentar Reduzir
+                let acc = []
+                const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
+                LOG('Sancada',RX)
+                TRS.forEach(tr=>{                                                       // Rodar isso pra cada Tr
+                    let trOK   = false ; LimpaGrifo(tr)                                 // Define que começa Falso, ou seja Oculto e Limpar os Grifos
+                    const oObj = JJ[Typ][tr_ID(tr)]                                     // 1° - Encontra o Objeto pelo Tr
+                    const bjj  = Ex_Pesq_J([oObj],Typ,RX,I,_C,Ipt)                      // 2° - Faz o Match e Retorna o Caminho
+                    if(bjj[0].length!=0){trOK=true}                                     // se não for vazio, Passou no regex
+
+                    $$(`.P-P`,tr).forEach(p=>{                                          // percorre Todos P-P da Camada1
+                        GrifarAcc(p,Nm(p),RX,_C)                                        // Grifar cada P-P
+                    })
+                    
+                    if(I!=''&&bjj[1]){Grifar_Not(tr,Typ,bjj[1]) ; trOK=true}            // 3° - Se algum Bater faz o grifNot apartir do Caminho de bjj
+                    if(trOK){Rmv(tr,'n0') ; acc.push(tr_ID(tr))}else{Add(tr,'n0')}      // 4° - trOK define se Exibir ou Ocultar, e dar um Push no ID, pra retornar todos Id depois do Loop
+                })
+                return acc
             }
 
             function Pesq(Ipt,Typ){ /*ao apagar todo o texto os icons SOME, */
@@ -651,45 +738,29 @@
                 debounceTimer = setTimeout(()=>{
                     Espelhar(Pai(Ipt),$$(`.Pesq_${Typ}`).filter(e=>e!==Pai(Ipt)))
                     const [I,_C,RX] = Avnc_Pesq(Ipt,Typ)
+
                     if(Typ=='ORC'){ // Página é Orçamento
                         $$('#Div-Prod > div').forEach(e=>{
-                            $$(".rgx",e).forEach(Rx=>GrifarAcc(Rx,RX,_C))         // grifar  as Ocorrências
-                            AddTrue(e,'NONE',!RX.test(Acnto(e.textContent,_C)))}) // Ocultar as Ausentes
+                            $$(".rgx",e).forEach(div=>GrifarAcc(div,div.textContent,RX,_C))       // grifar  as Ocorrências
+                            AddTrue(e,'NONE',!RX.test(Acnto(e.textContent,_C)))   // Ocultar as Ausentes
+                        })
                     }
+
                     else if(Coten($(`#Pag_${Typ}`),'TBLAA')){ // Página é uma Tabela
-                        Ex_Pesq(TRs(Typ),Typ,RX,I,_C,Ipt)
+
+                        const ListPes = Ex_Pesq(TRs2(Typ,'1')      ,Typ,RX,I,_C,Ipt)    // Pesquisa tabela carregada, apenas Ocultando
+                        const PesqJ   = Ex_Pesq_J(J[Typ].reverse(),Typ,RX,I,_C,Ipt)[0] // Pesquisa quando não existe nada na tabela, Criando com Template
+
+                        if(Ipt.value!==''){
+                              Inn($(`#H_${Typ} > #Bodd2`),HeadGroupTR + Tm_Table(Typ,PesqJ.filter(j=>!ListPes.includes(`${j.Id}`)))) // esse filter é pra remover os que já estão carregados na tabela Principal
+                        }else{Inn($(`#H_${Typ} > #Bodd2`),'')}
+
+                        Re_Colr(Typ,tr_Viw(Typ))
                         Re_Foot(Typ)
                     }
                 },100)
             }
 
-            function Ex_Pesq(TRS,Typ,RX,I,_C,Ipt){ // desnessesário essa quantidade de argumento, depois tentar Reduzir
-                TRS.forEach(tr=>{ // Rodar isso pra cada Tr
-                    let trOK = false
-                    const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
-                    const P_P = $$(`:scope ${C1?Rx7(Typ,C1):Rx7(Typ)}`,tr)          // Todos P-P da Camada1
-                    P_P.forEach(p=>{
-                        RmvGrifo(p) ; Rmv(p,'Psq')
-                        if(I==='"'){if(`${VAL(p)}`.trim()===""){Add(p,'Psq');trOK=true}return} // Caso Seja Strng Vazia
-                        const Chk = RX.test(Acnto(VAL(p),_C))
-                        if(p.tagName=='P'){GrifarAcc(p,RX,_C)}                                 // Passa em cada P, grifa as Ocorrências e dar TrOK
-                        if(p.tagName=='SELECT' && Chk && I!=""){Add(p,'Psq')}                  // Passa em cada Select e Pinta ele
-                        if(Chk){trOK=true}
-                    })
-                    const PesqJJ=j=>{try{const has=v=>v&&RX.test(Acnto(v,_C)+""),ent=o=>ObjEtr(o).find(([k,v])=>has(v)),arr=a=>a&&a.map(ent).find(Boolean)
-                            if (C1) {const v1 = j[C1] ; if(r=arr(v1)) return[C1,r[0],r[1]]} else {;const r1 = ObjEtr(j).find(([k,v])=>isArr(v) && arr(v));if(r1){const r2=arr(r1[1]);return[r1[0],r2[0],r2[1]]}} // MODO 4 — pesquisa interna sempre ativa
-                            const v1 = j[C1] ; if (C1&&C2 && isArr(v1)) {const o2=v1.find(o=>o&&has(o[C2]));if(o2) return [C1,C2,o2[C2]]}                                                                        // MODO 3 — pesquisa em duas camadas (C1 + C2)
-                        return false}catch{return false}
-                    }
-                    const bjj=PesqJJ(JJ[Typ][tr_ID(tr)])                            // 1° - Encontrar a Linha pelo Obj JJ e Faz o Match e Retorna o Caminho
-                    $$('.GrifNot1',tr).forEach(e=>{Rmv(e,'GrifNot1')})              // 2° - Limpa todos os "grifNot"
-                    $$('.GrifFora',tr).forEach(e=>{Inn(e,''        )})              // 2° - Limpa todos os "grifFora"
-                    const td = bjj ? _td($(Rx7(Typ,bjj[0]),tr)) : null
-                    if(I!=''&&bjj){Add(td,'GrifNot1');Inn($('.grifoo i',td),bjj[2]) // 3° - Se algum Bater faz o grifNot apartir do Caminho de bjj
-                    Inn($(':scope > td > div > .GrifFora',tr),bjj[2]);trOK=true}
-                    if(trOK){Rmv(tr,'n0')}else{Add(tr,'n0')}                        // 4° - Exibir e Ocultar as tr OK
-                })
-            }
 
             // 🔨 Grifo, Bndj de Pesq deve Ocultar conforme Click Fora
             // 🔨 Fazer o Grifo Acontecer dentro da Bandeija apenas quando ela for Aberta!
@@ -936,11 +1007,11 @@
                 function TogSeta(e,asc){AllI(_table(e)).forEach(i=>{DTV(i);i.textContent='▼'});const atu = SibQSl(e,'i') ; ATV(atu) ; atu.textContent = asc?'▼':'▲'}
                 const table = _table(e)
                 const cOl = $('p',_th(e))
-                const tbody = $('tbody',table)
+                const TBODY = $('tbody',table) // TBODYID ver se o melhor seria isso
                 const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
                 const Get=E=>$('.P-P',E.children[x])
 
-                const Ordn = [...tbody.rows].sort((a,b)=>{                    
+                const Ordn = [...TBODY.rows].sort((a,b)=>{                    
                     if(KeyCtrl(ev)){ // se tiver com Cntrl Selecionado faz o Filtro por Caracteres
                         const lenA = (VAL(Get(a)) || '').length
                         const lenB = (VAL(Get(b)) || '').length
@@ -963,7 +1034,7 @@
                         return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
                 })
                 table.dataset.sortOrder = asc ? "asc" : "desc"
-                Ordn.forEach(r=>tbody.appendChild(r))
+                Ordn.forEach(r=>TBODY.appendChild(r))
                 TogSeta(e,asc)
             }
 
@@ -973,7 +1044,7 @@
             function FiltMes(Mes,Typ){
                 LOG('Mes',mesesObj[Mes])
                 const Filt = RangeMes(J[Typ],mesesObj[Mes])
-                Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,Filt))
+                Inn($(`#H_${Typ} > tbody`),Tm_Table(Typ,Filt)) // TBODYID
                 RFresh(Typ,'All')
             }
         </script>
@@ -1071,7 +1142,7 @@
 
             function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
                 const IN = performance.now()
-                const trs = All=='All' ? TRs(Typ) : [All]
+                const trs = All=='All' ? TRs(Typ) : isArr(All) ? All : [All]
                 const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
 
                 if(Typ=='SERV'){LOG('FUDEU',CrBS(Typ))}
@@ -1080,7 +1151,6 @@
                 if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
                 if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
                 if(Typ=='OS'  ){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
-
                 if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''            // Traz pra cá alem do ss todas as info importantes
                     const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
                     const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
@@ -1106,7 +1176,7 @@
         const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
         const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
         const FiM =(arr   )=>arr.slice(0,-1)
-        const tr_Viw=Typ=>$$(`#H_${Typ} > tbody > tr:not([class*=" n"])`)
+        
 
         function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
             ;['PDDS','CLNT'].forEach(Typ=>{// tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
@@ -2182,7 +2252,7 @@
                                     <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
                                     <tfoot class="Stky2"><tr></tr></tfoot>
                                 </table>
-                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody id="Bodd1"></tbody><tbody id="Bodd2"></tbody><tfoot class="Stky2"></tfoot></table>
                                 <button onclick="loadtmtable('PDDS',true,false)">Carregar Tudo</button>
                             </div>
                         </div>

@@ -130,7 +130,7 @@ const Tm_Tm = {
     Data:(e,R,P)=>`<p      data-R="${R}" data-P="${P}" class="P-P Ct" name="${ YMD(e)}" onclick="TrcFih(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${YMD(e)}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
     Auto:(e,R,P)=>`<p      data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
     Sync:(e,R,P)=>`<p      data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
-    Lixo:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp"><i class="Abslt GrifFora"></i>`,
+    Lixo:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp">`,
     Imgs:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
     ImUP:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
     Link:(e,R,P)=>{ // aqui é o Link principal q aparece
