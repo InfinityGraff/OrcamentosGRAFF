@@ -439,7 +439,7 @@
 <script> // Bibliotecas
     const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
-    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > #Bodd${n} > tr:not(.H_Tbody)`)
+    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
 
     const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
@@ -571,7 +571,7 @@
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
-                        <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="none"></i></i></div>
+                        <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
                         <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                             <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
                             ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
@@ -589,7 +589,7 @@
                     Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
                     setTimeout(()=>{
                         const NewTyp = RANGE_DATA(J[TYP],BS[TYP].Limit,Lmtt) // Limita por Data
-                        if(TYP=='PDDS'){Inn($(`#H_${TYP} > #Bodd1`), HeadGroupTR  + Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp)) /*TBODYID*/
+                        if(TYP=='PDDS'){Inn($(`#H_${TYP} > .Bodd1`), HeadGroupTR  + Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp)) /*TBODYID*/
                                   }else{Inn($(`#H_${TYP} > tbody`), Tm_Table(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))} /*TBODYID*/
                         Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(BS[TYP].Orden,TYP)}</tr>`)
                         Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(BS[TYP].Orden,TYP)}</tr>`)
@@ -625,18 +625,25 @@
         <script> // SCRIPT - PESQUISA
             let debounceTimer
             const Espelhar =(Org,Dst)=>{Dst.forEach(e=>{e.innerHTML = Org.innerHTML ; $('input',e) ? $('input',e).value = $('input',Org).value : null})}
-            
             const Acnto    =(s,Tru)=>Tru && s ? `${s}`.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : s
+            
+            // LINKS
+            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
+            const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
 
-            // FUNDIR os 2
+
             const GrifarAcc=(e,val,Rx,C)=>{ // Provavelmente da pra passar o SELECT pra aqui pra dentro!
                 const t  = val ; const tn = C ? t.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : t
                 const m  = tn.match(Rx) ; if (!m) return ; const i = m.index
-                if(TagVoid.has(e.tagName)){
-                    Add(e,'Psq')
-                }else{
-                    Inn(e,t.slice(0,i)+`<strong style="background:orange">${t.slice(i,i+m[0].length)}</strong>`+t.slice(i+m[0].length))
-                }
+                if(TagVoid.has(e.tagName)){Add(e,'Psq')}
+                else{Inn(e,t.slice(0,i)+`<strong style="background:orange">${t.slice(i,i+m[0].length)}</strong>`+t.slice(i+m[0].length))}
+                // Mudar este Background para uma Class="Griff"
+            }
+
+            const LimpaGrifo=tr=>{
+                const RmvGrifo=e=>{Inn(e,Inn(e).replace(/<strong[^>]*>(.*?)<\/strong>/gi,"$1")) ; Rmv(e,'Psq')}
+                $$('.P-P',tr).forEach(p=>RmvGrifo(p))
+                $$('.GrifNot1',tr).forEach(e=>{Rmv(e,'GrifNot1')})              // 2° - Limpa todos os "grifNot" (é a Bolinha)
             }
             
             const Load_Pesq=Typ=>
@@ -663,12 +670,6 @@
                 const RX = new RegExp(`${A_}${rx?I:EscpRgx(Acnto(I,_C))}${A_}`,Aa)
                 return [I,_C,RX]
             }
-
-            const LimpaGrifo=tr=>{
-                const RmvGrifo=e=>{Inn(e,Inn(e).replace(/<strong[^>]*>(.*?)<\/strong>/gi,"$1")) ; Rmv(e,'Psq')}
-                $$('.P-P',tr).forEach(p=>RmvGrifo(p))
-                $$('.GrifNot1',tr).forEach(e=>{Rmv(e,'GrifNot1')})              // 2° - Limpa todos os "grifNot" (é a Bolinha)
-            }
             
             const Grifar_Not=(tr,Typ,Val)=>{   // Tentar Fundir com de Cima!
                 const td = _td($(Rx7(Typ,Val[0]),tr))
@@ -676,13 +677,12 @@
                 Inn($('.grifoo i',td),Val[2])  // Atribuir o Valor pra dentro do GrifNot                                     
             }
 
-            function grifooXX(){Tog_N($$('.grifoo i'))}
+            function grifooXX(){Tog_N($$('.grifoo i'))} // acho q isso deveria ser i > i
 
-            function Ex_Pesq_J(Arr,Typ,RX,I,_C,Ipt){
+            function Ex_Pesq_J(Arr,Typ,RX,_C,Ipt){
                 // Criar aqui as Condições que retorna um Erro, criado por mim mesmo, que vai dizer como os Argumentos tem que chegar aqui
                 // se todos tiverem Ok, então segue, se não, meu Erro entra em Ação
                 // Evoluir este Regex pra Aceitar Dados Literarios
-
                 const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
 
                 const PesqJJ=j=>{try{const has=v=>v&&RX.test(Acnto(v,_C)+""),ent=o=>ObjEtr(o).find(([k,v])=>has(v)),arr=a=>a&&a.map(ent).find(Boolean)
@@ -690,13 +690,11 @@
                         const v1 = j[C1] ; if (C1&&C2 && isArr(v1)) {const o2=v1.find(o=>o&&has(o[C2]));if(o2) return [C1,C2,o2[C2]]}                                                                      // MODO 3 - Pesquisa em duas camadas (C1+C2)
                     return false}catch{return false}
                 }
-
                 const PesqJJ2 = j => {try{const has=v=>v&&RX.test(Acnto(v,_C)+"")
                         for (const [k, v] of ObjEtr(j)) {if (has(v)) return true /*[k, v]*/}
                         return false
                     } catch { return false}
                 }
-                
                 const PesqLink=j=>{
                     const TMs = ObjEtr(BS[Typ].Json).filter(([k,e])=>e.TM=='Link').map(e=>e[0])
                     const Filtrado = TMs.map((col,x)=>{
@@ -706,28 +704,21 @@
                     })
                     return Filtrado.some(e=>e==true)
                 }
-
                 const Dados = Arr.map(j=>PesqJJ(j))
                 const OBJJJ = Arr.filter(j=>PesqJJ(j)||PesqLink(j))
                 return [OBJJJ,Dados[0]]
-                
             }
 
-            function Ex_Pesq(TRS,Typ,RX,I,_C,Ipt){ // desnessesário essa quantidade de argumento, depois tentar Reduzir
+            function Ex_Pesq(TRS,Typ,RX,_C,Ipt){
                 let acc = []
-                const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
-                LOG('Sancada',RX)
+                //const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
                 TRS.forEach(tr=>{                                                       // Rodar isso pra cada Tr
                     let trOK   = false ; LimpaGrifo(tr)                                 // Define que começa Falso, ou seja Oculto e Limpar os Grifos
                     const oObj = JJ[Typ][tr_ID(tr)]                                     // 1° - Encontra o Objeto pelo Tr
-                    const bjj  = Ex_Pesq_J([oObj],Typ,RX,I,_C,Ipt)                      // 2° - Faz o Match e Retorna o Caminho
+                    const bjj  = Ex_Pesq_J([oObj],Typ,RX,_C,Ipt)                        // 2° - Faz o Match e Retorna o Caminho
                     if(bjj[0].length!=0){trOK=true}                                     // se não for vazio, Passou no regex
-
-                    $$(`.P-P`,tr).forEach(p=>{                                          // percorre Todos P-P da Camada1
-                        GrifarAcc(p,Nm(p),RX,_C)                                        // Grifar cada P-P
-                    })
-                    
-                    if(I!=''&&bjj[1]){Grifar_Not(tr,Typ,bjj[1]) ; trOK=true}            // 3° - Se algum Bater faz o grifNot apartir do Caminho de bjj
+                    $$(`.P-P`,tr).forEach(p=>{GrifarAcc(p,Nm(p),RX,_C)})                // percorre Todos P-P da Camada1, Grifar cada P-P
+                    if(Ipt.value!=''&&bjj[1]){Grifar_Not(tr,Typ,bjj[1]) ; trOK=true}    // 3° - Se algum Bater faz o grifNot apartir do Caminho de bjj
                     if(trOK){Rmv(tr,'n0') ; acc.push(tr_ID(tr))}else{Add(tr,'n0')}      // 4° - trOK define se Exibir ou Ocultar, e dar um Push no ID, pra retornar todos Id depois do Loop
                 })
                 return acc
@@ -741,19 +732,16 @@
 
                     if(Typ=='ORC'){ // Página é Orçamento
                         $$('#Div-Prod > div').forEach(e=>{
-                            $$(".rgx",e).forEach(div=>GrifarAcc(div,div.textContent,RX,_C))       // grifar  as Ocorrências
-                            AddTrue(e,'NONE',!RX.test(Acnto(e.textContent,_C)))   // Ocultar as Ausentes
+                            $$(".rgx",e).forEach(div=>GrifarAcc(div,div.textContent,RX,_C))    // grifar  as Ocorrências
+                            AddTrue(e,'NONE',!RX.test(Acnto(e.textContent,_C)))                // Ocultar as Ausentes
                         })
                     }
-
                     else if(Coten($(`#Pag_${Typ}`),'TBLAA')){ // Página é uma Tabela
+                        const ListPes = Ex_Pesq(TRs2(Typ,'1')     ,Typ,RX,_C,Ipt)    // Pesquisa tabela carregada, apenas Ocultando
+                        const PesqJ   = Ex_Pesq_J(J[Typ].reverse(),Typ,RX,_C,Ipt)[0] // Pesquisa quando não existe nada na tabela, Criando com Template
 
-                        const ListPes = Ex_Pesq(TRs2(Typ,'1')      ,Typ,RX,I,_C,Ipt)    // Pesquisa tabela carregada, apenas Ocultando
-                        const PesqJ   = Ex_Pesq_J(J[Typ].reverse(),Typ,RX,I,_C,Ipt)[0] // Pesquisa quando não existe nada na tabela, Criando com Template
-
-                        if(Ipt.value!==''){
-                              Inn($(`#H_${Typ} > #Bodd2`),HeadGroupTR + Tm_Table(Typ,PesqJ.filter(j=>!ListPes.includes(`${j.Id}`)))) // esse filter é pra remover os que já estão carregados na tabela Principal
-                        }else{Inn($(`#H_${Typ} > #Bodd2`),'')}
+                        if(Ipt.value!==''){Inn($(`#H_${Typ} > .Bodd2`),HeadGroupTR + Tm_Table(Typ,PesqJ.filter(j=>!ListPes.includes(`${j.Id}`)))) // esse filter é pra remover os que já estão carregados na tabela Principal
+                                     }else{Inn($(`#H_${Typ} > .Bodd2`),'')}
 
                         Re_Colr(Typ,tr_Viw(Typ))
                         Re_Foot(Typ)
@@ -1355,13 +1343,6 @@
             // Contar quantas Imagens tem
         }
     </script>
-
-    <div>     <!--LINKS  - ⭐⭐_ _ _    (⚡ Precisa Funcionar sem BNDJ) (mas acho q ele em Sí nem usa Bndj) -->
-        <script> // LINKS
-            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
-            const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
-        </script>
-    </div>
 
     <div>  <!--INTERAÇÕES- ⭐_ _ _ _ -->
         <style> /*Preview*/
@@ -2252,7 +2233,7 @@
                                     <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
                                     <tfoot class="Stky2"><tr></tr></tfoot>
                                 </table>
-                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody id="Bodd1"></tbody><tbody id="Bodd2"></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tbody class="Bodd2"></tbody><tfoot class="Stky2"></tfoot></table>
                                 <button onclick="loadtmtable('PDDS',true,false)">Carregar Tudo</button>
                             </div>
                         </div>
@@ -2366,7 +2347,7 @@
                                     <div id="PagPesq_CLNT" class="PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
                                     <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
                                 </div>
-                                <table id="H_CLNT" class="hMin"><thead class="Stky" style="z-index:510;top:40px"></thead><tbody></tbody></table>
+                                <table id="H_CLNT" class="hMin"><thead class="Stky" style="z-index:510;top:40px"></thead><tbody class="Bodd1"></tbody></table>
                 </div></div></div></div>
             </div>
 
