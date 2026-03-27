@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacHouse</title>
+    <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!--         
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
+    --> 
+    
+    <link href="./SB_Crud.css" rel="stylesheet">
+    <script src="./SB_Crud.js"      ></script>
+    <!--
+        <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+        <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+       
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    -->
+    
+    <!-- <link  href="./CssGRAFF.css" rel="stylesheet"> -->
+    <link  href="./MACHOUSE.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
+    <!--<script src="https://threejs.org/build/three.js"></script>-->
+</head>
+
+<script> // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
+
+<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
+    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
+    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
+    const Tm_Suggs = {// Campo pra Imbutir dentro do BS
+         SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
+        ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
+        ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`                                                 
+        ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`                                      
+        ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
+        ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`                                                 
+        ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`                              
+    }
+    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
+    let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
+    let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
+    
+    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
+    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg',MPAG:'Mpag'}
+</script>
+
+<script> // Bibliotecas
+    const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
+    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
+    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
+    const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
+
+    const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
+    const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
+    const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+    const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+</script>
+
+<script> // aBase de Dados INFINITY GRAFF
+    const USERlg = {}
+
+    const Cgo  = { // Cargo
+        Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
+                orc :['Serigrafia','Figurinha','Cartela'],
+                PDDS:[],
+                PGMT:[],
+                SERV:[]},
+
+        Grnt: { nav :['HOME','|','ORC','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
+                orc :[],
+                PDDS:[],
+                PGMT:[],
+                SERV:[]},
+
+        DSgn: { nav:['HOME','|','ORC','|','PDDS','|','MPAG','|','CONF'] ,
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
+                PDDS:['Id','Cust','Lcro'],
+                PGMT:['Id','Stts','Link','Mpag'],
+                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"Oimg"]},
+
+        Atnd: { nav:['HOME','|','ORC','|','PDDS','|','MPAG','|','CONF'] ,
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
+                PDDS:['Id','Cust','Lcro'],
+                PGMT:['Id','Stts','Link','Mpag'],
+                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"CArt","Oimg"]},
+
+        Clnt: { nav:['HOME','|','ORC','|','CONF'],
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
+                PDDS:[],
+                PGMT:[],
+                SERV:[]}
+    }
+    const tipBS = {}
+    const Atual    = {Pag:'HOME'}
+    let U = {}
+    let UCgo = {}
+    
+</script>
+
+
+<style> /*Analsisar a interferência deste CSS*/
+    #Pag_PRFL   {padding: 40px;}
+    .rs         {color:#8dff57}
+    .Box .rs    {font-size: 25px}
+    .Art .rs    {font-size: 25px}
+    h2,h3       {font-size: 25px}
+    .BOX        {padding:18px;border-radius:14px;background:#2c2c2c48;border:1px solid #50505034}
+    .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
+    .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
+    #Perf .Box a{width: 40px; height: 40px}
+    .Desc a     {width: 15px; height: 15px}
+    .Pic        {width:120px;border-radius:50%}
+    .Art        {gap:3px}
+    .Art img    {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+    .Fotoz      {width: 20px; height: auto;}
+
+    .Svg-P svg  {width: 15px; height: 15px;}
+    .Svg-M svg  {width: 30px; height: 30px;}
+    .Svg-G svg  {width: 40px; height: 40px;}
+
+    #Perf-Trfs table {width:100%; font-size:14px; color:#eee; background-color:#222}
+    #Perf-Trfs th, #Perf-Trfs td {border:1px solid #444; padding:8px 12px; text-align:left}
+    #Perf-Trfs th                {background-color:#333}
+    #Perf-Trfs tr:hover          {background-color:#444}
+    #Perf-Trfs td:first-child    {text-align:center; width:50px; }
+
+    .Hovoi{overflow-x: scroll;}
+
+    .LILI{height: 200px;width: auto;}
+
+    #Pag_HOME{padding: 20px;}
+</style>
+
+<body>
+
+    <style> /*CSS do Header*/
+        /*Fixos*/
+            header    {padding:0px ; z-index:999 ; transition: all ease-in-out 0.3s}
+            header > *{transition: all ease-in-out 0.3s}
+            #LgNome      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
+            #LgNome:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
+            #PAGES{flex:1 ; height:100% ; overflow-y:hidden}
+            .ConfigOrc{transition: all ease-in-out 0.3s}
+            .Body1 .ConfigOrc{height: 0px}
+            .Body2 .ConfigOrc{height: 40px}
+            .Body1 .Content{height:92vh;}
+            .Body2 .Content{height:100vh;}
+        /*Body1*/
+            .BBody1{height:8vh  ; width:100vw ; position:sticky; top:0}
+            .Body2 .BBody1{height: 0vh; pointer-events: none;}.Body2 .BBody1 > *{opacity: 0}
+            .Body1 #PAGES > div{height:100%} /*Aqui são as Páginas de Fato*/
+                .BBody1 #Title      {margin-left:15px}                @media(max-width:500px){.BBody1 #Title    {margin-left:3px}}
+                .BBody1 #Title #Logo{margin:5px; height:30px}         
+                .BBody1 #Title h1   {font-size:3vw}                   @media(max-width:500px){.BBody1 #Title h1 {display:none}}   
+                .BBody1 nav         {margin:0px 10px}                 @media(max-width:700px){.BBody1 nav       {display:none}}
+                .BBody1 nav img     {height:22px; margin:3px 3px}
+                .BBody1 nav p       {display:none}
+                .BBody1 nav div     {border-radius:5px ; margin: 0px 2px;}
+                .Body1 #NavPerf     {flex-direction:row}
+                .Body1 #LgNome      {display:none}
+                .Body1 #LgMORE      {display:none}
+        /*Body2*/
+            .BBody2{height:100%;width:18% ; flex-direction: column}
+            .Body1 .BBody2{width:0% ; pointer-events: none;}.Body1 .BBody2 > *{opacity: 0}
+            .BBody2.recolhe{width:5% } @media(max-width:500px){.BBody2.recolhe{width:50% }}
+            .BBody2.recolhe #Logo   {display: none}
+                .BBody2 #Title      {width: 90%; justify-content: space-between}
+                .BBody2 #Title #Logo{margin:5px; height:30px}
+                .BBody2 #Title h1   {font-size:50% ; display:none}
+                .BBody2 nav     {margin:10px 0px; flex-direction:column; width: 100%}
+                .BBody2 nav img {height:22px; margin:5px 0px ; margin-right: 9px}                            .BBody2.recolhe nav img {margin-right: 0px}
+                .BBody2 nav p   {display:block ; font-size: 14px}                                            .BBody2.recolhe nav p   {display:none}
+                .BBody2 nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .BBody2.recolhe nav div {justify-content:center}
+                .BBody2 nav div:hover     {background: #ffffff15}
+                .BBody2 nav #b1_HNVDv_LIN img{display: none}
+                .BBody2 nav #b1_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
+                .BBody2 nav #b2_HNVDv_LIN img{display: none}
+                .BBody2 nav #b2_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
+                .BBody2 #NavPerf         {flex-direction:column; width: 90%}
+                .BBody2 #Div-Pesq        {display:none}
+                .BBody2 #DivNav          {width:90%}
+                .BBody2 #H_Login         {width: 100% ; justify-content: flex-end; background: #38003fa6}
+                .BBody2 #LgNome          {display: flex; margin-right: 7px; font-size: 14px;}
+                .BBody2 #LgMORE          {display: flex}
+                nav > *.Atv              {background: #da00aa}
+                nav > *.Atv:hover        {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
+    </style>
+
+    <header class="BBody1 Bt"> <!--Body1--> <!--HEADER-->
+
+        <div id="Title" class="Ct"> <!--Titulo-->
+            <img id="Logo"  draggable="false" src="./Img/Mac.png" onclick="TrocaBody()">
+            <h1 class="PT" onclick="TrocaBody()"></h1>
+            <script>
+                function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
+                function Recolher(){Tog($('.BBody2'),'recolhe')}
+                function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
+            </script>
+        </div>
+        <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div><!--Pesquisa-->
+        <div id="DivNav"><nav class="Ct H_Nav"></nav></div><!--nav-->
+
+        <script>
+            function NavPag(Typ){// ao Navegar
+                Atual.Pag=Typ
+                Show(`#Pag_${Typ}`,$$('#PAGES > *'))             // Troca Página
+                if(!Cgo.Admn.nav.includes(Typ)){DTV($$('.H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no nNav
+                // ATV($(`#b1_HNVDv_${Typ}`),$$('.BBody1 .H_Nav > *')) // Troca nNav.Atv do BBody1
+                // ATV($(`#b2_HNVDv_${Typ}`),$$('.BBody2 .H_Nav > *')) // Troca nNav.Atv do BBody2
+                // Show($$(`.Pesq_${Typ}`),$$('.pPesq'))            // Troca Pesquisa
+                // setTimeout(()=>getSBPromise.then(()=>loadtmtable(Typ,false,true)),0) // 100% Assíncrono
+            }
+        </script>
+
+        <div id="H_Login" class="Ct"> <!--Perfil-->
+            <style>
+                #LgFoto{background-size:cover ; height: 100%; width: auto;}
+                #LgFoto img{width:42px; height:42px; margin:4px 4px}
+                .Body1 #H_Mais{top:55px; right:0px}
+                .Body2 #H_Mais{bottom: 0%; left:170px}
+                #MAIS{background:#4e4e4e; width:250px ; color:white}
+                #MAIS div{padding:10px;cursor:pointer;font-size:15px; width:100%}
+                #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
+                #MAIS div:last-child{padding:10px}
+                #MAIS img{height:25px;margin-right:10px}
+                #MAIS p,#MAIS p a{font-size:10px}
+            </style>
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov" style="width:18px" onclick="ShowMore()" oncontextmenu="Prvn();ShowMore()">
+            <div id="LgNome" class="Ct PT"  onclick="AbreLogin(true)">Login</div>
+            <div id="LgFoto"><img draggable="false" class="NObj" onclick="AbreLogin(true)" oncontextmenu="Prvn();ShowMore()"></div>
+
+            <script>
+                function ShowMore(){TogShow('#H_Mais')}
+
+                function AbreLogin(valid){
+                
+                    if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; //MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')
+                    
+                    MODAL(`
+                        <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
+                        <div class="Bt Loginn">Login</div>
+                        <div class="Ct Start">
+                            <label for="Senha">Senha</label>
+                            <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
+                        </div>
+                        <span id="errPass" class="erro"></span>
+                        <div class="Bt">
+                            <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
+                            <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
+                            </div>
+                        </div>
+                    `)
+            
+                }
+
+                const SaiMdal=()=>{if($('.FModal')){$('.FModal').remove()}} /*GAMBIARRA*/
+
+                function TestSenha(Mod,p){
+                    const nome=$('#LgNome'),foto=$('#LgFoto img')
+                    const storg=e=>{StogeRmv('Pass');if(e){StogeSet('Pass',e)}}
+                    const logaa=e=>{const U = JJ['USER'][e] ; Inn(nome,U.Nome);foto.src=U.Foto;storg(e);SaiMdal();PosLogin(U)}
+                    if(Mod=='Dslog')     logaa(0)
+                    if(Mod=='Storg') p ? logaa(p) : logaa(0)
+                    if(Mod=='Modal'){if(JJ['USER'][Vll(p)]){logaa(Vll(p))}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
+                }
+                function PosLogin(U){
+                    UCgo = Cgo[U.cgo]
+                    $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
+                    Inn('.BBody1 .H_Nav',UCgo.nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+                    Inn('.BBody2 .H_Nav',UCgo.nav.map(e=>`<div id="b2_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+                    //Inn('#Div-Pesq',UCgo.nav.map(Typ=>Load_Pesq(Typ)).join(''))
+                    NavPag(Atual.Pag)
+                    //tmplt_Prod()
+                    $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando class do Cargo do Usuário a todas as Tabelas
+                    Load_Perfil(U)
+                    LOG('✅ Perfil Logado!')
+                }
+            </script>
+
+            <div id="H_Mais" class="Abslt none bndj">
+                <div id="MAIS" class="Ct Pose">
+                    <div class="Start" onclick="NavPag('PRFL');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+                    <div class="Start" onclick="AbreLogin()   ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="NavPag('CONF');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="NavPag('SPRT');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="TestSenha('Dslog');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div id="PAGES"> <!--isso era pra ser main-->
+
+    <div id="Pag_HOME">
+        <div class="w100 Cl Gap">
+            <div id="Perf-Perf" class="BOX Ev Gap w100"></div>
+            <div id="Perf-Soli" class="BOX Cl Gap w100"></div>
+            <div id="Perf-Andm" class="BOX Cl Gap w100"></div>
+            <div id="Perf-Hist" class="BOX Cl Gap w100"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let [__A,__M,__D,__S]=['','','','']
+    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Nome}.webp"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
+    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Nome}.webp"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
+    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+    const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
+
+    const Unyc = (U, ID, ev) => {
+    if (ev?.target.closest('button')) return
+    MODAL(Tm_ListArt(U, __A.filter(e => e.Id == ID)))
+    }
+
+    function Load_Perfil(U){
+        const u = U.Nome
+
+        __A = J['ARTEY'].filter(o=>o.Dsng==u && o.Stts=='Ok' && !o.Dslk?.includes(u))
+        __M = J['ARTEY'].filter(o=>o.Dsng==u && o.Stts=='Aceita')
+        __D = J['ARTEY'].filter(o=>o.Dslk?.includes(u))
+        __S = J['ARTEY'].filter(o=>o.Dsng==null||o.Dsng=="")
+         let Partic = 0 ; let Comiss = 0
+
+        Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
+                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
+                    ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
+                </div>
+                <div class="Ct Gap">
+                    <div class="BOX Cl Box"                              ><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Participações     </p><h3>${Partic             }</h3></div>
+                    <div class="BOX Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3>${__A.length         }</h3></div>
+                    <div class="BOX Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3>${__D.length         }</h3></div>
+                    <div class="BOX Cl Box" onclick="View('${u}','Coin')"><a class="Svg-G f-Yell">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
+                </div>`)
+        Inn($('#Perf-Soli'),Tm_SOliArt(u,__S)) ; Inn($('#Perf-Andm'),Tm_AnDAArt(u,__M)) ; Inn($('#Perf-Hist'),Tm_ListArt(u,__A)) // U.On?"Online":"Offline"
+    }
+
+    async function AceitarART(U,Id){
+        const{error}=await supaBASE.from("ARTEY").update({Stts:"Aceita",Dsng:U}).eq("Id",Id)
+        if(!error){alert("Solicitação aceita") ; location.reload()}
+    }
+
+    async function ConclurART(U,Id){
+        const{error}=await supaBASE.from("ARTEY").update({Stts:"Ok",Dsng:U}).eq("Id",Id)
+        if(!error){alert("Concluido") ; location.reload()}
+    }
+
+</script>
+
+
+<script> // SupaBASE
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','ARTEY','GRD2','IMGS'])
+    
+    const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
+
+    function PosGET(){
+        const INN = performance.now()
+        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
+        TestSenha('Storg',StogeGet('Pass'))
+        Listagem('CLNT','Clnt')
+        //Tratamento()
+        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
+    }
+
+    function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
+        return
+        if(crud==='UPDATE'){
+            const NOVOO = NULL__([nEw])[0]
+            const atual = JJ[Typ][nEw.Id]
+            const Limparr = j => j ? Object.keys(j).length ? Object.fromEntries(Object.entries(j).filter(([k,v])=>BS[Typ].Json[k]?.[1]!=='A')) : null : null
+            const DiF = Limparr(Diferentes(NOVOO,atual,Typ))
+            if(!DiF || (Object.keys(DiF).length == 1 && 'Id' in DiF)){LOG(`🌐 EDIT RealTime(${Typ},${nEw.Id}) OK👍`) ; return}
+            function KeysSemId(obj){return Object.keys(obj).filter(k => k !== 'Id')}
+
+            KeysSemId(DiF).forEach(Cl=>{
+                LOG(`${Typ}-${nEw.Id}-${Cl}`,`${AA(Cl)}-`,DiF)
+            })
+
+            //EditCell(,'SB')
+
+            /*Obj*/ ObjEtr(DiF).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro
+            /*Obj*/ // falta atualziar o JJ[Typ]
+            /*DOM*/ flatenObject(DiF,Typ).forEach(([TYP,ID,col,Vlr])=>{
+                $$(Rx7([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
+                    if(col=='Clnt'){return}
+                    if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{return}}
+                    
+                    if(td){if(VAL(td)!==Vlr){
+                        if(d_r(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
+                        if(d_r(td).Tm=='Sync'){return}
+                        DarVAL(td,Vlr) // Editou valor
+                         LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
+                    else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
+                    else{LOG('⚠️ RealTime() P-P não Existe')}
+                })
+            })
+        }
+        else if(crud==='DELETE'){
+            if(!J[Typ].some(e=>e.Id==old.Id)){LOG(`🌐 DELETE RealTime(${Typ},${old.Id}) OK👍`) ; return}
+            RmvROW($(`${Rx7([Typ,old.Id,'Lixo'])} a`),true) //Simular o Click, true veio do SB 🌐
+        }
+        else if(crud==='INSERT'){
+            if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
+            AddROW(Typ,'<',NULL__([nEw]),'SB') // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
+        }
+    }
+    
+    function PlayRealTime(){
+        return supaBASE.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
+            const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
+    };PlayRealTime()
+
+    function SaveConfig(e){LOG('Salva Config no SB')}
+</script>
+
+<script>// Iniciação 
+    function PosGet(){Onloads('body');LOG('✅ Página Carregada!')}  ;PosGet()
+
+    document.addEventListener('click',e=>{const targ = e.target
+        Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
+        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes(_tr(targ))}
+        if(targ.closest('.Sugg')){return}{Add_N($$('#ORC tr:not(.Atv) .Sugg'))} // LINDO TREXO é uma Gambiarra mais ta BOM (Fazer a Cascata igual Bureal Usando este metodo aqui!)
+        // isso Deve virar Padão tipo algo genético, pra usar em varios
+        // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
+    })
+    document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
+        document.addEventListener('keydown',function(event){
+            if(event.key==='Escape'){
+                if(EShow($('#FModal'))){return}
+                else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
+            }// F_Clen(Atual.Pag) // se for outro botão
+    })})
+    GetPC()
+</script>
