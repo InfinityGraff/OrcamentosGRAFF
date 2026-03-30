@@ -52,23 +52,12 @@
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    const Tm_Suggs = {// Campo pra Imbutir dentro do BS
-         SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
-        ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
-        ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`                                                 
-        ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`                                      
-        ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
-        ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`                                                 
-        ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`                              
-    }
     let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-    let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
-    let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
     
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg',MPAG:'Mpag'}
+    
 </script>
 
 <script> // Bibliotecas

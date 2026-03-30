@@ -48,26 +48,18 @@
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
     const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    const Tm_Suggs = {// Campo pra Imbutir dentro do BS
-         SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
-        ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
-        ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`                                                 
-        ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}] }</div>`                                      
-        ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
-        ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`                                                 
-        ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`                              
-    }
     let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-    let  ContGrad  = {} // Fundir essa com a Debaixo (e deixar a coisa grande igual a J)
-    let  ContCLNT  = {} // Fundir essa com a DeCima  (e deixar a coisa grande igual a J)
-    
+
+    // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
+    let  ContGrad  = {} ; let  ContCLNT  = {}
+
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
-    const dbCol  = {Id:"Id",Lin:"Lin",Data:"Data",Clnt:"Clientes",Serv:"Serviços",Valr:"Valor",Pgmt:"Pagamentos",Cust:"Custos",Lcro:"Lucros",Stts:"Etapa",Lixo:"",Tipo:"Tipo",Desc:"Descrição",Dsng:"Design",Arte:"Arte",Forn:"Fornecedor",OK:"OK",Entg:"Entregue",Detg:"Detg",Grad:"Grad",Gimg:"Gimg",OS:"OS",Uber:"Uber",Cmnt:"Comentário",SStts:"Status",Form:"Forma",Link:"Link",Mpag:"Mpag",Item:"Item",Dstn:"Destino",Pcnt:"Porcentagem",Cmpt:"Complemento",Cntt:"Contato",Lcal:"Local",Loja:"Loja",CtLj:"Ctt Loja",Cat:"Categoria",Emal:"Email",Cont:"Cont",Nome:"Nome",QntS:"Qnt",VUbr:"Valor Uber",AsStts:"Stts",Dest:"Destino",Hora:"Hora",Dirc:"Direção",Prds:"Paradas",Cpvt:"Comprovante",User:"Usuário",Qnt:"Qnt",Lag:"Lag",Alt:'Alt',TArt:'TArt',ImgU:"ImgU",ImgG:'ImgG',Oimg:'Oimg',SrvF:'Produto',VlrO:'VlrO',Cnt2:'Cnt2',Summ:'Summ',Manu:'Manu',Medi:'Media',Img:'Img',Deve:'Resta',Vlpg:'Valr PG',Tema:'Tema',Tempo:'Tempo',Dslk:'Rejeitados',Prazo:'Prazo',Nome:'Nome',Rg:'Rg',MPAG:'Mpag'}
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -139,7 +131,7 @@
         }
     }
 
-    const MATR={
+    const MATR = {
             'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
             Tipos:{
                 'Brilho'         :{Grad:'Ads(Blh)',Valr:60 ,Cust:20, Extra:['Laminação','Aplicação']},
@@ -414,8 +406,7 @@
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação',,'Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
         Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
-    }
-    
+    } 
 
     const GetycCores = {
         'Preto'       : '#000000',
@@ -629,8 +620,7 @@
             
             // LINKS
             const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
-            const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
-
+            
 
             const GrifarAcc=(e,val,Rx,C)=>{ // Provavelmente da pra passar o SELECT pra aqui pra dentro!
                 const t  = val ; const tn = C ? t.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : t
@@ -749,7 +739,6 @@
                 },100)
             }
 
-
             // 🔨 Grifo, Bndj de Pesq deve Ocultar conforme Click Fora
             // 🔨 Fazer o Grifo Acontecer dentro da Bandeija apenas quando ela for Aberta!
             // 💡 Pesquisa por mais de uma Ocorrência:'^(?=.*Fraco)(?=.*Lutar).*$'
@@ -793,7 +782,7 @@
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
                     `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
-                            <p class="PT" name="${e}">${Typ=="SERV"?e:dbCol[e]||e /*Gambiarra pra remvoer o DbCol*/}</p>
+                            <p class="PT" name="${e}">${Typ=="SERV"?e:BS[Typ].Json[e].COL||e /*GAMBIARRA pra remvoer o DbCol*/}</p>
                             <i onclick="Orden(this,event,'${x}')">▼</i>
                             <b class="Ct none Atv">0</b>
                             <b class="Ct none Rtv">0</b>
@@ -1163,8 +1152,7 @@
     <script> // AUTOCOMP - ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
         const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
         const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
-        const FiM =(arr   )=>arr.slice(0,-1)
-        
+        const FiM =(arr   )=>arr.slice(0,-1)      
 
         function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
             ;['PDDS','CLNT'].forEach(Typ=>{// tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
@@ -1196,7 +1184,7 @@
             else{return}
             if(All=="All"){LOG(`🔄 Re_Cont:(${Typ}) ${MS(IN)}`)}
             // Fundir Informações Redundantes
-            // deixar esta contagem dentro de alguma coisa no BS ContGrad ou ContCLNT pode ser um BS
+            // deixar esta contagem dentro de alguma coisa no BS contGrad ou ContCLNT pode ser um BS
             // alem do mais quem vai dizer se vai ter contagem ou não, não seria esssa função Tratamento nem esses ifs
             // ficaria em algum lugar no BS
         }
@@ -2754,8 +2742,8 @@
     function SaveConfig(e){LOG('Salva Config no SB')}
 </script>
 
-<script>// Iniciação 
-    function PosGet(){Onloads('body');Check_W_Pag();LOG('✅ Página Carregada!')}  ;PosGet()
+<script>// Iniciação
+    function PosGet(){Onloads('body') ; Check_W_Pag() ; LOG('✅ Página Carregada!')} ; PosGet()
 
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
@@ -2801,6 +2789,10 @@
         "ARTE FEXTA 2026 - 006.webp"
         "ARTE FEXTA 2026 - 009.webp"
     */
+
+   // https://leakgallery.com/arisepeach/Videos
+   // https://viper.to/threads/5459006-Beautiful-and-Hot-sweet-Teenagers-girls(new-unique-video)/?page=1246
+   https://str-11.filestore.app/7089bd9752550/c70126ce62dcf/alternative_resolution_65f01507852c2_360p.mp4?temp_url_expires=1774892730&temp_url_id=b0c3743a-49c5-4af8-8e54-a6bff5c6845b&countable=true&filename=new%2C+clg13+-+16085+Hardcore+Fucktape.mp4&inline=true&content_type=video%2Fmp4&concurrency=32&rate_limit=0&response_limit=6608952&ip_access_policy=everyone&tags=action%3Alimited_view%2Cdownload_type%3Afree%2Cfile_type%3Avideo_360p%2Cproject%3Ak2s%2Cowner_id%3A8956%2Csite_owner_id%3A176572%2Csize%3A634066470%2Cfile_id%3Aa6282ae20c485%2Csite_id%3A22908%2Cuser_pc_id%3A2cf51879d030c%2Cis_partner_side%3Afalse%2Ccts%3A1774806330%2Cdevice_type%3Adesktop%2Cuser_os%3AWindows%2Cuser_file_id%3Aa6282ae20c485%2Cuser_id%3A&temp_url_issuer=5445f78a91de707b297e67ed&temp_url_sig=7d537b588c42b506a12216d2589b790384312252d15a3870966da1065b22153df1fa182bade6a203b12deb7fcc397e12b10a23bef0fb23ca89867a971c8ea1da&client_ip=
 </script>
 
 </html>

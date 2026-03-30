@@ -135,12 +135,13 @@ const Tm_Tm = {
     ImUP:(e,R,P)=>`<img    data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
     Link:(e,R,P)=>{ // aqui é o Link principal q aparece
         const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK ; const TYP2 = Typ2.split('-')
+        const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
         return e!=''? Tm_Bndj(R,e)
          : `<div class="Rltv">
                 <p class="P-P" data-R="${R}" data-P="${P}" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p>
                 <div class="BndjSUG MySelect BNdj Abslt none Cl">
                     <a>${SVG.Ponta}</a>
-                    <input class="Stky" placeholder="${dbCol[TYP2[0]]}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
+                    <input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
                     <span class="Sugg Cl"></span>   
                 </div>
             </div>`
@@ -148,7 +149,8 @@ const Tm_Tm = {
 
    Link2:(e,R,P)=>{ // Aqui é o de Troca (mas Fundir com a de Cima)
         const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK  ;   
-        return `<input class="Stky" placeholder="${dbCol[Typ2]}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
+        const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
+        return `<input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
                 <span class="Sugg Cl"></span>`
     },
 
@@ -259,6 +261,22 @@ function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
     Inn(td,Tm_Bndj(_R,`${val}`))
 }
 
+// const Tm_Suggs = {// Campo pra Imbutir dentro do BS
+//      SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
+//     ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
+//     ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`
+//     ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}]}</div>`
+//     ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
+//     ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`  
+//     ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`
+// }
+
+const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
+function EvalSugg(Typ,e){
+    const Fn = new Function('e',`return ${BS[Typ].List}`)
+    return Fn(e)
+}
+
 function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procurando)
     clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
     debounceTimer = setTimeout(()=>{
@@ -275,7 +293,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
         const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
 
         if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Primary[Typ2]]}')">${Griff(Tm_Suggs[Typ2](e),RX)}</a>`).join(''))
+            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Primary[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
         }
         if(Mod=='Table'){
             Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
