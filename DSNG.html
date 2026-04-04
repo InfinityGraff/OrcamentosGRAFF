@@ -104,7 +104,6 @@
     #Perf .Box a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
     .Pic        {width:120px;border-radius:50%}
-    .Art        {gap:3px}
     .Art img    {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
     .Fotoz      {width: 20px; height: auto;}
 
@@ -118,7 +117,7 @@
     #Perf-Trfs tr:hover          {background-color:#444}
     #Perf-Trfs td:first-child    {text-align:center; width:50px; }
 
-    .Hovoi{overflow-x: scroll;}
+    .Art{overflow-x: scroll; padding: 20px 0px;}
 
     .LILI{height: 200px;width: auto;}
 
@@ -298,9 +297,9 @@
 
 <script>
     let [__A,__M,__D,__S]=['','','','']
-    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Nome}.webp"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
-    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Nome}.webp"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
-    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
+    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
+    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
     const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
 
     const Unyc = (U, ID, ev) => {
@@ -310,11 +309,14 @@
 
     function Load_Perfil(U){
         const u = U.Nome
+        __S = J['ARTE'].filter(o=>(!o.Dsng||o.Dsng==u) && o.Stts=='_S')              // Solicitações
+        __M = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Act')                        // Andamento
+        __A = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='OK' && !o.Dslk?.includes(u)) // Concluidas
+        __D = J['ARTE'].filter(o=>o.Dslk?.includes(u))                               // Rejeitadas
+        
 
-        __A = J['ARTEY'].filter(o=>o.Dsng==u && o.Stts=='Ok' && !o.Dslk?.includes(u))
-        __M = J['ARTEY'].filter(o=>o.Dsng==u && o.Stts=='Aceita')
-        __D = J['ARTEY'].filter(o=>o.Dslk?.includes(u))
-        __S = J['ARTEY'].filter(o=>o.Dsng==null||o.Dsng=="")
+        LOG(__A,__M,__D,__S)
+
          let Partic = 0 ; let Comiss = 0
 
         Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
@@ -331,12 +333,12 @@
     }
 
     async function AceitarART(U,Id){
-        const{error}=await supaBASE.from("ARTEY").update({Stts:"Aceita",Dsng:U}).eq("Id",Id)
+        const{error}=await supaBASE.from('ARTE').update({Stts:"Act",Dsng:U}).eq("Id",Id)
         if(!error){alert("Solicitação aceita") ; location.reload()}
     }
 
     async function ConclurART(U,Id){
-        const{error}=await supaBASE.from("ARTEY").update({Stts:"Ok",Dsng:U}).eq("Id",Id)
+        const{error}=await supaBASE.from('ARTE').update({Stts:"Ok",Dsng:U}).eq("Id",Id)
         if(!error){alert("Concluido") ; location.reload()}
     }
 
@@ -344,7 +346,7 @@
 
 
 <script> // SupaBASE
-    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','ARTEY','GRD2','IMGS'])
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
     
     const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
 

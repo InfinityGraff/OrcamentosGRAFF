@@ -379,14 +379,15 @@
         Serv:['',...AllProd],
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Form:['','Pix','Av','Card','QR'],
-        Pgmt:['','Pix','Av','Card','QR'],// ''
-        Dstn:['','Serv1','Serv2'],
+        
         Stts:['','Orçamento','Arte','Analise Art','Impressão','Grad Uber','Falta Uber','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
-        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação',,'Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
-        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'], // Interessante cada um só poder botar a Si mesmo!
-    } 
+
+        Form:['','Pix','Av','Card','QR'],
+        Pgmt:['','Pix','Av','Card','QR'],
+        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','--'],
+        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
+    }
 
     const GetycCores = {
         'Preto'       : '#000000',
