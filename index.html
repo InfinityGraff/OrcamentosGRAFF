@@ -453,6 +453,9 @@
             .H_Tbody td{background: purple;}
             .H_Tbody:hover {background: #ff0000}
             tbody.closed tr:not(.H_Tbody) {display: none}
+
+            textarea{padding: 0px;}
+            .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
         </style>
 
         <style> /*CARD*/
@@ -2633,7 +2636,8 @@
 
             const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
             const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
-            const tR = _tr(Pai(_tr(e)))
+            const Text = e.tagName === 'TEXTAREA'; // GAMBIARRA do textarea
+            const tR = Text ? '' : _tr(Pai(_tr(e))) // GAMBIARRA por causa do Textarea que usa MODAL pra escrever o texto dai não tem mais tr
 
             /*OBJ*/ DarJJ(Mod,..._R,R.Sc?_P:null)
             const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai e depois Colata ele em 'ObjSec'            
@@ -2644,12 +2648,12 @@
                 const T_T = TD && $('.T-T',TD)
                 /*Del*/ if(Mod =='Del'){
                     Add_N(tr) //.remove() // Deveria remover mas isso faz a bandeija ocultar eu n sei pq
-                    if(R.Bj && T_T && P && !Auto){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; RFresh(P.Ty,tR,Auto,e)}
+                    if(R.Bj && T_T && P && !Auto){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; Text ? null : RFresh(P.Ty,tR,Auto,e)} // GAMBIARRA do textarea
 
                 /*Edt/Add*/}else{
                     DarVAL(PP,V)
                     if(!Auto){if(R.Bj && T_T){
-                            if(R.Sc){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; RFresh(P.Ty,tR,Auto,e)}
+                            if(R.Sc){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; Text ? null :  RFresh(P.Ty,tR,Auto,e)} // GAMBIARRA do textarea
                         }else{RFresh(R.Ty,tr,Auto,e)}
                     }
                 }
