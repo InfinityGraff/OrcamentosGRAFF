@@ -371,7 +371,7 @@
     }
 
     async function ConclurART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"Ok",Dsng:U}).eq("Id",Id)
+        const{error}=await supaBASE.from('ARTE').update({Stts:"OK",Dsng:U}).eq("Id",Id)
         if(!error){alert("Concluido") ; location.reload()}
     }
 
