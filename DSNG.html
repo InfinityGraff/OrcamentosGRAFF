@@ -74,46 +74,23 @@
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
-    const USERlg = {}
-
     const Cgo  = { // Cargo
-        Admn: { nav :['HOME','|','ORC','LOJA','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :['Serigrafia','Figurinha','Cartela'],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]},
-
-        Grnt: { nav :['HOME','|','ORC','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :[],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]},
-
-        DSgn: { nav:['HOME','|','ORC','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:['Id','Cust','Lcro'],
-                PGMT:['Id','Stts','Link','Mpag'],
-                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"Oimg"]},
-
-        Atnd: { nav:['HOME','|','ORC','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:['Id','Cust','Lcro'],
-                PGMT:['Id','Stts','Link','Mpag'],
-                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"CArt","Oimg"]},
-
-        Clnt: { nav:['HOME','|','ORC','|','CONF'],
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]}
+        Admn: { nav :['HOME','|','ORC','LOJA','ARTE','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
+                orc :['Serigrafia','Figurinha','Cartela'],},
+        Grnt: { nav :['HOME','|','ORC','ARTE','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
+                orc :[],},
+        DSgn: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
+        Atnd: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
+        Clnt: { nav:['HOME','|','ORC','ARTE','|','CONF'],
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],}
     }
-    const tipBS = {}
+    const USERlg = {}
     const Atual    = {Pag:'HOME'}
-    let U = {}
+    let U = {} ; let UU={Cgo:""}
     let UCgo = {}
-    
 </script>
-
 
 <style> /*Analsisar a interferência deste CSS*/
     #Pag_PRFL   {padding: 40px;}

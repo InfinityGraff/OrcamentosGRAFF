@@ -169,7 +169,7 @@ function Tm_Td(v,e,x,Typ,_P=''){
     const _RR=d_r(_R)
     const Cls= BS[Typ].Json[_RR.Cl].CLS
     if((Typ=='SERV'||Typ=='PGMT')&&_RR.Sc&&!_RR.Bj){_P=`PDDS-${_RR.Id.split('_')[0]}-${Aa(Typ)}-Bndj-_-_`} // GAMBIARRRRA (isso é pra dar o Rpai nas tabelas secuntárias prinmcipais pois na hora de exibir erlas não possuem Rpai)
-    return `<td class="${Cls} Rltv">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
+    return `<td class="${Cls} ${NoneCgo(Typ,_RR.Cl)} Rltv">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
 }
 
 function Tm_Table(Typ,arry,Rpai=''){

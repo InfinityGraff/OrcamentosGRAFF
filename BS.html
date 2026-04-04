@@ -79,11 +79,10 @@
       const json = typeof row.Json==='string' ? JSON.parse(row.Json) : row.Json
       if(!json) return ''
       return `<div class="Ct SB_WRAP"><h2 class="w100">${row.Tabela}</h2>
-        <div class="Cl SB_ROW">${['.','TM','CLS','SRC','TH','LINK',"LnkEX",'FOOT','DPCK','COR','AUTO','COL'].map(e=>`<div class="SB_CELL SB_ID">${e}</div>`).join('')}</div>
-        ${ObjEtr(json).map(([k,j])=>`
-          <div class="Cl SB_ROW">
-            <div class="SB_CELL SB_ID" contenteditable onblur="SB_OnInput(${row.Id},'${k}','KEY',this)">${k}</div>
-            ${['TM','CLS','SRC','TH','LINK',"LnkEX",'FOOT','DPCK','COR','AUTO','COL'].map(e=>`<div class="SB_CELL" contenteditable onblur="SB_OnInput(${row.Id},'${k}','${e}',this)">${j[e]??''}</div>`).join('')}
+        <div class="Cl SB_ROW">
+        ${['.','COL','TM','CLS','SRC','TH','LINK',"LnkEX",'FOOT','DPCK','COR','AUTO','NONE'].map(e=>`<div class="SB_CELL SB_ID">${e}</div>`).join('')}</div>
+        ${ObjEtr(json).map(([k,j])=>`<div class="Cl SB_ROW"><div class="SB_CELL SB_ID" contenteditable onblur="SB_OnInput(${row.Id},'${k}','KEY',this)">${k}</div>
+            ${['COL','TM','CLS','SRC','TH','LINK',"LnkEX",'FOOT','DPCK','COR','AUTO','NONE'].map(e=>`<div class="SB_CELL" contenteditable onblur="SB_OnInput(${row.Id},'${k}','${e}',this)">${j[e]??''}</div>`).join('')}
           </div>`).join('')}
       </div>`
     }).join(''))

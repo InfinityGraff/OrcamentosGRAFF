@@ -63,42 +63,22 @@
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
-    const USERlg = {}
 
     const Cgo  = { // Cargo
         Admn: { nav :['HOME','|','ORC','LOJA','ARTE','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :['Serigrafia','Figurinha','Cartela'],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]},
-
+                orc :['Serigrafia','Figurinha','Cartela'],},
         Grnt: { nav :['HOME','|','ORC','ARTE','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :[],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]},
-
+                orc :[],},
         DSgn: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:['Id','Cust','Lcro'],
-                PGMT:['Id','Stts','Link','Mpag'],
-                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"Oimg"]},
-
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
         Atnd: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:['Id','Cust','Lcro'],
-                PGMT:['Id','Stts','Link','Mpag'],
-                SERV:['Id','Forn','Detg','Grad','Gimg','OS','Uber','Cbmt','VCbt','Cmnt',"CArt","Oimg"]},
-
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
         Clnt: { nav:['HOME','|','ORC','ARTE','|','CONF'],
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],
-                PDDS:[],
-                PGMT:[],
-                SERV:[]}
+                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],}
     }
-    const tipBS = {}
+    const USERlg = {}
     const Atual    = {Pag:'ORC'}
-    let U = {}
+    let U = {} ; let UU={Cgo:""}
     let UCgo = {}
 
     let SVG_FILES = [] // esse é do de importar SVG pra calcular
@@ -433,6 +413,8 @@
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
 
+    const NoneCgo  =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(UU.Cgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
+
     const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
@@ -518,7 +500,7 @@
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
             // Estão OK
             const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
-            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" Rltv"></td>`).join('')
+            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" class="Rltv ${NoneCgo(Typ,e)}"></td>`).join('')
 
             // Ajeitar
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
@@ -559,7 +541,7 @@
                 
                 Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
 
-                const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
+                const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th class="${NoneCgo(TYP,t)}">${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                         <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
@@ -781,7 +763,7 @@
 
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
-                    `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
+                    `<th class="ThFilt Rltv PT ${NoneCgo(Typ,e)}" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
                             <p class="PT" name="${e}">${Typ=="SERV"?e:BS[Typ].Json[e].COL||e /*GAMBIARRA pra remvoer o DbCol*/}</p>
                             <i onclick="Orden(this,event,'${x}')">▼</i>
                             <b class="Ct none Atv">0</b>
@@ -1030,9 +1012,6 @@
     <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (Recolorir ao Abrir Bndj) (Baixa Peformance)-->
         <style> /*RECOLOR - CSS*/
             .EtpSVG{height:25px ; width:25px ; pointer-events: none}
-            #H_PDDS > thead > tr > th:nth-child(1)      {display: none;}
-            #H_PDDS > tbody > tr > td:nth-child(1)      {display: none;}
-            #H_PDDS > tfoot > tr > td:nth-child(1)      {display: none;}
             #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
         </style>
 
@@ -1597,7 +1576,7 @@
                     if(Mod=='Modal'){if(JJ['USER'][Vll(p)]){logaa(Vll(p))}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
                 }
                 function PosLogin(U){
-                    UCgo = Cgo[U.cgo]
+                    UCgo = Cgo[U.cgo] ; UU.Cgo = U.cgo
                     $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
                     Inn('.BBody1 .H_Nav',UCgo.nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
                     Inn('.BBody2 .H_Nav',UCgo.nav.map(e=>`<div id="b2_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
@@ -2789,10 +2768,6 @@
         "ARTE FEXTA 2026 - 006.webp"
         "ARTE FEXTA 2026 - 009.webp"
     */
-
-   // https://leakgallery.com/arisepeach/Videos
-   // https://viper.to/threads/5459006-Beautiful-and-Hot-sweet-Teenagers-girls(new-unique-video)/?page=1246
-   
 </script>
 
 </html>
