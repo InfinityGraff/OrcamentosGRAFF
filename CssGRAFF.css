@@ -4,60 +4,95 @@
 @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
 @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
 
-:root{
-  --CSS1btn:   linear-gradient(to right,#434343,#73008A,#FF5900);
-  --CSS3btn:   linear-gradient(135deg, #E8778D, #C151A8);
-  --CSS3btnDk: linear-gradient(135deg, #810483, #b8636e);
-  --CSS3btnLt: linear-gradient(135deg, #B654B8,#F0A8B2);
-  --CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);
-  --CSS1Fnd:   linear-gradient(#1f1f1f,#101010) center center no-repeat fixed;
-}
+  :root{
+    
+    
 
-/*Formatos das Tags______________________________________________________________ */
+    --CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);
+  }
+
+  .Infinity.Lite{
+    --BodyBk  :#ffffff                                                ;--BodyTx:#000000; /*Body   */
+    --BtnBk:   linear-gradient(to right,#434343,#73008A,#FF5900)  ;--BtnTx :#ffffff; /*Buttons*/
+
+    /*N botei ainda no Basic*/ --FcusBkg:#ffffff00;--FcusBrd:1px solid #ff00fff5;--FcusShw:0 0 10px #ff00fffb; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+  }
+  .Infinity.Dark{
+    --BodyBk  :linear-gradient(#19111f,#16101a) center no-repeat fixed;--BodyTx:#ffffff; /*Body   */
+    --BtnBk:   linear-gradient(to right,#434343,#73008A,#FF5900)    ;--BtnTx :#ffffff; /*Buttons*/
+
+    /*N botei ainda no Basic*/ --FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+  }
+  .Infinity.Rosa{
+    --BodyBk  :linear-gradient(135deg, #B654B8,#F0A8B2); --BodyTx:#3a0027; /*Body   */
+    --BtnBk:   linear-gradient(135deg, #E8778D, #C151A8);--BtnTx :#ffffff; /*Buttons*/
+
+    --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; /*Buttons*/
+    --TagHovBk:#0073ee;--TagHovTx  :#ffffff; /*Hovers */
+    --Tag_Atv :#007bff;--Tag_Atv_Tx:#ffffff; /*Ativas */ 
+    --TagRngBk:#cfe2ff;--TagRngTx  :#283953; /*Ranges */ 
+    --Tag_Off :#f5f5f5;--Tag_Off_Tx:#bbbbbb; /*Offline*/
+    --Tag_DESTK:#007bff  ;--Tag_DESTK_Tx:#ffffff; /*Destaque*/
+    --Tag_dstk :#ffffff00;--Tag_dstk_Tx :#0f90e6; /*Destaque Simples*/
+
+    /*N botei ainda no Basic*/--FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+  }
+
+  .Basic.Lite{
+    --BodyBk  :#ffffff;--BodyTx    :#000000; /*Body   */
+    --BtnBk   :#eeeeee;--BtnTx     :#000000; /*Buttons*/
+    --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; /*Buttons*/
+    --TagHovBk:#0073ee;--TagHovTx  :#ffffff; /*Hovers */
+    --Tag_Atv :#007bff;--Tag_Atv_Tx:#ffffff; /*Ativas */ 
+    --TagRngBk:#cfe2ff;--TagRngTx  :#283953; /*Ranges */ 
+    --Tag_Off :#f5f5f5;--Tag_Off_Tx:#bbbbbb; /*Offline*/
+    --Tag_DESTK:#007bff  ;--Tag_DESTK_Tx:#ffffff; /*Destaque*/
+    --Tag_dstk :#ffffff00;--Tag_dstk_Tx :#0f90e6; /*Destaque Simples*/
+  }
+  .Basic.Dark{
+    --BodyBk  :#1e1e1e;--BodyTx    :#ffffff; /*Body   */
+    --BtnBk   :#333333;--BtnTx     :#ffffff; /*Buttons*/
+    --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; /*Buttons*/
+    --TagHovBk:#0073ee;--TagHovTx  :#ffffff; /*Hovers */
+    --Tag_Atv :#007bff;--Tag_Atv_Tx:#ffffff; /*Ativas */ 
+    --TagRngBk:#1f4168;--TagRngTx  :#ffffff; /*Ranges */ 
+    --Tag_Off :#2a2a2a;--Tag_Off_Tx:#666666; /*Offline*/
+    --Tag_DESTK:#007bff  ;--Tag_DESTK_Tx:#ffffff; /*Destaque*/
+    --Tag_dstk :#ffffff00;--Tag_dstk_Tx :#3085be; /*Destaque Simples*/
+  }
+
+  /*Formatos das Tags______________________________________________________________ */
+    h2{font-size:18px; color:#fa7d09}
+
     /*Body*/
-      body.Lite.CSS1{background: #ffffff       ;color:#000000}
-      body.Dark.CSS1{background: var(--CSS1Fnd)  ;color:#ffffff}
-      body.Lite.CSS2{background: #ffffff       ;color:#000000}
-      body.Dark.CSS2{background: #120c16       ;color:#ffffff}
-      body.Lite.CSS3{background: var(--CSS3btnLt);color:#3a0027;
-            background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      }
-      body.Dark.CSS3{background: var(--CSS3btnDk);color:#ffffff}
-
-    .copybody {
-      background: var(--CSS1Fnd);
-      background-repeat: no-repeat;
-      background-size: 100vw 100vh;
-      background-position: 0 -106px; /* "recorte" do degradê */
-    }
-    .CSS3 .copybody {
-      background: var(--CSS3btnLt);
-      background-repeat: no-repeat;
-      background-size: 100vw 100vh;
-      background-position: 0 -106px; /* "recorte" do degradê */
-    }
+      body{background:var(--BodyBk);color:var(--BodyTx)}
+      body.CSS3{background-size:cover; background-position:center; background-attachment:fixed}
+      .copybody{background: var(--BodyBk);background-repeat: no-repeat;background-size: 100vw 100vh;background-position: 0 -106px;} /* "recorte" do degradê */
 
     /*Button, Input e Select*/
-      input,select,button,.button,.Interup{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px;}
+      input,select,button,.button,.Interup{height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px}
       :is(button,.button,input,select)>:is(img,svg){height:18px; fill:#ffffff}
-      .Dark input:focus,.Dark select:focus{background:#ffffff42; border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
-      .Lite input:focus,.Lite select:focus{background:#ffffff00; border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
-    /*Botões*/   
-      .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:var(--CSS1btn); background-size:500%; padding: 0px 6px}
-      .CSS1 :is(button,.button):hover                           {transform:scale(1.10); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
-      .CSS1 :is(button,.button):active                          {transform:scale(0.95)}
-      .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
-      .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:#ffffff; background:var(--CSS3btn);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
-      .CSS3 :is(button,.button):hover                           {transform:scale(1.03);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);} /*essa n t afuncionando por conflito com a de cima*/
-      .CSS3 :is(button,.button):active                          {transform:scale(0.95);box-shadow: 0 0 5px #ff5c7d, 0 0 10px #ff5c7d;filter: drop-shadow(0 0 5px #ff5c7d);}
-      .Dark button:focus,.FOC.Atv{border:1px solid #ff00ff79; box-shadow:0 0 10px #ff00ff7c}
-      .Lite button:focus,.FOC.Atv{border:1px solid #ff00fff5; box-shadow:0 0 10px #ff00fffb}
+      input:focus, select:focus{background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+
+    /*button*/
+      .CSS2 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:var(--BtnTx); background:#ff7300     ;border: 2px solid #ffae00; padding:0px 10px; font-family:Almarose-Medium}
+
+      .CSS1 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:var(--BtnTx); background:var(--BtnBk); background-size:500%; padding: 0px 6px}
+      .CSS1 :is(button,.button):hover                                     {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+      .CSS1 :is(button,.button):active                                    {transform:scale(0.95)}
+
+      .CSS3 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){color:var(--BtnTx); background:var(--BtnBk);border: 1px solid #ecc3c98e; padding:0px 10px; font-family:Almarose-Medium;box-shadow:inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123}
+      .CSS3 :is(button,.button):hover                                     {transform:scale(1.05);box-shadow: 0 0 5px #fff1f1c9,0 0 6px #fdeeee9a,0 0 10px #ffd6d679, 0 0 15px #ffd8d836, 0 0 20px #ffe9e94b;filter: drop-shadow(0 0 5px #E8778D),drop-shadow(0 0 10px #e8778e7c);} /*essa n t afuncionando por conflito com a de cima*/
+      .CSS3 :is(button,.button):active                                    {transform:scale(0.95);box-shadow: 0 0 5px #ff5c7d, 0 0 10px #ff5c7d;filter: drop-shadow(0 0 5px #ff5c7d);}
+
+      button:focus,.FOC.Atv{border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+
       button.Block               {background: #797979 !important;border:1px solid #414141 !important}
       button.Mini                {height: 20px;}
       button                     {gap:5px; white-space: nowrap} /*Evitar quebra de Linha para todos Botões*/
       button a                   {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
+
+
     /*Interruptores*/
       .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
       .Interup i, .Switch i   {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
@@ -110,8 +145,8 @@
           .CSS1.Lite .TBLAA table{background: #ffffff ; }
           .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f}
     /*thead e tfoot*/ 
-      .CSS3.Lite .TBLAA thead tr{background: var(--CSS3btn);color:#ffffff; height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
-      .CSS3.Lite .TBLAA tfoot tr{background: var(--CSS3btn);color:#ffffff; height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
+      .CSS3.Lite .TBLAA thead tr{background: var(--BtnBk);color:#ffffff; height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
+      .CSS3.Lite .TBLAA tfoot tr{background: var(--BtnBk);color:#ffffff; height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
       .CSS1.Dark .TBLAA tbody tr{border:1px solid #cccccc27}
       .CSS1.Lite .TBLAA tbody tr{border:1px solid #00000027}
       .TBLAA th{padding:4px 6px}
