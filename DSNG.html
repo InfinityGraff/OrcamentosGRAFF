@@ -122,6 +122,18 @@
     .LILI{height: 200px;width: auto;}
 
     #Pag_HOME{padding: 20px;}
+
+    .INFO img     {height: 450px;width: auto;}
+    .INFO textarea{height: 500px;width: 500px;}
+    .INFO .rs     {font-size: 25px}
+
+    .INFO a img   {height: 18px;width: auto;}
+
+    textarea {
+    text-align: left;
+    white-space: pre-wrap; /* mantém quebras de linha */
+    }
+
 </style>
 
 <body>
@@ -297,14 +309,35 @@
 
 <script>
     let [__A,__M,__D,__S]=['','','','']
-    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
-    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
-    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
+    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
+    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl PT Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
     const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
 
-    const Unyc = (U, ID, ev) => {
+    const Unyc = (U, ID, ev) => { // Talvez Obsoleto
     if (ev?.target.closest('button')) return
     MODAL(Tm_ListArt(U, __A.filter(e => e.Id == ID)))
+    }
+
+    const Exib = (U, ID, ev) => {
+        if (ev?.target.closest('button')) return
+        const Obj = J['ARTE'].find(e=>e.Id==ID)
+        const TM = `
+            <h3>${Obj.Nome}</h3>
+            <div class="gap Ct PT BOX INFO">
+                <div>
+                    <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
+                    <p>${Obj.Nome}</p>
+                    <p>${Obj.Tema}</p>
+                    <p>${Tm_RS2(Obj.Valr)}</p>
+                </div>
+                <div>
+                    <textarea>${Obj.Info}</textarea>
+                    <a class="Button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>
+                </div>
+            </div>`
+                
+        MODAL(TM)
     }
 
     function Load_Perfil(U){
@@ -338,7 +371,7 @@
     }
 
     async function ConclurART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"Ok",Dsng:U}).eq("Id",Id)
+        const{error}=await supaBASE.from('ARTE').update({Stts:"OK",Dsng:U}).eq("Id",Id)
         if(!error){alert("Concluido") ; location.reload()}
     }
 
