@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>--> <script src="../MyBiblioteca/PreScript.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -1739,8 +1739,8 @@
 
                         #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
                         #Div-Prod .Conteudo{padding-top:10px; z-index:999}
-                        :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b3  ,#ffffff); color:#575757}
-                                   .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px ;background:linear-gradient(to top,#b3b3b35b,#ffffff); color:#575757;box-shadow:inset 0 0 8px #fdfdfd6e}
+                        :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+                                   .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
           
                         #Div-Prod .Conteudo.Pecq{width:200px}
                         #Div-Prod .Conteudo.Grnd{width:270px}
@@ -1868,7 +1868,7 @@
                                             const Al   = V=='Todos'
                                             const Xo   = {'ímã':'I','Trofeu':'T'}
 
-                                            return `<div class="Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
+                                            return `<div class="BOXY Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
                                             <div class="KeyVari rgx">${V}</div>
 
@@ -2175,6 +2175,17 @@
                     <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
                     <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
                     <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
+                </div>
+                
+                <div>
+                    <div class="DateBox Rltv">
+                        <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
+                        <div class="Boxy calendar Abslt Cl none"></div>
+                    </div>
+                    <div class="DateBox Rltv">
+                        <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
+                        <div class="Boxy calendar Abslt Cl none"></div>
+                    </div>
                 </div>
             </div>
 
