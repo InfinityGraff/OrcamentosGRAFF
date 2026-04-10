@@ -9,7 +9,7 @@
       <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script> -->
 
-   <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
+  <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
   <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
   <script src="../MyBiblioteca/PreScript.js"      ></script>
   <link  href="./CssGRAFF.css" rel="stylesheet">
@@ -83,7 +83,7 @@
   }
 </script>
 
-<body class="CSS1 Dark">
+<body class="Infinity CSS1 Dark">
   <div id="saida"></div>
       <div class="Config Ct Stky copybody">
         <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
@@ -101,12 +101,12 @@
 
 <script>
     function Pesq(Eu,Ev){
-    let Cont = 0
-    const qq = aa(Vll(Eu).trim())
-    $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
-    $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
-    Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
-  }
+      let Cont = 0
+      const qq = aa(Vll(Eu).trim())
+      $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
+      $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
+      Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
+    }
 </script>
 
 <script>
@@ -148,19 +148,25 @@
       <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a><a>${Pre}</a></div>
   </div>`
 
+  let BaseIMG2 = [] // vem do SupaBase
+
   function ren(Modo){
+    LOG('JSON',BaseIMG )
+    LOG('SB'  ,BaseIMG2)
+
     const Tm_Past = ObjEtr(BaseIMG.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
       `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
         <div class="Alven">${v.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join('')}</div></div>`).join('')
 
+
     Inn($('#Galery'),'')
     $('#Galery').insertAdjacentHTML("beforeend",Modo=='Nome'?BaseIMG.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join(''):Tm_Past) // Aqui Dentro eu tenho que chamar Tm_Boxyy 3 vezes um pra cada tanque,Prlm e Gvt
-    
     $$('.Cnvs').forEach(e=>GearCanv2(e))
   }
  
   Onloads('body')
   ren('Nome')
+
 
   function Tm_Canvs2(){
     Topic.forEach(e=>{const [Top,Dt] = Object.entries(e)[0]
@@ -183,14 +189,12 @@
             </div>`).join('')}
           <div>
       </div>`
-
       $('#RoloTopHome').insertAdjacentHTML('beforeend',Template)
-
       For2(Dt.Qnt).map(e=>GearCanv(e,Top,Dt))
     })
   }
-  //Tm_Canvs()
 
+  //Tm_Canvs()
   //Tm_Canvs2()
   
   // Alterar a LarguraMaxima das imagens, um Slide com Stop="5"
@@ -202,7 +206,6 @@
   // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, só não pode Alterar o src da imagem
   // Agora criar o Organizador de Pastas lá em Cima eu escolho uma Categoria, ou até uma Chave nova se eu quiser! e abaixo eu seleciono as imagens que estarão dentro dela
   
-
   // {
   // "Metadados": {
   //   estilo:["Coloridas","Moderna", "Vetorial"],

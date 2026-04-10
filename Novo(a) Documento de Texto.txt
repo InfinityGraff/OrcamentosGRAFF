@@ -1,0 +1,519 @@
+1;Logo/AFC.svg;23.35kb;Time;Print
+2;Logo/Brasil.cdr.svg;39.97kb;Time;Print
+3;Logo/Corinthias.svg;87.54kb;Time;Print
+4;Logo/Ell Raio Futebol Clube.svg;17.81kb;Time;Print
+5;Logo/Esporte Clube Bahia.svg;13.90kb;Time;Print
+6;Logo/Flamengo (2).svg;7.86kb;Time;Print
+7;Logo/Fut (1).svg;126.60kb;Time;Print
+8;Logo/Guarani (1).svg;76.76kb;Time;Print
+9;Logo/Guarani (2).svg;14.83kb;Time;Print
+10;Logo/Nautico (1).svg;11.38kb;Time;Print
+11;Logo/Nautico (2).svg;19.71kb;Time;Print
+12;Logo/Palmeiras.svg;33.71kb;Time;Print
+13;Logo/Parque City.svg;51.02kb;Time;Print
+14;Logo/Santa Cruz.svg;9.41kb;Time;Print
+15;Logo/Santos.svg;37.70kb;Time;Print
+16;Logo/Sport.svg;32.46kb;Time;Print
+17;Logo/São Paulo.svg;2.38kb;Time;Print
+18;Logo/Talmidm EC.svg;17.87kb;Time;Print
+19;Logo/Vasco.svg;5.41kb;Time;Print
+20;Logo/Barbie.svg;15.52kb;Marcas;Print
+21;Logo/BMW.svg;4.66kb;Marcas;Print
+22;Logo/Celpe.svg;4.01kb;Marcas;Print
+23;Logo/Corona.svg;33.84kb;Marcas;Print
+24;Logo/Devassa (1).svg;127.25kb;Marcas;Print
+25;Logo/Devassa (2).svg;23.68kb;Marcas;Print
+26;Logo/Esso.svg;3.28kb;Marcas;Print
+27;Logo/Estrrela.svg;4.58kb;Marcas;Print
+28;Logo/Ford.svg;5.10kb;Marcas;Print
+29;Logo/Harley Dayvison.svg;9.82kb;Marcas;Print
+30;Logo/LG.svg;2.30kb;Marcas;Print
+31;Logo/MotoCross.svg;30.11kb;Marcas;Print
+32;Logo/Motorola.svg;1.18kb;Marcas;Print
+33;Logo/PayPal.svg;1.75kb;Marcas;Print
+34;Logo/Pitú.svg;16.69kb;Marcas;Print
+35;Logo/RedBull (1).svg;42.07kb;Marcas;Print
+36;Logo/RedBull (2).svg;180.71kb;Marcas;Print
+37;Logo/Samsumg.svg;4.57kb;Marcas;Print
+38;Logo/Spaten.svg;14.55kb;Marcas;Print
+39;Logo/Stunt Race.svg;79.85kb;Marcas;Print
+40;Logo/ThunderCat.svg;4.86kb;Marcas;Print
+41;Logo/Uber Eats.svg;24.65kb;Marcas;Print
+42;Logo/Xaomi.svg;1.81kb;Marcas;Print
+43;Logo/Amigo do Bege.svg;8.74kb;Prefeitura;Print
+44;Logo/Carlos Jose.svg;32.15kb;Prefeitura;Print
+45;Logo/Gameleira.svg;8.15kb;Prefeitura;Print
+46;Logo/Local.svg;28.00kb;Prefeitura;Print
+47;Logo/Lucca.svg;7.64kb;Prefeitura;Print
+48;Logo/Paudalho.svg;23.92kb;Prefeitura;Print
+49;Logo/Pernambuco.svg;29.15kb;Prefeitura;Print
+50;Logo/Recife.svg;90.88kb;Prefeitura;Print
+51;Logo/Salgadinho.svg;19.14kb;Prefeitura;Print
+52;Logo/São Lourenço da Mata (1).svg;17.83kb;Prefeitura;Print
+53;Logo/São Lourenço da Mata (2).svg;18.00kb;Prefeitura;Print
+54;Logo/São Lourenço da Mata (3).svg;52.77kb;Prefeitura;Print
+55;Logo/São Lourenço da Mata (4).svg;22.77kb;Prefeitura;Print
+56;Logo/Teto do Povo.svg;18.69kb;Prefeitura;Print
+57;Logo/Xanax.svg;141.26kb;Prefeitura;Print
+58;Logo/3a Placas.svg;18.10kb;LogoCliente;Print
+59;Logo/A.W Biike.svg;28.91kb;LogoCliente;Print
+60;Logo/ABanc.svg;4.09kb;LogoCliente;Print
+61;Logo/ABC Centro.svg;23.03kb;LogoCliente;Print
+62;Logo/Acervo Engenharia.svg;15.81kb;LogoCliente;Print
+63;Logo/AD Dipper.svg;26.16kb;LogoCliente;Print
+64;Logo/Adrenalina 244.svg;51.44kb;LogoCliente;Print
+65;Logo/Agro 1.svg;60.01kb;LogoCliente;Print
+66;Logo/Agro 2.svg;58.92kb;LogoCliente;Print
+67;Logo/AGS Silva.svg;16.80kb;LogoCliente;Print
+68;Logo/Aldeia WaterPark.svg;18.32kb;LogoCliente;Print
+69;Logo/Alkaline.svg;42.77kb;LogoCliente;Print
+70;Logo/Almirante - Restaurante & Bar.svg;32.63kb;LogoCliente;Print
+71;Logo/Amedoim.svg;16.70kb;LogoCliente;Print
+72;Logo/Amface.svg;36.40kb;LogoCliente;Print
+73;Logo/Amorim.svg;25.92kb;LogoCliente;Print
+74;Logo/Amostrada Boutique.svg;41.34kb;LogoCliente;Print
+75;Logo/AP Construção.svg;50.67kb;LogoCliente;Print
+76;Logo/Arena HR & KIA.svg;14.65kb;LogoCliente;Print
+77;Logo/Armarinho Vida Nova.svg;18.86kb;LogoCliente;Print
+78;Logo/Armazem Solução.svg;10.69kb;LogoCliente;Print
+79;Logo/Arraial Auto Center.svg;16.83kb;LogoCliente;Print
+80;Logo/Arrecifes frevo.svg;74.18kb;LogoCliente;Print
+81;Logo/Atual Sistemas.svg;6.97kb;LogoCliente;Print
+82;Logo/Auto Car - Louan.svg;19.47kb;LogoCliente;Print
+83;Logo/Auto-Peças Confiança.svg;9.78kb;LogoCliente;Print
+84;Logo/AV Noivas.svg;39.79kb;LogoCliente;Print
+85;Logo/AWS - Material de Contrução.svg;47.29kb;LogoCliente;Print
+86;Logo/Açaí Rosa.svg;12.74kb;LogoCliente;Print
+87;Logo/Açaí Tasly Food.svg;18.98kb;LogoCliente;Print
+88;Logo/BabyFigs.svg;13.86kb;LogoCliente;Print
+89;Logo/Banda bandida.svg;23.66kb;LogoCliente;Print
+90;Logo/Banda metade.svg;52.82kb;LogoCliente;Print
+91;Logo/Bar da Varanda.svg;23.35kb;LogoCliente;Print
+92;Logo/Barbara Leite Cosmeticos.svg;21.65kb;LogoCliente;Print
+93;Logo/Barbearia do Coquinha.svg;36.05kb;LogoCliente;Print
+94;Logo/Barber - Barbearia Lima.svg;55.11kb;LogoCliente;Print
+95;Logo/Barber - Erivan Cortes.svg;49.87kb;LogoCliente;Print
+96;Logo/Barber - Lucas Cortes.svg;19.27kb;LogoCliente;Print
+97;Logo/Barber - Miminho Cortes.svg;18.34kb;LogoCliente;Print
+98;Logo/Barber - Vini dos Cortes.svg;98.76kb;LogoCliente;Print
+99;Logo/Barber Shop.svg;54.58kb;LogoCliente;Print
+100;Logo/Barber Shope.svg;54.10kb;LogoCliente;Print
+101;Logo/Barbershop Camaragibe.svg;48.95kb;LogoCliente;Print
+102;Logo/Barbosa Cell.svg;14.67kb;LogoCliente;Print
+103;Logo/Barãoi.svg;25.48kb;LogoCliente;Print
+104;Logo/Batattis Salgaderia.svg;44.38kb;LogoCliente;Print
+105;Logo/BatCar Baterias.svg;8.74kb;LogoCliente;Print
+106;Logo/Baterias Troca Rápida.svg;28.75kb;LogoCliente;Print
+107;Logo/BB Gás.svg;61.51kb;LogoCliente;Print
+108;Logo/Beer.svg;55.52kb;LogoCliente;Print
+109;Logo/Bella Economia Frigorifico e granjinha.svg;50.55kb;LogoCliente;Print
+110;Logo/BetHouse.svg;2.88kb;LogoCliente;Print
+111;Logo/Big Charque.svg;33.36kb;LogoCliente;Print
+112;Logo/Bigodes do Asfalto SLM.svg;30.19kb;LogoCliente;Print
+113;Logo/BN Thec.svg;19.75kb;LogoCliente;Print
+114;Logo/Boteco do Lipão.svg;48.93kb;LogoCliente;Print
+115;Logo/BR Baterias.svg;55.75kb;LogoCliente;Print
+116;Logo/BR Pneus.svg;27.93kb;LogoCliente;Print
+117;Logo/Brasa Viva.svg;88.91kb;LogoCliente;Print
+118;Logo/Brena Castro.svg;42.09kb;LogoCliente;Print
+119;Logo/Camará ExtraFarma.svg;17.26kb;LogoCliente;Print
+120;Logo/Camará Jato.svg;15.34kb;LogoCliente;Print
+121;Logo/Carla Costa Clinica e Spa.svg;17.22kb;LogoCliente;Print
+122;Logo/Carvalho Lazer e recepção.svg;32.90kb;LogoCliente;Print
+123;Logo/Casa Arte.svg;14.87kb;LogoCliente;Print
+124;Logo/Casa do Axé.svg;40.09kb;LogoCliente;Print
+125;Logo/Casa doar - Para Autos.svg;19.37kb;LogoCliente;Print
+126;Logo/Cavterra Construções.svg;10.65kb;LogoCliente;Print
+127;Logo/CD8 Consultoria Financeira.svg;25.83kb;LogoCliente;Print
+128;Logo/Cecília Pasteis.svg;35.98kb;LogoCliente;Print
+129;Logo/Chama do brega.svg;48.88kb;LogoCliente;Print
+130;Logo/Chá de Cruz - Materias de Construção.svg;23.22kb;LogoCliente;Print
+131;Logo/Cia Funcional.svg;7.39kb;LogoCliente;Print
+132;Logo/Cimento Forte.svg;5.10kb;LogoCliente;Print
+133;Logo/Cimento Zebu.svg;24.50kb;LogoCliente;Print
+134;Logo/Circulos.svg;2.70kb;LogoCliente;Print
+135;Logo/CL Doceria.svg;28.79kb;LogoCliente;Print
+136;Logo/CLB Móveis Planejado.svg;19.04kb;LogoCliente;Print
+137;Logo/Coco Lêgourmet.svg;34.40kb;LogoCliente;Print
+138;Logo/Colchão Mais.svg;44.17kb;LogoCliente;Print
+139;Logo/Colégio Desafio.svg;24.48kb;LogoCliente;Print
+140;Logo/Colégio Fátima Ferreira.svg;27.42kb;LogoCliente;Print
+141;Logo/Colégio Radial.svg;28.20kb;LogoCliente;Print
+142;Logo/Combat Mentality.svg;51.11kb;LogoCliente;Print
+143;Logo/Comedoria -  Delicia do Sabor.svg;19.26kb;LogoCliente;Print
+144;Logo/Conexão SLM.svg;32.05kb;LogoCliente;Print
+145;Logo/Construtora Sentra.svg;6.90kb;LogoCliente;Print
+146;Logo/Costa Clima.svg;55.04kb;LogoCliente;Print
+147;Logo/Cristina Pimentel - Buffet.svg;54.71kb;LogoCliente;Print
+148;Logo/D&G Vidraçaria.svg;34.50kb;LogoCliente;Print
+149;Logo/Debora Joias.svg;4.22kb;LogoCliente;Print
+150;Logo/Dedé das Baterias.svg;6.71kb;LogoCliente;Print
+151;Logo/Defesa Civil.svg;9.64kb;LogoCliente;Print
+152;Logo/Diego Moto Peças.svg;62.49kb;LogoCliente;Print
+153;Logo/DM Dayane e Miqueias.svg;21.06kb;LogoCliente;Print
+154;Logo/Dom Burger.svg;9.02kb;LogoCliente;Print
+155;Logo/Don Burger.svg;3.85kb;LogoCliente;Print
+156;Logo/Donna Sapatos.svg;17.47kb;LogoCliente;Print
+157;Logo/Dread.svg;7.00kb;LogoCliente;Print
+158;Logo/Du Campo - Procamp.svg;6.34kb;LogoCliente;Print
+159;Logo/DuhMotos - Peças e Serviços.svg;58.55kb;LogoCliente;Print
+160;Logo/EB Nails.svg;11.70kb;LogoCliente;Print
+161;Logo/Ecoprime.svg;25.37kb;LogoCliente;Print
+162;Logo/Edificio Cristal.svg;7.37kb;LogoCliente;Print
+163;Logo/Edificio Gamboa.svg;8.81kb;LogoCliente;Print
+164;Logo/Edifícios Antonio Badeira.svg;63.06kb;LogoCliente;Print
+165;Logo/Educandario Caminho do Saber (2).svg;42.66kb;LogoCliente;Print
+166;Logo/EIB Transportes (Pisca).svg;44.53kb;LogoCliente;Print
+167;Logo/Elisangela Camillo - Nails Desgner.svg;97.95kb;LogoCliente;Print
+168;Logo/Elisio Alves Empreendimentos LTDA.svg;13.78kb;LogoCliente;Print
+169;Logo/Elit Carr.cdr.svg;22.67kb;LogoCliente;Print
+170;Logo/Elite Car.svg;8.24kb;LogoCliente;Print
+171;Logo/Eliza.svg;62.01kb;LogoCliente;Print
+172;Logo/Engefish.svg;7.21kb;LogoCliente;Print
+173;Logo/Engenharia.svg;6.73kb;LogoCliente;Print
+174;Logo/Engrenagerm.svg;13.57kb;LogoCliente;Print
+175;Logo/Equipe MR Segurança (2).svg;93.60kb;LogoCliente;Print
+176;Logo/Equipe Pronta Resposta.svg;10.65kb;LogoCliente;Print
+177;Logo/ES Studio -  Brazilian Jiu Jitsu.svg;12.31kb;LogoCliente;Print
+178;Logo/Escola Frei Caneca.svg;13.23kb;LogoCliente;Print
+179;Logo/Espaço Lazer Oceania.svg;33.38kb;LogoCliente;Print
+180;Logo/Esquina do Açaí.svg;24.94kb;LogoCliente;Print
+181;Logo/Esquina do sabor.svg;49.10kb;LogoCliente;Print
+182;Logo/Estação açaí.svg;19.37kb;LogoCliente;Print
+183;Logo/Expansivo Distribuidora.svg;6.43kb;LogoCliente;Print
+184;Logo/Explendido Colchões do lar.svg;12.89kb;LogoCliente;Print
+185;Logo/Facilitta Imóveis.svg;20.17kb;LogoCliente;Print
+186;Logo/Familia Moura.svg;21.80kb;LogoCliente;Print
+187;Logo/Família Moura - Churrascaria e Pizzaria.svg;13.38kb;LogoCliente;Print
+188;Logo/Farmacia (2).svg;1.77kb;LogoCliente;Print
+189;Logo/Farmacia - Remédio Barato é aqui!.svg;57.40kb;LogoCliente;Print
+190;Logo/Farmacia São Jorge.svg;13.31kb;LogoCliente;Print
+191;Logo/Farmacia.svg;7.21kb;LogoCliente;Print
+192;Logo/Fazenda irmão carvalho.svg;85.77kb;LogoCliente;Print
+193;Logo/Felupe.svg;6.88kb;LogoCliente;Print
+194;Logo/Felupe2.svg;7.02kb;LogoCliente;Print
+195;Logo/Fibra Net.svg;9.25kb;LogoCliente;Print
+196;Logo/Fire Store.svg;10.88kb;LogoCliente;Print
+197;Logo/FireStore Multimarcas.svg;9.11kb;LogoCliente;Print
+198;Logo/Flexnet.svg;19.82kb;LogoCliente;Print
+199;Logo/Flore da Arte.svg;65.40kb;LogoCliente;Print
+200;Logo/Food Team.svg;15.91kb;LogoCliente;Print
+201;Logo/Formula Animal.svg;62.35kb;LogoCliente;Print
+202;Logo/Fricar - Centro Automotivo.svg;30.97kb;LogoCliente;Print
+203;Logo/G Logo.svg;2.30kb;LogoCliente;Print
+204;Logo/G max - Banda Larga.svg;9.78kb;LogoCliente;Print
+205;Logo/Gabriel 19 Anos.svg;26.38kb;LogoCliente;Print
+206;Logo/Gabriel Jatto 2.svg;9.32kb;LogoCliente;Print
+207;Logo/Gabriel Jatto 3.svg;5.45kb;LogoCliente;Print
+208;Logo/Gabriel Jatto.svg;19.11kb;LogoCliente;Print
+209;Logo/Gabriel Santos.svg;20.81kb;LogoCliente;Print
+210;Logo/Gago Motos - Estetica Autmotiva.svg;39.23kb;LogoCliente;Print
+211;Logo/Geladinho.svg;53.00kb;LogoCliente;Print
+212;Logo/Germano & Souza - Advogados.svg;21.47kb;LogoCliente;Print
+213;Logo/Gezinho - Lava Jato.svg;54.66kb;LogoCliente;Print
+214;Logo/Graziella Oliveira - Nails Desiner.svg;13.40kb;LogoCliente;Print
+215;Logo/Grupo de varões os 300.svg;12.51kb;LogoCliente;Print
+216;Logo/Guadalajara bebidas.svg;23.90kb;LogoCliente;Print
+217;Logo/Guilherme Construtora.svg;24.09kb;LogoCliente;Print
+218;Logo/Heliar 3X.svg;6.23kb;LogoCliente;Print
+219;Logo/Heliar.svg;3.08kb;LogoCliente;Print
+220;Logo/HG3 Equipadora.svg;14.96kb;LogoCliente;Print
+221;Logo/Hinode.svg;14.26kb;LogoCliente;Print
+222;Logo/IBPR.svg;48.59kb;LogoCliente;Print
+223;Logo/Igor Fume.svg;6.72kb;LogoCliente;Print
+224;Logo/Igreja - Assembléia de Deus.svg;14.50kb;LogoCliente;Print
+225;Logo/Igreja - Grupo Universal.svg;13.35kb;LogoCliente;Print
+226;Logo/Igreja - Igreija Evagelica.svg;24.57kb;LogoCliente;Print
+227;Logo/Igreja Assembléia de Deus.svg;67.27kb;LogoCliente;Print
+228;Logo/igreja Assembéia.svg;21.38kb;LogoCliente;Print
+229;Logo/Igreja Visão do Recomeço de Deus.svg;30.16kb;LogoCliente;Print
+230;Logo/Igrejja (2).svg;12.22kb;LogoCliente;Print
+231;Logo/Igrejja - Pentecostal.svg;14.88kb;LogoCliente;Print
+232;Logo/Infinty Barber.svg;22.54kb;LogoCliente;Print
+233;Logo/InneditaFit - Academia.svg;6.19kb;LogoCliente;Print
+234;Logo/Inová Rastreamento.svg;36.55kb;LogoCliente;Print
+235;Logo/Irmã Maria da Cocneição 84 Anos.svg;31.52kb;LogoCliente;Print
+236;Logo/Ivan das Baterias.svg;24.02kb;LogoCliente;Print
+237;Logo/Jana Doceria (1).svg;40.86kb;LogoCliente;Print
+238;Logo/Jana Doceria (2).svg;94.46kb;LogoCliente;Print
+239;Logo/Jana Doceria.svg;23.79kb;LogoCliente;Print
+240;Logo/Janaina Oliveira - Micropgmentação e Estética.svg;13.21kb;LogoCliente;Print
+241;Logo/Japão.svg;20.46kb;LogoCliente;Print
+242;Logo/JCB.svg;11.92kb;LogoCliente;Print
+243;Logo/John ADS.svg;3.91kb;LogoCliente;Print
+244;Logo/João victor.svg;28.49kb;LogoCliente;Print
+245;Logo/Kairos - Eventos e Recpções.svg;24.01kb;LogoCliente;Print
+246;Logo/Kaluka Relax Spa.svg;38.38kb;LogoCliente;Print
+247;Logo/Kelvis.svg;16.02kb;LogoCliente;Print
+248;Logo/Ki Churros.svg;76.17kb;LogoCliente;Print
+249;Logo/Ki Salgado.svg;13.69kb;LogoCliente;Print
+250;Logo/Krona - Tubos e Conexão.svg;13.19kb;LogoCliente;Print
+251;Logo/Labsabin - Centro de Diagnóstico.svg;15.19kb;LogoCliente;Print
+252;Logo/LAE - Engenharia.svg;5.18kb;LogoCliente;Print
+253;Logo/Laryssa silva - Nails Studio.svg;17.18kb;LogoCliente;Print
+254;Logo/Laura Dias.svg;18.47kb;LogoCliente;Print
+255;Logo/LB Lipe Burger.svg;69.36kb;LogoCliente;Print
+256;Logo/Leandro Surf.svg;76.39kb;LogoCliente;Print
+257;Logo/Life Sense.svg;6.00kb;LogoCliente;Print
+258;Logo/Lima.svg;19.78kb;LogoCliente;Print
+259;Logo/Limu 2.svg;7.66kb;LogoCliente;Print
+260;Logo/Limu.svg;7.93kb;LogoCliente;Print
+261;Logo/Locatelle Supermercado.svg;9.70kb;LogoCliente;Print
+262;Logo/LocLinbe.svg;35.40kb;LogoCliente;Print
+263;Logo/Logxinfo.svg;31.75kb;LogoCliente;Print
+264;Logo/Loja marinho.svg;42.21kb;LogoCliente;Print
+265;Logo/Lotérica.svg;4.58kb;LogoCliente;Print
+266;Logo/LS (2).svg;6.26kb;LogoCliente;Print
+267;Logo/LS Larissa Santana.svg;9.10kb;LogoCliente;Print
+268;Logo/LS.svg;2.84kb;LogoCliente;Print
+269;Logo/Luiza ketlyn.svg;21.72kb;LogoCliente;Print
+270;Logo/Lula Passeios.svg;38.74kb;LogoCliente;Print
+271;Logo/M&A Cell.svg;5.66kb;LogoCliente;Print
+272;Logo/Macrame da Valeria.svg;19.75kb;LogoCliente;Print
+273;Logo/Made for you.svg;8.71kb;LogoCliente;Print
+274;Logo/Magazine Amorim.svg;13.14kb;LogoCliente;Print
+275;Logo/Mannu Oliveira - Fotografia.svg;10.26kb;LogoCliente;Print
+276;Logo/Marbon Sorvetes.svg;6.94kb;LogoCliente;Print
+277;Logo/MBW STore.svg;26.53kb;LogoCliente;Print
+278;Logo/Medeiros Burger (1).svg;57.42kb;LogoCliente;Print
+279;Logo/Medeiros Burger (2).svg;38.73kb;LogoCliente;Print
+280;Logo/Mercearia JV.svg;18.47kb;LogoCliente;Print
+281;Logo/Mestre Baterias.svg;16.14kb;LogoCliente;Print
+282;Logo/Metal Sol - Usinagem e Caldeiraria.svg;8.85kb;LogoCliente;Print
+283;Logo/Mexicale - Paletas Mexicana.svg;10.09kb;LogoCliente;Print
+284;Logo/Meyre Rodolfo - Salão de Beleza.svg;25.90kb;LogoCliente;Print
+285;Logo/Meyre Rodolfo.svg;45.66kb;LogoCliente;Print
+286;Logo/Milton Micuiba.svg;13.26kb;LogoCliente;Print
+287;Logo/Ministério da Saude.svg;10.04kb;LogoCliente;Print
+288;Logo/Miranha Teia Supply.svg;4.77kb;LogoCliente;Print
+289;Logo/Mizu Cimentos.svg;5.16kb;LogoCliente;Print
+290;Logo/Monte Rios - Cemit´-erio e Crematório.svg;50.48kb;LogoCliente;Print
+291;Logo/Morada Verde - Empreendedora.svg;11.13kb;LogoCliente;Print
+292;Logo/Moura.svg;2.79kb;LogoCliente;Print
+293;Logo/MS Diesil.svg;36.16kb;LogoCliente;Print
+294;Logo/Mulatê do Dendê.svg;45.76kb;LogoCliente;Print
+295;Logo/Multimarcas.svg;20.91kb;LogoCliente;Print
+296;Logo/Muscle Wolf - Luan Henri.svg;38.17kb;LogoCliente;Print
+297;Logo/Na Brasa Hamburgeria.svg;42.32kb;LogoCliente;Print
+298;Logo/Naldinho Burger.svg;40.75kb;LogoCliente;Print
+299;Logo/Natalia Munique.svg;53.80kb;LogoCliente;Print
+300;Logo/Nathy Cores (2).svg;36.29kb;LogoCliente;Print
+301;Logo/Nathy Cores.svg;47.54kb;LogoCliente;Print
+302;Logo/Natália Munique.svg;24.85kb;LogoCliente;Print
+303;Logo/Neide Fashion.svg;7.85kb;LogoCliente;Print
+304;Logo/Nerly.svg;1.75kb;LogoCliente;Print
+305;Logo/New Life.svg;16.97kb;LogoCliente;Print
+306;Logo/Nilda Ótica.svg;6.35kb;LogoCliente;Print
+307;Logo/Nino Familia.svg;53.85kb;LogoCliente;Print
+308;Logo/Nino família.svg;68.95kb;LogoCliente;Print
+309;Logo/NJK karatê.svg;16.73kb;LogoCliente;Print
+310;Logo/NN - Nallya Narielly.svg;31.26kb;LogoCliente;Print
+311;Logo/Noite do Brother.svg;29.22kb;LogoCliente;Print
+312;Logo/Nordeste Mini Buggys.svg;77.91kb;LogoCliente;Print
+313;Logo/Noroesty Móveis.svg;22.94kb;LogoCliente;Print
+314;Logo/Nova Arena.svg;10.64kb;LogoCliente;Print
+315;Logo/Novanáutica.svg;5.28kb;LogoCliente;Print
+316;Logo/Ocean Runner.svg;9.52kb;LogoCliente;Print
+317;Logo/Oficina Garagem.svg;44.98kb;LogoCliente;Print
+318;Logo/OGSA - Turismo.svg;5.07kb;LogoCliente;Print
+319;Logo/Oliver Joy Utilidades Perfumaria.svg;40.91kb;LogoCliente;Print
+320;Logo/ON true Strength.svg;22.83kb;LogoCliente;Print
+321;Logo/Operação Anjos da Noite.svg;33.36kb;LogoCliente;Print
+322;Logo/Opção Car.svg;80.43kb;LogoCliente;Print
+323;Logo/os Moreninho.svg;18.38kb;LogoCliente;Print
+324;Logo/Padrão Rosa.svg;32.24kb;LogoCliente;Print
+325;Logo/Panela Cheia.svg;17.67kb;LogoCliente;Print
+326;Logo/Panificadora boa esperança.svg;81.77kb;LogoCliente;Print
+327;Logo/Panificadora Muribara.svg;14.66kb;LogoCliente;Print
+328;Logo/PCP Contrução.svg;7.46kb;LogoCliente;Print
+329;Logo/Pensionato das marias.svg;17.63kb;LogoCliente;Print
+330;Logo/Pernambuco da Sorte.svg;13.34kb;LogoCliente;Print
+331;Logo/PG Transportes.svg;8.23kb;LogoCliente;Print
+332;Logo/Photoshop.svg;75.63kb;LogoCliente;Print
+333;Logo/PHP Guindastes.svg;4.18kb;LogoCliente;Print
+334;Logo/Piso e Tinta.svg;29.75kb;LogoCliente;Print
+335;Logo/Pizza Karla's.svg;22.32kb;LogoCliente;Print
+336;Logo/Pmf - Padaria monteiro Filho.svg;18.95kb;LogoCliente;Print
+337;Logo/Polar Shups (1).svg;66.81kb;LogoCliente;Print
+338;Logo/Polar Shups (2).svg;69.00kb;LogoCliente;Print
+339;Logo/Power Cell.svg;31.86kb;LogoCliente;Print
+340;Logo/Pratique - Ginastica Coletiva.svg;11.86kb;LogoCliente;Print
+341;Logo/Preta Pratas.svg;17.44kb;LogoCliente;Print
+342;Logo/ProceCar.svg;12.40kb;LogoCliente;Print
+343;Logo/Procvence.svg;7.98kb;LogoCliente;Print
+344;Logo/Prometeus.svg;26.27kb;LogoCliente;Print
+345;Logo/Pronta Resposta.svg;8.56kb;LogoCliente;Print
+346;Logo/Qsl Net.svg;30.14kb;LogoCliente;Print
+347;Logo/Qualityimport - peças e Acessórios.svg;17.38kb;LogoCliente;Print
+348;Logo/Raffan.svg;9.57kb;LogoCliente;Print
+349;Logo/RC Beleza e Estetica.svg;21.83kb;LogoCliente;Print
+350;Logo/RDG - construtora.svg;5.00kb;LogoCliente;Print
+351;Logo/RDS.svg;6.93kb;LogoCliente;Print
+352;Logo/Recanto Sapucaí.svg;31.25kb;LogoCliente;Print
+353;Logo/Red Lion.svg;7.86kb;LogoCliente;Print
+354;Logo/Rei dos led.svg;25.38kb;LogoCliente;Print
+355;Logo/Rhodes Hotel.svg;3.47kb;LogoCliente;Print
+356;Logo/Rian Barbearia.svg;67.40kb;LogoCliente;Print
+357;Logo/Rio Lanches.svg;21.42kb;LogoCliente;Print
+358;Logo/RME Produções.svg;19.21kb;LogoCliente;Print
+359;Logo/RO.svg;2.18kb;LogoCliente;Print
+360;Logo/Rosa dos Ventrs.svg;18.34kb;LogoCliente;Print
+361;Logo/Rosangela Salão.svg;22.98kb;LogoCliente;Print
+362;Logo/Sallãaao.svg;21.04kb;LogoCliente;Print
+363;Logo/Sallãao.svg;17.28kb;LogoCliente;Print
+364;Logo/Sallão.svg;23.35kb;LogoCliente;Print
+365;Logo/Salão da Socorro.svg;32.08kb;LogoCliente;Print
+366;Logo/Salão Rose.svg;13.14kb;LogoCliente;Print
+367;Logo/Salãoo.svg;30.08kb;LogoCliente;Print
+368;Logo/Satevi.svg;12.28kb;LogoCliente;Print
+369;Logo/Saúde Estetica.svg;45.58kb;LogoCliente;Print
+370;Logo/SD sedutora.svg;13.52kb;LogoCliente;Print
+371;Logo/Sentra.svg;45.06kb;LogoCliente;Print
+372;Logo/Serginho operador.svg;51.96kb;LogoCliente;Print
+373;Logo/Sertec.svg;34.49kb;LogoCliente;Print
+374;Logo/Seu Deka Bebidas (1).svg;47.06kb;LogoCliente;Print
+375;Logo/Seu Deka Bebidas (2).svg;31.50kb;LogoCliente;Print
+376;Logo/Sistema ùnico de Sáude.svg;31.15kb;LogoCliente;Print
+377;Logo/Sitio VIana SV.svg;4.30kb;LogoCliente;Print
+378;Logo/Solo.svg;36.39kb;LogoCliente;Print
+379;Logo/Sonhe Alto Balão.svg;26.67kb;LogoCliente;Print
+380;Logo/Sorvete MAx.svg;11.44kb;LogoCliente;Print
+381;Logo/Souza LEão.svg;9.57kb;LogoCliente;Print
+382;Logo/Speed Suplemento.svg;20.37kb;LogoCliente;Print
+383;Logo/Studio - Karol Oliveira 1 (1).svg;45.99kb;LogoCliente;Print
+384;Logo/Studio - Karol Oliveira 1 (2).svg;46.83kb;LogoCliente;Print
+385;Logo/Studio Ana Silva.svg;53.28kb;LogoCliente;Print
+386;Logo/Studio Calabrias.svg;16.09kb;LogoCliente;Print
+387;Logo/Studio Smth - Gravações e Ensaios.svg;80.02kb;LogoCliente;Print
+388;Logo/Sulpemento.svg;6.33kb;LogoCliente;Print
+389;Logo/Super oara.svg;68.72kb;LogoCliente;Print
+390;Logo/Suplemento.svg;79.79kb;LogoCliente;Print
+391;Logo/Supremax.svg;72.80kb;LogoCliente;Print
+392;Logo/Supricampo.svg;13.94kb;LogoCliente;Print
+393;Logo/Swing do pará.svg;49.51kb;LogoCliente;Print
+394;Logo/São Lourenço Baterias.svg;10.47kb;LogoCliente;Print
+395;Logo/São Lourenço Hidraulicas.svg;74.18kb;LogoCliente;Print
+396;Logo/Sérgio Bateria.svg;41.78kb;LogoCliente;Print
+397;Logo/Sítio Viana.svg;21.85kb;LogoCliente;Print
+398;Logo/T-Tech.svg;24.46kb;LogoCliente;Print
+399;Logo/Talismã.svg;3.48kb;LogoCliente;Print
+400;Logo/Tapioca do Berg.svg;37.29kb;LogoCliente;Print
+401;Logo/Team Boy Team Girl.cdr.svg;48.96kb;LogoCliente;Print
+402;Logo/Teia Supply.svg;62.33kb;LogoCliente;Print
+403;Logo/Tempero em Familia.svg;49.92kb;LogoCliente;Print
+404;Logo/Tempero em Família.svg;53.12kb;LogoCliente;Print
+405;Logo/Terraplanagem.svg;20.96kb;LogoCliente;Print
+406;Logo/The Best.svg;17.81kb;LogoCliente;Print
+407;Logo/Timbi ótica.svg;95.66kb;LogoCliente;Print
+408;Logo/Totalbaterias.svg;22.54kb;LogoCliente;Print
+409;Logo/Tr Sergio.cdr.svg;23.41kb;LogoCliente;Print
+410;Logo/Tr. Biscoito.svg;15.29kb;LogoCliente;Print
+411;Logo/Trailer Mega Sabor.svg;14.03kb;LogoCliente;Print
+412;Logo/Transpetro.svg;6.62kb;LogoCliente;Print
+413;Logo/Transporte.svg;67.39kb;LogoCliente;Print
+414;Logo/Trepidant's.svg;23.13kb;LogoCliente;Print
+415;Logo/Tropinha244 (1).svg;53.85kb;LogoCliente;Print
+416;Logo/Tropinha244 (2).svg;56.87kb;LogoCliente;Print
+417;Logo/Tubarão.svg;5.04kb;LogoCliente;Print
+418;Logo/Tutti Dolci.svg;4.79kb;LogoCliente;Print
+419;Logo/ULA ULA Burger.svg;31.62kb;LogoCliente;Print
+420;Logo/ULA ULA.svg;16.60kb;LogoCliente;Print
+421;Logo/umbro.svg;12.82kb;LogoCliente;Print
+422;Logo/Unilast Records.svg;6.00kb;LogoCliente;Print
+423;Logo/URPE 2.svg;24.57kb;LogoCliente;Print
+424;Logo/URPE.svg;45.22kb;LogoCliente;Print
+425;Logo/Val Variedades.svg;14.52kb;LogoCliente;Print
+426;Logo/Varejão das Fraldas.svg;82.75kb;LogoCliente;Print
+427;Logo/Vem.svg;11.56kb;LogoCliente;Print
+428;Logo/Venâncio.svg;6.71kb;LogoCliente;Print
+429;Logo/Veterano.svg;54.24kb;LogoCliente;Print
+430;Logo/Viagem e Turismo.svg;38.53kb;LogoCliente;Print
+431;Logo/Vini Car.svg;13.61kb;LogoCliente;Print
+432;Logo/Vitinho Som.svg;17.74kb;LogoCliente;Print
+433;Logo/Vitrine Oline 2.svg;15.58kb;LogoCliente;Print
+434;Logo/Vitrine Oline.svg;26.93kb;LogoCliente;Print
+435;Logo/Viva Farma.svg;11.01kb;LogoCliente;Print
+436;Logo/Viva o Instante.svg;9.90kb;LogoCliente;Print
+437;Logo/VL Cell.svg;18.88kb;LogoCliente;Print
+438;Logo/Vício louco.svg;29.34kb;LogoCliente;Print
+439;Logo/Walter Gás.svg;14.04kb;LogoCliente;Print
+440;Logo/Wellington Bebidas.svg;12.31kb;LogoCliente;Print
+441;Logo/Wesley Grafit.svg;12.42kb;LogoCliente;Print
+442;Logo/WF.svg;74.01kb;LogoCliente;Print
+443;Logo/WS.svg;37.45kb;LogoCliente;Print
+444;Logo/Wyden.svg;2.10kb;LogoCliente;Print
+445;Logo/Yasmim Academy.svg;20.94kb;LogoCliente;Print
+446;Logo/Yasmim.svg;5.00kb;LogoCliente;Print
+447;Logo/Zimaz Acessorio e Assistencia.svg;6.52kb;LogoCliente;Print
+448;Logo/Óticamaranata.svg;23.55kb;LogoCliente;Print
+449;Logo/Brasil.svg;18.07kb;Bandeira;Print
+450;Logo/Canadá.svg;2.39kb;Bandeira;Print
+451;Logo/Estados Unidos.svg;8.20kb;Bandeira;Print
+452;Logo/Inglaterra.svg;1.89kb;Bandeira;Print
+A1;Estampas/A1.webp;51.83kb;Simpson;Prlm,Tnq,Gvt
+A2;Estampas/A2.webp;24.77kb;Simpson;Prlm,Tnq,Gvt
+A3;Estampas/A3.webp;31.45kb;Simpson;Prlm,Tnq,Gvt
+A4;Estampas/A4.webp;41.04kb;Simpson;Prlm,Tnq,Gvt
+A5;Estampas/A5.webp;29.29kb;Simpson;Prlm,Tnq,Gvt
+A6;Estampas/A6.webp;25.75kb;Simpson;Prlm,Tnq,Gvt
+A7;Estampas/A7.webp;33.09kb;Simpson;Prlm,Tnq,Gvt
+I1;Estampas/I1.webp;24.38kb;Patinhas;Prlm,Tnq,Gvt
+I10;Estampas/I10.webp;32.03kb;Patinhas;Prlm,Tnq,Gvt
+I11;Estampas/I11.webp;37.47kb;Patinhas;Prlm,Tnq,Gvt
+I12;Estampas/I12.webp;32.40kb;Patinhas;Prlm,Tnq,Gvt
+I13;Estampas/I13.webp;30.83kb;Patinhas;Prlm,Tnq,Gvt
+I14;Estampas/I14.webp;36.51kb;Patinhas;Prlm,Tnq,Gvt
+I15;Estampas/I15.webp;19.98kb;Patinhas;Prlm,Tnq,Gvt
+I16;Estampas/I16.webp;31.43kb;Patinhas;Prlm,Tnq,Gvt
+I2;Estampas/I2.webp;32.93kb;Patinhas;Prlm,Tnq,Gvt
+I3;Estampas/I3.webp;41.08kb;Patinhas;Prlm,Tnq,Gvt
+I4;Estampas/I4.webp;26.97kb;Patinhas;Prlm,Tnq,Gvt
+I5;Estampas/I5.webp;27.44kb;Patinhas;Prlm,Tnq,Gvt
+I6;Estampas/I6.webp;45.39kb;Patinhas;Prlm,Tnq,Gvt
+I7;Estampas/I7.webp;39.34kb;Patinhas;Prlm,Tnq,Gvt
+I8;Estampas/I8.webp;20.45kb;Patinhas;Prlm,Tnq,Gvt
+I9;Estampas/I9.webp;29.43kb;Patinhas;Prlm,Tnq,Gvt
+J1;Estampas/J1.webp;25.21kb;Palhaço;Prlm,Tnq,Gvt
+J10;Estampas/J10.webp;31.67kb;Palhaço;Prlm,Tnq,Gvt
+J11;Estampas/J11.webp;43.91kb;Palhaço;Prlm,Tnq,Gvt
+J12;Estampas/J12.webp;31.77kb;Palhaço;Prlm,Tnq,Gvt
+J13;Estampas/J13.webp;32.44kb;Palhaço;Prlm,Tnq,Gvt
+J14;Estampas/J14.webp;32.85kb;Palhaço;Prlm,Tnq,Gvt
+J15;Estampas/J15.webp;31.34kb;Palhaço;Prlm,Tnq,Gvt
+J16;Estampas/J16.webp;37.13kb;Palhaço;Prlm,Tnq,Gvt
+J17;Estampas/J17.webp;26.59kb;Palhaço;Prlm,Tnq,Gvt
+J18;Estampas/J18.webp;33.50kb;Palhaço;Prlm,Tnq,Gvt
+J19;Estampas/J19.webp;36.74kb;Palhaço;Prlm,Tnq,Gvt
+J2;Estampas/J2.webp;25.38kb;Palhaço;Prlm,Tnq,Gvt
+J20;Estampas/J20.webp;42.94kb;Palhaço;Prlm,Tnq,Gvt
+J21;Estampas/J21.webp;42.56kb;Palhaço;Prlm,Tnq,Gvt
+J22;Estampas/J22.webp;19.60kb;Palhaço;Prlm,Tnq,Gvt
+J23;Estampas/J23.webp;23.17kb;Palhaço;Prlm,Tnq,Gvt
+J3;Estampas/J3.webp;20.54kb;Palhaço;Prlm,Tnq,Gvt
+J4;Estampas/J4.webp;22.17kb;Palhaço;Prlm,Tnq,Gvt
+J5;Estampas/J5.webp;17.66kb;Palhaço;Prlm,Tnq,Gvt
+J6;Estampas/J6.webp;30.14kb;Palhaço;Prlm,Tnq,Gvt
+J7;Estampas/J7.webp;24.58kb;Palhaço;Prlm,Tnq,Gvt
+J8;Estampas/J8.webp;15.43kb;Palhaço;Prlm,Tnq,Gvt
+J9;Estampas/J9.webp;40.15kb;Palhaço;Prlm,Tnq,Gvt
+Z1;Estampas/Z1.webp;8.46kb;Outros;Prlm,Tnq,Gvt
+Z10;Estampas/Z10.webp;6.51kb;Outros;Prlm,Tnq,Gvt
+Z11;Estampas/Z11.webp;15.81kb;Outros;Prlm,Tnq,Gvt
+Z12;Estampas/Z12.webp;20.25kb;Outros;Prlm,Tnq,Gvt
+Z13;Estampas/Z13.webp;18.50kb;Outros;Prlm,Tnq,Gvt
+Z14;Estampas/Z14.webp;10.05kb;Outros;Prlm,Tnq,Gvt
+Z15;Estampas/Z15.webp;32.64kb;Outros;Prlm,Tnq,Gvt
+Z16;Estampas/Z16.webp;42.09kb;Outros;Prlm,Tnq,Gvt
+Z17;Estampas/Z17.webp;54.42kb;Outros;Prlm,Tnq,Gvt
+Z18;Estampas/Z18.webp;35.42kb;Outros;Prlm,Tnq,Gvt
+Z19;Estampas/Z19.webp;26.30kb;Outros;Prlm,Tnq,Gvt
+Z2;Estampas/Z2.webp;12.96kb;Outros;Prlm,Tnq,Gvt
+Z20;Estampas/Z20.webp;42.75kb;Outros;Prlm,Tnq,Gvt
+Z21;Estampas/Z21.webp;11.98kb;Outros;Prlm,Tnq,Gvt
+Z3;Estampas/Z3.webp;14.67kb;Outros;Prlm,Tnq,Gvt
+Z4;Estampas/Z4.webp;16.12kb;Outros;Prlm,Tnq,Gvt
+Z5;Estampas/Z5.webp;52.44kb;Outros;Prlm,Tnq,Gvt
+Z6;Estampas/Z6.webp;18.26kb;Outros;Prlm,Tnq,Gvt
+Z7;Estampas/Z7.webp;17.40kb;Outros;Prlm,Tnq,Gvt
+Z8;Estampas/Z8.webp;13.58kb;Outros;Prlm,Tnq,Gvt
+Z9;Estampas/Z9.webp;3.70kb;Outros;Prlm,Tnq,Gvt
