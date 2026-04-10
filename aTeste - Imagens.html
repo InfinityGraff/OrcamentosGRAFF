@@ -14,7 +14,32 @@
   <script src="../MyBiblioteca/PreScript.js"      ></script>
   <link  href="./CssGRAFF.css" rel="stylesheet">
   <script src="./BaseIMG.js"      ></script>
+  <script src="./SB_Crud.js"      ></script>
 </head>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script> // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
+
+<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
+    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+
+    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id',STOK:'Id'} // Campo pra Imbutir dentro do BS
+    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
+    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
+    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
+
+    // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
+    let  ContGrad  = {} ; let  ContCLNT  = {}
+
+    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
+    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
+</script>
 
 <style>
     :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff}
@@ -61,7 +86,10 @@
     .RolImg .Boxyyy:hover canvas{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
     @media(max-width:600px){:root{--w:140px}}
     .NONE{display: none !important;}
+
+    .Ativado{background: #ff62ff;}
 </style>
+
 
 <script> // Biblioteca
   const Topic = [
@@ -93,20 +121,21 @@
         <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
         <div onclick="Tog($('#Galery'),'Gap')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
         <div onclick="Tog($('#Galery'),'Txt')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <input type="text" placeholder="Novo Metta Dados"> <!--Usar meu MySelect-->
+        <input id="MettaDados" type="text" placeholder="Novo Metta Dados"> <!--Usar meu MySelect-->
+        <button onclick="OKMettaDados($('#MettaDados'))">OK Metadados</button>
       </div>
       <div id="RoloTopHome" class="Ct"></div>
       <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
 </body>
 
 <script>
-    function Pesq(Eu,Ev){
-      let Cont = 0
-      const qq = aa(Vll(Eu).trim())
-      $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
-      $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
-      Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
-    }
+  function Pesq(Eu,Ev){
+    let Cont = 0
+    const qq = aa(Vll(Eu).trim())
+    $$('.Boxyy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
+    $$('.Pasta').forEach(e=>$$('.Boxyy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
+    Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
+  }
 </script>
 
 <script>
@@ -143,29 +172,40 @@
 
   const Tm_Boxyy=(i,Pre)=>`<div class="Boxyy Boxy">
       <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
-        ${['Prlm','Tnq','Gvt'].includes(Pre) ? `<canvas id="${Pre}_${i.id}" class="Rd PT Cnvs"></canvas>` : `<img src="./Kits/${i.src}" loading="lazy">`}
+        ${['Prlm','Tnq','Gvt'].includes(Pre) ? `<canvas id="${Pre}_${i.Id}" class="Rd PT Cnvs"></canvas>` : `<img src="./Kits/${i.src}" name="${i.Id}" onclick="ClickEmIMG(this)" loading="lazy">`}
       </div>
-      <div class="mt"><p>${i.src}</p><a>${i.Cat}</a><a>${i.id}</a><a>${Pre}</a></div>
+      <div class="mt"><p>${i.src}</p><a>${i.Cat}-</a><a>${i.Id}-</a><a>${Pre}-</a><a>${ObjVal(i.Tags).join(',')}</a></div>
   </div>`
 
-  let BaseIMG2 = [] // vem do SupaBase
+  function ClickEmIMG(Img){
+    Tog(Img,'Ativado')
+  }
+
+  function OKMettaDados(Inpt){
+    $$('.Ativado').forEach(e=>{
+      const IDD = Nm(e)
+      const OBJ = JJ['STOK'][IDD].Tags
+      const NEW = OBJ.Otro.push(Inpt.value)
+      Sb_EDIT(supaBASE,'STOK',IDD,'Tags',OBJ)
+      Rmv(e,'Ativado')
+    })
+
+  }
 
   function ren(Modo){
-    LOG('JSON',BaseIMG )
-    LOG('SB'  ,BaseIMG2)
 
-    const Tm_Past = ObjEtr(BaseIMG.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
+    const Tm_Past = ObjEtr(J['STOK'].reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
       `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
-        <div class="Alven">${v.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join('')}</div></div>`).join('')
+        <div class="Alven">${v.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join('')}</div>
+      </div>`).join('')
 
 
     Inn($('#Galery'),'')
-    $('#Galery').insertAdjacentHTML("beforeend",Modo=='Nome'?BaseIMG.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join(''):Tm_Past) // Aqui Dentro eu tenho que chamar Tm_Boxyy 3 vezes um pra cada tanque,Prlm e Gvt
+    $('#Galery').insertAdjacentHTML("beforeend",Modo=='Nome'?J['STOK'].map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join(''):Tm_Past) // Aqui Dentro eu tenho que chamar Tm_Boxyy 3 vezes um pra cada tanque,Prlm e Gvt
     $$('.Cnvs').forEach(e=>GearCanv2(e))
   }
  
-  Onloads('body')
-  ren('Nome')
+
 
 
   function Tm_Canvs2(){
@@ -206,14 +246,28 @@
   // a Lista com as informações fica no Supabase e são atualziadas em tempo Real, só não pode Alterar o src da imagem
   // Agora criar o Organizador de Pastas lá em Cima eu escolho uma Categoria, ou até uma Chave nova se eu quiser! e abaixo eu seleciono as imagens que estarão dentro dela
   
-  // {
-  // "Metadados": {
-  //   estilo:["Coloridas","Moderna", "Vetorial"],
-  //   tipo: ["Logotipo", "Fundo Transparente"],
-  //   qualidade: ["Alta Qualidade"],
-  //   tema: ["Corporativa", "Criativa"]
+  // "Metadados":{
+  //   "Styl":["Coloridas","Moderna", "Vetorial"],
+  //   "Tipo":["Logotipo", "Fundo Transparente"],
+  //   "Quld":["Alta Qualidade"],
+  //   "Tema":["Corporativa", "Criativa"]
+  //   "Otro":[]
   // }
 
+  
+
+</script>
+
+<script> // Iniciar
+
+  const getSBPromise = SB_Get(supaBASE,['STOK'])
+
+  function PosGET(){
+    ren('Nome')
+  }
+
+  Onloads('body')
+  
 </script>
 
 </html>
