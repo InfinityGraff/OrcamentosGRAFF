@@ -414,7 +414,7 @@
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
 
-    const NoneCgo  =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(UU.Cgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
+    
 
     const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
@@ -427,6 +427,8 @@
     <div>   <!--TABELAS  - ⭐⭐⭐_ _ -->
         <style> /*CSS apenas da Tabela*/
             /*Particularidades*/
+            h2{font-size:18px}
+
             .BndjFOT,.BndjFLT{overflow: hidden}
             .BndjFLT{border-radius:0 0 10px 10px}
             .BndjTBL{padding:5px ; width:auto !important; height:auto !important}
@@ -605,8 +607,7 @@
             const Acnto    =(s,Tru)=>Tru && s ? `${s}`.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : s
             
             // LINKS
-            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)
-            
+            const Griff =(e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)          
 
             const GrifarAcc=(e,val,Rx,C)=>{ // Provavelmente da pra passar o SELECT pra aqui pra dentro!
                 const t  = val ; const tn = C ? t.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : t
@@ -661,7 +662,9 @@
                 // Evoluir este Regex pra Aceitar Dados Literarios
                 const [C1,C2] = [Vll($('.COL1',Pai(Ipt))),Vll($('.COL2',Pai(Ipt)))]
 
-                const PesqJJ=j=>{try{const has=v=>v&&RX.test(Acnto(v,_C)+""),ent=o=>ObjEtr(o).find(([k,v])=>has(v)),arr=a=>a&&a.map(ent).find(Boolean)
+                const PesqJJ=j=>{
+                    try{const has=v=>v&&RX.test(Acnto(v,_C)+""),ent=o=>ObjEtr(o).find(([k,v])=>has(v)),arr=a=>a&&a.map(ent).find(Boolean)
+                    if(Typ!='PDDS'){const r = ObjEtr(j).find(([k, v]) => !isArr(v) && has(v));if (r) return [r[0], r[1]]}
                     if (C1) {const v1 = j[C1] ; if(r=arr(v1)) return[C1,r[0],r[1]]} else {;const r1 = ObjEtr(j).find(([k,v])=>isArr(v) && arr(v));if(r1){const r2=arr(r1[1]);return[r1[0],r2[0],r2[1]]}}   // MODO 4 - Pesquisa interna sempre ativa
                         const v1 = j[C1] ; if (C1&&C2 && isArr(v1)) {const o2=v1.find(o=>o&&has(o[C2]));if(o2) return [C1,C2,o2[C2]]}                                                                      // MODO 3 - Pesquisa em duas camadas (C1+C2)
                     return false}catch{return false}
@@ -672,8 +675,10 @@
                     } catch { return false}
                 }
                 const PesqLink=j=>{
+                    if(Typ!=='PDDS'){return false}
                     const TMs = ObjEtr(BS[Typ].Json).filter(([k,e])=>e.TM=='Link').map(e=>e[0])
                     const Filtrado = TMs.map((col,x)=>{
+                        if(!j[col] || j[col].length==0){return false} // só pra tirar caso de erro no j[col] pra o caso de ele vir como vazio ou [] (e isso nem precisa quando é pra PDDS)
                         const [TYP,ID] = j[col].split('-')
                         if(!TYP||!ID){return false}
                         return PesqJJ2(JJ[TYP][ID])
@@ -682,6 +687,7 @@
                 }
                 const Dados = Arr.map(j=>PesqJJ(j))
                 const OBJJJ = Arr.filter(j=>PesqJJ(j)||PesqLink(j))
+                //LOG('xat',OBJJJ)
                 return [OBJJJ,Dados[0]]
             }
 
@@ -714,11 +720,11 @@
                     }
                     else if(Coten($(`#Pag_${Typ}`),'TBLAA')){ // Página é uma Tabela
                         const ListPes = Ex_Pesq(TRs2(Typ,'1')     ,Typ,RX,_C,Ipt)    // Pesquisa tabela carregada, apenas Ocultando
-                        const PesqJ   = Ex_Pesq_J(J[Typ].reverse(),Typ,RX,_C,Ipt)[0] // Pesquisa quando não existe nada na tabela, Criando com Template
-
-                        if(Ipt.value!==''){Inn($(`#H_${Typ} > .Bodd2`),HeadGroupTR + Tm_Table(Typ,PesqJ.filter(j=>!ListPes.includes(`${j.Id}`)))) // esse filter é pra remover os que já estão carregados na tabela Principal
-                                     }else{Inn($(`#H_${Typ} > .Bodd2`),'')}
-
+                        if(Typ=='PDDS'){ // isso serve pra fazer a Pesquiza de coisas antigas, criando nova tabela!
+                            const PesqJ   = Ex_Pesq_J(J[Typ].reverse(),Typ,RX,_C,Ipt)[0] // Pesquisa quando não existe nada na tabela, Criando com Template   
+                            if(Ipt.value!==''){Inn($(`#H_${Typ} > .Bodd2`),HeadGroupTR + Tm_Table(Typ,PesqJ.filter(j=>!ListPes.includes(`${j.Id}`)))) // esse filter é pra remover os que já estão carregados na tabela Principal
+                            }else{Inn($(`#H_${Typ} > .Bodd2`),'')}
+                        }
                         Re_Colr(Typ,tr_Viw(Typ))
                         Re_Foot(Typ)
                     }
@@ -2177,16 +2183,7 @@
                     <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
                 </div>
                 
-                <div>
-                    <div class="DateBox Rltv">
-                        <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
-                        <div class="Boxy calendar Abslt Cl none"></div>
-                    </div>
-                    <div class="DateBox Rltv">
-                        <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
-                        <div class="Boxy calendar Abslt Cl none"></div>
-                    </div>
-                </div>
+                <div onload="Inn(this,Tm_DataNatora())"></div>
             </div>
 
             <div id="Pag_PDDS" class="     Cl TBLAA">
@@ -2228,7 +2225,7 @@
                                     <div id="COnf_SERV" class="Configs Ct"></div>
                                     <button onclick="F_Clen('SERV')">Limpar</button>
                                 </div>
-                                <table id="H_SERV" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_SERV" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2240,7 +2237,7 @@
                                     <div id="COnf_PGMT" class="Configs Ct"></div>
                                     <button onclick="F_Clen('PGMT')">Limpar</button>
                                 </div>
-                                <table id="H_PGMT" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_PGMT" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
                     </div>
@@ -2258,7 +2255,7 @@
                                     <div id="COnf_MPAG" class="Configs Ct"></div>
                                     <button onclick="F_Clen('MPAG')">Limpar</button>
                                 </div>
-                                <table id="H_MPAG" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody></table>
+                                <table id="H_MPAG" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody></table>
                 </div></div></div></div>
             </div>
 
@@ -2275,7 +2272,7 @@
                                     <div id="COnf_GRAD" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_GRAD" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_GRAD" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2286,7 +2283,7 @@
                                     <div id="COnf_OS" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_OS" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_OS" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2297,7 +2294,7 @@
                                     <div id="COnf_GRD2" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_GRD2" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_GRD2" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2308,7 +2305,7 @@
                                     <div id="COnf_UBER" class="Configs Ct"></div>
                                     <button>Limpar</button>
                                 </div>
-                                <table id="H_UBER" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+                                <table id="H_UBER" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
                             </div>
                         </div>
 
@@ -2509,7 +2506,7 @@
                     .Box .rs    {font-size: 25px}
                     .Art .rs    {font-size: 25px}
                     h2,h3       {font-size: 25px}
-                    .BOX        {padding:18px;border-radius:14px;background:#111;border:1px solid #222}
+
                     .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
                     .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
                     #Perf .Box a{width: 40px; height: 40px}
@@ -2533,19 +2530,19 @@
                 </style>
 
                 <div class="w100 Cl Gap">
-                    <div id="Perf-Perf" class="BOX Ev Gap w100"></div>
-                    <div id="Perf-Soli" class="BOX Cl Gap w100"></div>
-                    <div id="Perf-Andm" class="BOX Cl Gap w100"></div>
-                    <div id="Perf-Hist" class="BOX Cl Gap w100"></div>
-                    <div id="Perf-Hist2" class="BOX Cl Gap w100"></div>
-                    <div id="Perf-Trfs" class="BOX Cl Gap w100"></div>
+                    <div id="Perf-Perf" class="Boxy Ev Gap w100"></div>
+                    <div id="Perf-Soli"  class="Boxy Cl Gap w100"></div>
+                    <div id="Perf-Andm"  class="Boxy Cl Gap w100"></div>
+                    <div id="Perf-Hist"  class="Boxy Cl Gap w100"></div>
+                    <div id="Perf-Hist2" class="Boxy Cl Gap w100"></div>
+                    <div id="Perf-Trfs"  class="Boxy Cl Gap w100"></div>
                 </div>
 
                 <script>
                     const Llmt     = {PDDS:['2026-03-05','2026-12-30'],SERV:['2026-03-05','2026-12-30'],PGMT:['2026-03-05','2026-12-30']}  // Campo pra Imbutir dentro do BS
                     let [__A,__M,__D,__S]=['','','','']
-                    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Ct Bt Hov BOX" onclick="Unyc('${U}','${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART(${U},${e.Id})">AceitarART</button></div>`).join("")}</div>`
-                    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${U}','${e.Id}')"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
+                    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Ct Bt Hov Boxy" onclick="Unyc('${U}','${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART(${U},${e.Id})">AceitarART</button></div>`).join("")}</div>`
+                    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov Boxy" onclick="Unyc('${U}','${e.Id}')"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
                     const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
                     const Unyc=(U,ID)=>MODAL(Tm_ListArt(U,__A.filter(e=>e.Id==ID)))    // ao rodar o Modal Excluir o Antigo
                     const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1]) // espero que der pra REMOVER
@@ -2566,10 +2563,10 @@
                                     ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Lrnj">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
                                 </div>
                                 <div class="Ct Gap">
-                                    <div class="BOX Cl Box"                              ><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Participações     </p><h3>${Partic             }</h3></div>
-                                    <div class="BOX Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Total de Artes    </p><h3>${__A.length         }</h3></div>
-                                    <div class="BOX Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3>${__D.length         }</h3></div>
-                                    <div class="BOX Cl Box" onclick="View('${u}','Coin')"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
+                                    <div class="Boxy Cl Box"                              ><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Participações     </p><h3>${Partic             }</h3></div>
+                                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Total de Artes    </p><h3>${__A.length         }</h3></div>
+                                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3>${__D.length         }</h3></div>
+                                    <div class="Boxy Cl Box" onclick="View('${u}','Coin')"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
                                 </div>`)
                         Inn($('#Perf-Soli'),Tm_SOliArt(u,__S)) ; Inn($('#Perf-Andm'),Tm_SOliArt(u,__M)) ; Inn($('#Perf-Hist'),Tm_ListArt(u,__A)) // U.On?"Online":"Offline"
                             
@@ -2582,7 +2579,7 @@
                         </tr>`).join('')
 
                         Inn($('#Perf-Trfs'),`<table><thead><tr>${['Cliente','Serviço','Tipo','Valor','Desing','Foto'].map(e=>`<th>${e}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`)
-                        Inn($('#Perf-Hist2' ),`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${tableFilt.map(e=>`<div class="Art Cl PT Hov BOX" onclick="Unyc('${e.Id}')"><img src="${BASE_URL}Img/${J['IMGS'][e.Id]}"><p>${JJ.CLNT[e.Clnt]?.Clnt}</p><p>${e.TArt}</p><p>${Tm_RS2(e.CArt)}</p></div>`).join("")}</div>`)    
+                        Inn($('#Perf-Hist2' ),`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${tableFilt.map(e=>`<div class="Art Cl PT Hov Boxy" onclick="Unyc('${e.Id}')"><img src="${BASE_URL}Img/${J['IMGS'][e.Id]}"><p>${JJ.CLNT[e.Clnt]?.Clnt}</p><p>${e.TArt}</p><p>${Tm_RS2(e.CArt)}</p></div>`).join("")}</div>`)    
                     }
 
                     async function AceitarART(U,Id){const{error}=await supaBASE.from("ARTE").update({Stts:"Aceita",Dsng:U}).eq("Id",Id)

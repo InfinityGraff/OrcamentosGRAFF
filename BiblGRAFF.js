@@ -1,5 +1,16 @@
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
+const NoVazio=e=>(e.tagName=='INPUT' && e.value.trim()) || (e.tagName=='SELECT' && e.selectedIndex)
+
+function Tm_DataNatora(){
+    return `
+    <div class="Rltv">
+        <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
+        <div class="Boxy calendar Abslt Cl none"></div>
+    </div>
+`
+}
+
 
 const TagVoid = new Set(["AREA","BASE","BR","COL","EMBED","HR","IMG","INPUT","LINK","META","PARAM","SOURCE","TRACK","WBR","SELECT"])
 
@@ -7,6 +18,15 @@ const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 
 function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
 const ObjValToArr = o =>Object.fromEntries(ObjEtr(o).map(([k,v]) => [k, [].concat(v)])) // Transforma todos os valores do objeto em array (ex: {a:1} → {a:[1]})
+
+const TempoResta = d => {
+  const n = new Date(), a = new Date(d.length == 10 ? d + 'T23:59:59' : d), ms = a - n;
+  if (ms <= 0) return 'Expirado';
+  const h = ms / 36e5, dInt = h / 24 | 0;
+  return h >= 24 ? `${dInt} Dia${dInt-1?'s':''}`
+       : h >= 1  ? `${h|0} Hora${(h|0)-1?'s':''}`
+                 : `${(ms/6e4|0)||1} Minuto${((ms/6e4|0)||1)-1?'s':''}`;
+};
 
 const UniqSplit=Arry=>{
   const    N = e=>RxAcento(RxRepeti(RxEspaco(e))).toLowerCase()
@@ -851,3 +871,10 @@ function RANGE_DATA(arr,LMT,Atv){ // Array de objetos | Limite ["2026-03-05","20
     for(let i=idx0;i<=idx1;i++){const e=arr[i],d=e.Data ; if(!e.Lixo&&(d==""||!has||d>=LMT[0]&&d<=LMT[1])) out.push(e)}
     return out
 }
+
+
+
+
+
+
+

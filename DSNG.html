@@ -9,35 +9,12 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <!--         
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/SB_Crud.js"        ></script>
-    --> 
-    
-    <link href="./SB_Crud.css" rel="stylesheet">
-    <script src="./SB_Crud.js"      ></script>
-    <!--
-        <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
-        <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
-       
-        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
-        <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-    -->
-    
-    <!-- <link  href="./CssGRAFF.css" rel="stylesheet"> -->
-    <link  href="./MACHOUSE.css" rel="stylesheet">
+    <link   href="./SB_Crud.css"  rel="stylesheet">
+    <link   href="./cssGRAFF.css"  rel="stylesheet">
+    <script src="./SB_Crud.js"  ></script>
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
-    <script src="./Gera3D.js"></script>
     
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
-    <!--<script src="https://threejs.org/build/three.js"></script>-->
 </head>
 
 <script> // Configuração do SupaBase
@@ -49,15 +26,43 @@
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id',FONT:'Id'} // Campo pra Imbutir dentro do BS
     const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
     let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
     let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
     
     const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
     const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
-    
+
+    const SVVVG = {
+       "Soli":`<svg viewBox="0 0 598.03 659.63"><path d="M473.98 558.37c-0.03,18.81 -0.03,30.81 0.03,35.99 0.12,10.24 -6.31,14.46 -15.85,14.41 0,0 -35.03,-0.36 -35.03,0.38 0.03,21.14 0.04,33.3 0.02,36.5 -0.04,7.56 -5.17,13.99 -11.48,13.97 -143.15,0 -275.27,0 -396.33,0 -11.52,0 -15.32,-4.99 -15.32,-16.39 0.02,-262.73 0.02,-437.61 -0.01,-524.63 0,-12 3.87,-17.05 15.86,-16.78 0,0 34.96,0.68 34.96,-0.36 0.13,-57.19 -7.55,-50.43 50.38,-50.64 1.83,0 -1.06,-38.68 1.79,-43.68 3.58,-6.28 7.03,-7.14 15.15,-7.14 32.85,0.02 163.18,0.02 390.98,0.01 11.44,0 15.82,4.73 15.82,16.07 -0.03,145.61 -0.03,220.25 0.04,223.94 0.07,4.11 -0.29,6.96 -1.08,8.54 -3.2,6.41 -10.6,9.59 -17.26,6.37 -38.36,-18.52 -84.59,-11.76 -115.8,16.77 -65.44,59.77 -33.67,167.86 53.58,182.25 60.43,9.96 117.85,-35.83 121.86,-96.22 0.12,-1.73 0.47,-11.31 1.45,-13.22 5.89,-11.6 25.34,-10.54 24.56,9.1 -3.11,78.29 -67.34,111.09 -67.34,111.15 -0.04,44 -0.03,68.53 0.03,73.58 0.18,14.05 -2.84,19.65 -17.07,19.48 -0.69,0 -11.81,-0.01 -33.36,-0.02 -0.32,0 -0.57,0.26 -0.57,0.57l0 0zm-383.93 -24.16l223.46 0c16.54,0 16.54,25.67 0,25.67l-223.46 0c-16.54,0 -16.54,-25.67 0,-25.67l0 0zm-0.01 -78.81l223.46 0c16.54,0 16.54,25.66 0,25.66l-223.46 0c-16.54,0 -16.54,-25.66 0,-25.66l0 0zm0.03 -78.93l203.49 0c16.57,0 16.57,25.72 0,25.72l-203.49 0c-16.57,0 -16.57,-25.72 0,-25.72l0 0zm216.2 -65.8c0,7.03 -5.7,12.73 -12.73,12.73l-203.43 0c-16.61,0 -16.61,-25.77 0,-25.77l203.43 0c7.26,0 12.74,5.89 12.73,13.05zm-126.12 10.16c3.85,0.95 -0.03,-1.41 -0.03,-0.03 0,0.02 0.01,0.03 0.03,0.03zm282.67 43.6l0.51 0.05c34.11,-31.61 71.9,-66.64 113.35,-105.1 9.6,-8.9 25.14,1.5 20.49,14.48 -0.6,1.66 -2.76,4.22 -6.47,7.66 -20.93,19.34 -60.05,55.6 -117.36,108.78 -9.29,8.63 -16.76,9.84 -24.26,-1.01l-48.98 -67.15c-8.53,-11.55 5.24,-25.74 16.73,-19.03 4.59,2.68 27.33,35.81 45.98,61.33zm-372.78 -145.58l223.5 0c16.52,0 16.52,25.63 0,25.63l-223.5 0c-16.52,0 -16.52,-25.63 0,-25.63l0 0zm408.99 5.31l0.28 -197.95c0,-0.31 -0.24,-0.55 -0.55,-0.55 -30.71,0 -371.28,-0.2 -371.28,0.27 0,2.21 -0.2,24.88 0.24,24.88 11.89,0.02 120.28,0.03 325.18,0.01 12.59,0 21.09,0.57 21.07,15.5 0,0 -0.31,153.12 0.25,153.17 10.65,1.01 15.77,2.67 24.8,4.67zm-51.2 -147.53l-370.89 0c-0.62,0 -0.72,25.19 0.04,25.19 142.85,0 252.77,-0.01 329.77,-0.01 10.98,0 16.68,4.41 16.4,15.77 0,0 -0.33,106.74 0.29,106.74 0.03,0 0.07,0 0.09,-0.01 8.03,-2.42 16.16,-4.01 24.37,-4.75l0.44 -0.48 0 -141.95c0,-0.28 -0.23,-0.5 -0.51,-0.5l0 0zm-421.92 557.33c30.76,0 371.47,0.24 371.47,-0.31 0,-14.42 0.37,-168.95 -0.3,-169.34 -89.28,-51.2 -88.91,-178.49 0.09,-228.81 0.55,-0.32 0.16,-108 0.01,-108 -30.73,0 -371.51,-0.2 -371.51,0.27 0,41.79 -0.18,506.2 0.24,506.2l0 0zm422.14 -50.97c0.23,0 0.72,-102.09 0.06,-102.21 -2.21,-0.43 -24.98,-5.35 -24.99,-4.6 -0.06,8.99 -0.18,106.81 0.29,106.81l24.63 0zm51.01 -50.87c0.29,0 0.6,-56.4 -0.16,-56.25 -2.25,0.47 -24.94,4.79 -24.94,5.22 -0.03,4.39 -0.12,51.07 0.38,51.07l24.73 -0.04z"/></svg>`
+      ,"Andm":`<svg viewBox="0 0 781.83 782.04"><path d="M151.66 351.77l0 -0.87c-75.57,-44.34 -112.88,-140.09 -116.51,-224.23 -0.08,-2.04 -34.9,6.16 -34.86,-23.64 0,0 -0.7,-81.8 0.75,-86.9 2.66,-9.3 11.07,-15.85 20.99,-15.86 0,0 412.04,-0.9 418.25,0.6 8.48,2.06 14.48,8.88 16.14,17.74 1.41,7.56 -0.11,89.72 -0.13,89.79 -6.47,24.7 -34.13,15.16 -34.28,17.92 -4.99,85.88 -40.15,177.39 -116.32,224.35l0 0.68c19.21,11.47 36.03,25.94 50.47,43.38 1.26,1.5 52.14,-53.08 58.19,-56.08 7.51,-3.71 16.26,-3.29 23.28,1.37 5.55,3.67 23.99,24.9 25.55,24.26 1.62,-0.67 11.69,-4.22 11.69,-5.55 0.01,-15.31 -1.03,-29.51 0.68,-36.07 2.58,-9.88 11.02,-16.32 21.4,-16.47 8.21,-0.11 38.97,-0.14 92.29,-0.07 13.55,0.02 24.05,8.27 24.07,22.62 0.01,5.34 -0.64,30.4 0.63,30.91 1.5,0.61 11.23,5.16 12,4.4 4.37,-4.35 11.41,-11.39 21.12,-21.12 7.27,-7.32 18.42,-8.96 27.43,-3.81 5.89,3.35 35.68,34.69 67.91,66.85 7.16,7.14 10.66,12.46 9.31,22.75 -1.62,12.34 -29.03,31.67 -27.96,34.21 0.62,1.48 4.31,11.64 5.34,11.67 3.38,0.11 31.91,-0.54 36.48,0.78 10.19,2.94 16.12,11.46 16.08,22.09 0,0 0.66,93.93 -0.63,99.12 -2.35,9.52 -10.63,16.41 -20.62,16.58 -10.31,0.18 -20.72,0.2 -31.23,0.08 -1.37,0.01 -5.89,12.09 -5.46,12.54 2.21,2.21 9.04,9.03 20.47,20.45 9.56,9.54 10.24,23.47 0.93,32.78 -33.27,33.31 -55.27,55.34 -66.01,66.08 -10.9,10.88 -24.76,7.89 -35.04,-2.98 -0.19,-0.2 -6.34,-6.35 -18.43,-18.43 -0.57,-0.57 -12.44,4.29 -12.44,5.44 0,0.87 0.01,9.85 0.04,26.96 0.01,11.17 -3.62,20.5 -14.51,24.42 -6.78,2.43 -99.21,1.24 -100.52,1.24 -13.74,0.04 -23.36,-8.71 -23.43,-22.87 -0.04,-8.48 0.59,-30.09 -0.5,-30.54 -1.3,-0.54 -11.47,-5.12 -11.99,-4.62 -9.31,9.28 -20.14,21.81 -26.28,25.3 -7.37,4.19 -16.46,4.09 -23.54,-0.87 -6.02,-4.22 -43.35,-42.77 -51.05,-50.52 -0.75,-0.76 -1.81,-1.21 -2.92,-1.22 -82.18,0.05 -194.29,0.05 -336.33,0.01 -9.75,-0.01 -18.76,-6.85 -21.14,-16.22 -2.07,-8.18 -0.4,-91.85 -0.21,-92.69 5.22,-23.15 34.45,-15.38 34.57,-17.46 5.03,-80.89 42.84,-176.33 116.28,-218.29zm492.7 192.28c0,55.37 -44.9,100.26 -100.26,100.26 -55.37,0 -100.27,-44.89 -100.27,-100.26 0,-55.37 44.9,-100.27 100.27,-100.27 55.36,0 100.26,44.9 100.26,100.27zm-43.41 -0.16c0,-31.4 -25.46,-56.87 -56.86,-56.87 -31.39,0 -56.86,25.47 -56.86,56.86 0,31.4 25.47,56.86 56.86,56.86 31.4,0 56.86,-25.46 56.86,-56.86l0 0.01zm-187.45 -499.81c0,-0.29 -0.23,-0.52 -0.52,-0.52l-368.87 0c-0.29,0 -0.52,0.23 -0.52,0.52l0 37.97c0,0.28 0.23,0.51 0.52,0.51l368.87 0c0.29,0 0.52,-0.23 0.52,-0.51l0 -37.97zm-184.94 285.02c48.79,0 87.92,-33.87 112.33,-74.02 23.28,-38.3 35.38,-84.18 37.54,-128.74 0.02,-0.34 -299.79,-0.8 -299.73,-0.01 2.15,44.57 14.25,90.44 37.53,128.74 24.41,40.16 63.55,74.03 112.32,74.03zm177.99 352.27c10.89,10.9 17.91,18.7 18.74,17.88 14.27,-14.2 25.31,-30.61 43.71,-20.92 34.45,18.14 49.76,10.73 49.15,40.69 0,0 -1.14,19.75 0.78,19.75l50.18 -0.1c1.66,0 -0.42,-27.18 2.25,-33.66 6.14,-14.94 22.63,-13.09 45.95,-25.67 19.79,-10.68 29.23,3.88 45.2,20l1.05 0 35.57 -35.57c1.16,-1.16 -13.58,-14.73 -13.58,-14.73 -9.83,-9.68 -13.32,-19.57 -6.36,-31.87 17.38,-30.73 7.5,-47.63 40.65,-47.34 7.33,0.06 18.89,0.88 18.89,-0.64l-0.1 -50.48c0,-1.14 -27.86,0.27 -33.41,-2.03 -15.73,-6.51 -13.12,-22.15 -24.28,-42.87 -12.28,-22.78 -1.9,-27.98 18.57,-48.43 0.94,-0.94 -7.65,-8.63 -17.83,-18.82 -10.18,-10.2 -17.87,-18.8 -18.8,-17.86 -20.56,20.55 -25.74,30.79 -48.46,18.52 -26.72,-14.45 -45.39,-6.43 -44.34,-40.64 0,0 0.81,-17.1 -0.5,-17.1l-50.47 -0.17c-1.76,0 0.43,28.13 -2.18,33.87 -7.23,15.88 -23.79,13.15 -45.87,25.62 -19.56,11.05 -30.07,-4.42 -45.51,-19.99l-1.07 0c-3.46,3.46 -35.83,34.98 -35.83,36.05 0,0.66 17.71,18.27 17.92,18.47 7.04,7.38 7.62,17.35 2.25,27.3 -15.54,28.72 -9.58,47.86 -38.29,47.47 0,0 -21.09,-0.86 -21.1,0.66l-0.16 50.18c0,2.23 27.11,-0.5 33.72,2.33 7.93,3.39 11.51,8.97 14.07,17.84 9.14,31.75 27.93,38.28 3.18,61.93 0,0 -12.53,11.34 -11.58,12.36 0.74,0.8 6.69,6.8 17.88,18zm-326.73 -110.93l225.57 0c2.09,-0.02 0.53,-73.1 1.02,-76.22 1.49,-9.45 7.18,-16.22 16.07,-18.7 2.61,-0.73 36.87,-0.43 37.17,-1.17 9.45,-22.87 3.09,-4.3 -12.15,-17.53 -5.28,-4.58 -17.29,-29.89 -41.47,-51.65 -29.15,-26.23 -68.22,-39.22 -106.82,-27.61 -77.78,23.38 -114.58,118.05 -120.07,192.16l0.67 0.72zm279.91 43.17c-0.29,-0.71 -289.14,0.25 -315.59,0.24 -0.31,0 -0.56,0.25 -0.56,0.56l0.06 37.8c0,0.31 0.26,0.56 0.56,0.56 25.1,0 293.73,0.57 294.44,-0.17 2.46,-2.56 26.21,-26.73 25.87,-27.53l-4.79 -11.47z"/></svg>`
+      ,"Hist":`<svg viewBox="0 0 203.18 203.31"><path d="M-0 35.58c0,-4.78 1.58,-8.91 6.23,-10.91 6.31,-2.72 13.62,1.09 14.56,8.07 0.26,1.94 0.36,3.79 0.36,6.03l0.2 0.07c16.93,-21.42 42.07,-35.51 69.48,-38.42 4.23,-0.45 15.4,-0.54 18.76,-0.25 37.53,3.22 69.9,26.19 85.05,60.7 14.25,32.47 10.45,70.05 -9.86,99.05 -10.54,15.05 -24.36,26.5 -41.45,34.35 -11.51,5.28 -20.74,-9.57 -11.34,-17.49 0.67,-0.56 1.88,-1.24 3.64,-2.06 18.47,-8.49 33.02,-24.14 40.62,-42.76 10.24,-25.08 6.88,-53.93 -8.14,-75.98 -7.64,-11.22 -19.96,-21.81 -31.43,-26.99 -6.14,-2.77 -11.83,-5.04 -16.7,-5.91 -1.99,-0.36 -3.88,-0.96 -6.14,-1.23 -5.54,-0.66 -11.2,-1.37 -16.6,-0.84 -1.81,0.18 -3.91,0.2 -5.95,0.5 -16.86,2.48 -30.69,8.34 -43.35,19.69 -4.83,4.33 -5.26,5.11 -9,9.33l0.13 0.11c14.95,-2.41 17.66,19.13 3.05,20.79 -0.91,0.1 -10.2,1.24 -27.88,3.43 -7.16,0.89 -12.2,-4.08 -12.62,-11.04 -0.5,-8.26 -0.95,-16.42 -1.35,-24.47 -0.06,-1.26 -0.15,-2.51 -0.27,-3.76zm100.92 146.9c3.29,0.01 6.47,-0.29 9.66,-0.5 5.86,-0.38 11.04,4.06 11.21,10 0.15,5.3 -3.26,9.7 -8.75,10.77 -3.94,0.77 -20.41,0.71 -24.35,-0.07 -5.48,-1.09 -8.87,-5.52 -8.69,-10.82 0.2,-5.94 5.41,-10.36 11.27,-9.94 3.18,0.23 6.37,0.55 9.66,0.55zm-51.15 -18.86c1.97,1.67 4.32,3.45 7.04,5.34 10.79,7.48 2.51,22.78 -9.06,18.81 -4.42,-1.51 -19.26,-14.1 -21.48,-18.21 -5.81,-10.77 7.93,-21.43 17.07,-12.02 2.31,2.38 4.45,4.4 6.42,6.07zm-49.77 -54.69c0,-15.1 19.75,-14.97 20.97,-1.54 0.37,4.12 0.96,8.01 1.77,11.68 1.17,5.32 3.6,9.69 0.65,14.66 -4.51,7.61 -16.22,6.89 -19.14,-2.52 -2.65,-8.51 -3.15,-13.72 -4.25,-22.29zm104.53 -1.51c0,0.14 0.08,0.26 0.21,0.32 14.46,6.36 23.9,10.51 28.31,12.45 13.59,5.98 4.77,24.84 -7.93,19.41 -1.99,-0.85 -13.55,-5.92 -34.67,-15.21 -5.75,-2.53 -7.01,-6.44 -6.95,-12.09 0.03,-3.34 0.04,-19.26 0.01,-47.75 -0.01,-15.07 21.06,-15.18 21.03,0 -0.02,14.43 -0.03,28.72 -0.01,42.86z"/></svg>`
+      ,"Mdds":`<svg viewBox="0 0 83.46 83.46"><path d="M18.42 68.63l1.14 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 5.05 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 5.05 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 9.94 -70.09 0 4.85 -5.1c0.61,-0.63 4.62,-4.85 5.1,-4.85zm24.45 -24.45l21.03 0 0 9.78 -30.97 0 7.29 -7.38c0.45,-0.45 2.1,-2.4 2.65,-2.4zm25.96 6.23l-0.04 -6.23 6.19 0 -6.15 6.23zm-39.49 -0.04l0 -30.64 9.78 0 0 20.7c0,0.56 -6.35,6.59 -7.21,7.46 -0.69,0.69 -1.85,2.01 -2.57,2.49zm39.45 -31.79c0,-0.56 6.41,-6.67 7.3,-7.54 0.88,-0.87 1.48,-1.89 2.48,-2.57l0 30.81 -9.78 0 0 -20.7zm-24.78 1.14l19.89 0 0 19.56 -19.89 0 0 -19.56zm-4.89 -11.25l0 6.36 -6.19 0c0.53,-0.79 2.26,-2.35 3.06,-3.14 0.61,-0.61 0.94,-0.93 1.48,-1.61 0.41,-0.51 1.14,-1.26 1.65,-1.61zm25.92 6.36l-21.03 0 0 -9.94 30.97 0 -7.29 7.54c-0.45,0.45 -2.1,2.4 -2.65,2.4zm-40.59 2.12l0 39.77c0,1 1.12,2.12 2.12,2.12l40.1 0c1.18,0 3.64,-2.91 4.52,-3.79l10.51 -10.51c0.6,-0.6 1.75,-1.44 1.75,-2.49l0 -39.94c0,-1 -1.12,-2.12 -2.12,-2.12l-40.1 0c-1.03,0 -1.82,1.09 -2.4,1.67l-7.42 7.42c-1.78,2.03 -3.31,3.47 -5.22,5.38 -0.6,0.6 -1.75,1.44 -1.75,2.49zm-14.67 -4.89c0,3.28 2.42,2.77 4.89,2.77l0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0c0,2.04 0.04,1.35 -2.32,3.71 -0.88,0.88 -1.64,1.64 -2.53,2.53l-4.93 5.01 0 -70.09 9.78 0 0 5.05 -2.77 0c-1,0 -2.12,1.12 -2.12,2.12zm-9.78 -9.94l0 79.22c0,1 1.12,2.12 2.12,2.12l79.22 0c1,0 2.12,-1.12 2.12,-2.12l0 -15.49c0,-1 -1.12,-2.12 -2.12,-2.12l-61.78 0 0 -61.62c0,-1 -1.12,-2.12 -2.12,-2.12l-15.32 0c-1,0 -2.12,1.12 -2.12,2.12z"/></svg>`
+    }
+
+    const Cgo  = { // Cargo
+        Admn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
+        Grnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
+        DSgn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
+        Atnd: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
+        Clnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']}
+    }
+    const USERlg = {}
+    const Atual    = {Pag:'HOME'}
+    let U = {} ; let UU={Cgo:""} ; let USUARIO=''
+    let UCgo = {}
+
+    const DB = {
+        Serv    :['Serviço','Arte','Edição de Video','Produção Musical','3D','After Effects','Programação'],
+        Tipo    :["Tipo de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
+        Catg    :["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
+        Dest    :["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
+        Presset :["Livre","1:1","4:5","9:16","16:9"],
+        template:['1','2','3']
+    }
+    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
 </script>
 
 <script> // Bibliotecas
@@ -71,36 +76,97 @@
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+
+    const gID     =e=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${Nm(Pai(e))}"]`)
+    const gID2=(e,x)=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${x}"]`)
+    const gID3=(e,x)=>$(`.UNDD[name="${1}"] .e[name="${x}"]`)
+
+    function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
 </script>
 
-<script> // aBase de Dados INFINITY GRAFF
-    const Cgo  = { // Cargo
-        Admn: { nav :['HOME','|','ORC','LOJA','ARTE','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :['Serigrafia','Figurinha','Cartela'],},
-        Grnt: { nav :['HOME','|','ORC','ARTE','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :[],},
-        DSgn: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
-        Atnd: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
-        Clnt: { nav:['HOME','|','ORC','ARTE','|','CONF'],
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],}
-    }
-    const USERlg = {}
-    const Atual    = {Pag:'HOME'}
-    let U = {} ; let UU={Cgo:""}
-    let UCgo = {}
-</script>
+<style> /*MacHouse*/
+    /*Fontes______________________________________________________________ */
+    @font-face {font-family:'Tommy_Regular'; src:url('FontGRAFF/MADE TOMMY Regular_PERSONAL USE.otf') format('opentype')}
+    @font-face {font-family:'Tommy_Ligth'  ; src:url('FontGRAFF/MADE TOMMY Thin_PERSONAL USE.otf')    format('opentype')}
+    @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
+    @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
+
+    h3 svg{height: 25px;width: auto}
+
+    input,select,textarea{height:36px;display:block;padding:8px;font-size:14px;border:1px solid #ced4da;border-radius:4px;outline:none;transition:0.2s}
+    input:focus,select:focus,textarea:focus{border-color:#ffd000;box-shadow:0 0 0 2px #ffc40340}
+
+    .Dark *::-webkit-scrollbar             {width: 10px;height:10px}
+    .Dark *::-webkit-scrollbar-track       {background: #0000006a}
+    .Dark *::-webkit-scrollbar-thumb       {background: #5d5d5da5; border-radius:500px}
+    .Dark *::-webkit-scrollbar-thumb:hover {background: #555555}
+
+    .f-yelw {fill:#ffdb6f; color:#ffdb6f}
+    .f-gren {fill:#8dff57; color:#8dff57}
+    .f-roxo {fill:#ae8ffd; color:#ae8ffd}
+    .f-azul {fill:#7dadff; color:#7dadff}
+    .f-redd {fill:#ff8080; color:#ff8080}
+    .f-Lrnj {fill:#fa7d09; color:#fa7d09}
+    .f-Yell {fill:#ffd000; color:#ffd000}
+
+    .SvgGambiarr{height: 20px;width: 20px;fill: white;}
+
+    .FModal{position:fixed;top:0px; left:0px;width:100%;height:100%;z-index:999;background:#00000046;backdrop-filter:blur(10px);animation:FModal 0.5s}
+    .FModal > *{padding:15px; box-shadow: 10px 10px 20px black;animation: modal 0.5s}
+</style>
+
+<style> /*O CSS do Solicit*/
+    #List_Desng {height: 400px;}
+    #DivFormArt {height: 625px;}
+    #DivFormArt .LA{width:68%}
+    #DivFormArt .LB{width:28%}
+    #FormArt>*     {width:100%}
+    .Infos img     {width:26px;height:26px}
+    #UNDDD         {overflow:auto;height:440px}
+    .UNDD,.UNDBTN  {width: 360px;/*height: 360px*/;flex: 0 0 auto;min-width: 360px;min-height: 360px ; gap: 5px;}
+    .idTop > *     {width: 15%}
+    
+    .s{width:500px;height:500px ; background:#eee ; box-shadow:0 0 20px #000 ; overflow:hidden}
+    .e{position:absolute;cursor:move}
+    .e a{width:10px;height:10px;background:#000;position:absolute;z-index:10;display:none} /*Controladores*/
+    .e.Atv .c{outline:1px dashed #000}
+    .e.Atv  a{display: block}
+    .sc{right:-5px;bottom:-5px;cursor:nwse-resize} /*Controlador Escala */
+    .rt{left :50% ;top:-18px  ;cursor:grab}        /*Controlador Rotação*/
+    .idTop.Img > :nth-child(-n+3){display:none}
+    .c{color: #000}
+
+
+    #List_Desng{overflow: auto;}
+    #List_Desng > .Boxy{height: 260px ; width: 100%}
+    #List_Desng .LA{width:30%} #List_Desng .LB{width:70%}
+    #List_Desng .LA .Head p{font-size: 20px}
+    .St{width:12px;height:12px;border-radius:255px}
+    .St.On{background:#4caf50} .St.Of{background:#575757}
+    .Perf{width:90px;height:90px;border-radius:255px}
+    .Prtf{width: 100%;overflow:auto}
+    .Prtf a{width:120px;gap:8px;padding:8px;margin-bottom:8px}
+    .Prtf a img{width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+    .Tags p{padding:5px 10px;background:#333;border-radius:12px;font-size:13px}
+
+    /*GAMBIARRA*/
+    .UNDD .Mdd input {width: 150px;}             /*GAMBIARRA*/
+    .ConfUND :is(input,select,.Drop){width:75px ; margin: 0px;} /*GAMBIARRA*/
+    select.vigem{color:#ffffff79 !important}   /*GAMBIARRA*/
+    
+</style>
 
 <style> /*Analsisar a interferência deste CSS*/
     #Pag_PRFL   {padding: 40px;}
-    .rs         {color:#8dff57}
-    .Box .rs    {font-size: 25px}
-    .Art .rs    {font-size: 25px}
+    .RS         {gap: 2px}
+    .rs         {font-size: 25px;color:#8dff57}
+    i.rs        {font-size: 20px;font-style: normal}
+    
     h2,h3       {font-size: 25px}
-    .BOX        {padding:18px;border-radius:14px;background:#2c2c2c48;border:1px solid #50505034}
+
     .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
     .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
+
     #Perf .Box a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
     .Pic        {width:120px;border-radius:50%}
@@ -125,19 +191,28 @@
 
     .INFO img     {height: 450px;width: auto;}
     .INFO textarea{height: 500px;width: 500px;}
-    .INFO .rs     {font-size: 25px}
+
 
     .INFO a img   {height: 18px;width: auto;}
-
-    textarea {
-    text-align: left;
-    white-space: pre-wrap; /* mantém quebras de linha */
-    }
-
+    textarea {text-align: left;white-space: pre-wrap;} /* mantém quebras de linha */
+    
+    .FModal table{width:900px;height:500px;border-collapse:collapse;background:#1a1d24;border-radius:10px;overflow:scroll}
+    .FModal th,td{padding:12px 15px;text-align:left}
+    .FModal th{background:#222633;font-weight:600;color:#aaa;text-transform:uppercase;font-size:12px;letter-spacing:1px}
+    .FModal tr{border-bottom:1px solid #2c313c}
+    .FModal tr:last-child{border-bottom:none}
+    .FModal td{font-size:14px}
+    .FModal tr:hover{background:#262b36}
+    .FModal td:nth-child(1){display: none}
+    .FModal td:nth-child(4){color:#4cff9a;font-weight:bold}
+    .FModal td:nth-child(5){color:#00d4ff}
+    .FModal td:nth-child(8){display: none}
+    .FModal td:nth-child(9){display: none}
+    
+    button{font-size: 14px;}
 </style>
 
-<body>
-
+<body class="FEXTA Dark">
     <style> /*CSS do Header*/
         /*Fixos*/
             header    {padding:0px ; z-index:999 ; transition: all ease-in-out 0.3s}
@@ -194,7 +269,7 @@
     <header class="BBody1 Bt"> <!--Body1--> <!--HEADER-->
 
         <div id="Title" class="Ct"> <!--Titulo-->
-            <img id="Logo"  draggable="false" src="./Img/Mac.png" onclick="TrocaBody()">
+            <img id="Logo"  draggable="false" src="./Img/Mac.webp" onclick="TrocaBody()">
             <h1 class="PT" onclick="TrocaBody()"></h1>
             <script>
                 function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
@@ -269,7 +344,8 @@
                     if(Mod=='Modal'){if(JJ['USER'][Vll(p)]){logaa(Vll(p))}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
                 }
                 function PosLogin(U){
-                    UCgo = Cgo[U.cgo]
+                    USUARIO = U
+                    UCgo = Cgo[U.cgo] ; UU.Cgo = U.cgo
                     $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
                     Inn('.BBody1 .H_Nav',UCgo.nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
                     Inn('.BBody2 .H_Nav',UCgo.nav.map(e=>`<div id="b2_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
@@ -297,48 +373,352 @@
     
     <div id="PAGES"> <!--isso era pra ser main-->
 
-    <div id="Pag_HOME">
-        <div class="w100 Cl Gap">
-            <div id="Perf-Perf" class="BOX Ev Gap w100"></div>
-            <div id="Perf-Soli" class="BOX Cl Gap w100"></div>
-            <div id="Perf-Andm" class="BOX Cl Gap w100"></div>
-            <div id="Perf-Hist" class="BOX Cl Gap w100"></div>
+        <div id="Pag_HOME">
+            <div class="w100 Cl Gap">
+                <div id="Perf-Perf" class="Boxy Ev Gap w100"></div>
+                <div id="Perf-Soli" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Soli'])"></a> Solicitações</h3><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Andm" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Andm'])"></a> Andamento...</h3><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Hist" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Histórico   </h3><div class="Start w100 Gap Art"></div></div>
+            </div>
         </div>
+
+        <div id="Pag_ARTE" class="Cl">
+                <h1>Solicitação de Arte</h1>
+                <div id="DivFormArt" class="w100 Ct Gap">
+                    <div id="FormArt" class="LA Cl Gap h100" oninput="InnResult(Calc(this))">
+                        <div class="Ct Boxy">
+                            <div             ><label>Serviço     </label><select id="ART_Serv" name="0" data-Obj="Serv" data-Nv="1" onload="load_Opts(this,DB.Serv)" onchange="$$('#ART_Tipo'                    ).forEach(e=>Rmv_N(Pai(e)))"></select></div>
+                            <div class="none"><label>Tipo de Arte</label><select id="ART_Tipo" name="0" data-Obj="Tipo" data-Nv="1" onload="load_Opts(this,DB.Tipo)" onchange="$$('#ART_Catg,#ART_Titl,#ART_Slgn').forEach(e=>Rmv_N(Pai(e)));Rmv_N($$('.GAMBBI'))"></select></div>
+                            <div class="none"><label>Categoria   </label><select id="ART_Catg" name="3" data-Obj="Tema" data-Nv="2" onload="load_Opts(this,DB.Catg)"></select></div>
+                            <div class="none"><label>Título      </label><input  id="ART_Titl" name="2" data-Obj="Nome" data-Nv="1" placeholder="Nome da Empresa"    oninput="Inn($('.c',gID2(this,2)),this.value)"></div>
+                            <div class="none"><label>Slogan      </label><input  id="ART_Slgn" name="2" data-Obj="Slgn" data-Nv="1" placeholder="Slogan da Empresa"  oninput="Inn($('.c',gID2(this,3)),this.value)"></div>
+                        </div>
+
+                        <div id="UNDDD" class="Boxy Gap CT">
+                            <div class="UNDBTN box Ct"><button onclick="Rmv_N($$(':scope > .none',Avo(this)));Add_N(Pai(this))">+ Adicionar Rascunho</button></div>
+
+                            <div class="box UNDD none Cl Rltv" name="1">
+                                <h2>Rascunho</h2>
+                                <div class="XX Ct PT" onclick="Pai(this).remove()">X</div>
+                                <div class="Ct ConfUND gap">
+                                    <div><label>Destino    </label><select class="Dest"  name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
+                                    <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,DB.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
+                                    <div><label>Fundo      </label><input  class="Fundo" name="4" data-Nv="2" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
+                                    <div><label>Referências</label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+                                </div>
+
+                                <div class="Box topbar Abslt none">
+                                    <div class="idTop Ct" name="1">
+                                        <input  data-Nv="3" oninput="$('.c',gID(this)).style.color = this.value" type="color">
+                                        <input  data-Nv="3" oninput="Inn($('.c',gID(this)),this.value)">
+                                        <select data-Nv="3" onload="Tm_OptFnt(this,KitFonts)" onchange="$('.c',gID(this)).style.fontFamily = this.value"></select>
+                                        <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) + 1">⬆</button>
+                                        <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) - 1">⬇</button>
+                                    </div>
+                                </div>
+
+                                <div class="Ct containerLimite" style="width:100%;height:200px;overflow:hidden;border:1px solid #000">
+                                    <div class="s Rltv" onmousedown="Disppp(this,event)" onclick="xMenu(this,event)" ondblclick="ClickDuplo(this,event)"></div>
+                                </div>
+
+                                <div class="Mdd Ct" >
+                                    <div class="SvgGambiarr Ct" onload="Inn(this,SVVVG['Mdds']+'Medidas')" onclick="Rmv_N($$('.none',Pai(this)));Add_N(this)"></div>
+                                    <div class="none"><label>Largura</label><input name="4" data-Nv="2" class="Lag" placeholder="Largura"></div>
+                                    <div class="none"><label>Altura </label><input name="4" data-Nv="2" class="Alt" placeholder="Altura" ></div>
+                                </div>
+                                <button onclick="SaveTemplate($('.s',Pai(this)),'Template 1')">Salvar Template</button>
+                            </div>
+                            <div class="UNDBTN box none Ct"><button onclick="AddUND()">+ Adicionar Variação</button></div>
+                        </div>
+
+                        <div class="Boxy Ct">
+                            <div class="Cl Infos">
+                                <div class="Ct"><img onclick="Tog_N($('input',Pai(this)))" src="./SVG/Insta.svg"><input class="none" name="3" data-Nv="1" id="Inst" placeholder="Instagram" oninput="Inn($('.c',gID3(this,4)),this.value)"></div>
+                                <div class="Ct"><img onclick="Tog_N($('input',Pai(this)))" src="./SVG/Zap.svg"  ><input class="none" name="3" data-Nv="1" id="Zapp" placeholder="WhatsApp"  oninput="Inn($('.c',gID3(this,5)),this.value)"></div>
+                                <div class="Ct"><img onclick="Tog_N($('input',Pai(this)))" src="./SVG/Lcal.svg" ><input class="none" name="3" data-Nv="1" id="Lcal" placeholder="Endereço"  oninput="Inn($('.c',gID3(this,6)),this.value)"></div>
+                            </div>
+                            <div class="Ct">
+                                <div class="Cl"><label>Informações</label><textarea id="OBS"></textarea></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="Cl LB Boxy h100 GAP">
+                        <div id="Resultss" class="w100 box Cl"></div>
+                        <div   class="GAMBBI box w100 none Ct"><label>Prazo</label><div id="ART_Prazo" onload="Inn(this,Tm_DataNatora())"></div></div>
+                        <aside class="GAMBBI Cl Gap w100 none" id="List_Desng"></aside>
+                        <div   class="GAMBBI box w100 none Ct">
+                            <button onclick="Ger_SOliArt('')">Solicitar para Todos</button>
+                            <button class="none" onclick="SavePDF($('.s',Avo(this)))">PDF</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div id="Pag_BBTC">
+
+        </div>
+        
+        <div id="Pag_MPAG">
+            <h1>MPAG</h1>
+        </div>
+
+        <div id="Pag_CONF">
+            <h1>CONF</h1>
+        </div>
+        
     </div>
 </body>
 
-<script>
+<div> <!--Página Solicit-->
+
+    <script> // ==== INTERFACE ====
+        const initUND=u=>{
+            const [Dest,Cnvs,Mdds,Lag,Alt]=[$('.Dest',u),$('.s',u),$('.Mdd',u),$('.Lag',u),$('.Alt',u)];
+            if(!Dest||!Cnvs||!Lag||!Alt)return;
+            const Container=Cnvs.parentElement,MAX_H=200; let dr=false,sx=0,sy=0,selBox;
+            const Draw=()=>{let w=+Lag.value,h=+Alt.value;if(!w||!h)return;let scale=Math.min(Container.clientWidth/w,MAX_H/h);Cnvs.style.width=w*scale+'px';Cnvs.style.height=h*scale+'px';};
+            Dest.onchange=()=>{const p=Preset[Dest.value];if(!p){Rmv_N($(Mdds));return;}const [w,h]=p.split(':').map(Number);Lag.value=w*10;Alt.value=h*10;Draw();};
+            [Lag,Alt].forEach(i=>i.oninput=Draw);Draw()
+        }
+
+        const AddUND=()=>{
+            const base  = $('.UNDD')
+            const clone = base.cloneNode(true)
+            Clen_Alls(clone)
+            const S = $('.s',clone) ; S.innerHTML=''
+            Rmv_N($('.Mdd', clone))
+            Nm(clone,$$('#UNDDD .UNDD').length+1)
+            $('#UNDDD').insertBefore(clone,$('.UNDBTN'))
+            initUND(clone)
+        }
+    </script>
+    
+    <script> // ==== RASCUNHO ====
+        let ZZ={A:null,M:0,ox:0,oy:0,rs:1,rr:0,ED:0,dragged:false}
+        function xMenu(Eu,e){if(!e.target.closest('.menu')){Dlt($$('.menu',Eu))}} // Fecha menus ao clicar fora deles
+        
+        const SELY=e=>{ // ===== SELECT ===== 
+            DTV($$('.e')) ; ShowTrue($$('.topbar'),e) ; Add_N($$('.idTop')) ; if(!e){return}  // Desativa e Oculta e retorna caso n seja nada
+            ATV(e);ZZ.A=e ; Rmv_N($(`.topbar > [name="${Nm(e)}"]`,e.closest('.UNDD')))        // Ativa as Coisas do Item Selecionado
+        }
+
+        const adD=(Mod,x,y,S,Iner)=>{ // ===== ADD Canvas Fake =====
+            const TOP = $(".topbar",Avo(S))
+            const Idx = $$('.idTop',TOP).length+1
+            const T   = $('.idTop',TOP).cloneNode(true)       ; Nm(T,Idx) ; Add(T,Mod=='Txt'?null:'Img') ; TOP.appendChild(T)
+            const e   = NewTag('div') ; e.className=`${Mod=='Fnd'?'noClk':'e'} noDrg` ; Nm(e,Idx) ; e.style.cssText=`left:${x}px;top:${y}px` ; e.dataset.s=1;e.dataset.r=0
+            const Cntu= e=>`<div class="EE noDrg"><div class="c noslt Ct gap">${e}</div><a class="sc"></a><a class="rt"></a></div>`
+            if (Mod === 'Txt') {              Inn(e,Cntu(`${Iner}`))}
+            if (Mod === 'Img') {InptImg(url=>{Inn(e,Cntu(`<img draggable="false" src="${url}" style="width:150px">`))})}
+            if (Mod === 'Fnd') {InptImg(url=>{Inn(e,     `<img draggable="false" src="${url}" style="width:100%;height:100%" class="noClk">`)})}
+            S.appendChild(e);SELY(e)
+        }
+
+        function ClickDuplo(Eu,e){ // ===== DUPLO CLICK FUNDO =====
+            const [x,y]=[e.offsetX,e.offsetY] ; if (e.target!==Eu) return
+            Eu.insertAdjacentHTML("beforeend",`<div class="menu Box Abslt Ct" style="left:${x}px;top:${y}px">
+                <button onclick="adD('Txt',${x},${y},Avo(this),'Texto') ; Dlt(Pai(this))">+ Texto  </button>
+                <button onclick="adD('Img',${x},${y},Avo(this))         ; Dlt(Pai(this))">+ Imagem </button>
+                <button onclick="adD('Fnd',${x},${y},Avo(this))         ; Dlt(Pai(this))">Img Fundo</button>
+            </div>`)
+        }
+
+        function TituloSlogan(){  //  Carregar os Primeiros Itens Padrão
+            adD('Txt',0,0,$('.UNDD .s'),'Titulo')
+            adD('Txt',0,0,$('.UNDD .s'),'Slogan')
+
+            adD('Txt',0,0,$('.UNDD .s'),'Insta')
+            adD('Txt',0,0,$('.UNDD .s'),'Zap')
+            adD('Txt',0,0,$('.UNDD .s'),'Endereço')
+        }
+
+        function Disppp(Eu,e){ // ===== MOUSE =====
+            e.preventDefault()
+            if(e.target==Eu)                           return SELY(null)
+            const el = e.target.closest('.e');if (!el) return SELY(null) ; SELY(el)
+            ZZ.ox=  e.clientX    ; ZZ.oy=  e.clientY
+            ZZ.rs=+ el.dataset.s ; ZZ.rr=+ el.dataset.r
+            ZZ.M =  Coten(e.target,'sc')?2:Coten(e.target,'rt')?3:1
+        }
+
+        document.addEventListener('click', e => {if (ZZ.dragged) {ZZ.dragged = false ; return } ; if (e.target.closest('.e') ||e.target.closest('.menu') ||e.target.closest('.topbar')) return;SELY(null);Add_N($$('.menu'))})
+        document.addEventListener('keydown',e=>{if(e.target.tagName=='INPUT') return ; if(!ZZ.ED && e.key =='Delete'&&ZZ.A)ZZ.A.remove()}) // ===== DELETE =====
+        document.onmouseup  =_=>{ZZ.M=0 ; ZZ.ox=ZZ.oy=ZZ.rs=ZZ.rr=null}
+        document.onmousemove=e=>{
+            const tf = () => ZZ.A && (ZZ.A.style.transform =`scale(${ZZ.A.dataset.s}) rotate(${ZZ.A.dataset.r}deg)`)
+            if(!ZZ.A||!ZZ.M||ZZ.ED) return
+            ZZ.dragged = true
+            if(ZZ.M==1){ZZ.A.style.left=parseFloat(ZZ.A.style.left)+e.movementX+'px'
+                        ZZ.A.style.top =parseFloat(ZZ.A.style.top )+e.movementY+'px'}
+            if(ZZ.M==2){ZZ.A.dataset.s=Math.max(.1,ZZ.rs+(e.clientX-ZZ.ox)/200);tf()}
+            if(ZZ.M==3){ZZ.A.dataset.r=ZZ.rr+(e.clientX-ZZ.ox);tf()}}
+    </script>
+
+    <script> // ==== CALCULAR VALOR DA ARTE ====
+        const Calc=()=>{
+            const Tipo  = Vll($('#ART_Tipo'))
+            const vBase = TIPOS_ARTES.find(a=>a.Nome==Tipo)?.Valr ?? 0
+            const Soma  = arr=>arr.reduce((s,e)=>s+(NoVazio(e)?+Nm(e):0),0)
+            const UNDD  = $$('.UNDD')
+            const Pct1  = Soma($$('[data-Nv="1"]')) // % desconto Nv1
+            const adUND = UNDD.map((u,x)=>{const Nv2 = $$('[data-Nv="2"]',u) ; const Pct = (Nv2.length * 3) - Soma(Nv2) ; return { Und:x, Pct }})
+            const vUNDD = (vBase * (1 - Pct1/100)) * (1 + Math.max(UNDD.length - 1, 0) * 0.15)
+            const Nv3   = $$('[data-Nv="3"]')
+            const pNv3  = Nv3.length ? Nv3.filter(NoVazio).length / Nv3.length : 0
+            const Desc  = pNv3 * 20
+            return {vBase, Final:(vUNDD*(1-Desc/100)).toFixed(2)}
+        }
+        let VALLOR = 0
+        function InnResult(r){ // antes exibia o ${Tm_RS2(r.vBase)} valor BASE
+            VALLOR = r.Final
+            Inn($('#Resultss'),`<div class="Ct">Total: ${Tm_RS2(r.Final)}</div><div class="Start2 w80">${r.vBase==0?"":
+            $$(`ART_Serv, #ART_Tipo, #ART_Catg, #ART_Titl, #ART_Slgn`).map(I=>`<p>${Inn($('label',Pai(I)))}: ${I.value}</p>`).join('')}</div>`)
+        }InnResult({vBase:0,Final:0})
+
+        function Ger_SOliArt(DSNG){
+            const Objj = Object.fromEntries($$(`#ART_Tipo, #ART_Catg, #ART_Titl`).map(I=>[I.getAttribute('data-Obj'),I.value]))
+            const List = $$('#Resultss .Start2 p').map(p=>Inn(p))
+            const info = $$('#Inst,#Zapp,#Lcal').map(I=>`${I.placeholder}: ${I.value}`)
+            const OBS  = $('#OBS').value // isso é um textArea (quero que seja capturado toda a quebra de linha também)
+            const NEW  = {...Objj,Data:HOJE(),Dsng:DSNG,Stts:'_S',Info:[...List,...info,OBS].join('\n'),Prazo:$('#ART_Prazo input').value,Valr:VALLOR}
+            LOG(NEW)
+            AddROW('ARTE','<',NEW)
+        }
+    </script>
+
+    <script> // === TEMPLATES PRESSES ====
+        const SaveTemplate=(c,name="Template")=>{
+            const t={
+                name,canvas:{w:c.offsetWidth,h:c.offsetHeight,b:c.style.background||c.style.backgroundColor||null},
+                items:$$('.e',c).map(e=>{const C=$('.c',e)
+                return{
+                    id:Nm(e),
+                    type:Coten(e,'Img')?'Img':'Txt',
+                    x:parseFloat(e.style.left)||0,
+                    y:parseFloat(e.style.top )||0,
+                    scale:+e.dataset.s||1,
+                    rotate:+e.dataset.r||0,
+                    z:+e.style.zIndex||0,
+                    color:C?.style.color||null,
+                    font:C?.style.fontFamily||null
+                }})
+            }
+            console.log(JSON.stringify(t,null,2))
+            return t
+        }
+
+        const ApplyTemplate=(c,p)=>{
+            p.canvas&&(p.canvas.w&&(c.style.width=p.canvas.w+'px'),
+                        p.canvas.h&&(c.style.height=p.canvas.h+'px'),
+                        p.canvas.b&&(c.style.background=p.canvas.b))
+            $$('.e',c).forEach((e,i)=>{
+                const o=p.items[i],C=$('.c',e); if(!o)return
+                Object.assign(e.style,{
+                left:o.x+'px',top:o.y+'px',zIndex:o.z,
+                transform:`scale(${o.scale}) rotate(${o.rotate}deg)`
+                })
+                e.dataset.s=o.scale; e.dataset.r=o.rotate
+                C&&o.color&&(C.style.color=o.color)
+                C&&o.font &&(C.style.fontFamily=o.font)
+            })
+        }
+    </script>
+
+    <script> // === LOCAL LIST DESIGNER ====
+        const Uu = true
+        async function LoadByName(){
+            if(!Uu) return          null ; const {data:USER,error:e1} = await supaBASE.from("USER").select("*")
+            if(e1)  return ERR(e1), null ; const {data:ARTE         } = await supaBASE.from("ARTE").select("*")
+            return {USER,ARTE}
+        };LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
+        
+        function Load_Page(DSG,ART){
+            Inn($("#List_Desng"),DSG.map(d=>{
+                if(d.Nome=='Login'){return}
+                const Arts = ART.reverse().filter(a=>a.Dsng==d.Nome && a.Stts=='OK')
+                const Tags = Uniq(Arts.map(e=>e.Tema))
+                const Rank = Arts.length + Tags.length
+                               
+                // Critério Velocidade, Quantidade de Arte, Complexidade da Arte, Quantidade de variações diferentes, Tempo de Aceitação
+                return `<div class="Boxy CT">
+                    <div class="LA h100 Start2 gap">
+                        <div class="Head Ct gap"><p>${Rank}° - ${d.Nome}</p><a class="St ${d.On?'On':'Of'}"></a></div>
+                        <img class="Perf" src="./Img/Perfil_${d.Nome}.webp">
+                        <div class="Cl Start2">   <p>${d.Cgo}</p>  
+                            <button onclick="Ger_SOliArt('${d.Nome}')">Solicitar</button>
+                        </div>
+                    </div>
+                    <div class="LB h100 Cl Gap Start2">
+                        <div class="Prtf CT Gap">${Arts.map(a=>`<a class="Cl box"><img src="${BASE_URL}Img/${a.Img}?v=${Date.now()}"><p>${a.Nome}</p></a>`).join("")}</div>
+                        <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
+                    </div>
+                </div>`}).join(''))
+        }
+    </script>
+
+    <script> // ==== Comentários ====
+
+        // em Titulo opção pra botar imagem
+        // Lista pode ter texto ou Imagens
+        
+
+        // Botar as Mascaras nos Inputs | Proteção pra não Digitar errado (como Endereço por Exemplo)
+        
+        // Insistir no SVG pelomenso se eu tiver ele Interno Escrito no HTML sem ser importado
+
+        // Titulo, Slogan, Insta e Zap, tem que Editar em Todos
+
+        // Lista de Produtos Carregará uma Tabela
+        // Carregar Minha Lista de SVG e Minha Bando de Imagens PNG's
+        // se o Cliente não tem uma Referência carregar uma Lista de Referência pra ele Escolher! (claro de acordo do o template que ele escolheu!)
+
+        Add($$('select'),'vigem')                                /*GAMBIARRA*/ // só pra mudar a cor do placeholder Select
+        $$('select').forEach(s=>s.addEventListener('change',()=>Rmv(s,'vigem')))  /*GAMBIARRA*/
+
+        Onloads('body') ; initUND($('.UNDD')) ; TituloSlogan()
+    </script>
+</div>
+
+<script> // Página do Designer
     let [__A,__M,__D,__S]=['','','','']
-    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART('${U}','${e.Id}')">Aceitar Arte</button></div>`).join("")}</div>`
-    const Tm_AnDAArt=(U,E)=>`<h3>Andamento...      </h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl Bt Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="ConclurART('${U}','${e.Id}')">Concluir Arte</button></div>`).join("")}</div>`
-    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Art">${E.map(e=>`<div class="gap Cl PT Hov BOX" onclick="Exib('${U}','${e.Id}',event)"><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
-    const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
 
-    const Unyc = (U, ID, ev) => { // Talvez Obsoleto
-    if (ev?.target.closest('button')) return
-    MODAL(Tm_ListArt(U, __A.filter(e => e.Id == ID)))
-    }
+    const Tm_Resumo=(U,E)=>`${E.map(e=>
+        `<div class="gap Cl Bt Hov Boxy" onclick="MODAL(Tm_Exib('${U}','${e.Id}',event))">
+            <p>${e.Clnt}</p>
+            <img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
+            <p>${e.Tipo}</p>
+            <div class="Cl Start2">
+                <b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p>
+            </div>
+            <p>${Tm_RS2(e.Valr)}</p>
+        </div>`
+    ).join("")}`
 
-    const Exib = (U, ID, ev) => {
+    const Tm_Exib=(U,ID,ev)=>{
         if (ev?.target.closest('button')) return
         const Obj = J['ARTE'].find(e=>e.Id==ID)
-        const TM = `
-            <h3>${Obj.Nome}</h3>
-            <div class="gap Ct PT BOX INFO">
-                <div>
-                    <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
-                    <p>${Obj.Nome}</p>
-                    <p>${Obj.Tema}</p>
-                    <p>${Tm_RS2(Obj.Valr)}</p>
-                </div>
-                <div>
-                    <textarea>${Obj.Info}</textarea>
-                    <a class="Button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>
-                </div>
-            </div>`
-                
-        MODAL(TM)
+        return `<h3>${Obj.Nome}</h3>
+                <div class="gap Ct PT Boxy INFO">
+                    <div>
+                        <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
+                        <p>${Obj.Nome}</p>
+                        <p>${Obj.Tema}</p>
+                        <p>${Tm_RS2(Obj.Valr)}</p>
+                        <button>Discutir Preço</button>
+                    </div>
+                    <div>
+                        <textarea>${Obj.Info}</textarea>
+                        <a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>
+                    </div>
+                    ${false ? `<button onclick="ConclurART('${U}','${ID}')">Concluir Arte</button>` : 
+                              `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte</button>`}
+                </div>`
     }
+
+    const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
+
+    const Sldo=U=>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`) // Carregar tabela do Saldo
 
     function Load_Perfil(U){
         const u = U.Nome
@@ -346,37 +726,22 @@
         __M = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Act')                        // Andamento
         __A = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='OK' && !o.Dslk?.includes(u)) // Concluidas
         __D = J['ARTE'].filter(o=>o.Dslk?.includes(u))                               // Rejeitadas
-        
-
-        LOG(__A,__M,__D,__S)
-
-         let Partic = 0 ; let Comiss = 0
 
         Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
                 <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
                     ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
                 </div>
                 <div class="Ct Gap">
-                    <div class="BOX Cl Box"                              ><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Participações     </p><h3>${Partic             }</h3></div>
-                    <div class="BOX Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3>${__A.length         }</h3></div>
-                    <div class="BOX Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3>${__D.length         }</h3></div>
-                    <div class="BOX Cl Box" onclick="View('${u}','Coin')"><a class="Svg-G f-Yell">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
+                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${__A.length         }</h3></div>
+                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${__D.length         }</h3></div>
+                    <div class="Boxy Cl Box" onclick="Sldo('${u}'       )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
                 </div>`)
-        Inn($('#Perf-Soli'),Tm_SOliArt(u,__S)) ; Inn($('#Perf-Andm'),Tm_AnDAArt(u,__M)) ; Inn($('#Perf-Hist'),Tm_ListArt(u,__A)) // U.On?"Online":"Offline"
-    }
 
-    async function AceitarART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"Act",Dsng:U}).eq("Id",Id)
-        if(!error){alert("Solicitação aceita") ; location.reload()}
+        Inn($('#Perf-Soli .Art'),Tm_Resumo(u,__S))
+        Inn($('#Perf-Andm .Art'),Tm_Resumo(u,__M))
+        Inn($('#Perf-Hist .Art'),Tm_Resumo(u,__A))
     }
-
-    async function ConclurART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"OK",Dsng:U}).eq("Id",Id)
-        if(!error){alert("Concluido") ; location.reload()}
-    }
-
 </script>
-
 
 <script> // SupaBASE
     const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
@@ -440,19 +805,23 @@
             const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
     };PlayRealTime()
 
+
+    async function AceitarART(U,Id){
+        const{error}=await supaBASE.from('ARTE').update({Stts:"Act",Dsng:U}).eq("Id",Id)
+        if(!error){alert("Solicitação aceita") ; location.reload()}
+    }
+
+    async function ConclurART(U,Id){
+        const{error}=await supaBASE.from('ARTE').update({Stts:"OK",Dsng:U}).eq("Id",Id)
+        if(!error){alert("Concluido") ; location.reload()}
+    }
+
     function SaveConfig(e){LOG('Salva Config no SB')}
 </script>
 
 <script>// Iniciação 
     function PosGet(){Onloads('body');LOG('✅ Página Carregada!')}  ;PosGet()
 
-    document.addEventListener('click',e=>{const targ = e.target
-        Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
-        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes(_tr(targ))}
-        if(targ.closest('.Sugg')){return}{Add_N($$('#ORC tr:not(.Atv) .Sugg'))} // LINDO TREXO é uma Gambiarra mais ta BOM (Fazer a Cascata igual Bureal Usando este metodo aqui!)
-        // isso Deve virar Padão tipo algo genético, pra usar em varios
-        // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
-    })
     document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
         document.addEventListener('keydown',function(event){
             if(event.key==='Escape'){
@@ -462,3 +831,10 @@
     })})
     GetPC()
 </script>
+
+<script>
+    // na Solicitação deve escolher formato de arquivo que deve ser enviado
+</script>
+
+
+

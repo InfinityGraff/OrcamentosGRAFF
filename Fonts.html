@@ -3,68 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+    <!--<link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">-->
+    <link rel="stylesheet" href="../MyBiblioteca/fontes.css">
     <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+    <script src="./BiblGRAFF.js"></script>
     <link  href="./CssGRAFF.css" rel="stylesheet">
-    <script src="./BaseIMG.js"      ></script>
+    <link   href="./SB_Crud.css"  rel="stylesheet">
+    <script src="./SB_Crud.js"  ></script>
+    <script src="./BaseIMG.js"  ></script>
     <script src="./BaseGRAFF.js"></script>
     <title>Visualizador de Fontes</title>
 </head>
 
-<style>
-  body {font-family:Arial;padding:20px;background:#f0f0f0}
-  input{font-size:16px;width:40%}
-  .Font-Itn    {background:#fff;margin:10px 0;padding:15px;border-radius:6px;box-shadow:0 0 4px #0002}
-  .Font-Itn a  {position:relative;overflow:hidden;display:block}
-  .Font-Itn a p{white-space:nowrap;display:inline-block;position:absolute;left:50%;top:50%;transform-origin:center;will-change:transform}
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script> // Configuração do SupaBase
+    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+    const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+</script>
 
-  @media (max-width:500px){
-    h2{font-size: 28px;}
-    .Font-Itn > p{font-size: 15px; color: #a3a3a3;}
-  }
+<style>
+    .End          {justify-content:flex-end}
+    body          {background:#f0f0f0}
+    body::after   {position:fixed;content:"";inset:0;pointer-events:none;background:linear-gradient(to top,#f0f0f0 10%,#00000000 30%)}
+    .hHeader      {position:fixed;background:#ffffff;z-index:2;padding:15px;box-shadow:0 3px 10px #000000a4 ; border-radius: 20px; transition: all 0.3s ease-in-out;}
+    .hHeader.Modo1{top:50%; left:50%; transform:translate(-50%,-50%);width: 85%; height: 85%;}
+    .hHeader.Modo1 button{width: 100px;}
+    .hHeader.Modo1 label {color: #555555;font-size: 35px;}
+    .hHeader.Modo2{bottom:20px;left:0;left:50%; transform:translate(-50%,0%);width:80%}
+    .hHeader.Hidenn{transform:translate(-50%,80%)}
+    h2            {font-size: 20px; color: #9f009a;}
+    #Lista        {width:100%;bottom:0;overflow:scroll;height: 100vh; padding:10px;gap: 10px}
+    .Step         {display:none;gap:10px;flex-wrap:wrap ; height: 95%; width: 95%;}
+    .Step.Atv     {display:flex}
+
+    .Font-Itn    {background:#fff;padding:10px;border-radius:10px;box-shadow:0 0 6px #0002;width:100%}
+    .Font-Itn a  {position:relative;overflow:hidden;display:block}
+    .Font-Itn a p{white-space:nowrap;position:absolute;left:50%;top:50%;transform-origin:center}
+
+    #Cores{display:flex;gap:8px;flex-wrap:wrap}
+    .Cor{width:30px;height:30px;border-radius:50%;border:2px solid #0002;cursor:pointer}
+    .Cor.Atv{outline:3px solid #000}
+
+    .FModal .info {font-size: 15px}
 </style>
 
-<body class="CSS1">
-    <h2>Visualizador de Fontes</h2>
-    <div class="Ct w100">
-        <input id="alt" type="number" placeholder="Altura (px)"  value="30">
-        <input id="lar" type="number" placeholder="Largura (px)" value="300">
+<style> /*Animação de Fundo*/ 
+  body{overflow:hidden}
+  .bg{position:fixed;inset:0}
+  .linha{position:absolute;left:0;width:200%;background:url('./SVG/Infinity.svg') repeat-x center/auto 100%;will-change:transform;opacity: 0.8;}
+  .l1{ top:5%;height:140px;animation:s1 20s linear infinite}
+  .l2{top:25%;height:110px;animation:s2 30s linear infinite reverse}
+  .l3{top:45%;height:80px ;animation:s3 40s linear infinite}
+  .l4{top:65%;height:60px ;animation:s4 50s linear infinite reverse}
+  .l5{top:80%;height:40px ;animation:s5 60s linear infinite}
+  @keyframes s1{to{transform:translateX(-50%)}}
+  @keyframes s2{to{transform:translateX(-50%)}}
+  @keyframes s3{to{transform:translateX(-50%)}}
+  @keyframes s4{to{transform:translateX(-50%)}}
+  @keyframes s5{to{transform:translateX(-50%)}}
+</style>
+
+<script> // Biblioteca
+    let cor="#000"
+    const StokCor=()=>StockjVinil.map(c=>`<div class="Cor ${c=='Holo'?`Holo`:''}" ${c=='Holo'?'':`style="background:${c}"`} onclick="SelCor(this,'${c}')"></div>`).join('')
+    const SelCor=(e,c)=>{cor=c;DTV($('.Cor.Atv' )) ; ATV(e)}            // Igual a essa debaxo
+    const Next  =   n =>{      DTV($('.Step.Atv')) ; ATV($(`#S${n}`))}  // Igual a essa decima
+
+    const SVVVG = {
+        'Set>':`<svg viewBox="0 0 0.36 0.56"><path d="M0 0.48c0.02,0.02 0.06,0.07 0.08,0.08l0.28 -0.28 -0.28 -0.28 -0.08 0.08 0.2 0.2 -0.2 0.2z"/></svg>`,
+        'Set<':`<svg viewBox="0 0 0.36 0.56"><path d="M0.35 0.48c-0.02,0.02 -0.06,0.07 -0.08,0.08l-0.28 -0.28 0.28 -0.28 0.08 0.08 -0.2 0.2 0.2 0.2z"/></svg>`
+    }
+</script>
+
+<script> // base de DADOS
+    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
+    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id',FONT:'Id'}
+</script>
+
+<body class="Infinity Lite Cl">
+    <div class="bg">
+        <div class="linha l1"></div>
+        <div class="linha l2"></div>
+        <div class="linha l3"></div>
+        <div class="linha l4"></div>
+        <div class="linha l5"></div>
     </div>
-    <div class="w100 Cl">
-        <input id="txt" type="text" class="w100"   placeholder="Texto"        value="Robertinho.Faax">
-        <button onclick="Atualiza()" style="width: 50%;">Rodar</button>
+
+    <div class="hHeader Modo1 Ct Cl" onclick="Rmv($(this),'Hidenn')">
+
+        <div id="S1" class="Step Cl Atv Bt">
+            <h2 class="Nomd2">Visualizador de Fontes</h2>
+            <label class="Nomd2">Digite o nome que Deseja!</label>
+            <input id="txt" placeholder="Texto" onkeydown="KeyEntr(()=>{Next(2);Foco('#lar')})">
+            <div class="w100 Bt End">
+                <button class="Nomd2" onclick="Next(2);Foco('#lar')" onload="Inn(this,'Próximo'+SVVVG['Set>'])"></button>
+            </div>
+        </div>
+
+        <div id="S2" class="Step Cl Bt">
+            <h2 class="Nomd2">Visualizador de Fontes</h2>
+            <label class="Nomd2">Se Souber a Medida, Digite Aqui!</label>
+            <input id="lar" placeholder="Largura" oninput="Mask.Num(this)" onkeydown="KeyEntr(()=>{Vll('#alt')==''||Vll('#alt')=='0,00'?Foco('#alt'):Next(3)})">
+            <input id="alt" placeholder="Altura"  oninput="Mask.Num(this)" onkeydown="KeyEntr(()=>{Vll('#lar')==''||Vll('#lar')=='0,00'?Foco('#lar'):Next(3)})">
+            <div class="w100 Bt">
+                <button class="Nomd2" onclick="Next(1);Foco('#txt')" onload="Inn(this,SVVVG['Set<']+'Voltar')" ></button>
+                <button class="Nomd2" onclick="Next(3)"              onload="Inn(this,'Próximo'+SVVVG['Set>'])"></button>
+            </div>
+        </div>
+
+        <div id="S3" class="Step Cl Bt">
+            <h2    class="Nomd2">Visualizador de Fontes</h2>
+            <label class="Nomd2">Qual cor você Deseja?</label>
+            <div id="Cores" onload="Inn(this,StokCor())"></div>
+            <div class="w100 Bt">
+                <button class="Nomd2" onclick="Next(2)" onload="Inn(this,SVVVG['Set<']+'Voltar')"></button>
+                <button               onclick="Rodar()">Rodar</button>
+            </div>
+        </div>
+        <div class="NONE Nomd1">
+            <button onclick="GerarLink()">Gerar Link</button>
+            <select name="" id="Modo">
+                <option value="Ver" selected>Ver</option>
+                <option value="Remove">Remove</option>
+            </select>
+            
+        </div>
     </div>
-    <div id="Lista"></div>
+
+    <div id="Lista" class="Cl" onmousedown="Add($('.hHeader'),'Hidenn')"></div>
+
 </body>
 
 <script>
+    const Lista = $('#Lista')
 
-    function Atualiza(){
-        const h = +$('#alt').value ; const w = +$('#lar').value
-        const t = $('#txt').value.trim() ; const Lista = $('#Lista')
-        Inn(Lista,"") ; if(!t) return
+    function Rodar(){
+        const t= txt.value.trim()
+        const w=Num(lar.value)||30
+        const h=Num(alt.value)||3
+        RenderizaFont(Lista,h,w,t,cor)
+        
+          Trc($('.hHeader'),'Modo2','Modo1')
+          Add($$('.Nomd2'),'NONE')
+          Rmv($$('.Nomd1'),'NONE')
+          ATV($$('.Step'))
+          Trc($('#S2'),'Ct','Cl')
+          Add($('.bg'),'none')
+    }
+
+    function Escolher_Font(Eu,f,h,w,t,c,Id){
+        LOG('Escolhendo')
+        if(Modo=='Rank'){
+            //Sb_EDIT(supaBASE,'FONT',Id,'Rcrt',false)
+        }else if(Modo.value=='Remove'){
+            Sb_EDIT(supaBASE,'FONT',Id,'Rcrt',false)
+            Eu.remove()
+        }else if(Modo.value=='Ver'){
+            const Info = [f,h,w,t,c].map(e=>`<p class="info">${e}</p>`).join('')
+            MODAL(`<div class="Cl">${Eu.outerHTML}<div class="Start2">${Info}</div><button onclick="Confirm_Font('${f}','${h}','${w}','${t}','${c}')">Confirmar</button></div>`)
+        }else{
+            LOG('Nada Acontece')
+        }
+    }
+
+    function Confirm_Font(f,h,w,t,c){
+        navigator.clipboard.writeText([t,w*100,h*100,c,f].join(','))
+        LOG(t,w,h,c,f)
+    }
+
+    function Init(){
+        const p = new URLSearchParams(location.search)
+
+        if(p.get('t')) txt.value = p.get('t')
+        if(p.get('h')) alt.value = p.get('h')
+        if(p.get('w')) lar.value = p.get('w')
+        if(p.get('c')) cor = p.get('c')
+
+        if(txt.value) Rodar()
+    }
+
+    function GerarLink(){
+        const t=txt.value.trim()
+        const w=lar.value||30
+        const h=alt.value||3
+        const c=cor||'#000'
+        const url=`${location.origin+location.pathname}?t=${encodeURIComponent(t)}&h=${h}&w=${w}&c=${encodeURIComponent(c)}`
+        navigator.clipboard.writeText(url)
+        alert("Link copiado!")
+    }
+
+    function RenderizaFont(Div,h,w,t,c){
+        Inn(Div,"") ; if(!t) return
         const Size = window.innerWidth <= 500 ? 300 : 700
         const newL = Size
         const NewA = (h / w) * newL
         let i = 0
+        const KitFontss = J['FONT'].filter(e=>e.Rcrt)
         function RenderNext(){
-            const f = KitFonts[i]
+            const f = KitFontss[i].Nome
+            const IDD = KitFontss[i].Id
             const id = "fit" + Math.random().toString(36).slice(2)
-            Lista.insertAdjacentHTML("beforeend",`<div class="Font-Itn Cl" onclick="Escolher(this)"><p>${f}</p><a style="width:${newL}px;height:${NewA}px"><p id="${id}" style="font-family:${f}">${t}</p></a></div>`)
+            Div.insertAdjacentHTML("beforeend",`<div class="Font-Itn Cl" onclick="Escolher_Font(this,'${f}','${h}','${w}','${t}','${c}','${IDD}')"><p>${f}</p><a style="width:${newL}px;height:${NewA}px"><p id="${id}" style="font-family:${f}">${t}</p></a></div>`)
             const el = $('#'+id)
             el.style.fontSize = "100px"
+            el.style.color = c
             el.style.transform = ""
             const bw = el.offsetWidth      ; const bh = el.offsetHeight
             const sx = bw ? (newL/bw) : 1  ; const sy = bh ? (NewA/bh) : 1
             el.style.transform = `translate(-50%,-50%) scale(${sx},${sy})`
-            i++ ; if(i < KitFonts.length){requestAnimationFrame(RenderNext)}
+            i++ ; if(i < KitFontss.length){requestAnimationFrame(RenderNext)}
         }RenderNext()
-    }Atualiza()
-
-    function Escolher(Eu){
-        alert('Você escolheu '+Inn($('p',Eu)))
     }
 
+    const getSBPromise = SB_Get(supaBASE,['FONT'])
+
+    function PosGET(){
+        Onloads('body')
+        Init()
+    }
+
+
 </script>
+
 </html>
+

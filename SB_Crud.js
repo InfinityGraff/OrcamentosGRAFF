@@ -1,6 +1,8 @@
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
 const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
+const NoneCgo =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(UU.Cgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
+
 
 const Tm_R=(e,x,Typ,P=false)=>{
     const k=OjKy(Typ)[x]
@@ -133,7 +135,7 @@ const Tm_Tm = {
     Slct:(e,R,P)=>`<select   data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')">${Tm_Opt(MyEval(BsJs(d_r(R).Ty,d_r(R).Cl,'TH')),e)}</select>`,
     Slc2:(e,R,P)=>`MySelect()`,
     Data:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ YMD(e)}" onclick="TrcFih(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${YMD(e)}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
-    Dat2:(e,R,P)=>``,
+    Dat2:(e,R,P)=>`<div      data-R="${R}" data-P="${P}" class="P-P Ct" name="${ YMD(e)}">${Tm_DataNatora()}</div>`,
     Auto:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
     Sync:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
     Lixo:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp">`,
@@ -165,8 +167,8 @@ const Tm_Tm = {
     OKAY:(e,R,P)=>{
         // se tiver na Tabela Normal não carrega nada
         // Provavelmente Mpag não usa OK, quem usa isso é Somente as GRADS, pois depende manualmente desta Validação
-        return e ? `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="RmvLink(this,'${R}','${P}')" src="./CrudSB/Unlink.webp">` :
-                   `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="Linkar2(this,'${R}','${P}')" src="./CrudSB/Link.webp">`
+        return e ? `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" name="${e}" onclick="RmvLink(this,'${R}','${P}')" src="./CrudSB/Unlink.webp">` :
+                   `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}','${P}')" src="./CrudSB/Link.webp">`
     },
     Bndj:(e,R,P)=>Tm_Bndj(R,e),
     BjIn:(e,R,P)=>Tm_Bndj(R,e)
