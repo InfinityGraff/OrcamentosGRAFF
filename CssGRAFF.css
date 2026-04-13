@@ -8,6 +8,7 @@
   --CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);
 }
 
+
 .Infinity.Lite{
   /*Body   */ --BodyBk  :#ffffff                                           ;--BodyTx:#000000; 
   /*Header*/ --HeadBk:url(./SVG/Fundo.png)                                   ;--HeadTx:#ffffff;
