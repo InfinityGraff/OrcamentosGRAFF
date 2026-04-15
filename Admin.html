@@ -33,7 +33,7 @@
     let SVG_FILES = []
 </script>
 
-<body class="Dark CSS1 Cl">
+<body class="Infinity Dark CSS1 Cl">
     <div id="CalcSVGGG" class="Cl bord w80">
         <h1>1° - Calculo SVG</h1>
         <input type="file" id="svgInput" accept=".svg" multiple onchange="SVG_FILES=[...this.files].filter(f=>f.type==='image/svg+xml')">
@@ -62,6 +62,146 @@
     </div>
 
     <canvas id="myChart"></canvas>
+
+    <header>
+  <h1>Título Principal</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Sobre</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section>
+  <h2>Texto</h2>
+  <p>Parágrafo normal</p>
+  <p><strong>Negrito</strong> e <em>itálico</em></p>
+  <span>Span simples</span>
+  <br>
+  <small>Texto pequeno</small>
+</section>
+
+<section>
+  <h2>Botões</h2>
+  <button>Botão</button>
+  <input type="button" value="Input Button">
+</section>
+
+<section>
+  <h2>Formulário</h2>
+  <form>
+    <label>Nome:</label>
+    <input type="text" placeholder="Digite aqui">
+
+    <label>Email:</label>
+    <input type="email">
+
+    <label>Senha:</label>
+    <input type="password">
+
+    <label>Data:</label>
+    <input type="date">
+
+    <label>Cor:</label>
+    <input type="color">
+
+    <label>Arquivo:</label>
+    <input type="file">
+
+    <label>Opções:</label>
+    <select>
+      <option>Opção 1</option>
+      <option>Opção 2</option>
+    </select>
+
+    <textarea placeholder="Digite algo..."></textarea>
+
+    <input type="checkbox"> Checkbox
+    <input type="radio" name="r"> Radio
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<section>
+  <h2>Lista</h2>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+
+  <ol>
+    <li>Primeiro</li>
+    <li>Segundo</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Imagem</h2>
+  <img src="https://via.placeholder.com/150" alt="Imagem">
+</section>
+
+<section>
+  <h2>Tabela</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>João</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>Maria</td>
+        <td>30</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Cards</h2>
+  <div class="card">
+    <h3>Título Card</h3>
+    <p>Descrição aqui</p>
+  </div>
+</section>
+
+<section>
+  <h2>Detalhes</h2>
+  <details>
+    <summary>Clique aqui</summary>
+    <p>Conteúdo escondido</p>
+  </details>
+</section>
+
+<section>
+  <h2>Vídeo</h2>
+  <video controls width="200">
+    <source src="" type="video/mp4">
+  </video>
+</section>
+
+<section>
+  <h2>Áudio</h2>
+  <audio controls>
+    <source src="" type="audio/mp3">
+  </audio>
+</section>
+
+</main>
+
+<footer>
+  <p>Rodapé</p>
+</footer>
 </body>
 
 <script>
