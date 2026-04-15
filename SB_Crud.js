@@ -1,3 +1,5 @@
+const J={},JJ={},BS={},ALL={},PreTbl={}
+
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
 const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
@@ -5,6 +7,7 @@ const NoneCgo =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(UU.Cgo) ? '
 
 
 const Tm_R=(e,x,Typ,P=false)=>{
+    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // GAMBIARRA
     const k=OjKy(Typ)[x]
     return `${Typ}-${e=='Foot'?e:e[isArr(e)?0:'Id']}-${k}-${BS[Typ].Json[k].TM}-${P?'Bj':'_'}-${ObjKey(Secund).includes(Typ)?'Sc':'_'}`
 }
@@ -184,7 +187,7 @@ function Tm_Td(v,e,x,Typ,_P=''){
 
 function Tm_Table(Typ,arry,Rpai=''){
     const IN = performance.now()
-    const Retorno = arry.map(e=> e ? `<tr class="tr-${e[Primary[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
+    const Retorno = arry.map(e=> e ? `<tr class="tr-${e[Pry[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
     LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
     return Retorno
 }
@@ -303,7 +306,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
         const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
 
         if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Primary[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
+            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Pry[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
         }
         if(Mod=='Table'){
             Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
@@ -411,8 +414,8 @@ async function SB_Get(SB,Typs){
         }while(data.length===lim)        
         const Colet = {}
         J[Typ]=todas.map(e=>normalizeObj(e,Colet))
-        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Primary[AA(col)])}
-        JJ[Typ] = ArrtoOBJ(J[Typ],Primary[Typ])
+        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
+        JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
         LOG(`✔️ ${Typ}`)
     }
 

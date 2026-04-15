@@ -20,24 +20,6 @@
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
     const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
     const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
-
-    
-</script>
-
-<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
-
-    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id',STOK:'Id'} // Campo pra Imbutir dentro do BS
-    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-
-    // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
-    let  ContGrad  = {} ; let  ContCLNT  = {}
-
-    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
 </script>
 
 <style>

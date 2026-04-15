@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -20,9 +20,10 @@
     
     <link href="./SB_Crud.css" rel="stylesheet">
     <script src="./SB_Crud.js"      ></script>
+
     <!--
+        <script  src="../MyBiblioteca/PreScript.js"></script>
         <link  href="../MyBiblioteca/fontes.css"        rel="stylesheet">
-        <link  href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
        
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
         <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
@@ -47,19 +48,7 @@
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
-
-    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
-    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-
-    // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
-    let  ContGrad  = {} ; let  ContCLNT  = {}
-
-    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
+    const Pry  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -416,7 +405,6 @@
 
     
 
-    const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
@@ -545,7 +533,7 @@
                 const NmTle  = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '' : Title // (GAMBIARRA preparar pra RMV)
                 const Cimg   = Find.map(e=>ImgT_T(col,e,R)).join('')
                 
-                Find.map(e=>`${todoTitle[col]?.push(e[col])}`)
+                Find.map(e=>`${ALL[col]?.push(e[col])}`)
 
                 const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th class="${NoneCgo(TYP,t)}">${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
@@ -578,12 +566,12 @@
                 },0)}
 
                 if(ObjKey(J).includes(Typ)){
-                    if(PreTable[Typ]==true&&!GAMBIARRRRRRRRRA){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
+                    if(PreTbl[Typ]==true&&!GAMBIARRRRRRRRRA){MyAlert(Mnsg['PreTbl'](D_Brev[Typ]));return} // Conferir se essa Aba já foi Aberta!
                          if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')             } // tem 3 Tabelas na #PagPDDS
                     else if(Typ=='PGMT'){LOAD('MPAG')                                    } // tem 2 Tabelas na #PagPGMT
                     else if(Typ=='GRAD'){LOAD(Typ);LOAD('OS');LOAD('UBER'),LOAD('GRD2')  } // tem 3 Tabelas na #PagGRAD
                     else{LOAD(Typ)}                                                        // os demais tem só 1 tabela
-                    PreTable[Typ]=true                                                     // Declarar que a Aba já foi Aberta!
+                    PreTbl[Typ]=true                                                     // Declarar que a Aba já foi Aberta!
                 }
             }
 
@@ -816,10 +804,10 @@
                                     Typ=="SERV" && Servicos.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Serv'].map(E=>Trato(E[Col],Col)))) :
                                     Typ=="PGMT" && Pagament.includes(Col) ? Uniq(J.PDDS.flatMap(e=>e['Pgmt'].map(E=>Trato(E[Col],Col)))) :
                                     Typ=="PDDS" && Pedidoss.includes(Col) ? Uniq(J.PDDS.map(e=>e[Col])) :
-                                    Col=='Clnt'                           ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col=='Cust'            ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col=="Serv"            ? Uniq(todoTitle[Col]) :
-                                    Typ=="PDDS" && Col=='Valr'            ? Uniq(todoTitle[`Sum_${Col}`].map(e=>Cm(e))) :
+                                    Col=='Clnt'                           ? Uniq(ALL[Col]) :
+                                    Typ=="PDDS" && Col=='Cust'            ? Uniq(ALL[Col]) :
+                                    Typ=="PDDS" && Col=="Serv"            ? Uniq(ALL[Col]) :
+                                    Typ=="PDDS" && Col=='Valr'            ? 'Soma da Coluna' :
                                     Typ=="PDDS" && Col==='Stts'           ? ListEtps.map(e=>`${e[0]} <a style="fill:rgb(${COR[e[1]]})">${SVGEtapas[e[0]]}</a>`) :
                                     // o Obigetivo central da Função é Evitar isso!
                                     Uniq(Colls(Typ,Col,n).map(e=>VAL(e))) // PEZADO
@@ -1153,6 +1141,9 @@
             })
         }
 
+        // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
+        let  ContGrad  = {} ; let  ContCLNT  = {}
+
         function Re_Cont(Typ,All){  // ⭐⭐⭐_ _ Sempre é All contar quantas vezes algo aparece dentro e agrupar valores
             const IN = performance.now()
             if(Typ=='PDDS'){J['SERV'].forEach(({Grad,Id,Valr})=>{if (!Grad || Grad === "" || Grad === "--"){return}
@@ -1208,7 +1199,7 @@
         }
 
         // todas as imagens vão sair do Autocomp, pois elas são carregadas mediante ao tm usando o valor q está dentro de si
-
+        const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}// deve ter um desse em um BS diferente
         const Splii = {
     /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
     /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
@@ -1255,7 +1246,7 @@
             const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
                 const Coa = {S:'SERV',P:'PGMT'}
                 const TYP = Coa[Pre]||Typ
-                const Key = All=='All' ? tr[Primary[TYP]] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${Primary[TYP]}`)}`,tr)) // Pegando a Chave Primaria
+                const Key = All=='All' ? tr[Pry[TYP]] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${Pry[TYP]}`)}`,tr)) // Pegando a Chave Primaria
                 const arg = All=='All' ? tr : JJ[TYP][Key]
                 if(!arg){LOG('⚠️ o Objeto Não Existe') ; return}
                 const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
@@ -1323,12 +1314,14 @@
 
     <div>  <!--INTERAÇÕES- ⭐_ _ _ _ -->
         <style> /*Preview*/
-            .casusa{flex: 1 1 auto}
-            .Wrapper {overflow-X: hidden; overflow-y: scroll; width: 100%;position: relative}
             .inherit {background: inherit;} /*Copiar a cor do Pai*/
-            .Slide_Table {display: flex;transition: all 0.4s ease}
+            .casusa{flex: 1 1 auto}
+
+            .Wrapper {overflow-X: hidden; overflow-y: scroll; width: 100%;position: relative}
+            .Slide_Table {display: flex;transition: all 0.4s ease-in-out}
             .Slide_Table > div > div{transition: all 0.4s ease-in-out}
             .Slide_Table > div {flex: 0 0 100%;width: 100%;min-height: 100vh;box-sizing: border-box}
+
             #H_SERV{font-size: 10px}
             .Switch{margin: 8px;}
             #Sommma{color: white}
@@ -2187,8 +2180,7 @@
             </div>
 
             <div id="Pag_PDDS" class="     Cl TBLAA">
-
-                <div onload="Tm_Switch(this,['Pedidos','Serviços','Pagamento'],`slideTo(x,'PDDS')`,'PPDS')"></div>
+                <div onload="Tm_Switch(this,['Pedidos','Serviços','Pagamento'],$('#Slide_PDDS'),'PPDS','80px')"></div>
 
                 <div class="Wrapper">
                     <div id="Slide_PDDS" class="Slide_Table">
@@ -2261,7 +2253,7 @@
 
             <div id="Pag_GRAD" class="none Cl TBLAA"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
 
-                <div onload="Tm_Switch(this,['GRAD','OS','UBER','GRD2'],`slideTo(x,'GRAD')`,'GRAD')"></div>
+                <div onload="Tm_Switch(this,['GRAD','OS','UBER','GRD2'],$('#Slide_GRAD'),'GRAD','55px')"></div>
 
                 <div class="Wrapper">
                     <div id="Slide_GRAD" class="Slide_Table">

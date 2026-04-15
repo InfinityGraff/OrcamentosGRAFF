@@ -10,11 +10,11 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
     <link   href="./SB_Crud.css"  rel="stylesheet">
-
     <link   href="./CssGRAFF.css"  rel="stylesheet">
-    <script src="./SB_Crud.js"  ></script>
+
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
+    <script src="./SB_Crud.js"  ></script>
     
 </head>
 
@@ -26,15 +26,6 @@
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const J={},JJ={},BS={},ALL={} // nem sei se eu realmente to usando este ALL
-    const Primary  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id',FONT:'Id'} // Campo pra Imbutir dentro do BS
-    const PreTable = {PDDS:'',SERV:'',PGMT:'',GRAD:'',CLNT:''} // Campo pra Imbutir dentro do BS
-    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // ver depois como Tirar isso daqui  // Campo pra Imbutir dentro do BS
-    let SlideTable = {PDDS:0 ,SERV:0 ,PGMT:0 ,GRAD:0 ,MPAG:0 ,OS:0 ,UBER:0, CLNT:0 }
-    let todoTitle  = {Serv:[],Cust:[],Soma:[],Sum_Valr:[],Sum_Cust:[],Clnt:[],Rg:[],Pgmt:[],OS:[]} // todos esses são quem tem Bndj e possuem uma Lista de titles para ser carregados no th Filter
-    
-    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}
-    const D_Brev = {HOME:'Principal',ORC:'Orçamento',LOJA:'Loja',GBRT:'Gabaritos',BBTC:'Biblioteca','|':'',PDDS:'Pedidos',SERV:'Serviços',PGMT:'Pagamentos',MPAG:'Mercado Pago',GRAD:'DashBoard',CLNT:'Clientes',CONF:'Configurações',CUST:'Custos',Tipo:'Tipo',Serv:'Serviço',Lrg:'Largura',Alt:'Altura',Cmp:'Comprimento',Cbmt:'Acabamento',Gram:'Gramatura',Matr:'Material',Qnt:'QNT',Und:'Valor UND',SbTt:'SubTotal',Aplic:'Aplicação',Vund:'Valor UND',_:'',X:'',Imgs:'Imgs',Extr:'Extra',RG:'Rg'}
 
     const SVVVG = {
        "Soli":`<svg viewBox="0 0 598.03 659.63"><path d="M473.98 558.37c-0.03,18.81 -0.03,30.81 0.03,35.99 0.12,10.24 -6.31,14.46 -15.85,14.41 0,0 -35.03,-0.36 -35.03,0.38 0.03,21.14 0.04,33.3 0.02,36.5 -0.04,7.56 -5.17,13.99 -11.48,13.97 -143.15,0 -275.27,0 -396.33,0 -11.52,0 -15.32,-4.99 -15.32,-16.39 0.02,-262.73 0.02,-437.61 -0.01,-524.63 0,-12 3.87,-17.05 15.86,-16.78 0,0 34.96,0.68 34.96,-0.36 0.13,-57.19 -7.55,-50.43 50.38,-50.64 1.83,0 -1.06,-38.68 1.79,-43.68 3.58,-6.28 7.03,-7.14 15.15,-7.14 32.85,0.02 163.18,0.02 390.98,0.01 11.44,0 15.82,4.73 15.82,16.07 -0.03,145.61 -0.03,220.25 0.04,223.94 0.07,4.11 -0.29,6.96 -1.08,8.54 -3.2,6.41 -10.6,9.59 -17.26,6.37 -38.36,-18.52 -84.59,-11.76 -115.8,16.77 -65.44,59.77 -33.67,167.86 53.58,182.25 60.43,9.96 117.85,-35.83 121.86,-96.22 0.12,-1.73 0.47,-11.31 1.45,-13.22 5.89,-11.6 25.34,-10.54 24.56,9.1 -3.11,78.29 -67.34,111.09 -67.34,111.15 -0.04,44 -0.03,68.53 0.03,73.58 0.18,14.05 -2.84,19.65 -17.07,19.48 -0.69,0 -11.81,-0.01 -33.36,-0.02 -0.32,0 -0.57,0.26 -0.57,0.57l0 0zm-383.93 -24.16l223.46 0c16.54,0 16.54,25.67 0,25.67l-223.46 0c-16.54,0 -16.54,-25.67 0,-25.67l0 0zm-0.01 -78.81l223.46 0c16.54,0 16.54,25.66 0,25.66l-223.46 0c-16.54,0 -16.54,-25.66 0,-25.66l0 0zm0.03 -78.93l203.49 0c16.57,0 16.57,25.72 0,25.72l-203.49 0c-16.57,0 -16.57,-25.72 0,-25.72l0 0zm216.2 -65.8c0,7.03 -5.7,12.73 -12.73,12.73l-203.43 0c-16.61,0 -16.61,-25.77 0,-25.77l203.43 0c7.26,0 12.74,5.89 12.73,13.05zm-126.12 10.16c3.85,0.95 -0.03,-1.41 -0.03,-0.03 0,0.02 0.01,0.03 0.03,0.03zm282.67 43.6l0.51 0.05c34.11,-31.61 71.9,-66.64 113.35,-105.1 9.6,-8.9 25.14,1.5 20.49,14.48 -0.6,1.66 -2.76,4.22 -6.47,7.66 -20.93,19.34 -60.05,55.6 -117.36,108.78 -9.29,8.63 -16.76,9.84 -24.26,-1.01l-48.98 -67.15c-8.53,-11.55 5.24,-25.74 16.73,-19.03 4.59,2.68 27.33,35.81 45.98,61.33zm-372.78 -145.58l223.5 0c16.52,0 16.52,25.63 0,25.63l-223.5 0c-16.52,0 -16.52,-25.63 0,-25.63l0 0zm408.99 5.31l0.28 -197.95c0,-0.31 -0.24,-0.55 -0.55,-0.55 -30.71,0 -371.28,-0.2 -371.28,0.27 0,2.21 -0.2,24.88 0.24,24.88 11.89,0.02 120.28,0.03 325.18,0.01 12.59,0 21.09,0.57 21.07,15.5 0,0 -0.31,153.12 0.25,153.17 10.65,1.01 15.77,2.67 24.8,4.67zm-51.2 -147.53l-370.89 0c-0.62,0 -0.72,25.19 0.04,25.19 142.85,0 252.77,-0.01 329.77,-0.01 10.98,0 16.68,4.41 16.4,15.77 0,0 -0.33,106.74 0.29,106.74 0.03,0 0.07,0 0.09,-0.01 8.03,-2.42 16.16,-4.01 24.37,-4.75l0.44 -0.48 0 -141.95c0,-0.28 -0.23,-0.5 -0.51,-0.5l0 0zm-421.92 557.33c30.76,0 371.47,0.24 371.47,-0.31 0,-14.42 0.37,-168.95 -0.3,-169.34 -89.28,-51.2 -88.91,-178.49 0.09,-228.81 0.55,-0.32 0.16,-108 0.01,-108 -30.73,0 -371.51,-0.2 -371.51,0.27 0,41.79 -0.18,506.2 0.24,506.2l0 0zm422.14 -50.97c0.23,0 0.72,-102.09 0.06,-102.21 -2.21,-0.43 -24.98,-5.35 -24.99,-4.6 -0.06,8.99 -0.18,106.81 0.29,106.81l24.63 0zm51.01 -50.87c0.29,0 0.6,-56.4 -0.16,-56.25 -2.25,0.47 -24.94,4.79 -24.94,5.22 -0.03,4.39 -0.12,51.07 0.38,51.07l24.73 -0.04z"/></svg>`
@@ -71,8 +62,6 @@
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
-
-    const slideTo  =(i,Typ)=>{SlideTable[Typ] = Math.max(0,Math.min(2,i));$(`#Slide_${Typ}`).style.transform = `translateX(-${SlideTable[Typ] * 100}%)`}
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
