@@ -777,13 +777,6 @@ const PesqOpt = (Inpt, Modo) => { // Essa função de Pesquisa Pode ser Util em 
 // dexia os Selects Cinza caso não tenha nada (Mudar isso pra o INPUT)
 function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
 
-function exibirObjeto() {
-    function adicionaID(arr) {return arr.map((obj, i) => ({ id: i, ...obj }))}
-    const saida = document.getElementById("saida")
-    saida.innerHTML = `<pre>${JSON.stringify(adicionaID(BaseIMG), null, 2)}</pre>`
-}
-
-
 // GRAFICOS VISUAIS de ANALISES
 
 function Load_Grfc(tipo,base,div){

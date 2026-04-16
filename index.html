@@ -402,9 +402,6 @@
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
-
-    
-
     const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
@@ -2177,6 +2174,24 @@
                 </div>
                 
                 <div onload="Inn(this,Tm_DataNatora())"></div>
+
+                    <div class="Ct">
+                        <input id="valor" type="number" placeholder="Valor em R$" oninput="simular()">
+                        <button onclick="simular()">Simular</button>
+
+                        <table>
+                            <thead><tr><th>Parcelas</th><th>Taxa</th><th>Total (R$)</th><th>Parcela (R$)</th></tr></thead>
+                            <tbody id="res"></tbody>
+                        </table>
+
+                        <script>
+                            const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
+                            function simular(){
+                                const v=+valor.value;if(!v)return alert("Digite um valor!")
+                                Inn(res,TaxaMpag.map((t,i)=>{const tot=v*(1+t),parc=tot/(i+1);return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`}).join(''))
+                            }
+                        </script>
+                    </div>
             </div>
 
             <div id="Pag_PDDS" class="     Cl TBLAA">
