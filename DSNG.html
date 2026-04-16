@@ -737,7 +737,7 @@
 </script>
 
 <script> // SupaBASE
-    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
     
     const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
 

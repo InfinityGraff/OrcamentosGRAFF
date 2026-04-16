@@ -147,7 +147,6 @@
     .Basic button:hover  {background:var(--BtnHovBk) ; color:var(--BtnHovTx)}
     .FEXTA button:hover  {background:var(--BtnHovBk) ; color:var(--BtnHovTx)}
 
-
     button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
     button.Block            {background: #797979 !important; border:1px solid #414141 !important}
     button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
