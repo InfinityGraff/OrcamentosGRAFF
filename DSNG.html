@@ -156,13 +156,13 @@
     
     h2,h3       {font-size: 25px}
 
-    .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
-    .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
+    .Box        {transition:all 0.1s ease-in-out ;cursor: pointer}
+    .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05)}
 
     #Perf .Box a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
     .Pic        {width:120px;border-radius:50%}
-    .Art img    {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
+    .Art .LILI  {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
     .Fotoz      {width: 20px; height: auto;}
 
     .Svg-P svg  {width: 15px; height: 15px;}
@@ -175,7 +175,11 @@
     #Perf-Trfs tr:hover          {background-color:#444}
     #Perf-Trfs td:first-child    {text-align:center; width:50px; }
 
+    p.Conty{top: 10px; right: 10px; font-size: 15px;}
+
     .Art{overflow-x: scroll; padding: 20px 0px;}
+
+    .Art .Pic.Abslt{top: 0px;right: 0px;width: 25px;}
 
     .LILI{height: 200px;width: auto;}
 
@@ -183,7 +187,6 @@
 
     .INFO img     {height: 450px;width: auto;}
     .INFO textarea{height: 500px;width: 500px;}
-
 
     .INFO a img   {height: 18px;width: auto;}
     textarea {text-align: left;white-space: pre-wrap;} /* mantém quebras de linha */
@@ -368,9 +371,10 @@
         <div id="Pag_HOME">
             <div class="w100 Cl Gap">
                 <div id="Perf-Perf" class="Boxy Ev Gap w100"></div>
-                <div id="Perf-Soli" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Soli'])"></a> Solicitações</h3><div class="Start w100 Gap Art"></div></div>
-                <div id="Perf-Andm" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Andm'])"></a> Andamento...</h3><div class="Start w100 Gap Art"></div></div>
-                <div id="Perf-Hist" class="Boxy Cl Gap w100"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Histórico   </h3><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Soli" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Soli'])"></a> Solicitações   </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Andm" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Andm'])"></a> Andamento...   </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Cncl" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Falta Pagamento</h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Hist" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Histórico      </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
             </div>
         </div>
 
@@ -461,6 +465,99 @@
         
     </div>
 </body>
+
+
+<script> // Página do Designer
+    const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
+    const Sldo=U=>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`) // Carregar tabela do Saldo
+
+    const Tm_Resumo=(U,E,UU)=>`${E.map(e=>`
+        <div class="gap Cl Bt Hov Boxy Rltv" onclick="MODAL(Tm_Exib('${U}','${e.Id}',event))">
+            ${e.Dsng==UU.Nome ? `<img class="Pic Abslt" src="${UU.Foto}">` : ''}
+            <p>${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
+            <p>${e.Tipo}</p><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
+            <p>${Tm_RS2(e.Valr)}</p>
+    </div>`).join("")}`
+
+    const Tm_Exib=(U,ID,ev)=>{
+        if (ev?.target.closest('button')) return
+        const Obj = J['ARTE'].find(e=>e.Id==ID)
+        return `<h3>${Obj.Nome}</h3>
+            <div class="gap Ct PT Boxy INFO">
+                <div>
+                    <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
+                    <p>${Obj.Nome}</p>
+                    <p>${Obj.Tema}</p>
+                    <p>${Tm_RS2(Obj.Valr)}</p>
+                    <button>Discutir Preço</button>
+                </div>
+                <div>
+                    <textarea>${Obj.Info}</textarea>
+                    ${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>` : ''}
+                </div>
+                ${false ? `<button onclick="ConclurART('${U}','${ID}')">Concluir Arte</button>` : 
+                          `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte</button>`}
+            </div>`
+    }
+
+    function Load_Perfil(U){
+        const u = U.Nome
+        const __S=[],__M=[],__a=[],__A=[],__D=[],__U=[]
+        J['ARTE'].forEach(o=>{
+            if(o.Dsng==u)                                 __U.push(o) // Todos
+            if(o.Dslk?.includes(u))                       __D.push(o) // Rejeitados
+            else if((!o.Dsng||o.Dsng==u) && o.Stts=='_S') __S.push(o) // Solicitações
+            else if(o.Dsng==u && o.Stts=='Act')           __M.push(o) // Aceitos
+            else if(o.Dsng==u && o.Stts=='Ok')            __a.push(o) // OK1
+            else if(o.Dsng==u && o.Stts=='OK')            __A.push(o) // OK2
+        })
+        const Tags = Uniq(__U.map(e=>e.Tema).filter(Boolean))
+
+        Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
+                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
+                    ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
+                </div>
+                <div class="Ct" style="width:300px">
+                    <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
+                </div>
+                <div class="Ct Gap">
+                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${__A.length         }</h3></div>
+                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${__D.length         }</h3></div>
+                    <div class="Boxy Cl Box" onclick="Sldo('${u}'       )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__a,'Valr'))}</div>
+                </div>`)
+
+        Inn($('#Perf-Soli p.Conty'),`${__S.length} UND`) ; Inn($('#Perf-Soli .Art'),Tm_Resumo(u,__S,U))
+        Inn($('#Perf-Andm p.Conty'),`${__M.length} UND`) ; Inn($('#Perf-Andm .Art'),Tm_Resumo(u,__M,U))
+        Inn($('#Perf-Cncl p.Conty'),`${__a.length} UND`) ; Inn($('#Perf-Cncl .Art'),Tm_Resumo(u,__a,U))
+        Inn($('#Perf-Hist p.Conty'),`${__A.length} UND`) ; Inn($('#Perf-Hist .Art'),Tm_Resumo(u,__A,U))
+    }
+
+    function Load_Page(DSG,ART){
+        Inn($("#List_Desng"),J['USER'].map(d=>{
+            if(d.Nome=='Login'){return}
+            const Arts = J['ARTE'].reverse().filter(a=>a.Dsng==d.Nome && (a.Stts=='Ok'||a.Stts=='OK'))
+            const Tags = Uniq(Arts.map(e=>e.Tema))
+            const Rank = Arts.length + Tags.length // Quantidade de Arte e Quantidade de Tags
+            // Critérios de Rankeada
+            // Tempo de Aceitação
+            // Tempo de Entrega (Entrega no Prazo) Calculada pelo Prazo
+            // Complexidade da Arte
+
+            return `<div class="Boxy CT">
+                <div class="LA h100 Start2 gap">
+                    <div class="Head Ct gap"><p>${Rank}° - ${d.Nome}</p><a class="St ${d.On?'On':'Of'}"></a></div>
+                    <img class="Perf" src="./Img/Perfil_${d.Nome}.webp">
+                    <div class="Cl Start2"><p>${d.Cgo}</p>
+                        <button onclick="Ger_SOliArt('${d.Nome}')">Solicitar</button>
+                    </div>
+                </div>
+                <div class="LB h100 Cl Gap Start2">
+                    <div class="Prtf CT Gap">${Arts.map(a=>`<a class="Cl box"><img src="${BASE_URL}Img/${a.Img}?v=${Date.now()}"><p>${a.Nome}</p></a>`).join("")}</div>
+                    <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
+                </div>
+            </div>`}).join(''))
+    }
+</script>
 
 <div> <!--Página Solicit-->
 
@@ -617,38 +714,6 @@
         }
     </script>
 
-    <script> // === LOCAL LIST DESIGNER ====
-        const Uu = true
-        async function LoadByName(){
-            if(!Uu) return          null ; const {data:USER,error:e1} = await supaBASE.from("USER").select("*")
-            if(e1)  return ERR(e1), null ; const {data:ARTE         } = await supaBASE.from("ARTE").select("*")
-            return {USER,ARTE}
-        };LoadByName().then(r=>{if(!r)return;Load_Page(r.USER,r.ARTE)})
-        
-        function Load_Page(DSG,ART){
-            Inn($("#List_Desng"),DSG.map(d=>{
-                if(d.Nome=='Login'){return}
-                const Arts = ART.reverse().filter(a=>a.Dsng==d.Nome && a.Stts=='OK')
-                const Tags = Uniq(Arts.map(e=>e.Tema))
-                const Rank = Arts.length + Tags.length
-                               
-                // Critério Velocidade, Quantidade de Arte, Complexidade da Arte, Quantidade de variações diferentes, Tempo de Aceitação
-                return `<div class="Boxy CT">
-                    <div class="LA h100 Start2 gap">
-                        <div class="Head Ct gap"><p>${Rank}° - ${d.Nome}</p><a class="St ${d.On?'On':'Of'}"></a></div>
-                        <img class="Perf" src="./Img/Perfil_${d.Nome}.webp">
-                        <div class="Cl Start2">   <p>${d.Cgo}</p>  
-                            <button onclick="Ger_SOliArt('${d.Nome}')">Solicitar</button>
-                        </div>
-                    </div>
-                    <div class="LB h100 Cl Gap Start2">
-                        <div class="Prtf CT Gap">${Arts.map(a=>`<a class="Cl box"><img src="${BASE_URL}Img/${a.Img}?v=${Date.now()}"><p>${a.Nome}</p></a>`).join("")}</div>
-                        <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
-                    </div>
-                </div>`}).join(''))
-        }
-    </script>
-
     <script> // ==== Comentários ====
 
         // em Titulo opção pra botar imagem
@@ -672,69 +737,6 @@
     </script>
 </div>
 
-<script> // Página do Designer
-    let [__A,__M,__D,__S]=['','','','']
-
-    const Tm_Resumo=(U,E)=>`${E.map(e=>
-        `<div class="gap Cl Bt Hov Boxy" onclick="MODAL(Tm_Exib('${U}','${e.Id}',event))">
-            <p>${e.Clnt}</p>
-            <img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
-            <p>${e.Tipo}</p>
-            <div class="Cl Start2">
-                <b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p>
-            </div>
-            <p>${Tm_RS2(e.Valr)}</p>
-        </div>`
-    ).join("")}`
-
-    const Tm_Exib=(U,ID,ev)=>{
-        if (ev?.target.closest('button')) return
-        const Obj = J['ARTE'].find(e=>e.Id==ID)
-        return `<h3>${Obj.Nome}</h3>
-                <div class="gap Ct PT Boxy INFO">
-                    <div>
-                        <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
-                        <p>${Obj.Nome}</p>
-                        <p>${Obj.Tema}</p>
-                        <p>${Tm_RS2(Obj.Valr)}</p>
-                        <button>Discutir Preço</button>
-                    </div>
-                    <div>
-                        <textarea>${Obj.Info}</textarea>
-                        <a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>
-                    </div>
-                    ${false ? `<button onclick="ConclurART('${U}','${ID}')">Concluir Arte</button>` : 
-                              `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte</button>`}
-                </div>`
-    }
-
-    const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
-
-    const Sldo=U=>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`) // Carregar tabela do Saldo
-
-    function Load_Perfil(U){
-        const u = U.Nome
-        __S = J['ARTE'].filter(o=>(!o.Dsng||o.Dsng==u) && o.Stts=='_S')              // Solicitações
-        __M = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Act')                        // Andamento
-        __A = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='OK' && !o.Dslk?.includes(u)) // Concluidas
-        __D = J['ARTE'].filter(o=>o.Dslk?.includes(u))                               // Rejeitadas
-
-        Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
-                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
-                    ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
-                </div>
-                <div class="Ct Gap">
-                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${__A.length         }</h3></div>
-                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${__D.length         }</h3></div>
-                    <div class="Boxy Cl Box" onclick="Sldo('${u}'       )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
-                </div>`)
-
-        Inn($('#Perf-Soli .Art'),Tm_Resumo(u,__S))
-        Inn($('#Perf-Andm .Art'),Tm_Resumo(u,__M))
-        Inn($('#Perf-Hist .Art'),Tm_Resumo(u,__A))
-    }
-</script>
-
 <script> // SupaBASE
     const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
 
@@ -742,6 +744,7 @@
         const INN = performance.now()
         J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
         TestSenha('Storg',StogeGet('Pass'))
+        Load_Page()
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
 
@@ -802,7 +805,7 @@
 </script>
 
 <script>// Iniciação 
-    function PosGet(){Onloads('body');LOG('✅ Página Carregada!')}  ;PosGet()
+    Onloads('body')
 
     document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
         document.addEventListener('keydown',function(event){
@@ -816,13 +819,19 @@
 
 <script>
     // Adicionar Sua Foto quando for Apenas pra você, e ela fica em 1° Primeiro!
-    // os Concluidos deve ficar Separados entre, os antigos que ainda não foi Recebido
-    // e os Pendentes que ainda Falta Receber!
     // Adicionar Login
     // corrigir erro do NaN no Valor
     // adicionar aqueles campos de obrigações como devem vir
-    // o Link deve sumir quando não tiver Nada!
+
     // Várias Imagens
     // Exigência dos Prints
     // comentário em cada Arte
+
+
+    // Novidades 
+        // (Contagem de UND por Box)
+        // Lista de Tags
+        // Separação de Ok e OK
+        // Link Agora Some se n tiver Link
+        // Adicionei sua Foto para Solicitações Particulares
 </script>
