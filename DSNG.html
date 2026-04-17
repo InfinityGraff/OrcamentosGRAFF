@@ -146,7 +146,6 @@
     .UNDD .Mdd input {width: 150px;}             /*GAMBIARRA*/
     .ConfUND :is(input,select,.Drop){width:75px ; margin: 0px;} /*GAMBIARRA*/
     select.vigem{color:#ffffff79 !important}   /*GAMBIARRA*/
-    
 </style>
 
 <style> /*Analsisar a interferência deste CSS*/
@@ -738,15 +737,11 @@
 
 <script> // SupaBASE
     const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
-    
-    const Listagem=(Typ,col)=>ALL[Typ] = Uniq(J[Typ].map(e=>e[col])) // pegar todos itens de uma determinada coluna no Json e botar na const all
 
     function PosGET(){
         const INN = performance.now()
         J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
         TestSenha('Storg',StogeGet('Pass'))
-        Listagem('CLNT','Clnt')
-        //Tratamento()
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
 
@@ -793,12 +788,6 @@
         }
     }
     
-    function PlayRealTime(){
-        return supaBASE.channel('SuBs-CLNT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>{
-            const [crud,nEw,old,Typ] = [e.eventType,e.new,e.old,e.table] ; Supa_RealTime(crud,nEw,Typ,old)}).subscribe()
-    };PlayRealTime()
-
-
     async function AceitarART(U,Id){
         const{error}=await supaBASE.from('ARTE').update({Stts:"Act",Dsng:U}).eq("Id",Id)
         if(!error){alert("Solicitação aceita") ; location.reload()}
@@ -826,8 +815,14 @@
 </script>
 
 <script>
-    // na Solicitação deve escolher formato de arquivo que deve ser enviado
+    // Adicionar Sua Foto quando for Apenas pra você, e ela fica em 1° Primeiro!
+    // os Concluidos deve ficar Separados entre, os antigos que ainda não foi Recebido
+    // e os Pendentes que ainda Falta Receber!
+    // Adicionar Login
+    // corrigir erro do NaN no Valor
+    // adicionar aqueles campos de obrigações como devem vir
+    // o Link deve sumir quando não tiver Nada!
+    // Várias Imagens
+    // Exigência dos Prints
+    // comentário em cada Arte
 </script>
-
-
-
