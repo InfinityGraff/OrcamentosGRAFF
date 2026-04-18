@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/SVGLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+
+<style>
+body{margin:0;display:flex;height:100vh;overflow:hidden}
+#view{flex:1;display:flex;justify-content:center;align-items:center;background:#eee}
+canvas{width:600px!important;height:400px!important;border:1px solid #aaa}
+#ui{width:220px;border-left:1px solid #ccc;overflow:auto;font-size:12px;background:#fff}
+.row{border-bottom:1px solid #ccc;padding:4px}
+</style>
+</head><body>
+
+<input type="file" id="f" accept=".svg" style="position:absolute;z-index:2">
+<div id="view"></div>
+<div id="ui"></div>
+
+<script>
+let s=new THREE.Scene(),
+c=new THREE.PerspectiveCamera(45,600/400,.1,1e3),
+r=new THREE.WebGLRenderer({antialias:1});
+
+view.appendChild(r.domElement);
+r.setSize(600,400);
+c.position.set(0,100,200);
+
+new THREE.OrbitControls(c,r.domElement);
+s.add(new THREE.AmbientLight(0xffffff,.4));
+
+let L=new THREE.DirectionalLight(0xffffff,1);
+L.position.set(100,100,100);s.add(L);
+
+s.add(new THREE.GridHelper(400,40));
+
+let G=new THREE.Group();s.add(G);
+let layers=[],ui=document.getElementById('ui');
+
+// 🔥 CRIA CAMADA (1 PATH = 1 CAMADA)
+function add(shapes){
+ let topo=new THREE.MeshStandardMaterial({color:Math.random()*0xffffff});
+ let lado=new THREE.MeshStandardMaterial({color:topo.color.clone().multiplyScalar(.5)});
+ let group=new THREE.Group(),valid=[];
+
+ shapes.forEach(s=>{
+  let pts=s.getPoints();
+
+  // ❌ invalida se poucos pontos
+  if(!pts || pts.length<3) return;
+
+  // ❌ invalida se tiver NaN / Infinity
+  for(let p of pts){
+   if(!isFinite(p.x)||!isFinite(p.y)) return;
+  }
+
+  // ❌ invalida se área ~0 (shape quebrado)
+  let area=Math.abs(THREE.ShapeUtils.area(pts));
+  if(area<0.0001) return;
+
+  try{
+   s.autoClose=true; // 🔥 força fechamento
+   let geo=new THREE.ExtrudeGeometry(s,{depth:5,bevelEnabled:0});
+
+   // ❌ checa geometria gerada
+   let pos=geo.attributes.position.array;
+   for(let i=0;i<pos.length;i++){
+    if(!isFinite(pos[i])) return;
+   }
+
+   let mesh=new THREE.Mesh(geo,[topo,lado]);
+   group.add(mesh);
+   valid.push(s);
+
+  }catch(e){}
+ });
+
+ if(valid.length){
+  G.add(group);
+  layers.push({shapes:valid,group,topo,lado,depth:5});
+ }
+}
+
+// 🔄 POSIÇÃO Z
+function updateZ(){
+ let z=0;
+ layers.forEach(l=>{
+  l.group.position.z=z;
+  z+=l.depth;
+ });
+}
+
+// 🎛 UI
+function drawUI(){
+ ui.innerHTML='';
+ layers.forEach((l,i)=>{
+  let d=document.createElement('div');d.className='row';
+  d.innerHTML=`Cam ${i}
+  <button>↑</button><button>↓</button><br>
+  <input type=color value="#${l.topo.color.getHexString()}">
+  <select><option>3</option><option selected>5</option><option>10</option><option>20</option></select>`;
+
+  let [up,down,col,sel]=d.children;
+
+  up.onclick=()=>{if(i>0){[layers[i],layers[i-1]]=[layers[i-1],layers[i]];drawUI();updateZ()}};
+  down.onclick=()=>{if(i<layers.length-1){[layers[i],layers[i+1]]=[layers[i+1],layers[i]];drawUI();updateZ()}};
+
+  col.oninput=()=>{
+   l.topo.color.set(col.value);
+   l.lado.color.set(col.value).multiplyScalar(.5);
+  };
+
+  sel.onchange=()=>{
+   let v=+sel.value;
+   l.depth=v;
+
+   l.group.children.forEach((m,i)=>{
+    let s=l.shapes[i];
+    if(!s) return;
+
+    try{
+     let g=new THREE.ExtrudeGeometry(s,{depth:v,bevelEnabled:0});
+     m.geometry.dispose();
+     m.geometry=g;
+    }catch(e){}
+   });
+
+   updateZ();
+  };
+
+  ui.appendChild(d);
+ });
+ updateZ();
+}
+
+// 📥 LOAD SVG
+function loadSVG(txt){
+ G.clear();layers=[];
+
+ let data=new THREE.SVGLoader().parse(txt);
+
+ data.paths.forEach(p=>{
+  let shapes=THREE.SVGLoader.createShapes(p);
+  if(shapes.length) add(shapes);
+ });
+
+ // 📍 CENTRALIZAR
+ let center=new THREE.Vector3();
+ new THREE.Box3().setFromObject(G).getCenter(center);
+ G.position.sub(center);
+
+ drawUI();
+}
+
+// 📂 INPUT
+f.onchange=e=>{
+ let r=new FileReader();
+ r.onload=()=>loadSVG(r.result);
+ r.readAsText(e.target.files[0]);
+};
+
+// 🔥 SVG PADRÃO
+loadSVG(`<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="40"/>
+</svg>`);
+
+// 🔄 LOOP
+!function loop(){requestAnimationFrame(loop);r.render(s,c)}();
+</script>
+
+</body></html>
