@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MacHouse</title>
+    <title>Returns</title>
     <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <!--<link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+        <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>-->
+
+    <link href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="../MyBiblioteca/PreScript.js"></script>
     <link   href="./SB_Crud.css"  rel="stylesheet">
     <link   href="./CssGRAFF.css"  rel="stylesheet">
 
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
     <script src="./SB_Crud.js"  ></script>
+    
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script> // Configuração do SupaBase
+        const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
+        const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
+        const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+    </script>
 </head>
-
-<script> // Configuração do SupaBase
-    const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
-    const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
-    const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
-</script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     const Pry  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-
-    const SVVVG = {
-       "Soli":`<svg viewBox="0 0 598.03 659.63"><path d="M473.98 558.37c-0.03,18.81 -0.03,30.81 0.03,35.99 0.12,10.24 -6.31,14.46 -15.85,14.41 0,0 -35.03,-0.36 -35.03,0.38 0.03,21.14 0.04,33.3 0.02,36.5 -0.04,7.56 -5.17,13.99 -11.48,13.97 -143.15,0 -275.27,0 -396.33,0 -11.52,0 -15.32,-4.99 -15.32,-16.39 0.02,-262.73 0.02,-437.61 -0.01,-524.63 0,-12 3.87,-17.05 15.86,-16.78 0,0 34.96,0.68 34.96,-0.36 0.13,-57.19 -7.55,-50.43 50.38,-50.64 1.83,0 -1.06,-38.68 1.79,-43.68 3.58,-6.28 7.03,-7.14 15.15,-7.14 32.85,0.02 163.18,0.02 390.98,0.01 11.44,0 15.82,4.73 15.82,16.07 -0.03,145.61 -0.03,220.25 0.04,223.94 0.07,4.11 -0.29,6.96 -1.08,8.54 -3.2,6.41 -10.6,9.59 -17.26,6.37 -38.36,-18.52 -84.59,-11.76 -115.8,16.77 -65.44,59.77 -33.67,167.86 53.58,182.25 60.43,9.96 117.85,-35.83 121.86,-96.22 0.12,-1.73 0.47,-11.31 1.45,-13.22 5.89,-11.6 25.34,-10.54 24.56,9.1 -3.11,78.29 -67.34,111.09 -67.34,111.15 -0.04,44 -0.03,68.53 0.03,73.58 0.18,14.05 -2.84,19.65 -17.07,19.48 -0.69,0 -11.81,-0.01 -33.36,-0.02 -0.32,0 -0.57,0.26 -0.57,0.57l0 0zm-383.93 -24.16l223.46 0c16.54,0 16.54,25.67 0,25.67l-223.46 0c-16.54,0 -16.54,-25.67 0,-25.67l0 0zm-0.01 -78.81l223.46 0c16.54,0 16.54,25.66 0,25.66l-223.46 0c-16.54,0 -16.54,-25.66 0,-25.66l0 0zm0.03 -78.93l203.49 0c16.57,0 16.57,25.72 0,25.72l-203.49 0c-16.57,0 -16.57,-25.72 0,-25.72l0 0zm216.2 -65.8c0,7.03 -5.7,12.73 -12.73,12.73l-203.43 0c-16.61,0 -16.61,-25.77 0,-25.77l203.43 0c7.26,0 12.74,5.89 12.73,13.05zm-126.12 10.16c3.85,0.95 -0.03,-1.41 -0.03,-0.03 0,0.02 0.01,0.03 0.03,0.03zm282.67 43.6l0.51 0.05c34.11,-31.61 71.9,-66.64 113.35,-105.1 9.6,-8.9 25.14,1.5 20.49,14.48 -0.6,1.66 -2.76,4.22 -6.47,7.66 -20.93,19.34 -60.05,55.6 -117.36,108.78 -9.29,8.63 -16.76,9.84 -24.26,-1.01l-48.98 -67.15c-8.53,-11.55 5.24,-25.74 16.73,-19.03 4.59,2.68 27.33,35.81 45.98,61.33zm-372.78 -145.58l223.5 0c16.52,0 16.52,25.63 0,25.63l-223.5 0c-16.52,0 -16.52,-25.63 0,-25.63l0 0zm408.99 5.31l0.28 -197.95c0,-0.31 -0.24,-0.55 -0.55,-0.55 -30.71,0 -371.28,-0.2 -371.28,0.27 0,2.21 -0.2,24.88 0.24,24.88 11.89,0.02 120.28,0.03 325.18,0.01 12.59,0 21.09,0.57 21.07,15.5 0,0 -0.31,153.12 0.25,153.17 10.65,1.01 15.77,2.67 24.8,4.67zm-51.2 -147.53l-370.89 0c-0.62,0 -0.72,25.19 0.04,25.19 142.85,0 252.77,-0.01 329.77,-0.01 10.98,0 16.68,4.41 16.4,15.77 0,0 -0.33,106.74 0.29,106.74 0.03,0 0.07,0 0.09,-0.01 8.03,-2.42 16.16,-4.01 24.37,-4.75l0.44 -0.48 0 -141.95c0,-0.28 -0.23,-0.5 -0.51,-0.5l0 0zm-421.92 557.33c30.76,0 371.47,0.24 371.47,-0.31 0,-14.42 0.37,-168.95 -0.3,-169.34 -89.28,-51.2 -88.91,-178.49 0.09,-228.81 0.55,-0.32 0.16,-108 0.01,-108 -30.73,0 -371.51,-0.2 -371.51,0.27 0,41.79 -0.18,506.2 0.24,506.2l0 0zm422.14 -50.97c0.23,0 0.72,-102.09 0.06,-102.21 -2.21,-0.43 -24.98,-5.35 -24.99,-4.6 -0.06,8.99 -0.18,106.81 0.29,106.81l24.63 0zm51.01 -50.87c0.29,0 0.6,-56.4 -0.16,-56.25 -2.25,0.47 -24.94,4.79 -24.94,5.22 -0.03,4.39 -0.12,51.07 0.38,51.07l24.73 -0.04z"/></svg>`
-      ,"Andm":`<svg viewBox="0 0 781.83 782.04"><path d="M151.66 351.77l0 -0.87c-75.57,-44.34 -112.88,-140.09 -116.51,-224.23 -0.08,-2.04 -34.9,6.16 -34.86,-23.64 0,0 -0.7,-81.8 0.75,-86.9 2.66,-9.3 11.07,-15.85 20.99,-15.86 0,0 412.04,-0.9 418.25,0.6 8.48,2.06 14.48,8.88 16.14,17.74 1.41,7.56 -0.11,89.72 -0.13,89.79 -6.47,24.7 -34.13,15.16 -34.28,17.92 -4.99,85.88 -40.15,177.39 -116.32,224.35l0 0.68c19.21,11.47 36.03,25.94 50.47,43.38 1.26,1.5 52.14,-53.08 58.19,-56.08 7.51,-3.71 16.26,-3.29 23.28,1.37 5.55,3.67 23.99,24.9 25.55,24.26 1.62,-0.67 11.69,-4.22 11.69,-5.55 0.01,-15.31 -1.03,-29.51 0.68,-36.07 2.58,-9.88 11.02,-16.32 21.4,-16.47 8.21,-0.11 38.97,-0.14 92.29,-0.07 13.55,0.02 24.05,8.27 24.07,22.62 0.01,5.34 -0.64,30.4 0.63,30.91 1.5,0.61 11.23,5.16 12,4.4 4.37,-4.35 11.41,-11.39 21.12,-21.12 7.27,-7.32 18.42,-8.96 27.43,-3.81 5.89,3.35 35.68,34.69 67.91,66.85 7.16,7.14 10.66,12.46 9.31,22.75 -1.62,12.34 -29.03,31.67 -27.96,34.21 0.62,1.48 4.31,11.64 5.34,11.67 3.38,0.11 31.91,-0.54 36.48,0.78 10.19,2.94 16.12,11.46 16.08,22.09 0,0 0.66,93.93 -0.63,99.12 -2.35,9.52 -10.63,16.41 -20.62,16.58 -10.31,0.18 -20.72,0.2 -31.23,0.08 -1.37,0.01 -5.89,12.09 -5.46,12.54 2.21,2.21 9.04,9.03 20.47,20.45 9.56,9.54 10.24,23.47 0.93,32.78 -33.27,33.31 -55.27,55.34 -66.01,66.08 -10.9,10.88 -24.76,7.89 -35.04,-2.98 -0.19,-0.2 -6.34,-6.35 -18.43,-18.43 -0.57,-0.57 -12.44,4.29 -12.44,5.44 0,0.87 0.01,9.85 0.04,26.96 0.01,11.17 -3.62,20.5 -14.51,24.42 -6.78,2.43 -99.21,1.24 -100.52,1.24 -13.74,0.04 -23.36,-8.71 -23.43,-22.87 -0.04,-8.48 0.59,-30.09 -0.5,-30.54 -1.3,-0.54 -11.47,-5.12 -11.99,-4.62 -9.31,9.28 -20.14,21.81 -26.28,25.3 -7.37,4.19 -16.46,4.09 -23.54,-0.87 -6.02,-4.22 -43.35,-42.77 -51.05,-50.52 -0.75,-0.76 -1.81,-1.21 -2.92,-1.22 -82.18,0.05 -194.29,0.05 -336.33,0.01 -9.75,-0.01 -18.76,-6.85 -21.14,-16.22 -2.07,-8.18 -0.4,-91.85 -0.21,-92.69 5.22,-23.15 34.45,-15.38 34.57,-17.46 5.03,-80.89 42.84,-176.33 116.28,-218.29zm492.7 192.28c0,55.37 -44.9,100.26 -100.26,100.26 -55.37,0 -100.27,-44.89 -100.27,-100.26 0,-55.37 44.9,-100.27 100.27,-100.27 55.36,0 100.26,44.9 100.26,100.27zm-43.41 -0.16c0,-31.4 -25.46,-56.87 -56.86,-56.87 -31.39,0 -56.86,25.47 -56.86,56.86 0,31.4 25.47,56.86 56.86,56.86 31.4,0 56.86,-25.46 56.86,-56.86l0 0.01zm-187.45 -499.81c0,-0.29 -0.23,-0.52 -0.52,-0.52l-368.87 0c-0.29,0 -0.52,0.23 -0.52,0.52l0 37.97c0,0.28 0.23,0.51 0.52,0.51l368.87 0c0.29,0 0.52,-0.23 0.52,-0.51l0 -37.97zm-184.94 285.02c48.79,0 87.92,-33.87 112.33,-74.02 23.28,-38.3 35.38,-84.18 37.54,-128.74 0.02,-0.34 -299.79,-0.8 -299.73,-0.01 2.15,44.57 14.25,90.44 37.53,128.74 24.41,40.16 63.55,74.03 112.32,74.03zm177.99 352.27c10.89,10.9 17.91,18.7 18.74,17.88 14.27,-14.2 25.31,-30.61 43.71,-20.92 34.45,18.14 49.76,10.73 49.15,40.69 0,0 -1.14,19.75 0.78,19.75l50.18 -0.1c1.66,0 -0.42,-27.18 2.25,-33.66 6.14,-14.94 22.63,-13.09 45.95,-25.67 19.79,-10.68 29.23,3.88 45.2,20l1.05 0 35.57 -35.57c1.16,-1.16 -13.58,-14.73 -13.58,-14.73 -9.83,-9.68 -13.32,-19.57 -6.36,-31.87 17.38,-30.73 7.5,-47.63 40.65,-47.34 7.33,0.06 18.89,0.88 18.89,-0.64l-0.1 -50.48c0,-1.14 -27.86,0.27 -33.41,-2.03 -15.73,-6.51 -13.12,-22.15 -24.28,-42.87 -12.28,-22.78 -1.9,-27.98 18.57,-48.43 0.94,-0.94 -7.65,-8.63 -17.83,-18.82 -10.18,-10.2 -17.87,-18.8 -18.8,-17.86 -20.56,20.55 -25.74,30.79 -48.46,18.52 -26.72,-14.45 -45.39,-6.43 -44.34,-40.64 0,0 0.81,-17.1 -0.5,-17.1l-50.47 -0.17c-1.76,0 0.43,28.13 -2.18,33.87 -7.23,15.88 -23.79,13.15 -45.87,25.62 -19.56,11.05 -30.07,-4.42 -45.51,-19.99l-1.07 0c-3.46,3.46 -35.83,34.98 -35.83,36.05 0,0.66 17.71,18.27 17.92,18.47 7.04,7.38 7.62,17.35 2.25,27.3 -15.54,28.72 -9.58,47.86 -38.29,47.47 0,0 -21.09,-0.86 -21.1,0.66l-0.16 50.18c0,2.23 27.11,-0.5 33.72,2.33 7.93,3.39 11.51,8.97 14.07,17.84 9.14,31.75 27.93,38.28 3.18,61.93 0,0 -12.53,11.34 -11.58,12.36 0.74,0.8 6.69,6.8 17.88,18zm-326.73 -110.93l225.57 0c2.09,-0.02 0.53,-73.1 1.02,-76.22 1.49,-9.45 7.18,-16.22 16.07,-18.7 2.61,-0.73 36.87,-0.43 37.17,-1.17 9.45,-22.87 3.09,-4.3 -12.15,-17.53 -5.28,-4.58 -17.29,-29.89 -41.47,-51.65 -29.15,-26.23 -68.22,-39.22 -106.82,-27.61 -77.78,23.38 -114.58,118.05 -120.07,192.16l0.67 0.72zm279.91 43.17c-0.29,-0.71 -289.14,0.25 -315.59,0.24 -0.31,0 -0.56,0.25 -0.56,0.56l0.06 37.8c0,0.31 0.26,0.56 0.56,0.56 25.1,0 293.73,0.57 294.44,-0.17 2.46,-2.56 26.21,-26.73 25.87,-27.53l-4.79 -11.47z"/></svg>`
-      ,"Hist":`<svg viewBox="0 0 203.18 203.31"><path d="M-0 35.58c0,-4.78 1.58,-8.91 6.23,-10.91 6.31,-2.72 13.62,1.09 14.56,8.07 0.26,1.94 0.36,3.79 0.36,6.03l0.2 0.07c16.93,-21.42 42.07,-35.51 69.48,-38.42 4.23,-0.45 15.4,-0.54 18.76,-0.25 37.53,3.22 69.9,26.19 85.05,60.7 14.25,32.47 10.45,70.05 -9.86,99.05 -10.54,15.05 -24.36,26.5 -41.45,34.35 -11.51,5.28 -20.74,-9.57 -11.34,-17.49 0.67,-0.56 1.88,-1.24 3.64,-2.06 18.47,-8.49 33.02,-24.14 40.62,-42.76 10.24,-25.08 6.88,-53.93 -8.14,-75.98 -7.64,-11.22 -19.96,-21.81 -31.43,-26.99 -6.14,-2.77 -11.83,-5.04 -16.7,-5.91 -1.99,-0.36 -3.88,-0.96 -6.14,-1.23 -5.54,-0.66 -11.2,-1.37 -16.6,-0.84 -1.81,0.18 -3.91,0.2 -5.95,0.5 -16.86,2.48 -30.69,8.34 -43.35,19.69 -4.83,4.33 -5.26,5.11 -9,9.33l0.13 0.11c14.95,-2.41 17.66,19.13 3.05,20.79 -0.91,0.1 -10.2,1.24 -27.88,3.43 -7.16,0.89 -12.2,-4.08 -12.62,-11.04 -0.5,-8.26 -0.95,-16.42 -1.35,-24.47 -0.06,-1.26 -0.15,-2.51 -0.27,-3.76zm100.92 146.9c3.29,0.01 6.47,-0.29 9.66,-0.5 5.86,-0.38 11.04,4.06 11.21,10 0.15,5.3 -3.26,9.7 -8.75,10.77 -3.94,0.77 -20.41,0.71 -24.35,-0.07 -5.48,-1.09 -8.87,-5.52 -8.69,-10.82 0.2,-5.94 5.41,-10.36 11.27,-9.94 3.18,0.23 6.37,0.55 9.66,0.55zm-51.15 -18.86c1.97,1.67 4.32,3.45 7.04,5.34 10.79,7.48 2.51,22.78 -9.06,18.81 -4.42,-1.51 -19.26,-14.1 -21.48,-18.21 -5.81,-10.77 7.93,-21.43 17.07,-12.02 2.31,2.38 4.45,4.4 6.42,6.07zm-49.77 -54.69c0,-15.1 19.75,-14.97 20.97,-1.54 0.37,4.12 0.96,8.01 1.77,11.68 1.17,5.32 3.6,9.69 0.65,14.66 -4.51,7.61 -16.22,6.89 -19.14,-2.52 -2.65,-8.51 -3.15,-13.72 -4.25,-22.29zm104.53 -1.51c0,0.14 0.08,0.26 0.21,0.32 14.46,6.36 23.9,10.51 28.31,12.45 13.59,5.98 4.77,24.84 -7.93,19.41 -1.99,-0.85 -13.55,-5.92 -34.67,-15.21 -5.75,-2.53 -7.01,-6.44 -6.95,-12.09 0.03,-3.34 0.04,-19.26 0.01,-47.75 -0.01,-15.07 21.06,-15.18 21.03,0 -0.02,14.43 -0.03,28.72 -0.01,42.86z"/></svg>`
-      ,"Mdds":`<svg viewBox="0 0 83.46 83.46"><path d="M18.42 68.63l1.14 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 5.05 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 5.05 0 0 2.77c0,2.81 4.89,2.81 4.89,0l0 -2.77 4.89 0 0 9.94 -70.09 0 4.85 -5.1c0.61,-0.63 4.62,-4.85 5.1,-4.85zm24.45 -24.45l21.03 0 0 9.78 -30.97 0 7.29 -7.38c0.45,-0.45 2.1,-2.4 2.65,-2.4zm25.96 6.23l-0.04 -6.23 6.19 0 -6.15 6.23zm-39.49 -0.04l0 -30.64 9.78 0 0 20.7c0,0.56 -6.35,6.59 -7.21,7.46 -0.69,0.69 -1.85,2.01 -2.57,2.49zm39.45 -31.79c0,-0.56 6.41,-6.67 7.3,-7.54 0.88,-0.87 1.48,-1.89 2.48,-2.57l0 30.81 -9.78 0 0 -20.7zm-24.78 1.14l19.89 0 0 19.56 -19.89 0 0 -19.56zm-4.89 -11.25l0 6.36 -6.19 0c0.53,-0.79 2.26,-2.35 3.06,-3.14 0.61,-0.61 0.94,-0.93 1.48,-1.61 0.41,-0.51 1.14,-1.26 1.65,-1.61zm25.92 6.36l-21.03 0 0 -9.94 30.97 0 -7.29 7.54c-0.45,0.45 -2.1,2.4 -2.65,2.4zm-40.59 2.12l0 39.77c0,1 1.12,2.12 2.12,2.12l40.1 0c1.18,0 3.64,-2.91 4.52,-3.79l10.51 -10.51c0.6,-0.6 1.75,-1.44 1.75,-2.49l0 -39.94c0,-1 -1.12,-2.12 -2.12,-2.12l-40.1 0c-1.03,0 -1.82,1.09 -2.4,1.67l-7.42 7.42c-1.78,2.03 -3.31,3.47 -5.22,5.38 -0.6,0.6 -1.75,1.44 -1.75,2.49zm-14.67 -4.89c0,3.28 2.42,2.77 4.89,2.77l0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0 0 4.89 -2.77 0c-2.81,0 -2.81,4.89 0,4.89l2.77 0c0,2.04 0.04,1.35 -2.32,3.71 -0.88,0.88 -1.64,1.64 -2.53,2.53l-4.93 5.01 0 -70.09 9.78 0 0 5.05 -2.77 0c-1,0 -2.12,1.12 -2.12,2.12zm-9.78 -9.94l0 79.22c0,1 1.12,2.12 2.12,2.12l79.22 0c1,0 2.12,-1.12 2.12,-2.12l0 -15.49c0,-1 -1.12,-2.12 -2.12,-2.12l-61.78 0 0 -61.62c0,-1 -1.12,-2.12 -2.12,-2.12l-15.32 0c-1,0 -2.12,1.12 -2.12,2.12z"/></svg>`
-    }
 
     const Cgo  = { // Cargo
         Admn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
@@ -45,7 +42,7 @@
         Clnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']}
     }
     const USERlg = {}
-    const Atual    = {Pag:'HOME'}
+    const Atual    = {Pag:'PRFL'}
     let U = {} ; let UU={Cgo:""} ; let USUARIO=''
     let UCgo = {}
 
@@ -77,47 +74,21 @@
     function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
 </script>
 
-<style> /*MacHouse*/
-    /*Fontes______________________________________________________________ */
-    @font-face {font-family:'Tommy_Regular'; src:url('FontGRAFF/MADE TOMMY Regular_PERSONAL USE.otf') format('opentype')}
-    @font-face {font-family:'Tommy_Ligth'  ; src:url('FontGRAFF/MADE TOMMY Thin_PERSONAL USE.otf')    format('opentype')}
-    @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
-    @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
+<style> /*O CSS Interno*/
+    h2,h3       {font-size: 25px}
+    h3 svg      {height:25px;width:auto}
+    .SvgGambiarr{height:20px;width:20px; fill:#ffffff}
+    button{font-size: 14px;}
 
-    h3 svg{height: 25px;width: auto}
-
-    input,select,textarea{height:36px;display:block;padding:8px;font-size:14px;border:1px solid #ced4da;border-radius:4px;outline:none;transition:0.2s}
-    input:focus,select:focus,textarea:focus{border-color:#ffd000;box-shadow:0 0 0 2px #ffc40340}
-
-    .Dark *::-webkit-scrollbar             {width: 10px;height:10px}
-    .Dark *::-webkit-scrollbar-track       {background: #0000006a}
-    .Dark *::-webkit-scrollbar-thumb       {background: #5d5d5da5; border-radius:500px}
-    .Dark *::-webkit-scrollbar-thumb:hover {background: #555555}
-
-    .f-yelw {fill:#ffdb6f; color:#ffdb6f}
-    .f-gren {fill:#8dff57; color:#8dff57}
-    .f-roxo {fill:#ae8ffd; color:#ae8ffd}
-    .f-azul {fill:#7dadff; color:#7dadff}
-    .f-redd {fill:#ff8080; color:#ff8080}
-    .f-Lrnj {fill:#fa7d09; color:#fa7d09}
-    .f-Yell {fill:#ffd000; color:#ffd000}
-
-    .SvgGambiarr{height: 20px;width: 20px;fill: white;}
-
-    .FModal{position:fixed;top:0px; left:0px;width:100%;height:100%;z-index:999;background:#00000046;backdrop-filter:blur(10px);animation:FModal 0.5s}
-    .FModal > *{padding:15px; box-shadow: 10px 10px 20px black;animation: modal 0.5s}
-</style>
-
-<style> /*O CSS do Solicit*/
-    #List_Desng {height: 400px;}
-    #DivFormArt {height: 625px;}
-    #DivFormArt .LA{width:68%}
-    #DivFormArt .LB{width:28%}
+    #Form_Arte  {height:625px   } #Form_Arte .LA{width:68%} #Form_Arte .LB{width:28%}
+    #List_Dsng  {overflow:scroll} #List_Dsng .LA{width:30%} #List_Dsng .LB{width:70%}
+    #Todo_Dsng  {overflow:scroll} #Todo_Dsng .LA{width:30%} #Todo_Dsng .LB{width:70%}
+    
+    #UNDDD         {height:440px;overflow:auto}
     #FormArt>*     {width:100%}
+    .idTop > *     {width:15% }
     .Infos img     {width:26px;height:26px}
-    #UNDDD         {overflow:auto;height:440px}
-    .UNDD,.UNDBTN  {width: 360px;/*height: 360px*/;flex: 0 0 auto;min-width: 360px;min-height: 360px ; gap: 5px;}
-    .idTop > *     {width: 15%}
+    .UNDD,.UNDBTN  {width:360px;/*height: 360px*/;flex: 0 0 auto;min-width: 360px;min-height: 360px ; gap: 5px;}
     
     .s{width:500px;height:500px ; background:#eee ; box-shadow:0 0 20px #000 ; overflow:hidden}
     .e{position:absolute;cursor:move}
@@ -129,42 +100,34 @@
     .idTop.Img > :nth-child(-n+3){display:none}
     .c{color: #000}
 
+    .St        {width:12px;height:12px;border-radius:255px}
+    .St.On     {background:#4caf50} .St.Of{background:#575757}
+    .Perf      {width:90px;height:90px;border-radius:255px}
 
-    #List_Desng{overflow: auto;}
-    #List_Desng > .Boxy{height: 260px ; width: 100%}
-    #List_Desng .LA{width:30%} #List_Desng .LB{width:70%}
-    #List_Desng .LA .Head p{font-size: 20px}
-    .St{width:12px;height:12px;border-radius:255px}
-    .St.On{background:#4caf50} .St.Of{background:#575757}
-    .Perf{width:90px;height:90px;border-radius:255px}
-    .Prtf{width: 100%;overflow:auto}
-    .Prtf a{width:120px;gap:8px;padding:8px;margin-bottom:8px}
-    .Prtf a img{width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
-    .Tags p{padding:5px 10px;background:#333;border-radius:12px;font-size:13px}
+
+
+    .Tags p    {padding:5px 10px;border-radius:12px}
 
     /*GAMBIARRA*/
     .UNDD .Mdd input {width: 150px;}             /*GAMBIARRA*/
     .ConfUND :is(input,select,.Drop){width:75px ; margin: 0px;} /*GAMBIARRA*/
     select.vigem{color:#ffffff79 !important}   /*GAMBIARRA*/
-</style>
 
-<style> /*Analsisar a interferência deste CSS*/
-    #Pag_PRFL   {padding: 40px;}
     .RS         {gap: 2px}
     .rs         {font-size: 25px;color:#8dff57}
     i.rs        {font-size: 20px;font-style: normal}
-    
-    h2,h3       {font-size: 25px}
-
     .Box        {transition:all 0.1s ease-in-out ;cursor: pointer}
     .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05)}
-
     #Perf .Box a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
-    .Pic        {width:120px;border-radius:50%}
-    .Art .LILI  {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
-    .Fotoz      {width: 20px; height: auto;}
+    .Pic        {width:120px;border-radius:50%;border: solid 3px #ffc400}
+    
 
+    .Resumo .LILI     {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#ffffff}
+    .Resumo .Pic.Abslt{top: 0px;right: 0px;width: 25px;}
+    .Art {overflow-x: scroll; padding: 20px 0px;}
+
+    .Fotoz      {width: 20px; height: auto;}
     .Svg-P svg  {width: 15px; height: 15px;}
     .Svg-M svg  {width: 30px; height: 30px;}
     .Svg-G svg  {width: 40px; height: 40px;}
@@ -176,18 +139,9 @@
     #Perf-Trfs td:first-child    {text-align:center; width:50px; }
 
     p.Conty{top: 10px; right: 10px; font-size: 15px;}
-
-    .Art{overflow-x: scroll; padding: 20px 0px;}
-
-    .Art .Pic.Abslt{top: 0px;right: 0px;width: 25px;}
-
     .LILI{height: 200px;width: auto;}
-
-    #Pag_HOME{padding: 20px;}
-
     .INFO img     {height: 450px;width: auto;}
     .INFO textarea{height: 500px;width: 500px;}
-
     .INFO a img   {height: 18px;width: auto;}
     textarea {text-align: left;white-space: pre-wrap;} /* mantém quebras de linha */
     
@@ -203,8 +157,6 @@
     .FModal td:nth-child(5){color:#00d4ff}
     .FModal td:nth-child(8){display: none}
     .FModal td:nth-child(9){display: none}
-    
-    button{font-size: 14px;}
 </style>
 
 <body class="FEXTA Dark">
@@ -368,19 +320,19 @@
     
     <div id="PAGES"> <!--isso era pra ser main-->
 
-        <div id="Pag_HOME">
+        <div id="Pag_PRFL" class="p20">
             <div class="w100 Cl Gap">
-                <div id="Perf-Perf" class="Boxy Ev Gap w100"></div>
-                <div id="Perf-Soli" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Soli'])"></a> Solicitações   </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
-                <div id="Perf-Andm" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Andm'])"></a> Andamento...   </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
-                <div id="Perf-Cncl" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Falta Pagamento</h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
-                <div id="Perf-Hist" class="Boxy Cl Gap w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVVVG['Hist'])"></a> Histórico      </h3><p class="Conty Abslt"></p><div class="Start w100 Gap Art"></div></div>
+                <div id="Perf-Perf" class="Box1 Ev w100"></div>
+                <div id="Perf-Soli" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Soli'])"></a> Solicitações   </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
+                <div id="Perf-Andm" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Andm'])"></a> Andamento...   </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
+                <div id="Perf-Cncl" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Hist'])"></a> Falta Pagamento</h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
+                <div id="Perf-Hist" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Hist'])"></a> Histórico      </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
             </div>
         </div>
 
-        <div id="Pag_ARTE" class="Cl">
+        <div id="Pag_ARTE" class="Cl"> <!--Fazer uma página Básica pra Solicitar Arte, mais Simples que aquela que tem!-->
                 <h1>Solicitação de Arte</h1>
-                <div id="DivFormArt" class="w100 Ct Gap">
+                <div id="Form_Arte" class="w100 Ct Gap">
                     <div id="FormArt" class="LA Cl Gap h100" oninput="InnResult(Calc(this))">
                         <div class="Ct Boxy">
                             <div             ><label>Serviço     </label><select id="ART_Serv" name="0" data-Obj="Serv" data-Nv="1" onload="load_Opts(this,DB.Serv)" onchange="$$('#ART_Tipo'                    ).forEach(e=>Rmv_N(Pai(e)))"></select></div>
@@ -400,7 +352,7 @@
                                     <div><label>Destino    </label><select class="Dest"  name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
                                     <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,DB.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
                                     <div><label>Fundo      </label><input  class="Fundo" name="4" data-Nv="2" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
-                                    <div><label>Referências</label><div class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+                                    <div><label>Referências</label><div    class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
                                 </div>
 
                                 <div class="Box topbar Abslt none">
@@ -418,7 +370,7 @@
                                 </div>
 
                                 <div class="Mdd Ct" >
-                                    <div class="SvgGambiarr Ct" onload="Inn(this,SVVVG['Mdds']+'Medidas')" onclick="Rmv_N($$('.none',Pai(this)));Add_N(this)"></div>
+                                    <div class="SvgGambiarr Ct" onload="Inn(this,SVG['Mdds']+'Medidas')" onclick="Rmv_N($$('.none',Pai(this)));Add_N(this)"></div>
                                     <div class="none"><label>Largura</label><input name="4" data-Nv="2" class="Lag" placeholder="Largura"></div>
                                     <div class="none"><label>Altura </label><input name="4" data-Nv="2" class="Alt" placeholder="Altura" ></div>
                                 </div>
@@ -442,7 +394,7 @@
                     <div class="Cl LB Boxy h100 GAP">
                         <div id="Resultss" class="w100 box Cl"></div>
                         <div   class="GAMBBI box w100 none Ct"><label>Prazo</label><div id="ART_Prazo" onload="Inn(this,Tm_DataNatora())"></div></div>
-                        <aside class="GAMBBI Cl Gap w100 none" id="List_Desng"></aside>
+                        <aside class="GAMBBI Cl Gap w100 none" id="List_Dsng"></aside>
                         <div   class="GAMBBI box w100 none Ct">
                             <button onclick="Ger_SOliArt('')">Solicitar para Todos</button>
                             <button class="none" onclick="SavePDF($('.s',Avo(this)))">PDF</button>
@@ -451,12 +403,12 @@
                 </div>
         </div>
 
-        <div id="Pag_BBTC">
-
+        <div id="Pag_BBTC" class="p20">
+            <div id="Todo_Dsng" class="Cl Gap"></div>
         </div>
         
         <div id="Pag_MPAG">
-            <h1>MPAG</h1>
+
         </div>
 
         <div id="Pag_CONF">
@@ -466,17 +418,42 @@
     </div>
 </body>
 
-
 <script> // Página do Designer
     const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
-    const Sldo=U=>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`) // Carregar tabela do Saldo
+    const Sldo=U=>{
+        const Cmplt = U.Nome
+        LOG(Cmplt)
+        MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`)} // Carregar tabela do Saldo
 
-    const Tm_Resumo=(U,E,UU)=>`${E.map(e=>`
-        <div class="gap Cl Bt Hov Boxy Rltv" onclick="MODAL(Tm_Exib('${U}','${e.Id}',event))">
-            ${e.Dsng==UU.Nome ? `<img class="Pic Abslt" src="${UU.Foto}">` : ''}
+    const MediaRank=(Arts,Tags)=>{
+       return Arts.length + Tags.length // Quantidade de Arte e Quantidade de tags
+        // Critérios de Rankeada
+            // Complexidade da Arte
+            // Tempo de Aceitação
+            // Tempo de Entrega (Entrega no Prazo) Calculada pelo Prazo
+    }
+
+    const ListaTags=(Obj)=>{
+        const Lis1 = Uniq(Obj.map(e=>e.Tema).filter(Boolean))
+        const Lis2 = Uniq(Obj.map(e=>e.Tipo).filter(Boolean))
+        return [Lis1,Lis2]
+        
+    }
+
+    const Tm_Tags=(Obj)=>{
+        const COLOR = {Gray:'#4b4b4b',Yellow:'#bb8c00',Purple:'#C77DFF'}
+        return `<div class="Tags Ct gap w100" style="overflow: hidden">
+            ${Obj[0].map(t=>`<p style="background:${COLOR['Gray'  ]}">${t}</p>`).join("")}
+            ${Obj[1].map(t=>`<p style="background:${COLOR['Yellow']}">${t}</p>`).join("")}
+            </div>`
+    }
+
+    const Tm_Resumo=(E,U,Mod)=>`${E.map(e=>`
+        <div class="Resumo gap Cl Bt HOV Box2 Rltv" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event))">
+            ${e.Dsng==U.Nome ? `<img class="Pic Abslt" src="${U.Foto}">` : ''}
             <p>${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
-            <p>${e.Tipo}</p><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
-            <p>${Tm_RS2(e.Valr)}</p>
+            <p>${e.Tipo}</p><div class="Cl Start2 ${Mod=='P'?'NONE':''}"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
+            <div class="${Mod=='P'?'NONE':''}">${Tm_RS2(e.Valr)}</div>
     </div>`).join("")}`
 
     const Tm_Exib=(U,ID,ev)=>{
@@ -511,52 +488,59 @@
             else if(o.Dsng==u && o.Stts=='Ok')            __a.push(o) // OK1
             else if(o.Dsng==u && o.Stts=='OK')            __A.push(o) // OK2
         })
-        const Tags = Uniq(__U.map(e=>e.Tema).filter(Boolean))
 
         Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
                 <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
                     ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
                 </div>
-                <div class="Ct" style="width:300px">
-                    <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
-                </div>
+                <div class="Ct" style="width:300px">${Tm_Tags(ListaTags(__U))}</div>
                 <div class="Ct Gap">
-                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${__A.length         }</h3></div>
-                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${__D.length         }</h3></div>
-                    <div class="Boxy Cl Box" onclick="Sldo('${u}'       )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__a,'Valr'))}</div>
+                    <div class="Box2 HOV Cl" onclick="View('${u}','Okay')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${__A.length         }</h3></div>
+                    <div class="Box2 HOV Cl" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${__D.length         }</h3></div>
+                    <div class="Box2 HOV Cl" onclick="Sldo('${u}'       )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__a,'Valr'))}</div>
                 </div>`)
 
-        Inn($('#Perf-Soli p.Conty'),`${__S.length} UND`) ; Inn($('#Perf-Soli .Art'),Tm_Resumo(u,__S,U))
-        Inn($('#Perf-Andm p.Conty'),`${__M.length} UND`) ; Inn($('#Perf-Andm .Art'),Tm_Resumo(u,__M,U))
-        Inn($('#Perf-Cncl p.Conty'),`${__a.length} UND`) ; Inn($('#Perf-Cncl .Art'),Tm_Resumo(u,__a,U))
-        Inn($('#Perf-Hist p.Conty'),`${__A.length} UND`) ; Inn($('#Perf-Hist .Art'),Tm_Resumo(u,__A,U))
+        Inn($('#Perf-Soli p.Conty'),`${__S.length} UND`) ; Inn($('#Perf-Soli .Art'),Tm_Resumo(__S,U))
+        Inn($('#Perf-Andm p.Conty'),`${__M.length} UND`) ; Inn($('#Perf-Andm .Art'),Tm_Resumo(__M,U))
+        Inn($('#Perf-Cncl p.Conty'),`${__a.length} UND`) ; Inn($('#Perf-Cncl .Art'),Tm_Resumo(__a,U))
+        Inn($('#Perf-Hist p.Conty'),`${__A.length} UND`) ; Inn($('#Perf-Hist .Art'),Tm_Resumo(__A,U))
     }
 
-    function Load_Page(DSG,ART){
-        Inn($("#List_Desng"),J['USER'].map(d=>{
-            if(d.Nome=='Login'){return}
-            const Arts = J['ARTE'].reverse().filter(a=>a.Dsng==d.Nome && (a.Stts=='Ok'||a.Stts=='OK'))
-            const Tags = Uniq(Arts.map(e=>e.Tema))
-            const Rank = Arts.length + Tags.length // Quantidade de Arte e Quantidade de Tags
-            // Critérios de Rankeada
-            // Tempo de Aceitação
-            // Tempo de Entrega (Entrega no Prazo) Calculada pelo Prazo
-            // Complexidade da Arte
+    function Load_Page(div,Mod){
+        const validUser=d=>d.Nome!='Login' && d.cgo!='Atnd'
+        const isOk=s=>s=='Ok'||s=='OK'
+        
+        const mapArts = {} // Agrupa ARTE por designer (1 loop só)
+        J['ARTE'].forEach(a=>{if(!isOk(a.Stts)) return;(mapArts[a.Dsng]??=[]).push(a)})
 
-            return `<div class="Boxy CT">
-                <div class="LA h100 Start2 gap">
-                    <div class="Head Ct gap"><p>${Rank}° - ${d.Nome}</p><a class="St ${d.On?'On':'Of'}"></a></div>
-                    <img class="Perf" src="./Img/Perfil_${d.Nome}.webp">
-                    <div class="Cl Start2"><p>${d.Cgo}</p>
-                        <button onclick="Ger_SOliArt('${d.Nome}')">Solicitar</button>
+        const USERS = J['USER'].filter(validUser).map(d=>{
+            const Arts = (mapArts[d.Nome]||[]).slice().reverse()
+            const Tags = ListaTags(Arts)
+            const Rank = MediaRank(Arts,Tags)
+            return {...d,Arts,Tags,Rank}
+        }).sort((a,b)=>b.Rank - a.Rank)
+
+        Inn(div, USERS.map(u=>`
+            <div class="Boxy CT w100">
+                <div class="LA Ct h100 gap">
+                    <div class="Start2">
+                    <div class="Head Ct gap"><p>${u.Rank}° - ${u.Nome}</p><a class="St ${u.On?'On':'Of'}"></a></div>
+                    <img class="Perf" src="./Img/Perfil_${u.Nome}.webp">
+                    <div class="Cl Start2"><p>${u.Cgo}</p><button onclick="Ger_SOliArt('${u.Nome}')">Solicitar</button></div>
+                    </div>
+                    <div>
+                    <p>Saldo Total</p>${Tm_RS2(SOMA_Obj(u.Arts,'Valr'))}
+                    <p>${u.Arts.length} Artes</p>
                     </div>
                 </div>
                 <div class="LB h100 Cl Gap Start2">
-                    <div class="Prtf CT Gap">${Arts.map(a=>`<a class="Cl box"><img src="${BASE_URL}Img/${a.Img}?v=${Date.now()}"><p>${a.Nome}</p></a>`).join("")}</div>
-                    <div class="Tags Ct gap">${Tags.map(t=>`<p>${t}</p>`).join("")}</div>
+                    <div class="CT w100 Gap Art">${Tm_Resumo(u.Arts,u,Mod)}</div>
+                    ${Tm_Tags(u.Tags)}
                 </div>
-            </div>`}).join(''))
+            </div>
+        `).join(''))
     }
+
 </script>
 
 <div> <!--Página Solicit-->
@@ -738,15 +722,7 @@
 </div>
 
 <script> // SupaBASE
-    const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
 
-    function PosGET(){
-        const INN = performance.now()
-        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
-        TestSenha('Storg',StogeGet('Pass'))
-        Load_Page()
-        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
-    }
 
     function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
         return
@@ -806,7 +782,19 @@
 
 <script>// Iniciação 
     Onloads('body')
+    
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
 
+    function PosGET(){
+        const INN = performance.now()
+        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
+        TestSenha('Storg',StogeGet('Pass'))
+        Load_Page($("#List_Dsng"),'P')
+        Load_Page($('#Todo_Dsng'),'G')
+        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
+    }
+
+    // botar isso no PreScript
     document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
         document.addEventListener('keydown',function(event){
             if(event.key==='Escape'){
@@ -817,20 +805,24 @@
 </script>
 
 <script>
-    // Adicionar Sua Foto quando for Apenas pra você, e ela fica em 1° Primeiro!
-    // Adicionar Login
     // corrigir erro do NaN no Valor
-    // adicionar aqueles campos de obrigações como devem vir
-
-    // Várias Imagens
-    // Exigência dos Prints
-    // comentário em cada Arte
-
+    // Novidades do BANCO de DADOS
+        // Adicionar Login
+        // Várias Imagens & Exigência dos Prints
+        // Importar Arquivos
+        // comentário em cada Arte
+        // adicionar aqueles campos de obrigações como devem vir
 
     // Novidades 
-        // (Contagem de UND por Box)
-        // Lista de Tags
-        // Separação de Ok e OK
-        // Link Agora Some se n tiver Link
-        // Adicionei sua Foto para Solicitações Particulares
+        // ✅ Melhorei o CSS
+        // ✅ (Contagem de artes por cada Box de Status)
+        // ✅ Lista de Tags Personalizadas
+        // ✅ Separação de Ok e OK
+        // ✅ Link Agora Some se n tiver Link
+        // ✅ Adicionei sua Foto para Solicitações Particulares
+        // ✅ Rankeada dos Designers
+        // ✅ Página pra ver todos Designers (tem que ter Gráfico)
+        // ✅ Pagamento (Modal) e ver mais, em Tabela Maior!
+
+
 </script>

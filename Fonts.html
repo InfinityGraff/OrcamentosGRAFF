@@ -71,10 +71,7 @@
     const SelCor=(e,c)=>{cor=c;DTV($('.Cor.Atv' )) ; ATV(e)}            // Igual a essa debaxo
     const Next  =   n =>{      DTV($('.Step.Atv')) ; ATV($(`#S${n}`))}  // Igual a essa decima
 
-    const SVVVG = {
-        'Set>':`<svg viewBox="0 0 0.36 0.56"><path d="M0 0.48c0.02,0.02 0.06,0.07 0.08,0.08l0.28 -0.28 -0.28 -0.28 -0.08 0.08 0.2 0.2 -0.2 0.2z"/></svg>`,
-        'Set<':`<svg viewBox="0 0 0.36 0.56"><path d="M0.35 0.48c-0.02,0.02 -0.06,0.07 -0.08,0.08l-0.28 -0.28 0.28 -0.28 0.08 0.08 -0.2 0.2 0.2 0.2z"/></svg>`
-    }
+
 </script>
 
 <body class="Infinity Lite Cl">
@@ -93,7 +90,7 @@
             <label class="Nomd2">Digite o nome que Deseja!</label>
             <input id="txt" placeholder="Texto" onkeydown="KeyEntr(()=>{Next(2);Foco('#lar')})">
             <div class="w100 Bt End">
-                <button class="Nomd2" onclick="Next(2);Foco('#lar')" onload="Inn(this,'Próximo'+SVVVG['Set>'])"></button>
+                <button class="Nomd2" onclick="Next(2);Foco('#lar')" onload="Inn(this,'Próximo'+SVG['Set>'])"></button>
             </div>
         </div>
 
@@ -103,8 +100,8 @@
             <input id="lar" placeholder="Largura" oninput="Mask.Num(this)" onkeydown="KeyEntr(()=>{Vll('#alt')==''||Vll('#alt')=='0,00'?Foco('#alt'):Next(3)})">
             <input id="alt" placeholder="Altura"  oninput="Mask.Num(this)" onkeydown="KeyEntr(()=>{Vll('#lar')==''||Vll('#lar')=='0,00'?Foco('#lar'):Next(3)})">
             <div class="w100 Bt">
-                <button class="Nomd2" onclick="Next(1);Foco('#txt')" onload="Inn(this,SVVVG['Set<']+'Voltar')" ></button>
-                <button class="Nomd2" onclick="Next(3)"              onload="Inn(this,'Próximo'+SVVVG['Set>'])"></button>
+                <button class="Nomd2" onclick="Next(1);Foco('#txt')" onload="Inn(this,SVG['Set<']+'Voltar')" ></button>
+                <button class="Nomd2" onclick="Next(3)"              onload="Inn(this,'Próximo'+SVG['Set>'])"></button>
             </div>
         </div>
 
@@ -113,7 +110,7 @@
             <label class="Nomd2">Qual cor você Deseja?</label>
             <div id="Cores" onload="Inn(this,StokCor())"></div>
             <div class="w100 Bt">
-                <button class="Nomd2" onclick="Next(2)" onload="Inn(this,SVVVG['Set<']+'Voltar')"></button>
+                <button class="Nomd2" onclick="Next(2)" onload="Inn(this,SVG['Set<']+'Voltar')"></button>
                 <button               onclick="Rodar()">Rodar</button>
             </div>
         </div>

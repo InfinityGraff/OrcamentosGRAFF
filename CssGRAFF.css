@@ -106,7 +106,7 @@
   /*Offline*/ --Tag_Off  :#2a2a2a;--Tag_Off_Tx:#666666; 
   /*Destq UP*/--Tag_DESTK:#ffdc41  ;--Tag_DESTK_Tx:#ffffff;
   /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#ffdc41;
-  /*Boxy    */--Boxy     :#ffffff0a;--BoxySdw:0;
+  /*Boxy    */--Boxy     :#ffffff0a;--BoxySdw:0; --BoxyRd:1px solid #494949;
   /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
 }
 
@@ -120,8 +120,12 @@
   /*Scroll*/ *::-webkit-scrollbar{width: 10px;height:10px} *::-webkit-scrollbar-corner{background:var(--ScrolBk)} *::-webkit-scrollbar-track{background:var(--ScrolBk );border-radius:500px} *::-webkit-scrollbar-thumb{background:var(--ScrllBrr);border-radius:500px} *::-webkit-scrollbar-thumb:hover {background:var(--ScrllBrrHV)}
 
   /*Box   */
-  .Boxy{padding:6px ;border-radius:15px;background:var(--Boxy);box-shadow:var(--BoxySdw);gap: 5px;}
-  .FEXTA.Boxy {padding:18px;border-radius:15px;background:#2c2c2c48;border:1px solid #50505034;gap: 5px;}
+  .Box1{padding:6px; border-radius:15px; gap:5px; background:var(--Boxy); box-shadow:var(--BoxySdw)}
+  .Box2{padding:6px; border-radius:15px; gap:5px; background:var(--Boxy); box-shadow:var(--BoxySdw); border:var(--BoxyRd)}
+
+  
+  .Boxy{padding:6px ;border-radius:15px;gap:5px;background:var(--Boxy);box-shadow:var(--BoxySdw)}
+  .FEXTA.Boxy {padding:18px}
   .box {padding:18px;border-radius:15px;background:#6363631a;border:1px solid #494949}
   .Box {padding:6px ;border-radius:15px;background:#272727ce;border:1px solid #929292 ; backdrop-filter: blur(10px)}
 
@@ -134,6 +138,9 @@
     .Infinity :is(button,.button,input,select)>:is(img,svg){height:18px; fill:#ffffff}
     .Infinity :is(input:focus, select:focus)               {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
       .Basic input   {width:100%;padding:8px;border:1px solid #ccc;border-radius:6px}
+
+  .FEXTA :is(input,select,textarea){height:36px;display:block;padding:8px;font-size:14px;border:1px solid #ced4da;border-radius:4px;outline:none;transition:0.2s}
+  .FEXTA :is(input:focus,select:focus,textarea:focus){border-color:#ffd000;box-shadow:0 0 0 2px #ffc40340}
 
   /*button*/
     .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i)       {background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap}
@@ -298,12 +305,13 @@
 .bckG{background-size:cover;background-position:center;background-repeat:no-repeat}
 
 /*PAGINAD NOVAS DE PROGRAMA DE DESIGNER INDEPENDENTE*/
-  .f-gren { fill: #8dff57}
-  .f-yelw { fill: rgb(255, 219, 111)}
-  .f-roxo { fill: rgb(174, 143, 253)}
-  .f-azul { fill: rgb(125, 173, 255)}
-  .f-redd { fill: rgb(255, 128, 128)}
-  .f-Lrnj { fill: rgb(250, 125, 9)} 
+  .f-yelw {fill:#ffdb6f; color:#ffdb6f}
+  .f-gren {fill:#8dff57; color:#8dff57}
+  .f-roxo {fill:#ae8ffd; color:#ae8ffd}
+  .f-azul {fill:#7dadff; color:#7dadff}
+  .f-redd {fill:#ff8080; color:#ff8080}
+  .f-Lrnj {fill:#fa7d09; color:#fa7d09}
+  .f-Yell {fill:#ffd000; color:#ffd000}
 
 .FModal{position:fixed;top:0px; left:0px;width:100%;height:100%;z-index:999;background:#00000046;backdrop-filter:blur(10px);animation:FModal 0.5s}
 .FModal > *{padding:15px; box-shadow: 10px 10px 20px black;animation: modal 0.5s}
