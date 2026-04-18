@@ -62,8 +62,6 @@
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
-    const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
-    const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
 
@@ -327,6 +325,9 @@
                 <div id="Perf-Andm" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Andm'])"></a> Andamento...   </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
                 <div id="Perf-Cncl" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Hist'])"></a> Falta Pagamento</h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
                 <div id="Perf-Hist" class="Box1 Cl w100 Rltv"><h3 class="Ct gap"><a onload="Inn(this,SVG['Hist'])"></a> Histórico      </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
+                <div id="ImgExtras">
+
+                </div>
             </div>
         </div>
 
@@ -404,15 +405,24 @@
         </div>
 
         <div id="Pag_BBTC" class="p20">
+            <input id="InputeZZ" type="file" multiple accept="image/*">
+            <button onclick="ImgUPP2($('#InputeZZ'),'ARTE-2418','ARTE-2418-Img-Imgs-_-_')">Rodar</button>
+            
+            
+            
             <div id="Todo_Dsng" class="Cl Gap"></div>
         </div>
         
         <div id="Pag_MPAG">
-
+            <h1>VIAGEM</h1>
+            <div class="Ct">
+                
+            </div>
         </div>
 
-        <div id="Pag_CONF">
+        <div id="Pag_CONF" class="h100">
             <h1>CONF</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione numquam earum obcaecati fugit quisquam distinctio ipsum deleniti rerum, in enim laborum eos ea delectus quaerat sequi maxime, fuga vel aut?
         </div>
         
     </div>
@@ -472,8 +482,8 @@
                     <textarea>${Obj.Info}</textarea>
                     ${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>` : ''}
                 </div>
-                ${false ? `<button onclick="ConclurART('${U}','${ID}')">Concluir Arte</button>` : 
-                          `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte</button>`}
+                ${Obj.Stts == '_S'  ? `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte </button>` :
+                  Obj.Stts == 'Act' ? `<button onclick="ConclurART('${U}','${ID}')">Finalizar Arte</button>` : ''}
             </div>`
     }
 
@@ -524,13 +534,13 @@
             <div class="Boxy CT w100">
                 <div class="LA Ct h100 gap">
                     <div class="Start2">
-                    <div class="Head Ct gap"><p>${u.Rank}° - ${u.Nome}</p><a class="St ${u.On?'On':'Of'}"></a></div>
-                    <img class="Perf" src="./Img/Perfil_${u.Nome}.webp">
-                    <div class="Cl Start2"><p>${u.Cgo}</p><button onclick="Ger_SOliArt('${u.Nome}')">Solicitar</button></div>
+                        <div class="Head Ct gap"><p>${u.Rank}° - ${u.Nome}</p><a class="St ${u.On?'On':'Of'}"></a></div>
+                        <img class="Perf" src="./Img/Perfil_${u.Nome}.webp">
+                        <div class="Cl Start2"><p>${u.Cgo}</p><button onclick="Ger_SOliArt('${u.Nome}')">Solicitar</button></div>
                     </div>
                     <div>
-                    <p>Saldo Total</p>${Tm_RS2(SOMA_Obj(u.Arts,'Valr'))}
-                    <p>${u.Arts.length} Artes</p>
+                        <p>Saldo Total</p>${Tm_RS2(SOMA_Obj(u.Arts,'Valr'))}
+                        <p>${u.Arts.length} Artes</p>
                     </div>
                 </div>
                 <div class="LB h100 Cl Gap Start2">
@@ -722,62 +732,25 @@
 </div>
 
 <script> // SupaBASE
-
-
-    function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
-        return
-        if(crud==='UPDATE'){
-            const NOVOO = NULL__([nEw])[0]
-            const atual = JJ[Typ][nEw.Id]
-            const Limparr = j => j ? Object.keys(j).length ? Object.fromEntries(Object.entries(j).filter(([k,v])=>BS[Typ].Json[k]?.[1]!=='A')) : null : null
-            const DiF = Limparr(Diferentes(NOVOO,atual,Typ))
-            if(!DiF || (Object.keys(DiF).length == 1 && 'Id' in DiF)){LOG(`🌐 EDIT RealTime(${Typ},${nEw.Id}) OK👍`) ; return}
-            function KeysSemId(obj){return Object.keys(obj).filter(k => k !== 'Id')}
-
-            KeysSemId(DiF).forEach(Cl=>{
-                LOG(`${Typ}-${nEw.Id}-${Cl}`,`${AA(Cl)}-`,DiF)
-            })
-
-            //EditCell(,'SB')
-
-            /*Obj*/ ObjEtr(DiF).forEach(([col,Vlr])=>{if(col!=='Id'){atual[col]=NOVOO[col]}})// Atualiza a Const primeiro
-            /*Obj*/ // falta atualziar o JJ[Typ]
-            /*DOM*/ flatenObject(DiF,Typ).forEach(([TYP,ID,col,Vlr])=>{
-                $$(Rx7([`${AA(TYP)}-${ID}-${col}`])).forEach(td=>{
-                    if(col=='Clnt'){return}
-                    if(col=='Lixo'){if(Vlr){_tr(td).remove() ; return}else{return}}
-                    
-                    if(td){if(VAL(td)!==Vlr){
-                        if(d_r(td).Tm=='Auto'){return}  // a idéia é n precisar disso aqui pois isso só ta afetando a tabela de GRAD
-                        if(d_r(td).Tm=='Sync'){return}
-                        DarVAL(td,Vlr) // Editou valor
-                         LOG(`✏️ RealTime() "${TYP}-${ID}-${col}" >> ${Vlr}`)} // chamar R_Color()
-                    else{LOG('⚠️ RealTime() P-P ja Tava Igual')}}
-                    else{LOG('⚠️ RealTime() P-P não Existe')}
-                })
-            })
-        }
-        else if(crud==='DELETE'){
-            if(!J[Typ].some(e=>e.Id==old.Id)){LOG(`🌐 DELETE RealTime(${Typ},${old.Id}) OK👍`) ; return}
-            RmvROW($(`${Rx7([Typ,old.Id,'Lixo'])} a`),true) //Simular o Click, true veio do SB 🌐
-        }
-        else if(crud==='INSERT'){
-            if(J[Typ].some(e=>e.Id==nEw.Id)){LOG(`🌐 INSERT RealTime(${Typ },${nEw.Id}) OK👍`) ; return}
-            AddROW(Typ,'<',NULL__([nEw]),'SB') // esse vazio é um input q fica em outra coisa relacionada a cliente, true veio do SB 🌐
-        }
-    }
-    
     async function AceitarART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"Act",Dsng:U}).eq("Id",Id)
-        if(!error){alert("Solicitação aceita") ; location.reload()}
-    }
-
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts','Act'],null)
+        DarJJ('Edt',...['ARTE',Id,'Dsng',  U  ],null)
+        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:"Act",Dsng:U},'Solicitação Aceita') ; Load_Perfil(USUARIO)}
     async function ConclurART(U,Id){
-        const{error}=await supaBASE.from('ARTE').update({Stts:"OK",Dsng:U}).eq("Id",Id)
-        if(!error){alert("Concluido") ; location.reload()}
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts','Ok' ],null)
+        DarJJ('Edt',...['ARTE',Id,'Dsng',  U  ],null)
+        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:'Ok' ,Dsng:U},'Concluido'         ) ; Load_Perfil(USUARIO)}
+    
+    function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
+        
     }
 
-    function SaveConfig(e){LOG('Salva Config no SB')}
+    function ImgExtras(){
+        Inn($('#ImgExtras'),For(3).map(e=>`<img src="${BASE_URL}Med/ARTE-2418_${e}.webp">`).join(''))
+    }
+
 </script>
 
 <script>// Iniciação 
@@ -792,26 +765,21 @@
         Load_Page($("#List_Dsng"),'P')
         Load_Page($('#Todo_Dsng'),'G')
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
+        ImgExtras()
     }
 
-    // botar isso no PreScript
-    document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
-        document.addEventListener('keydown',function(event){
-            if(event.key==='Escape'){
-                if(EShow($('#FModal'))){return}
-                else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
-            }// F_Clen(Atual.Pag) // se for outro botão
-    })})
 </script>
 
 <script>
-    // corrigir erro do NaN no Valor
     // Novidades do BANCO de DADOS
         // Adicionar Login
         // Várias Imagens & Exigência dos Prints
         // Importar Arquivos
         // comentário em cada Arte
         // adicionar aqueles campos de obrigações como devem vir
+        // Botão de Desistência
+        // Botar ESC pra funcionar nos Modais
+        // Botão pra voltar, e Botão pra aceitar Colaboração
 
     // Novidades 
         // ✅ Melhorei o CSS

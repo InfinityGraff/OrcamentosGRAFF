@@ -2754,7 +2754,7 @@
     document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
         document.addEventListener('keydown',function(event){
             if(event.key==='Escape'){
-                if(EShow($('#FModal'))){return}
+                if(EShow($('.FModal'))){return}
                 else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
             }// F_Clen(Atual.Pag) // se for outro botão
     })})

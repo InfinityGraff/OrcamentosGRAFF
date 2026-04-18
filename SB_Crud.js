@@ -347,6 +347,34 @@ async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bon
     }else{LOG('não é nem Img nem Svg é um arquivo!')}
 }
 
+async function ImgUPP2(Inpt,Nome,R){
+    const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
+    const _R  = d_r(R)
+    const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
+    // const Pay = _td(Pai(_td(PP)))
+    // const T_T = Pay ? Pai($('.T-T',Pay)) : null
+
+    for(let i=0;i<Inpt.files.length;i++){
+        const f   = Inpt.files[i]
+        const Ext = RxExt(f.name)
+        const src = URL.createObjectURL(f)
+        const NomeFinal = `${Nome}_${i}` // evita sobrescrever
+        J.IMGS[NomeFinal] = f.name
+        // if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${_R.Id}',this)" src="${src}">`}
+
+        if(Eximg.includes(Ext)){
+            //EditCell(PP,'Edt',`${NomeFinal}.${Ext}`)
+            //DarVAL(PP,src)
+
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${NomeFinal}.webp`,true)
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${NomeFinal}.webp`,true)
+
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${NomeFinal}.svg`,true)
+            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`Img/${NomeFinal}.webp`,true)}
+        }else{LOG('não é nem Img nem Svg é um arquivo!')}
+    }
+}
+
 function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
     const df = Deff(Typ)                 // Cria um Default Baseado no BS
        df.Id = NewID(J[Typ])             // Atribuindo Novo Id++
@@ -449,6 +477,13 @@ async function Sb_EDIT(SB,Typ,id,col,Val){
         if (error){ERR('Erro ao atualizar:',error)}
         else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
     } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
+}
+
+async function Sb_EDIT2(SB,Typ,id,Obj,Alert){
+    try{const {error} = await SB.from(Typ).update(Obj).eq('Id',id)
+        if(error){ERR('Erro ao atualizar:',error)}
+        else{LOG(`💾✏️ SB_EDIT2(${id},${JSON.stringify(Obj)})`) ; MyAlert(Alert||`Editado no SB! (${Typ},${id})`)}
+    }catch(err){ ERR('Erro:',err) ; MyAlert('Erro ao atualizar serviço')}
 }
 
 async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
