@@ -64,6 +64,8 @@
   /*N botei ainda no Basic*/--FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
 }
 .Basic.Lite{
+  /*Principal*/ --CorPrin:#0073ee;
+
   /*Body   */ --BodyBk  :#ffffff;--BodyTx    :#000000; 
   /*Buttons*/ --BtnBk   :#eeeeee;--BtnTx     :#000000; 
   /*Buttons*/ --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; 
@@ -79,6 +81,8 @@
   /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
 }
 .Basic.Dark{
+  /*Principal*/ --CorPrin:#0073ee;
+
   /*Body   */ --BodyBk  :#1e1e1e;--BodyTx    :#ffffff; 
   /*Buttons*/ --BtnBk   :#333333;--BtnTx     :#ffffff; 
   /*Buttons*/ --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; 
@@ -94,6 +98,9 @@
   /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
 }
 .FEXTA.Dark{
+  /*Principal*/ --CorPrin:#ffd000;
+  /*CorOpacy*/  --CorPacy:#ffdc415d;
+
   /*Body   */ --BodyBk  :#060606;--BodyTx     :#ffffff; 
   /*Header */ --HeadBk  :#222222;--HeadTx     :#ffffff;
   /*Buttons*/ --BtnBk   :#ffd000;--BtnTx      :#000000; 
@@ -161,6 +168,17 @@
     .BtnRed{background: #ff4343 !important;}
     .BrnOff{background: #acacac !important; pointer-events:none}
     button:disabled{opacity:0.6;cursor:not-allowed}
+
+  /*Drop*/
+    .Drop                  {border:2px dashed var(--CorPrin); border-radius:10px; padding: 5px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden; height:88px}
+    .Drop:hover,.Drop.hover{background:var(--CorPacy)}
+    .Drop a                {width:70px; height:70px; border-radius:10px ; background:#ffffff42}
+    .Drop img              {width:70px; height:70px; border-radius:10px ; object-fit:cover}
+    .Drop .P div           {position:relative;display:inline-block}
+    .Drop .P i             {position:absolute;top:0;right:0;background:#f00;color:#fff;cursor:pointer;font-size:10px}
+
+
+
 
     /*Interruptores*/
       .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
@@ -324,9 +342,7 @@
 .RS i:nth-child(1){transform: scale(0.6) ; font-style: normal ; transform-origin: right center}
 .RS i:nth-child(3){transform: scale(0.6) ; font-style: normal ; transform-origin: left center}  
 
-.Drop       { border:2px dashed #a1c2d8; border-radius:10px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden;  -height:60px}
-.Drop:hover { background:#63a6dd33}.Drop.hover { background:#63a6dd33}
-.Drop img   { width:auto ; height:80px; border-radius:10px}
+
 
 /*CALENDÁRIO*/
 .Basic.Lite{--bg:#ffffff;--border:1px solid #cccccc;--shadow:0 5px 15px #0000001a;}

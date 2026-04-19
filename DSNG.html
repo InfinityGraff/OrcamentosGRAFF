@@ -9,9 +9,10 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-
-    <!--<link href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
-    <script src="../MyBiblioteca/PreScript.js"></script>-->
+    <!--
+        <link href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="../MyBiblioteca/PreScript.js"></script>
+    -->
 
     <link   href="./SB_Crud.css"  rel="stylesheet">
     <link   href="./CssGRAFF.css"  rel="stylesheet">
@@ -34,7 +35,6 @@
 </script>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-
     const Cgo  = { // Cargo
         Admn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
         Grnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
@@ -42,20 +42,31 @@
         Atnd: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
         Clnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']}
     }
-    const USERlg = {}
-    const Atual    = {Pag:'PRFL'}
+    const Atual    = {Pag:'ARTE'}
     let U = {} ; let UU={Cgo:""} ; let USUARIO=''
     let UCgo = {}
 
-    const DB = {
-        Serv    :['Serviço','Arte','Edição de Video','Produção Musical','3D','After Effects','Programação'],
-        Tipo    :["Tipo de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
+    const O = {
+        Serv    :['Serviço','Arte','Edição de Video','Produção Musical','Modelagem 3D','After Effects','Programação'],
+        TArt    :['Tipo de Arte','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração'],
+        Tema    :["Tema de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
         Catg    :["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
+        
         Dest    :["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
         Presset :["Livre","1:1","4:5","9:16","16:9"],
-        template:['1','2','3']
+        template:['1','2','3'],
     }
     const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
+
+    const Tipo_ARTE = [
+        { Nome:"Criação"     , Valr:20.00}, 
+        { Nome:"Recriação"   , Valr:15.00}, 
+        { Nome:"Restauração" , Valr:10.00},
+        { Nome:"Vetorização" , Valr:8.00}, 
+        { Nome:"Adaptação"   , Valr:7.00}, 
+        { Nome:"Digitação"   , Valr:5.00}, 
+        { Nome:"Modificação" , Valr:4.00}, 
+    ]
 </script>
 
 <script> // Bibliotecas
@@ -334,23 +345,26 @@
                 <h1>Solicitação de Arte</h1>
                 <div id="Form_Arte" class="w100 Ct Gap">
                     <div id="FormArt" class="LA Cl Gap h100" oninput="InnResult(Calc(this))">
-                        <div class="Ct Boxy">
-                            <div             ><label>Serviço     </label><select id="ART_Serv" name="0" data-Obj="Serv" data-Nv="1" onload="load_Opts(this,DB.Serv)" onchange="$$('#ART_Tipo'                    ).forEach(e=>Rmv_N(Pai(e)))"></select></div>
-                            <div class="none"><label>Tipo de Arte</label><select id="ART_Tipo" name="0" data-Obj="Tipo" data-Nv="1" onload="load_Opts(this,DB.Tipo)" onchange="$$('#ART_Catg,#ART_Titl,#ART_Slgn').forEach(e=>Rmv_N(Pai(e)));Rmv_N($$('.GAMBBI'))"></select></div>
-                            <div class="none"><label>Categoria   </label><select id="ART_Catg" name="3" data-Obj="Tema" data-Nv="2" onload="load_Opts(this,DB.Catg)"></select></div>
+                        <div class="Ct Box1">
+                            <div             ><label>Serviço     </label><select id="ART_Serv" name="0" data-Obj="Serv" data-Nv="1" onload="load_Opts(this,O.Serv)" onchange="$$('#ART_Tipo'                    ).forEach(e=>Rmv_N(Pai(e)))"></select></div>
+                            <div class="none"><label>Tipo de Arte</label><select id="ART_Tipo" name="0" data-Obj="Tipo" data-Nv="1" onload="load_Opts(this,O.TArt)" onchange="$$('#ART_Tema,#ART_Titl,#ART_Slgn').forEach(e=>Rmv_N(Pai(e)));Rmv_N($$('.GAMBBI'))"></select></div>
+                            <div class="none"><label>Tema        </label><select id="ART_Tema" name="3" data-Obj="Tema" data-Nv="2" onload="load_Opts(this,O.Tema)"></select></div>
                             <div class="none"><label>Título      </label><input  id="ART_Titl" name="2" data-Obj="Nome" data-Nv="1" placeholder="Nome da Empresa"    oninput="Inn($('.c',gID2(this,2)),this.value)"></div>
                             <div class="none"><label>Slogan      </label><input  id="ART_Slgn" name="2" data-Obj="Slgn" data-Nv="1" placeholder="Slogan da Empresa"  oninput="Inn($('.c',gID2(this,3)),this.value)"></div>
                         </div>
 
-                        <div id="UNDDD" class="Boxy Gap CT">
-                            <div class="UNDBTN box Ct"><button onclick="Rmv_N($$(':scope > .none',Avo(this)));Add_N(Pai(this))">+ Adicionar Rascunho</button></div>
+                        <div id="UNDDD" class="Box1 Gap CT">
+                            <div class="UNDBTN Box2 Ct Cl">
+                                <button onclick="Rmv_N($$('.DivRascunho',Avo(this)));Add_N(Pai(this))">Criar Rascunho    </button>
+                                <button onclick="Rmv_N($$('.DivImptImgs',Avo(this)));Add_N(Pai(this))">+ Adicionar Imagem</button>
+                            </div>
 
-                            <div class="box UNDD none Cl Rltv" name="1">
+                            <div class="DivRascunho Box2 UNDD none Cl Rltv" name="1">
                                 <h2>Rascunho</h2>
                                 <div class="XX Ct PT" onclick="Pai(this).remove()">X</div>
                                 <div class="Ct ConfUND gap">
                                     <div><label>Destino    </label><select class="Dest"  name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
-                                    <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,DB.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
+                                    <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,O.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
                                     <div><label>Fundo      </label><input  class="Fundo" name="4" data-Nv="2" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
                                     <div><label>Referências</label><div    class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
                                 </div>
@@ -376,10 +390,17 @@
                                 </div>
                                 <button onclick="SaveTemplate($('.s',Pai(this)),'Template 1')">Salvar Template</button>
                             </div>
+
+                            <div class="DivImptImgs Box2 UNDD none Cl Rltv">
+                                <div><label>Imagens</label><div class="Drop Ct" onload="PrepDrop(this,'Drop')"></div></div>
+                                <input id="InputeZZ" type="file" multiple accept="image/*">
+                                <button onclick="ImgUPP2($('#InputeZZ'),'ARTE-2418','ARTE-2418-Img-Imgs-_-_')">Rodar</button>
+                            </div>
+
                             <div class="UNDBTN box none Ct"><button onclick="AddUND()">+ Adicionar Variação</button></div>
                         </div>
 
-                        <div class="Boxy Ct">
+                        <div class="Box1 Ct">
                             <div class="Cl Infos">
                                 <div class="Ct"><img onclick="Tog_N($('input',Pai(this)))" src="./SVG/Insta.svg"><input class="none" name="3" data-Nv="1" id="Inst" placeholder="Instagram" oninput="Inn($('.c',gID3(this,4)),this.value)"></div>
                                 <div class="Ct"><img onclick="Tog_N($('input',Pai(this)))" src="./SVG/Zap.svg"  ><input class="none" name="3" data-Nv="1" id="Zapp" placeholder="WhatsApp"  oninput="Inn($('.c',gID3(this,5)),this.value)"></div>
@@ -391,11 +412,11 @@
                         </div>
                     </div>
                     
-                    <div class="Cl LB Boxy h100 GAP">
-                        <div id="Resultss" class="w100 box Cl"></div>
-                        <div   class="GAMBBI box w100 none Ct"><label>Prazo</label><div id="ART_Prazo" onload="Inn(this,Tm_DataNatora())"></div></div>
+                    <div class="Cl LB Box1 h100 GAP">
+                        <div id="Resultss" class="w100 Box2 Cl"></div>
+                        <div   class="GAMBBI Box2 w100 none Ct"><label>Prazo</label><div id="ART_Prazo" onload="Inn(this,Tm_DataNatora())"></div></div>
                         <aside class="GAMBBI Cl Gap w100 none" id="List_Dsng"></aside>
-                        <div   class="GAMBBI box w100 none Ct">
+                        <div   class="GAMBBI Box2 w100 none Ct">
                             <button onclick="Ger_SOliArt('')">Solicitar para Todos</button>
                             <button class="none" onclick="SavePDF($('.s',Avo(this)))">PDF</button>
                         </div>
@@ -409,15 +430,10 @@
         
         <div id="Pag_MPAG">
             <h1>VIAGEM</h1>
-            <div class="Ct">
-                <input id="InputeZZ" type="file" multiple accept="image/*">
-                <button onclick="ImgUPP2($('#InputeZZ'),'ARTE-2418','ARTE-2418-Img-Imgs-_-_')">Rodar</button>
-            </div>
         </div>
 
         <div id="Pag_CONF" class="h100">
-            <h1>CONF</h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione numquam earum obcaecati fugit quisquam distinctio ipsum deleniti rerum, in enim laborum eos ea delectus quaerat sequi maxime, fuga vel aut?
+            <h1>CONF</h1>  
         </div>
         
     </div>
@@ -636,7 +652,7 @@
     <script> // ==== CALCULAR VALOR DA ARTE ====
         const Calc=()=>{
             const Tipo  = Vll($('#ART_Tipo'))
-            const vBase = TIPOS_ARTES.find(a=>a.Nome==Tipo)?.Valr ?? 0
+            const vBase = Tipo_ARTE.find(a=>a.Nome==Tipo)?.Valr ?? 0
             const Soma  = arr=>arr.reduce((s,e)=>s+(NoVazio(e)?+Nm(e):0),0)
             const UNDD  = $$('.UNDD')
             const Pct1  = Soma($$('[data-Nv="1"]')) // % desconto Nv1
@@ -647,15 +663,16 @@
             const Desc  = pNv3 * 20
             return {vBase, Final:(vUNDD*(1-Desc/100)).toFixed(2)}
         }
+
         let VALLOR = 0
-        function InnResult(r){ // antes exibia o ${Tm_RS2(r.vBase)} valor BASE
+        function InnResult(r){
             VALLOR = r.Final
-            Inn($('#Resultss'),`<div class="Ct">Total: ${Tm_RS2(r.Final)}</div><div class="Start2 w80">${r.vBase==0?"":
-            $$(`ART_Serv, #ART_Tipo, #ART_Catg, #ART_Titl, #ART_Slgn`).map(I=>`<p>${Inn($('label',Pai(I)))}: ${I.value}</p>`).join('')}</div>`)
+            Inn($('#Resultss'),`<div class="Ct">Total: ${Tm_RS2(r.vBase)} >> ${Tm_RS2(r.Final)}</div><div class="Start2 w80">${r.vBase==0?"":
+            $$(`ART_Serv, #ART_Tipo, #ART_Tema, #ART_Titl, #ART_Slgn`).map(I=>`<p>${Inn($('label',Pai(I)))}: ${I.value}</p>`).join('')}</div>`)
         }InnResult({vBase:0,Final:0})
 
         function Ger_SOliArt(DSNG){
-            const Objj = Object.fromEntries($$(`#ART_Tipo, #ART_Catg, #ART_Titl`).map(I=>[I.getAttribute('data-Obj'),I.value]))
+            const Objj = Object.fromEntries($$(`#ART_Tipo, #ART_Tema, #ART_Titl`).map(I=>[I.getAttribute('data-Obj'),I.value]))
             const List = $$('#Resultss .Start2 p').map(p=>Inn(p))
             const info = $$('#Inst,#Zapp,#Lcal').map(I=>`${I.placeholder}: ${I.value}`)
             const OBS  = $('#OBS').value // isso é um textArea (quero que seja capturado toda a quebra de linha também)
@@ -766,16 +783,6 @@
 </script>
 
 <script>
-    // Novidades do BANCO de DADOS
-        // Adicionar Login
-        // Várias Imagens & Exigência dos Prints
-        // Importar Arquivos
-        // comentário em cada Arte
-        // adicionar aqueles campos de obrigações como devem vir
-        // Botão de Desistência
-        // Botar ESC pra funcionar nos Modais
-        // Botão pra voltar, e Botão pra aceitar Colaboração
-
     // Novidades 
         // ✅ Melhorei o CSS
         // ✅ (Contagem de artes por cada Box de Status)
@@ -786,6 +793,20 @@
         // ✅ Rankeada dos Designers
         // ✅ Página pra ver todos Designers (tem que ter Gráfico)
         // ✅ Pagamento (Modal) e ver mais, em Tabela Maior!
+    //
+
+    // Novidades do BANCO de DADOS
+        // Várias Imagens & Exigência dos Prints
+        // Importar Arquivos
+        // Botão de Desistência
+        // Botão pra voltar, e Botão pra aceitar Colaboração
+        // Adicionar Login
+        // adicionar aqueles campos de obrigações como devem vir
+        
+        // comentário em cada Arte
+        // Botar ESC pra funcionar nos Modais
+
+
 
 
 </script>
