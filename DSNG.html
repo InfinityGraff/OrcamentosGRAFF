@@ -519,10 +519,8 @@
         const Obj  = J['ARTE'].find(e=>e.Id==ID)
         const ADM  = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
         const ADMs = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
-        
-        const ETAP = cgo=='Admn' ? ['AI','UP','BG','CP','DG','VT','MK'] : r.Etps.split('-')
-        const   G  = a=>`style="grid-area:${a}"`
         const Rgr  = Obj.Regra
+        const   G  = a=>`style="grid-area:${a}"`
         return `<div class="INFO">
                     <h3 class="Ct" ${G('A')} ${ADM('Nome')}>${Obj.Nome}</h3>
                     
@@ -534,16 +532,17 @@
                         <div ${G('E')} class="Box2"          ><p ${ADM('Valr')}>${cgo=="Admn"?Obj.Valr:Tm_RS2(Obj.Valr)}</p><button>Discutir Preço</button></div>
                     </div>
 
-                    ${Rgr.map((r,x)=> 
-                        `<div class="F2 Box2 ${x==0?'':'NONE'} RasC${x+1}" ${G('C')}>
-                            <div ${G('A')} class="ETAPASS Ct gap"><p>Rascunho ${x+1}</p> ${ETAP.map(k=>`<div class="Ct gap HOV" onclick="TOV(this)"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
-                            <div ${G('B')} ><textarea>${Obj.Info}</textarea></div>
-                            <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p>${r.Mdds}</p></div>    
-                            <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
-                            <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
-                            <div ${G('F')} class=""></div>
-                        </div>`
-                    ).join('')}
+                    ${Rgr.map((r,x)=>{
+                        const ETAP = cgo=='Admn' ? ['AI','UP','BG','CP','DG','VT','MK'] : r.Etps.split('-')
+                        return `<div class="F2 Box2 ${x==0?'':'NONE'} RasC${x+1}" ${G('C')}>
+                                    <div ${G('A')} class="ETAPASS Ct gap"><p>Rascunho ${x+1}</p> ${ETAP.map(k=>`<div class="Ct gap HOV" onclick="TOV(this)"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
+                                    <div ${G('B')} ><textarea>${Obj.Info}</textarea></div>
+                                    <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p>${r.Mdds}</p></div>    
+                                    <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
+                                    <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
+                                    <div ${G('F')} class=""></div>
+                                </div>`
+                    }).join('')}
 
                     <div class="F3 Box2" ${G('D')}>
                         <div ${G('A')}>${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>`:'<button>Baixar</button>'}</div>
