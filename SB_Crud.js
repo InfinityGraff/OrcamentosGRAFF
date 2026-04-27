@@ -375,6 +375,16 @@ async function ImgUPP2(Inpt,Nome,R){
     }
 }
 
+async function FileUP(Inpt,Nome,R){
+    //const _R=d_r(R),PP=$(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
+    for(let i=0;i<Inpt.files.length;i++){
+        const f=Inpt.files[i],Ext=RxExt(f.name),NomeFinal=`${Nome}_${i}`
+        J.ARQS ??= {}
+        J.ARQS[NomeFinal]=f.name
+        Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
+    }
+}
+
 function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
     const df = Deff(Typ)                 // Cria um Default Baseado no BS
        df.Id = NewID(J[Typ])             // Atribuindo Novo Id++

@@ -58,6 +58,21 @@
     }
     const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
 
+    const STTS={
+        _S:{txt:'Desistência',btn:'Aceitar Arte'},
+        Act:{txt:'Arte Aceita',btn:'Finalizar'},
+        Ok :{txt:'Concluída',btn:''},
+        Err:{txt:'Em Correção',btn:'Corrigir'}
+    }
+    const FLOW={
+        _S :{n:{s:'Act',t:'Aceitar Arte'}},
+        Act:{n:{s:'Ok' ,t:'Finalizar Arte'},p:{s:'_S',t:'Desistir'},e:{s:'Err',t:'Corrigir'}},
+        Err:{n:{s:'Act',t:'Corrigido'},p:{s:'Act',t:'Voltar'}},
+        Ok :{p:{s:'Act',t:'Reabrir'}}
+    }
+    const Next=s=>FLOW[FLOW.indexOf(s)+1]||null
+    const Prev=s=>FLOW[FLOW.indexOf(s)-1]||null
+
     const Tipo_ARTE = [
         { Nome:"Criação"     , Valr:20.00}, 
         { Nome:"Recriação"   , Valr:15.00}, 
@@ -67,6 +82,9 @@
         { Nome:"Digitação"   , Valr:5.00}, 
         { Nome:"Modificação" , Valr:4.00}, 
     ]
+
+    const ETAPASS={AI:'Gerar com IA',UP:'Upscale',BG:'Remover Fundo',CP:'Completar',DG:'Digitar',VT:'Vetorizar',MK:'Fazer Mockup'}
+
 </script>
 
 <script> // Bibliotecas
@@ -85,6 +103,8 @@
 </script>
 
 <style> /*O CSS Interno*/
+    /*Biblioteca CSS*/
+
     h2,h3       {font-size: 25px}
     h3 svg      {height:25px;width:auto}
     .SvgGambiarr{height:20px;width:20px; fill:#ffffff}
@@ -114,8 +134,6 @@
     .St.On     {background:#4caf50} .St.Of{background:#575757}
     .Perf      {width:90px;height:90px;border-radius:255px}
 
-
-
     .Tags p    {padding:5px 10px;border-radius:12px}
 
     /*GAMBIARRA*/
@@ -131,7 +149,6 @@
     #Perf .Box a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
     .Pic        {width:120px;border-radius:50%;border: solid 3px #ffc400}
-    
 
     .Resumo .LILI     {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#ffffff}
     .Resumo .Pic.Abslt{top: 0px;right: 0px;width: 25px;}
@@ -148,13 +165,31 @@
     #Perf-Trfs tr:hover          {background-color:#444}
     #Perf-Trfs td:first-child    {text-align:center; width:50px; }
 
-    p.Conty{top: 10px; right: 10px; font-size: 15px;}
-    .LILI{height: 200px;width: auto;}
-    .INFO img     {height: 450px;width: auto;}
-    .INFO textarea{height: 500px;width: 500px;}
-    .INFO a img   {height: 18px;width: auto;}
-    textarea {text-align: left;white-space: pre-wrap;} /* mantém quebras de linha */
+    p.Conty        {top:10px; right:10px; font-size:15px}
+    .LILI          {height:200px; width:auto}
+
+    /*INFORMAÇÕES*/
+        div:has(>.INFO){height:90%;width:90%}
+        .INFO      {display:grid;gap:10px;height:100%}
+        .INFO > div{display:grid;gap:10px;padding:10px}
+        .INFO      {grid-template:"A A" 35px "B C" 2fr "B D" 1fr / 1fr 1fr}
+        .INFO .F1  {grid-template:"A A A A A A" 30px "C B B B B B" 1fr "C B B B B B" 60px "D D D E E E" 100px}
+        .INFO .F2  {grid-template:"A A B B" 150px "C C B B" 40px "D D D F" 1fr "E E E F" 1fr / 1fr 1fr 2fr 0.5fr;}
+        .INFO .F3  {grid-template:"A B" 50px "C C" 1fr}
+            .INFO textarea {height: 100%; width:100%; text-align:left;white-space:pre-wrap}
+            .INFO a img    {height: 18px; width:auto}
+            .INFO .Rascunho{height: 100%; width:100%; object-fit:contain}
     
+    .LISTA {overflow: auto;}
+    .LISTA img  {height:70px; width:70px; object-fit:contain}
+    .LISTA1 img {height:70px; width:100%; object-fit:contain ; background: #ffffff; border-radius: 5px}
+
+    .ETAPASS img{width: 20px; height: 20px}
+    .ETAPASS div{background: #797979;cursor: pointer;border: none;padding: 4px 8px;border-radius: 4px}
+    .ETAPASS div.Atv{background: #c46ffd;}
+
+    .Atv{background: #ffff003a;}
+
     .FModal table{width:900px;height:500px;border-collapse:collapse;background:#1a1d24;border-radius:10px;overflow:scroll}
     .FModal th,td{padding:12px 15px;text-align:left}
     .FModal th{background:#222633;font-weight:600;color:#aaa;text-transform:uppercase;font-size:12px;letter-spacing:1px}
@@ -167,6 +202,8 @@
     .FModal td:nth-child(5){color:#00d4ff}
     .FModal td:nth-child(8){display: none}
     .FModal td:nth-child(9){display: none}
+
+
 </style>
 
 <body class="FEXTA Dark">
@@ -287,7 +324,6 @@
                             </div>
                         </div>
                     `)
-            
                 }
 
                 const SaiMdal=()=>{if($('.FModal')){$('.FModal').remove()}} /*GAMBIARRA*/
@@ -437,6 +473,7 @@
         </div>
         
     </div>
+
 </body>
 
 <script> // Página do Designer
@@ -470,32 +507,54 @@
     }
 
     const Tm_Resumo=(E,U,Mod)=>`${E.map(e=>`
-        <div class="Resumo gap Cl Bt HOV Box2 Rltv" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event))">
+        <div class="Resumo gap Cl Bt HOV Box2 Rltv" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event,'${U.cgo}'))">
             ${e.Dsng==U.Nome ? `<img class="Pic Abslt" src="${U.Foto}">` : ''}
             <p>${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
             <p>${e.Tipo}</p><div class="Cl Start2 ${Mod=='P'?'NONE':''}"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
             <div class="${Mod=='P'?'NONE':''}">${Tm_RS2(e.Valr)}</div>
     </div>`).join("")}`
 
-    const Tm_Exib=(U,ID,ev)=>{
+    const Tm_Exib=(U,ID,ev,cgo)=>{
         if (ev?.target.closest('button')) return
-        const Obj = J['ARTE'].find(e=>e.Id==ID)
-        return `<h3>${Obj.Nome}</h3>
-            <div class="gap Ct PT Boxy INFO">
-                <div>
-                    <img class="LILI" src="${BASE_URL}Img/${Obj.Img}?v=${Date.now()}">
-                    <p>${Obj.Nome}</p>
-                    <p>${Obj.Tema}</p>
-                    <p>${Tm_RS2(Obj.Valr)}</p>
-                    <button>Discutir Preço</button>
-                </div>
-                <div>
-                    <textarea>${Obj.Info}</textarea>
-                    ${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>` : ''}
-                </div>
-                ${Obj.Stts == '_S'  ? `<button onclick="AceitarART('${U}','${ID}')"> Aceitar Arte </button>` :
-                  Obj.Stts == 'Act' ? `<button onclick="ConclurART('${U}','${ID}')">Finalizar Arte</button>` : ''}
-            </div>`
+        const Obj  = J['ARTE'].find(e=>e.Id==ID)
+        const ADM  = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADMs = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        
+        const ETAP = cgo=='Admn' ? ['AI','UP','BG','CP','DG','VT','MK'] : r.Etps.split('-')
+        const   G  = a=>`style="grid-area:${a}"`
+        const Rgr  = Obj.Regra
+        return `<div class="INFO">
+                    <h3 class="Ct" ${G('A')} ${ADM('Nome')}>${Obj.Nome}</h3>
+                    
+                    <div class="F1 Box2" ${G('B')}>
+                        <div ${G('A')} class="Bt"><div class="Ct">Tipo:<div>${cgo=='Admn' ? `<select ${ADMs('Tipo')}>${Tm_Opt(O['TArt'],Obj.Tipo)}</select>` : Obj.Tipo}</div></div><div>Arte Aberta</div><div ${ADM('Dsng')}>${Obj.Dsng}</div></div>
+                        <div ${G('B')} class="Box2 RASC"     >${For(Rgr.length).map(e=>`<img class="Rascunho ${e==0?'':'none'}"             src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}</div>
+                        <div ${G('C')} class="Box2 LISTA1 Cl">${For(Rgr.length).map(e=>`<img class="HOV" onclick="TrocaRasc(this,'${e+1}')" src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}</div>
+                        <div ${G('D')} class="Box2"          ><p ${ADM('Clnt')}>${Obj.Clnt}</p> <p ${ADM('Tema')}>${Obj.Tema}</p> <div ${ADM('Data')}>${Obj.Data}</div> <div>${TempoResta(Obj.Prazo)}</div>   </div>
+                        <div ${G('E')} class="Box2"          ><p ${ADM('Valr')}>${cgo=="Admn"?Obj.Valr:Tm_RS2(Obj.Valr)}</p><button>Discutir Preço</button></div>
+                    </div>
+
+                    ${Rgr.map((r,x)=> 
+                        `<div class="F2 Box2 ${x==0?'':'NONE'} RasC${x+1}" ${G('C')}>
+                            <div ${G('A')} class="ETAPASS Ct gap"><p>Rascunho ${x+1}</p> ${ETAP.map(k=>`<div class="Ct gap HOV" onclick="TOV(this)"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
+                            <div ${G('B')} ><textarea>${Obj.Info}</textarea></div>
+                            <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p>${r.Mdds}</p></div>    
+                            <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
+                            <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
+                            <div ${G('F')} class=""></div>
+                        </div>`
+                    ).join('')}
+
+                    <div class="F3 Box2" ${G('D')}>
+                        <div ${G('A')}>${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>`:'<button>Baixar</button>'}</div>
+                        <div ${G('B')} class="Box2"><label>Emvie em ${'SVG'}</label><input type="file" multiple accept=".pdf,.zip,.rar" onchange="FileUP(this,'ARQ',this)"></div>
+                        <div ${G('C')} class="Bt">
+                                ${(f=>`${f?.p?`<button onclick="MudaSTTS('${U}','${ID}','${f.p.s}')">${f.p.t}</button>`:'.'}
+                                       ${f?.n?`<button onclick="MudaSTTS('${U}','${ID}','${f.n.s}')">${f.n.t}</button>`:'.'}`)(FLOW[Obj.Stts])}
+                        </div>        
+                    </div>
+
+                </div>`
     }
 
     function Load_Perfil(U){
@@ -562,6 +621,10 @@
         `).join(''))
     }
 
+    function TrocaRasc(Eu,X){
+        $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ; Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
+        $$('.F2'      ,Bzv(Eu)).forEach(e=>Add(e,'NONE')) ;   Rmv($(`.RasC${X}`,Bzv(Eu)),'NONE')
+    }
 </script>
 
 <div> <!--Página Solicit-->
@@ -721,17 +784,6 @@
     </script>
 
     <script> // ==== Comentários ====
-
-        // em Titulo opção pra botar imagem
-        // Lista pode ter texto ou Imagens
-        
-
-        // Botar as Mascaras nos Inputs | Proteção pra não Digitar errado (como Endereço por Exemplo)
-        
-        // Insistir no SVG pelomenso se eu tiver ele Interno Escrito no HTML sem ser importado
-
-        // Titulo, Slogan, Insta e Zap, tem que Editar em Todos
-
         // Lista de Produtos Carregará uma Tabela
         // Carregar Minha Lista de SVG e Minha Bando de Imagens PNG's
         // se o Cliente não tem uma Referência carregar uma Lista de Referência pra ele Escolher! (claro de acordo do o template que ele escolheu!)
@@ -744,25 +796,29 @@
 </div>
 
 <script> // SupaBASE
-    async function AceitarART(U,Id){
+    async function MudaSTTS(U,Id,S){
         $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts','Act'],null)
-        DarJJ('Edt',...['ARTE',Id,'Dsng',  U  ],null)
-        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:"Act",Dsng:U},'Solicitação Aceita') ; Load_Perfil(USUARIO)}
-    async function ConclurART(U,Id){
-        $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts','Ok' ],null)
-        DarJJ('Edt',...['ARTE',Id,'Dsng',  U  ],null)
-        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:'Ok' ,Dsng:U},'Concluido'         ) ; Load_Perfil(USUARIO)}
-    
-    function Supa_RealTime(crud,nEw,Typ,old){ // ⭐⭐⭐_ _ (Adicionar e Remover Linha da Bandeija)
-        
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        DarJJ('Edt',...['ARTE',Id,'Dsng',U],null)
+        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:S,Dsng:U},STTS[S]?.txt||'')
+        Load_Perfil(USUARIO)
     }
-
+    
     function ImgExtras(){
         Inn($('#ImgExtras'),For(3).map(e=>`<img src="${BASE_URL}Med/ARTE-2418_${e}.webp">`).join(''))
     }
 
+    function EditCell(e,Mod,vall=null,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) // e:Celula | Mod:'Edit/Add,Del' |  Val: Valor    
+        const V = is_ArrStg(vall) ?? (vall === "" ? "" : (vall || VAL(e))) // pega valor se for vazio ou string, ou array de String
+        if(V==Nm(e)/* || Nm(e)=='False'*/){return} // não foi Aterado || é uma img (esse False precisa sair, Pois se for uma imagem deve receber aqui seu SRC)    
+        
+        const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
+        const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
+
+        /*OBJ*/ DarJJ(Mod,..._R,R.Sc?_P:null)
+        const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai e depois Colata ele em 'ObjSec'            
+        /*SUB*/ SB==null ? Sb_EDIT(supaBASE,...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
+    }
 </script>
 
 <script>// Iniciação 
@@ -796,17 +852,14 @@
     //
 
     // Novidades do BANCO de DADOS
-        // Várias Imagens & Exigência dos Prints
-        // Importar Arquivos
-        // Botão de Desistência
-        // Botão pra voltar, e Botão pra aceitar Colaboração
-        // Adicionar Login
-        // adicionar aqueles campos de obrigações como devem vir
-        
+        // ✅ Importar Arquivos
+        // ✅ Botão de Desistência
+        // ✅ adicionar aqueles campos de obrigações como devem vir
+        // ✅ Várias Imagens
         // comentário em cada Arte
+        
+        // Botão pra Chamar Colaboração
+        // Exigência dos Prints
         // Botar ESC pra funcionar nos Modais
-
-
-
-
+        // Adicionar Login
 </script>
