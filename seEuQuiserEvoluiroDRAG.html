@@ -1,0 +1,46 @@
+<style>
+    .NONE{display: none !important;}
+    /*Drop*/
+        .Drop                  {border:2px dashed var(--CorPrin); border-radius:10px; padding: 5px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden; height:88px}
+        .Drop:hover,.Drop.hover{background:var(--CorPacy)}
+        .Drop a                {width:70px; height:70px; border-radius:10px ; background:#ffffff42}
+        .Drop img              {width:70px; height:70px; border-radius:10px ; object-fit:cover}
+        .Drop .P div           {position:relative;display:inline-block}
+        .Drop .P i             {position:absolute;top:0;right:0;background:#f00;color:#fff;cursor:pointer;font-size:10px}
+</style>
+
+<div class="Drop Ct"></div>
+
+<div>NOVA</div>
+
+<div class="Drop Ct"></div>
+
+<script>
+
+  // Biblioteca
+    const     $ = (Stg,e=document)=>(typeof Stg==='string'?e.querySelector(Stg):Stg)
+    const    $$ = (Stg,e=document)=>(typeof Stg==='string'?Array.from(e.querySelectorAll(Stg)):Stg)
+    function FazArry(e){return Array.isArray(e)?e:e instanceof HTMLCollection||e instanceof NodeList?Array.from(e):/^\./.test(e)?$$(e):[e]}
+    const Add=(e,Stg)=>FazArry(e).forEach(E=>E.classList.add(Stg))
+    const Rmv=(e,Stg)=>FazArry(e).forEach(E=>E.classList.remove(Stg))
+    const Prvn2 = ev=>(ev||event).preventDefault() 
+    const   Inn = (e,Stg=null)=>{const el=$(e);return el?(Stg===null?el.innerHTML:(el.innerHTML=Stg)):undefined}
+
+  // a Função
+    function PrepDrop(Eu,m=0){
+        Inn(Eu,`<div class="P Ct gap"></div><a>+ Adicionar Imagem</a><input type=file accept=image/* ${m?'multiple':''} class=NONE>`)
+        let f=$('input',Eu),a=$('a',Eu),p=$('.P',Eu),
+        add=F=>{if(!F)return;let b=document.createElement('div'),u=URL.createObjectURL(F)
+            b.innerHTML=`<img src="${u}"><i>X</i>`,$('i',b).onclick=_=>b.remove()
+            if(!m)p.replaceChildren();p.appendChild(b)},
+        imp=fs=>[...fs].map(add)
+        a.onclick=_=>f.click()
+        f.onchange=e=>(imp(e.target.files),f.value='')
+        Eu.ondragover=e=>(Prvn2(e),Add(Eu,'hover'))
+        Eu.ondragleave=_=>Rmv(Eu,'hover')
+        Eu.ondrop=e=>(Prvn2(e),Rmv(Eu,'hover'),imp(e.dataTransfer.files))
+    }
+
+    $$('.Drop').forEach(e=>PrepDrop(e,1))
+
+</script>

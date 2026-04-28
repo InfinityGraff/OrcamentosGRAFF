@@ -349,8 +349,8 @@ async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bon
 
 async function ImgUPP2(Inpt,Nome,R){
     const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-    const _R  = d_r(R)
-    const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
+    // const _R  = d_r(R)
+    // const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
     // const Pay = _td(Pai(_td(PP)))
     // const T_T = Pay ? Pai($('.T-T',Pay)) : null
 
