@@ -87,6 +87,22 @@
 
 </script>
 
+<script>
+    function PrepDrop2(Eu,m=0){
+        Inn(Eu,`<div class="P Ct gap"></div><a>+ Adicionar Imagem</a><input type=file accept=image/* ${m?'multiple':''} class=NONE>`)
+        let f=$('input',Eu),a=$('a',Eu),p=$('.P',Eu),
+        add=F=>{if(!F)return;let b=document.createElement('div'),u=URL.createObjectURL(F)
+            b.innerHTML=`<img src="${u}"><i>X</i>`,$('i',b).onclick=_=>b.remove()
+            if(!m)p.replaceChildren();p.appendChild(b)},
+        imp=fs=>[...fs].map(add)
+        a.onclick=_=>f.click()
+        f.onchange=e=>(imp(e.target.files),f.value='')
+        Eu.ondragover=e=>(Prvn2(e),Add(Eu,'hover'))
+        Eu.ondragleave=_=>Rmv(Eu,'hover')
+        Eu.ondrop=e=>(Prvn2(e),Rmv(Eu,'hover'),imp(e.dataTransfer.files))
+    }
+</script>
+
 <script> // Bibliotecas
     const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
@@ -176,7 +192,7 @@
         .INFO .F1  {grid-template:"A A A A A A" 30px "C B B B B B" 1fr "C B B B B B" 60px "D D D E E E" 100px}
         .INFO .F2  {grid-template:"A A B B" 150px "C C B B" 40px "D D D F" 1fr "E E E F" 1fr / 1fr 1fr 2fr 0.5fr;}
         .INFO .F3  {grid-template:"A B" 50px "C C" 1fr}
-            .INFO textarea {height: 100%; width:100%; text-align:left;white-space:pre-wrap}
+            .INFO textarea {height: 49%; width:100%; text-align:left;white-space:pre-wrap; border-radius: 8px;}
             .INFO a img    {height: 18px; width:auto}
             .INFO .Rascunho{height: 100%; width:100%; object-fit:contain}
     
@@ -402,7 +418,7 @@
                                     <div><label>Destino    </label><select class="Dest"  name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
                                     <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,O.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
                                     <div><label>Fundo      </label><input  class="Fundo" name="4" data-Nv="2" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
-                                    <div><label>Referências</label><div    class="Drop Ct" onload="PrepDrop(this,'Time_A')"></div></div>
+                                    <div><label>Referências</label><div    class="Drop Ct" onload="PrepDrop2(this,1)"></div></div>
                                 </div>
 
                                 <div class="Box topbar Abslt none">
@@ -428,7 +444,7 @@
                             </div>
 
                             <div class="DivImptImgs Box2 UNDD none Cl Rltv">
-                                <div><label>Imagens</label><div class="Drop Ct" onload="PrepDrop(this,'Drop')"></div></div>
+                                <div><label>Imagens</label><div class="Drop Ct" onload="PrepDrop2(this,1)"></div></div>
                                 <input id="InputeZZ" type="file" multiple accept="image/*">
                                 <button onclick="ImgUPP2($('#InputeZZ'),'ARTE-2418','ARTE-2418-Img-Imgs-_-_')">Rodar</button>
                             </div>
@@ -477,6 +493,7 @@
 </body>
 
 <script> // Página do Designer
+    function RodarDrops(){$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))}
     const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
     const Sldo=U=>{
         const Cmplt = U.Nome
@@ -507,8 +524,8 @@
     }
 
     const Tm_Resumo=(E,U,Mod)=>`${E.map(e=>`
-        <div class="Resumo gap Cl Bt HOV Box2 Rltv" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event,'${U.cgo}'))">
-            ${e.Dsng==U.Nome ? `<img class="Pic Abslt" src="${U.Foto}">` : ''}
+        <div class="Resumo gap Cl Bt HOV Box2 Rltv" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event,'${U.cgo}'));RodarDrops()">
+            ${U.cgo=='Admn'&&e.Dsng!==''? `<img class="Pic Abslt" src="./img/Perfil_${e.Dsng}.webp">` :  e.Dsng==U.Nome ? `<img class="Pic Abslt" src="${U.Foto}">` : ''}
             <p>${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
             <p>${e.Tipo}</p><div class="Cl Start2 ${Mod=='P'?'NONE':''}"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
             <div class="${Mod=='P'?'NONE':''}">${Tm_RS2(e.Valr)}</div>
@@ -516,40 +533,47 @@
 
     const Tm_Exib=(U,ID,ev,cgo)=>{
         if (ev?.target.closest('button')) return
+        const Admn = cgo=='Admn'
         const Obj  = J['ARTE'].find(e=>e.Id==ID)
-        const ADM  = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
-        const ADMs = Col=>cgo=='Admn' ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADM  = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADMs = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADMp = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_"`:''
+        const ADMP = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADMt = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Text-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true"                          onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+
         const Rgr  = Obj.Regra
         const   G  = a=>`style="grid-area:${a}"`
         return `<div class="INFO">
                     <h3 class="Ct" ${G('A')} ${ADM('Nome')}>${Obj.Nome}</h3>
                     
                     <div class="F1 Box2" ${G('B')}>
-                        <div ${G('A')} class="Bt"><div class="Ct">Tipo:<div>${cgo=='Admn' ? `<select ${ADMs('Tipo')}>${Tm_Opt(O['TArt'],Obj.Tipo)}</select>` : Obj.Tipo}</div></div><div>Arte Aberta</div><div ${ADM('Dsng')}>${Obj.Dsng}</div></div>
+                        <div ${G('A')} class="Bt"><div class="Ct">Tipo:<div>${Admn ? `<select ${ADMs('Tipo')}>${Tm_Opt(O['TArt'],Obj.Tipo)}</select>` : Obj.Tipo}</div></div><div>Arte Aberta</div><div ${ADM('Dsng')}>${Obj.Dsng}</div></div>
                         <div ${G('B')} class="Box2 RASC"     >${For(Rgr.length).map(e=>`<img class="Rascunho ${e==0?'':'none'}"             src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}</div>
-                        <div ${G('C')} class="Box2 LISTA1 Cl">${For(Rgr.length).map(e=>`<img class="HOV" onclick="TrocaRasc(this,'${e+1}')" src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}</div>
+                        <div ${G('C')} class="Box2 LISTA1 Cl">${For(Rgr.length).map(e=>`<img class="HOV" onclick="TrocaRasc(this,'${e+1}')" src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}<button>UPP</button></div>
                         <div ${G('D')} class="Box2"          ><p ${ADM('Clnt')}>${Obj.Clnt}</p> <p ${ADM('Tema')}>${Obj.Tema}</p> <div ${ADM('Data')}>${Obj.Data}</div> <div>${TempoResta(Obj.Prazo)}</div>   </div>
                         <div ${G('E')} class="Box2"          ><p ${ADM('Valr')}>${cgo=="Admn"?Obj.Valr:Tm_RS2(Obj.Valr)}</p><button>Discutir Preço</button></div>
                     </div>
 
                     ${Rgr.map((r,x)=>{
-                        const ETAP = cgo=='Admn' ? ['AI','UP','BG','CP','DG','VT','MK'] : r.Etps.split('-')
+                        const Ettp = r.Etps.split('-')
+                        const ETAP = Admn ? ['AI','UP','BG','CP','DG','VT','MK'] : Ettp
                         return `<div class="F2 Box2 ${x==0?'':'NONE'} RasC${x+1}" ${G('C')}>
-                                    <div ${G('A')} class="ETAPASS Ct gap"><p>Rascunho ${x+1}</p> ${ETAP.map(k=>`<div class="Ct gap HOV" onclick="TOV(this)"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
-                                    <div ${G('B')} ><textarea>${Obj.Info}</textarea></div>
-                                    <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p>${r.Mdds}</p></div>    
-                                    <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
-                                    <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}</div></div>
-                                    <div ${G('F')} class=""></div>
+                                    <div ${G('A')} class="ETAPASS Ct gap" ${ADMp(r.Id,'Etps')}><p>Rascunho: ${r.Id}</p> ${ETAP.map(k=>`<div class="Ct gap HOV ${Ettp.includes(k)?'Atv':''}" onclick="TOV(this);EditETPS(this)" name="${k}"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
+                                    <div ${G('B')} class="gap"        ><textarea ${ADMt(r.Id,'Desc')}>${r.Desc}</textarea><textarea ${ADMt(r.Id,'Info')}>${r.Info}</textarea></div>
+                                    <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p ${ADMP(r.Id,'Mdds')}>${r.Mdds}</p></div>    
+                                    <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}<div class="Drop Ct"></div></div></div>
+                                    <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}<div class="Drop Ct"></div></div></div>
+                                    <div ${G('F')} class="Cl"><button ${ADMp(r.Id,'Elmt')} onclick="AddNewIMG(this,'${r.Elmt}')">Elmt</button><button ${ADMp(r.Id,'Refr')} onclick="AddNewIMG(this,'${r.Refr}')">Refr</button></div>
                                 </div>`
                     }).join('')}
 
                     <div class="F3 Box2" ${G('D')}>
                         <div ${G('A')}>${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>`:'<button>Baixar</button>'}</div>
-                        <div ${G('B')} class="Box2"><label>Emvie em ${'SVG'}</label><input type="file" multiple accept=".pdf,.zip,.rar" onchange="FileUP(this,'ARQ',this)"></div>
+                        <div ${G('B')} class="Box2"><label class="Ct">Emvie em <p ${ADMP(Rgr[0].Id,'Form')}>${Rgr[0].Form}</p></label><input type="file" multiple accept=".pdf,.zip,.rar" onchange="FileUP(this,'ARQ',this)"></div>
                         <div ${G('C')} class="Bt">
-                                ${(f=>`${f?.p?`<button onclick="MudaSTTS('${U}','${ID}','${f.p.s}')">${f.p.t}</button>`:'.'}
-                                       ${f?.n?`<button onclick="MudaSTTS('${U}','${ID}','${f.n.s}')">${f.n.t}</button>`:'.'}`)(FLOW[Obj.Stts])}
+                                ${(f=>`${f?.p ?`<button onclick="MudaSTTS('${U}','${ID}','${f.p.s}')">${f.p.t}</button>`:'.'}
+                                        ${Admn?`<button onclick="MudaSTTS2('${U}','${ID}','OK')">'OK ADM'</button>`:''}
+                                       ${f?.n ?`<button onclick="MudaSTTS('${U}','${ID}','${f.n.s}')">${f.n.t}</button>`:'.'}`)(FLOW[Obj.Stts])}
                         </div>        
                     </div>
 
@@ -558,14 +582,17 @@
 
     function Load_Perfil(U){
         const u = U.Nome
+        const ADM = U.cgo=='Admn'
         const __S=[],__M=[],__a=[],__A=[],__D=[],__U=[]
+
         J['ARTE'].forEach(o=>{
-            if(o.Dsng==u)                                 __U.push(o) // Todos
-            if(o.Dslk?.includes(u))                       __D.push(o) // Rejeitados
-            else if((!o.Dsng||o.Dsng==u) && o.Stts=='_S') __S.push(o) // Solicitações
-            else if(o.Dsng==u && o.Stts=='Act')           __M.push(o) // Aceitos
-            else if(o.Dsng==u && o.Stts=='Ok')            __a.push(o) // OK1
-            else if(o.Dsng==u && o.Stts=='OK')            __A.push(o) // OK2
+            const isU = o.Dsng==u ; const S   = o.Stts
+            if(isU)                                     __U.push(o) // Todos
+            if(o.Dslk?.includes(u))                     __D.push(o) // Rejeitados
+            else if((ADM || !o.Dsng || isU) && S=='_S') __S.push(o) // Solicitações
+            else if((ADM || isU) && S=='Act')           __M.push(o) // Aceitos
+            else if((ADM || isU) && S=='Ok')            __a.push(o) // OK1
+            else if(isU && S=='OK')                     __A.push(o) // OK2
         })
 
         Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
@@ -802,6 +829,12 @@
         await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:S,Dsng:U},STTS[S]?.txt||'')
         Load_Perfil(USUARIO)
     }
+    async function MudaSTTS2(U,Id,S){ // esse faz a mesma coisa só que sem alterar o Dsng
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:S},STTS[S]?.txt||'')
+        Load_Perfil(USUARIO)
+    }
     
     function ImgExtras(){
         Inn($('#ImgExtras'),For(3).map(e=>`<img src="${BASE_URL}Med/ARTE-2418_${e}.webp">`).join(''))
@@ -813,11 +846,29 @@
         
         const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
         const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
-
         /*OBJ*/ DarJJ(Mod,..._R,R.Sc?_P:null)
         const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai e depois Colata ele em 'ObjSec'            
         /*SUB*/ SB==null ? Sb_EDIT(supaBASE,...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
     }
+
+    function EditETPS(Eu){
+        const Concat =  $$('.Atv',Pai(Eu)).map(e=>Nm(e)).join('-')
+        EditCell(Pai(Eu),'Edt',Concat)
+        LOG(Concat)
+    }
+    function AddNewIMG(Eu,val){
+        LOG(val)
+        ImgUPP2(Inpt,Nome) 
+        // Rascunhos : 2466_Rasc_1    (Talvez melhorar este)
+        // Elementos : 2466_1_Elmt_1
+        // Referencia: 2466_1_Refr_1
+        
+        EditCell(Eu,'Edt',val)
+    }
+
+
+
+
 </script>
 
 <script>// Iniciação 
