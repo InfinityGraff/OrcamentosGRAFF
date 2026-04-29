@@ -875,6 +875,14 @@
     Onloads('body')
     
     const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
+    
+    // async function GetArte(){
+    //     const { data: userData } = await supaBASE.auth.getUser()
+    //     if(!userData?.user){console.log("Não logado") ; return}
+    //     const { data, error } = await supaBASE.from('ARTE').select('*')
+    //     if(error){console.error("Erro:", error.message) ; return}
+    //     console.log("Dados:", data)
+    // }
 
     function PosGET(){
         const INN = performance.now()
@@ -912,4 +920,6 @@
         // Exigência dos Prints
         // Botar ESC pra funcionar nos Modais
         // Adicionar Login
+
+        // BDJW: Fathippo1210
 </script>

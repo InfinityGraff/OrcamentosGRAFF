@@ -75,16 +75,9 @@
 
     $('#forgot-form').addEventListener('submit', async e => {
         e.preventDefault()
-
         const email = Vll('#EMAIL_RESET')
-
-        const { error } = await supaBASE.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/reset.html'
-        })
-
-        msg.textContent = error
-            ? error.message
-            : 'Link enviado! Verifique seu email.'
+        const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset.html'})
+        msg.textContent = error ? error.message : 'Link enviado! Verifique seu email.'
     })
 
     $('#LogOut').addEventListener('click',async ()=>{await supaBASE.auth.signOut() ; msg.textContent = 'Logout feito!'})
