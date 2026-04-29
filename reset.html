@@ -1,0 +1,16 @@
+<input id="NEW_PASS" placeholder="Nova senha">
+<button onclick="Resetar()">Salvar nova senha</button>
+<div id="msg"></div>
+
+<script>
+    async function Resetar() {
+        const password = document.querySelector('#NEW_PASS').value
+
+        const { error } = await supaBASE.auth.updateUser({
+            password
+        })
+
+        document.querySelector('#msg').textContent =
+            error ? error.message : 'Senha redefinida!'
+    }
+</script>
