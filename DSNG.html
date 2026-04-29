@@ -362,9 +362,10 @@
                     NavPag(Atual.Pag)
                     //tmplt_Prod()
                     $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando class do Cargo do Usuário a todas as Tabelas
-                    Load_Perfil(U)
+                    Load_Perfil(U)    
                     LOG('✅ Perfil Logado!')
                 }
+                
             </script>
 
             <div id="H_Mais" class="Abslt none bndj">
@@ -582,7 +583,9 @@
 
     function Load_Perfil(U){
         const u = U.Nome
+        
         const ADM = U.cgo=='Admn'
+
         const __S=[],__M=[],__a=[],__A=[],__D=[],__U=[]
 
         J['ARTE'].forEach(o=>{
@@ -865,9 +868,6 @@
         
         EditCell(Eu,'Edt',val)
     }
-
-
-
 
 </script>
 
