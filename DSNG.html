@@ -9,10 +9,11 @@
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    
     <!--
         <link href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
         <script src="../MyBiblioteca/PreScript.js"></script>
-    -->
+        -->
 
     <link   href="./SB_Crud.css"  rel="stylesheet">
     <link   href="./CssGRAFF.css"  rel="stylesheet">
@@ -31,33 +32,23 @@
 </head>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const Pry  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
-</script>
+    const Atual = {Pag:'PRFL'}
+    let USUARIO = ''
+    const Pry    = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
+    const ETAPASS= {AI:'Gerar com IA',UP:'Upscale',BG:'Remover Fundo',CP:'Completar',DG:'Digitar',VT:'Vetorizar',MK:'Fazer Mockup'}
+    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
+    const Next   =s=>FLOW[FLOW.indexOf(s)+1]||null
+    const Prev   =s=>FLOW[FLOW.indexOf(s)-1]||null
 
-<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const Cgo  = { // Cargo
-        Admn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
-        Grnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
-        DSgn: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
-        Atnd: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']},
-        Clnt: { nav:['HOME','ARTE','BBTC','|','MPAG','|','CONF']}
-    }
-    const Atual    = {Pag:'PRFL'}
-    let U = {} ; let UU={Cgo:""} ; let USUARIO=''
-    let UCgo = {}
-
-    const O = {
+    const O   ={
         Serv    :['Serviço','Arte','Edição de Video','Produção Musical','Modelagem 3D','After Effects','Programação'],
         TArt    :['Tipo de Arte','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração'],
         Tema    :["Tema de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
         Catg    :["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
-        
         Dest    :["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
         Presset :["Livre","1:1","4:5","9:16","16:9"],
         template:['1','2','3'],
     }
-    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
-
     const STTS={
         _S:{txt:'Desistência',btn:'Aceitar Arte'},
         Act:{txt:'Arte Aceita',btn:'Finalizar'},
@@ -70,9 +61,6 @@
         Err:{n:{s:'Act',t:'Corrigido'},p:{s:'Act',t:'Voltar'}},
         Ok :{p:{s:'Act',t:'Reabrir'}}
     }
-    const Next=s=>FLOW[FLOW.indexOf(s)+1]||null
-    const Prev=s=>FLOW[FLOW.indexOf(s)-1]||null
-
     const Tipo_ARTE = [
         { Nome:"Criação"     , Valr:20.00}, 
         { Nome:"Recriação"   , Valr:15.00}, 
@@ -82,49 +70,27 @@
         { Nome:"Digitação"   , Valr:5.00}, 
         { Nome:"Modificação" , Valr:4.00}, 
     ]
-
-    const ETAPASS={AI:'Gerar com IA',UP:'Upscale',BG:'Remover Fundo',CP:'Completar',DG:'Digitar',VT:'Vetorizar',MK:'Fazer Mockup'}
-
-</script>
-
-<script>
-    function PrepDrop2(Eu,m=0){
-        Inn(Eu,`<div class="P Ct gap"></div><a>+ Adicionar Imagem</a><input type=file accept=image/* ${m?'multiple':''} class=NONE>`)
-        let f=$('input',Eu),a=$('a',Eu),p=$('.P',Eu),
-        add=F=>{if(!F)return;let b=document.createElement('div'),u=URL.createObjectURL(F)
-            b.innerHTML=`<img src="${u}"><i>X</i>`,$('i',b).onclick=_=>b.remove()
-            if(!m)p.replaceChildren();p.appendChild(b)},
-        imp=fs=>[...fs].map(add)
-        a.onclick=_=>f.click()
-        f.onchange=e=>(imp(e.target.files),f.value='')
-        Eu.ondragover=e=>(Prvn2(e),Add(Eu,'hover'))
-        Eu.ondragleave=_=>Rmv(Eu,'hover')
-        Eu.ondrop=e=>(Prvn2(e),Rmv(Eu,'hover'),imp(e.dataTransfer.files))
-    }
 </script>
 
 <script> // Bibliotecas
-    const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
-    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
+    const tr_ID    =tr     =>getClss(tr,'tr-').split('-')[1]
+    const TRs      =Typ    =>$$(`#H_${Typ} > tbody     > tr:not(.H_Tbody)`)
     const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
-    const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
+    const tr_Viw   =Typ    =>$$(`#H_${Typ} > tbody     > tr:not(.H_Tbody):not([class*=" n"])`)
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
-
     const gID     =e=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${Nm(Pai(e))}"]`)
     const gID2=(e,x)=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${x}"]`)
     const gID3=(e,x)=>$(`.UNDD[name="${1}"] .e[name="${x}"]`)
-
     function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
 </script>
 
 <style> /*O CSS Interno*/
     /*Biblioteca CSS*/
-
-    h2,h3       {font-size: 25px}
+    h2,h3       {font-size:25px}
     h3 svg      {height:25px;width:auto}
     .SvgGambiarr{height:20px;width:20px; fill:#ffffff}
-    button{font-size: 14px;}
+    button      {font-size:14px}
 
     #Form_Arte  {height:625px   } #Form_Arte .LA{width:68%} #Form_Arte .LB{width:28%}
     #List_Dsng  {overflow:scroll} #List_Dsng .LA{width:30%} #List_Dsng .LB{width:70%}
@@ -185,16 +151,16 @@
     .LILI          {height:200px; width:auto}
 
     /*INFORMAÇÕES*/
-        div:has(>.INFO){height:90%;width:90%}
-        .INFO      {display:grid;gap:10px;height:100%}
-        .INFO > div{display:grid;gap:10px;padding:10px}
-        .INFO      {grid-template:"A A" 35px "B C" 2fr "B D" 1fr / 1fr 1fr}
-        .INFO .F1  {grid-template:"A A A A A A" 30px "C B B B B B" 1fr "C B B B B B" 60px "D D D E E E" 100px}
-        .INFO .F2  {grid-template:"A A B B" 150px "C C B B" 40px "D D D F" 1fr "E E E F" 1fr / 1fr 1fr 2fr 0.5fr;}
-        .INFO .F3  {grid-template:"A B" 50px "C C" 1fr}
-            .INFO textarea {height: 49%; width:100%; text-align:left;white-space:pre-wrap; border-radius: 8px;}
-            .INFO a img    {height: 18px; width:auto}
-            .INFO .Rascunho{height: 100%; width:100%; object-fit:contain}
+    div:has(>.INFO){height:90%;width:90%}
+    .INFO      {display:grid;gap:10px;height:100%}
+    .INFO > div{display:grid;gap:10px;padding:10px}
+    .INFO      {grid-template:"A A" 35px "B C" 2fr "B D" 1fr / 1fr 1fr}
+    .INFO .F1  {grid-template:"A A A A A A" 30px "C B B B B B" 1fr "C B B B B B" 60px "D D D E E E" 100px}
+    .INFO .F2  {grid-template:"A A B B" 150px "C C B B" 40px "D D D F" 1fr "E E E F" 1fr / 1fr 1fr 2fr 0.5fr;}
+    .INFO .F3  {grid-template:"A B" 50px "C C" 1fr}
+        .INFO textarea {height: 49%; width:100%; text-align:left;white-space:pre-wrap; border-radius: 8px;}
+        .INFO a img    {height: 18px; width:auto}
+        .INFO .Rascunho{height: 100%; width:100%; object-fit:contain}
     
     .LISTA {overflow: auto;}
     .LISTA img  {height:70px; width:70px; object-fit:contain}
@@ -219,169 +185,96 @@
     .FModal td:nth-child(8){display: none}
     .FModal td:nth-child(9){display: none}
 
-
+    .Infinity .Hov_Shw{filter:drop-shadow(0px 0px 5px #f030c0)}
+    .FEXTA    .Hov_Shw{filter:drop-shadow(0px 0px 5px #ffc813)}
+    .Hov_Bkg          {background: #ffc813}
+    .Hov_Cor          {color:      #ffc813}
 </style>
 
-<body class="FEXTA Dark">
+<body class="FEXTA Dark grid">
     <style> /*CSS do Header*/
         /*Fixos*/
-            header    {padding:0px ; z-index:999 ; transition: all ease-in-out 0.3s}
-            header > *{transition: all ease-in-out 0.3s}
-            #LgNome      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
-            #LgNome:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
-            #PAGES{flex:1 ; height:100% ; overflow-y:hidden}
-            .ConfigOrc{transition: all ease-in-out 0.3s}
-            .Body1 .ConfigOrc{height: 0px}
-            .Body2 .ConfigOrc{height: 40px}
-            .Body1 .Content{height:92vh;}
-            .Body2 .Content{height:100vh;}
-        /*Body1*/
-            .BBody1{height:8vh  ; width:100vw ; position:sticky; top:0}
-            .Body2 .BBody1{height: 0vh; pointer-events: none;}.Body2 .BBody1 > *{opacity: 0}
-            .Body1 #PAGES > div{height:100%} /*Aqui são as Páginas de Fato*/
-                .BBody1 #Title      {margin-left:15px}                @media(max-width:500px){.BBody1 #Title    {margin-left:3px}}
-                .BBody1 #Title #Logo{margin:5px; height:30px}         
-                .BBody1 #Title h1   {font-size:3vw}                   @media(max-width:500px){.BBody1 #Title h1 {display:none}}   
-                .BBody1 nav         {margin:0px 10px}                 @media(max-width:700px){.BBody1 nav       {display:none}}
-                .BBody1 nav img     {height:22px; margin:3px 3px}
-                .BBody1 nav p       {display:none}
-                .BBody1 nav div     {border-radius:5px ; margin: 0px 2px;}
-                .Body1 #NavPerf     {flex-direction:row}
-                .Body1 #LgNome      {display:none}
-                .Body1 #LgMORE      {display:none}
-        /*Body2*/
-            .BBody2{height:100%;width:18% ; flex-direction: column}
-            .Body1 .BBody2{width:0% ; pointer-events: none;}.Body1 .BBody2 > *{opacity: 0}
-            .BBody2.recolhe{width:5% } @media(max-width:500px){.BBody2.recolhe{width:50% }}
-            .BBody2.recolhe #Logo   {display: none}
-                .BBody2 #Title      {width: 90%; justify-content: space-between}
-                .BBody2 #Title #Logo{margin:5px; height:30px}
-                .BBody2 #Title h1   {font-size:50% ; display:none}
-                .BBody2 nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                .BBody2 nav img {height:22px; margin:5px 0px ; margin-right: 9px}                            .BBody2.recolhe nav img {margin-right: 0px}
-                .BBody2 nav p   {display:block ; font-size: 14px}                                            .BBody2.recolhe nav p   {display:none}
-                .BBody2 nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .BBody2.recolhe nav div {justify-content:center}
-                .BBody2 nav div:hover     {background: #ffffff15}
-                .BBody2 nav #b1_HNVDv_LIN img{display: none}
-                .BBody2 nav #b1_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
-                .BBody2 nav #b2_HNVDv_LIN img{display: none}
-                .BBody2 nav #b2_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
-                .BBody2 #NavPerf         {flex-direction:column; width: 90%}
-                .BBody2 #Div-Pesq        {display:none}
-                .BBody2 #DivNav          {width:90%}
-                .BBody2 #H_Login         {width: 100% ; justify-content: flex-end; background: #38003fa6}
-                .BBody2 #LgNome          {display: flex; margin-right: 7px; font-size: 14px;}
-                .BBody2 #LgMORE          {display: flex}
-                nav > *.Atv              {background: #da00aa}
-                nav > *.Atv:hover        {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
+            body.grid {height:100vh;display:grid;grid:"A A" auto"B C" 1fr / 1fr 4fr}
+            header    {padding:0px ; z-index:999 ; transition: all ease-in-out 0.3s;position:sticky; top:0}
+            header > *{transition:all ease-in-out 0.3s}
+            #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
+            #PAGES > *{height:100% ; overflow-y:scroll}
+            #COLUN    {height:100% ; background:#1a1a1a}
+        /*header*/
+            #Logo        {height:30px}
+            #Title h1    {font-size:3vw}           @media(max-width:500px){#Title h1 {display:none}}
+            nav          {gap:6px}                 @media(max-width:700px){nav       {display:none}}
+            nav p        {display:none}
+            nav img      {height:22px}
+            nav div      {border-radius:5px}
+            #LgFoto      {background-size:cover ; height:100%; width:auto}
+            #LgFoto img  {width:42px; height:42px; margin:4px 4px}
+
+            #H_Mais           {top:55px; right:0px}
+            #MAIS             {background:#4e4e4e; width:250px; color:#ffffff}
+            #MAIS img         {height:25px; margin-right:10px}
+            #MAIS div         {padding:10px; cursor:pointer; font-size:15px; width:100%}
+            #MAIS p,#MAIS p a {font-size:10px}
+            #MAIS div:not(:last-child):hover{background:#808080; color:var(--Txt-Wit-Hover)}
     </style>
 
-    <header class="BBody1 Bt"> <!--Body1--> <!--HEADER-->
-
-        <div id="Title" class="Ct"> <!--Titulo-->
-            <img id="Logo"  draggable="false" src="./Img/Mac.webp" onclick="TrocaBody()">
-            <h1 class="PT" onclick="TrocaBody()"></h1>
-            <script>
-                function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
-                function Recolher(){Tog($('.BBody2'),'recolhe')}
-                function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
-            </script>
-        </div>
-        <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div><!--Pesquisa-->
-        <div id="DivNav"><nav class="Ct H_Nav"></nav></div><!--nav-->
-
-        <script>
-            function NavPag(Typ){// ao Navegar
-                Atual.Pag=Typ
-                Show(`#Pag_${Typ}`,$$('#PAGES > *'))             // Troca Página
-                if(!Cgo.Admn.nav.includes(Typ)){DTV($$('.H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no nNav
-                // ATV($(`#b1_HNVDv_${Typ}`),$$('.BBody1 .H_Nav > *')) // Troca nNav.Atv do BBody1
-                // ATV($(`#b2_HNVDv_${Typ}`),$$('.BBody2 .H_Nav > *')) // Troca nNav.Atv do BBody2
-                // Show($$(`.Pesq_${Typ}`),$$('.pPesq'))            // Troca Pesquisa
-                // setTimeout(()=>getSBPromise.then(()=>loadtmtable(Typ,false,true)),0) // 100% Assíncrono
-            }
-        </script>
-
-        <div id="H_Login" class="Ct"> <!--Perfil-->
-            <style>
-                #LgFoto{background-size:cover ; height: 100%; width: auto;}
-                #LgFoto img{width:42px; height:42px; margin:4px 4px}
-                .Body1 #H_Mais{top:55px; right:0px}
-                .Body2 #H_Mais{bottom: 0%; left:170px}
-                #MAIS{background:#4e4e4e; width:250px ; color:white}
-                #MAIS div{padding:10px;cursor:pointer;font-size:15px; width:100%}
-                #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
-                #MAIS div:last-child{padding:10px}
-                #MAIS img{height:25px;margin-right:10px}
-                #MAIS p,#MAIS p a{font-size:10px}
-            </style>
-            <img id="LgMORE" src="./SVG/More.svg" class="Hov" style="width:18px" onclick="ShowMore()" oncontextmenu="Prvn();ShowMore()">
-            <div id="LgNome" class="Ct PT"  onclick="AbreLogin(true)">Login</div>
-            <div id="LgFoto"><img draggable="false" class="NObj" onclick="AbreLogin(true)" oncontextmenu="Prvn();ShowMore()"></div>
-
-            <script>
-                function ShowMore(){TogShow('#H_Mais')}
-
-                function AbreLogin(valid){
-                
-                    if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; //MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')
-                    
-                    MODAL(`
-                        <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
-                        <div class="Bt Loginn">Login</div>
-                        <div class="Ct Start">
-                            <label for="Senha">Senha</label>
-                            <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
-                        </div>
-                        <span id="errPass" class="erro"></span>
-                        <div class="Bt">
-                            <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
-                            <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
-                            </div>
-                        </div>
-                    `)
-                }
-
-                const SaiMdal=()=>{if($('.FModal')){$('.FModal').remove()}} /*GAMBIARRA*/
-
-                function TestSenha(Mod,p){
-                    const nome=$('#LgNome'),foto=$('#LgFoto img')
-                    const storg=e=>{StogeRmv('Pass');if(e){StogeSet('Pass',e)}}
-                    const logaa=e=>{const U = JJ['USER'][e] ; Inn(nome,U.Nome);foto.src=U.Foto;storg(e);SaiMdal();PosLogin(U)}
-                    if(Mod=='Dslog')     logaa(0)
-                    if(Mod=='Storg') p ? logaa(p) : logaa(0)
-                    if(Mod=='Modal'){if(JJ['USER'][Vll(p)]){logaa(Vll(p))}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
-                }
-                function PosLogin(U){
-                    USUARIO = U
-                    UCgo = Cgo[U.cgo] ; UU.Cgo = U.cgo
-                    $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
-                    Inn('.BBody1 .H_Nav',UCgo.nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-                    Inn('.BBody2 .H_Nav',UCgo.nav.map(e=>`<div id="b2_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-                    //Inn('#Div-Pesq',UCgo.nav.map(Typ=>Load_Pesq(Typ)).join(''))
-                    NavPag(Atual.Pag)
-                    //tmplt_Prod()
-                    $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando class do Cargo do Usuário a todas as Tabelas
-                    Load_Perfil(U)    
-                    LOG('✅ Perfil Logado!')
-                }
-                
-            </script>
+    <header class="Bt w100" style="grid-area:A">
+        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Mac.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+        <!-- Perfil --><div id="H_Login" class="Ct"> 
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="ShowMAIS()" oncontextmenu="Prvn();ShowMAIS()">
+            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+            <div id="LgNome"  class="Ct PT"  onclick="AbreLogin('Cdstr')">Cadastre-se</div>
+            <div id="LgFoto"><img draggable="false" class="NObj" onclick="ShowMAIS()" oncontextmenu="Prvn();ShowMAIS()"></div>
 
             <div id="H_Mais" class="Abslt none bndj">
                 <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="NavPag('PRFL');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-                    <div class="Start" onclick="AbreLogin()   ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-                    <div class="Start" onclick="NavPag('CONF');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="NavPag('SPRT');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-                    <div class="Start" onclick="TestSenha('Dslog');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-                    <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                    <div class="Start" onclick="NavPag('PRFL')    ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+                    <div class="Start" onclick="AbreLogin('Login');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+                    <div class="Start" onclick="NavPag('CONF')    ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+                    <div class="Start" onclick="NavPag('SPRT')    ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+                    <div class="Start" onclick="SB_LgOff()        ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+                    <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
                 </div>
             </div>
         </div>
+
+        <script>
+            function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
+            function Recolher(){Tog($('.BBody2'),'recolhe')}
+            function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
+            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
+            function ShowMAIS(){Tog_N($('#H_Mais'))}
+             /*GAMBIARRA*/ const SaiMdal=()=>{if($('.FModal')){$('.FModal').remove()}}
+
+            function AbreLogin(stg){
+                const Obj = {
+                    Login:{Tt:'Entre com sua Conta!',btn:'Entrar'   ,Ou:['Cdstr','Cadastre-se'        ],Fn:'SB_Login',p:'',},
+                    Cdstr:{Tt:'Cadastr-se Agora!'   ,btn:'Cadastrar',Ou:['Login','Já tenho uma Conta!'],Fn:'SB_Cdstr',p:'',},
+                    Reset:{Tt:'Esqueceu a Senha?'   ,btn:'Enviar'   ,Ou:['Login','Voltar!'            ],Fn:'SB_Reset',p:'digite seu Email para poder trocar a Senha!'},
+                }
+                const Stgg = `<div class="Cl Gap">
+                    <form id="ModalLogin" class="Cl Bt w100 Gap" onsubmit="${Obj[stg].Fn}(event,Vll($('.Email',this)),Vll($('.Senha',this)),$('.errPass',this),$('.UNome',this))">
+                        <h2>${Obj[stg].Tt}</h2><p>${Obj[stg].p}</p>
+                        ${stg=='Cdstr'?`<div class="Start2 w80"><label>Nome </label><input                 placeholder="Nome de Usuário..." class="UNome w100" required></div>` : ''} 
+                                        <div class="Start2 w80"><label>Email</label><input type="email"    placeholder="Seu Email...      " class="Email w100" required></div>
+                        ${stg!='Reset'?`<div class="Start2 w80"><label>Senha</label><input type="password" placeholder="Sua Senha...      " class="Senha w100" required>${stg=='Login'?`<a class="PT" onclick="AbreLogin('Reset')">Esqueceu a Senha?</a>`:''}</div>` : ''}
+                        <span class="errPass erro"></span>
+                        <div class="w80"><button class="w100" type="submit">${Obj[stg].btn}</button></div>
+                    </form>
+                        <p>---------------- OU ----------------</p>
+                        <button class="" onclick="SaiMdal();AbreLogin('${Obj[stg].Ou[0]}')">${Obj[stg].Ou[1]}</button>
+                        <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                    </div>`
+                MODAL(Stgg)
+            }          
+        </script>
     </header>
+
+    <aside id="COLUN" style="grid-area:B"></aside>
     
-    <div id="PAGES"> <!--isso era pra ser main-->
+    <div id="PAGES" style="grid-area:C"> <!--isso era pra ser main-->
 
         <div id="Pag_PRFL" class="p20">
             <div class="w100 Cl Gap">
@@ -482,11 +375,14 @@
         </div>
         
         <div id="Pag_MPAG">
-            <h1>VIAGEM</h1>
+            <h1>Pagamentos</h1>
+            <div class="DivPagamentos">aqui fica os pagamentos</div>
         </div>
 
         <div id="Pag_CONF" class="h100">
-            <h1>CONF</h1>  
+            <h1>CONF</h1>
+            <div>configurações</div>
+            <div onload="Inn(this,O['Serv'].map(e=>`<p>${e}</p>`).join())"></div>
         </div>
         
     </div>
@@ -494,12 +390,10 @@
 </body>
 
 <script> // Página do Designer
-    function RodarDrops(){$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))}
-    const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
-    const Sldo=U=>{
-        const Cmplt = U.Nome
-        LOG(Cmplt)
-        MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'].filter(e=>e.Clnt.includes('Higor')))}</tbody></table>`)} // Carregar tabela do Saldo
+    function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)}
+    function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))}
+    const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__D:__A))                               // ao rodar o Modal Excluir o Antigo
+    const Sldo=U     =>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'])}</tbody></table>`) // Carregar tabela do Saldo
 
     const MediaRank=(Arts,Tags)=>{
        return Arts.length + Tags.length // Quantidade de Arte e Quantidade de tags
@@ -583,13 +477,12 @@
 
     function Load_Perfil(U){
         const u = U.Nome
-        
-        const ADM = U.cgo=='Admn'
-
+        const ADM = U.Crgo=='Admn'
         const __S=[],__M=[],__a=[],__A=[],__D=[],__U=[]
 
         J['ARTE'].forEach(o=>{
-            const isU = o.Dsng==u ; const S   = o.Stts
+            const isU = o.Dsng==u
+            const S   = o.Stts
             if(isU)                                     __U.push(o) // Todos
             if(o.Dslk?.includes(u))                     __D.push(o) // Rejeitados
             else if((ADM || !o.Dsng || isU) && S=='_S') __S.push(o) // Solicitações
@@ -598,7 +491,8 @@
             else if(isU && S=='OK')                     __A.push(o) // OK2
         })
 
-        Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
+        Inn($('#Perf-Perf'),`<img class="Pic" onclick="TrocaFoto(this)" src="${BASE_URL}User/${U.Id}.webp?v=${Date.now()}">
+                <div class="none"><div class="Drop"></div><button onclick="LOG($('input',Pai(this)));Upload_Foto($('input',Pai(this)).files[0])">Trocar Foto</button></div>
                 <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
                     ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
                 </div>
@@ -873,27 +767,29 @@
 
 <script>// Iniciação 
     Onloads('body')
-    
-    const getSBPromise = SB_Get(supaBASE,['BS','USER','MPAG','ARTE','IMGS'])
-    
-    // async function GetArte(){
-    //     const { data: userData } = await supaBASE.auth.getUser()
-    //     if(!userData?.user){console.log("Não logado") ; return}
-    //     const { data, error } = await supaBASE.from('ARTE').select('*')
-    //     if(error){console.error("Erro:", error.message) ; return}
-    //     console.log("Dados:", data)
-    // }
+    Get_User()
+
+    function PosLogin(U){
+        USUARIO = U
+        LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)
+        Add_N($('#LgNNome'))
+        $('#LgFoto img').src= `${BASE_URL}User/${U.Id}.webp?v=${Date.now()}`
+        $('body').className="" ; ['grid',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        NavPag(Atual.Pag)
+        SB_Get(supaBASE,['BS','ARTE','MPAG'])
+    }
 
     function PosGET(){
+        Load_Perfil(USUARIO)
         const INN = performance.now()
         J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
-        TestSenha('Storg',StogeGet('Pass'))
-        Load_Page($("#List_Dsng"),'P')
-        Load_Page($('#Todo_Dsng'),'G')
+        //Load_Page($("#List_Dsng"),'P')
+        //Load_Page($('#Todo_Dsng'),'G')
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
         ImgExtras()
     }
-
 </script>
 
 <script>

@@ -3,8 +3,7 @@ const J={},JJ={},BS={},ALL={},PreTbl={}
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
 const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
-const NoneCgo =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(UU.Cgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
-
+const NoneCgo =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(USUARIO.Crgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
 
 const Tm_R=(e,x,Typ,P=false)=>{
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // GAMBIARRA
@@ -507,4 +506,48 @@ async function Sb_DELIMG(SB,nome){
     let {error} = await SB.storage.from('uploads').remove(paths)
     if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
     else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
+}
+
+
+// LOGIN--------------------------------------------------
+async function Get_User(){
+    const { data:userData } = await supaBASE.auth.getUser()
+    if(!userData.user)return
+    const { data:User,error } = await supaBASE.from('USER2').select('*').eq('Id',userData.user.id).single()
+    if(error)return console.log(error)
+    PosLogin(User)
+    MyAlert('DEUCERTO!')
+}
+async function SB_Cdstr(e,email,password,msg,nome){e.preventDefault()
+    const { error } = await supaBASE.auth.signUp({email,password})
+    msg.textContent = error ? error.message : 'Conta criada! Confirme seu email.'
+    MyAlert('DEUCERTO!')
+}
+async function SB_Login(e,email,password,msg,nome){e.preventDefault()
+    const { data, error } = await supaBASE.auth.signInWithPassword({email,password})
+    msg.textContent = error ? error.message : `Seja Bem-Vindo! ${data?.user?.email}`
+    MyAlert('DEUCERTO!')
+}
+async function SB_Reset(e,email,password,msg,nome){e.preventDefault()
+    const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset.html'})
+    msg.textContent = error ? error.message : 'Link Enviado! Verifique seu email.'
+    MyAlert('DEUCERTO!')
+}
+async function SB_LgOff(msg){
+    await supaBASE.auth.signOut() ; msg ? msg.textContent = 'Perfil Desconectado!' : null
+    MyAlert('DEUCERTO!')
+}
+async function Upload_Foto(File){
+    let {data:{user}}=await supaBASE.auth.getUser() ; if(!user)return
+    let Img=new Image(),Cnv=document.createElement('canvas'),Ctx=Cnv.getContext('2d')
+    Img.src=URL.createObjectURL(File)
+    await new Promise(ok=>Img.onload=ok)
+    Cnv.width=500 ; Cnv.height=500
+    Ctx.drawImage(Img,0,0,500,500)
+    let Blob=await new Promise(ok=>Cnv.toBlob(ok,'image/webp',0.8))
+    let Nome=`${user.id}.webp`
+    let {error}=await supaBASE.storage.from('uploads').upload(`User/${Nome}`,Blob,{upsert:true,contentType:'image/webp'})
+    if(error)return LOG(error)
+    MyAlert('Foto Upada com Sucesso!')
+    return Nome
 }
