@@ -4,270 +4,176 @@
 @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
 @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
 
-:root{
-  --CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);
+:root{--CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff)}
+
+.COR_Infinity{background:#9f009a}
+.COR_Rosa    {background:#E8778D}
+.COR_FEXTA   {background:#ffd000}
+.COR_Basic   {background:#0073ee}
+
+body[data-Base="Infinity"]{
+  /*Header*/ --HeadBk:url(./SVG/Fundo.png);
+  /*Buttons*/ --BtnBk:linear-gradient(to right,#73008A 30%,#FF5900);--BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #00000025; --BtnBord: 0px solid #ffae0000;
+  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#463a4b7a;--ScrllBrrHV:#401c47a5;
 }
-
-
-.Infinity.Lite{
-  /*Body   */ --BodyBk  :#ffffff                                           ;--BodyTx:#000000; 
-  /*Header*/ --HeadBk:url(./SVG/Fundo.png)                                   ;--HeadTx:#ffffff;
-  /*Buttons*/ --BtnBk:   linear-gradient(to right,#73008A 30%,#FF5900)  ;--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #00000025; --BtnBord: 0px solid #ffae0000;
-  /*h1*/      --H1cTx: #fa7d09;
-
-  /*Buttons*/ --BtnHovBk:#9f009a;--BtnHovTx  :#ffffff; 
-  /*Hovers */ --TagHovBk:#9f009a;--TagHovTx  :#ffffff; 
-  /*Ativas */ --Tag_Atv :#9f009a;--Tag_Atv_Tx:#ffffff; 
-  /*Ranges */ --TagRngBk:#cfe2ff;--TagRngTx  :#4a2853; 
-  /*Offline*/ --Tag_Off :#f5f5f5;--Tag_Off_Tx:#bbbbbb; 
-  /*Destq UP*/--Tag_DESTK:#9f009a  ;--Tag_DESTK_Tx:#ffffff; 
-  /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#9f009a;
-  /*Boxy    */--Boxy     :#0000000a;--BoxySdw:0;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
-
-  /*N botei ainda no Basic*/ --FcusBkg:#ffffff00;--FcusBrd:1px solid #ff00fff5;--FcusShw:0 0 10px #ff00fffb; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+body[data-Base="Infinity"][data-tema="Lite"]{
+  /*Body    */ --CorText :#2d1933  ; --BodyBk :#ffffff  ;
+  /*Ipt,Opt */ --OptBkg  :#ffffff  ; --OptCor :#000000  ; --Invalid:#00000083;
+  /*Focus   */ --FcusBkg :#ffffff00;
 }
-.Infinity.Dark{
-  /*Body   */ --BodyBk  :linear-gradient(#19111f,#16101a) center no-repeat fixed;--BodyTx:#ffffff; 
-  /*Header*/  --HeadBk  :url(./SVG/Fundo.png)/*linear-gradient(to top,#4e004e,#740083)*/;--HeadTx:#ffffff;
-  /*Buttons*/ --BtnBk:   linear-gradient(to right,#434343,#73008A,#FF5900)    ;--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #00000025; --BtnBord: 0px solid #ffae0000;
-  /*h1*/      --H1cTx: #fa7d09;
-
-  /*Buttons*/ --BtnHovBk :#9f009a   ;--BtnHovTx    :#ffffff; 
-  /*Hovers */ --TagHovBk :#9f009a   ;--TagHovTx    :#ffffff; 
-  /*Ativas */ --Tag_Atv  :#cc00c5   ;--Tag_Atv_Tx  :#ffffff; 
-  /*Ranges */ --TagRngBk :#cfe2ff   ;--TagRngTx    :#4a2853; 
-  /*Offline*/ --Tag_Off  :#6b556e3f ;--Tag_Off_Tx  :#bbbbbb6c; 
-  /*Destq UP*/--Tag_DESTK:#9f009a   ;--Tag_DESTK_Tx:#ffffff; 
-  /*Destq Sm*/--Tag_dstk :#ffffff00 ;--Tag_dstk_Tx :#9f009a;
-  /*Boxy    */--Boxy     :linear-gradient(to top,#fbddff0c,#fce4ff05);--BoxySdw:inset 0 0 8px #fce5ff1c,3px 3px 8px #0000003a;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#463a4b7a;--ScrllBrrHV:#6c0081a5;
-
-  /*N botei ainda no Basic*/ --FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+body[data-Base="Infinity"][data-tema="Dark"]{
+  /*Body    */ --CorText :#ffffff  ; --BodyBk :linear-gradient(#19111f,#16101a) center no-repeat fixed;
+  /*Ipt,Opt */ --OptBkg  :#3d3d3d  ; --OptCor :#ffffff  ;  --Invalid:  #ffffff4b;
+  /*Focus   */ --FcusBkg :#ffffff42;
 }
-.Infinity.Rosa{
-  /*Body   */ --BodyBk  :linear-gradient(135deg,#B654B8,#F0A8B2);--BodyTx:#3a0027; 
-  /*Header */ --HeadBk  :linear-gradient(116deg,#f570be,#c027b3);--HeadTx:#ffffff;
-  /*Buttons*/ --BtnBk   :linear-gradient(135deg,#E8778D,#C151A8);--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123; --BtnBord:1px solid #ecc3c98e;
-  /*h1*/      --H1cTx: #fa0909;
-  
-  /*Buttons*/ --BtnHovBk:#C151A8;--BtnHovTx  :#ffffff; 
-  /*Hovers */ --TagHovBk:#C151A8;--TagHovTx  :#ffffff; 
-  /*Ativas */ --Tag_Atv :#E8778D;--Tag_Atv_Tx:#ffffff; 
-  /*Ranges */ --TagRngBk:#cfe2ff;--TagRngTx  :#4a2853; 
-  /*Offline*/ --Tag_Off :#6b556e2a;--Tag_Off_Tx:#bbbbbba8; 
-  /*Destq UP*/--Tag_DESTK:#C151A8  ;--Tag_DESTK_Tx:#ffffff; 
-  /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#C151A8;
-  /*Boxy    */--Boxy     :linear-gradient(to top,#ffffff5d,#ffffff09);--BoxySdw:inset 0 0 8px #fdfdfd6e,3px 3px 8px #5c084118;
+body[data-Base="Basic"]{
+  /*Box     */--Box      :#2c2c2c70;--BoxySdw:0;
+  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr  :#5d5d5da5;--ScrllBrrHV:#555555;
+}
+body[data-Base="Basic"][data-tema="Lite"]{
+  /*Body    */ --BodyBk  :#ffffff  ;--CorText:#16202e ;
+  /*Ipt,Opt */ --OptBkg  :#ffffff  ;--OptCor :#000000 ; --Invalid:#00000083;
+}
+body[data-Base="Basic"][data-tema="Dark"]{
+  /*Body    */ --BodyBk :#131313  ; --CorText:#ffffff ;
+  /*Ipt,Opt */ --OptBkg :#3d3d3d  ; --OptCor :#ffffff ; --Invalid:#ffffff4b;
+}
+body[data-Cor="Blue"]{
+  /*Textos   */ --CorPrin :#0073ee;--CorText:#16202e;--CorPacy:#0066ff67; --CorATV :#007bff;--BtnTx     :#000000; 
+  /*Header   */ --HeadBk  :#222222;
+  /*Buttons  */ --BtnBk   :#0073ee; 
+}
+body[data-Cor="Yelw"]{
+  /*Textos   */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; 
+  /*Header   */ --HeadBk  :#222222;
+  /*Buttons  */ --BtnBk   :#ffd000; 
+}
+body[data-Cor="Rosa"]{
+  /*Textos  */ --CorPrin :#C151A8;--CorText:#3a0027;--CorPacy:#ffcffd;--CorATV :#E8778D;
+  /*Body    */ --BodyBk  :linear-gradient(135deg,#B654B8,#F0A8B2); 
+  /*Header  */ --HeadBk  :linear-gradient(116deg,#f570be,#c027b3);
+  /*Buttons */ --BtnBk   :linear-gradient(135deg,#E8778D,#C151A8);--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123; --BtnBord:1px solid #ecc3c98e;
+  /*Box     */--Box      :linear-gradient(to top,#ffffff5d,#ffffff09);--BoxySdw:inset 0 0 8px #fdfdfd6e,3px 3px 8px #5c084118;
   /*Scroll  */--ScrolBk  :#64003e1c;--ScrllBrr:#6d0b4748;--ScrllBrrHV:#c027b3;
-
   /*N botei ainda no Basic*/--FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
 }
-.Basic.Lite{
-  /*Principal*/ --CorPrin:#0073ee;
-
-  /*Body   */ --BodyBk  :#ffffff;--BodyTx    :#000000; 
-  /*Buttons*/ --BtnBk   :#eeeeee;--BtnTx     :#000000; 
-  /*Buttons*/ --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; 
-  /*h1*/      --H1cTx: #0073ee;
-
-  /*Hovers */ --TagHovBk:#0073ee;--TagHovTx  :#ffffff; 
-  /*Ativas */ --Tag_Atv :#007bff;--Tag_Atv_Tx:#ffffff; 
-  /*Ranges */ --TagRngBk:#cfe2ff;--TagRngTx  :#283953; 
-  /*Offline*/ --Tag_Off :#f5f5f5;--Tag_Off_Tx:#bbbbbb; 
-  /*Destq UP*/--Tag_DESTK:#007bff  ;--Tag_DESTK_Tx:#ffffff; 
-  /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#0f90e6; 
-  /*Boxy    */--Boxy     :#ffffff0a;--BoxySdw:0;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
-}
-.Basic.Dark{
-  /*Principal*/ --CorPrin:#0073ee;
-
-  /*Body   */ --BodyBk  :#1e1e1e;--BodyTx    :#ffffff; 
-  /*Buttons*/ --BtnBk   :#333333;--BtnTx     :#ffffff; 
-  /*Buttons*/ --BtnHovBk:#0073ee;--BtnHovTx  :#ffffff; 
-  /*h1*/      --H1cTx: #0073ee;
-
-  /*Hovers */ --TagHovBk:#0073ee;--TagHovTx  :#ffffff; 
-  /*Ativas */ --Tag_Atv :#007bff;--Tag_Atv_Tx:#ffffff; 
-  /*Ranges */ --TagRngBk:#1f4168;--TagRngTx  :#ffffff; 
-  /*Offline*/ --Tag_Off :#2a2a2a;--Tag_Off_Tx:#666666; 
-  /*Destq UP*/--Tag_DESTK:#007bff  ;--Tag_DESTK_Tx:#ffffff;
-  /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#3085be;
-  /*Boxy    */--Boxy     :#ffffff0a;--BoxySdw:0;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
-}
-.FEXTA.Dark{
-  /*Principal*/ --CorPrin:#ffd000;
-  /*CorOpacy*/  --CorPacy:#ffdc415d;
-
-  /*Body   */ --BodyBk  :#060606;--BodyTx     :#ffffff; 
-  /*Header */ --HeadBk  :#222222;--HeadTx     :#ffffff;
-  /*Buttons*/ --BtnBk   :#ffd000;--BtnTx      :#000000; 
-  /*h1*/      --H1cTx   :#ffd000;
-
-  /*Buttons*/ --BtnHovBk :#b19000;--BtnHovTx  :#000000; 
-  /*Hovers */ --TagHovBk :#ffd000;--TagHovTx  :#ffffff; 
-  /*Ativas */ --Tag_Atv  :#ffdc41;--Tag_Atv_Tx:#ffffff; 
-  /*Ranges */ --TagRngBk :#ffdc415d;--TagRngTx:#ffffff; 
-  /*Offline*/ --Tag_Off  :#2a2a2a;--Tag_Off_Tx:#666666; 
-  /*Destq UP*/--Tag_DESTK:#ffdc41  ;--Tag_DESTK_Tx:#ffffff;
-  /*Destq Sm*/--Tag_dstk :#ffffff00;--Tag_dstk_Tx :#ffdc41;
-  /*Boxy    */--Boxy     :#ffffff0a;--BoxySdw:0; --BoxyRd:1px solid #494949;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
+body[data-Cor="Roxo"]{
+  /*Textos  */ --CorPrin :#9f009a;--BtnTx :#ffffff;--CorATV:#c400bd;--CorPacy :#db00e23a;
+  /*Focus   */ --FcusBrd:1px solid #ff00fff5;--FcusShw:0 0 10px #ff00fffb;
+  /*Box     */ --Box     :linear-gradient(to top,#fbddff0c,#fce4ff05);--BoxySdw:inset 0 0 8px #fce5ff1c,3px 3px 8px #0000003a;
 }
 
-  /*Formatos das Tags______________________________________________________________ */
-  
-  h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--H1cTx);fill:var(--H1cTx)}
+/*Formatos das Tags______________________________________________________________ */
+h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
+/*Scroll*/ *::-webkit-scrollbar{width: 10px;height:10px} *::-webkit-scrollbar-corner{background:var(--ScrolBk)} *::-webkit-scrollbar-track{background:var(--ScrolBk );border-radius:500px} *::-webkit-scrollbar-thumb{background:var(--ScrllBrr);border-radius:500px} *::-webkit-scrollbar-thumb:hover {background:var(--ScrllBrrHV)}
+/*Body  */ body       {background:var(--BodyBk) ; color:var(--CorText);background-size:cover; background-position:center; background-attachment:fixed}
+/*Header*/ header     {background:var(--HeadBk) ; color:#ffffff     ;background-size:cover}
+/*Box1  */ .Box1,.Box2{background:var(--Box) ; padding:6px; border-radius:15px; gap:5px; box-shadow:var(--BoxySdw)}
+/*Box2  */ .Box2      {border:1px solid #494949}
+/*Box3  */[data-tema="Lite"] .Box3{background:linear-gradient(to top,#b3b3b3  ,#ffffff)           ; color:#575757}
+/*Box3  */[data-tema="Dark"] .Box3{background:linear-gradient(to top,#fcf1ff71,#ffffff, #ffffff); color:#575757;box-shadow:inset 0 0 15px #fdfdfdb7,3px 3px 8px #0000002a}
+/*Box3  */[data-tema="Rosa"] .Box3{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
 
-  /*Body  */ body     {background:var(--BodyBk)  ;color:var(--BodyTx);background-size:cover; background-position:center; background-attachment:fixed}
-  /*Body2 */ .copybody{background:var(--BodyBk)  ;background-repeat: no-repeat;background-size: 100vw 100vh;background-position: 0 -106px} /*Remvoer Isso!*/
-  /*Header*/ header   {background:var(--HeadBk);color:var(--HeadTx);background-size:cover}
-  /*Scroll*/ *::-webkit-scrollbar{width: 10px;height:10px} *::-webkit-scrollbar-corner{background:var(--ScrolBk)} *::-webkit-scrollbar-track{background:var(--ScrolBk );border-radius:500px} *::-webkit-scrollbar-thumb{background:var(--ScrllBrr);border-radius:500px} *::-webkit-scrollbar-thumb:hover {background:var(--ScrllBrrHV)}
+/*Button, Input e Select*/
+  [data-Base="Infinity"] :is(input,select,button,.button,.Interup)    {height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px}
+  :is(input,select,button,.button)>:is(img,svg){height:18px; fill:var(--BtnTx)}
+  :is(input,select):focus                      {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+  input.Error,select.Error,input.Error:focus,input.Error:hover{background:#ff0000} /*Falta incluir Button no Rolo*/
 
-  /*Box   */
-  .Box1{padding:6px; border-radius:15px; gap:5px; background:var(--Boxy); box-shadow:var(--BoxySdw)}
-  .Box2{padding:6px; border-radius:15px; gap:5px; background:var(--Boxy); box-shadow:var(--BoxySdw); border:var(--BoxyRd)}
+  [data-Base="Basic"] :is(input,select,textarea)       {height:36px;display:block;padding:8px;font-size:14px;border-radius:4px;outline:none;transition:0.2s}
+  [data-Base="Basic"] :is(input,select,textarea):focus {border-color:#ffd000;box-shadow:0 0 2px 3px #ffc40340}
 
-  
-  .Boxy{padding:6px ;border-radius:15px;gap:5px;background:var(--Boxy);box-shadow:var(--BoxySdw)}
-  .FEXTA.Boxy {padding:18px}
-  .box {padding:18px;border-radius:15px;background:#6363631a;border:1px solid #494949}
-  .Box {padding:6px ;border-radius:15px;background:#272727ce;border:1px solid #929292 ; backdrop-filter: blur(10px)}
+/*button*/
+  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i)       {background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap ; background-size:500%}
+  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
 
-  .Lite .BOXY{background:linear-gradient(to top,#b3b3b3  ,#ffffff)           ; color:#575757}
-  .Dark .BOXY{background:linear-gradient(to top,#fcf1ff71,#ffffff, #ffffff); color:#575757;box-shadow:inset 0 0 15px #fdfdfdb7,3px 3px 8px #0000002a}
-  .Rosa .BOXY{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
+  [data-Base="Basic"] :is(button,.button){background:var(--BtnBk)    ; color:var(--BtnTx);cursor:pointer;border:none;padding:4px 8px;border-radius:4px ; font-size: 14px;}
+  [data-Base="Basic"] button:hover  {background:var(--CorATV)}
 
-  /*Button, Input e Select*/
-    .Infinity :is(input,select,button,.button,.Interup)    {height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px}
-    .Infinity :is(button,.button,input,select)>:is(img,svg){height:18px; fill:#ffffff}
-    .Infinity :is(input:focus, select:focus)               {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
-      .Basic input   {width:100%;padding:8px;border:1px solid #ccc;border-radius:6px}
-
-  .FEXTA :is(input,select,textarea){height:36px;display:block;padding:8px;font-size:14px;border:1px solid #ced4da;border-radius:4px;outline:none;transition:0.2s}
-  .FEXTA :is(input:focus,select:focus,textarea:focus){border-color:#ffd000;box-shadow:0 0 0 2px #ffc40340}
-
-  /*button*/
-    .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i)       {background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap}
-    .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
-    .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
-      .Infinity.CSS1 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){background-size:500%}
-      .Infinity.CSS2 :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){background:#ff7300 ; border: 2px solid #ffae00}
-
-    .Basic button,.Basic .button{background:var(--BtnBk)    ; color:var(--BtnTx);cursor:pointer;border:none;padding:4px 8px;border-radius:4px}
-    .FEXTA button,.FEXTA .button{background:var(--BtnBk)    ; color:var(--BtnTx);cursor:pointer;border:none;padding:4px 8px;border-radius:4px}
-    .Basic button:hover  {background:var(--BtnHovBk) ; color:var(--BtnHovTx)}
-    .FEXTA button:hover  {background:var(--BtnHovBk) ; color:var(--BtnHovTx)}
-
-    button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
-    button.Block            {background: #797979 !important; border:1px solid #414141 !important}
-    button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
-    button.Mini             {height: 20px}
-    .BtnRed{background: #ff4343 !important;}
-    .BrnOff{background: #acacac !important; pointer-events:none}
-    button:disabled{opacity:0.6;cursor:not-allowed}
-
-  /*Drop*/
-    .Drop                  {border:2px dashed var(--CorPrin); border-radius:10px; padding: 5px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden; height:88px}
-    .Drop:hover,.Drop.hover{background:var(--CorPacy)}
-    .Drop a                {width:70px; height:70px; border-radius:10px ; background:#ffffff42}
-    .Drop img              {width:70px; height:70px; border-radius:10px ; object-fit:cover}
-    .Drop .P div           {position:relative;display:inline-block}
-    .Drop .P i             {position:absolute;top:0;right:0;background:#f00;color:#fff;cursor:pointer;font-size:10px}
+  button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+  button.Block            {background: #797979 !important; border:1px solid #414141 !important}
+  button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
+  button.Mini             {height: 20px}
+  .BtnRed{background: #ff4343 !important;}
+  .BrnOff{background: #acacac !important; pointer-events:none}
+  button:disabled{opacity:0.6;cursor:not-allowed}
 
 
+/*Input*/      
+  [data-tema="Dark"] :is(input,select)      {background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
+  [data-tema="Lite"] :is(input,select)      {background:#ffffffb2; color:#000000; border:1px solid #727272ee}
+  [data-tema="Dark"] :is(input,select):hover{background:#ffffff33; transform:scale(1.02)}
+  [data-tema="Lite"] :is(input,select):hover{background:#ffffffd5; transform:scale(1.02)}
+  input.Pcy,select.Pcy,.Interup.Pcy   {background:#00000018; color:#ffffff; border:1px solid #ef3aff}
+  input.Pcy::placeholder              {color:#ffffff ; opacity:0.5}
+  .CSS3 :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
+  .CSS3 :is(input,select)::placeholder{color:#612d4ba8}
+  .CSS3 .imita{border: none !important; color: #008000;} /*Gambiarra*/
 
+/*Select*/
+  select:has(option:checked:disabled){color:var(--Invalid)} /*Talvez uma Opacide*/
+  option  {color:var(--OptCor) ; background:var(--OptBkg)}
+  optgroup{color:var(--OptCor) ; background:var(--OptBkg); font-size:10px; text-align:left; padding-left:80px}
 
-    /*Interruptores*/
-      .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
-      .Interup i, .Switch i   {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
-      .Interup.Atv   i{left:50%}
-      .Interup       a:nth-child(2){opacity:0.5}
-      .Interup.Atv   a:nth-child(1){opacity:0.5}
-      .Interup.Atv   a:nth-child(2){opacity:1.0}
-      .CSS3 .Interup      {border-radius:255px}
-      .CSS3 .Interup a    {flex:1;text-align:center ;color:#ffffff;z-index:2;transition:all 0.3s}
-      .CSS3 .Interup a svg{width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
-      .CSS3 .Switch  svg  {width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
-      .CSS3 .Interup i    {border-radius:255px}
-    /*Check*/
-      .Chek{gap:8px}
-      .Chek a{width:26px;height:26px;border:1px solid #e298c663;border-radius:8px;transition:.1s;padding:0px !important}
-      .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
-      .Chek input:checked + a svg{opacity:1;transform:scale(1);fill:#ffffff}
-      .Chek p{color:#ffffff}
-    /*Switch*/
-      .Switch{border-radius:50px}
-      .Switch label {flex:1; z-index:2; color:#aaa; transition: color 0.3s ease; line-height:30px}
-      .Switch label:hover {color:#fff}
-      .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
-    /*Select*/
-      .Dark select:has(option:checked:disabled){color:#ffffff4b}
-      .Lite select:has(option:checked:disabled){color:#00000083}
-      input.Error      {background:#ff0000}
-      select.Error     {background:#ff0000}
-      input.Error:focus{background:#ff0000}
-      input.Error:hover{background:#ff0000}
-    /*Input*/      
-      .Dark input,.Dark select{background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
-      .Lite input,.Lite select{background:#ffffffb2; color:#000000; border:1px solid #727272ee}
-      .Dark input:hover,.Dark select:hover{background:#ffffff33; transform:scale(1.02)}
-      .Lite input:hover,.Lite select:hover{background:#ffffffd5; transform:scale(1.02)}
-      input.Pcy,select.Pcy,.Interup.Pcy   {background:#00000018; color:#ffffff; border:1px solid #ef3aff}
-      input.Pcy::placeholder              {color:#ffffff ; opacity:0.5}
-      .CSS3 :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
-      .CSS3 :is(input,select)::placeholder{color:#612d4ba8}
-      .CSS3 .imita{border: none !important; color: #008000;} /*Gambiarra*/
-    /*Options*/ 
-      .Dark option  {color:#ffffff  ; background:#3d3d3d}
-      .Lite option  {color:#000000  ; background:#ffffff}
-      .Dark optgroup{color:#ffffff3f; background:#3d3d3d; font-size:10px; text-align:left; padding-left:80px}
-      .Lite optgroup{color:#00000038; background:#ffffff; font-size:10px; text-align:left; padding-left:80px}
+/*Drop*/
+  .Drop                  {border:2px dashed var(--CorPrin); border-radius:10px; padding: 5px; text-align:center; background:#ffffff1a; cursor:pointer; position:relative; overflow:hidden; height:88px}
+  .Drop:hover,.Drop.hover{background:var(--CorPacy)}
+  .Drop a                {width:70px; height:70px; border-radius:10px ; background:#ffffff42}
+  .Drop img              {width:70px; height:70px; border-radius:10px ; object-fit:cover}
+  .Drop .P div           {position:relative;display:inline-block}
+  .Drop .P i             {position:absolute;top:0;right:0;background:#f00;color:#fff;cursor:pointer;font-size:10px}
 
-
-
-
-
-
-
-
-
-    /*Table*/ 
-      table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
-        .CSS1.Dark .TBLAA table{background: #ffffff ; color: #000000 !important}
-        .CSS1.Lite .TBLAA table{background: #ffffff ; }
-        .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f}
-    /*thead e tfoot*/ 
-      .CSS3.Lite .TBLAA thead tr{background: var(--BtnBk);color:#ffffff; height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
-      .CSS3.Lite .TBLAA tfoot tr{background: var(--BtnBk);color:#ffffff; height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
-      .CSS1.Dark .TBLAA tbody tr{border:1px solid #cccccc27}
-      .CSS1.Lite .TBLAA tbody tr{border:1px solid #00000027}
-      .TBLAA th{padding:4px 6px}
-      .CSS1.Dark .TBLAA thead{background:#8b0085;color:#ffffff}
-      .CSS1.Lite .TBLAA thead{background:#8b0085;color:#ffffff}
-      .CSS1.Dark .TBLAA tfoot{background:#8b0085;color:#ffffff}
-      .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:#ffffff}
-      .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px} /*Não sei a Necessidade*/
-    /*Tbody*/
-      .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
-      .CSS1.Dark .TBLAA select{color: #000000 !important}
-    /*Outros Tabela*/
-      .TBLAA td {height: 37px;}
-      .TBLAA td img      {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
-      .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
-      .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
-      .CSS1.Dark .TBLAA td.Foco{background:#ffffff18}     
-      .TBLAA .hMin td{height:10px}
-      .TBLAA .hMin td select,.hMin td input{height: 17px !important}
-
-
-
-
-
-
-
+/*Interruptores*/
+  .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
+  .Interup i, .Switch i   {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
+  .Interup.Atv   i{left:50%}
+  .Interup       a:nth-child(2){opacity:0.5}
+  .Interup.Atv   a:nth-child(1){opacity:0.5}
+  .Interup.Atv   a:nth-child(2){opacity:1.0}
+  .CSS3 .Interup      {border-radius:255px}
+  .CSS3 .Interup a    {flex:1;text-align:center ;color:#ffffff;z-index:2;transition:all 0.3s}
+  .CSS3 .Interup a svg{width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
+  .CSS3 .Switch  svg  {width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
+  .CSS3 .Interup i    {border-radius:255px}
+/*Check*/
+  .Chek{gap:8px}
+  .Chek a{width:26px;height:26px;border:1px solid #e298c663;border-radius:8px;transition:.1s;padding:0px !important}
+  .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
+  .Chek input:checked + a svg{opacity:1;transform:scale(1);fill:#ffffff}
+  .Chek p{color:#ffffff}
+/*Switch*/
+  .Switch{border-radius:50px}
+  .Switch label {flex:1; z-index:2; color:#aaa; transition: color 0.3s ease; line-height:30px}
+  .Switch label:hover {color:#fff}
+  .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
+/*Table*/ 
+  table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
+    .CSS1.Dark .TBLAA table{background: #ffffff ; color: #000000 !important}
+    .CSS1.Lite .TBLAA table{background: #ffffff ; }
+    .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f}
+/*thead e tfoot*/ 
+  .CSS3.Lite .TBLAA thead tr{background: var(--BtnBk);color:#ffffff; height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
+  .CSS3.Lite .TBLAA tfoot tr{background: var(--BtnBk);color:#ffffff; height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
+  .CSS1.Dark .TBLAA tbody tr{border:1px solid #cccccc27}
+  .CSS1.Lite .TBLAA tbody tr{border:1px solid #00000027}
+  .TBLAA th{padding:4px 6px}
+  .CSS1.Dark .TBLAA thead{background:#8b0085;color:#ffffff}
+  .CSS1.Lite .TBLAA thead{background:#8b0085;color:#ffffff}
+  .CSS1.Dark .TBLAA tfoot{background:#8b0085;color:#ffffff}
+  .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:#ffffff}
+  .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px} /*Não sei a Necessidade*/
+/*Tbody*/
+  .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
+  .CSS1.Dark .TBLAA select{color: #000000 !important}
+/*Outros Tabela*/
+  .TBLAA td {height: 37px;}
+  .TBLAA td img      {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+  .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
+  .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
+  .CSS1.Dark .TBLAA td.Foco{background:#ffffff18}     
+  .TBLAA .hMin td{height:10px}
+  .TBLAA .hMin td select,.hMin td input{height: 17px !important}
       
 /*Anailsar depois*/
   #Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
@@ -333,8 +239,8 @@
 
 .FModal{position:fixed;top:0px; left:0px;width:100%;height:100%;z-index:999;background:#00000046;backdrop-filter:blur(10px);animation:FModal 0.5s}
 .FModal > *{padding:15px; box-shadow: 10px 10px 20px black;animation: modal 0.5s}
-.Dark .FModal>*{background:#1b1b1b}
-.Lite .FModal>*{background:#ffffff}
+[data-tema="Dark"] .FModal>*{background:#1b1b1b}
+[data-tema="Lite"] .FModal>*{background:#ffffff}
 
 .XX{position: absolute;top: 10px;right: 10px;}
 
@@ -349,23 +255,20 @@
 .Basic.Dark{--bg:#1e1e1e;--border:1px solid #444444;--shadow:0 5px 15px #00000080;}
 
 /*CALENDAR*/
-body       {background:var(--BodyBk   ) ; color:var(--BodyTx      )}
-.Tag_Off   {background:var(--Tag_Off  ) ; color:var(--Tag_Off_Tx  )} /*Tag Off*/
-.Tag_Range {background:var(--TagRngBk ) ; color:var(--TagRngTx    )} /*Tag Range*/
-.Tag_destk {background:var(--Tag_dstk ) ; color:var(--Tag_dstk_Tx )} /*Tag em Destaque Básico*/
-.Tag_DESTK {background:var(--Tag_DESTK) ; color:var(--Tag_DESTK_Tx)} /*Tag em Destaque*/
-.Tag_Atv   {background:var(--Tag_Atv  ) ; color:var(--Tag_Atv_Tx  )} /*Tag Ativa*/
+.Tag_Off   {opacity: 0.5} /*Tag Off*/
+.Tag_Range {background:var(--CorPacy  ) ; color:var(--CorText    )} /*Tag Range*/
+.Tag_destk {background:var(#ffffff00) ; color:var(--CorATV )} /*Tag em Destaque Básico*/
+.Tag_DESTK {background:var(--CorATV   ) ; color:var(--BtnTx)} /*Tag em Destaque*/
+.Tag_Atv   {background:var(--CorATV   ) ; color:var(--BtnTx  )} /*Tag Ativa*/
 
 .Basic .calendar  {background:var(--bg);border:var(--border);border-radius:8px;padding:10px;box-shadow:var(--shadow);gap:5px}
 .calendar table   {width:100%;border-collapse:collapse} /*isso aqui é do Projeto Atual*/
 .calendar td      {text-align:center;padding:6px;cursor:pointer;border-radius:4px} /*este comportamento deve mudar conforme os Estilos*/
-.calendar tr:not(.NONO) td:hover{background:var(--TagHovBk);color:var(--TagHovTx)} /*Hov mesmo*/
-.calendar .NONO   {background:var(--Tag_dstk) ; color:var(--Tag_dstk_Tx )}
+.calendar tr:not(.NONO) td:hover{background:var(--CorPrin);color:var(--BtnTx)} /*Hov mesmo*/
+.calendar .NONO   {background:#ffffff00 ; color:var(--CorATV )}
 
 
-:root{
-    --Holo:linear-gradient(120deg,#ff00cc,#bfa7df,#3333ff,#98bdd6,#ff00ff,#b8e0d4,#00ff99,#c7dfb1,#ffff00,#c2b9a7,#ff6600,#dbb8a8,#ff00cc)
-}
+:root{--Holo:linear-gradient(120deg,#ff00cc,#bfa7df,#3333ff,#98bdd6,#ff00ff,#b8e0d4,#00ff99,#c7dfb1,#ffff00,#c2b9a7,#ff6600,#dbb8a8,#ff00cc)}
 /* anima o gradiente */@keyframes holo{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 /* glow animado */     @keyframes glow{0%,100%{box-shadow:0 0 10px #ff00cc99,0 0 20px #00ffff66,0 0 30px #ffff004d}50%{box-shadow:0 0 20px #00ffcccc,0 0 40px #ff00ff99,0 0 60px #ffff0080}}
 .Holo{
@@ -375,3 +278,8 @@ body       {background:var(--BodyBk   ) ; color:var(--BodyTx      )}
     filter:brightness(1.2) contrast(1.2);
     box-shadow:0 0 10px #ff00cc99,0 0 20px #00ffff66,0 0 30px #ffff004d;
 }
+
+
+summary{list-style:none;cursor:pointer;display:grid;gap:5px;padding-bottom:10px}
+summary::-webkit-details-marker{display:none}
+footer{opacity:.5;text-align:center}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns</title>
+    <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
+    
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    
+    <!--
+        <link href="../MyBiblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="../MyBiblioteca/PreScript.js"></script>
+    -->
+
+    <link   href="./SB_Crud.css"  rel="stylesheet">
+    <link   href="./CssGRAFF.css"  rel="stylesheet">
+
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./SB_Crud.js"  ></script>
+
+</head>
+
+<script>
+    const Preset = {Destino:null,Instagram: "1:1", WhatsApp: "1:1", Banner: "3:1", Etiqueta: "2:1", Camisa: "1:1", Fachada: "5:1", Panfleto: "1:1.41", Cartão: "1.75:1",outros:null};
+
+    const O   ={
+        Serv    :['Serviço','Arte','Edição de Video','Produção Musical','Modelagem 3D','After Effects','Programação'],
+        TArt    :['Tipo de Arte','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração'],
+        Tema    :["Tema de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
+        Catg    :["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
+        Dest    :["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
+        Presset :["Livre","1:1","4:5","9:16","16:9"],
+        template:['1','2','3'],
+    }
+</script>
+
+<script>
+    const gID     =e=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${Nm(Pai(e))}"]`)
+    const gID2=(e,x)=>$(`.UNDD[name="${Nm(Bzv(e))}"] .e[name="${x}"]`)
+    const gID3=(e,x)=>$(`.UNDD[name="${1}"] .e[name="${x}"]`)
+</script>
+
+<style>
+    .s{width:500px;height:500px ; background:#eee ; box-shadow:0 0 20px #000 ; overflow:hidden}
+    .e{position:absolute;cursor:move}
+    .e a{width:10px;height:10px;background:#000;position:absolute;z-index:10;display:none} /*Controladores*/
+    .e.Atv .c{outline:1px dashed #000}
+    .e.Atv  a{display: block}
+    .sc{right:-5px;bottom:-5px;cursor:nwse-resize} /*Controlador Escala */
+    .rt{left :50% ;top:-18px  ;cursor:grab}        /*Controlador Rotação*/
+    .idTop > *     {width:15% }
+    .idTop.Img > :nth-child(-n+3){display:none}
+    .c{color: #000}
+    
+    #UNDDD         {height:440px;overflow:auto}
+    .UNDD,.UNDBTN  {width:360px;/*height: 360px*/;flex: 0 0 auto;min-width: 360px;min-height: 360px ; gap: 5px;}
+    .UNDD .Mdd input {width: 150px;}             /*GAMBIARRA*/
+    .ConfUND :is(input,select,.Drop){width:75px ; margin: 0px;} /*GAMBIARRA*/
+</style>
+
+<body data-Base="Basic" data-tema="Dark" data-Cor="Yelw" class="grid">
+
+    <div class="DivRascunho Box2 UNDD Cl Rltv" name="1">
+        <h2>Rascunho</h2>
+        <div class="XX Ct PT" onclick="Pai(this).remove()">X</div>
+        <div class="Ct ConfUND gap">
+            <div><label>Destino    </label><select class="Dest"  name="3" data-Nv="2" onload="load_Opts(this,ObjKey(Preset))"></select></div>
+            <div><label>Presset    </label><select class="Tmpt"  name="8" data-Nv="2" onload="load_Opts(this,O.template)" onchange="ApplyTemplate($('.s',Ttv(this)),Tmplts[0])"></select></div>
+            <div><label>Fundo      </label><input  class="Fundo" name="4" data-Nv="2" value="#ffffff" oninput="Bkg($('.s',Bzv(this)),this.value)" type="color"></div>
+            <div><label>Referências</label><div    class="Drop Ct" onload="PrepDrop2(this,1)"></div></div>
+        </div>
+
+        <div class="Box2 topbar Abslt none">
+            <div class="idTop Ct" name="1">
+                <input  data-Nv="3" oninput="$('.c',gID(this)).style.color = this.value" type="color">
+                <input  data-Nv="3" oninput="Inn($('.c',gID(this)),this.value)">
+                <select data-Nv="3" onload="/*Tm_OptFnt(this,KitFonts)*/" onchange="$('.c',gID(this)).style.fontFamily = this.value"></select>
+                <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) + 1">⬆</button>
+                <button onclick="gID(this).style.zIndex = (+gID(this).style.zIndex || 0) - 1">⬇</button>
+            </div>
+        </div>
+
+        <div class="Ct containerLimite" style="width:100%;height:200px;overflow:hidden;border:1px solid #000">
+            <div class="s Rltv" onmousedown="Disppp(this,event)" onclick="xMenu(this,event)" ondblclick="ClickDuplo(this,event)"></div>
+        </div>
+
+        <div class="Mdd Ct" >
+            <div class="SvgGambiarr Ct" onload="Inn(this,SVG['Mdds']+'Medidas')" onclick="Rmv_N($$('.none',Pai(this)));Add_N(this)"></div>
+            <div class="none"><label>Largura</label><input name="4" data-Nv="2" class="Lag" placeholder="Largura"></div>
+            <div class="none"><label>Altura </label><input name="4" data-Nv="2" class="Alt" placeholder="Altura" ></div>
+        </div>
+        <button onclick="SaveTemplate($('.s',Pai(this)),'Template 1')">Salvar Template</button>
+    </div>
+
+</body>
+
+<script>
+    const initUND=u=>{
+        const [Dest,Cnvs,Mdds,Lag,Alt]=[$('.Dest',u),$('.s',u),$('.Mdd',u),$('.Lag',u),$('.Alt',u)];
+        if(!Dest||!Cnvs||!Lag||!Alt)return;
+        const Container=Cnvs.parentElement,MAX_H=200; let dr=false,sx=0,sy=0,selBox;
+        const Draw=()=>{let w=+Lag.value,h=+Alt.value;if(!w||!h)return;let scale=Math.min(Container.clientWidth/w,MAX_H/h);Cnvs.style.width=w*scale+'px';Cnvs.style.height=h*scale+'px';};
+        Dest.onchange=()=>{const p=Preset[Dest.value];if(!p){Rmv_N($(Mdds));return;}const [w,h]=p.split(':').map(Number);Lag.value=w*10;Alt.value=h*10;Draw();};
+        [Lag,Alt].forEach(i=>i.oninput=Draw);Draw()
+    }
+
+    const AddUND=()=>{
+        const base  = $('.UNDD')
+        // const clone = base.cloneNode(true)
+        // Clen_Alls(clone)
+        // const S = $('.s',clone) ; S.innerHTML=''
+        // Rmv_N($('.Mdd', clone))
+        // Nm(clone,$$('#UNDDD .UNDD').length+1)
+        // $('#UNDDD').insertBefore(clone,$('.UNDBTN'))
+        initUND(base)
+    }
+</script>
+
+<script> // ==== RASCUNHO ====
+    let ZZ={A:null,M:0,ox:0,oy:0,rs:1,rr:0,ED:0,dragged:false}
+    function xMenu(Eu,e){if(!e.target.closest('.menu')){Dlt($$('.menu',Eu))}} // Fecha menus ao clicar fora deles
+    
+    const SELY=e=>{ // ===== SELECT ===== 
+        DTV($$('.e')) ; ShowTrue($$('.topbar'),e) ; Add_N($$('.idTop')) ; if(!e){return}  // Desativa e Oculta e retorna caso n seja nada
+        ATV(e);ZZ.A=e ; Rmv_N($(`.topbar > [name="${Nm(e)}"]`,e.closest('.UNDD')))        // Ativa as Coisas do Item Selecionado
+    }
+
+    const adD=(Mod,x,y,S,Iner)=>{ // ===== ADD Canvas Fake =====
+        const TOP = $(".topbar",Avo(S))
+        const Idx = $$('.idTop',TOP).length+1
+        const T   = $('.idTop',TOP).cloneNode(true)       ; Nm(T,Idx) ; Add(T,Mod=='Txt'?null:'Img') ; TOP.appendChild(T)
+        const e   = NewTag('div') ; e.className=`${Mod=='Fnd'?'noClk':'e'} noDrg` ; Nm(e,Idx) ; e.style.cssText=`left:${x}px;top:${y}px` ; e.dataset.s=1;e.dataset.r=0
+        const Cntu= e=>`<div class="EE noDrg"><div class="c noslt Ct gap">${e}</div><a class="sc"></a><a class="rt"></a></div>`
+        if (Mod === 'Txt') {              Inn(e,Cntu(`${Iner}`))}
+        if (Mod === 'Img') {InptImg(url=>{Inn(e,Cntu(`<img draggable="false" src="${url}" style="width:150px">`))})}
+        if (Mod === 'Fnd') {InptImg(url=>{Inn(e,     `<img draggable="false" src="${url}" style="width:100%;height:100%" class="noClk">`)})}
+        S.appendChild(e);SELY(e)
+    }
+
+    function ClickDuplo(Eu,e){ // ===== DUPLO CLICK FUNDO =====
+        const [x,y]=[e.offsetX,e.offsetY] ; if (e.target!==Eu) return
+        Eu.insertAdjacentHTML("beforeend",`<div class="menu Box2 Abslt Ct" style="left:${x}px;top:${y}px">
+            <button onclick="adD('Txt',${x},${y},Avo(this),'Texto') ; Dlt(Pai(this))">+ Texto  </button>
+            <button onclick="adD('Img',${x},${y},Avo(this))         ; Dlt(Pai(this))">+ Imagem </button>
+            <button onclick="adD('Fnd',${x},${y},Avo(this))         ; Dlt(Pai(this))">Img Fundo</button>
+        </div>`)
+    }
+
+    function TituloSlogan(){  //  Carregar os Primeiros Itens Padrão
+        adD('Txt',0,0,$('.UNDD .s'),'Titulo')
+        adD('Txt',0,0,$('.UNDD .s'),'Slogan')
+
+        adD('Txt',0,0,$('.UNDD .s'),'Insta')
+        adD('Txt',0,0,$('.UNDD .s'),'Zap')
+        adD('Txt',0,0,$('.UNDD .s'),'Endereço')
+    }
+    
+
+    function Disppp(Eu,e){ // ===== MOUSE =====
+        e.preventDefault()
+        if(e.target==Eu)                           return SELY(null)
+        const el = e.target.closest('.e');if (!el) return SELY(null) ; SELY(el)
+        ZZ.ox=  e.clientX    ; ZZ.oy=  e.clientY
+        ZZ.rs=+ el.dataset.s ; ZZ.rr=+ el.dataset.r
+        ZZ.M =  Coten(e.target,'sc')?2:Coten(e.target,'rt')?3:1
+    }
+
+    document.addEventListener('click', e => {if (ZZ.dragged) {ZZ.dragged = false ; return } ; if (e.target.closest('.e') ||e.target.closest('.menu') ||e.target.closest('.topbar')) return;SELY(null);Add_N($$('.menu'))})
+    document.addEventListener('keydown',e=>{if(e.target.tagName=='INPUT') return ; if(!ZZ.ED && e.key =='Delete'&&ZZ.A)ZZ.A.remove()}) // ===== DELETE =====
+    document.onmouseup  =_=>{ZZ.M=0 ; ZZ.ox=ZZ.oy=ZZ.rs=ZZ.rr=null}
+    document.onmousemove=e=>{
+        const tf = () => ZZ.A && (ZZ.A.style.transform =`scale(${ZZ.A.dataset.s}) rotate(${ZZ.A.dataset.r}deg)`)
+        if(!ZZ.A||!ZZ.M||ZZ.ED) return
+        ZZ.dragged = true
+        if(ZZ.M==1){ZZ.A.style.left=parseFloat(ZZ.A.style.left)+e.movementX+'px'
+                    ZZ.A.style.top =parseFloat(ZZ.A.style.top )+e.movementY+'px'}
+        if(ZZ.M==2){ZZ.A.dataset.s=Math.max(.1,ZZ.rs+(e.clientX-ZZ.ox)/200);tf()}
+        if(ZZ.M==3){ZZ.A.dataset.r=ZZ.rr+(e.clientX-ZZ.ox);tf()}}
+</script>
+
+<script> // === TEMPLATES PRESSES ====
+    const SaveTemplate=(c,name="Template")=>{
+        const t={
+            name,canvas:{w:c.offsetWidth,h:c.offsetHeight,b:c.style.background||c.style.backgroundColor||null},
+            items:$$('.e',c).map(e=>{const C=$('.c',e)
+            return{
+                id:Nm(e),
+                type:Coten(e,'Img')?'Img':'Txt',
+                x:parseFloat(e.style.left)||0,
+                y:parseFloat(e.style.top )||0,
+                scale:+e.dataset.s||1,
+                rotate:+e.dataset.r||0,
+                z:+e.style.zIndex||0,
+                color:C?.style.color||null,
+                font:C?.style.fontFamily||null
+            }})
+        }
+        console.log(JSON.stringify(t,null,2))
+        return t
+    }
+
+    const ApplyTemplate=(c,p)=>{
+        p.canvas&&(p.canvas.w&&(c.style.width=p.canvas.w+'px'),
+                    p.canvas.h&&(c.style.height=p.canvas.h+'px'),
+                    p.canvas.b&&(c.style.background=p.canvas.b))
+        $$('.e',c).forEach((e,i)=>{
+            const o=p.items[i],C=$('.c',e); if(!o)return
+            Object.assign(e.style,{
+            left:o.x+'px',top:o.y+'px',zIndex:o.z,
+            transform:`scale(${o.scale}) rotate(${o.rotate}deg)`
+            })
+            e.dataset.s=o.scale; e.dataset.r=o.rotate
+            C&&o.color&&(C.style.color=o.color)
+            C&&o.font &&(C.style.fontFamily=o.font)
+        })
+    }
+</script>
+
+<script>
+    Onloads('body')
+    AddUND()
+    TituloSlogan()
+</script>
+
+</html>

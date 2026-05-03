@@ -1442,7 +1442,7 @@
     </div>
 </div>
 
-<body onclick="NoneBndj()">
+<body data-tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
 
     <style> /*CSS do Header*/
         /*Fixos*/
@@ -1784,7 +1784,7 @@
                         <a class="IconDtlh Ct PT Start" onclick="TOV($('#DivIMGProd'))"><h3>⭐</h3><p>Detalhes</p></a>
                         <div id="NewCanvas"        class="canvi Ct Cnvs none"></div>
                         <div class="DetalheCanvMdds ORC_tr ORC_tr-1" class="Cl">
-                            <div class="DivCanvMdd Rd Ct Boxy"><canvas class="CanvasMedidas canvi Cnvs Wmax"></canvas></div>
+                            <div class="DivCanvMdd Rd Ct Box1"><canvas class="CanvasMedidas canvi Cnvs Wmax"></canvas></div>
                             <div class="Ct w100" style="margin-top:5px">  <!--// Criar um pra cada linha--> 
                                 <div class="Cl"><label>Largura Area</label><input class="I_AreaX" placeholder="Largura Area" value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
                                 <div class="Cl"><label>Altura Area </label><input class="I_AreaY" placeholder="Altura Area"  value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
@@ -1863,7 +1863,7 @@
                                             const Al   = V=='Todos'
                                             const Xo   = {'ímã':'I','Trofeu':'T'}
 
-                                            return `<div class="BOXY Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
+                                            return `<div class="Box3 Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
                                             ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
                                             <div class="KeyVari rgx">${V}</div>
 
@@ -1923,7 +1923,7 @@
                     </script>
                 </div>
                 
-                <div id="NovoForm" class="Cl w90 Rltv Rd Boxy">
+                <div id="NovoForm" class="Cl w90 Rltv Rd Box1">
                     
                     <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
                         <div class="PT HOV O_All" onclick="ClrAll()">🧹</div>
@@ -2200,7 +2200,7 @@
                     <div id="Slide_PDDS" class="Slide_Table">
                         <div class="Cl"> <!--PDDS-->
                             <div class="Confy_PDDS Cl">
-                                <div class="Bt Stky copybody w100" style="height: 40px;">
+                                <div class="Bt Stky  w100" style="height: 40px;">
                                     <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
                                     <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
                                     <div id="COnf_PDDS"    class="Configs Ct">
@@ -2225,7 +2225,7 @@
 
                         <div class="Cl"> <!--SERV-->
                             <div class="Confy_SERV">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="LOG('Indisponivel')">Nova Linha</button>
                                     <div id="PagPesq_SERV" class="PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
                                     <div id="COnf_SERV" class="Configs Ct"></div>
@@ -2237,7 +2237,7 @@
 
                         <div class="Cl"> <!--PGMT-->
                             <div class="Confy_PGMT">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="LOG('Indisponivel')">Nova Linha</button>
                                     <div id="PagPesq_PGMT" class="PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
                                     <div id="COnf_PGMT" class="Configs Ct"></div>
@@ -2255,7 +2255,7 @@
                     <div id="Slide_MPAG" class="Slide_Table">
                         <div class="Cl">
                             <div class="Confy_MPAG">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
                                     <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
                                     <div id="COnf_MPAG" class="Configs Ct"></div>
@@ -2273,7 +2273,7 @@
                     <div id="Slide_GRAD" class="Slide_Table">
                         <div class="Cl"> <!--GRAD-->
                             <div class="Confy_GRAD">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
                                     <div id="COnf_GRAD" class="Configs Ct"></div>
                                     <button>Limpar</button>
@@ -2284,7 +2284,7 @@
 
                         <div class="Cl"> <!--OS-->
                             <div class="Confy_OS">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('OS','<')">Nova Linha +</button>
                                     <div id="COnf_OS" class="Configs Ct"></div>
                                     <button>Limpar</button>
@@ -2295,7 +2295,7 @@
 
                         <div class="Cl"> <!--GRD2-->
                             <div class="Confy_GRD2">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('GRD2','<')">Nova Linha +</button>
                                     <div id="COnf_GRD2" class="Configs Ct"></div>
                                     <button>Limpar</button>
@@ -2306,7 +2306,7 @@
 
                         <div class="Cl"> <!--UBER-->
                             <div class="Confy_UBER">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('UBER','<')">Nova Linha +</button>
                                     <div id="COnf_UBER" class="Configs Ct"></div>
                                     <button>Limpar</button>
@@ -2325,7 +2325,7 @@
                     <div id="Slide_CLNT" class="Slide_Table">
                         <div class="Cl">
                             <div class="Confy_CLNT">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
                                     <h1>Tabela de Clientes</h1>
                                     <button onclick="MesclaRow('CLNT',BS['CLNT'].Json)">Mesclar</button>
@@ -2339,7 +2339,7 @@
             <div id="Pag_GBRT" class="none Ct" style="overflow-y: scroll;"> <!--VIROU AGENDA-->
                 <style>
                     #Agnda{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-                    #Agnda .box{padding: 3px; min-height: 100px ; min-width: 150px}
+                    #Agnda .box2{padding: 3px; min-height: 100px ; min-width: 150px}
                     .evt{color:#fff;margin:2px 0;padding:2px}
                     .Cov:hover{background-color: #8b8b8b5d}
                     .Off{opacity: 0.3}
@@ -2365,7 +2365,7 @@
 
                 <div>
                     <h1>AGENDA infinityGRAFF</h1>
-                    <div class="box Cl Gap"><h2 id="mes"></h2><div id="Agnda" class="w100"></div></div>
+                    <div class="box2 Cl Gap"><h2 id="mes"></h2><div id="Agnda" class="w100"></div></div>
                 </div>
 
                 <script>
@@ -2406,9 +2406,9 @@
                             let ev  = lista.filter(e=>e.Data===dt).sort((a,b)=>HoraMin(a.Hora)-HoraMin(b.Hora))
                             let dow = new Date(dt).getDay()   // 0 = Dom, 6 = Sáb
                             let off = dt < hj || dow == 6 || dow == 5 ? 'Off noClk' : 'Cov'
-                            g.innerHTML += `<div class="box ${off} Rltv" ondblclick="OpenDay(this,event,'${dt}')"><b class="noslt">${d}</b>
+                            g.innerHTML += `<div class="box2 ${off} Rltv" ondblclick="OpenDay(this,event,'${dt}')"><b class="noslt">${d}</b>
                                 ${ev.map(e=>`<div class="evt RD Hov" style="background:${FUNC_COLOR[e.Func]||'#007bff'}" onclick="EditItem(${e.id},this)">${e.Hora} • ${e.Nome} • ${e.Func}</div>`).join('')}
-                                <div class="bandj gap Ct Box Abslt none"></div>
+                                <div class="bandj gap Ct Box2 Abslt none"></div>
                             </div>`
                         }
                     }
@@ -2494,7 +2494,7 @@
                     <div id="Slide_ARTE" class="Slide_Table">
                         <div class="Cl">
                             <div class="Confy_ARTE">
-                                <div class="Bt Stky copybody" style="height: 40px;">
+                                <div class="Bt Stky " style="height: 40px;">
                                     <button onclick="AddROW('ARTE','<')">Nova Linha +</button>
                                     <div id="PagPesq_ARTE" class="PagPEsq" onload="Inn(this,Load_Pesq('ARTE'))"></div>
                                     <div id="COnf_ARTE" class="Configs Ct"></div>
@@ -2504,96 +2504,7 @@
                 </div></div></div></div>
             </div>
 
-            <div id="Pag_PRFL" class="none Cl" style="overflow-y: scroll;">
-
-                <style> /*Analsisar a interferência deste CSS*/
-                    #Pag_PRFL   {padding: 40px;}
-                    .rs         {color:#8dff57}
-                    .Box .rs    {font-size: 25px}
-                    .Art .rs    {font-size: 25px}
-                    h2,h3       {font-size: 25px}
-
-                    .Box        {width:130px; height:100px; padding:5px ;  transition:all 0.1s ease-in-out ;cursor: pointer;}
-                    .Box:hover  {border:1px solid #93c47d;box-shadow:0 0 8px #93c47d99;transform:scale(1.05);}
-                    #Perf .Box a{width: 40px; height: 40px}
-                    .Desc a     {width: 15px; height: 15px}
-                    .Pic        {width:120px;border-radius:50%}
-                    .Art        {gap:3px}
-                    .Art img    {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#111}
-                    .Fotoz      {width: 20px; height: auto;}
-
-                    .Svg-P svg  {width: 15px; height: 15px;}
-                    .Svg-M svg  {width: 30px; height: 30px;}
-                    .Svg-G svg  {width: 40px; height: 40px;}
-
-                    #Perf-Trfs table {width:100%; font-size:14px; color:#eee; background-color:#222}
-                    #Perf-Trfs th, #Perf-Trfs td {border:1px solid #444; padding:8px 12px; text-align:left}
-                    #Perf-Trfs th                {background-color:#333}
-                    #Perf-Trfs tr:hover          {background-color:#444}
-                    #Perf-Trfs td:first-child    {text-align:center; width:50px; }
-
-                    .Hovoi{overflow-x: scroll;}
-                </style>
-
-                <div class="w100 Cl Gap">
-                    <div id="Perf-Perf" class="Boxy Ev Gap w100"></div>
-                    <div id="Perf-Soli"  class="Boxy Cl Gap w100"></div>
-                    <div id="Perf-Andm"  class="Boxy Cl Gap w100"></div>
-                    <div id="Perf-Hist"  class="Boxy Cl Gap w100"></div>
-                    <div id="Perf-Hist2" class="Boxy Cl Gap w100"></div>
-                    <div id="Perf-Trfs"  class="Boxy Cl Gap w100"></div>
-                </div>
-
-                <script>
-                    const Llmt     = {PDDS:['2026-03-05','2026-12-30'],SERV:['2026-03-05','2026-12-30'],PGMT:['2026-03-05','2026-12-30']}  // Campo pra Imbutir dentro do BS
-                    let [__A,__M,__D,__S]=['','','','']
-                    const Tm_SOliArt=(U,E)=>`<h3>Solicitações      </h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="    Ct Bt Hov Boxy" onclick="Unyc('${U}','${e.Id}')"><div class="Cl Start2"><b>${e.Nome}</b><p>${e.Tema} • ${e.Prazo}</p></div><p>${Tm_RS2(e.Valr)}</p><button onclick="AceitarART(${U},${e.Id})">AceitarART</button></div>`).join("")}</div>`
-                    const Tm_ListArt=(U,E)=>`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${E.map(e=>`<div class="Art Cl PT Hov Boxy" onclick="Unyc('${U}','${e.Id}')"><img src="${BASE_URL}Img/${e.Nome}.webp"><p>${e.Nome}</p><p>${e.Tema}</p><p>${Tm_RS2(e.Valr)}</p></div>`).join("")}</div>`
-                    const View=(U,Md)=>MODAL(Tm_ListArt(U,Md=='Dslk'?__D:__A))         // ao rodar o Modal Excluir o Antigo
-                    const Unyc=(U,ID)=>MODAL(Tm_ListArt(U,__A.filter(e=>e.Id==ID)))    // ao rodar o Modal Excluir o Antigo
-                    const RangeDATA=(arr,Typ)=>RangeDat(arr,Llmt[Typ][0],Llmt[Typ][1]) // espero que der pra REMOVER
-
-                    function Load_Perfil(U){
-                        const u = U.Nome
-                        
-                        const Fil = RangeDATA(J['SERV'],'SERV')
-                        __A = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Ok' && !o.Dslk?.includes(u))
-                        __M = J['ARTE'].filter(o=>o.Dsng==u && o.Stts=='Aceita')
-                        __D = J['ARTE'].filter(o=>o.Dslk?.includes(u))
-                        __S = J['ARTE'].filter(o=>o.Dsng==null||o.Dsng=="")
-                        let Partic = 0 ; let Comiss = 0
-                        Fil.forEach(e=>{if(e.Dsng==u){Partic+=1 ; Comiss+=e.CArt} /*if(e.Cbmt==U){Partic+=1 ; Comiss+=e.VCbt}*/ })
-
-                        Inn($('#Perf-Perf'),`<img class="Pic" src="${U.Foto}">
-                                <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.cgo]}</p></div>
-                                    ${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Lrnj">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}
-                                </div>
-                                <div class="Ct Gap">
-                                    <div class="Boxy Cl Box"                              ><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Participações     </p><h3>${Partic             }</h3></div>
-                                    <div class="Boxy Cl Box" onclick="View('${u}','Okay')"><a class="Svg-G f-gren">${SVG['Okay']}</a><p>Total de Artes    </p><h3>${__A.length         }</h3></div>
-                                    <div class="Boxy Cl Box" onclick="View('${u}','Dslk')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3>${__D.length         }</h3></div>
-                                    <div class="Boxy Cl Box" onclick="View('${u}','Coin')"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(__A,'Valr'))}</div>
-                                </div>`)
-                        Inn($('#Perf-Soli'),Tm_SOliArt(u,__S)) ; Inn($('#Perf-Andm'),Tm_SOliArt(u,__M)) ; Inn($('#Perf-Hist'),Tm_ListArt(u,__A)) // U.On?"Online":"Offline"
-                            
-                        const tableFilt = Fil.reverse().filter(e=>e.Dsng==u)
-
-                        const rows = tableFilt.map(e=>`<tr>
-                            <td>${JJ.CLNT[e.Clnt]?.Clnt}</td>
-                            <td>${e.Serv}</td><td>${e.TArt}</td><td>${e.CArt}</td><td>${e.Dsng}</td>
-                            <td><img class="Fotoz" src="${BASE_URL}Img/${J['IMGS'][e.Id]}"></td>
-                        </tr>`).join('')
-
-                        Inn($('#Perf-Trfs'),`<table><thead><tr>${['Cliente','Serviço','Tipo','Valor','Desing','Foto'].map(e=>`<th>${e}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`)
-                        Inn($('#Perf-Hist2' ),`<h3>Histórico de Artes</h3><div class="Start w100 Gap Hovoi">${tableFilt.map(e=>`<div class="Art Cl PT Hov Boxy" onclick="Unyc('${e.Id}')"><img src="${BASE_URL}Img/${J['IMGS'][e.Id]}"><p>${JJ.CLNT[e.Clnt]?.Clnt}</p><p>${e.TArt}</p><p>${Tm_RS2(e.CArt)}</p></div>`).join("")}</div>`)    
-                    }
-
-                    async function AceitarART(U,Id){const{error}=await supaBASE.from("ARTE").update({Stts:"Aceita",Dsng:U}).eq("Id",Id)
-                        if(!error){alert("Solicitação aceita") ; location.reload()}
-                    }
-
-                </script>
-            </div>
+            <div id="Pag_PRFL" class="none Cl" style="overflow-y: scroll;"></div>
 
             <div id="Pag_BBTC" class="none Cl"></div>
 

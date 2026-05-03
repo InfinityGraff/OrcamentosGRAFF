@@ -98,7 +98,7 @@
 
 <body class="Infinity CSS1 Dark">
   <div id="saida"></div>
-      <div class="Config Ct Stky copybody">
+      <div class="Config Ct Stky ">
         <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
         <div onclick="Tog($('#Galery'),'Crop' )" onload="Tm_Check(this,SVG.Crop('',''))"></div>
         <div onclick="Tog($('#Galery'),'cover')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
@@ -155,7 +155,7 @@
     }
   }
 
-  const Tm_Boxyy=(i,Pre)=>`<div class="Boxyy Boxy">
+  const Tm_Boxyy=(i,Pre)=>`<div class="Boxyy">
       <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
         ${['Prlm','Tnq','Gvt'].includes(Pre) ? `<canvas id="${Pre}_${i.Id}" class="Rd PT Cnvs"></canvas>` : `<img src="./Kits/${i.src}" name="${i.Id}" onclick="ClickEmIMG(this)" loading="lazy">`}
       </div>
@@ -180,7 +180,7 @@
   function ren(Modo){
 
     const Tm_Past = ObjEtr(J['STOK'].reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
-      `<div class="Pasta Boxy"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
+      `<div class="Pasta"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
         <div class="Alven">${v.map(i=>i.Uso.split(',').map(I=>Tm_Boxyy(i,I)).join('')).join('')}</div>
       </div>`).join('')
 

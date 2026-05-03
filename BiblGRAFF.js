@@ -6,7 +6,7 @@ function Tm_DataNatora(){
     return `
     <div class="Rltv">
         <input placeholder="dd/mm/aaaa" onclick="Tog_N($('.calendar',Pai(this)));Calendario(this,$('.calendar',Pai(this)))">
-        <div class="Boxy calendar Abslt Cl none"></div>
+        <div class="Box1 calendar Abslt Cl none"></div>
     </div>
 `
 }

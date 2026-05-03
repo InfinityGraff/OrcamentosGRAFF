@@ -14,6 +14,7 @@ const Tm_R=(e,x,Typ,P=false)=>{
 const _Bol=v=> v !== '_'
 const _par=s=>(([Ty,Id,Cl,Tm,Bj,Sc]) => ({Ty,Id,Cl,Tm,Bj:_Bol(Bj),Sc:_Bol(Sc)}))(s.split('-'))
 const d_r=e=>_par(typeof e == "string" ? e : e.dataset.r)
+const d_R=e=>typeof e == "string" ? e : e.dataset.r
 const d_p=e=>NoVazi(e.dataset.p) ? _par(e.dataset.p) : null
 const RR=(r,p)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
 const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
@@ -482,18 +483,31 @@ async function Sb_CREATE(SB,Typ,row){
 }
 
 async function Sb_EDIT(SB,Typ,id,col,Val){
-    try {const {error} = await SB.from(Typ).update({[col]:Val}).eq('Id',id)
+    try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
         if (error){ERR('Erro ao atualizar:',error)}
         else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
     } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
 }
-
 async function Sb_EDIT2(SB,Typ,id,Obj,Alert){
     try{const {error} = await SB.from(Typ).update(Obj).eq('Id',id)
         if(error){ERR('Erro ao atualizar:',error)}
         else{LOG(`💾✏️ SB_EDIT2(${id},${JSON.stringify(Obj)})`) ; MyAlert(Alert||`Editado no SB! (${Typ},${id})`)}
     }catch(err){ ERR('Erro:',err) ; MyAlert('Erro ao atualizar serviço')}
 }
+
+async function Sb_EDIT3(Typ,id,col,Val){
+    try {let {error}=await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
+        if (error){ERR('Erro ao atualizar:',error   )}
+        else      {LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
+    } catch (err) {ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
+}
+async function Sb_EDITJSON(tbl,uid,col,path,Valor){
+    try{let {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
+        if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
+        else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
+    }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
+}
+
 
 async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
     let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
