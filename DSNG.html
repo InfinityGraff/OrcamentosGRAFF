@@ -493,7 +493,7 @@
     const View=(U,Md)=>MODAL(Tm_Resumo(U,Md=='Dslk'?__X:__A))                               // ao rodar o Modal Excluir o Antigo
     const Sldo=U     =>MODAL(`<table><tbody>${Tm_Table('MPAG',J['MPAG'])}</tbody></table>`) // Carregar tabela do Saldo
     function TrocaRasc(Eu,X){
-        $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ; Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
+        $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ;   Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
         $$('.F2'      ,Bzv(Eu)).forEach(e=>Add(e,'NONE')) ;   Rmv($(`.RasC${X}`,Bzv(Eu)),'NONE')
     }
 
@@ -614,7 +614,7 @@
             return {...d,Arts,Tags,Rank}
         }).sort((a,b)=>b.Rank - a.Rank)
 
-        Inn(div, USERS.map(u=>`
+        Inn(div,USERS.map(u=>`
             <div class="Box1 CT w100">
                 <div class="LA Ct h100 gap">
                     <div class="Start2">
@@ -709,7 +709,7 @@
 
     function EditCell2(Eu){
         const [Typ,Id,Col,Path] = d_R(Eu).split('#')
-        const Val = VAL(e)
+        const Val = VAL(Eu)
         if(Path){Sb_EDITJSON(Typ,Id,Col,[...Path.split(',')],Val)}
             else{Sb_EDIT3   (Typ,Id,Col,Val)}
     }
@@ -764,7 +764,7 @@
         const INN = performance.now()
         J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
         //Load_Page($("#List_Dsng"),'P')
-        //Load_Page($('#Todo_Dsng'),'G')
+        Load_Page($('#Todo_Dsng'),'G')
         LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
     // Lista de Produtos Carregará uma Tabela
