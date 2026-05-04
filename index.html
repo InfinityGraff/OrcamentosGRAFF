@@ -490,7 +490,7 @@
         <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
             // Estão OK
             const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
-            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" class="Rltv ${NoneCgo(Typ,e)}"></td>`).join('')
+            const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" class="Rltv"></td>`).join('')
 
             // Ajeitar
             const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
@@ -531,7 +531,7 @@
                 
                 Find.map(e=>`${ALL[col]?.push(e[col])}`)
 
-                const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th class="${NoneCgo(TYP,t)}">${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
+                const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
                 if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
                 else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                         <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
@@ -757,7 +757,7 @@
 
             const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
                 return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
-                    `<th class="ThFilt Rltv PT ${NoneCgo(Typ,e)}" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
+                    `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
                             <p class="PT" name="${e}">${Typ=="SERV"?e:BS[Typ].Json[e].COL||e /*GAMBIARRA pra remvoer o DbCol*/}</p>
                             <i onclick="Orden(this,event,'${x}')">▼</i>
                             <b class="Ct none Atv">0</b>
@@ -1505,7 +1505,6 @@
             <script>
                 function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
                 function Recolher(){Tog($('.BBody2'),'recolhe')}
-                function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}               
             </script>
         </div>
         <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div><!--Pesquisa-->
@@ -1583,7 +1582,6 @@
                     NavPag(Atual.Pag)
                     tmplt_Prod()
                     $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando class do Cargo do Usuário a todas as Tabelas
-                    Load_Perfil(U)
                     LOG('✅ Perfil Logado!')
                 }
             </script>
@@ -1604,7 +1602,7 @@
     <div class="Ct w100 Content"> <!--q é descontando a altura do Head-->
         <header class="BBody2 Bt"> <!--Body2-->
             <div id="Title" class="Ct"> <!--Titulo-->
-                <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
+                <img id="Logo"  draggable="false"      src="./Img/Logo.png" onclick="TrocaBody()">
                 <img id="recolhe" style="height: 18px" src="./SVG/Recolhe.svg" onclick="Recolher()">
             </div>
             <div id="DivNav"><nav class="H_Nav Ct"></nav></div><!--nav-->
@@ -1620,8 +1618,7 @@
                             .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
                         </style>
                         
-                        <div class="Cl">
-                            <h1>Semana1</h1>
+                        <div class="Cl"><h1>Semana1</h1>
                             <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                             <div class="Ct">
                                 <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
@@ -1631,8 +1628,7 @@
                             </div>
                         </div>
 
-                        <div class="Cl">
-                            <h1>Semana2</h1>
+                        <div class="Cl"><h1>Semana2</h1>
                             <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                             <div class="Ct">
                                 <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
@@ -1642,8 +1638,7 @@
                             </div>
                         </div>
 
-                        <div class="Cl">
-                            <h1>Semana3</h1>
+                        <div class="Cl"><h1>Semana3</h1>
                             <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                             <div class="Ct">
                                 <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
@@ -1653,8 +1648,7 @@
                             </div>
                         </div>
 
-                        <div class="Cl">
-                            <h1>Semana4</h1>
+                        <div class="Cl"><h1>Semana4</h1>
                             <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                             <div class="Ct">
                                 <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
@@ -1673,7 +1667,6 @@
                             const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
                             const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
                             const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
-                            
 
                             function RfreshGrafic(Div,Semn){ 
                                 const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
@@ -2486,8 +2479,6 @@
                 </script>
 
             </div>
-
-            <div id="Pag_LOJA" class="none Cl"></div>
             
             <div id="Pag_ARTE" class="none Cl TBLAA">
                 <div class="Wrapper">
@@ -2504,27 +2495,11 @@
                 </div></div></div></div>
             </div>
 
-            <div id="Pag_PRFL" class="none Cl" style="overflow-y: scroll;"></div>
-
+            <div id="Pag_LOJA" class="none Cl"></div>
+            <div id="Pag_PRFL" class="none Cl"></div>
             <div id="Pag_BBTC" class="none Cl"></div>
-
-            <div id="Pag_SPRT" class="none Cl">
-                <div>informações de Suporte</div>
-                <div>dicas de como usar o APP, principalmente pra mim</div>
-                <button onclick="CopyGRAFF('Pix',this)">Copiar Pix</button>
-            </div>
-
-            <div id="Pag_CONF">
-                <h1>Configurações</h1>
-                <div id="ConfigPag" class="Cl Rltv Rd">
-                    <div><input id="DarkLite" type="checkbox" onchange="DarkLite2('body',this.checked)" onclick="SaveConfig(this)"> <label>Modo Escuro</label></div>
-                    <div><input id="TamFonte" type="range"> <label>Tamanho de Fonte</label></div>
-                    <button onclick="TrocaCSS('CSS1')">CSS1</button>
-                    <button onclick="TrocaCSS('CSS2')">CSS2</button>
-                    <button onclick="TrocaCSS('CSS3')">CSS3</button>
-                </div>
-                <!--Tudo aqui será dependente do Login do Usuário-->
-            </div>
+            <div id="Pag_SPRT" class="none Cl"></div>
+            <div id="Pag_CONF"></div>
         </div>
     </div>
 </body>

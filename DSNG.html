@@ -101,9 +101,8 @@
 <script> // Bibliotecas
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
     const SortData=Arr=>[...Arr].sort((a,b)=>new Date(a.Data)-new Date(b.Data))
-    const DR=(e,R)=>`data-R="${R}" name="${e}"`
     const Foto=U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
-    const XModal2=_=>$('.FModal')?.remove()
+    const DR=(e,R)=>`data-R="${R}" name="${e}"`
     const Rclh=e=>Tog(e,'Rclh')
 </script>
 
@@ -519,30 +518,25 @@
     .Resumo .Pic  {border-color:var(--Cory)}
 
     .CropTxt{overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
-</style>
 
-<style>
     .Mmdal{width:80vw; height:80vh}
 </style>
 
 <script> // Página do Designer
-    function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)}
-    function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))}
-    const ListTag=j=>['Tema','Tipo'].map(k=>Uniq(j.map(e=>e[k]).filter(Boolean)))
-    const View=(__)=>{XModal2();MODAL(`<div class="Ct Mmdal">${Tm_Resumo(ARTS[__],USUARIO)}</div>`)}
-    const Sldo=(  )=>{XModal2();MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Table('MPAG',J['MPAG'])}</tbody></table></div>`)}
+    function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)} /*GAMBIARRA*/
+    function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))} /*GAMBIARRA*/
+    const View=(__)=>MODAL(`<div class="Ct Mmdal">${Tm_Resumo(ARTS[__],USUARIO)}</div>`)
+    const Sldo=(  )=>MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Table('MPAG',J['MPAG'])}</tbody></table></div>`)
 
     function TrocaRasc(Eu,X){ // tentar algo dinâmico aqui tbm
         $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ;   Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
         $$('.F2'      ,Bzv(Eu)).forEach(e=>Add(e,'NONE')) ;     Rmv($(`.RasC${X}`,Bzv(Eu)),'NONE')
     }
 
-    const Tm_Tags=(Obj)=>{
-        const COLOR = {Gray:'#4b4b4b',Yellow:'#bb8c00',Purple:'#C77DFF'}
-        return `<div class="Tags Ct gap w100" style="overflow: hidden">
-            ${Obj[0].map(t=>`<p style="background:${COLOR['Gray'  ]}">${t}</p>`).join("")}
-            ${Obj[1].map(t=>`<p style="background:${COLOR['Yellow']}">${t}</p>`).join("")}
-            </div>`
+    function Tm_Tags(Arr){
+        const CorTag = {Gray:'#4b4b4b',Yelw:'#bb8c00',Roxo:'#C77DFF'}
+        const Obj = ['Tema','Tipo'].map(k=>Uniq(Arr.map(e=>e[k]).filter(Boolean)))
+        return `<div class="Tags Ct gap w100" style="overflow:hidden">${Obj.map((arr,i)=>arr.map(t=>`<p style="background:${CorTag[i? 'Yelw':'Gray']}">${t}</p>`).join('')).join('')}</div>`
     }
 
     function Tm_Resumo(E,U,Rclh){
@@ -555,7 +549,7 @@
         </div>`).join("")}`
     }
 
-    function Tm_Exib(U,ID,ev,cgo){
+    function Tm_Exib(U,ID,ev,cgo){ // Falta Melhorar?
         if (ev?.target.closest('button')) return
         const Admn = cgo=='Admn'
         const Obj  = J['ARTE'].find(e=>e.Id==ID)
@@ -607,7 +601,7 @@
     }
 
     function Load_ARTES(U){
-        Inn($('#Perf-Perf .Perf_2'),Tm_Tags(ListTag(ARTS.__A)))
+        Inn($('#Perf-Perf .Perf_2'),Tm_Tags(ARTS.__A))
         Inn($('#Perf-Perf .Perf_3'),`
             <div class="Box2 HOV Cl" onclick="View('__A')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${ARTS.__A.length}</h3></div>
             <div class="Box2 HOV Cl" onclick="View('__X')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${ARTS.__X.length}</h3></div>
@@ -640,7 +634,7 @@
             </div>
             <div style="grid-area:B"><p>Total:</p><div class="Ct Zoom">${Tm_RS2(SOMA_Obj(U.Artes,'Valr'))}<p>${U.Artes.length} Artes</p></div></div>
             <div style="grid-area:C" class="w100 CT Gap Art NN">${['_S','Act','Ok','OK'].map(s=>`<div class="Grup_${s} CT gap">${U.Artes.filter(e=>e.Stts==s).map(e=>Tm_Resumo([e],U,Rclh)).join('')}</div>`).join('')}</div>
-            <div style="grid-area:D" class="NN">${Tm_Tags(ListTag(U.Artes))}</div>
+            <div style="grid-area:D" class="NN">${Tm_Tags(U.Artes)}</div>
         </div> `).join(''))
     }
 

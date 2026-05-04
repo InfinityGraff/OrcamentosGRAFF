@@ -3,7 +3,6 @@ const J={},JJ={},BS={},ALL={},PreTbl={}
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
 const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
-const NoneCgo =(Typ,Col)=>BS[Typ].Json[Col].NONE.split(',').includes(USUARIO.Crgo) ? 'none' : '' // usado em Thead, Tbody e Tfoot
 
 const Tm_R=(e,x,Typ,P=false)=>{
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // GAMBIARRA
@@ -182,7 +181,7 @@ function Tm_Td(v,e,x,Typ,_P=''){
     const _RR=d_r(_R)
     const Cls= BS[Typ].Json[_RR.Cl].CLS
     if((Typ=='SERV'||Typ=='PGMT')&&_RR.Sc&&!_RR.Bj){_P=`PDDS-${_RR.Id.split('_')[0]}-${Aa(Typ)}-Bndj-_-_`} // GAMBIARRRRA (isso é pra dar o Rpai nas tabelas secuntárias prinmcipais pois na hora de exibir erlas não possuem Rpai)
-    return `<td class="${Cls} ${NoneCgo(Typ,_RR.Cl)} Rltv">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
+    return `<td class="${Cls} Rltv">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
 }
 
 function Tm_Table(Typ,arry,Rpai=''){
