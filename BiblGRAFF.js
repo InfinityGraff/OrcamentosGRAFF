@@ -19,7 +19,8 @@ const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
 function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
 const ObjValToArr = o =>Object.fromEntries(ObjEtr(o).map(([k,v]) => [k, [].concat(v)])) // Transforma todos os valores do objeto em array (ex: {a:1} → {a:[1]})
 
-const TempoResta = d => {
+const TempoResta =d=> {
+  if(!d) return ''
   const n = new Date(), a = new Date(d.length == 10 ? d + 'T23:59:59' : d), ms = a - n;
   if (ms <= 0) return 'Expirado';
   const h = ms / 36e5, dInt = h / 24 | 0;

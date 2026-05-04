@@ -4,6 +4,10 @@
 @font-face {font-family:'Tommy_Bold'   ; src:url('FontGRAFF/MADE TOMMY Bold_PERSONAL USE.otf')    format('opentype')}
 @font-face {font-family:'Tommy_Medium' ; src:url('FontGRAFF/MADE TOMMY Medium_PERSONAL USE.otf')  format('opentype')}
 
+.Mw10{max-width:10%}.Mw20{max-width:20%}.Mw30{max-width:30%}.Mw40{max-width:40%}.Mw50{max-width:50%}.Mw60{max-width:60%}.Mw70{max-width:70%}.Mw80{max-width:80%}.Mw90{max-width:90%}.Mw100{max-width:100%}
+.Mh10{max-height:10%}.Mh20{max-height:20%}.Mh30{max-height:30%}.Mh40{max-height:40%}.Mh50{max-height:50%}.Mh60{max-height:60%}.Mh70{max-height:70%}.Mh80{max-height:80%}.Mh90{max-height:90%}.Mh100{max-height:100%}
+.h10{height:10%}.h20{height:20%}.h30{height:30%}.h40{height:40%}.h50{height:50%}.h60{height:60%}.h70{height:70%}.h80{height:80%}.h90{height:90%}.h100{height:100%}
+
 :root{--CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff)}
 
 .COR_Infinity{background:#9f009a}

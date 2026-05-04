@@ -565,3 +565,10 @@ async function Upload_Foto(File){
     MyAlert('Foto Upada com Sucesso!')
     return Nome
 }
+
+async function GetDsngUsers(){
+    let {data,error}=await supaBASE.rpc('getdsngusers')
+    if(error){ERR('Erro:',error); return []}
+    LOG('✔️ Designers Carregadors')
+    return data
+}
