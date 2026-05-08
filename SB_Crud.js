@@ -542,7 +542,7 @@ async function SB_Login(e,email,password,msg,nome){e.preventDefault()
     MyAlert('DEUCERTO!')
 }
 async function SB_Reset(e,email,password,msg,nome){e.preventDefault()
-    const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset.html'})
+    const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset'})
     msg.textContent = error ? error.message : 'Link Enviado! Verifique seu email.'
     MyAlert('DEUCERTO!')
 }

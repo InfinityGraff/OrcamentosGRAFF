@@ -1,16 +1,82 @@
-<input id="NEW_PASS" placeholder="Nova senha">
-<button onclick="Resetar()">Salvar nova senha</button>
-<div id="msg"></div>
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <link  href="./CssGRAFF.css"  rel="stylesheet">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./supaBASE.js"></script>
+</head>
+<style>
+    body.grid{display:grid;grid:"A A" 55px "B B" 1fr / 1fr}
+    .Box2    {width:100%;max-width:420px; padding:35px ; gap:18px ; box-shadow:0 10px 40px #00000050}
+    .Box2 p  {color:#b5b5b5;line-height:1.5;font-size:14px}
+    #msg     {min-height:20px;font-size:14px;color:var(--CorPrin)}
+    #Logo    {height:30px}
 
+    .PassBox{position:relative;width:100%;}
+    .PassBox input{width:100%;padding-right:45px;}
+    .Eye{position:absolute;top:50%;right:10px;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#FFF;font-size:18px;opacity:.8;}
+    .Eye:hover{opacity:1;}
+    .Bars{display:flex;gap:5px;width:180px;}
+    .Bars i{flex:1;height:8px;border-radius:999px;background:#333;overflow:hidden;transition:.15s linear;}
+    #PassTxt{font-size:14px;min-width:50px;}
+</style>
+
+<body data-Base="Basic" data-tema="Dark" data-Cor="Yelw" class="Ct Cl grid">
+    <header class="Bt w100 h100" style="grid-area:A">
+        <div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Mac.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+    </header>
+    <main class="Cl p30 Gap" style="grid-area:B;gap:38px">
+        <div class="Box2 CL">
+            <h1>Nova senha</h1>
+            <p>Digite sua nova senha abaixo. Escolha uma senha forte para manter sua conta segura.</p>
+            <div class="PassBox"><input id="PASS1" type="password" oninput="AddTrue($('.PassPower'),'Opacy',this.value=='')" placeholder="Nova senha"     ><button class="Eye" onclick="TogglePass('PASS1',this)">👁</button></div>
+            <div class="PassBox"><input id="PASS2" type="password" oninput="AddTrue($('.PassPower'),'Opacy',this.value=='')" placeholder="Confirmar senha"><button class="Eye" onclick="TogglePass('PASS2',this)">👁</button></div>
+            <div class="PassPower Ct gap Opacy"><div class="Bars"><i></i><i></i><i></i></div><span id="PassTxt">Fraca</span></div>
+            <button class="Block" onclick="Resetar($('#PASS1').value.trim(),$('#PASS2').value.trim())">Redefinir Senha</button>
+            <div id="msg"></div>
+        </div>
+        <footer class="Ct">© 2026 Infinity Graff • Segurança da Conta</footer>
+    </main>
+</body>
 <script>
-    async function Resetar() {
-        const password = document.querySelector('#NEW_PASS').value
+    const PASS1=document.getElementById('PASS1')
+    PASS1.addEventListener('input',CheckPassPower)
 
-        const { error } = await supaBASE.auth.updateUser({
-            password
+    function TogglePass(id,btn){const inp=document.getElementById(id) ; inp.type= inp.type==='password' ? 'text' : 'password' ; btn.textContent= inp.type==='password' ? '👁' : '🙈'}
+
+    function CheckPassPower(PassTxt){
+        let p=PASS1.value,s=
+            Math.min(p.length*6,40)+
+            Math.min((p.match(/[A-Z]/g)||[]).length*5,15)+
+            Math.min((p.match(/[0-9]/g)||[]).length*5,15)+
+            Math.min((p.match(/[^A-Za-z0-9]/g)||[]).length*8,20)
+        if(/[a-z]/.test(p)&&/[A-Z]/.test(p)&&/[0-9]/.test(p)&&/[^A-Za-z0-9]/.test(p))s+=10
+        s=Math.min(s,100)
+        let c=s<=33?'#ff3b3b':s<=66?'#ffae00':'#00d26a',t=s<=33?'Fraca':s<=66?'Média':'Forte'
+        document.getElementById('PassTxt').textContent=t
+        document.querySelectorAll('.Bars i').forEach((b,i)=>{
+            let f=Math.max(0,Math.min((s-i*33.33)/33.33,1))*100
+            b.style.background=`linear-gradient(to right,${c} ${f}%,#333 ${f}%)`
         })
+    }
 
-        document.querySelector('#msg').textContent =
-            error ? error.message : 'Senha redefinida!'
+    async function Resetar(Pass1,Pass2){
+        if(Pass1!==Pass2 ){msg.textContent='As senhas não coincidem' ; return}
+        if(Pass1.length<6){msg.textContent='Senha muito curta'       ; return}
+        msg.textContent='Salvando...'
+        const {error}= await supaBASE.auth.updateUser({password:Pass1})
+        msg.textContent = error ? (SB_ERRORS[error.message] || error.message) : '✅ Senha redefinida com sucesso!'
     }
 </script>
+
+
+
+
+
+</html>

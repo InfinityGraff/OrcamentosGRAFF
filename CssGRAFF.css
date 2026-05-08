@@ -39,8 +39,9 @@ body[data-Base="Basic"][data-tema="Lite"]{
   /*Ipt,Opt */ --OptBkg  :#ffffff  ;--OptCor :#000000 ; --Invalid:#00000083;
 }
 body[data-Base="Basic"][data-tema="Dark"]{
-  /*Body    */ --BodyBk :#131313  ; --CorText:#ffffff ;
+  /*Body    */ --BodyBk :#0f1115  ; --CorText:#ffffff ;
   /*Ipt,Opt */ --OptBkg :#3d3d3d  ; --OptCor :#ffffff ; --Invalid:#ffffff4b;
+  /*Box     */ --Box    :#181c24  ; 
 }
 body[data-Cor="Blue"]{
   /*Textos   */ --CorPrin :#0073ee;--CorText:#16202e;--CorPacy:#0066ff67; --CorATV :#007bff;--BtnTx     :#000000; 
@@ -49,7 +50,7 @@ body[data-Cor="Blue"]{
 }
 body[data-Cor="Yelw"]{
   /*Textos   */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; 
-  /*Header   */ --HeadBk  :#222222;
+  /*Header   */ --HeadBk  :#181c24;
   /*Buttons  */ --BtnBk   :#ffd000; 
 }
 body[data-Cor="Rosa"]{
@@ -70,13 +71,17 @@ body[data-Cor="Roxo"]{
 /*Formatos das Tags______________________________________________________________ */
 h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 /*Scroll*/ *::-webkit-scrollbar{width: 10px;height:10px} *::-webkit-scrollbar-corner{background:var(--ScrolBk)} *::-webkit-scrollbar-track{background:var(--ScrolBk );border-radius:500px} *::-webkit-scrollbar-thumb{background:var(--ScrllBrr);border-radius:500px} *::-webkit-scrollbar-thumb:hover {background:var(--ScrllBrrHV)}
-/*Body  */ body       {background:var(--BodyBk) ; color:var(--CorText);background-size:cover; background-position:center; background-attachment:fixed}
-/*Header*/ header     {background:var(--HeadBk) ; color:#ffffff     ;background-size:cover}
+/*Body  */ body       {background:var(--BodyBk) ; color:var(--CorText);background-size:cover ; background-position:center; background-attachment:fixed ; height:100vh; width: 100vw}
+/*Header*/ header     {background:var(--HeadBk) ; color:#ffffff     ;background-size:cover ; padding:5px 15px ; z-index:999 ; transition: all ease-in-out 0.3s;position:sticky; top:0}
+/*Header*/ header > * {transition:all ease-in-out 0.3s}
 /*Box1  */ .Box1,.Box2{background:var(--Box) ; padding:6px; border-radius:15px; gap:5px; box-shadow:var(--BoxySdw)}
-/*Box2  */ .Box2      {border:1px solid #494949}
+/*Box2  */ .Box2      {border:1px solid #ffffff10}
 /*Box3  */[data-tema="Lite"] .Box3{background:linear-gradient(to top,#b3b3b3  ,#ffffff)           ; color:#575757}
 /*Box3  */[data-tema="Dark"] .Box3{background:linear-gradient(to top,#fcf1ff71,#ffffff, #ffffff); color:#575757;box-shadow:inset 0 0 15px #fdfdfdb7,3px 3px 8px #0000002a}
 /*Box3  */[data-tema="Rosa"] .Box3{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
+
+
+            
 
 /*Button, Input e Select*/
   [data-Base="Infinity"] :is(input,select,button,.button,.Interup)    {height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px}
@@ -96,7 +101,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   [data-Base="Basic"] button:hover  {background:var(--CorATV)}
 
   button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
-  button.Block            {background: #797979 !important; border:1px solid #414141 !important}
+  button.Block            {background: #797979 !important; border:1px solid #414141 !important; color: #555555;pointer-events:none ; cursor:not-allowed;}
   button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
   button.Mini             {height: 20px}
   .BtnRed{background: #ff4343 !important;}
@@ -286,4 +291,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 
 summary{list-style:none;cursor:pointer;display:grid;gap:5px;padding-bottom:10px}
 summary::-webkit-details-marker{display:none}
-footer{opacity:.5;text-align:center}
+
+/* footer{opacity:.5;text-align:center} */
+footer {height:60px;border-top:1px solid #ffffff10;color:#8d8d8d;font-size:13px}
+
+.CL {display: flex; flex-direction: column;}
