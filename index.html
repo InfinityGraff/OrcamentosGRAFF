@@ -578,11 +578,7 @@
     </div>
 
     <div>   <!--PESQUISA - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
-        <style> /*CSS - PESQUISA*/
-            #Lupa   {top:8px; right:6px; width:17px; opacity:0.5} #Lupa:hover{opacity:1}
-            .pPesq a{color:#ffffff ; top:8px} .pPesq a.Atv{color:#00ff0d !important}
-            .Pesq-A_{right:30px}.Pesq-Aa{right:50px}.Pesq-Bj{right:70px}.Pesq-Rx{right:90px}.Pesq-_C{right:110px}
-            @media(max-width:500px){#Div-Pesq{width:50%}}
+        <style> 
         </style>
 
         <script> // SCRIPT - PESQUISA
@@ -609,7 +605,7 @@
             
             const Load_Pesq=Typ=>
                 `<div class="pPesq Pesq_${Typ} Rltv" class="none">
-                    <input class="w100 Pcy" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
+                    <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')">
                     <i class="Abslt" onclick="Tog_N($('span',Pai(this)))">▼</i>
                     ${['Aa','A_','Bj','Rx','_C'].map(e=>`<a class="Abslt HOV Pesq-${e}" onclick="TOV(this);Pesq($('input',Pai(this)),'${Typ}')">${e}</a>`).join('')}
                     <img id="Lupa" class="Abslt HOV" src="./SVG/Icon_Lupa.svg">
@@ -723,31 +719,7 @@
     </div>
 
     <div>   <!--FILTROS  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Melhorias Bestas) -->
-        <style> /*FILTROS - CSS*/
-            /*Particularidades da BndjFLT*/
-            .BndjFLT input  {height:18px ; width:80px}
-            .Sugg {overflow-x: hidden; overflow-y: auto; max-height: 200px; width: 100%;border-radius:10px}
-            .Sugg > *{padding: 4px}
-            .BjConf         {color:#ffffff; height:24px}
-            .BjConf img     {height:18px; width:18px}
-            .BjConf span.Atv{fill:#ffff00; background:#00df00}
 
-            /*Bolinhas + e -*/
-            .Sugg div        {gap: 10px;}
-            .Sugg div a      {opacity:0;font-size:15px; background:#d822ab; color:#ffffff; width:18px; height:18px; text-align: center} 
-            .Sugg div:hover a{opacity:1}
-
-            .ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%);opacity:0.5}
-            .ThFilt > i.Atv{opacity:1}
-            .ThFilt > b    {position:absolute; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; }
-            .ThFilt > b.Atv{background:#0c8f00; right:29px}
-            .ThFilt > b.Rtv{background:#ff0000; right:10px}   
-
-            .filtTrue{  color:#ffffff; background:#008000 !important} /*aplica no Tr*/
-            .filtFals{  color:#ffffff; background:#ff0000 !important} /*aplica no Tr*/
-            .ThFilt_Atv{color:#ffffff; background:#059b00}            /*aplica no Filt*/
-            .ThFilt_Rtv{color:#ffffff; background:#ff0000}            /*aplica no Filt*/
-        </style>
         <script> // FILTROS - SCRIPT
             const Colx    =(Typ,col)=>FIdx(BS[Typ].Orden,col)+1
             const COLLLL  =(Typ,col)=>{if (!Typ || !col) return "";return `td:nth-child(${Colx(Typ, col)})`}
@@ -1505,7 +1477,7 @@
                 function Recolher(){Tog($('.BBody2'),'recolhe')}
             </script>
         </div>
-        <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div><!--Pesquisa-->
+        <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov Pcy"></div></div><!--Pesquisa-->
         <div id="DivNav"><nav class="Ct H_Nav"></nav></div><!--nav-->
 
         <script>

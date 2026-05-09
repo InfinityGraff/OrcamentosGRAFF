@@ -32,7 +32,7 @@ body[data-Base="Infinity"][data-tema="Dark"]{
 }
 body[data-Base="Basic"]{
   /*Box     */--Box      :#2c2c2c70;--BoxySdw:0;
-  /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr  :#5d5d5da5;--ScrllBrrHV:#555555;
+  /*Scroll  */--ScrolBk  :#00000000;--ScrllBrr  :#5d5d5da5;--ScrllBrrHV:#555555;
 }
 body[data-Base="Basic"][data-tema="Lite"]{
   /*Body    */ --BodyBk  :#ffffff  ;--CorText:#16202e ;
@@ -45,27 +45,33 @@ body[data-Base="Basic"][data-tema="Dark"]{
 }
 body[data-Cor="Blue"]{
   /*Textos   */ --CorPrin :#0073ee;--CorText:#16202e;--CorPacy:#0066ff67; --CorATV :#007bff;--BtnTx     :#000000; 
+  /*Focus    */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #0073ee;--FcusShw:0 0 2px 2px #0073ee98;
   /*Header   */ --HeadBk  :#222222;
   /*Buttons  */ --BtnBk   :#0073ee; 
+  /*Thead    */ --thead   :#0073ee;
 }
 body[data-Cor="Yelw"]{
   /*Textos   */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; 
+  /*Focus    */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #ffd724;--FcusShw:0 0 2px 2px #ffdd4886;
   /*Header   */ --HeadBk  :#181c24;
-  /*Buttons  */ --BtnBk   :#ffd000; 
+  /*Buttons  */ --BtnBk   :#ffd000;
+  /*Thead   */  --thead : linear-gradient(180deg,#ffd000,#ffae00);
 }
 body[data-Cor="Rosa"]{
   /*Textos  */ --CorPrin :#C151A8;--CorText:#3a0027;--CorPacy:#ffcffd;--CorATV :#E8778D;
+  /*Focus   */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c;
   /*Body    */ --BodyBk  :linear-gradient(135deg,#B654B8,#F0A8B2); 
   /*Header  */ --HeadBk  :linear-gradient(116deg,#f570be,#c027b3);
   /*Buttons */ --BtnBk   :linear-gradient(135deg,#E8778D,#C151A8);--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123; --BtnBord:1px solid #ecc3c98e;
   /*Box     */--Box      :linear-gradient(to top,#ffffff5d,#ffffff09);--BoxySdw:inset 0 0 8px #fdfdfd6e,3px 3px 8px #5c084118;
   /*Scroll  */--ScrolBk  :#64003e1c;--ScrllBrr:#6d0b4748;--ScrllBrrHV:#c027b3;
-  /*N botei ainda no Basic*/--FcusBkg:#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c; /*Talvez não precise replicar isso deixando apenas em .Infinity*/
+  /*Thead   */--thead    :linear-gradient(135deg,#E8778D,#C151A8);
 }
 body[data-Cor="Roxo"]{
   /*Textos  */ --CorPrin :#9f009a;--BtnTx :#ffffff;--CorATV:#c400bd;--CorPacy :#db00e23a;
   /*Focus   */ --FcusBrd:1px solid #ff00fff5;--FcusShw:0 0 10px #ff00fffb;
   /*Box     */ --Box     :linear-gradient(to top,#fbddff0c,#fce4ff05);--BoxySdw:inset 0 0 8px #fce5ff1c,3px 3px 8px #0000003a;
+  /*Thead   */--thead :#9f009a;
 }
 
 /*Formatos das Tags______________________________________________________________ */
@@ -80,28 +86,40 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 /*Box3  */[data-tema="Dark"] .Box3{background:linear-gradient(to top,#fcf1ff71,#ffffff, #ffffff); color:#575757;box-shadow:inset 0 0 15px #fdfdfdb7,3px 3px 8px #0000002a}
 /*Box3  */[data-tema="Rosa"] .Box3{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
 
-
-            
-
 /*Button, Input e Select*/
-  [data-Base="Infinity"] :is(input,select,button,.button,.Interup)    {height:30px; margin:3px; border-radius:255px; font-size:14px; transition:all 0.2s cubic-bezier(0.8,0,0.8,2.4);display:flex;justify-content: center;align-items: center;gap: 3px}
+
+  [data-tema="Dark"] :is(input,select)      {background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
+  [data-tema="Lite"] :is(input,select)      {background:#ffffffb2; color:#000000; border:1px solid #727272ee}
+  [data-tema="Dark"] :is(input,select):hover{background:#ffffff33; transform:scale(1.02)}
+  [data-tema="Lite"] :is(input,select):hover{background:#ffffffd5; transform:scale(1.02)}
+
+  [data-Base="Infinity"] :is(input,select,button,.button,.Interup) {height:30px; outline:none ; border-radius:255px;               font-size:14px ; display:flex ;justify-content:center;align-items:center; gap:3px ; transition:all 0.1s cubic-bezier(0.8,0,0.8,2.4)}
+  [data-Base="Basic"   ] :is(input,select,button,.button,.Interup) {height:36px; outline:none ; border-radius:  4px; padding:8px ; font-size:14px ; display:flex ;justify-content:center;align-items:center; gap:3px ; transition:all 0.1s}
+
   :is(input,select,button,.button)>:is(img,svg){height:18px; fill:var(--BtnTx)}
-  :is(input,select):focus                      {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+  :is(input,select,textarea):focus             {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
+
+
   input.Error,select.Error,input.Error:focus,input.Error:hover{background:#ff0000} /*Falta incluir Button no Rolo*/
 
-  [data-Base="Basic"] :is(input,select,textarea)       {height:36px;display:block;padding:8px;font-size:14px;border-radius:4px;outline:none;transition:0.2s}
-  [data-Base="Basic"] :is(input,select,textarea):focus {border-color:#ffd000;box-shadow:0 0 2px 3px #ffc40340}
+/*Input*/
+  [data-Cor ="Rosa"] :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
+  [data-Cor ="Rosa"] :is(input,select)::placeholder{color:#612d4ba8}
+
+  [data-Cor="Rosa"] .imita{border: none !important; color: #008000;} /*Gambiarra*/
+  .Pcy :is(input,select,.Interup) {color:#ffffff ; background:#00000018; border:1px solid #ef3aff}
+  .Pcy input::placeholder         {color:#ffffff ; opacity:0.5}
+
+
 
 /*button*/
   .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i)       {background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap ; background-size:500%}
   .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
   .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
-
   [data-Base="Basic"] :is(button,.button){background:var(--BtnBk)    ; color:var(--BtnTx);cursor:pointer;border:none;padding:4px 8px;border-radius:4px ; font-size: 14px;}
-  [data-Base="Basic"] button:hover  {background:var(--CorATV)}
-
+  [data-Base="Basic"] button:hover       {background:var(--CorATV)}
   button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
-  button.Block            {background: #797979 !important; border:1px solid #414141 !important; color: #555555;pointer-events:none ; cursor:not-allowed;}
+  button.Block            {background: #797979 !important; border:1px solid #414141 !important; color: #313131 !important;pointer-events:none !important ; cursor:not-allowed !important;}
   button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
   button.Mini             {height: 20px}
   .BtnRed{background: #ff4343 !important;}
@@ -109,16 +127,6 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   button:disabled{opacity:0.6;cursor:not-allowed}
 
 
-/*Input*/      
-  [data-tema="Dark"] :is(input,select)      {background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
-  [data-tema="Lite"] :is(input,select)      {background:#ffffffb2; color:#000000; border:1px solid #727272ee}
-  [data-tema="Dark"] :is(input,select):hover{background:#ffffff33; transform:scale(1.02)}
-  [data-tema="Lite"] :is(input,select):hover{background:#ffffffd5; transform:scale(1.02)}
-  input.Pcy,select.Pcy,.Interup.Pcy   {background:#00000018; color:#ffffff; border:1px solid #ef3aff}
-  input.Pcy::placeholder              {color:#ffffff ; opacity:0.5}
-  .CSS3 :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
-  .CSS3 :is(input,select)::placeholder{color:#612d4ba8}
-  .CSS3 .imita{border: none !important; color: #008000;} /*Gambiarra*/
 
 /*Select*/
   select:has(option:checked:disabled){color:var(--Invalid)} /*Talvez uma Opacide*/
@@ -156,27 +164,28 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .Switch label {flex:1; z-index:2; color:#aaa; transition: color 0.3s ease; line-height:30px}
   .Switch label:hover {color:#fff}
   .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
-/*Table*/ 
-  table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
-    .CSS1.Dark .TBLAA table{background: #ffffff ; color: #000000 !important}
-    .CSS1.Lite .TBLAA table{background: #ffffff ; }
-    .CSS3.Lite .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f}
-/*thead e tfoot*/ 
-  .CSS3.Lite .TBLAA thead tr{background: var(--BtnBk);color:#ffffff; height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
-  .CSS3.Lite .TBLAA tfoot tr{background: var(--BtnBk);color:#ffffff; height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
-  .CSS1.Dark .TBLAA tbody tr{border:1px solid #cccccc27}
-  .CSS1.Lite .TBLAA tbody tr{border:1px solid #00000027}
+
+
+
+
+/*Table*/
+  .WrapTable  {max-height:500px;overflow:auto; border-radius: 20px;}
+  .TBLAA table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
+  .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f} /*Baby*/
+  .TBLAA tbody{background: #ffffff ; color: #000000 !important}
+  .TBLAA :is(thead,tfoot) tr{background:var(--thead);color:var(--BtnTx)}
+  .TBLAA tbody tr{border-bottom:2px solid #7c005733}
+
+  .CSS3.Lite .TBLAA thead tr{height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
+  .CSS3.Lite .TBLAA tfoot tr{height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
+
+  .TBLAA tbody tr{border:1px solid #cccccc27}
+  .TBLAA tbody tr{border:1px solid #00000027}
   .TBLAA th{padding:4px 6px}
-  .CSS1.Dark .TBLAA thead{background:#8b0085;color:#ffffff}
-  .CSS1.Lite .TBLAA thead{background:#8b0085;color:#ffffff}
-  .CSS1.Dark .TBLAA tfoot{background:#8b0085;color:#ffffff}
-  .CSS1.Lite .TBLAA tfoot{background:#8b0085;color:#ffffff}
-  .CSS1 .TBLAA .hMin tfoot td{padding:8px 6px} /*Não sei a Necessidade*/
-/*Tbody*/
-  .CSS3.Lite .TBLAA tbody tr{border-bottom:2px solid #7c005733}
-  .CSS1.Dark .TBLAA select{color: #000000 !important}
+  .TBLAA select{color: #000000 !important}
+
 /*Outros Tabela*/
-  .TBLAA td {height: 37px;}
+  .TBLAA td          {height:37px}
   .TBLAA td img      {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
   .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
   .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
@@ -184,6 +193,10 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .TBLAA .hMin td{height:10px}
   .TBLAA .hMin td select,.hMin td input{height: 17px !important}
       
+
+
+
+  
 /*Anailsar depois*/
   #Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
   .MyAlert{background:#28a745;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 4px 12px #0000004d}
@@ -194,11 +207,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 /*DivConfig*/
   .Body1 .DivSlid{        height:50px}
   .Body2 .DivSlid{top:0px;height:40px}
-  .PagPEsq             {transition: all ease-in-out 0.3s}
-  .PagPEsq   :is(a,img){transition: all ease-in-out 0.3s}
-  .Body1 .PagPEsq input{border: none}
-  .Body1 .PagPEsq{width:0px;pointer-events:none}.Body1 .PagPEsq :is(a,img){opacity:0 !important}
-  .Body2 .PagPEsq{width:450px                  }.Body2 .PagPEsq :is(a,img){opacity:1}
+
+  
              
 /*Basicamente são CSS de cores dos Suggs e Links e Bandeijas*/
     .CSS1 .BndjSUG,.CSS1 .BndjTBL, .CSS1 .BndjPsq
@@ -296,3 +306,77 @@ summary::-webkit-details-marker{display:none}
 footer {height:60px;border-top:1px solid #ffffff10;color:#8d8d8d;font-size:13px}
 
 .CL {display: flex; flex-direction: column;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*FILTROS - CSS*/
+/*Particularidades da BndjFLT*/
+.BndjFLT input  {height:18px ; width:80px}
+.Sugg {overflow-x: hidden; overflow-y: auto; max-height: 200px; width: 100%;border-radius:10px}
+.Sugg > *{padding: 4px}
+.BjConf         {color:#ffffff; height:24px}
+.BjConf img     {height:18px; width:18px}
+.BjConf span.Atv{fill:#ffff00; background:#00df00}
+
+/*Bolinhas + e -*/
+.Sugg div        {gap: 10px;}
+.Sugg div a      {opacity:0;font-size:15px; background:#d822ab; color:#ffffff; width:18px; height:18px; text-align: center} 
+.Sugg div:hover a{opacity:1}
+
+.ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%);opacity:0.5}
+.ThFilt > i.Atv{opacity:1}
+.ThFilt > b    {position:absolute; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; }
+.ThFilt > b.Atv{background:#0c8f00; right:29px}
+.ThFilt > b.Rtv{background:#ff0000; right:10px}   
+
+.filtTrue{  color:#ffffff; background:#008000 !important} /*aplica no Tr*/
+.filtFals{  color:#ffffff; background:#ff0000 !important} /*aplica no Tr*/
+.ThFilt_Atv{color:#ffffff; background:#059b00}            /*aplica no Filt*/
+.ThFilt_Rtv{color:#ffffff; background:#ff0000}            /*aplica no Filt*/
+
+
+/*CSS - PESQUISA*/
+.pPesq input{transition:0.0s !important; padding-right:139px !important} .pPesq input:hover{transform: scale(1) !important}
+.AaAa{color:#ffffff ; opacity:0.5;} .AaAa:hover{opacity:1} .AaAa.Atv{color:#00ff0d !important}
+
+/*Biblioteca*/
+.hOv{cursor: pointer;transition: all 0.1s ease-in-out;}.hOv:hover{transform: scale(1.02)}.hOv:active{transform: scale(1.01)}
+
+

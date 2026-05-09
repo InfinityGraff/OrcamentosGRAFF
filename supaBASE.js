@@ -16,3 +16,11 @@ const SB_ERRORS={
     "Database error updating user":"Erro ao salvar usuário",
     "Password is too weak":"Senha muito fraca"
 }
+
+async function SB_Resetar(Pass1,Pass2){
+    if(Pass1!==Pass2 ){msg.textContent='As senhas não coincidem' ; return}
+    if(Pass1.length<6){msg.textContent='Senha muito curta'       ; return}
+    msg.textContent='Salvando...'
+    const {error}= await supaBASE.auth.updateUser({password:Pass1})
+    msg.textContent = error ? (SB_ERRORS[error.message] || error.message) : '✅ Senha redefinida com sucesso!'
+}

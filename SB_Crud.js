@@ -448,7 +448,7 @@ async function SB_Get(SB,Typs){
         do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
             if (!data) return ERR('Erro ao carregar dados')
             todas.push(...data) ; ofs+=lim
-        }while(data.length===lim)        
+        }while(data.length===lim)
         const Colet = {}
         J[Typ]=todas.map(e=>normalizeObj(e,Colet))
         for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}

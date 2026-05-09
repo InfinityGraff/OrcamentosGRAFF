@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns</title>
+    <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <link   href="./SB_Crud.css"  rel="stylesheet">
+    <link   href="./CssGRAFF.css"  rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./SB_Crud.js"  ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./supaBASE.js"></script>
+</head>
+
+<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
+    // Acumuladores
+        const Atual = {Pag:'CLNT'}
+        let USUARIO = ''
+
+        const Pry    = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'}
+</script>
+
+<script>
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
+    const Foto=U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
+
+    const ReszH    =Typ=>{Tog($(`#H_${Typ}`),'hMin')                               ;SaveConfig('a')}
+    const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+</script>
+
+
+
+<script>
+    const Load_Pesq=Typ=>
+    `<div class="pPesq Pesq_${Typ} hOv Rltv">
+        <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="Pesq(this,'${Typ}')" onkeydown="KeyEntr(()=>SB_Pesq(this,'${Typ}'))">
+        <div class="Abslt Ct gap" style="top:8px;right:8px">
+            ${['Aa','A_','Bj','Rx','_C'].map(e=>`<a class="AaAa Pesq-${e}" onclick="TOV(this);Pesq($('input',Avo(this)),'${Typ}')">${e}</a>`).join('')}
+            <a class="AaAa" onclick="Tog_N($('span',Avo(this)))">▼</a>  <img class="AaAa" style="width:17px" onclick="SB_Pesq($('input',Avo(this)),'${Typ}')" src="./SVG/Icon_Lupa.svg">
+        </div>
+        <span class="BndjPsq BNdj Abslt Ct none">
+            <select class="COL1" onload="Inn(this,Tm_Opt(['','','Clnt','Serv','Pgmt']))"></select>
+            <select class="COL2" onload="Inn(this,Tm_Opt(['','','Grad','Desc','Cmnt']))"></select>
+            <div onload="Tm_Check(this,'${SVG.Chek.replace(/"/g,'&quot;')}','Mais de uma Correspondência')"></div>
+            <div onload="Tm_Check(this,'${SVG.Chek.replace(/"/g,'&quot;')}','Aceitar Erros Ortográficos' )"></div>
+        </span>
+    </div>`
+
+    function Pesq(){}
+</script>
+
+
+<style> /*CSS apenas da Tabela*/
+    .BndjFOT,.BndjFLT{overflow: hidden}
+    .BndjFLT{border-radius:0 0 10px 10px}
+    .BndjTBL{padding:5px ; width:auto !important; height:auto !important}
+    .BndjFOT{border-radius:10px 10px 0 0; bottom:0px}
+
+    /*Fica apenas nas Tabelas*/
+    td          .grifoo{display:none  ; height:5px; width:5px ; left:0px}
+    td.GrifNot2 .grifoo{display:block ; background:#ff880060}
+    td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
+    p.Psq,select.Psq   {                background:#ff7b00 !important} /*Griff do Select*/
+
+    .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
+    .TBLAA tfoot .RS{color:#00df00; font-size:7px}
+
+    .TBLAA   tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
+    .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
+    .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
+    .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
+    .BndjTBL tbody td p                                                {width: 100%;height:100%;padding:2px 6px; text-align:center}
+    .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter: saturate(1.6) brightness(1.05); z-index: 999999}
+    .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
+
+    .H_Tbody{height: 30px !important;}
+    .H_Tbody td{background: purple;}
+    .H_Tbody:hover {background: #ff0000}
+    tbody.closed tr:not(.H_Tbody) {display: none}
+
+    textarea{padding: 0px;}
+    .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
+
+    table.Card {background: none !important;}
+    table.Card > thead{display: none}
+    table.Card > tfoot{display: none}
+    table.Card > tbody{display:flex; flex-wrap:wrap; gap:12px ; padding:10px}
+    table.Card > tbody > tr {padding: 8px;background:#ffffff;border-radius: 16px;box-shadow: 0 4px 12px #0000001a;}/*CARD*/
+    table.Card > tbody > tr {display: grid;grid-template-columns: 1fr auto auto;gap: 4px 4px;
+        grid-template-areas:
+            " Id   Id  Data"
+            "Clnt Clnt Stts"
+            "Serv Serv Serv"
+            "Valr Pgmt Deve"
+            "Obs  Obs  Obs ";
+    }
+    table.Card > tbody > tr[class^="n"]{display: none;}
+    table.Card .Auto,table.Card .CorID{background: transparent !important;}
+                                table.Card > tbody > tr{width:calc(25% - 9px)}        /*Largura dos Cards 4 por Linha*/
+    @media (max-width: 800px) {table.Card > tbody > tr {width: calc(33.333% - 8px)}} /* 3 por linha */
+    @media (max-width: 500px) {table.Card > tbody > tr {width: 100%}}                /* 1 por linha */
+    
+    table.Card > tbody > tr > td{padding: 5px; border-radius: 255px ; height: auto !important; } /*border: 1px solid red;*/
+    table.Card > tbody > tr > td:nth-child(1) { grid-area: Id   }table.Card > tbody > tr > td:nth-child(1) > div > .P-P {color:#780096; font-size: 10px ; font-weight:bold}
+    table.Card > tbody > tr > td:nth-child(2) { grid-area: Data }table.Card > tbody > tr > td:nth-child(2) > div > .P-P {color:#666666; text-align:right                        } table.Card > tbody > tr > td:nth-child(2) > div > .P-P > img{height:11px; margin-right:3px ; display: block;}
+    table.Card > tbody > tr > td:nth-child(3) { grid-area: Clnt }table.Card > tbody > tr > td:nth-child(3) > div > .P-P {color:#000000d5; font-size: 18px ;                     } table.Card > tbody > tr > td:nth-child(3) > .Ct{justify-content:start}
+    table.Card > tbody > tr > td:nth-child(4) { grid-area: Serv }table.Card > tbody > tr > td:nth-child(4) > div > .P-P {color:#000000;                 ;                       } table.Card > tbody > tr > td:nth-child(4) > .Ct{justify-content:start}
+    table.Card > tbody > tr > td:nth-child(5) { grid-area: Valr }table.Card > tbody > tr > td:nth-child(5) > div > .P-P {color:#008000; font-size: 16px ; font-weight:bold      } table.Card > tbody > tr > td:nth-child(5) > .Ct{justify-content:start}
+    table.Card > tbody > tr > td:nth-child(6) { grid-area: Pgmt }table.Card > tbody > tr > td:nth-child(6) > div > .P-P {color:#000000; }
+    table.Card > tbody > tr > td:nth-child(7) { grid-area: Deve }table.Card > tbody > tr > td:nth-child(7) > div > .P-P {color:#c7380c; font-size: 12px}
+    table.Card > tbody > tr > td:nth-child(8) { grid-area: Cust ;display: none}table.Card > tbody > tr > td:nth-child(8) > div > .P-P {color:#c7380c; font-size: 12px}
+    table.Card > tbody > tr > td:nth-child(9) { grid-area: Lcro; display: none;}
+    table.Card > tbody > tr > td:nth-child(10){ grid-area: Stts }table.Card > tbody > tr > td:nth-child(10) > div > .P-P{color:#999999; width: 50px;}
+    table.Card > tbody > tr > td:nth-child(11){ grid-area: Obs  ; display: none; color:#757575; font-size: 12px}
+    table.Card > tbody > tr > td:nth-child(12){ grid-area: Lixo ; display: none;}
+
+    /*Rodar as Ecessões*/
+    table.Card > tbody > tr > td:nth-child(3) {background: none !important}
+
+    table.Tbla td[class*="Data"] a{display: none}
+    table.Tbla td[class*="Data"] p{display: flex}
+    table.Card td[class*="Data"] a{display: flex}
+    table.Card td[class*="Data"] p{display: none}
+</style>
+
+<script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
+    // Estão OK
+    const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
+    const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" class="Rltv"></td>`).join('')
+
+    // Ajeitar
+    const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
+    function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
+    function CopyFone(Fone,Eu){LOG(Fone)}
+    
+    const ImgT_T=(col,e,R)=>{
+            const ARTEE = col=='Serv' ? JJ['ARTE'][e.Arte.split('-')[1]]?.Img : ''
+            return                col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                                : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                                : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
+                                : ''
+        // isso daqui tem que ser, Pegar todas as Imagens que estão dentro da Bandeija, todas mesmo incluindo Bandeija de Bandeija e Links tbm
+    }
+
+    const FazerTitle=(Typ,Find,Buttonn)=>{
+        const Stg = BS[Typ].Title
+        const Fn = Function('e',`return ${Stg}`)
+        const Join = Find.map(e=>Fn(e)).join('|')
+        return  Stg ? Join ? BrevTitle(Typ,Join) : Buttonn : 'Sem Titulo'
+    }
+
+    function Tm_Bndj(R,Arr,DOM){
+        const r = d_r(R)                                   // Melhorar declarações
+        const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]        // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
+        const COL   = Tm=='Bndj' ? AA(col) : BS[Typ].Json[col].LINK.split('-')[0] // isso serve pra acessar qual é a Tabela Passiva
+        if(Typ=='PGMT'&&col=='Clnt'){return}
+        const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
+        const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
+
+        const Find   = Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? Dados2(dado) : []
+        if(Tm=='Link'&&Find[0]==undefined){return}    // só ta aqui pq no Link GRAD quando chamo OS ta dando um ERRO pois um item é Undefined
+        const Buttonn = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO ${RmvPlural(D_Brev[COL])}</button>` : ''
+        const Title  = FazerTitle(COL,Find,Buttonn)
+        const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
+        const NmTle  = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '' : Title // (GAMBIARRA preparar pra RMV)
+        const Cimg   = Find.map(e=>ImgT_T(col,e,R)).join('')
+        
+        Find.map(e=>`${ALL[col]?.push(e[col])}`)
+
+        const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
+        if(DOM){return `${Find.map((e,x)=>x===0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
+        else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
+                <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
+                <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                    <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
+                    ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">+ Novo ${RmvPlural(D_Brev[COL])}</button>`:
+                        Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${col}')">Excluir ${ col }</button><button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R,'')}</div>`:''}
+                </div>
+            </div>`
+        }
+    }
+
+    const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
+        return arr.map((e,x)=>e=='Lixo'?`<th><p>${''}</p></th>`:
+            `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);OpcyFilt(_table(this).id);Tm_Filt(this,'${Typ}','${e}')">
+                    <p class="PT" name="${e}">${Typ=="SERV"?e:BS[Typ].Json[e].COL||e /*GAMBIARRA pra remvoer o DbCol*/}</p>
+                    <i onclick="Orden(this,event,'${x}')">▼</i>
+                    <b class="Ct none Atv">0</b>
+                    <b class="Ct none Rtv">0</b>
+
+                    <div class="Rltv w100">
+                        <div class="BndjFLT BNdj Abslt none">
+                            <div class="BjConf Stky Ev" onclick="ShowDate(this,'${Typ}','${e}')"></div>
+                            ${e=='Data'?`<input type="date" onchange="RangeDate(this,'${Typ}','${e}')" class="D-Inn none">
+                                            <input type="date" onchange="RangeDate(this,'${Typ}','${e}')" class="D-Out none">` : ''}
+                            <span class="Sugg Cl">${e}</span>
+                        </div>
+                    </div>
+            </th>`).join('') // P=Texto, i=▼, b=Notfi, a=Config, span=Suggs
+    }
+
+    function TogTbody(e){Tog(e.closest('tbody'),'closed')}
+    const HeadGroupTR = `<tr class="H_Tbody" onclick="TogTbody(this)"><td></td><td colspan="3">📦 Grupo</td></tr>` // aqui terá um Breve Resumo do Mês Inteiro
+
+
+    const Tm_Tr=(Typ,arry,Rpai='')=>arry.map(e=> e ? `<tr class="tr-${e[Pry[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
+
+    function Tm_Table2(Typ,GAMBIARRRRRRRRRA,Lmtt){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs
+        const LOAD=(TYP)=>{
+            Add_N($(`#H_${TYP}`)) // Oculta a Table Original pra poder ver o Esqueleto
+            setTimeout(()=>{
+                const NewTyp = J[TYP] //RANGE_DATA(J[TYP],BS[TYP].Limit,Lmtt) // Limita por Data
+                if(TYP=='PDDS'){Inn($(`#H_${TYP} > .Bodd1`), HeadGroupTR  + Tm_Tr(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp)) /*TBODYID*/
+                            }else{Inn($(`#H_${TYP} > tbody`), Tm_Tr(TYP, !GAMBIARRRRRRRRRA ? NewTyp.reverse() : NewTyp))} /*TBODYID*/
+                Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(BS[TYP].Orden,TYP)}</tr>`)
+                Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(BS[TYP].Orden,TYP)}</tr>`)
+                //RFresh(TYP,'All')
+                Rmv_N($(`#H_${TYP}`)) // Exibir a table Original
+                if($(`#SKLT_${TYP}`)){Add_N($(`#SKLT_${TYP}`))} // Ocultar o Esqueleto
+        },0)}
+
+        if(ObjKey(J).includes(Typ)){
+                 if(Typ=='PDDS'){LOAD(Typ);LOAD('SERV');LOAD('PGMT')             } // tem 3 Tabelas na #PagPDDS
+            else if(Typ=='PGMT'){LOAD('MPAG')                                    } // tem 2 Tabelas na #PagPGMT
+            else if(Typ=='GRAD'){LOAD(Typ);LOAD('OS');LOAD('UBER'),LOAD('GRD2')  } // tem 3 Tabelas na #PagGRAD
+            else{LOAD(Typ)}                                                        // os demais tem só 1 tabela
+            PreTbl[Typ]=true                                                       // Declarar que a Aba já foi Aberta!
+        }
+    }
+
+    // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
+    // 💡 Opção de mais de 1 Designer
+    // 💡 Mover-se nas células com as Setas
+</script>
+
+
+<body data-Base="Basic" data-tema="Dark" data-Cor="Yelw" class="grid" onclick="NoneBndj()">
+
+    <style> /*CSS do Header*/
+        /*Fixos*/
+            body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
+
+            #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
+            #PAGES > *{height:100% ; overflow-y:scroll}
+            #COLUN    {height:100% ; background:#1a1a1a}
+        /*header*/
+            #Logo        {height:30px}
+            #Title h1    {font-size:3vw}           @media(max-width:500px){#Title h1 {display:none}}
+            nav          {gap:6px}                 @media(max-width:700px){nav       {display:none}}
+            nav p        {display:none}
+            nav img      {height:22px}
+            nav div      {border-radius:5px}
+            #LgFoto      {background-size:cover ; height:100%; width:auto}
+            #LgFoto img  {width:42px; height:42px}
+
+            #MAIS             {background:#4e4e4e; width:250px; color:#ffffff ; top:55px; right:0px}
+            #MAIS img         {height:25px; margin-right:10px}
+            #MAIS div         {padding:10px; cursor:pointer; font-size:15px; width:100%}
+            #MAIS p,#MAIS p a {font-size:10px}
+            #MAIS div:not(:last-child):hover{background:#808080; color:var(--Txt-Wit-Hover)}
+    </style>
+
+    <header class="Bt w100" style="grid-area:A">
+            <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Mac.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+            <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+            <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+            <!-- Perfil --><div id="H_Login" class="Ct"> 
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+        </div>
+
+        <div id="MAIS" class="Abslt none bndj Ct">
+            <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+            <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+        </div>
+
+        <script>
+            function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
+            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
+
+            function AbreLogin(stg){
+                const Obj = {
+                    Login:{Tt:'Entre com sua Conta!',btn:'Entrar'   ,Ou:['Cdstr','Cadastre-se'        ],Fn:'SB_Login',p:'',},
+                    Cdstr:{Tt:'Cadastr-se Agora!'   ,btn:'Cadastrar',Ou:['Login','Já tenho uma Conta!'],Fn:'SB_Cdstr',p:'',},
+                    Reset:{Tt:'Esqueceu a Senha?'   ,btn:'Enviar'   ,Ou:['Login','Voltar!'            ],Fn:'SB_Reset',p:'digite seu Email para poder trocar a Senha!'},
+                }
+                const Stgg = `<div class="Cl Gap">
+                    <form id="ModalLogin" class="Cl Bt w100 Gap" onsubmit="${Obj[stg].Fn}(event,Vll($('.Email',this)),Vll($('.Senha',this)),$('.errPass',this),$('.UNome',this))">
+                        <h2>${Obj[stg].Tt}</h2><p>${Obj[stg].p}</p>
+                        ${stg=='Cdstr'?`<div class="Start2 w80"><label>Nome </label><input                 placeholder="Nome de Usuário..." class="UNome w100" required></div>` : ''} 
+                                        <div class="Start2 w80"><label>Email</label><input type="email"    placeholder="Seu Email...      " class="Email w100" required></div>
+                        ${stg!='Reset'?`<div class="Start2 w80"><label>Senha</label><input type="password" placeholder="Sua Senha...      " class="Senha w100" required>${stg=='Login'?`<a class="PT" onclick="XModal(this);AbreLogin('Reset')">Esqueceu a Senha?</a>`:''}</div>` : ''}
+                        <span class="errPass erro"></span>
+                        <div class="w80"><button class="w100" type="submit">${Obj[stg].btn}</button></div>
+                    </form>
+                        <p>---------------- OU ----------------</p>
+                        <button class="" onclick="XModal(this);AbreLogin('${Obj[stg].Ou[0]}')">${Obj[stg].Ou[1]}</button>
+                        <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                    </div>`
+                MODAL(Stgg)
+            }          
+        </script>
+    </header>
+
+    <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
+        <div id="Pag_PDDS" class="none Cl TBLAA">
+            <div onload="Tm_Switch(this,['Pedidos','Serviços','Pagamento'],$('#Slide_PDDS'),'PPDS','80px')"></div>
+
+            <div class="Wrapper">
+                <div id="Slide_PDDS" class="Slide_Table">
+                    <div class="Cl"> <!--PDDS-->
+                        <div class="Confy_PDDS Cl">
+                            <div class="Bt Stky  w100" style="height: 40px;">
+                                <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
+                                <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
+                                <div id="COnf_PDDS"    class="Configs Ct">
+                                    <div onclick="ReszH('PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
+                                    <div onclick="ReszW('PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
+                                </div>
+                                <div onclick="Tog($$('#H_PDDS .Auto'),'Cor')" onload="Tm_Check(this,`${SVG.Chek}`,'Auto')"></div>
+                                <div id="Sommma">Soma: 00,00</div>
+                                <div onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
+                                <select id="mesES" onload="Inn(this,Tm_Opt(meses))" onchange="FiltMes(this.value,'PDDS')"></select>
+                                <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
+                            </div>  
+                            <table id="H_PDDS" class="hMin Tbla">
+                                <thead class="Stky" style="z-index: 510;top:40px"></thead>
+                                <tbody class="Bodd1"></tbody><tbody class="Bodd2"></tbody>
+                                <tfoot class="Stky2"></tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="Cl"> <!--SERV-->
+                        <div class="Confy_SERV">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="LOG('Indisponivel')">Nova Linha</button>
+                                <div id="PagPesq_SERV" class="PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
+                                <div id="COnf_SERV" class="Configs Ct"></div>
+                                <button onclick="F_Clen('SERV')">Limpar</button>
+                            </div>
+                            <table id="H_SERV" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+
+                    <div class="Cl"> <!--PGMT-->
+                        <div class="Confy_PGMT">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="LOG('Indisponivel')">Nova Linha</button>
+                                <div id="PagPesq_PGMT" class="PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
+                                <div id="COnf_PGMT" class="Configs Ct"></div>
+                                <button onclick="F_Clen('PGMT')">Limpar</button>
+                            </div>
+                            <table id="H_PGMT" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Pag_MPAG" class="none Cl TBLAA">
+            <div class="Wrapper">
+                <div id="Slide_MPAG" class="Slide_Table">
+                    <div class="Cl">
+                        <div class="Confy_MPAG">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
+                                <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
+                                <div id="COnf_MPAG" class="Configs Ct"></div>
+                                <button onclick="F_Clen('MPAG')">Limpar</button>
+                            </div>
+                            <table id="H_MPAG" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody></table>
+            </div></div></div></div>
+        </div>
+
+        <div id="Pag_GRAD" class="none Cl TBLAA"> <!-- ⭐⭐_ _ _  (bem quse lá, na questão de organização e distribuição) -->
+
+            <div onload="Tm_Switch(this,['GRAD','OS','UBER','GRD2'],$('#Slide_GRAD'),'GRAD','55px')"></div>
+
+            <div class="Wrapper">
+                <div id="Slide_GRAD" class="Slide_Table">
+                    <div class="Cl"> <!--GRAD-->
+                        <div class="Confy_GRAD">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
+                                <div id="COnf_GRAD" class="Configs Ct"></div>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_GRAD" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+
+                    <div class="Cl"> <!--OS-->
+                        <div class="Confy_OS">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('OS','<')">Nova Linha +</button>
+                                <div id="COnf_OS" class="Configs Ct"></div>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_OS" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+
+                    <div class="Cl"> <!--GRD2-->
+                        <div class="Confy_GRD2">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('GRD2','<')">Nova Linha +</button>
+                                <div id="COnf_GRD2" class="Configs Ct"></div>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_GRD2" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+
+                    <div class="Cl"> <!--UBER-->
+                        <div class="Confy_UBER">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('UBER','<')">Nova Linha +</button>
+                                <div id="COnf_UBER" class="Configs Ct"></div>
+                                <button>Limpar</button>
+                            </div>
+                            <table id="H_UBER" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody class="Bodd1"></tbody><tfoot class="Stky2"></tfoot></table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="Pag_ARTE" class="none Cl TBLAA">
+            <div class="Wrapper">
+                <div id="Slide_ARTE" class="Slide_Table">
+                    <div class="Cl">
+                        <div class="Confy_ARTE">
+                            <div class="Bt Stky " style="height: 40px;">
+                                <button onclick="AddROW('ARTE','<')">Nova Linha +</button>
+                                <div id="PagPesq_ARTE" class="PagPEsq" onload="Inn(this,Load_Pesq('ARTE'))"></div>
+                                <div id="COnf_ARTE" class="Configs Ct"></div>
+                                <button onclick="F_Clen('ARTE')">Limpar</button>
+                            </div>
+                            <table id="H_ARTE" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody></table>
+            </div></div></div></div>
+        </div>
+
+        <div id="Pag_CLNT" class="none Cl TBLAA Gap p20" style="overflow: visible;">
+            <h1>Tabela de Clientes</h1>     
+            <div class="Bt Stky w90" style="height:40px">
+                <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
+                <div id="PagPesq_CLNT" class="PagPEsq w40" onload="Inn(this,Load_Pesq('CLNT'))"></div>
+                <button onclick="Tm_Table2('CLNT',false,true)">Carregar     </button>
+                <button onclick="F_Clen('CLNT')                ">Limpar Filtro</button>
+            </div>
+            <div class="WrapTable w90"><table id="H_CLNT" class="w100 hMin"><thead class="Stky"></thead><tbody class="Bodd1"></tbody></table><tfoot class="Stky2"></tfoot></div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
+ 
+    function Render(Typ,data){
+        J[Typ]= data ; Tm_Table2(Typ,false,true)
+    }
+    async function SB_GETT(Typ,Limit=100){
+        const {data,error}= await supaBASE.from(Typ).select('*').order('Id',{ascending:false}).limit(Limit)
+        Render(Typ,data)
+    }
+    async function SB_Pesq(ipt,Typ){
+        const txt = ipt.value
+        const {data,error}=await supaBASE.from(Typ).select('*').ilike('Clnt',`%${txt}%`).order('Id',{ascending:false}).limit(100)
+        Render(Typ,data)
+    }
+    async function FiltrarSTTS(Typ,stts){
+        const {data,error}=await supaBASE.from(Typ).select('*').eq('Stts',stts).order('Id',{ascending:false}).limit(100)
+        Render(Typ,data)
+    }
+    
+</script>
+
+<script>
+    Onloads('body') ; Get_User()
+
+    async function PosLogin(U){
+        USUARIO = U
+        LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)
+        Add_N($('#LgNNome'))
+        $('#LgFoto img').src= Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        NavPag(Atual.Pag)
+        SB_Get(supaBASE,['BS']) //'MPAG'
+    }
+    async function PosGET(){
+        const INN = performance.now()
+        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
+        SB_GETT('CLNT',100)
+        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
+    }
+</script>
+
+</html>
