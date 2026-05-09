@@ -21,19 +21,15 @@
     // Acumuladores
         const Atual = {Pag:'CLNT'}
         let USUARIO = ''
-
         const Pry    = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'}
 </script>
 
 <script>
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
     const Foto=U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
-
     const ReszH    =Typ=>{Tog($(`#H_${Typ}`),'hMin')                               ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
 </script>
-
-
 
 <script>
     const Load_Pesq=Typ=>
@@ -484,6 +480,27 @@
         const {data,error}=await supaBASE.from(Typ).select('*').ilike('Clnt',`%${txt}%`).order('Id',{ascending:false}).limit(100)
         Render(Typ,data)
     }
+
+
+    async function SB_Pesq(ipt, Typ) {
+        const txt = ipt.value
+
+        const { data, error } = await supaBASE
+            .from(Typ)
+            .select('*')
+            .filter('Clnt', 'imatch', txt)
+            .order('Id', { ascending: false })
+            .limit(100)
+
+        if (error) {
+            console.log(error)
+            return
+        }
+
+        Render(Typ, data)
+    }
+
+
     async function FiltrarSTTS(Typ,stts){
         const {data,error}=await supaBASE.from(Typ).select('*').eq('Stts',stts).order('Id',{ascending:false}).limit(100)
         Render(Typ,data)
