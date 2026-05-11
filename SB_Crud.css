@@ -1,5 +1,6 @@
-.BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; /*width:250px*/ ; max-height:250px;  box-shadow:0 0 9px #00000069}
+.BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; min-width:250px ; max-height:250px}
 .BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
+.BNdj > a.flip{transform:translate(-50%,0%) rotate(180deg);bottom:-12px}
 
 .MdalIMG{width: 800px; height: 500px}
 .MdalIMG img{max-width: 100%;max-height: 100%;object-fit: contain; background: #474747; border-radius: 10px; padding: 5px;}
@@ -31,3 +32,26 @@
 .CSS1 .TBLAA .Auto.Cor{background: #9dff00} /*Ver se isso realmente serve antes ffffff00*/
 .CSS3 .TBLAA .Auto    {background: #f08cb64f}
 .CSS3 .TBLAA .Auto.Cor{background: #9dff00} /*Ver se isso realmente serve antes ffffff00*/
+
+
+/*GAMBIARRA*/
+.Pcy :is(input,select,.Interup) {color:#ffffff ; background:#00000018; border:1px solid #ef3aff}
+.Pcy input::placeholder         {color:#ffffff ; opacity:0.5}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

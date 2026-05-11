@@ -11,6 +11,16 @@ function Tm_DataNatora(){
 `
 }
 
+const Tm_Switch2=(e,l=[],p,px,Call)=>{
+    e.className+=" Switch Rltv Ct PT"
+    e.innerHTML=`<style>${l.map((_,i)=>`#opt_${p}_${i}:checked~i{transform:translateX(${i*100}%)}#opt_${p}_${i}:checked~label[for="opt_${p}_${i}"]{color:#fff}`).join("")}</style>
+    ${l.map((_,i)=>`<input type=radio name=${p} class="NONE" id=opt_${p}_${i} ${!i?"checked":""} onchange="${Call}('${p}','${_}')">`).join("")}
+    ${l.map((t,i)=>`<label style="width:${px}" for=opt_${p}_${i}>${t}</label>`).join("")}
+    <i style="width:calc(100%/${l.length})"></i>`
+}
+const Tm_Interup2=(v1,v2   ,Call)=>`<div class="Interup Rltv Bt PT" onclick="TOV(this);${Call}"><i></i><a>${v1}</a><a>${v2}</a></div>`
+const Tm_Check2  =(Stg,nome,Call)=>`<div class="Chek Ct" onclick="SynChk(this);${Call}"><input class="NONE" type="checkbox"><a class="Ct">${Stg}</a>${nome?`<p>${nome}</p>`:''}</div>`
+
 
 const TagVoid = new Set(["AREA","BASE","BR","COL","EMBED","HR","IMG","INPUT","LINK","META","PARAM","SOURCE","TRACK","WBR","SELECT"])
 

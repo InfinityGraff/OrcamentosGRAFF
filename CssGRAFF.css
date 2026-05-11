@@ -8,16 +8,33 @@
 .Mh10{max-height:10%}.Mh20{max-height:20%}.Mh30{max-height:30%}.Mh40{max-height:40%}.Mh50{max-height:50%}.Mh60{max-height:60%}.Mh70{max-height:70%}.Mh80{max-height:80%}.Mh90{max-height:90%}.Mh100{max-height:100%}
 .h10{height:10%}.h20{height:20%}.h30{height:30%}.h40{height:40%}.h50{height:50%}.h60{height:60%}.h70{height:70%}.h80{height:80%}.h90{height:90%}.h100{height:100%}
 
-:root{--CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff)}
+:root{--CSS3TblLt: linear-gradient(135deg, #ECD1EA,#ffffff);}
 
 .COR_Infinity{background:#9f009a}
 .COR_Rosa    {background:#E8778D}
 .COR_FEXTA   {background:#ffd000}
 .COR_Basic   {background:#0073ee}
 
+
+/*CALENDÁRIO*/
+  .Tag_Off   {opacity: 0.5} /*Tag Off*/
+  .Tag_Range {background:var(--CorPacy  ) ; color:var(--CorText    )} /*Tag Range*/
+  .Tag_destk {background:var(#ffffff00) ; color:var(--CorATV )} /*Tag em Destaque Básico*/
+  .Tag_DESTK {background:var(--CorATV   ) ; color:var(--BtnTx)} /*Tag em Destaque*/
+  .Tag_Atv   {background:var(--CorATV   ) ; color:var(--BtnTx  )} /*Tag Ativa*/
+  .calendar  {background:var(--bg);border:var(--border);border-radius:8px;padding:10px;box-shadow:var(--shadow);gap:5px}
+  .calendar table   {width:100%;border-collapse:collapse} /*isso aqui é do Projeto Atual*/
+  .calendar td      {text-align:center;padding:6px;cursor:pointer;border-radius:4px} /*este comportamento deve mudar conforme os Estilos*/
+  .calendar tr:not(.NONO) td:hover{background:var(--CorPrin);color:var(--BtnTx)} /*Hov mesmo*/
+  .calendar .NONO   {background:#ffffff00 ; color:var(--CorATV )}
+  .calendar         {max-height: none;}
+
+
+
 body[data-Base="Infinity"]{
   /*Header*/ --HeadBk:url(./SVG/Fundo.png);
   /*Buttons*/ --BtnBk:linear-gradient(to right,#73008A 30%,#FF5900);--BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #00000025; --BtnBord: 0px solid #ffae0000;
+  /*Btn,Ipt */--Radus    :255px;--BtIpHEI:30px; --Radus2: 8px;
   /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#463a4b7a;--ScrllBrrHV:#401c47a5;
 }
 body[data-Base="Infinity"][data-tema="Lite"]{
@@ -32,7 +49,8 @@ body[data-Base="Infinity"][data-tema="Dark"]{
 }
 body[data-Base="Basic"]{
   /*Box     */--Box      :#2c2c2c70;--BoxySdw:0;
-  /*Scroll  */--ScrolBk  :#00000000;--ScrllBrr  :#5d5d5da5;--ScrllBrrHV:#555555;
+  /*Btn,Ipt */--Radus    :4px; --BtIpHEI:36px; --Radus2: 4px;
+  /*Scroll  */--ScrolBk  :#00000000;--ScrllBrr:#5d5d5da5;--ScrllBrrHV:#555555;
 }
 body[data-Base="Basic"][data-tema="Lite"]{
   /*Body    */ --BodyBk  :#ffffff  ;--CorText:#16202e ;
@@ -44,34 +62,40 @@ body[data-Base="Basic"][data-tema="Dark"]{
   /*Box     */ --Box    :#181c24  ; 
 }
 body[data-Cor="Blue"]{
-  /*Textos   */ --CorPrin :#0073ee;--CorText:#16202e;--CorPacy:#0066ff67; --CorATV :#007bff;--BtnTx     :#000000; 
-  /*Focus    */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #0073ee;--FcusShw:0 0 2px 2px #0073ee98;
-  /*Header   */ --HeadBk  :#222222;
-  /*Buttons  */ --BtnBk   :#0073ee; 
-  /*Thead    */ --thead   :#0073ee;
+  /*Textos  */ --CorPrin :#0073ee;--CorText:#16202e;--CorPacy:#0066ff67; --CorATV :#007bff;--BtnTx     :#000000;  --CorPacy2:#0000001c;
+  /*Focus   */ --FcusBkg :#ffffff42;--FcusBrd:1px solid #0073ee;--FcusShw:0 0 2px 2px #0073ee98;
+  /*Header  */ --HeadBk  :#222222;
+  /*Buttons */ --BtnBk   :#0073ee; 
+  /*Thead   */ --thead   :#0073ee;
+  /*CheckOFF*/ --ChekOff:1px solid #98a9e263;
 }
 body[data-Cor="Yelw"]{
-  /*Textos   */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; 
-  /*Focus    */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #ffd724;--FcusShw:0 0 2px 2px #ffdd4886;
-  /*Header   */ --HeadBk  :#181c24;
-  /*Buttons  */ --BtnBk   :#ffd000;
-  /*Thead   */  --thead : linear-gradient(180deg,#ffd000,#ffae00);
+  /*Textos  */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; --CorPacy2:#0000001c;
+  /*Focus   */ --FcusBkg  :#ffffff42;--FcusBrd:1px solid #ffd724;--FcusShw:0 0 2px 2px #ffdd4886;
+  /*Header  */ --HeadBk  :#181c24;
+  /*Buttons */ --BtnBk   :#ffd000;
+  /*Thead   */ --thead : linear-gradient(180deg,#ffd000,#ffae00);
+  /*CheckOFF*/ --ChekOff:1px solid #e2d49863;
+
 }
-body[data-Cor="Rosa"]{
-  /*Textos  */ --CorPrin :#C151A8;--CorText:#3a0027;--CorPacy:#ffcffd;--CorATV :#E8778D;
-  /*Focus   */--FcusBkg  :#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c;
-  /*Body    */ --BodyBk  :linear-gradient(135deg,#B654B8,#F0A8B2); 
-  /*Header  */ --HeadBk  :linear-gradient(116deg,#f570be,#c027b3);
-  /*Buttons */ --BtnBk   :linear-gradient(135deg,#E8778D,#C151A8);--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123; --BtnBord:1px solid #ecc3c98e;
-  /*Box     */--Box      :linear-gradient(to top,#ffffff5d,#ffffff09);--BoxySdw:inset 0 0 8px #fdfdfd6e,3px 3px 8px #5c084118;
-  /*Scroll  */--ScrolBk  :#64003e1c;--ScrllBrr:#6d0b4748;--ScrllBrrHV:#c027b3;
-  /*Thead   */--thead    :linear-gradient(135deg,#E8778D,#C151A8);
+body[data-Base="Infinity"][data-Cor="Rosa"]{
+  /*Textos  */ --CorPrin:#C151A8;--CorText:#3a0027;--CorPacy:#ffcffd;--CorATV :#E8778D; --CorPacy2:#7c005733;
+  /*Focus   */--FcusBkg :#ffffff42;--FcusBrd:1px solid #ff00ff79;--FcusShw:0 0 10px #ff00ff7c;
+  /*Body    */ --BodyBk :linear-gradient(135deg,#B654B8,#F0A8B2); 
+  /*Header  */ --HeadBk :linear-gradient(116deg,#f570be,#c027b3);
+  /*Buttons */ --BtnBk  :linear-gradient(135deg,#E8778D,#C151A8);--BtnTx :#ffffff; --BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #5c084123; --BtnBord:1px solid #ecc3c98e;
+  /*Box     */--Box     :linear-gradient(to top,#ffffff5d,#ffffff09);--BoxySdw:inset 0 0 8px #fdfdfd6e,3px 3px 8px #5c084118;
+  /*Scroll  */--ScrolBk :#64003e1c;--ScrllBrr:#6d0b4748;--ScrllBrrHV:#c027b3;
+  /*Thead   */--thead   :linear-gradient(135deg,#E8778D,#C151A8);
+  /*ShdwInst*/--ShIst   :inset 0 0 4px #fdfdfd5b;
+  /*CheckOFF*/--ChekOff:1px solid #e298c663;
 }
 body[data-Cor="Roxo"]{
-  /*Textos  */ --CorPrin :#9f009a;--BtnTx :#ffffff;--CorATV:#c400bd;--CorPacy :#db00e23a;
+  /*Textos  */ --CorPrin :#9f009a;--BtnTx :#ffffff;--CorATV:#c400bd;--CorPacy :#db00e23a; --CorPacy2:#36002633;
   /*Focus   */ --FcusBrd:1px solid #ff00fff5;--FcusShw:0 0 10px #ff00fffb;
   /*Box     */ --Box     :linear-gradient(to top,#fbddff0c,#fce4ff05);--BoxySdw:inset 0 0 8px #fce5ff1c,3px 3px 8px #0000003a;
   /*Thead   */--thead :#9f009a;
+  /*CheckOFF*/--ChekOff:1px solid #e298c663;
 }
 
 /*Formatos das Tags______________________________________________________________ */
@@ -80,44 +104,41 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 /*Body  */ body       {background:var(--BodyBk) ; color:var(--CorText);background-size:cover ; background-position:center; background-attachment:fixed ; height:100vh; width: 100vw}
 /*Header*/ header     {background:var(--HeadBk) ; color:#ffffff     ;background-size:cover ; padding:5px 15px ; z-index:999 ; transition: all ease-in-out 0.3s;position:sticky; top:0}
 /*Header*/ header > * {transition:all ease-in-out 0.3s}
-/*Box1  */ .Box1,.Box2{background:var(--Box) ; padding:6px; border-radius:15px; gap:5px; box-shadow:var(--BoxySdw)}
-/*Box2  */ .Box2      {border:1px solid #ffffff10}
+/*Box1  */ .Box1,.Box2,.Box3{background:var(--Box) ; padding:6px; border-radius:15px; gap:5px; box-shadow:var(--BoxySdw)}
+/*Box2  */ .Box2            {border:1px solid #ffffff10}
 /*Box3  */[data-tema="Lite"] .Box3{background:linear-gradient(to top,#b3b3b3  ,#ffffff)           ; color:#575757}
 /*Box3  */[data-tema="Dark"] .Box3{background:linear-gradient(to top,#fcf1ff71,#ffffff, #ffffff); color:#575757;box-shadow:inset 0 0 15px #fdfdfdb7,3px 3px 8px #0000002a}
-/*Box3  */[data-tema="Rosa"] .Box3{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
+/*Box3  */[data-Cor ="Rosa"] .Box3{background:linear-gradient(to top,#b3b3b35b,#ffffff)           ; color:#575757;box-shadow:inset 0 0 8px  #fdfdfd6e,3px 3px 8px #5c084118}
 
 /*Button, Input e Select*/
-
   [data-tema="Dark"] :is(input,select)      {background:#ffffff21; color:#ffffff; border:1px solid #b4b4b42c}
   [data-tema="Lite"] :is(input,select)      {background:#ffffffb2; color:#000000; border:1px solid #727272ee}
   [data-tema="Dark"] :is(input,select):hover{background:#ffffff33; transform:scale(1.02)}
   [data-tema="Lite"] :is(input,select):hover{background:#ffffffd5; transform:scale(1.02)}
+  :is(input,select,textarea):focus          {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
 
-  [data-Base="Infinity"] :is(input,select,button,.button,.Interup) {height:30px; outline:none ; border-radius:255px;               font-size:14px ; display:flex ;justify-content:center;align-items:center; gap:3px ; transition:all 0.1s cubic-bezier(0.8,0,0.8,2.4)}
-  [data-Base="Basic"   ] :is(input,select,button,.button,.Interup) {height:36px; outline:none ; border-radius:  4px; padding:8px ; font-size:14px ; display:flex ;justify-content:center;align-items:center; gap:3px ; transition:all 0.1s}
-
-  :is(input,select,button,.button)>:is(img,svg){height:18px; fill:var(--BtnTx)}
-  :is(input,select,textarea):focus             {background:var(--FcusBkg); border:var(--FcusBrd); box-shadow:var(--FcusShw)}
-
-
+  [data-Base="Infinity"] :is(input,select,button,.button,.Interup) {transition:all 0.1s cubic-bezier(0.8,0,0.8,2.4)}
+  [data-Base="Basic"   ] :is(input,select,button,.button,.Interup) {transition:all 0.1s ; padding:8px}
+  :is(input,select,button,.button,.Interup)             {border-radius:var(--Radus); height:var(--BtIpHEI); outline:none; font-size:14px ; display:flex ;justify-content:center;align-items:center; gap:3px}
+  :is(input,select,button,.button,.Interup) :is(img,svg){height:18px; fill:var(--BtnTx)}
   input.Error,select.Error,input.Error:focus,input.Error:hover{background:#ff0000} /*Falta incluir Button no Rolo*/
 
-/*Input*/
-  [data-Cor ="Rosa"] :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
-  [data-Cor ="Rosa"] :is(input,select)::placeholder{color:#612d4ba8}
-
+/*Input GAMBIARRAS*/
+  [data-Cor="Rosa"] :is(input,select){background:#ffffff41; color:#27000cc9; border:1px solid #ffffff3f ; box-shadow:inset 0 0 4px #fdfdfd5b}
+  [data-Cor="Rosa"] :is(input,select)::placeholder{color:#612d4ba8}
   [data-Cor="Rosa"] .imita{border: none !important; color: #008000;} /*Gambiarra*/
-  .Pcy :is(input,select,.Interup) {color:#ffffff ; background:#00000018; border:1px solid #ef3aff}
-  .Pcy input::placeholder         {color:#ffffff ; opacity:0.5}
-
-
+  .Bodd1 :is(input,select){color: #000000;}
 
 /*button*/
-  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i)       {background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap ; background-size:500%}
-  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
-  .Infinity :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
-  [data-Base="Basic"] :is(button,.button){background:var(--BtnBk)    ; color:var(--BtnTx);cursor:pointer;border:none;padding:4px 8px;border-radius:4px ; font-size: 14px;}
-  [data-Base="Basic"] button:hover       {background:var(--CorATV)}
+  [data-Base="Infinity"] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){background:var(--BtnBk); color:var(--BtnTx); border: var(--BtnBord); box-shadow:var(--BtnSdw) ; padding: 0px 10px; gap:5px; white-space: nowrap ; background-size:500%}
+  [data-Base="Basic"   ] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i){background:var(--BtnBk); color:var(--BtnTx); cursor:pointer;border:none;padding:4px 8px;border-radius:4px ; font-size: 14px;}
+
+  [data-Base="Infinity"] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {transform:scale(1.05); animation-name:BtnBaby;animation-duration:0.4s;animation-timing-function:ease-in-fas;animation-fill-mode:forwards;}
+  [data-Base="Basic"   ] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):hover {background:var(--CorATV)}
+  
+  [data-Base="Infinity"] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
+  [data-Base="Basic"   ] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{background:yellow}
+
   button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
   button.Block            {background: #797979 !important; border:1px solid #414141 !important; color: #313131 !important;pointer-events:none !important ; cursor:not-allowed !important;}
   button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
@@ -125,6 +146,33 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .BtnRed{background: #ff4343 !important;}
   .BrnOff{background: #acacac !important; pointer-events:none}
   button:disabled{opacity:0.6;cursor:not-allowed}
+
+
+/*Interruptores - Check - Switch*/
+  .Interup,.Chek a,.Switch   {background:#5c195117;box-shadow:inset 0 0 10px #00000030}
+  .Interup i, .Switch i      {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
+  .Interup.Atv        i      {left:50%}
+  .Interup     a             {z-index: 3}
+  .Interup     a:nth-child(2){opacity:0.5}
+  .Interup.Atv a:nth-child(1){opacity:0.5}
+  .Interup.Atv a:nth-child(2){opacity:1.0}
+
+  [data-Cor="Rosa"] .Interup      {border-radius:255px}
+  [data-Cor="Rosa"] .Interup i    {border-radius:255px}
+  [data-Cor="Rosa"] .Interup a    {flex:1;text-align:center ;color:var(--BtnTx); z-index:2;transition:all 0.3s}
+  [data-Cor="Rosa"] :is(.Switch,.Interup a) svg{width: 18px; height: 18px; fill:var(--BtnTx); margin: 0px 10px}
+
+  .Chek      {gap:8px}
+  .Chek a    {width:26px;height:26px;border:var(--ChekOff);border-radius:var(--Radus2);transition:.1s;padding:0px !important}
+  .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
+  .Chek p    {color:var(--BtnTx)}
+  .Chek input:checked + a svg{opacity:1;transform:scale(1);fill:var(--BtnTx)}
+
+  .Switch       {border-radius:50px}
+  .Switch i     {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
+  .Switch label {flex:1; z-index:2; color:#808080; transition: color 0.3s ease; line-height:30px}
+  .Switch label:hover {color:var(--BtnTx)}
+
 
 
 
@@ -141,48 +189,33 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .Drop .P div           {position:relative;display:inline-block}
   .Drop .P i             {position:absolute;top:0;right:0;background:#f00;color:#fff;cursor:pointer;font-size:10px}
 
-/*Interruptores*/
-  .Interup,.Chek a,.Switch{background:#5c195117;box-shadow:inset 0 0 10px #00000030}
-  .Interup i, .Switch i   {position:absolute;top:0;left:0;width:50%;height:100%;z-index:1;transition: all 0.3s cubic-bezier(0.8,0,0.8,1.4)}
-  .Interup.Atv   i{left:50%}
-  .Interup       a:nth-child(2){opacity:0.5}
-  .Interup.Atv   a:nth-child(1){opacity:0.5}
-  .Interup.Atv   a:nth-child(2){opacity:1.0}
-  .CSS3 .Interup      {border-radius:255px}
-  .CSS3 .Interup a    {flex:1;text-align:center ;color:#ffffff;z-index:2;transition:all 0.3s}
-  .CSS3 .Interup a svg{width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
-  .CSS3 .Switch  svg  {width: 18px; height: 18px; fill:#ffffff; margin: 0px 10px}
-  .CSS3 .Interup i    {border-radius:255px}
-/*Check*/
-  .Chek{gap:8px}
-  .Chek a{width:26px;height:26px;border:1px solid #e298c663;border-radius:8px;transition:.1s;padding:0px !important}
-  .Chek a svg{width:16px;height:16px;fill:#525252;opacity:0.5;transform:scale(.8);transition:.1s}
-  .Chek input:checked + a svg{opacity:1;transform:scale(1);fill:#ffffff}
-  .Chek p{color:#ffffff}
-/*Switch*/
-  .Switch{border-radius:50px}
-  .Switch label {flex:1; z-index:2; color:#aaa; transition: color 0.3s ease; line-height:30px}
-  .Switch label:hover {color:#fff}
-  .Switch i {padding: 0 !important;border-radius: 255px;top:-1;left:-1}
 
 
 
 
-/*Table*/
-  .WrapTable  {max-height:500px;overflow:auto; border-radius: 20px;}
+
+
+
+    
+
+
+/*Table*/ 
+  .WrapTable  {max-height:90%;overflow:auto; border-radius: 20px;scrollbar-width:none}
+  .Slidde .WrapTable {max-height: 80%;}
+  .WrapTable::-webkit-scrollbar{display:none}
+
+  .TBLAA{overflow:visible !important}
   .TBLAA table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
   .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f} /*Baby*/
   .TBLAA tbody{background: #ffffff ; color: #000000 !important}
   .TBLAA :is(thead,tfoot) tr{background:var(--thead);color:var(--BtnTx)}
-  .TBLAA tbody tr{border-bottom:2px solid #7c005733}
+  .TBLAA tbody tr{border-bottom:1px solid var(--CorPacy2)}
 
-  .CSS3.Lite .TBLAA thead tr{height: 30px;box-shadow:inset 0 0 4px #fdfdfd5b}
-  .CSS3.Lite .TBLAA tfoot tr{height: 60px;box-shadow:inset 0 0 4px #fdfdfd5b}
+  .TBLAA thead tr{height:25px;box-shadow:var(--ShIst)}
+  .TBLAA tfoot tr{height:40px;box-shadow:var(--ShIst)}
 
-  .TBLAA tbody tr{border:1px solid #cccccc27}
-  .TBLAA tbody tr{border:1px solid #00000027}
   .TBLAA th{padding:4px 6px}
-  .TBLAA select{color: #000000 !important}
+  .TBLAA :is(select,input){padding: 0px !important}
 
 /*Outros Tabela*/
   .TBLAA td          {height:37px}
@@ -193,7 +226,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .TBLAA .hMin td{height:10px}
   .TBLAA .hMin td select,.hMin td input{height: 17px !important}
       
-
+  .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
+  .TBLAA tfoot .RS{color:#00df00; font-size:7px}
 
 
   
@@ -207,33 +241,54 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 /*DivConfig*/
   .Body1 .DivSlid{        height:50px}
   .Body2 .DivSlid{top:0px;height:40px}
-
-  
              
-/*Basicamente são CSS de cores dos Suggs e Links e Bandeijas*/
-    .CSS1 .BndjSUG,.CSS1 .BndjTBL, .CSS1 .BndjPsq
-                        {background:#bb0092; border-radius:10px}
-    .CSS1 .BNdj         {border:3px #bb0092 solid}
-    .CSS1 .BNdj > a     {      fill:#bb0092}
-    .CSS1 .BjConf       {background:#bb0092;}
-    .CSS2 .BndjSUG,.CSS2 .BndjTBL, .CSS2 .BndjPsq
-                        {background:#ee6e19; border-radius:10px}
-    .CSS2 .BNdj         {border:3px #ee6e19 solid}
-    .CSS2 .BNdj > a     {      fill:#ee6e19}
-    .CSS2 .BjConf       {background:#ee6e19;}
-    .CSS3 .BndjSUG,.CSS3 .BndjTBL, .CSS3 .BndjPsq
-                        {background:#ce3783e1; border-radius:24px ; backdrop-filter:blur(6px) ; box-shadow:inset 0 0 4px #ce3782, 3px 3px 8px #3b0529b6 }
-    .CSS3 .BNdj         {border:2px #f05da6 solid}
-    .CSS3 .BNdj > a     {      fill:#ce3782}
-    .CSS3 .BjConf       {background:#ce3782;}
-    .CSS3 .BNdj table   {border-radius:15px; overflow:hidden}
+/*Suggs e Links e Bndjs*/
+  .BNdj table      {border-radius:15px; overflow:hidden}
+  .BndjSUG,.BndjTBL{border-radius:24px ; backdrop-filter:blur(6px) ; box-shadow:inset 0 0 4px #ce3782, 3px 3px 8px #3b0529b6}  
+  .BndjSUG,.BndjTBL{background:var(--CorPrin)}
+  .BndjTBL         {padding:5px ; width:auto !important; height:auto !important}
+  .BNdj            {border:3px var(--CorPrin) solid}
+  .BNdj > a        {      fill:var(--CorPrin)}
+  .Sugg            {background:var(--OptBkg );color:var(--CorText)}
+  .Sugg            {overflow-x: hidden; overflow-y: auto; max-height: 200px; width: 100%;border-radius:10px ; gap:4px ; padding: 4px;}
+  .Sugg > *:hover  {background:var(--CorPrin);color:var(--BtnTx  )}
+  [data-Cor ="Rosa"] .Sugg{background: var(--CSS3TblLt)}
+  .BjConf          {color:var(--BtnTx); height:24px}
+  .BjConf img      {height:18px; width:18px}
+  .BjConf span.Atv {fill:#ffff00; background:#00df00}  
 
-        .Lite .Sugg{background: #ffffff;color:#000000}
-        .Dark .Sugg{background: #585858;color:#ffffff}
-        .CSS3 .Sugg{background: var(--CSS3TblLt)}
-    .Lite .Sugg > *:hover {background: #aa009c; color:#ffffff}
-    .Dark .Sugg > *:hover {background: #757575}
+  .BndjFOT{background:var(--CorPrin); border-radius:10px 10px 0 0 ; bottom:100% ; box-shadow:0 0 10px #00000069}
+  .BndjFLT{background:var(--CorPrin); border-radius:0 0 10px 10px ;   top: 100% ; box-shadow:0 0 10px #00000069}
+  
 
+
+  tfoot td{position:relative ; padding: 0px 5px}
+  tfoot td:has(.TTfot:not(:empty)):not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);height:50%;border-right:solid 1px #0000004f}
+  .TTfot.tFbj{border: 1px solid #00000063 ; border-radius: 255px ; padding: 0px 8px}
+
+/*Bolinhas + e -*/
+.Sugg div        {gap: 10px;}
+.Sugg div a      {opacity:0;font-size:15px; background:#d822ab; color:#ffffff; width:18px; height:18px; text-align: center} 
+.Sugg div:hover a{opacity:1}
+
+.ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%);opacity:0.5}
+.ThFilt > i.Atv{opacity:1}
+.ThFilt > b    {position:absolute; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; }
+.ThFilt > b.Atv{background:#0c8f00; right:29px}
+.ThFilt > b.Rtv{background:#ff0000; right:10px}   
+.ThFilt_Atv{color:#ffffff; background:#059b00}            /*aplica no Filt*/
+.ThFilt_Rtv{color:#ffffff; background:#ff0000}            /*aplica no Filt*/
+
+
+
+
+
+
+
+
+
+
+    
 /* Skeleton box */
   @keyframes shimmer {0%{background-position: 200% 0}100%{background-position:-200% 0}}
   .Sklt{
@@ -269,22 +324,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 
 
 
-/*CALENDÁRIO*/
-.Basic.Lite{--bg:#ffffff;--border:1px solid #cccccc;--shadow:0 5px 15px #0000001a;}
-.Basic.Dark{--bg:#1e1e1e;--border:1px solid #444444;--shadow:0 5px 15px #00000080;}
 
-/*CALENDAR*/
-.Tag_Off   {opacity: 0.5} /*Tag Off*/
-.Tag_Range {background:var(--CorPacy  ) ; color:var(--CorText    )} /*Tag Range*/
-.Tag_destk {background:var(#ffffff00) ; color:var(--CorATV )} /*Tag em Destaque Básico*/
-.Tag_DESTK {background:var(--CorATV   ) ; color:var(--BtnTx)} /*Tag em Destaque*/
-.Tag_Atv   {background:var(--CorATV   ) ; color:var(--BtnTx  )} /*Tag Ativa*/
 
-.Basic .calendar  {background:var(--bg);border:var(--border);border-radius:8px;padding:10px;box-shadow:var(--shadow);gap:5px}
-.calendar table   {width:100%;border-collapse:collapse} /*isso aqui é do Projeto Atual*/
-.calendar td      {text-align:center;padding:6px;cursor:pointer;border-radius:4px} /*este comportamento deve mudar conforme os Estilos*/
-.calendar tr:not(.NONO) td:hover{background:var(--CorPrin);color:var(--BtnTx)} /*Hov mesmo*/
-.calendar .NONO   {background:#ffffff00 ; color:var(--CorATV )}
 
 
 :root{--Holo:linear-gradient(120deg,#ff00cc,#bfa7df,#3333ff,#98bdd6,#ff00ff,#b8e0d4,#00ff99,#c7dfb1,#ffff00,#c2b9a7,#ff6600,#dbb8a8,#ff00cc)}
@@ -321,6 +362,16 @@ footer {height:60px;border-top:1px solid #ffffff10;color:#8d8d8d;font-size:13px}
 
 
 
+table.Card        {background:none}
+table.Card > thead{display   :none}
+table.Card > tfoot{display   :none}
+table.Card > tbody{background:none ; display:flex; flex-wrap:wrap; gap:12px ; padding:10px}
+                            table.Card > tbody > tr {width:calc(25% - 9px)}      /* Largura dos Cards 4 por Linha */
+@media (max-width: 800px) {table.Card > tbody > tr {width:calc(33.333% - 8px)}} /* 3 por linha */
+@media (max-width: 500px) {table.Card > tbody > tr {width:100%}}                /* 1 por linha */
+table.Card > tbody > tr   {display:grid; grid-template-columns:1fr auto auto; border:0px}
+table.Card .Auto,table.Card .CorID{background: transparent !important}
+table.Card > tbody > tr > td      {padding: 5px; border-radius: 255px ; height: auto !important; border: 1px solid #00000086}
 
 
 
@@ -344,39 +395,13 @@ footer {height:60px;border-top:1px solid #ffffff10;color:#8d8d8d;font-size:13px}
 
 
 
-
-
-/*FILTROS - CSS*/
-/*Particularidades da BndjFLT*/
-.BndjFLT input  {height:18px ; width:80px}
-.Sugg {overflow-x: hidden; overflow-y: auto; max-height: 200px; width: 100%;border-radius:10px}
-.Sugg > *{padding: 4px}
-.BjConf         {color:#ffffff; height:24px}
-.BjConf img     {height:18px; width:18px}
-.BjConf span.Atv{fill:#ffff00; background:#00df00}
-
-/*Bolinhas + e -*/
-.Sugg div        {gap: 10px;}
-.Sugg div a      {opacity:0;font-size:15px; background:#d822ab; color:#ffffff; width:18px; height:18px; text-align: center} 
-.Sugg div:hover a{opacity:1}
-
-.ThFilt > i    {position:absolute; cursor:pointer; font-size:9px; right:0px; top:50%; transform:translate(-0%,-50%);opacity:0.5}
-.ThFilt > i.Atv{opacity:1}
-.ThFilt > b    {position:absolute; border-radius:255px; width:15px; height:15px; text-align:center; top:-5px; }
-.ThFilt > b.Atv{background:#0c8f00; right:29px}
-.ThFilt > b.Rtv{background:#ff0000; right:10px}   
-
-.filtTrue{  color:#ffffff; background:#008000 !important} /*aplica no Tr*/
-.filtFals{  color:#ffffff; background:#ff0000 !important} /*aplica no Tr*/
-.ThFilt_Atv{color:#ffffff; background:#059b00}            /*aplica no Filt*/
-.ThFilt_Rtv{color:#ffffff; background:#ff0000}            /*aplica no Filt*/
 
 
 /*CSS - PESQUISA*/
-.pPesq input{transition:0.0s !important; padding-right:139px !important} .pPesq input:hover{transform: scale(1) !important}
+.pPesq input{transition:0.0s !important; padding-right:139px !important ; padding-left: 50px !important} .pPesq input:hover{transform: scale(1) !important}
 .AaAa{color:#ffffff ; opacity:0.5;} .AaAa:hover{opacity:1} .AaAa.Atv{color:#00ff0d !important}
 
 /*Biblioteca*/
 .hOv{cursor: pointer;transition: all 0.1s ease-in-out;}.hOv:hover{transform: scale(1.02)}.hOv:active{transform: scale(1.01)}
 
-
+.Grd2{width:unset;flex:1;max-height:100%} 

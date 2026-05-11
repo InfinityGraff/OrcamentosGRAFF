@@ -54,50 +54,22 @@
 <script> // aBase de Dados INFINITY GRAFF
 
     const Cgo  = { // Cargo
-        Admn: { nav :['HOME','|','ORC','LOJA','ARTE','GBRT','BBTC','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
-                orc :['Serigrafia','Figurinha','Cartela'],},
-        Grnt: { nav :['HOME','|','ORC','ARTE','GBRT','|','PDDS','|','MPAG','GRAD','CLNT','|','CONF'],
+        Admn: { nav :["HOME","|","ORC","LOJA","ARTE","GBRT","BBTC","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
+                orc :["Serigrafia","Figurinha","Cartela"],},
+        Grnt: { nav :["HOME","|","ORC","ARTE","GBRT","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
                 orc :[],},
-        DSgn: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
-        Atnd: { nav:['HOME','|','ORC','ARTE','|','PDDS','|','MPAG','|','CONF'] ,
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],},
-        Clnt: { nav:['HOME','|','ORC','ARTE','|','CONF'],
-                orc:['Arte','Router','Envelopamento','Serigrafia','Figurinha','Topo Bolo','Vendas','Placa','Sinalização','Cartela','Plotagem','Crachá','Carteira','Plaqueta'],}
+        DSgn: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
+                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
+        Atnd: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
+                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
+        Clnt: { nav:["HOME","|","ORC","ARTE","|","CONF"],
+                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],}
     }
     const Atual    = {Pag:'ORC'}
     let U = {} ; let UU={Cgo:""}
     let UCgo = {}
 
     let SVG_FILES = [] // esse é do de importar SVG pra calcular
-
-    const ValForn = {
-        Grafit:{
-            'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
-            'Transparente':[{val: 25.00, data:"2025-01-01"}],
-            'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
-            'Perfurado'   :[{val: 35.00, data:"2025-01-01"}],
-            'Recorte'     :[{val: 32.00, data:"2025-01-01"}],
-            'Banner'      :[{val: 22.00, data:"2025-01-01"}],
-            'Faixa'       :[{val: 22.00, data:"2025-01-01"}],
-            'L.ilhos'     :[{val: 22.50, data:"2025-01-01"}],
-            'Lona'        :[{val: 22.00, data:"2025-02-05"}],
-        },BPrint:{
-            'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
-            'Transparente':[{val: 25.00, data:"2025-01-01"}],
-            'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
-            'Perfurado'   :[{val: 33.00, data:"2025-01-01"}],
-            'Recorte'     :[{val: 32.00, data:"2025-01-01"}],
-            'Banner'      :[{val: 24.00, data:"2025-02-01"}],
-            'Faixa'       :[{val: 24.00, data:"2025-01-15"}],
-            'L.ilhos'     :[{val: 24.00, data:"2025-02-05"}],
-            'Lona'        :[{val: 22.00, data:"2025-02-05"}],
-        },'Inová':{
-            'Camisa'   :[{val: 25.00, data:"2025-02-05"}],
-        },Bureal:{
-            'Cartão'   :[{val: 20.00}]
-        }
-    }
 
     const MATR = {
             'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -412,21 +384,6 @@
         <style> /*CSS apenas da Tabela*/
             /*Particularidades*/
             h2{font-size:18px}
-
-            .BndjFOT,.BndjFLT{overflow: hidden}
-            .BndjFLT{border-radius:0 0 10px 10px}
-            .BndjTBL{padding:5px ; width:auto !important; height:auto !important}
-            .BndjFOT{border-radius:10px 10px 0 0; bottom:0px}
-
-            /*Fica apenas nas Tabelas*/
-            td          .grifoo{display:none  ; height:5px; width:5px ; left:0px}
-            td.GrifNot2 .grifoo{display:block ; background:#ff880060}
-            td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
-            p.Psq,select.Psq   {                background:#ff7b00 !important} /*Griff do Select*/
-
-            .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
-            .TBLAA tfoot .RS{color:#00df00; font-size:7px}
-
             .TBLAA   tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
             .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
             .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
@@ -519,6 +476,7 @@
                 const COL   = Tm=='Bndj' ? AA(col) : BS[Typ].Json[col].LINK.split('-')[0] // isso serve pra acessar qual é a Tabela Passiva
                 if(Typ=='PGMT'&&col=='Clnt'){return}
                 const dado  = Typ=='GRAD' ? J[Typ].find(j=>j.Id==Id)[col] : JJ[Typ][Id][col]
+                LOG(dado)
                 const Dados2=dado=>{if(COL=='UBER'){return []} ; if(!dado){return []} ; return `${dado}`.split(' | ').map(e=>{const E = e.split('-') ; if(!E[1]){return null} ; return JJ[E[0].trim()][E[1].trim()]})}
 
                 const Find   = Tm=='Bndj' ? (dado||[]) : Tm=='Link' ? Dados2(dado) : []
@@ -578,8 +536,6 @@
     </div>
 
     <div>   <!--PESQUISA - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
-        <style> 
-        </style>
 
         <script> // SCRIPT - PESQUISA
             let debounceTimer
@@ -633,8 +589,6 @@
                 Add(td,'GrifNot1')             // Dizer que a Div agora Possúi GrifNot do Tipo 1
                 Inn($('.grifoo i',td),Val[2])  // Atribuir o Valor pra dentro do GrifNot                                     
             }
-
-            function grifooXX(){Tog_N($$('.grifoo i'))} // acho q isso deveria ser i > i
 
             function Ex_Pesq_J(Arr,Typ,RX,_C,Ipt){
                 // Criar aqui as Condições que retorna um Erro, criado por mim mesmo, que vai dizer como os Argumentos tem que chegar aqui
@@ -964,8 +918,7 @@
             }
 
             // Voltar ordem ao Normal
-        </script>
-        <script> // um tipo de Filtro que Reescreve
+
             function FiltMes(Mes,Typ){
                 LOG('Mes',mesesObj[Mes])
                 const Filt = RangeMes(J[Typ],mesesObj[Mes])
@@ -2633,6 +2586,11 @@
 
     // Html-1 - seria Página de Orçamento (único SB q precisa carregar aqui é Produtos e Rascunho)
     // Html-2 - Tabelas, onde fica todas as Tabelas pois todas tem que estarem Juntas
+
+    
+    // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
+    // 💡 Opção de mais de 1 Designer
+    // 💡 Mover-se nas células com as Setas
 </script>
 
 </html>

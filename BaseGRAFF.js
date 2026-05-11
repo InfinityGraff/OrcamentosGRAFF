@@ -51,6 +51,34 @@ const TIPOS_ARTES = [
 ]
 
 
+const ValForn = {
+    Grafit:{
+        'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
+        'Transparente':[{val: 25.00, data:"2025-01-01"}],
+        'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
+        'Perfurado'   :[{val: 35.00, data:"2025-01-01"}],
+        'Recorte'     :[{val: 32.00, data:"2025-01-01"}],
+        'Banner'      :[{val: 22.00, data:"2025-01-01"}],
+        'Faixa'       :[{val: 22.00, data:"2025-01-01"}],
+        'L.ilhos'     :[{val: 22.50, data:"2025-01-01"}],
+        'Lona'        :[{val: 22.00, data:"2025-02-05"}],
+    },BPrint:{
+        'Adesivo'     :[{val: 20.00, data:"2025-01-01"}],
+        'Transparente':[{val: 25.00, data:"2025-01-01"}],
+        'Blackout'    :[{val: 25.00, data:"2025-01-01"}],
+        'Perfurado'   :[{val: 33.00, data:"2025-01-01"}],
+        'Recorte'     :[{val: 32.00, data:"2025-01-01"}],
+        'Banner'      :[{val: 24.00, data:"2025-02-01"}],
+        'Faixa'       :[{val: 24.00, data:"2025-01-15"}],
+        'L.ilhos'     :[{val: 24.00, data:"2025-02-05"}],
+        'Lona'        :[{val: 22.00, data:"2025-02-05"}],
+    },'Inová':{
+        'Camisa'   :[{val: 25.00, data:"2025-02-05"}],
+    },Bureal:{
+        'Cartão'   :[{val: 20.00}]
+    }
+}
+
 
 const D_Brev = {
     '|':'',
@@ -63,7 +91,10 @@ const D_Brev = {
     SERV:'Serviços',
     PGMT:'Pagamentos',
     MPAG:'Mercado Pago',
-    GRAD:'DashBoard',
+    GRAD:'Grades',
+    UBER:'Uber',
+    GRD2:'Grade',
+    OS:'OS',
     CLNT:'Clientes',
     CONF:'Configurações',
     CUST:'Custos',

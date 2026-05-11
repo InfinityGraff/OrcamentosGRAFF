@@ -118,13 +118,15 @@ function DarVAL(e,V){
     if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r,''))} // Parece q Sugg n existe mais
 }
 
-const SrcsIMG=(src,R)=>src.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
+const SrcsIMG=(src,R)=>src ? src.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp` : ''
 
 const safeS =(e)=>encodeURIComponent(JSON.stringify(e))
 const ArrBolean = v =>Array.isArray(v) && v.length > 0
 
 const MyEval=(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
 const BsJs =(Typ,Col,Mod)=>BS[Typ].Json[Col][Mod] // Acessar o Json do BS
+
+
 
 const Tm_Tm = {
     Fixo:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
@@ -136,8 +138,15 @@ const Tm_Tm = {
     Chek:(e,R,P)=>`<input    data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
     Slct:(e,R,P)=>`<select   data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')">${Tm_Opt(MyEval(BsJs(d_r(R).Ty,d_r(R).Cl,'TH')),e)}</select>`,
     Slc2:(e,R,P)=>`MySelect()`,
-    Data:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ YMD(e)}" onclick="TrcFih(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${YMD(e)}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
-    Dat2:(e,R,P)=>`<div      data-R="${R}" data-P="${P}" class="P-P Ct" name="${ YMD(e)}">${Tm_DataNatora()}</div>`,
+    Data:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih(this,$('input',Pai(this)))">${e?BrevData(DMY(e)):e}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${e?YMD(e):e}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
+    Dat2:(e,R,P)=>`<div      data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" >${
+
+        `<div class="Rltv">
+            <input style="width:90px" placeholder="-" data-R="${R}" data-P="${P}" class="none" name="${e?YMD(e):e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this,'Edt')" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))">
+            <div class="Box1 calendar BNdj Abslt Cl none"></div>
+        </div>`
+
+        }</div>`,
     Auto:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
     Sync:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
     Lixo:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp">`,
@@ -177,11 +186,12 @@ const Tm_Tm = {
 }
 
 function Tm_Td(v,e,x,Typ,_P=''){
-    const _R = Tm_R(e,x,Typ,_P)
-    const _RR=d_r(_R)
-    const Cls= BS[Typ].Json[_RR.Cl].CLS
+    const _R  = Tm_R(e,x,Typ,_P)
+    const _RR =d_r(_R)
+    const Cls = BS[Typ].Json[_RR.Cl].CLS
+    const Crd ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
     if((Typ=='SERV'||Typ=='PGMT')&&_RR.Sc&&!_RR.Bj){_P=`PDDS-${_RR.Id.split('_')[0]}-${Aa(Typ)}-Bndj-_-_`} // GAMBIARRRRA (isso é pra dar o Rpai nas tabelas secuntárias prinmcipais pois na hora de exibir erlas não possuem Rpai)
-    return `<td class="${Cls} Rltv">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
+    return `<td class="${Cls} Rltv" style="grid-area:${Crd[x]}">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
 }
 
 function Tm_Table(Typ,arry,Rpai=''){
