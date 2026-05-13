@@ -19,9 +19,8 @@
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     // Acumuladores
-    const Atual = {Pag:'CLNT'}
+    const Atual = {Pag:'TEST'}
     let USUARIO = ''
-    const Pry    = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'}
     const FF     = {}
     const BSFIL  = {}
     const Forns  = ['B','RR','U','G','I','J','W','T']
@@ -37,6 +36,8 @@
         Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--'],
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
     }
+    
+
 </script>
 
 <script> // Biblioteca
@@ -53,6 +54,15 @@
     function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
     const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
     const FiltrarR=(Arr,Cols)=>Arr.map(o=>Object.fromEntries(Cols.map(c=>[c,o[c]]))) // filtrar a tabela, para as colunas que foi passada no argumento
+
+    function normalizeObj(obj,Colet={}){
+        for (const k in obj) {
+            let v = obj[k] ?? ""
+            if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
+            if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
+            obj[k] = v
+        };return obj
+    }
 </script>
 
 <style> /*----- GRIFO -----*/
@@ -464,7 +474,7 @@
 
         <script>
             function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
-            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
+            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *')) ; RodaTable(Typ)}
 
             function AbreLogin(stg){
                 const Obj = {
@@ -507,7 +517,7 @@
             #H_CLNT.Card > tbody > tr{grid:"A B B I" auto "D E C C" auto "F G H H" auto "J K L M" auto / 1fr 1fr 1fr 1fr}
         </style>
         <div id="Pag_PDDS" class="none Cl TBLAA Gap p20">
-            <div onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PPDS','80px')"></div>
+            <div onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PPDS','80px','ExecSwith')"></div>
             <div class="Confy_PDDS Slidde w100 h100 Cl Gap     " onload="Inn(this,PrepTable('PDDS'))"></div>
             <div class="Confy_SERV Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('SERV'))"></div>
             <div class="Confy_PGMT Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('PGMT'))"></div>
@@ -530,15 +540,35 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
-    function Render_Tbla(Typ,data      ){J[Typ]=data ; Tm_Table2(Typ)}
-    function Render_Tbls(Typ,data      ){J[Typ]=data ; Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(data,[e,`${e}_`])))}
-    function Render_Body(Typ,data,RX,Aa){J[Typ]=data ; Tm_tbody(Typ) ; RX ? FazeroGrif(Typ,RX,Aa) : null} // Somente o body
+    function Render_PDDS(Typ,      ){Tm_Table2(Typ)}
+    function Render_Tbla(Typ,      ){Tm_Table2(Typ)}
+    function Render_Tbls(Typ,data      ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(data,[e,`${e}_`])))}
+    function Render_Body(Typ,data,RX,Aa){Tm_tbody(Typ) ; RX ? FazeroGrif(Typ,RX,Aa) : null} // Somente o body
 
-    async function SB_GETT(Typ,Limit=100){
-        const {data,error}= await supaBASE.from(Typ).select('*').order('Id',{ascending:false}).limit(Limit)
-        if(error)return LOG(error)
-        Typ=='GRD2' ? Render_Tbls(Typ,data) : Render_Tbla(Typ,data)
+    const Pry = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',UBER:'Id',MPAG:'Id',ARTE:'Id',GRD2:'Id',REGRA:'Id',GRAD:'Grad',OS:'OS'}
+
+    function fazJJJ(Typ,dados){
+        const Colet = {}
+        J[Typ]=dados.map(e=>normalizeObj(e,Colet))
+        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
+        JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
     }
+
+    async function SB_GETT(Typ,Limit){
+        if(Limit==null){
+            let todas = [], lim = 1000, ofs = 0, data
+            do{({data}=await supaBASE.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+                if (!data) return ERR('Erro ao carregar dados')
+                todas.push(...data) ; ofs+=lim
+            }while(data.length===lim)
+            LOG(`✔️ Get(${Typ})`) ; return todas
+        }else{
+            const {data,error}= await supaBASE.from(Typ).select('*').order('Id',{ascending:false}).limit(Limit)
+            if(error)return LOG(error)
+            LOG(`✔️ Get(${Typ})`) ; return data
+        }
+    }
+
     async function SB_Pesq(Typ,Col,Rgx,Aa,Bj){
         const Cols = Col.filter(e=>e!='Lixo'&&e!='Data'&&e!='Valr'&&e!='OKAY'&&e!='user_id'&&e!='Id') // AJEITAR
         const Or = Cols.map(c=>`${c}.${Aa}.${Rgx}`).join(',')
@@ -554,34 +584,30 @@
         if(error)return LOG(error)
         Render_Body(Typ,data)
     }
+
+    function RodaTable(Typ){
+        if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}else{LOAD(Typ)}
+        async function LOAD(TYP){
+            const data = await SB_GETT(TYP,100) ; fazJJJ(TYP,data)
+            TYP=='PDDS' ? Render_PDDS(TYP,data) : TYP=='GRD2' ? Render_Tbls(TYP,data) : Render_Tbla(TYP,data)
+        }
+    }
+
+    async function GetLink(Typ){
+        const {data}=await supaBASE.from('PDDS').select(`*,CLNT(*)`)
+        LOG(data)
+    }
 </script>
 
 <script>
     Onloads('body') ; Get_User()
 
     async function PosLogin(U){
-        USUARIO = U
-        LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)
-        Add_N($('#LgNNome'))
-        $('#LgFoto img').src= Foto(U.User)
+        USUARIO = U  ; LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         NavPag(Atual.Pag)
-        SB_Get(supaBASE,['BS']) //'MPAG'
-    }
-    async function PosGET(){
-        const INN = performance.now()
-        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
-        SB_GETT('CLNT',100)
-        SB_GETT('ARTE',100)
-        SB_GETT('MPAG',100)
-        SB_GETT('OS'  ,100)
-        SB_GETT('GRAD',100)
-        SB_GETT('GRD2',100)
-        SB_GETT('UBER',100)
-        SB_GETT('PDDS',100)
-
-        LOG(`✅ Pre-Trat OK: ${MS(INN)}`)
     }
 </script>
 
