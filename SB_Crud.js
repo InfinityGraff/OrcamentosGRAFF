@@ -2,7 +2,7 @@ const J={},JJ={},BS={},ALL={},PreTbl={}
 
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
-const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
+
 
 const Tm_R=(e,x,Typ,P=false)=>{
     const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // GAMBIARRA
@@ -126,8 +126,6 @@ const ArrBolean = v =>Array.isArray(v) && v.length > 0
 const MyEval=(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
 const BsJs =(Typ,Col,Mod)=>BS[Typ].Json[Col][Mod] // Acessar o Json do BS
 
-
-
 const Tm_Tm = {
     Fixo:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
     Ssvg:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
@@ -136,7 +134,7 @@ const Tm_Tm = {
     Valr:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${e?RS(e):'R$ -'}</p>`,
     Mdds:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${e?Cm(e):''    }</p>`,
     Chek:(e,R,P)=>`<input    data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
-    Slct:(e,R,P)=>`<select   data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')">${Tm_Opt(MyEval(BsJs(d_r(R).Ty,d_r(R).Cl,'TH')),e)}</select>`,
+    Slct:(e,R,P)=>`<select   data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')">${Tm_Opt(MyEval(BsJs(d_r(R).Ty,d_r(R).Cl,'TH'))||[],e)}</select>`,
     Slc2:(e,R,P)=>`MySelect()`,
     Data:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih(this,$('input',Pai(this)))">${e?BrevData(DMY(e)):e}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${e?YMD(e):e}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
     Dat2:(e,R,P)=>`<div      data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" >${
@@ -174,6 +172,7 @@ const Tm_Tm = {
         return `<input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
                 <span class="Sugg Cl"></span>`
     },
+    Lnk2:(e,R,P)=>{ return Tm_Bndj(R,e)},
 
     OKAY:(e,R,P)=>{
         // se tiver na Tabela Normal não carrega nada
@@ -330,10 +329,7 @@ function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procu
 
 //===========================CRUD===========================
 
-const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
-    const pc = GetPC() ; const Ag = AGORA().split(' ')
-    return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
-}
+
 
 async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
     const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
@@ -394,14 +390,18 @@ async function FileUP(Inpt,Nome,R){
     }
 }
 
+const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
+    const pc = GetPC() ; const Ag = AGORA().split(' ')
+    return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
+}
+
 function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
     const df = Deff(Typ)                 // Cria um Default Baseado no BS
        df.Id = NewID(J[Typ])             // Atribuindo Novo Id++
     if('Rg' in df){df.Rg = getRG(df)}    // Atribuindo o Rg se Existir
     ObjKey(obj).forEach(k=>df[k]=obj[k]) // Atribuindo oq vem no Objeto dos argumento!
-    /*Obj*/ DarJJ('Add',Typ,df.Id,null,df)
     /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,CleanObj(df))}
-    /*DOM*/ PrePos($(`#H_${Typ} > tbody`),Tm_Table(Typ,[df]),Ps)
+    /*DOM*/ //PrePos($(`#H_${Typ} > tbody`),Tm_Table(Typ,[df]),Ps) // Interromper DOM pois n acho mais Nessesário
     if(SB){LOG('Linha Adicionada pelo SB')}
     return df // isso é bom pq que precisa de dados daqui pode usar por Fora
 }

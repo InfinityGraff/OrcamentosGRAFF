@@ -431,3 +431,25 @@
         // Contar quantas Imagens tem
     }
 </script>
+
+<script> // SupaBase
+    const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
+        const pc = GetPC() ; const Ag = AGORA().split(' ')
+        return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
+    }
+
+    function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
+        const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
+        function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
+        const df = Deff(Typ)                 // Cria um Default Baseado no BS
+        df.Id = NewID(J[Typ])             // Atribuindo Novo Id++
+        if('Rg' in df){df.Rg = getRG(df)}    // Atribuindo o Rg se Existir
+        ObjKey(obj).forEach(k=>df[k]=obj[k]) // Atribuindo oq vem no Objeto dos argumento!
+        /*Obj*/ DarJJ('Add',Typ,df.Id,null,df)
+        /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,CleanObj(df))}
+        /*DOM*/ PrePos($(`#H_${Typ} > tbody`),Tm_Table(Typ,[df]),Ps)
+        if(SB){LOG('Linha Adicionada pelo SB')}
+        return df // isso é bom pq que precisa de dados daqui pode usar por Fora
+    }
+
+</script>
