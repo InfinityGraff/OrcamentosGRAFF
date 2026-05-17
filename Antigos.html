@@ -432,6 +432,151 @@
     }
 </script>
 
+<script> // AUTOCOMP - ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
+    const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
+    const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
+    const FiM =(arr   )=>arr.slice(0,-1)      
+
+    function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
+        ;['PDDS','CLNT'].forEach(Typ=>{// tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
+            Re_Cont(Typ,'All')
+        }) 
+        ;['OS','UBER','GRAD','PDDS','CLNT','ARTE'].forEach(Typ=>{
+            Re_Comp(Typ,'All')
+            Re_Soma(Typ,'All')
+        })
+    }
+
+    // FUNDIR essas Contagem Dentro de J e JJ, ou algo  parecido
+    let  ContGrad  = {} ; let  ContCLNT  = {}
+
+    function Re_Cont(Typ,All){  // ⭐⭐⭐_ _ Sempre é All contar quantas vezes algo aparece dentro e agrupar valores
+        const IN = performance.now()
+        if(Typ=='PDDS'){J['SERV'].forEach(({Grad,Id,Valr})=>{if (!Grad || Grad === "" || Grad === "--"){return}
+                ContGrad[Grad]??={Qnt:0,Sum:0,List:[]}
+                ContGrad[Grad].Qnt++
+                ContGrad[Grad].Sum += Number(Valr)
+                ContGrad[Grad].List.push(Id)
+            })
+        }
+        if(Typ=='CLNT'){J['PDDS'].forEach(({Clnt,Id,Serv})=>{if (!Clnt || Clnt === "" || Clnt === "--"){return}
+                if(Serv==''){return}
+                ContCLNT[Clnt]??={Qnt:0,Sum:0,List:[]}
+                ContCLNT[Clnt].Qnt++
+                ContCLNT[Clnt].Sum += Serv.reduce((acc,e)=>acc+Number(e.Valr),0)
+                ContCLNT[Clnt].List.push(Id)
+            })
+        }
+        else{return}
+        if(All=="All"){LOG(`🔄 Re_Cont:(${Typ}) ${MS(IN)}`)}
+        // Fundir Informações Redundantes
+        // deixar esta contagem dentro de alguma coisa no BS contGrad ou ContCLNT pode ser um BS
+        // alem do mais quem vai dizer se vai ter contagem ou não, não seria esssa função Tratamento nem esses ifs
+        // ficaria em algum lugar no BS
+    }
+
+    function Re_Soma(Typ,All){ // ⭐⭐⭐⭐⭐ (Usado apenas em PDDS) (sem DOM) (Alta Peformance)
+        const IN = performance.now()
+        if(Typ==='PDDS'){
+            const trs = All=='All' ? J[Typ] : [All]
+            trs.forEach(tr=>{
+                const oID=All=='All'? tr.Id : tr_ID(tr)                                                  // coleta Id
+                const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                          // pega o td onde inserirei o valor da Soma
+                const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
+                const vzz=e=>e==0?'':RS(e)                                                               // conferir se ta tudo vazio
+                /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
+                /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
+                /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
+                /*Rest*/ const sD = sV-ges('Pgmt',['Valr'])                 ; All=='All' ? tr.Deve=vzz(sD) : Vai('Deve',vzz(sD))
+            })
+            if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
+        }
+    }
+
+
+    function RFresh(Typ,All,Auto,e){ // Tudo isso é Usado após Carregar no DOM!
+        if(Typ=='GRAD' && Auto=='Auto'){return}
+        //Re_Cont(Typ,All)
+        if(All!=='All'){if(Auto!=='Auto'){Re_Comp(Typ,All)}} // ta com essa agonia toda mas vou ajeitar! (Provavelmente só o IF de All fica) (esse if de auto vai sair!)
+        if(All!=='All'){Re_Soma(Typ,All)}
+        Re_Colr(Typ,All)
+        Re_Foot(Typ,All)
+        LOG('🔄 Rfresh Geral')
+    }
+
+    // todas as imagens vão sair do Autocomp, pois elas são carregadas mediante ao tm usando o valor q está dentro de si
+    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal','-':'--'}// deve ter um desse em um BS diferente
+    const Splii = {
+/*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
+/*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
+/*Opt*/ //,S_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
+        //,S_Arte:j=>J['IMGS'][j.Id] ?? '' // não precisa
+        //,S_CArt:j=>''                    // não precisa
+        ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
+        //,S_Forn:j=>j.Grad ? [Dbbrev[j.Grad[0]]] : '' /*acho q esse vai sair*/
+        //,S_Gimg:j=>`${j.Grad}.webp`      // aqui sim Realmente é um AutoMatico Uber e OS também
+        
+        // Localizar onde boto essas informações de OS e de UBER (pois agora que tem Bandeija fica dificil) (não quero ter que criar mais 2 colunas extras, só pra possuir esses valores)
+        //,S_OS  :j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro((Num(F.Valr)+(F.Val1)) * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero
+        //,S_Uber:j=>{if(j.Grad==''){return ''} ; if(j.Grad=='--'){return '--'} ; const F = J['GRAD'].find(e=>e.Grad==j.Grad) ; const L = ContGrad[j.Grad] ; return F && L ? Seguro( F.VUbr                * (j.Valr / L.Sum)).toFixed(2) : ''} // Pega uma Porcentagem do Valor do Uber  // se for NaN retorna Zero // if(j.Grad=='B_264_2'){LOG('UB',L.Sum,F.VUbr)} ; 
+
+        //-----------------------------------------------------------------------------------------------------------
+        ,G_ImgU:j=>J['IMGS'][j.Grad] ?? ''
+        ,G_ImgG:j=>J['IMGS'][j.Grad.replace(/_\d*$/,"")] ?? ''
+/*Opt*/ ,G_Forn:j=>[Dbbrev[j.Grad[0]]]
+/*Opt*/ ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
+        ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+        ,G_Cnt2:j=>ContGrad[j.Grad]?.Qnt ?? ''
+        ,G_VlrO:j=> JJ['OS'][j.OS]?.Valr || 0
+        ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr+Number(e.Val1)))
+        ,G_Oimg:j=>`${j.OS}`  ?? ''
+        ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
+        //-----------------------------------------------------------------------------------------------------------
+        ,O_Oimg:j=>J['IMGS'][j.OS] ?? ''
+        ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
+        //-----------------------------------------------------------------------------------------------------------
+        ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
+        ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
+        ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
+        //-----------------------------------------------------------------------------------------------------------
+        ,U_Img:j=>J['IMGS'][j.Uber] ?? ''
+        ,A_Img:j=>J['IMGS'][j.Nome] ?? ''
+    }
+
+    function Re_Comp(Typ,All){
+        return
+        if(Typ=='SERV' ||  Typ=='PGMT'){return} // por enquanto iguinorar eles até eu dar o devido Trato!
+        const IN = performance.now()
+        const trs = All=='All' ? J[Typ] : [All] // se for Bandeija entra edição na Linha do Pai
+
+        const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
+            const Coa = {S:'SERV',P:'PGMT'}
+            const TYP = Coa[Pre]||Typ
+            const Key = All=='All' ? tr[Pry[TYP]] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${Pry[TYP]}`)}`,tr)) // Pegando a Chave Primaria
+            const arg = All=='All' ? tr : JJ[TYP][Key]
+            if(!arg){LOG('⚠️ o Objeto Não Existe') ; return}
+            const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
+            if(Mod.includes('O') && All!=='All'){ReOpt(TDp(tr,TYP,col),Val)}
+            if(Mod.includes('V')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto','sem SB')}}
+            if(Mod.includes('E')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto')}}
+        }
+        if(All!=='All'){LOG(`Edição Unica: ${Typ}`)}
+
+        // xDOM subistituir esses Trs DOM por trs JJ[Typ]
+        if(Typ=="PDDS"){      trs.forEach(TR=>(All=='All' ? TR.Serv||[] : $$('.Bdj_SERV > tbody > tr',TR)).forEach(tr=>[['Surg','EN'],['Tipo','ON'],['TArt','ON'],/*['Grad','V' ],['Cbmt','N' ],['VCbt','N']*/         ].forEach(c=>Edit('S',c[0],c[1],tr))))
+                                trs.forEach(TR=>(All=='All' ? TR.Serv||[] : $$('.Bdj_SERV > tbody > tr',TR)).forEach(tr=>[['Dsng','ON'],['Arte','VN'],['CArt','N' ],['Gimg','VN'],['Forn','ON'],['OS','VN'],['Uber','VN']].forEach(c=>Edit('S',c[0],c[1],tr)))) // Dependem de TArt e de Grad
+                                trs.forEach(tr=>''/*aqui roda a terceira vez, q esse aqui é pra ocultar, mas só fica disponivel se for Individual (mas eu planejei o novo Modelo de separar as Linhas e então vai poder ocultar colunas Sempre*/)
+        }else if(Typ=="CLNT"){trs.forEach(tr=>[['Link','V'],['Lcro','V'],['Medi','V']                                                                 ].forEach(c=>Edit('C',c[0],c[1],tr)))
+        }else if(Typ=="GRAD"){trs.forEach(tr=>[['ImgU','V'],['ImgG','V'],['Forn','O'],['Valr','V'],['Cnt2','V'],['Oimg','V'],['VlrO','V'],['VUbr','V']].forEach(c=>Edit('G',c[0],c[1],tr))) 
+                                trs.forEach(tr=>[['SrvF','O'],['Summ','V']                                                                              ].forEach(c=>Edit('G',c[0],c[1],tr))) /*SrvF-(Forn), Summ-(Valr,VlrO)*/
+        }else if(Typ=='OS'  ){trs.forEach(tr=>[['Oimg','V'],['Cnt2','V']                                                                              ].forEach(c=>Edit('O',c[0],c[1],tr)))
+        }else if(Typ=='UBER'){trs.forEach(tr=>[['Img' ,'V']                                                                                           ].forEach(c=>Edit('U',c[0],c[1],tr)))
+        }else if(Typ=='ARTE'){trs.forEach(tr=>[['Img' ,'E']                                                                                           ].forEach(c=>Edit('A',c[0],c[1],tr)))
+        }else{return}
+        if(All=="All"){LOG(`🔄 Re_comp:(${Typ}) ${MS(IN)}`)}
+    }
+</script>
+
 <script> // SupaBase
     const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
         const pc = GetPC() ; const Ag = AGORA().split(' ')

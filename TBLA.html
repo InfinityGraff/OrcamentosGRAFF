@@ -19,12 +19,12 @@
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     // Acumuladores
-    const Atual = {Pag:'PDDS'}
+    const Atual = {Pag:'GRAD'}
     let USUARIO = ''
     const FF     = {}
     const BSFIL  = {}
-    const Forns  = ['B','RR','U','G','I','J','W','T']
-
+    const Forns  = ['G','B','I','RR','U','J','W','T']
+    const Dbbrev = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     const O = {
         Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','--'], // 'WM SilkSing','Casas leo'
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
@@ -39,27 +39,19 @@
 </script>
 
 <script> // Biblioteca
-    const Foto=U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
+    const Foto     =U  =>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const ReszH    =Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
     const ReszW    =Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w90');Tog($(`.Confy_${Typ}`),'w90');SaveConfig('a')}
+    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
+    const UniqAvnc =Arr=>Object.entries(Arr.reduce((a,v)=>(a[v]=(a[v]||0)+1,a),{})).map(([val,qnt])=>({qnt,val})).sort((a,b)=>b.qnt-a.qnt) // fazer Unique retornando um objeto com a quantidade
+    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const Acnto    =(s,Tru)=>Tru && s ? `${s}`.normalize("NFD").replace(/[\u0300-\u036f]/g,"") : s
     const Acnto2   =(t,_C)=>!_C ? t : t.replace(/a/gi,'[aáàâã]').replace(/e/gi,'[eéèê]').replace(/i/gi,'[iíìî]').replace(/o/gi,'[oóòôõ]').replace(/u/gi,'[uúùû]')
+    const FiltrarR =(Arr,Cols)=>Arr.map(o=>Object.fromEntries(Cols.map(c=>[c,o[c]]))) // filtrar a tabela, para as colunas que foi passada no argumento
     const RplcPesq ={Aa:'Aa',A_:'[]',Bj:'Bj',In:'<',Ot:'>',Of:'"',_C:'~'}
-    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
-    const UniqAvnc =Arr=>Object.entries(Arr.reduce((a,v)=>(a[v]=(a[v]||0)+1,a),{})).map(([val,qnt])=>({qnt,val})).sort((a,b)=>b.qnt-a.qnt) // fazer Unique retornando um objeto com a quantidade
     function ExecSwith(Pag,Typ){Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`))}
     function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
-    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
-    const FiltrarR=(Arr,Cols)=>Arr.map(o=>Object.fromEntries(Cols.map(c=>[c,o[c]]))) // filtrar a tabela, para as colunas que foi passada no argumento
-
-    function normalizeObj(obj,Colet={}){
-        for (const k in obj) {
-            let v = obj[k] ?? ""
-            if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
-            if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
-            obj[k] = v
-        };return obj
-    }
+    function normalizeObj(obj,Colet={}){for (const k in obj) {let v = obj[k] ?? "" ; if (isJSON(v)) {try { v = JSON.parse(v) } catch {}} if (Array.isArray(v)){(Colet[k] ??= []).push(...v)} obj[k] = v};return obj}
 </script>
 
 <style> /*----- GRIFO -----*/
@@ -93,6 +85,7 @@
 </script>
 
 <script> // ---- PESQUISA ----
+    function Pesq(Typ){SB_Pesq(Typ,BS[Typ].Orden,...Pesc_RX(Typ))}
     function Pesc_RX(Typ){
         const I =   $(`.Pesq_${Typ} input`).value.trim().replace(/\s+/g,' ')
         const s =x=>$(`.Pesq_${Typ} .Pesq-${x}.Atv`)
@@ -107,9 +100,6 @@
         const RX=Of||`${In}${A_}${T}${A_}${Ot}`
         return [RX,Aa,Bj]
     }
-
-    function Pesq(Typ){SB_Pesq(Typ,BS[Typ].Orden,...Pesc_RX(Typ))}
-
     const Tm_Pesq=Typ=>
     `<div class="pPesq Pesq_${Typ} hOv Rltv">
         <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." onkeydown="KeyEntr(()=>Pesq('${Typ}'))">
@@ -293,6 +283,109 @@
     }
 </script>
 
+<script> // ---- AUTOCOMP ----
+
+    function Re_Soma(Typ,All){ // ⭐⭐⭐⭐⭐ (Usado apenas em PDDS) (sem DOM) (Alta Peformance)
+        const IN = performance.now()
+        if(Typ==='PDDS'){
+            const trs = All=='All' ? J[Typ] : [All]
+            trs.forEach(tr=>{
+                const oID=All=='All'? tr.Id : tr_ID(tr)                                                  // coleta Id
+                const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                          // pega o td onde inserirei o valor da Soma
+                const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
+                const vzz=e=>e==0?'':RS(e)                                                               // conferir se ta tudo vazio
+                /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
+                /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
+                /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
+                /*Rest*/ const sD = sV-ges('Pgmt',['Valr'])                 ; All=='All' ? tr.Deve=vzz(sD) : Vai('Deve',vzz(sD))
+            })
+            if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
+        }
+    }
+    
+    const Splitt = {
+        GRAD:{
+            // esses são os que eu Faço aqui Mesmo DOM, são apenas Exibições (todos Fixos)
+             ImgU:j=>`${j.Id}.webp` ?? ''
+            ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? ''
+            ,Forn:j=>Dbbrev[j.Id[0]]
+        },
+        OS:{
+             O_Oimg:j=>J['IMGS'][j.OS] ?? ''
+            ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
+        },
+        UBER:{
+             U_Img:j=>J['IMGS'][j.Uber] ?? ''
+        }
+
+        
+    }
+
+    function RECOMP(Typ){ // isso deve se repetir para o JJ também
+
+        J[Typ].forEach(j=>{
+            const Logs=(c,val)=>{if(Typ=='GRAD'){return} ; LOG('Comp',Typ,c,val)}
+            const Exec=c=>{const val = Splitt[Typ]?.[c](j) ; Logs(c,val) ; j[c]=val ; JJ[Typ][j.Id][c]=val }
+            if(Typ=='GRAD'){['ImgU','ImgG','Forn'].forEach(c=>Exec(c))}
+            //if(Typ=='UBER'){['Img'               ].forEach(c=>Exec(c))}
+            //if(Typ=='OS'  ){['Oimg','Cnt2'       ].forEach(c=>Exec(c))}
+
+            if(Typ=='SERV'){['Tipo','Surg'       ].forEach(c=>Exec(c))}
+            if(Typ=='ARTE'){['Dsng','TArt','CArt'].forEach(c=>Exec(c))}
+            if(Typ=='CLNT'){['Link','Lcro','Medi'].forEach(c=>Exec(c))}
+
+            //GRAD ['Valr','Cnt2','Oimg','VlrO','VUbr','SrvF','Summ']
+        })
+    }
+
+        const Re_Comp = {
+    /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
+    /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
+
+            ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
+    /*Opt*/ ,A_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
+    
+    //GRAD-----------------------------------------------------------------------------------------------------------
+
+        // Soma de Link // FIXOs (Não Podem Alterar)
+            ,G_VlrO:j=> JJ['OS'][j.OS]?.Valr || 0
+            ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
+        // FIXO
+            ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+            ,G_Cnt2:j=>ContGrad[j.Grad]?.Qnt ?? ''
+            ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr+Number(e.Val1)))
+
+    //-----------------------------------------------------------------------------------------------------------
+
+            //-----------------------------------------------------------------------------------------------------------
+            ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
+            ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
+            ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
+            //-----------------------------------------------------------------------------------------------------------
+            
+            ,A_Img:j=>J['IMGS'][j.Nome] ?? ''
+
+            ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
+    }
+
+    function Re_Comps(Typ,All){
+        const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
+            const Coa = {S:'SERV',P:'PGMT'}
+            const TYP = Coa[Pre]||Typ
+            const Key = All=='All' ? tr['Id'] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${'Id'}`)}`,tr)) // Pegando a Chave Primaria
+            const arg = All=='All' ? tr : JJ[TYP][Key]
+            if(!arg){LOG('⚠️ o Objeto Não Existe') ; return}
+            const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
+            if(Mod.includes('O') && All!=='All'){ReOpt(TDp(tr,TYP,col),Val)}
+            if(Mod.includes('V')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto','sem SB')}}
+            if(Mod.includes('E')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto')}}
+        }
+
+
+    }
+
+</script>
+
 <style> /*CSS apenas da Tabela*/
     body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
     #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
@@ -318,10 +411,9 @@
 
 <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
     // Estão OK
-    const Pry = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',UBER:'Id',MPAG:'Id',ARTE:'Id',GRD2:'Id',REGRA:'Id',GRAD:'Grad',OS:'OS'}
     function TogTbody(e){Tog(e.closest('tbody'),'closed')}
     const HeadGroupTR = `<tr class="H_Tbody" onclick="TogTbody(this)"><td></td><td colspan="3">📦 Grupo</td></tr>` // aqui terá um Breve Resumo do Mês Inteiro
-    const Tm_Tr    =(Typ,arry,Rpai='')=>arry.map(e=> e ? `<tr class="tr-${e[Pry[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
+    const Tm_Tr    =(Typ,arry,Rpai='')=>arry.map(e=> e ? `<tr class="tr-${e.Id}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
     const Tm_Sklt  =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
     const Tm_tdFoot=(arr,Typ)=>arr.map((e,x)=>`<td data-R="${Tm_R('Foot',x,Typ)}" class="Rltv"></td>`).join('')
     const Tm_tbody =Typ=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,J[Typ]))
@@ -332,14 +424,12 @@
     function CopyFone(Fone,Eu){LOG(Fone)}
     const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
     
-    const ImgT_T=(col,e,R)=>{
-            return ''
-            const ARTEE = col=='Serv' ? JJ['ARTE'][e.Arte.split('-')[1]]?.Img : ''
-            return                col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                                : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                                : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
-                                : ''
-        // isso daqui tem que ser, Pegar todas as Imagens que estão dentro da Bandeija, todas mesmo incluindo Bandeija de Bandeija e Links tbm
+    const ImgT_T=(col,e,R)=>{ // imagem que fica no Title
+            const ARTEE = col=='Serv' ? JJ['ARTE']?.[e.Arte.split('-')[1]]?.Img : ''
+            return    col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                    : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
+                    : ''
     }
 
     const FazerTitle=(Typ,Find)=>{
@@ -357,11 +447,10 @@
         const COL   = AA(col)
         const Title = Find.length==0 ? '-' : FazerTitle(COL,Find)
         const NmTle = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '-' : Title // Ainda é uma Gambiarra
-        
         const Cimg  = Find.map(e=>ImgT_T(col,e,R)).join('')
         
         const I_Link= BS[Typ].Json[col].LINK.split('-')[0] // Acessar Informações de Link como (CLNT-List-1-Cria)
-
+        
         const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
                                       <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
 
@@ -523,19 +612,19 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
-    function Render_Tbla(Typ,          ){Tm_Table2(Typ)}
-    function Render_Tbls(Typ,data      ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(data,[e,`${e}_`])))}
+    function Render_Tbla(Typ      ){Tm_Table2(Typ)}
+    function Render_Tbls(Typ      ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
     function Render_Body(Typ,data,RX,Aa){Tm_tbody(Typ) ; RX ? FazeroGrif(Typ,RX,Aa) : null} // Somente o body
 
     function fazJJJ(Typ,dados){
         const Colet = {}
         J[Typ]=dados.map(e=>normalizeObj(e,Colet))
-        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
-        JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
+        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')}
+        JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
     }
 
     async function SB_GETT(Typ,Limit){
-        const FK = { PDDS:'*,Clnt:CLNT(*)'}
+        const FK = {PDDS:'*,Clnt:CLNT(*)',OS:'*,GRAD(*)'}
         if(Limit==null){
             let todas = [], lim = 1000, ofs = 0, data
             do{({data}=await supaBASE.from(Typ).select(FK[Typ]||'*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
@@ -568,8 +657,8 @@
     function RodaTable(Typ){
         if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}else{LOAD(Typ)}
         async function LOAD(TYP){
-            const data = await SB_GETT(TYP,100) ; fazJJJ(TYP,data)
-            TYP=='GRD2' ? Render_Tbls(TYP,data) : Render_Tbla(TYP,data)
+            const data = await SB_GETT(TYP,100) ; fazJJJ(TYP,data) ; RECOMP(TYP)
+            TYP=='GRD2' ? Render_Tbls(TYP) : Render_Tbla(TYP)
         }
     }
 </script>

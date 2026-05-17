@@ -68,6 +68,7 @@ body[data-Cor="Blue"]{
   /*Buttons */ --BtnBk   :#0073ee; 
   /*Thead   */ --thead   :#0073ee;
   /*CheckOFF*/ --ChekOff:1px solid #98a9e263;
+  /*AUTO    */ --TdAuto : #a7a7a744 ; 
 }
 body[data-Cor="Yelw"]{
   /*Textos  */ --CorPrin :#ffd000;--CorText:#ffffff; --CorATV    :#ffdc41;--BtnTx      :#000000; --CorPacy  :#ffdc415d; --CorPacy2:#0000001c;
@@ -76,6 +77,8 @@ body[data-Cor="Yelw"]{
   /*Buttons */ --BtnBk   :#ffd000;
   /*Thead   */ --thead : linear-gradient(180deg,#ffd000,#ffae00);
   /*CheckOFF*/ --ChekOff:1px solid #e2d49863;
+  /*AUTO    */ --TdAuto : #a7a7a744 ; 
+
 
 }
 body[data-Base="Infinity"][data-Cor="Rosa"]{
@@ -89,6 +92,8 @@ body[data-Base="Infinity"][data-Cor="Rosa"]{
   /*Thead   */--thead   :linear-gradient(135deg,#E8778D,#C151A8);
   /*ShdwInst*/--ShIst   :inset 0 0 4px #fdfdfd5b;
   /*CheckOFF*/--ChekOff:1px solid #e298c663;
+  /*AUTO    */ --TdAuto : #f08cb64f ; 
+  
 }
 body[data-Cor="Roxo"]{
   /*Textos  */ --CorPrin :#9f009a;--BtnTx :#ffffff;--CorATV:#c400bd;--CorPacy :#db00e23a; --CorPacy2:#36002633;
@@ -96,6 +101,7 @@ body[data-Cor="Roxo"]{
   /*Box     */ --Box     :linear-gradient(to top,#fbddff0c,#fce4ff05);--BoxySdw:inset 0 0 8px #fce5ff1c,3px 3px 8px #0000003a;
   /*Thead   */--thead :#9f009a;
   /*CheckOFF*/--ChekOff:1px solid #e298c663;
+  /*AUTO    */ --TdAuto : #a7a7a744 ; 
 }
 
 /*Formatos das Tags______________________________________________________________ */
@@ -229,8 +235,13 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
   .TBLAA tfoot .RS{color:#00df00; font-size:7px}
 
+  /*Depois Analisar esse AutoCom*/
 
-  
+  .TBLAA .Auto    {background: var(--TdAuto)  ; color: #696969;}
+  .TBLAA .Auto.Cor{background: #9dff00} /*Ver se isso realmente serve antes ffffff00*/
+
+
+
 /*Anailsar depois*/
   #Alert{padding: 15px;box-shadow: 10px 10px 20px black;animation: modal 0.5s;}
   .MyAlert{background:#28a745;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 4px 12px #0000004d}
