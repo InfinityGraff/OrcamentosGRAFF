@@ -657,6 +657,7 @@
     const Camada2 = {
         PDDS:'PDDS(*,Serv:SERV(*),Pgmt:PGMT(*))'
     }
+    
     async function SB_GETT(Typ,Limit){
         let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
         if(Typ=='CLNT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
