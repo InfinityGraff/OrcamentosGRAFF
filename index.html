@@ -349,20 +349,6 @@
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
     }
 
-    const GetycCores = {
-        'Preto'       : '#000000',
-        'Branco'      : '#FFFFFF',
-        'Prata'       : '#C0C0C0',
-        'Vermelho'    : '#FF0000',
-        'Azul'        : '#0000FF',
-        'Verde'       : '#008000',
-        'Amarelo'     : '#FFFF00',
-        'Laranja'     : '#FFA500',
-        'Rosa'        : '#FFC0CB',
-        'Roxo'        : '#800080',
-        'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
-    }
-
     const COR  = {'Gren':'147,196,125','Yelw':'255,229,153','Roxo':'180,167,214','Azul':'164,194,244','Redd':'234,153,153','Opcy':'0,0,0,0'}
     const COR2 = {'Gren':'39,80,12'   ,'Yelw':'133,99,0'   ,'Roxo':'80,0,146'   ,'Azul':'0,54,146'   ,'Redd':'134,0,0'    ,'Opcy':'0,0,0,0'}
     const ListEtps = [['Orçamento','Roxo'],['Arte','Roxo'],['Impressão','Yelw'],['Acabamento','Yelw'],['Pronto','Azul'],['Entregue','Gren'],['Devendo','Redd']]
@@ -380,7 +366,7 @@
 </script>
 
 <div> <!--JS e CSS das Tabelas-->
-    <div>   <!--TABELAS  - ⭐⭐⭐_ _ -->
+    <div>   <!--TABELAS  - 💚 ⭐⭐⭐_ _ -->
         <style> /*CSS apenas da Tabela*/
             /*Particularidades*/
             h2{font-size:18px}
@@ -535,7 +521,7 @@
         </script>
     </div>
 
-    <div>   <!--PESQUISA - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
+    <div>   <!--PESQUISA - 💚 ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
 
         <script> // SCRIPT - PESQUISA
             let debounceTimer
@@ -672,7 +658,7 @@
         </script>
     </div>
 
-    <div>   <!--FILTROS  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Melhorias Bestas) -->
+    <div>   <!--FILTROS  - 💚 ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Melhorias Bestas) -->
 
         <script> // FILTROS - SCRIPT
             const Colx    =(Typ,col)=>FIdx(BS[Typ].Orden,col)+1
@@ -928,126 +914,7 @@
         </script>
     </div>
 
-    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (Recolorir ao Abrir Bndj) (Baixa Peformance)-->
-        <style> /*RECOLOR - CSS*/
-            .EtpSVG{height:25px ; width:25px ; pointer-events: none}
-            #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
-        </style>
-
-        <script> // RECOLOR  - SCRIPT
-
-            // como Funcionará o novo jeito de Recolor
-            // isso são 2 Coisas Fundidas, ReStatus e Recolor
-            // no BS terá uma Ordem de como o Status deve ser (ou por quantidade, ou por ordem) (este seria o Modelo de Exemplo)
-            // Para cada Tabela começa das Linhas Internas, e vai passando pra cima
-            // PDDS depende de SERV e de PGMT (más SERV depende de ARTE) (PGMT depende de MPAG)
-            // MPAG e ARTE se comporta e passa pra cima
-            // SERV e PGMT se comporta e passa pra cima
-            // Primeiro Antes de carregar o DOM Gera o Status das Linhas
-            // antes de Gerar o Status, tem que preparar os Dados
-            // então já faz todas as Contagens
-            // depois da contagem (si bem que a contagem poderia ser feita diretamente no msm Loop de importação dentro do GetSB, economizaria LOOP)
-            // depois disso os Autocomp!
-            // depoisentra o Re_soma, por enquanto só existe RESOMA em PDDS
-
-            const LALEL = {
-                SERV:{Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
-                      Arte: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
-                      Grad: ['Impressão'  ,COR['Yelw'],COR2['Yelw'],'white'],
-                      OK:   ['Pronto'     ,COR['Azul'],COR2['Azul'],'white'],
-                      Entg: ['Entregue'   ,COR['Gren'],COR2['Gren'],'white'],
-                      Deve: ['Devendo'    ,COR['Redd'],COR2['Redd'],'white'],
-            }}
-
-            const GetStts=(arr,L,O)=>{ // Função pra Encontrar as Etapas
-                const S = new Set(arr)
-                const m = O.find(e=>!S.has(e))
-                const l = [...O].reverse().find(e=>S.has(e))
-                if (!l) return L[m]
-                if (!m) return L[O.at(-1)]
-                return O.indexOf(m) < O.indexOf(l) ? ((r=[...L[m]]),(r[0]=L[l][0]),r) : L[l]
-            }
-
-            function IcnEtp(Typ,tr,Etp,cct){ // acho q da pra Remover isso! de OBJ
-                //const objj = {'PDDS':'Stts','SERV':'SStts'} // fundir tudo em Stts
-                stt = $(`:scope ${Rx7(Typ,'Stts')}`,tr)
-                if(cct){Nm(stt,cct)}                          // Joga o Concate no Name do td Stts
-                const Bndjj=(e)=>`${e}<div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
-                Inn(stt,Bndjj(`<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp[2]})">${SVGEtapas[Etp[0]]}</div>`)) // Dar o Inner do SVG dentro do Stts
-            }
-
-            function R_Cor(e,opc,Cor){ // nesta função dar apeans o Retorno caso "e" não seja DOM
-                if(!isDOM(e)){return [opc,Cor]}
-                if(e.tagName=='TD'){Bkg(e,`rgba(${Cor},${(opc).toFixed(2)})`)}        // Colore o Fundo com Opacidade
-                else{Bkg(e,`rgb(${Cor.split(',').map(v=>Math.round(+v+(255-v)*(1-opc))).join(',')})`)} // Colore o Fundo sem Opacidade
-                e.style.color        = `rgb(${Cor.split(',').map(e=>e/4).join(',')})` // Colore o Fundo
-                e.style.borderBottom = `1px solid rgba(${Cor},${(opc).toFixed(2)})`   // Colore a Borda
-                $$('select',e).forEach(E=>Bkg(E,'#00000000'))
-                return [opc,Cor]
-            }
-
-            function LimpaCor(tr){Bkg(tr,'') ; $$('td',tr).forEach(e=>e.style.border='')} // Limpa cor de um tr
-            function PegaLink(Stg){const Spli = Stg.split('-') ; return JJ[Spli[0]][Spli[1]] }
-            const EvalCond = (expr,obj)=>{try {return Function('e','PegaLink',`return ${expr}`)(obj,PegaLink)}catch{return false}}
-
-            function R_Colr(tr,Typ,Mod,TR,CrBS){ // Mod TEmperatura :: // Ta Funcionando pra GRAD,OS,PGMT
-                const DOM = isDOM(tr)
-                const bjj = JJ[Typ][DOM?tr_ID(tr):tr] ; if(!bjj){return}       // ✔️ Pega o Objeto pelo Id do tr
-                const Atu = CrBS ? CrBS.filter(([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Filtro das Colunas que Passaram no Critério
-                const Crt = CrBS ? CrBS.map   (([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Lista de True False
-                const opc = _0_1(Crt.filter(v=>v==true).length/Crt.length)     // ✔️ Part/Total == Porcentagem do que Falta
-
-                if(DOM){LimpaCor(tr)}                                          // ✔️ Zera Fundo e Borda
-                if(DOM){Atu.forEach(e=>R_Cor($(Rx7(e[0]),tr),1,COR['Gren']))}  // ✔️ Pintar os Td antes de Pintar as Tr
-
-                if(Mod=='Etapa'){
-                    const Atuu = Atu.map(e=>e[0])
-                    const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
-                    const LISTA= ['Serv','Grad','OK','Entg']               // GAMBIARRRRRA
-                    const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
-                    if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
-                    const trr = !DOM ? TRR : tr
-                    /*DOM*/ IcnEtp(Typ,trr,Etp,Atuu.join('-'))                    // Adiciona o Icone em Serv
-                    /*DOM*/ return [...R_Cor(trr,opc,Etp[1]),Etp]                 // Pinta o Tr
-                }
-                else if(Crt.every(v=>v==true )){return R_Cor(tr,1,COR['Gren'])}   // Todos os Crit são True Tentar usar o Próprio R_Cor pra dar Return tbm
-                else if(Crt.every(v=>v==false)){return [0,'']}                    // Todos os Crit são False
-                else{return R_Cor(tr,opc,COR['Yelw'])}
-            }
-
-            function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
-                const IN = performance.now()
-                const trs = All=='All' ? TRs(Typ) : isArr(All) ? All : [All]
-                const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
-
-                if(Typ=='SERV'){LOG('FUDEU',CrBS(Typ))}
-
-                if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa'      ,null,CrBS(Typ))})} // esta informação de etapa fica no BS tbm
-                if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
-                if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
-                if(Typ=='OS'  ){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
-                if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''            // Traz pra cá alem do ss todas as info importantes
-                    const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
-                    const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
-                    const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
-                    Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ;  // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
-                    if(ss.length==0){return}                             // Rodando agora na Linha tr
-                    const Etp = Menor(ss)[2]                             // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
-                    const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)        // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
-                    const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)        // pega o valor q foi pago q é a Soma dos Valr de PGMT
-                    const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)  // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
-                    const E = Dev ? LALEL['SERV']['Deve'] : Etp
-                    IcnEtp(Typ,tr,E)                                     // Adicionar o Icone de Etapas
-                    R_Cor(tr,opc(ss),E[1])                               // Pintar o Tr
-                    Bkg(Vlr,`rgb(${E[2]})`,E[3])                         // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
-                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}           // Quando Tiver Devendo Limpar as Cores dos Td
-                })}
-                if(All=="All"){LOG(`🔄 Re_Colr:(${Typ}) ${MS(IN)}`)}
-            }
-        </script>
-    </div>
-    
-    <script> // AUTOCOMP - ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
+    <script> // AUTOCOMP - 💚 ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
         const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
         const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
         const FiM =(arr   )=>arr.slice(0,-1)      
@@ -1233,7 +1100,126 @@
         }
     </script>
 
-    <div>  <!--INTERAÇÕES- ⭐_ _ _ _ -->
+    <div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (Recolorir ao Abrir Bndj) (Baixa Peformance)-->
+        <style> /*RECOLOR - CSS*/
+            .EtpSVG{height:25px ; width:25px ; pointer-events: none}
+            #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
+        </style>
+
+        <script> // RECOLOR  - SCRIPT
+
+            // como Funcionará o novo jeito de Recolor
+            // isso são 2 Coisas Fundidas, ReStatus e Recolor
+            // no BS terá uma Ordem de como o Status deve ser (ou por quantidade, ou por ordem) (este seria o Modelo de Exemplo)
+            // Para cada Tabela começa das Linhas Internas, e vai passando pra cima
+            // PDDS depende de SERV e de PGMT (más SERV depende de ARTE) (PGMT depende de MPAG)
+            // MPAG e ARTE se comporta e passa pra cima
+            // SERV e PGMT se comporta e passa pra cima
+            // Primeiro Antes de carregar o DOM Gera o Status das Linhas
+            // antes de Gerar o Status, tem que preparar os Dados
+            // então já faz todas as Contagens
+            // depois da contagem (si bem que a contagem poderia ser feita diretamente no msm Loop de importação dentro do GetSB, economizaria LOOP)
+            // depois disso os Autocomp!
+            // depoisentra o Re_soma, por enquanto só existe RESOMA em PDDS
+
+            const LALEL = {
+                SERV:{Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
+                      Arte: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
+                      Grad: ['Impressão'  ,COR['Yelw'],COR2['Yelw'],'white'],
+                      OK:   ['Pronto'     ,COR['Azul'],COR2['Azul'],'white'],
+                      Entg: ['Entregue'   ,COR['Gren'],COR2['Gren'],'white'],
+                      Deve: ['Devendo'    ,COR['Redd'],COR2['Redd'],'white'],
+            }}
+
+            const GetStts=(arr,L,O)=>{ // Função pra Encontrar as Etapas
+                const S = new Set(arr)
+                const m = O.find(e=>!S.has(e))
+                const l = [...O].reverse().find(e=>S.has(e))
+                if (!l) return L[m]
+                if (!m) return L[O.at(-1)]
+                return O.indexOf(m) < O.indexOf(l) ? ((r=[...L[m]]),(r[0]=L[l][0]),r) : L[l]
+            }
+
+            function IcnEtp(Typ,tr,Etp,cct){ // acho q da pra Remover isso! de OBJ
+                //const objj = {'PDDS':'Stts','SERV':'SStts'} // fundir tudo em Stts
+                stt = $(`:scope ${Rx7(Typ,'Stts')}`,tr)
+                if(cct){Nm(stt,cct)}                          // Joga o Concate no Name do td Stts
+                const Bndjj=(e)=>`${e}<div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
+                Inn(stt,Bndjj(`<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp[2]})">${SVGEtapas[Etp[0]]}</div>`)) // Dar o Inner do SVG dentro do Stts
+            }
+
+            function R_Cor(e,opc,Cor){ // nesta função dar apeans o Retorno caso "e" não seja DOM
+                if(!isDOM(e)){return [opc,Cor]}
+                if(e.tagName=='TD'){Bkg(e,`rgba(${Cor},${(opc).toFixed(2)})`)}        // Colore o Fundo com Opacidade
+                else{Bkg(e,`rgb(${Cor.split(',').map(v=>Math.round(+v+(255-v)*(1-opc))).join(',')})`)} // Colore o Fundo sem Opacidade
+                e.style.color        = `rgb(${Cor.split(',').map(e=>e/4).join(',')})` // Colore o Fundo
+                e.style.borderBottom = `1px solid rgba(${Cor},${(opc).toFixed(2)})`   // Colore a Borda
+                $$('select',e).forEach(E=>Bkg(E,'#00000000'))
+                return [opc,Cor]
+            }
+
+            function LimpaCor(tr){Bkg(tr,'') ; $$('td',tr).forEach(e=>e.style.border='')} // Limpa cor de um tr
+            function PegaLink(Stg){const Spli = Stg.split('-') ; return JJ[Spli[0]][Spli[1]] }
+            const EvalCond = (expr,obj)=>{try {return Function('e','PegaLink',`return ${expr}`)(obj,PegaLink)}catch{return false}}
+
+            function R_Colr(tr,Typ,Mod,TR,CrBS){ // Mod TEmperatura :: // Ta Funcionando pra GRAD,OS,PGMT
+                const DOM = isDOM(tr)
+                const bjj = JJ[Typ][DOM?tr_ID(tr):tr] ; if(!bjj){return}       // ✔️ Pega o Objeto pelo Id do tr
+                const Atu = CrBS ? CrBS.filter(([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Filtro das Colunas que Passaram no Critério
+                const Crt = CrBS ? CrBS.map   (([k,v])=>EvalCond(v,bjj)) : []  // ✔️ Lista de True False
+                const opc = _0_1(Crt.filter(v=>v==true).length/Crt.length)     // ✔️ Part/Total == Porcentagem do que Falta
+
+                if(DOM){LimpaCor(tr)}                                          // ✔️ Zera Fundo e Borda
+                if(DOM){Atu.forEach(e=>R_Cor($(Rx7(e[0]),tr),1,COR['Gren']))}  // ✔️ Pintar os Td antes de Pintar as Tr
+
+                if(Mod=='Etapa'){
+                    const Atuu = Atu.map(e=>e[0])
+                    const TRR  = !DOM ? $(`[class^="tr-${tr}"]`,TR) : null
+                    const LISTA= ['Serv','Grad','OK','Entg']               // GAMBIARRRRRA
+                    const Etp = GetStts(Atuu,LALEL[Typ],LISTA) ; if(!Etp){return} 
+                    if(!DOM && !TRR){return [opc,Etp[1],Etp]}                     // Ativar ou Desativar quando tiver ou n DOM (to usando isso aqui pq n consigo Cancelar o Icone por aqui, a n ser que eu infie o Icone em R_Cor())
+                    const trr = !DOM ? TRR : tr
+                    /*DOM*/ IcnEtp(Typ,trr,Etp,Atuu.join('-'))                    // Adiciona o Icone em Serv
+                    /*DOM*/ return [...R_Cor(trr,opc,Etp[1]),Etp]                 // Pinta o Tr
+                }
+                else if(Crt.every(v=>v==true )){return R_Cor(tr,1,COR['Gren'])}   // Todos os Crit são True Tentar usar o Próprio R_Cor pra dar Return tbm
+                else if(Crt.every(v=>v==false)){return [0,'']}                    // Todos os Crit são False
+                else{return R_Cor(tr,opc,COR['Yelw'])}
+            }
+
+            function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
+                const IN = performance.now()
+                const trs = All=='All' ? TRs(Typ) : isArr(All) ? All : [All]
+                const CrBS=TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
+
+                if(Typ=='SERV'){LOG('FUDEU',CrBS(Typ))}
+
+                if(Typ=='SERV'){trs.forEach(tr=>{R_Colr(tr,Typ,'Etapa'      ,null,CrBS(Typ))})} // esta informação de etapa fica no BS tbm
+                if(Typ=='PGMT'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+                if(Typ=='GRAD'){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+                if(Typ=='OS'  ){trs.forEach(tr=>{R_Colr(tr,Typ,'Temperatura',null,CrBS(Typ))})} // esta informação de Temperatura fica no BS tbm
+                if(Typ==='PDDS'){trs.forEach(tr=>{let ss = ''            // Traz pra cá alem do ss todas as info importantes
+                    const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
+                    const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
+                    const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
+                    Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ;  // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
+                    if(ss.length==0){return}                             // Rodando agora na Linha tr
+                    const Etp = Menor(ss)[2]                             // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
+                    const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)        // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
+                    const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)        // pega o valor q foi pago q é a Soma dos Valr de PGMT
+                    const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)  // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
+                    const E = Dev ? LALEL['SERV']['Deve'] : Etp
+                    IcnEtp(Typ,tr,E)                                     // Adicionar o Icone de Etapas
+                    R_Cor(tr,opc(ss),E[1])                               // Pintar o Tr
+                    Bkg(Vlr,`rgb(${E[2]})`,E[3])                         // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
+                    if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}           // Quando Tiver Devendo Limpar as Cores dos Td
+                })}
+                if(All=="All"){LOG(`🔄 Re_Colr:(${Typ}) ${MS(IN)}`)}
+            }
+        </script>
+    </div>
+
+    <div>  <!--INTERAÇÃO - 💚 ⭐_ _ _ _ -->
         <style> /*Preview*/
             .inherit {background: inherit;} /*Copiar a cor do Pai*/
             .casusa{flex: 1 1 auto}
@@ -1256,12 +1242,11 @@
                         $$(`:scope > ${Rx(['Serv'])} > div > .T-T`,tr).forEach(e=>{if(Card){Inn(e,Inn(e))}else{}})
                     })
             }
-
             function CtrlSoma(Eu){Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)}
         </script>
     </div>
 
-    <div>  <!--MODAIS    - ⭐_ _ _ _ -->
+    <div>  <!--NOTA    - ⭐_ _ _ _ -->
         <style> /*CSS dos Modais*/
             .Dark #FModal>div{background:#1b1b1b}
             .Lite #FModal>div{background:#ffffff}
@@ -1280,7 +1265,6 @@
             #Tbl_Nota tbody td:nth-child(7){color:#00000093 ; font-size: 13px}
             #Tbl_Nota tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja)}
         </style>
-
         <script>
             const Tm_Nota=e=>`
                 <div id="ModalNota" class="Cl Rltv Rd media30">
@@ -1319,7 +1303,6 @@
                 </div>
             </div>
             `
-
 
             const AbrevServs=arr=>arr.map(e=>{
                 e.Serv = `${e.Serv} (${e.Tipo})`.replace('Lona (Banner)','Banner') // Fazer um Padrão com isso aqui

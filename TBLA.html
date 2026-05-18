@@ -19,7 +19,7 @@
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
     // Acumuladores
-    const Atual = {Pag:'GRAD'}
+    const Atual = {Pag:'PDDS'}
     let USUARIO = ''
     const FF     = {}
     const BSFIL  = {}
@@ -54,7 +54,32 @@
     function normalizeObj(obj,Colet={}){for (const k in obj) {let v = obj[k] ?? "" ; if (isJSON(v)) {try { v = JSON.parse(v) } catch {}} if (Array.isArray(v)){(Colet[k] ??= []).push(...v)} obj[k] = v};return obj}
 </script>
 
-<style> /*----- GRIFO -----*/
+<style> /*CSS apenas da Tabela*/
+    body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
+    #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
+    #PAGES > *{height:100% ; overflow-y:scroll}
+    #COLUN    {height:100% ; background:#1a1a1a}
+
+    .TBLAA   tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
+    .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
+    .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
+    .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
+    .BndjTBL tbody td p                                                {width: 100%;height:100%;padding:2px 6px; text-align:center}
+    .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter:saturate(1.6) brightness(1.05); z-index: 999999}
+    .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
+
+    .H_Tbody{height: 30px !important;}
+    .H_Tbody td{background: purple;}
+    .H_Tbody:hover {background: #ff0000}
+    tbody.closed tr:not(.H_Tbody) {display: none}
+
+    textarea{padding: 0px;}
+    .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
+
+    .EtpSVG{height:25px ; width:25px ; pointer-events: none}
+    #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
+
+    /*----- GRIFO -----*/
     td          .grifoo{display:none  ; height:5px; width:5px ; left:0px}
     td.GrifNot2 .grifoo{display:block ; background:#ff880060}
     td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
@@ -120,9 +145,9 @@
     const Tm_thSort=(arr,Typ)=>{             // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
         return arr.map((col,x)=>col=='Lixo'?`<th><p>${''}</p></th>`:
         `<th class="ThFilt Rltv PT" onclick="ShowBndj(this);Tm_Filt(this,'${Typ}','${col}')">
-            <p class="PT" name="${col}">${Typ=="SERV"?col:BS[Typ].Json[col].COL||col /*GAMBIARRA pra remvoer o DbCol*/}</p>
+            <p class="PT" name="${col}">${Typ=="SERV"?col:BS[Typ]?.Json[col]?.COL||col /*GAMBIARRA pra remvoer o DbCol*/}</p>
             <i onclick="Orden(this,event,'${x}')">▼</i>
-            ${BS[Typ].Json[col].TH=='--' ? '' :
+            ${BS[Typ]?.Json[col]?.TH=='--' ? '' :
             `<b class="Ct none Atv">0</b><b class="Ct none Rtv">0</b>
             <div class="BndjFLT BNdj Abslt none">
                 <div class="BjConf Stky Ev">
@@ -283,131 +308,132 @@
     }
 </script>
 
-<script> // ---- AUTOCOMP ----
+<script> // ---- STATUS ----
+    const COR      = {'Gren':'147,196,125','Yelw':'255,229,153','Roxo':'180,167,214','Azul':'164,194,244','Redd':'234,153,153','Opcy':'0,0,0,0'}
+    const COR2     = {'Gren':'39,80,12'   ,'Yelw':'133,99,0'   ,'Roxo':'80,0,146'   ,'Azul':'0,54,146'   ,'Redd':'134,0,0'    ,'Opcy':'0,0,0,0'}
+    const ListEtps = [['Orçamento','Roxo'],['Arte','Roxo'],['Impressão','Yelw'],['Acabamento','Yelw'],['Pronto','Azul'],['Entregue','Gren'],['Devendo','Redd']]
+    const tr_ID    = tr =>getClss(tr,'tr-').split('-')[1]
+    const CrBS     = TYP=>ObjEtr(BS[TYP].Json).map(([k,v])=>v.COR!=''?[k,v.COR]:null).filter(Boolean) // no TFOOT tem uma igualzinha
+    const EvalCond = (expr,obj)=>{try {return Function('e','PegaLink',`return ${expr}`)(obj,PegaLink)}catch{return false}}
 
-    function Re_Soma(Typ,All){ // ⭐⭐⭐⭐⭐ (Usado apenas em PDDS) (sem DOM) (Alta Peformance)
-        const IN = performance.now()
-        if(Typ==='PDDS'){
-            const trs = All=='All' ? J[Typ] : [All]
-            trs.forEach(tr=>{
-                const oID=All=='All'? tr.Id : tr_ID(tr)                                                  // coleta Id
-                const Vai=(col,val)=>DarVAL($(Rx7(`${Typ}-${oID}-${col}`)),val)                          // pega o td onde inserirei o valor da Soma
-                const ges=(typ,arr)=>sum(arr.flatMap(c=>getArr(JJ[Typ][oID]?.[typ]).map(e=>+e?.[c]||0))) // pega todos os Valores das Colunas passadas em array
-                const vzz=e=>e==0?'':RS(e)                                                               // conferir se ta tudo vazio
-                /*Soma*/ const sV = ges('Serv',['Valr'])                    ; All=='All' ? tr.Valr=vzz(sV) : Vai('Valr',vzz(sV))
-                /*Cust*/ const sC = ges('Serv',['CArt','OS','Uber','VCbt']) ; All=='All' ? tr.Cust=vzz(sC) : Vai('Cust',vzz(sC))
-                /*Lcro*/ const sL = sV-sC                                   ; All=='All' ? tr.Lcro=vzz(sL) : Vai('Lcro',vzz(sL))
-                /*Rest*/ const sD = sV-ges('Pgmt',['Valr'])                 ; All=='All' ? tr.Deve=vzz(sD) : Vai('Deve',vzz(sD))
-            })
-            if(All=="All"){LOG(`🔄 Re_Soma:(${Typ}) ${MS(IN)}`)}
-        }
-    }
-    
-    const Splitt = {
-        GRAD:{
-            // esses são os que eu Faço aqui Mesmo DOM, são apenas Exibições (todos Fixos)
-             ImgU:j=>`${j.Id}.webp` ?? ''
-            ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? ''
-            ,Forn:j=>Dbbrev[j.Id[0]]
-        },
-        OS:{
-             O_Oimg:j=>J['IMGS'][j.OS] ?? ''
-            ,O_Cnt2:j=>J['GRAD'].filter(e=>e.OS==j.OS).length
-        },
-        UBER:{
-             U_Img:j=>J['IMGS'][j.Uber] ?? ''
-        }
-
-        
+    const GetStts=(arr,L,O)=>{ // Função pra Encontrar as Etapas
+        const S = new Set(arr)
+        const m = O.find(e=>!S.has(e))
+        const l = [...O].reverse().find(e=>S.has(e))
+        if (!l) return L[m]
+        if (!m) return L[O.at(-1)]
+        return O.indexOf(m) < O.indexOf(l) ? ((r=[...L[m]]),(r[0]=L[l][0]),r) : L[l]
     }
 
-    function RECOMP(Typ){ // isso deve se repetir para o JJ também
-
-        J[Typ].forEach(j=>{
-            const Logs=(c,val)=>{if(Typ=='GRAD'){return} ; LOG('Comp',Typ,c,val)}
-            const Exec=c=>{const val = Splitt[Typ]?.[c](j) ; Logs(c,val) ; j[c]=val ; JJ[Typ][j.Id][c]=val }
-            if(Typ=='GRAD'){['ImgU','ImgG','Forn'].forEach(c=>Exec(c))}
-            //if(Typ=='UBER'){['Img'               ].forEach(c=>Exec(c))}
-            //if(Typ=='OS'  ){['Oimg','Cnt2'       ].forEach(c=>Exec(c))}
-
-            if(Typ=='SERV'){['Tipo','Surg'       ].forEach(c=>Exec(c))}
-            if(Typ=='ARTE'){['Dsng','TArt','CArt'].forEach(c=>Exec(c))}
-            if(Typ=='CLNT'){['Link','Lcro','Medi'].forEach(c=>Exec(c))}
-
-            //GRAD ['Valr','Cnt2','Oimg','VlrO','VUbr','SrvF','Summ']
-        })
-    }
-
-        const Re_Comp = {
-    /*Opt*/  S_Tipo:j=>j.Serv ? Vari(j.Serv) : []                                                                   // isso é reoptions (deveria ser apenas DOM simples)
-    /*Opt*/ ,S_TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt']             // isso é reoptions (deveria ser apenas DOM simples)
-
-            ,S_Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
-    /*Opt*/ ,A_Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'] // isso é reoptions (deveria ser apenas DOM simples)
-    
-    //GRAD-----------------------------------------------------------------------------------------------------------
-
-        // Soma de Link // FIXOs (Não Podem Alterar)
-            ,G_VlrO:j=> JJ['OS'][j.OS]?.Valr || 0
-            ,G_VUbr:j=>{const u=J['UBER'].find(e=>e.Uber==j.Uber)?.Valr, q=J['GRAD']?.filter(e=>e.Uber==j.Uber).length||0 ; return q && u ? (u/q).toFixed(2) : 0}
-        // FIXO
-            ,G_Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
-            ,G_Cnt2:j=>ContGrad[j.Grad]?.Qnt ?? ''
-            ,G_Summ:j=>j.OS=='' ? '' : sum(J['GRAD'].filter(e=>e.OS==j.OS).map(e=>e.Valr+Number(e.Val1)))
-
-    //-----------------------------------------------------------------------------------------------------------
-
-            //-----------------------------------------------------------------------------------------------------------
-            ,C_Link:j=>ContCLNT[j.Id]?.Qnt ?? ''
-            ,C_Lcro:j=>ContCLNT[j.Id]?.Sum ?? ''
-            ,C_Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
-            //-----------------------------------------------------------------------------------------------------------
-            
-            ,A_Img:j=>J['IMGS'][j.Nome] ?? ''
-
-            ,G_SrvF:j=>ObjKey(ValForn[j.Forn]||{})
-    }
-
-    function Re_Comps(Typ,All){
-        const Edit=(Pre,col,Mod,tr)=>{ // Por enquanto nenhum aqui precisa de SB
-            const Coa = {S:'SERV',P:'PGMT'}
-            const TYP = Coa[Pre]||Typ
-            const Key = All=='All' ? tr['Id'] : VAL($(`:scope ${Rx7(`${TYP}-${tr_ID(tr)}-${'Id'}`)}`,tr)) // Pegando a Chave Primaria
-            const arg = All=='All' ? tr : JJ[TYP][Key]
-            if(!arg){LOG('⚠️ o Objeto Não Existe') ; return}
-            const Val = Splii[`${Pre}_${col}`](arg)   // arg deve sempre ser o Objeto!
-            if(Mod.includes('O') && All!=='All'){ReOpt(TDp(tr,TYP,col),Val)}
-            if(Mod.includes('V')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto','sem SB')}}
-            if(Mod.includes('E')){if(All=='All'){tr[col]=Val}else{EditCell($(TDp(tr,TYP,col)),'Edt',Val,'Auto')}}
-        }
-
-
-    }
-
+    const LALEL = {
+        SERV:{  Serv: ['Orçamento'  ,COR['Roxo'],COR2['Roxo'],'black'],
+                Arte: ['Arte'       ,COR['Roxo'],COR2['Roxo'],'white'],
+                Grad: ['Impressão'  ,COR['Yelw'],COR2['Yelw'],'white'],
+                OK:   ['Pronto'     ,COR['Azul'],COR2['Azul'],'white'],
+                Entg: ['Entregue'   ,COR['Gren'],COR2['Gren'],'white'],
+                Deve: ['Devendo'    ,COR['Redd'],COR2['Redd'],'white'],
+    }}
 </script>
 
-<style> /*CSS apenas da Tabela*/
-    body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
-    #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
-    #PAGES > *{height:100% ; overflow-y:scroll}
-    #COLUN    {height:100% ; background:#1a1a1a}
+<script> // ---- AUTOCOMP ----
+    const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
 
-    .TBLAA   tbody td:not([class*="-Bndj-"]) > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
-    .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
-    .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
-    .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
-    .BndjTBL tbody td p                                                {width: 100%;height:100%;padding:2px 6px; text-align:center}
-    .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter:saturate(1.6) brightness(1.05); z-index: 999999}
-    .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
+    const COMP = {
+        PDDS:{Valr:j=>SOMA_Obj2(j.Serv,'Valr')
+             ,Cust:j=>SOMA_Obj2(j.Serv,'VCbt') // tem que Somar com ARTE e GRAD futuramente VCbt vai virar Custo Geral uma tabela separada
+             ,Deve:j=>j.Valr-SOMA_Obj2(j.Pgmt,'Valr')
+             ,Lcro:j=>j.Valr-j.Cust
+             //,Stts:j=>Depende dos Stts Internos e dos Valores Já calculados (Valr,Cust,Deve,Lcro)
+        },
+        GRAD:{ImgU:j=>`${j.Id}.webp` ?? ''                     // OK
+             ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
+             ,Forn:j=>Dbbrev[j.Id.split('_')[0]]               // OK
+             ,VlrO:j=> j.OS?.Valr || 0                         // OK
+             ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt},
+        OS  :{Oimg:j=>`${j.Id}.webp` ?? ''},                   // OK
+        UBER:{Img :j=>`${j.Id}.webp` ?? ''},                   // OK
+        CLNT:{Lcro:j=>j.Pdds?.Valr ?? 0
+             ,Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}  
+        },
+        SERV:{SStts:j=>{
+                const CRBS  = CrBS('SERV')
+                const Atu   = CRBS ? CRBS.filter(([k,v])=>EvalCond(v,j)) : []  // ✔️ Filtro das Colunas que Passaram no Critério
+                const Crt   = CRBS ? CRBS.map   (([k,v])=>EvalCond(v,j)) : []  // ✔️ Lista de True False
+                const opc   = _0_1(Crt.filter(v=>v==true).length/Crt.length)   // ✔️ Part/Total == Porcentagem do que Falta
+                const AA    = [j.Serv!=='',j.Grad!=='',j.OK==true,j.Entg==true].map(e=>e).join('')
+                const Atuu  = Atu.map(e=>e[0])
+                const LISTA = ['Serv','Arte','Grad','OK','Entg']
+                const Etp   = GetStts(Atuu,LALEL['SERV'],LISTA)
+                return [opc,Etp[1],Etp]
+                
+                //    else if(Crt.every(v=>v==true )){return R_Cor(tr,1,COR['Gren'])}   // Todos os Crit são True Tentar usar o Próprio R_Cor pra dar Return tbm
+                //    else if(Crt.every(v=>v==false)){return [0,'']}                    // Todos os Crit são False
+                //   else{return R_Cor(tr,opc,COR['Yelw'])}
+            }
+            //Tipo:j=>j.Serv?Vari(j.Serv):[], //Opt
+            //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
+        },
+        ARTE:{Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
+              TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
+               Img:j=>J['IMGS'][j.Nome] ?? '' // não sei se isso é exatamente AUTO, vamos ver lá!
+            },        
+    }
 
-    .H_Tbody{height: 30px !important;}
-    .H_Tbody td{background: purple;}
-    .H_Tbody:hover {background: #ff0000}
-    tbody.closed tr:not(.H_Tbody) {display: none}
+    function AutoCOMP(Typ,Arr=J[Typ]){
+        if(Typ=='ARTE'||Typ=='CLNT'){return}
+        if(!Array.isArray(Arr)) return
+        Arr.forEach(j=>{
+            ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
+                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? '' // Coleta o Valor
+                j[c]=V ; JJ?.[Typ]?.[j.Id] && (JJ[Typ][j.Id][c]=V) // Aplica os J e JJ
+            })
+            ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
+                const Key=AA(fk) ; const V=j[fk]||j[Key]
+                if(Array.isArray(V)) AutoCOMP(Key,V)
+                else if(V && typeof V=='object') AutoCOMP(Key,[V])
+            })
+        })  
+    }
+</script>
 
-    textarea{padding: 0px;}
-    .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
-</style>
+<div>   <!--RECOLOR  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (Recolorir ao Abrir Bndj) (Baixa Peformance)-->
+    <script> // RECOLOR  - SCRIPT
+        function LimpaCor(tr){Bkg(tr,'') ; $$('td',tr).forEach(e=>e.style.border='')} // Limpa cor de um tr
+        function R_Cor(e,opc,Cor){ // nesta função dar apeans o Retorno caso "e" não seja DOM
+            if(!isDOM(e)){return [opc,Cor]}
+            if(e.tagName=='TD'){Bkg(e,`rgba(${Cor},${(opc).toFixed(2)})`)}        // Colore o Fundo com Opacidade
+            else{Bkg(e,`rgb(${Cor.split(',').map(v=>Math.round(+v+(255-v)*(1-opc))).join(',')})`)} // Colore o Fundo sem Opacidade
+            e.style.color        = `rgb(${Cor.split(',').map(e=>e/4).join(',')})` // Colore o Fundo
+            e.style.borderBottom = `1px solid rgba(${Cor},${(opc).toFixed(2)})`   // Colore a Borda
+            $$('select',e).forEach(E=>Bkg(E,'#00000000'))
+            return [opc,Cor]
+        }
+        
+        function Re_Colr(Typ,All){                // ✔️ Muda a cor de Todos os 'tr' ou de 1 'tr' só!
+            const trs = All=='All' ? TRs(Typ) : isArr(All) ? All : [All]
+
+            if(Typ==='PDDS'){trs.forEach(tr=>{
+                let ss = ''                                          // Traz pra cá alem do ss todas as info importantes
+                const opc   =e=>e.reduce((a,v)=>a+v[0],0)/e.length
+                const Menor =arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
+                const Exec  =(typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
+                Exec('SERV','Etapa') ; Exec('PGMT','Temperatura') ;  // Exec('CLNT','Temperatura') // por enquanto desativa Clnt pq n vai funcionar mt bem
+                if(ss.length==0){return}                             // Rodando agora na Linha tr
+                const Etp = Menor(ss)[2]                             // ⚠️ Essa Função precisa do DOM interno pra Saber qual é o Menor, Arrumar um Jeito de Descobrir Melhor isso. sem o DOM
+
+                // Essa parte aqui, já da pra fazer no AutoComp (Descobrir se ta Devendo)
+                const Vlr = $(`:scope ${Rx7(Typ,'Valr')}`,tr)        // pega Valr de PDDS (oq é a Soma de todos Valr de SERV em JJ)
+                const Pag = $(`:scope ${Rx7(Typ,'Pgmt')}`,tr)        // pega o valor q foi pago q é a Soma dos Valr de PGMT
+                const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)  // Conferir se já foi entrege e se ainda falta dinheiro ⚠️ A Validação de Ambos deve ser feita pelo const JJ['PDDS'][ID].Serv.map(e=>e.Valr) e depois com Pgmt
+                const E = Dev ? LALEL['SERV']['Deve'] : Etp
+                IcnEtp(Typ,tr,E)                                     // Adicionar o Icone de Etapas
+                R_Cor(tr,opc(ss),E[1])                               // Pintar o Tr
+                Bkg(Vlr,`rgb(${E[2]})`,E[3])                         // Pintar o P-P de Valr  (isso pode ficar Dentro de R_Cor() caso exista um argumento indicando quem é especial)
+                if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}           // Quando Tiver Devendo Limpar as Cores dos Td
+            })}
+        }
+    </script>
+</div>
 
 <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
     // Estão OK
@@ -423,16 +449,21 @@
     function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
     function CopyFone(Fone,Eu){LOG(Fone)}
     const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
-    
-    const ImgT_T=(col,e,R)=>{ // imagem que fica no Title
-            const ARTEE = col=='Serv' ? JJ['ARTE']?.[e.Arte.split('-')[1]]?.Img : ''
-            return    col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                    : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
-                    : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
-                    : ''
+
+    const ImgT_T=(Typ,col,e,R)=>{ // imagem que fica no Title (mas ainda é uma grande Gambiarra)
+        const  colimg= ObjEtr(BS[AA(col)].Json).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
+        return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${AA(col)}-${e.Id}-${i}-Imgs-Bj-Sc`)).join('') // Rodar isso pra cada Imagem desta Linha
+
+        // return
+        //     const ARTEE = col=='Serv' ? JJ['ARTE']?.[e.Arte.split('-')[1]]?.Img : ''
+        //     return    col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+        //             : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
+        //             : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
+        //             : ''
     }
 
     const FazerTitle=(Typ,Find)=>{
+        //LOG(Typ,Find)
         const Btn  = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
         const Stg  = BS[Typ].Title
         const Fn   = Function('e',`return ${Stg}`)
@@ -447,12 +478,14 @@
         const COL   = AA(col)
         const Title = Find.length==0 ? '-' : FazerTitle(COL,Find)
         const NmTle = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '-' : Title // Ainda é uma Gambiarra
-        const Cimg  = Find.map(e=>ImgT_T(col,e,R)).join('')
+        const Cimg  = Find.map(e=>ImgT_T(Typ,col,e,R)).join('')
         
         const I_Link= BS[Typ].Json[col].LINK.split('-')[0] // Acessar Informações de Link como (CLNT-List-1-Cria)
         
         const Bandeija=(arr,TYP,_P)=>`<thead><tr>${arr[0].map(t=>`<th>${t}</th>`).join('')}</tr></thead>
-                                      <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')}</tr>`).join('')}</tbody>`
+                                      <tbody>${arr.slice(1).map((LL,X)=>`<tr class="tr-${LL[0]}-${X}">${
+                                            LL.map((v,x)=>Tm_Td(v,LL,x,TYP,_P)).join('')
+                                        }</tr>`).join('')}</tbody>`
 
         if(DOM){return `${Find.map((e,x)=>x==0 ? Bandeija(ArrObj_OrdnCol(Find,BS[COL].Orden),COL,R):'').join('')}`} // isso Roda a Situação dentro da Table
         else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
@@ -466,7 +499,6 @@
             </div>`
         }
     }
-
     
     function Tm_Table2(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
@@ -589,7 +621,7 @@
             <select onload="Inn(this,Tm_Opt(meses))"></select>
         </div>
         <div id="Pag_PDDS" class="none Cl TBLAA Gap p20">
-            <div onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PPDS','80px','ExecSwith')"></div>
+            <div onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PDDS','80px','ExecSwith')"></div>
             <div class="Confy_PDDS Slidde w100 h100 Cl Gap     " onload="Inn(this,PrepTable('PDDS'))"></div> <style>#H_PDDS.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
             <div class="Confy_SERV Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('SERV'))"></div> <style>#H_SERV.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
             <div class="Confy_PGMT Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('PGMT'))"></div> <style>#H_PGMT.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
@@ -616,24 +648,27 @@
     function Render_Tbls(Typ      ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
     function Render_Body(Typ,data,RX,Aa){Tm_tbody(Typ) ; RX ? FazeroGrif(Typ,RX,Aa) : null} // Somente o body
 
-    function fazJJJ(Typ,dados){
+    function fazJJJ(Typ,dados){ // Ocultei essas coisas pra n da problema com SERV e PGMT (depois olhar se RG precisa msm disso!)
         const Colet = {}
         J[Typ]=dados.map(e=>normalizeObj(e,Colet))
-        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')}
+        //for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')}
         JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
     }
-
+    const Camada2 = {
+        PDDS:'PDDS(*,Serv:SERV(*),Pgmt:PGMT(*))'
+    }
     async function SB_GETT(Typ,Limit){
-        const FK = {PDDS:'*,Clnt:CLNT(*)',OS:'*,GRAD(*)'}
+        let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
+        if(Typ=='CLNT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
         if(Limit==null){
             let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supaBASE.from(Typ).select(FK[Typ]||'*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+            do{({data}=await supaBASE.from(Typ).select(selectStr).order('Id',{ascending:true}).range(ofs,ofs+lim-1))
                 if (!data) return ERR('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
             LOG(`✔️ Get(${Typ})`) ; return todas
         }else{
-            const {data,error}= await supaBASE.from(Typ).select(FK[Typ]||'*').order('Id',{ascending:false}).limit(Limit)
+            const {data,error}= await supaBASE.from(Typ).select(selectStr).order('Id',{ascending:false}).limit(Limit)
             if(error)return LOG(error)            
             LOG(`✔️ Get(${Typ})`) ; return data
         }
@@ -655,10 +690,13 @@
     }
 
     function RodaTable(Typ){
-        if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}else{LOAD(Typ)}
+        if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}
+        else if(Typ=='PDDS'){LOAD('PDDS');LOAD('SERV');LOAD('PGMT')
+        }else{LOAD(Typ)}
         async function LOAD(TYP){
-            const data = await SB_GETT(TYP,100) ; fazJJJ(TYP,data) ; RECOMP(TYP)
+            const data = await SB_GETT(TYP,200) ; fazJJJ(TYP,data) ; AutoCOMP(TYP) ; //RECOLOR(Typ,'All')
             TYP=='GRD2' ? Render_Tbls(TYP) : Render_Tbla(TYP)
+            
         }
     }
 </script>

@@ -118,7 +118,9 @@ function DarVAL(e,V){
     if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r,''))} // Parece q Sugg n existe mais
 }
 
-const SrcsIMG=(src,R)=>src.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
+const SrcsIMG=(src,R)=>{
+    return src.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
+}
 
 const safeS =(e)=>encodeURIComponent(JSON.stringify(e))
 const ArrBolean = v =>Array.isArray(v) && v.length > 0
@@ -126,9 +128,16 @@ const ArrBolean = v =>Array.isArray(v) && v.length > 0
 const MyEval=(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
 const BsJs =(Typ,Col,Mod)=>BS[Typ].Json[Col][Mod] // Acessar o Json do BS
 
+const IcnEtp=Etp=>{
+    if(!Etp[2]){return ''}
+    const ETP = Etp[2]
+    return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${ETP[2]})">${SVGEtapas[ETP[0]]}</div>
+            <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
+}
+
 const Tm_Tm = {
     Fixo:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
-    Ssvg:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
+    Ssvg:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }"></p>${IcnEtp(e)}`,
     Edit:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</p>`,
     Text:(e,R,P)=>`<textarea data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
     Valr:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${e?RS(e):'R$ -'}</p>`,
@@ -148,10 +157,10 @@ const Tm_Tm = {
     Auto:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
     Sync:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
     Lixo:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp">`,
-    Imgs:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
+    Imgs:(e,R,P)=>{
+        return `<img      data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">` // essa só carrega mas não pode Upar
+    },
     ImUP:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
-    
-
     Link:(e,R,P)=>{ // aqui é o Link principal q aparece
         const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK ; const TYP2 = Typ2.split('-')
         const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
@@ -165,7 +174,6 @@ const Tm_Tm = {
                 </div>
             </div>`
     },
-
    Link2:(e,R,P)=>{ // Aqui é o de Troca (mas Fundir com a de Cima)
         const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK  ;   
         const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
@@ -173,7 +181,6 @@ const Tm_Tm = {
                 <span class="Sugg Cl"></span>`
     },
     Lnk2:(e,R,P)=>{ return Tm_Bndj(R,e)},
-
     OKAY:(e,R,P)=>{
         // se tiver na Tabela Normal não carrega nada
         // Provavelmente Mpag não usa OK, quem usa isso é Somente as GRADS, pois depende manualmente desta Validação
@@ -181,13 +188,13 @@ const Tm_Tm = {
                    `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}','${P}')" src="./CrudSB/Link.webp">`
     },
     Bndj:(e,R,P)=>Tm_Bndj(R,e),
-    BjIn:(e,R,P)=>Tm_Bndj(R,e)
+    BjIn:(e,R,P)=>Tm_Bndj(R,e),
 }
 
 function Tm_Td(v,e,x,Typ,_P=''){
     const _R  = Tm_R(e,x,Typ,_P)
     const _RR =d_r(_R)
-    const Cls = BS[Typ].Json[_RR.Cl].CLS
+    const Cls = BS[Typ]?.Json[_RR.Cl]?.CLS
     const Crd ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
     if((Typ=='SERV'||Typ=='PGMT')&&_RR.Sc&&!_RR.Bj){_P=`PDDS-${_RR.Id.split('_')[0]}-${Aa(Typ)}-Bndj-_-_`} // GAMBIARRRRA (isso é pra dar o Rpai nas tabelas secuntárias prinmcipais pois na hora de exibir erlas não possuem Rpai)
     return `<td class="${Cls} Rltv" style="grid-area:${Crd[x]}">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`

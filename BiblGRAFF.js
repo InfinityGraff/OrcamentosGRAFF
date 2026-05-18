@@ -760,6 +760,20 @@ const Tm_Select=(Eu,e,lista)=>{
         <span class="Abslt Cl Sugg" style="z-index:10">${Tm_MyOpts(lista,'List')}</span>`
     )
 }
+const GetycCores = {
+    'Preto'       : '#000000',
+    'Branco'      : '#FFFFFF',
+    'Prata'       : '#C0C0C0',
+    'Vermelho'    : '#FF0000',
+    'Azul'        : '#0000FF',
+    'Verde'       : '#008000',
+    'Amarelo'     : '#FFFF00',
+    'Laranja'     : '#FFA500',
+    'Rosa'        : '#FFC0CB',
+    'Roxo'        : '#800080',
+    'Holografico' : 'linear-gradient(135deg, #ff00ff, #00ffff, #ffff00, #ff6600, #00ff99, #0099ff)'
+}
+
 function Tm_MyOpts(List,Modo){
     const Previw = {
         List :e=>`<p style="pointer-events: none">${e}</p>`,
