@@ -129,9 +129,8 @@ const MyEval=(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
 const BsJs =(Typ,Col,Mod)=>BS[Typ].Json[Col][Mod] // Acessar o Json do BS
 
 const IcnEtp=Etp=>{
-    if(!Etp[2]){return ''}
-    const ETP = Etp[2]
-    return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${ETP[2]})">${SVGEtapas[ETP[0]]}</div>
+    if(!Etp){return ''}
+    return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
             <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
 }
 
