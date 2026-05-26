@@ -282,7 +282,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 
   tfoot td{position:relative ; padding: 0px 5px}
   tfoot td:has(.TTfot:not(:empty)):not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);height:50%;border-right:solid 1px #0000004f}
-  .TTfot.tFbj{border: 1px solid #00000063 ; border-radius: 255px ; padding: 0px 8px}
+  .tFbj{border: 1px solid #00000063 ; border-radius: 255px ; padding: 0px 8px}
 
 /*Bolinhas + e -*/
 .Sugg div        {gap: 10px;}
@@ -423,3 +423,42 @@ table.Card > tbody > tr > td      {padding: 5px; border-radius: 255px ; height: 
 .hOv{cursor: pointer;transition: all 0.1s ease-in-out;}.hOv:hover{transform: scale(1.02)}.hOv:active{transform: scale(1.01)}
 
 .Grd2{width:unset;flex:1;max-height:100%} 
+
+
+
+
+
+.BNdj    {transform:translate(-50%,0%); left:50%; z-index:500 ; min-width:250px ; max-height:250px}
+.BNdj > a{position:absolute ; bottom:100%; left:50%; transform:translate(-50%,0%); z-index:1; width:20px ; height:11px} /*essa é a Pontinha da Bndj*/
+.BNdj > a.flip{transform:translate(-50%,0%) rotate(180deg);bottom:-12px}
+
+.MdalIMG{width: 800px; height: 500px}
+.MdalIMG img{max-width: 100%;max-height: 100%;object-fit: contain; background: #474747; border-radius: 10px; padding: 5px;}
+
+/*Ambos São a mesma coisa!*/
+   .P-P.SEL{background:#0000ff !important;color: #ffffff}
+.SelectSoma{background:#ff0000 !important; color:#ffffff}
+
+
+
+.Destk .P-P{font-size:13px ; border-radius: 255px ; cursor: pointer}
+.Font13 .T-T{font-size:13px}
+
+.LnK > div:first-child{background: #0000ff1a;border-radius: 255px;border: 1px solid #0000ff4f;}
+
+.Cropp{max-width: 100px !important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;justify-content: start;} /*Deixa a Coluna com Limite de 100px*/
+
+.Sugg.Atv  {background: #d822ab; color: #ffffff}
+.CorID     {background:#94949473}
+
+
+.GrifColr{color: #ff7c00}
+
+/*GAMBIARRA*/
+.Pcy :is(input,select,.Interup) {color:#ffffff ; background:#00000018; border:1px solid #ef3aff}
+.Pcy input::placeholder         {color:#ffffff ; opacity:0.5}
+
+
+.RangeNum .Range{position:relative;width:300px;height:20px}
+.RangeNum .Range input{position:absolute;width:100%;pointer-events:none;appearance:none;background:none}
+.RangeNum .Range input::-webkit-slider-thumb{appearance:none;pointer-events:auto;width:18px;height:18px;border-radius:50%;background:#000}

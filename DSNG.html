@@ -525,7 +525,7 @@
     function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)} /*GAMBIARRA*/
     function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))} /*GAMBIARRA*/
     const View=(__)=>MODAL(`<div class="Ct Mmdal">${Tm_Resumo(ARTS[__],USUARIO)}</div>`)
-    const Sldo=(  )=>MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Table('MPAG',J['MPAG'])}</tbody></table></div>`)
+    const Sldo=(  )=>MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Tr('MPAG',J['MPAG'])}</tbody></table></div>`)
 
     function TrocaRasc(Eu,X){ // tentar algo dinâmico aqui tbm
         $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ;   Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
@@ -757,6 +757,8 @@
         Load_Conf(U,'USER2')
         SB_Get(supaBASE,['BS','ARTE']) //'MPAG'
     }
+
+    function SaveConfig(e){LOG('Salva Config no SB')}
 
     async function PosGET(){
         ListDSNGrs = await GetDsngUsers()

@@ -1,6 +1,6 @@
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
-const NoVazio=e=>(e.tagName=='INPUT' && e.value.trim()) || (e.tagName=='SELECT' && e.selectedIndex)
+
 
 function Tm_DataNatora(){
     return `
@@ -10,7 +10,8 @@ function Tm_DataNatora(){
     </div>
 `
 }
-
+const Tm_Interup2=(v1,v2   ,Call)=>`<div class="Interup Rltv Bt PT" onclick="TOV(this);${Call}"><i></i><a>${v1}</a><a>${v2}</a></div>`
+const Tm_Check2  =(Stg,nome,Call)=>`<div class="Chek Ct" onclick="SynChk(this);${Call}"><input class="NONE" type="checkbox"><a class="Ct">${Stg}</a>${nome?`<p>${nome}</p>`:''}</div>`
 const Tm_Switch2=(e,l=[],p,px,Call)=>{
     e.className+=" Switch Rltv Ct PT"
     e.innerHTML=`<style>${l.map((_,i)=>`#opt_${p}_${i}:checked~i{transform:translateX(${i*100}%)}#opt_${p}_${i}:checked~label[for="opt_${p}_${i}"]{color:#fff}`).join("")}</style>
@@ -18,28 +19,8 @@ const Tm_Switch2=(e,l=[],p,px,Call)=>{
     ${l.map((t,i)=>`<label style="width:${px}" for=opt_${p}_${i}>${t}</label>`).join("")}
     <i style="width:calc(100%/${l.length})"></i>`
 }
-const Tm_Interup2=(v1,v2   ,Call)=>`<div class="Interup Rltv Bt PT" onclick="TOV(this);${Call}"><i></i><a>${v1}</a><a>${v2}</a></div>`
-const Tm_Check2  =(Stg,nome,Call)=>`<div class="Chek Ct" onclick="SynChk(this);${Call}"><input class="NONE" type="checkbox"><a class="Ct">${Stg}</a>${nome?`<p>${nome}</p>`:''}</div>`
 
-
-const TagVoid = new Set(["AREA","BASE","BR","COL","EMBED","HR","IMG","INPUT","LINK","META","PARAM","SOURCE","TRACK","WBR","SELECT"])
-
-const InM =(e,Val)=>{Nm(e,Val);Inn(e,Val)}
-
-function CleanObj(obj){return Object.fromEntries(Object.entries(obj).filter(([_,v]) => v !== "" && v !== undefined && v !== null))}
-const ObjValToArr = o =>Object.fromEntries(ObjEtr(o).map(([k,v]) => [k, [].concat(v)])) // Transforma todos os valores do objeto em array (ex: {a:1} → {a:[1]})
-
-const TempoResta =d=> {
-  if(!d) return ''
-  const n = new Date(), a = new Date(d.length == 10 ? d + 'T23:59:59' : d), ms = a - n;
-  if (ms <= 0) return 'Expirado';
-  const h = ms / 36e5, dInt = h / 24 | 0;
-  return h >= 24 ? `${dInt} Dia${dInt-1?'s':''}`
-       : h >= 1  ? `${h|0} Hora${(h|0)-1?'s':''}`
-                 : `${(ms/6e4|0)||1} Minuto${((ms/6e4|0)||1)-1?'s':''}`;
-};
-
-const UniqSplit=Arry=>{
+const UniqSplit=Arry=>{ // Acho que OBSOLETA
   const    N = e=>RxAcento(RxRepeti(RxEspaco(e))).toLowerCase()
   const  arr = [...new Map(Arry.map(e=>[N(e),e.trim()])).values()]
   return arr.filter(a=>!arr.some(b=>{
@@ -54,26 +35,6 @@ function ClickForaa(el,div,fn){ // ir pra biblioteca PreScript
         fn() ; document.removeEventListener('click', handler)}
     setTimeout(()=>document.addEventListener('click', handler),0)
 }
-
-
-
-const is_ArrStg = (vall)=>{
-    if (typeof vall !== 'string' || !vall.trim()) return null
-    try {const v = JSON.parse(decodeURIComponent(vall)) ; return Array.isArray(v) ? v : null} catch {return null}
-}
-
-// passar pra Biblioteca
-const ArrObj_OrdnCol2 = (Obj,Ordn)=>{const K = Object.keys(Obj[0]) ; const x = Ordn.filter(col=>K.includes(col)) ; return [x, ...Obj.map(obj=>x.map(col=>obj[col]))]} // Cria uma tabela ordenada a partir de um array de objetos
-const RangeDat=(arr,In,Out)=> isArr(arr) ? arr.filter(o=>o.Data>=In&&o.Data<=Out) : arr>=In&&arr<=Out
-const RangeMes=(arr,Mes)=>{if(!Mes){return arr} ; return isArr(arr) ? arr.filter(o=>o.Data?.slice(5,7)==Mes):arr?.Data?.slice(5,7)==Mes}
-const Vazi2=v=>v=='-'||v==''||v==false||v==undefined||v==null // esta vazio (Biblioteca)
-
-// Bibliotecas Gambiarras! // criaCol_Col('Qnt','PDDS','Serv')
-function criaCol_Typ(New,Typ    ){J[Typ].forEach(e=>{if(e[New]==null){e[New]=''}})}                                            // pra quando for Fora!
-function criaCol_Col(New,Typ,Col){J[Typ].forEach(e=>{if(!e[Col]){return} ; e[Col].forEach(s=>{if(s[New]==null){s[New]=''}})})} // pra quando for Dentro!
-//function exclCol_Col(Del,Typ,Col){J[Typ].forEach(e=>e[Col]?.forEach(s=>delete s[Del]))}                                        // pra quando for Dentro!
-
-
 
 function LocAno(Email){
     const nome = Email.match(/\d+°\s*(.*?)\s*-\s*\d+/)?.[1] || ""
@@ -107,22 +68,6 @@ const Crecent=(M,F=0.5,F2=1.8)=>{ // Mudar as Forças de Acordo com cada Produto
   const t1 = 1 - Math.pow(M, F * 1.2);
   const gradual = F2 * Math.pow(Math.max(0, 0.25 - M) / 0.25, 2)
   return +(t1 * (F + 0.7) + gradual).toFixed(3);
-}
-
-function CrypPass(senha){ // Obsoleta
-  const Cryp = senha.split('').map((c,idx)=>{
-    if(/[0-9]/.test(c)){let N=parseInt(c)
-      N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
-    else if(/[A-Za-z]/.test(c)){
-      let L=c.charCodeAt(0)+(idx%2===1?5:1)
-      if(L>90&&L<97)L-=26
-      else if(L>122)L-=26
-      return String.fromCharCode(L)}else{return c}})
-  var par = [] ; var imp = []
-  Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
-  const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
-  const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
-  return Par.concat(Imp).join('')
 }
 
 const BrevTitle = (Typ,Stg)=>{
@@ -460,7 +405,9 @@ function JuntarCanvas(C1,C2){
     return newCanvas
 }
 
-function Nome_Bxar(C1,und){return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`}
+function Nome_Bxar(C1,und){
+    return `${$Vl('#NomeCliente')}_ CAM `+C1.replace('C_','').replace('F_','').replace(/\d/g, "")+`_ ${und} UND.jpg`
+}
 
 function Baixar_Cnvs(C1,C2,und){
     if($Vl('#NomeCliente')===''){ alert('Falta Nome do Pedido');return}
@@ -491,11 +438,6 @@ function CopyGRAFF(e,btn){
     document.body.removeChild(temp)
     btn.innerText = 'Texto copiado!'
 }
-
-
-
-
-
 
 function Diferentes(b,a){ // REALTIME do SUPABASE comparar objetos se são iguais Usado
   const r = { Id: b.Id}
@@ -699,15 +641,11 @@ function CheckLimit(Variant,La,Al,Lrg,Alt){ // ⚠️ Da pra SIMPLIFICAR a parte
     else if(x && !X){if(Lrg && Alt && Lrg > x && Alt > x) [La, Al].forEach(i => AVISO(x, i, 'Max'))} // Caso compartilhado: apenas um lado precisa obedecer
 }
 
-// Aparentemente Jogar o gráfico na Biblioteca
-
-
 // Trexo relacionado a Mover os Botões das Fotinhas
 let alvo,dx,dy
 document.querySelectorAll('.movel').forEach(el => el.onmousedown = e => {alvo = el; dx = e.clientX - el.offsetLeft; dy = e.clientY - el.offsetTop})
 document.onmousemove = e => {if(alvo) {const x = e.clientX - dx, y = e.clientY - dy; alvo.style.left = x + 'px'; alvo.style.top = y + 'px'; $('.dimens',alvo).textContent = `${x}, ${y}`}}
 document.onmouseup = () => {if (alvo) {navigator.clipboard.writeText(`top: ${alvo.style.top}; left: ${alvo.style.left};`); alvo = null}}
-
 
 //  PREPARAR pra o DESMANCHE
 function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentro dos Grupos
@@ -720,7 +658,6 @@ function Tm_OptsGraff(Ary,Stg=null){ //  Função que Carrega os Serviços dentr
         },{})).map(([g,o]) => `<optgroup label=\"${g}\">${o.join('')}</optgroup>`).join('')}
     `
 }
-
 
 // SavePDF
 const SavePDF = async (Div, Nome="download.pdf") => {
@@ -746,8 +683,6 @@ const SavePDF = async (Div, Nome="download.pdf") => {
         callback: () => pdf.save(Nome)
     });
 }
-
-
 
 function Selecty(Eu){const I = $('input',_td(Eu)) ; Vll(I,Eu.innerText) ; Dispinput(I) ; /*Add_N(Pai(Eu))*/}
 
@@ -797,7 +732,6 @@ const PesqOpt = (Inpt, Modo) => { // Essa função de Pesquisa Pode ser Util em 
     // quando pesquiso um nome como "Brilho" em "brilho Local" grifa o brilho e acaba perdendo o espaço
     // quando vai inserir o valor fica 'BrilhoLocal'
 }
-
 
 // dexia os Selects Cinza caso não tenha nada (Mudar isso pra o INPUT)
 function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
@@ -863,7 +797,6 @@ const SavePDF2 = async (Div, Nome = "download.pdf") => {
     await pdf.html(Div,{x: 20,y: 20,autoPaging: "text",callback: (doc) => doc.save(Nome)});
 }
 
-
 const GetPC = () => {
     const L = ['Balcão','Allan','Render','Baby','Outro']
     let PC = localStorage.PC_NAME
@@ -877,9 +810,6 @@ const GetPC = () => {
     return {PC,Navgd:ua.includes('Edg')    ? 'Edge'   : ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox')? 'Firefox': ua.includes('Safari') ? 'Safari' : 'Outro'}
 }
 
-
-
-
 function RANGE_DATA(arr,LMT,Atv){ // Array de objetos | Limite ["2026-03-05","2026-12-30"] | Atv=Boolean (se permite isso ou não)
     const has=LMT&&Atv
     let idx0=0,idx1=arr.length-1
@@ -889,10 +819,3 @@ function RANGE_DATA(arr,LMT,Atv){ // Array de objetos | Limite ["2026-03-05","20
     for(let i=idx0;i<=idx1;i++){const e=arr[i],d=e.Data ; if(!e.Lixo&&(d==""||!has||d>=LMT[0]&&d<=LMT[1])) out.push(e)}
     return out
 }
-
-
-
-
-
-
-

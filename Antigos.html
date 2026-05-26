@@ -75,7 +75,7 @@
     #Sommma{color: white}
 </style>
 
-<div>   <!--TABELAS  - ⭐⭐⭐_ _ -->
+<div>   <!--TABELAS  - ⭐⭐⭐ _ _ -->
     <script>// TABELAS (Transitar na Tabela com as Setas do Teclado)
         // Estão OK
         const Tm_Sklt  =(Typ)=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
@@ -160,6 +160,12 @@
                 PreTbl[Typ]=true                                                     // Declarar que a Aba já foi Aberta!
             }
         }
+        function Tm_Table(Typ,arry,Rpai=''){
+            const IN = performance.now()
+            const Retorno = arry.map(e=> e ? `<tr class="tr-${e[Pry[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
+            LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
+            return Retorno
+        }
 
         // 🚫 impedir que cliente seja excluido quando ele tiver atribuido a pelomenos 1 Pedido
         // 💡 Opção de mais de 1 Designer
@@ -167,7 +173,7 @@
     </script>
 </div>
 
-<div>   <!--PESQUISA - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
+<div>   <!--PESQUISA - ⭐⭐⭐⭐ _  (⚡ sem DOM ⚡) (🎨 Apenas Melhorar a Interface) (⚠️ botar os Grifos na Bibliotecas pra tbm ser usado no Select)-->
     <script> // SCRIPT - PESQUISA
         let debounceTimer
         const Espelhar =(Org,Dst)=>{Dst.forEach(e=>{e.innerHTML = Org.innerHTML ; $('input',e) ? $('input',e).value = $('input',Org).value : null})}
@@ -303,7 +309,7 @@
     </script>
 </div>
 
-<div>   <!--FILTROS  - ⭐⭐⭐⭐_  (⚡ sem DOM ⚡) (🎨 Melhorias Bestas) -->
+<div>   <!--FILTROS  - ⭐⭐⭐⭐ _  (⚡ sem DOM ⚡) (🎨 Melhorias Bestas) -->
     <script> // FILTROS - SCRIPT
         const Colx    =(Typ,col)=>FIdx(BS[Typ].Orden,col)+1
         const COLLLL  =(Typ,col)=>{if (!Typ || !col) return "";return `td:nth-child(${Colx(Typ, col)})`}
@@ -604,7 +610,8 @@
 <script> // AUTOCOMP - ⭐⭐⭐ _ _  (⚡ Precisa Funcionar sem BNDJ) (Recomp ao Abrir Bndj) (ainda falta Muito...)
     const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v // Regras de Fornecerdores (BPRint e talvez Grafit) // Tirar isso e Imbutir dentro daquela Const Principal
     const TDp =(tr,Typ,col)=>$(`:scope ${Rx7(Typ,col)}`,tr)
-    const FiM =(arr   )=>arr.slice(0,-1)      
+    const FiM =(arr   )=>arr.slice(0,-1)
+    const sum =arr=>arr.reduce((acc,el)=>acc+el,0) // acho q essa é só mais Fraca q a SOMA 
 
     function Tratamento(){ // Isso é usando antes de a tabela Carregar no DOM!
         ;['PDDS','CLNT'].forEach(Typ=>{// tem que ser chamado separado pois acessa 2 tabelas ao msm tempo
@@ -889,7 +896,6 @@
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
-
     function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
         const NewID   =arr=>Math.max(...arr.map(o=>Num(o.Id)))+1
         function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
@@ -902,6 +908,49 @@
         /*DOM*/ PrePos($(`#H_${Typ} > tbody`),Tm_Table(Typ,[df]),Ps)
         if(SB){LOG('Linha Adicionada pelo SB')}
         return df // isso é bom pq que precisa de dados daqui pode usar por Fora
+    }
+    function RmvROW(Eu,SB){              // ⭐⭐⭐⭐_
+        const R   = d_r(Eu) ; if(!R) return
+        const Img = $$(Rx7('-Imgs-'),__tr(Eu)).map(e=>Nm(e))
+        /*OBJ*/     DarJJ('Del',R.Ty,R.Id)
+        /*OBJ-IMG*/ Img.forEach(e=>delete J['IMGS'][RmvExt(e)])
+        /*SUB*/     if(!SB){Sb_DELETE(supaBASE,R.Ty,R.Id)}
+        /*SUB-IMG*/ if(!SB){Img.forEach(e=>Sb_DELIMG(supaBASE,e))}
+        /*DOM*/     $$(Rx7(`${R.Ty}-${R.Id}-${R.Cl}`)).forEach(td=>{__tr(td).remove() ; if(SB){LOG('Deletado pelo SupaBase')}})
+    }
+    function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
+        const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
+        const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
+        const _Rf = d_r(Fim)                   // pega o _R do Ultimo
+        let    Jn = ObjValToArr(ClnObjs(JJ[Typ][_Rf.Id],bs)) // criar o Def
+        SEL.forEach(p=>{                       // pra cada Célula
+            const _R = d_r(p)                  // pega o _R de cada um
+            if(p!==Fim){                                                           // se for Diferente da Ultima
+                const Ids_PDDS = ContCLNT[_R.Id]?.List||[]                         // Pega a Lista de Pedidos
+                Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
+                ObjEtr(ClnObjs(JJ[Typ][_R.Id],bs)).forEach(([k,v])=>Jn[k].push(v)) // Concatena as Informações
+                RmvROW(p)                                                          // remove a Linha
+            }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDIT(supaBASE,'CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
+        })
+    }
+</script>
+
+<script> // Biblioteca
+
+    function CrypPass(senha){ // OBSOLETA
+    const Cryp = senha.split('').map((c,idx)=>{
+        if(/[0-9]/.test(c)){let N=parseInt(c)
+        N=N===9?0:N+(idx%2===1?4:1);return N.toString()}
+        else if(/[A-Za-z]/.test(c)){
+        let L=c.charCodeAt(0)+(idx%2===1?5:1)
+        if(L>90&&L<97)L-=26
+        else if(L>122)L-=26
+        return String.fromCharCode(L)}else{return c}})
+    var par = [] ; var imp = []
+    Cryp.forEach((e,idx)=>{idx%2===0?par.push(e):imp.push(e)})
+    const Par=par.reverse().flatMap(C=>[`3${C}$`,`r${C}-`,`3${C}&`])
+    const Imp=imp.reverse().flatMap(C=>[`-${C}e`,`V${C}9`,`@${C}K`])
+    return Par.concat(Imp).join('')
     }
 
 </script>

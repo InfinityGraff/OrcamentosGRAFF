@@ -1,31 +1,22 @@
-const J={},JJ={},BS={},ALL={},PreTbl={}
+const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
-const OjKy   =Typ=>ObjKey(BS[Typ].Json)
-const ClrObj  =obj=>Object.fromEntries(ObjKey(obj).map(k=>[k,'']))
-
-
-const Tm_R=(e,x,Typ,P=false)=>{
-    const Secund   = {SERV:'PDDS',PGMT:'PDDS'} // GAMBIARRA
-    const k=OjKy(Typ)[x]
-    return `${Typ}-${e=='Foot'?e:e[isArr(e)?0:'Id']}-${k}-${BS[Typ].Json[k].TM}-${P?'Bj':'_'}-${ObjKey(Secund).includes(Typ)?'Sc':'_'}`
-}
-
-const _Bol=v=> v !== '_'
-const _par=s=>(([Ty,Id,Cl,Tm,Bj,Sc]) => ({Ty,Id,Cl,Tm,Bj:_Bol(Bj),Sc:_Bol(Sc)}))(s.split('-'))
-const d_r=e=>_par(typeof e == "string" ? e : e.dataset.r)
-const d_R=e=>typeof e == "string" ? e : e.dataset.r
-const d_p=e=>NoVazi(e.dataset.p) ? _par(e.dataset.p) : null
-const RR=(r,p)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
-const rr=(r,p)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}${p?(isArr(p)?p:[p]).map(k=>`[data-p*="${k}"]`).join(''):''}`)
-const $r=(...arr)=>{const K=arr.filter(v=>v!=null&&v!=="").join('-') ; return K ? $(`[data-r="${K}"]`) : null} // da pra simplificar esta Limpeza
-const Rx7=(...arr)=>`.P-P${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // nem todos tem .P-P isso pode dar BO depois
-const Rx8=(...arr)=>`${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // esse é pra usar em Tfoot justamente pq ele não tem .P-P
-const __tr=e=>e.closest('[class^="tr-"]')
-const RmvExt=e=>e.replace(/\.[^/.]+$/,'')
-const PrePos=(div,Clone,Ps)=>Ps == "<" ? After(div,Clone) : Befor(div,Clone)
-/*Novos Libs*/
-const SELE=(ev,Eu)=>{ev.preventDefault() ; Tog(Eu,'SEL')}
+const _Bol   =v=> v !== '_'
+const _par   =s=>(([Ty,Id,Cl,Tm,Bj,Sc]) => ({Ty,Id,Cl,Tm,Bj:_Bol(Bj),Sc:_Bol(Sc)}))(s.split('-'))
+const d_r    =e=>_par(typeof e == "string" ? e : e.dataset.r)
+const d_R    =e=>     typeof e == "string" ? e : e.dataset.r
+const RR     =(r)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
+const rr     =(r)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
+const $r     =(...arr)=>{const K=arr.filter(v=>v!=null&&v!=="").join('-') ; return K ? $(`[data-r="${K}"]`) : null} // da pra simplificar esta Limpeza
+const Rx7    =(...arr)=>`.P-P${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // nem todos tem .P-P isso pode dar BO depois
+const Rx8    =(...arr)=>    `${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // esse é pra usar em Tfoot justamente pq ele não tem .P-P
+const __tr   =e=>e.closest('[class^="tr-"]')
+const PrePos =(div,Clone,Ps)=>Ps == "<" ? After(div,Clone) : Befor(div,Clone)
+const SELE   =(ev,Eu)=>{ev.preventDefault() ; Tog(Eu,'SEL')}
 const ClnObjs=(obj,bs)=>CleanObj(Object.fromEntries(ObjEtr(obj).filter(([k])=>{const r = bs[k] ; return r && r[1] !== 'I' && r[0] !== 'X' && r[1] !== 'A'})))
+const MyEval =(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
+const BSJsn  =(Typ,Col)=>BS[Typ].Json[Col]
+const BsJs   =(Typ,Col,Mod)=>BSJsn(Typ,Col)[Mod] // Acessar o Json do BS
+const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 
 const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
     const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
@@ -61,39 +52,11 @@ const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
     const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
     //LOG(`Const Atualizadas! ${M}, ${iguais}`)
 }
-
-async function ImgLowQuality(src, mod = 'Low') {
-    const CFG = {
-        Low: { w: 35,  h: 17,  q: 0.3 },
-        Med: { w: 300, h: 300, q: 0.7 },
-        HD:  { w: null, h: null, q: 0.9 } // tamanho real
-    };
-    const cfg = CFG[mod] || CFG.Low;
-    return new Promise(res => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => {
-            const r = (cfg.w && cfg.h)
-                ? Math.min(cfg.w / img.width, cfg.h / img.height, 1)
-                : 1; // HD → escala real
-            const canvas = document.createElement('canvas');
-            canvas.width  = img.width  * r;
-            canvas.height = img.height * r;
-            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-            // sempre WebP
-            res(canvas.toDataURL('image/webp', cfg.q));
-        }
-        img.onerror = () => res(null);
-        img.src = src;
-    });
-}
-
 function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
     if(arr.length==1)         {EditCell(Sel,'Edt',arr[0],'Auto')} // Troca pra o Unico option, se Tiver
     if(!arr.includes(Nm(Sel))){EditCell(Sel,'Edt',""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
     setTimeout(()=>{$$('option',Sel).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
 }
-
 function VAL(e){
     const R = d_r(e)
     const val = 
@@ -107,7 +70,6 @@ function VAL(e){
             : null
     return val
 }
-
 function DarVAL(e,V){
     const R = d_r(e)
     if(['Edit','Fixo'  ].includes(R.Tm)){Nm(e,V)       ; Inn(e,V)}
@@ -115,428 +77,395 @@ function DarVAL(e,V){
     if(['Auto'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V)}
     if(['Mdds'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V?Cm(V):'')}
     if(['Valr','Sync'  ].includes(R.Tm)){Nm(e,V==''?'':Num(V)) ; Inn(e,V==''?'':RS(V))}
-    if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r,''))} // Parece q Sugg n existe mais
+    if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r))} // Parece q Sugg n existe mais
 }
 
-const SrcsIMG=(src,R)=>{
-    return src.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
-}
+//===========================TEMPLATE===========================
 
-const safeS =(e)=>encodeURIComponent(JSON.stringify(e))
-const ArrBolean = v =>Array.isArray(v) && v.length > 0
-
-const MyEval=(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
-const BsJs =(Typ,Col,Mod)=>BS[Typ].Json[Col][Mod] // Acessar o Json do BS
-
-const IcnEtp=Etp=>{
-    if(!Etp){return ''}
-    return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
-            <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
-}
-
-const Tm_Tm = {
-    Fixo:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }">${e}</p>`,
-    Ssvg:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }"></p>${IcnEtp(e)}`,
-    Edit:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</p>`,
-    Text:(e,R,P)=>`<textarea data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
-    Valr:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${e?RS(e):'R$ -'}</p>`,
-    Mdds:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${e?Cm(e):''    }</p>`,
-    Chek:(e,R,P)=>`<input    data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
-    Slct:(e,R,P)=>`<select   data-R="${R}" data-P="${P}" class="P-P Ct" name="${e      }" onchange="EditCell(this,'Edt')">${Tm_Opt(MyEval(BsJs(d_r(R).Ty,d_r(R).Cl,'TH'))||[],e)}</select>`,
-    Slc2:(e,R,P)=>`MySelect()`,
-    Data:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih(this,$('input',Pai(this)))">${e?BrevData(DMY(e)):e}</p><input type="date" data-R="${R}" data-P="${P}" class="none" value="${e?YMD(e):e}" onchange="EditCell(this,'Edt')" onblur="TrcFih(this,$('p',Pai(this)))">`,
-    Dat2:(e,R,P)=>`<div      data-R="${R}" data-P="${P}" class="P-P Ct" name="${e?YMD(e):e}" >${
-
-        `<div class="Rltv">
-            <input style="width:90px" placeholder="-" data-R="${R}" data-P="${P}" class="none" name="${e?YMD(e):e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this,'Edt')" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))">
-            <div class="Box1 calendar BNdj Abslt Cl none"></div>
-        </div>`
-
-        }</div>`,
-    Auto:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${ Num(e)}" onclick="CtrlSoma(this)">${e}</p>`,
-    Sync:(e,R,P)=>`<p        data-R="${R}" data-P="${P}" class="P-P Ct" name="${NUMM(e)}" onclick="CtrlSoma(this)">${e=='--'?'--':e==''?'':e==0?'--':RS(e)}</p>`, // a idéia seria receber aqui sempre um Numero
-    Lixo:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P PT HOV" onclick="${d_r(P).Tm =='Bndj'?`EditCell(this,'Del')`:'RmvROW(this)'}" name="${e}" src="./CrudSB/Lixo.webp">`,
-    Imgs:(e,R,P)=>{
-        return `<img      data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">` // essa só carrega mas não pode Upar
-    },
-    ImUP:(e,R,P)=>`<img      data-R="${R}" data-P="${P}" class="P-P"    name="${e      }" loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
-    Link:(e,R,P)=>{ // aqui é o Link principal q aparece
-        const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK ; const TYP2 = Typ2.split('-')
-        const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
-        return e!=''? Tm_Bndj(R,e)
-         : `<div class="Rltv">
-                <p class="P-P" data-R="${R}" data-P="${P}" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p>
-                <div class="BndjSUG MySelect BNdj Abslt none Cl">
-                    <a>${SVG.Ponta}</a>
-                    <input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
-                    <span class="Sugg Cl"></span>   
-                </div>
-            </div>`
-    },
-   Link2:(e,R,P)=>{ // Aqui é o de Troca (mas Fundir com a de Cima)
-        const Typ2 = BS[d_r(R).Ty].Json[d_r(R).Cl].LINK  ;   
-        const COLL = BS[d_r(R).Ty].Json[d_r(R).Cl].COL
-        return `<input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
-                <span class="Sugg Cl"></span>`
-    },
-    Lnk2:(e,R,P)=>{ return Tm_Bndj(R,e)},
-    OKAY:(e,R,P)=>{
-        // se tiver na Tabela Normal não carrega nada
-        // Provavelmente Mpag não usa OK, quem usa isso é Somente as GRADS, pois depende manualmente desta Validação
-        return e ? `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" name="${e}" onclick="RmvLink(this,'${R}','${P}')" src="./CrudSB/Unlink.webp">` :
-                   `<img data-R="${R}" data-P="${P}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}','${P}')" src="./CrudSB/Link.webp">`
-    },
-    Bndj:(e,R,P)=>Tm_Bndj(R,e),
-    BjIn:(e,R,P)=>Tm_Bndj(R,e),
-}
-
-function Tm_Td(v,e,x,Typ,_P=''){
-    const _R  = Tm_R(e,x,Typ,_P)
-    const _RR =d_r(_R)
-    const Cls = BS[Typ]?.Json[_RR.Cl]?.CLS
-    const Crd ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    if((Typ=='SERV'||Typ=='PGMT')&&_RR.Sc&&!_RR.Bj){_P=`PDDS-${_RR.Id.split('_')[0]}-${Aa(Typ)}-Bndj-_-_`} // GAMBIARRRRA (isso é pra dar o Rpai nas tabelas secuntárias prinmcipais pois na hora de exibir erlas não possuem Rpai)
-    return `<td class="${Cls} Rltv" style="grid-area:${Crd[x]}">${Tm_Tm[d_r(_R).Tm](v,_R,_P)}</td>`
-}
-
-function Tm_Table(Typ,arry,Rpai=''){
-    const IN = performance.now()
-    const Retorno = arry.map(e=> e ? `<tr class="tr-${e[Pry[Typ]]}">${ObjOrdn(e,BS[Typ].Orden).map((v,x)=>Tm_Td(v,e,x,Typ,Rpai)).join('')}</tr>` : '').join('')
-    LOG(`⏱️🔴 Tm_table(${Typ}): ${MS(IN)}`)
-    return Retorno
-}
-
-function SellFilesIMG(Inpt){ // Fazer isso Ficar imbutido dentro da Função do input Files
-    const file = Inpt.files[0]
-    $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file)
-    $('span',Pai(Inpt)).textContent = file.name
-}
-
-function AbrirImg(img,Nome,R){
-    const X   = Nome ? 'Plc' : 'Up'
-    const _R  = d_r(R)
-    const Pre = BS[_R.Ty].Json[_R.Cl].SRC ?? '' // Prefixo de Imagens se Tiver
-    const W   = img.naturalWidth > img.naturalHeight
-    MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
-                <img src="${BASE_URL}Img/${Nome}">
-                <div class="casusa Cl ${W ? 'w100':'h100'}">
-                    <span>Nome: ${Nome}</span> <div>Id: ${_R.Id}</div>
-                    <span>SALVAR COM NOME: ${Pre}${_R.Id}</span>
-                    <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                    <button onclick="XModal(this);ImgUPP($('input',Pai(this)),'${Pre}${_R.Id}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
-                </div>
-            <div>`)
-    if(X=='Up'){$('.MdalIMG input').click()}
-}
-
-function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
-function GambiarraRmv(div){Rmv(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Rmv(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (adicionar o hov q faz a saturação da tr)
-
-function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
-    const el = $('.BNdj', div)
-    Tog_N(el);GambiarraAdd(div)
-    ClickForaa(el,div,()=>{Add_N(el);/*GambiarraRmv(div)*/}) // não remover a GAMBIARRA se a próxima bandeija estiver na msm tr
-}
-
-// criar uma Função Geral, que serve tanto pra Edit ImgUpload, para delete, para várias coisas ela faz o seguinte abaixo
-// ela Localiza todos os seus relacionados nessesários e gera um objeto, ent ela vai localizar
-// Eu, Pai, T-T Pai, fora o d_r(R) inteiro, mas tbm vai Rerornar Minha tr, a tr do Pai, qual td é o Pai dela
-// retornará várias coisas em um unico Obj dai é só acessalo pelo nome do Obj
-
-
-//===========================LINK===========================
-    // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
-
-function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
-    if(Ipt.value){
-        if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
-            const df = AddROW(AA(Typ),'<',{[Aa(Typ)]:Ipt.value})
-            Linkar(Ipt,`${AA(Typ)}-${df.Id}`)
-        }
+    const IcnEtp=Etp=>{
+        if(!Etp){return ''}
+        return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
+                <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
     }
-    // NewLink apenas para os que Permitem NewLink
-}
 
-function RmvLink(){
-    LOG('remove Link')
-}
+    const Tm_RangNUM=(Typ,Col)=>
+    `<div class="RangeNum">
+        <div class="Bt">
+            <div class="Rang-Min" contenteditable>0</div>
+            <div class="Rang-Max" contenteditable>1000</div>
+        </div>
+        <div class="Range">
+            <input class="R1" type="range" max="1000" value="0"    oninput="SyncRangNum(this)">
+            <input class="R2" type="range" max="1000" value="1000" oninput="SyncRangNum(this)">
+        </div>
+        <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
+    </div>`
 
-// isso tem que servir pra ADICIONAR, REMOVER, TROCAR
-function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
-    const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
-    const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
-    const PP2 = $(Rx7(`${d_r(Eu).Id}-Link`),_tr(Eu))  // Passiva (isso deveria ser a td que recebe o valor do ativo dentro do passivo)
-    const  OK = $(Rx7('OKAY'),_tr(Eu))                // (para as Linkagem que o OKOK é automativo blz, mas tem umas como Grad q é Manual depois ver isso!)
-    const _R2 = d_r(PP2)                              // Raster da Passivo (Alterar pra d_r(this))
-
-    const Ar1 = JJ[_R1.Ty][_R1.Id][_R1.Cl] // PGMT (Buscar o que Ja tinha)
-    const Ar2 = JJ[_R2.Ty][_R2.Id][_R2.Cl] // MPAG (Buscar o que Ja tinha)
-
-    const Vl1 = Ar1 ? `${Ar1} | ${_R1.Ty}-${_R1.Id}` : `${_R1.Ty}-${_R1.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
-    const Vl2 = Ar2 ? `${Ar2} | ${_R2.Ty}-${_R2.Id}` : `${_R2.Ty}-${_R2.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
-
-    EditCell(PP1,'Edt',Vl2)    // Id da Passiva na Ativa (String)
-    EditCell(PP2,'Edt',Vl1)    // Id da Ativa na Passiva como Array
-    EditCell(OK ,'Edt',true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
-}
-
-function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
-    const td = _td(Eu)
-    const PP = $('.P-P',td)
-    const _R = PP.dataset.r
-    EditCell(PP,'Edt',val)
-    Inn(td,Tm_Bndj(_R,`${val}`))
-}
-
-// const Tm_Suggs = {// Campo pra Imbutir dentro do BS
-//      SERV:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - ${e.Serv} ${e.Desc}</p>`
-//     ,PGMT:e=> `<p>  ${e.Id  } - ${Getna(e,'Clnt')} - R$ ${e.Valr} (${e.Form}) ${e.Data}</p>`
-//     ,CLNT:e=> `<p>  ${e.Id  } - ${e.Clnt}</p>`
-//     ,GRAD:e=> `<div>${e.Grad} - ${Tm_Tm[e.ImgU,{Col:''}]}</div>`
-//     ,  OS:e=> `<p>  ${e.Id  } - ${e.OS}</p>`
-//     ,UBER:e=> `<p>  ${e.Id  } - ${e.Uber}</p>`  
-//     ,MPAG:e=> `<p>  ${e.Data} - ${e.Clnt}, ${e.Valr} ${e.Form}</p>`
-// }
-
-const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
-function EvalSugg(Typ,e){
-    const Fn = new Function('e',`return ${BS[Typ].List}`)
-    return Fn(e)
-}
-
-function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procurando)
-    clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
-    debounceTimer = setTimeout(()=>{
-        const _R = d_r(R)
-        const [Typ2,Mod,Qnt,Cria] = TYP2.split('-')
-
-        const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
-        const list = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista
-
-        const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BS[Typ2].Json[k]?.TM=='Link' ? Getna(j,k) : v))
+    const Tm_Tm = {
+        Lixo:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW('${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
+        Fixo:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
+        Ssvg:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
+        Auto:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" onclick="CtrlSoma(this)">${GrifTxt(e,Rgx)}</p>`,
+        Edit:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${GrifTxt(e,Rgx)}</p>`,
+        Valr:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
+        Mdds:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
+        Text:(e,R,Rgx)=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
+        Imgs:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
+        ImUP:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
+        Chek:(e,R,Rgx)=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this,'Edt')" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
+        Slct:(e,R,Rgx)=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this,'Edt')">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
+        Data:(e,R,Rgx)=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this,'Edt')" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
-        const EXTRA = BS[_R.Ty].Json[_R.Cl].LnkEX   // Acessar os Extras (de cada Tabela)
-        const Fn    = Function(`return ${EXTRA}`)()
-        const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
+        Link:(e,R)=>{ // aqui é o Link principal q aparece
+            const _R = d_r(R)
+            const Typ2 = BSJsn(_R.Ty,_R.Cl).LINK ; const TYP2 = Typ2.split('-')
+            const COLL = BSJsn(_R.Ty,_R.Cl).COL
+            return e!=''? Tm_Bndj(R,e)
+            : `<div class="Rltv">
+                    <p class="P-P" data-R="${R}" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p>
+                    <div class="BndjSUG MySelect BNdj Abslt none Cl">
+                        <a>${SVG.Ponta}</a>
+                        <input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
+                        <span class="Sugg Cl"></span>   
+                    </div>
+                </div>`
+        },
+    Link2:(e,R)=>{ // Aqui é o de Troca (mas Fundir com a de Cima)
+            const _R = d_r(R)
+            const Typ2 = BSJsn(_R.Ty,_R.Cl).LINK  ;   
+            const COLL = BSJsn(_R.Ty,_R.Cl).COL
+            return `<input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
+                    <span class="Sugg Cl"></span>`
+        },
+        OKAY:(e,R)=>{
+            // se tiver na Tabela Normal não carrega nada
+            // Provavelmente Mpag não usa OK, quem usa isso é Somente as GRADS, pois depende manualmente desta Validação
+            return e ? `<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="RmvLink(this,'${R}')" src="./CrudSB/Unlink.webp">` :
+                       `<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}')" src="./CrudSB/Link.webp">`
+        },
+        Slc2:(e,R)=>`MySelect()`,
+        Lnk2:(e,R)=>Tm_Bndj(R,e),
+        Bndj:(e,R)=>Tm_Bndj(R,e),
+        BjIn:(e,R)=>Tm_Bndj(R,e),
+    }
+    
+    const Tm_R     =(Typ,Id,Col)=>`${Typ}-${Id}-${Col}-${BSJsn(Typ,Col)?.TM}-_-_` // esses 2 Ultimos _-_ acho q ja da pra remover
+    const Tm_Td    =(Typ,Id,Col,Val,x,Rgx)=>{const _R=Tm_R(Typ,Id,Col) ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx)}</td>`}
+    const Tm_Tr    =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${AplicaStts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx)).join('')}</tr>`:'').join('')
+    const Tm_tdFoot=(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
 
-        if(Mod=='List'){
-            Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Pry[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
-        }
-        if(Mod=='Table'){
-            Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Table(Typ2,filt,R)}</tbody></table>`)
-            Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
-        }
-        if(Mod=='Card'){
-
-        }
-    },100)
-}
-
-
-//===========================CRUD===========================
-
-
-
-async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
-    const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-    const _R  = d_r(R)
-    const f   = Inpt.files[0]                          // Pega o único arquivo
-    const Ext = RxExt(f.name)                          // Pega a Extensão do Arquivo
-    const src = URL.createObjectURL(f)                 // src temporário
-    const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
-    const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
-    const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-    J.IMGS[Nome] = f.name
-    if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
-    if(Eximg.includes(Ext)){
-        EditCell(PP,'Edt',`${Nome}.${Ext}`)
-        DarVAL(PP,src)
-        Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
-        Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
-        if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${Nome}.svg` ,true)
-        }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
-    }else{LOG('não é nem Img nem Svg é um arquivo!')}
-}
-
-async function ImgUPP2(Inpt,Nome,R){
-    const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-    // const _R  = d_r(R)
-    // const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
-    // const Pay = _td(Pai(_td(PP)))
-    // const T_T = Pay ? Pai($('.T-T',Pay)) : null
-
-    for(let i=0;i<Inpt.files.length;i++){
-        const f   = Inpt.files[i]
-        const Ext = RxExt(f.name)
-        const src = URL.createObjectURL(f)
-        const NomeFinal = `${Nome}_${i}` // evita sobrescrever
-        J.IMGS[NomeFinal] = f.name
-        // if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${_R.Id}',this)" src="${src}">`}
-
+//===========================IMAGENS===========================
+    async function ImgLowQuality(src,mod='Low'){
+        const CFG = {
+            Low: { w: 35,  h: 17,  q: 0.3 },
+            Med: { w: 300, h: 300, q: 0.7 },
+            HD:  { w: null, h: null, q: 0.9 } // tamanho real
+        };
+        const cfg = CFG[mod] || CFG.Low;
+        return new Promise(res => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+                const r = (cfg.w && cfg.h)
+                    ? Math.min(cfg.w / img.width, cfg.h / img.height, 1)
+                    : 1; // HD → escala real
+                const canvas = document.createElement('canvas');
+                canvas.width  = img.width  * r;
+                canvas.height = img.height * r;
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                // sempre WebP
+                res(canvas.toDataURL('image/webp', cfg.q));
+            }
+            img.onerror = () => res(null);
+            img.src = src;
+        });
+    }
+    function SrcsIMG(src,R){
+        return `${src}`.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
+    }
+    function SellFilesIMG(Inpt){ // Fazer isso Ficar imbutido dentro da Função do input Files
+        const file = Inpt.files[0]
+        $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file)
+        $('span',Pai(Inpt)).textContent = file.name
+    }
+    function AbrirImg(img,Nome,R){
+        const X   = Nome ? 'Plc' : 'Up'
+        const _R  = d_r(R)
+        const Pre = BSJsn(_R.Ty,_R.Cl).SRC ?? '' // Prefixo de Imagens se Tiver
+        const W   = img.naturalWidth > img.naturalHeight
+        MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
+                    <img src="${BASE_URL}Img/${Nome}">
+                    <div class="casusa Cl ${W ? 'w100':'h100'}">
+                        <span>Nome: ${Nome}</span> <div>Id: ${_R.Id}</div>
+                        <span>SALVAR COM NOME: ${Pre}${_R.Id}</span>
+                        <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
+                        <button onclick="XModal(this);ImgUPP($('input',Pai(this)),'${Pre}${_R.Id}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
+                    </div>
+                <div>`)
+        if(X=='Up'){$('.MdalIMG input').click()}
+    }
+    async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
+        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
+        const _R  = d_r(R)
+        const f   = Inpt.files[0]                          // Pega o único arquivo
+        const Ext = RxExt(f.name)                          // Pega a Extensão do Arquivo
+        const src = URL.createObjectURL(f)                 // src temporário
+        const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
+        const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
+        const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
+        J.IMGS[Nome] = f.name
+        if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
         if(Eximg.includes(Ext)){
-            //EditCell(PP,'Edt',`${NomeFinal}.${Ext}`)
-            //DarVAL(PP,src)
-
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${NomeFinal}.webp`,true)
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${NomeFinal}.webp`,true)
-
-            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${NomeFinal}.svg`,true)
-            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`Img/${NomeFinal}.webp`,true)}
+            EditCell(PP,'Edt',`${Nome}.${Ext}`)
+            DarVAL(PP,src)
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${Nome}.svg` ,true)
+            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
         }else{LOG('não é nem Img nem Svg é um arquivo!')}
     }
-}
+    async function ImgUPP2(Inpt,Nome,R){
+        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
+        // const _R  = d_r(R)
+        // const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
+        // const Pay = _td(Pai(_td(PP)))
+        // const T_T = Pay ? Pai($('.T-T',Pay)) : null
 
-async function FileUP(Inpt,Nome,R){
-    //const _R=d_r(R),PP=$(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
-    for(let i=0;i<Inpt.files.length;i++){
-        const f=Inpt.files[i],Ext=RxExt(f.name),NomeFinal=`${Nome}_${i}`
-        J.ARQS ??= {}
-        J.ARQS[NomeFinal]=f.name
-        Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
+        for(let i=0;i<Inpt.files.length;i++){
+            const f   = Inpt.files[i]
+            const Ext = RxExt(f.name)
+            const src = URL.createObjectURL(f)
+            const NomeFinal = `${Nome}_${i}` // evita sobrescrever
+            J.IMGS[NomeFinal] = f.name
+            // if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${_R.Id}',this)" src="${src}">`}
+
+            if(Eximg.includes(Ext)){
+                //EditCell(PP,'Edt',`${NomeFinal}.${Ext}`)
+                //DarVAL(PP,src)
+
+                Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${NomeFinal}.webp`,true)
+                Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${NomeFinal}.webp`,true)
+
+                if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${NomeFinal}.svg`,true)
+                }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`Img/${NomeFinal}.webp`,true)}
+            }else{LOG('não é nem Img nem Svg é um arquivo!')}
+        }
     }
-}
+    async function FileUP(Inpt,Nome,R){
+        //const _R=d_r(R),PP=$(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
+        for(let i=0;i<Inpt.files.length;i++){
+            const f=Inpt.files[i],Ext=RxExt(f.name),NomeFinal=`${Nome}_${i}`
+            J.ARQS ??= {}
+            J.ARQS[NomeFinal]=f.name
+            Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
+        }
+    }
 
-const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
-    const pc = GetPC() ; const Ag = AGORA().split(' ')
-    return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
-}
+//===========================LINK===========================
+    function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
+        if(Ipt.value){
+            if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
+                const df = AddROW(AA(Typ),'<',{[Aa(Typ)]:Ipt.value})
+                Linkar(Ipt,`${AA(Typ)}-${df.Id}`)
+            }
+        }
+        // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
+        // NewLink apenas para os que Permitem NewLink
+    }
+    function RmvLink(){
+        LOG('remove Link')
+    }
+    function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
+        const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
+        const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
+        const PP2 = $(Rx7(`${d_r(Eu).Id}-Link`),_tr(Eu))  // Passiva (isso deveria ser a td que recebe o valor do ativo dentro do passivo)
+        const  OK = $(Rx7('OKAY'),_tr(Eu))                // (para as Linkagem que o OKOK é automativo blz, mas tem umas como Grad q é Manual depois ver isso!)
+        const _R2 = d_r(PP2)                              // Raster da Passivo (Alterar pra d_r(this))
 
-function AddROW(Typ,Ps,obj={},SB){   // ⭐⭐⭐⭐_ (Adicionar um OBJ se tiver!)
-    const df = Deff(Typ)                 // Cria um Default Baseado no BS
-       df.Id = NewID(J[Typ])             // Atribuindo Novo Id++
-    if('Rg' in df){df.Rg = getRG(df)}    // Atribuindo o Rg se Existir
-    ObjKey(obj).forEach(k=>df[k]=obj[k]) // Atribuindo oq vem no Objeto dos argumento!
-    /*Sub*/ if(!SB){Sb_CREATE(supaBASE,Typ,CleanObj(df))}
-    /*DOM*/ //PrePos($(`#H_${Typ} > tbody`),Tm_Table(Typ,[df]),Ps) // Interromper DOM pois n acho mais Nessesário
-    if(SB){LOG('Linha Adicionada pelo SB')}
-    return df // isso é bom pq que precisa de dados daqui pode usar por Fora
-}
+        const Ar1 = JJ[_R1.Ty][_R1.Id][_R1.Cl] // PGMT (Buscar o que Ja tinha)
+        const Ar2 = JJ[_R2.Ty][_R2.Id][_R2.Cl] // MPAG (Buscar o que Ja tinha)
 
-function RmvROW(Eu,SB){              // ⭐⭐⭐⭐_
-    const R   = d_r(Eu) ; if(!R) return
-    const Img = $$(Rx7('-Imgs-'),__tr(Eu)).map(e=>Nm(e))
-    /*OBJ*/     DarJJ('Del',R.Ty,R.Id)
-    /*OBJ-IMG*/ Img.forEach(e=>delete J['IMGS'][RmvExt(e)])
-    /*SUB*/     if(!SB){Sb_DELETE(supaBASE,R.Ty,R.Id)}
-    /*SUB-IMG*/ if(!SB){Img.forEach(e=>Sb_DELIMG(supaBASE,e))}
-    /*DOM*/     $$(Rx7(`${R.Ty}-${R.Id}-${R.Cl}`)).forEach(td=>{__tr(td).remove() ; if(SB){LOG('Deletado pelo SupaBase')}})
-}
+        const Vl1 = Ar1 ? `${Ar1} | ${_R1.Ty}-${_R1.Id}` : `${_R1.Ty}-${_R1.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
+        const Vl2 = Ar2 ? `${Ar2} | ${_R2.Ty}-${_R2.Id}` : `${_R2.Ty}-${_R2.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
 
-function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_ (Ficar usando apenas com CLNT até ver se ta TUDO OK mesmo, pra Evoluir pra outras Tabelas)
-    const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
-    const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
-    const _Rf = d_r(Fim)                   // pega o _R do Ultimo
-    let    Jn = ObjValToArr(ClnObjs(JJ[Typ][_Rf.Id],bs)) // criar o Def
-    SEL.forEach(p=>{                       // pra cada Célula
-        const _R = d_r(p)                  // pega o _R de cada um
-        if(p!==Fim){                                                           // se for Diferente da Ultima
-            const Ids_PDDS = ContCLNT[_R.Id]?.List||[]                         // Pega a Lista de Pedidos
-            Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
-            ObjEtr(ClnObjs(JJ[Typ][_R.Id],bs)).forEach(([k,v])=>Jn[k].push(v)) // Concatena as Informações
-            RmvROW(p)                                                          // remove a Linha
-        }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDIT(supaBASE,'CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
-    })
-}
+        EditCell(PP1,'Edt',Vl2)    // Id da Passiva na Ativa (String)
+        EditCell(PP2,'Edt',Vl1)    // Id da Ativa na Passiva como Array
+        EditCell(OK ,'Edt',true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
+        // isso tem que servir pra ADICIONAR, REMOVER, TROCAR
+    }
+    function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
+        const td = _td(Eu)
+        const PP = $('.P-P',td)
+        const _R = PP.dataset.r
+        EditCell(PP,'Edt',val)
+        Inn(td,Tm_Bndj(_R,`${val}`))
+    }
+    const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
+    function EvalSugg(Typ,e){
+        const Fn = new Function('e',`return ${BS[Typ].List}`)
+        return Fn(e)
+    }
+    function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procurando)
+        clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
+        debounceTimer = setTimeout(()=>{
+            const _R = d_r(R)
+            const [Typ2,Mod,Qnt,Cria] = TYP2.split('-')
+
+            const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
+            const list = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista
+
+            const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BSJsn(Typ2,k)?.TM=='Link' ? Getna(j,k) : v))
+            
+            const EXTRA = BSJsn(_R.Ty,_R.Cl).LnkEX   // Acessar os Extras (de cada Tabela)
+            const Fn    = Function(`return ${EXTRA}`)()
+            const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
+
+            if(Mod=='List'){
+                Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Pry[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
+            }
+            if(Mod=='Table'){
+                Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Tr(Typ2,filt,R)}</tbody></table>`)
+                Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
+            }
+            if(Mod=='Card'){
+
+            }
+        },100)
+    }
+    function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
+        function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
+        function GambiarraRmv(div){Rmv(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Rmv(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (adicionar o hov q faz a saturação da tr)
+        const el = $('.BNdj', div)
+        Tog_N(el);GambiarraAdd(div)
+        ClickForaa(el,div,()=>{Add_N(el);/*GambiarraRmv(div)*/}) // não remover a GAMBIARRA se a próxima bandeija estiver na msm tr
+    }
+
+//===========================CRUD===========================
+    const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
+        const pc = GetPC() ; const Ag = AGORA().split(' ')
+        return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
+    }
+
+    function AddRow_DOM(Typ,Arr){PrePos($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr),'<')}
+    function RmvRow_DOM(Typ,Id ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
+    async function SB_AddROW(Typ,obj={}){   // ⭐⭐⭐⭐⭐
+        if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
+        const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
+        AddRow_DOM(Typ,[data])
+        RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
+        }
+    }
+    async function SB_RmvROW(Typ,Id){        // ⭐⭐⭐⭐⭐
+        const {data,error}=await supaBASE.rpc('del_row',{tbl:Typ,uid:Id})
+        RmvRow_DOM(Typ,Id)
+        RT_Rmv.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
+    }
+    function Supa_RealTime(crud,New,Typ,Old){ // ⭐⭐⭐⭐⭐
+        if(crud==='INSERT'){
+            const k=`${Typ}_${New.Id}` ; if(RT_Add.has(k)){RT_Add.delete(k) ; return}
+            AddRow_DOM(Typ,[New])      ; MyAlert(`🌐 Rt_NewRow(${Typ },${New.Id})`)
+        }   
+        if(crud==='DELETE'){
+            const k=`${Typ}_${Old.Id}` ; if(RT_Rmv.has(k)){RT_Rmv.delete(k) ; return}
+            RmvRow_DOM(Typ,Old.Id)     ; MyAlert(`🌐 Rt_NewRow(${Typ },${Old.Id})`)
+        }
+        if(crud==='UPDATE'){}
+    }
+
+
+    
+    
+    function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
+        const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
+        const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
+        const _Rf = d_r(Fim)                   // pega o _R do Ultimo
+        let    Jn = ObjValToArr(ClnObjs(JJ[Typ][_Rf.Id],bs)) // criar o Def
+        SEL.forEach(p=>{                       // pra cada Célula
+            const _R = d_r(p)                  // pega o _R de cada um
+            if(p!==Fim){                                                           // se for Diferente da Ultima
+                const Ids_PDDS = ContCLNT[_R.Id]?.List||[]                         // Pega a Lista de Pedidos
+                Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
+                ObjEtr(ClnObjs(JJ[Typ][_R.Id],bs)).forEach(([k,v])=>Jn[k].push(v)) // Concatena as Informações
+            }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDIT(supaBASE,'CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
+        })
+    }
 
 // ===========================SUPABASE===========================
+    async function SB_Get(SB,Typs){
 
-async function SB_Get(SB,Typs){
+        const IN = performance.now()
 
-    const IN = performance.now()
+        function normalizeObj(obj,Colet={}){
+            for (const k in obj) {
+                let v = obj[k] ?? ""
+                if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
+                if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
+                obj[k] = v
+            };return obj
+        }
 
-    function normalizeObj(obj,Colet={}){
-        for (const k in obj) {
-            let v = obj[k] ?? ""
-            if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
-            if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
-            obj[k] = v
-        };return obj
+        async function getIMG(Typ){
+            const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
+            if (error) {ERR("Erro ao listar:", error.message);return []}
+            J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
+        }
+
+        async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
+            let todas = [], lim = 1000, ofs = 0, data
+            do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+                if (!data) return ERR('Erro ao carregar dados')
+                todas.push(...data) ; ofs+=lim
+            }while(data.length===lim)
+            const Colet = {}
+            J[Typ]=todas.map(e=>normalizeObj(e,Colet))
+            for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
+            JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
+            LOG(`✔️ ${Typ}`)
+        }
+
+        await Promise.all(Typs.map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
+
+            LOG(`✅ SB Carregado: ${MS(IN)}`)
+        MyAlert(`✅ SB Carregado: ${MS(IN)}`)
+        
+        PosGET()
     }
 
-    async function getIMG(Typ){
-        const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
-        if (error) {ERR("Erro ao listar:", error.message);return []}
-        J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
+    async function Sb_EDIT(SB,Typ,id,col,Val){
+        try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
+            if (error){ERR('Erro ao atualizar:',error)}
+            else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
+        } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
     }
-
-    async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
-        let todas = [], lim = 1000, ofs = 0, data
-        do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
-            if (!data) return ERR('Erro ao carregar dados')
-            todas.push(...data) ; ofs+=lim
-        }while(data.length===lim)
-        const Colet = {}
-        J[Typ]=todas.map(e=>normalizeObj(e,Colet))
-        for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
-        JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
-        LOG(`✔️ ${Typ}`)
+    async function Sb_EDIT2(SB,Typ,id,Obj,Alert){
+        try{const {error} = await SB.from(Typ).update(Obj).eq('Id',id)
+            if(error){ERR('Erro ao atualizar:',error)}
+            else{LOG(`💾✏️ SB_EDIT2(${id},${JSON.stringify(Obj)})`) ; MyAlert(Alert||`Editado no SB! (${Typ},${id})`)}
+        }catch(err){ ERR('Erro:',err) ; MyAlert('Erro ao atualizar serviço')}
     }
-
-    await Promise.all(Typs.map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
-
-        LOG(`✅ SB Carregado: ${MS(IN)}`)
-    MyAlert(`✅ SB Carregado: ${MS(IN)}`)
-    
-    PosGET()
-}
-
-async function Sb_DELETE(SB,Typ,id){
-    const {error} = await SB.from(Typ).delete().eq("Id",id)
-    if(error){ERR("Erro ao excluir:",error)}else{LOG(`SB_DELETE(${Typ},${id})`) ; MyAlert(`SB_DELETE(${Typ},${id})`)}
-}
-
-async function Sb_CREATE(SB,Typ,row){
-    LOG(row)
-    let baseId = Number(row.Id) || 0
-    let tentativas = 0
-    while (true) {
-        const Id = baseId + tentativas
-        const { error } = await SB.from(Typ).insert([{...row,Id}])
-        if (!error) {LOG("Linha criada:",Id) ; return Id}
-        if (error.code !== "23505") {ERR("Erro:", error) ; return null}
-        tentativas++}
-}
-
-async function Sb_EDIT(SB,Typ,id,col,Val){
-    try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-        if (error){ERR('Erro ao atualizar:',error)}
-        else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-    } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-}
-async function Sb_EDIT2(SB,Typ,id,Obj,Alert){
-    try{const {error} = await SB.from(Typ).update(Obj).eq('Id',id)
-        if(error){ERR('Erro ao atualizar:',error)}
-        else{LOG(`💾✏️ SB_EDIT2(${id},${JSON.stringify(Obj)})`) ; MyAlert(Alert||`Editado no SB! (${Typ},${id})`)}
-    }catch(err){ ERR('Erro:',err) ; MyAlert('Erro ao atualizar serviço')}
-}
-
-async function Sb_EDIT3(Typ,id,col,Val){
-    try {let {error}=await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-        if (error){ERR('Erro ao atualizar:',error   )}
-        else      {LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-    } catch (err) {ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-}
-async function Sb_EDITJSON(tbl,uid,col,path,Valor){
-    try{let {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
-        if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
-        else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
-    }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
-}
-
-
-async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
-    let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
-    if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
-    else{LOG('✔️ Arquivo enviado!',nome)}
-}
-
-async function Sb_DELIMG(SB,nome){
-    const paths = ['Img','Med','Low'].map(p=>`${p}/${nome}`)
-    let {error} = await SB.storage.from('uploads').remove(paths)
-    if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
-    else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
-}
-
+    async function Sb_EDIT3(Typ,id,col,Val){
+        try {let {error}=await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
+            if (error){ERR('Erro ao atualizar:',error   )}
+            else      {LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
+        } catch (err) {ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
+    }
+    async function Sb_EDITJSON(tbl,uid,col,path,Valor){
+        try{let {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
+            if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
+            else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
+        }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
+    }
+    async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
+        let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
+        if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
+        else{LOG('✔️ Arquivo enviado!',nome)}
+    }
+    async function Sb_DELIMG(SB,nome){
+        const paths = ['Img','Med','Low'].map(p=>`${p}/${nome}`)
+        let {error} = await SB.storage.from('uploads').remove(paths)
+        if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
+        else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
+    }
 
 // LOGIN--------------------------------------------------
 async function Get_User(){
@@ -580,7 +509,6 @@ async function Upload_Foto(File){
     MyAlert('Foto Upada com Sucesso!')
     return Nome
 }
-
 async function GetDsngUsers(){
     let {data,error}=await supaBASE.rpc('getdsngusers')
     if(error){ERR('Erro:',error); return []}
