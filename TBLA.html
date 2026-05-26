@@ -7,8 +7,8 @@
     <link rel="icon" type="image/x-icon" href="Img/FAV32MAC.png">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>-->
-    <script  src="../MyBiblioteca/PreScript.js"></script>
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <!--<script  src="../MyBiblioteca/PreScript.js"></script>-->
     <link   href="./SB_Crud.css"  rel="stylesheet">
     <link   href="./CssGRAFF.css"  rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
@@ -649,9 +649,8 @@
         // Condições Anteriores
         let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
         const OrdemN  = ['PDDS','SERV','PGMT'].includes(Typ) ? 'Data' : 'Id'
-        LOG('Diamond',selectStr)
-        const Camada2 = {PDDS:'PDDS(*,Serv:SERV(*),Pgmt:PGMT(*))'}
-        if(Typ=='CLNT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
+        const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
+        if(Typ=='CLNT'||Typ=='SERV'||Typ=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
 
         if(Limit==null){
             let todas = [], lim = 1000, ofs = 0, data
@@ -698,6 +697,9 @@
         NavPag(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
+
+
+
 </script>
 
 </html>
