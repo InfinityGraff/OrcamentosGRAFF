@@ -38,7 +38,7 @@
     
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
-</head>
+</head> 
 
 <script> // Configuração do SupaBase
     const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
@@ -48,23 +48,23 @@
 </script>
 
 <script> // aBase de Dados INFINITY GRAFF
-    const Pry  = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
+    const Atual    = {Pag:'ORC'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
+    // const Cgo  = { // Cargo
+    //     Admn: { nav :["HOME","|","ORC","LOJA","ARTE","GBRT","BBTC","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
+    //             orc :["Serigrafia","Figurinha","Cartela"],},
+    //     Grnt: { nav :["HOME","|","ORC","ARTE","GBRT","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
+    //             orc :[],},
+    //     DSgn: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
+    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
+    //     Atnd: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
+    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
+    //     Clnt: { nav:["HOME","|","ORC","ARTE","|","CONF"],
+    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],}
+    // }
+    // const Atual    = {Pag:'ORC'}
+    // let U = {} ; let UU={Cgo:""}
+    // let UCgo = {}
 
-    const Cgo  = { // Cargo
-        Admn: { nav :["HOME","|","ORC","LOJA","ARTE","GBRT","BBTC","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
-                orc :["Serigrafia","Figurinha","Cartela"],},
-        Grnt: { nav :["HOME","|","ORC","ARTE","GBRT","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
-                orc :[],},
-        DSgn: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
-                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
-        Atnd: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
-                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
-        Clnt: { nav:["HOME","|","ORC","ARTE","|","CONF"],
-                orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],}
-    }
-    const Atual    = {Pag:'ORC'}
-    let U = {} ; let UU={Cgo:""}
-    let UCgo = {}
     let SVG_FILES = [] // esse é do de importar SVG pra calcular
 
     const MATR = {
@@ -101,12 +101,7 @@
 </script>
 
 <script> // Bibliotecas
-    const tr_ID    =tr =>getClss(tr,'tr-').split('-')[1]
-    const TRs      =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody)`)
-    const TRs2     =(Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
-    const tr_Viw   =Typ=>$$(`#H_${Typ} > tbody  > tr:not(.H_Tbody):not([class*=" n"])`)
-    const ReszH    =Typ=>{TrcTog($(`#H_${Typ}`),'hMin','hMax')                     ;SaveConfig('a')}
-    const ReszW    =Typ=>{Tog($(`#H_${Typ}`),'w100');Tog($(`.Confy_${Typ}`),'w100');SaveConfig('a')}
+    const Foto     =         U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
 </script>
@@ -216,1061 +211,819 @@
 
 <body data-tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
 
-    <style> /*CSS do Header*/
-        /*Fixos*/
-            #LgNome      , header nav div      {filter:drop-shadow(0px 0px 8px #3a002b)}
-            #LgNome:hover, header nav div:hover{filter:drop-shadow(0px 0px 5px #f030c0)}
-            #PAGES{flex:1 ; height:100% ; overflow-y:hidden}
-            .ConfigOrc{transition: all ease-in-out 0.3s}
-            .Body1 .ConfigOrc{height: 0px}
-            .Body2 .ConfigOrc{height: 40px}
-            .Body1 .Content{height:92vh;}
-            .Body2 .Content{height:100vh;}
-        /*Body1*/
-            .BBody1{height:8vh  ; width:100vw ; position:sticky; top:0}
-            .Body2 .BBody1{height: 0vh; pointer-events: none;}.Body2 .BBody1 > *{opacity: 0}
-            .Body1 #PAGES > div{height:100%} /*Aqui são as Páginas de Fato*/
-                .BBody1 #Title      {margin-left:15px}                @media(max-width:500px){.BBody1 #Title    {margin-left:3px}}
-                .BBody1 #Title #Logo{margin:5px; height:30px}         
-                .BBody1 #Title h1   {font-size:3vw}                   @media(max-width:500px){.BBody1 #Title h1 {display:none}}   
-                .BBody1 nav         {margin:0px 10px}                 @media(max-width:700px){.BBody1 nav       {display:none}}
-                .BBody1 nav img     {height:22px; margin:3px 3px}
-                .BBody1 nav p       {display:none}
-                .BBody1 nav div     {border-radius:5px ; margin: 0px 2px;}
-                .Body1 #NavPerf     {flex-direction:row}
-                .Body1 #LgNome      {display:none}
-                .Body1 #LgMORE      {display:none}
-        /*Body2*/
-            .BBody2{height:100%;width:18% ; flex-direction: column}
-            .Body1 .BBody2{width:0% ; pointer-events: none;}.Body1 .BBody2 > *{opacity: 0}
-            .BBody2.recolhe{width:5% } @media(max-width:500px){.BBody2.recolhe{width:50% }}
-            .BBody2.recolhe #Logo   {display: none}
-                .BBody2 #Title      {width: 90%; justify-content: space-between}
-                .BBody2 #Title #Logo{margin:5px; height:30px}
-                .BBody2 #Title h1   {font-size:50% ; display:none}
-                .BBody2 nav     {margin:10px 0px; flex-direction:column; width: 100%}
-                .BBody2 nav img {height:22px; margin:5px 0px ; margin-right: 9px}                            .BBody2.recolhe nav img {margin-right: 0px}
-                .BBody2 nav p   {display:block ; font-size: 14px}                                            .BBody2.recolhe nav p   {display:none}
-                .BBody2 nav div {width: 90% ; justify-content: start; margin: 3px 0px ; border-radius: 8px}  .BBody2.recolhe nav div {justify-content:center}
-                .BBody2 nav div:hover     {background: #ffffff15}
-                .BBody2 nav #b1_HNVDv_LIN img{display: none}
-                .BBody2 nav #b1_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
-                .BBody2 nav #b2_HNVDv_LIN img{display: none}
-                .BBody2 nav #b2_HNVDv_LIN    {border-bottom:1px solid #ffffff;opacity: 0.3}
-                .BBody2 #NavPerf         {flex-direction:column; width: 90%}
-                .BBody2 #Div-Pesq        {display:none}
-                .BBody2 #DivNav          {width:90%}
-                .BBody2 #H_Login         {width: 100% ; justify-content: flex-end; background: #38003fa6}
-                .BBody2 #LgNome          {display: flex; margin-right: 7px; font-size: 14px;}
-                .BBody2 #LgMORE          {display: flex}
-                nav > *.Atv              {background: #da00aa}
-                nav > *.Atv:hover        {background: #ff00c8 !important; filter:drop-shadow(0px 0px 5px #f030c0) !important}
-    </style>
-
-    <header class="BBody1 Bt"> <!--Body1--> <!--HEADER-->
-
-        <div id="Title" class="Ct"> <!--Titulo-->
-            <img id="Logo"  draggable="false" src="./Img/Logo.png" onclick="TrocaBody()">
-            <h1 class="PT" onclick="TrocaBody()">InfinityAPP 7.6</h1>
-            <script>
-                function TrocaBody(){if(window.innerWidth>500){TrcTog($('body'),'Body1','Body2')}else{Recolher()}}
-                function Recolher(){Tog($('.BBody2'),'recolhe')}
-            </script>
+    <header class="Bt w100" style="grid-area:A">
+        <style> /*CSS do Header*/
+            /*header*/
+                #Logo        {height:30px}
+                #Title h1    {font-size:3vw}   @media(max-width:500px){#Title h1 {display:none}}
+                nav          {gap:6px}         @media(max-width:700px){nav       {display:none}}
+                nav p        {display:none}
+                nav img      {height:22px}
+                nav div      {border-radius:5px}
+                #LgFoto      {background-size:cover ; height:100%; width:auto}
+                #LgFoto img  {width:42px; height:42px}
+            /*Mais*/
+                #MAIS             {background:#4e4e4e; width:250px; color:#ffffff ; top:55px; right:0px}
+                #MAIS img         {height:25px; margin-right:10px}
+                #MAIS div         {padding:10px; cursor:pointer; font-size:15px; width:100%}
+                #MAIS p,#MAIS p a {font-size:10px}
+                #MAIS div:not(:last-child):hover{background:#808080; color:var(--Txt-Wit-Hover)}
+        </style>
+            <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Mac.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+            <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+            <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+            <!-- Perfil --><div id="H_Login" class="Ct"> 
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
         </div>
-        <div class="w30"><div id="Div-Pesq" class="Rltv w100 hov Pcy"></div></div><!--Pesquisa-->
-        <div id="DivNav"><nav class="Ct H_Nav"></nav></div><!--nav-->
+
+        <div id="MAIS" class="Abslt none bndj Ct">
+            <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+            <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+        </div>
 
         <script>
-            function NavPag(Typ){// ao Navegar
-                Atual.Pag=Typ
-                Show(`#Pag_${Typ}`,$$('#PAGES > *'))             // Troca Página
-                if(!Cgo.Admn.nav.includes(Typ)){DTV($$('.H_Nav > *')) ; None($$('.pPesq')); return} // Caso a página não exista no nNav
-                ATV($(`#b1_HNVDv_${Typ}`),$$('.BBody1 .H_Nav > *')) // Troca nNav.Atv do BBody1
-                ATV($(`#b2_HNVDv_${Typ}`),$$('.BBody2 .H_Nav > *')) // Troca nNav.Atv do BBody2
-                Show($$(`.Pesq_${Typ}`),$$('.pPesq'))            // Troca Pesquisa
-                setTimeout(()=>getSBPromise.then(()=>loadtmtable(Typ,false,true)),0) // 100% Assíncrono
-            }
+            function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
+            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
+
+            function AbreLogin(stg){
+                const Obj = {
+                    Login:{Tt:'Entre com sua Conta!',btn:'Entrar'   ,Ou:['Cdstr','Cadastre-se'        ],Fn:'SB_Login',p:'',},
+                    Cdstr:{Tt:'Cadastr-se Agora!'   ,btn:'Cadastrar',Ou:['Login','Já tenho uma Conta!'],Fn:'SB_Cdstr',p:'',},
+                    Reset:{Tt:'Esqueceu a Senha?'   ,btn:'Enviar'   ,Ou:['Login','Voltar!'            ],Fn:'SB_Reset',p:'digite seu Email para poder trocar a Senha!'},
+                }
+                const Stgg = `<div class="Cl Gap">
+                    <form id="ModalLogin" class="Cl Bt w100 Gap" onsubmit="${Obj[stg].Fn}(event,Vll($('.Email',this)),Vll($('.Senha',this)),$('.errPass',this),$('.UNome',this))">
+                        <h2>${Obj[stg].Tt}</h2><p>${Obj[stg].p}</p>
+                        ${stg=='Cdstr'?`<div class="Start2 w80"><label>Nome </label><input                 placeholder="Nome de Usuário..." class="UNome w100" required></div>` : ''} 
+                                        <div class="Start2 w80"><label>Email</label><input type="email"    placeholder="Seu Email...      " class="Email w100" required></div>
+                        ${stg!='Reset'?`<div class="Start2 w80"><label>Senha</label><input type="password" placeholder="Sua Senha...      " class="Senha w100" required>${stg=='Login'?`<a class="PT" onclick="XModal(this);AbreLogin('Reset')">Esqueceu a Senha?</a>`:''}</div>` : ''}
+                        <span class="errPass erro"></span>
+                        <div class="w80"><button class="w100" type="submit">${Obj[stg].btn}</button></div>
+                    </form>
+                        <p>---------------- OU ----------------</p>
+                        <button class="" onclick="XModal(this);AbreLogin('${Obj[stg].Ou[0]}')">${Obj[stg].Ou[1]}</button>
+                        <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                    </div>`
+                MODAL(Stgg)
+            }          
         </script>
+    </header>
 
-        <div id="H_Login" class="Ct"> <!--Perfil-->
-            <style>
-                #LgFoto{background:url(./Img/FundoLogo.png); background-size:cover ; height: 100%; width: auto;}
-                #LgFoto img{width:42px; height:42px; margin:4px 4px}
-                .Body1 #H_Mais{top:55px; right:0px}
-                .Body2 #H_Mais{bottom: 0%; left:170px}
-                #MAIS{background:#4e4e4e; width:250px ; color:white}
-                #MAIS div{padding:10px;cursor:pointer;font-size:15px; width:100%}
-                #MAIS div:not(:last-child):hover{background:gray;color:var(--Txt-Wit-Hover)}
-                #MAIS div:last-child{padding:10px}
-                #MAIS img{height:25px;margin-right:10px}
-                #MAIS p,#MAIS p a{font-size:10px}
-            </style>
-            <img id="LgMORE" src="./SVG/More.svg" class="Hov" style="width:18px" onclick="ShowMore()" oncontextmenu="Prvn();ShowMore()">
-            <div id="LgNome" class="Ct PT"  onclick="AbreLogin(true)">Login</div>
-            <div id="LgFoto"><img draggable="false" class="NObj" onclick="AbreLogin(true)" oncontextmenu="Prvn();ShowMore()"></div>
-
-            <script>
-                function ShowMore(){TogShow('#H_Mais')}
-
-                function AbreLogin(valid){
-                
-                    if(valid){if(Inn($('#LgNome'))!=='Login'){ShowMore();return}} ; //MdalShow('#ModalLogin');Inn('#errPass','');Foco('#I_Pass')
+    <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
+        <div id="Pag_HOME" class="none"> <!--Dentro era pra ser Section-->
+            <div class="Cl w100">
+                <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
+                    <style>
+                        .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
+                        .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                    </style>
                     
-                    MODAL(`
-                        <div id="ModalLogin" class="Ct Rltv Rd" style="width:300px;height:400px">
-                        <div class="Bt Loginn">Login</div>
-                        <div class="Ct Start">
-                            <label for="Senha">Senha</label>
-                            <input id="I_Pass" class="Inputss" type="password" onkeydown="KeyEntr(()=>TestSenha('Modal',this))">
+                    <div class="Cl"><h1>Semana1</h1>
+                        <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
                         </div>
-                        <span id="errPass" class="erro"></span>
-                        <div class="Bt">
-                            <button class="Ct w40" onclick="TestSenha('Modal',$('#I_Pass'))">Logar</button>
-                            <button class="Ct w40" onclick="TestSenha('Dslog')             ">Sair </button>
-                            </div>
+                    </div>
+
+                    <div class="Cl"><h1>Semana2</h1>
+                        <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
                         </div>
-                    `)
-            
-                }
+                    </div>
 
-                const SaiMdal=()=>{if($('.FModal')){$('.FModal').remove()}} /*GAMBIARRA*/
+                    <div class="Cl"><h1>Semana3</h1>
+                        <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
 
-                function TestSenha(Mod,p){
-                    const nome=$('#LgNome'),foto=$('#LgFoto img')
-                    const storg=e=>{StogeRmv('Pass');if(e){StogeSet('Pass',e)}}
-                    const logaa=e=>{const U = JJ['USER'][e] ; Inn(nome,U.Nome);foto.src=U.Foto;storg(e);SaiMdal();PosLogin(U)}
-                    if(Mod=='Dslog')     logaa(0)
-                    if(Mod=='Storg') p ? logaa(p) : logaa(0)
-                    if(Mod=='Modal'){if(JJ['USER'][Vll(p)]){logaa(Vll(p))}else{Inn('#errPass',TM.Pss) ; p.placeholder=TM.Pss};p.value='';p.focus()}
-                }
-                function PosLogin(U){
-                    UCgo = Cgo[U.cgo] ; UU.Cgo = U.cgo
-                    $('body').className="" ; ['Ct',...U.body].forEach(e=>Add($('body'),e)) // Adiciona os CSS do Body
-                    Inn('.BBody1 .H_Nav',UCgo.nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-                    Inn('.BBody2 .H_Nav',UCgo.nav.map(e=>`<div id="b2_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-                    Inn('#Div-Pesq',UCgo.nav.map(Typ=>Load_Pesq(Typ)).join(''))
-                    NavPag(Atual.Pag)
-                    tmplt_Prod()
-                    $$('.TBLAA').forEach(e=>Add(e,U.cgo)) // Adicionando class do Cargo do Usuário a todas as Tabelas
-                    LOG('✅ Perfil Logado!')
-                }
-            </script>
+                    <div class="Cl"><h1>Semana4</h1>
+                        <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
 
-            <div id="H_Mais" class="Abslt none bndj">
-                <div id="MAIS" class="Ct Pose">
-                    <div class="Start" onclick="NavPag('PRFL');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-                    <div class="Start" onclick="AbreLogin()   ;None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-                    <div class="Start" onclick="NavPag('CONF');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-                    <div class="Start" onclick="NavPag('SPRT');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-                    <div class="Start" onclick="TestSenha('Dslog');None('#H_Mais')"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-                    <div><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+                    <script>
+                        const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
+                        const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
+                        const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
+                        const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
+                        const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
+                        const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
+                        const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
+                        const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
+
+                        function RfreshGrafic(Div,Semn){ 
+                            const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
+                            LOG(ContForn(Filt('GRAD')))
+                            Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+                            Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
+                            Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
+                            Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
+                        }
+
+                        // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
+                        // as Grades que mais Demoraram, Pedidos que mais Demoraram
+                        // Mostrar mesmo quando tiver Zero
+                    </script>
                 </div>
             </div>
         </div>
-    </header>
 
-    <div class="Ct w100 Content"> <!--q é descontando a altura do Head-->
-        <header class="BBody2 Bt"> <!--Body2-->
-            <div id="Title" class="Ct"> <!--Titulo-->
-                <img id="Logo"  draggable="false"      src="./Img/Logo.png" onclick="TrocaBody()">
-                <img id="recolhe" style="height: 18px" src="./SVG/Recolhe.svg" onclick="Recolher()">
-            </div>
-            <div id="DivNav"><nav class="H_Nav Ct"></nav></div><!--nav-->
-        </header>
+        <div id="Pag_ORC" class="Cl" style="overflow: scroll;">
 
-        <div id="PAGES"> <!--isso era pra ser main-->
-            <div id="Pag_PDDS" class="     Cl TBLAA"> <!-- 💚 ⭐⭐_ _ _ -->
-                <div onload="Tm_Switch(this,['Pedidos','Serviços','Pagamento'],$('#Slide_PDDS'),'PPDS','80px')"></div>
+            <script>function Load_Pesq(Typ){return 'Load_Pesq(ORC)'} </script>
 
-                <div class="Wrapper">
-                    <div id="Slide_PDDS" class="Slide_Table">
-                        <div class="Cl"> <!--PDDS-->
-                            <div class="Confy_PDDS Cl">
-                                <div class="Bt Stky  w100" style="height: 40px;">
-                                    <button onclick="AddROW('PDDS','<')">Nova Linha +</button>
-                                    <div id="PagPesq_PDDS" class="PagPEsq" onload="Inn(this,Load_Pesq('PDDS'))"></div>
-                                    <div id="COnf_PDDS"    class="Configs Ct">
-                                        <div onclick="ReszH('PDDS')" onload="Tm_Check(this,`${SVG.RszH}`,'')"></div>
-                                        <div onclick="ReszW('PDDS')" onload="Tm_Check(this,`${SVG.RszW}`,'')"></div>
-                                    </div>
-                                    <div onclick="Tog($$('#H_PDDS .Auto'),'Cor')" onload="Tm_Check(this,`${SVG.Chek}`,'Auto')"></div>
-                                    <div id="Sommma">Soma: 00,00</div>
-                                    <div onclick="TrcTog($('#H_PDDS'),'Tbla','Card');Tog_Card('PDDS')" onload="Tm_Interup(this,`${SVG.List}`,`${SVG.Card}`)"></div>
-                                    <select id="mesES" onload="Inn(this,Tm_Opt(meses))" onchange="FiltMes(this.value,'PDDS')"></select>
-                                    <button onclick="F_Clen('PDDS')" onload="Inn(this,`${SVG.Cler.replace('HOV PT','')}Limpar`)"></button>
-                                </div>  
-                                <table id="SKLT_PDDS" class="hMin Tbla w90">
-                                    <thead class="Stky" style="z-index: 510;top:40px;"></thead>
-                                    <tbody onload="Inn(this,Tm_Sklt('PDDS'))"></tbody>
-                                    <tfoot class="Stky2"><tr></tr></tfoot>
-                                </table>
-                                <table id="H_PDDS" class="hMin Tbla"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tbody class="Bodd2"></tbody><tfoot class="Stky2"></tfoot></table>
-                                <button onclick="loadtmtable('PDDS',true,false)">Carregar Tudo</button>
-                            </div>
-                        </div>
+            <div class="ConfigOrc w100 Ct"><div id="PagPesq_ORC" class="PagPEsq" onload="Inn(this,Load_Pesq('ORC'))"></div></div>
 
-                        <div class="Cl"> <!--SERV-->
-                            <div class="Confy_SERV">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="LOG('Indisponivel')">Nova Linha</button>
-                                    <div id="PagPesq_SERV" class="PagPEsq" onload="Inn(this,Load_Pesq('SERV'))"></div>
-                                    <div id="COnf_SERV" class="Configs Ct"></div>
-                                    <button onclick="F_Clen('SERV')">Limpar</button>
-                                </div>
-                                <table id="H_SERV" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-
-                        <div class="Cl"> <!--PGMT-->
-                            <div class="Confy_PGMT">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="LOG('Indisponivel')">Nova Linha</button>
-                                    <div id="PagPesq_PGMT" class="PagPEsq" onload="Inn(this,Load_Pesq('PGMT'))"></div>
-                                    <div id="COnf_PGMT" class="Configs Ct"></div>
-                                    <button onclick="F_Clen('PGMT')">Limpar</button>
-                                </div>
-                                <table id="H_PGMT" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="Pag_MPAG" class="none Cl TBLAA"> <!-- 💚 ⭐⭐_ _ _ -->
-                <div class="Wrapper">
-                    <div id="Slide_MPAG" class="Slide_Table">
-                        <div class="Cl">
-                            <div class="Confy_MPAG">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('MPAG','<')">Nova Linha +</button>
-                                    <div id="PagPesq_MPAG" class="PagPEsq" onload="Inn(this,Load_Pesq('MPAG'))"></div>
-                                    <div id="COnf_MPAG" class="Configs Ct"></div>
-                                    <button onclick="F_Clen('MPAG')">Limpar</button>
-                                </div>
-                                <table id="H_MPAG" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody></table>
-                </div></div></div></div>
-            </div>
-            <div id="Pag_GRAD" class="none Cl TBLAA"> <!-- 💚 ⭐⭐_ _ _ -->
-
-                <div onload="Tm_Switch(this,['GRAD','OS','UBER','GRD2'],$('#Slide_GRAD'),'GRAD','55px')"></div>
-
-                <div class="Wrapper">
-                    <div id="Slide_GRAD" class="Slide_Table">
-                        <div class="Cl"> <!--GRAD-->
-                            <div class="Confy_GRAD">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('GRAD','<')">Nova Linha +</button>
-                                    <div id="COnf_GRAD" class="Configs Ct"></div>
-                                    <button>Limpar</button>
-                                </div>
-                                <table id="H_GRAD" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-
-                        <div class="Cl"> <!--OS-->
-                            <div class="Confy_OS">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('OS','<')">Nova Linha +</button>
-                                    <div id="COnf_OS" class="Configs Ct"></div>
-                                    <button>Limpar</button>
-                                </div>
-                                <table id="H_OS" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-
-                        <div class="Cl"> <!--GRD2-->
-                            <div class="Confy_GRD2">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('GRD2','<')">Nova Linha +</button>
-                                    <div id="COnf_GRD2" class="Configs Ct"></div>
-                                    <button>Limpar</button>
-                                </div>
-                                <table id="H_GRD2" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-
-                        <div class="Cl"> <!--UBER-->
-                            <div class="Confy_UBER">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('UBER','<')">Nova Linha +</button>
-                                    <div id="COnf_UBER" class="Configs Ct"></div>
-                                    <button>Limpar</button>
-                                </div>
-                                <table id="H_UBER" class="hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody ></tbody><tfoot class="Stky2"></tfoot></table>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div id="Pag_CLNT" class="none Cl TBLAA"> <!-- 💚 ⭐⭐_ _ _ -->
-                <div class="Wrapper">
-                    <div id="Slide_CLNT" class="Slide_Table">
-                        <div class="Cl">
-                            <div class="Confy_CLNT">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('CLNT','<')">+ Nova Linha</button>
-                                    <h1>Tabela de Clientes</h1>
-                                    <button onclick="MesclaRow('CLNT',BS['CLNT'].Json)">Mesclar</button>
-                                    <div id="PagPesq_CLNT" class="PagPEsq" onload="Inn(this,Load_Pesq('CLNT'))"></div>
-                                    <button onclick="F_Clen('CLNT')">Limpar Filtro</button>
-                                </div>
-                                <table id="H_CLNT" class="hMin"><thead class="Stky" style="z-index:510;top:40px"></thead><tbody ></tbody></table>
-                </div></div></div></div>
-            </div>
-            <div id="Pag_ARTE" class="none Cl TBLAA"> <!-- 💚 ⭐⭐_ _ _ -->
-                <div class="Wrapper">
-                    <div id="Slide_ARTE" class="Slide_Table">
-                        <div class="Cl">
-                            <div class="Confy_ARTE">
-                                <div class="Bt Stky " style="height: 40px;">
-                                    <button onclick="AddROW('ARTE','<')">Nova Linha +</button>
-                                    <div id="PagPesq_ARTE" class="PagPEsq" onload="Inn(this,Load_Pesq('ARTE'))"></div>
-                                    <div id="COnf_ARTE" class="Configs Ct"></div>
-                                    <button onclick="F_Clen('ARTE')">Limpar</button>
-                                </div>
-                                <table id="H_ARTE" class="w100 hMin"><thead class="Stky" style="z-index: 510;top:40px"></thead><tbody></tbody></table>
-                </div></div></div></div>
-            </div>
-
-            <div id="Pag_HOME"> <!--Dentro era pra ser Section-->
-                <div class="Cl w100">
-                    <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
-                        <style>
-                            .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
-                            .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
-                        </style>
-                        
-                        <div class="Cl"><h1>Semana1</h1>
-                            <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                            <div class="Ct">
-                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                            </div>
-                        </div>
-
-                        <div class="Cl"><h1>Semana2</h1>
-                            <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                            <div class="Ct">
-                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                            </div>
-                        </div>
-
-                        <div class="Cl"><h1>Semana3</h1>
-                            <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                            <div class="Ct">
-                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                            </div>
-                        </div>
-
-                        <div class="Cl"><h1>Semana4</h1>
-                            <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                            <div class="Ct">
-                                <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                                <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                                <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                                <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                            </div>
-                        </div>
-
-                        <script>
-                            const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
-                            const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
-                            const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
-                            const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
-                            const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
-                            const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
-                            const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
-                            const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
-
-                            function RfreshGrafic(Div,Semn){ 
-                                const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
-                                LOG(ContForn(Filt('GRAD')))
-                                Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
-                                Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
-                                Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
-                                Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
-                            }
-
-                            // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
-                            // as Grades que mais Demoraram, Pedidos que mais Demoraram
-                            // Mostrar mesmo quando tiver Zero
-                        </script>
-                    </div>
-                </div>
-            </div>
-
-            <div id="Pag_ORC" class="none Cl" style="overflow: scroll;">
-
-                <div class="ConfigOrc w100 Ct"><div id="PagPesq_ORC" class="PagPEsq" onload="Inn(this,Load_Pesq('ORC'))"></div></div>
-
-                <div id="DivIMGProd" class="Bt w90"> <!--IMAGENS dos PRODUTOS-->
-                    <style>
-                        #Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
-                        #Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
-                        #DivIMGProd     #Div-Prod {width: 100%}
-                        #DivIMGProd.Atv #Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
-
-                        #DivIMGProd     #Div-Detalhes {width:  0% ; background: #00df0000}
-                        #DivIMGProd.Atv #Div-Detalhes {width: 39% ; background: #00df0000 ; padding: 8px;}
-                        #DivIMGProd     #Div-Detalhes > div {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
-                        #DivIMGProd.Atv #Div-Detalhes > div {opacity: 1; pointer-events: auto}
-                        #DivIMGProd     .IconDtlh p         {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
-                        #DivIMGProd.Atv .IconDtlh p         {opacity: 1; pointer-events: auto}
-                        .IconDtlh p            {font-size: 20px}
-                        .DivCanvMdd            {height: 75%;width: 100%;padding:8px;}
-
-                        #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
-                        #Div-Prod span         {margin-left:10px; margin-bottom:10px}
-                        #Div-Prod span p       {margin:0px; font-size:9px}
-                        #Div-Prod span p strong{font-size:9px}
-                        #Div-Prod span img     {margin:5px; height:30px; width:30px}
-                        #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
-                        .CSS3 #Div-Prod span{color: #ffffff}
-                        #Div-Prod .DivVrnts    {margin-top:20px}
-                        .DivVrnts .vlM2        {margin-top: 5px;}
-                        .DivVrnts .vlM2 a      {font-size: 15px;}
-                        .DivVrnts .vlM2 p      {margin: 1px 2px;}
-    
-                        #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
-                        #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
-                        #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
-                            #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
-                            #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
-                            #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
-                            #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
-
-                        #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
-                        #Div-Prod .Conteudo{padding-top:10px; z-index:999}
-                        :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
-                                   .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
-          
-                        #Div-Prod .Conteudo.Pecq{width:200px}
-                        #Div-Prod .Conteudo.Grnd{width:270px}
-                        .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
-
-                        #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
-                        #Div-Prod .BtnCarr        {width: 120px; top:310px   }
-                    </style>
-                    <style>
-                        .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
-                        .BxVlr            {color:#ffffff}
-                        .Indisdp          {font-size:6px;transform:rotate(-15deg);top:5px;left:4px}
-                        .Armz > a         {right:  0px ; bottom: 0px}
-                        .Pecq .Armz       {width: 90px ; height:66px}              .Grnd .Armz       {width:120px ; height:88px}
-                        .Pecq .BxVlr      {width: 48px ; height:20px ; margin:1px} .Grnd .BxVlr      {width: 62px ; height:26px ; margin:2px}
-                        .Pecq .BxVlr .TMRS{top:5px;left:2px}                       .Grnd .BxVlr .TMRS{top:7px; left:2px}
-                        
-                        .Pecq .V3         {right:0px;top:1px}                      .Grnd .V3      {right:0px;top:1px}
-                        .Pecq .V1         {font-size:   4px}                       .Grnd .V1      {font-size:  6px}
-                        .Pecq .TMRS b     {font-size:   7px}                       .Grnd .TMRS b  {font-size:  9px}
-                        .Pecq .TMRS p     {font-size:  11px}                       .Grnd .TMRS p  {font-size: 15px}
-                        .Pecq .V3         {font-size:   4px}                       .Grnd .V3      {font-size:  7px}
-                        
-                        .Variate2 a{background: #fd0061; margin: 2px; color: #ffffff;}
-                        .Variate2 {margin: 2px}
-
-                        .CanvasMedidas.Hmax{width: auto ; height: 100%}
-                        .CanvasMedidas.Wmax{width: 100% ; height: auto}
-                    </style>
-
-                    <style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
-                        .fotO      {width:150px ; height:160px}
-                        .fotO1 img {width:150px ; height:160px}
-                        .fotO2 img {width:120px ; height:90px }
-                        .fotO2T img{width:75px  ; height:90px }
-                        .fotO3 img {width: 150px; height: 53px}
-                        .fotO3I img{width: 75px ; height:96px } .fotO3I img:last-child{width:150px ; height:95px }
-                        .fotO4 img {width:80px  ; height:80px }
-                        .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
-                        .fotO6 img {width:150px ; height:53px }
-                    </style>
-
-                    <div id="Div-Prod" class="Start"></div>
-
-                    <div id="Div-Detalhes" class="Rltv">
-                        <a class="IconDtlh Ct PT Start" onclick="TOV($('#DivIMGProd'))"><h3>⭐</h3><p>Detalhes</p></a>
-                        <div id="NewCanvas"        class="canvi Ct Cnvs none"></div>
-                        <div class="DetalheCanvMdds ORC_tr ORC_tr-1" class="Cl">
-                            <div class="DivCanvMdd Rd Ct Box1"><canvas class="CanvasMedidas canvi Cnvs Wmax"></canvas></div>
-                            <div class="Ct w100" style="margin-top:5px">  <!--// Criar um pra cada linha--> 
-                                <div class="Cl"><label>Largura Area</label><input class="I_AreaX" placeholder="Largura Area" value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
-                                <div class="Cl"><label>Altura Area </label><input class="I_AreaY" placeholder="Altura Area"  value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script> // Focado no Preview de Produtos
-                        const Bckg=e=>`style="background-image:url('./Prod/Avanc/${e}')"`
-                        function AddBoxy(e){AddCarr(...e.split('_'))} // tentar tirar isso daqui só serve pra desconstruir
-                        function Gmbrr(Eu){
-                            $$('.Opts > div',Avo(Eu)).forEach(e=>{
-                                if(Coten(Eu,'Atv')){(e.dataset.s??=e.style.cssText, e.style.cssText=e.getAttribute('name')||'') ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Grnd','Pecq'))}
-                                else{(e.style.cssText=e.dataset.s || '', delete e.dataset.s)                                    ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Pecq','Grnd'))}
-                            })
-                        }
-
-                        function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
-                            $$('div',Pai(e)).forEach((B,x,l)=>{Rmv(B,'Atv')
-                                if(x < IdxDe(e)){Add(B,'Pre');Rmv(B,'Pos') ; B.style.zIndex = (l.length+x)-IdxDe(e)+10}
-                                else{            Add(B,'Pos');Rmv(B,'Pre') ; B.style.zIndex = (l.length-x)+IdxDe(e)+10}})
-                            Add(e,'Atv')
-                            if(x===IdxDe(e)){Show(E)}else{None(E)}
-                        })}
-
-                        function Armzn(Bx,ON){
-                            const Tm_R$ =e=>`<div class="TMRS Abslt Ct"><b>R$</b><p>${e}</p><b>,00</b></div>`
-                            const TmRSS =e=>e==0 ? `<b class="Ct Abslt Indisdp">Indisponível</b>` : Tm_R$(e)
-                            const BoxVlr=e=>`<div class="BxVlr bckG Rltv HOV" ${Bckg('Base.svg')} onclick="AddBoxy('${e[1]}_${e[0][4]}_${e[0][0]}')">
-                                                <p class="V1 Abslt">${e[0][0]} UND   </p>
-                                                <p class="V2 Abslt">${TmRSS(e[0][1])}</p>
-                                                <p class="V3 Abslt">${(Num(e[0][1])/Num(e[0][0])).toFixed(2)}</p>
-                                            </div>`
-                            return `<div class="Armz bckG Cl Rltv" name="${Bx}" ${Bckg(`${Bx}.webp`)}><a class="Abslt Cl">${ON.filter(Y=>Y[1]==Bx).map(Y=>BoxVlr(Y)).join('')}</a></div>`
-                        }
-
-                        function MudaArmzn(Eu,V){
-                            $$('.Armz',Avo(Eu)).forEach(e=>{
-                                if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}
-                            })
-                        }
-
-                        function tmplt_Prod(){ //GRANDE
-                            Inn('#Div-Prod',AllProd.map(e=>{
-                                if(UCgo.orc.includes(e)) return
-                                const Fora = Prod[e].img=='Place' ? './SVG/placeholder.svg' : null
-                                const vari = Prod[e].Tipos
-                                const TblA = Prod[e].Prvw=='Tabela' ; const ON = FiltOn(e)
-                                const iSVG = Prod[e].Prvw=='IptSVG'
-                                const CalC = Prod[e].Calc
-                                const Alll = Prod[e].Alll
-                                const Brvv = {Masculino:'Masc',Feminino:'Femi'}
-                                const onck = `onclick="ExibeFotinha('${e}')"`
-                                const novo = (arr)=>arr.map(u=>u?.[1] ?? null)
-                                const Flts = ObjKey(vari).flatMap(v=>e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v)
-                                const VVV  = Vari(e)
-                                const VARI = (VVV.length === 2 &&VVV[0] === 'Todos' &&VVV[1] === e) ? [...Flts] : VVV
-
-                                return `<div class="Rltv Start2">
-                                    <span class="Start"><img ${TblA ? `class="PT" onclick="TOV(this);Gmbrr(this)"` : ''}  src="${Fora||`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
-                                    <div class="KeyInn none">...</div>
-
-                                    <div class="Ct w100 Opts Abslt">${ // Faz o Menusiho de opções de cima
-                                        // Quando só tem 2 Tipos Todos e Repete o Prod então deve carregar todos os itens de dentro desse Prod
-                                        //
-                                        VARI.map((vv,x,l)=>{const L = l.length ; const U = L==1 ? 0 : 15
-                                            const CS1 = `left:${(x*(200/L))-(x==0?0:U)}px ; width:${(200/L)+U}px ; z-index:${(L-x)+10}`
-                                            const CS2 = `left:${(x*(270/L))-(x==0?0:U)}px ; width:${(270/L)+U}px ; z-index:${(L-x)+10}`
-                                            return `<div style="${CS1}" name="${CS2}" onclick="ShowVrnts(this)" class="Ct Abslt PT Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora || `./Prod/IconProd/${vv=='Todos'?`${vv}`:`${e}_${vv}`}.svg`}"></div>`
-                                        }).join('')}
-                                    </div>
-
-                                    <div class="Ct DivVrnts">${
-                                        VARI.map((V,x)=>{
-                                            const obj  = vari[V]
-                                            const Al   = V=='Todos'
-                                            const Xo   = {'ímã':'I','Trofeu':'T'}
-
-                                            return `<div class="Box3 Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
-                                            ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
-                                            <div class="KeyVari rgx">${V}</div>
-
-                                            ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[2])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${Brvv[s]||s}</a>`).join('')}</div>` : ``}
-                                            ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[3])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${s         }</a>`).join('')}</div>` : ``}
-
-                                             ${Al&&iSVG  ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
-                                              :Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                                             :!Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>{return s.includes(`${e}_${V}_`)}).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                                             :Al         ? `<div class="Ct fotO${Flts.length-1}${Xo[e]||''}">${Flts.map((vV)=>vV=='Todos'?'':`<img class="Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr(${Alll=='Al1'?`'${e}','${e}','${vV}'` : Alll=='Al2'?`'${e}','${vV}',null,'Brilho'`:''})">`).join('')}</div>`
-                                             /*de UND*/  : `<img class="fotO Hov" src="${Fora||`./Prod/${e}_${V}.webp`}" ${onck}>`
-                                            }
-                                            ${!Al&&CalC=='M2'?`<div class="Ct vlM2" ${onck}>${'Tm_RS(obj.Valr)'}<p>m²</p></div>`:''}
-                                            <div class="rgx none">${(HotKy[e]||[]).join(',')}</div>
-                                            <a class="Abslt BtnGrid">${SVG.Gemn}</a>
-                                            <div>Prazo 3 dias</div>
-                                            <img class="Abslt BtnCarr HOV" onclick="AddCarr('${e}','${V}')" src="./SVG/Adicionar.svg">
-                                            </div>`
-                                        }).join('')}
-                                    </div>
-                                </div>`
-                            }).join(''))
-                        }
-                    </script>
-
-                    <script> // Focados nos CANVAS
-                        function ORCnewID(tr){ // dar o NOVO id pra cada linha do ORC
-                            tr.classList.forEach(c=>c.startsWith('ORC_tr-') && tr.classList.remove(c))
-                            const max = Math.max(0,...[...$$('tr',Pai(tr))].map(e=>[...e.classList].find(c=>c.startsWith('ORC_tr-'))).filter(Boolean).map(c=>+c.split('-')[1]||0))
-                            Add(tr,`ORC_tr-${max+1}`)
-                            const Dtlh = $('#Div-Detalhes .ORC_tr')
-                            const clone = Dtlh.cloneNode(true)
-                            clone.classList.forEach(c=>c.startsWith('ORC_tr-') && clone.classList.remove(c))
-                            Add(clone,`ORC_tr-${max+1}`)
-                            Insert(Pai(Dtlh)).After(clone,Dtlh)
-                        }
-                        function ReloadDetalhes(tr){ // acho q tr já é a ativa
-                            const Tr = $(`#ORC tbody tr.Atv`); if (!Tr) return
-                            const id = [...Tr.classList].find(c => c.startsWith('ORC_tr-'))?.split('-')[1]
-                            $$('#Div-Detalhes .ORC_tr').forEach(c=>Add_N(c))
-                            Rmv_N($(`#Div-Detalhes .ORC_tr-${id}`))
-                        }
-                        function TipoCanvas(tr){ // Trocar pra o Tipo de Canvas Conforme o Input Serv (Se tiver Ativo)
-                            const serv = VAAL($('.oServ',tr))
-                            if(Prod[serv]?.Prvw=='CanvMdd'){Show($('#CanvasMedidas' ))}
-                            if(Prod[serv]?.Prvw=='Canva3D'){Show($('#NewCanvas'     ))}
-                        }
-                        function AtvMyMdds(Eu){// a Estrelinha que Ativa CanvasMdds
-                            TOV(Eu) ; Tog(_tr(Eu),'CanvMddsATV')
-                            ATV($('#DivIMGProd'))  // Ajeitar o negócio de tog reverso se já tiver com o detalhe aberto // se meu tr já tiver ATV e o detalhe tiver Oculto Apenas abre {pois já está ativo}
-                            // Cria o Canvas com Tm_CnvsMdds()
-                            // ao Remover este Click remove o Canvas Detalhe
-                            // a Estrelinha só deve aparecer em quem tem "CanvMdd"
-                            // Fundir com o de cima e arrumar uma estrelinha pra "Canva3D"
-                            RodaCanvMdds(Eu)
-                        }
-                    </script>
-                </div>
-                
-                <div id="NovoForm" class="Cl w90 Rltv Rd Box1">
-                    
-                    <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
-                        <div class="PT HOV O_All" onclick="ClrAll()">🧹</div>
-                        <div class="PT HOV O_All" onclick="RmvAll()">❌</div>
-                        <img draggable="false" src="./SVG/More.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
-                        <script>
-                            function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
-                            function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
-                            function Hdd_Crct(){Tog($$(`[class^="ORC_CRCT_"]`),'none')}
-                            document.addEventListener("keydown",function(e){if(e.key==="'"){Prvn();Hdd_Cust()}})
-                        </script>
-                        <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
-                        <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
-                            <div class="Ct"><input id="Hdd-Cbclh" type="checkbox" checked onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
-                            <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"> <label>Exibir Custo    </label></div>
-                            <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"> <label>Exibir Crescente</label></div>
-                            <div class="Ct"><input type="checkbox" id="TrocaDetalheE">    <label>Trocar Detalhes </label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
-                        </div>
-                    </div>
-
-                    <style>  /*CSS do ORC NovoForm*/
-                        #NovoForm{padding:20px 10px;margin-bottom: 5px;}
-                        #ORC input,#ORC select{width:100% !important ; margin:0}
-                        #ORC   .RS    {font-size:9px  ; margin-right: 3px}
-                        #ORC   .RS + a{font-size:15px ; font-weight: bold;}
-                        .Final .RS + a{font-size:25px ; font-family:var(--Bold)}
-                        .Final .RS    {margin-right:3px}
-                        :is(.CSS1,.CSS2) [class^="ORC_CUST_"]{color:#ff6565}.CSS3 [class^="ORC_CUST_"]{color:#c42929}
-                        :is(.CSS1,.CSS2) [class^="ORC_CRCT_"]{color:#65b5ff}.CSS3 [class^="ORC_CRCT_"]{color:#146bbd}
-                        :is(.CSS1,.CSS2) [class^="ORC_RSUT_"]{color:#48ff00}.CSS3 [class^="ORC_RSUT_"]{color:#2c9402}
-                        .CSS3 .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
-                        #ORC td{padding: 1px}
-                        #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center; opacity: 0.8;}
-                        #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
-                        #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
-                        .Branc{color: #ffffff5d !important}
-                        .imita{height: 30px; background: #ffffff11}
-                        .sOFF{opacity:0.3}
-                        #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
-                        #G_Cores p  {width:30px; height:30px; margin:2px}
-                        .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
-
-                        .CSS1 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
-                        .CSS2 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
-                        .CSS3 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#6900569c !important} :is(.OrcAdd,.OrcClr) svg{width: 18px;}
-                        .OrcRmv     {fill:#ff0000e7 !important} .OrcRmv svg{width:15px}
-                        .BtnoQnt.Atv{fill:#690056   !important}
-                        .BtnoQnt    {width:15px; height:15px; top: 8px;right: 8px}
-                        .oImgs      {width:30px; height:30px}
-                        .oImgs svg  {width:100%; height:100%}
-                    </style>
-
-                    <script> // Templates e Ações para Tabela de Orçamento
-                        const BurealMode = true
-                        // Templates
-                            const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
-                            const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
-                        // Ações
-                            const ReadSVG    =()=>readSVGFiles(SVG_FILES,(svg)=>AddCarr('Recorte','','','','',svg))
-                            const Check_W_Pag=()=>{if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
-                                                   if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
-                        // Add, Rmv, Clear
-                            const RmvORC=tr=>tr.remove()
-                            const ClrORC=tr=>{Clear($$('input',tr)) ; Zerar(tr)}
-                            const ClrAll=()=>{$$(`#ORC tbody tr`                  ).forEach(tr=>ClrORC(tr))            ; Rload_Tbl() }
-                            const RmvAll=()=>{$$(`#ORC tbody tr:not(:first-child)`).forEach(tr=>RmvORC(tr)) ; ClrAll() ; Rload_Tbl() }
-                            const AddORC=tr=>{const Tr=tr.cloneNode(true) ; ClrORC(Tr) ; Insert(Pai(tr)).After(Tr,tr)  ; ORCnewID(Tr) ; Rload_Tbl()}
-                            // Ao Limpar a tr tbm deveria Limpar os Detalhes
-                    </script>
-                    <script> // Handlers 
-                        function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; ReloadTotal()}
-                        function Upp_Tabela(Tbl){
-                            $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
-                            $$(`${Tbl} tbody tr`).length == 1 ? None($$('.O_All')) : Show($$('.O_All'))
-                        }
-                        function Upp_RowCol(Tbl){
-                            const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
-                            $$(`${Tbl} input`).forEach((I,x)=>{
-                                I.dataset.row = Math.floor(x/Lmt)
-                                I.dataset.col = x % Lmt})
-                        }
-                        function HandArrow(Tbl,e){
-                            if (e.key === "Enter"){
-                                const Inpts = $$(`input`,Tbl)
-                                const Elemt = $(':focus')
-                                const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
-                                if(Next){Next.focus() ; Next.select() }}
-                            let act = document.activeElement
-                            if (act.tagName !== "INPUT") return
-                            let r = +act.dataset.row, c = +act.dataset.col, nxt
-                            if (e.key === "ArrowRight") nxt = `[data-row='${ r }'][data-col='${c+1}']`
-                            if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
-                            if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
-                            if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
-                            if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
-                        }
-                    </script>
-
-                    <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
-                        <thead><tr onload="Inn(this,Tm_ORC_Th(['','Imgs','Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Extr','Und','SbTt','','']))"></tr></thead>
-                        <tbody>
-                            <tr class="ORC_tr ORC_tr-1" oninput="Orcamento(this)" onchange="ValidOpts()">
-                                <td width="15px"><div class="PT Ct OrcAdd" onclick="AddORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Mais)" ></div></td>
-                                <td             ><div   class="oImgs"></div></td>
-                                <td             ><div   class="oServ" oninput="ChangE(this,'Tipo')"   onload="Tm_Select(this,'Serv',['Serviços',...AllProd])" ></div></td>
-                                <td             ><div   class="oTipo" oninput="ChangE(this,'Cbmt',0)" onload="Tm_Select(this,'Tipo',['Tipo'])"                ></div></td>
-                                <td             ><div   class="oCbmt" oninput="ChangE(this,'Matr',1)" onload="Tm_Select(this,'Cbmt',['Acabamento'])"          ></div></td>
-                                <td             ><div   class="oMatr" oninput="ChangE(this,'Qnt' ,2)" onload="Tm_Select(this,'Matr',['Gramatura'])"           ></div></td>
-                                <td class="Rltv"><input class="oLrg"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Largura"><span class="Abslt AvisoInpt none RD"></span></td>
-                                <td class="Rltv"><input class="oAlt"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Altura" ><span class="Abslt AvisoInpt none RD"></span></td>
-                                <td class="Rltv"><div   class="oQnt"  oninput="ChangE(this,'Finn')" onload="Tm_Select(this,'Qnt',['Qnt'])"></div><div class="BtnoQnt Abslt PT" style="z-index: 50;" onclick="AtvMyMdds(this)" onload="Inn(this,SVG.Gemn)"></div></td>
-                                <td width="10px"><div onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
-                                <td width="10%" ><div onload="Inn(this,Tm_Total('Vund'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
-                                <td width="10%" ><div onload="Inn(this,Tm_Total('SbTt'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
-                                <td width="15px"><div class="PT Ct OrcClr" onclick="ClrORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Cler)"   ></div></td>
-                                <td width="15px"><div class="PT Ct OrcRmv" onclick="RmvORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Fexa)"   ></div></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div><p>Total</p>
-                        <div class="ORC_CUST_FINAL Final none"></div>
-                        <div class="ORC_CRCT_FINAL Final none"></div>
-                        <div class="ORC_RSUT_FINAL Final"     ></div>
-                    </div>
-
-                    <button onclick="VerNota('ORC')">Ver Nota</button>
-
-                    <script> // Funções Dedicadas a Tabelas de ORÇAMENTO
-                        function AddCarr(Serv,Tipo,Cbmt,Matr,Qnt,Imgs){
-                            const ut = $$('.OrcAdd').slice(-1)[0]       // Pega o Ultimo
-                            if(vAL('Serv',ut)!==""){DispClick(ut)}      // Cria uma Linha Nova se Precisar
-                            const tr = _tr($$('.OrcAdd').slice(-1)[0])  // Pega agora essa Nova Linha
-                                     Inn($('.oImgs',tr),Imgs)
-                            const SERV = $('.oServ input',tr) ; Vll(SERV,Serv) ; ChangE(SERV,'Tipo')
-                            const TIPO = $('.oTipo input',tr) ; Vll(TIPO,Tipo) ; ChangE(TIPO,'Cbmt')
-                            const CBMT = $('.oCbmt input',tr) ; Vll(CBMT,Cbmt) ; ChangE(CBMT,'Matr')
-                            const GRAM = $('.oMatr input',tr) ; Vll(GRAM,Matr) ; ChangE(GRAM,'Qnt' )
-                            const QNTT = $('.oQnt  input',tr) ; Vll(QNTT,Qnt ) ; ChangE(QNTT,'Finn')
-                            return tr
-                        }
-
-                        const TipoCalc=(e,tr)=>{
-                            ['M2','OFS','UND'].forEach(t=>{Prod[e].Calc==t ? Add(tr,'Calc_'+t) : Rmv(tr,'Calc_'+t)}) // Tog_M2_OFS_UND
-
-                            if(!tr.classList.contains('Calc_OFS')){Add(_td($('.oQnt',tr)),'Rltv')}else{Rmv(_td($('.oQnt',tr)),'Rltv')} // tentar ver o qão isso não é nessesário
-                        }
-
-                        const VALS=tr=>Object.fromEntries(['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>[e,vAL(e,tr)]))
-
-                        // Mostrar o Valor por m2 ao Lado do Option
-                        // ativar e Desativar a Opção de imitar Bureal (Melhorar a Imitação)
-                        // quando for algum M2 já da quantidade 1 logo no Inicio ao editar Serv
-
-                        const sP=(Stg,tr)=>$(`.o${Stg} span` ,tr)
-                        const sI=(Stg,tr)=>$(`.o${Stg} input`,tr)
-                        
-                        const cP=(tr,Md)=>{ // a idéia é fazer isso ser possível selecionar de traz pra frente também
-                            const B = VALS(tr)
-                            const Calc = Prod[B.Serv].Calc
-                            const Faiz =e=> e ? MATR[e] ? ObjKey(MATR[e].Tipos) : [...e] : e
-                                if(              Md=='Tipo'){return Uniq(ObjKey(Prod[B.Serv].Tipos                          )).filter(e=>e!=="Todos" )}
-                                if(Calc=='OFS'&& Md=='Cbmt'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[0])                       )}
-                                if(Calc=='OFS'&& Md=='Matr'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[1])                       )}
-                                if(Calc=='OFS'&& Md=='Qnt' ){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[2])[0].map(e=>e[0])       )}
-                                if(Calc=='OFS'&& Md=='Finn'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table                                    )}
-                                if(Calc=='M2' && Md=='Cbmt'){return Uniq(ObjKey(Prod[B.Serv].Tipos[B.Tipo]?.Cbmt             )).filter(e=>e!=="Todos")}
-                                if(Calc=='M2' && Md=='Matr'){return Uniq(  Faiz(Prod[B.Serv].Tipos[B.Tipo]?.Cbmt[B.Cbmt].matr)).filter(e=>e!=="Todos")}
-                                if(Calc=='M2' && Md=='Qnt' ){return null}
-                        }
-
-                        function ChangE(d,Md,X){ // a Função que Troca os Options Conforme Seleciona
-                            const [e,tr]=[VAAL(d),_tr(d)]
-                            if(Md=='Finn'){LOG(Md,cP(tr,Md)) ; Orcamento(tr,cP(tr,Md)) ; return}
-                            const Dados = cP(tr,Md)                                                         // eliminar este array, pra deixar tudo em Objetos
-                            if(Dados==null){return}                                                         // só apliquei isso pra tirar um ERRO, mas n sei se eu deveria realmente fazer isso!
-                            const Opt   = Md=='Tipo' ? Prod[e].Opts : 'List'                                // se não for Change em Serv todo resto fica List por enquanto (Melhorar isso!)
-                            Inn(sP(Md,tr),Tm_MyOpts(Dados||[],Opt))                                         // dar o Inner do MyOpts a (lista,Forma de Exibire)
-                            if(Md=='Tipo'){TipoCalc(e,tr)}                                                  // Quando dou Change em Serv (Talvez n tem Problema Rodar toda Vez, vai Qui Né!)
-                            if(!Dados.includes(vAL(Md,tr)||'')){Vll(sI(Md,tr),'')}                          // Analisar depois se precisa de Disparo
-                            if(Dados.length==1            ){Vll(sI(Md,tr),Dados[0]) ; Dispinput(sI(Md,tr))} // se tiver apenas um Seleciona ele e dispara
-                            // ainda acontece algo que quando eu troco o serv, a Limpeza só é efetuada no 'Tipo' por que ele já é o Próximo
-                            // e só vai pra o terceiro se o tipo for apenas 1, pq bate com o critério acima e dar o Disparo, ai nesse caso atualiza o outro
-                            // mas eu quero isso mais Poderoso, quero que ao trocar percorra todas elas pra analziar se as demais tão tudo OK msm!
-                        }
-
-                        function Orcamento(tr,Lista=null){
-                            const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
-                            let [Serv,Tipo,Cbmt,Matr,Lrg,Alt,Qnt,Qntt] = ['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>vAL(e,tr))
-                            if(!Prod[Serv]){return} // Cancela se o Poduto não Exista
-                            const Calc = Prod[Serv].Calc
-                            const QNT  = Num(`${Qntt}`.replace('.',''))
-                            
-                            if(Calc=='OFS'){ // quando for Zero é pq ta indisponivel ent n deveria carregar
-                                if(Lista==null){return} // caso não venha nenhuma Lista
-                                const Flt=Lista.filter(e=>e[0]==Cbmt && e[1]==Matr)
-                                if(Flt.length==0){return} // Caso não tenha Filter
-                                const F = Flt[0][2].filter(e=>e[0]==Qntt)[0]
-                                InnRsult(tr,QNT,F[2],F[1],F[1])                // (tr,Qnt,Cust,Crcnt,Valr)
-                            }
-                            if(Calc=='M2v'){
-                                const svg = $('.oImgs svg',tr).outerHTML
-                                const R   = CalcSVG(svg,[Lrg,Alt,Qnt],BS_Mtras[Tipo])
-                                LOG('Corte: ',R.Cort,'Mtrl: ',R.Mtrl)
-                                InnRsult(tr,Qnt,2,R.Cort+R.Mtrl,(R.Cort+R.Mtrl)*1.15) // (tr,Qnt,Cust,Crcnt,Valr)
-                            }
-                            if(Calc=='M2'){
-                                const tipo = Prod[Serv].Tipos[Tipo].Cbmt[Cbmt]
-                                CheckLimit(tipo,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)
-                                const m2   = Lrg*Alt*Qnt
-                                const DESCt= m2<=5 ? 0 : m2>=15 ? 0.15 : m2/100 // Desconto pra cima de 5 Metros
-                                const addi = Serv=='Trofeu' ? 1*Qnt : 0
-                                const vCst = tipo?.Cust ?? 0
-                                const MtrL = tipo?.matr=='Adesivo' ? MATR['Adesivo'].Tipos[Matr]?.Valr : 0
-                                const vM2  = tipo?.Valr+MtrL ?? 0
-                                const VV   = TotalCress(vM2,m2)+addi
-                                const Cust = vCst*m2
-                                const Crct = vM2*m2+addi
-                                const Valr = Math.floor(VV-(VV*(DESCt)))
-                                InnRsult(tr,Qnt,Cust,Crct,Valr)
-                            }
-                            // mostrar o Valor q sairia se fosse de UND quando eu escolher mais de 1
-                        }
-
-                        const Zerar=tr=>InnRsult(tr,0,0,0)
-                        const InNa_RS=(e,v)=>{const V=isNaN(v)?0:v ; Inn(e,Tm_RS(V)) ; Nm(e,V) ; if(V==0){Add(e,'Branc')}else{Rmv(e,'Branc')}}
-                        function ReloadTotal(){['CUST','CRCT','RSUT'].forEach(E=>{const v = SOMA($$(`.ORC_${E}_SbTt`).map(e=>Nm(e))) ; InNa_RS($(`.ORC_${E}_FINAL`),v)})}
-                        
-                        function InnRsult(tr,Qnt,F_Cust,F_Crct,F_Valr){    
-                            InNa_RS($('.ORC_CUST_Vund',tr),(F_Cust/Qnt||0))
-                            InNa_RS($('.ORC_CRCT_Vund',tr),(F_Crct/Qnt||0))
-                            InNa_RS($('.ORC_RSUT_Vund',tr),(F_Valr/Qnt||0))
-                            InNa_RS($('.ORC_CUST_SbTt',tr),F_Cust)
-                            InNa_RS($('.ORC_CRCT_SbTt',tr),F_Crct)
-                            InNa_RS($('.ORC_RSUT_SbTt',tr),F_Valr)
-                            ReloadTotal()
-                            // a soma de metros de produtos do mesmo tipo tem q resultar na soma da Diminuição da Crescente
-                        }
-                        Rload_Tbl() // Iniciar
-                    </script>
-                </div>
-
-                <div class="Cl none">                   
-                    <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
-                    <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
-                    <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
-                </div>
-                
-                <div onload="Inn(this,Tm_DataNatora())"></div>
-
-                    <div class="Ct">
-                        <input id="valor" type="number" placeholder="Valor em R$" oninput="simular()">
-                        <button onclick="simular()">Simular</button>
-
-                        <table>
-                            <thead><tr><th>Parcelas</th><th>Taxa</th><th>Total (R$)</th><th>Parcela (R$)</th></tr></thead>
-                            <tbody id="res"></tbody>
-                        </table>
-
-                        <script>
-                            const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
-                            function simular(){
-                                const v=+valor.value;if(!v)return alert("Digite um valor!")
-                                Inn(res,TaxaMpag.map((t,i)=>{const tot=v*(1+t),parc=tot/(i+1);return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`}).join(''))
-                            }
-                        </script>
-                    </div>
-            </div>
-
-            <div id="Pag_GBRT" class="none Ct"> <!--VIROU AGENDA-->
+            <div id="DivIMGProd" class="Bt w90"> <!--IMAGENS dos PRODUTOS-->
                 <style>
-                    #Agnda{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-                    #Agnda .box2{padding: 3px; min-height: 100px ; min-width: 150px}
-                    .evt{color:#fff;margin:2px 0;padding:2px}
-                    .Cov:hover{background-color: #8b8b8b5d}
-                    .Off{opacity: 0.3}
-                    option.Off{color: red !important}
-                    .bandj{width:500px;left:50%;transform:translateX(-50%);top: 35px;}
-                    .bandj :is(input,select){width: 100px}
+                    #Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
+                    #Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
+                    #DivIMGProd     #Div-Prod {width: 100%}
+                    #DivIMGProd.Atv #Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
+
+                    #DivIMGProd     #Div-Detalhes {width:  0% ; background: #00df0000}
+                    #DivIMGProd.Atv #Div-Detalhes {width: 39% ; background: #00df0000 ; padding: 8px;}
+                    #DivIMGProd     #Div-Detalhes > div {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
+                    #DivIMGProd.Atv #Div-Detalhes > div {opacity: 1; pointer-events: auto}
+                    #DivIMGProd     .IconDtlh p         {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
+                    #DivIMGProd.Atv .IconDtlh p         {opacity: 1; pointer-events: auto}
+                    .IconDtlh p            {font-size: 20px}
+                    .DivCanvMdd            {height: 75%;width: 100%;padding:8px;}
+
+                    #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
+                    #Div-Prod span         {margin-left:10px; margin-bottom:10px}
+                    #Div-Prod span p       {margin:0px; font-size:9px}
+                    #Div-Prod span p strong{font-size:9px}
+                    #Div-Prod span img     {margin:5px; height:30px; width:30px}
+                    #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
+                    .CSS3 #Div-Prod span{color: #ffffff}
+                    #Div-Prod .DivVrnts    {margin-top:20px}
+                    .DivVrnts .vlM2        {margin-top: 5px;}
+                    .DivVrnts .vlM2 a      {font-size: 15px;}
+                    .DivVrnts .vlM2 p      {margin: 1px 2px;}
+
+                    #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
+                    #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
+                    #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
+                        #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
+                        #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
+                        #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
+                        #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
+
+                    #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
+                    #Div-Prod .Conteudo{padding-top:10px; z-index:999}
+                    :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+                                .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+        
+                    #Div-Prod .Conteudo.Pecq{width:200px}
+                    #Div-Prod .Conteudo.Grnd{width:270px}
+                    .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
+
+                    #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
+                    #Div-Prod .BtnCarr        {width: 120px; top:310px   }
+                </style>
+                <style>
+                    .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
+                    .BxVlr            {color:#ffffff}
+                    .Indisdp          {font-size:6px;transform:rotate(-15deg);top:5px;left:4px}
+                    .Armz > a         {right:  0px ; bottom: 0px}
+                    .Pecq .Armz       {width: 90px ; height:66px}              .Grnd .Armz       {width:120px ; height:88px}
+                    .Pecq .BxVlr      {width: 48px ; height:20px ; margin:1px} .Grnd .BxVlr      {width: 62px ; height:26px ; margin:2px}
+                    .Pecq .BxVlr .TMRS{top:5px;left:2px}                       .Grnd .BxVlr .TMRS{top:7px; left:2px}
+                    
+                    .Pecq .V3         {right:0px;top:1px}                      .Grnd .V3      {right:0px;top:1px}
+                    .Pecq .V1         {font-size:   4px}                       .Grnd .V1      {font-size:  6px}
+                    .Pecq .TMRS b     {font-size:   7px}                       .Grnd .TMRS b  {font-size:  9px}
+                    .Pecq .TMRS p     {font-size:  11px}                       .Grnd .TMRS p  {font-size: 15px}
+                    .Pecq .V3         {font-size:   4px}                       .Grnd .V3      {font-size:  7px}
+                    
+                    .Variate2 a{background: #fd0061; margin: 2px; color: #ffffff;}
+                    .Variate2 {margin: 2px}
+
+                    .CanvasMedidas.Hmax{width: auto ; height: 100%}
+                    .CanvasMedidas.Wmax{width: 100% ; height: auto}
                 </style>
 
-                <script> // ====== BASE DE DADOS ======
-                    let hoje = new Date(), ano=hoje.getFullYear(), mes=hoje.getMonth(), AGND=[], DaySel=null
-                    const FUNC_COLOR = {Arte:'#6f42c1','Aplicação':'#0d6efd'}
-                    const FUNC_TIME  = {Arte:120,'Aplicação':60}
-                    const HORAS      = ["Hora","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
-                </script>
+                <style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
+                    .fotO      {width:150px ; height:160px}
+                    .fotO1 img {width:150px ; height:160px}
+                    .fotO2 img {width:120px ; height:90px }
+                    .fotO2T img{width:75px  ; height:90px }
+                    .fotO3 img {width: 150px; height: 53px}
+                    .fotO3I img{width: 75px ; height:96px } .fotO3I img:last-child{width:150px ; height:95px }
+                    .fotO4 img {width:80px  ; height:80px }
+                    .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
+                    .fotO6 img {width:150px ; height:53px }
+                </style>
 
-                <script> // ====== BIBLIOTECA ======
-                    const LmtUser=(Arr,{Data,User})=>Arr.filter(e=>e.Data==Data && e.User==User).length>=5
-                    const FmtDate=d=>d.toISOString().slice(0,10)
-                    const FmtHora=d=>`${String(d.getHours()).padStart(2,'0')}:00`
-                    const HoraMin=h=>+h.split(':')[0]*60
-                    const MinHora=m=>`${String(m/60).padStart(2,'0')}:00`
-                </script>
+                <div id="Div-Prod" class="Start"></div>
 
-                <div>
-                    <h1>AGENDA infinityGRAFF</h1>
-                    <div class="box2 Cl Gap"><h2 id="mes"></h2><div id="Agnda" class="w100"></div></div>
+                <div id="Div-Detalhes" class="Rltv">
+                    <a class="IconDtlh Ct PT Start" onclick="TOV($('#DivIMGProd'))"><h3>⭐</h3><p>Detalhes</p></a>
+                    <div id="NewCanvas"        class="canvi Ct Cnvs none"></div>
+                    <div class="DetalheCanvMdds ORC_tr ORC_tr-1" class="Cl">
+                        <div class="DivCanvMdd Rd Ct Box1"><canvas class="CanvasMedidas canvi Cnvs Wmax"></canvas></div>
+                        <div class="Ct w100" style="margin-top:5px">  <!--// Criar um pra cada linha--> 
+                            <div class="Cl"><label>Largura Area</label><input class="I_AreaX" placeholder="Largura Area" value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
+                            <div class="Cl"><label>Altura Area </label><input class="I_AreaY" placeholder="Altura Area"  value="1,00" oninput="Mask.Num(this);RodaCanvMdds(this)"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <script>
-                    /* ================== HORAS ================== */
-                    function LoadHoras(dt,sel){
-                        function Ocupadas(dt){
-                            return AGND.filter(e=>e.Data===dt).flatMap(e=>{
-                                let ini = HoraMin(e.Hora)
-                                let dur = FUNC_TIME[e.Func]||60
-                                return Array.from({length:dur/60},(_,i)=>MinHora(ini+i*60))})
-                        }
-                        let agora = new Date()
-                        let usadas = Ocupadas(dt)
-                        $$('option',sel).forEach(op=>{
-                            let h = op.value || op.innerText
-                            let off1 = usadas.includes(h)
-                            let off2 = dt==FmtDate(agora) && h<=FmtHora(agora)
-                            let off = off1 || off2
-                            op.classList.toggle('Off', off)
-                            op.disabled = off
+                <script> // Focado no Preview de Produtos
+                    const Bckg=e=>`style="background-image:url('./Prod/Avanc/${e}')"`
+                    function AddBoxy(e){AddCarr(...e.split('_'))} // tentar tirar isso daqui só serve pra desconstruir
+                    function Gmbrr(Eu){
+                        $$('.Opts > div',Avo(Eu)).forEach(e=>{
+                            if(Coten(Eu,'Atv')){(e.dataset.s??=e.style.cssText, e.style.cssText=e.getAttribute('name')||'') ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Grnd','Pecq'))}
+                            else{(e.style.cssText=e.dataset.s || '', delete e.dataset.s)                                    ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Pecq','Grnd'))}
                         })
                     }
 
-                    /* ================== CALENDÁRIO ================== */
-                    function Tm_Agnd(g, lista){
-                        const DOW = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']
-                        Inn(g,'') ; Inn('#mes', hoje.toLocaleString('pt-BR',{month:'long',year:'numeric'}))
-                        let d0 = new Date(ano,mes,1).getDay()   // Domingo = 0
-                        let dm = new Date(ano,mes+1,0).getDate()
-                        let hj = FmtDate(new Date())
-                        // Cabeçalho
-                        DOW.forEach((d,i)=>{let off = (i === 0 || i === 6) ? 'Off' : '' ; g.innerHTML += `<div class="noslt ${off}"><b>${d}</b></div>`})
-                        // Espaços antes do dia 1
-                        for(let i=0;i<d0;i++) g.innerHTML += '<div></div>'
-                        // Dias do mês
-                        for(let d=1; d<=dm; d++){
-                            let dt  = `${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
-                            let ev  = lista.filter(e=>e.Data===dt).sort((a,b)=>HoraMin(a.Hora)-HoraMin(b.Hora))
-                            let dow = new Date(dt).getDay()   // 0 = Dom, 6 = Sáb
-                            let off = dt < hj || dow == 6 || dow == 5 ? 'Off noClk' : 'Cov'
-                            g.innerHTML += `<div class="box2 ${off} Rltv" ondblclick="OpenDay(this,event,'${dt}')"><b class="noslt">${d}</b>
-                                ${ev.map(e=>`<div class="evt RD Hov" style="background:${FUNC_COLOR[e.Func]||'#007bff'}" onclick="EditItem(${e.id},this)">${e.Hora} • ${e.Nome} • ${e.Func}</div>`).join('')}
-                                <div class="bandj gap Ct Box2 Abslt none"></div>
+                    function ShowVrnts(e){$$('.DivVrnts > div',Avo(e)).forEach((E,x)=>{
+                        $$('div',Pai(e)).forEach((B,x,l)=>{Rmv(B,'Atv')
+                            if(x < IdxDe(e)){Add(B,'Pre');Rmv(B,'Pos') ; B.style.zIndex = (l.length+x)-IdxDe(e)+10}
+                            else{            Add(B,'Pos');Rmv(B,'Pre') ; B.style.zIndex = (l.length-x)+IdxDe(e)+10}})
+                        Add(e,'Atv')
+                        if(x===IdxDe(e)){Show(E)}else{None(E)}
+                    })}
+
+                    function Armzn(Bx,ON){
+                        const Tm_R$ =e=>`<div class="TMRS Abslt Ct"><b>R$</b><p>${e}</p><b>,00</b></div>`
+                        const TmRSS =e=>e==0 ? `<b class="Ct Abslt Indisdp">Indisponível</b>` : Tm_R$(e)
+                        const BoxVlr=e=>`<div class="BxVlr bckG Rltv HOV" ${Bckg('Base.svg')} onclick="AddBoxy('${e[1]}_${e[0][4]}_${e[0][0]}')">
+                                            <p class="V1 Abslt">${e[0][0]} UND   </p>
+                                            <p class="V2 Abslt">${TmRSS(e[0][1])}</p>
+                                            <p class="V3 Abslt">${(Num(e[0][1])/Num(e[0][0])).toFixed(2)}</p>
+                                        </div>`
+                        return `<div class="Armz bckG Cl Rltv" name="${Bx}" ${Bckg(`${Bx}.webp`)}><a class="Abslt Cl">${ON.filter(Y=>Y[1]==Bx).map(Y=>BoxVlr(Y)).join('')}</a></div>`
+                    }
+
+                    function MudaArmzn(Eu,V){
+                        $$('.Armz',Avo(Eu)).forEach(e=>{
+                            if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}
+                        })
+                    }
+
+                    function tmplt_Prod(){ //GRANDE
+                        Inn('#Div-Prod',AllProd.map(e=>{
+                            //if(UCgo.orc.includes(e)) return
+                            const Fora = Prod[e].img=='Place' ? './SVG/placeholder.svg' : null
+                            const vari = Prod[e].Tipos
+                            const TblA = Prod[e].Prvw=='Tabela' ; const ON = FiltOn(e)
+                            const iSVG = Prod[e].Prvw=='IptSVG'
+                            const CalC = Prod[e].Calc
+                            const Alll = Prod[e].Alll
+                            const Brvv = {Masculino:'Masc',Feminino:'Femi'}
+                            const onck = `onclick="ExibeFotinha('${e}')"`
+                            const novo = (arr)=>arr.map(u=>u?.[1] ?? null)
+                            const Flts = ObjKey(vari).flatMap(v=>e==v?ObjKey(Prod[e].Tipos[v].Cbmt):v)
+                            const VVV  = Vari(e)
+                            const VARI = (VVV.length === 2 &&VVV[0] === 'Todos' &&VVV[1] === e) ? [...Flts] : VVV
+
+                            return `<div class="Rltv Start2">
+                                <span class="Start"><img ${TblA ? `class="PT" onclick="TOV(this);Gmbrr(this)"` : ''}  src="${Fora||`./Prod/IconProd/${e}.svg`}"><div class="Start2"><h3 class="rgx">${e}</h3><p class="rgx">${Prod[e].Desc}</p></div></span>
+                                <div class="KeyInn none">...</div>
+
+                                <div class="Ct w100 Opts Abslt">${ // Faz o Menusiho de opções de cima
+                                    // Quando só tem 2 Tipos Todos e Repete o Prod então deve carregar todos os itens de dentro desse Prod
+                                    //
+                                    VARI.map((vv,x,l)=>{const L = l.length ; const U = L==1 ? 0 : 15
+                                        const CS1 = `left:${(x*(200/L))-(x==0?0:U)}px ; width:${(200/L)+U}px ; z-index:${(L-x)+10}`
+                                        const CS2 = `left:${(x*(270/L))-(x==0?0:U)}px ; width:${(270/L)+U}px ; z-index:${(L-x)+10}`
+                                        return `<div style="${CS1}" name="${CS2}" onclick="ShowVrnts(this)" class="Ct Abslt PT Pos ${x===0?'Atv':''}"><a class="none rgx">${vv}</a> <img name="${vv}" src="${Fora || `./Prod/IconProd/${vv=='Todos'?`${vv}`:`${e}_${vv}`}.svg`}"></div>`
+                                    }).join('')}
+                                </div>
+
+                                <div class="Ct DivVrnts">${
+                                    VARI.map((V,x)=>{
+                                        const obj  = vari[V]
+                                        const Al   = V=='Todos'
+                                        const Xo   = {'ímã':'I','Trofeu':'T'}
+
+                                        return `<div class="Box3 Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
+                                        ${Prod[e].Stts=="Offf"?`<div class="Ct Abslt offf">Indisponível no momento...</div>`:''}
+                                        <div class="KeyVari rgx">${V}</div>
+
+                                        ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[2])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${Brvv[s]||s}</a>`).join('')}</div>` : ``}
+                                        ${TblA&&e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[3])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${s         }</a>`).join('')}</div>` : ``}
+
+                                            ${Al&&iSVG  ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
+                                            :Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
+                                            :!Al&&TblA  ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>{return s.includes(`${e}_${V}_`)}).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
+                                            :Al         ? `<div class="Ct fotO${Flts.length-1}${Xo[e]||''}">${Flts.map((vV)=>vV=='Todos'?'':`<img class="Hov" src="${Fora||`./Prod/${e}_${V}_${vV}.webp`}" onclick="AddCarr(${Alll=='Al1'?`'${e}','${e}','${vV}'` : Alll=='Al2'?`'${e}','${vV}',null,'Brilho'`:''})">`).join('')}</div>`
+                                            /*de UND*/  : `<img class="fotO Hov" src="${Fora||`./Prod/${e}_${V}.webp`}" ${onck}>`
+                                        }
+                                        ${!Al&&CalC=='M2'?`<div class="Ct vlM2" ${onck}>${'Tm_RS(obj.Valr)'}<p>m²</p></div>`:''}
+                                        <div class="rgx none">${(HotKy[e]||[]).join(',')}</div>
+                                        <a class="Abslt BtnGrid">${SVG.Gemn}</a>
+                                        <div>Prazo 3 dias</div>
+                                        <img class="Abslt BtnCarr HOV" onclick="AddCarr('${e}','${V}')" src="./SVG/Adicionar.svg">
+                                        </div>`
+                                    }).join('')}
+                                </div>
                             </div>`
-                        }
-                    }
-
-                    /* ================== BANDEJA ================== */
-                    function TplAgnd({mode='new',data={},id=null}={}){
-                        const Alls = `$$('input, select',Avo(this))`
-                        return `
-                            <input  class="Nome" placeholder="Nome" value="${data.Nome||''}">
-                            <select class="Func">${Tm_Opt(['Função','Arte','Aplicação'],data.Func)}</select>
-                            <select class="User">${Tm_Opt(['Usuário','Allan','Baby','Fexta'],data.User)}</select>
-                            <select class="Hora">${Tm_Opt(HORAS,data.Hora)}</select>
-                            ${mode=='edit' ? `<input type="date" class="Data" value="${data.Data}">` : ''}
-                            <div class="Ct Gap">
-                                ${mode!='edit' ? `<button onclick="SB_Inst_AGND(${Alls})                   ">Salvar</button>`
-                                            : `<button onclick="SB_Edit_AGND(${Alls},${id});XModal(this)">Salvar</button>
-                                                <button onclick="SB_Dlet_AGND(${id})        ;XModal(this)">Excluir</button>`
-                            }</div>
-                        `
-                    }
-
-                    function OpenDay(Eu,ev,dt){
-                        if (dt < FmtDate(new Date())) return ; DaySel = dt
-                        None($$('.bandj'))
-                        const Bj = $('.bandj',Eu)
-                        Inn(Bj,TplAgnd())
-                        LoadHoras(dt,$('.Hora',Bj))
-                        Show(Bj)
-                    }
-
-                    function EditItem(id){
-                        let e = AGND.find(a=>a.id==id) ; if(!e) return
-                        MODAL(`<h2>Editar Agendamento</h2>${TplAgnd({mode:'edit',data:e,id})}`)
-                        LoadHoras(e.Data,$('.FModal .Hora'))
+                        }).join(''))
                     }
                 </script>
 
-                <script>// ================== SUPABASE ==================
-                    async function getAgnd(g){let {data}=await supaBASE.from('AGND').select('*') ; AGND=data||[] ; Tm_Agnd(g,AGND)}
-
-                    async function SB_Inst_AGND(Ipnts){
-                        let obj={}
-                        Ipnts.forEach(i=>obj[i.className]=i.value)
-                        obj.Data = DaySel
-                        if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
-                        if(LmtUser(AGND,obj))       return alert('Limite diário atingido')
-                        await supaBASE.from('AGND').insert(obj)
-                        DaySel=null
-                        getAgnd($('#Agnda'))
+                <script> // Focados nos CANVAS
+                    function ORCnewID(tr){ // dar o NOVO id pra cada linha do ORC
+                        tr.classList.forEach(c=>c.startsWith('ORC_tr-') && tr.classList.remove(c))
+                        const max = Math.max(0,...[...$$('tr',Pai(tr))].map(e=>[...e.classList].find(c=>c.startsWith('ORC_tr-'))).filter(Boolean).map(c=>+c.split('-')[1]||0))
+                        Add(tr,`ORC_tr-${max+1}`)
+                        const Dtlh = $('#Div-Detalhes .ORC_tr')
+                        const clone = Dtlh.cloneNode(true)
+                        clone.classList.forEach(c=>c.startsWith('ORC_tr-') && clone.classList.remove(c))
+                        Add(clone,`ORC_tr-${max+1}`)
+                        Insert(Pai(Dtlh)).After(clone,Dtlh)
                     }
-
-                    async function SB_Edit_AGND(Ipnts,id){
-                        let obj={}
-                        Ipnts.forEach(i=>obj[i.className]=i.value)
-                        if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
-                        await supaBASE.from('AGND').update(obj).eq('id',id)
-                        getAgnd($('#Agnda'))
+                    function ReloadDetalhes(tr){ // acho q tr já é a ativa
+                        const Tr = $(`#ORC tbody tr.Atv`); if (!Tr) return
+                        const id = [...Tr.classList].find(c => c.startsWith('ORC_tr-'))?.split('-')[1]
+                        $$('#Div-Detalhes .ORC_tr').forEach(c=>Add_N(c))
+                        Rmv_N($(`#Div-Detalhes .ORC_tr-${id}`))
                     }
-
-                    async function SB_Dlet_AGND(id){
-                        if(!confirm('Excluir este agendamento?')) return
-                        await supaBASE.from('AGND').delete().eq('id',id)
-                        $('.FModal')?.remove()
-                        getAgnd($('#Agnda'))
+                    function TipoCanvas(tr){ // Trocar pra o Tipo de Canvas Conforme o Input Serv (Se tiver Ativo)
+                        const serv = VAAL($('.oServ',tr))
+                        if(Prod[serv]?.Prvw=='CanvMdd'){Show($('#CanvasMedidas' ))}
+                        if(Prod[serv]?.Prvw=='Canva3D'){Show($('#NewCanvas'     ))}
+                    }
+                    function AtvMyMdds(Eu){// a Estrelinha que Ativa CanvasMdds
+                        TOV(Eu) ; Tog(_tr(Eu),'CanvMddsATV')
+                        ATV($('#DivIMGProd'))  // Ajeitar o negócio de tog reverso se já tiver com o detalhe aberto // se meu tr já tiver ATV e o detalhe tiver Oculto Apenas abre {pois já está ativo}
+                        // Cria o Canvas com Tm_CnvsMdds()
+                        // ao Remover este Click remove o Canvas Detalhe
+                        // a Estrelinha só deve aparecer em quem tem "CanvMdd"
+                        // Fundir com o de cima e arrumar uma estrelinha pra "Canva3D"
+                        RodaCanvMdds(Eu)
                     }
                 </script>
-
-                <script>/* ================== INIT ================== */
-                    getAgnd($('#Agnda'))
-                    document.addEventListener('click',e=>{if(!e.target.closest('.bandj') && !e.target.closest('.Cov')){None($$('.bandj'))}})
-                    // Filtrar pra exibir cada um
-                    // Ocultar quando atingir Limit Diário LmtUser(AGND,obj)
-
-                    // Campo pra Presencial, Waapp, Ligação
-                </script>
-
             </div>
-            <div id="Pag_LOJA" class="none Cl"></div>
-            <div id="Pag_PRFL" class="none Cl"></div>
-            <div id="Pag_BBTC" class="none Cl"></div>
-            <div id="Pag_SPRT" class="none Cl"></div>
-            <div id="Pag_CONF"></div>
+            
+            <div id="NovoForm" class="Cl w90 Rltv Rd Box1">
+                
+                <div id="CONFIG" class="Abslt Ct" style="right:10px;top:10px"> <!--CONFIGURAÇÕES-->
+                    <div class="PT HOV O_All" onclick="ClrAll()">🧹</div>
+                    <div class="PT HOV O_All" onclick="RmvAll()">❌</div>
+                    <img draggable="false" src="./SVG/More.svg" class="NObj" style="width:20px;opacity:0.2" onclick="TogShow($('#CONFIG_Bdj'))">
+                    <script>
+                        function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
+                        function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none')}
+                        function Hdd_Crct(){Tog($$(`[class^="ORC_CRCT_"]`),'none')}
+                        document.addEventListener("keydown",function(e){if(e.key==="'"){Prvn();Hdd_Cust()}})
+                    </script>
+                    <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
+                    <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
+                        <div class="Ct"><input id="Hdd-Cbclh" type="checkbox" checked onchange="Hdd_Cblh(this.checked)" onclick="SaveConfig(this)"><label>Exibir Cabeçalho</label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Cust()"> <label>Exibir Custo    </label></div>
+                        <div class="Ct"><input type="checkbox" onchange="Hdd_Crct()"> <label>Exibir Crescente</label></div>
+                        <div class="Ct"><input type="checkbox" id="TrocaDetalheE">    <label>Trocar Detalhes </label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
+                    </div>
+                </div>
+
+                <style>  /*CSS do ORC NovoForm*/
+                    #NovoForm{padding:20px 10px;margin-bottom: 5px;}
+                    #ORC input,#ORC select{width:100% !important ; margin:0}
+                    #ORC   .RS    {font-size:9px  ; margin-right: 3px}
+                    #ORC   .RS + a{font-size:15px ; font-weight: bold;}
+                    .Final .RS + a{font-size:25px ; font-family:var(--Bold)}
+                    .Final .RS    {margin-right:3px}
+                    :is(.CSS1,.CSS2) [class^="ORC_CUST_"]{color:#ff6565}.CSS3 [class^="ORC_CUST_"]{color:#c42929}
+                    :is(.CSS1,.CSS2) [class^="ORC_CRCT_"]{color:#65b5ff}.CSS3 [class^="ORC_CRCT_"]{color:#146bbd}
+                    :is(.CSS1,.CSS2) [class^="ORC_RSUT_"]{color:#48ff00}.CSS3 [class^="ORC_RSUT_"]{color:#2c9402}
+                    .CSS3 .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
+                    #ORC td{padding: 1px}
+                    #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center; opacity: 0.8;}
+                    #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
+                    #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
+                    .Branc{color: #ffffff5d !important}
+                    .imita{height: 30px; background: #ffffff11}
+                    .sOFF{opacity:0.3}
+                    #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
+                    #G_Cores p  {width:30px; height:30px; margin:2px}
+                    .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
+
+                    .CSS1 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
+                    .CSS2 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
+                    .CSS3 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#6900569c !important} :is(.OrcAdd,.OrcClr) svg{width: 18px;}
+                    .OrcRmv     {fill:#ff0000e7 !important} .OrcRmv svg{width:15px}
+                    .BtnoQnt.Atv{fill:#690056   !important}
+                    .BtnoQnt    {width:15px; height:15px; top: 8px;right: 8px}
+                    .oImgs      {width:30px; height:30px}
+                    .oImgs svg  {width:100%; height:100%}
+                </style>
+
+                <script> // Templates e Ações para Tabela de Orçamento
+                    const BurealMode = true
+                    // Templates
+                        const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
+                        const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
+                    // Ações
+                        const ReadSVG    =()=>readSVGFiles(SVG_FILES,(svg)=>AddCarr('Recorte','','','','',svg))
+                        const Check_W_Pag=()=>{if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
+                                                if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
+                    // Add, Rmv, Clear
+                        const RmvORC=tr=>tr.remove()
+                        const ClrORC=tr=>{Clear($$('input',tr)) ; Zerar(tr)}
+                        const ClrAll=()=>{$$(`#ORC tbody tr`                  ).forEach(tr=>ClrORC(tr))            ; Rload_Tbl() }
+                        const RmvAll=()=>{$$(`#ORC tbody tr:not(:first-child)`).forEach(tr=>RmvORC(tr)) ; ClrAll() ; Rload_Tbl() }
+                        const AddORC=tr=>{const Tr=tr.cloneNode(true) ; ClrORC(Tr) ; Insert(Pai(tr)).After(Tr,tr)  ; ORCnewID(Tr) ; Rload_Tbl()}
+                        // Ao Limpar a tr tbm deveria Limpar os Detalhes
+                </script>
+                <script> // Handlers 
+                    function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; ReloadTotal()}
+                    function Upp_Tabela(Tbl){
+                        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.OrcRmv',$(Tbl))) : Show($$('.OrcRmv',$(Tbl))) // Remover o X
+                        $$(`${Tbl} tbody tr`).length == 1 ? None($$('.O_All')) : Show($$('.O_All'))
+                    }
+                    function Upp_RowCol(Tbl){
+                        const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
+                        $$(`${Tbl} input`).forEach((I,x)=>{
+                            I.dataset.row = Math.floor(x/Lmt)
+                            I.dataset.col = x % Lmt})
+                    }
+                    function HandArrow(Tbl,e){
+                        if (e.key === "Enter"){
+                            const Inpts = $$(`input`,Tbl)
+                            const Elemt = $(':focus')
+                            const Next = Inpts[Array.from(Inpts).indexOf(Elemt)+1]
+                            if(Next){Next.focus() ; Next.select() }}
+                        let act = document.activeElement
+                        if (act.tagName !== "INPUT") return
+                        let r = +act.dataset.row, c = +act.dataset.col, nxt
+                        if (e.key === "ArrowRight") nxt = `[data-row='${ r }'][data-col='${c+1}']`
+                        if (e.key === "ArrowLeft")  nxt = `[data-row='${ r }'][data-col='${c-1}']`
+                        if (e.key === "ArrowDown")  nxt = `[data-row='${r+1}'][data-col='${ c }']`
+                        if (e.key === "ArrowUp")    nxt = `[data-row='${r-1}'][data-col='${ c }']`
+                        if (nxt){$(nxt)?.focus() ; setTimeout(()=>$(nxt)?.select(),0)}
+                    }
+                </script>
+
+                <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
+                    <thead><tr onload="Inn(this,Tm_ORC_Th(['','Imgs','Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Extr','Und','SbTt','','']))"></tr></thead>
+                    <tbody>
+                        <tr class="ORC_tr ORC_tr-1" oninput="Orcamento(this)" onchange="ValidOpts()">
+                            <td width="15px"><div class="PT Ct OrcAdd" onclick="AddORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Mais)" ></div></td>
+                            <td             ><div   class="oImgs"></div></td>
+                            <td             ><div   class="oServ" oninput="ChangE(this,'Tipo')"   onload="Tm_Select(this,'Serv',['Serviços',...AllProd])" ></div></td>
+                            <td             ><div   class="oTipo" oninput="ChangE(this,'Cbmt',0)" onload="Tm_Select(this,'Tipo',['Tipo'])"                ></div></td>
+                            <td             ><div   class="oCbmt" oninput="ChangE(this,'Matr',1)" onload="Tm_Select(this,'Cbmt',['Acabamento'])"          ></div></td>
+                            <td             ><div   class="oMatr" oninput="ChangE(this,'Qnt' ,2)" onload="Tm_Select(this,'Matr',['Gramatura'])"           ></div></td>
+                            <td class="Rltv"><input class="oLrg"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Largura"><span class="Abslt AvisoInpt none RD"></span></td>
+                            <td class="Rltv"><input class="oAlt"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Altura" ><span class="Abslt AvisoInpt none RD"></span></td>
+                            <td class="Rltv"><div   class="oQnt"  oninput="ChangE(this,'Finn')" onload="Tm_Select(this,'Qnt',['Qnt'])"></div><div class="BtnoQnt Abslt PT" style="z-index: 50;" onclick="AtvMyMdds(this)" onload="Inn(this,SVG.Gemn)"></div></td>
+                            <td width="10px"><div onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
+                            <td width="10%" ><div onload="Inn(this,Tm_Total('Vund'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
+                            <td width="10%" ><div onload="Inn(this,Tm_Total('SbTt'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
+                            <td width="15px"><div class="PT Ct OrcClr" onclick="ClrORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Cler)"   ></div></td>
+                            <td width="15px"><div class="PT Ct OrcRmv" onclick="RmvORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Fexa)"   ></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div><p>Total</p>
+                    <div class="ORC_CUST_FINAL Final none"></div>
+                    <div class="ORC_CRCT_FINAL Final none"></div>
+                    <div class="ORC_RSUT_FINAL Final"     ></div>
+                </div>
+
+                <button onclick="VerNota('ORC')">Ver Nota</button>
+
+                <script> // Funções Dedicadas a Tabelas de ORÇAMENTO
+                    function AddCarr(Serv,Tipo,Cbmt,Matr,Qnt,Imgs){
+                        const ut = $$('.OrcAdd').slice(-1)[0]       // Pega o Ultimo
+                        if(vAL('Serv',ut)!==""){DispClick(ut)}      // Cria uma Linha Nova se Precisar
+                        const tr = _tr($$('.OrcAdd').slice(-1)[0])  // Pega agora essa Nova Linha
+                                    Inn($('.oImgs',tr),Imgs)
+                        const SERV = $('.oServ input',tr) ; Vll(SERV,Serv) ; ChangE(SERV,'Tipo')
+                        const TIPO = $('.oTipo input',tr) ; Vll(TIPO,Tipo) ; ChangE(TIPO,'Cbmt')
+                        const CBMT = $('.oCbmt input',tr) ; Vll(CBMT,Cbmt) ; ChangE(CBMT,'Matr')
+                        const GRAM = $('.oMatr input',tr) ; Vll(GRAM,Matr) ; ChangE(GRAM,'Qnt' )
+                        const QNTT = $('.oQnt  input',tr) ; Vll(QNTT,Qnt ) ; ChangE(QNTT,'Finn')
+                        return tr
+                    }
+
+                    const TipoCalc=(e,tr)=>{
+                        ['M2','OFS','UND'].forEach(t=>{Prod[e].Calc==t ? Add(tr,'Calc_'+t) : Rmv(tr,'Calc_'+t)}) // Tog_M2_OFS_UND
+
+                        if(!tr.classList.contains('Calc_OFS')){Add(_td($('.oQnt',tr)),'Rltv')}else{Rmv(_td($('.oQnt',tr)),'Rltv')} // tentar ver o qão isso não é nessesário
+                    }
+
+                    const VALS=tr=>Object.fromEntries(['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>[e,vAL(e,tr)]))
+
+                    // Mostrar o Valor por m2 ao Lado do Option
+                    // ativar e Desativar a Opção de imitar Bureal (Melhorar a Imitação)
+                    // quando for algum M2 já da quantidade 1 logo no Inicio ao editar Serv
+
+                    const sP=(Stg,tr)=>$(`.o${Stg} span` ,tr)
+                    const sI=(Stg,tr)=>$(`.o${Stg} input`,tr)
+                    
+                    const cP=(tr,Md)=>{ // a idéia é fazer isso ser possível selecionar de traz pra frente também
+                        const B = VALS(tr)
+                        const Calc = Prod[B.Serv].Calc
+                        const Faiz =e=> e ? MATR[e] ? ObjKey(MATR[e].Tipos) : [...e] : e
+                            if(              Md=='Tipo'){return Uniq(ObjKey(Prod[B.Serv].Tipos                          )).filter(e=>e!=="Todos" )}
+                            if(Calc=='OFS'&& Md=='Cbmt'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[0])                       )}
+                            if(Calc=='OFS'&& Md=='Matr'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[1])                       )}
+                            if(Calc=='OFS'&& Md=='Qnt' ){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table.map(e=>e[2])[0].map(e=>e[0])       )}
+                            if(Calc=='OFS'&& Md=='Finn'){return Uniq(       Prod[B.Serv].Tipos[B.Tipo]?.Table                                    )}
+                            if(Calc=='M2' && Md=='Cbmt'){return Uniq(ObjKey(Prod[B.Serv].Tipos[B.Tipo]?.Cbmt             )).filter(e=>e!=="Todos")}
+                            if(Calc=='M2' && Md=='Matr'){return Uniq(  Faiz(Prod[B.Serv].Tipos[B.Tipo]?.Cbmt[B.Cbmt].matr)).filter(e=>e!=="Todos")}
+                            if(Calc=='M2' && Md=='Qnt' ){return null}
+                    }
+
+                    function ChangE(d,Md,X){ // a Função que Troca os Options Conforme Seleciona
+                        const [e,tr]=[VAAL(d),_tr(d)]
+                        if(Md=='Finn'){LOG(Md,cP(tr,Md)) ; Orcamento(tr,cP(tr,Md)) ; return}
+                        const Dados = cP(tr,Md)                                                         // eliminar este array, pra deixar tudo em Objetos
+                        if(Dados==null){return}                                                         // só apliquei isso pra tirar um ERRO, mas n sei se eu deveria realmente fazer isso!
+                        const Opt   = Md=='Tipo' ? Prod[e].Opts : 'List'                                // se não for Change em Serv todo resto fica List por enquanto (Melhorar isso!)
+                        Inn(sP(Md,tr),Tm_MyOpts(Dados||[],Opt))                                         // dar o Inner do MyOpts a (lista,Forma de Exibire)
+                        if(Md=='Tipo'){TipoCalc(e,tr)}                                                  // Quando dou Change em Serv (Talvez n tem Problema Rodar toda Vez, vai Qui Né!)
+                        if(!Dados.includes(vAL(Md,tr)||'')){Vll(sI(Md,tr),'')}                          // Analisar depois se precisa de Disparo
+                        if(Dados.length==1            ){Vll(sI(Md,tr),Dados[0]) ; Dispinput(sI(Md,tr))} // se tiver apenas um Seleciona ele e dispara
+                        // ainda acontece algo que quando eu troco o serv, a Limpeza só é efetuada no 'Tipo' por que ele já é o Próximo
+                        // e só vai pra o terceiro se o tipo for apenas 1, pq bate com o critério acima e dar o Disparo, ai nesse caso atualiza o outro
+                        // mas eu quero isso mais Poderoso, quero que ao trocar percorra todas elas pra analziar se as demais tão tudo OK msm!
+                    }
+
+                    function Orcamento(tr,Lista=null){
+                        const TotalCress=(Valr,e)=>Math.round(e*(Valr+Valr*Crecent(e)))
+                        let [Serv,Tipo,Cbmt,Matr,Lrg,Alt,Qnt,Qntt] = ['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>vAL(e,tr))
+                        if(!Prod[Serv]){return} // Cancela se o Poduto não Exista
+                        const Calc = Prod[Serv].Calc
+                        const QNT  = Num(`${Qntt}`.replace('.',''))
+                        
+                        if(Calc=='OFS'){ // quando for Zero é pq ta indisponivel ent n deveria carregar
+                            if(Lista==null){return} // caso não venha nenhuma Lista
+                            const Flt=Lista.filter(e=>e[0]==Cbmt && e[1]==Matr)
+                            if(Flt.length==0){return} // Caso não tenha Filter
+                            const F = Flt[0][2].filter(e=>e[0]==Qntt)[0]
+                            InnRsult(tr,QNT,F[2],F[1],F[1])                // (tr,Qnt,Cust,Crcnt,Valr)
+                        }
+                        if(Calc=='M2v'){
+                            const svg = $('.oImgs svg',tr).outerHTML
+                            const R   = CalcSVG(svg,[Lrg,Alt,Qnt],BS_Mtras[Tipo])
+                            LOG('Corte: ',R.Cort,'Mtrl: ',R.Mtrl)
+                            InnRsult(tr,Qnt,2,R.Cort+R.Mtrl,(R.Cort+R.Mtrl)*1.15) // (tr,Qnt,Cust,Crcnt,Valr)
+                        }
+                        if(Calc=='M2'){
+                            const tipo = Prod[Serv].Tipos[Tipo].Cbmt[Cbmt]
+                            CheckLimit(tipo,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)
+                            const m2   = Lrg*Alt*Qnt
+                            const DESCt= m2<=5 ? 0 : m2>=15 ? 0.15 : m2/100 // Desconto pra cima de 5 Metros
+                            const addi = Serv=='Trofeu' ? 1*Qnt : 0
+                            const vCst = tipo?.Cust ?? 0
+                            const MtrL = tipo?.matr=='Adesivo' ? MATR['Adesivo'].Tipos[Matr]?.Valr : 0
+                            const vM2  = tipo?.Valr+MtrL ?? 0
+                            const VV   = TotalCress(vM2,m2)+addi
+                            const Cust = vCst*m2
+                            const Crct = vM2*m2+addi
+                            const Valr = Math.floor(VV-(VV*(DESCt)))
+                            InnRsult(tr,Qnt,Cust,Crct,Valr)
+                        }
+                        // mostrar o Valor q sairia se fosse de UND quando eu escolher mais de 1
+                    }
+
+                    const Zerar=tr=>InnRsult(tr,0,0,0)
+                    const InNa_RS=(e,v)=>{const V=isNaN(v)?0:v ; Inn(e,Tm_RS(V)) ; Nm(e,V) ; if(V==0){Add(e,'Branc')}else{Rmv(e,'Branc')}}
+                    function ReloadTotal(){['CUST','CRCT','RSUT'].forEach(E=>{const v = SOMA($$(`.ORC_${E}_SbTt`).map(e=>Nm(e))) ; InNa_RS($(`.ORC_${E}_FINAL`),v)})}
+                    
+                    function InnRsult(tr,Qnt,F_Cust,F_Crct,F_Valr){    
+                        InNa_RS($('.ORC_CUST_Vund',tr),(F_Cust/Qnt||0))
+                        InNa_RS($('.ORC_CRCT_Vund',tr),(F_Crct/Qnt||0))
+                        InNa_RS($('.ORC_RSUT_Vund',tr),(F_Valr/Qnt||0))
+                        InNa_RS($('.ORC_CUST_SbTt',tr),F_Cust)
+                        InNa_RS($('.ORC_CRCT_SbTt',tr),F_Crct)
+                        InNa_RS($('.ORC_RSUT_SbTt',tr),F_Valr)
+                        ReloadTotal()
+                        // a soma de metros de produtos do mesmo tipo tem q resultar na soma da Diminuição da Crescente
+                    }
+                    Rload_Tbl() // Iniciar
+                </script>
+            </div>
+
+            <div class="Cl none">                   
+                <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
+                <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
+                <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
+            </div>
+            
+            <div onload="Inn(this,Tm_DataNatora())"></div>
+
+                <div class="Ct">
+                    <input id="valor" type="number" placeholder="Valor em R$" oninput="simular()">
+                    <button onclick="simular()">Simular</button>
+
+                    <table>
+                        <thead><tr><th>Parcelas</th><th>Taxa</th><th>Total (R$)</th><th>Parcela (R$)</th></tr></thead>
+                        <tbody id="res"></tbody>
+                    </table>
+
+                    <script>
+                        const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
+                        function simular(){
+                            const v=+valor.value;if(!v)return alert("Digite um valor!")
+                            Inn(res,TaxaMpag.map((t,i)=>{const tot=v*(1+t),parc=tot/(i+1);return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`}).join(''))
+                        }
+                    </script>
+                </div>
         </div>
+
+        <div id="Pag_GBRT" class="none Ct"> <!--VIROU AGENDA-->
+            <style>
+                #Agnda{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+                #Agnda .box2{padding: 3px; min-height: 100px ; min-width: 150px}
+                .evt{color:#fff;margin:2px 0;padding:2px}
+                .Cov:hover{background-color: #8b8b8b5d}
+                .Off{opacity: 0.3}
+                option.Off{color: red !important}
+                .bandj{width:500px;left:50%;transform:translateX(-50%);top: 35px;}
+                .bandj :is(input,select){width: 100px}
+            </style>
+
+            <script> // ====== BASE DE DADOS ======
+                let hoje = new Date(), ano=hoje.getFullYear(), mes=hoje.getMonth(), AGND=[], DaySel=null
+                const FUNC_COLOR = {Arte:'#6f42c1','Aplicação':'#0d6efd'}
+                const FUNC_TIME  = {Arte:120,'Aplicação':60}
+                const HORAS      = ["Hora","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
+            </script>
+
+            <script> // ====== BIBLIOTECA ======
+                const LmtUser=(Arr,{Data,User})=>Arr.filter(e=>e.Data==Data && e.User==User).length>=5
+                const FmtDate=d=>d.toISOString().slice(0,10)
+                const FmtHora=d=>`${String(d.getHours()).padStart(2,'0')}:00`
+                const HoraMin=h=>+h.split(':')[0]*60
+                const MinHora=m=>`${String(m/60).padStart(2,'0')}:00`
+            </script>
+
+            <div>
+                <h1>AGENDA infinityGRAFF</h1>
+                <div class="box2 Cl Gap"><h2 id="mes"></h2><div id="Agnda" class="w100"></div></div>
+            </div>
+
+            <script>
+                /* ================== HORAS ================== */
+                function LoadHoras(dt,sel){
+                    function Ocupadas(dt){
+                        return AGND.filter(e=>e.Data===dt).flatMap(e=>{
+                            let ini = HoraMin(e.Hora)
+                            let dur = FUNC_TIME[e.Func]||60
+                            return Array.from({length:dur/60},(_,i)=>MinHora(ini+i*60))})
+                    }
+                    let agora = new Date()
+                    let usadas = Ocupadas(dt)
+                    $$('option',sel).forEach(op=>{
+                        let h = op.value || op.innerText
+                        let off1 = usadas.includes(h)
+                        let off2 = dt==FmtDate(agora) && h<=FmtHora(agora)
+                        let off = off1 || off2
+                        op.classList.toggle('Off', off)
+                        op.disabled = off
+                    })
+                }
+
+                /* ================== CALENDÁRIO ================== */
+                function Tm_Agnd(g, lista){
+                    const DOW = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']
+                    Inn(g,'') ; Inn('#mes', hoje.toLocaleString('pt-BR',{month:'long',year:'numeric'}))
+                    let d0 = new Date(ano,mes,1).getDay()   // Domingo = 0
+                    let dm = new Date(ano,mes+1,0).getDate()
+                    let hj = FmtDate(new Date())
+                    // Cabeçalho
+                    DOW.forEach((d,i)=>{let off = (i === 0 || i === 6) ? 'Off' : '' ; g.innerHTML += `<div class="noslt ${off}"><b>${d}</b></div>`})
+                    // Espaços antes do dia 1
+                    for(let i=0;i<d0;i++) g.innerHTML += '<div></div>'
+                    // Dias do mês
+                    for(let d=1; d<=dm; d++){
+                        let dt  = `${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
+                        let ev  = lista.filter(e=>e.Data===dt).sort((a,b)=>HoraMin(a.Hora)-HoraMin(b.Hora))
+                        let dow = new Date(dt).getDay()   // 0 = Dom, 6 = Sáb
+                        let off = dt < hj || dow == 6 || dow == 5 ? 'Off noClk' : 'Cov'
+                        g.innerHTML += `<div class="box2 ${off} Rltv" ondblclick="OpenDay(this,event,'${dt}')"><b class="noslt">${d}</b>
+                            ${ev.map(e=>`<div class="evt RD Hov" style="background:${FUNC_COLOR[e.Func]||'#007bff'}" onclick="EditItem(${e.id},this)">${e.Hora} • ${e.Nome} • ${e.Func}</div>`).join('')}
+                            <div class="bandj gap Ct Box2 Abslt none"></div>
+                        </div>`
+                    }
+                }
+
+                /* ================== BANDEJA ================== */
+                function TplAgnd({mode='new',data={},id=null}={}){
+                    const Alls = `$$('input, select',Avo(this))`
+                    return `
+                        <input  class="Nome" placeholder="Nome" value="${data.Nome||''}">
+                        <select class="Func">${Tm_Opt(['Função','Arte','Aplicação'],data.Func)}</select>
+                        <select class="User">${Tm_Opt(['Usuário','Allan','Baby','Fexta'],data.User)}</select>
+                        <select class="Hora">${Tm_Opt(HORAS,data.Hora)}</select>
+                        ${mode=='edit' ? `<input type="date" class="Data" value="${data.Data}">` : ''}
+                        <div class="Ct Gap">
+                            ${mode!='edit' ? `<button onclick="SB_Inst_AGND(${Alls})                   ">Salvar</button>`
+                                        : `<button onclick="SB_Edit_AGND(${Alls},${id});XModal(this)">Salvar</button>
+                                            <button onclick="SB_Dlet_AGND(${id})        ;XModal(this)">Excluir</button>`
+                        }</div>
+                    `
+                }
+
+                function OpenDay(Eu,ev,dt){
+                    if (dt < FmtDate(new Date())) return ; DaySel = dt
+                    None($$('.bandj'))
+                    const Bj = $('.bandj',Eu)
+                    Inn(Bj,TplAgnd())
+                    LoadHoras(dt,$('.Hora',Bj))
+                    Show(Bj)
+                }
+
+                function EditItem(id){
+                    let e = AGND.find(a=>a.id==id) ; if(!e) return
+                    MODAL(`<h2>Editar Agendamento</h2>${TplAgnd({mode:'edit',data:e,id})}`)
+                    LoadHoras(e.Data,$('.FModal .Hora'))
+                }
+            </script>
+
+            <script>// ================== SUPABASE ==================
+                async function getAgnd(g){let {data}=await supaBASE.from('AGND').select('*') ; AGND=data||[] ; Tm_Agnd(g,AGND)}
+
+                async function SB_Inst_AGND(Ipnts){
+                    let obj={}
+                    Ipnts.forEach(i=>obj[i.className]=i.value)
+                    obj.Data = DaySel
+                    if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
+                    if(LmtUser(AGND,obj))       return alert('Limite diário atingido')
+                    await supaBASE.from('AGND').insert(obj)
+                    DaySel=null
+                    getAgnd($('#Agnda'))
+                }
+
+                async function SB_Edit_AGND(Ipnts,id){
+                    let obj={}
+                    Ipnts.forEach(i=>obj[i.className]=i.value)
+                    if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
+                    await supaBASE.from('AGND').update(obj).eq('id',id)
+                    getAgnd($('#Agnda'))
+                }
+
+                async function SB_Dlet_AGND(id){
+                    if(!confirm('Excluir este agendamento?')) return
+                    await supaBASE.from('AGND').delete().eq('id',id)
+                    $('.FModal')?.remove()
+                    getAgnd($('#Agnda'))
+                }
+            </script>
+
+            <script>/* ================== INIT ================== */
+                getAgnd($('#Agnda'))
+                document.addEventListener('click',e=>{if(!e.target.closest('.bandj') && !e.target.closest('.Cov')){None($$('.bandj'))}})
+                // Filtrar pra exibir cada um
+                // Ocultar quando atingir Limit Diário LmtUser(AGND,obj)
+
+                // Campo pra Presencial, Waapp, Ligação
+            </script>
+
+        </div>
+        <div id="Pag_LOJA" class="none Cl"></div>
+        <div id="Pag_PRFL" class="none Cl"></div>
+        <div id="Pag_BBTC" class="none Cl"></div>
+        <div id="Pag_SPRT" class="none Cl"></div>
+        <div id="Pag_CONF"></div>
     </div>
+
 </body>
 
 <script>// Iniciação
-    function PosGet(){Onloads('body') ; Check_W_Pag() ; LOG('✅ Página Carregada!')} ; PosGet()
-
+    Onloads('body') ; Check_W_Pag() ; tmplt_Prod() ; LOG('✅ Página Carregada!')
+    Get_User()
+    async function PosLogin(U){
+        USUARIO = U  ; LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        //const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        NavPag(Atual.Pag)
+    }
     document.addEventListener('click',e=>{const targ = e.target
         Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
         if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes(_tr(targ))}
@@ -1287,6 +1040,7 @@
     })})
     GetPC()
 </script>
+
 
 <script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡ 💡
     // ERROS pra corrigir
