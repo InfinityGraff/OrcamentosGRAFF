@@ -46,11 +46,6 @@
     const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
 </script>
 
-<script>
-  //const CRYPP  = ['Fixo','Edit','Data','Valr','Slct','Chek','Imgs','Mdds','Bndj','Auto','Soma','Lixo','Ssvg','Sync','Link','BjIn','OKAY']
-  //const CRYCLS = ['Auto','CorID','Fita1','Fita2','LnK']
-</script>
-
 <style>
     body    {font-family:Arial;background:#111;color:#eee}
     .SB_WRAP{border:1px solid #444;padding:10px;margin:12px}
@@ -68,11 +63,6 @@
 </body>
 
 <script>
-  async function SB_GET(){
-    const {data,error} = await supaBASE.from('BS').select('*').order('Id',{ascending:true})
-    if(error){ERR(error);return []} ; return data
-  }
-
   function RenderBS(rows){
     window.SB_OnInput = (id,key,prop,el)=>{const R=rows.find(r=>r.Id==id) ; if(!R) return ; UpdateJSON(R,key,prop,el.innerText )}
     Inn($('#app'),rows.map(row=>{
@@ -87,7 +77,6 @@
       </div>`
     }).join(''))
   }
-
   function UpdateJSON(row,key,prop,val){
     LOG(row,key,prop,val)
     const json = typeof row.Json === 'string' ? JSON.parse(row.Json) : structuredClone(row.Json)
@@ -97,24 +86,12 @@
       json[val] = json[key]
       delete json[key]
     } else {json[key] && (json[key][prop] = val) }
-    Sb_EDIT(supaBASE, 'BS', row.Id, 'Json', row.Json = json)
+    LOG('Conferir antes de Continuar') ; return
+    Sb_EDIT('BS',row.Id,{['Json']:row.Json=json})
   }
-
-  async function Init(){const rows = await SB_GET() ; RenderBS(rows)}
-  Init()
-
-  // Exibir aqui na Tabela um Reflexo de como as tabelas vão ficar no CSS
-
+  async function Init(){
+    const {data,error} = await supaBASE.from('BS').select('*').order('Id',{ascending:true})
+    if(error){ERR(error);return []} ; RenderBS(rows)
+  };Init()
 </script>
-
 </html>
-
-
-
-
-
-
-
-
-
-

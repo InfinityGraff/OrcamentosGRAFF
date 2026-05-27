@@ -388,6 +388,17 @@
                     Inn($('.Conf_Notf .Info'),`${ObjEtr(Nf).map(([k,v])=>`<label><input class="P-P" name="${k}" onchange="AtvBTN(this)" type="checkbox" ${U.Notf.includes(k)?'checked':''}>${v}</label>`).join('')}<button ${DR('',`${Typ}#${U.Id}#Notf`)} class="w100 none SALVAR" onclick="Edit_Varius(this,$$('.P-P',Pai(this)))">Salvar</button>`)
                     Inn($('.Conf_Arte .Info'),`<div class="Start2"><label>Tema</label><select name="${U.Css.Tema}" onchange="CSSBody(this)" class="P-P w100">${Tm_Opt(['Selecione um Tema','Dark','Lite'])}</select></div><div class="Start2"><label>Cor Principal</label><div class="Ct gap">${Cs.map(e=>`<a name="${e}" class="Unicor COR_${e} HOV ${U.Css.Cor==e ?'ATV':''}" onclick="TOVUNI(this,'.Unicor');CSSBody(this)"></a>`).join('')}</div></div><button ${DR('',`${Typ}#${U.Id}#Css`)} class="w100 none SALVAR" onclick="Edit_Mais(this,$$('.P-P',Pai(this)))">Salvar</button>`)
                 }
+                function EditCell2(Eu){ // Edita coisas indidividuais das config daqui mesmo
+                    const [Typ,Id,Col,Path] = d_R(Eu).split('#')
+                    const Val = VAL(Eu)
+                    if(Path){Sb_EDITJSON(Typ,Id,Col,[...Path.split(',')],Val)}
+                    else{Sb_EDIT(Typ,Id,{[Col]:Val})}
+                }
+                function Edit_Varius(Eu,ee){
+                    const [Typ,Id,Col,Path] = d_R(Eu).split('#')
+                    const Val = ee.filter(e=>e.checked).map(e=>Nm(e))
+                    Sb_EDIT(Typ,Id,{[Col]:Val})
+                }
             </script>
             <footer>© Returns • Configurações</footer>
         </div>
@@ -552,11 +563,11 @@
         if (ev?.target.closest('button')) return
         const Admn = cgo=='Admn'
         const Obj  = J['ARTE'].find(e=>e.Id==ID)
-        const ADM  = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
-        const ADMs = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADM  = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
+        const ADMs = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
         const ADMp = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_"`:''
-        const ADMP = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
-        const ADMt = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Text-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true"                          onblur="DTV(this);EditCell(this,'Edt')" onfocus="ATV(this)"`:''
+        const ADMP = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
+        const ADMt = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Text-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true"                          onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
 
         const Rgr  = Obj.Regra
         const   G  = a=>`style="grid-area:${a}"`
@@ -597,6 +608,26 @@
             </div>
 
         </div>`
+    }
+    async function MudaSTTS(U,Id,S){
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        DarJJ('Edt',...['ARTE',Id,'Dsng',U],null)
+        const Alert = STTS[S]?.txt||''
+        await Sb_EDIT('ARTE',Id,{Stts:S,Dsng:U},Alert)
+        Load_ARTES(USUARIO)
+    }
+    async function MudaSTTS2(U,Id,S){ // isso aqui é só pra o ADM (GAMBIARRA)
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        const Alert = STTS[S]?.txt||''
+        await Sb_EDIT('ARTE',Id,{Stts:S},Alert)
+        Load_ARTES(USUARIO)
+    }
+    function EditETPS(Eu){
+        const Concat =  $$('.Atv',Pai(Eu)).map(e=>Nm(e)).join('-')
+        EditCell(Pai(Eu),Concat)
+        LOG(Concat)
     }
 
     function Load_ARTES(U){
@@ -684,50 +715,8 @@
 </script>
 
 <script> // SupaBASE
-    async function MudaSTTS(U,Id,S){
-        $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
-        DarJJ('Edt',...['ARTE',Id,'Dsng',U],null)
-        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:S,Dsng:U},STTS[S]?.txt||'')
-        Load_ARTES(USUARIO)
-    }
-    async function MudaSTTS2(U,Id,S){ // esse faz a mesma coisa só que sem alterar o Dsng
-        $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
-        await Sb_EDIT2(supaBASE,'ARTE',Id,{Stts:S},STTS[S]?.txt||'')
-        Load_ARTES(USUARIO)
-    }
-    
-    function EditCell(e,Mod,vall=null,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) // e:Celula | Mod:'Edit/Add,Del' |  Val: Valor    
-        const V = is_ArrStg(vall) ?? (vall === "" ? "" : (vall || VAL(e))) // pega valor se for vazio ou string, ou array de String
-        if(V==Nm(e)/* || Nm(e)=='False'*/){return} // não foi Aterado || é uma img (esse False precisa sair, Pois se for uma imagem deve receber aqui seu SRC)    
-        
-        const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
-        const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
-        /*OBJ*/ DarJJ(Mod,..._R,R.Sc?_P:null)
-        const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai e depois Colata ele em 'ObjSec'            
-        /*SUB*/ SB==null ? Sb_EDIT(supaBASE,...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
-    }
 
-    function EditCell2(Eu){
-        const [Typ,Id,Col,Path] = d_R(Eu).split('#')
-        const Val = VAL(Eu)
-        if(Path){Sb_EDITJSON(Typ,Id,Col,[...Path.split(',')],Val)}
-            else{Sb_EDIT3   (Typ,Id,Col,Val)}
-    }
 
-    function Edit_Varius(Eu,ee){
-        const [Typ,Id,Col,Path] = d_R(Eu).split('#')
-        const Val = ee.filter(e=>e.checked).map(e=>Nm(e))
-        Sb_EDIT3(Typ,Id,Col,Val)
-
-    }
-
-    function EditETPS(Eu){
-        const Concat =  $$('.Atv',Pai(Eu)).map(e=>Nm(e)).join('-')
-        EditCell(Pai(Eu),'Edt',Concat)
-        LOG(Concat)
-    }
     function AddNewIMG(Eu,val){
         LOG(val)
         ImgUPP2(Inpt,Nome) 
@@ -735,7 +724,7 @@
         // Elementos : 2466_1_Elmt_1
         // Referencia: 2466_1_Refr_1
         
-        EditCell(Eu,'Edt',val)
+        EditCell(Eu,val)
     }
 
 </script>
@@ -755,7 +744,8 @@
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         NavPag(Atual.Pag)
         Load_Conf(U,'USER2')
-        SB_Get(supaBASE,['BS','ARTE']) //'MPAG'
+        SB_GETT('BS')
+        SB_GETT('ARTE')
     }
 
     function SaveConfig(e){LOG('Salva Config no SB')}

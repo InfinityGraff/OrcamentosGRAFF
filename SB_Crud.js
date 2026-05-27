@@ -53,8 +53,8 @@ const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
     //LOG(`Const Atualizadas! ${M}, ${iguais}`)
 }
 function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
-    if(arr.length==1)         {EditCell(Sel,'Edt',arr[0],'Auto')} // Troca pra o Unico option, se Tiver
-    if(!arr.includes(Nm(Sel))){EditCell(Sel,'Edt',""    ,'Auto')} // se o valor atual não Existir dar valor "Vazio"
+    if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
+    if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
     setTimeout(()=>{$$('option',Sel).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
 }
 function VAL(e){
@@ -81,7 +81,7 @@ function DarVAL(e,V){
 }
 
 //===========================TEMPLATE===========================
-
+    function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
     const IcnEtp=Etp=>{
         if(!Etp){return ''}
         return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
@@ -106,21 +106,21 @@ function DarVAL(e,V){
         Fixo:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
         Ssvg:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
         Auto:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" onclick="CtrlSoma(this)">${GrifTxt(e,Rgx)}</p>`,
-        Edit:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${GrifTxt(e,Rgx)}</p>`,
-        Valr:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
-        Mdds:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
-        Text:(e,R,Rgx)=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this,'Edt')" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
+        Edit:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${GrifTxt(e,Rgx)}</p>`,
+        Valr:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
+        Mdds:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
+        Text:(e,R,Rgx)=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
         Imgs:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
         ImUP:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
-        Chek:(e,R,Rgx)=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this,'Edt')" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
-        Slct:(e,R,Rgx)=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this,'Edt')">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
-        Data:(e,R,Rgx)=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this,'Edt')" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
+        Chek:(e,R,Rgx)=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
+        Slct:(e,R,Rgx)=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
+        Data:(e,R,Rgx)=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
         Link:(e,R)=>{ // aqui é o Link principal q aparece
             const _R = d_r(R)
             const Typ2 = BSJsn(_R.Ty,_R.Cl).LINK ; const TYP2 = Typ2.split('-')
             const COLL = BSJsn(_R.Ty,_R.Cl).COL
-            return e!=''? Tm_Bndj(R,e)
+            return e!=''? Tm_Bndj(R,getArr(e))
             : `<div class="Rltv">
                     <p class="P-P" data-R="${R}" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p>
                     <div class="BndjSUG MySelect BNdj Abslt none Cl">
@@ -144,15 +144,18 @@ function DarVAL(e,V){
                        `<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}')" src="./CrudSB/Link.webp">`
         },
         Slc2:(e,R)=>`MySelect()`,
-        Lnk2:(e,R)=>Tm_Bndj(R,e),
-        Bndj:(e,R)=>Tm_Bndj(R,e),
-        BjIn:(e,R)=>Tm_Bndj(R,e),
+        Lnk2:(e,R)=>Tm_Bndj(R,getArr(e)),
+        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)),
+        BjIn:(e,R)=>Tm_Bndj(R,getArr(e)),
     }
-    
-    const Tm_R     =(Typ,Id,Col)=>`${Typ}-${Id}-${Col}-${BSJsn(Typ,Col)?.TM}-_-_` // esses 2 Ultimos _-_ acho q ja da pra remover
-    const Tm_Td    =(Typ,Id,Col,Val,x,Rgx)=>{const _R=Tm_R(Typ,Id,Col) ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx)}</td>`}
-    const Tm_Tr    =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${AplicaStts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx)).join('')}</tr>`:'').join('')
-    const Tm_tdFoot=(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
+    const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
+    const Tm_Sklt   =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
+    const Tm_R      =(Typ,Id,Col)=>`${Typ}-${Id}-${Col}-${BSJsn(Typ,Col)?.TM}-_-_` // esses 2 Ultimos _-_ acho q ja da pra remover
+    const Tm_Td     =(Typ,Id,Col,Val,x,Rgx)=>{const _R=Tm_R(Typ,Id,Col) ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx)}</td>`}
+    const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx)).join('')}</tr>`:'').join('')
+    const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
+    const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
+
 
 //===========================IMAGENS===========================
     async function ImgLowQuality(src,mod='Low'){
@@ -216,7 +219,7 @@ function DarVAL(e,V){
         J.IMGS[Nome] = f.name
         if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
         if(Eximg.includes(Ext)){
-            EditCell(PP,'Edt',`${Nome}.${Ext}`)
+            EditCell(PP,`${Nome}.${Ext}`)
             DarVAL(PP,src)
             Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
             Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
@@ -240,7 +243,7 @@ function DarVAL(e,V){
             // if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${_R.Id}',this)" src="${src}">`}
 
             if(Eximg.includes(Ext)){
-                //EditCell(PP,'Edt',`${NomeFinal}.${Ext}`)
+                //EditCell(PP,`${NomeFinal}.${Ext}`)
                 //DarVAL(PP,src)
 
                 Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${NomeFinal}.webp`,true)
@@ -272,9 +275,8 @@ function DarVAL(e,V){
         // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
         // NewLink apenas para os que Permitem NewLink
     }
-    function RmvLink(){
-        LOG('remove Link')
-    }
+    function RmvLink(){LOG('remove Link')}
+
     function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
         const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
         const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
@@ -288,17 +290,17 @@ function DarVAL(e,V){
         const Vl1 = Ar1 ? `${Ar1} | ${_R1.Ty}-${_R1.Id}` : `${_R1.Ty}-${_R1.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
         const Vl2 = Ar2 ? `${Ar2} | ${_R2.Ty}-${_R2.Id}` : `${_R2.Ty}-${_R2.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
 
-        EditCell(PP1,'Edt',Vl2)    // Id da Passiva na Ativa (String)
-        EditCell(PP2,'Edt',Vl1)    // Id da Ativa na Passiva como Array
-        EditCell(OK ,'Edt',true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
+        EditCell(PP1,Vl2)    // Id da Passiva na Ativa (String)
+        EditCell(PP2,Vl1)    // Id da Ativa na Passiva como Array
+        EditCell(OK ,true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
         // isso tem que servir pra ADICIONAR, REMOVER, TROCAR
     }
     function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
         const td = _td(Eu)
         const PP = $('.P-P',td)
         const _R = PP.dataset.r
-        EditCell(PP,'Edt',val)
-        Inn(td,Tm_Bndj(_R,`${val}`))
+        EditCell(PP,val)
+        // Inn(td,Tm_Bndj(_R,`${val}`)) // ERRADO deveria ser Array no 2°
     }
     const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
     function EvalSugg(Typ,e){
@@ -346,19 +348,48 @@ function DarVAL(e,V){
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
 
-    function AddRow_DOM(Typ,Arr){PrePos($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr),'<')}
-    function RmvRow_DOM(Typ,Id ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
-    async function SB_AddROW(Typ,obj={}){   // ⭐⭐⭐⭐⭐
-        if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
-        const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
-        AddRow_DOM(Typ,[data])
-        RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
+    async function SB_GETT(Typ,Limit,Slct,Ordn){ // ⭐⭐⭐⭐⭐
+        if(Limit==null){
+            let todas = [], lim = 1000, ofs = 0, data
+            do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:true}).range(ofs,ofs+lim-1))
+                if (!data) return ERR('Erro ao carregar dados')
+                todas.push(...data) ; ofs+=lim
+            }while(data.length===lim)
+            MyAlert(`✔️ Get(${Typ})`) ; return todas
+        }else{
+            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false}).limit(Limit)
+            if(error)return LOG(error)            
+            MyAlert(`✔️ Get(${Typ})`) ; return data
         }
     }
-    async function SB_RmvROW(Typ,Id){        // ⭐⭐⭐⭐⭐
+    function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
+    function RmvRow_DOM(Typ,Id   ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
+    function AddRow_DOM(Typ,Arr  ){PrePos($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr),'<')} // Adicionar em todas tbm (Inclui Bndj e Fora da Bndj)
+    async function SB_AddROW(Typ,obj={}){     // ⭐⭐⭐⭐⭐
+        if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
+            const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
+            AddRow_DOM(Typ,[data])
+            RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
+        }else if('SERV','PGMT'){
+
+        }
+    }
+    async function SB_RmvROW(Typ,Id){         // ⭐⭐⭐⭐⭐
         const {data,error}=await supaBASE.rpc('del_row',{tbl:Typ,uid:Id})
         RmvRow_DOM(Typ,Id)
         RT_Rmv.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
+    }
+    function EditCell(e,val=null,RT){        // ⭐⭐⭐⭐⭐
+        const V = val == "" ? "" : (val || VAL(e))
+        if(V==Nm(e)){return} // não foi Aterado
+        const R = d_r(e)
+        if(!RT){Sb_EDIT(R.Ty,R.Id,{[R.Cl]:V})}
+    }
+    async function Sb_EDIT(Typ,Id,Obj,Alert){ // ⭐⭐⭐⭐⭐
+        try{const {error}=await supaBASE.from(Typ).update(Obj).eq('Id',Id)
+            if(error){ERR('Erro ao atualizar:',error)}
+            else     {MyAlert(Alert||`✏️ SB_EDIT(${Typ},${Id},${JSON.stringify(Obj)})`)}
+        } catch(err) {ERR('Erro:',err) ; MyAlert('Erro ao atualizar Celula')}
     }
     function Supa_RealTime(crud,New,Typ,Old){ // ⭐⭐⭐⭐⭐
         if(crud==='INSERT'){
@@ -369,12 +400,32 @@ function DarVAL(e,V){
             const k=`${Typ}_${Old.Id}` ; if(RT_Rmv.has(k)){RT_Rmv.delete(k) ; return}
             RmvRow_DOM(Typ,Old.Id)     ; MyAlert(`🌐 Rt_NewRow(${Typ },${Old.Id})`)
         }
-        if(crud==='UPDATE'){}
+        if(crud==='UPDATE'){
+            RmvRow_DOM(Typ,New.Id,Cols)
+        }
     }
 
+    function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ // Basicamente Adicionar Novo SERV e PGMT              
+        const P = d_r(_P) ; const COL = AA(P.Cl)
+        const p   = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
+        const arr = isArr(p[P.Cl])?p[P.Cl] : [] // se n for um array, return []
+        const Prim= l0(arr)                     // conferir se é a Primeira vez!
+        const Def = {}
+        const Tabl= $('table',_td(Eu))
+        Rmv_N(Tabl)
+        /*DOM*/
+        Prim ? Inn(Tabl,Tm_Bndj(_P,'','DOM')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],_P))
 
-    
-    
+        SB_AddROW(Typ)
+
+
+        // Novo Id
+        // Clona Cliente
+    }
+
+    // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
+
+
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
         const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
         const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
@@ -384,73 +435,14 @@ function DarVAL(e,V){
             const _R = d_r(p)                  // pega o _R de cada um
             if(p!==Fim){                                                           // se for Diferente da Ultima
                 const Ids_PDDS = ContCLNT[_R.Id]?.List||[]                         // Pega a Lista de Pedidos
-                Ids_PDDS.forEach(ID=>{Sb_EDIT(supaBASE,'PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
+                Ids_PDDS.forEach(ID=>{Sb_EDITy('PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
                 ObjEtr(ClnObjs(JJ[Typ][_R.Id],bs)).forEach(([k,v])=>Jn[k].push(v)) // Concatena as Informações
-            }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDIT(supaBASE,'CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
+            }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDITy('CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
         })
     }
-
 // ===========================SUPABASE===========================
-    async function SB_Get(SB,Typs){
-
-        const IN = performance.now()
-
-        function normalizeObj(obj,Colet={}){
-            for (const k in obj) {
-                let v = obj[k] ?? ""
-                if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
-                if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
-                obj[k] = v
-            };return obj
-        }
-
-        async function getIMG(Typ){
-            const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
-            if (error) {ERR("Erro ao listar:", error.message);return []}
-            J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
-        }
-
-        async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
-            let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
-                if (!data) return ERR('Erro ao carregar dados')
-                todas.push(...data) ; ofs+=lim
-            }while(data.length===lim)
-            const Colet = {}
-            J[Typ]=todas.map(e=>normalizeObj(e,Colet))
-            for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
-            JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
-            LOG(`✔️ ${Typ}`)
-        }
-
-        await Promise.all(Typs.map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
-
-            LOG(`✅ SB Carregado: ${MS(IN)}`)
-        MyAlert(`✅ SB Carregado: ${MS(IN)}`)
-        
-        PosGET()
-    }
-
-    async function Sb_EDIT(SB,Typ,id,col,Val){
-        try {const {error} = await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-            if (error){ERR('Erro ao atualizar:',error)}
-            else  {    LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-        } catch (err){ ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-    }
-    async function Sb_EDIT2(SB,Typ,id,Obj,Alert){
-        try{const {error} = await SB.from(Typ).update(Obj).eq('Id',id)
-            if(error){ERR('Erro ao atualizar:',error)}
-            else{LOG(`💾✏️ SB_EDIT2(${id},${JSON.stringify(Obj)})`) ; MyAlert(Alert||`Editado no SB! (${Typ},${id})`)}
-        }catch(err){ ERR('Erro:',err) ; MyAlert('Erro ao atualizar serviço')}
-    }
-    async function Sb_EDIT3(Typ,id,col,Val){
-        try {let {error}=await supaBASE.from(Typ).update({[col]:Val}).eq('Id',id)
-            if (error){ERR('Erro ao atualizar:',error   )}
-            else      {LOG(`💾✏️ SB_EDIT(${id},${Val})`) ; MyAlert(`"${Val}" Editado no SB! (${Typ},${id},${col})`)}
-        } catch (err) {ERR('Erro:',err)  ; MyAlert('Erro ao atualizar serviço')}
-    }
     async function Sb_EDITJSON(tbl,uid,col,path,Valor){
-        try{let {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
+        try{const {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
             if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
             else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
         }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}

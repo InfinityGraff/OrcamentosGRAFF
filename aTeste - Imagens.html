@@ -171,7 +171,7 @@
       const IDD = Nm(e)
       const OBJ = JJ['STOK'][IDD].Tags
       const NEW = OBJ.Otro.push(Inpt.value)
-      Sb_EDIT(supaBASE,'STOK',IDD,'Tags',OBJ)
+      Sb_EDIT('STOK',IDD,{['Tags']:OBJ})
       Rmv(e,'Ativado')
     })
 
@@ -245,7 +245,7 @@
 
 <script> // Iniciar
 
-  const getSBPromise = SB_Get(supaBASE,['STOK'])
+  SB_GETT('STOK')
 
   function PosGET(){
     ren('Nome')

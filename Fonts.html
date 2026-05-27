@@ -148,9 +148,9 @@
     function Escolher_Font(Eu,f,h,w,t,c,Id){
         LOG('Escolhendo')
         if(Modo=='Rank'){
-            //Sb_EDIT(supaBASE,'FONT',Id,'Rcrt',false)
+            //Sb_EDIT('FONT',Id,{['Rcrt']:false})
         }else if(Modo.value=='Remove'){
-            Sb_EDIT(supaBASE,'FONT',Id,'Rcrt',false)
+            Sb_EDIT('FONT',Id,{['Rcrt']:false})
             Eu.remove()
         }else if(Modo.value=='Ver'){
             const Info = [f,h,w,t,c].map(e=>`<p class="info">${e}</p>`).join('')
@@ -209,7 +209,7 @@
         }RenderNext()
     }
 
-    const getSBPromise = SB_Get(supaBASE,['FONT'])
+    SB_GETT('FONT')
 
     function PosGET(){
         Onloads('body')

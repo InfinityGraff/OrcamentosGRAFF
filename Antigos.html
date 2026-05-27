@@ -892,6 +892,46 @@
 </div>
 
 <script> // SupaBase
+    const getSBPromise = SB_Get(supaBASE,['BS','USER','PDDS','CLNT','MPAG','GRAD','UBER','OS','ARTE','GRD2','IMGS'])
+    async function SB_Get(SB,Typs){
+
+        const IN = performance.now()
+
+        function normalizeObj(obj,Colet={}){
+            for (const k in obj) {
+                let v = obj[k] ?? ""
+                if (isJSON(v)) {try { v = JSON.parse(v) } catch {}}
+                if (Array.isArray(v)){(Colet[k] ??= []).push(...v)}
+                obj[k] = v
+            };return obj
+        }
+
+        async function getIMG(Typ){
+            const {data,error} = await SB.storage.from("uploads").list("Img",{limit:1000})
+            if (error) {ERR("Erro ao listar:", error.message);return []}
+            J[Typ] = data.reduce((o,e)=>(o[e.name.split('.')[0]]=e.name,o),{}) ; LOG(`🖼️ IMGS`)
+        }
+
+        async function gett(Typ){ // isso apenas traz os dados e Joga na Const!
+            let todas = [], lim = 1000, ofs = 0, data
+            do{({data}=await SB.from(Typ).select('*').order('Id',{ascending:true}).range(ofs,ofs+lim-1))
+                if (!data) return ERR('Erro ao carregar dados')
+                todas.push(...data) ; ofs+=lim
+            }while(data.length===lim)
+            const Colet = {}
+            J[Typ]=todas.map(e=>normalizeObj(e,Colet))
+            for(const col in Colet){J[AA(col)] = Colet[col] ; JJ[AA(col)] = ArrtoOBJ(Colet[col],Pry[AA(col)])}
+            JJ[Typ] = ArrtoOBJ(J[Typ],Pry[Typ])
+            LOG(`✔️ ${Typ}`)
+        }
+
+        await Promise.all(Typs.map(Typ=>Typ=='IMGS'?getIMG(Typ):gett(Typ))) // Tabelas Disponíveis no SB! (Promisse espera terminar pra poder dar o Log)
+
+            LOG(`✅ SB Carregado: ${MS(IN)}`)
+        MyAlert(`✅ SB Carregado: ${MS(IN)}`)
+        
+        PosGET()
+    }
     const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
@@ -933,6 +973,60 @@
             }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDIT(supaBASE,'CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
         })
     }
+
+    function EditCell(e,Mod,vall=null,Auto,SB){ // ⭐⭐⭐⭐⭐✔️ (Muito Boa!) // e:Celula | Mod:'Edit/Add,Del' |  Val: Valor | Auto: veio Automatica | SB: tem SupaBase       
+        const V = is_ArrStg(vall) ?? (vall === "" ? "" : (vall || VAL(e))) // pega valor se for vazio ou string, ou array de String
+
+        if(V==Nm(e)/* || Nm(e)=='False'*/){return} // não foi Aterado || é uma img (esse False precisa sair, Pois se for uma imagem deve receber aqui seu SRC)    
+
+        const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V]:null ; //LOG(Nyme[R.Bj][R.Sc])
+        const P  = d_p(e) ; let _P = P ? [P.Ty,P.Id,P.Cl  ]:null
+        const Text = e.tagName === 'TEXTAREA'; // GAMBIARRA do textarea
+        const tR = Text ? '' : _tr(Pai(_tr(e))) // GAMBIARRA por causa do Textarea que usa MODAL pra escrever o texto dai não tem mais tr
+
+        /*OBJ*/ DarJJ(Mod,..._R,R.Sc?_P:null)
+        const ObjSec = P ? JJ[P.Ty][P.Id][P.Cl] : null // Dar o Objeto (Principal ou Bndj) se For Secundário adiciona o _P do Pai e depois Colata ele em 'ObjSec'            
+        /*SUB*/ SB==null ? Sb_EDIT(...(R.Sc?[..._P,ObjSec]:_R)) : LOG('sem SB')
+        /*DOM*/ $$(Rx7(..._R.slice(0,-1))).forEach(PP=>{
+            const tr  = _tr(PP)
+            const TD  = _td(Pai(PP))
+            const T_T = TD && $('.T-T',TD)
+            /*Del*/ if(Mod =='Del'){
+                Add_N(tr) //.remove() // Deveria remover mas isso faz a bandeija ocultar eu n sei pq
+                if(R.Bj && T_T && P && !Auto){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; Text ? null : RFresh(P.Ty,tR,Auto,e)} // GAMBIARRA do textarea
+
+            /*Edt/Add*/}else{
+                DarVAL(PP,V)
+                if(!Auto){if(R.Bj && T_T){
+                        if(R.Sc){InM(T_T,FazerTitle(P.Cl,ObjSec)) ; Text ? null :  RFresh(P.Ty,tR,Auto,e)} // GAMBIARRA do textarea
+                    }else{RFresh(R.Ty,tr,Auto,e)}
+                }
+            }
+        })
+    }
+    function Deff(Typ){return Object.fromEntries(BS[Typ].Orden.map(k=>[k,'']))}
+
+    function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ (Ta bem BOA!)
+        const orArr  =(e,fallback=[])=>isArr(e) ? e : fallback
+        const IdMaior=arr=>Math.max(...arr.map(o=>+o.Id.split('_')[1]))+1
+
+        const P = d_r(_P) ; const COL = AA(P.Cl)
+        if(P.Tm=='Bndj'){
+            const Pj   = JJ[P.Ty][P.Id]         // Localizar Linha pelo 'Id'
+            const arr = orArr(Pj[P.Cl])         // se n for um array, return []
+            const lngh= l0(arr)                 // conferir se é a Primeira vez!
+            const Def = Deff(COL)
+            const NId = lngh ? 1 : IdMaior(arr) // fazer isso só que procurando o Valor maior e não com Lenth
+            Def.Id    = `${Pj.Id}_${NId}`       // Novo Id
+            Def.Clnt  = Pj.Clnt                 // Clona Cliente
+            if(P.Cl=='Serv'){Def.Data = Pj.Data}// Clona Data só pra Serv
+            newarr = [...arr].push(Def)
+            /*Obj*/ DarJJ('Add',COL,Def.Id,null,Def,[P.Ty,P.Id,P.Cl])
+            /*DOM*/ lngh ? Inn($('table',_td(Eu)),Tm_Bndj(_P,'','DOM')) : Befor($('table tbody',_td(Eu)),Tm_Table(COL,[Def],_P))
+            if(lngh){Rmv_N($('table',_td(Eu)))}
+            /*Sub*/ Sb_EDIT(P.Ty,P.Id,P.Cl,arr)
+        }
+    } // antes de tirar ele daqui, corrigir a questão do por que ele SOME! ao Clicar
 </script>
 
 <script> // Biblioteca

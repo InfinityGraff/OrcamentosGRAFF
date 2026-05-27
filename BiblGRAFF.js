@@ -443,7 +443,7 @@ function Diferentes(b,a){ // REALTIME do SUPABASE comparar objetos se são iguai
   const r = { Id: b.Id}
   for (const k in b) {
     if (k === 'Id') continue;
-    if (Array.isArray(b[k]) && Array.isArray(a[k])) {
+    if (isArr(b[k]) && isArr(a[k])) {
       const diffs = b[k].map((itemB, i) => {
         const itemA = a[k][i] || {};
         const d = {};
@@ -469,7 +469,7 @@ function flatenObject(obj,prefix){ // REALTIME do SUPABASE
   for (const [key,val] of Object.entries(obj)){
     if (key === 'Id') continue; // Já usamos o ID do pai
 
-    if (Array.isArray(val)) {
+    if (isArr(val)) {
       for (const item of val) {
         const idFilho = item.Id || '';
         for (const [k, v] of Object.entries(item)) {

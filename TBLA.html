@@ -19,7 +19,7 @@
 </head>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const Atual    = {Pag:'CLNT'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
+    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     
@@ -46,6 +46,8 @@
     const TRs2     =   (Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
     const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`))}
     const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
+    //const TogTbody =         e=>Tog(e.closest('tbody'),'closed')
+    const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}// Melhorar isso, apenas com CSS
 </script>
 
 <style> /*CSS apenas da Tabela*/
@@ -377,7 +379,7 @@
 
     function AutoCOMP(Typ,Arr=J[Typ]){
         if(Typ=='ARTE'||Typ=='CLNT'){return}
-        if(!Array.isArray(Arr)) return
+        if(!isArr(Arr)) return
         Arr.forEach(j=>{
             ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
                 const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? '' // Coleta o Valor
@@ -385,7 +387,7 @@
             })
             ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
                 const Key=AA(fk) ; const V=j[fk]||j[Key]
-                if(Array.isArray(V)) AutoCOMP(Key,V)
+                if(isArr(V)) AutoCOMP(Key,V)
                 else if(V && typeof V=='object') AutoCOMP(Key,[V])
             })
         })  
@@ -426,19 +428,10 @@
 </script>
 
 <script>// ---- TABELAS ----
-    // Estão OK
-    function TogTbody(e){Tog(e.closest('tbody'),'closed')}
-    const HeadGroupTR = `<tr class="H_Tbody" onclick="TogTbody(this)"><td></td><td colspan="3">📦 Grupo</td></tr>` // aqui terá um Breve Resumo do Mês Inteiro
-    const AplicaStts=e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
     
-    const Tm_Sklt  =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
-    const Tm_tbody =(Typ,Dados,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Dados||J[Typ],Rgx))
+    const SunPix   = Stg  =>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
+    const CopyFone =(Fone,Eu)=>LOG(Fone)
 
-    // Ajeitar
-    const LoadBndj =(Eu,R)=>{if(Coten($('.BNdj',Pai(Eu)),'none')){Inn($('.BNdj > table',Pai(Eu)),Tm_Bndj(R,'','DOM'))}}
-    function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
-    function CopyFone(Fone,Eu){LOG(Fone)}
-    const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
 
     const ImgT_T=(Typ,col,e,R)=>{ // imagem que fica no Title (mas ainda é uma grande Gambiarra)
         const  colimg= ObjEtr(BS[AA(col)]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
@@ -451,7 +444,6 @@
         //             : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
         //             : ''
     }
-
     const FazerTitle=(Typ,Find)=>{
         //LOG(Typ,Find)
         const Btn  = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
@@ -461,56 +453,59 @@
         return Stg ? Join ? BrevTitle(Typ,Join) : Btn : 'Sem Titulo'
     }
 
-    function Tm_Bndj(R,Arr,DOM){ // Recebe Link ou Tabela Interna
-        const r = d_r(R)                                    // Melhorar declarações
-        const [Typ,col,Id,Tm]=[r.Ty,r.Cl,r.Id,r.Tm]         // Melhorar declarações (melhor usar _R.Ty e _R.Cl)
-        const Find  = [].concat(JJ[Typ]?.[Id]?.[col]??[]).filter(v=>v!==''&&v!=null)
-        const COL   = AA(col)
-        const Title = Find.length==0 ? '-' : FazerTitle(COL,Find)
-        const NmTle = col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '-' : Title // Ainda é uma Gambiarra
-        const Cimg  = Find.map(e=>ImgT_T(Typ,col,e,R)).join('')
-        const I_Link= BSJsn(Typ,col).LINK.split('-')[0] // Acessar Informações de Link como (CLNT-List-1-Cria)
+    const LoadBndj =(Eu,R)=>{
+        if(Coten($('.BNdj',Pai(Eu)),'none')){
+            Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
 
+            function LoadLinhasBndj(E){
+                const r = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
+                const COL   = AA(Col)
+            }
+        }
+    
+    }
+
+
+    function Tm_Bndj(R,Arr,DOM){ // Recebe Link ou Tabela Interna
+        const r = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
+        const COL   = AA(Col)
+        const Find  = isArr(Arr)?Arr:[] // [].concat(JJ[Typ]?.[Id]?.[Col]??[])
+        if(Typ=='PDDS'){LOG(Arr)}
+        const Title = Find.length==0 ? '-' : FazerTitle(COL,Find)
+        const NmTle = Col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '-' : Title // Ainda é uma Gambiarra
+        const Cimg  = Find.map(e=>ImgT_T(Typ,Col,e,R)).join('')
         if(DOM){return `<thead><tr>${BS[COL].Orden.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`}
         else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                 <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
                 <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                     <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
                     ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')        ">+ Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
-                      Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${col}')      ">Excluir ${ col }</button>
-                                  <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar  ${ col }</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R)}</div>`:''}
+                      Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${Col}')      ">Deslinkar ${Col}</button>
+                                  <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R)}</div>`:''}
             </div></div>`}
     }
     
-    function Tm_Table2(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
+    function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
         Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))
         Inn($(`#H_${Typ} > thead`),`<tr>${Tm_thSort(Typ,BS[Typ].Orden)}</tr>`)
         Inn($(`#H_${Typ} > tfoot`),`<tr>${Tm_tdFoot(Typ,BS[Typ].Orden)}</tr>`)
-        if(Typ=='PDDS'){Inn($(`#H_${Typ} > .Bodd1`), HeadGroupTR  + Tm_Tr(Typ,J[Typ]))  /*TBODYID*/
-                  }else{Inn($(`#H_${Typ} > tbody` ),                Tm_Tr(Typ,J[Typ]))} /*TBODYID*/
+        Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,J[Typ]))
         Re_Foot(Typ)
     }
     
-    function Tm_Table4(Typ,X,Dados){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs
+    function Tm_Table4(Typ,X,Dados){ // isso carrega em GRAD2 melhorar isso, e Fundir com CIMA
         Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))
-        Inn($(`#H_${Typ}_${X} > thead`),`<tr>${Tm_thSort([`${X}_`,X],Typ)}</tr>`)
-        Inn($(`#H_${Typ}_${X} > tfoot`),`<tr>${Tm_tdFoot([`${X}_`,X],Typ)}</tr>`)
+        Inn($(`#H_${Typ}_${X} > thead`),`<tr>${Tm_thSort(Typ,[`${X}_`,X])}</tr>`)
+        Inn($(`#H_${Typ}_${X} > tfoot`),`<tr>${Tm_tdFoot(Typ,[`${X}_`,X])}</tr>`)
         Inn($(`#H_${Typ}_${X} > tbody` ),Tm_Tr(Typ,Dados))
-    }
-
-    function Tog_Card(Typ){ // Melhorar isso, apenas com CSS
-        const Card = Coten($(`#H_${Typ}`),'Card')
-        TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})
     }
 
     function PrepTable(Typ){
         const tabtab=(e,m)=>`
         <div class="WrapTable CT ${m}">
             <table id="H_${Typ}${e}" class="hMin Tbla w100">
-                <thead class="Stky"></thead>
-                <tbody class="Bodd1"></tbody>${Typ=='PDDS'?'<tbody class="Bodd2"></tbody>':''}
-                <tfoot class="Stky2"></tfoot>
+                <thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot>
             </table>
         </div>`
         return `<div class="Bt Stky w90" style="height:40px">
@@ -626,44 +621,15 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
-    function Render_Tbla(Typ         ){Tm_Table2(Typ)}
+    function Render_Tbla(Typ         ){Tm_Table(Typ)}
     function Render_Tbls(Typ         ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
     function Render_Body(Typ,data,Rgx){AutoCOMP(Typ,data) ; Tm_tbody(Typ,data,Rgx)}
 
-    function EditCell(e,Mod,vall=null,SB){ // ⭐⭐⭐⭐⭐
-        const V = is_ArrStg(vall) ?? (vall === "" ? "" : (vall || VAL(e))) // pega valor se for vazio ou string, ou array de String
-        if(V==Nm(e)){return} // não foi Aterado
-        const R  = d_r(e) ; let _R = R ? [R.Ty,R.Id,R.Cl,V] : null
-        /*OBJ*/ // DarJJ(Mod,..._R,R.Sc?_P:null)
-        /*SUB*/ SB==null ? Sb_EDIT(supaBASE,..._R) : LOG('sem SB')
-    }
-    
     function fazJJJ(Typ,dados){ // Ocultei essas coisas pra n da problema com SERV e PGMT (depois olhar se RG precisa msm disso!)
         const Colet = {}
         J[Typ]=dados.map(e=>NormlOBJ2(e,Colet))
         for(const col in Colet){JJJ[AA(col)] = Colet[col] ; /*JJJJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')*/}
         JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
-    }
-    
-    async function SB_GETT(Typ,Limit){
-        // Condições Anteriores
-        let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
-        const OrdemN  = ['PDDS','SERV','PGMT'].includes(Typ) ? 'Data' : 'Id'
-        const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
-        if(Typ=='CLNT'||Typ=='SERV'||Typ=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
-
-        if(Limit==null){
-            let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supaBASE.from(Typ).select(selectStr).order(OrdemN,{ascending:true}).range(ofs,ofs+lim-1))
-                if (!data) return ERR('Erro ao carregar dados')
-                todas.push(...data) ; ofs+=lim
-            }while(data.length===lim)
-            LOG(`✔️ Get(${Typ})`) ; return todas
-        }else{
-            const {data,error}= await supaBASE.from(Typ).select(selectStr).order(OrdemN,{ascending:false}).limit(Limit)
-            if(error)return LOG(error)            
-            LOG(`✔️ Get(${Typ})`) ; return data
-        }
     }
     
     async function SB_Filt(Typ,Fls,Modo='E'){
@@ -676,11 +642,15 @@
     }
 
     function RodaTable(Typ){
-        if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}
-        else if(Typ=='PDDS'){LOAD('PDDS');LOAD('SERV');LOAD('PGMT')
-        }else{LOAD(Typ)}
+             if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}
+        else if(Typ=='PDDS'){LOAD('PDDS');LOAD('SERV');LOAD('PGMT')           }
+        else                {LOAD(Typ)                                        }
         async function LOAD(TYP){
-            const data = await SB_GETT(TYP,200) ; fazJJJ(TYP,data) ; AutoCOMP(TYP)
+            let selectStr = `*${BS[TYP]?.FK?.length ? ',' + BS[TYP]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
+            const OrdemN  = ['PDDS','SERV','PGMT'].includes(TYP) ? 'Data' : 'Id'
+            const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
+            if(TYP=='CLNT'||TYP=='SERV'||TYP=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
+            const data = await SB_GETT(TYP,200,selectStr,OrdemN) ; fazJJJ(TYP,data) ; AutoCOMP(TYP)
             TYP=='GRD2' ? Render_Tbls(TYP) : Render_Tbla(TYP)
         }
     }
@@ -688,7 +658,6 @@
 
 <script>
     Onloads('body') ; Get_User()
-
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
@@ -697,9 +666,6 @@
         NavPag(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
-
-
-
 </script>
 
 </html>
