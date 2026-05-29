@@ -341,10 +341,10 @@
              ,Cust:j=>SOMA_Obj(j.Serv,'VCbt') // tem que Somar com ARTE e GRAD futuramente VCbt vai virar Custo Geral uma tabela separada
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
              ,Lcro:j=>j.Valr-j.Cust
-            //  ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
-            //            const Ed  = LALEL.SERV.Deve
-            //            const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
-            //            return E?.Stts=='Entregue' && j.Deve ? Dev : E}
+             ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
+                       const Ed  = LALEL.SERV.Deve
+                       const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
+                       return E?.Stts=='Entregue' && j.Deve ? Dev : E}
         },
         SERV:{
             Stts:j=>{
@@ -632,6 +632,14 @@
         NavPag(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
+</script>
+
+<script>/*
+    https://www.erome.com/a/bdK9LKBE
+    https://www.erome.com/a/aDLulwCe
+    https://www.erome.com/a/TyD1hh95
+    https://www.erome.com/a/emwZDXtE
+    */
 </script>
 
 </html>
