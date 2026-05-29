@@ -238,6 +238,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .TBLAA tfoot  [class*="Foot-Pgmt"] a{color:#00df00}
   .TBLAA tfoot .RS{color:#00df00; font-size:7px}
 
+  .TBLAA td :is(select,input){color: black;}
+
   /*Depois Analisar esse AutoCom*/
 
   .TBLAA .Auto    {background: var(--TdAuto)  ; color: #696969;}

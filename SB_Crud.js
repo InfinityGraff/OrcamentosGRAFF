@@ -87,6 +87,10 @@ function DarVAL(e,V){
         return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
                 <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
     }
+    function Destak(j,R){ // Pintar o Destak
+        if(!j.Stts){return ''}
+        return BSJsn(d_r(R).Ty,d_r(R).Cl).CLS.includes('Destk') ? `style="background:rgb(${j.Stts.Dark});color:${j.Stts.Texto}"` : ''
+    }
 
     const Tm_RangNUM=(Typ,Col)=>
     `<div class="RangeNum">
@@ -102,19 +106,19 @@ function DarVAL(e,V){
     </div>`
 
     const Tm_Tm = {
-        Lixo:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW('${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
-        Fixo:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
-        Ssvg:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
-        Auto:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" onclick="CtrlSoma(this)">${GrifTxt(e,Rgx)}</p>`,
-        Edit:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${GrifTxt(e,Rgx)}</p>`,
-        Valr:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
-        Mdds:(e,R,Rgx)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
-        Text:(e,R,Rgx)=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
-        Imgs:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
-        ImUP:(e,R,Rgx)=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
-        Chek:(e,R,Rgx)=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
-        Slct:(e,R,Rgx)=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
-        Data:(e,R,Rgx)=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
+        Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW('${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
+        Fixo:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
+        Ssvg:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
+        Auto:(e,R,Rgx,j)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" onclick="CtrlSoma(this)" ${Destak(j,R)}>${j,GrifTxt(e?RS(e):'-',Rgx)}</p>`,
+        Edit:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${GrifTxt(e,Rgx)}</p>`,
+        Valr:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
+        Mdds:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
+        Text:(e,R,Rgx  )=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
+        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
+        ImUP:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
+        Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
+        Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
+        Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
         Link:(e,R)=>{ // aqui é o Link principal q aparece
             const _R = d_r(R)
@@ -151,8 +155,8 @@ function DarVAL(e,V){
     const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
     const Tm_Sklt   =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
     const Tm_R      =(Typ,Id,Col)=>`${Typ}-${Id}-${Col}-${BSJsn(Typ,Col)?.TM}-_-_` // esses 2 Ultimos _-_ acho q ja da pra remover
-    const Tm_Td     =(Typ,Id,Col,Val,x,Rgx)=>{const _R=Tm_R(Typ,Id,Col) ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx)}</td>`}
-    const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx)).join('')}</tr>`:'').join('')
+    const Tm_Td     =(Typ,Id,Col,Val,x,Rgx,j)=>{const _R=Tm_R(Typ,Id,Col) ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx,j)}</td>`}
+    const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx,j)).join('')}</tr>`:'').join('')
     const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
     const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
 
@@ -351,13 +355,13 @@ function DarVAL(e,V){
     async function SB_GETT(Typ,Limit,Slct,Ordn){ // ⭐⭐⭐⭐⭐
         if(Limit==null){
             let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:true}).range(ofs,ofs+lim-1))
+            do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).range(ofs,ofs+lim-1))
                 if (!data) return ERR('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
             MyAlert(`✔️ Get(${Typ})`) ; return todas
         }else{
-            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false}).limit(Limit)
+            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
             if(error)return LOG(error)            
             MyAlert(`✔️ Get(${Typ})`) ; return data
         }
@@ -404,7 +408,6 @@ function DarVAL(e,V){
             RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
-
     function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ // Basicamente Adicionar Novo SERV e PGMT              
         const P = d_r(_P) ; const COL = AA(P.Cl)
         const p   = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
@@ -414,7 +417,7 @@ function DarVAL(e,V){
         const Tabl= $('table',_td(Eu))
         Rmv_N(Tabl)
         /*DOM*/
-        Prim ? Inn(Tabl,Tm_Bndj(_P,'','DOM')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],_P))
+        Prim ? Inn(Tabl,Tm_Bndj(_P,'')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],_P))
 
         SB_AddROW(Typ)
 
@@ -460,50 +463,50 @@ function DarVAL(e,V){
     }
 
 // LOGIN--------------------------------------------------
-async function Get_User(){
-    const { data:userData } = await supaBASE.auth.getUser()
-    if(!userData.user)return
-    const { data:User,error } = await supaBASE.from('USER2').select('*').eq('Id',userData.user.id).single()
-    if(error)return console.log(error)
-    PosLogin(User)
-    MyAlert('DEUCERTO!')
-}
-async function SB_Cdstr(e,email,password,msg,nome){e.preventDefault()
-    const { error } = await supaBASE.auth.signUp({email,password})
-    msg.textContent = error ? error.message : 'Conta criada! Confirme seu email.'
-    MyAlert('DEUCERTO!')
-}
-async function SB_Login(e,email,password,msg,nome){e.preventDefault()
-    const { data, error } = await supaBASE.auth.signInWithPassword({email,password})
-    msg.textContent = error ? error.message : `Seja Bem-Vindo! ${data?.user?.email}`
-    MyAlert('DEUCERTO!')
-}
-async function SB_Reset(e,email,password,msg,nome){e.preventDefault()
-    const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset'})
-    msg.textContent = error ? error.message : 'Link Enviado! Verifique seu email.'
-    MyAlert('DEUCERTO!')
-}
-async function SB_LgOff(msg){
-    await supaBASE.auth.signOut() ; msg ? msg.textContent = 'Perfil Desconectado!' : null
-    MyAlert('DEUCERTO!')
-}
-async function Upload_Foto(File){
-    let {data:{user}}=await supaBASE.auth.getUser() ; if(!user)return
-    let Img=new Image(),Cnv=document.createElement('canvas'),Ctx=Cnv.getContext('2d')
-    Img.src=URL.createObjectURL(File)
-    await new Promise(ok=>Img.onload=ok)
-    Cnv.width=500 ; Cnv.height=500
-    Ctx.drawImage(Img,0,0,500,500)
-    let Blob=await new Promise(ok=>Cnv.toBlob(ok,'image/webp',0.8))
-    let Nome=`${user.id}.webp`
-    let {error}=await supaBASE.storage.from('uploads').upload(`User/${Nome}`,Blob,{upsert:true,contentType:'image/webp'})
-    if(error)return LOG(error)
-    MyAlert('Foto Upada com Sucesso!')
-    return Nome
-}
-async function GetDsngUsers(){
-    let {data,error}=await supaBASE.rpc('getdsngusers')
-    if(error){ERR('Erro:',error); return []}
-    LOG('✔️ Designers Carregadors')
-    return data
-}
+    async function Get_User(){
+        const { data:userData } = await supaBASE.auth.getUser()
+        if(!userData.user)return
+        const { data:User,error } = await supaBASE.from('USER2').select('*').eq('Id',userData.user.id).single()
+        if(error)return console.log(error)
+        PosLogin(User)
+        MyAlert('DEUCERTO!')
+    }
+    async function SB_Cdstr(e,email,password,msg,nome){e.preventDefault()
+        const { error } = await supaBASE.auth.signUp({email,password})
+        msg.textContent = error ? error.message : 'Conta criada! Confirme seu email.'
+        MyAlert('DEUCERTO!')
+    }
+    async function SB_Login(e,email,password,msg,nome){e.preventDefault()
+        const { data, error } = await supaBASE.auth.signInWithPassword({email,password})
+        msg.textContent = error ? error.message : `Seja Bem-Vindo! ${data?.user?.email}`
+        MyAlert('DEUCERTO!')
+    }
+    async function SB_Reset(e,email,password,msg,nome){e.preventDefault()
+        const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset'})
+        msg.textContent = error ? error.message : 'Link Enviado! Verifique seu email.'
+        MyAlert('DEUCERTO!')
+    }
+    async function SB_LgOff(msg){
+        await supaBASE.auth.signOut() ; msg ? msg.textContent = 'Perfil Desconectado!' : null
+        MyAlert('DEUCERTO!')
+    }
+    async function Upload_Foto(File){
+        let {data:{user}}=await supaBASE.auth.getUser() ; if(!user)return
+        let Img=new Image(),Cnv=document.createElement('canvas'),Ctx=Cnv.getContext('2d')
+        Img.src=URL.createObjectURL(File)
+        await new Promise(ok=>Img.onload=ok)
+        Cnv.width=500 ; Cnv.height=500
+        Ctx.drawImage(Img,0,0,500,500)
+        let Blob=await new Promise(ok=>Cnv.toBlob(ok,'image/webp',0.8))
+        let Nome=`${user.id}.webp`
+        let {error}=await supaBASE.storage.from('uploads').upload(`User/${Nome}`,Blob,{upsert:true,contentType:'image/webp'})
+        if(error)return LOG(error)
+        MyAlert('Foto Upada com Sucesso!')
+        return Nome
+    }
+    async function GetDsngUsers(){
+        let {data,error}=await supaBASE.rpc('getdsngusers')
+        if(error){ERR('Erro:',error); return []}
+        LOG('✔️ Designers Carregadors')
+        return data
+    }

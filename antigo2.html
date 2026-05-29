@@ -1,0 +1,48 @@
+<script>
+    const ListEtps = [['Orçamento','Roxo'],['Arte','Roxo'],['Impressão','Yelw'],['Acabamento','Yelw'],['Pronto','Azul'],['Entregue','Gren'],['Devendo','Redd']]
+    const COR      = {'Gren':'147,196,125','Yelw':'255,229,153','Roxo':'180,167,214','Azul':'164,194,244','Redd':'234,153,153','Opcy':'0,0,0,0'}
+    const COR2     = {'Gren':'39,80,12'   ,'Yelw':'133,99,0'   ,'Roxo':'80,0,146'   ,'Azul':'0,54,146'   ,'Redd':'134,0,0'    ,'Opcy':'0,0,0,0'}
+    const CorPacyy = E  =>`rgb(${E.split(',').map(e=>e/4).join(',')})`
+    const LALEL = {
+    SERV:{  Serv: {Stts:'Orçamento',Cor:COR['Roxo'],Dark:COR2['Roxo'],Texto:'black',TxPcy:CorPacyy(COR['Roxo'])},
+            Arte: {Stts:'Arte'     ,Cor:COR['Roxo'],Dark:COR2['Roxo'],Texto:'white',TxPcy:CorPacyy(COR['Roxo'])},
+            Grad: {Stts:'Impressão',Cor:COR['Yelw'],Dark:COR2['Yelw'],Texto:'white',TxPcy:CorPacyy(COR['Yelw'])},
+            OK:   {Stts:'Pronto'   ,Cor:COR['Azul'],Dark:COR2['Azul'],Texto:'white',TxPcy:CorPacyy(COR['Azul'])},
+            Entg: {Stts:'Entregue' ,Cor:COR['Gren'],Dark:COR2['Gren'],Texto:'white',TxPcy:CorPacyy(COR['Gren'])},
+            Deve: {Stts:'Devendo'  ,Cor:COR['Redd'],Dark:COR2['Redd'],Texto:'white',TxPcy:CorPacyy(COR['Redd'])},
+    }}
+
+    const STATUS = {
+        SERV:{Critr:j=>{return {'Serv':j.Serv!=='','Arte':j.Arte!=='','Grad':j.Grad!=='','OK':j.OK==true,'Entg':j.Entg==true}}
+    }}
+    const GetStts=(arr,O,L)=>{
+        const S=new Set(arr), m=O.find(e=>!S.has(e)), l=[...O].reverse().find(e=>S.has(e))
+        if(!l) return L[m] ; if(!m) return L[O.at(-1)]
+        if(O.indexOf(m)<O.indexOf(l)){ const r={...L[m]}, k=Object.keys(r)[0] ; r[k]=L[l][k] ; return r } return L[l]
+    }
+
+    const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
+    const Menor=Arr=>isArr(Arr) && Arr.length ? Arr.reduce((a,b)=>a.Stts.Lv < b.Stts.Lv ? a : b) : null
+
+    const COMP = {
+        PDDS:{Valr:j=>SOMA_Obj(j.Serv,'Valr')
+             ,Cust:j=>SOMA_Obj(j.Serv,'VCbt') // tem que Somar com ARTE e GRAD futuramente VCbt vai virar Custo Geral uma tabela separada
+             ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
+             ,Lcro:j=>j.Valr-j.Cust
+             ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
+                       const Ed  = LALEL.SERV.Deve
+                       const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
+                       return E?.Stts=='Entregue' && j.Deve ? Dev : E}
+        },
+        SERV:{
+            Stts:j=>{
+                const Critr = STATUS['SERV']['Critr'](j)
+                const Todos = ObjKey(Critr)
+                const Atual = ObjEtr(Critr).filter(([k,v])=>v==true).map(e=>e[0]) // Filtrar só os True
+                const opc   = _0_1(Atual.length/Todos.length)                     // Part/Total
+                const Etp   = GetStts(Atual,Todos,LALEL['SERV'])
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['SERV']).indexOf(Etp.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+            }}}
+</script>

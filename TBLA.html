@@ -18,7 +18,7 @@
 </head>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
+    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     
@@ -43,10 +43,11 @@
     const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w90');Tog($(`.Confy_${Typ}`),'w90');SaveConfig('a')}
     const TRs      =       Typ=>$$(`#H_${Typ} > tbody     > tr:not(.H_Tbody)`)
     const TRs2     =   (Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
-    const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`))}
+    const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`)) ; RodaTable(Typ)}
     const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
     //const TogTbody =         e=>Tog(e.closest('tbody'),'closed')
     const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}// Melhorar isso, apenas com CSS
+    const CopyFone = (Fone,Eu)=>LOG(Fone)
 </script>
 
 <style> /*CSS apenas da Tabela*/
@@ -59,7 +60,7 @@
     .BndjTBL tbody td                        > div:not(.Sklt)          {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
     .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
     .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
-    .BndjTBL tbody td p                                                {width: 100%;height:100%;padding:2px 6px; text-align:center}
+    .BndjTBL tbody td p                                                {width: 100%;/*height:100%*/;padding:2px 6px; text-align:center}
     .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter:saturate(1.6) brightness(1.05); z-index: 999999}
     .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
 
@@ -313,49 +314,46 @@
     }
 </script>
 
-<script> // ---- STATUS ----
+<script> // ---- STATUS COLOR ----
     const ListEtps = [['Orçamento','Roxo'],['Arte','Roxo'],['Impressão','Yelw'],['Acabamento','Yelw'],['Pronto','Azul'],['Entregue','Gren'],['Devendo','Redd']]
     const COR      = {'Gren':'147,196,125','Yelw':'255,229,153','Roxo':'180,167,214','Azul':'164,194,244','Redd':'234,153,153','Opcy':'0,0,0,0'}
     const COR2     = {'Gren':'39,80,12'   ,'Yelw':'133,99,0'   ,'Roxo':'80,0,146'   ,'Azul':'0,54,146'   ,'Redd':'134,0,0'    ,'Opcy':'0,0,0,0'}
-    const CorPacyy = E  =>`rgb(${E.split(',').map(e=>e/4).join(',')})`
-    const tr_ID    = tr =>getClss(tr,'tr-').split('-')[1]
-    const LALEL = {                                                 // essas são as Cores dos Textos Soltos
-    SERV:{  Serv: {Stts:'Orçamento',Cor:COR['Roxo'],Dark:COR2['Roxo'],Texto:'black',TxPcy:CorPacyy(COR['Roxo'])},
-            Arte: {Stts:'Arte'     ,Cor:COR['Roxo'],Dark:COR2['Roxo'],Texto:'white',TxPcy:CorPacyy(COR['Roxo'])},
-            Grad: {Stts:'Impressão',Cor:COR['Yelw'],Dark:COR2['Yelw'],Texto:'white',TxPcy:CorPacyy(COR['Yelw'])},
-            OK:   {Stts:'Pronto'   ,Cor:COR['Azul'],Dark:COR2['Azul'],Texto:'white',TxPcy:CorPacyy(COR['Azul'])},
-            Entg: {Stts:'Entregue' ,Cor:COR['Gren'],Dark:COR2['Gren'],Texto:'white',TxPcy:CorPacyy(COR['Gren'])},
-            Deve: {Stts:'Devendo'  ,Cor:COR['Redd'],Dark:COR2['Redd'],Texto:'white',TxPcy:CorPacyy(COR['Redd'])},
+    const CorPacyy = E=>`rgb(${E?.split(',').map(e=>e/4).join(',')})`
+    const Mk=(Stts,c,Texto='white')=>{return {Stts,Cor:COR[c],Dark:COR2[c],Texto,TxPcy:CorPacyy(COR[c])}}
+    const LALEL={
+    SERV:{
+        Orcamento:(c)=>Mk('Orçamento',c,'black'),
+        Arte     :(c)=>Mk('Arte'     ,c),
+        Impressao:(c)=>Mk('Impressão',c),
+        Pronto   :(c)=>Mk('Pronto'   ,c),
+        Entregue :(c)=>Mk('Entregue' ,c),
+        Devendo  :(c)=>Mk('Devendo'  ,c)
     }}
-    const STATUS = {
-        SERV:{Critr:j=>{return {'Serv':j.Serv!=='','Arte':j.Arte!=='','Grad':j.Grad!=='','OK':j.OK==true,'Entg':j.Entg==true}}
-    }}
-    const GetStts=(arr,O,L)=>{
-        const S=new Set(arr), m=O.find(e=>!S.has(e)), l=[...O].reverse().find(e=>S.has(e))
-        if(!l) return L[m] ; if(!m) return L[O.at(-1)]
-        if(O.indexOf(m)<O.indexOf(l)){ const r={...L[m]}, k=Object.keys(r)[0] ; r[k]=L[l][k] ; return r } return L[l]
-    }
 </script>
 
 <script> // ---- AUTOCOMP ----
     const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
+    const Rmvact=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    const Menor=Arr=>isArr(Arr) && Arr.length ? Arr.reduce((a,b)=>a.Stts.Lv < b.Stts.Lv ? a : b) : null
 
     const COMP = {
         PDDS:{Valr:j=>SOMA_Obj(j.Serv,'Valr')
              ,Cust:j=>SOMA_Obj(j.Serv,'VCbt') // tem que Somar com ARTE e GRAD futuramente VCbt vai virar Custo Geral uma tabela separada
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
              ,Lcro:j=>j.Valr-j.Cust
-             //,Stts:j=>Depende dos Stts Internos e dos Valores Já calculados (Valr,Cust,Deve,Lcro)
+            //  ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
+            //            const Ed  = LALEL.SERV.Deve
+            //            const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
+            //            return E?.Stts=='Entregue' && j.Deve ? Dev : E}
         },
-        SERV:{Stts:j=>{
-                const Critr = STATUS['SERV']['Critr'](j)
-                const Todos = ObjKey(Critr)
-                const Atual = ObjEtr(Critr).filter(([k,v])=>v==true).map(e=>e[0]) // Filtrar só os True
-                const opc   = _0_1(Atual.length/Todos.length)                     // Part/Total
-                const Etp   = GetStts(Atual,Todos,LALEL['SERV'])
+        SERV:{
+            Stts:j=>{
+                const S     = j.Stts[0]
+                const Etp   = LALEL['SERV'][Rmvact(S.Stts)](S.Cor)
+                const opc   = _0_1(S.True/S.Total)
                 const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
-                return {Opc:opc,BkPcy:BkPcy,...Etp}
-                R_Cor(tr,opc(ss),E[1],BkPcy,TxPcy) // quando for pra Pintar o TR, é assim que se Faz, msm coisa pra o Td
+                const Level = ObjKey(LALEL['SERV']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
             }
             //Tipo:j=>j.Serv?Vari(j.Serv):[], //Opt
             //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
@@ -380,62 +378,24 @@
         if(Typ=='ARTE'||Typ=='CLNT'){return}
         if(!isArr(Arr)) return
         Arr.forEach(j=>{
-            ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
-                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? '' // Coleta o Valor
-                j[c]=V ; JJ?.[Typ]?.[j.Id] && (JJ[Typ][j.Id][c]=V) // Aplica os J e JJ
-            })
             ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
+                if(fk=='Pdds'){return}
                 const Key=AA(fk) ; const V=j[fk]||j[Key]
                 if(isArr(V)) AutoCOMP(Key,V)
                 else if(V && typeof V=='object') AutoCOMP(Key,[V])
+            })
+            ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
+                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? '' // Coleta o Valor
+                j[c]=V ; JJ?.[Typ]?.[j.Id] && (JJ[Typ][j.Id][c]=V) // Aplica os J e JJ
             })
         })  
     }
 </script>
 
-<script> // ---- RECOLOR ----
-    function LimpaCor(tr){Bkg(tr,'') ; $$('td',tr).forEach(e=>e.style.border='')} // Limpa cor de um tr
-
-    function R_Cor(e,opc,Cor,BkPcy,TxPcy){ // nesta função dar apeans o Retorno caso "e" não seja DOM
-        if(e.tagName=='TD'){Bkg(e,BkPcy)}  // Colore o Fundo com Opacidade
-        else{Bkg(e,`rgb(${Cor.split(',').map(v=>Math.round(+v+(255-v)*(1-opc))).join(',')})`)} // Colore o Fundo sem Opacidade
-        e.style.color        = TxPcy
-        e.style.borderBottom = `1px solid rgba(${Cor},${(opc).toFixed(2)})`   // Colore a Borda
-        $$('select',e).forEach(E=>Bkg(E,'#00000000'))
-    }
-    
-    function Re_Colr(Typ,tr){ // isso aqui deve fazer a Soma Dos Status Internos pra poder Pintar si mesmo
-        if(Typ==='PDDS'){
-            let ss = ''                                          // Traz pra cá alem do ss todas as info importantes
-            const opc   = e=>e.reduce((a,v)=>a+v[0],0)/e.length
-            const Menor = arr=>arr?.length ? arr.reduce((m,a) => O['Stts'].indexOf(a[2][0]) < O['Stts'].indexOf(m[2][0]) ? a : m) : null
-            const Exec  = (typ,Mod)=>{const s = getArr(JJ[Typ][tr_ID(tr)][Aa(typ)]).map(tr2=>R_Colr(tr2.Id,typ,Mod,tr,CrBS(typ))) ; if(typ=='SERV'){ss=s}} // soma Opacidade de 'Clnt','Serv','Pgmt'
-            Exec('SERV','Etapa')
-            Exec('PGMT','Temperatura')
-            Exec('CLNT','Temperatura')
-            const Etp = Menor(ss)[2]
-            const Vlr = tr.Valr
-            const Pag = Soma(tr.Pgmt)
-            const Dev = Etp[0]=='Entregue' && Nm(Vlr) > Nm(Pag)
-            const E = Dev ? LALEL['SERV']['Deve'] : Etp
-            IcnEtp(Typ,tr,E)                                     // Adicionar o Icone de Etapas
-            R_Cor(tr,opc(ss),E[1])                               // Pintar o Tr
-            Bkg(Vlr,`rgb(${E[2]})`,E[3])                         // Pintar o P-P de Valr
-            if(Dev){$$('td',tr).forEach(d=>Bkg(d,''))}           // Quando Tiver Devendo Limpar as Cores dos Td
-        }
-    }
-</script>
-
 <script>// ---- TABELAS ----
-    
-    const SunPix   = Stg  =>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
-    const CopyFone =(Fone,Eu)=>LOG(Fone)
-
-
-    const ImgT_T=(Typ,col,e,R)=>{ // imagem que fica no Title (mas ainda é uma grande Gambiarra)
-        const  colimg= ObjEtr(BS[AA(col)]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
-        return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${AA(col)}-${e.Id}-${i}-Imgs-Bj-Sc`)).join('') // Rodar isso pra cada Imagem desta Linha
-
+    const ImgT_T=(Typ,Col,e,R)=>{ // imagem que fica no Title (mas ainda é uma grande Gambiarra)
+        const  colimg= ObjEtr(BS[AA(Col)]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
+        return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${AA(Col)}-${e.Id}-${i}-Imgs-Bj-Sc`)).join('') // Rodar isso pra cada Imagem desta Linha
         // return
         //     const ARTEE = col=='Serv' ? JJ['ARTE']?.[e.Arte.split('-')[1]]?.Img : ''
         //     return    col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-Bj-Sc`) : ''
@@ -443,45 +403,50 @@
         //             : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
         //             : ''
     }
-    const FazerTitle=(Typ,Find)=>{
-        //LOG(Typ,Find)
-        const Btn  = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
-        const Stg  = BS[Typ]?.Title
-        const Fn   = Function('e',`return ${Stg}`)
-        const Join = Find.map(e=>Fn(e)).join('|')
-        return Stg ? Join ? BrevTitle(Typ,Join) : Btn : 'Sem Titulo'
+
+    const Tm_TT=(COL,Find,Typ,Col,R)=>{
+        //const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
+        const FAZ=()=>{
+            const Btn  = Find.length==0 ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
+            const Stg  = BS[COL]?.Title
+            const Fn   = Function('e',`return ${Stg}`)
+            const Join = Find.map(e=>Fn(e)).join('|')
+            return Stg ? Join ? BrevTitle(COL,Join) : Btn : 'Sem Titulo'
+        }
+        const Tt  = Find.length==0 ? '-' : FAZ(COL,Find)
+        const Nm  = Col==='Pgmt'? SOMA_Obj(Find,'Valr') /*SunPix(Tt)*/ : Tt.includes('button') ? '-' : Tt // Ainda é uma Gambiarra
+        const Img = Find.map(e=>ImgT_T(Typ,Col,e,R)).join('')
+        return {Tt,Nm,Img}
     }
 
-    const LoadBndj =(Eu,R)=>{
+    const LoadBndj =(Eu,R)=>{ // Renderiza Bandeija
         if(Coten($('.BNdj',Pai(Eu)),'none')){
-            Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
-
-            function LoadLinhasBndj(E){
+            function LoadLinhasBndj(R){
                 const r = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
+                const Find  = [].concat(JJ[Typ]?.[Id]?.[Col]??[])
+                return `<thead><tr>${BS[COL].Orden.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
             }
+            Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
         }
-    
     }
 
-
-    function Tm_Bndj(R,Arr,DOM){ // Recebe Link ou Tabela Interna
-        const r = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
-        const COL   = AA(Col)
-        const Find  = isArr(Arr)?Arr:[] // [].concat(JJ[Typ]?.[Id]?.[Col]??[])
-        if(Typ=='PDDS'){LOG(Arr)}
-        const Title = Find.length==0 ? '-' : FazerTitle(COL,Find)
-        const NmTle = Col==='Pgmt'? SunPix(Title) : Title.includes('button') ? '-' : Title // Ainda é uma Gambiarra
-        const Cimg  = Find.map(e=>ImgT_T(Typ,Col,e,R)).join('')
-        if(DOM){return `<thead><tr>${BS[COL].Orden.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`}
-        else{return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
-                <p data-R="${R}" class="P-P T-T Ct PT" name="${NmTle}">${Title}</p>${Cimg}<i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i></div>
-                <div class="Rltv w100"><div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
-                    <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
-                    ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')        ">+ Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
-                      Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${Col}')      ">Deslinkar ${Col}</button>
-                                  <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R)}</div>`:''}
-            </div></div>`}
+    function Tm_Bndj(R,Arr){ // Recebe Link ou Tabela Interna
+        const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
+        const Find  = isArr(Arr)?Arr:[]
+        const TT    = Tm_TT(COL,Find,Typ,Col,R)
+        return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
+                    <p data-R="${R}" class="P-P T-T Ct PT" name="${TT.Nm}">${TT.Tt}</p>${TT.Img}
+                    <i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i>
+                </div>
+                <div class="Rltv w100">
+                    <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                        <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
+                        ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')        ">+ Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
+                          Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${Col}')      ">Deslinkar ${Col}</button>
+                                      <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link2']('',R)}</div>`:''}
+                    </div>
+                </div>`
     }
     
     function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
@@ -499,6 +464,11 @@
         Inn($(`#H_${Typ}_${X} > tfoot`),`<tr>${Tm_tdFoot(Typ,[`${X}_`,X])}</tr>`)
         Inn($(`#H_${Typ}_${X} > tbody` ),Tm_Tr(Typ,Dados))
     }
+
+    function Render_Tbla(Typ         ){Tm_Table(Typ)}
+    function Render_Tbls(Typ         ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
+    function Render_TblP(Typ         ){Tm_Table(Typ)}
+    function Render_Body(Typ,data,Rgx){AutoCOMP(Typ,data) ; Tm_tbody(Typ,data,Rgx)}
 
     function PrepTable(Typ){
         const tabtab=(e,m)=>`
@@ -619,15 +589,17 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
-    function Render_Tbla(Typ         ){Tm_Table(Typ)}
-    function Render_Tbls(Typ         ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
-    function Render_Body(Typ,data,Rgx){AutoCOMP(Typ,data) ; Tm_tbody(Typ,data,Rgx)}
-
     function fazJJJ(Typ,dados){ // Ocultei essas coisas pra n da problema com SERV e PGMT (depois olhar se RG precisa msm disso!)
         const Colet = {}
         J[Typ]=dados.map(e=>NormlOBJ2(e,Colet))
         for(const col in Colet){JJJ[AA(col)] = Colet[col] ; /*JJJJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')*/}
         JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
+    }
+    function Gambiarra(Typ){ // esa gambiarra só serve pq no recomp a parte de Stts recebe na bndj de serv um obj, e no SERV tabela recebe array de OBJ
+        // quem fudeu isso foi este fazJJJ mas não sei onde é não vou mecher agora! vou só limpar aqui por enquanto!
+        if(Typ=='PDDS'){
+            J[Typ].forEach(j=>j.Serv.forEach(e=>e.Stts=[e.Stts]))
+        }
     }
     
     async function SB_Filt(Typ,Fls,Modo='E'){
@@ -639,18 +611,14 @@
         Render_Body(Typ,data)
     }
 
-    function RodaTable(Typ){
-             if(Typ=='GRAD'){LOAD('GRAD');LOAD('UBER'),LOAD('GRD2');LOAD('OS')}
-        else if(Typ=='PDDS'){LOAD('PDDS');LOAD('SERV');LOAD('PGMT')           }
-        else                {LOAD(Typ)                                        }
-        async function LOAD(TYP){
-            let selectStr = `*${BS[TYP]?.FK?.length ? ',' + BS[TYP]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
-            const OrdemN  = ['PDDS','SERV','PGMT'].includes(TYP) ? 'Data' : 'Id'
-            const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
-            if(TYP=='CLNT'||TYP=='SERV'||TYP=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])}
-            const data = await SB_GETT(TYP,200,selectStr,OrdemN) ; fazJJJ(TYP,data) ; AutoCOMP(TYP)
-            TYP=='GRD2' ? Render_Tbls(TYP) : Render_Tbla(TYP)
-        }
+    async function RodaTable(Typ){
+        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
+        let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
+        const OrdemN  = ['PDDS','SERV','PGMT'].includes(Typ) ? 'Data' : 'Id' // Pegar isso pelo BS
+        const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
+        if(Typ=='CLNT'||Typ=='SERV'||Typ=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])} // GAMBIARRA logo logo vai sair
+        const data = await SB_GETT(Typ,30,selectStr,OrdemN) ; fazJJJ(Typ,data) ; Gambiarra(Typ) ; AutoCOMP(Typ)
+        Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
 </script>
 

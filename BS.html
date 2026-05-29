@@ -91,7 +91,7 @@
   }
   async function Init(){
     const {data,error} = await supaBASE.from('BS').select('*').order('Id',{ascending:true})
-    if(error){ERR(error);return []} ; RenderBS(rows)
+    if(error){ERR(error);return []} ; RenderBS(data)
   };Init()
 </script>
 </html>
