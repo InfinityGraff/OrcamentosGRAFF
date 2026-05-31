@@ -347,9 +347,7 @@
                        return E?.Stts=='Entregue' && j.Deve ? Dev : E}
         },
         SERV:{
-            // Clnt:j=>{
-            //     return j.Pdds.Clnt
-            // },
+            Clnt:j=>[j.Clnt?.CLNT],
             Stts:j=>{
                 const S     = j.Stts
                 const Etp   = LALEL['SERV'][Rmvact(S.Stts)](S.Cor)
@@ -522,15 +520,15 @@
         const Cl    = (TYP,Rmv)=>ArrDif(BS[TYP].Orden,Rmv).join(',')
         
         const selectStr = {
-            PDDS:`${Cl(Typ)},Clnt:CLNT(${Cl('CLNT',RMV.BJ_CLNT)}),Serv:SERV(${Cl('SERV')}),Pgmt:PGMT(${Cl('PGMT')})`,
-            SERV:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)})),Arte:ARTE(${Cl('ARTE')}),Grad:GRAD(${Cl('GRAD')})`,
-            PGMT:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)}))`, //Mpag:()
+            PDDS:`${Cl(Typ)},Clnt:CLNT(${Cl('CLNT',RMV.BJ_CLNT)}),Serv:SERV(${Cl('SERV',['Clnt'])}),Pgmt:PGMT(${Cl('PGMT',['Clnt'])})`,
+            SERV:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
+            PGMT:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)})),Mpag:MPAG(*)`,
             CLNT:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.CL_PDDS)},Serv:SERV(${Cl('SERV',RMV.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',RMV.CL_PDDS)}))`,
-            MPAG:`${Cl(Typ)},Pgmt:()`, // Traz Clnt de PGMT 
-            ARTE:`${Cl(Typ)},Serv:()`, // Não Chama Pedidos apenas Clnt
-            GRAD:`${Cl(Typ)},Serv:(),OS:(),Uber:()`, // Não Chama Pedidos apenas Clnt
-            OS  :`${Cl(Typ)},Grad:(),Mpag:()`,
-            UBER:`${Cl(Typ)},Grad:(),Mpag:()`,
+            MPAG:`${Cl(Typ)},Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
+            ARTE:`${Cl(Typ)},Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+            GRAD:`${Cl(Typ)},Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+            OS  :`${Cl(Typ)},Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
+            UBER:`${Cl(Typ)},Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
         }
         const data = await SB_GETT(Typ,30,selectStr[Typ],BS[Typ].Ordnn)
         LOG(selectStr[Typ],data)
@@ -639,6 +637,14 @@
         NavPag(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
+</script>
+
+<script>
+    // Adicionar nova Linha na Bndj (Criar novo ID em Pdds, e em Serv)
+    // Criar o RG
+    // Linkar (botão que Linka) (ai sim, recebe todos, ou vai por Eliminação) pra Facilitar
+    // e em Linkar opção pra Adicionar um Novo lá mesmo
+    // e Cricual, Mesclar Linhas
 </script>
 
 </html>
