@@ -9,13 +9,13 @@
     .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter: saturate(1.6) brightness(1.05); z-index: 999999}
     .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
 
-    .H_Tbody{height: 30px !important;}
-    .H_Tbody td{background: purple;}
-    .H_Tbody:hover {background: #ff0000}
-    tbody.closed tr:not(.H_Tbody) {display: none}
-
     textarea{padding: 0px;}
     .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
+
+    .H_Tbody       {height: 30px !important;}
+    .H_Tbody td    {background:#800080}
+    .H_Tbody:hover {background:#ff0000}
+    tbody.closed tr:not(.H_Tbody) {display: none}
 </style>
 
 <style> /*CARD*/
@@ -60,6 +60,14 @@
     table.Card td[class*="Data"] a{display: flex}
     table.Card td[class*="Data"] p{display: none}
 </style>
+
+<script> // biblioteca
+
+    const TRs      =       Typ=>$$(`#H_${Typ} > tbody     > tr:not(.H_Tbody)`)
+    const TRs2     =   (Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
+    const TogTbody =         e=>Tog(e.closest('tbody'),'closed')
+
+</script>
 
 <style> /*Preview*/
     .inherit {background: inherit;} /*Copiar a cor do Pai*/

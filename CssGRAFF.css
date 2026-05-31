@@ -463,3 +463,11 @@ table.Card > tbody > tr > td      {padding: 5px; border-radius: 255px ; height: 
 .RangeNum .Range{position:relative;width:300px;height:20px}
 .RangeNum .Range input{position:absolute;width:100%;pointer-events:none;appearance:none;background:none}
 .RangeNum .Range input::-webkit-slider-thumb{appearance:none;pointer-events:auto;width:18px;height:18px;border-radius:50%;background:#000}
+
+
+/*----- GRIFO -----*/
+td          .grifoo{display:none  ; height:5px; width:5px ; left:0px}
+td.GrifNot2 .grifoo{display:block ; background:#ff880060}
+td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
+.P-P > strong{background:#ff7b00 !important} /*Griff dos Normais*/
+.P-P.Psq     {background:#ff7b00 !important} /*Griff dos Selects*/

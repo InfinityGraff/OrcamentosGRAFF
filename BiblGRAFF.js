@@ -2,6 +2,7 @@ function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Anima
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
 
+
 function Tm_DataNatora(){
     return `
     <div class="Rltv">

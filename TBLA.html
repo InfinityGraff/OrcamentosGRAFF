@@ -39,15 +39,19 @@
 
 <script> // Biblioteca
     const Foto     =         U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
+    const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
     const ReszH    =       Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
     const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w90');Tog($(`.Confy_${Typ}`),'w90');SaveConfig('a')}
-    const TRs      =       Typ=>$$(`#H_${Typ} > tbody     > tr:not(.H_Tbody)`)
-    const TRs2     =   (Typ,n)=>$$(`#H_${Typ} > .Bodd${n} > tr:not(.H_Tbody)`)
-    const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`)) ; RodaTable(Typ)}
-    const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
-    //const TogTbody =         e=>Tog(e.closest('tbody'),'closed')
     const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}// Melhorar isso, apenas com CSS
+    const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`)) ; RodaTable(Typ)}
     const CopyFone = (Fone,Eu)=>LOG(Fone)
+
+    function SaveConfig(e){LOG('SaveConfig')}
+    function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
+    async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
+
+    const ArrDif=(Arr=[],Arr2=[])=>Arr.filter(v=>!Arr2.includes(v)) // remove todos itens os que estão Arr2
+    const ArrInt=(Arr=[],Arr2=[])=>Arr.filter(v=>Arr2.includes(v))  // mantem apenas os que existe no Arr2
 </script>
 
 <style> /*CSS apenas da Tabela*/
@@ -64,23 +68,10 @@
     .TBLAA   tbody > tr:not([class*="Hoov"]):hover      {filter:saturate(1.6) brightness(1.05); z-index: 999999}
     .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index: 999999}
 
-    .H_Tbody       {height: 30px !important;}
-    .H_Tbody td    {background:#800080}
-    .H_Tbody:hover {background:#ff0000}
-    tbody.closed tr:not(.H_Tbody) {display: none}
-
     textarea{padding: 0px;}
     .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px;}
-
     .EtpSVG{height:25px ; width:25px ; pointer-events: none}
     #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
-
-    /*----- GRIFO -----*/
-    td          .grifoo{display:none  ; height:5px; width:5px ; left:0px}
-    td.GrifNot2 .grifoo{display:block ; background:#ff880060}
-    td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
-    .P-P > strong{background:#ff7b00 !important} /*Griff dos Normais*/
-    .P-P.Psq     {background:#ff7b00 !important} /*Griff dos Selects*/
 </style>
 
 <script> // ----- GRIFO -----
@@ -272,6 +263,15 @@
         Inn($('.Rang-Min',R),a) ; Inn($('.Rang-Max',R),b)
     }
     function FiltrarNum(Typ,Col,Min,Max){LOG(Typ,Col,Min,Max)}
+
+    async function SB_Filt(Typ,Fls,Modo='E'){
+        let q=supaBASE.from(Typ).select('*')
+        if(Modo=='E'){Fls.forEach(([c,v])=>q=v.includes('|') ? q.or(v.split('|').map(x=>`${c}.eq.${x}`).join(',')) : q.eq(c,v))}
+          else{q=q.or(Fls.flatMap(([c,v])=>v.split('|').map(x=>`${c}.eq.${x}`)).join(','))}
+        const {data,error}=await q.order('Id',{ascending:false}).limit(100)
+        if(error)return LOG(error)
+        Render_Body(Typ,data)
+    }
 </script>
 
 <script> // ---- REFOOR ----
@@ -321,13 +321,13 @@
     const CorPacyy = E=>`rgb(${E?.split(',').map(e=>e/4).join(',')})`
     const Mk=(Stts,c,Texto='white')=>{return {Stts,Cor:COR[c],Dark:COR2[c],Texto,TxPcy:CorPacyy(COR[c])}}
     const LALEL={
-    SERV:{
+        SERV:{
         Orcamento:(c)=>Mk('Orçamento',c,'black'),
         Arte     :(c)=>Mk('Arte'     ,c),
         Impressao:(c)=>Mk('Impressão',c),
         Pronto   :(c)=>Mk('Pronto'   ,c),
         Entregue :(c)=>Mk('Entregue' ,c),
-        Devendo  :(c)=>Mk('Devendo'  ,c)
+        Devendo  :(c)=>Mk('Devendo'  ,'Redd')
     }}
 </script>
 
@@ -342,13 +342,16 @@
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
              ,Lcro:j=>j.Valr-j.Cust
              ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
-                       const Ed  = LALEL.SERV.Deve
+                       const Ed  = LALEL.SERV.Devendo()
                        const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
                        return E?.Stts=='Entregue' && j.Deve ? Dev : E}
         },
         SERV:{
+            // Clnt:j=>{
+            //     return j.Pdds.Clnt
+            // },
             Stts:j=>{
-                const S     = j.Stts[0]
+                const S     = j.Stts
                 const Etp   = LALEL['SERV'][Rmvact(S.Stts)](S.Cor)
                 const opc   = _0_1(S.True/S.Total)
                 const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
@@ -422,10 +425,12 @@
     const LoadBndj =(Eu,R)=>{ // Renderiza Bandeija
         if(Coten($('.BNdj',Pai(Eu)),'none')){
             function LoadLinhasBndj(R){
-                const r = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
+                const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
                 const Find  = [].concat(JJ[Typ]?.[Id]?.[Col]??[])
-                return `<thead><tr>${BS[COL].Orden.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
+                let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
+                if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')} // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
+                return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
             }
             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
         }
@@ -491,6 +496,46 @@
         </div>    
         ${Typ=="GRD2" ? `<div class="Paizao w90 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w90')}
         <p>Soma: 00,00</p>`
+    }
+    
+    function fazJJJ(Typ,dados){
+        const Acc = {}
+        const Norml=(j,Acc={},Tru=[])=>{for(const k in j){if(Tru.includes(k)){let v=j[k];if(v&&!isArr(v)&&typeof v=='object')v=[v];if(isArr(v))(Acc[k]??=[]).push(...v);j[k]=v}j[k]??=''}return j}
+        const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc,el)=>{acc[el[col]]=el;return acc;},{})}
+        const FKs = BS[Typ].FK
+        J[Typ]  = dados.map(e=>Norml(e,Acc,FKs))
+        JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
+        for(const col in Acc){JJJ[AA(col)]=Acc[col]}
+    }
+
+    
+
+    async function RodaTable(Typ){
+        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
+        const RMV   = {
+            PDDS:[],
+            BJ_CLNT:['Pdds','Lcro','Medi','Lixo'],
+            SV_PDDS:['Serv','Lixo'], // Dentro de SERV a Bndj de Pdds não recebe Serv nem Lixo
+            PG_PDDS:['Pgmt','Lixo'], // Dentro de PGMT a Bndj de Pdds não recebe Pgmt nem Lixo
+            CL_PDDS:['Clnt','Lixo'], // 
+        }
+        const Cl    = (TYP,Rmv)=>ArrDif(BS[TYP].Orden,Rmv).join(',')
+        
+        const selectStr = {
+            PDDS:`${Cl(Typ)},Clnt:CLNT(${Cl('CLNT',RMV.BJ_CLNT)}),Serv:SERV(${Cl('SERV')}),Pgmt:PGMT(${Cl('PGMT')})`,
+            SERV:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)})),Arte:ARTE(${Cl('ARTE')}),Grad:GRAD(${Cl('GRAD')})`,
+            PGMT:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',RMV.BJ_CLNT)}))`, //Mpag:()
+            CLNT:`${Cl(Typ)},Pdds:PDDS(${Cl('PDDS',RMV.CL_PDDS)},Serv:SERV(${Cl('SERV',RMV.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',RMV.CL_PDDS)}))`,
+            MPAG:`${Cl(Typ)},Pgmt:()`, // Traz Clnt de PGMT 
+            ARTE:`${Cl(Typ)},Serv:()`, // Não Chama Pedidos apenas Clnt
+            GRAD:`${Cl(Typ)},Serv:(),OS:(),Uber:()`, // Não Chama Pedidos apenas Clnt
+            OS  :`${Cl(Typ)},Grad:(),Mpag:()`,
+            UBER:`${Cl(Typ)},Grad:(),Mpag:()`,
+        }
+        const data = await SB_GETT(Typ,30,selectStr[Typ],BS[Typ].Ordnn)
+        LOG(selectStr[Typ],data)
+        fazJJJ(Typ,data) ; AutoCOMP(Typ)
+        Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
 </script>
 
@@ -585,44 +630,6 @@
 </body>
 
 <script>
-    function SaveConfig(e){LOG('SaveConfig')}
-    function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
-    async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
-
-    function fazJJJ(Typ,dados){ // Ocultei essas coisas pra n da problema com SERV e PGMT (depois olhar se RG precisa msm disso!)
-        const Colet = {}
-        J[Typ]=dados.map(e=>NormlOBJ2(e,Colet))
-        for(const col in Colet){JJJ[AA(col)] = Colet[col] ; /*JJJJ[AA(col)] = ArrtoOBJ(Colet[col],'Id')*/}
-        JJ[Typ] = ArrtoOBJ(J[Typ],'Id')
-    }
-    function Gambiarra(Typ){ // esa gambiarra só serve pq no recomp a parte de Stts recebe na bndj de serv um obj, e no SERV tabela recebe array de OBJ
-        // quem fudeu isso foi este fazJJJ mas não sei onde é não vou mecher agora! vou só limpar aqui por enquanto!
-        if(Typ=='PDDS'){
-            J[Typ].forEach(j=>j.Serv.forEach(e=>e.Stts=[e.Stts]))
-        }
-    }
-    
-    async function SB_Filt(Typ,Fls,Modo='E'){
-        let q=supaBASE.from(Typ).select('*')
-        if(Modo=='E'){Fls.forEach(([c,v])=>q=v.includes('|') ? q.or(v.split('|').map(x=>`${c}.eq.${x}`).join(',')) : q.eq(c,v))}
-          else{q=q.or(Fls.flatMap(([c,v])=>v.split('|').map(x=>`${c}.eq.${x}`)).join(','))}
-        const {data,error}=await q.order('Id',{ascending:false}).limit(100)
-        if(error)return LOG(error)
-        Render_Body(Typ,data)
-    }
-
-    async function RodaTable(Typ){
-        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
-        let selectStr = `*${BS[Typ]?.FK?.length ? ',' + BS[Typ]?.FK?.map(t=>`${t}:${AA(t)}(*)`).join(',') : ''}`
-        const OrdemN  = ['PDDS','SERV','PGMT'].includes(Typ) ? 'Data' : 'Id' // Pegar isso pelo BS
-        const Camada2 = {PDDS:'PDDS(*,Clnt:CLNT(*),Serv:SERV(*),Pgmt:PGMT(*))'} // se for Clnt não deveria nem ter a Coluna CLNT se n vira paradoxo
-        if(Typ=='CLNT'||Typ=='SERV'||Typ=='PGMT'){selectStr = selectStr.replace('PDDS(*)',Camada2['PDDS'])} // GAMBIARRA logo logo vai sair
-        const data = await SB_GETT(Typ,30,selectStr,OrdemN) ; fazJJJ(Typ,data) ; Gambiarra(Typ) ; AutoCOMP(Typ)
-        Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
-    }
-</script>
-
-<script>
     Onloads('body') ; Get_User()
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
@@ -632,14 +639,6 @@
         NavPag(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
-</script>
-
-<script>/*
-    https://www.erome.com/a/bdK9LKBE
-    https://www.erome.com/a/aDLulwCe
-    https://www.erome.com/a/TyD1hh95
-    https://www.erome.com/a/emwZDXtE
-    */
 </script>
 
 </html>
