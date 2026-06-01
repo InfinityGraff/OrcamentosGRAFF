@@ -119,36 +119,22 @@ function DarVAL(e,V){
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
         Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
-        
-        Link:(e,R)=>{ // aqui é o Link principal q aparece
-            const _R = d_r(R)
-            const Typ2 = BSJsn(_R.Ty,_R.Cl).LINK ; const TYP2 = Typ2.split('-')
-            const COLL = BSJsn(_R.Ty,_R.Cl).COL
+        OKAY:(e,R,Rgx  )=>['Add','Rmv'].map(E=>`<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="LinkaR(this,'${E=='Rmv'?'null':d_r(R).Id}')" src="./CrudSB/${E}Link.webp">`).join(''),
+        Link:(e,R,Rgx  )=>{
+            const Place = d_r(R).Cl
             return e!=''? Tm_Bndj(R,getArr(e))
             : `<div class="Rltv">
-                    <p class="P-P" data-R="${R}" onclick="ShowBndj(_td(this))" name="${e}">${e==''?'-':e}</p>
+                    <p class="P-P" data-R="${R}" onclick="ShowBndj(_td(this));Tm_Sugg($('input',Pai(this)),'${R}')" name="${e}">${e==''?'-':e}</p>
                     <div class="BndjSUG MySelect BNdj Abslt none Cl">
                         <a>${SVG.Ponta}</a>
-                        <input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))">
-                        <span class="Sugg Cl"></span>   
+                        <input class="Stky" placeholder="${Place}" onkeydown="KeyEntr(()=>Tm_Sugg(this,'${R}'))">
+                        <span class="Sugg Cl"></span>
                     </div>
                 </div>`
-        },
-    Link2:(e,R)=>{ // Aqui é o de Troca (mas Fundir com a de Cima)
-            const _R = d_r(R)
-            const Typ2 = BSJsn(_R.Ty,_R.Cl).LINK  ;   
-            const COLL = BSJsn(_R.Ty,_R.Cl).COL
-            return `<input class="Stky" placeholder="${COLL}" oninput="LinkSug(this,'${R}','${Typ2}')" onkeydown="KeyEntr(()=>NewLink('${Typ2}',this))">
-                    <span class="Sugg Cl"></span>`
-        },
-        OKAY:(e,R)=>{
-            // se tiver na Tabela Normal não carrega nada
-            // Provavelmente Mpag não usa OK, quem usa isso é Somente as GRADS, pois depende manualmente desta Validação
-            return e ? `<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="RmvLink(this,'${R}')" src="./CrudSB/Unlink.webp">` :
-                       `<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="Linkar2(this,'${R}')" src="./CrudSB/Link.webp">`
-        },
+        },// onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))"
+
+        Lnk2:(e,R,Rgx)=>Tm_Bndj(R,getArr(e)),
         Slc2:(e,R)=>`MySelect()`,
-        Lnk2:(e,R)=>Tm_Bndj(R,getArr(e)),
         Bndj:(e,R)=>Tm_Bndj(R,getArr(e)),
         BjIn:(e,R)=>Tm_Bndj(R,getArr(e)),
     }
@@ -220,7 +206,7 @@ function DarVAL(e,V){
         const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
         const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
         const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-        J.IMGS[Nome] = f.name
+        //J.IMGS[Nome] = f.name
         if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
         if(Eximg.includes(Ext)){
             EditCell(PP,`${Nome}.${Ext}`)
@@ -279,65 +265,9 @@ function DarVAL(e,V){
         // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
         // NewLink apenas para os que Permitem NewLink
     }
-    function RmvLink(){LOG('remove Link')}
 
-    function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
-        const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
-        const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
-        const PP2 = $(Rx7(`${d_r(Eu).Id}-Link`),_tr(Eu))  // Passiva (isso deveria ser a td que recebe o valor do ativo dentro do passivo)
-        const  OK = $(Rx7('OKAY'),_tr(Eu))                // (para as Linkagem que o OKOK é automativo blz, mas tem umas como Grad q é Manual depois ver isso!)
-        const _R2 = d_r(PP2)                              // Raster da Passivo (Alterar pra d_r(this))
 
-        const Ar1 = JJ[_R1.Ty][_R1.Id][_R1.Cl] // PGMT (Buscar o que Ja tinha)
-        const Ar2 = JJ[_R2.Ty][_R2.Id][_R2.Cl] // MPAG (Buscar o que Ja tinha)
 
-        const Vl1 = Ar1 ? `${Ar1} | ${_R1.Ty}-${_R1.Id}` : `${_R1.Ty}-${_R1.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
-        const Vl2 = Ar2 ? `${Ar2} | ${_R2.Ty}-${_R2.Id}` : `${_R2.Ty}-${_R2.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
-
-        EditCell(PP1,Vl2)    // Id da Passiva na Ativa (String)
-        EditCell(PP2,Vl1)    // Id da Ativa na Passiva como Array
-        EditCell(OK ,true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
-        // isso tem que servir pra ADICIONAR, REMOVER, TROCAR
-    }
-    function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
-        const td = _td(Eu)
-        const PP = $('.P-P',td)
-        const _R = PP.dataset.r
-        EditCell(PP,val)
-        // Inn(td,Tm_Bndj(_R,`${val}`)) // ERRADO deveria ser Array no 2°
-    }
-    const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
-    function EvalSugg(Typ,e){
-        const Fn = new Function('e',`return ${BS[Typ].List}`)
-        return Fn(e)
-    }
-    function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procurando)
-        clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
-        debounceTimer = setTimeout(()=>{
-            const _R = d_r(R)
-            const [Typ2,Mod,Qnt,Cria] = TYP2.split('-')
-
-            const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
-            const list = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista
-
-            const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BSJsn(Typ2,k)?.TM=='Link' ? Getna(j,k) : v))
-            
-            const EXTRA = BSJsn(_R.Ty,_R.Cl).LnkEX   // Acessar os Extras (de cada Tabela)
-            const Fn    = Function(`return ${EXTRA}`)()
-            const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
-
-            if(Mod=='List'){
-                Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Pry[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
-            }
-            if(Mod=='Table'){
-                Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Tr(Typ2,filt,R)}</tbody></table>`)
-                Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
-            }
-            if(Mod=='Card'){
-
-            }
-        },100)
-    }
     function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
         function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
         function GambiarraRmv(div){Rmv(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Rmv(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (adicionar o hov q faz a saturação da tr)
@@ -384,7 +314,7 @@ function DarVAL(e,V){
         RT_Rmv.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
     }
     function EditCell(e,val=null,RT){        // ⭐⭐⭐⭐⭐
-        const V = val == "" ? "" : (val || VAL(e))
+        const V = val == "" ? "" : val =='null' ? null : (val || VAL(e))
         if(V==Nm(e)){return} // não foi Aterado
         const R = d_r(e)
         if(!RT){Sb_EDIT(R.Ty,R.Id,{[R.Cl]:V})}

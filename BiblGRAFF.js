@@ -72,10 +72,10 @@ const Crecent=(M,F=0.5,F2=1.8)=>{ // Mudar as Forças de Acordo com cada Produto
 }
 
 const BrevTitle = (Typ,Stg)=>{
-    if(Typ!='SERV') return Stg
+    if(Typ!='SERV') return Stg.replace(/#/g,'')
     try{const g={}
         Stg.split('|').forEach(s=>{
-            let [Serv,Qnt,Lag,Alt,Desc]=s.split('-')
+            let [Serv,Qnt,Lag,Alt,Desc]=s.split('#')
             if(!Serv){g[Desc]??={q:0,m:new Set()};return g[Desc].q++}
             let m=Lag&&Alt?`${Cm(Lag)} x ${Cm(Alt)}`:`${Lag||''}${Alt||''}`
             g[Serv]??={q:0,m:new Set()}
@@ -85,7 +85,7 @@ const BrevTitle = (Typ,Stg)=>{
         let r = Object.entries(g).map(([n,{q,m}])=>`${q} - ${n}${m.size>1?` (${[...m].join(' / ')})`:" "+[...m][0]}`).join(' | ')
         if(r.length<=80) return r
         return Object.entries(g).map(([n,{q}])=>`${q} - ${n}`).join(' | ')
-    }catch{return Stg}
+    }catch{return Stg.replace(/#/g,'')}
 }
 
 const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null

@@ -85,8 +85,7 @@
       if(!val || val === key || json[val]) return
       json[val] = json[key]
       delete json[key]
-    } else {json[key] && (json[key][prop] = val) }
-    LOG('Conferir antes de Continuar') ; return
+    } else {json[key] && (json[key][prop] = val)}
     Sb_EDIT('BS',row.Id,{['Json']:row.Json=json})
   }
   async function Init(){

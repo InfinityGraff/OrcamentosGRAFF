@@ -885,6 +885,81 @@
     </script>
 </div>
 
+<script>//===========================LINK===========================
+    function RmvLink(){LOG('remove Link')}    
+    function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
+        if(Ipt.value){
+            if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
+                const df = AddROW(AA(Typ),'<',{[Aa(Typ)]:Ipt.value})
+                Linkar(Ipt,`${AA(Typ)}-${df.Id}`)
+            }
+        }
+        // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
+        // NewLink apenas para os que Permitem NewLink
+    }
+
+    function Linkar2(Eu){ // esse Link é usado pra linkar pela Tabela (essa Função é Chamada pelo BOTÃO de Link q aparece no SuggLink em Formato de Tabela)
+        const PP1 = $('.P-P',Eu.closest('.LnK'))          // Ativa
+        const _R1 = d_r(PP1)                              // Raster da Ativa (Alterar pra d_r(Pai))
+        const PP2 = $(Rx7(`${d_r(Eu).Id}-Link`),_tr(Eu))  // Passiva (isso deveria ser a td que recebe o valor do ativo dentro do passivo)
+        const  OK = $(Rx7('OKAY'),_tr(Eu))                // (para as Linkagem que o OKOK é automativo blz, mas tem umas como Grad q é Manual depois ver isso!)
+        const _R2 = d_r(PP2)                              // Raster da Passivo (Alterar pra d_r(this))
+
+        const Ar1 = JJ[_R1.Ty][_R1.Id][_R1.Cl] // PGMT (Buscar o que Ja tinha)
+        const Ar2 = JJ[_R2.Ty][_R2.Id][_R2.Cl] // MPAG (Buscar o que Ja tinha)
+
+        const Vl1 = Ar1 ? `${Ar1} | ${_R1.Ty}-${_R1.Id}` : `${_R1.Ty}-${_R1.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
+        const Vl2 = Ar2 ? `${Ar2} | ${_R2.Ty}-${_R2.Id}` : `${_R2.Ty}-${_R2.Id}` // Concatenar o novo com o antigo caso o antigo ele exista
+
+        EditCell(PP1,Vl2)    // Id da Passiva na Ativa (String)
+        EditCell(PP2,Vl1)    // Id da Ativa na Passiva como Array
+        EditCell(OK ,true)   // Recebe String (aqui não serve se tiver 2, isso tem q ser Bolean) /tem uns que só pode ser OK automático se permitir/
+        // isso tem que servir pra ADICIONAR, REMOVER, TROCAR
+    }
+
+    function Linkar(Eu,val){          // ⭐⭐⭐⭐_  (Faz o Básico)
+        const td = _td(Eu)
+        const PP = $('.P-P',td)
+        const _R = PP.dataset.r
+        EditCell(PP,val)
+        // Inn(td,Tm_Bndj(_R,`${val}`)) // ERRADO deveria ser Array no 2°
+    }
+
+    const Getna =(j,col)=>JJ[AA(col)][j[col]]?.[col]??''
+    function EvalSugg(Typ,e){
+        const Fn = new Function('e',`return ${BS[Typ].List}`)
+        return Fn(e)
+    }
+
+    function LinkSug(Ipt,R,TYP2){ // Typ2 é a Tabela Passiva (a qual eu estou Procurando)
+        clearTimeout(debounceTimer) // Cancela Chamadas Anteriores ao escrever mt Rápido
+        debounceTimer = setTimeout(()=>{
+            const _R = d_r(R)
+            const [Typ2,Mod,Qnt,Cria] = TYP2.split('-')
+
+            const [I,_C,RX] = Avnc_Pesq(Ipt,Typ2)
+            const list = $('.Sugg',Pai(Ipt)) ; Show(list) ; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista
+
+            const RgxOK=j=>ObjEtr(j).some(([k,v])=>RX.test(BSJsn(Typ2,k)?.TM=='Link' ? Getna(j,k) : v))
+            
+            const EXTRA = BSJsn(_R.Ty,_R.Cl).LnkEX   // Acessar os Extras (de cada Tabela)
+            const Fn    = Function(`return ${EXTRA}`)()
+            const filt  = (J[Typ2]||[]).filter(j=>RgxOK(j) && (!j.OKAY) && (!EXTRA||Fn(j))) // [RgxOK obrigatório] | !OKAY Pula, Se existir [precisa faltar o typ] | [chama Extra se Existir]
+
+            if(Mod=='List'){
+                Inn(list,filt.map(e=>`<a class="PT w100 Ct" onclick="Linkar(this,'${Typ2}-${e[Pry[Typ2]]}')">${Griff(EvalSugg(Typ2,e),RX)}</a>`).join(''))
+            }
+            if(Mod=='Table'){
+                Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Tm_thSort(BS[Typ2].Orden,Typ2)}</tr></thead><tbody>${Tm_Tr(Typ2,filt,R)}</tbody></table>`)
+                Ex_Pesq($$('tbody > tr',list),Typ2,RX,I,true,Ipt) // isso é só pra fazer os Grifos
+            }
+            if(Mod=='Card'){
+
+            }
+        },100)
+    }
+</script>
+
 <div>  <!--INTERAÇÕES- ⭐_ _ _ _ -->
     <script> // Previews
         function Tog_Card(Typ){ // xDOM
