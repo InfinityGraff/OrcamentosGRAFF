@@ -99,7 +99,6 @@
 
 <script> // ---- PESQUISA ----
     const oPesq = {Aa:'Aa',A_:'[]',Bj:'Bj',In:'<',Ot:'>',_C:'~'}
-
     const Tm_Pesq=Typ=>
     `<div class="pPesq Pesq_${Typ} hOv Rltv">
         <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." onkeydown="KeyEntr(()=>SB_Pesq('${Typ}'))">
@@ -110,7 +109,6 @@
         <a class="AaAa Abslt PT" style="left:8px;top:8px" onclick="Tog_N(this);Tog($('.COL1',Avo(this)),'NONE')">▼</a>
         <select class="COL1 Abslt NONE" style="top:0px;left:0px;width:70px">${Tm_Opt(BS[Typ].Orden)}</select>
     </div>`
-    
     async function SB_Pesq(typ){
         const busca = $(`.Pesq_${typ} input`).value.trim().replace(/\s+/g,' ')
         const [bj,aa,cc,a_,ii,ot,of] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${typ} .Pesq-${e}.Atv`))
@@ -400,7 +398,6 @@
 <script> // ---- LINK ----
     async function FK_True (Typ,Typ2){const {data} = await supaBASE.from(Typ).select(`*,${Typ2}!inner(*)`).order('Id',{ascending:false})}
     async function FK_False(Typ,Typ2){const {data} = await supaBASE.from(Typ).select(`*,${Typ2}(*)`).is(Typ2,null).order('Id',{ascending:false}).limit(100)}
-    
 
     async function Tm_Sugg(Ipt,R){
             const _R     = d_r(R),COL=AA(_R.Cl)
