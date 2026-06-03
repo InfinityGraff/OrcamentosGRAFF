@@ -127,6 +127,7 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
                         <a>${SVG.Ponta}</a>
                         <input class="Stky" placeholder="${Place}" onkeydown="KeyEntr(()=>Tm_Sugg(this,'${R}'))">
                         <span class="Sugg Cl"></span>
+                        <button onclick="SB_Link($('input',Pai(this)),'${R}')">Adicionar +</button>
                     </div>
                 </div>`
         },// onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))"
@@ -287,8 +288,6 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
             const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
             AddRow_DOM(Typ,[data])
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
-        }else if('SERV','PGMT'){
-
         }
     }
     async function SB_RmvROW(Typ,Id){         // ⭐⭐⭐⭐⭐
@@ -321,21 +320,21 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
             RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
-    function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
-        const P = d_r(_P) ; const COL = AA(P.Cl)
-        const p   = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
-        const arr = isArr(p[P.Cl])?p[P.Cl] : [] // se n for um array, return []
-        const Prim= l0(arr)                     // conferir se é a Primeira vez!
-        const Def = {}
-        const Tabl= $('table',_td(Eu))
+    async function AddRowBdj(Eu,R){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
+        const P    = d_r(R) ; const COL = AA(P.Cl)
+        const p    = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
+        const arr  = isArr(p[P.Cl])?p[P.Cl] : [] // se n for um array, return []
+        const Prim = l0(arr)                     // conferir se é a Primeira vez!
+        const Def  = {}
+        const Tabl = $('table',_td(Eu))
         Rmv_N(Tabl)
-        
-        Prim ? Inn(Tabl,Tm_Bndj(_P,'')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],_P))
-
-        SB_AddROW(Typ)
-
-        // Novo Id
-        // Clona Cliente
+        LOG(COL,P.Id)
+        if(['SERV','PGMT'].includes(COL)){
+            const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:P.Id,dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
+            LOG(data,error)
+        }
+        Prim ? Inn(Tabl,Tm_Bndj(R,'')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],R))
+        // Novo Id // Clona Cliente
     }
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
@@ -374,7 +373,7 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
     async function Get_User(){
         const { data:userData } = await supaBASE.auth.getUser()
         if(!userData.user)return
-        const { data:User,error } = await supaBASE.from('USER2').select('*').eq('Id',userData.user.id).single()
+        const { data:User,error } = await supaBASE.from('USER').select('*').eq('Id',userData.user.id).single()
         if(error)return console.log(error)
         PosLogin(User)
         MyAlert('DEUCERTO!')

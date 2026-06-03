@@ -43,7 +43,7 @@ AS $$
             '[]'::jsonb
         ) AS "Artes"
 
-    FROM public."USER2" U
+    FROM public."USER" U
 
     WHERE U."Prof" ? 'Dsng';
 

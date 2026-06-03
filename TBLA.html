@@ -37,6 +37,7 @@
 </script>
 
 <script> // Biblioteca
+    const Trim     =         e=>e.trim().replace(/\s+/g,' ')
     const Foto     =         U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
     const ReszH    =       Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
@@ -49,8 +50,11 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
+
     const ArrDif=(Arr=[],Arr2=[])=>Arr.filter(v=>!Arr2.includes(v)) // remove todos itens os que estão Arr2
     const ArrInt=(Arr=[],Arr2=[])=>Arr.filter(v=>Arr2.includes(v))  // mantem apenas os que existe no Arr2
+
+
 </script>
 
 <style> /*CSS apenas da Tabela*/
@@ -109,7 +113,7 @@
         <select class="COL1 Abslt NONE" style="top:0px;left:0px;width:70px">${Tm_Opt(BS[Typ].Orden)}</select>
     </div>`
     async function SB_Pesq(typ){
-        const busca = $(`.Pesq_${typ} input`).value.trim().replace(/\s+/g,' ')
+        const busca = Trim($(`.Pesq_${typ} input`).value)
         const [bj,aa,cc,a_,ii,ot,of] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${typ} .Pesq-${e}.Atv`))
         const {data,error}=await supaBASE.rpc('pesq_all',{typ,busca,bj,aa,cc,a_,ii,ot,of,ord:'Id',lim:100})
         if(error)return LOG(error) ; LOG('Pesq',typ,busca) ; Render_Body(typ,data,[busca,aa,cc])
@@ -400,9 +404,9 @@
 
     async function Tm_Sugg(Ipt,R){
             const _R     = d_r(R),COL=AA(_R.Cl)
-            const g      = BS[COL]?.Sugg
-            const NRow   = BS[COL]?.New // pode criar Nova Linha
-            const I      = Ipt.value.trim().replace(/\s+/g,' ') // Limpar exesso de Espaços
+            const g      = BS[COL]?.Sugg   // Config Sugg
+            const NRow   = BS[COL]?.New    // Pode criar Nova Linha
+            const I      = Trim(Ipt.value) // Limpar exesso de Espaços
             const RX     = new RegExp(I)
             const list   = $('.Sugg',Pai(Ipt)) ; Show(list) //; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista           
 
@@ -413,6 +417,7 @@
             function EvalSugg(Typ,e){const Fn = new Function('e',`return ${BS[Typ].List}`) ; return Fn(e)}
             
             const Find   = await SB_Sugg(g.Sug,COL,_R.Ty) //.filter(j=>RgxOK(j) && (!EXTRA||Fn(j))) // Regex | OKAY | Extra
+            // fazer algum tratamento quando Find vir vazio
             let Ths      = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
 
             if(g.Tm=='List' ){Inn(list,Find.map(e=>`<a class="PT w100 Ct" onclick="SB_Link()">${Griff(EvalSugg(COL,e),RX)}</a>`).join(''))}
@@ -422,16 +427,14 @@
             // isso é tipo uma Bandeija então da pra Fundor a parte do Table com LoadBndj()
     }
 
-    async function SB_Sugg(Mod,Typ,Typ2){
-        const R  = {'ARTE':['Data','Nome','Tema','Dslk','Prazo','Pixo']} // esses deve ser Basicamente os Mesmos do RodaTable()
-        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP].Orden,Rmv).join(',')
-
+    async function SB_Sugg(Mod,COL,Typ){
+        const selectStr = SB_CriaSlct(Typ,COL)
         if(Mod=='Uniq') // ['MPAG']             // Somente as que não tem Link
-            return (await supaBASE.from(Typ).select(`${Cl(Typ,R[Typ])},${Typ2}(Id)`).is(Typ2,null).order('Id',{ascending:false}).limit(100)).data||[]
+            return (await supaBASE.from(COL).select(selectStr).is(Typ,null).order('Id',{ascending:false}).limit(100)).data||[]
         if(Mod=='OKAY') // ['GRAD','OS','UBER'] // Todas as que não estão OKAY
-            return (await supaBASE.from(Typ).select(`${Cl(Typ,R[Typ])}`).neq('OKAY',null).order('Id',{ascending:false})).data||[] // OKAY tem que ser null ou False
+            return (await supaBASE.from(COL).select(selectStr).is('OKAY',null).order('Id',{ascending:false}).limit(100)).data||[] // OKAY tem que ser null ou False
         if(Mod=='Free') // ['ARTE','CLNT']      // só os 50 mais recentes
-            return (await supaBASE.from(Typ).select(`${Cl(Typ,R[Typ])}`).order('Id',{ascending:false}).limit(100)).data||[]
+            return (await supaBASE.from(COL).select(selectStr).order('Id',{ascending:false}).limit(100)).data||[]
         return []
     }
 
@@ -442,14 +445,17 @@
         _tr(P).outerHTML = Tm_Tr(_R.Ty,data)
     }
 
-    async function SB_Link(Typ,Col,Valr,Id){
+    async function SB_Link(Ipt,R){
+        const Val = Vll(Ipt)
+        const [Typ,Id,Col] = R.split('-')
         const Tbl = AA(Col)
-        const Exs = await supaBASE.from(Tbl).select('Id').eq('Id',Valr).single() // Conferir se Existe
+        const Exs = await supaBASE.from(Tbl).select('Id').eq('Id',Val).single() // Conferir se Existe
+        const TBLLA = {'GRAD':{Id:Val,OS:null,Uber:null}}
         if(!Exs.data){
-            if(!confirm(`${Tbl} ${Valr} não existe.\nCriar agora?`))return
-            await supaBASE.from(Tbl).insert({Id:Valr})
+            if(!confirm(`${Tbl} ${Val} não existe.\nCriar agora?`))return
+            await supaBASE.from(Tbl).insert(TBLLA[Tbl]||{Id:Val})
         }
-        await supaBASE.from(Typ).update({[Col]:Valr}).eq('Id',Id)
+        await supaBASE.from(Typ).update({[Col]:Val}).eq('Id',Id)
     }
 
 </script>
@@ -486,6 +492,7 @@
                 const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
                 const Find  = [].concat(JJ[Typ]?.[Id]?.[Col]??[])
+                if(Find.length==0){return ''}
                 let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
                 if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')} // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
                 return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
@@ -515,7 +522,7 @@
     function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
         Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))
-        Inn($(`#H_${Typ} > thead`),`<tr>${Tm_thSort(Typ,BS[Typ].Orden)}</tr>`)
+        Inn($(`#H_${Typ} > thead`),`<tr>${Tm_thSort(Typ,ArrDif(BS[Typ].Orden,['Cbmt','VCbt']))}</tr>`)
         Inn($(`#H_${Typ} > tfoot`),`<tr>${Tm_tdFoot(Typ,BS[Typ].Orden)}</tr>`)
         Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,J[Typ]))
         Re_Foot(Typ)
@@ -566,38 +573,46 @@
         for(const col in Acc){JJJ[AA(col)]=Acc[col]}
     }
 
-    async function RodaTable(Typ){
-        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
+    function SB_CriaSlct(Typ,COL){
         const R   = {
-            PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'],
-            PDDS_Serv:['Clnt'], // 2° Camada - Dentro disso tem GRAD e ARTE
+            SERV_ARTE:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // esse daqui é pra o Sugg é o tipo de Regra na key que funciona pra Sugg
+            SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+            PDDS_CLNT:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+            PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+            PDDS_Serv:['Clnt','Cbmt','VCbt'], // 2° Camada - Dentro disso tem GRAD e ARTE
             PDDS_Pgmt:['Clnt'], // 2° Camada - Dentro disso tem MPAG
 
             CL_PDDS:['Clnt','Lixo'], // 
             SV_PDDS:['Serv','Lixo'], // Dentro de SERV a Bndj de Pdds não recebe Serv nem Lixo
             PG_PDDS:['Pgmt','Lixo'], // Dentro de PGMT a Bndj de Pdds não recebe Pgmt nem Lixo
+
         }
-        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP].Orden,Rmv).join(',')
+        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
         const FK = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),R[`${TYP}_${Col}`])})` // Clnt:CLNT(${Cl('CLNT',R['PDDS_Clnt'])})
         const FK2= (TYP,Col)=>``
-        
+
         const selectStr = { // isso tem que ficar Fora, pois deve ser Chamado, tanto por RodaTable() mas tbm por Filtros, Sugg, Pesquisas e outros, deve conciderar tudo isso!
-            PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
+                 PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
+                 SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',R.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
+                 PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Mpag:MPAG(*)`,
+                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.CL_PDDS)},Serv:SERV(${Cl('SERV',R.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',R.CL_PDDS)}))`,
+                 MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
+                 ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+                 GRAD:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+                 OS  :`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
+                 UBER:`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
+            PDDS_CLNT:`${Cl(COL,R[`${Typ}_${COL}`])}`,
+            SERV_ARTE:`${Cl(COL,R[`${Typ}_${COL}`])}`,
+            SERV_GRAD:`${Cl(COL,R[`${Typ}_${COL}`])}`
 
-            SERV:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
-
-            PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Mpag:MPAG(*)`,
-            CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.CL_PDDS)},Serv:SERV(${Cl('SERV',R.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',R.CL_PDDS)}))`,
-
-            MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
-            ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
-            GRAD:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
-
-            OS  :`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
-            UBER:`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
         }
-        const data = await SB_GETT(Typ,30,selectStr[Typ],BS[Typ].Ordnn)
-        LOG(selectStr[Typ],data)
+        return COL ? selectStr[`${Typ}_${COL}`] : selectStr[Typ]
+    }
+
+    async function RodaTable(Typ){
+        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
+        const selectStr = SB_CriaSlct(Typ)
+        const data = await SB_GETT(Typ,30,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
@@ -706,13 +721,7 @@
 </script>
 
 <script>
-    // Adicionar nova Linha na Bndj (Criar novo ID em 'Serv' e 'Pgmt')
-    // Criar o RG automatico
-
-    // e Cricual, Mesclar Linhas
-    // deve existir várias formas de renderizar o T-T pois quando ele fica dentro de Grad, plmns, o Serv, fica muito grande
-        // teria que diminuir ele pra apenas uma Contagem 1,2,3 ou '4 Serv' por exemplo!
-
+    // deve existir várias formas de renderizar o T-T pois quando ele fica dentro de Grad, plmns, o Serv, fica muito grande // teria que diminuir ele pra apenas uma Contagem 1,2,3 ou '4 Serv' por exemplo!
     // corrigir em MPAG as linhas
     // Linha 654 (tinha 382_1 em Link)
     // Linha 25  (tinha 55_2 em Link)
