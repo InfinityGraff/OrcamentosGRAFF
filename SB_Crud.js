@@ -18,67 +18,67 @@ const BSJsn  =(Typ,Col)=>BS[Typ].Json[Col]
 const BsJs   =(Typ,Col,Mod)=>BSJsn(Typ,Col)[Mod] // Acessar o Json do BS
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
 
-const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
-    const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
-    const j = J[T], k = JJ[T]; if (!j || !k) return
-    let o, jL, jjL, parent
-    if (Lv2){
-        parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
-        if (!parent) return
-        if(M!=='Add'){
-            jL   = parent[Lv2.pC]?.find(e => e.Id == R)
-            jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
-        }
-    } else o = j.find(e => e.Id == R)
+    const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
+        const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
+        const j = J[T], k = JJ[T]; if (!j || !k) return
+        let o, jL, jjL, parent
+        if (Lv2){
+            parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
+            if (!parent) return
+            if(M!=='Add'){
+                jL   = parent[Lv2.pC]?.find(e => e.Id == R)
+                jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
+            }
+        } else o = j.find(e => e.Id == R)
 
-    switch(M){
-        case 'Add':{
-            const n = typeof V=='object'?V:{Id:R,[C]:V}
-            if(Lv2) {   if(!parent[Lv2.pC]) parent[Lv2.pC]=[] ; parent[Lv2.pC].push(n)
-                        if(    !JJ[Lv2.pC]) JJ[Lv2.pC]={}     ;     JJ[Lv2.pC][R]=n}
-            else { j.push(n); k[R]=n}
-            break;
+        switch(M){
+            case 'Add':{
+                const n = typeof V=='object'?V:{Id:R,[C]:V}
+                if(Lv2) {   if(!parent[Lv2.pC]) parent[Lv2.pC]=[] ; parent[Lv2.pC].push(n)
+                            if(    !JJ[Lv2.pC]) JJ[Lv2.pC]={}     ;     JJ[Lv2.pC][R]=n}
+                else { j.push(n); k[R]=n}
+                break;
+            }
+            case 'Edt':
+                if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
+                else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
+                break;
+            case 'Del':
+                if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
+                else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
         }
-        case 'Edt':
-            if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
-            else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
-            break;
-        case 'Del':
-            if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
-            else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
+        const LOG1 = Lv2 ? jL : o
+        const LOG2 = Lv2 ? jjL : k[R]
+        const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
+        //LOG(`Const Atualizadas! ${M}, ${iguais}`)
     }
-    const LOG1 = Lv2 ? jL : o
-    const LOG2 = Lv2 ? jjL : k[R]
-    const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
-    //LOG(`Const Atualizadas! ${M}, ${iguais}`)
-}
-function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
-    if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
-    if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
-    setTimeout(()=>{$$('option',Sel).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
-}
-function VAL(e){
-    const R = d_r(e)
-    const val = 
-              ['Edit','Fixo','Sugg','Soma','Bndj'].includes(R.Tm) ?     e.textContent.trim()
-            : ['Ssvg','Imgs','Link'              ].includes(R.Tm) ?  Nm(e).trim()
-            : ['Valr','Mdds','Auto','Sync'       ].includes(R.Tm) ? Num(e.textContent.trim())
-            : ['Data','Inpt','Slct','Text'       ].includes(R.Tm) ?     e.value
-            : R.Tm==='Chek' ? e.checked
-            : Is(e,'input') ? e.value
-            : R.Tm==='Lixo' ? '-'
-            : null
-    return val
-}
-function DarVAL(e,V){
-    const R = d_r(e)
-    if(['Edit','Fixo'  ].includes(R.Tm)){Nm(e,V)       ; Inn(e,V)}
-    if(['Slct'         ].includes(R.Tm)){Nm(e,V)       ; e.value = V}
-    if(['Auto'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V)}
-    if(['Mdds'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V?Cm(V):'')}
-    if(['Valr','Sync'  ].includes(R.Tm)){Nm(e,V==''?'':Num(V)) ; Inn(e,V==''?'':RS(V))}
-    if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r))} // Parece q Sugg n existe mais
-}
+    function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
+        if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
+        if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
+        setTimeout(()=>{$$('option',Sel).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
+    }
+    function VAL(e){
+        const R = d_r(e)
+        const val = 
+                ['Edit','Fixo','Sugg','Soma','Bndj'].includes(R.Tm) ?     e.textContent.trim()
+                : ['Ssvg','Imgs','Link'              ].includes(R.Tm) ?  Nm(e).trim()
+                : ['Valr','Mdds','Auto','Sync'       ].includes(R.Tm) ? Num(e.textContent.trim())
+                : ['Data','Inpt','Slct','Text'       ].includes(R.Tm) ?     e.value
+                : R.Tm==='Chek' ? e.checked
+                : Is(e,'input') ? e.value
+                : R.Tm==='Lixo' ? '-'
+                : null
+        return val
+    }
+    function DarVAL(e,V){
+        const R = d_r(e)
+        if(['Edit','Fixo'  ].includes(R.Tm)){Nm(e,V)       ; Inn(e,V)}
+        if(['Slct'         ].includes(R.Tm)){Nm(e,V)       ; e.value = V}
+        if(['Auto'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V)}
+        if(['Mdds'         ].includes(R.Tm)){Nm(e,Num(V))  ; Inn(e,V?Cm(V):'')}
+        if(['Valr','Sync'  ].includes(R.Tm)){Nm(e,V==''?'':Num(V)) ; Inn(e,V==''?'':RS(V))}
+        if(['Data','Link','Ssvg','Imgs','Chek'].includes(R.Tm)){Inn(Pai(e),Tm_Tm[R.Tm](V,e.dataset.r))} // Parece q Sugg n existe mais
+    }
 
 //===========================TEMPLATE===========================
     function RenderSVVG(td){Inn($('span',td),Nm($('svg.P-P',td)))}//(GAMBIARRA) (Outras Formas de Exibir Bandeijas) isso talvez deva entrar em (BjIN)
@@ -91,7 +91,6 @@ function DarVAL(e,V){
         if(!j.Stts){return ''}
         return BSJsn(d_r(R).Ty,d_r(R).Cl).CLS.includes('Destk') ? `style="background:rgb(${j.Stts.Dark});color:${j.Stts.Texto}"` : ''
     }
-
     const Tm_RangNUM=(Typ,Col)=>
     `<div class="RangeNum">
         <div class="Bt">
@@ -104,7 +103,6 @@ function DarVAL(e,V){
         </div>
         <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
     </div>`
-
     const Tm_Tm = {
         Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW('${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
         Fixo:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
@@ -146,32 +144,43 @@ function DarVAL(e,V){
     const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
     const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
 
-
 //===========================IMAGENS===========================
     async function ImgLowQuality(src,mod='Low'){
-        const CFG = {
-            Low: { w: 35,  h: 17,  q: 0.3 },
-            Med: { w: 300, h: 300, q: 0.7 },
-            HD:  { w: null, h: null, q: 0.9 } // tamanho real
-        };
+        const CFG = {Low: { w: 35,  h: 17,  q: 0.3 },
+                     Med: { w: 300, h: 300, q: 0.7 },
+                     HD:  { w: null, h: null, q: 0.9 } /*tamanho real*/};
         const cfg = CFG[mod] || CFG.Low;
         return new Promise(res => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
             img.onload = () => {
-                const r = (cfg.w && cfg.h)
-                    ? Math.min(cfg.w / img.width, cfg.h / img.height, 1)
-                    : 1; // HD → escala real
+                const r = (cfg.w && cfg.h) ? Math.min(cfg.w / img.width, cfg.h / img.height, 1) : 1; // HD → escala real
                 const canvas = document.createElement('canvas');
-                canvas.width  = img.width  * r;
-                canvas.height = img.height * r;
+                canvas.width  = img.width  * r; ; canvas.height = img.height * r;
                 canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-                // sempre WebP
                 res(canvas.toDataURL('image/webp', cfg.q));
-            }
-            img.onerror = () => res(null);
-            img.src = src;
+            };img.onerror = () => res(null) ; img.src = src;
         });
+    }
+    async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
+        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
+        const _R  = d_r(R)
+        const f   = Inpt.files[0]                          // Pega o único arquivo
+        const Ext = RxExt(f.name)                          // Pega a Extensão do Arquivo
+        const src = URL.createObjectURL(f)                 // src temporário
+        const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
+        const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
+        const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
+        //J.IMGS[Nome] = f.name
+        if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
+        if(Eximg.includes(Ext)){
+            EditCell(PP,`${Nome}.${Ext}`)
+            DarVAL(PP,src)
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${Nome}.svg` ,true)
+            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
+        }else{LOG('não é nem Img nem Svg é um arquivo!')}
     }
     function SrcsIMG(src,R){
         return `${src}`.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
@@ -196,26 +205,6 @@ function DarVAL(e,V){
                     </div>
                 <div>`)
         if(X=='Up'){$('.MdalIMG input').click()}
-    }
-    async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
-        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-        const _R  = d_r(R)
-        const f   = Inpt.files[0]                          // Pega o único arquivo
-        const Ext = RxExt(f.name)                          // Pega a Extensão do Arquivo
-        const src = URL.createObjectURL(f)                 // src temporário
-        const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
-        const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
-        const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-        //J.IMGS[Nome] = f.name
-        if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
-        if(Eximg.includes(Ext)){
-            EditCell(PP,`${Nome}.${Ext}`)
-            DarVAL(PP,src)
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
-            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${Nome}.svg` ,true)
-            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg é um arquivo!')}
     }
     async function ImgUPP2(Inpt,Nome,R){
         const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
@@ -253,7 +242,6 @@ function DarVAL(e,V){
             Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
         }
     }
-
 //===========================LINK===========================
     function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
         if(Ipt.value){
@@ -265,9 +253,6 @@ function DarVAL(e,V){
         // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
         // NewLink apenas para os que Permitem NewLink
     }
-
-
-
     function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
         function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
         function GambiarraRmv(div){Rmv(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Rmv(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (adicionar o hov q faz a saturação da tr)
@@ -275,13 +260,11 @@ function DarVAL(e,V){
         Tog_N(el);GambiarraAdd(div)
         ClickForaa(el,div,()=>{Add_N(el);/*GambiarraRmv(div)*/}) // não remover a GAMBIARRA se a próxima bandeija estiver na msm tr
     }
-
 //===========================CRUD===========================
     const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
-
     async function SB_GETT(Typ,Limit,Slct,Ordn){ // ⭐⭐⭐⭐⭐
         if(Limit==null){
             let todas = [], lim = 1000, ofs = 0, data
@@ -338,7 +321,7 @@ function DarVAL(e,V){
             RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
-    function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ // Basicamente Adicionar Novo SERV e PGMT              
+    function AddRowBdj(Eu,_P){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
         const P = d_r(_P) ; const COL = AA(P.Cl)
         const p   = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
         const arr = isArr(p[P.Cl])?p[P.Cl] : [] // se n for um array, return []
@@ -346,19 +329,15 @@ function DarVAL(e,V){
         const Def = {}
         const Tabl= $('table',_td(Eu))
         Rmv_N(Tabl)
-        /*DOM*/
+        
         Prim ? Inn(Tabl,Tm_Bndj(_P,'')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],_P))
 
         SB_AddROW(Typ)
 
-
         // Novo Id
         // Clona Cliente
     }
-
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
-
-
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
         const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
         const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
@@ -391,7 +370,6 @@ function DarVAL(e,V){
         if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
         else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
     }
-
 // LOGIN--------------------------------------------------
     async function Get_User(){
         const { data:userData } = await supaBASE.auth.getUser()
