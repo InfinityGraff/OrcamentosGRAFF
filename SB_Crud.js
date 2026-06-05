@@ -104,7 +104,7 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
         <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
     </div>`
     const Tm_Tm = {
-        Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW('${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
+        Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW(this,'${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
         Fixo:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
         Ssvg:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
         Auto:(e,R,Rgx,j)=>`<p        data-R="${R}" name="${e}" class="P-P Ct" onclick="CtrlSoma(this)" ${Destak(j,R)}>${j,GrifTxt(e?RS(e):'-',Rgx)}</p>`,
@@ -290,15 +290,16 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
         }
     }
-    async function SB_RmvROW(Typ,Id){         // ⭐⭐⭐⭐⭐
-        const {data,error}=await supaBASE.rpc('del_row',{tbl:Typ,uid:Id})
-        RmvRow_DOM(Typ,Id)
-        RT_Rmv.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
+    async function SB_RmvROW(Eu,Typ,Id){         // ⭐⭐⭐⭐⭐
+        await supaBASE.from(Typ).delete().eq('Id',Id) //.rpc('del_row',{tbl:Typ,uid:Id})
+        _tr(Eu).remove() ; RmvRow_DOM(Typ,Id)
+        RT_Rmv.add(`${Typ}_${Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
     }
     function EditCell(e,val=null,RT){        // ⭐⭐⭐⭐⭐
         const V = val == "" ? "" : val =='null' ? null : (val || VAL(e))
         if(V==Nm(e)){return} // não foi Aterado
         const R = d_r(e)
+        LOG(e,val)
         if(!RT){Sb_EDIT(R.Ty,R.Id,{[R.Cl]:V})}
     }
     async function Sb_EDIT(Typ,Id,Obj,Alert){ // ⭐⭐⭐⭐⭐
@@ -320,22 +321,7 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
             RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
-    async function AddRowBdj(Eu,R){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
-        const P    = d_r(R) ; const COL = AA(P.Cl)
-        const p    = JJ[P.Ty][P.Id]              // Localizar Linha pelo 'Id'
-        const arr  = isArr(p[P.Cl])?p[P.Cl] : [] // se n for um array, return []
-        const Prim = l0(arr)                     // conferir se é a Primeira vez!
-        const Def  = {}
-        const Tabl = $('table',_td(Eu))
-        Rmv_N(Tabl)
-        LOG(COL,P.Id)
-        if(['SERV','PGMT'].includes(COL)){
-            const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:P.Id,dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
-            LOG(data,error)
-            Prim ? Inn(Tabl,Tm_Bndj(R,'')) : Befor($('tbody',Tabl),Tm_Table(COL,data,R))
-        }
-        // Novo Id // Clona Cliente
-    }
+
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
         const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas

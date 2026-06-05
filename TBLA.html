@@ -18,7 +18,7 @@
 </head>
 
 <script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] // Acumuladores
+    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     const O = {
@@ -33,6 +33,44 @@
         Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--'], // TEM QUE SER DINÂMICO
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'], // TEM QUE SER DINÂMICO
         True:['true','false']
+    }
+    const Ryp   = {
+        SERV_ARTE:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // esse daqui é pra o Sugg é o tipo de Regra na key que funciona pra Sugg
+        SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+        SERV_GRAD:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+        SERV_Grad:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+        PDDS_CLNT:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+        PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
+        PDDS_Serv:['Clnt','Cbmt','VCbt'], // 2° Camada - Dentro disso tem GRAD e ARTE // 
+        PDDS_Pgmt:['Clnt'], // 2° Camada - Dentro disso tem MPAG
+
+        CL_PDDS:['Clnt','Lixo'], // 
+        SV_PDDS:['Serv','Lixo'], // Dentro de SERV a Bndj de Pdds não recebe Serv nem Lixo
+        PG_PDDS:['Pgmt','Lixo'], // Dentro de PGMT a Bndj de Pdds não recebe Pgmt nem Lixo
+
+    }
+    function SB_CriaSlct(Typ,COL){
+
+        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
+        const FK = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),Ryp[`${TYP}_${Col}`])})` // Clnt:CLNT(${Cl('CLNT',R['PDDS_Clnt'])})
+        const FK2= (TYP,Col)=>``
+
+        const selectStr = { // isso tem que ficar Fora, pois deve ser Chamado, tanto por RodaTable() mas tbm por Filtros, Sugg, Pesquisas e outros, deve conciderar tudo isso!
+                 PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
+                 SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',Ryp.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
+                 PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Mpag:MPAG(*)`,
+                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.CL_PDDS)},Serv:SERV(${Cl('SERV',Ryp.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',Ryp.CL_PDDS)}))`,
+                 MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
+                 ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+                 GRAD:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
+                 OS  :`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
+                 UBER:`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
+            PDDS_CLNT:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`,
+            SERV_ARTE:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`,
+            SERV_GRAD:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`
+
+        }
+        return COL ? selectStr[`${Typ}_${COL}`] : selectStr[Typ]
     }
 </script>
 
@@ -50,10 +88,9 @@
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 
-
     const ArrDif=(Arr=[],Arr2=[])=>Arr.filter(v=>!Arr2.includes(v)) // remove todos itens os que estão Arr2
     const ArrInt=(Arr=[],Arr2=[])=>Arr.filter(v=>Arr2.includes(v))  // mantem apenas os que existe no Arr2
-
+    const RmvKeys=(Obj,Arr)=>{const New={...Obj} ; Arr.forEach(Key=>{delete New[Key]}) ; return New}
 
 </script>
 
@@ -488,6 +525,7 @@
 
     const LoadBndj =(Eu,R)=>{ // Renderiza Bandeija
         if(Coten($('.BNdj',Pai(Eu)),'none')){
+            if(BjCarregado.includes(R)){return} ; BjCarregado.push(R)
             function LoadLinhasBndj(R){
                 const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
@@ -517,6 +555,18 @@
                                       <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
                     </div>
                 </div>`
+    }
+
+    async function AddRowBdj(Eu,R){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
+        const _R    = d_r(R) ; const COL = AA(_R.Cl)
+        const Tabl = $('table',_td(Eu)) ; Rmv_N(Tabl)
+        if(['SERV','PGMT'].includes(COL)){
+            const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
+            // data.Id.split('_')[1]=='1' se for o primeiro cria tudo se não só adiciona
+            const Find = RmvKeys(data,Ryp[`${_R.Ty}_${_R.Cl}`])
+            Befor($('tbody',Tabl),Tm_Tr(COL,[Find])) // Agora Limpar as Colunas desnessesárias
+        }
+        // Novo Id // Clona Cliente
     }
     
     function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
@@ -573,47 +623,20 @@
         for(const col in Acc){JJJ[AA(col)]=Acc[col]}
     }
 
-    function SB_CriaSlct(Typ,COL){
-        const R   = {
-            SERV_ARTE:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // esse daqui é pra o Sugg é o tipo de Regra na key que funciona pra Sugg
-            SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-            PDDS_CLNT:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-            PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-            PDDS_Serv:['Clnt','Cbmt','VCbt'], // 2° Camada - Dentro disso tem GRAD e ARTE
-            PDDS_Pgmt:['Clnt'], // 2° Camada - Dentro disso tem MPAG
-
-            CL_PDDS:['Clnt','Lixo'], // 
-            SV_PDDS:['Serv','Lixo'], // Dentro de SERV a Bndj de Pdds não recebe Serv nem Lixo
-            PG_PDDS:['Pgmt','Lixo'], // Dentro de PGMT a Bndj de Pdds não recebe Pgmt nem Lixo
-
+    function GAMBIARRAA(Typ){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
+        if(Typ=='PDDS'){
+            J['PDDS'].forEach(j=>{
+                j.Serv.forEach(e=>{delete e['Clnt']})
+                j.Pgmt.forEach(e=>{delete e['Clnt']})
+            })
         }
-        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
-        const FK = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),R[`${TYP}_${Col}`])})` // Clnt:CLNT(${Cl('CLNT',R['PDDS_Clnt'])})
-        const FK2= (TYP,Col)=>``
-
-        const selectStr = { // isso tem que ficar Fora, pois deve ser Chamado, tanto por RodaTable() mas tbm por Filtros, Sugg, Pesquisas e outros, deve conciderar tudo isso!
-                 PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
-                 SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',R.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
-                 PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',R.PDDS_Clnt)})),Mpag:MPAG(*)`,
-                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',R.CL_PDDS)},Serv:SERV(${Cl('SERV',R.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',R.CL_PDDS)}))`,
-                 MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
-                 ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
-                 GRAD:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
-                 OS  :`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
-                 UBER:`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
-            PDDS_CLNT:`${Cl(COL,R[`${Typ}_${COL}`])}`,
-            SERV_ARTE:`${Cl(COL,R[`${Typ}_${COL}`])}`,
-            SERV_GRAD:`${Cl(COL,R[`${Typ}_${COL}`])}`
-
-        }
-        return COL ? selectStr[`${Typ}_${COL}`] : selectStr[Typ]
     }
 
     async function RodaTable(Typ){
         if(carregado.includes(Typ)){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = await SB_GETT(Typ,30,selectStr,BS[Typ].Ordnn)
-        fazJJJ(Typ,data) ; AutoCOMP(Typ)
+        fazJJJ(Typ,data) ; AutoCOMP(Typ) ; GAMBIARRAA(Typ)
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
 </script>
