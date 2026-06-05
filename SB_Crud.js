@@ -332,8 +332,8 @@ const OjKy   =Typ=>ObjKey(BS[Typ].Json)
         if(['SERV','PGMT'].includes(COL)){
             const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:P.Id,dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
             LOG(data,error)
+            Prim ? Inn(Tabl,Tm_Bndj(R,'')) : Befor($('tbody',Tabl),Tm_Table(COL,data,R))
         }
-        Prim ? Inn(Tabl,Tm_Bndj(R,'')) : Befor($('tbody',Tabl),Tm_Table(COL,[Def],R))
         // Novo Id // Clona Cliente
     }
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza

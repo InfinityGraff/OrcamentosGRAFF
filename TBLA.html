@@ -446,8 +446,8 @@
     }
 
     async function SB_Link(Ipt,R){
-        const Val = Vll(Ipt)
         const [Typ,Id,Col] = R.split('-')
+        const Val = Vll(Ipt)
         const Tbl = AA(Col)
         const Exs = await supaBASE.from(Tbl).select('Id').eq('Id',Val).single() // Conferir se Existe
         const TBLLA = {'GRAD':{Id:Val,OS:null,Uber:null}}
@@ -618,7 +618,7 @@
     }
 </script>
 
-<body data-Base="Basic" data-tema="Dark" data-Cor="Yelw" class="grid">
+<body data-Base="Infinity" data-tema="Dark" data-Cor="Roxo" class="grid">
 
     <header class="Bt w100" style="grid-area:A">
         <style> /*CSS do Header*/
