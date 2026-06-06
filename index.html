@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
     <title>Orcamento</title>
-    <link rel="icon" type="image/x-icon" href="Img/FavG_32.png">
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
@@ -101,9 +101,9 @@
 </script>
 
 <script> // Bibliotecas
-    const Foto     =         U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
+    function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
 </script>
 
 <div>  <!--NOTA    - ⭐_ _ _ _ -->
@@ -209,36 +209,18 @@
     </script>
 </div>
 
-<body data-tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
+<body data-Tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
 
     <header class="Bt w100" style="grid-area:A">
-        <style> /*CSS do Header*/
-            /*header*/
-                #Logo        {height:30px}
-                #Title h1    {font-size:3vw}   @media(max-width:500px){#Title h1 {display:none}}
-                nav          {gap:6px}         @media(max-width:700px){nav       {display:none}}
-                nav p        {display:none}
-                nav img      {height:22px}
-                nav div      {border-radius:5px}
-                #LgFoto      {background-size:cover ; height:100%; width:auto}
-                #LgFoto img  {width:42px; height:42px}
-            /*Mais*/
-                #MAIS             {background:#4e4e4e; width:250px; color:#ffffff ; top:55px; right:0px}
-                #MAIS img         {height:25px; margin-right:10px}
-                #MAIS div         {padding:10px; cursor:pointer; font-size:15px; width:100%}
-                #MAIS p,#MAIS p a {font-size:10px}
-                #MAIS div:not(:last-child):hover{background:#808080; color:var(--Txt-Wit-Hover)}
-        </style>
-            <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Mac.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-            <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-            <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-            <!-- Perfil --><div id="H_Login" class="Ct"> 
+        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+        <!-- Perfil --><div id="H_Login" class="Ct"> 
             <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
             <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
             <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
             <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
         </div>
-
         <div id="MAIS" class="Abslt none bndj Ct">
             <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
             <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
@@ -247,33 +229,6 @@
             <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
             <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
         </div>
-
-        <script>
-            function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
-            function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
-
-            function AbreLogin(stg){
-                const Obj = {
-                    Login:{Tt:'Entre com sua Conta!',btn:'Entrar'   ,Ou:['Cdstr','Cadastre-se'        ],Fn:'SB_Login',p:'',},
-                    Cdstr:{Tt:'Cadastr-se Agora!'   ,btn:'Cadastrar',Ou:['Login','Já tenho uma Conta!'],Fn:'SB_Cdstr',p:'',},
-                    Reset:{Tt:'Esqueceu a Senha?'   ,btn:'Enviar'   ,Ou:['Login','Voltar!'            ],Fn:'SB_Reset',p:'digite seu Email para poder trocar a Senha!'},
-                }
-                const Stgg = `<div class="Cl Gap">
-                    <form id="ModalLogin" class="Cl Bt w100 Gap" onsubmit="${Obj[stg].Fn}(event,Vll($('.Email',this)),Vll($('.Senha',this)),$('.errPass',this),$('.UNome',this))">
-                        <h2>${Obj[stg].Tt}</h2><p>${Obj[stg].p}</p>
-                        ${stg=='Cdstr'?`<div class="Start2 w80"><label>Nome </label><input                 placeholder="Nome de Usuário..." class="UNome w100" required></div>` : ''} 
-                                        <div class="Start2 w80"><label>Email</label><input type="email"    placeholder="Seu Email...      " class="Email w100" required></div>
-                        ${stg!='Reset'?`<div class="Start2 w80"><label>Senha</label><input type="password" placeholder="Sua Senha...      " class="Senha w100" required>${stg=='Login'?`<a class="PT" onclick="XModal(this);AbreLogin('Reset')">Esqueceu a Senha?</a>`:''}</div>` : ''}
-                        <span class="errPass erro"></span>
-                        <div class="w80"><button class="w100" type="submit">${Obj[stg].btn}</button></div>
-                    </form>
-                        <p>---------------- OU ----------------</p>
-                        <button class="" onclick="XModal(this);AbreLogin('${Obj[stg].Ou[0]}')">${Obj[stg].Ou[1]}</button>
-                        <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-                    </div>`
-                MODAL(Stgg)
-            }          
-        </script>
     </header>
 
     <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->

@@ -17,7 +17,17 @@ const MyEval =(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
 const BSJsn  =(Typ,Col)=>BS[Typ].Json[Col]
 const BsJs   =(Typ,Col,Mod)=>BSJsn(Typ,Col)[Mod] // Acessar o Json do BS
 const OjKy   =Typ=>ObjKey(BS[Typ].Json)
+const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
 
+    function fazJJJ(Typ,dados){
+        const Acc = {}
+        const Norml=(j,Acc={},Tru=[])=>{for(const k in j){if(Tru?.includes(k)){let v=j[k];if(v&&!isArr(v)&&typeof v=='object')v=[v];if(isArr(v))(Acc[k]??=[]).push(...v);j[k]=v}j[k]??=''}return j}
+        const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc,el)=>{acc[el[col]]=el;return acc;},{})}
+        const FKs = BS[Typ].FK
+        J[Typ]    = dados.map(e=>Norml(e,Acc,FKs))
+        JJ[Typ]   = ArrtoOBJ(J[Typ],'Id')
+        for(const col in Acc){JJJ[AA(col)]=Acc[col]}
+    }
     const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
         const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
         const j = J[T], k = JJ[T]; if (!j || !k) return

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
+    <title>Configurações</title>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <link   href="./SB_Crud.css"  rel="stylesheet">
+    <link   href="./CssGRAFF.css"  rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./SB_Crud.js"  ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./supaBASE.js"></script>
+</head>
+
+<script> // Biblioteca
+    const Atual = {Pag:'CONF'}
+    const Cs = ['Infinity','Rosa','FEXTA','Basic']
+    const Dbrev = {Nome:'Nome de Usuário',Emal:'Email',Fone:'Contato',Lcal:'Endereço',Pix:'Chave Pix',Cmpt:'Nome Completo',Chav:'Tipo de Chave'}
+    const Sv = {Serv:'Serviço',Arte:'Arte',EVid:'Edição de Video',Musc:'Produção Musical',Mo3D:'Modelagem 3D',AfEf:'After Effects',Codg:'Programação'}
+    const Nf = {Soli:"Novas Solicitações",Arte:"Aprovação de arte",Prmo:"Promoções",Whpp:"WhatsApp",Emal:"Email"}
+
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
+    const DR=(e,R)=>`data-R="${R}" name="${e}"`
+
+    function TogCSSBody(Base,Tema,Cor){
+        $('body').dataset.base = Base
+        $('body').dataset.tema = Tema
+        $('body').dataset.cor  = Cor
+    }
+</script>
+
+<style>/*SUPORTE e CONFIG*/
+    h2,h3           {font-size:25px; display:flex; align-items:center; justify-content:center; gap:4px}
+    :has(h2,h3) svg {height:25px;width:auto}
+
+    .GridS{display:grid;gap:15px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    /*Info*/
+    .Info            {display:grid; gap:10px; padding:10px; border-top:1px solid #2A2A2A}
+    .Info input      {text-align:start}
+    .Info.Check label{display:flex; gap:10px; align-items:center}
+    .Info.Check input{width:auto; height:auto !important}
+    .Opcy{opacity: 0.5;}
+    
+    /*Gambiarra Por Enquanto*/
+    .Unicor {width:35px; height:35px; border-radius:50%; border:2px solid #ffffff48}
+    .Unicor.ATV {border-radius: 4px;}
+    .Danger {background:#D50000;color: #ffffff;}
+
+    /*Chat*/
+    .Chat{display:grid;gap:15px}
+    .Msgs{height:250px;overflow:auto;display:grid;gap:10px}
+    .Msg {padding:12px 15px;border-radius:15px;width:max-content;max-width:80%}
+    .YO  {background:#4d4d4d}
+    .Me  {background:var(--BtnBk);color:var(--BtnTx);justify-self:end}
+</style>
+
+<body class="grid" onclick="NoneBndj()"> <!--data-Base="Basic" data-Tema="Dark" data-Cor="Yelw"-->
+
+    <style> /*CSS do Header*/
+        /*Fixos*/
+            body.grid {height:100vh;display:grid;grid:"A A" auto"B C" 1fr / 1fr 4fr}
+            #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
+            #PAGES > *{height:100% ; overflow-y:scroll}
+            #COLUN    {height:100% ; background:#1a1a1a}
+    </style>
+
+    <header class="Bt w100" style="grid-area:A">
+        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+        <!-- Perfil --><div id="H_Login" class="Ct"> 
+            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('DSNG'):AbreLogin('Cdstr')">Cadastre-se</div>
+            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+        </div>
+        <div id="MAIS" class="Abslt none bndj Ct">
+            <div class="Start" onclick="NavPag('DSNG')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+            <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+        </div>
+    </header>
+
+    <aside id="COLUN" style="grid-area:B"> <div>Colunaa</div> </aside>
+
+    <div id="PAGES" style="grid-area:C"> <!--isso era pra ser main-->
+        <div id="Pag_CONF" class="Cl Gap p20">
+            <h1>Configurações</h1>
+            <div class="Box1 Ev w100 Head_Perf"></div>
+            <section class="GridS w100">
+                <details class="Box2 Conf_User" open><summary><h2 onload="Inn(this,`${SVVVGG['User']}Conta`      )"></h2></summary><div class="Info"      ></div></details>
+                <details class="Box2 Conf_Pgmt" open><summary><h2 onload="Inn(this,`${SVVVGG['Pgmt']}Pagamento`  )"></h2></summary><div class="Info"      ></div></details>
+                <details class="Box2 Conf_Serv" open><summary><h2 onload="Inn(this,`${SVVVGG['Serv']}Serviços`   )"></h2></summary><div class="Info Check"></div></details>
+                <details class="Box2 Conf_Arte" open><summary><h2 onload="Inn(this,`${SVVVGG['Arte']}Aparência`  )"></h2></summary><div class="Info"      ></div></details>
+                <details class="Box2 Conf_Notf" open><summary><h2 onload="Inn(this,`${SVVVGG['Notf']}Notificação`)"></h2></summary><div class="Info Check"></div></details>
+                <details class="Box2 Conf_Segr" open><summary><h2 onload="Inn(this,`${SVVVGG['Segr']}Segurança`  )"></h2></summary><div class="Info"><button onclick="AbreLogin('Reset')">Alterar Senha</button><button onclick="SB_LgOff()">Encerrar Sessões</button></div></details>
+                <details class="Box2 Conf_Alrt" open><summary><h2 onload="Inn(this,`${SVVVGG['Alrt']}Conta`      )"></h2></summary><div class="Info"><button class="Danger" onclick="SB_LgOff()">Apenas Sair</button><button onclick="LOG('Ainda Nada');MyAlert('Ainda Nada')" class="Danger"> Desativar Conta</button></div></details>
+            </section>
+            <footer>© Returns • Configurações</footer>
+            <script> // Configurações
+                function TOVUNI(Eu,Class){$$(Class).forEach(e=>Rmv(e,'ATV')) ; Tog(Eu,'ATV')}
+                function AtvBTN(Eu){Rmv_N($('.SALVAR',Eu.closest('.Info')))}
+                function CSSBody(Eu){AtvBTN(Eu)
+                    const Base = $('.Info-Base' ,Eu.closest('.Info')).value
+                    const Tema = $('.Info-Tema' ,Eu.closest('.Info')).value
+                    const Cor  = Nm($('.ATV',Eu.closest('.Info')))
+                    TogCSSBody(Base,Tema,Cor)
+                }
+                function Edit_Mais(Eu){                   
+                    const Base = $('.Info-Base' ,Eu.closest('.Info')).value
+                    const Tema = $('.Info-Tema' ,Eu.closest('.Info')).value
+                    const Cor  = Nm($('.ATV',Eu.closest('.Info')))
+                    const [Typ,Id,Col,Path] = d_R(Eu).split('#')
+                    Sb_EDITJSON(Typ,Id,Col,['Tema'],Tema)
+                    Sb_EDITJSON(Typ,Id,Col,['Cor' ],Cor)
+                }
+
+                function Load_Conf(U,Typ){
+                    Inn($('.Conf_User .Info'),['Nome','Emal','Fone','Lcal'].map(e=>`<div class="Start2"><label>${Dbrev[e]}</label><input ${DR(  U[e]  ,`${Typ}#${U.Id}#${e}`    )} class="P-P w100" onchange="EditCell2(this)" value="${U[e]    ||''}" placeholder="Insira seu ${Dbrev[e]}"></div>`).join(''))
+                    Inn($('.Conf_Pgmt .Info'),['Chav','Pix' ,'Cmpt'       ].map(e=>`<div class="Start2"><label>${Dbrev[e]}</label><input ${DR(U.Pix[e],`${Typ}#${U.Id}#Pix#${e}`)} class="P-P w100" onchange="EditCell2(this)" value="${U.Pix[e]||''}" placeholder="Insira seu ${Dbrev[e]}"></div>`).join(''))
+                    Inn($('.Conf_Serv .Info'),`${ObjEtr(Sv).map(([k,v])=>`<label><input class="P-P" name="${k}" onchange="AtvBTN(this)" type="checkbox" ${U.Prof.includes(k)?'checked':''}>${v}</label>`).join('')}<button ${DR('',`${Typ}#${U.Id}#Prof`)} class="w100 none SALVAR" onclick="Edit_Varius(this,$$('.P-P',Pai(this)))">Salvar</button>`) 
+                    Inn($('.Conf_Notf .Info'),`${ObjEtr(Nf).map(([k,v])=>`<label><input class="P-P" name="${k}" onchange="AtvBTN(this)" type="checkbox" ${U.Notf.includes(k)?'checked':''}>${v}</label>`).join('')}<button ${DR('',`${Typ}#${U.Id}#Notf`)} class="w100 none SALVAR" onclick="Edit_Varius(this,$$('.P-P',Pai(this)))">Salvar</button>`)
+                    Inn($('.Conf_Arte .Info'),`<div class="Start2"><label>Base</label><select class="Info-Base" name="${U.Css.Base}" onchange="CSSBody(this)" class="P-P w100">${Tm_Opt(['Selecione uma Base','Basic','Infinity'],U.Css.Base)}</select></div>
+                                               <div class="Start2"><label>Tema</label><select class="Info-Tema" name="${U.Css.Tema}" onchange="CSSBody(this)" class="P-P w100">${Tm_Opt(['Selecione um Tema','Dark','Lite'      ],U.Css.Tema)}</select></div>
+                                               <div class="Start2"><label>Cor Principal</label><div class="Ct gap">${Cs.map(e=>`<a name="${e}" class="Unicor COR_${e} HOV ${U.Css.Cor==e ?'ATV':''}" onclick="TOVUNI(this,'.Unicor');CSSBody(this)"></a>`).join('')}</div></div><button ${DR('',`${Typ}#${U.Id}#Css`)} class="w100 none SALVAR" onclick="Edit_Mais(this,$$('.P-P',Pai(this)))">Salvar</button>`)
+                }
+                function EditCell2(Eu){ // Edita coisas indidividuais das config daqui mesmo
+                    const [Typ,Id,Col,Path] = d_R(Eu).split('#')
+                    const Val = VAL(Eu)
+                    if(Path){Sb_EDITJSON(Typ,Id,Col,[...Path.split(',')],Val)}
+                    else{Sb_EDIT(Typ,Id,{[Col]:Val})}
+                }
+                function Edit_Varius(Eu,ee){
+                    const [Typ,Id,Col,Path] = d_R(Eu).split('#')
+                    const Val = ee.filter(e=>e.checked).map(e=>Nm(e))
+                    Sb_EDIT(Typ,Id,{[Col]:Val})
+                }
+            </script>
+        </div>
+
+        <div id="Pag_SPRT" class="Cl Gap p20">
+            <section class="Box1 Busca w100"><input class="w100" placeholder="Buscar suporte, pedido, pagamento..."></section>
+
+            <section class="Box1 GridS w100">
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Serv']}Produção`)"></h2><p>Acompanhar andamento</p></summary>
+                    <div class="Info">
+                        <a>Status do pedido em tempo real.</a>
+                        <a>Atualizações automáticas.</a>
+                        <a>Etapas: fila, design, produção e entrega.</a>
+                        <a>Pedidos atrasados aparecem em vermelho.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Arte']}Aprovar Arte`)"></h2><p>Visualizar alterações</p></summary>
+                    <div class="Info">
+                        <a>Visualize a prévia da arte.</a>
+                        <a>Aprove ou solicite ajustes.</a>
+                        <a>Após aprovado inicia produção.</a>
+                        <a>Evite aprovar com erros.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Pgmt']}Financeiro`)"></h2><p>Pix e comprovantes</p></summary>
+                    <div class="Info">
+                        <a>Consultar pagamentos.</a>
+                        <a>Enviar comprovantes.</a>
+                        <a>Gerar QR Code Pix.</a>
+                        <a>Parcelamentos quando disponíveis.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Past']}Upload`)"></h2><p>Enviar arquivos</p></summary>
+                    <div class="Info">
+                        <a>Enviar PNG, JPG, PDF e CDR.</a>
+                        <a>Arquivos grandes são compactados.</a>
+                        <a>Evite prints de baixa qualidade.</a>
+                        <a>Nomeie os arquivos corretamente.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Calc']}Orçamentos`)"></h2><p>Histórico de pedidos</p></summary>
+                    <div class="Info">
+                        <a>Visualizar pedidos anteriores.</a>
+                        <a>Refazer orçamentos rapidamente.</a>
+                        <a>Duplicar pedidos antigos.</a>
+                        <a>Salvar favoritos.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Fret']}Entrega`)"></h2><p>Rastreamento</p></summary>
+                    <div class="Info">
+                        <a>Consultar rastreamento.</a>
+                        <a>Previsão de entrega.</a>
+                        <a>Atualizações da transportadora.</a>
+                        <a>Retirada no local disponível.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid"><summary><h2 onload="Inn(this,`${SVVVGG['Chat']}Atendimento`)"></h2><p>Falar com humano</p></summary>
+                    <div class="Info">
+                        <a>Atendimento em horário comercial.</a>
+                        <a>Suporte para dúvidas gerais.</a>
+                        <a>Setores: design, produção e financeiro.</a>
+                        <a>Fila automática de atendimento.</a>
+                    </div>
+                </details>
+                <details class="Box2 Hov Grid" style="background:#102418"><summary><h2 onload="Inn(this,`${SVVVGG['Wzpp']}WhatsApp`)"></h2><p>Suporte rápido</p></summary>
+                    <div class="Info">
+                        <a>Atendimento rápido via WhatsApp.</a>
+                        <a>Envio de imagens e comprovantes.</a>
+                        <a>Receba atualizações do pedido.</a>
+                        <a>Resposta automática com IA.</a>
+                    </div>
+                </details>
+            </section>
+
+            <section class="Box1 FAQ Grid Gap w100">
+                <h2>Dúvidas Frequentes</h2>
+                <details class="Box2"><summary>Qual prazo?</summary><p>2 a 5 dias úteis.</p></details>
+                <details class="Box2"><summary>Posso alterar a arte?</summary><p>Sim, antes da produção.</p></details>
+                <details class="Box2"><summary>Como enviar arquivos?</summary><p>Pelo upload ou WhatsApp.</p></details>
+                <details class="Box2"><summary>Faz instalação?</summary><p>Consultar disponibilidade.</p></details>
+            </section>
+
+            <section class="Box1 Chat w100">
+                <h2>Converse com o Suporte!</h2>
+                <div class="Msgs">
+                    <div class="Msg YO">Olá, posso ajudar?</div>
+                    <div class="Msg Me">Meu pedido atrasou.</div>
+                    <div class="Msg YO">Vou verificar pra você.</div>
+                </div>
+                <div class="Bt"><input placeholder="Digite..."><button>Enviar</button></div>
+            </section>
+
+            <footer class="w100">© Returns • Suporte 24 Horas</footer>
+        </div>
+    </div>
+</body>
+
+<script>
+    const params = new URLSearchParams(window.location.search)
+    Atual.Pag = params.get("pag")||'CONF'
+    Onloads('body')
+    Get_User()
+
+    function PosLogin(U){
+        USUARIO = U
+        LOG('✅ Perfil Logado!')
+        TogCSSBody(U.Css.Base,U.Css.Tema,U.Css.Cor)
+        Inn($('#LgNome'),U.Nome)
+        Add_N($('#LgNNome'))
+        $('#LgFoto img').src= Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        NavPag(Atual.Pag)
+        Load_Conf(U,'USER')
+        SB_GETT('BS')
+    }
+</script>
+
+</html>
