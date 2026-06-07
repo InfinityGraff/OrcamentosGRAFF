@@ -22,6 +22,7 @@
     const ARTS  = {__S:[],__M:[],__a:[],__A:[],__X:[],__U:[]}
 
     const Cprss = '?width=100&resize=contain'
+    const Cprs1 = '?width=400&resize=contain'
 
     const ETAPASS= {AI:'Gerar com IA',UP:'Upscale',BG:'Remover Fundo',CP:'Completar',DG:'Digitar',VT:'Vetorizar',MK:'Fazer Mockup'}
     const O   ={
@@ -59,7 +60,7 @@
     ]
 </script>
 
-<script> // Bibliotecas
+<script> // Biblioteca
     const Next    =s=>FLOW[FLOW.indexOf(s)+1]||null
     const Prev    =s=>FLOW[FLOW.indexOf(s)-1]||null
     const SortData=Arr=>[...Arr].sort((a,b)=>new Date(a.Data)-new Date(b.Data))
@@ -85,7 +86,6 @@
     #Perf .Box2 a{width: 40px; height: 40px}
     .Desc a     {width: 15px; height: 15px}
     .Pic        {width:120px;border-radius:50%;border: solid 3px #ffc400}
-
 
     .Art {overflow-x: scroll; padding: 20px 0px;}
 
@@ -176,8 +176,9 @@
     .Resumo .Pic  {border-color:var(--Cory)}
 
     .CropTxt{overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
-
     .Mmdal{width:80vw; height:80vh ; overflow: hidden scroll;}
+    .EXATO{font-size: 18px;color: var(--BtnBk)}
+    .VALORGRAND.Rclh{display:none}
 </style>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid" onclick="NoneBndj()">
@@ -360,12 +361,10 @@
         XModal(Eu);DispClick($(`.Resumo.id_${Id}`))             // Recarrega Modal
     }
 
-    async function AddNewRASC(Eu,id){ // Cria nova Linha apenas isso
-        //const  j= JJ['ARTE'][id]
-        const _R={Id:id} ; const COL = 'RASC'
-        const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,typ:Aa('ARTE'),dados:{}})
-        if(!error){/*j.Rasc.push(data)*/ LOG('Deu Certo!',data)}
-        XModal(Eu) ; DispClick($(`.Resumo.id_${id}`))
+    async function AddNewRASC(Eu,Id){ // Cria nova Linha apenas isso
+        const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:'RASC',pai:Id,typ:'Arte',dados:{}})
+        if(!error){LOG('Deu Certo!',data)}
+        XModal(Eu) ; DispClick($(`.Resumo.id_${Id}`))
     }
 
 </script>
@@ -404,17 +403,17 @@
         const ADMp = (e,Col)    =>Admn ?             `data-r="RASC-${e.Id}-${Col}-Edit-_-_"`:''
         const EDIT = (e,Typ,Col)=>Admn ?           `data-r="${Typ}-${e.Id}-${Col}-Edit-_-_" name="${e[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
         const TEXT = (e,Col)    =>Admn ? `<textarea   data-r="RASC-${e.Id}-${Col}-Text-_-_" name="${e[Col]}" contenteditable="true" onkeydown="EntBlr2(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)">${e[Col]}</textarea>`              :`<textarea readonly>${e[Col]}</textarea>`
-        const INPT = Col        =>Admn ? `<input      data-r="ARTE-${j.Id}-${Col}-Inpt-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)" value="${j[Col]}">`                : `<div>${j[Col]}</div>` 
-        const SLCT = Col        =>Admn ? `<select     data-r="ARTE-${j.Id}-${Col}-Slct-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)">${Tm_Opt(O[Col],j[Col])}</select>` : `<div>${j[Col]}</div>`
+        const INPT = Col        =>Admn ? `<input      data-r="ARTE-${j.Id}-${Col}-Inpt-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)" value="${j[Col]}">`                : `<div class="EXATO">${Col=='Data'?DMY(j[Col]):j[Col]}</div>` 
+        const SLCT = Col        =>Admn ? `<select     data-r="ARTE-${j.Id}-${Col}-Slct-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)">${Tm_Opt(O[Col],j[Col])}</select>` : `<div class="EXATO">${j[Col]}</div>`
         return `
         <div class="INFO">
             <h3 class="Ct" ${G('A')} ${EDIT(j,'ARTE','Nome')}>${j.Nome}</h3>            
             <div class="F1 Box2" ${G('B')}>
                 <div ${G('A')} class="Bt"><div class="Ct">Tipo:${SLCT('Tipo')}</div><div>Arte Aberta</div>${Lixo(j,'ARTE')}<div class="Ct">Designer:${SLCT('Dsng')}</div></div>
-                <div ${G('B')} class="Box2 RASC"     >${Rsc.map((e,x)=>`<div class="${x==0?'':'none'} divRASC Rasc_${e.Id}"><img class="Rascunho"  onclick="AbrirImg(this,'${SrcC(e)}','${_R(e.Id)}','Dsng')" src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprss}">${Lixo(e,'RASC')}</div>`).join('')}</div>
+                <div ${G('B')} class="Box2 RASC"     >${Rsc.map((e,x)=>`<div class="${x==0?'':'none'} divRASC Rasc_${e.Id}"><img class="Rascunho"  onclick="AbrirImg(this,'${SrcC(e)}','${_R(e.Id)}','Dsng')" src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprs1}">${Lixo(e,'RASC')}</div>`).join('')}</div>
                 <div ${G('C')} class="Box2 LISTA1 Cl">${Rsc.map(e=>    `<img class="HOV"                                      onclick="TrocaRasc(this,'${e.Id}')"                        src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprss}">`).join('')}<button onclick="AddNewRASC(this,'${j.Id}')">UPP</button></div>
                 <div ${G('D')} class="Box2 Start2"><div class="Ct"><p>Cliente:</p>${INPT('Clnt')}</div><div class="Ct"><p>Tema:</p>${INPT('Tema')}</div><div class="Ct"><p>Data:</p>${INPT('Data')}</div><div>${TempoResta(j.Prazo)}</div></div>
-                <div ${G('E')} class="Box2 Ct"><p>Valor:</p>${Admn ? INPT('Valr') : `<p>${Tm_RS2(j.Valr)}</p>`}<button class="NONE">Discutir Preço</button></div>
+                <div ${G('E')} class="Box2 Ct"><p>Valor:</p>${Admn ? INPT('Valr') : `<div class="Zoom">${Tm_RS2(j.Valr)}</div>`}<button class="NONE">Discutir Preço</button></div>
             </div>
 
             ${Rsc.map((r,x)=>{
@@ -457,11 +456,11 @@
 
     function Acc_Artes(U){
         J['ARTE'].forEach(A=>{
-            if(A.Dslk?.includes(U.Nome))                       ARTS.__X.push(A) // Rejeitados
-            else if(A.Stts=='_S' && (!A.Dsng||A.Dsng==U.Nome)) ARTS.__S.push(A) // Solicitações
-            else if(A.Stts=='Act')                             ARTS.__M.push(A) // Aceitos
-            else if(A.Stts=='Ok' )                             ARTS.__a.push(A) // Falta Pagar
-            else if(A.Stts=='OK' )                             ARTS.__A.push(A) // Histórico
+            if(A.Dslk?.includes(U.Nome))                                       ARTS.__X.push(A) // Rejeitados
+            else if(A.Stts=='_S' && (!A.Dsng||A.Dsng==U.Nome||A.Dsng=='null')) ARTS.__S.push(A) // Solicitações
+            else if(A.Stts=='Act')                                             ARTS.__M.push(A) // Aceitos
+            else if(A.Stts=='Ok' )                                             ARTS.__a.push(A) // Falta Pagar
+            else if(A.Stts=='OK' )                                             ARTS.__A.push(A) // Histórico
         })
     }
 
@@ -474,7 +473,7 @@
                 <div class="Cl Start2"><p>${U.Crgo}</p><button onclick="MudaPara_Soli('${U.User}')">Solicitar</button></div>
                 <div class="Ct p5 gap NN">${['_S','Act','Ok','OK'].map(s=>`<a data-Cor="${s}" class="St Hov" onclick="Rclh($$('.Grup_${s} .Resumo',this.closest('.ListDSNG')))"></a>`).join('')}</div>
             </div>
-            <div style="grid-area:B"><p>Total:</p><div class="Cl Zoom">${Tm_RS2(SOMA_Obj(U.Artes,'Valr'))}<p>${U.Artes.length} Artes</p></div></div>
+            <div style="grid-area:B"><p>Total:</p><div class="Cl Zoom VALORGRAND ${Rclh}">${Tm_RS2(SOMA_Obj(U.Artes,'Valr'))}<p>${U.Artes.length} Artes</p></div></div>
             <div style="grid-area:C" class="w100 CT Gap Art NN">${['_S','Act','Ok','OK'].map(s=>`<div class="Grup_${s} CT gap">${U.Artes.filter(e=>e.Stts==s).map(e=>Tm_Resumo([e],U,Rclh)).join('')}</div>`).join('')}</div>
             <div style="grid-area:D" class="NN">${Tm_Tags(U.Artes)}</div>
         </div> `).join(''))
@@ -515,6 +514,7 @@
         Load_Perfis($('#Todo_Dsng'),ListDSNGrs.reverse())
         Load_Perfis($("#List_Dsng"),ListDSNGrs.reverse(),'Rclh')
     }
+    
 </script>
 
 <script> // Gambiarra

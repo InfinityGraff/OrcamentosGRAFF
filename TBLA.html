@@ -17,7 +17,7 @@
     <script src="./supaBASE.js"></script>
 </head>
 
-<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
+<script> // BaseCRUD
     const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
@@ -93,7 +93,7 @@
 
 </script>
 
-<style> /*CSS apenas da Tabela*/
+<style> /*O CSS Interno*/
     body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
     #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
     #PAGES > *{height:100% ; overflow-y:scroll}

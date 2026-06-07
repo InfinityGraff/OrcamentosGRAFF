@@ -201,8 +201,13 @@
         }RenderNext()
     }
 
-    SB_GETT('FONT')
+</script>
+<script> // Inciiação
+    Onloads('body') ; Int()
 
-    function PosGET(){Onloads('body') ; Init()}
+    async function Int(){
+        ;(await SB_GETT('BS',100)).forEach(e=>BS[e.Tabela]=e)
+        const data  = await SB_GETT('FONT') ; fazJJJ('FONT',data)
+    }
 </script>
 </html>

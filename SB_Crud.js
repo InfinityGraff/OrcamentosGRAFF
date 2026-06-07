@@ -86,6 +86,9 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         </div>
         <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
     </div>`
+
+    const TrcFih2 = (e, showChild) =>{ Rmv(showChild,'NONE') ; Filh(Pai(e)).forEach(f => (f === e ? None(f) : (showChild ? (f === showChild ? Show(f) : None(f)) : Show(f)))) || (showChild && showChild.focus())} ; // GAMBIARRA
+
     const Tm_Tm = {
         Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW(this,'${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
         Fixo:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
@@ -99,7 +102,9 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         ImUP:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
-        Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
+        Data:(e,R,Rgx  )=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" data-R="${R}" class="NONE" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
+        //Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
+        
         OKAY:(e,R,Rgx  )=>['Add','Rmv'].map(E=>`<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="LinkaR(this,'${E=='Rmv'?'null':d_r(R).Id}')" src="./CrudSB/${E}Link.webp">`).join(''),
         Link:(e,R,Rgx  )=>{
             const Place = d_r(R).Cl
@@ -178,6 +183,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     }
 
     async function ImgUPP2(File,Nome,Past){
+
         const Ext = RxExt(File.name)
         const src = URL.createObjectURL(File)
         if(Eximg.includes(Ext)){
@@ -199,7 +205,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                     <div class="casusa Cl ${W ? 'w100':'h100'}">
                         <p>Nome: ${nome}</p><p>Id: ${_R.Id}</p>
                         <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                        <button onclick="XModal(this);ImgUPP${Q}($('input',Pai(this)).files[0],'${nome}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
+                        <button onclick="XModal(this);ImgUPP${Q}($('input',Pai(this)).files[0],'${nome}','${Past?Past:R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
                     </div>
                 <div>`)
         if(X=='Up'){$('.MdalIMG input').click()}
@@ -274,6 +280,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
     async function SB_RmvARTE(Typ,Id){
+        LOG(`del_arte(${Typ},${Id})`)
         const {data}=await supaBASE.rpc('del_arte',{p_tabela:Typ,p_id:String(Id)})
         if(!data?.success){return false}
         const {data:files=[]} = await supaBASE.storage.from('uploads').list('Dsng')
@@ -285,6 +292,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         if(['ARTE','RASC'].includes(Typ)){SB_RmvARTE(Typ,Id)}
         else{await supaBASE.from(Typ).delete().eq('Id',Id)}
         if(!Origem){_tr(Eu).remove() ; RmvRow_DOM(Typ,Id); RT_Rmv.add(`${Typ}_${Id}`)} // se não tiver origem então estou na Tabela, só pagina de ARTE que usa ORIGEM
+        LOG([Typ,Id])
         MyAlert(`SB_DLT(${Typ},${Id})`)
     }
     function EditCell(e,val=null,RT){         // ⭐⭐⭐⭐⭐
