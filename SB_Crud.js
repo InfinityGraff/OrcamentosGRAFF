@@ -244,18 +244,23 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
-    async function SB_GETT(Typ,Limit,Slct,Ordn){ // ⭐⭐⭐⭐⭐
-        if(Limit==null){
+    async function SB_GETT(Typ,Limit,Slct,Ordn,Filt){ // ⭐⭐⭐⭐⭐
+        if(Filt){  // se tiver Filtro
+            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit).eq('Id',Filt)
+            if(error)return LOG(error)            
+            MyAlert(`✔️ Get(${Typ})`) ; return data
+        }
+        else if(Limit){ // se tiver limite
+            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
+            if(error)return LOG(error)            
+            MyAlert(`✔️ Get(${Typ})`) ; return data
+        }else{ // sem Limite e sem Filtro
             let todas = [], lim = 1000, ofs = 0, data
             do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).range(ofs,ofs+lim-1))
                 if (!data) return ERR('Erro ao carregar dados')
                 todas.push(...data) ; ofs+=lim
             }while(data.length===lim)
             MyAlert(`✔️ Get(${Typ})`) ; return todas
-        }else{
-            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
-            if(error)return LOG(error)            
-            MyAlert(`✔️ Get(${Typ})`) ; return data
         }
     }
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
@@ -268,12 +273,21 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
         }
     }
-    async function SB_RmvROW(Eu,Typ,Id){         // ⭐⭐⭐⭐⭐
-        await supaBASE.from(Typ).delete().eq('Id',Id) //.rpc('del_row',{tbl:Typ,uid:Id})
-        _tr(Eu).remove() ; RmvRow_DOM(Typ,Id)
-        RT_Rmv.add(`${Typ}_${Id}`) ; MyAlert(`SB_DLT(${Typ},${Id})`)
+    async function SB_RmvARTE(Typ,Id){
+        const {data}=await supaBASE.rpc('del_arte',{p_tabela:Typ,p_id:String(Id)})
+        if(!data?.success){return false}
+        const {data:files=[]} = await supaBASE.storage.from('uploads').list('Dsng')
+        const rmv = files.filter(f=>f.name.startsWith(String(Id))).map(f=>`Dsng/${f.name}`)
+        rmv.length && await supaBASE.storage.from('uploads').remove(rmv)
+        return true
     }
-    function EditCell(e,val=null,RT){        // ⭐⭐⭐⭐⭐
+    async function SB_RmvROW(Eu,Typ,Id,Origem){         // ⭐⭐⭐⭐⭐
+        if(['ARTE','RASC'].includes(Typ)){SB_RmvARTE(Typ,Id)}
+        else{await supaBASE.from(Typ).delete().eq('Id',Id)}
+        if(!Origem){_tr(Eu).remove() ; RmvRow_DOM(Typ,Id); RT_Rmv.add(`${Typ}_${Id}`)} // se não tiver origem então estou na Tabela, só pagina de ARTE que usa ORIGEM
+        MyAlert(`SB_DLT(${Typ},${Id})`)
+    }
+    function EditCell(e,val=null,RT){         // ⭐⭐⭐⭐⭐
         const V = val == "" ? "" : val =='null' ? null : (val || VAL(e))
         if(V==Nm(e)){return} // não foi Aterado
         const R = d_r(e)
@@ -286,7 +300,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             else     {MyAlert(Alert||`✏️ SB_EDIT(${Typ},${Id},${JSON.stringify(Obj)})`)}
         } catch(err) {ERR('Erro:',err) ; MyAlert('Erro ao atualizar Celula')}
     }
-
     function Supa_RealTime(crud,New,Typ,Old){ // ⭐⭐⭐⭐⭐
         if(crud==='INSERT'){
             const k=`${Typ}_${New.Id}` ; if(RT_Add.has(k)){RT_Add.delete(k) ; return}
@@ -300,6 +313,21 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
+
+
+
+    async function Sb_EDITJSON(tbl,uid,col,path,Valor){
+        try{const {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
+            if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
+            else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
+        }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
+    }
+    async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
+        let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
+        if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
+        else{LOG('✔️ Arquivo enviado!',nome)}
+    }
+
 
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
@@ -316,25 +344,15 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDITy('CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
         })
     }
-// ===========================SUPABASE===========================
-    async function Sb_EDITJSON(tbl,uid,col,path,Valor){
-        try{const {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
-            if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
-            else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
-        }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
-    }
-    async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
-        let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
-        if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
-        else{LOG('✔️ Arquivo enviado!',nome)}
-    }
     async function Sb_DELIMG(SB,nome){
         const paths = ['Img','Med','Low'].map(p=>`${p}/${nome}`)
         let {error} = await SB.storage.from('uploads').remove(paths)
         if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
         else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
     }
+
 // LOGIN--------------------------------------------------
+
     async function Get_User(){
         const { data:userData } = await supaBASE.auth.getUser()
         if(!userData.user)return
