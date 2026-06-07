@@ -1,3 +1,5 @@
+const EntBlr2= e => e.tagName !== 'TEXTAREA' && KeyEntr(() => e.blur()); // fazer Blur caso enter seja pressionado
+const TogCSSBody=(B,T,C)=>{$('body').dataset.base=B ; $('body').dataset.tema=T ; $('body').dataset.cor=C}
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
@@ -10,14 +12,18 @@ function TrocaFavCon(Url) {
 }
 
 function NavPag(Typ){
+    LOG(Typ)
     if($(`#Pag_${Typ}`)){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
-    else{
-        if(Typ=='SPRT'){
-            window.location.href = `CONF.html?pag=${encodeURIComponent(Typ)}`
-        }else{
-            location.href = `${Typ}.html`
-        }
+    else{if(Typ=='SPRT'){window.location.href = `CONF.html?pag=${encodeURIComponent(Typ)}`
+        }else{location.href = `${Typ}.html`}
     }
+}
+
+function Inn_Perfil(U){
+    Inn($('#LgNome'),U.Nome)
+    Add_N($('#LgNNome'))
+    $('#LgFoto img').src= Foto(U.User)
+    Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
 }
 
 const SVVVGG={  
@@ -37,7 +43,6 @@ const SVVVGG={
     ,Wzpp:`<svg style="fill-rule:evenodd" viewBox="0 0 21145.78 21147.3"><path class="" d="M978.59 14283.97c333.81,816.76 650.69,1294.38 627.87,1430.03l-1422.95 5248.84 5037.84 -1297.15c645.86,-165.6 393.16,-111.61 1083.73,206.69 3970,1830.73 8571.7,904.62 11600.94,-2106.77 5319.93,-5289.32 3263.47,-13778.18 -2846.41,-16591.54 -6678.65,-3074.2 -14040,1389 -14758.72,8222.48 -174.18,1655.84 45.02,3339.58 677.69,4887.43zm3995.59 3414.34c553.39,-147.42 1026.83,-224.87 1335.25,-30.26 3295.95,2080.31 7744.39,1202.12 10283.55,-1327.21 2518.29,-2509.72 3221.14,-6184.09 1751.03,-9447.56 -1430.9,-3174.52 -4720.09,-5199.12 -8344.83,-4947.67 -6555.18,454.51 -9913.7,7814.94 -6576.65,12944.74 301.11,463.08 99.31,640.95 -181.56,1674.97l-471.55 1720.32 2204.75 -587.33zm1664.09 -11929.11c-478.47,226.25 -940.9,923.45 -1102.29,1480.42 -250.86,862.97 -85.28,1600.16 231.24,2333.07 461.83,1068.32 1708.08,2572.86 2359.45,3185.51 1003.42,945.13 1779.88,1508.15 3454.79,2097.57 702.84,247.79 1497.7,479.04 2317.74,348.95 675.25,-107.29 1453.55,-681.98 1673.72,-1138.93 119.58,-247.79 258.24,-839.66 211.62,-1133.42 -51.56,-319.51 -504.76,-413.99 -796.73,-571.62 -326.27,-176.62 -1617.34,-900.95 -1942.39,-690.58l-908.31 1123c-172.96,170.49 -266.84,174.18 -528.07,77.31 -1264.59,-467.99 -2354.48,-1391.66 -3110.1,-2441.56 -791.82,-1100.91 -379.64,-805.3 185.22,-1666.37 280.33,-427.51 270.51,-491.87 68.71,-966 -138.58,-326.87 -257.62,-637.26 -398.04,-972.73 -253.44,-607.63 -361.98,-1259.62 -1188.83,-1188.5 -151.09,12.94 -378.77,53.62 -527.74,123.87z"/></svg>`
 }
 
-function TrocaCSS(nova){$('body').className = [...$('body').classList].filter(c=>!c.includes('CSS')).concat(nova).join(' ')}
 
 
 function AbreLogin(stg){

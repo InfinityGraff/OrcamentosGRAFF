@@ -18,7 +18,7 @@
 </head>
 
 <script> // Biblioteca
-    const Atual = {Pag:'CONF'}
+    const Atual = {Pag:'CONF'} ; let USUARIO = ''
     const Cs = ['Infinity','Rosa','FEXTA','Basic']
     const Dbrev = {Nome:'Nome de Usuário',Emal:'Email',Fone:'Contato',Lcal:'Endereço',Pix:'Chave Pix',Cmpt:'Nome Completo',Chav:'Tipo de Chave'}
     const Sv = {Serv:'Serviço',Arte:'Arte',EVid:'Edição de Video',Musc:'Produção Musical',Mo3D:'Modelagem 3D',AfEf:'After Effects',Codg:'Programação'}
@@ -26,12 +26,6 @@
 
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
     const DR=(e,R)=>`data-R="${R}" name="${e}"`
-
-    function TogCSSBody(Base,Tema,Cor){
-        $('body').dataset.base = Base
-        $('body').dataset.tema = Tema
-        $('body').dataset.cor  = Cor
-    }
 </script>
 
 <style>/*SUPORTE e CONFIG*/
@@ -59,7 +53,7 @@
     .Me  {background:var(--BtnBk);color:var(--BtnTx);justify-self:end}
 </style>
 
-<body class="grid" onclick="NoneBndj()"> <!--data-Base="Basic" data-Tema="Dark" data-Cor="Yelw"-->
+<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid" onclick="NoneBndj()">
 
     <style> /*CSS do Header*/
         /*Fixos*/

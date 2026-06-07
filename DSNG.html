@@ -17,27 +17,25 @@
     <script src="./supaBASE.js"></script>
 </head>
 
-<script> // BaseCRUD (Nessesário caso tenha SB_Crud.js)
-    // Acumuladores
-    const Atual = {Pag:'PRFL'}
-    let USUARIO = ''
+<script> // BaseCRUD
+    const Atual = {Pag:'PRFL'} ; let USUARIO = '' ; let ListDSNGrs = ''
     const ARTS  = {__S:[],__M:[],__a:[],__A:[],__X:[],__U:[]}
-    let ListDSNGrs = ''
 
-    const Pry    = {PDDS:'Id',SERV:'Id',PGMT:'Id',CLNT:'Id',GRAD:'Grad',OS:'OS',UBER:'Id',MPAG:'Id',USER:'Pass',ARTE:'Id'} // Campo pra Imbutir dentro do BS
+    const Cprss = '?width=100&resize=contain'
+
     const ETAPASS= {AI:'Gerar com IA',UP:'Upscale',BG:'Remover Fundo',CP:'Completar',DG:'Digitar',VT:'Vetorizar',MK:'Fazer Mockup'}
-    const Next   =s=>FLOW[FLOW.indexOf(s)+1]||null
-    const Prev   =s=>FLOW[FLOW.indexOf(s)-1]||null
-
     const O   ={
         Serv    :['Serviço','Arte','Edição de Video','Produção Musical','Modelagem 3D','After Effects','Programação'],
         TArt    :['Tipo de Arte','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração'],
+        Tipo    :['Tipo de Arte','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração'],
         Tema    :["Tema de Arte","Logomarca","Identidade Visual","Cardápio","Evento","Carrossel","Carnaval","Ilustração","Vetorização","Photoshop","IA","Sinalização","Kit Veículo","Plano de Fundo"],
         Catg    :["Categoria","Lanchonete","Odontologia","Influencer","Música","Loja","Roupas","Outro"],
         Dest    :["Destino"  ,"Instagram","WhatsApp","Banner","Etiqueta","Camisa","Fachada","Panfleto","Cartão","Outro"],
         Presset :["Livre","1:1","4:5","9:16","16:9"],
         template:['1','2','3'],
+        Dsng    :[]
     }
+    
     const STTS={
         _S:{txt:'Desistência',btn:'Aceitar Arte'},
         Act:{txt:'Arte Aceita',btn:'Finalizar'},
@@ -62,12 +60,12 @@
 </script>
 
 <script> // Bibliotecas
-    
-    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
+    const Next    =s=>FLOW[FLOW.indexOf(s)+1]||null
+    const Prev    =s=>FLOW[FLOW.indexOf(s)-1]||null
     const SortData=Arr=>[...Arr].sort((a,b)=>new Date(a.Data)-new Date(b.Data))
-    const Rclh=e=>Tog(e,'Rclh')
-
-
+    const Rclh    =e=>Tog(e,'Rclh')
+    function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
+    function SaveConfig(e){LOG('Salva Config no SB')}
 </script>
 
 <style> /*O CSS Interno*/
@@ -146,13 +144,47 @@
     .FEXTA    .Hov_Shw:hover{filter:drop-shadow(0px 0px 5px #ffc813)}
     .Hov_Bkg:hover          {background: #ffc813}
     .Hov_Cor:hover          {color:      #ffc813}
+
+    .INFO textarea {padding: 5px;overflow: auto;}
+
+    .Zoom .rs   {Zoom:1.7}
+    b.rs        {font-size:25px;color:#8dff57}
+    i.rs        {font-size:20px;color:#8dff57 ; font-style:normal}
+
+    .ListDSNG         {width: 100%  ; grid-template:"A C" 3fr "B C" 1fr "B D" 1fr / 1fr 4fr}
+    .ListDSNG.Rclh    {width: 170px ; grid-template:"A" 3fr "B" 1fr ; height: 300px;}
+    .ListDSNG.Rclh .NN{display: none}
+    .ListDSNG.Rclh .Zoom .rs {Zoom:1.1}
+
+    .Resumo           {max-width:140px ; min-width: 50px; overflow: hidden;}
+    .Resumo .LILI     {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#ffffff}
+    .Resumo .Pic.Abslt{top: 0px;right: 0px;width: 25px}
+    .Resumo::after    {content:'';position:absolute;left:0;bottom:0;width:100%;height:6px}
+    .Resumo.Rclh      {width:80px}
+    .Resumo.Rclh .NN  {display: none}
+    .Resumo.Rclh .LILI{zoom: 0.5}
+    *:has(>.Resumo.Rclh){height:260px;display:grid;grid-template-rows:1fr 1fr;grid-auto-flow:column;}
+
+    [data-Cor="_S" ]{--Cory:#919191;}
+    [data-Cor="Act"]{--Cory:#ffcc00;}
+    [data-Cor="Ok" ]{--Cory:#00afef;}
+    [data-Cor="OK" ]{--Cory:#8dff57;}
+    
+    .St           {background  :var(--Cory)}
+    .Resumo::after{background  :var(--Cory)}
+    .Resumo .rs   {color       :var(--Cory)}
+    .Resumo .Pic  {border-color:var(--Cory)}
+
+    .CropTxt{overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
+
+    .Mmdal{width:80vw; height:80vh ; overflow: hidden scroll;}
 </style>
 
-<body data-Base="Basic" data-Tema="Dark" data-Cor="Yelw" class="grid" onclick="NoneBndj()">
+<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid" onclick="NoneBndj()">
 
     <style> /*CSS do Header*/
         /*Fixos*/
-            body.grid {height:100vh;display:grid;grid:"A A" auto"B C" 1fr / 1fr 4fr}
+            body.grid {height:100vh;display:grid;grid:"A A" auto"C C" 1fr / 1fr 4fr}
             #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
             #PAGES > *{height:100% ; overflow-y:scroll}
             #COLUN    {height:100% ; background:#1a1a1a}
@@ -178,13 +210,13 @@
         </div>
     </header>
 
-    <aside id="COLUN" style="grid-area:B"> <div>Colunaa</div> </aside>
+    <aside id="COLUN" class="none" style="grid-area:B"> <div>Colunaa</div> </aside>
     
     <div id="PAGES" style="grid-area:C"> <!--isso era pra ser main-->
 
         <div id="Pag_PRFL" class="p20">
             <div class="w100 Cl Gap">
-                <div id="Perf-Perf" class="Box1 Ev w100 Head_Perf"></div>
+                <div id="Perf-Perf" class="Box1 Ev w100 Head_Perf" style="height: 180px;"></div>
                 <div id="Perf-Soli" class="Box1 Cl w100 Rltv"><h3><a onload="Inn(this,SVG['Soli'])"></a> Solicitações   </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
                 <div id="Perf-Andm" class="Box1 Cl w100 Rltv"><h3><a onload="Inn(this,SVG['Andm'])"></a> Andamento...   </h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
                 <div id="Perf-Cncl" class="Box1 Cl w100 Rltv"><h3><a onload="Inn(this,SVG['Hist'])"></a> Falta Pagamento</h3><p class="Conty Abslt"></p><div class="CT w100 Gap Art"></div></div>
@@ -192,9 +224,9 @@
             </div>
         </div>
 
-        <div id="Pag_ARTE" class="Cl Gap p20" style="box-sizing:border-box;">
+        <div id="Pag_ARTE" class="Cl Gap p20" style="box-sizing:border-box">
             <style>
-                #Form_Arte {flex:1;min-height:0;grid-template:"A A E" 1fr "B C E" 4.5fr "D D E" 1fr / 0.3fr 2fr 1fr}
+                #Form_Arte    {flex:1;min-height:0;grid-template:"A A E" 1fr "B C E" 4.5fr "D D E" 1fr / 0.3fr 2fr 1fr}
                 #Form_Arte > *{min-height:0;min-width:0; overflow: auto;}
                 .Rasc_Und     {width: 270px; height: 100%}
             </style>
@@ -252,189 +284,15 @@
 
 </body>
 
-<style>
-    .Zoom .rs   {Zoom:1.7}
-    b.rs        {font-size:25px;color:#8dff57}
-    i.rs        {font-size:20px;color:#8dff57 ; font-style:normal}
+<script> // ==== Funcionalidades ====
+    let VALLOR = 0
+    function EditETPS(Eu){const Concat=$$('.Atv',Pai(Eu)).map(e=>Nm(e)).join('-') ; EditCell(Pai(Eu),Concat)}
 
-    .ListDSNG         {width: 100%  ; grid-template:"A C" 3fr "B C" 1fr "B D" 1fr / 1fr 4fr}
-    .ListDSNG.Rclh    {width: 170px ; grid-template:"A" 3fr "B" 1fr ; height: 300px;}
-    .ListDSNG.Rclh .NN{display: none}
-    .ListDSNG.Rclh .Zoom .rs {Zoom:1.1}
-
-    .Resumo           {max-width:140px ; min-width: 50px; overflow: hidden;}
-    .Resumo .LILI     {width:120px;height:120px;object-fit:contain;border-radius:8px;background:#ffffff}
-    .Resumo .Pic.Abslt{top: 0px;right: 0px;width: 25px}
-    .Resumo::after    {content:'';position:absolute;left:0;bottom:0;width:100%;height:6px}
-    .Resumo.Rclh      {width:80px}
-    .Resumo.Rclh .NN  {display: none}
-    .Resumo.Rclh .LILI{zoom: 0.5}
-    *:has(>.Resumo.Rclh){height:260px;display:grid;grid-template-rows:1fr 1fr;grid-auto-flow:column;}
-
-    [data-Cor="_S" ]{--Cory:#919191;}
-    [data-Cor="Act"]{--Cory:#ffcc00;}
-    [data-Cor="Ok" ]{--Cory:#00afef;}
-    [data-Cor="OK" ]{--Cory:#8dff57;}
-    
-    .St           {background  :var(--Cory)}
-    .Resumo::after{background  :var(--Cory)}
-    .Resumo .rs   {color       :var(--Cory)}
-    .Resumo .Pic  {border-color:var(--Cory)}
-
-    .CropTxt{overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
-
-    .Mmdal{width:80vw; height:80vh}
-</style>
-
-<script> // Página do Designer
-    function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)} /*GAMBIARRA*/
-    function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))} /*GAMBIARRA*/
-    const View=(__)=>MODAL(`<div class="Ct Mmdal">${Tm_Resumo(ARTS[__],USUARIO)}</div>`)
-    const Sldo=(  )=>MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Tr('MPAG',J['MPAG'])}</tbody></table></div>`)
-
-    function TrocaRasc(Eu,X){ // tentar algo dinâmico aqui tbm
-        $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ;   Rmv_N($(`.RASC img:nth-child(${X})`,Avo(Eu)))
-        $$('.F2'      ,Bzv(Eu)).forEach(e=>Add(e,'NONE')) ;     Rmv($(`.RasC${X}`,Bzv(Eu)),'NONE')
+    function TrocaRasc(Eu,Id){ // tentar algo dinâmico aqui tbm
+        $$('.RASC img',Avo(Eu)).forEach(e=>Add_N(e))      ;   Rmv_N($(`.RASC img.Rasc_${Id}`,Avo(Eu)))
+        $$('.F2'      ,Bzv(Eu)).forEach(e=>Add(e,'NONE')) ;     Rmv($(`.RasC_${Id}`,Bzv(Eu)),'NONE')
     }
 
-    function Tm_Tags(Arr){
-        const CorTag = {Gray:'#4b4b4b',Yelw:'#bb8c00',Roxo:'#C77DFF'}
-        const Obj = ['Tema','Tipo'].map(k=>Uniq(Arr.map(e=>e[k]).filter(Boolean)))
-        return `<div class="Tags Ct gap w100" style="overflow:hidden">${Obj.map((arr,i)=>arr.map(t=>`<p style="background:${CorTag[i? 'Yelw':'Gray']}">${t}</p>`).join('')).join('')}</div>`
-    }
-
-    function Tm_Resumo(E,U,Rclh){
-        return `${E.map(e=>`
-        <div class="Resumo gap Cl Bt Hov Box2 Rltv ${Rclh}" data-Cor="${e.Stts}" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}',event,'${U.Crgo}'));RodarDrops()">
-            ${e.Dsng ? `<img class="Pic Abslt" src="${Foto(e.Dsng)}">`:''}
-            <p class="CropTxt Mw80">${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}?v=${Date.now()}">
-            <p>${e.Tipo}</p><div class="Cl Start2 NN"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
-            <div class="NN">${Tm_RS2(e.Valr)}</div>
-        </div>`).join("")}`
-    }
-
-    function Tm_Exib(U,ID,ev,cgo){ // Falta Melhorar?
-        if (ev?.target.closest('button')) return
-        const Admn = cgo=='Admn'
-        const Obj  = J['ARTE'].find(e=>e.Id==ID)
-        const ADM  = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Edit-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
-        const ADMs = Col     =>Admn ? `data-r="ARTE-${Obj.Id}-${Col}-Slct-_-_" data-p="" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
-        const ADMp = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_"`:''
-        const ADMP = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Edit-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
-        const ADMt = (id,Col)=>Admn ? `data-r="REGRA-${id}-${Col}-Text-Bj-Sc" data-p="ARTE-${Obj.Id}-Regra-Edit-_-_" contenteditable="true"                          onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
-
-        const Rgr  = Obj.Regra
-        const   G  = a=>`style="grid-area:${a}"`
-        return `
-        <div class="INFO">
-            <h3 class="Ct" ${G('A')} ${ADM('Nome')}>${Obj.Nome}</h3>
-            
-            <div class="F1 Box2" ${G('B')}>
-                <div ${G('A')} class="Bt"><div class="Ct">Tipo:<div>${Admn ? `<select ${ADMs('Tipo')}>${Tm_Opt(O['TArt'],Obj.Tipo)}</select>` : Obj.Tipo}</div></div><div>Arte Aberta</div><div ${ADM('Dsng')}>${Obj.Dsng}</div></div>
-                <div ${G('B')} class="Box2 RASC"     >${For(Rgr.length).map(e=>`<img class="Rascunho ${e==0?'':'none'}"             src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}</div>
-                <div ${G('C')} class="Box2 LISTA1 Cl">${For(Rgr.length).map(e=>`<img class="HOV" onclick="TrocaRasc(this,'${e+1}')" src="${BASE_URL}Dsng/${Obj.Id}_Rasc_${e+1}.webp?v=${Date.now()}">`).join('')}<button>UPP</button></div>
-                <div ${G('D')} class="Box2"          ><p ${ADM('Clnt')}>${Obj.Clnt}</p> <p ${ADM('Tema')}>${Obj.Tema}</p> <div ${ADM('Data')}>${Obj.Data}</div> <div>${TempoResta(Obj.Prazo)}</div>   </div>
-                <div ${G('E')} class="Box2"          ><p ${ADM('Valr')}>${cgo=="Admn"?Obj.Valr:Tm_RS2(Obj.Valr)}</p><button>Discutir Preço</button></div>
-            </div>
-
-            ${Rgr.map((r,x)=>{
-                const Ettp = r.Etps.split('-')
-                const ETAP = Admn ? ['AI','UP','BG','CP','DG','VT','MK'] : Ettp
-                return `
-                <div class="F2 Box2 ${x==0?'':'NONE'} RasC${x+1}" ${G('C')}>
-                    <div ${G('A')} class="ETAPASS Ct gap" ${ADMp(r.Id,'Etps')}><p>Rascunho: ${r.Id}</p> ${ETAP.map(k=>`<div class="Ct gap HOV ${Ettp.includes(k)?'Atv':''}" onclick="TOV(this);EditETPS(this)" name="${k}"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
-                    <div ${G('B')} class="gap"        ><textarea ${ADMt(r.Id,'Desc')}>${r.Desc}</textarea><textarea ${ADMt(r.Id,'Info')}>${r.Info}</textarea></div>
-                    <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p ${ADMP(r.Id,'Mdds')}>${r.Mdds}</p></div>    
-                    <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Elmt_${e+1}.webp?v=${Date.now()}">`).join('')}<div class="Drop Ct"></div></div></div>
-                    <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL}Dsng/${Obj.Id}_${x+1}_Refr_${e+1}.webp?v=${Date.now()}">`).join('')}<div class="Drop Ct"></div></div></div>
-                    <div ${G('F')} class="Cl"><button ${ADMp(r.Id,'Elmt')} onclick="AddNewIMG(this,'${r.Elmt}')">Elmt</button><button ${ADMp(r.Id,'Refr')} onclick="AddNewIMG(this,'${r.Refr}')">Refr</button></div>
-                </div>`
-            }).join('')}
-
-            <div class="F3 Box2" ${G('D')}>
-                <div ${G('A')}>${Obj.Drive ? `<a class="button" href="${Obj.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>`:'<button>Baixar</button>'}</div>
-                <div ${G('B')} class="Box2"><label class="Ct">Emvie em <p ${ADMP(Rgr[0].Id,'Form')}>${Rgr[0].Form}</p></label><input type="file" multiple accept=".pdf,.zip,.rar" onchange="FileUP(this,'ARQ',this)"></div>
-                <div ${G('C')} class="Bt">
-                    ${(f=>`${f?.p ?`<button onclick="MudaSTTS ('${U}','${ID}','${f.p.s}')">${f.p.t}</button>`:'.'}
-                            ${Admn?`<button onclick="MudaSTTS2('${U}','${ID}','OK')">'OK ADM'</button>`:''}
-                            ${f?.n?`<button onclick="MudaSTTS ('${U}','${ID}','${f.n.s}')">${f.n.t}</button>`:'.'}`)(FLOW[Obj.Stts])}
-                </div>        
-            </div>
-
-        </div>`
-    }
-    async function MudaSTTS(U,Id,S){
-        $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
-        DarJJ('Edt',...['ARTE',Id,'Dsng',U],null)
-        const Alert = STTS[S]?.txt||''
-        await Sb_EDIT('ARTE',Id,{Stts:S,Dsng:U},Alert)
-        Load_ARTES(USUARIO)
-    }
-    async function MudaSTTS2(U,Id,S){ // isso aqui é só pra o ADM (GAMBIARRA)
-        $('.FModal').remove()
-        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
-        const Alert = STTS[S]?.txt||''
-        await Sb_EDIT('ARTE',Id,{Stts:S},Alert)
-        Load_ARTES(USUARIO)
-    }
-    function EditETPS(Eu){
-        const Concat =  $$('.Atv',Pai(Eu)).map(e=>Nm(e)).join('-')
-        EditCell(Pai(Eu),Concat)
-        LOG(Concat)
-    }
-
-    function Load_ARTES(U){
-        Inn($('#Perf-Perf .Perf_2'),Tm_Tags(ARTS.__A))
-        Inn($('#Perf-Perf .Perf_3'),`
-            <div class="Box2 HOV Cl" onclick="View('__A')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${ARTS.__A.length}</h3></div>
-            <div class="Box2 HOV Cl" onclick="View('__X')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${ARTS.__X.length}</h3></div>
-            <div class="Box2 HOV Cl" onclick="Sldo(     )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(ARTS.__a,'Valr'))}</div>
-        `)
-        Inn($('#Perf-Soli p.Conty'),`${ARTS.__S.length} Artes`) ; Inn($('#Perf-Soli .Art'),Tm_Resumo(ARTS.__S,U))
-        Inn($('#Perf-Andm p.Conty'),`${ARTS.__M.length} Artes`) ; Inn($('#Perf-Andm .Art'),Tm_Resumo(ARTS.__M,U))
-        Inn($('#Perf-Cncl p.Conty'),`${ARTS.__a.length} Artes`) ; Inn($('#Perf-Cncl .Art'),Tm_Resumo(ARTS.__a,U))
-        Inn($('#Perf-Hist p.Conty'),`${ARTS.__A.length} Artes`) ; Inn($('#Perf-Hist .Art'),Tm_Resumo(ARTS.__A,U))
-    }
-
-    function FilterArtes(U,Typ){
-        J[Typ].forEach(A=>{
-            if(A.Dslk?.includes(U.Nome))                       ARTS.__X.push(A) // Rejeitados
-            else if(A.Stts=='_S' && (!A.Dsng||A.Dsng==U.Nome)) ARTS.__S.push(A) // Solicitações
-            else if(A.Stts=='Act')                             ARTS.__M.push(A) // Aceitos
-            else if(A.Stts=='Ok' )                             ARTS.__a.push(A) // Falta Pagar
-            else if(A.Stts=='OK' )                             ARTS.__A.push(A) // Histórico
-        })
-    }
-
-    function Load_Perfis(div,Rclh){
-        Inn(div,ListDSNGrs.map(U=>`
-        <div class="ListDSNG Box1 Grid gap">
-            <div class="Ct Cl" style="grid-area:A">
-                <h2 class="Ct gap">${U.Rank}° - ${U.Nome} <a class="St ${U.On?'On':'Of'}"></a></h2>
-                <img class="Perf" src="${Foto(U.User)}">
-                <div class="Cl Start2"><p>${U.Crgo}</p><button onclick="MudaPara_Soli('${U.User}')">Solicitar</button></div>
-                <div class="Ct p5 gap NN">${['_S','Act','Ok','OK'].map(s=>`<a data-Cor="${s}" class="St Hov" onclick="Rclh($$('.Grup_${s} .Resumo',this.closest('.ListDSNG')))"></a>`).join('')}</div>
-            </div>
-            <div style="grid-area:B"><p>Total:</p><div class="Ct Zoom">${Tm_RS2(SOMA_Obj(U.Artes,'Valr'))}<p>${U.Artes.length} Artes</p></div></div>
-            <div style="grid-area:C" class="w100 CT Gap Art NN">${['_S','Act','Ok','OK'].map(s=>`<div class="Grup_${s} CT gap">${U.Artes.filter(e=>e.Stts==s).map(e=>Tm_Resumo([e],U,Rclh)).join('')}</div>`).join('')}</div>
-            <div style="grid-area:D" class="NN">${Tm_Tags(U.Artes)}</div>
-        </div> `).join(''))
-    }
-
-    function Load_Perfil(U){
-        $$('.Head_Perf').forEach(e=>Inn(e,`
-        <div class="Perf_1 Ct Gap">
-            <img class="Pic" onclick="TrocaFoto(this)" src="${Foto(U.User)}">
-            <div class="none"><div class="Drop"></div><button onclick="Upload_Foto($('input',Pai(this)).files[0])">Trocar Foto</button></div>
-            <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.Crgo]}</p></div>${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}</div>
-        </div>
-        <div class="Perf_2 Ct" style="width:300px"></div>
-        <div class="Perf_3 Ct Gap"></div>`))
-    }
-</script>
-
-<script> // ==== CALCULAR VALOR DA ARTE ====
     const Calc=()=>{
         const Tipo  = Vll($('#ART_Tipo'))
         const vBase = Tipo_ARTE.find(a=>a.Nome==Tipo)?.Valr ?? 0
@@ -449,7 +307,6 @@
         return {vBase, Final:(vUNDD*(1-Desc/100)).toFixed(2)}
     }
 
-    let VALLOR = 0
     function InnResult(r){
         VALLOR = r.Final
         Inn($('#Resultss'),`<div class="Ct">Total: ${Tm_RS2(r.vBase)} >> ${Tm_RS2(r.Final)}</div><div class="Start2 w80">${r.vBase==0?"":
@@ -457,7 +314,6 @@
     }InnResult({vBase:0,Final:0})
 
     function Ger_SOliArt(DSNG){
-        // ImgUPP2($('#InputeZZ'),'ARTE-2418','ARTE-2418-Img-Imgs-_-_')
         const Objj = Object.fromEntries($$(`#ART_Tipo, #ART_Tema, #ART_Titl`).map(I=>[I.getAttribute('data-Obj'),I.value]))
         const List = $$('#Resultss .Start2 p').map(p=>Inn(p))
         const info = $$('#Inst,#Zapp,#Lcal').map(I=>`${I.placeholder}: ${I.value}`)
@@ -466,62 +322,7 @@
         LOG(NEW)
         AddROW('ARTE','<',NEW)
     }
-</script>
-
-<script> // SupaBASE
-
-
-    function AddNewIMG(Eu,val){
-        LOG(val)
-        ImgUPP2(Inpt,Nome) 
-        // Rascunhos : 2466_Rasc_1    (Talvez melhorar este)
-        // Elementos : 2466_1_Elmt_1
-        // Referencia: 2466_1_Refr_1
-        
-        EditCell(Eu,val)
-    }
-
-</script>
-
-<script>// Iniciação 
-    Onloads('body')
-    Get_User()
-
-    function PosLogin(U){
-        USUARIO = U
-        LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)
-        Add_N($('#LgNNome'))
-        $('#LgFoto img').src= Foto(U.User)
-        //$('body').dataset.tema = U.Css.Tema
-        //$('body').dataset.cor = U.Css.Cor
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-        NavPag(Atual.Pag)
-        SB_GETT('BS')
-        SB_GETT('ARTE')
-    }
-
-    function SaveConfig(e){LOG('Salva Config no SB')}
-
-    async function PosGET(){
-        ListDSNGrs = await GetDsngUsers()
-        FilterArtes(USUARIO,'ARTE')
-        Load_Perfil(USUARIO)
-        Load_ARTES(USUARIO)
-        J['BS'].forEach(e=>BS[e.Tabela]=e) // Upar o BS
-        //Load_Page($("#List_Dsng"),'P')
-        Load_Perfis($('#Todo_Dsng'))
-    }
-    // Lista de Produtos Carregará uma Tabela
-    // Carregar Minha Lista de SVG e Minha Bando de Imagens PNG's
-    // se o Cliente não tem uma Referência carregar uma Lista de Referência pra ele Escolher! (claro de acordo do o template que ele escolheu!)
-
-    Add($$('select'),'vigem')                                /*GAMBIARRA*/ // só pra mudar a cor do placeholder Select
-    $$('select').forEach(s=>s.addEventListener('change',()=>Rmv(s,'vigem')))  /*GAMBIARRA*/
-
-</script>
-
-<script>
+    
     const MediaRank=(Arts,Tags)=>{
         Tags.length // Quantidade de Tags 
         Arts.length // Quantidade de Arte
@@ -529,36 +330,195 @@
         // Tempo de Aceitação (conta do Inicio da Solicitação até a Aceitação)
         // Tempo de Entrega   (conta do Inicio da Aceitação   até a Conclusão)
     }
-    // Novidades 
-        // ✅ Melhorei o CSS
-        // ✅ (Contagem de artes por cada Box de Status)
-        // ✅ Lista de Tags Personalizadas
-        // ✅ Separação de Ok e OK
-        // ✅ Link Agora Some se n tiver Link
-        // ✅ Adicionei sua Foto para Solicitações Particulares
-        // ✅ Rankeada dos Designers
-        // ✅ Página pra ver todos Designers (tem que ter Gráfico)
-        // ✅ Pagamento (Modal) e ver mais, em Tabela Maior!
-    //
 
-    // Novidades do BANCO de DADOS
-        // ✅ Importar Arquivos
-        // ✅ Botão de Desistência
-        // ✅ adicionar aqueles campos de obrigações como devem vir
-        // ✅ Várias Imagens
-        // ✅ Adicionar Login
-        // comentário em cada Arte
-        
-        // Botão pra Chamar Colaboração
-        // Exigência dos Prints
-        // Botar ESC pra funcionar nos Modais
+    async function MudaSTTS (U,Id,S){
+        LOG('Analisar') ; return
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        DarJJ('Edt',...['ARTE',Id,'Dsng',U],null)
+        const Alert = STTS[S]?.txt||''
+        await Sb_EDIT('ARTE',Id,{Stts:S,Dsng:U},Alert)
+        Load_ARTES(USUARIO)
+    }
+    async function MudaSTTS2(U,Id,S){ // isso aqui é só pra o ADM (GAMBIARRA)
+        LOG('Analisar') ; return
+        $('.FModal').remove()
+        DarJJ('Edt',...['ARTE',Id,'Stts',S],null)
+        const Alert = STTS[S]?.txt||''
+        await Sb_EDIT('ARTE',Id,{Stts:S},Alert)
+        Load_ARTES(USUARIO)
+    }
 
+    async function AddNewIMG(Eu,Nome,Col){
+        const Inpt = $(`.LISTA.${Col}`,Avo(Eu)) // Usar 'Eu' pra acessar o Input
+        await Inpt.files.length.forEach(i=>{    // Upar de um por um
+            const File = Inpt.files[i]
+            ImgUPP2(File,Nome,'Dsng') // a Incrementação do _1 _2 _3 no nome do arquivo deve ser feita lá no SQL
+        })
+        // EditCell(Eu,val) Depois Editar a Célula
+        // Após o await Dar o DOM aqui no APP
         
-        
-        // Ajeitar a troca do CSS
-        // Ajeitar a Página de Solicitação
-        // Ajeitar a Página de Edição (do Produto)
-        // Página de Notificações
+    }
 
-        // BDJW: Fathippo1210
+    async function AddNewRASC(Eu,id){ // Cria nova Linha apenas isso
+        const  j= JJ['ARTE'][id]
+        const _R={Id:id} ; const COL = 'RASC'
+        const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,typ:Aa('ARTE'),dados:{}})
+        if(!error){j.Rasc.push(data) ;  ; LOG('Deu Certo!',data)}
+        XModal(Eu) ; DispClick($(`.Resumo.id_${id}`))
+    }
+
+</script>
+
+<script> // ==== Templates ====
+    function TrocaFoto(Eu){const Drop = $('.Drop',Pai(Eu)) ; Tog_N(Pai(Drop)) ; Tog_N(Eu) ; PrepDrop2(Drop,1)} /*GAMBIARRA*/
+    function RodarDrops() {$$('.INFO .Drop').forEach(e=>PrepDrop2(e,1))} /*GAMBIARRA*/
+    const View=(_)=>MODAL(`<div class="Ct Mmdal">${Tm_Resumo(ARTS[_],USUARIO)}</div>`)
+    const Sldo=(_)=>MODAL(`<div class="Ct Mmdal"><table><tbody>${Tm_Tr('MPAG',J['MPAG'])}</tbody></table></div>`)
+
+    function Tm_Tags(Arr){
+        const CorTag = {Gray:'#4b4b4b',Yelw:'#bb8c00',Roxo:'#C77DFF'}
+        const Obj = ['Tema','Tipo'].map(k=>Uniq(Arr.map(e=>e[k]).filter(Boolean)))
+        return `<div class="Tags Ct gap w100" style="overflow:hidden">${Obj.map((arr,i)=>arr.map(t=>`<p style="background:${CorTag[i? 'Yelw':'Gray']}">${t}</p>`).join('')).join('')}</div>`
+    }
+
+    function Tm_Resumo(E,U,Rclh){
+        return `${E.map(e=>`
+        <div class="Resumo gap Cl Bt Hov Box2 Rltv ${Rclh} id_${e.Id}" data-Cor="${e.Stts}" onclick="MODAL(Tm_Exib('${U.Nome}','${e.Id}','${U.Crgo}',event));RodarDrops()">
+            ${e.Dsng ? `<img class="Pic Abslt" src="${Foto(e.Dsng)}">`:''}
+            <p class="CropTxt Mw80">${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}">
+            <p>${e.Tipo}</p><div class="Cl Start2 NN"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
+            <div class="NN">${Tm_RS2(e.Valr)}</div>
+        </div>`).join("")}`
+    }
+
+    function Tm_Exib(U,ID,cgo,ev){
+        if (ev?.target.closest('button')) return
+        const Admn = cgo=='Admn'
+        const   j  = J['ARTE'].find(e=>e.Id==ID)
+        const Rgr  = j.Rasc
+        const   G  = a=>`style="grid-area:${a}"`
+        const SrcC = e=>`${e.Id}_Rasc`
+        const _R   = id=>`ARTE-${id}-Rasc-Imgs-_-_` // isso é temporário (Intenção é remover logo Logo)
+        const ADMp = (r,Col)     =>Admn ?             `data-r="RASC-${r.Id}-${Col}-Edit-_-_"`:''
+        const EDIT = (e,Typ,Col) =>Admn ?           `data-r="${Typ}-${e.Id}-${Col}-Edit-_-_" name="${e[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)"`:''
+        const TEXT = (r,Col)     =>Admn ? `<textarea   data-r="RASC-${r.Id}-${Col}-Text-_-_" name="${r[Col]}" contenteditable="true" onkeydown="EntBlr2(this)" onblur="DTV(this);EditCell(this)" onfocus="ATV(this)">${r[Col]}</textarea>`              :`<textarea readonly>${r[Col]}</textarea>`
+        const INPT = Col         =>Admn ? `<input      data-r="ARTE-${j.Id}-${Col}-Inpt-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)" value="${j[Col]}">`                : `<div>${j[Col]}</div>` 
+        const SLCT = Col         =>Admn ? `<select     data-r="ARTE-${j.Id}-${Col}-Slct-_-_" name="${j[Col]}" contenteditable="true" onkeydown="EntBlr(this)"  onblur="DTV(this);EditCell(this)" onfocus="ATV(this)">${Tm_Opt(O[Col],j[Col])}</select>` : `<div>${j[Col]}</div>`
+        return `
+        <div class="INFO">
+            <h3 class="Ct" ${G('A')} ${EDIT(j,'ARTE','Nome')}>${j.Nome}</h3>            
+            <div class="F1 Box2" ${G('B')}>
+                <div ${G('A')} class="Bt"><div class="Ct">Tipo:${SLCT('Tipo')}</div><div>Arte Aberta</div><div class="Ct">Designer:${SLCT('Dsng')}</div></div>
+                <div ${G('B')} class="Box2 RASC"     >${Rgr.map((e,x)=>`<img class="Rascunho ${x==0?'':'none'} Rasc_${e.Id}"  onclick="AbrirImg(this,'${SrcC(e)}','${_R(e.Id)}','Dsng')" src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprss}">`).join('')}</div>
+                <div ${G('C')} class="Box2 LISTA1 Cl">${Rgr.map(e=>    `<img class="HOV"                                      onclick="TrocaRasc(this,'${e.Id}')"                        src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprss}">`).join('')}<button onclick="AddNewRASC(this,'${j.Id}')">UPP</button></div>
+                <div ${G('D')} class="Box2 Start2"><div class="Ct"><p>Cliente:</p>${INPT('Clnt')}</div><div class="Ct"><p>Tema:</p>${INPT('Tema')}</div><div class="Ct"><p>Data:</p>${INPT('Data')}</div><div>${TempoResta(j.Prazo)}</div></div>
+                <div ${G('E')} class="Box2 Ct"><p>Valor:</p>${Admn ? INPT('Valr') : `<p>${Tm_RS2(j.Valr)}</p>`}<button class="NONE">Discutir Preço</button></div>
+            </div>
+
+            ${Rgr.map((r,x)=>{
+                const Ettp = r.Etps?.split('-')||[]
+                const ETAP = Admn ? ['AI','UP','BG','CP','DG','VT','MK'] : Ettp
+                return `<div class="F2 Box2 RasC_${r.Id} ${x==0?'':'NONE'}" ${G('C')}>
+                    <div ${G('A')} class="ETAPASS Ct gap" ${ADMp(r,'Etps')}><p>Rascunho: ${r.Id}</p> ${ETAP.map(k=>`<div class="Ct gap HOV ${Ettp.includes(k)?'Atv':''}" onclick="TOV(this);EditETPS(this)" name="${k}"><img src="./SVG/Dsngg/${k}.svg"><p>${ETAPASS[k]}</p></div>`).join('')}</div>
+                    <div ${G('B')} class="gap"        >${TEXT(r,'Desc')}${TEXT(r,'Info')}</div>
+                    <div ${G('C')} class="Box2 Ct"    ><label>Medidas:   </label><p ${EDIT(r,'RASC','Mdds')}>${r.Mdds}</p></div>    
+                    <div ${G('D')} class="Start2 Box2"><label>Elementos: </label><div class="CT LISTA Elmt w100">${For(r.Elmt).map(e=>`<img class="HOV" src="${BASE_URL2}Dsng/${r.Id}_Elmt_${e+1}.webp${Cprss}">`).join('')}<div class="Drop Ct"></div></div></div>
+                    <div ${G('E')} class="Start2 Box2"><label>Referência:</label><div class="CT LISTA Refr w100">${For(r.Refr).map(e=>`<img class="HOV" src="${BASE_URL2}Dsng/${r.Id}_Refr_${e+1}.webp${Cprss}">`).join('')}<div class="Drop Ct"></div></div></div>
+                    <div ${G('F')} class="Cl"><button ${ADMp(r,'Elmt')} onclick="AddNewIMG(this,'${r.Id}_Elmt','Elmt')">Elmt</button><button ${ADMp(r,'Refr')} onclick="AddNewIMG(this,'${r.Id}_Refr','Refr')">Refr</button></div>
+                </div>`
+            }).join('')}
+
+            <div class="F3 Box2" ${G('D')}>
+                <div ${G('A')}>${j.Drive ? `<a class="button" href="${j.Drive}" target="_blank" rel="noopener noreferrer">Abrir Link <img src="./img/Corel.webp"></a>`:'<button>Baixar</button>'}</div>
+                <div ${G('B')} class="Box2"><label class="Ct">Emvie em <p ${EDIT(Rgr[0].Id,'RASC','Form')}>${Rgr[0].Form}</p></label><input type="file" multiple accept=".pdf,.zip,.rar" onchange="FileUP(this,'ARQ',this)"></div>
+                <div ${G('C')} class="Bt">
+                    ${(f=>`${f?.p ?`<button onclick="MudaSTTS ('${U}','${ID}','${f.p.s}')">${f.p.t}</button>`:'.'}
+                            ${Admn?`<button onclick="MudaSTTS2('${U}','${ID}','OK'      )">'OK ADM'</button>`:''}
+                            ${f?.n?`<button onclick="MudaSTTS ('${U}','${ID}','${f.n.s}')">${f.n.t}</button>`:'.'}`)(FLOW[j.Stts])}
+                </div>
+            </div>
+        </div>`
+    }
+
+    function Tm_Artes(U){
+        Inn($('#Perf-Perf .Perf_2'),Tm_Tags(ARTS.__A))
+        Inn($('#Perf-Perf .Perf_3'),`
+            <div class="Box2 HOV Cl" onclick="View('__A')"><a class="Svg-G f-Yell">${SVG['Okay']}</a><p>Total de Artes    </p><h3 class="f-Yell">${ARTS.__A.length}</h3></div>
+            <div class="Box2 HOV Cl" onclick="View('__X')"><a class="Svg-G f-redd">${SVG['Dslk']}</a><p>Total de rejeições</p><h3 class="f-redd">${ARTS.__X.length}</h3></div>
+            <div class="Box2 HOV Cl" onclick="Sldo(     )"><a class="Svg-G f-gren">${SVG['Coin']}</a><p>Saldo Total       </p>${Tm_RS2(SOMA_Obj(ARTS.__a,'Valr'))}</div>
+        `)
+        Inn($('#Perf-Soli p.Conty'),`${ARTS.__S.length} Artes`) ; Inn($('#Perf-Soli .Art'),Tm_Resumo(ARTS.__S,U))
+        Inn($('#Perf-Andm p.Conty'),`${ARTS.__M.length} Artes`) ; Inn($('#Perf-Andm .Art'),Tm_Resumo(ARTS.__M,U))
+        Inn($('#Perf-Cncl p.Conty'),`${ARTS.__a.length} Artes`) ; Inn($('#Perf-Cncl .Art'),Tm_Resumo(ARTS.__a,U))
+        Inn($('#Perf-Hist p.Conty'),`${ARTS.__A.length} Artes`) ; Inn($('#Perf-Hist .Art'),Tm_Resumo(ARTS.__A,U))
+    }
+
+    function Acc_Artes(U){
+        J['ARTE'].forEach(A=>{
+            if(A.Dslk?.includes(U.Nome))                       ARTS.__X.push(A) // Rejeitados
+            else if(A.Stts=='_S' && (!A.Dsng||A.Dsng==U.Nome)) ARTS.__S.push(A) // Solicitações
+            else if(A.Stts=='Act')                             ARTS.__M.push(A) // Aceitos
+            else if(A.Stts=='Ok' )                             ARTS.__a.push(A) // Falta Pagar
+            else if(A.Stts=='OK' )                             ARTS.__A.push(A) // Histórico
+        })
+    }
+
+    function Load_Perfis(div,Arr,Rclh){
+        Inn(div,Arr.map(U=>`
+        <div class="ListDSNG Box1 Grid gap">
+            <div class="Ct Cl" style="grid-area:A">
+                <h2 class="Ct gap">${U.Rank}° - ${U.Nome} <a class="St ${U.On?'On':'Of'}"></a></h2>
+                <img class="Perf" src="${Foto(U.User)}">
+                <div class="Cl Start2"><p>${U.Crgo}</p><button onclick="MudaPara_Soli('${U.User}')">Solicitar</button></div>
+                <div class="Ct p5 gap NN">${['_S','Act','Ok','OK'].map(s=>`<a data-Cor="${s}" class="St Hov" onclick="Rclh($$('.Grup_${s} .Resumo',this.closest('.ListDSNG')))"></a>`).join('')}</div>
+            </div>
+            <div style="grid-area:B"><p>Total:</p><div class="Cl Zoom">${Tm_RS2(SOMA_Obj(U.Artes,'Valr'))}<p>${U.Artes.length} Artes</p></div></div>
+            <div style="grid-area:C" class="w100 CT Gap Art NN">${['_S','Act','Ok','OK'].map(s=>`<div class="Grup_${s} CT gap">${U.Artes.filter(e=>e.Stts==s).map(e=>Tm_Resumo([e],U,Rclh)).join('')}</div>`).join('')}</div>
+            <div style="grid-area:D" class="NN">${Tm_Tags(U.Artes)}</div>
+        </div> `).join(''))
+    }
+
+    function Tm_Perfil(U){
+        $$('.Head_Perf').forEach(e=>Inn(e,`
+        <div class="Perf_1 Ct Gap">
+            <img class="Pic" onclick="TrocaFoto(this)" src="${Foto(U.User)}">
+            <div class="none"><div class="Drop"></div><button onclick="Upload_Foto($('input',Pai(this)).files[0])">Trocar Foto</button></div>
+            <div class="Desc Cl Start2 Gap"><div class="Ct Gap"><h2>${U.Nome}</h2><p>${D_Brev2[U.Crgo]}</p></div>${['Emal','Lcal','Fone'].map(e=>`<div class="Ct gap"><a class="Svg-P f-Yell">${SVG[e]}</a><p>${U[e]}</p></div>`).join('')}</div>
+        </div>
+        <div class="Perf_2 Ct h90" style="width:300px;overflow:hidden scroll"></div>
+        <div class="Perf_3 Ct Gap"></div>`))
+    }
+</script>
+
+<script>// Iniciação 
+    Onloads('body') ; Get_User()
+    async function PosLogin(U){
+        USUARIO = U
+        LOG('✅ Perfil Logado!')
+        TogCSSBody(U.Css.Base,U.Css.Tema,U.Css.Cor)
+        Inn_Perfil(U)
+        NavPag(Atual.Pag)
+        ;(await SB_GETT('BS',100)).forEach(e=>BS[e.Tabela]=e)
+        const data  = await SB_GETT('ARTE',null,'*,Rasc:RASC(*)') ; fazJJJ('ARTE',data)
+        //const data2 = await SB_GETT('MPAG') ; fazJJJ('MPAG',data2) // só chamar quando Clicar no Saldo
+        Int(U)
+    }
+
+    async function Int(U){
+        Tm_Perfil(U)
+        Acc_Artes(U)
+        Tm_Artes (U)
+        ListDSNGrs=await GetDsngUsers()  // se for ADM chama a Lista dos Designers
+        O.Dsng = ListDSNGrs.map(e=>e.User) // Criar a Lista de Designers
+        Load_Perfis($('#Todo_Dsng'),ListDSNGrs.reverse())
+        Load_Perfis($("#List_Dsng"),ListDSNGrs.reverse(),'Rclh')
+    }
+</script>
+
+<script> // Gambiarra
+    Add($$('select'),'vigem')                                                 /*GAMBIARRA*/ // só pra mudar a cor do placeholder Select
+    $$('select').forEach(s=>s.addEventListener('change',()=>Rmv(s,'vigem')))  /*GAMBIARRA*/
+
+    // Botão de Solicitar Nova arte (ele Cria a Nova Linha)
 </script>

@@ -1,23 +1,24 @@
 const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
-const _Bol   =v=> v !== '_'
-const _par   =s=>(([Ty,Id,Cl,Tm,Bj,Sc]) => ({Ty,Id,Cl,Tm,Bj:_Bol(Bj),Sc:_Bol(Sc)}))(s.split('-'))
-const d_r    =e=>_par(typeof e == "string" ? e : e.dataset.r)
-const d_R    =e=>     typeof e == "string" ? e : e.dataset.r
-const RR     =(r)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
-const rr     =(r)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
-const $r     =(...arr)=>{const K=arr.filter(v=>v!=null&&v!=="").join('-') ; return K ? $(`[data-r="${K}"]`) : null} // da pra simplificar esta Limpeza
-const Rx7    =(...arr)=>`.P-P${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // nem todos tem .P-P isso pode dar BO depois
-const Rx8    =(...arr)=>    `${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // esse é pra usar em Tfoot justamente pq ele não tem .P-P
-const __tr   =e=>e.closest('[class^="tr-"]')
-const PrePos =(div,Clone,Ps)=>Ps == "<" ? After(div,Clone) : Befor(div,Clone)
-const SELE   =(ev,Eu)=>{ev.preventDefault() ; Tog(Eu,'SEL')}
-const ClnObjs=(obj,bs)=>CleanObj(Object.fromEntries(ObjEtr(obj).filter(([k])=>{const r = bs[k] ; return r && r[1] !== 'I' && r[0] !== 'X' && r[1] !== 'A'})))
-const MyEval =(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
-const BSJsn  =(Typ,Col)=>BS[Typ].Json[Col]
-const BsJs   =(Typ,Col,Mod)=>BSJsn(Typ,Col)[Mod] // Acessar o Json do BS
-const OjKy   =Typ=>ObjKey(BS[Typ].Json)
-const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
+    const _Bol   =v=> v !== '_'
+    const _par   =s=>(([Ty,Id,Cl,Tm,Bj,Sc]) => ({Ty,Id,Cl,Tm,Bj:_Bol(Bj),Sc:_Bol(Sc)}))(s.split('-'))
+    const d_r    =e=>_par(typeof e == "string" ? e : e.dataset.r)
+    const d_R    =e=>     typeof e == "string" ? e : e.dataset.r
+    const RR     =(r)=>$$(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
+    const rr     =(r)=> $(`td${(isArr(r)?r:[r]).map(k=>`[data-r*="${k}"]`).join('')}`)
+    const $r     =(...arr)=>{const K=arr.filter(v=>v!=null&&v!=="").join('-') ; return K ? $(`[data-r="${K}"]`) : null} // da pra simplificar esta Limpeza
+    const Rx7    =(...arr)=>`.P-P${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // nem todos tem .P-P isso pode dar BO depois
+    const Rx8    =(...arr)=>    `${(arr).map(k=>`[data-r*="${k}"]`).join('')}` // esse é pra usar em Tfoot justamente pq ele não tem .P-P
+    const __tr   =e=>e.closest('[class^="tr-"]')
+    const PrePos =(div,Clone,Ps)=>Ps == "<" ? After(div,Clone) : Befor(div,Clone)
+    const SELE   =(ev,Eu)=>{ev.preventDefault() ; Tog(Eu,'SEL')}
+    const ClnObjs=(obj,bs)=>CleanObj(Object.fromEntries(ObjEtr(obj).filter(([k])=>{const r = bs[k] ; return r && r[1] !== 'I' && r[0] !== 'X' && r[1] !== 'A'})))
+    const MyEval =(Stg,e)=>Function('e',`return ${Stg}`)(e) // chamar o Eval
+    const BSJsn  =(Typ,Col)=>BS[Typ].Json[Col]
+    const BsJs   =(Typ,Col,Mod)=>BSJsn(Typ,Col)[Mod] // Acessar o Json do BS
+    const OjKy   =Typ=>ObjKey(BS[Typ].Json)
+    const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
+    const Eximg  =["jpg","jpeg","png","gif","webp","svg"]
 
     function fazJJJ(Typ,dados){
         const Acc = {}
@@ -28,40 +29,6 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
         JJ[Typ]   = ArrtoOBJ(J[Typ],'Id')
         for(const col in Acc){JJJ[AA(col)]=Acc[col]}
     }
-    const DarJJ = (M,T,R,C,V,Lv2Arr)=>{
-        const Lv2 = Lv2Arr && (([pT,pR,pC]) => ({pT,pR,pC}))(Lv2Arr)
-        const j = J[T], k = JJ[T]; if (!j || !k) return
-        let o, jL, jjL, parent
-        if (Lv2){
-            parent = J[Lv2.pT]?.find(e => e.Id == Lv2.pR)
-            if (!parent) return
-            if(M!=='Add'){
-                jL   = parent[Lv2.pC]?.find(e => e.Id == R)
-                jjL  = JJ[Lv2.pT]?.[Lv2.pR]?.[Lv2.pC]?.find(e=>e.Id==R)
-            }
-        } else o = j.find(e => e.Id == R)
-
-        switch(M){
-            case 'Add':{
-                const n = typeof V=='object'?V:{Id:R,[C]:V}
-                if(Lv2) {   if(!parent[Lv2.pC]) parent[Lv2.pC]=[] ; parent[Lv2.pC].push(n)
-                            if(    !JJ[Lv2.pC]) JJ[Lv2.pC]={}     ;     JJ[Lv2.pC][R]=n}
-                else { j.push(n); k[R]=n}
-                break;
-            }
-            case 'Edt':
-                if(Lv2){if(jL)jL[C]=V ; if(jjL)jjL[C]=V}
-                else { if(o) o[C]=V; if(k[R]) k[R][C]=V}
-                break;
-            case 'Del':
-                if(Lv2) { const i=parent[Lv2.pC].findIndex(e=>e.Id==R); if(i>=0) parent[Lv2.pC].splice(i,1); if(JJ[Lv2.pC]) delete JJ[Lv2.pC][R]}
-                else { const i=j.findIndex(e=>e.Id==R); if(i>=0) j.splice(i,1); delete k[R]}
-        }
-        const LOG1 = Lv2 ? jL : o
-        const LOG2 = Lv2 ? jjL : k[R]
-        const iguais = JSON.stringify(LOG1) === JSON.stringify(LOG2)
-        //LOG(`Const Atualizadas! ${M}, ${iguais}`)
-    }
     function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
         if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
         if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
@@ -70,7 +37,7 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     function VAL(e){
         const R = d_r(e)
         const val = 
-                ['Edit','Fixo','Sugg','Soma','Bndj'].includes(R.Tm) ?     e.textContent.trim()
+                  ['Edit','Fixo','Sugg','Soma','Bndj'].includes(R.Tm) ?     e.textContent.trim()
                 : ['Ssvg','Imgs','Link'              ].includes(R.Tm) ?  Nm(e).trim()
                 : ['Valr','Mdds','Auto','Sync'       ].includes(R.Tm) ? Num(e.textContent.trim())
                 : ['Data','Inpt','Slct','Text'       ].includes(R.Tm) ?     e.value
@@ -96,6 +63,12 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
         if(!Etp){return ''}
         return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
                 <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
+    }
+    const GrifTxt=(t,Regex)=>{
+        if(!Regex){return t} ; const [Rx,Aa,_C] = Regex
+        const Rgx=new RegExp(_C?Rx:Acnto3(Rx),Aa?'':'i')
+        const m=Rgx.exec(t); if(!m)return t; const i=m.index,f=i+m[0].length
+        return t.slice(0,i)+`<strong>${t.slice(i,f)}</strong>`+t.slice(f)
     }
     function Destak(j,R){ // Pintar o Destak
         if(!j.Stts){return ''}
@@ -155,7 +128,19 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
     const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
 
+
+
+
+
+
+
+
+
+
 //===========================IMAGENS===========================
+    function SrcsIMG(src,R){return `${src}`.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`}
+    function SellFilesIMG(Inpt){const file = Inpt.files[0] ; $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file) ; $('span',Pai(Inpt)).textContent = file.name} // Fazer isso Ficar imbutido dentro da Função do input Files
+
     async function ImgLowQuality(src,mod='Low'){
         const CFG = {Low: { w: 35,  h: 17,  q: 0.3 },
                      Med: { w: 300, h: 300, q: 0.7 },
@@ -173,77 +158,54 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
             };img.onerror = () => res(null) ; img.src = src;
         });
     }
-    async function ImgUPP(Inpt,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
-        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-        const _R  = d_r(R)
-        const f   = Inpt.files[0]                          // Pega o único arquivo
-        const Ext = RxExt(f.name)                          // Pega a Extensão do Arquivo
-        const src = URL.createObjectURL(f)                 // src temporário
-        const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
-        const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
-        const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-        //J.IMGS[Nome] = f.name
-        if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
+    async function ImgUPP(File,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
+        const Ext = RxExt(File.name)                          // Pega a Extensão do Arquivo
+        const src = URL.createObjectURL(File)                 // src temporário
+        
+        /*DOM*/const _R  = d_r(R)
+        /*DOM*/const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
+        /*DOM*/const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
+        /*DOM*/const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
+        /*DOM*/if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
+        /*DOM*/if(Eximg.includes(Ext)){EditCell(PP,`${Nome}.${Ext}`) ; DarVAL(PP,src)}
+
         if(Eximg.includes(Ext)){
-            EditCell(PP,`${Nome}.${Ext}`)
-            DarVAL(PP,src)
             Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
             Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
-            if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${Nome}.svg` ,true)
-            }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg é um arquivo!')}
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`Img/${Nome}.svg` ,true)
+            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
+        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
     }
-    function SrcsIMG(src,R){
-        return `${src}`.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`
+
+    async function ImgUPP2(File,Nome,Past){
+        const Ext = RxExt(File.name)
+        const src = URL.createObjectURL(File)
+        if(Eximg.includes(Ext)){
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`${Past}/${Nome}.svg`,true)
+            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`${Past}/${Nome}.webp`,true)}
+        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
     }
-    function SellFilesIMG(Inpt){ // Fazer isso Ficar imbutido dentro da Função do input Files
-        const file = Inpt.files[0]
-        $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file)
-        $('span',Pai(Inpt)).textContent = file.name
-    }
-    function AbrirImg(img,Nome,R){
+    
+    function AbrirImg(img,Nome,R,Past){
         const X   = Nome ? 'Plc' : 'Up'
+        const Pasta=Past||'Img'
         const _R  = d_r(R)
-        const Pre = BSJsn(_R.Ty,_R.Cl).SRC ?? '' // Prefixo de Imagens se Tiver
+        const Pre = BSJsn(_R.Ty,_R.Cl)?.SRC ?? ''  // Prefixo de Imagens se Tiver
+        const nome= Past ? Nome : `${Pre}${_R.Id}` // isso é só uma Gambiarra, é só pra dizer que se for Past, veio da Tabela DSNG
+        const Q   = Past ? '2':''
         const W   = img.naturalWidth > img.naturalHeight
         MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
-                    <img src="${BASE_URL}Img/${Nome}">
+                    <img src="${BASE_URL}${Pasta}/${Nome}">
                     <div class="casusa Cl ${W ? 'w100':'h100'}">
-                        <span>Nome: ${Nome}</span> <div>Id: ${_R.Id}</div>
-                        <span>SALVAR COM NOME: ${Pre}${_R.Id}</span>
+                        <p>Nome: ${nome}</p><p>Id: ${_R.Id}</p>
                         <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                        <button onclick="XModal(this);ImgUPP($('input',Pai(this)),'${Pre}${_R.Id}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
+                        <button onclick="XModal(this);ImgUPP${Q}($('input',Pai(this)).files[0],'${nome}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
                     </div>
                 <div>`)
         if(X=='Up'){$('.MdalIMG input').click()}
     }
-    async function ImgUPP2(Inpt,Nome,R){
-        const Eximg = ["jpg","jpeg","png","gif","webp","svg"]
-        // const _R  = d_r(R)
-        // const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
-        // const Pay = _td(Pai(_td(PP)))
-        // const T_T = Pay ? Pai($('.T-T',Pay)) : null
 
-        for(let i=0;i<Inpt.files.length;i++){
-            const f   = Inpt.files[i]
-            const Ext = RxExt(f.name)
-            const src = URL.createObjectURL(f)
-            const NomeFinal = `${Nome}_${i}` // evita sobrescrever
-            J.IMGS[NomeFinal] = f.name
-            // if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${_R.Id}',this)" src="${src}">`}
 
-            if(Eximg.includes(Ext)){
-                //EditCell(PP,`${NomeFinal}.${Ext}`)
-                //DarVAL(PP,src)
-
-                Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${NomeFinal}.webp`,true)
-                Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${NomeFinal}.webp`,true)
-
-                if(Ext=='svg'){Sb_UPLOAD(supaBASE,f,`Img/${NomeFinal}.svg`,true)
-                }else{Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`Img/${NomeFinal}.webp`,true)}
-            }else{LOG('não é nem Img nem Svg é um arquivo!')}
-        }
-    }
     async function FileUP(Inpt,Nome,R){
         //const _R=d_r(R),PP=$(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`)
         for(let i=0;i<Inpt.files.length;i++){
@@ -253,6 +215,12 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
             Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
         }
     }
+
+
+
+
+
+
 //===========================LINK===========================
     function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
         if(Ipt.value){
@@ -309,7 +277,7 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
         const V = val == "" ? "" : val =='null' ? null : (val || VAL(e))
         if(V==Nm(e)){return} // não foi Aterado
         const R = d_r(e)
-        LOG(e,val)
+        LOG(R.Ty,R.Id,{[R.Cl]:V})
         if(!RT){Sb_EDIT(R.Ty,R.Id,{[R.Cl]:V})}
     }
     async function Sb_EDIT(Typ,Id,Obj,Alert){ // ⭐⭐⭐⭐⭐
@@ -318,6 +286,7 @@ const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
             else     {MyAlert(Alert||`✏️ SB_EDIT(${Typ},${Id},${JSON.stringify(Obj)})`)}
         } catch(err) {ERR('Erro:',err) ; MyAlert('Erro ao atualizar Celula')}
     }
+
     function Supa_RealTime(crud,New,Typ,Old){ // ⭐⭐⭐⭐⭐
         if(crud==='INSERT'){
             const k=`${Typ}_${New.Id}` ; if(RT_Add.has(k)){RT_Add.delete(k) ; return}

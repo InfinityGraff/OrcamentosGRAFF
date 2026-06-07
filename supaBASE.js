@@ -2,6 +2,7 @@ const SUPABASE_URL      = "https://adxigvfxtafvlmpvwwvb.supabase.co"
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkeGlndmZ4dGFmdmxtcHZ3d3ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1Njc1NTEsImV4cCI6MjA2NzE0MzU1MX0.wc90qDuSNhtolJBd4qLEux3xCwJwPuTTFb3gZMKUBYU"
 const supaBASE          = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)
 const BASE_URL          = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/object/public/uploads/`
+const BASE_URL2         = `https://adxigvfxtafvlmpvwwvb.supabase.co/storage/v1/render/image/public/uploads/`
 
 const SB_ERRORS={
     "New password should be different from the old password":"A nova senha deve ser diferente da atual",

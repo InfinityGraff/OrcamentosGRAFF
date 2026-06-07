@@ -9,176 +9,195 @@
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
   <link  href="./CssGRAFF.css" rel="stylesheet">
+  <script src="./BaseGRAFF.js"></script>
+  <script src="./BiblGRAFF.js"></script>
   <script src="./SB_Crud.js"      ></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="./supaBASE.js"></script>
 </head>
 
 <style>
-    :root  {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff}
-    .Config{gap:12px;margin-bottom:14px ; z-index: 100;}
-    .Tudo {width: 100vw;}
+    :root       {--g:12px;--w:220px;--bg:#f6f7fb;--cb:#fff}
+    .Config     {gap:12px;margin-bottom:14px ; z-index: 100;}
+    .Tudo       {width: 100vw;}
     #PesqImgs p {font-size:13px;color:#ffffff;margin-left: 10px;}
-    .Bloco {display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
-    .Alven {display:block;column-width:var(--w)}
-    .Boxy {display:inline-block;width:100%;overflow:hidden ; border-radius:10px}
+    .Bloco      {display:grid ;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))}
+    .Alven      {display:block;column-width:var(--w)}
+    .Boxy       {display:inline-block;width:100%;overflow:hidden ; border-radius:10px} /*Unir com Box de verdade*/
     .Alven .Boxy{margin:0 0 var(--g) 0}
     .Pasta .Boxy{display:block}
-    #Galery{padding: 0px 30px;}
-    #Galery.Crop .Boxy img       {object-fit:cover  ;width:100%;height:200px}
-    #Galery.Crop.cover .Boxy img {object-fit:contain;width:100%;height:200px}
+    #Galery.Crop .Boxy img        {object-fit:cover  ;width:100%;height:200px}
+    #Galery.Crop.cover .Boxy img  {object-fit:contain;width:100%;height:200px}
     #Galery.Alven.cover img       {max-width: var(--w);max-height: var(--w);}
-    #Galery.Gap .Boxy     {border-radius:0px;margin:0px;background:transparent;box-shadow:none}
-    #Galery.Gap .Boxy .iw {padding:0px;}
-    #Galery.Txt .mt   {display: none}
-    #Galery[name="Pasta"].Bloco{display:block}
-    #Galery[name="Pasta"].Alven{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))} /*Depois ver se eu quero msm isso*/
+    #Galery.Gap .Boxy             {border-radius:0px;margin:0px;background:transparent;box-shadow:none}
+    #Galery.Gap .Boxy .iw         {padding:0px;}
+    #Galery.Txt .mt               {display: none}
+    #Galery[name="Pasta"].Bloco   {display:block}
+    #Galery[name="Pasta"].Alven   {display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(var(--w),1fr))} /*Depois ver se eu quero msm isso*/
 
     .Boxy .iw    {padding:8px}
     .Boxy .iw a  {top:15px;left:15px;background:#00000073;color:#ffffff;font-size:11px;padding:4px;pointer-events:none ; border-radius:5px}
     .Boxy .iw img{width:100%;height:auto;max-width:100%;transition:object-fit .3s ease ; border-radius:6px}
     .Boxy .mt    {padding:12px} .mt p{font-size:14px;font-weight:bold} .mt a{font-size:13px;color:#666}
 
-    .Pasta {margin-bottom:20px;border-radius:10px;overflow:hidden}
+    .Pasta              {margin-bottom:20px;border-radius:10px;overflow:hidden}
     .Pasta     > a      {gap:8px;padding:10px 14px;cursor:pointer;background:#e9e9ef57;font-weight:bold}
     .Pasta     > a:hover{background:#e9e9ef7a}
     .Pasta     > a svg  {width:20px;height:20px;transition:transform .3s ease}
     .Pasta.Atv > a svg  {transform:rotate(-90deg)}
-    .Pasta     > div{padding:12px} /*Fazer isso acontecer com uma animação*/
-    .Pasta.Atv > div{display: none}
+    .Pasta     > div    {padding:12px} /*Fazer isso acontecer com uma animação*/
+    .Pasta.Atv > div    {display: none}
 
-    #RoloTop            {overflow: hidden; margin: 10px 0px;}
-    #RoloTop  .Grup     {overflow-x:scroll;flex-wrap:nowrap ; margin-top: 20px; padding: 10px 20px;}
-    #RoloTop  h3        {left: 50%;transform: translateX(-50%) ; top: 8px; font-size: 20px}
-    #RoloTop  .Seta     {top: 50%;transform: translateY(-50%);z-index:5;background:#cfcfcfc7;padding:5px;} .Seta.St1{left :5px} .Seta.St2{right:5px}
-    #RoloTop  .Seta svg {width:20px;height:20px}
-    #RoloTop ::before   {position: absolute; content: "";top: 0;left: 0;right: 0;bottom: 0;pointer-events: none;z-index: 2;box-shadow:inset 15px 0 20px -15px rgba(0,0,0,0.6),inset -15px 0 20px -15px rgba(0,0,0,0.6);}
+    .RolImg             {overflow: hidden; margin: 10px 0px;}
+    .RolImg  .Grup      {overflow-x:scroll;overflow-y: hidden;flex-wrap:nowrap ; margin-top: 20px; padding: 10px 20px;}
+    .RolImg  h3         {left: 50%;transform: translateX(-50%) ; top: 8px; font-size: 20px}
+    .RolImg  .Seta      {top: 50%;transform: translateY(-50%);z-index:5;background:#cfcfcfc7;padding:5px;} .Seta.St1{left :5px} .Seta.St2{right:5px}
+    .RolImg  .Seta svg  {width:20px;height:20px}
+    .RolImg::before     {position: absolute; content: "";top: 0;left: 0;right: 0;bottom: 0;pointer-events: none;z-index: 2;box-shadow:inset 15px 0 20px -15px rgba(0,0,0,0.6),inset -15px 0 20px -15px rgba(0,0,0,0.6);}
     
-    #RoloTop .Boxy          {transition: all 0.1s ease-in-out ; overflow: visible;}
-    #RoloTop .Boxy:hover    {transform: scale(1.05) rotate(1deg)}
-    #RoloTop .Boxy .OO      {border: 1px solid #ffffff00}
-    #RoloTop .Boxy:hover .OO{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
+    .RolImg .Boxy          {transition: all 0.1s ease-in-out ; overflow: visible;}
+    .RolImg .Boxy:hover    {transform: scale(1.05) rotate(1deg)}
+    .RolImg .Boxy .OO      {border: 1px solid #ffffff00}
+    .RolImg .Boxy:hover .OO{border: 1px solid #ff62ff;box-shadow: 0 0 30px #ff00ffb9}
     
     @media(max-width:600px){:root{--w:140px}}
-    .NONE{display: none !important;}
-
-    .Ativado{background: #ff62ff;}
+    /*.NONE{display: none !important;}*/
+    .OO.Atv{background: #ff62ff;border: solid 1px #ff9dff}
 </style>
 
 <script> // Biblioteca
-  const Dt = {
-      Gvt       :{w:123,h:300},
-      Prlm      :{w:170,h:170},
-      Tnq       :{w:170,h:170},
-      Geladeira :{w:170,h:300},
-      Status    :{w:170,h:300},
-      Wind      :{w:143,h:300},
-      Camisa    :{w:280,h:170},
-      Personagem:{w:170,h:170},
-  }
-  const Grup = 'Cat'
-  const ClickEmIMG=Img=>Tog(Img,'Ativado')
-  const For2=e=>Array.from({length:e},(_,x)=>x+1)
+  const Atual = {Pag:'GLRY'} ; let USUARIO = ''
+  const Grup  = 'Cat'
+  const Dt    = {Gvt:'123x300',Prlm:'170x170',Tnq:'170x170',Gldr:'170x300',Stts:'170x300',Wind:'143x300',Cams:'280x170',Pers:'170x170'}
+  function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{Add_N($$('.bndj'))}}
 </script>
 
-<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo">
-  <div id="saida"></div>
-      <div class="Config Ct Stky ">
-        <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
-        <div onclick="Tog($('#Galery'),'Crop' )" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <div onclick="Tog($('#Galery'),'cover')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <div><select onchange="Nm($('#Galery'),this.value);Render(this.value)"><option value="Nome">Por Nome</option><option value="Pasta">Por Tipo</option></select></div>
-        <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
-        <div onclick="Tog($('#Galery'),'Gap')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <div onclick="Tog($('#Galery'),'Txt')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
-        <input id="MettaDados" type="text" placeholder="Novo Metta Dados"> <!--Usar meu MySelect-->
-        <button onclick="OKMettaDados($('#MettaDados'))">OK Metadados</button>
+<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" onclick="NoneBndj()">
+  <header class="Bt w100" style="grid-area:A">
+      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+      <!-- Perfil --><div id="H_Login" class="Ct"> 
+          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
       </div>
-      <div id="RoloTop" class="Ct"></div>
-      <div id="Galery" class="Alven"></div> <!--Começa como Alvenaria-->
+      <div id="MAIS" class="Abslt none bndj Ct">
+          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+      </div>
+  </header>
+
+  <div id="PAGES" style="grid-area:C"> <!--isso era pra ser main-->
+    <div id="Pag_GLRY" class="Cl p20">
+        <div class="Config Ct Stky">
+          <div onclick="TrcTog($('#Galery'),'Bloco','Alven')" onload="Tm_Interup(this,SVG.Alvn,SVG.Blok)"></div>
+          <div onclick="Tog($('#Galery'),'Crop' )" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+          <div onclick="Tog($('#Galery'),'cover')" onload="Tm_Check(this,SVG.Crop('',''))"></div>
+          <div><select onchange="Nm($('#Galery'),this.value);Tm_Render(this.value)" onload="Inn(this,Tm_Opt(['Tipos','Nome','Pasta','Rolo']))"></select></div>
+          <div id="PesqImgs" class="Ct"><input placeholder="Buscar..." oninput="Pesq(this,event)"><p>0 imgs</p></div>
+          <div onclick="Tog($('#Galery'),'Gap')"   onload="Tm_Check(this,SVG.Crop('',''))"></div>
+          <div onclick="Tog($('#Galery'),'Txt')"   onload="Tm_Check(this,SVG.Crop('',''))"></div>
+          <input id="MettaDados" type="text"   placeholder="Novo Metta Dados"> <!--Usar meu MySelect-->
+          <button onclick="OKMettaDados($('#MettaDados'))">OK Metadados</button>
+        </div>
+        <div id="Galery" class="w100 p20 Alven"></div> <!--Começa como Alvenaria-->
+    </div>
+  </div>
 </body>
 
-<script>
-  function Pesq(Eu,Ev){
-    let Cont = 0
-    const qq = aa(Vll(Eu).trim())
-    $$('.Boxy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
-    $$('.Pasta').forEach(e=>$$('.Boxy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
-    Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
-  }
+<script> // Funcionalidades
+    function Pesq(Eu,Ev){
+      let Cont = 0
+      const qq = aa(Vll(Eu).trim())
+      $$('.Boxy').forEach(e=>{Rmv(e,'NONE');if(aa(Inn($('.mt',e))).includes(qq)){Rmv(e,'NONE');Cont+=1}else{Add(e,'NONE')}})
+      $$('.Pasta').forEach(e=>$$('.Boxy',e).every(b=>Coten(b,'none')) ? Add(e,'NONE') : Rmv(e,'NONE'))
+      Inn('#PesqImgs p',`${Cont} img${Cont>1?'s':''}`)
+    }
 
-  function GearCanv(e){
+    function OKMettaDados(Inpt){
+      $$('.OO.Atv').forEach(e=>{
+        const IDD = Nm(e)
+        const OBJ = JJ['STOK'][IDD].Tags
+        const NEW = OBJ.Otro.push(Inpt.value)
+        Sb_EDIT('STOK',IDD,{['Tags']:NEW})
+        DTV(e)
+      })
+    }
+</script>
+
+<script> // Templates
+  const GearCanv=e=>{
     const i1 = new Image() ; const i2 = new Image()
     const [Tip,ID] = e.id.split('_')
+    const SRC = JJ['STOK'][ID].src
     i1.src = `Kits/Mokup/${Tip}.webp`
-    i2.src = `Kits/Estampas/${ID}.webp`
+    i2.src = `Kits/${SRC}`
     i1.onload=()=>{
-      e.width = Dt[Tip].w; e.height = Dt[Tip].h
-      const ctx = e.getContext('2d')
-      ctx.drawImage(i2,0,0,Dt[Tip].w,Dt[Tip].h)
-      ctx.drawImage(i1,0,0,Dt[Tip].w,Dt[Tip].h)
+      const [W,H]=Dt[Tip].split('x')
+      e.width = W ; e.height = H
+      const ctx=e.getContext('2d')
+      ctx.drawImage(i2,0,0,W,H)
+      ctx.drawImage(i1,0,0,W,H)
     }
   }
 
-  const Tm_Boxyy=(i,Uso,Top)=>{
-    const Arr = Uso=='Canvas' ? Top : [Uso]
-    return Arr.map(e=>
+  const Tm_Boxyy=(i,Top)=>{
+    const Arr = Top ? [Top] : i.Uso=='Canvas'||i.Uso=='Imagem' ? i.Cnvs : [i.Uso]
+    return Arr.map(Top=>
      `<div class="Boxy">
       <div class="iw Rltv"><a class="Abslt none">${i.src}</a>
-        ${Uso=='Canvas' ? `<canvas id="${e}_${i.Id}" class="Rd PT Cnvs OO"></canvas>` : `<img src="./Kits/${i.src}" name="${i.Id}" class="OO" onclick="ClickEmIMG(this)" loading="lazy">`}
+        ${i.Uso=='Canvas' ? `<canvas id="${Top}_${i.Id}" name="${i.Id}" class="Rd PT Cnvs OO" onclick="TOV(this)"></canvas>` :
+                            `<img src="./Kits/${i.src}"  name="${i.Id}" class="           OO" onclick="TOV(this)" loading="lazy">`}
       </div>
-      <div class="mt"><p>${i.src}</p><a>${i.Cat}-</a><a>${i.Id}-</a><a>${Uso}-</a><a>${ObjVal(i.Tags).join(',')}</a></div>
+      <div class="mt"><p>${i.src}</p><a>${i.Cat}-</a><a>${i.Id}-</a><a>${i.Uso}-</a><a>${ObjVal(i.Tags).join(',')}</a></div>
     </div>`).join('')
-}
-
-  function OKMettaDados(Inpt){
-    $$('.Ativado').forEach(e=>{
-      const IDD = Nm(e)
-      const OBJ = JJ['STOK'][IDD].Tags
-      const NEW = OBJ.Otro.push(Inpt.value)
-      Sb_EDIT('STOK',IDD,{['Tags']:OBJ})
-      Rmv(e,'Ativado')
-    })
   }
 
-  function Render(Modo){
-    const Tops = ['Gvt','Prlm','Tnq']
-    const Tm_Past = ObjEtr(J['STOK'].reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
+  function Tm_Render(Modo){
+    const Tm_Boxx =(Arr,Top)=>Arr.map(e=>Tm_Boxyy(e,Top)).join('')
+    const Tm_Past =Arr=>ObjEtr(Arr.reduce((acc,i)=>{(acc[i[Grup]]??=[]).push(i);return acc},{})).map(([k,v])=>
       `<div class="Pasta"><a class="Start" onclick="TOV(Pai(this))">${SVG.Past}${k}</a>
-        <div class="Alven">${v.map(i=>i.Uso.split(',').map(u=>Tm_Boxyy(i,u,Tops)).join('')).join('')}</div>
-      </div>`).join('')
-    Inn($('#Galery'),'')
-    $('#Galery').insertAdjacentHTML("beforeend",Modo=='Nome'?J['STOK'].map(i=>i.Uso.split(',').map(u=>Tm_Boxyy(i,u,Tops)).join('')).join(''):Tm_Past) // Aqui Dentro eu tenho que chamar tm_Boxyy 3 vezes um pra cada tanque,Prlm e Gvt
-    $$('#Galery .Cnvs').forEach(e=>GearCanv(e))
-  }
+        <div class="Alven">${Tm_Boxx(v)}</div></div>`).join('')
+    const Tm_Rolo=Arr=>ObjKey(Dt).map(Top=>{return `
+      <div class="RolImg Rltv Rd Rw">
+        <a class="Abslt Ct RD Seta St1">${SVG.Mais}</a>
+        <a class="Abslt Ct RD Seta St2">${SVG.Mais}</a>
+        <h3 class="Abslt">${Top}</h3>
+        <div class="Grup gap w100 Start">${Tm_Boxx(Arr.filter(e=>e.Cnvs.includes(Top)),Top)}</div>
+    </div>`}).join('')
 
-  function Tm_BoxScroll(){   
-    const RolTop = $('#RoloTop')
-    const Find   = J['STOK'].filter(e=>e.Uso=='Canvas')
-    ObjKey(Dt).forEach(Top=>{
-      RolTop.insertAdjacentHTML('beforeend',`
-        <div class="RolImg Rltv Rd Rw w90">
-          <a class="Abslt Ct RD Seta St1">${SVG.Mais}</a>
-          <a class="Abslt Ct RD Seta St2">${SVG.Mais}</a>
-          <h3 class="Abslt">${Top}</h3>
-          <div class="Grup gap w100 Ct">${Find.filter(e=>e.Cnvs.includes(Top)).map(e=>Tm_Boxyy(e,e.Uso,[Top])).join('')}<div>
-      </div>`)
-      For2(Dt.Qnt).map(e=>GearCanv(e,Top,Dt))
-    })
-    $$('#RoloTop .Cnvs').forEach(e=>GearCanv(e))
+    const Mod = {
+      Nome :arr=>Tm_Boxx(arr),
+      Pasta:arr=>Tm_Past(arr),
+      Rolo :arr=>Tm_Rolo(arr.filter(e=>e.Uso=='Canvas'||e.Uso=='Imagem'))
+    }
+        
+    Inn($('#Galery'),'')
+    AddTrue($('#Galery'),'Ct'   ,Modo=="Rolo")
+    AddTrue($('#Galery'),'Alven',Modo!="Rolo")
+    $('#Galery').insertAdjacentHTML("beforeend",Mod[Modo](J['STOK']))
+    $$('#Galery .Cnvs').forEach(e=>GearCanv(e))
   }
 </script>
 
 <script> // Iniciar
-  Onloads('body')
-  async function Int(){
-    const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-    const data = await SB_GETT('STOK')
-    fazJJJ('STOK',data)
-    Render('Nome')
-    //Tm_BoxScroll()
+  Onloads('body') ; Get_User()
+  async function PosLogin(U){
+    USUARIO = U
+    LOG('✅ Perfil Logado!')
+    TogCSSBody(U.Css.Base,U.Css.Tema,U.Css.Cor)
+    Inn_Perfil(U)
+    NavPag(Atual.Pag)
+    ;(await SB_GETT('BS',100)).forEach(e=>BS[e.Tabela]=e)
+    const data = await SB_GETT('STOK') ; fazJJJ('STOK',data)
+    Tm_Render('Rolo')
   }
-  Int()
 </script>
 
 </html>

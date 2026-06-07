@@ -122,12 +122,7 @@
         Add(td,'GrifNot1')             // Div agora Possúi GrifNot do Tipo 1
         Inn($('.grifoo i',td),Val[2])  // Atribuir o Valor pra dentro do GrifNot
     }
-    const GrifTxt=(t,Regex)=>{
-        if(!Regex){return t} ; const [Rx,Aa,_C] = Regex
-        const Rgx=new RegExp(_C?Rx:Acnto3(Rx),Aa?'':'i')
-        const m=Rgx.exec(t); if(!m)return t; const i=m.index,f=i+m[0].length
-        return t.slice(0,i)+`<strong>${t.slice(i,f)}</strong>`+t.slice(f)
-    }
+
     function DOM_Grif(Typ,Regex){
         TRs2(Typ,'1').forEach(tr=>{
             $$('.GrifNot1',tr).forEach(e=>Rmv(e,'GrifNot1'))
@@ -560,7 +555,7 @@
         const _R    = d_r(R) ; const COL = AA(_R.Cl)
         const Tabl = $('table',_td(Eu)) ; Rmv_N(Tabl)
         if(['SERV','PGMT'].includes(COL)){
-            const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
+            const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,typ:Aa('PDDS'),dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
             // data.Id.split('_')[1]=='1' se for o primeiro cria tudo se não só adiciona
             const Find = RmvKeys(data,Ryp[`${_R.Ty}_${_R.Cl}`])
             Befor($('tbody',Tabl),Tm_Tr(COL,[Find])) // Agora Limpar as Colunas desnessesárias
