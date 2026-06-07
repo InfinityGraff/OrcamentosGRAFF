@@ -102,7 +102,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         ImUP:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
-        Data:(e,R,Rgx  )=>`<p class="P-P Ct" name="${YMD(e)}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(DMY(e))}</p><input type="date" data-R="${R}" class="NONE" value="${YMD(e)}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
+        Data:(e,R,Rgx  )=>`<p class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
         //Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
         OKAY:(e,R,Rgx  )=>['Add','Rmv'].map(E=>`<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="LinkaR(this,'${E=='Rmv'?'null':d_r(R).Id}')" src="./CrudSB/${E}Link.webp">`).join(''),
