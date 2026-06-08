@@ -209,103 +209,140 @@
     </script>
 </div>
 
+<style>
+    #Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
+    #Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
+    #DivIMGProd     #Div-Prod {width: 100%}
+    #DivIMGProd.Atv #Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
+
+    #DivIMGProd     #Div-Detalhes {width:  0% ; background: #00df0000}
+    #DivIMGProd.Atv #Div-Detalhes {width: 39% ; background: #00df0000 ; padding: 8px;}
+    #DivIMGProd     #Div-Detalhes > div {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
+    #DivIMGProd.Atv #Div-Detalhes > div {opacity: 1; pointer-events: auto}
+    #DivIMGProd     .IconDtlh p         {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
+    #DivIMGProd.Atv .IconDtlh p         {opacity: 1; pointer-events: auto}
+    .IconDtlh p            {font-size: 20px}
+    .DivCanvMdd            {height: 75%;width: 100%;padding:8px;}
+
+    #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
+    #Div-Prod span         {margin-left:10px; margin-bottom:10px}
+    #Div-Prod span p       {margin:0px; font-size:9px}
+    #Div-Prod span p strong{font-size:9px}
+    #Div-Prod span img     {margin:5px; height:30px; width:30px}
+    #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
+    .CSS3 #Div-Prod span{color: #ffffff}
+    #Div-Prod .DivVrnts    {margin-top:20px}
+    .DivVrnts .vlM2        {margin-top: 5px;}
+    .DivVrnts .vlM2 a      {font-size: 15px;}
+    .DivVrnts .vlM2 p      {margin: 1px 2px;}
+
+    #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
+    #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
+    #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
+        #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
+        #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
+        #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
+        #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
+
+    #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
+    #Div-Prod .Conteudo{padding-top:10px; z-index:999}
+    :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+                .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+
+    #Div-Prod .Conteudo.Pecq{width:200px}
+    #Div-Prod .Conteudo.Grnd{width:270px}
+    .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
+
+    #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
+    #Div-Prod .BtnCarr        {width: 120px; top:310px   }
+</style>
+<style>
+    .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
+    .BxVlr            {color:#ffffff}
+    .Indisdp          {font-size:6px;transform:rotate(-15deg);top:5px;left:4px}
+    .Armz > a         {right:  0px ; bottom: 0px}
+    .Pecq .Armz       {width: 90px ; height:66px}              .Grnd .Armz       {width:120px ; height:88px}
+    .Pecq .BxVlr      {width: 48px ; height:20px ; margin:1px} .Grnd .BxVlr      {width: 62px ; height:26px ; margin:2px}
+    .Pecq .BxVlr .TMRS{top:5px;left:2px}                       .Grnd .BxVlr .TMRS{top:7px; left:2px}
+    
+    .Pecq .V3         {right:0px;top:1px}                      .Grnd .V3      {right:0px;top:1px}
+    .Pecq .V1         {font-size:   4px}                       .Grnd .V1      {font-size:  6px}
+    .Pecq .TMRS b     {font-size:   7px}                       .Grnd .TMRS b  {font-size:  9px}
+    .Pecq .TMRS p     {font-size:  11px}                       .Grnd .TMRS p  {font-size: 15px}
+    .Pecq .V3         {font-size:   4px}                       .Grnd .V3      {font-size:  7px}
+    
+    .Variate2 a{background: #fd0061; margin: 2px; color: #ffffff;}
+    .Variate2 {margin: 2px}
+
+    .CanvasMedidas.Hmax{width: auto ; height: 100%}
+    .CanvasMedidas.Wmax{width: 100% ; height: auto}
+</style>
+<style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
+    .fotO      {width:150px ; height:160px}
+    .fotO1 img {width:150px ; height:160px}
+    .fotO2 img {width:120px ; height:90px }
+    .fotO2T img{width:75px  ; height:90px }
+    .fotO3 img {width: 150px; height: 53px}
+    .fotO3I img{width: 75px ; height:96px } .fotO3I img:last-child{width:150px ; height:95px }
+    .fotO4 img {width:80px  ; height:80px }
+    .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
+    .fotO6 img {width:150px ; height:53px }
+</style>
+<style>  /*CSS do ORC NovoForm*/
+    #NovoForm{padding:20px 10px;margin-bottom: 5px;}
+    #ORC input,#ORC select{width:100% !important ; margin:0}
+    #ORC   .RS    {font-size:9px  ; margin-right: 3px}
+    #ORC   .RS + a{font-size:15px ; font-weight: bold;}
+    .Final .RS + a{font-size:25px ; font-family:var(--Bold)}
+    .Final .RS    {margin-right:3px}
+    :is(.CSS1,.CSS2) [class^="ORC_CUST_"]{color:#ff6565}.CSS3 [class^="ORC_CUST_"]{color:#c42929}
+    :is(.CSS1,.CSS2) [class^="ORC_CRCT_"]{color:#65b5ff}.CSS3 [class^="ORC_CRCT_"]{color:#146bbd}
+    :is(.CSS1,.CSS2) [class^="ORC_RSUT_"]{color:#48ff00}.CSS3 [class^="ORC_RSUT_"]{color:#2c9402}
+    .CSS3 .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
+    #ORC td{padding: 1px}
+    #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center; opacity: 0.8;}
+    #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
+    #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
+    .Branc{color: #ffffff5d !important}
+    .imita{height: 30px; background: #ffffff11}
+    .sOFF{opacity:0.3}
+    #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
+    #G_Cores p  {width:30px; height:30px; margin:2px}
+    .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
+
+    .CSS1 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
+    .CSS2 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
+    .CSS3 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#6900569c !important} :is(.OrcAdd,.OrcClr) svg{width: 18px;}
+    .OrcRmv     {fill:#ff0000e7 !important} .OrcRmv svg{width:15px}
+    .BtnoQnt.Atv{fill:#690056   !important}
+    .BtnoQnt    {width:15px; height:15px; top: 8px;right: 8px}
+    .oImgs      {width:30px; height:30px}
+    .oImgs svg  {width:100%; height:100%}
+</style>
+
 <body data-Tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
 
     <header class="Bt w100" style="grid-area:A">
-        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-        <!-- Perfil --><div id="H_Login" class="Ct"> 
-            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
-            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-        </div>
-        <div id="MAIS" class="Abslt none bndj Ct">
-            <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-            <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-        </div>
+      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+      <!-- Perfil --><div id="H_Login" class="Ct"> 
+          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+      </div>
+      <div id="MAIS" class="Abslt none bndj Ct">
+          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+      </div>
     </header>
 
     <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
-        <div id="Pag_HOME" class="none"> <!--Dentro era pra ser Section-->
-            <div class="Cl w100">
-                <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
-                    <style>
-                        .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
-                        .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
-                    </style>
-                    
-                    <div class="Cl"><h1>Semana1</h1>
-                        <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana2</h1>
-                        <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana3</h1>
-                        <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana4</h1>
-                        <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <script>
-                        const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
-                        const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
-                        const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
-                        const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
-                        const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
-                        const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
-                        const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
-                        const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
-
-                        function RfreshGrafic(Div,Semn){ 
-                            const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
-                            LOG(ContForn(Filt('GRAD')))
-                            Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
-                            Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
-                            Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
-                            Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
-                        }
-
-                        // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
-                        // as Grades que mais Demoraram, Pedidos que mais Demoraram
-                        // Mostrar mesmo quando tiver Zero
-                    </script>
-                </div>
-            </div>
-        </div>
 
         <div id="Pag_ORC" class="Cl" style="overflow: scroll;">
 
@@ -314,86 +351,6 @@
             <div class="ConfigOrc w100 Ct"><div id="PagPesq_ORC" class="PagPEsq" onload="Inn(this,Load_Pesq('ORC'))"></div></div>
 
             <div id="DivIMGProd" class="Bt w90"> <!--IMAGENS dos PRODUTOS-->
-                <style>
-                    #Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
-                    #Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
-                    #DivIMGProd     #Div-Prod {width: 100%}
-                    #DivIMGProd.Atv #Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
-
-                    #DivIMGProd     #Div-Detalhes {width:  0% ; background: #00df0000}
-                    #DivIMGProd.Atv #Div-Detalhes {width: 39% ; background: #00df0000 ; padding: 8px;}
-                    #DivIMGProd     #Div-Detalhes > div {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
-                    #DivIMGProd.Atv #Div-Detalhes > div {opacity: 1; pointer-events: auto}
-                    #DivIMGProd     .IconDtlh p         {opacity: 0; pointer-events: none ; transition: all 0.3s cubic-bezier(0.8,0,0.8,1)}
-                    #DivIMGProd.Atv .IconDtlh p         {opacity: 1; pointer-events: auto}
-                    .IconDtlh p            {font-size: 20px}
-                    .DivCanvMdd            {height: 75%;width: 100%;padding:8px;}
-
-                    #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
-                    #Div-Prod span         {margin-left:10px; margin-bottom:10px}
-                    #Div-Prod span p       {margin:0px; font-size:9px}
-                    #Div-Prod span p strong{font-size:9px}
-                    #Div-Prod span img     {margin:5px; height:30px; width:30px}
-                    #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
-                    .CSS3 #Div-Prod span{color: #ffffff}
-                    #Div-Prod .DivVrnts    {margin-top:20px}
-                    .DivVrnts .vlM2        {margin-top: 5px;}
-                    .DivVrnts .vlM2 a      {font-size: 15px;}
-                    .DivVrnts .vlM2 p      {margin: 1px 2px;}
-
-                    #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:4px}
-                    #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
-                    #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
-                        #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
-                        #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
-                        #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
-                        #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
-
-                    #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
-                    #Div-Prod .Conteudo{padding-top:10px; z-index:999}
-                    :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
-                                .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
-        
-                    #Div-Prod .Conteudo.Pecq{width:200px}
-                    #Div-Prod .Conteudo.Grnd{width:270px}
-                    .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
-
-                    #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
-                    #Div-Prod .BtnCarr        {width: 120px; top:310px   }
-                </style>
-                <style>
-                    .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
-                    .BxVlr            {color:#ffffff}
-                    .Indisdp          {font-size:6px;transform:rotate(-15deg);top:5px;left:4px}
-                    .Armz > a         {right:  0px ; bottom: 0px}
-                    .Pecq .Armz       {width: 90px ; height:66px}              .Grnd .Armz       {width:120px ; height:88px}
-                    .Pecq .BxVlr      {width: 48px ; height:20px ; margin:1px} .Grnd .BxVlr      {width: 62px ; height:26px ; margin:2px}
-                    .Pecq .BxVlr .TMRS{top:5px;left:2px}                       .Grnd .BxVlr .TMRS{top:7px; left:2px}
-                    
-                    .Pecq .V3         {right:0px;top:1px}                      .Grnd .V3      {right:0px;top:1px}
-                    .Pecq .V1         {font-size:   4px}                       .Grnd .V1      {font-size:  6px}
-                    .Pecq .TMRS b     {font-size:   7px}                       .Grnd .TMRS b  {font-size:  9px}
-                    .Pecq .TMRS p     {font-size:  11px}                       .Grnd .TMRS p  {font-size: 15px}
-                    .Pecq .V3         {font-size:   4px}                       .Grnd .V3      {font-size:  7px}
-                    
-                    .Variate2 a{background: #fd0061; margin: 2px; color: #ffffff;}
-                    .Variate2 {margin: 2px}
-
-                    .CanvasMedidas.Hmax{width: auto ; height: 100%}
-                    .CanvasMedidas.Wmax{width: 100% ; height: auto}
-                </style>
-
-                <style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
-                    .fotO      {width:150px ; height:160px}
-                    .fotO1 img {width:150px ; height:160px}
-                    .fotO2 img {width:120px ; height:90px }
-                    .fotO2T img{width:75px  ; height:90px }
-                    .fotO3 img {width: 150px; height: 53px}
-                    .fotO3I img{width: 75px ; height:96px } .fotO3I img:last-child{width:150px ; height:95px }
-                    .fotO4 img {width:80px  ; height:80px }
-                    .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
-                    .fotO6 img {width:150px ; height:53px }
-                </style>
 
                 <div id="Div-Prod" class="Start"></div>
 
@@ -438,11 +395,7 @@
                         return `<div class="Armz bckG Cl Rltv" name="${Bx}" ${Bckg(`${Bx}.webp`)}><a class="Abslt Cl">${ON.filter(Y=>Y[1]==Bx).map(Y=>BoxVlr(Y)).join('')}</a></div>`
                     }
 
-                    function MudaArmzn(Eu,V){
-                        $$('.Armz',Avo(Eu)).forEach(e=>{
-                            if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}
-                        })
-                    }
+                    function MudaArmzn(Eu,V){$$('.Armz',Avo(Eu)).forEach(e=>{if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}})}
 
                     function tmplt_Prod(){ //GRANDE
                         Inn('#Div-Prod',AllProd.map(e=>{
@@ -560,38 +513,6 @@
                         <div class="Ct"><input type="checkbox" id="TrocaDetalheE">    <label>Trocar Detalhes </label></div> <!--q siguinfica mudar de Modal para Fixo na tela-->
                     </div>
                 </div>
-
-                <style>  /*CSS do ORC NovoForm*/
-                    #NovoForm{padding:20px 10px;margin-bottom: 5px;}
-                    #ORC input,#ORC select{width:100% !important ; margin:0}
-                    #ORC   .RS    {font-size:9px  ; margin-right: 3px}
-                    #ORC   .RS + a{font-size:15px ; font-weight: bold;}
-                    .Final .RS + a{font-size:25px ; font-family:var(--Bold)}
-                    .Final .RS    {margin-right:3px}
-                    :is(.CSS1,.CSS2) [class^="ORC_CUST_"]{color:#ff6565}.CSS3 [class^="ORC_CUST_"]{color:#c42929}
-                    :is(.CSS1,.CSS2) [class^="ORC_CRCT_"]{color:#65b5ff}.CSS3 [class^="ORC_CRCT_"]{color:#146bbd}
-                    :is(.CSS1,.CSS2) [class^="ORC_RSUT_"]{color:#48ff00}.CSS3 [class^="ORC_RSUT_"]{color:#2c9402}
-                    .CSS3 .ORC_RSUT_FINAL  {color:#ffffff !important;background:#2c9402;border-radius:255px;padding:0px 10px}
-                    #ORC td{padding: 1px}
-                    #ORC th a,#ORC th p{display: flex;align-items: center;justify-content: center; opacity: 0.8;}
-                    #ORC .Atv input,#ORC .Atv select{border: solid 2px #ff008c}
-                    #ORC .Atv .imita{box-shadow: 0 0 2px 2px #ff008c}
-                    .Branc{color: #ffffff5d !important}
-                    .imita{height: 30px; background: #ffffff11}
-                    .sOFF{opacity:0.3}
-                    #G_Cores div{width:80%;  height:30px; border:2px solid #ffffff2f}
-                    #G_Cores p  {width:30px; height:30px; margin:2px}
-                    .AvisoInpt{top: 25px;width: 70%;left: 50%;font-size: 10px;background: #710808;padding: 2px;transform: translate(-50%, 0%)}
-
-                    .CSS1 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
-                    .CSS2 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#ffa500   !important}
-                    .CSS3 :is(.OrcAdd,.OrcClr,.BtnoQnt){fill:#6900569c !important} :is(.OrcAdd,.OrcClr) svg{width: 18px;}
-                    .OrcRmv     {fill:#ff0000e7 !important} .OrcRmv svg{width:15px}
-                    .BtnoQnt.Atv{fill:#690056   !important}
-                    .BtnoQnt    {width:15px; height:15px; top: 8px;right: 8px}
-                    .oImgs      {width:30px; height:30px}
-                    .oImgs svg  {width:100%; height:100%}
-                </style>
 
                 <script> // Templates e Ações para Tabela de Orçamento
                     const BurealMode = true
@@ -809,164 +730,7 @@
                     </script>
                 </div>
         </div>
-
-        <div id="Pag_GBRT" class="none Ct"> <!--VIROU AGENDA-->
-            <style>
-                #Agnda{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
-                #Agnda .box2{padding: 3px; min-height: 100px ; min-width: 150px}
-                .evt{color:#fff;margin:2px 0;padding:2px}
-                .Cov:hover{background-color: #8b8b8b5d}
-                .Off{opacity: 0.3}
-                option.Off{color: red !important}
-                .bandj{width:500px;left:50%;transform:translateX(-50%);top: 35px;}
-                .bandj :is(input,select){width: 100px}
-            </style>
-
-            <script> // ====== BASE DE DADOS ======
-                let hoje = new Date(), ano=hoje.getFullYear(), mes=hoje.getMonth(), AGND=[], DaySel=null
-                const FUNC_COLOR = {Arte:'#6f42c1','Aplicação':'#0d6efd'}
-                const FUNC_TIME  = {Arte:120,'Aplicação':60}
-                const HORAS      = ["Hora","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
-            </script>
-
-            <script> // ====== BIBLIOTECA ======
-                const LmtUser=(Arr,{Data,User})=>Arr.filter(e=>e.Data==Data && e.User==User).length>=5
-                const FmtDate=d=>d.toISOString().slice(0,10)
-                const FmtHora=d=>`${String(d.getHours()).padStart(2,'0')}:00`
-                const HoraMin=h=>+h.split(':')[0]*60
-                const MinHora=m=>`${String(m/60).padStart(2,'0')}:00`
-            </script>
-
-            <div>
-                <h1>AGENDA infinityGRAFF</h1>
-                <div class="box2 Cl Gap"><h2 id="mes"></h2><div id="Agnda" class="w100"></div></div>
-            </div>
-
-            <script>
-                /* ================== HORAS ================== */
-                function LoadHoras(dt,sel){
-                    function Ocupadas(dt){
-                        return AGND.filter(e=>e.Data===dt).flatMap(e=>{
-                            let ini = HoraMin(e.Hora)
-                            let dur = FUNC_TIME[e.Func]||60
-                            return Array.from({length:dur/60},(_,i)=>MinHora(ini+i*60))})
-                    }
-                    let agora = new Date()
-                    let usadas = Ocupadas(dt)
-                    $$('option',sel).forEach(op=>{
-                        let h = op.value || op.innerText
-                        let off1 = usadas.includes(h)
-                        let off2 = dt==FmtDate(agora) && h<=FmtHora(agora)
-                        let off = off1 || off2
-                        op.classList.toggle('Off', off)
-                        op.disabled = off
-                    })
-                }
-
-                /* ================== CALENDÁRIO ================== */
-                function Tm_Agnd(g, lista){
-                    const DOW = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']
-                    Inn(g,'') ; Inn('#mes', hoje.toLocaleString('pt-BR',{month:'long',year:'numeric'}))
-                    let d0 = new Date(ano,mes,1).getDay()   // Domingo = 0
-                    let dm = new Date(ano,mes+1,0).getDate()
-                    let hj = FmtDate(new Date())
-                    // Cabeçalho
-                    DOW.forEach((d,i)=>{let off = (i === 0 || i === 6) ? 'Off' : '' ; g.innerHTML += `<div class="noslt ${off}"><b>${d}</b></div>`})
-                    // Espaços antes do dia 1
-                    for(let i=0;i<d0;i++) g.innerHTML += '<div></div>'
-                    // Dias do mês
-                    for(let d=1; d<=dm; d++){
-                        let dt  = `${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`
-                        let ev  = lista.filter(e=>e.Data===dt).sort((a,b)=>HoraMin(a.Hora)-HoraMin(b.Hora))
-                        let dow = new Date(dt).getDay()   // 0 = Dom, 6 = Sáb
-                        let off = dt < hj || dow == 6 || dow == 5 ? 'Off noClk' : 'Cov'
-                        g.innerHTML += `<div class="box2 ${off} Rltv" ondblclick="OpenDay(this,event,'${dt}')"><b class="noslt">${d}</b>
-                            ${ev.map(e=>`<div class="evt RD Hov" style="background:${FUNC_COLOR[e.Func]||'#007bff'}" onclick="EditItem(${e.id},this)">${e.Hora} • ${e.Nome} • ${e.Func}</div>`).join('')}
-                            <div class="bandj gap Ct Box2 Abslt none"></div>
-                        </div>`
-                    }
-                }
-
-                /* ================== BANDEJA ================== */
-                function TplAgnd({mode='new',data={},id=null}={}){
-                    const Alls = `$$('input, select',Avo(this))`
-                    return `
-                        <input  class="Nome" placeholder="Nome" value="${data.Nome||''}">
-                        <select class="Func">${Tm_Opt(['Função','Arte','Aplicação'],data.Func)}</select>
-                        <select class="User">${Tm_Opt(['Usuário','Allan','Baby','Fexta'],data.User)}</select>
-                        <select class="Hora">${Tm_Opt(HORAS,data.Hora)}</select>
-                        ${mode=='edit' ? `<input type="date" class="Data" value="${data.Data}">` : ''}
-                        <div class="Ct Gap">
-                            ${mode!='edit' ? `<button onclick="SB_Inst_AGND(${Alls})                   ">Salvar</button>`
-                                        : `<button onclick="SB_Edit_AGND(${Alls},${id});XModal(this)">Salvar</button>
-                                            <button onclick="SB_Dlet_AGND(${id})        ;XModal(this)">Excluir</button>`
-                        }</div>
-                    `
-                }
-
-                function OpenDay(Eu,ev,dt){
-                    if (dt < FmtDate(new Date())) return ; DaySel = dt
-                    None($$('.bandj'))
-                    const Bj = $('.bandj',Eu)
-                    Inn(Bj,TplAgnd())
-                    LoadHoras(dt,$('.Hora',Bj))
-                    Show(Bj)
-                }
-
-                function EditItem(id){
-                    let e = AGND.find(a=>a.id==id) ; if(!e) return
-                    MODAL(`<h2>Editar Agendamento</h2>${TplAgnd({mode:'edit',data:e,id})}`)
-                    LoadHoras(e.Data,$('.FModal .Hora'))
-                }
-            </script>
-
-            <script>// ================== SUPABASE ==================
-                async function getAgnd(g){let {data}=await supaBASE.from('AGND').select('*') ; AGND=data||[] ; Tm_Agnd(g,AGND)}
-
-                async function SB_Inst_AGND(Ipnts){
-                    let obj={}
-                    Ipnts.forEach(i=>obj[i.className]=i.value)
-                    obj.Data = DaySel
-                    if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
-                    if(LmtUser(AGND,obj))       return alert('Limite diário atingido')
-                    await supaBASE.from('AGND').insert(obj)
-                    DaySel=null
-                    getAgnd($('#Agnda'))
-                }
-
-                async function SB_Edit_AGND(Ipnts,id){
-                    let obj={}
-                    Ipnts.forEach(i=>obj[i.className]=i.value)
-                    if(ObjVal(obj).some(v=>!v)) return alert('Preencha tudo')
-                    await supaBASE.from('AGND').update(obj).eq('id',id)
-                    getAgnd($('#Agnda'))
-                }
-
-                async function SB_Dlet_AGND(id){
-                    if(!confirm('Excluir este agendamento?')) return
-                    await supaBASE.from('AGND').delete().eq('id',id)
-                    $('.FModal')?.remove()
-                    getAgnd($('#Agnda'))
-                }
-            </script>
-
-            <script>/* ================== INIT ================== */
-                getAgnd($('#Agnda'))
-                document.addEventListener('click',e=>{if(!e.target.closest('.bandj') && !e.target.closest('.Cov')){None($$('.bandj'))}})
-                // Filtrar pra exibir cada um
-                // Ocultar quando atingir Limit Diário LmtUser(AGND,obj)
-
-                // Campo pra Presencial, Waapp, Ligação
-            </script>
-
-        </div>
-        <div id="Pag_LOJA" class="none Cl"></div>
-        <div id="Pag_PRFL" class="none Cl"></div>
-        <div id="Pag_BBTC" class="none Cl"></div>
-        <div id="Pag_SPRT" class="none Cl"></div>
-        <div id="Pag_CONF"></div>
     </div>
-
 </body>
 
 <script>// Iniciação
@@ -993,9 +757,7 @@
                 else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
             }// F_Clen(Atual.Pag) // se for outro botão
     })})
-    GetPC()
 </script>
-
 
 <script> // comentários ⏳ ❌ ✔️ ⚠️ 🔝 ⚡ 💡
     // ERROS pra corrigir

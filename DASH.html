@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
+  <title>Galeria</title>
+  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
+  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
+  <link  href="./CssGRAFF.css" rel="stylesheet">
+  <script src="./BaseGRAFF.js"></script>
+  <script src="./BiblGRAFF.js"></script>
+  <script src="./SB_Crud.js"      ></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="./supaBASE.js"></script>
+</head>
+
+<body data-Tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
+
+    <header class="Bt w100" style="grid-area:A">
+      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+      <!-- Perfil --><div id="H_Login" class="Ct"> 
+          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+      </div>
+      <div id="MAIS" class="Abslt none bndj Ct">
+          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+      </div>
+    </header>
+
+    <div id="PAGES" style="grid-area:B">
+
+        <div id="Pag_HOME" class=""> <!--Dentro era pra ser Section-->
+            <div class="Cl w100">
+                <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
+                    <style>
+                        .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
+                        .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                    </style>
+                    
+                    <div class="Cl"><h1>Semana1</h1>
+                        <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
+
+                    <div class="Cl"><h1>Semana2</h1>
+                        <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
+
+                    <div class="Cl"><h1>Semana3</h1>
+                        <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
+
+                    <div class="Cl"><h1>Semana4</h1>
+                        <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                        <div class="Ct">
+                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
+                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
+                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
+                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
+                        </div>
+                    </div>
+
+                    <script>
+                        const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
+                        const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
+                        const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
+                        const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
+                        const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
+                        const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
+                        const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
+                        const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
+
+                        function RfreshGrafic(Div,Semn){ 
+                            const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
+                            LOG(ContForn(Filt('GRAD')))
+                            Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+                            Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
+                            Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
+                            Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
+                        }
+
+                        // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
+                        // as Grades que mais Demoraram, Pedidos que mais Demoraram
+                        // Mostrar mesmo quando tiver Zero
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
