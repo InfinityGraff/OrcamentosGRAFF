@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectorizer.ai | Vetorizar Imagem</title>
+    
+    <!-- Fonte moderna Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0b;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== CONTAINER PRINCIPAL ========== */
+        .container {
+            width: 100%;
+            max-width: 640px;
+            background: #141416;
+            border: 1px solid #242429;
+            border-radius: 20px;
+            padding: 36px 28px;
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        /* ========== CABEÇALHO ========== */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .header .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #7B2FF7, #a855f7);
+            border-radius: 14px;
+            margin-bottom: 16px;
+            font-size: 26px;
+            box-shadow: 0 4px 16px rgba(123, 47, 247, 0.3);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        /* ========== ÁREA DE DROP ========== */
+        .drop-zone {
+            position: relative;
+            border: 2px dashed #2a2a2e;
+            border-radius: 14px;
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: #0e0e11;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .drop-zone:hover {
+            border-color: #7B2FF7;
+            background: #111114;
+        }
+
+        .drop-zone.dragover {
+            border-color: #7B2FF7;
+            background: #1a102b;
+            box-shadow: 0 0 0 4px rgba(123, 47, 247, 0.1);
+            transform: scale(1.01);
+        }
+
+        .drop-zone .icon-upload {
+            display: block;
+            margin: 0 auto 14px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .drop-zone:hover .icon-upload,
+        .drop-zone.dragover .icon-upload {
+            opacity: 1;
+        }
+
+        .drop-zone .drop-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #b0b0b0;
+        }
+
+        .drop-zone .drop-text strong {
+            color: #c084fc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+        }
+
+        .drop-zone .drop-sub {
+            font-size: 0.78rem;
+            color: #6b6b75;
+            margin-top: 6px;
+        }
+
+        /* Estado com arquivo selecionado */
+        .drop-zone.file-selected {
+            border-color: #7B2FF7;
+            border-style: solid;
+            background: #111114;
+            padding: 24px;
+        }
+
+        .drop-zone .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .drop-zone .file-info .file-icon {
+            width: 40px;
+            height: 40px;
+            background: #242429;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .drop-zone .file-info .file-name {
+            font-weight: 600;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .drop-zone .file-info .file-size {
+            font-size: 0.78rem;
+            color: #7e7e8a;
+        }
+
+        /* ========== BOTÃO ========== */
+        .btn {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: linear-gradient(135deg, #7B2FF7, #9333ea);
+            color: #fff;
+            letter-spacing: 0.01em;
+        }
+
+        .btn:hover:not(:disabled) {
+            box-shadow: 0 4px 20px rgba(123, 47, 247, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background: #2a2a2e;
+            color: #5a5a62;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* ========== STATUS ========== */
+        .status {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            min-height: 20px;
+        }
+
+        .status.success {
+            color: #4ade80;
+        }
+
+        .status.error {
+            color: #f87171;
+        }
+
+        .status.loading {
+            color: #fbbf24;
+        }
+
+        /* ========== RESULTADO ========== */
+        .result-section {
+            margin-top: 24px;
+            display: none;
+        }
+
+        .result-section.visible {
+            display: block;
+        }
+
+        .result-section h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .result-preview {
+            background: #0e0e11;
+            border: 1px solid #242429;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 400px;
+            overflow: auto;
+        }
+
+        .result-preview img {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            font-family: inherit;
+            background: #242429;
+            color: #d0d0d0;
+            border: 1px solid #34343a;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-download:hover {
+            background: #2e2e36;
+            border-color: #7B2FF7;
+            color: #fff;
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+                padding-top: 30px;
+            }
+
+            .container {
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+
+            .header h1 {
+                font-size: 1.25rem;
+            }
+
+            .drop-zone {
+                padding: 32px 16px;
+            }
+
+            .btn {
+                padding: 12px 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="icon">🖼️</div>
+            <h1>Vectorizer.ai</h1>
+            <p>Converta JPG ou PNG em vetor SVG com qualidade</p>
+        </div>
+
+        <!-- Área de arrastar e soltar -->
+        <div class="drop-zone" id="dropArea">
+            <svg class="icon-upload" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#7B2FF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p class="drop-text">Arraste sua imagem aqui ou <strong>clique para selecionar</strong></p>
+            <p class="drop-sub">JPG ou PNG</p>
+            <input type="file" id="inputImagem" accept="image/png, image/jpeg" style="display: none;">
+        </div>
+
+        <!-- Botão de ação -->
+        <button class="btn" id="btnVetorizar" disabled>Vetorizar</button>
+        <div class="status" id="status"></div>
+
+        <!-- Resultado -->
+        <div class="result-section" id="resultSection">
+            <h3>Resultado</h3>
+            <div class="result-preview">
+                <img id="resultado" alt="Imagem vetorizada">
+            </div>
+            <a class="btn-download" id="btnDownload" download="vetorizado.svg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Baixar SVG
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // ⚠️ ATENÇÃO: Credenciais de teste (SOMENTE PARA USO LOCAL – NÃO PUBLICAR)
+        const API_ID = "vkgkdynecvlaxxi";
+        const API_SECRET = "ru0a6j90pkfr2djtdkl2b2jq1t5sep4uhdv3inhajt80qgn2ms07";
+        const VECTORIZER_URL = "https://vectorizer.ai/api/v1/vectorize";
+
+        const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+const URL_PROXY = CORS_PROXY + VECTORIZER_URL;   // sem encodeURIComponent
+
+        // Elementos da interface
+        const dropArea = document.getElementById("dropArea");
+        const inputImagem = document.getElementById("inputImagem");
+        const btnVetorizar = document.getElementById("btnVetorizar");
+        const statusEl = document.getElementById("status");
+        const resultadoImg = document.getElementById("resultado");
+        const btnDownload = document.getElementById("btnDownload");
+        const resultSection = document.getElementById("resultSection");
+
+        let arquivoSelecionado = null;
+
+        // ========== EVENTOS DE UPLOAD ==========
+
+        dropArea.addEventListener("click", () => inputImagem.click());
+
+        dropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropArea.classList.add("dragover");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("dragover");
+        });
+
+        dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropArea.classList.remove("dragover");
+            const file = e.dataTransfer.files[0];
+            if (file) selecionarArquivo(file);
+        });
+
+        inputImagem.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) selecionarArquivo(file);
+        });
+
+        // ========== VALIDAÇÃO E EXIBIÇÃO DO ARQUIVO ==========
+
+        function selecionarArquivo(file) {
+            // Valida formato
+            if (!file.type.match(/image\/(jpeg|png)/)) {
+                alert("Formato inválido! Selecione uma imagem JPG ou PNG.");
+                return;
+            }
+
+            arquivoSelecionado = file;
+
+            // Atualiza visual da área de drop
+            dropArea.classList.add("file-selected");
+            dropArea.innerHTML = `
+                <div class="file-info">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${(file.size / 1024).toFixed(1)} KB</div>
+                    </div>
+                </div>
+            `;
+
+            btnVetorizar.disabled = false;
+            statusEl.textContent = "";
+            statusEl.className = "status";
+            resultSection.classList.remove("visible");
+        }
+
+        // ========== ENVIO PARA A API ==========
+
+        btnVetorizar.addEventListener("click", async () => {
+            if (!arquivoSelecionado) return;
+
+            btnVetorizar.disabled = true;
+            statusEl.textContent = "⏳ Vetorizando... aguarde.";
+            statusEl.className = "status loading";
+
+            try {
+                const formData = new FormData();
+                formData.append("image", arquivoSelecionado);
+                formData.append("output", "svg");
+                formData.append("mode", "test"); // Modo gratuito (com marca d'água)
+
+                const authHeader = "Basic " + btoa(API_ID + ":" + API_SECRET);
+
+                const response = await fetch(URL_PROXY, {
+                    method: "POST",
+                    headers: { "Authorization": authHeader },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const erro = await response.text();
+                    throw new Error(erro || "Erro desconhecido na API");
+                }
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                resultadoImg.src = url;
+                btnDownload.href = url;
+                resultSection.classList.add("visible");
+
+                statusEl.textContent = "✅ Vetorizado com sucesso!";
+                statusEl.className = "status success";
+            } catch (erro) {
+                statusEl.textContent = "❌ Erro: " + erro.message;
+                statusEl.className = "status error";
+            } finally {
+                btnVetorizar.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
