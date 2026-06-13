@@ -12,6 +12,7 @@
     <link   href="./CssGRAFF.css"  rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
     <script src="./BiblGRAFF.js"></script>
+    <script src="./DadosClientes.js"></script>
     <script src="./SB_Crud.js"  ></script>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="./supaBASE.js"></script>
@@ -35,42 +36,63 @@
         True:['true','false']
     }
     const Ryp   = {
-        SERV_ARTE:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // esse daqui é pra o Sugg é o tipo de Regra na key que funciona pra Sugg
-        SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-        SERV_GRAD:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-        SERV_Grad:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-        PDDS_CLNT:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-        PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'], // tanto pra Link quanto pra Bndj é a msm coisa
-        PDDS_Serv:['Clnt','Cbmt','VCbt'], // 2° Camada - Dentro disso tem GRAD e ARTE // 
-        PDDS_Pgmt:['Clnt'], // 2° Camada - Dentro disso tem MPAG
-
-        CL_PDDS:['Clnt','Lixo'], // 
-        SV_PDDS:['Serv','Lixo'], // Dentro de SERV a Bndj de Pdds não recebe Serv nem Lixo
-        PG_PDDS:['Pgmt','Lixo'], // Dentro de PGMT a Bndj de Pdds não recebe Pgmt nem Lixo
-
+        PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'],
+        PDDS_Serv:['Clnt','Cbmt','VCbt'],
+        PDDS_Pgmt:['Clnt'],
+        SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'],
+        SERV_Grad:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'],
+        CLNT_Pdds:['Clnt','Lixo'],
+        SERV_Pdds:['Serv','Lixo'],
+        PGMT_Pdds:['Pgmt','Lixo'],
     }
-    function SB_CriaSlct(Typ,COL){
-
+    
+    function CriaselectStr(Typ){
         const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
-        const FK = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),Ryp[`${TYP}_${Col}`])})` // Clnt:CLNT(${Cl('CLNT',R['PDDS_Clnt'])})
-        const FK2= (TYP,Col)=>``
+        const Construc = {
+            PDDS:{Clnt:{},Serv:{Arte:{},Grad:{}},Pgmt:{Mpag:{}}}, // `*,Clnt:CLNT(*),Serv:SERV(*,Arte:ARTE(*),Grad:GRAD(*)),Pgmt:PGMT(*,Mpag:MPAG(*))`
+            SERV:{Pdds:{},Arte:{},Grad:{}},// 'Pdds:PDDS(*),Arte:ARTE(*),Grad:GRAD(*)'
+            PGMT:{Pdds:{},Mpag:{}},        // 'Pdds:PDDS(*),Mpag:MPAG(*)'
+            CLNT:{Pdds:{Serv:{},Pgmt:{}}}, // 'Pdds:PDDS(*,Serv:SERV(*),Pgmt:PGMT(*))'
+            MPAG:{Pgmt:{}},                // 'Pgmt:PGMT(*)'
+            ARTE:{Serv:{}},                // 'Serv:SERV(*)'
+            GRAD:{Serv:{},OS:{},Uber:{}},  // 'Serv:SERV(*),OS:OS(*),Uber:UBER(*)'
+            OS  :{Grad:{},Mpag:{}},        // 'Grad:GRAD(*),Mpag:MPAG(*)',
+            UBER:{Grad:{},Mpag:{}},        // 'Grad:GRAD(*),Mpag:MPAG(*)',
+        }
+        const f = (o,p='')=>ObjEtr(o).map(([k,v])=>`${k}:${AA(k)}(${Cl(AA(k),Ryp[`${Typ}_${k}`])}${ObjKey(v).length?','+f(v,k):''})`).join(',')
+        //LOG('PDDS =',`*,${f(Construc[Typ])}`)
+        return `*,${f(Construc[Typ])}`
+    }
+
+    function SB_CriaSlct(Typ,COL){
+        
+        const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
+        const FK = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),Ryp[`${TYP}_${Col}`])})`
+        
+        const Fk2 = {PDDS_Serv:()=>`,${['ARTE','GRAD'].map(e=>FK('SERV',e)).join('')}`}
+        const FK2 = (TYP,Col)=>`${Col}:${AA(Col)}(${Cl(AA(Col),Ryp[`${TYP}_${Col}`])}${Fk2[`${TYP}_${Col}`]()})` // Clnt:CLNT(${Cl('CLNT',R['PDDS_Clnt'])})
 
         const selectStr = { // isso tem que ficar Fora, pois deve ser Chamado, tanto por RodaTable() mas tbm por Filtros, Sugg, Pesquisas e outros, deve conciderar tudo isso!
                  PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
-                 SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',Ryp.SV_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
-                 PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.PG_PDDS)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Mpag:MPAG(*)`,
-                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.CL_PDDS)},Serv:SERV(${Cl('SERV',Ryp.CL_PDDS)}),Pgmt:PGMT(${Cl('PGMT',Ryp.CL_PDDS)}))`,
+                 SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',Ryp.SERV_Pdds)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
+                 PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.PGMT_Pdds)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Mpag:MPAG(*)`,
+                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.CLNT_Pdds)},Serv:SERV(${Cl('SERV',Ryp.CLNT_Pdds)}),Pgmt:PGMT(${Cl('PGMT',Ryp.CLNT_Pdds)}))`,
+
                  MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
                  ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
                  GRAD:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Grad'])}),OS:OS(*),Uber:UBER(*)`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
                  OS  :`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['OS'  ])}),Mpag:MPAG(*)`,
                  UBER:`${Cl(Typ)}, Grad:GRAD(${Cl('GRAD',['Uber'])}),Mpag:MPAG(*)`,
-            PDDS_CLNT:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`,
-            SERV_ARTE:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`,
-            SERV_GRAD:`${Cl(COL,Ryp[`${Typ}_${COL}`])}`
+
+            PDDS_CLNT:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
+            SERV_ARTE:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
+            SERV_GRAD:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`
 
         }
-        return COL ? selectStr[`${Typ}_${COL}`] : selectStr[Typ]
+        if(COL){return selectStr[`${Typ}_${COL}`]()}
+        if(Typ=='PDDS'){return CriaselectStr(Typ)}
+
+        return COL ? selectStr[`${Typ}_${COL}`]() : selectStr[Typ]
     }
 </script>
 
@@ -434,28 +456,26 @@
     async function FK_False(Typ,Typ2){const {data} = await supaBASE.from(Typ).select(`*,${Typ2}(*)`).is(Typ2,null).order('Id',{ascending:false}).limit(100)}
 
     async function Tm_Sugg(Ipt,R){
-            const _R     = d_r(R),COL=AA(_R.Cl)
-            const g      = BS[COL]?.Sugg   // Config Sugg
-            const NRow   = BS[COL]?.New    // Pode criar Nova Linha
-            const I      = Trim(Ipt.value) // Limpar exesso de Espaços
-            const RX     = new RegExp(I)
-            const list   = $('.Sugg',Pai(Ipt)) ; Show(list) //; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista           
+        const _R     = d_r(R),COL=AA(_R.Cl)
+        const g      = BS[COL]?.Sugg   // Config Sugg
+        const NRow   = BS[COL]?.New    // Pode criar Nova Linha
+        const I      = Trim(Ipt.value) // Limpar exesso de Espaços
+        const RX     = new RegExp(I)
+        const div    = $('.Sugg',Pai(Ipt)) ; Show(div) //; if(!I){None(list) ; return Inn(list,'')} // Exibe a Div Lista           
+        const Griff  = (e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)     
 
+        if(g.Tm=='List' ){
+            const Find = BS_CLNT.filter(e=>Object.values(e).some(v => RX.test(String(v))))
+            const tm_P = {CLNT:e=>`${e.Id} - ${e.Clnt}`}
+            Inn(div,Find.map(e=>`<a class="PT w100 Ct" onclick="SB_Link(this,'${e.Id}','${R}','Escape')"><p>${Griff(tm_P[COL](e),RX)}</p></a>`).join(''))}
+        if(g.Tm=='Table'){
             // const RgxOK  = j=>ObjEtr(j).some(([k,v])=>RX.test(BSJsn(COL,k)?.TM=='Link' ? Getna(j,k) : v))
             // const EXTRA  = BSJsn(_R.Ty,_R.Cl).LnkEX   // Acessar os Extras (de cada Tabela)
             // const Fn     = Function(`return ${EXTRA}`)()
-
-            function EvalSugg(Typ,e){const Fn = new Function('e',`return ${BS[Typ].List}`) ; return Fn(e)}
-            
-            const Find   = await SB_Sugg(g.Sug,COL,_R.Ty) //.filter(j=>RgxOK(j) && (!EXTRA||Fn(j))) // Regex | OKAY | Extra
-            // fazer algum tratamento quando Find vir vazio
-            let Ths      = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
-
-            if(g.Tm=='List' ){Inn(list,Find.map(e=>`<a class="PT w100 Ct" onclick="SB_Link()">${Griff(EvalSugg(COL,e),RX)}</a>`).join(''))}
-            if(g.Tm=='Table'){Inn(list,`<table><thead class="Stky" style="z-index:510"><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody></table>`)}
-            if(g.Tm=='Card' ){}
-
-            // isso é tipo uma Bandeija então da pra Fundor a parte do Table com LoadBndj()
+            const Find = await SB_Sugg(g.Sug,COL,_R.Ty) //.filter(j=>RgxOK(j) && (!EXTRA||Fn(j))) // Regex | OKAY | Extra
+            const Ths  = ArrInt(BS[COL].Orden,ObjKey(Find[0]||{})) // Limpa Colunas antes de Carregar os Th
+            Inn(div,`<table><thead class="Stky" style="z-index:510"><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody></table>`)}
+        if(g.Tm=='Card' ){}
     }
 
     async function SB_Sugg(Mod,COL,Typ){
@@ -464,7 +484,7 @@
             return (await supaBASE.from(COL).select(selectStr).is(Typ,null).order('Id',{ascending:false}).limit(100)).data||[]
         if(Mod=='OKAY') // ['GRAD','OS','UBER'] // Todas as que não estão OKAY
             return (await supaBASE.from(COL).select(selectStr).is('OKAY',null).order('Id',{ascending:false}).limit(100)).data||[] // OKAY tem que ser null ou False
-        if(Mod=='Free') // ['ARTE','CLNT']      // só os 50 mais recentes
+        if(Mod=='Free') // ['ARTE','CLNT']      // Só os 50 mais recentes
             return (await supaBASE.from(COL).select(selectStr).order('Id',{ascending:false}).limit(100)).data||[]
         return []
     }
@@ -476,35 +496,49 @@
         _tr(P).outerHTML = Tm_Tr(_R.Ty,data)
     }
 
-    async function SB_Link(Ipt,R){
-        const [Typ,Id,Col] = R.split('-')
-        const Val = Vll(Ipt)
-        const Tbl = AA(Col)
-        const Exs = await supaBASE.from(Tbl).select('Id').eq('Id',Val).single() // Conferir se Existe
-        const TBLLA = {'GRAD':{Id:Val,OS:null,Uber:null}}
-        if(!Exs.data){
-            if(!confirm(`${Tbl} ${Val} não existe.\nCriar agora?`))return
-            await supaBASE.from(Tbl).insert(TBLLA[Tbl]||{Id:Val})
+    async function SB_Link(Eu,Val,R,Escape){
+        const [Typ,Id,Col] = R.split('-'),COL=AA(Col)
+        if(COL=='CLNT' && !Escape){
+            if(!confirm(`${COL} ${Val} não existe.\nCriar Cliente agora?`)) return
+            const NewID = await SB_AddROW(COL,{Clnt:Val})
+            await supaBASE.from(Typ).update({[Col]:NewID}).eq('Id',Id)
+            LOG('Adicionou Novo Cliente')
+        }else{
+            LOG('Analisa',COL)
+            const Exs = await supaBASE.from(COL).select('Id').eq('Id',Val).single() // Conferir se Existe
+            if(!Exs.data){
+                const TBLLA = {'GRAD':{Id:Val,OS:null,Uber:null}}
+                if(!confirm(`${COL} ${Val} não existe.\nCriar agora?`)) return
+                await supaBASE.from(COL).insert(TBLLA[COL]||{Id:Val})
+            }
+            await supaBASE.from(Typ).update({[Col]:Val}).eq('Id',Id)
         }
-        await supaBASE.from(Typ).update({[Col]:Val}).eq('Id',Id)
+        Read_Tr(_tr(Eu),Typ,Id)
+    }
+
+    async function RmvLink(Eu,R){
+        const [Typ,Id,Col,Tm]=R.split('-')
+        await Sb_EDIT(Typ,Id,{[Col]:null})
+        Read_Tr(_tr(Eu),Typ,Id) // Melhor Passar R talvez
     }
 
 </script>
 
 <script>// ---- TABELAS ----
 
+    const Acc_Bndj = {}
     const Tm_TT=(COL,Find,Typ,Col,R)=>{
         //const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
 
+        const AllImgs=(e,COLL)=>{
+            const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
+            return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('')   // Rodar isso pra cada Imagem desta Linha
+        }
+
         const ImgT_T=e=>{
-            const  colimg = ObjEtr(BS[COL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
-            return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${COL}-${e.Id}-${i}-Imgs-_-_`)).join('')     // Rodar isso pra cada Imagem desta Linha
-            // return
-            //     const ARTEE = col=='Serv' ? JJ['ARTE']?.[e.Arte.split('-')[1]]?.Img : ''
-            //     return    col=='Serv' ? ARTEE  ? Tm_Tm['Imgs'](ARTEE,`SERV-${e.Id}-Arte-Imgs-_-_`) : ''
-            //             : col=='Arte' ? e.Img  ? Tm_Tm['Imgs'](e.Img,`SERV-${e.Id}-Arte-Imgs-_-_`) : ''
-            //             : col=='Clnt' ? e.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''
-            //             : ''
+                 if(Typ=='PDDS' && Col=='Clnt'){return e?.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''}
+            else if(Typ=='PDDS' && Col=='Serv'){return e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
+            else{return AllImgs(e,COL)}
         }
 
         const Vazio = ['SERV','PGMT'].includes(COL) ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
@@ -523,20 +557,24 @@
             function LoadLinhasBndj(R){
                 const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
-                const Find  = [].concat(JJ[Typ]?.[Id]?.[Col]??[])
+                const Find  = [].concat(Acc_Bndj[`${Typ}-${Id}-${Col}`]??[])
                 if(Find.length==0){return ''}
                 let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
                 if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')} // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
                 return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
             }
             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
+            Rmv_N($('.BNdj > table',Pai(Eu)))
         }
     }
 
     function Tm_Bndj(R,Arr){ // Recebe Link ou Tabela Interna
         const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
+        if(Typ=='SERV'){LOG(Typ,Id,Col,Arr)}
         const Find  = isArr(Arr)?Arr:[]
+        LOG('oFund Atual',Find)
         const TT    = Tm_TT(COL,Find,Typ,Col,R)
+        Acc_Bndj[`${Typ}-${Id}-${Col}`]=Find
         return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
                     <p data-R="${R}" class="P-P T-T Ct PT" name="${TT.Nm}">${TT.Tt}</p>${TT.Img}
                     <i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i>
@@ -544,8 +582,8 @@
                 <div class="Rltv w100">
                     <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
                         <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
-                        ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')        ">+ Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
-                          Tm=='Link'?`<button class="Mini" onclick="RmvLink('${R}','${Col}')      ">Deslinkar ${Col}</button>
+                        ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">  + Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
+                          Tm=='Link'?`<button class="Mini" onclick="  RmvLink(this,'${R}')">Deslinkar ${Col}</button>
                                       <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
                     </div>
                 </div>`
@@ -607,23 +645,25 @@
         <p>Soma: 00,00</p>`
     }
     
-
-
-    function GAMBIARRAA(Typ){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
-        if(Typ=='PDDS'){
-            J['PDDS'].forEach(j=>{
-                j.Serv.forEach(e=>{delete e['Clnt']})
-                j.Pgmt.forEach(e=>{delete e['Clnt']})
-            })
-        }
+    function GAMBIARRAA(Find){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
+        Find.forEach(j=>{j.Serv.forEach(e=>{delete e['Clnt']})
+                         j.Pgmt.forEach(e=>{delete e['Clnt']}) })
     }
 
     async function RodaTable(Typ){
         if(carregado.includes(Typ)){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
-        fazJJJ(Typ,data) ; AutoCOMP(Typ) ; GAMBIARRAA(Typ)
+        fazJJJ(Typ,data) ; AutoCOMP(Typ) // if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
+    }
+
+    async function Read_Tr(Tr,Typ,Id){ // Geralmente quando tenho acesso a ela
+        const selectStr = SB_CriaSlct(Typ)
+        const data = await SB_GETT(Typ,1,selectStr,null,Id)
+        fazJJJ(Typ,data,'Unico') ; AutoCOMP(Typ,data) ; /*if(Typ=='PDDS'){GAMBIARRAA(data)}*/ ; __NULL(data[0])
+        LOG('Read_Tr',data)
+        $(Tr).outerHTML = Tm_Tr(Typ,data)
     }
 </script>
 
@@ -674,11 +714,15 @@
 
 <script>
     Onloads('body') ; Get_User()
+    
+
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; LOG('Clientes',data) ; BS_CLNT.push(...data)}
+        await SB_GET_Clnt()
         NavPag(Atual.Pag) ; RodaTable(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()

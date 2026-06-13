@@ -19,16 +19,45 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     const OjKy   =Typ=>ObjKey(BS[Typ].Json)
     const Foto   =U=>`${BASE_URL}User/${U}.webp?v=${Date.now()}`
     const Eximg  =["jpg","jpeg","png","gif","webp","svg"]
+    const src20  = '?width=20&resize=contain'
+    const TrcFih2 = (e, showChild) =>{ Rmv(showChild,'NONE') ; Filh(Pai(e)).forEach(f => (f === e ? None(f) : (showChild ? (f === showChild ? Show(f) : None(f)) : Show(f)))) || (showChild && showChild.focus())} ; // GAMBIARRA
 
-    function fazJJJ(Typ,dados){
-        const Acc = {}
-        const Norml=(j,Acc={},Tru=[])=>{for(const k in j){if(Tru?.includes(k)){let v=j[k];if(v&&!isArr(v)&&typeof v=='object')v=[v];if(isArr(v))(Acc[k]??=[]).push(...v);j[k]=v}j[k]??=''}return j}
-        const ArrtoOBJ=(arr,col)=>{return arr.reduce((acc,el)=>{acc[el[col]]=el;return acc;},{})}
-        const FKs = BS[Typ].FK
-        J[Typ]    = dados.map(e=>Norml(e,Acc,FKs))
-        JJ[Typ]   = ArrtoOBJ(J[Typ],'Id')
-        for(const col in Acc){JJJ[AA(col)]=Acc[col]}
+    function fazJJJ(Typ,dados,Unico){
+        const Tabelas=['Pdds','Serv','Pgmt','Clnt','Grad','Arte','OS','Uber']
+        const Acc={}
+        const Norml=j=>{
+            if(!j||typeof j!='object'||isArr(j))return j
+            for(const k in j){
+                let v=j[k]
+                if(Tabelas.includes(k)){
+                    if(v&&!isArr(v)&&typeof v=='object')v=[Norml(v)]
+                    else if(isArr(v))v=v.map(Norml)
+                    ;(Acc[k]??=[]).push(...(isArr(v)?v:[v]).filter(Boolean))
+                    j[k]=v
+                }else if(isArr(v))j[k]=v.map(Norml)
+                else if(v&&typeof v=='object')j[k]=Norml(v)
+                j[k]??=''
+            }
+            return j
+        }
+        const ArrtoOBJ=(arr,col)=>arr.reduce((acc,el)=>(acc[el[col]]=el,acc),{})
+        //const FKs = BS[Typ].FK
+        if(Unico){
+            dados.forEach(e=>{
+                const Novo = Norml(e)
+                const IDD  = Novo.Id
+                const i    = J[Typ].findIndex(x=>x.Id==IDD)
+                if(i!=-1)J[Typ][i] = Novo
+                JJ[Typ][IDD] = Novo
+            })
+        }else{
+            J[Typ]    = dados.map(e=>Norml(e,Acc))
+            JJ[Typ]   = ArrtoOBJ(J[Typ],'Id')
+            for(const col in Acc){JJJ[AA(col)]=Acc[col]}
+        }
     }
+
+
     function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
         if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
         if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
@@ -87,7 +116,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
     </div>`
 
-    const TrcFih2 = (e, showChild) =>{ Rmv(showChild,'NONE') ; Filh(Pai(e)).forEach(f => (f === e ? None(f) : (showChild ? (f === showChild ? Show(f) : None(f)) : Show(f)))) || (showChild && showChild.focus())} ; // GAMBIARRA
 
     const Tm_Tm = {
         Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW(this,'${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
@@ -98,8 +126,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Valr:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
         Mdds:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
         Text:(e,R,Rgx  )=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
-        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar
-        ImUP:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${SrcsIMG(e,d_r(R))}" onclick="AbrirImg(this,'${e}','${R}')">`, // essa é com Opção de UPAR
+        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}Low/${e.replace('.svg','.webp')}`:`${BASE_URL2}Img/${e}${src20}`:`./CrudSB/Upld.webp`}"  onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar         src="${SrcsIMG(e,d_r(R))}"
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
         Data:(e,R,Rgx  )=>`<p class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
@@ -113,9 +140,9 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                     <p class="P-P" data-R="${R}" onclick="ShowBndj(_td(this));Tm_Sugg($('input',Pai(this)),'${R}')" name="${e}">${e==''?'-':e}</p>
                     <div class="BndjSUG MySelect BNdj Abslt none Cl">
                         <a>${SVG.Ponta}</a>
-                        <input class="Stky" placeholder="${Place}" onkeydown="KeyEntr(()=>Tm_Sugg(this,'${R}'))">
+                        <input class="Stky" placeholder="${Place}" ${Place=='Clnt'?`oninput="Tm_Sugg(this,'${R}')"`:`onkeydown="KeyEntr(()=>Tm_Sugg(this,'${R}'))"`}>
                         <span class="Sugg Cl"></span>
-                        <button onclick="SB_Link($('input',Pai(this)),'${R}')">Adicionar +</button>
+                        <button onclick="SB_Link(this,Vll($('input',Pai(this))),'${R}')">Adicionar +</button>
                     </div>
                 </div>`
         },// onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))"
@@ -135,15 +162,8 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
 
 
-
-
-
-
-
-
-
 //===========================IMAGENS===========================
-    function SrcsIMG(src,R){return `${src}`.includes('blob:') ? src : src ? `${BASE_URL}Low/${src.replace('.svg','.webp')}?v=${Date.now()}` : `./CrudSB/${R.Cl=='Arte'?'Upld':'Plce'}.webp`}
+
     function SellFilesIMG(Inpt){const file = Inpt.files[0] ; $('img',Pai(Pai(Inpt))).src = URL.createObjectURL(file) ; $('span',Pai(Inpt)).textContent = file.name} // Fazer isso Ficar imbutido dentro da Função do input Files
 
     async function ImgLowQuality(src,mod='Low'){
@@ -176,14 +196,13 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
         if(Eximg.includes(Ext)){
             Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
+            //Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
             if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`Img/${Nome}.svg` ,true)
             }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
         }else{LOG('não é nem Img nem Svg, é um arquivo!')}
     }
 
     async function ImgUPP2(File,Nome,Past){
-
         const Ext = RxExt(File.name)
         const src = URL.createObjectURL(File)
         if(Eximg.includes(Ext)){
@@ -228,16 +247,9 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
 
 //===========================LINK===========================
-    function NewLink(Typ,Ipt){          // ⭐⭐⭐_ _ Perguntar antes se quer Adicionar Nova Linha
-        if(Ipt.value){
-            if(confirm(`Tem Certeza que quer salvar: ${Ipt.value} em ${Typ}?`)){
-                const df = AddROW(AA(Typ),'<',{[Aa(Typ)]:Ipt.value})
-                Linkar(Ipt,`${AA(Typ)}-${df.Id}`)
-            }
-        }
-        // Opção de Unir Mesclar ou Fundir Links diretamente pelo Sugg
-        // NewLink apenas para os que Permitem NewLink
-    }
+
+
+
     function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
         function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
         function GambiarraRmv(div){Rmv(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Rmv(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (adicionar o hov q faz a saturação da tr)
@@ -275,8 +287,10 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     async function SB_AddROW(Typ,obj={}){     // ⭐⭐⭐⭐⭐
         if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
             const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
+            LOG('datta',data)
             AddRow_DOM(Typ,[data])
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
+            return data.Id
         }
     }
     async function SB_RmvARTE(Typ,Id){
@@ -318,7 +332,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             RmvRow_DOM(Typ,Old.Id)     ; MyAlert(`🌐 Rt_NewRow(${Typ },${Old.Id})`)
         }
         if(crud==='UPDATE'){
-            RmvRow_DOM(Typ,New.Id,Cols)
+            //RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
 
