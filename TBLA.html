@@ -572,7 +572,7 @@
         const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
         if(Typ=='SERV'){LOG(Typ,Id,Col,Arr)}
         const Find  = isArr(Arr)?Arr:[]
-        LOG('oFund Atual',Find)
+        //LOG('oFund Atual',Find)
         const TT    = Tm_TT(COL,Find,Typ,Col,R)
         Acc_Bndj[`${Typ}-${Id}-${Col}`]=Find
         return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
@@ -656,6 +656,8 @@
         const data = await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) // if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
+
+        
     }
 
     async function Read_Tr(Tr,Typ,Id){ // Geralmente quando tenho acesso a ela
