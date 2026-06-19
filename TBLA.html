@@ -390,10 +390,22 @@
     const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
     const Rmvact=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     const Menor=Arr=>isArr(Arr) && Arr.length ? Arr.reduce((a,b)=>a.Stts.Lv < b.Stts.Lv ? a : b) : null
+    const SOMA_Obj5 =(Objs,Key,Key2)=>isArr(Objs) ? Objs.reduce((soma,j)=>{if(!j[Key][0]) return Number(soma)+0 ; return Number(soma)+Number(j[Key][0][Key2]||0),0}) : 0
 
     const COMP = {
         PDDS:{Valr:j=>SOMA_Obj(j.Serv,'Valr')
-             ,Cust:j=>SOMA_Obj(j.Serv,'VCbt') // tem que Somar com ARTE e GRAD futuramente VCbt vai virar Custo Geral uma tabela separada
+             ,Cust:j=>{
+                const valroes = j.Serv.map(s=>{
+                    const LL = s.VCbt ? s.VCbt : 0
+                    const S1 = isArr(s.Grad) ? s.Grad.Valr : 0
+                    const S2 = isArr(s.Arte) ? s.Arte.Valr : 0
+                    if(j.Id==2458){LOG('Dentro',s.Grad,s.Arte)}
+                    return [LL,S1,S2]
+                })
+                if(j.Id==2458){LOG('Cust',valroes)}
+                
+                return 0
+            }
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
              ,Lcro:j=>j.Valr-j.Cust
              ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
@@ -715,8 +727,7 @@
 </body>
 
 <script>
-    Onloads('body') ; Get_User()
-    
+    Onloads('body') ; Get_User() 
 
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
