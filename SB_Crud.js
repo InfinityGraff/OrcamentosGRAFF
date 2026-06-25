@@ -57,12 +57,12 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
 
-
     function ReOpt(Sel,arr){ // arr = valores Disponiveis (precisa ser no DOM) (✔️ SB agora disponível)
         if(arr.length==1)         {EditCell(Sel,arr[0])} // Troca pra o Unico option, se Tiver
         if(!arr.includes(Nm(Sel))){EditCell(Sel,""    )} // se o valor atual não Existir dar valor "Vazio"
         setTimeout(()=>{$$('option',Sel).forEach(o=>{Add_N(o);if(arr.includes(o.value)){Rmv_N(o)}})},500) // Ocultar os Options Ausentes
     }
+
     function VAL(e){
         const R = d_r(e)
         const val = 
@@ -76,6 +76,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                 : null
         return val
     }
+
     function DarVAL(e,V){
         const R = d_r(e)
         if(['Edit','Fixo'  ].includes(R.Tm)){Nm(e,V)       ; Inn(e,V)}
@@ -115,7 +116,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         </div>
         <button onclick="FiltrarNum('${Typ}','${Col}',Inn($('.Rang-Min',Pai(this))),Inn($('.Rang-Max',Pai(this))))">RODAR</button>
     </div>`
-
 
     const Tm_Tm = {
         Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW(this,'${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
@@ -159,8 +159,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx,j)).join('')}</tr>`:'').join('')
     const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
     const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
-
-
 
 //===========================IMAGENS===========================
 
@@ -241,14 +239,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
 
-
-
-
-
-
 //===========================LINK===========================
-
-
 
     function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
         function GambiarraAdd(div){Add(_tr(div),'Hoov') ; $$(':scope > td',_tr(div)).forEach(e=>Add(e,'Hoov'))} // HOROZOZA fazer de tudo pra tirar! (remover o hov q faz a saturação da tr)
@@ -262,25 +253,45 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
-    async function SB_GETT(Typ,Limit,Slct,Ordn,Filt){ // ⭐⭐⭐⭐⭐
-        if(Filt){  // se tiver Filtro
-            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit).eq('Id',Filt)
-            if(error)return LOG(error)            
-            MyAlert(`✔️ Get(${Typ})`) ; return data
+    // async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Apartir){ // ⭐⭐⭐⭐⭐
+    //     if(Uniq){  // se tiver Unico
+    //         const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit).eq('Id',Uniq)
+    //         if(error)return LOG(error)            
+    //         MyAlert(`✔️ Get(${Typ})`) ; return data
+    //     }
+    //     else if(Limit){ // se tiver limite
+    //         const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
+    //         if(error)return LOG(error)            
+    //         MyAlert(`✔️ Get(${Typ})`) ; return data
+    //     }else{ // sem Limite e sem Unico
+    //         let todas = [], lim = 1000, ofs = 0, data
+    //         do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).range(ofs,ofs+lim-1))
+    //             if (!data) return ERR('Erro ao carregar dados')
+    //             todas.push(...data) ; ofs+=lim
+    //         }while(data.length===lim)
+    //         MyAlert(`✔️ Get(${Typ})`) ; return todas
+    //     }
+    // }
+
+    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Aprt){
+        let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false,nullsFirst:false})
+             if(Uniq ){Q=Q.eq( 'Id',Uniq)}
+        else if(Aprt ){Q=Q.gte('Id',Aprt)}
+             if(Limit){Q=Q.limit(Limit)}
+
+        if(Uniq||Limit||Aprt){
+            const {data,error}=await Q
+            if(error)return LOG(error)
+            MyAlert(`✔️ Get(${Typ})`)
+            return data
         }
-        else if(Limit){ // se tiver limite
-            const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
-            if(error)return LOG(error)            
-            MyAlert(`✔️ Get(${Typ})`) ; return data
-        }else{ // sem Limite e sem Filtro
-            let todas = [], lim = 1000, ofs = 0, data
-            do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).range(ofs,ofs+lim-1))
-                if (!data) return ERR('Erro ao carregar dados')
-                todas.push(...data) ; ofs+=lim
-            }while(data.length===lim)
-            MyAlert(`✔️ Get(${Typ})`) ; return todas
-        }
+
+        let All=[],lim=1000,ofs=0,data
+        do{({data} = await Q.range(ofs,ofs+lim-1)) ; if(!data)return ERR('Erro') ; All.push(...data) ; ofs+=lim}while(data.length===lim)
+        MyAlert(`✔️ Get(${Typ})`)
+        return All
     }
+
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
     function RmvRow_DOM(Typ,Id   ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
     function AddRow_DOM(Typ,Arr  ){PrePos($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr),'<')} // Adicionar em todas tbm (Inclui Bndj e Fora da Bndj)
@@ -336,8 +347,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
 
-
-
     async function Sb_EDITJSON(tbl,uid,col,path,Valor){
         try{const {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
             if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
@@ -349,7 +358,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
         else{LOG('✔️ Arquivo enviado!',nome)}
     }
-
 
     // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
     function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL

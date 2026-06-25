@@ -665,11 +665,9 @@
     async function RodaTable(Typ){
         if(carregado.includes(Typ)){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
-        const data = await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
+        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,2394) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) // if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
-
-        
     }
 
     async function Read_Tr(Tr,Typ,Id){ // Geralmente quando tenho acesso a ela
