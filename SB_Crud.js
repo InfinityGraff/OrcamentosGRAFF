@@ -274,10 +274,11 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     // }
 
     async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Aprt){
-        let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false,nullsFirst:false})
+        let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Uniq ){Q=Q.eq( 'Id',Uniq)}
         else if(Aprt ){Q=Q.gte('Id',Aprt)}
              if(Limit){Q=Q.limit(Limit)}
+             if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
 
         if(Uniq||Limit||Aprt){
             const {data,error}=await Q
