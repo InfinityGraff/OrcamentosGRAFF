@@ -27,7 +27,7 @@
         Serv:['',...AllProd],
         SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))], // Tem que vir da TABELA de Produtos
         Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        Stts:['','Orçamento','Arte','Analise Art','Impressão','Grad Uber','Falta Uber','Acabamento','Pronto','Entregue','Devendo','Concluído'],
+        Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'], // Tem que vir da TABELA de Produtos
         Form:['','Pix','Av','Card','QR'], // Fixo
         Pgmt:['','Pix','Av','Card','QR'], // Fixo
@@ -157,7 +157,7 @@
     const oPesq = {Aa:'Aa',A_:'[]',Bj:'Bj',In:'<',Ot:'>',_C:'~'}
     const Tm_Pesq=Typ=>
     `<div class="pPesq Pesq_${Typ} hOv Rltv">
-        <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." onkeydown="KeyEntr(()=>SB_Pesq('${Typ}'))">
+        <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="DOM_Pesq('${Typ}')" onkeydown="KeyEntr(()=>SB_Pesq('${Typ}'))">
         <div class="Abslt Ct gap" style="top:8px;right:8px">
             ${ObjKey(oPesq).map(e=>`<a class="AaAa Pesq-${e}" onclick="TOV(this);SB_Pesq('${Typ}')">${oPesq[e]}</a>`).join('')}
             <img class="AaAa" style="width:17px" onclick="SB_Pesq('${Typ}')" src="./SVG/Icon_Lupa.svg">
@@ -172,6 +172,22 @@
         if(error)return LOG(error) ; LOG('Pesq',typ,busca) ; Render_Body(typ,data,[busca,aa,cc])
     }
 
+    function DOM_Pesq(Typ){
+        const busca = Trim($(`.Pesq_${Typ} input`).value)
+        const [bj,aa,cc,a_,ii,ot,of] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${Typ} .Pesq-${e}.Atv`))
+        const getV = (j,c)=>{
+            if(!BS[Typ].FK?.includes(c)) return [String(j[c])]
+            return (j[c]||[]).map(x=>{let v = x[c] ; while(typeof v==='object'&&v!==null) v=Object.values(v)[0] ; return String(v)})
+        }
+        const isMatch=(j)=>{
+            for(const c in j){const vals = getV(j,c) ; if(vals.some(v=>String(v).toLowerCase().includes(busca.toLowerCase()))) return true}
+            return false
+        }
+        const Res = J[Typ].filter(isMatch)
+        $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Add_N(tr))
+        Res.forEach(j=>{const tr = $(`#H_${Typ} > tbody > .tr-${j.Id}`) ; if(tr) Rmv_N(tr)})
+    }
+
     // 💡 se ao Digitar eu escrever uma Acento então pode Ativar oa Acentos
     // 💡 se não tiver bandeija então oculta também!
     // 💡 Conciderar Pesquisa em Coluna Específica
@@ -184,7 +200,7 @@
     const Rodelaaa=Arr=>Object.entries(Arr.reduce((a,[k,v])=>(a[k]=a[k]?a[k]+'|'+v:v,a),{}))
     function FiltrarNum(Typ,Col,Min,Max){LOG(Typ,Col,Min,Max)}
 
-    const Tm_thSort=(Typ,Cols)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
+    const Tm_thSort=(Typ,Cols)=>{           // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
         return Cols.map((col,x)=>{
         const bs = BSJsn(Typ,col) ; const Tem = bs?.TH=='--' ; const NOne = bs?.CLS.includes('none')?'none':''
         return col=='Lixo'?`<th><p>${''}</p></th>`:
@@ -230,13 +246,46 @@
     function Ex_Filt(Typ,col){              // ✔️ Executa o Filto na Tabela
         const aTV = $$(`#H_${Typ} > thead .ThFilt_Atv`).map(e=>[e.dataset.col,Txt(e)])
         const rTV = $$(`#H_${Typ} > thead .ThFilt_Rtv`).map(e=>[e.dataset.col,Txt(e)])       
-        LOG(Rodelaaa(aTV))
+        //LOG(Rodelaaa(aTV))
         //const aTV = $$(`#H_${Typ} > thead .ThFilt_Atv`).map(e=>Txt(e)).join('|') ; const RxAtv = new RegExp(aTV,'i')
         //const rTV = $$(`#H_${Typ} > thead .ThFilt_Rtv`).map(e=>Txt(e)).join('|') ; const RxRtv = new RegExp(rTV,'i')
         //LOG(RxAtv,RxRtv) // Positivos e Negativos de uma Unica Coluna
         const Filtros=[['Tipo','Recriação'],['Dsng','Allan|Baby']] // Exemplo
-        const Modo = 'E' // ou 'E'
-        SB_Filt(Typ,Rodelaaa(aTV),Modo)
+        //const Modo = 'E' // ou 'E'
+        //SB_Filt(Typ,Rodelaaa(aTV),Modo)
+        DOM_Filt(Typ,col,Rodelaaa(aTV),Rodelaaa(rTV))
+    }
+
+    function DOM_Filt(Typ,col,aTV,rTV){
+        const getMatch=(j,c,val)=>{
+            const Vl = val.split('|')
+            // FK (array de objetos)
+            if(BS[Typ].FK?.includes(c)){
+                return (j[c]||[]).some(x=>{
+                let v=x[c]
+                while(typeof v==='object'&&v!==null) v=Object.values(v)[0]
+                return Vl.includes(String(v))
+                })
+            }
+            const v = j[c]
+            // OBJETO (não FK, mas é obj)
+            if(typeof v==='object'&&v!==null){
+                let vv = v[c]
+                while(typeof vv==='object'&&vv!==null) vv=Object.values(vv)[0]
+                return Vl.includes(String(vv))
+            }
+            // NORMAL
+            return Vl.includes(String(v))
+        }
+
+        const isMatch=(j)=>{
+            for(const [c,v] of aTV){if(!getMatch(j,c,v)) return false}
+            for(const [c,v] of rTV){if( getMatch(j,c,v)) return false}
+            return true
+        }
+        const Res = J[Typ].filter(isMatch)
+        $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Add_N(tr)) // Limpar
+        Res.forEach(j=>{const tr = $(`#H_${Typ} > tbody > .tr-${j.Id}`) ; if(tr) Rmv_N(tr)}) // Ocultar
     }
 
     function F_Clen(Typ){                   // ✔️ Limpa todos os Filtros

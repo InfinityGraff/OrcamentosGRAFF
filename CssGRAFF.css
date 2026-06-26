@@ -213,6 +213,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .Slidde .WrapTable {max-height: 80%;}
   .WrapTable::-webkit-scrollbar{display:none}
 
+  .WrapTable > table{margin-bottom: 100px}
+
   .TBLAA{overflow:visible !important}
   .TBLAA table{text-align:center;border-collapse:collapse;transition: width 0.4s ease-in-out} /*Parece q n ta funcionando a animação*/
   .TBLAA table{background:var(--CSS3TblLt) ; box-shadow:0 5px 10px #a700a72f} /*Baby*/
