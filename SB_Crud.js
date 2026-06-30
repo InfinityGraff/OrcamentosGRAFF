@@ -273,14 +273,16 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     //     }
     // }
 
-    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Aprt){
+    
+
+    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,mes){
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Uniq ){Q=Q.eq( 'Id',Uniq)}
-        else if(Aprt ){Q=Q.gte('Id',Aprt)}
+        else if(mes  ){Q=Q.or(`Data.is.null,and(Data.gte.${mes[0]},Data.lt.${mes[1]})`)} //. gte('Data',Aprt).lt('Data',Aprt2)} // Q.gte('Id',Aprt)
              if(Limit){Q=Q.limit(Limit)}
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
 
-        if(Uniq||Limit||Aprt){
+        if(Uniq||Limit||mes){
             const {data,error}=await Q
             if(error)return LOG(error)
             MyAlert(`✔️ Get(${Typ})`)

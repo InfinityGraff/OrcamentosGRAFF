@@ -45,6 +45,21 @@
         SERV_Pdds:['Serv','Lixo'],
         PGMT_Pdds:['Pgmt','Lixo'],
     }
+
+    const Mesess = {
+        Janeiro:['2026-01-01','2026-02-01'],
+        Fevereiro:['2026-02-01','2026-03-01'],
+        Março:['2026-03-01','2026-04-01'],
+        Abril:['2026-04-01','2026-05-01'],
+        Maio:['2026-05-01','2026-06-01'],
+        Junho:['2026-06-01','2026-07-01'],
+        Julho:['2026-07-01','2026-08-01'],
+        Agosto:['2026-08-01','2026-09-01'],
+        Setembro:['2026-09-01','2026-10-01'],
+        Outubro:['2026-10-01','2026-11-01'],
+        Novembro:['2026-11-01','2026-12-01'],
+        Dezembro:['2026-12-01','2027-01-01']
+    }
     
     function CriaselectStr(Typ){
         const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
@@ -699,11 +714,17 @@
                 ${Tm_Check2(SVG.RszH,'',`ReszH('${Typ}')`)}
                 ${Tm_Check2(SVG.RszW,'',`ReszW('${Typ}')`)}
             </div>
-            <button onclick="LOG('deve fazer a Requisição Novamente')">Carregar</button>
+            <select onchange="RecaregaMes('${Typ}',this.value)">${Tm_Opt(['Meses',...ObjKey(Mesess)])}</select>
+            <button onclick="LOG('deve fazer a Requisição Novamente')">Recarregar</button>
             <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}Limpar </button>
         </div>    
         ${Typ=="GRD2" ? `<div class="Paizao w90 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w90')}
         <p>Soma: 00,00</p>`
+    }
+
+    function RecaregaMes(Typ,Mes){
+        LOG(Typ,Mes)
+        RodaTable(Typ,Mesess[Mes])
     }
     
     function GAMBIARRAA(Find){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
@@ -711,10 +732,10 @@
                          j.Pgmt.forEach(e=>{delete e['Clnt']}) })
     }
 
-    async function RodaTable(Typ){
-        if(carregado.includes(Typ)){return} ; carregado.push(Typ)
+    async function RodaTable(Typ,Mes=['2026-06-01','2026-07-01']){
+        if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
-        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,2394) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
+        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) // if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
