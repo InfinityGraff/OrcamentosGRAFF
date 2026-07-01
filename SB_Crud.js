@@ -129,7 +129,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}Low/${e.replace('.svg','.webp')}`:`${BASE_URL2}Img/${e}${src20}`:`./CrudSB/Upld.webp`}"  onclick="AbrirImg(this,'${e}','${R}')">`, // essa só carrega mas não pode Upar         src="${SrcsIMG(e,d_r(R))}"
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
-        Data:(e,R,Rgx  )=>`<p class="P-P Ct" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="TrcFih2(this,$('p',Pai(this)))">`,
+        Data:(e,R,Rgx  )=>`<p class="P-P Ct h100" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="Inn($('p',Pai(this)),YMD(this.value));TrcFih2(this,$('p',Pai(this)))">`,
         //Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
         OKAY:(e,R,Rgx  )=>['Add','Rmv'].map(E=>`<img data-R="${R}" class="P-P PT HOV" name="${e}" onclick="LinkaR(this,'${E=='Rmv'?'null':d_r(R).Id}')" src="./CrudSB/${E}Link.webp">`).join(''),
@@ -149,7 +149,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
 
         Lnk2:(e,R,Rgx)=>Tm_Bndj(R,getArr(e)),
         Slc2:(e,R)=>`MySelect()`,
-        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)),
+        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)) ,
         BjIn:(e,R)=>Tm_Bndj(R,getArr(e)),
     }
     const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
@@ -276,6 +276,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
             const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
             LOG('datta',data)
+            __NULL(data)
             AddRow_DOM(Typ,[data])
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
             return data.Id

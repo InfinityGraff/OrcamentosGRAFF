@@ -184,7 +184,6 @@
         const busca = Trim($(`.Pesq_${typ} input`).value)
         const [bj,aa,cc,a_,ii,ot,of] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${typ} .Pesq-${e}.Atv`))
         const {data,error}=await supaBASE.rpc('pesq_all',{typ,busca,bj,aa,cc,a_,ii,ot,of,ord:'Id',lim:100})
-        LOG('Santiago',data)
         if(error)return LOG(error) ; LOG('Pesq',typ,busca) ; Render_Body(typ,data,[busca,aa,cc])
     }
 
@@ -562,7 +561,7 @@
         if(Mod=='OKAY') // ['GRAD','OS','UBER'] // Todas as que não estão OKAY
             return (await supaBASE.from(COL).select(selectStr).is('OKAY',null).order('Id',{ascending:false}).limit(100)).data||[] // OKAY tem que ser null ou False
         if(Mod=='Free') // ['ARTE','CLNT']      // Só os 50 mais recentes
-            return (await supaBASE.from(COL).select(selectStr).order('Id',{ascending:false}).limit(100)).data||[]
+            return (await supaBASE.from(COL).select(selectStr).order('Id',{ascending:false}).limit(80)).data||[]
         return []
     }
 
@@ -628,16 +627,16 @@
         return {Tt,Nm,Img}
     }
 
-    const LoadBndj =(Eu,R)=>{ // Renderiza Bandeija
-        if(Coten($('.BNdj',Pai(Eu)),'none')){
-            if(BjCarregado.includes(R)){return} ; BjCarregado.push(R)
+    const LoadBndj =(Eu,R,Btn)=>{ // Renderiza Bandeija
+        if(Coten($('.BNdj',Pai(Eu)),'none') || Btn=='Btn'){
+            if(BjCarregado.includes(R) && Btn!='Btn'){return} ; BjCarregado.push(R)
             function LoadLinhasBndj(R){
                 const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
                 const Find  = [].concat(Acc_Bndj[`${Typ}-${Id}-${Col}`]??[])
                 if(Find.length==0){return ''}
                 let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
-                if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')} // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
+                if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')}               // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
                 return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
             }
             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
@@ -647,9 +646,7 @@
 
     function Tm_Bndj(R,Arr){ // Recebe Link ou Tabela Interna
         const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
-        if(Typ=='SERV'){LOG(Typ,Id,Col,Arr)}
         const Find  = isArr(Arr)?Arr:[]
-        //LOG('oFund Atual',Find)
         const TT    = Tm_TT(COL,Find,Typ,Col,R)
         Acc_Bndj[`${Typ}-${Id}-${Col}`]=Find
         return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
@@ -661,7 +658,7 @@
                         <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
                         ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">  + Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
                           Tm=='Link'?`<button class="Mini" onclick="  RmvLink(this,'${R}')">Deslinkar ${Col}</button>
-                                      <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar    ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
+                                      <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
                     </div>
                 </div>`
     }
@@ -671,9 +668,12 @@
         const Tabl = $('table',_td(Eu)) ; Rmv_N(Tabl)
         if(['SERV','PGMT'].includes(COL)){
             const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,typ:Aa('PDDS'),dados:{}}) // dentro de dados. aqui fica o obj, provavelmente dar null nos FK q merda
+            __NULL(data)
             // data.Id.split('_')[1]=='1' se for o primeiro cria tudo se não só adiciona
             const Find = RmvKeys(data,Ryp[`${_R.Ty}_${_R.Cl}`])
-            Befor($('tbody',Tabl),Tm_Tr(COL,[Find])) // Agora Limpar as Colunas desnessesárias
+            LOG(Find)
+            if($('tbody',Tabl)){Befor($('tbody',Tabl),Tm_Tr(COL,[Find]))}
+            else{Acc_Bndj[`${_R.Ty}-${_R.Id}-${_R.Cl}`]=[Find] ; LoadBndj(Avo(Eu),R,'Btn')}   // Agora Limpar as Colunas desnessesárias
         }
         // Novo Id // Clona Cliente
     }
@@ -698,6 +698,7 @@
     function Render_Tbls(Typ         ){Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`])))}
     function Render_TblP(Typ         ){Tm_Table(Typ)}
     function Render_Body(Typ,data,Rgx){AutoCOMP(Typ,data) ; Tm_tbody(Typ,data,Rgx)}
+    function RecaregaMes(Typ,Mes){LOG(Typ,Mes) ; RodaTable(Typ,Mesess[Mes])}
 
     function PrepTable(Typ){
         const tabtab=(e,m)=>`
@@ -723,11 +724,6 @@
         <p>Soma: 00,00</p>`
     }
 
-    function RecaregaMes(Typ,Mes){
-        LOG(Typ,Mes)
-        RodaTable(Typ,Mesess[Mes])
-    }
-    
     function GAMBIARRAA(Find){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
         Find.forEach(j=>{j.Serv.forEach(e=>{delete e['Clnt']})
                          j.Pgmt.forEach(e=>{delete e['Clnt']}) })
@@ -737,14 +733,14 @@
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
-        fazJJJ(Typ,data) ; AutoCOMP(Typ) // if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
+        fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
 
     async function Read_Tr(Tr,Typ,Id){ // Geralmente quando tenho acesso a ela
         const selectStr = SB_CriaSlct(Typ)
         const data = await SB_GETT(Typ,1,selectStr,null,Id)
-        fazJJJ(Typ,data,'Unico') ; AutoCOMP(Typ,data) ; /*if(Typ=='PDDS'){GAMBIARRAA(data)}*/ ; __NULL(data[0])
+        fazJJJ(Typ,data,'Unico') ; AutoCOMP(Typ,data) ; if(Typ=='PDDS'){GAMBIARRAA(data)} ; __NULL(data[0])
         LOG('Read_Tr',data)
         $(Tr).outerHTML = Tm_Tr(Typ,data)
     }
@@ -803,7 +799,7 @@
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; LOG('Clientes',data) ; BS_CLNT.push(...data)}
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
         await SB_GET_Clnt()
         NavPag(Atual.Pag) ; RodaTable(Atual.Pag)
     }
