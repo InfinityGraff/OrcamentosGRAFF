@@ -184,6 +184,7 @@
         const busca = Trim($(`.Pesq_${typ} input`).value)
         const [bj,aa,cc,a_,ii,ot,of] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${typ} .Pesq-${e}.Atv`))
         const {data,error}=await supaBASE.rpc('pesq_all',{typ,busca,bj,aa,cc,a_,ii,ot,of,ord:'Id',lim:100})
+        LOG('Santiago',data)
         if(error)return LOG(error) ; LOG('Pesq',typ,busca) ; Render_Body(typ,data,[busca,aa,cc])
     }
 
@@ -732,7 +733,7 @@
                          j.Pgmt.forEach(e=>{delete e['Clnt']}) })
     }
 
-    async function RodaTable(Typ,Mes=['2026-06-01','2026-07-01']){
+    async function RodaTable(Typ,Mes=['2026-07-01','2026-08-01']){
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)

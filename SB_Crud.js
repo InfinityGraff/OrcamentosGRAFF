@@ -253,28 +253,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         const pc = GetPC() ; const Ag = AGORA().split(' ')
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
-    // async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Apartir){ // ⭐⭐⭐⭐⭐
-    //     if(Uniq){  // se tiver Unico
-    //         const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit).eq('Id',Uniq)
-    //         if(error)return LOG(error)            
-    //         MyAlert(`✔️ Get(${Typ})`) ; return data
-    //     }
-    //     else if(Limit){ // se tiver limite
-    //         const {data,error}= await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).limit(Limit)
-    //         if(error)return LOG(error)            
-    //         MyAlert(`✔️ Get(${Typ})`) ; return data
-    //     }else{ // sem Limite e sem Unico
-    //         let todas = [], lim = 1000, ofs = 0, data
-    //         do{({data}=await supaBASE.from(Typ).select(Slct||'*').order((Ordn||'Id'),{ascending:false,nullsFirst:false}).range(ofs,ofs+lim-1))
-    //             if (!data) return ERR('Erro ao carregar dados')
-    //             todas.push(...data) ; ofs+=lim
-    //         }while(data.length===lim)
-    //         MyAlert(`✔️ Get(${Typ})`) ; return todas
-    //     }
-    // }
-
-    
-
+   
     async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,mes){
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Uniq ){Q=Q.eq( 'Id',Uniq)}
@@ -282,12 +261,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
              if(Limit){Q=Q.limit(Limit)}
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
 
-        if(Uniq||Limit||mes){
-            const {data,error}=await Q
-            if(error)return LOG(error)
-            MyAlert(`✔️ Get(${Typ})`)
-            return data
-        }
+        if(Uniq||Limit||mes){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
 
         let All=[],lim=1000,ofs=0,data
         do{({data} = await Q.range(ofs,ofs+lim-1)) ; if(!data)return ERR('Erro') ; All.push(...data) ; ofs+=lim}while(data.length===lim)
