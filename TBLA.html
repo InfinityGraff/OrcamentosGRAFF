@@ -455,20 +455,19 @@
     const Rmvact=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     const Menor=Arr=>isArr(Arr) && Arr.length ? Arr.reduce((a,b)=>a.Stts.Lv < b.Stts.Lv ? a : b) : null
     const SOMA_Obj5 =(Objs,Key,Key2)=>isArr(Objs) ? Objs.reduce((soma,j)=>{if(!j[Key][0]) return Number(soma)+0 ; return Number(soma)+Number(j[Key][0][Key2]||0),0}) : 0
+    const somarrrrr=arr=>arr.reduce((a,b)=>a+b,0) // PreScript
 
     const COMP = {
         PDDS:{Valr:j=>SOMA_Obj(j.Serv,'Valr')
              ,Cust:j=>{
-                const valroes = j.Serv.map(s=>{
-                    const LL = s.VCbt ? s.VCbt : 0
-                    const S1 = isArr(s.Grad) ? s.Grad.Valr : 0
-                    const S2 = isArr(s.Arte) ? s.Arte.Valr : 0
-                    if(j.Id==2458){LOG('Dentro',s.Grad,s.Arte)}
-                    return [LL,S1,S2]
+                const SOMAA = j.Serv.map(s=>{
+                    const LL = s.VCbt ? s.VCbt : 0                   // Existe Acabamento
+                    const S1 = isArr(s.Arte) ? s.Arte[0].Valr||0 : 0 // Existe Custo Arte
+                    const S2 = isArr(s.Grad) ? s.Grad[0].Val1||0 : 0 // Existe Custo Grade
+                    return LL+S1+S2
                 })
-                if(j.Id==2458){LOG('Cust',valroes)}
-                
-                return 0
+                const resut = somarrrrr(SOMAA)
+                return resut==0?'':resut // Pode Futuramente ser uma Bandeija
             }
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
              ,Lcro:j=>j.Valr-j.Cust
@@ -497,7 +496,8 @@
              ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
              ,Forn:j=>Dbbrev[j.Id.split('_')[0]]               // OK
              ,VlrO:j=> j.OS?.Valr || 0                         // OK
-             ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt},
+            //,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+            },
         OS  :{Oimg:j=>`${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`${j.Id}.webp` ?? ''},                   // OK
         CLNT:{Lcro:j=>j.Pdds?.Valr ?? 0
@@ -520,7 +520,7 @@
                 else if(V && typeof V=='object') AutoCOMP(Key,[V])
             })
             ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
-                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? '' // Coleta o Valor
+                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? ''  // Coleta o Valor
                 j[c]=V ; JJ?.[Typ]?.[j.Id] && (JJ[Typ][j.Id][c]=V) // Aplica os J e JJ
             })
         })  
@@ -732,7 +732,9 @@
     async function RodaTable(Typ,Mes=['2026-07-01','2026-08-01']){
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
-        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) : await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
+        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) :
+                     Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
+                                   await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
@@ -812,6 +814,9 @@
     // Linha 654 (tinha 382_1 em Link)
     // Linha 25  (tinha 55_2 em Link)
     // 114 tinha 56_1
+
+    // FOTO do Produto
+    // Foto do Cliente
 </script>
 
 </html>
