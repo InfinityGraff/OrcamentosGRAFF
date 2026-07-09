@@ -463,7 +463,8 @@
                 const SOMAA = j.Serv.map(s=>{
                     const LL = s.VCbt ? s.VCbt : 0                   // Existe Acabamento
                     const S1 = isArr(s.Arte) ? s.Arte[0].Valr||0 : 0 // Existe Custo Arte
-                    const S2 = isArr(s.Grad) ? s.Grad[0].Val1||0 : 0 // Existe Custo Grade
+                    //const S2 = isArr(s.Grad) ? s.Grad[0].Val1||0 : 0 // Existe Custo Grade
+                    const S2 = s.VGrd ? s.VGrd : 0                   // Existe Acabamento
                     return LL+S1+S2
                 })
                 const resut = somarrrrr(SOMAA)
