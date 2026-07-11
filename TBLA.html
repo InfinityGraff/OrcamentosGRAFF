@@ -734,7 +734,7 @@
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) :
-                     Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
+                     Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'U\\_%'}) :
                                    await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
