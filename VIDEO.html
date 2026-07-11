@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mini Video Editor</title>
+</head>
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{background:#202124;color:#fff}
+    header{background:#2b2d31;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #444}
+    header h2{font-size:24px}
+    input[type=file]{color:#fff}
+    main{display:flex;flex-direction:column;height:calc(100vh - 70px)}
+    #previewArea{flex:1;display:flex;justify-content:center;align-items:center;background:#111}
+    #player{max-width:90%;max-height:90%;border-radius:8px;background:#000}
+    #controls{background:#2d2d2d;padding:15px;display:flex;gap:15px;justify-content:center}
+    button{padding:10px 20px;border:0;border-radius:6px;cursor:pointer;background:#1976d2;color:#fff;font-size:15px;transition:.2s}
+    button:hover{background:#0d5db8}
+    #timelineContainer{background:#181818;padding:15px;border-top:1px solid #333}
+    #timeline{margin-top:10px;min-height:90px;border:2px dashed #555;display:flex;align-items:center;gap:10px;overflow-x:auto;padding:10px}
+    .take{width:140px;height:70px;background:#444;border-radius:6px;display:flex;justify-content:center;align-items:center;cursor:pointer;flex-shrink:0;transition:.2s}
+    .take:hover{background:#666}
+    .take.selected{border:3px solid #00c853}
+    #properties{background:#2b2b2b;padding:20px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    #properties label{display:flex;flex-direction:column;gap:5px}
+    #properties input{width:120px;padding:8px;border:0;border-radius:5px}
+</style>
+
+<body>
+
+<header>
+<h2>Mini Video Editor</h2>
+<input type="file" id="videoInput" accept="video/*" multiple>
+</header>
+
+<main>
+    <section id="previewArea">
+    <video id="player" controls playsinline></video>
+    </section>
+
+    <section id="controls">
+    <button id="playBtn">Play</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="exportBtn">Exportar MP4</button>
+    </section>
+
+    <section id="timelineContainer">
+    <h3>Timeline</h3>
+    <div id="timeline"></div>
+    </section>
+
+    <section id="properties">
+    <h3>Take selecionado</h3>
+    <label>Início <input type="number" id="startTime" step="0.1" value="0"></label>
+    <label>Fim <input type="number" id="endTime" step="0.1" value="0"></label>
+    <button id="applyTrim">Aplicar Corte</button>
+    </section>
+</main>
+
+<script>
+
+
+
+
+    const videoInput = document.getElementById("videoInput");
+    const player = document.getElementById("player");
+    const timeline = document.getElementById("timeline");
+    const playBtn = document.getElementById("playBtn");
+    const pauseBtn = document.getElementById("pauseBtn");
+    const startTime = document.getElementById("startTime");
+    const endTime = document.getElementById("endTime");
+
+    let takes = [];
+    let selectedTake = null;
+
+    videoInput.addEventListener("change", loadVideos);
+    playBtn.addEventListener("click", () => {player.play();});
+    pauseBtn.addEventListener("click", () => {player.pause();});
+
+    function loadVideos(event){
+        const files = [...event.target.files];
+        files.forEach(file => {
+            const url = URL.createObjectURL(file);
+            const tempVideo = document.createElement("video");
+            tempVideo.preload = "metadata";
+            tempVideo.src = url;
+            tempVideo.onloadedmetadata = () => {
+                const take = {
+                    id: crypto.randomUUID(),
+                    file,
+                    url,
+                    duration: tempVideo.duration,
+                    start:0,
+                    end:tempVideo.duration,
+                    width:tempVideo.videoWidth,
+                    height:tempVideo.videoHeight
+                };
+                takes.push(take);
+                renderTimeline();
+            };
+        });
+    }
+
+    function renderTimeline(){
+        timeline.innerHTML = "";
+        takes.forEach((take,index)=>{
+            const item = document.createElement("div");
+            item.className = "take";
+            item.draggable = true;
+            item.dataset.index = index;
+            if(selectedTake===take.id){item.classList.add("selected");}
+            item.innerHTML = `<div><strong>Take ${index+1}</strong><br>${take.duration.toFixed(1)} s</div>`;
+            item.onclick = ()=>selectTake(take.id);
+            item.addEventListener("dragstart", dragStart);
+            item.addEventListener("dragover", dragOver);
+            item.addEventListener("drop", dropTake);
+            timeline.appendChild(item);
+        });
+    }
+
+    function selectTake(id){
+        selectedTake=id;
+        const take=takes.find(t=>t.id===id);
+        player.src=take.url;
+        startTime.value=take.start.toFixed(1);
+        endTime.value=take.end.toFixed(1);
+        renderTimeline();
+    }
+
+    document.getElementById("applyTrim").addEventListener("click",()=>{
+        if(!selectedTake) return;
+        const take=takes.find(t=>t.id===selectedTake);
+        take.start=parseFloat(startTime.value);
+        take.end=parseFloat(endTime.value);
+        alert("Corte atualizado.");
+    });
+
+</script>
+
+</body>
+</html>
