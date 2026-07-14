@@ -101,7 +101,9 @@
 
             PDDS_CLNT:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
             SERV_ARTE:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
-            SERV_GRAD:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`
+            SERV_GRAD:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
+            GRAD_OS  :()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
+            GRAD_UBER:()=>`${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}`,
 
         }
         if(COL){return selectStr[`${Typ}_${COL}`]()}
@@ -496,8 +498,9 @@
         GRAD:{ImgU:j=>`${j.Id}.webp` ?? ''                     // OK
              ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
              ,Forn:j=>Dbbrev[j.Id.split('_')[0]]               // OK
-             ,VlrO:j=> j.OS?.Valr || 0                         // OK
-            //,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+             ,VlrO:j=>j.OS?.Valr || 0                          // OK
+             ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+             ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
             },
         OS  :{Oimg:j=>`${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`${j.Id}.webp` ?? ''},                   // OK
@@ -609,12 +612,13 @@
 
         const AllImgs=(e,COLL)=>{
             const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
-            return colimg.map(i=>Tm_Tm['Imgs'](e[i],`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('')   // Rodar isso pra cada Imagem desta Linha
+            return colimg.map(i=>Tm_Tm['Imgs'](e[i]||'',`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('')   // Rodar isso pra cada Imagem desta Linha
         }
-
         const ImgT_T=e=>{
+                 if(!e){return ''} // Gambiarra
                  if(Typ=='PDDS' && Col=='Clnt'){return e?.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''}
             else if(Typ=='PDDS' && Col=='Serv'){return e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
+            else if(Typ=='GRAD' && Col=='Serv'){return ''} // e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
             else{return AllImgs(e,COL)}
         }
 
@@ -734,7 +738,7 @@
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
         const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) :
-                     Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'U\\_%'}) :
+                     Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
                                    await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
