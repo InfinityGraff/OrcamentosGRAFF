@@ -443,13 +443,34 @@
     const Mk=(Stts,c,Texto='white')=>{return {Stts,Cor:COR[c],Dark:COR2[c],Texto,TxPcy:CorPacyy(COR[c])}}
     const LALEL={
         SERV:{
-        Orcamento:(c)=>Mk('Orçamento',c,'black'),
-        Arte     :(c)=>Mk('Arte'     ,c),
-        Impressao:(c)=>Mk('Impressão',c),
-        Pronto   :(c)=>Mk('Pronto'   ,c),
-        Entregue :(c)=>Mk('Entregue' ,c),
-        Devendo  :(c)=>Mk('Devendo'  ,'Redd')
-    }}
+            Orcamento:c=>Mk('Orçamento',c,'black'),
+            Arte     :c=>Mk('Arte'     ,c),
+            Impressao:c=>Mk('Impressão',c),
+            Pronto   :c=>Mk('Pronto'   ,c),
+            Entregue :c=>Mk('Entregue' ,c),
+            Devendo  :c=>Mk('Devendo'  ,'Redd')
+        },
+        GRAD:{// Muita GAMBIARRA
+            Falta_Data:Mk('Falta','Azul'),
+            Falta_Cont:Mk('Falta','Roxo'),
+            Falta_VlrO:Mk('Falta','Redd'),
+            Falta_Data_Cont:Mk('Falta','Yelw'),
+            Falta_Data_VlrO:Mk('Falta','Yelw'),
+            Falta_Cont_VlrO:Mk('Falta','Yelw'),
+            Falta_Data_Cont_VlrO:Mk('Zerado','Roxo','black'),
+            OK:Mk('OK','Gren'),
+        }
+    }
+    const ListasGRADES = {// Muita GAMBIARRA
+        Falta_Data:['Falta','Yelw'],
+        Falta_Cont:['Falta','Yelw'],
+        Falta_VlrO:['Falta','Yelw'],
+        Falta_Data_Cont:['Falta','Roxo'],
+        Falta_Data_VlrO:['Falta','Roxo'],
+        Falta_Cont_VlrO:['Falta','Roxo'],
+        Falta_Data_Cont_VlrO:['Zerado','Roxo'],
+        OK:['OK','Gren']
+    }
 </script>
 
 <script> // ---- AUTOCOMP ----
@@ -488,8 +509,8 @@
                 const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
                 const Level = ObjKey(LALEL['SERV']).indexOf(S.Stts)
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
-            }
-            //Tipo:j=>j.Serv?Vari(j.Serv):[], //Opt
+            },
+            VGrd:j=>j.Serv=='Recorte' ? Number((j.Alt * j.Lag * j.Qnt * 15).toFixed(2)) : Number(j.VGrd)
             //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
         },
         PGMT:{
@@ -501,6 +522,23 @@
              ,VlrO:j=>j.OS?.Valr || 0                          // OK
              ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
              ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
+             ,Stts:j=>{ // Muita GAMBIARRA
+                const GData=+(j.Data!=='')
+                const GCont=+(j.Cont==j.Serv.length)
+                const GVlrO=+(j.VlrO==j.Summ)
+                const faltas=[]
+                if(!GData) faltas.push('Data')
+                if(!GCont) faltas.push('Cont')
+                if(!GVlrO) faltas.push('VlrO')
+                const Result = faltas.length ? `Falta_${faltas.join('_')}` : 'OK'
+                const Oobj = {Cor:ListasGRADES[Result][1], Stts:Result, True : GData+GCont+GVlrO, Total:3}
+                const S     = Oobj
+                const Etp   = LALEL['GRAD'][Rmvact(S.Stts)]
+                const opc   = _0_1(S.True/S.Total)
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['GRAD']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+             }
             },
         OS  :{Oimg:j=>`${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`${j.Id}.webp` ?? ''},                   // OK
@@ -825,3 +863,4 @@
 </script>
 
 </html>
+
