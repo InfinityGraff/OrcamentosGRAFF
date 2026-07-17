@@ -510,7 +510,8 @@
                 const Level = ObjKey(LALEL['SERV']).indexOf(S.Stts)
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
             },
-            VGrd:j=>j.Serv=='Recorte' ? Number((j.Alt * j.Lag * j.Qnt * 15).toFixed(2)) : Number(j.VGrd)
+            VGrd:j=>j.Serv=='Recorte' ? Number((j.Alt * j.Lag * j.Qnt * 15).toFixed(2)) : Number(j.VGrd),
+            Foto:j=>`${j.Id}.webp` ?? ''                  // OK
             //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
         },
         PGMT:{
