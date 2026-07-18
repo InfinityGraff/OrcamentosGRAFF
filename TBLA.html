@@ -414,13 +414,9 @@
                 const dbrev = BSJsn(Typ,k).COL||k
                 const All   = J[Typ].map(e=>e[k])
                 const JsCOl = {Clnt:'Clnt',Serv:'Serv',Pgmt:'Valr'}
-                const all   = v=='UnJs' ? JJJ[AA(k)].map(e=>e[JsCOl[k]]) : ''
+                const all   = v=='UnJs' ? JJJ[AA(k)]?.map(e=>e[JsCOl[k]]) : ['']
                 const SUM   = {PgPX:0,PgAV:0}
-
-                if(Typ=='PDDS' && k=='Pgmt'){
-                    JJJ['PGMT'].forEach(p=>{const v=p.Valr||0 ; if(p.Form=='Pix'){SUM.PgPX+=v} else if(p.Form=='Av' ){SUM.PgAV+=v}})
-                }
-
+                if(Typ=='PDDS' && k=='Pgmt'){JJJ['PGMT'].forEach(p=>{const v=p.Valr||0 ; if(p.Form=='Pix'){SUM.PgPX+=v} else if(p.Form=='Av' ){SUM.PgAV+=v}})}
                 if(v=='Uniq'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(All),dbrev))}
                 if(v=='UnJs'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(all),dbrev))}
                 if(v=='AvPx'){Inn($(Rx8(Typ,'Foot',k)),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div><div class="Ct">${Tm_RS(SUM.PgAV)}Av </div></div>`)}
@@ -781,10 +777,13 @@
                          j.Pgmt.forEach(e=>{delete e['Clnt']}) })
     }
 
+    //'1799|568|110|1808'.split('|')
+    const Filts = {Clnt:['4268','4291','4331','130']}
+
     async function RodaTable(Typ,Mes=['2026-07-01','2026-08-01']){
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
-        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) :
+        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,null/*Mes*/,Filts) :
                      Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
                      Typ=='CLNT' ? await SB_GETT(Typ,100,selectStr,'Stts',null,null) :
                                    await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)

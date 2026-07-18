@@ -257,7 +257,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Uniq ){Q=Q.eq( 'Id',Uniq)}
         else if(mes  ){Q=Q.or(`Data.is.null,and(Data.gte.${mes[0]},Data.lt.${mes[1]})`)}
-        else if(filt ){Object.entries(filt).forEach(([k,v])=>Q=Q.ilike(k,`${v}`))}
+        else if(filt ){Object.entries(filt).forEach(([k,v])=>{Q = Array.isArray(v) ? Q.in(k,v) : Q.ilike(k,`${v}`)})}
              if(Limit){Q=Q.limit(Limit)}
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
 
