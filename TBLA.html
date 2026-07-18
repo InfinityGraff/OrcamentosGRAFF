@@ -511,16 +511,16 @@
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
             },
             VGrd:j=>j.Serv=='Recorte' ? Number((j.Alt * j.Lag * j.Qnt * 15).toFixed(2)) : Number(j.VGrd),
-            Foto:j=>`${j.Id}.webp` ?? ''                  // OK
+            Foto:j=>`Foto/${j.Id}.webp` ?? ''                  // OK
             //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
         },
         PGMT:{
             Clnt:j=>[j.Clnt?.CLNT],
         },
-        GRAD:{ImgU:j=>`${j.Id}.webp` ?? ''                     // OK
-             ,ImgG:j=>`${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
-             ,Forn:j=>Dbbrev[j.Id.split('_')[0]]               // OK
-             ,VlrO:j=>j.OS?.Valr || 0                          // OK
+        GRAD:{ImgU:j=>`Img/${j.Id}.webp` ?? ''                     // OK
+             ,ImgG:j=>`Img/${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
+             ,Forn:j=>Dbbrev[j.Id.split('_')[0]]                   // OK
+             ,VlrO:j=>j.OS?.Valr || 0                              // OK
              ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
              ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
              ,Stts:j=>{ // Muita GAMBIARRA
@@ -541,15 +541,16 @@
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
              }
             },
-        OS  :{Oimg:j=>`${j.Id}.webp` ?? ''},                   // OK
-        UBER:{Img :j=>`${j.Id}.webp` ?? ''},                   // OK
-        CLNT:{Lcro:j=>j.Pdds?.Valr ?? 0
+        OS  :{Oimg:j=>`Img/${j.Id}.webp` ?? ''},                   // OK
+        UBER:{Img :j=>`Img/${j.Id}.webp` ?? ''},                   // OK
+        CLNT:{Foto:j=>`Clnt/${j.Id}.webp` ?? ''
+             ,Lcro:j=>j.Pdds?.Valr ?? 0
              ,Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}
             },
         ARTE:{Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
               TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
                Img:j=>J['IMGS'][j.Nome] ?? '' // não sei se isso é exatamente AUTO, vamos ver lá!
-            },        
+            },
     }
 
     function AutoCOMP(Typ,Arr=J[Typ]){
