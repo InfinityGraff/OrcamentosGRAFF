@@ -91,7 +91,7 @@
                  PDDS:`${Cl(Typ)},${FK(Typ,'Clnt')},${FK(Typ,'Serv')},${FK(Typ,'Pgmt')}`, // Clnt:CLNT(${Cl('CLNT',R.PDDS_Clnt)}),Serv:SERV(${Cl('SERV',R.PDDS_Serv)}),Pgmt:PGMT(${Cl('PGMT',R.PDDS_Pgmt)})`,
                  SERV:`${Cl(Typ,['Cbmt','VCbt'])}, Pdds:PDDS(${Cl('PDDS',Ryp.SERV_Pdds)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})`,
                  PGMT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.PGMT_Pdds)}),Clnt:PDDS(CLNT(${Cl('CLNT',Ryp.PDDS_Clnt)})),Mpag:MPAG(*)`,
-                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.CLNT_Pdds)},Serv:SERV(${Cl('SERV',Ryp.CLNT_Pdds)}),Pgmt:PGMT(${Cl('PGMT',Ryp.CLNT_Pdds)}))`,
+                 CLNT:`${Cl(Typ)}, Pdds:PDDS(${Cl('PDDS',Ryp.CLNT_Pdds)},Serv:SERV(${Cl('SERV',Ryp.CLNT_Pdds)},Arte:ARTE(${Cl('ARTE',['Serv'])}),Grad:GRAD(${Cl('GRAD',['Serv'])})),Pgmt:PGMT(${Cl('PGMT',Ryp.CLNT_Pdds)}))`,
 
                  MPAG:`${Cl(Typ)}, Pgmt:PGMT(${Cl('PGMT',['Mpag'])})`, // Dentro de PGMT trás o FK de Clnt, q fica dentro de PDDS
                  ARTE:`${Cl(Typ)}, Serv:SERV(${Cl('SERV',['Arte'])})`, // Dentro de SERV trás o FK de Clnt, q fica dentro de PDDS
@@ -525,7 +525,7 @@
              ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
              ,Stts:j=>{ // Muita GAMBIARRA
                 const GData=+(j.Data!=='')
-                const GCont=+(j.Cont==j.Serv.length)
+                const GCont=+(j.Cont==j.Serv?.length)
                 const GVlrO=+(j.VlrO==j.Summ)
                 const faltas=[]
                 if(!GData) faltas.push('Data')
@@ -544,8 +544,8 @@
         OS  :{Oimg:j=>`Img/${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`Img/${j.Id}.webp` ?? ''},                   // OK
         CLNT:{Foto:j=>`Clnt/${j.Id}.webp` ?? ''
-             ,Lcro:j=>j.Pdds?.Valr ?? 0
-             ,Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}
+             ,Lcro:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Valr') : 0
+             //,Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}
             },
         ARTE:{Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
               TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
@@ -554,11 +554,10 @@
     }
 
     function AutoCOMP(Typ,Arr=J[Typ]){
-        if(Typ=='ARTE'||Typ=='CLNT'){return}
+        if(Typ=='ARTE'){return}
         if(!isArr(Arr)) return
         Arr.forEach(j=>{
             ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
-                if(fk=='Pdds'){return}
                 const Key=AA(fk) ; const V=j[fk]||j[Key]
                 if(isArr(V)) AutoCOMP(Key,V)
                 else if(V && typeof V=='object') AutoCOMP(Key,[V])
@@ -722,6 +721,13 @@
         }
         // Novo Id // Clona Cliente
     }
+
+    function ResumirTBLA(Typ){
+        ['4','5','6','7','8','9'].forEach(e=>{
+            Tog_N($$(`#H_${Typ} > thead > tr > th:nth-child(${e})`))
+            Tog_N($$(`#H_${Typ} > tbody > tr > td:nth-child(${e})`))
+        })
+    }
     
     function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
@@ -761,6 +767,7 @@
                 ${Tm_Check2(SVG.RszH,'',`ReszH('${Typ}')`)}
                 ${Tm_Check2(SVG.RszW,'',`ReszW('${Typ}')`)}
             </div>
+            <button onclick="ResumirTBLA('${Typ}')">Resumo</button>
             <select onchange="RecaregaMes('${Typ}',this.value)">${Tm_Opt(['Meses',...ObjKey(Mesess)])}</select>
             <button onclick="LOG('deve fazer a Requisição Novamente')">Recarregar</button>
             <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}Limpar </button>
@@ -779,6 +786,7 @@
         const selectStr = SB_CriaSlct(Typ)
         const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes) :
                      Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
+                     Typ=='CLNT' ? await SB_GETT(Typ,100,selectStr,'Stts',null,null) :
                                    await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
