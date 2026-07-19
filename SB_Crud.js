@@ -147,10 +147,10 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                 </div>`
         },// onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))"
 
-        Lnk2:(e,R,Rgx)=>Tm_Bndj(R,getArr(e)),
         Slc2:(e,R)=>`MySelect()`,
-        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)) ,
+        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)),
         BjIn:(e,R)=>Tm_Bndj(R,getArr(e)),
+        Lnk2:(e,R)=>Tm_Bndj(R,getArr(e)),
     }
     const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
     const Tm_Sklt   =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
@@ -227,6 +227,30 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
 
+    async function SB_RENAMEIMGS(){ // Renomear lista de imagens
+        let offset=0, files=[];
+        while(true){
+            const { data, error } = await supaBASE.storage.from('uploads').list('Low',{
+                limit:1000,
+                offset
+            });
+            if(error) return console.log(error);
+            if(!data.length) break;
+            files.push(...data);
+            offset+=1000;
+        }
+        LOG(files.length);
+        for(const f of files){
+            if(f.name.startsWith('ARTE_')){
+                const novo=f.name.replace('ARTE_','');
+                const {error}=await supaBASE.storage.from('uploads').move(`Low/${f.name}`,`LowSVG/${novo}`);
+                if(error) console.log('Erro:',f.name,error);
+                else console.log(`${f.name} → ${novo}`);
+            }
+        }
+        console.log('Concluído!');
+    }
+
 //===========================LINK===========================
 
     function ShowBndj(div,Typ){ //Typ ? RFresh(Typ,_tr(div)) : null // (antes tinha isso mas n sei se é bom usar?)
@@ -242,15 +266,14 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
    
-    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,mes,filt){
+    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Filt){
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
-             if(Uniq ){Q=Q.eq( 'Id',Uniq)}
-        else if(mes  ){Q=Q.or(`Data.is.null,and(Data.gte.${mes[0]},Data.lt.${mes[1]})`)}
-        else if(filt ){Object.entries(filt).forEach(([k,v])=>{Q = Array.isArray(v) ? Q.in(k,v) : Q.ilike(k,`${v}`)})}
-             if(Limit){Q=Q.limit(Limit)}
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
+             if(Uniq ){Q=Q.eq('Id',Uniq)}
+        else if(Filt ){Q=Q.or(Filt)}
+             if(Limit){Q=Q.limit(Limit)}
 
-        if(Uniq||Limit||mes){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
+        if(Uniq||Limit||Filt){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
 
         let All=[],lim=1000,ofs=0,data
         do{({data} = await Q.range(ofs,ofs+lim-1)) ; if(!data)return ERR('Erro') ; All.push(...data) ; ofs+=lim}while(data.length===lim)

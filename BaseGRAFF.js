@@ -2,7 +2,7 @@ const StockjVinil = ["Holo","#000000","#FFFFFF","#808080","#FF0000","#FF00FF","#
 const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
 const D_Brev2 = {Clnt:'Cliente',Admn:'Administrador',Grnt:'Gerente',Atnd:'Atendente',DSgn:'Designer'}
 const meses = ["Todos","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
-const mesesObj={"Todos":"","Janeiro":"01","Fevereiro":"02","Março":"03","Abril":"04","Maio":"05","Junho":"06","Julho":"07","Agosto":"08","Setembro":"09","Outubro":"10","Novembro":"11","Dezembro":"12"}
+
 // Abrev da Pesquisa Avancada  Bj:Interna | Aa:Maiúsculas | _C:Acento | A_:Fronteiras | In:Começa com | Ot:Termina com | Of:Vazios
 
 const BS_Mtras = { // Maq é quanto tempo dura pra percorrer cada Ponto
@@ -54,6 +54,21 @@ const TIPOS_ARTES = [
     { Nome:"Kit Veículo"      , Valr:20.00},
     { Nome:"Plano de Fundo"   , Valr:10.00}
 ]
+
+const Meses2026 = {
+    Janeiro:  ['2026-01-01','2026-02-01'],
+    Fevereiro:['2026-02-01','2026-03-01'],
+    Março:    ['2026-03-01','2026-04-01'],
+    Abril:    ['2026-04-01','2026-05-01'],
+    Maio:     ['2026-05-01','2026-06-01'],
+    Junho:    ['2026-06-01','2026-07-01'],
+    Julho:    ['2026-07-01','2026-08-01'],
+    Agosto:   ['2026-08-01','2026-09-01'],
+    Setembro: ['2026-09-01','2026-10-01'],
+    Outubro:  ['2026-10-01','2026-11-01'],
+    Novembro: ['2026-11-01','2026-12-01'],
+    Dezembro: ['2026-12-01','2027-01-01']
+}
 
 
 const ValForn = {
