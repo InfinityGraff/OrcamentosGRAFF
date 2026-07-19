@@ -36,7 +36,7 @@
         True:['true','false']
     }
     const Ryp   = {
-        PDDS_Clnt:['Pdds','Lcro','Medi','Lixo'],
+        PDDS_Clnt:['Pdds','Lcro','Medi','Lixo','Cust','Soma','Stts'],
         PDDS_Serv:['Clnt','Cbmt','VCbt'],
         PDDS_Pgmt:['Clnt'],
         SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'],
@@ -375,7 +375,7 @@
 </script>
 
 <script> // ---- REFOOR ----
-    function F_Rndn(Typ,col){               // ✔️ Randomiza   parece q tbm n tem xDOM
+    function F_Rndn(Typ,col){     // ✔️ Randomiza parece q tbm n tem xDOM
         const noCopy       = true // impedir que pinte quando não tem cópias
         const PermitOculta = true // opção pra ocultar quem n tem Randon
         const QRY   = `#H_${Typ} > tbody > tr > ${COLLLL(Typ,col)} > div > .P-P`
@@ -414,7 +414,7 @@
                 const dbrev = BSJsn(Typ,k).COL||k
                 const All   = J[Typ].map(e=>e[k])
                 const JsCOl = {Clnt:'Clnt',Serv:'Serv',Pgmt:'Valr'}
-                const all   = v=='UnJs' ? JJJ[AA(k)]?.map(e=>e[JsCOl[k]]) : ['']
+                const all   = v=='UnJs' ? JJJ[AA(k)]?.map(e=>e[JsCOl[k]]).filter(Boolean) : ['']
                 const SUM   = {PgPX:0,PgAV:0}
                 if(Typ=='PDDS' && k=='Pgmt'){JJJ['PGMT'].forEach(p=>{const v=p.Valr||0 ; if(p.Form=='Pix'){SUM.PgPX+=v} else if(p.Form=='Av' ){SUM.PgAV+=v}})}
                 if(v=='Uniq'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(All),dbrev))}
@@ -482,7 +482,6 @@
                 const SOMAA = j.Serv.map(s=>{
                     const LL = s.VCbt ? s.VCbt : 0                   // Existe Acabamento
                     const S1 = isArr(s.Arte) ? s.Arte[0].Valr||0 : 0 // Existe Custo Arte
-                    //const S2 = isArr(s.Grad) ? s.Grad[0].Val1||0 : 0 // Existe Custo Grade
                     const S2 = s.VGrd ? s.VGrd : 0                   // Existe Acabamento
                     return LL+S1+S2
                 })
@@ -507,14 +506,14 @@
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
             },
             VGrd:j=>j.Serv=='Recorte' ? Number((j.Alt * j.Lag * j.Qnt * 15).toFixed(2)) : Number(j.VGrd),
-            Foto:j=>`Foto/${j.Id}.webp` ?? ''                  // OK
-            //Surg:j=>{return Seguro(j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}},
+            Foto:j=>`Foto/${j.Id}.webp` ?? '',                  // OK
+            //Surg:j=>{return (j.Alt * j.Lag * j.Qnt * Prod[j.Serv]?.Tipos[j.Tipo]?.Valr).toFixed(2)}
         },
         PGMT:{
             Clnt:j=>[j.Clnt?.CLNT],
         },
-        GRAD:{ImgU:j=>`Img/${j.Id}.webp` ?? ''                     // OK
-             ,ImgG:j=>`Img/${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
+        GRAD:{ImgU:j=>`Grad/${j.Id}.webp` ?? ''                     // OK
+             ,ImgG:j=>`Grad/${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
              ,Forn:j=>Dbbrev[j.Id.split('_')[0]]                   // OK
              ,VlrO:j=>j.OS?.Valr || 0                              // OK
              ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
@@ -537,20 +536,20 @@
                 return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
              }
             },
-        OS  :{Oimg:j=>`Img/${j.Id}.webp` ?? ''},                   // OK
-        UBER:{Img :j=>`Img/${j.Id}.webp` ?? ''},                   // OK
+        OS  :{Oimg:j=>  `OS/${j.Id}.webp` ?? ''},                   // OK
+        UBER:{Img :j=>`Uber/${j.Id}.webp` ?? ''},                   // OK
         CLNT:{Foto:j=>`Clnt/${j.Id}.webp` ?? ''
-             ,Lcro:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Valr') : 0
-             //,Medi:j=>{const q = ContCLNT[j.Id]?.Qnt; const s = ContCLNT[j.Id]?.Sum; return (q != null && s != null && s !== 0) ? (s / q).toFixed(2) : ""}
+             ,Soma:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Valr') : 0
+             ,Medi:j=>j.Soma / (j.Pdds?.length||0).toFixed(2)
+             ,Cust:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Cust') : 0
+             ,Lcro:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Lcro') : 0
             },
-        ARTE:{Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
-              TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
-               Img:j=>J['IMGS'][j.Nome] ?? '' // não sei se isso é exatamente AUTO, vamos ver lá!
+        ARTE:{//Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
+              //TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
             },
     }
 
     function AutoCOMP(Typ,Arr=J[Typ]){
-        if(Typ=='ARTE'){return}
         if(!isArr(Arr)) return
         Arr.forEach(j=>{
             ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
@@ -644,26 +643,22 @@
     const Acc_Bndj = {}
     const Tm_TT=(COL,Find,Typ,Col,R)=>{
         //const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
-
         const AllImgs=(e,COLL)=>{
-            const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k) // Pega todas as Colunas que Possuem TM == Imagens
-            return colimg.map(i=>Tm_Tm['Imgs'](e[i]||'',`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('')   // Rodar isso pra cada Imagem desta Linha
+            const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k)   // Pega todas as Colunas que Possuem TM == Imagens
+            return colimg.map(i=>Tm_Tm['Imgs'](e[i]||'',`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('') // Rodar isso pra cada Imagem desta Linha
         }
-        const ImgT_T=e=>{
-                 if(!e){return ''} // Gambiarra
-                 if(Typ=='PDDS' && Col=='Clnt'){return e?.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''}
-            else if(Typ=='PDDS' && Col=='Serv'){return e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
-            else if(Typ=='GRAD' && Col=='Serv'){return ''} // e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
-            else{return AllImgs(e,COL)}
-        }
-
         const Vazio = ['SERV','PGMT'].includes(COL) ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
         const Ttl   = BS[COL]?.Title
         const Join  = Find.map(e=>Ttl.map(E=>e?.[E]).join('#')).join('|')
-        const Titul = Ttl ? BrevTitle(COL,Join) : 'Sem Titulo'
-        const Tt    = Find.length==0 ? Vazio : Titul
+        const Tt    = Find.length==0 ? Vazio : Ttl ? BrevTitle(COL,Join) : 'Sem Titulo'
         const Nm    = Col==='Pgmt'? SOMA_Obj(Find,'Valr') /*SunPix(Tt)*/ : Tt.includes('button') ? '-' : Tt // Ainda é uma Gambiarra
-        const Img   = Find.map(e=>ImgT_T(e)).join('')
+        const Img   = Find.map(e=>{
+                                     if(!e){return ''} // Gambiarra
+                                     if(Typ=='PDDS' && Col=='Clnt'){return e?.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''}
+                                else if(Typ=='PDDS' && Col=='Serv'){return e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
+                                else if(Typ=='GRAD' && Col=='Serv'){return ''} // e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
+                                else{return AllImgs(e,COL)}
+                            }).join('')
         return {Tt,Nm,Img}
     }
 
@@ -778,15 +773,15 @@
     }
 
     //'1799|568|110|1808'.split('|')
-    const Filts = {Clnt:['4268','4291','4331','130']}
+    const Filts = {Clnt:['1801','4224','4266']}
 
     async function RodaTable(Typ,Mes=['2026-07-01','2026-08-01']){
         if(carregado.includes(Typ) && Mes==null){return} ; carregado.push(Typ)
         const selectStr = SB_CriaSlct(Typ)
-        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,null/*Mes*/,Filts) :
+        const data = Typ=='PDDS' ? await SB_GETT(Typ,null,selectStr,'Data',null,Mes/*,Filts*/) :
                      Typ=='GRAD' ? await SB_GETT(Typ,null,selectStr,'Id',null,null,{Id:'B\\_%'}) :
-                     Typ=='CLNT' ? await SB_GETT(Typ,100,selectStr,'Stts',null,null) :
-                                   await SB_GETT(Typ,100,selectStr,BS[Typ].Ordnn)
+                     Typ=='CLNT' ? await SB_GETT(Typ,100 ,selectStr,'Tag',null,null) :
+                                   await SB_GETT(Typ,100 ,selectStr,BS[Typ].Ordnn)
         fazJJJ(Typ,data) ; AutoCOMP(Typ) ; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Render_Tbls(Typ) : Typ=='PDDS' ? Render_TblP(Typ) : Render_Tbla(Typ) // GAMBIARRA logo logo vai sair
     }
@@ -798,6 +793,39 @@
         LOG('Read_Tr',data)
         $(Tr).outerHTML = Tm_Tr(Typ,data)
     }
+</script>
+
+<script>
+async function RENAME(){
+    let offset=0, files=[];
+
+    while(true){
+        const { data, error } = await supaBASE.storage.from('uploads').list('Low',{
+            limit:1000,
+            offset
+        });
+
+        if(error) return console.log(error);
+        if(!data.length) break;
+
+        files.push(...data);
+        offset+=1000;
+    }
+
+    LOG(files.length);
+
+    for(const f of files){
+        if(f.name.startsWith('ARTE_')){
+            const novo=f.name.replace('ARTE_','');
+            const {error}=await supaBASE.storage.from('uploads').move(`Low/${f.name}`,`LowSVG/${novo}`);
+
+            if(error) console.log('Erro:',f.name,error);
+            else console.log(`${f.name} → ${novo}`);
+        }
+    }
+
+    console.log('Concluído!');
+}
 </script>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">

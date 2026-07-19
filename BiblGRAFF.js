@@ -135,6 +135,7 @@ const Crecent=(M,F=0.5,F2=1.8)=>{ // Mudar as Forças de Acordo com cada Produto
 }
 
 const BrevTitle = (Typ,Stg)=>{
+    if(Typ=='PDDS') return `${Stg.replace(/#/g,'').split('|').length}`
     if(Typ!='SERV') return Stg.replace(/#/g,'')
     try{const g={}
         Stg.split('|').forEach(s=>{

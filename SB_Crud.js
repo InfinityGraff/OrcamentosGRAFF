@@ -126,7 +126,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Valr:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
         Mdds:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
         Text:(e,R,Rgx  )=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
-        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}Low/${e.replace('.svg','.webp')}`:`${BASE_URL2}${e.includes('/')?'':'Img/'}${e}${src20}`:`./CrudSB/Upld.webp`}"  onclick="AbrirImg(this,'${e}','${R}','${e.includes('/')?e.split('/')[0]+'/':'Img/'}')">`, // essa só carrega mas não pode Upar         src="${SrcsIMG(e,d_r(R))}"
+        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}${e.replace('Arte/','LowSVG/').replace('.svg','.webp')}`:`${BASE_URL2}${e}${src20}`:`./CrudSB/Upld.webp`}" onclick="AbrirImg(this,'${R}','${e}')">`,
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
         Data:(e,R,Rgx  )=>`<p class="P-P Ct h100" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="Inn($('p',Pai(this)),YMD(this.value));TrcFih2(this,$('p',Pai(this)))">`,
@@ -181,48 +181,37 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             };img.onerror = () => res(null) ; img.src = src;
         });
     }
-    async function ImgUPP(File,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
-        const Ext = RxExt(File.name)                          // Pega a Extensão do Arquivo
-        const src = URL.createObjectURL(File)                 // src temporário
-        
-        /*DOM*/const _R  = d_r(R)
-        /*DOM*/const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
-        /*DOM*/const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
-        /*DOM*/const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-        /*DOM*/if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
-        /*DOM*/if(Eximg.includes(Ext)){EditCell(PP,`${Nome}.${Ext}`) ; DarVAL(PP,src)}
 
-        if(Eximg.includes(Ext)){
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
-            //Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
-            if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`Img/${Nome}.svg` ,true)
-            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
-    }
-
-    async function ImgUPP2(File,Nome,Past){
+    async function ImgUPP(File,Past,Nome,R){
+        const _R  = d_r(R)
         const Ext = RxExt(File.name)
         const src = URL.createObjectURL(File)
         if(Eximg.includes(Ext)){
             if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`${Past}/${Nome}.svg`,true)
-            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`${Past}/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
+                           Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`LowSVG/${Nome}.webp`,true)
+                             Sb_EDIT(_R.Ty,_R.Id,{[_R.Cl]:`${Past}/${Nome}.svg`})
+            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`${Past}/${Nome}.webp`,true)
+                             Sb_EDIT(_R.Ty,_R.Id,{[_R.Cl]:`${Past}/${Nome}.webp`})
+        }
+        }else{LOG('não é nem Img nem Svg!')}
     }
     
-    function AbrirImg(img,Nome,R,Past){
-        const X    = Nome ? 'Plc' : 'Up'
+    function AbrirImg(img,R,Nome){
         const _R   = d_r(R)
-        const Pasta=Past||'Img/'
-        const Pre  = BSJsn(_R.Ty,_R.Cl)?.SRC ?? ''  // Prefixo de Imagens se Tiver
-        const nome = Past ? Nome.split('/')[1] : `${Pre}${_R.Id}` // isso é só uma Gambiarra, é só pra dizer que se for Past, veio da Tabela DSNG
-        const Q    = Past ? '2':''
+        const X    = Nome ? 'Plc' : 'Up'
         const W    = img.naturalWidth > img.naturalHeight
-        MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
-                    <img src="${BASE_URL}${Pasta}${nome}">
-                    <div class="casusa Cl ${W ? 'w100':'h100'}">
-                        <p>Nome: ${nome}</p><p>Id: ${_R.Id}</p>
+        const ObjPast={
+            ARTE_Img: 'Arte',
+            SERV_Foto:'Foto',
+        }
+        const [Past,nome] = Nome ? Nome.split('/') : [ObjPast[`${_R.Ty}_${_R.Cl}`],`${_R.Id}`]
+        
+        MODAL(`<div class="MdalIMG ${W?'Cl':'Ct'}">
+                    <img src="${BASE_URL}${Past}/${nome}">
+                    <div class="casusa Cl ${W?'w100':'h100'}">
+                        <p>Nome: ${Past}/${nome}</p><p>Id: ${_R.Id}</p>
                         <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                        <button onclick="XModal(this);ImgUPP${Q}($('input',Pai(this)).files[0],'${nome}','${Past?Past:R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
+                        <button onclick="XModal(this);ImgUPP($('input',Pai(this)).files[0],'${Past}','${nome}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
                     </div>
                 <div>`)
         if(X=='Up'){$('.MdalIMG input').click()}

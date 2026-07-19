@@ -1482,6 +1482,28 @@
     </div>
 </div>
 
+<script>
+
+        async function ImgUPP2(File,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
+        const Ext = RxExt(File.name)                          // Pega a Extensão do Arquivo
+        const src = URL.createObjectURL(File)                 // src temporário
+        
+        /*DOM*/const _R  = d_r(R)
+        /*DOM*/const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
+        /*DOM*/const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
+        /*DOM*/const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
+        /*DOM*/if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="abrirImg('${d_r(PP).Id}',this)" src="${src}">`}
+        /*DOM*/if(Eximg.includes(Ext)){EditCell(PP,`${Nome}.${Ext}`) ; DarVAL(PP,src)}
+
+        if(Eximg.includes(Ext)){
+            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
+            //Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
+            if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`Img/${Nome}.svg` ,true)
+            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
+        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
+    }
+</script>
+
 </body>
 
 

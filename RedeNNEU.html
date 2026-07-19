@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    *{margin:0;font:12px arial;box-sizing:border-box}
+    body{display:flex;height:100vh;background:#ddd}
+    canvas{flex:1;background:#fff}
+    div{width:170px;padding:5px;background:#eee}
+</style>
+
+<script>
+    let PLAY=1
+    let GER=1
+    let TEMPO=0
+    const MAXTIME=1000
+    const START={x:40,y:40}
+    const END={x:850,y:550}
+    const TAM=20
+    let WALLS=[[100,11,297,137],[58,338,373,174],[616,1,378,406],[476,526,101,149],[683,571,117,118],[53,493,437,229],[0,332,201,363],[360,4,426,183]]
+    let IND=[]
+</script>
+
+<script> // Biblioteca
+    const Copy=()=>console.log(JSON.stringify(WALLS))
+    const Circ=(x,y,r,c)=>{ctx.fillStyle=c ; ctx.beginPath() ; ctx.arc(x,y,r,0,7) ; ctx.fill()}
+    const Txt=(t,x,y   )=>{ctx.fillStyle='#000' ; ctx.fillText(t,x,y)}
+    const R=()=>Math.random()*2-1
+</script>
+
+<body>
+    <canvas></canvas>
+    <div>
+        <button onclick="PLAY=1">PLAY</button>
+        <button onclick="Copy()">Copy Mapa</button>
+    </div>
+</body>
+
+<script>
+    const cvs=document.querySelector("canvas")
+    const ctx=cvs.getContext("2d")
+    const W=cvs.width=900
+    const H=cvs.height=600
+
+    const Think=(b,i)=>{
+        let inp=[i.x/W,i.y/H,(END.x-i.x)/W,(END.y-i.y)/H,i.vx,i.vy]
+        let hid=b.w1.map(w=>Math.tanh(w.reduce((s,x,j)=>s+x*inp[j],0)))
+        return b.w2[0].map((_,x)=>Math.tanh(hid.reduce((s,h,j)=>s+h*b.w2[j][x],0)))
+    }
+
+    const Brain=()=>({
+        w1:Array.from({length:8},()=>Array.from({length:6},R)),
+        w2:Array.from({length:8},()=>Array.from({length:2},R))
+    })
+
+    const Mutate=b=>{
+        b.w1.forEach(r=>r.forEach((_,j)=>{if(Math.random()<.1)r[j]+=R()*.2}))
+        b.w2.forEach(r=>r.forEach((_,j)=>{if(Math.random()<.1)r[j]+=R()*.2}))
+        return b
+    }
+
+    const Novo=b=>({x:START.x,y:START.y,r:3,vx:0,vy:0,vivo:1,life:0,score:0,brain:b||Brain()})
+
+    const NovaGer=()=>{
+        if(!IND.length){while(IND.length<100)IND.push(Novo()) ; return}
+        IND.sort((a,b)=>(b.score)-(a.score))
+        let M=IND.slice(0,10)
+        IND=Array.from({length:100},(_,i)=>{let b=structuredClone(M[i%10].brain) ; return Novo(Mutate(b))})
+        GER++
+        TEMPO=0
+    }
+    
+    const Dist=(x,y)=>Math.hypot(END.x-x,END.y-y)
+    const Colide=(x,y,r=3)=>WALLS.some(([X,Y,W,H])=> x+r>X&&x-r<X+W && y+r>Y&&y-r<Y+H)
+
+    const Update=()=>{
+        if(!PLAY)return
+        TEMPO++
+        let vivos=0
+        IND.forEach(i=>{
+            if(!i.vivo)return
+            let [vx,vy]=Think(i.brain,i),
+                l=Math.hypot(vx,vy)||1,
+                x=i.x+vx/l*5,
+                y=i.y+vy/l*5
+            if(x<i.r||x>W-i.r||y<i.r||y>H-i.r||Colide(x,y,i.r)){i.life-- ; return}
+            i.vx=vx ; i.vy=vy ; i.x=x ; i.y=y ; i.life++ ; vivos++
+            let DisT=Dist(x,y)
+            i.score=5000-DisT+i.life
+            if(DisT<12){i.score+=1e5 ; i.vivo=0 ; vivos--}
+        })
+        if(!vivos||TEMPO>MAXTIME){PLAY=1 ; NovaGer()}
+    }
+
+    let M={x:0,y:0,w:0,h:0,d:0}
+    Pos=e=>{let r=cvs.getBoundingClientRect() ; return{x:e.clientX-r.left,y:e.clientY-r.top}}
+    cvs.onmousedown=e=>{let p=Pos(e) ; M={...p,w:0,h:0,d:1}}
+    cvs.onmousemove=e=>{if(!M.d)return ; let p=Pos(e) ; M.w=p.x-M.x ; M.h=p.y-M.y}
+    cvs.onmouseup=()=>{M.d=0 ; WALLS.push([Math.min(M.x,M.x+M.w),Math.min(M.y,M.y+M.h),Math.abs(M.w),Math.abs(M.h)])}
+
+    const Draw=()=>{
+        ctx.clearRect(0,0,W,H)
+        ctx.fillStyle='#000'
+        WALLS.forEach(w=>ctx.fillRect(...w))
+        if(M.d)
+        ctx.strokeRect(Math.min(M.x,M.x+M.w),Math.min(M.y,M.y+M.h),Math.abs(M.w),Math.abs(M.h))
+        Circ(START.x,START.y,8,'green')
+        Circ(END.x,END.y,8,'red')
+        IND.forEach(i=>Circ(i.x,i.y,3,'blue'))
+        Txt(`G:${GER}`,10,20)
+        Txt(`T:${TEMPO}`,10,40)
+    }
+    NovaGer()
+    function Loop(){Update() ; Draw() ; requestAnimationFrame(Loop)}
+    Loop()
+
+</script>
