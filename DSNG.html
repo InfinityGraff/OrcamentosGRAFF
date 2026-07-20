@@ -410,7 +410,7 @@
             <h3 class="Ct" ${G('A')} ${EDIT(j,'ARTE','Nome')}>${j.Nome}</h3>            
             <div class="F1 Box2" ${G('B')}>
                 <div ${G('A')} class="Bt"><div class="Ct">Tipo:${SLCT('Tipo')}</div><div>Arte Aberta</div>${Lixo(j,'ARTE')}<div class="Ct">Designer:${SLCT('Dsng')}</div></div>
-                <div ${G('B')} class="Box2 RASC"     >${Rsc.map((e,x)=>`<div class="${x==0?'':'none'} divRASC Rasc_${e.Id}"><img class="Rascunho"  onclick="AbrirImg(this,'${SrcC(e)}','${_R(e.Id)}','Dsng/')" src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprs1}">${Lixo(e,'RASC')}</div>`).join('')}</div>
+                <div ${G('B')} class="Box2 RASC"     >${Rsc.map((e,x)=>`<div class="${x==0?'':'none'} divRASC Rasc_${e.Id}"><img class="Rascunho"  onclick="AbrirImg(this,'${_R(e.Id)}','Dsng/${SrcC(e)}')" src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprs1}">${Lixo(e,'RASC')}</div>`).join('')}</div>
                 <div ${G('C')} class="Box2 LISTA1 Cl">${Rsc.map(e=>    `<img class="HOV"                                      onclick="TrocaRasc(this,'${e.Id}')"                        src="${BASE_URL2}Dsng/${SrcC(e)}.webp${Cprss}">`).join('')}<button onclick="AddNewRASC(this,'${j.Id}')">UPP</button></div>
                 <div ${G('D')} class="Box2 Start2"><div class="Ct"><p>Cliente:</p>${INPT('Clnt')}</div><div class="Ct"><p>Tema:</p>${INPT('Tema')}</div><div class="Ct"><p>Data:</p>${INPT('Data')}</div><div>${TempoResta(j.Prazo)}</div></div>
                 <div ${G('E')} class="Box2 Ct"><p>Valor:</p>${Admn ? INPT('Valr') : `<div class="Zoom">${Tm_RS2(j.Valr)}</div>`}<button class="NONE">Discutir Preço</button></div>

@@ -126,7 +126,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Valr:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.RS(this) ">${GrifTxt(e?RS(e):'R$ -',Rgx)}</p>`,
         Mdds:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
         Text:(e,R,Rgx  )=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
-        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}Low/${e.replace('.svg','.webp')}`:`${BASE_URL2}${e.includes('/')?'':'Img/'}${e}${src20}`:`./CrudSB/Upld.webp`}"  onclick="AbrirImg(this,'${e}','${R}','${e.includes('/')?e.split('/')[0]+'/':'Img/'}')">`, // essa só carrega mas não pode Upar         src="${SrcsIMG(e,d_r(R))}"
+        Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}${e.replace('Arte/','LowSVG/').replace('.svg','.webp')}`:`${BASE_URL2}${e}${src20}`:`./CrudSB/Upld.webp`}" onclick="AbrirImg(this,'${R}','${e}')">`,
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
         Data:(e,R,Rgx  )=>`<p class="P-P Ct h100" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="Inn($('p',Pai(this)),YMD(this.value));TrcFih2(this,$('p',Pai(this)))">`,
@@ -147,10 +147,10 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                 </div>`
         },// onkeydown="KeyEntr(()=>NewLink('${TYP2[0]}',this))"
 
-        Lnk2:(e,R,Rgx)=>Tm_Bndj(R,getArr(e)),
         Slc2:(e,R)=>`MySelect()`,
-        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)) ,
+        Bndj:(e,R)=>Tm_Bndj(R,getArr(e)),
         BjIn:(e,R)=>Tm_Bndj(R,getArr(e)),
+        Lnk2:(e,R)=>Tm_Bndj(R,getArr(e)),
     }
     const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
     const Tm_Sklt   =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
@@ -181,48 +181,37 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             };img.onerror = () => res(null) ; img.src = src;
         });
     }
-    async function ImgUPP(File,Nome,R){  // ⭐⭐⭐⭐_ (ver se ta funcionando Bonitinho com SVG)
-        const Ext = RxExt(File.name)                          // Pega a Extensão do Arquivo
-        const src = URL.createObjectURL(File)                 // src temporário
-        
-        /*DOM*/const _R  = d_r(R)
-        /*DOM*/const PP  = $(`table ${Rx7(`${_R.Id}-${_R.Cl}`)}`) // tem que ser o ID e depois a Coluna
-        /*DOM*/const Pay = _td(Pai(_td(PP)))                      // encontrar o td pai se ele for dentro da Bndj
-        /*DOM*/const T_T = Pay ? Pai($('.T-T',Pay)) : null        // Localiza o T-T se existir
-        /*DOM*/if(_R.Bj && T_T){T_T.innerHTML += `<img loading="lazy" onclick="AbrirImg('${d_r(PP).Id}',this)" src="${src}">`}
-        /*DOM*/if(Eximg.includes(Ext)){EditCell(PP,`${Nome}.${Ext}`) ; DarVAL(PP,src)}
 
-        if(Eximg.includes(Ext)){
-            Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`Low/${Nome}.webp`,true)
-            //Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Med')).then(r=>r.blob()),`Med/${Nome}.webp`,true)
-            if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`Img/${Nome}.svg` ,true)
-            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD' )).then(r=>r.blob()),`Img/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
-    }
-
-    async function ImgUPP2(File,Nome,Past){
+    async function ImgUPP(File,Past,Nome,R){
+        const _R  = d_r(R)
         const Ext = RxExt(File.name)
         const src = URL.createObjectURL(File)
         if(Eximg.includes(Ext)){
             if(Ext=='svg'){Sb_UPLOAD(supaBASE,File,`${Past}/${Nome}.svg`,true)
-            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`${Past}/${Nome}.webp`,true)}
-        }else{LOG('não é nem Img nem Svg, é um arquivo!')}
+                           Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'Low')).then(r=>r.blob()),`LowSVG/${Nome}.webp`,true)
+                             Sb_EDIT(_R.Ty,_R.Id,{[_R.Cl]:`${Past}/${Nome}.svg`})
+            }else{         Sb_UPLOAD(supaBASE,await fetch(await ImgLowQuality(src,'HD')).then(r=>r.blob()),`${Past}/${Nome}.webp`,true)
+                             Sb_EDIT(_R.Ty,_R.Id,{[_R.Cl]:`${Past}/${Nome}.webp`})
+        }
+        }else{LOG('não é nem Img nem Svg!')}
     }
     
-    function AbrirImg(img,Nome,R,Past){
-        const X    = Nome ? 'Plc' : 'Up'
+    function AbrirImg(img,R,Nome){
         const _R   = d_r(R)
-        const Pasta=Past||'Img/'
-        const Pre  = BSJsn(_R.Ty,_R.Cl)?.SRC ?? ''  // Prefixo de Imagens se Tiver
-        const nome = Past ? Nome.split('/')[1] : `${Pre}${_R.Id}` // isso é só uma Gambiarra, é só pra dizer que se for Past, veio da Tabela DSNG
-        const Q    = Past ? '2':''
+        const X    = Nome ? 'Plc' : 'Up'
         const W    = img.naturalWidth > img.naturalHeight
-        MODAL(`<div class="MdalIMG ${W ? 'Cl':'Ct'}">
-                    <img src="${BASE_URL}${Pasta}${nome}">
-                    <div class="casusa Cl ${W ? 'w100':'h100'}">
-                        <p>Nome: ${nome}</p><p>Id: ${_R.Id}</p>
+        const ObjPast={
+            ARTE_Img: 'Arte',
+            SERV_Foto:'Foto',
+        }
+        const [Past,nome] = Nome ? Nome.split('/') : [ObjPast[`${_R.Ty}_${_R.Cl}`],`${_R.Id}`]
+        
+        MODAL(`<div class="MdalIMG ${W?'Cl':'Ct'}">
+                    <img src="${BASE_URL}${Past}/${nome}">
+                    <div class="casusa Cl ${W?'w100':'h100'}">
+                        <p>Nome: ${Past}/${nome}</p><p>Id: ${_R.Id}</p>
                         <input type="file" class="w80" onchange="SelectFiles(this,SellFilesIMG)" accept="image/*">
-                        <button onclick="XModal(this);ImgUPP${Q}($('input',Pai(this)).files[0],'${nome}','${Past?Past:R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
+                        <button onclick="XModal(this);ImgUPP($('input',Pai(this)).files[0],'${Past}','${nome}','${R}')">${Nome?'Trocar Imagem':'Enviar'}</button>
                     </div>
                 <div>`)
         if(X=='Up'){$('.MdalIMG input').click()}
@@ -236,6 +225,30 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             J.ARQS[NomeFinal]=f.name
             Sb_UPLOAD(supaBASE,f,`Files/${NomeFinal}.${Ext}`,true)
         }
+    }
+
+    async function SB_RENAMEIMGS(){ // Renomear lista de imagens
+        let offset=0, files=[];
+        while(true){
+            const { data, error } = await supaBASE.storage.from('uploads').list('Low',{
+                limit:1000,
+                offset
+            });
+            if(error) return console.log(error);
+            if(!data.length) break;
+            files.push(...data);
+            offset+=1000;
+        }
+        LOG(files.length);
+        for(const f of files){
+            if(f.name.startsWith('ARTE_')){
+                const novo=f.name.replace('ARTE_','');
+                const {error}=await supaBASE.storage.from('uploads').move(`Low/${f.name}`,`LowSVG/${novo}`);
+                if(error) console.log('Erro:',f.name,error);
+                else console.log(`${f.name} → ${novo}`);
+            }
+        }
+        console.log('Concluído!');
     }
 
 //===========================LINK===========================
@@ -253,15 +266,14 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
    
-    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,mes,filt){
+    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Filt){
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
-             if(Uniq ){Q=Q.eq( 'Id',Uniq)}
-        else if(mes  ){Q=Q.or(`Data.is.null,and(Data.gte.${mes[0]},Data.lt.${mes[1]})`)}
-        else if(filt ){Object.entries(filt).forEach(([k,v])=>{Q = Array.isArray(v) ? Q.in(k,v) : Q.ilike(k,`${v}`)})}
-             if(Limit){Q=Q.limit(Limit)}
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
+             if(Uniq ){Q=Q.eq('Id',Uniq)}
+        else if(Filt ){Q=Q.or(Filt)}
+             if(Limit){Q=Q.limit(Limit)}
 
-        if(Uniq||Limit||mes){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
+        if(Uniq||Limit||Filt){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
 
         let All=[],lim=1000,ofs=0,data
         do{({data} = await Q.range(ofs,ofs+lim-1)) ; if(!data)return ERR('Erro') ; All.push(...data) ; ofs+=lim}while(data.length===lim)
