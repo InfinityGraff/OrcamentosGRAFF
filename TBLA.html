@@ -39,10 +39,10 @@
     const Ryp   = { // as Colunas que quero Remover
         PDDS     :['Serv_','Pgmt_'],
         GRAD     :[],
-        SERV     :['Cbmt','VCbt'],
+        SERV     :[],
         PGMT     :[],
         PDDS_Clnt:['Pdds','Lcro','Medi','Lixo','Cust','Soma','Stts'],
-        PDDS_Serv:['Clnt','Cbmt','VCbt'],
+        PDDS_Serv:['Clnt'],
         PDDS_Pgmt:['Clnt'],
         SERV_Arte:['Data','Nome','Tema','Dslk','Prazo','Lixo'],
         SERV_Grad:['Forn','Cont','Serv','VlrO','Summ','VUbr','Lixo'],
@@ -105,6 +105,10 @@
     .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px}
     .EtpSVG{height:25px ; width:25px ; pointer-events: none}
     #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
+
+    /*CSS do BS*/
+    .InfoBS p{color: #b300b3;}
+    .SB_ID  {background:#7d0088;color:#ffffff}
 </style>
 
 <script> // ----- GRIFO -----
@@ -444,7 +448,7 @@
                     const LL = s.VCbt ? s.VCbt : 0                   // Existe Acabamento
                     const S1 = isArr(s.Arte) ? s.Arte[0].Valr||0 : 0 // Existe Custo Arte
                     const S2 = s.VGrd ? s.VGrd : 0                   // Existe Acabamento
-                    return LL+S1+S2
+                    return Number(LL)+Number(S1)+Number(S2)
                 })
                 const resut = somarrrrr(SOMAA||[0])
                 return resut==0?'':resut // Pode Futuramente ser uma Bandeija
@@ -809,11 +813,6 @@
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
 </script>
-
-<style> /*CSS do BS*/
-    .InfoBS p{color: #b300b3;}
-    .SB_ID  {background:#7d0088;color:#ffffff}
-</style>
 
 <script> // Config BS
     function RenderBS(Typ){

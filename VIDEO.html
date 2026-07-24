@@ -26,58 +26,81 @@
     #properties{background:#2b2b2b;padding:20px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
     #properties label{display:flex;flex-direction:column;gap:5px}
     #properties input{width:120px;padding:8px;border:0;border-radius:5px}
-
     .take{user-select:none;}
     .take:active{cursor:grabbing;transform:scale(.96);}
     .take:hover{border:2px solid #4caf50;}
+    .take{width:170px;height:150px;background:#3a3a3a;display:flex;flex-direction:column;overflow:hidden;position:relative;}
+    .thumb{width:100%;height:95px;background:black;}
+    .thumb img{width:100%;height:100%;object-fit:cover;}
+    .loading{width:100%;height:100%;display:flex;justify-content:center;align-items:center;color:white;}
+    .info{padding:8px;display:flex;flex-direction:column;gap:4px;}
+    .removeBtn{position:absolute;right:6px;top:6px;width:28px;height:28px;padding:0;border-radius:50%;background:#d32f2f;}
+    .removeBtn:hover{background:#f44336;}
+    #timelineContainer{position:relative;padding-top:40px;}
+    #timeRuler{position:absolute;top:0;left:0;right:0;height:30px;background:#111;border-bottom:1px solid #555;overflow:hidden;}
+    .tick{position:absolute;top:0;width:1px;height:100%;background:#777;color:#ddd;font-size:11px;}
+    .tick span{position:absolute;top:2px;left:4px;}
+    #playhead{position:absolute;top:0;left:0;width:2px;height:220px;background:#ff3b30;z-index:999;pointer-events:none;}
 </style>
 
 <body>
+    <header>
+        <h2>Mini Video Editor</h2>
+        <input type="file" id="videoInput" accept="video/*" multiple>
+    </header>
 
-<header>
-<h2>Mini Video Editor</h2>
-<input type="file" id="videoInput" accept="video/*" multiple>
-</header>
+    <main>
+        <section id="previewArea">
+            <video id="player" controls playsinline></video>
+        </section>
 
-<main>
-    <section id="previewArea">
-    <video id="player" controls playsinline></video>
-    </section>
+        <section id="controls">
+            <button id="playBtn">Play</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="exportBtn">Exportar MP4</button>
+        </section>
 
-    <section id="controls">
-    <button id="playBtn">Play</button>
-    <button id="pauseBtn">Pause</button>
-    <button id="exportBtn">Exportar MP4</button>
-    </section>
+        <section id="timelineContainer">
+            <h3>Timeline</h3>
+            <div id="timeRuler"></div>
+            <div id="playhead"></div>
+            <div id="timeline"></div>
+        </section>
 
-    <section id="timelineContainer">
-    <h3>Timeline</h3>
-    <div id="timeline"></div>
-    </section>
+        <section id="properties">
+            <h3>Take selecionado</h3>
+            <label>Início <input type="number" id="startTime" step="0.1" value="0"></label>
+            <label>Fim <input type="number" id="endTime" step="0.1" value="0"></label>
+            <button id="applyTrim">Aplicar Corte</button>
+        </section>
 
-    <section id="properties">
-    <h3>Take selecionado</h3>
-    <label>Início <input type="number" id="startTime" step="0.1" value="0"></label>
-    <label>Fim <input type="number" id="endTime" step="0.1" value="0"></label>
-    <button id="applyTrim">Aplicar Corte</button>
-    </section>
-</main>
+
+    </main>
+</body>
 
 <script>
-    const videoInput = document.getElementById("videoInput");
-    const player = document.getElementById("player");
-    const timeline = document.getElementById("timeline");
-    const playBtn = document.getElementById("playBtn");
-    const pauseBtn = document.getElementById("pauseBtn");
-    const startTime = document.getElementById("startTime");
-    const endTime = document.getElementById("endTime");
+    //import {exportVideo} from "./ffmpeg.js"
 
-    let takes = [];
-    let selectedTake = null;
+    const videoInput = document.getElementById("videoInput")
+    const player     = document.getElementById("player")
+    const timeline   = document.getElementById("timeline")
+    const playBtn    = document.getElementById("playBtn")
+    const pauseBtn   = document.getElementById("pauseBtn")
+    const startTime  = document.getElementById("startTime")
+    const endTime    = document.getElementById("endTime")
+    const timeRuler  = document.getElementById("timeRuler")
+    const playhead   = document.getElementById("playhead")
+    const exportBtn  = document.getElementById("exportBtn")
 
-    videoInput.addEventListener("change", loadVideos);
-    playBtn.addEventListener("click", () => {player.play();});
-    pauseBtn.addEventListener("click", () => {player.pause();});
+    let takes = []
+    let dragIndex = null
+    let selectedTake = null
+    let totalDuration = 0
+    const PIXELS_PER_SECOND = 40
+
+    videoInput.addEventListener("change",loadVideos)
+    playBtn.addEventListener("click", ()=>{player.play()})
+    pauseBtn.addEventListener("click",()=>{player.pause()})
 
     function loadVideos(event){
         const files = [...event.target.files];
@@ -105,22 +128,31 @@
     }
 
     function renderTimeline(){
+        updateTimelineDuration();
         timeline.innerHTML = "";
+        let offset = 0;
         takes.forEach((take,index)=>{
+            const duration = take.end - take.start;
             const item = document.createElement("div");
             item.className = "take";
-            item.draggable = true;
+            item.style.width = (duration * PIXELS_PER_SECOND) + "px";
+            item.style.marginLeft = offset + "px";
             item.dataset.index = index;
-            if(selectedTake===take.id){item.classList.add("selected");}
-            item.innerHTML = `<div class="thumb">${take.thumbnail ? `<img src="${take.thumbnail}">` : `<div class="loading">...</div>`} </div>
-                              <div class="info"> <b>Take ${index+1}</b> <span>${take.duration.toFixed(1)} s</span> </div>
-                              <button class="removeBtn">✕</button>`
+            item.draggable = true;
+            if(selectedTake === take.id) item.classList.add("selected");
+            item.innerHTML = `
+                <div class="thumb">${take.thumbnail ? `<img src="${take.thumbnail}">` : ""}</div>
+                <div class="info"><b>Take ${index+1}</b><span>${duration.toFixed(1)} s</span></div>
+                <button class="removeBtn">✕</button>`;
             item.onclick = ()=>selectTake(take.id);
-            item.addEventListener("dragstart", dragStart);
-            item.addEventListener("dragover", dragOver);
-            item.addEventListener("drop", dropTake);
+            item.addEventListener("dragstart",dragStart);
+            item.addEventListener("dragover",dragOver);
+            item.addEventListener("drop",dropTake);
+            item.querySelector(".removeBtn").onclick=(e)=>{e.stopPropagation(); takes.splice(index,1); renderTimeline();};
             timeline.appendChild(item);
+            offset += duration * PIXELS_PER_SECOND;
         });
+        drawRuler();
     }
 
     function selectTake(id){
@@ -140,64 +172,127 @@
         alert("Corte atualizado.");
     });
 
-
-
-
-
-
-let dragIndex = null;
-
-function dragStart(e){dragIndex = Number(e.currentTarget.dataset.index);}
-function dragOver(e){e.preventDefault();}
-function dropTake(e){
-    e.preventDefault();
-    const dropIndex = Number(e.currentTarget.dataset.index);
-    if(dragIndex === dropIndex)
-        return;
-    const moved = takes.splice(dragIndex,1)[0];
-    takes.splice(dropIndex,0,moved);
-    renderTimeline();
-}
-
-function generateThumbnail(take){
-
-    const video = document.createElement("video");
-
-    video.src = take.url;
-
-    video.currentTime = 1;
-
-    video.muted = true;
-
-    video.playsInline = true;
-
-    video.addEventListener("loadeddata",()=>{
-
-        const canvas = document.createElement("canvas");
-
-        canvas.width = 160;
-        canvas.height = 90;
-
-        const ctx = canvas.getContext("2d");
-
-        ctx.drawImage(video,0,0,160,90);
-
-        take.thumbnail = canvas.toDataURL("image/jpeg");
-
+    function dragStart(e){dragIndex = Number(e.currentTarget.dataset.index);}
+    function dragOver(e){e.preventDefault();}
+    function dropTake(e){
+        e.preventDefault();
+        const dropIndex = Number(e.currentTarget.dataset.index);
+        if(dragIndex === dropIndex)
+            return;
+        const moved = takes.splice(dragIndex,1)[0];
+        takes.splice(dropIndex,0,moved);
         renderTimeline();
+    }
 
+    function generateThumbnail(take){
+        const video = document.createElement("video");
+        video.src = take.url;
+        video.currentTime = 1;
+        video.muted = true;
+        video.playsInline = true;
+        video.addEventListener("loadeddata",()=>{
+            const canvas = document.createElement("canvas");
+            canvas.width = 160;
+            canvas.height = 90;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(video,0,0,160,90);
+            take.thumbnail = canvas.toDataURL("image/jpeg");
+            renderTimeline();
+        });
+    }
+
+    function drawRuler(){
+        timeRuler.innerHTML = "";
+        let total = 0;
+        takes.forEach(t=>{total += (t.end - t.start);});
+        const pixelsPerSecond = 50;
+        const width = total * pixelsPerSecond;
+        timeRuler.style.width = width + "px";
+        for(let i=0;i<=total;i++){
+            const tick = document.createElement("div");
+            tick.className = "tick";
+            tick.style.left = (i*pixelsPerSecond)+"px";
+            tick.innerHTML = `<span>${i}s</span>`;
+            timeRuler.appendChild(tick);
+        }
+    }
+
+    player.addEventListener("timeupdate",()=>{
+        if(!selectedTake) return;
+        const take = takes.find(t=>t.id===selectedTake);
+        const pixelsPerSecond = 50;
+        playhead.style.left =((player.currentTime - take.start) * pixelsPerSecond) + "px";
     });
 
-}
+    timeRuler.addEventListener("click",(e)=>{
+        if(!selectedTake) return;
+        const rect = timeRuler.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const seconds = x / 50;
+        player.currentTime = seconds;
+    });
+
+    function updateTimelineDuration(){
+        totalDuration = 0;
+        takes.forEach(t=>{totalDuration += (t.end - t.start);});
+    }
+
+    function drawRuler(){
+        timeRuler.innerHTML = "";
+        const width = totalDuration * PIXELS_PER_SECOND;
+        timeRuler.style.width = width + "px";
+        timeline.style.width = width + "px";
+        for(let i=0;i<=Math.ceil(totalDuration);i++){
+            const tick = document.createElement("div");
+            tick.className = "tick";
+            tick.style.left = (i * PIXELS_PER_SECOND) + "px";
+            tick.innerHTML = `<span>${i}s</span>`;
+            timeRuler.appendChild(tick);
+        }
+    }
+
+    function getTakeAtTime(time){
+        let accumulated = 0;
+        for(const take of takes){
+            const duration = take.end - take.start;
+            if(time < accumulated + duration){ return{ take, localTime: take.start + (time - accumulated) };}
+            accumulated += duration;
+        }
+        return null;
+    }
+
+    timelineContainer.addEventListener("click",(e)=>{
+        const rect = timeline.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const editTime = x / PIXELS_PER_SECOND;
+        const result = getTakeAtTime(editTime);
+        if(!result) return;
+        selectedTake = result.take.id;
+        player.src = result.take.url;
+        player.currentTime = result.localTime;
+        renderTimeline();
+    });
+
+    player.addEventListener("timeupdate",()=>{
+        if(!selectedTake) return;
+        let offset = 0;
+        for(const take of takes){
+            if(take.id === selectedTake){ offset += player.currentTime - take.start; break;}
+            offset += take.end - take.start;}
+        playhead.style.left = (offset * PIXELS_PER_SECOND) + "px";
+    });
+
+    exportBtn.onclick = async()=>{
+        if(takes.length===0){ alert("Nenhum vídeo"); return;}
+        exportBtn.innerText = "Exportando...";
+        const url = await exportVideo(takes);
+        const link = document.createElement("a");
+        link.href=url;
+        link.download= "edicao.mp4";
+        link.click();
+        exportBtn.innerText = "Exportar MP4";
+    };
 
 </script>
 
-
-<script>
-
-</script>
-
-
-
-</body>
 </html>
