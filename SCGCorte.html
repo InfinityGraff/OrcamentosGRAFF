@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<input type="file" id="svgFile" accept=".svg">
+<pre id="out"></pre>
+<div id="view" style="display:none"></div>
+<script>
+    const VALOR_METRO = 0.68 // Valor M¹ do Corte
+    svgFile.onchange = async e=>{
+        const txt = await e.target.files[0].text()
+        const doc = new DOMParser().parseFromString(txt,'image/svg+xml')
+        const svg = doc.documentElement
+        view.innerHTML=''
+        view.append(svg)
+        const vb = svg.viewBox.baseVal
+        let escala
+        if(svg.width.baseVal.unitType==7) escala = svg.width.baseVal.value/vb.width // SVG em mm
+        else escala = 25.4/96 // SVG em pixels (96 DPI)
+        let dist=0
+        svg.querySelectorAll('*').forEach(e=>{if(e.getTotalLength) dist+=e.getTotalLength();})
+        dist*=escala
+        const metros = dist/1000
+        const valor = metros*VALOR_METRO
+        out.textContent =
+            `Comprimento  : ${metros.toFixed(2)} m
+             Valor        : ${valor.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+            `
+    }
+</script>
