@@ -19,7 +19,7 @@
 </head>
 
 <script> // BaseCRUD
-    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
+    const Atual    = {Pag:'PROD'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     const O = {
@@ -49,24 +49,30 @@
         CLNT_Pdds:['Clnt','Lixo'],
         SERV_Pdds:['Serv','Lixo'],
         PGMT_Pdds:['Pgmt','Lixo'],
+        PROD     :[],
+        MATR     :[]
+    }
+
+    const Construc = {
+        PDDS:{Clnt:{},Serv:{Arte:{},Grad:{}},Pgmt:{Mpag:{}}},
+        SERV:{Pdds:{Clnt:{}},Arte:{},Grad:{}}, // Colocar Cliente dentro
+        PGMT:{Pdds:{Clnt:{},Serv:{}},Mpag:{}}, // Colocar Cliente dentro
+        CLNT:{Pdds:{Serv:{Arte:{},Grad:{}},Pgmt:{Mpag:{}}}},
+        MPAG:{Pgmt:{}},
+        ARTE:{Serv:{}},
+        GRAD:{Serv:{Arte:{}},OS:{},Uber:{}},
+        OS  :{Grad:{Serv:{}},Mpag:{}},
+        UBER:{Grad:{Serv:{}},Mpag:{}},
+        PROD:{},
+        MATR:{}
     }
 
     function SB_CriaSlct(Typ,COL){
         const Cl = (TYP,Rmv)=>ArrDif(BS[TYP]?.Orden,Rmv).join(',')
         const f  = (o,p='' )=>ObjEtr(o).map(([k,v])=>`${k}:${AA(k)}(${Cl(AA(k),Ryp[`${Typ}_${k}`])}${ObjKey(v).length?','+f(v,k):''})`).join(',')
-        const Construc = {
-            PDDS:{Clnt:{},Serv:{Arte:{},Grad:{}},Pgmt:{Mpag:{}}},
-            SERV:{Pdds:{Clnt:{}},Arte:{},Grad:{}}, // Colocar Cliente dentro
-            PGMT:{Pdds:{Clnt:{},Serv:{}},Mpag:{}}, // Colocar Cliente dentro
-            CLNT:{Pdds:{Serv:{Arte:{},Grad:{}},Pgmt:{Mpag:{}}}},
-            MPAG:{Pgmt:{}},
-            ARTE:{Serv:{}},
-            GRAD:{Serv:{Arte:{}},OS:{},Uber:{}},
-            OS  :{Grad:{Serv:{}},Mpag:{}},
-            UBER:{Grad:{Serv:{}},Mpag:{}},
-        }
-        return COL ? `${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}` // a parte daqui debaixo é quando uso em Sugg
-                   : `${Cl(Typ,Ryp[Typ])||'*'},${f(Construc[Typ])}`
+        return Typ=='PROD' || Typ=='MATR' ?    Cl(Typ,Ryp[Typ])||'*' :
+                       COL ? `${Cl(COL,Ryp[`${Typ}_${Aa(COL)}`])}` // a parte daqui debaixo é quando uso em Sugg
+                           : `${Cl(Typ,Ryp[Typ])||'*'},${f(Construc[Typ])}`
     }
 
 </script>
@@ -739,7 +745,6 @@
         const selectStr = SB_CriaSlct(Typ)
         const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Julho') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
                               Typ=='GRAD' ? ORR({Id:'B\\_%'})       : Filt
-                          
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
@@ -796,6 +801,8 @@
         <div id="Pag_MPAG" class="none Cl TBLAA Gap p20"><div class="Confy_MPAG w100 h100 Cl Gap" onload="Inn(this,PrepTable('MPAG'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
         <div id="Pag_ARTE" class="none Cl TBLAA Gap p20"><div class="Confy_ARTE w100 h100 Cl Gap" onload="Inn(this,PrepTable('ARTE'))"></div></div> <style>#H_ARTE.Card > tbody > tr{grid:"A B E E E" auto "C C D D D" auto "F G H I I" auto "J K L M N" auto / 1fr 1fr 1fr 1fr 1fr}</style>
         <div id="Pag_CLNT" class="none Cl TBLAA Gap p20"><div class="Confy_CLNT w100 h100 Cl Gap" onload="Inn(this,PrepTable('CLNT'))"></div></div> <style>#H_CLNT.Card > tbody > tr{grid:"A B B I" auto "D E C C" auto "F G H H" auto "J K L M" auto         / 1fr 1fr 1fr 1fr}</style>
+        <div id="Pag_PROD" class="none Cl TBLAA Gap p20"><div class="Confy_PROD w100 h100 Cl Gap" onload="Inn(this,PrepTable('PROD'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_MATR" class="none Cl TBLAA Gap p20"><div class="Confy_MATR w100 h100 Cl Gap" onload="Inn(this,PrepTable('MATR'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
     </div>
 </body>
 

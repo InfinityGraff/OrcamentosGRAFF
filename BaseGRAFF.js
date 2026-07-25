@@ -275,14 +275,14 @@ const KitFonts = 'objFonts.map(e=>e.Nome)'
 const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte','Vendas']
 const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
     // m2
-    'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
-        Tipos:{'Todos':{},
-            'Adesivo':{Opts:'List',Cbmt:{
-                'Brilho'         :{Grad:'Ads(Blh)',Valr:0 ,Cust:20, matr:'Adesivo', Extra:['Laminação','Aplicação']},
-                'Blackout'       :{Grad:'Ads(Blk)',Valr:0 ,Cust:25, matr:'Adesivo', Extra:['Laminação','Aplicação']},
-                'Transparente'   :{Grad:'Ads(Trp)',Valr:0 ,Cust:25, matr:'Adesivo', Extra:['Laminação','Aplicação']},
-                'Espelhado'      :{Grad:'Ads(Trp)',Valr:0 ,Cust:20, matr:'Adesivo', Extra:['Laminação','Aplicação']},
-                'Fosco'          :{Grad:'Ads(Fos)',Valr:0 ,Cust:20, matr:'Adesivo', Extra:['Laminação','Aplicação']},
+    'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:["Arte","Print","Cbmt","Aplic"]  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
+        Tipos:{"Todos":{},
+            "Adesivo":{"Opts":"List","Cbmt":{
+                "Brilho"         :{"Grad":"Ads(Blh)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
+                "Blackout"       :{"Grad":"Ads(Blk)","Valr":0 ,"Cust":25, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
+                "Transparente"   :{"Grad":"Ads(Trp)","Valr":0 ,"Cust":25, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
+                "Espelhado"      :{"Grad":"Ads(Trp)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
+                "Fosco"          :{"Grad":"Ads(Fos)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
             }},
         }},
     'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:[]             , HotKey:["rótulo", "identificação", "label", "tag"] ,
@@ -314,7 +314,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                 },'PS 2mm' :{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 70, Cust: 0.00, Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}},  
                 },'PVC 2mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 90, Cust: 0.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}},
                 },'PVC 3mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:110, Cust:43.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
-            }},'PVC 5mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:200, Cust: 0.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']},
+               }},'PVC 5mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:200, Cust: 0.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']},
             }},
         }},
     'ímã'      :{Calc:'M2' , Stts:'Disp' , Alll:'Al2' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Aplic','Cbmt']  , Extra:['Manta']      , HotKey:["magneto", 'manta magnética'             ] ,
@@ -336,12 +336,12 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
         Tipos:{'Todos'    :{},
             'Brilho'      :{Table:[
                 ['Frente' ,'250g',[['500', 90,31,'on'],['1000',135,45,'on']]],
+                ['FVerso' ,'250g',[['500',115,42,'on'],['1000',150,54,'on']]], 
                 ['Frente' ,'300g',[['500',130,49     ],['1000',145,56     ]]], 
-                ['FVerso','250g',[['500',115,42,'on'],['1000',150,54,'on']]], 
-                ['FVerso','300g',[['500',150,58     ],['1000',165,65     ]]],]},
+                ['FVerso' ,'300g',[['500',150,58     ],['1000',165,65     ]]],]},
             'Brilho Local':{Table:[
                 ['Frente' ,'300g',[['500',155,62,'on'],['1000',190,78,'on']]],
-                ['FVerso','300g',[['500',190,80,'on'],['1000',230,99,'on']]],]},
+                ['FVerso' ,'300g',[['500',190,80,'on'],['1000',230,99,'on']]],]},
     }},
     'Panfleto' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
         Tipos:{'Todos':{},

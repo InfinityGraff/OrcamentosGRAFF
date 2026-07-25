@@ -49,23 +49,9 @@
 
 <script> // aBase de Dados INFINITY GRAFF
     const Atual    = {Pag:'ORC'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
-    // const Cgo  = { // Cargo
-    //     Admn: { nav :["HOME","|","ORC","LOJA","ARTE","GBRT","BBTC","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
-    //             orc :["Serigrafia","Figurinha","Cartela"],},
-    //     Grnt: { nav :["HOME","|","ORC","ARTE","GBRT","|","PDDS","|","MPAG","GRAD","CLNT","|","CONF"],
-    //             orc :[],},
-    //     DSgn: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
-    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
-    //     Atnd: { nav:["HOME","|","ORC","ARTE","|","PDDS","|","MPAG","|","CONF"] ,
-    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],},
-    //     Clnt: { nav:["HOME","|","ORC","ARTE","|","CONF"],
-    //             orc:["Arte","Router","Envelopamento","Serigrafia","Figurinha","Topo Bolo","Vendas","Placa","Sinalização","Cartela","Plotagem","Crachá","Carteira","Plaqueta"],}
-    // }
-    // const Atual    = {Pag:'ORC'}
-    // let U = {} ; let UU={Cgo:""}
-    // let UCgo = {}
-
     let SVG_FILES = [] // esse é do de importar SVG pra calcular
+    const BurealMode = true
+    const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
 
     const MATR = {
             'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -78,32 +64,32 @@
                 'Perfurado'      :{Grad:'Ads(Prf)',Valr:100,Cust:35, Extra:['Laminação','Aplicação']}, // Cobrado pela Largura
             }},
     }
-
-    // Dentro de Adesivo tem sim Acabamento q pode ser Laminação e Aplicação
-    const O = {
-        Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','--'], // 'WM SilkSing','Casas leo'
-        Serv:['',...AllProd],
-        SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))],
-        Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
-        
-        Stts:['','Orçamento','Arte','Analise Art','Impressão','Grad Uber','Falta Uber','Acabamento','Pronto','Entregue','Devendo','Concluído'],
-        Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'],
-        //
-        Form:['','Pix','Av','Card','QR'],
-        Pgmt:['','Pix','Av','Card','QR'],
-        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--'],
-        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'],
-    }
-
-    const COR  = {'Gren':'147,196,125','Yelw':'255,229,153','Roxo':'180,167,214','Azul':'164,194,244','Redd':'234,153,153','Opcy':'0,0,0,0'}
-    const COR2 = {'Gren':'39,80,12'   ,'Yelw':'133,99,0'   ,'Roxo':'80,0,146'   ,'Azul':'0,54,146'   ,'Redd':'134,0,0'    ,'Opcy':'0,0,0,0'}
-    const ListEtps = [['Orçamento','Roxo'],['Arte','Roxo'],['Impressão','Yelw'],['Acabamento','Yelw'],['Pronto','Azul'],['Entregue','Gren'],['Devendo','Redd']]
 </script>
 
 <script> // Bibliotecas
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
+
+    // Templates
+        const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
+        const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
+    // Ações
+        const ReadSVG    =()=>readSVGFiles(SVG_FILES,(svg)=>AddCarr('Recorte','','','','',svg))
+        const Check_W_Pag=()=>{if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
+                               if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
+    // Add, Rmv, Clear
+        const RmvORC=tr=>tr.remove()
+        const ClrORC=tr=>{Clear($$('input',tr)) ; Zerar(tr)}
+        const ClrAll=()=>{$$(`#ORC tbody tr`                  ).forEach(tr=>ClrORC(tr))            ; Rload_Tbl() }
+        const RmvAll=()=>{$$(`#ORC tbody tr:not(:first-child)`).forEach(tr=>RmvORC(tr)) ; ClrAll() ; Rload_Tbl() }
+        const AddORC=tr=>{const Tr=tr.cloneNode(true) ; ClrORC(Tr) ; Insert(Pai(tr)).After(Tr,tr)  ; ORCnewID(Tr) ; Rload_Tbl()}
+
+    // Ao Limpar a tr tbm deveria Limpar os Detalhes
+        const Bckg=e=>`style="background-image:url('./Prod/Avanc/${e}')"`
+        const VALS=tr=>Object.fromEntries(['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>[e,vAL(e,tr)]))
+        const sP=(Stg,tr)=>$(`.o${Stg} span` ,tr)
+        const sI=(Stg,tr)=>$(`.o${Stg} input`,tr)
 </script>
 
 <div>  <!--NOTA    - ⭐_ _ _ _ -->
@@ -255,8 +241,7 @@
 
     #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
     #Div-Prod .BtnCarr        {width: 120px; top:310px   }
-</style>
-<style>
+
     .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
     .BxVlr            {color:#ffffff}
     .Indisdp          {font-size:6px;transform:rotate(-15deg);top:5px;left:4px}
@@ -276,8 +261,7 @@
 
     .CanvasMedidas.Hmax{width: auto ; height: 100%}
     .CanvasMedidas.Wmax{width: 100% ; height: auto}
-</style>
-<style> /*GAMBIARRA FEIOSA pra Ajeitar o Tamanho das Imagens dentro do TmpltProd*/
+
     .fotO      {width:150px ; height:160px}
     .fotO1 img {width:150px ; height:160px}
     .fotO2 img {width:120px ; height:90px }
@@ -287,8 +271,7 @@
     .fotO4 img {width:80px  ; height:80px }
     .fotO5 img {width:80px  ; height:80px } .fotO5 img:last-child{display:none}
     .fotO6 img {width:150px ; height:53px }
-</style>
-<style>  /*CSS do ORC NovoForm*/
+
     #NovoForm{padding:20px 10px;margin-bottom: 5px;}
     #ORC input,#ORC select{width:100% !important ; margin:0}
     #ORC   .RS    {font-size:9px  ; margin-right: 3px}
@@ -430,28 +413,11 @@
 </body>
 
 <script>
-    const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
     function simular(){
         const v=+valor.value;if(!v)return alert("Digite um valor!")
         Inn(res,TaxaMpag.map((t,i)=>{const tot=v*(1+t),parc=tot/(i+1);return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`}).join(''))
     }
 
-    const BurealMode = true
-        // Templates
-            const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
-            const Tm_Total=E=>[`CUST_${E} none`,`CRCT_${E} none`,`RSUT_${E}`].map(e=>`<div class="ORC_${e}" name="0">${Tm_RS(0)}</div>`).join('')
-        // Ações
-            const ReadSVG    =()=>readSVGFiles(SVG_FILES,(svg)=>AddCarr('Recorte','','','','',svg))
-            const Check_W_Pag=()=>{if(window.innerWidth<=650){$$('#ORC .O_Tx').forEach(th=>Show($('a',th),$('p',th)))}
-                                    if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
-        // Add, Rmv, Clear
-            const RmvORC=tr=>tr.remove()
-            const ClrORC=tr=>{Clear($$('input',tr)) ; Zerar(tr)}
-            const ClrAll=()=>{$$(`#ORC tbody tr`                  ).forEach(tr=>ClrORC(tr))            ; Rload_Tbl() }
-            const RmvAll=()=>{$$(`#ORC tbody tr:not(:first-child)`).forEach(tr=>RmvORC(tr)) ; ClrAll() ; Rload_Tbl() }
-            const AddORC=tr=>{const Tr=tr.cloneNode(true) ; ClrORC(Tr) ; Insert(Pai(tr)).After(Tr,tr)  ; ORCnewID(Tr) ; Rload_Tbl()}
-            // Ao Limpar a tr tbm deveria Limpar os Detalhes
-    
     // Handlers 
         function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; ReloadTotal()}
         function Upp_Tabela(Tbl){
@@ -460,9 +426,7 @@
         }
         function Upp_RowCol(Tbl){
             const Lmt = $$(`${Tbl} tr:nth-child(1) input`).length
-            $$(`${Tbl} input`).forEach((I,x)=>{
-                I.dataset.row = Math.floor(x/Lmt)
-                I.dataset.col = x % Lmt})
+            $$(`${Tbl} input`).forEach((I,x)=>{I.dataset.row = Math.floor(x/Lmt) ; I.dataset.col = x % Lmt})
         }
         function HandArrow(Tbl,e){
             if (e.key === "Enter"){
@@ -497,10 +461,6 @@
             ['M2','OFS','UND'].forEach(t=>{Prod[e].Calc==t ? Add(tr,'Calc_'+t) : Rmv(tr,'Calc_'+t)}) // Tog_M2_OFS_UND
             if(!tr.classList.contains('Calc_OFS')){Add(_td($('.oQnt',tr)),'Rltv')}else{Rmv(_td($('.oQnt',tr)),'Rltv')} // tentar ver o qão isso não é nessesário
         }
-        const VALS=tr=>Object.fromEntries(['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Qntt'].map(e=>[e,vAL(e,tr)]))
-
-        const sP=(Stg,tr)=>$(`.o${Stg} span` ,tr)
-        const sI=(Stg,tr)=>$(`.o${Stg} input`,tr)
         
         const cP=(tr,Md)=>{ // a idéia é fazer isso ser possível selecionar de traz pra frente também
             const B = VALS(tr)
@@ -584,9 +544,7 @@
             // a soma de metros de produtos do mesmo tipo tem q resultar na soma da Diminuição da Crescente
         }
         Rload_Tbl() // Iniciar
-
-
-        const Bckg=e=>`style="background-image:url('./Prod/Avanc/${e}')"`
+        
         function AddBoxy(e){AddCarr(...e.split('_'))} // tentar tirar isso daqui só serve pra desconstruir
         function Gmbrr(Eu){
             $$('.Opts > div',Avo(Eu)).forEach(e=>{
@@ -676,9 +634,7 @@
                 </div>`
             }).join(''))
         }
-    </script>
-
-    <script> // Focados nos CANVAS
+    // Focados nos CANVAS
         function ORCnewID(tr){ // dar o NOVO id pra cada linha do ORC
             tr.classList.forEach(c=>c.startsWith('ORC_tr-') && tr.classList.remove(c))
             const max = Math.max(0,...[...$$('tr',Pai(tr))].map(e=>[...e.classList].find(c=>c.startsWith('ORC_tr-'))).filter(Boolean).map(c=>+c.split('-')[1]||0))
