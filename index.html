@@ -50,7 +50,7 @@
                                if(window.innerWidth> 650){$$('#ORC .O_Tx').forEach(th=>Show($('p',th),$('a',th)))}};window.addEventListener("resize",Check_W_Pag)
     // Add, Rmv, Clear
         const RmvORC=tr=>tr.remove()
-        const ClrORC=tr=>{Clear($$('input',tr)) ; InnRsult(tr,[0,0,0],[0,0,0])}
+        const ClrORC=tr=>{Clear($$('input',tr)) ; InnRsult(tr,0,[0,0],[0,0],0)}
         const ClrAll=()=>{$$(`#ORC tbody tr`                  ).forEach(tr=>ClrORC(tr))            ; Rload_Tbl() }
         const RmvAll=()=>{$$(`#ORC tbody tr:not(:first-child)`).forEach(tr=>RmvORC(tr)) ; ClrAll() ; Rload_Tbl() }
         const AddORC=tr=>{const Tr=tr.cloneNode(true) ; ClrORC(Tr) ; Insert(Pai(tr)).After(Tr,tr)  ; ORCnewID(Tr) ; Rload_Tbl()}
@@ -332,11 +332,11 @@
         let [Serv,Tipo,Cbmt,Matr,Lrg,Alt,Qnt] = ['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt'].map(e=>vAL(e,tr))
         const Exec=e=>{
             if(!e){return [0,0,0]}
-            const E = J['MATR'].find(ee=>ee.Item==e) // tentar fazer isso usando o ID do MATR pra ficar mais Certo, e poder usar JJ
-            CheckLimit(E,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)   // Conferir se tem Limite e da o Aviso
-            const m2   = E.Calc=='M2' ? Lrg*Alt*Qnt : 0         // Define o Tipo de Calculo
-            //const m2Grl= // Conciderar a Soma de todos pra dar m2 do valor
-            return [m2*E.Cust,m2*E.Valr,m2*Crecent3(m2,E.Valr)] // Custo , Valor , Desconto
+            const E = J['MATR'].find(ee=>ee.Item==e)           // tentar fazer isso usando o ID do MATR pra ficar mais Certo, e poder usar JJ
+            CheckLimit(E,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)  // Conferir se tem Limite e da o Aviso
+            const m2   = E.Calc=='M2' ? Lrg*Alt*Qnt : 0        // Define o Tipo de Calculo
+            const m2Grl=  // Conciderar a Soma de todos pra dar m2 do valor
+            return [m2*E.Cust,m2*E.Valr,m2*Crecent3(m2,E.Valr)]// Custo , Valor , Desconto
         }
         const A1 = Exec(Cbmt), A2 = Exec(Matr)
         InnRsult(tr,Qnt,A1,A2,A1[2]+A2[2])
@@ -444,7 +444,7 @@
                 </table>
                 <div><p>Total</p>
                     <div class="Ct"><div class="ORC_CUST_FINAL wp1 Final none"></div><div class="ORC_CUST_FINAL wp2 Final none"></div></div>
-                    <div><div class="ORC_CRCT_FINAL wp1 Final none"></div><div class="ORC_CRCT_FINAL wp2 Final none"></div></div>
+                    <div class="Ct"><div class="ORC_CRCT_FINAL wp1 Final none"></div><div class="ORC_CRCT_FINAL wp2 Final none"></div></div>
                     <div class="ORC_RSUT_FINAL Final"     ></div>
                 </div>
                 <button onclick="VerNota('ORC')">Ver Nota</button>
