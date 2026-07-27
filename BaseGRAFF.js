@@ -272,7 +272,7 @@ const Ramos = {
 const KitFonts = 'objFonts.map(e=>e.Nome)'
 
 
-const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte','Vendas']
+
 const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
     // m2
     'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:["Arte","Print","Cbmt","Aplic"]  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
@@ -331,137 +331,139 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                 'Retangula' :{Grad:'Bandeira',Valr:75, Cust:0 , matr:['Oxford','Cettin']},
             }},
     }},
-    // Offset
-    'Cartão'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
-        Tipos:{'Todos'    :{},
-            'Brilho'      :{Table:[
-                ['Frente' ,'250g',[['500', 90,31,'on'],['1000',135,45,'on']]],
-                ['FVerso' ,'250g',[['500',115,42,'on'],['1000',150,54,'on']]], 
-                ['Frente' ,'300g',[['500',130,49     ],['1000',145,56     ]]], 
-                ['FVerso' ,'300g',[['500',150,58     ],['1000',165,65     ]]],]},
-            'Brilho Local':{Table:[
-                ['Frente' ,'300g',[['500',155,62,'on'],['1000',190,78,'on']]],
-                ['FVerso' ,'300g',[['500',190,80,'on'],['1000',230,99,'on']]],]},
-    }},
-    'Panfleto' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
-        Tipos:{'Todos':{},
-            '10 x 15':{Table:[
-                ['Frente' ,'90g',[['1000',130, 67,'on'],['2500',180, 85,'on'],['5000',270,170],['10000',650,340]]],
-                ['FVerso','90g',[['1000',  0,  0,'on'],['2500',280,135,'on'],['5000',320,220],['10000',720,392]]],]},
-            '15 x 20':{Table:[
-                ['Frente' ,'90g',[['1000',190,127,'on'],['2500',340,170,'on'],['5000',650,340],['10000',900,600 ]]],
-                ['FVerso','90g',[['1000',  0,  0,'on'],['2500',500,270,'on'],['5000',700,440],['10000',1200,800]]],]},
-    }},
-    'Talão'    :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['JLTal']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:[] , 
-        Tipos:{
-            'Todos'  :{},
-            '10 x 15':{Table:[
-                ['Preto e Branco','1 Via',[['4',60,30,'on'],['8', 90,45],['12',130,65],['20',170, 85,'on']]],
-                ['Colorido'      ,'1 Via',[['4',80,40,'on'],['8',110,55],['12',150,75],['20',200,100,'on']]],
-                ['Preto e Branco','2 Via',[['4',75,35],['8',105,55],['12',145,70],['20',185, 80]]],
-                ['Colorido'      ,'2 Via',[['4',95,45],['8',125,65],['12',165,85],['20',215,110]]],]},
-            '15 x 20':{Table:[
-                ['Preto e Branco','1 Via',[['2',60,30,'on'],['4', 90,45],['10',170, 85],['20',300,150,'on']]],
-                ['Colorido'      ,'1 Via',[['2',80,40,'on'],['4',110,55],['10',200,100],['20',350,175,'on']]],
-                ['Preto e Branco','2 Via',[['2',75,35],['4',105,55],['10',185, 90],['20',315,165]]],
-                ['Colorido'      ,'2 Via',[['2',95,45],['4',125,65],['10',215,110],['20',365,195]]],]},
-            '9 x 21' :{Table:[
-                ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150, 75]]],
-                ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190, 95]]],
-                ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
-                ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],]},
-    }},
-    'Tag'      :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['Bureal']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
-        Tipos:{'Todos':{},
-            '4 x 5':{Table:[
-                ['Reto' ,'250g',[['500',  0, 0,'on'],['1.000',130,73,'on']]],
-                ['Curva','250g',[['500',  0, 0,'on'],['1.000',150,85,'on']]],]},
-            '5 x 9':{Table:[
-                ['Reto' ,'250g',[['500',100,57,'on'],['1.000',140,69,'on']]],
-                ['Curva','250g',[['500',120,67,'on'],['1.000',150,79,'on']]],]},
-    }},
-    'Cardápio' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'LAZER, Plastificado'  , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
-                Tipos:{'Todos':{},
-            'A4':{Table:[
-                ['Frente' ,'170g',[['1',15,6.90,'on']]],
-                ['F.Verso','170g',[['1',20,8.80,'on']]],
-            ]},
-            'A3':{Table:[
-                ['Frente' ,'170g',[['1',30,13.75,'on']]],
-                ['F.Verso','170g',[['1',35,17.50,'on']]],
-            ]},
-    }},
-    'Tabela'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tabela de Preço'      , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,   
-                Tipos:{'Todos':{},
-            'PS' :{Table:[
-                ['Frente' ,'170g',[['A4',20,0,'on'],['A3',38,0,'on']]],
-                ['F.Verso','170g',[['A4',28,0,'on'],['A3',46,0,'on']]],
-            ]},
-            'PVC':{Table:[
-                ['Frente' ,'170g',[['A4',30,0,'on'],['A3',58,0,'on']]],
-                ['F.Verso','170g',[['A4',46,0,'on'],['A3',88,0,'on']]],
-            ]},
-    }},
-    // Tecido
-    'Camisa'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
-        Tipos:{
-            'Todos'    :{},
-            'MCurta'   :{Tipo:['Helanca','Dry Furado','Dry Fit','Manchaster'],Tamn:['PP','P','M','G','GG','XG'],
-                Table:[
-                    ['Masculino_Normal','Helanca',[['1 UND',50,25,'on'],['10 UND',39,25,'on']]],
-                    ['Masculino_Raglan','Helanca',[['1 UND',58, 0,'on'],['10 UND',47, 0,'on']]],
-                    ['Masculino_V'     ,'Helanca',[['1 UND',55, 0,'on'],['10 UND',44, 0,'on']]],
-                    ['Masculino_Padre' ,'Helanca',[['1 UND',57, 0,'on'],['10 UND',36, 0,'on']]],
 
-                    ['Feminino_Normal' ,'Helanca',[['1 UND',50,25,'on'],['10 UND',39,25,'on']]],
-                    ['Feminino_Raglan' ,'Helanca',[['1 UND',58, 0,'on'],['10 UND',47, 0,'on']]],
-                    ['Feminino_V'      ,'Helanca',[['1 UND',55, 0,'on'],['10 UND',44, 0,'on']]],
-                    ['Feminino_Padre'  ,'Helanca',[['1 UND',57, 0,'on'],['10 UND',36, 0,'on']]],
-
-                    ['Infantil_Normal' ,'Helanca',[['1 UND',40, 0,'on'],['10 UND',29, 0,'on']]],
-                    ['Infantil_Raglan' ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                    ['Infantil_V'      ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                    ['Infantil_Padre'  ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-
-                    ['Plus Size_Normal','Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                    ['Plus Size_Raglan','Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                    ['Plus Size_V'     ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                    ['Plus Size_Padre' ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
-                ]
-            },
-            'MLonga'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':60,'10':49},Cust:{'1':25}},
-            'Regata'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':40,'10':29},Cust:{'1':25}},
-            'Polo'     :{Tipo:['Manchaster'              ],Tamn:['PP','P','M','G','GG'],Valr:{'1':80,'10':69},Cust:{'1':25}},
-    }},
-    'Calção'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Short','Sublimação','roupa','pano'] ,
-        Tipos:{
-            'Bermuda' :{},
-            'Short'   :{},
-    }},  
-    'WindFlag' :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
-        Tipos:{'Todos':{},
-            'P':{Cbmt:{
-                'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
-            'M':{Cbmt:{
-                'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
-            'G':{Cbmt:{
-                'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
-                'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
+    // TABELADOS
+        // Offset
+        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
+            Tipos:{'Todos'    :{},
+                'Brilho'      :{Table:[
+                    ['Frente' ,'250g',[['500', 90,31,'on'],['1000',135,45,'on']]],
+                    ['FVerso' ,'250g',[['500',115,42,'on'],['1000',150,54,'on']]], 
+                    ['Frente' ,'300g',[['500',130,49     ],['1000',145,56     ]]], 
+                    ['FVerso' ,'300g',[['500',150,58     ],['1000',165,65     ]]],]},
+                'Brilho Local':{Table:[
+                    ['Frente' ,'300g',[['500',155,62,'on'],['1000',190,78,'on']]],
+                    ['FVerso' ,'300g',[['500',190,80,'on'],['1000',230,99,'on']]],]},
         }},
-    'BigBall'  :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
-        Tipos:{'Todos':{},
-            P   :{Valr:0,Cust:0},
-            M   :{Valr:0,Cust:0},
-            G   :{Valr:0,Cust:0},
-        }},   
+        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
+            Tipos:{'Todos':{},
+                '10 x 15':{Table:[
+                    ['Frente' ,'90g',[['1000',130, 67,'on'],['2500',180, 85,'on'],['5000',270,170],['10000',650,340]]],
+                    ['FVerso','90g',[['1000',  0,  0,'on'],['2500',280,135,'on'],['5000',320,220],['10000',720,392]]],]},
+                '15 x 20':{Table:[
+                    ['Frente' ,'90g',[['1000',190,127,'on'],['2500',340,170,'on'],['5000',650,340],['10000',900,600 ]]],
+                    ['FVerso','90g',[['1000',  0,  0,'on'],['2500',500,270,'on'],['5000',700,440],['10000',1200,800]]],]},
+        }},
+        'Talão'    :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['JLTal']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:[] , 
+            Tipos:{
+                'Todos'  :{},
+                '10 x 15':{Table:[
+                    ['Preto e Branco','1 Via',[['4',60,30,'on'],['8', 90,45],['12',130,65],['20',170, 85,'on']]],
+                    ['Colorido'      ,'1 Via',[['4',80,40,'on'],['8',110,55],['12',150,75],['20',200,100,'on']]],
+                    ['Preto e Branco','2 Via',[['4',75,35],['8',105,55],['12',145,70],['20',185, 80]]],
+                    ['Colorido'      ,'2 Via',[['4',95,45],['8',125,65],['12',165,85],['20',215,110]]],]},
+                '15 x 20':{Table:[
+                    ['Preto e Branco','1 Via',[['2',60,30,'on'],['4', 90,45],['10',170, 85],['20',300,150,'on']]],
+                    ['Colorido'      ,'1 Via',[['2',80,40,'on'],['4',110,55],['10',200,100],['20',350,175,'on']]],
+                    ['Preto e Branco','2 Via',[['2',75,35],['4',105,55],['10',185, 90],['20',315,165]]],
+                    ['Colorido'      ,'2 Via',[['2',95,45],['4',125,65],['10',215,110],['20',365,195]]],]},
+                '9 x 21' :{Table:[
+                    ['Preto e Branco','1 Via',[['3',60,30],['6', 90,45],['9',130,65],['12',150, 75]]],
+                    ['Colorido'      ,'1 Via',[['3',80,40],['6',110,55],['9',170,85],['12',190, 95]]],
+                    ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
+                    ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],]},
+        }},
+        'Tag'      :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['Bureal']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
+            Tipos:{'Todos':{},
+                '4 x 5':{Table:[
+                    ['Reto' ,'250g',[['500',  0, 0,'on'],['1.000',130,73,'on']]],
+                    ['Curva','250g',[['500',  0, 0,'on'],['1.000',150,85,'on']]],]},
+                '5 x 9':{Table:[
+                    ['Reto' ,'250g',[['500',100,57,'on'],['1.000',140,69,'on']]],
+                    ['Curva','250g',[['500',120,67,'on'],['1.000',150,79,'on']]],]},
+        }},
+        'Cardápio' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'LAZER, Plastificado'  , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
+                    Tipos:{'Todos':{},
+                'A4':{Table:[
+                    ['Frente' ,'170g',[['1',15,6.90,'on']]],
+                    ['F.Verso','170g',[['1',20,8.80,'on']]],
+                ]},
+                'A3':{Table:[
+                    ['Frente' ,'170g',[['1',30,13.75,'on']]],
+                    ['F.Verso','170g',[['1',35,17.50,'on']]],
+                ]},
+        }},
+        'Tabela'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tabela de Preço'      , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,   
+                    Tipos:{'Todos':{},
+                'PS' :{Table:[
+                    ['Frente' ,'170g',[['A4',20,0,'on'],['A3',38,0,'on']]],
+                    ['F.Verso','170g',[['A4',28,0,'on'],['A3',46,0,'on']]],
+                ]},
+                'PVC':{Table:[
+                    ['Frente' ,'170g',[['A4',30,0,'on'],['A3',58,0,'on']]],
+                    ['F.Verso','170g',[['A4',46,0,'on'],['A3',88,0,'on']]],
+                ]},
+        }},
+        // Tecido
+        'Camisa'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+            Tipos:{
+                'Todos'    :{},
+                'MCurta'   :{Tipo:['Helanca','Dry Furado','Dry Fit','Manchaster'],Tamn:['PP','P','M','G','GG','XG'],
+                    Table:[
+                        ['Masculino_Normal','Helanca',[['1 UND',50,25,'on'],['10 UND',39,25,'on']]],
+                        ['Masculino_Raglan','Helanca',[['1 UND',58, 0,'on'],['10 UND',47, 0,'on']]],
+                        ['Masculino_V'     ,'Helanca',[['1 UND',55, 0,'on'],['10 UND',44, 0,'on']]],
+                        ['Masculino_Padre' ,'Helanca',[['1 UND',57, 0,'on'],['10 UND',36, 0,'on']]],
+
+                        ['Feminino_Normal' ,'Helanca',[['1 UND',50,25,'on'],['10 UND',39,25,'on']]],
+                        ['Feminino_Raglan' ,'Helanca',[['1 UND',58, 0,'on'],['10 UND',47, 0,'on']]],
+                        ['Feminino_V'      ,'Helanca',[['1 UND',55, 0,'on'],['10 UND',44, 0,'on']]],
+                        ['Feminino_Padre'  ,'Helanca',[['1 UND',57, 0,'on'],['10 UND',36, 0,'on']]],
+
+                        ['Infantil_Normal' ,'Helanca',[['1 UND',40, 0,'on'],['10 UND',29, 0,'on']]],
+                        ['Infantil_Raglan' ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                        ['Infantil_V'      ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                        ['Infantil_Padre'  ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+
+                        ['Plus Size_Normal','Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                        ['Plus Size_Raglan','Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                        ['Plus Size_V'     ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                        ['Plus Size_Padre' ,'Helanca',[['1 UND',0 , 0,'on'],['10 UND', 0, 0,'on']]],
+                    ]
+                },
+                'MLonga'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':60,'10':49},Cust:{'1':25}},
+                'Regata'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':40,'10':29},Cust:{'1':25}},
+                'Polo'     :{Tipo:['Manchaster'              ],Tamn:['PP','P','M','G','GG'],Valr:{'1':80,'10':69},Cust:{'1':25}},
+        }},
+        'Calção'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Short','Sublimação','roupa','pano'] ,
+            Tipos:{
+                'Bermuda' :{},
+                'Short'   :{},
+        }},  
+        'WindFlag' :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
+            Tipos:{'Todos':{},
+                'P':{Cbmt:{
+                    'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
+                'M':{Cbmt:{
+                    'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
+                'G':{Cbmt:{
+                    'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Vela':{Grad:'WindVela',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
+                    'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
+            }},
+        'BigBall'  :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
+            Tipos:{'Todos':{},
+                P   :{Valr:0,Cust:0},
+                M   :{Valr:0,Cust:0},
+                G   :{Valr:0,Cust:0},
+            }},   
     // Cortes
     'Letreiro' :{Calc:'M2v', Stts:'Disp' , Alll:false, Opts:'List' , Prvw:'IptSVG'  , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']         , Etpa:['Arte','Corte','Cbmt']          , Extra:[]             , HotKey:[]          , img:'Place',
         Tipos:{'Todos' :{},
@@ -512,11 +514,11 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
     //         Tipos:{
     //             'Serigrafia' :{}}
     // },  
-}
-// Const Importante pra Compilar a Tabela de produtos pra deixa o Load Mais Rápido
-const EtrProd = ObjEtr(Prod)
-const AllProd = ObjEtr(Prod).map(([k])=>k).sort((a,b)=>ORDEM.indexOf(a)-ORDEM.indexOf(b))
-const HotKy   =      Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
-const AllAll  = stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg]  ||[]]))
-const Vari    = e=>Prod[e] ? ObjKey(Prod[e].Tipos) : ''
-const FiltOn  = E=>Object.entries(Prod[E]?.Tipos||{}).flatMap(([n,o])=>(o.Table||[]).flatMap(([l,g,q])=>q.filter(e=>e[3]=='on').map(e=>[[...e,g],`${E}_${n}_${l}`.replace(/\./g,'')])))
+    }
+    const EtrProd = ObjEtr(Prod)
+    const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','DTF','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte','Vendas']
+    const AllProd = ObjEtr(Prod).map(([k])=>k).sort((a,b)=>ORDEM.indexOf(a)-ORDEM.indexOf(b))
+    const HotKy   =      Object.fromEntries(EtrProd.map(([k,v])=>[k,v.HotKey||[]]))
+    const AllAll  = stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg]  ||[]]))
+    const Vari    = e=>Prod[e] ? ObjKey(Prod[e].Tipos) : ''
+    const FiltOn  = E=>Object.entries(Prod[E]?.Tipos||{}).flatMap(([n,o])=>(o.Table||[]).flatMap(([l,g,q])=>q.filter(e=>e[3]=='on').map(e=>[[...e,g],`${E}_${n}_${l}`.replace(/\./g,'')])))

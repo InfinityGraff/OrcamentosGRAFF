@@ -3,6 +3,17 @@ const TogCSSBody=(B,T,C)=>{$('body').dataset.base=B ; $('body').dataset.tema=T ;
 function ExieMais(E,Off){if(Off){MdalShow('#MdalLgin')}else{Show('#mmdal');Animar(E,$('#H_Lgin'))}}
 function MdalShow(e){ShowModal($('#FModal'),$(e))}
 
+function WheelH(e,el){ // Mudar Orientação do Scroll
+    e.preventDefault();
+    cancelAnimationFrame(el._w);
+    el._dest=(el._dest??el.scrollLeft)+e.deltaY;
+
+    (function anim(){
+        el.scrollLeft+=(el._dest-el.scrollLeft)*.15;
+        if(Math.abs(el._dest-el.scrollLeft)>0.5)
+            el._w=requestAnimationFrame(anim);
+    })();
+}
 
 function TrocaTitulo(titulo) {document.title = titulo;}
 function TrocaFavCon(Url) {
@@ -115,24 +126,8 @@ function LocAno(Email){
     return ""
 }
 
-function CrecentAntigo(MM2){
-  /*Crescente:*/ var M = MM2
-    var D = {Min:0.06,Med:0.25,Max:1.00}
-    var V = {Min:1.70,Med:0.70,Max:0.00}
-      var crecent = M> D.Med? M>=D.Max? V.Max:
-      M< D.Med? V.Med: V.Med-((V.Med-V.Max)*((M-0.001)/D.Max)):
-      M<=D.Min? V.Min: V.Min-((V.Min-V.Med)*((M-0.001)/D.Med))
 
-  return crecent
-}
 
-const Crecent=(M,F=0.5,F2=1.8)=>{ // Mudar as Forças de Acordo com cada Produto
-  if (M <= 0) return (F + F2) * 2
-  if (M >= 1) return 0
-  const t1 = 1 - Math.pow(M, F * 1.2);
-  const gradual = F2 * Math.pow(Math.max(0, 0.25 - M) / 0.25, 2)
-  return +(t1 * (F + 0.7) + gradual).toFixed(3);
-}
 
 const BrevTitle = (Typ,Stg)=>{
     if(Typ=='PDDS') return `${Stg.replace(/#/g,'').split('|').length}`
@@ -152,18 +147,7 @@ const BrevTitle = (Typ,Stg)=>{
     }catch{return Stg.replace(/#/g,'')}
 }
 
-const VAAL = e => e?.value ?? e?.querySelector('input,select')?.value ?? null
 
-const vAL=(s,e)=>
-    s=='Imgs' ?     VAAL($('.oImgs',_tr(e)))  :
-    s=='Serv' ?     VAAL($('.oServ',_tr(e)))  :
-    s=='Tipo' ?     VAAL($('.oTipo',_tr(e)))  :
-    s=='Matr' ?     VAAL($('.oMatr',_tr(e)))  : 
-    s=='Cbmt' ?     VAAL($('.oCbmt',_tr(e)))  :
-    s=='Lrg'  ? Num(VAAL($('.oLrg' ,_tr(e)))) :
-    s=='Alt'  ? Num(VAAL($('.oAlt' ,_tr(e)))) :
-    s=='Qnt'  ? Num(VAAL($('.oQnt' ,_tr(e)))) :
-    s=='Qntt' ?     VAAL($('.oQnt' ,_tr(e)))  : null
 
 
 const SplitAvanc=(Stg)=>{ // Funciona Apenas pra GABARITO
