@@ -380,6 +380,112 @@
     }
 </script>
 
+<div>  <!--NOTA    - ⭐_ _ _ _ -->
+    <style> /*CSS dos Modais*/
+        .Dark #FModal>div{background:#1b1b1b}
+        .Lite #FModal>div{background:#ffffff}
+        #FModal h1{font-size:25px}
+        #ModalNota h2       {font-size: 20px;}
+        #ModalNota>div      {padding:5px 0px ;width:700px}
+        #ModalNota img      {width:50px;height:50px}
+        #ModalNota .Start2 p{margin:1px 5px}
+        #LugarFotoNotta     {margin-right:3px}
+
+        #Tbl_Nota           {border-collapse:collapse}
+        #Tbl_Nota td        {padding:3px ; font-size: 15px}
+        #Tbl_Nota th        {padding:3px ; font-size: 13px}
+        #Tbl_Nota thead tr  {background:#5F009E; color:#ffffff}
+        #Tbl_Nota tbody td:nth-child(3){text-align:start}
+        #Tbl_Nota tbody td:nth-child(4){text-align:end}
+        #Tbl_Nota tbody td:nth-child(5){color:#4f4f4f}
+        #Tbl_Nota tbody td:nth-child(6){margin-right: 6px ; text-align: start}
+        #Tbl_Nota tbody td:nth-child(7){color:#00000093 ; font-size: 13px}
+        #Tbl_Nota tbody td:nth-child(8){font-weight: bold ; color:var(--Laranja)}
+    </style>
+    <script>
+        const Tm_Nota=e=>`
+            <div id="ModalNota" class="Cl Rltv Rd media30">
+            <div id="NOTA" class="w100" style="background: white;padding: 10px;color: black;">
+                <div id="Titulo-Nota" class="w100 Bt Hr"></div>
+                <div id="Nota-Empresa" class="Ct Row Hr Bt w100">
+                    <div class="Ct">
+                        <div id="LugarFotoNotta"><img src="./Img/Logo_Infinity_0.webp" style="width:50px;height:50px"></div>
+                        <div><h2>INFINITY GRAFF</h2><h2>IMPRESSÃO DIGITAL</h2></div>
+                    </div>
+                    <div class="Start2">
+                        <div class="FtBd Ct">Endereço: <p>Estrada do Tip, N° 54A   </p></div>
+                        <div class="FtBd Ct">Cidade:   <p>SÃO LOURENÇO DA MATA     </p></div>
+                        <div class="FtBd Ct">Email:    <p>infinitygraff@outlook.com</p></div>
+                        <div class="FtBd Ct">Contato:  <p>(81) 98726.5401          </p></div>
+                    </div>
+                </div>
+                <div class="Ct Cl Hr"><h2>CUPOM FISCAL</h2><div id="DataNota"></div></div>
+                <div class="Start2 Hr">
+                    <div class="Ct"><p class="FtBd">ORDEM DE SERVIÇO:<p><p>   ${'id'}   </p></div>
+                    <div class="Ct"><p class="FtBd">      Data:      </p><p>00/00/2023</p></div>
+                </div>
+                <div id="Nota-Clnt" class="Row w100 Ev">
+                    <div><div class="Ct FtLt gap">Nome:     <div data="Clnt"  spellcheck="false" contenteditable>-</div></div>
+                            <div class="Ct FtLt gap">Fone:     <div data="Cntt"  spellcheck="false" contenteditable oninput="Mask2.fone(this)">-</div> </div></div>
+                    <div><div class="Ct FtLt gap">Endereço: <div data="Local" spellcheck="false" contenteditable>-</div></div>
+                            <div class="Ct FtLt gap">Cidade:   <div data="City"  spellcheck="false" contenteditable>-</div></div></div>
+                </div>
+                <div id="ConteudoNota" class="w100">${e}</div>
+            </div>
+            <div class="BtnNota w100 Ct">
+                <button  class="Ct"     onclick="SavePDF2($('#NOTA'),'Nota')"  > PDF <a>${SVG.PDFs}</a></button>
+                <button  class="Ct"     onclick="CopyTagImg(this,$('#NOTA'),2)">Print<a>${SVG.Prnt}</a></button>
+                <button  class="Ct"     onclick="CopyNotaTxt()"                >Texto<a>${SVG.Copy}</a></button>
+                <button  class="BtnRed" onclick="XModal(this)"                  >Sair</button>
+            </div>
+        </div>
+        `
+
+        const AbrevServs=arr=>arr.map(e=>{
+            e.Serv = `${e.Serv} (${e.Tipo})`.replace('Lona (Banner)','Banner') // Fazer um Padrão com isso aqui
+            delete e.Tipo
+            e.Vund  ? e.Vund   = `R$ ${e.Vund}`  : null
+            e.SbTt  ? e.SbTt   = `R$ ${e.SbTt}`  : null
+            e._ = '-' ; e.X = 'x'
+            return e
+        })
+
+        function VerNota(Typ){
+            let dados = []
+            if (Typ=='ORC'){
+                dados = $$('#ORC tbody tr').map(tr=>{
+                    const NewObj = {}
+                    const tipo = 'Calc_M2' // Array.from(tr.classList).find(c=>c.startsWith('Calc_'))
+                    const Rsut = ',.ORC_RSUT_Vund,.ORC_RSUT_SbTt'
+                    const arr  =  tipo === 'Calc_M2'  ? '.oQnt ,.oServ,.oTipo,.oLrg ,.oAlt '
+                                : tipo === 'Calc_OFS' ? '.oQnt,.oServ,.oTipo,.oCbmt,.oMatr'
+                                : tipo === 'Calc_QNT' ? '.oQnt,.oServ,.oTipo,.oLrg ,.oAlt ' : ''
+                    
+                        $$(arr+Rsut,tr).map(e=>{
+                            const cls_o   = Array.from(e.classList).find(c => c.startsWith('o'))
+                            const cls_orc = Array.from(e.classList).find(c => c.startsWith('ORC_'))
+                            const resto1  = cls_o   ? cls_o.slice(1)           : null
+                            const resto2  = cls_orc ? cls_orc.split('_').pop() : null
+                            const key   = resto1 || resto2
+                            if (key) NewObj[key] = cls_o ? VAAL(e) : Inn($('a',e))
+                        })
+                    return NewObj})
+            }
+            const dadosFmt = ArrObj_OrdnCol2(AbrevServs(dados),['Qnt','_','Serv','Cbmt','Matr','Lrg','X','Alt','Vund','SbTt'])
+            const [head,...rows] = dadosFmt
+
+            const Enel = `
+                <table id="Tbl_Nota" class="w100">
+                    <thead><tr>${head.map(c=>`<th>${D_Brev[c]??c}</th>`).join('')}</tr></thead>
+                    <tbody>    ${rows.map(r=>`<tr>${r.map(v=>`<td contenteditable>${v??''}</td>`).join('')}</tr>`).join('')}</tbody>
+                </table>
+                <h2 id="TotalNotta" class="Hr Ct" contenteditable>${RS(dados.reduce((a,e)=>a+Num(e.SbTt),0))}</h2>`
+
+            MODAL(Tm_Nota(Enel))
+        }
+    </script>
+</div>
+
 <body data-Tema="Dark" data-Base="Infinity" data-Cor="Roxo" onclick="NoneBndj()">
 
     <header class="Bt w100" style="grid-area:A">
