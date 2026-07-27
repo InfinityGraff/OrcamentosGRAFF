@@ -266,75 +266,11 @@ const Ramos = {
   }
 }
 
-
-
-
 const KitFonts = 'objFonts.map(e=>e.Nome)'
 
 
-
 const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quantidade // adicionar também o comporta das cores
-    // m2
-    'Adesivo'  :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:["Arte","Print","Cbmt","Aplic"]  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
-        Tipos:{"Todos":{},
-            "Adesivo":{"Opts":"List","Cbmt":{
-                "Brilho"         :{"Grad":"Ads(Blh)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
-                "Blackout"       :{"Grad":"Ads(Blk)","Valr":0 ,"Cust":25, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
-                "Transparente"   :{"Grad":"Ads(Trp)","Valr":0 ,"Cust":25, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
-                "Espelhado"      :{"Grad":"Ads(Trp)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
-                "Fosco"          :{"Grad":"Ads(Fos)","Valr":0 ,"Cust":20, "matr":"Adesivo", "Extra":["Laminação","Aplicação"]},
-            }},
-        }},
-    'Etiqueta' :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Impressão + Recorte'  , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:[]             , HotKey:["rótulo", "identificação", "label", "tag"] ,
-        Tipos:{'Todos':{},
-            'Etiqueta':{Opts:'List',Cbmt:{
-                'Refilada'       :{Grad:'Ads(Blh)',Valr:15 ,Cust:0  , matr:'Adesivo' , Extra:['Laminação']},
-                'Redonda'        :{Grad:'Ads(Rct)',Valr:20 ,Cust:12 , matr:'Adesivo' , Extra:[           ]},
-                'Personalizada'  :{Grad:'Ads(Rct)',Valr:25 ,Cust:12 , matr:'Adesivo' , Extra:[           ]},
-            }},
-        }},
-    'Perfurado':{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Adesivo Impresso'     , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Cbmt','Aplic']  , Extra:[]             , HotKey:["colar", "adesivar", "autocolante"       ] ,
-        Tipos:{'Todos':{},
-            'Perfurado':{Opts:'List',Cbmt:{
-                'Perfurado'      :{Grad:'Ads(Prf)',Valr:100,Cust:35 , matr:'Perfurado'       , Extra:['Aplicação']}, // Cobrado pela Largura
-            }},
-    }},
-    'Lona'     :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:''        , Desc:'Banner, Faixa, ilhós' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Instal']        , Extra:[]             , HotKey:["painel"                                 ] ,
-        Tipos:{'Todos':{},
-            'Lona'    :{Opts:'List',Cbmt:{
-                'Banner'         :{Grad:'Lon(Bnn)',matr:'Lona',Valr:70,Cust:22 , Limit:{Max:{L:1.20,A:0},Min:{L:0.40,A:0.60}} , Mdds:['0,50 x 0,70' , '0,80 x 1,20' , '2,00 x 1,00']}, 
-                'Faixa'          :{Grad:'Lon(Fax)',matr:'Lona',Valr:70,Cust:22 , Limit:{Max:{L:0,A:1.20},Min:{L:0.60,A:0.40}} , Mdds:['2,00 x 0,50']}, 
-                'com ilhós'      :{Grad:'Lon(Ilh)',matr:'Lona',Valr:70,Cust:22 , Limit:{Max:{x:3.20,X:0},Min:{L:0.40,A:0.40}} , Mdds:['1,00 x 1,00']},
-                'Sem Acabamento' :{Grad:'Lon(Sem)',matr:'Lona',Valr:60,Cust:20 , Limit:{Max:{x:3.20,X:0},Min:{L:0.30,A:0.30}} , Mdds:[]},
-            }},
-        }},
-    'Quadro'   :{Calc:'M2' , Stts:'Disp' , Alll:'Al2' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Quadro sem Moldura'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Aplic','Cbmt']  , Extra:['PVC','Fita'] , HotKey:["moldura", "pôster", "cartaz"            ] ,
-        Tipos:{'Todos' :{},
-                  'PS 1mm' :{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 40, Cust:21.25, Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}}, // Folha de PS com (2,00 x 1,00) R$ 42,50
-                },'PS 2mm' :{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 70, Cust: 0.00, Limit:{Max:{x:2.00,X:1.00}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}},  
-                },'PVC 2mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 90, Cust: 0.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}},
-                },'PVC 3mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:110, Cust:43.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']}, // Folha de PVC com (2,44 x 1,22) R$ 86,00
-               }},'PVC 5mm':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:200, Cust: 0.00, Limit:{Max:{x:2.44,X:1.22}} , Mdds:['0,30 x 0,20'] , matr:'Adesivo' , Extra:['Laminação']},
-            }},
-        }},
-    'ímã'      :{Calc:'M2' , Stts:'Disp' , Alll:'Al2' , Opts:'List' , Prvw:'CanvMdd' , Desc:'Geladeira ou Carro'   , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Aplic','Cbmt']  , Extra:['Manta']      , HotKey:["magneto", 'manta magnética'             ] ,
-        Tipos:{'Todos':{},
-              '03 Geladeira':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 70.00, Cust:35.00 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06'] , matr:'Adesivo' , Extra:['Laminação']}}, // 0.3 - R$ 21,00 (0,60 x 1,00) || o Metro fica: calc é assim:::> const precoPorMetro = (preco, largura, altura) => preco / (largura * altura)
-            },'04 Geladeira':{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr: 95.00, Cust:48.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,05 x 0,06'] , matr:'Adesivo' , Extra:['Laminação']}}, // 0.4 - R$ 29,00 (0,60 x 1,00) || o Metro fica: 
-            },'08 Carro'    :{Opts:'List',Cbmt:{'Refilado':{Grad:'Ads(Blh)',Valr:180.00, Cust:98.33 , Limit:{Max:{x:0.60,X:0}} , Mdds:['0,60 x 0,30'] , matr:'Adesivo' , Extra:['Laminação']}}, // 0.8 - R$ 59,00 (0,60 x 1,00) || o Metro fica: 
-            },
-        }},
-    'Bandeira' :{Calc:'M2' , Stts:'Disp' , Alll:'Al1' , Opts:'List' , Prvw:''        , Desc:'Tecido: Oxford'       , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Sublimação',"Pano","Tecido"] ,
-        Tipos:{'Todos':{},
-                'Bandeira'  :{Opts:'List',Cbmt:{
-                'Redonda'   :{Grad:'Bandeira',Valr:75, Cust:0 , matr:['Oxford','Cettin']},
-                'Retangula' :{Grad:'Bandeira',Valr:75, Cust:0 , matr:['Oxford','Cettin']},
-            }},
-    }},
-
-    // TABELADOS
-        // Offset
-        'Cartão'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
+        'Cartão'   :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Medida: 9cm x 5cn'    , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["cartão de visita", "business card", "papel", "folha"] , 
             Tipos:{'Todos'    :{},
                 'Brilho'      :{Table:[
                     ['Frente' ,'250g',[['500', 90,31,'on'],['1000',135,45,'on']]],
@@ -345,7 +281,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['Frente' ,'300g',[['500',155,62,'on'],['1000',190,78,'on']]],
                     ['FVerso' ,'300g',[['500',190,80,'on'],['1000',230,99,'on']]],]},
         }},
-        'Panfleto' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
+        'Panfleto' :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['BPrint','Bureal']           , Etpa:['Arte','Print','Cbmt']          , Extra:[]             , HotKey:["folheto", "papel", "informativo",'folha'] , 
             Tipos:{'Todos':{},
                 '10 x 15':{Table:[
                     ['Frente' ,'90g',[['1000',130, 67,'on'],['2500',180, 85,'on'],['5000',270,170],['10000',650,340]]],
@@ -354,7 +290,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['Frente' ,'90g',[['1000',190,127,'on'],['2500',340,170,'on'],['5000',650,340],['10000',900,600 ]]],
                     ['FVerso','90g',[['1000',  0,  0,'on'],['2500',500,270,'on'],['5000',700,440],['10000',1200,800]]],]},
         }},
-        'Talão'    :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['JLTal']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:[] , 
+        'Talão'    :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['JLTal']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:[] , 
             Tipos:{
                 'Todos'  :{},
                 '10 x 15':{Table:[
@@ -373,7 +309,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['Preto e Branco','2 Via',[['3',75,35],['6',105,55],['9',145,70],['12',165, 80]]],
                     ['Colorido'      ,'2 Via',[['3',95,45],['6',125,65],['9',185,85],['12',205,100]]],]},
         }},
-        'Tag'      :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['Bureal']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
+        'Tag'      :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Gramatura: 90g'       , Forn:['Bureal']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["etiqueta", "rótulo", "marcador",'furo'  ] , 
             Tipos:{'Todos':{},
                 '4 x 5':{Table:[
                     ['Reto' ,'250g',[['500',  0, 0,'on'],['1.000',130,73,'on']]],
@@ -382,7 +318,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['Reto' ,'250g',[['500',100,57,'on'],['1.000',140,69,'on']]],
                     ['Curva','250g',[['500',120,67,'on'],['1.000',150,79,'on']]],]},
         }},
-        'Cardápio' :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'LAZER, Plastificado'  , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
+        'Cardápio' :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'LAZER, Plastificado'  , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,
                     Tipos:{'Todos':{},
                 'A4':{Table:[
                     ['Frente' ,'170g',[['1',15,6.90,'on']]],
@@ -393,7 +329,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['F.Verso','170g',[['1',35,17.50,'on']]],
                 ]},
         }},
-        'Tabela'   :{Calc:'OFS', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tabela de Preço'      , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,   
+        'Tabela'   :{Calc:'OFS', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Tabela de Preço'      , Forn:['BPrint']                    , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["menu", "lista de pratos", "menu de restaurante", "opções de comida", "restaurante", "cozinha"] ,   
                     Tipos:{'Todos':{},
                 'PS' :{Table:[
                     ['Frente' ,'170g',[['A4',20,0,'on'],['A3',38,0,'on']]],
@@ -404,8 +340,7 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     ['F.Verso','170g',[['A4',46,0,'on'],['A3',88,0,'on']]],
                 ]},
         }},
-        // Tecido
-        'Camisa'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
+        'Camisa'   :{Calc:'UND', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:["blusa", "camiseta", "roupa", "estampa", "moda", "vestuário","Pano","Tecido"] ,
             Tipos:{
                 'Todos'    :{},
                 'MCurta'   :{Tipo:['Helanca','Dry Furado','Dry Fit','Manchaster'],Tamn:['PP','P','M','G','GG','XG'],
@@ -435,12 +370,12 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                 'Regata'   :{Tipo:['Helanquinha','Dry Furado'],Tamn:['PP','P','M','G','GG'],Valr:{'1':40,'10':29},Cust:{'1':25}},
                 'Polo'     :{Tipo:['Manchaster'              ],Tamn:['PP','P','M','G','GG'],Valr:{'1':80,'10':69},Cust:{'1':25}},
         }},
-        'Calção'   :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Short','Sublimação','roupa','pano'] ,
+        'Calção'   :{Calc:'UND', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Sublimação Total'     , Forn:['Inová']                     , Etpa:['Arte','Print']                 , Extra:[]             , HotKey:['Short','Sublimação','roupa','pano'] ,
             Tipos:{
                 'Bermuda' :{},
                 'Short'   :{},
         }},  
-        'WindFlag' :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
+        'WindFlag' :{Calc:'UND', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido",'BigFlag','WindBanner','Bandeira do Vento'] ,
             Tipos:{'Todos':{},
                 'P':{Cbmt:{
                     'Faca':{Grad:'WindFaca',Valr:0 , Cust:0 , matr:['Oxford']},
@@ -458,63 +393,20 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
                     'Pena':{Grad:'WindPena',Valr:0 , Cust:0 , matr:['Oxford']},
                     'Gota':{Grad:'WindGota',Valr:0 , Cust:0 , matr:['Oxford']},}},
             }},
-        'BigBall'  :{Calc:'UND', Stts:'Disp' , Alll:'Al3' , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
+        'BigBall'  :{Calc:'UND', Disp:true , Opts:'List' , Prvw:'Tabela'  , Desc:'Tecido: Oxford'       , Forn:['Inová','NovaImp']           , Etpa:['Arte','Print']                 , Extra:['Base']       , HotKey:['Sublimação',"Pano","Tecido"] ,
             Tipos:{'Todos':{},
                 P   :{Valr:0,Cust:0},
                 M   :{Valr:0,Cust:0},
                 G   :{Valr:0,Cust:0},
             }},   
-    // Cortes
-    'Letreiro' :{Calc:'M2v', Stts:'Disp' , Alll:false, Opts:'List' , Prvw:'IptSVG'  , Desc:'Cortes em PVC 10mm'   , Forn:['Barraca','Jailson']         , Etpa:['Arte','Corte','Cbmt']          , Extra:[]             , HotKey:[]          , img:'Place',
-        Tipos:{'Todos' :{},
-            'PVC'      :{},
-            'Acrilico' :{}
-    }},
-    'Recorte'  :{Calc:'M2v', Stts:'Disp' , Alll:false, Opts:'Cors' , Prvw:'IptSVG'  , Desc:'Adesivo Recortado'    , Forn:['Stock']                     , Etpa:['Arte','Corte','Cbmt','Aplic']  , Extra:[]             , HotKey:["Ploter",'Lamina','Siluet','Vetor'] ,
-        Tipos:{'Todos'   :{},
-            'Vinil'      :{Calc:'M2',Valr:150,Valor:70  , matr:['Preto','Branco','Prata','Vermelho','Azul','Verde','Amarelo','Laranja','Rosa','Roxo']},
-            'Holografico':{Calc:'M2',Valr:200,Valor:100 , matr:['Holografico']},
-    }},
-//   'Sinalização':{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Chapa de PVC ou Zinco', Forn:['Stock']                     , Etpa:['Arte','Corte','Aplic','Cbmt']  , Extra:['PVC']        , HotKey:[]           , img:'Place',
-//         Tipos:{
-//             'Sinalização' :{}
-//     }},
-    'Trofeu'   :{Calc:'M2' , Stts:'Disp' , Alll:'Al2', Opts:'List' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:['Acrilico']   , HotKey:['acrilico'] ,
-        Tipos:{'Todos':{},
-            'Virado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-            'Colado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
-    }},
-    // Serviços
-    'Arte'     :{Calc:'MAO', Stts:'Offf' , Alll:false , Opts:'List' , Prvw:'MdalArt' , Desc:'Criação e Recriação'  , Forn:['Arte']                      , Etpa:['Arte']                         , Extra:[]             , HotKey:[]           , img:'Place',
-        Tipos:{'Artes'     :{}
-    }},
-    // 'Plotagem' :{Calc:'MAO', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Aplciação de Adesivo' , Forn:['Stock','WM']                , Etpa:['Aplic']                        , Extra:[]             , HotKey:['Plotagem'] , img:'Place',
-    //                 Tipos:{
-    //             'Plotagem' :{}}
-    // },
-
-    // Produtos
-    'Vendas'   :{Calc:'UND', Stts:'Offf' , Alll:false, Opts:'List' , Prvw:''        , Desc:'Produtos do Painel'   , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-        Tipos:{
-            'Tanque'   :{},
-            'Quadros'  :{},
-            'Acrilico' :{},
-            'Figurinha':{},
-            'Recorte'  :{},
-            'Cartela'  :{},
-            'Rodagem'  :{},
-    }},
-    // Ferragem
-    // 'Placa'    :{Calc:'M2v', Stts:'Offf' , Opts:'List' , Prvw:'Canv3D'  , Desc:'Fachada de Lojas'     , Forn:['Jailson']                   , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-    //             Tipos:{
-    //                 'Placa' :{}}
-    // }, 
-    // Lombras
-    // 'Serigrafia':{Calc:'UND', Stts:'Offf' , Opts:'List' , Prvw:''        , Desc:'Estampa de Camisa'    , Forn:['Stock']                     , Etpa:['']                             , Extra:[]             , img:'Place'      ,
-    //         Tipos:{
-    //             'Serigrafia' :{}}
-    // },  
+        'Trofeu'   :{Calc:'M2' , Disp:true , Opts:'List' , Prvw:'CanvMdd' , Desc:'Acrilico Cristal 2mm' , Forn:['Grafit','BPrint','Tatiane'] , Etpa:['Arte','Print','Corte']         , Extra:['Acrilico']   , HotKey:['acrilico'] ,
+            Tipos:{'Todos':{},
+                'Virado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+17, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+                'Colado'  :{Grad:'Ads(Trp)',Valr:60+30+180+100+35, Cust:20+15+90+60}, // Adesivo, Vinil, Acrilico, Corte (ultimos 15 é estouro)
+        }},
     }
+   
+
     const EtrProd = ObjEtr(Prod)
     const ORDEM= ['Trofeu','Adesivo','Etiqueta','Perfurado','Lona','Quadro','ímã','Bandeira','DTF','Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall','Letreiro','Recorte','Arte','Vendas']
     const AllProd = ObjEtr(Prod).map(([k])=>k).sort((a,b)=>ORDEM.indexOf(a)-ORDEM.indexOf(b))

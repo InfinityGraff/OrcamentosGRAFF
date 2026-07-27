@@ -26,18 +26,21 @@
 
 <script> // aBase de Dados INFINITY GRAFF
     const Atual    = {Pag:'ORC'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
-    let SVG_FILES = [] // esse é do de importar SVG pra calcular
-    const BurealMode = true
-    const TaxaMpag=[0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
-    const LISTPROD= ['Adesivo','Etiqueta',"Perfurado",'Lona','Quadro','ímã','Bandeira','DTF','Recorte','Placa']
-    const OBJ_ORC = {}
+    let SVG_FILES  = [] ; let OBJ_ORC = {} // esse é do de importar SVG pra calcular
+    const TaxaMpag = [0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
+    const LISTPROD = ['Adesivo','Etiqueta',"Perfurado",'Lona','Quadro','ímã','Bandeira','DTF','Vinil','Recorte','Placa','Luminosa','Sinalização']
+    const LISTOFST = ['Cartão','Panfleto','Talão','Tag','Cardápio','Tabela','Camisa','Calção','WindFlag','BigBall']
+    const LISTMANU = ['Arte','Vendas','Plotagem','Ferragem']
+
+    const CORESSSS = ['Preto','Branco','Prata','Vermelho','Azul','Verde','Amarelo','Laranja','Rosa','Roxo']
 </script>
 
 <script> // Bibliotecas
     const DarkLite2=(e,Chk)=>{if(Chk){Trc2(e,'Dark','Lite')}else{Trc2(e,'Lite','Dark')} ; LOG('Chamou DarkLite',e,Chk)} // conferir se essa é realmente nessesária
     function NoneBndj(){if(event.target.closest('.bndj')||event.target.classList.contains('NObj')){return}else{None($$('.bndj'))}}
     function NavPag(Typ){Atual.Pag=Typ ; Show(`#Pag_${Typ}`,$$('#PAGES > *'))}
-    function ReObj(tr){OBJ_ORC[getClssIN(tr,'ORC_tr-')]=$$('.dadoD',tr).map(e=>(vAL2(e)))}
+    function ReObj(tr){OBJ_ORC[getClssIN(tr,'ORC_tr-')]=$$('.dadoD',tr).map(e=>vAL2(e))}
+    function RelodOBJ(){OBJ_ORC={} ; $$('#ORC .ORC_tr').forEach(tr=>ReObj(tr))}
     // Templates
         const Tm_ORC_Th=ary=>ary.map(e=>`<th class="${e==''?'':'O_Tx'}">${e==''?'':`<a>${e}</a><p>${D_Brev[e]}</p>`}</th>`).join('')
         const Tm_Total=E=>{
@@ -110,18 +113,18 @@
 
     const vAL2=e=>{
         const s = getClssIN(e,'Md_')
-        return  s=='Md_Slt' ? $('input',e).value :
-                s=='Md_Num' ?  Num(e.value)      :
-                s=='Md_Chk' ?      e.checked     :
-                s=='Md_Img' ? ''                 : null
+        return  s=='Md_Slt' ? $('input',e)?.value  :
+                s=='Md_Num' ?  Num(e?.value)||0    :
+                s=='Md_Chk' ?      e?.checked      :
+                s=='Md_Img' ? ''                   : null
     }
 </script>
 
 <style>
-    #Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
-    #Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
-    #DivIMGProd     #Div-Prod {width: 100%}
-    #DivIMGProd.Atv #Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
+    .Div-Prod                {overflow-x:scroll; flex-wrap:nowrap}
+    .Div-Prod, #Div-Detalhes {transition: all 0.3s cubic-bezier(0.8,0,0.8,1) ; height:360px ; margin-bottom:12px}
+    #DivIMGProd     .Div-Prod {width: 100%}
+    #DivIMGProd.Atv .Div-Prod {width:  59% ; box-shadow: inset -12px 0 12px -8px #36002431 ; border-radius: 20px;}
 
     #DivIMGProd     #Div-Detalhes {width:  0% ; background: #00df0000}
     #DivIMGProd.Atv #Div-Detalhes {width: 39% ; background: #00df0000 ; padding: 8px;}
@@ -132,37 +135,37 @@
     .IconDtlh p            {font-size: 20px}
     .DivCanvMdd            {height: 75%;width: 100%;padding:8px;}
 
-    #Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
-    #Div-Prod span         {margin-left:10px; margin-bottom:10px}
-    #Div-Prod span p       {margin:0px; font-size:9px}
-    #Div-Prod span p strong{font-size:9px}
-    #Div-Prod span img     {margin:5px; height:30px; width:30px}
-    #Div-Prod span h3, #Div-Prod span h3 strong{font-size:19px}
-    .CSS3 #Div-Prod span{color: #ffffff}
-    #Div-Prod .DivVrnts    {margin-top:20px}
+    .Div-Prod > div        {margin:9px 4px; display:flex; flex-direction:column}
+    .Div-Prod span         {margin-left:10px; margin-bottom:10px}
+    .Div-Prod span p       {margin:0px; font-size:9px}
+    .Div-Prod span p strong{font-size:9px}
+    .Div-Prod span img     {margin:5px; height:30px; width:30px}
+    .Div-Prod span h3, .Div-Prod span h3 strong{font-size:19px}
+    .CSS3 .Div-Prod span{color: #ffffff}
+    .Div-Prod .DivVrnts    {margin-top:20px}
     .DivVrnts .vlM2        {margin-top: 5px;}
     .DivVrnts .vlM2 a      {font-size: 15px;}
     .DivVrnts .vlM2 p      {margin: 1px 2px;}
 
-    #Div-Prod .Opts               {top:45px; width:100%; height:30px; left:0px}
-    #Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
-    #Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
-        #Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
-        #Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
-        #Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
-        #Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
+    .Div-Prod .Opts               {top:45px; width:100%; height:30px; left:0px}
+    .Div-Prod .Opts img           {height:23px; width:23px; margin:3px 7px}
+    .Div-Prod .Opts div           {bottom:0; height:30px; width:50%; transition:height 0.1s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out, left 0.2s ease-in-out; color: #000000}
+        .Div-Prod .Opts div.Pre   {border-radius: 20px 0px 0 0 !important ; background:linear-gradient(to left,#bdb5be,#ffffff)}
+        .Div-Prod .Opts div.Pos   {border-radius: 0px 20px 0 0 !important ; background:linear-gradient(to right, #bdb5be,#ffffff)}
+        .Div-Prod .Opts div:hover {height: 35px ; border-radius: 20px 20px 0 0 !important}
+        .Div-Prod .Opts div.Atv   {z-index: 99 !important; border-radius: 20px 20px 0 0 !important ; background:linear-gradient(to right,#ffffff,#ffffff)} /*background:white;  era pra ter background mas ele ta fazendo Piscar, ai tirei*/ 
 
-    #Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
-    #Div-Prod .Conteudo{padding-top:10px; /*z-index:999*/ ; height: 242px; border-radius: 0px 0px 15px 15px;}
-    :is(.CSS1,.CSS2) #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
-                .CSS3 #Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+    .Div-Prod .Conteudo{transition: all 0.2s ease-in-out}
+    .Div-Prod .Conteudo{padding-top:10px; /*z-index:999*/ ; height: 242px; border-radius: 0px 0px 15px 15px;}
+    :is(.CSS1,.CSS2) .Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
+                .CSS3 .Div-Prod .Conteudo,.offf{height:240px ; width:200px; margin:4px ; padding-bottom:15px; border-radius: 0px 0px 20px 20px}
 
-    #Div-Prod .Conteudo.Pecq{width:200px}
-    #Div-Prod .Conteudo.Grnd{width:270px}
+    .Div-Prod .Conteudo.Pecq{width:200px}
+    .Div-Prod .Conteudo.Grnd{width:270px}
     .offf{ top: 70px; background: #80808071; color: #ffffff;font-size: 20px;}
 
-    #Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
-    #Div-Prod .BtnCarr        {width: 120px; top:310px   }
+    .Div-Prod .BtnGrid        {width: 20px ; height:20px ; bottom:10px; right:16px; fill:#4d004d93}
+    .Div-Prod .BtnCarr        {width: 120px; top:310px   }
 
     .Armz,.Armz .BxVlr,.V3,.V1,.TMRS,.TMRS *{transition: all 0.2s ease-in-out}
     .BxVlr            {color:#ffffff}
@@ -228,17 +231,32 @@
 </style>
 
 <script> // Templates
+    function Navegar(Todos,Eu){Todos.forEach(e=>Add_N(e)) ; Rmv_N(Eu)}
     const ReadSVG=()=>readSVGFiles(SVG_FILES,(svg)=>AddCarr(svg,'Recorte','','','',''))
+    function MudaArmzn(Eu,V){$$('.Armz',Avo(Eu)).forEach(e=>{if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}})}
 
-    function tmplt_Prod(){
-        return LISTPROD.map(e=>{
-            const P = J['PROD'].find(p=>p.Prod==e)
+    function AddBoxy(e){LOG('',...e.split('_'));AddCarr('',...e.split('_'))} // tentar tirar isso daqui só serve pra desconstruir
+    function Tm_Tabelado(Bx,ON){
+        const Tm_R$ =e=>`<div class="TMRS Abslt Ct"><b>R$</b><p>${e}</p><b>,00</b></div>`
+        const TmRSS =e=>e == 0 ? `<b class="Ct Abslt Indisdp">Indisponível</b>` : Tm_R$(e)
+        const BoxVlr=e=>`<div class="BxVlr bckG Rltv HOV" ${Bckg('Base.svg')} onclick="AddBoxy('${e[1]}_${e[0][4]}_${e[0][0]}')">
+                            <p class="V1 Abslt">${e[0][0]} UND   </p>
+                            <p class="V2 Abslt">${TmRSS(e[0][1])}</p>
+                            <p class="V3 Abslt">${(Num(e[0][1])/Num(e[0][0])).toFixed(2)}</p>
+                        </div>`
+        return `<div class="Armz bckG Cl Rltv" name="${Bx}" ${Bckg(`${Bx}.webp`)}><a class="Abslt Cl">${ON.filter(Y=>Y[1]==Bx).map(Y=>BoxVlr(Y)).join('')}</a></div>`
+    }
+
+    function Tm_Prods(LIstaa,Gabiarra){
+        return LIstaa.map(e=>{
+            const CADOO = Gabiarra=='1' ? J['PROD'].find(p=>p.Prod==e) : Prod[e]
+            const P = CADOO
             if(!P){return ''}
             const Fora = P.img=='Place' ? './SVG/placeholder.svg' : null
             const TblA = P.Prvw=='Tabela'
             const iSVG = P.Prvw=='IptSVG'
             const ON   = FiltOn(e)
-            const Flts = P.Tipos.map(e=>e.Item)
+            const Flts = Gabiarra=='1' ? P.Tipos.map(e=>e.Item) : ObjKey(P.Tipos).filter(e=>e!='Todos')
             const VVV  = P ? ['Todos',...Flts] : ''
             const VARI = (VVV.length==2 && VVV[0]=='Todos' && VVV[1]==e) ? ['Todos',...Flts] : VVV
             const novo = (arr)=>arr.map(u=>u?.[1] ?? null)
@@ -271,8 +289,8 @@
                             ${TblA && e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[2])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${Brvv[s]||s}</a>`).join('')}</div>`:``}
                             ${TblA && e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[3])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${s         }</a>`).join('')}</div>`:``}
                             ${TUDO && iSVG        ? `<div class="Cl"><input id="svgInput" ${InptSVG}><button onclick="ReadSVG()">Carregar</button></div>`
-                            : TUDO && TblA        ? `<div class="Ct">${Uniq(novo(ON))                                    .map(Bx=>Armzn(Bx,ON)).join('')}</div>`
-                            :!TUDO && TblA        ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>s.includes(`${e}_${V}_`)).map(Bx=>Armzn(Bx,ON)).join('')}</div>`
+                            : TUDO && TblA        ? `<div class="Ct">${Uniq(novo(ON))                                    .map(Bx=>Tm_Tabelado(Bx,ON)).join('')}</div>`
+                            :!TUDO && TblA        ? `<div class="Ct">${Uniq(novo(ON)).filter(s=>s.includes(`${e}_${V}_`)).map(Bx=>Tm_Tabelado(Bx,ON)).join('')}</div>`
                             : TUDO                ? `<div class="Ct fotO${XXO}">${Flts.map((vV)=>`<img class="Hov" src="${Src(vV)}" ${Add(j(vV),Src(vV))}>`).join('')}</div>`
                             /*de UND*/            : `<div class="Ct fotO      ">                  <img class="Hov" src="${Src(  )}" ${Add(j(V ),Src(  ))}>            </div>`
                         }
@@ -302,6 +320,7 @@
         const tr = _tr(Div)
         const B = Object.fromEntries(['Serv','Tipo','Cbmt','Matr'].map(e=>[e,vAL(e,tr)])) // Valor Escolhido
         const P = J['PROD'].find(p=>p.Prod==B.Serv)                                       // Obj Encontrado
+        if(LISTOFST.includes(B.Serv)){return} // GAMBIARRA
         const Dados = col=='Tipo' ? P.Tipos.map(e=>e.Item)  : ''                          // eliminar este array, pra deixar tudo em Objetos
         const Opt   = col=='Tipo' ? P.Opts : 'List'                                       // se não for Change em Serv todo resto fica List por enquanto (Melhorar isso!)
         const Matrr = col=='Cbmt' ? P.Tipos.find(e=>e.Item==B.Tipo)?.matr : null
@@ -318,29 +337,29 @@
         }
     }
 
-    
-
-    // if(false){ // 'Calc = M2v'
-    //     const svg = $('.oImgs svg',tr).outerHTML
-    //     const R   = CalcSVG(svg,[Lrg,Alt,Qnt],BS_Mtras[Tipo])
-    //     LOG('Corte: ',R.Cort,'Mtrl: ',R.Mtrl)
-    //     InnRsult(tr,Qnt,2,R.Cort+R.Mtrl,(R.Cort+R.Mtrl)*1.15) // (tr,Qnt,Cust,Crcnt,Valr)
-    // }
-
-    function Orcamento(tr){
-        const Crecent3=(M,V,A=1.5,D=.3)=>{if(M<=1) return +(V*(1+A*(1-M**.6))).toFixed(2) ; return +(V*(1-D*((Math.min(M,10)-1)/9)**.7)).toFixed(2)}
-        let [Serv,Tipo,Cbmt,Matr,Lrg,Alt,Qnt] = ['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt'].map(e=>vAL(e,tr))
-        const Exec=e=>{
-            if(!e){return [0,0,0]}
-            const E = J['MATR'].find(ee=>ee.Item==e)           // tentar fazer isso usando o ID do MATR pra ficar mais Certo, e poder usar JJ
-            CheckLimit(E,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)  // Conferir se tem Limite e da o Aviso
-            const m2   = E.Calc=='M2' ? Lrg*Alt*Qnt : 0        // Define o Tipo de Calculo
-            const m2Grl=  // Conciderar a Soma de todos pra dar m2 do valor
-            return [m2*E.Cust,m2*E.Valr,m2*Crecent3(m2,E.Valr)]// Custo , Valor , Desconto
-        }
-        const A1 = Exec(Cbmt), A2 = Exec(Matr)
-        InnRsult(tr,Qnt,A1,A2,A1[2]+A2[2])
+    function Orcamento(){
+        $$('#ORC .ORC_tr').forEach(tr=>{ // tem que rodar orçamento em todas Linhas pra cada vez que acontecer uma edição          
+            const Crecent3=(M,V,A=1.5,D=.3)=>{if(M<=1) return +(V*(1+A*(1-M**.6))).toFixed(2) ; return +(V*(1-D*((Math.min(M,10)-1)/9)**.7)).toFixed(2)}
+            let [Serv,Tipo,Cbmt,Matr,Lrg,Alt,Qnt] = ['Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt'].map(e=>vAL(e,tr))
+            const Exec=(e,vai)=>{
+                if(!e){return [0,0,0]}
+                const E = J['MATR'].find(ee=>ee.Item==e)               // tentar fazer isso usando o ID do MATR pra ficar mais Certo, e poder usar JJ
+                CheckLimit(E,$('.oLrg',tr),$('.oAlt',tr),Lrg,Alt)      // Conferir se tem Limite e da o Aviso
+                const m2    = E.Calc=='M2' ? Lrg*Alt*Qnt : 0           // Define o Tipo de Calculo
+                const m2Grl = ObjVal(OBJ_ORC).reduce((s,v)=>v[vai]==e?s+v[5]*v[6]*v[7]:s,0) // Soma todos M2 presentes na Tabela, antes de Definir o Valor pra Crescente
+                return [m2*E.Cust,m2*E.Valr,m2*Crecent3(m2Grl,E.Valr)] // Custo , Valor , Desconto
+            }
+            const A1=Exec(Cbmt,3), A2=Exec(Matr,4)
+            InnRsult(tr,Qnt,A1,A2,A1[2]+A2[2])
+        })
+            // if(false){ // 'Calc = M2v'
+            //     const svg = $('.oImgs svg',tr).outerHTML
+            //     const R   = CalcSVG(svg,[Lrg,Alt,Qnt],BS_Mtras[Tipo])
+            //     LOG('Corte: ',R.Cort,'Mtrl: ',R.Mtrl)
+            //     InnRsult(tr,Qnt,2,R.Cort+R.Mtrl,(R.Cort+R.Mtrl)*1.15) // (tr,Qnt,Cust,Crcnt,Valr)
+            // }
     }
+
     const InNa_RS=(e,v)=>{const V=isNaN(v)?0:v ; Inn(e,Tm_RS(V)) ; Nm(e,V) ; if(V==0){Add(e,'Branc')}else{Rmv(e,'Branc')}}
     function ReloadTotal(){
         [['CUST','.wp1'],['CUST','.wp2'],['CRCT','.wp1'],['CRCT','.wp2'],['RSUT','']].forEach(([E,Wp])=>{
@@ -387,7 +406,14 @@
         <div id="Pag_ORC" class="Cl" style="overflow: scroll;">
             <div class="ConfigOrc w100 Ct"><div id="PagPesq_ORC" class="PagPEsq"></div></div>
             <div id="DivIMGProd" class="Bt w90"> <!--IMAGENS dos PRODUTOS-->
-                <div id="Div-Prod" class="Start" onwheel="WheelH(event,this)"></div>
+                <div class="Cl Bt">
+                    <div onclick="Navegar($$('.Div-Prod',Avo(this)),$('.ORCS',Avo(this)))">1</div>
+                    <div onclick="Navegar($$('.Div-Prod',Avo(this)),$('.OFST',Avo(this)))">2</div>
+                    <div onclick="Navegar($$('.Div-Prod',Avo(this)),$('.MANU',Avo(this)))">3</div>
+                </div>
+                <div class="Start Div-Prod ORCS     " onwheel="WheelH(event,this)"></div>
+                <div class="Start Div-Prod OFST none" onwheel="WheelH(event,this)"></div>
+                <div class="Start Div-Prod MANU none" onwheel="WheelH(event,this)"></div>
                 <div id="Div-Detalhes" class="Rltv">
                     <a class="IconDtlh Ct PT Start" onclick="TOV($('#DivIMGProd'))"><h3>⭐</h3><p>Detalhes</p></a>
                     <div id="NewCanvas"        class="canvi Ct Cnvs none"></div>
@@ -423,7 +449,7 @@
                 <table id="ORC" class="w90" onkeydown="HandArrow(this,event)">
                     <thead><tr onload="Inn(this,Tm_ORC_Th(['','Imgs','Serv','Tipo','Cbmt','Matr','Lrg','Alt','Qnt','Lamin','Aplic','Und','SbTt','','']))"></tr></thead>
                     <tbody>
-                        <tr class="ORC_tr ORC_tr-1" oninput="ReObj(this),Orcamento(this)" onchange="ValidOpts()">
+                        <tr class="ORC_tr ORC_tr-1" oninput="ReObj(this),Orcamento()" onchange="ValidOpts()">
                             <td width="15px"><div class="PT Ct OrcAdd" onclick="AddORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Mais)" ></div></td>
                             <td             ><div   class="dadoD Md_Img oImgs"></div></td>
                             <td             ><div   class="dadoD Md_Slt oServ" oninput="ChangE(this,'Tipo')"   onload="Tm_Select(this,'Serv',['Serviços',...LISTPROD])" ></div></td>
@@ -433,8 +459,8 @@
                             <td class="Rltv"><input class="dadoD Md_Num oLrg"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Largura"><span class="Abslt AvisoInpt none RD"></span></td>
                             <td class="Rltv"><input class="dadoD Md_Num oAlt"  oninput="Mask.Num(this);RodaCanvMdds(this)" placeholder="Altura" ><span class="Abslt AvisoInpt none RD"></span></td>
                             <td class="Rltv"><input class="dadoD Md_Num oQnt"  oninput="ChangE(this,'Finn')"               placeholder="Qnt"    ></input><div class="BtnoQnt Abslt PT" style="z-index: 50;" onclick="AtvMyMdds(this)" onload="Inn(this,SVG.Gemn)"></div></td>
-                            <td width="10px"><div   class="dadoD Md_Chk oLamn" onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
-                            <td width="10px"><div   class="dadoD Md_Chk oAplc" onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
+                            <td width="10px"><div   class="dadoD Md_Chk oLamn"  onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
+                            <td width="10px"><div   class="dadoD Md_Chk oAplc"  onload="Tm_Check(this,`${SVG.Chek}`)"></div></td>
                             <td width="10%" ><div onload="Inn(this,Tm_Total('Vund'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
                             <td width="10%" ><div onload="Inn(this,Tm_Total('SbTt'))" style="height:auto;min-height:30px" class="imita RD Ct"></div></td>
                             <td width="15px"><div class="PT Ct OrcClr" onclick="ClrORC(_tr(this));Rload_Tbl()" onload="Inn(this,SVG.Cler)"   ></div></td>
@@ -454,29 +480,17 @@
 </body>
 
 <script>
-    function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; ReloadTotal()}
-    
-
+    function Rload_Tbl(){Upp_Tabela('#ORC') ; Upp_RowCol('#ORC') ; RelodOBJ() ; ReloadTotal()}
     Rload_Tbl() // Iniciar
 
-        function Gmbrr(Eu){
-            $$('.Opts > div',Avo(Eu)).forEach(e=>{
-                if(Coten(Eu,'Atv')){(e.dataset.s??=e.style.cssText, e.style.cssText=e.getAttribute('name')||'') ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Grnd','Pecq'))}
-                else{(e.style.cssText=e.dataset.s || '', delete e.dataset.s)                                    ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Pecq','Grnd'))}
-            })
-        }
-        function AddBoxy(e){AddCarr(...e.split('_'))} // tentar tirar isso daqui só serve pra desconstruir
-        function Armzn(Bx,ON){
-            const Tm_R$ =e=>`<div class="TMRS Abslt Ct"><b>R$</b><p>${e}</p><b>,00</b></div>`
-            const TmRSS =e=>e == 0 ? `<b class="Ct Abslt Indisdp">Indisponível</b>` : Tm_R$(e)
-            const BoxVlr=e=>`<div class="BxVlr bckG Rltv HOV" ${Bckg('Base.svg')} onclick="AddBoxy('${e[1]}_${e[0][4]}_${e[0][0]}')">
-                                <p class="V1 Abslt">${e[0][0]} UND   </p>
-                                <p class="V2 Abslt">${TmRSS(e[0][1])}</p>
-                                <p class="V3 Abslt">${(Num(e[0][1])/Num(e[0][0])).toFixed(2)}</p>
-                            </div>`
-            return `<div class="Armz bckG Cl Rltv" name="${Bx}" ${Bckg(`${Bx}.webp`)}><a class="Abslt Cl">${ON.filter(Y=>Y[1]==Bx).map(Y=>BoxVlr(Y)).join('')}</a></div>`
-        }
-        function MudaArmzn(Eu,V){$$('.Armz',Avo(Eu)).forEach(e=>{if(Nm(e).includes(V) && Nm(e).includes(Nm(Eu))){Rmv_N(e)}else{Add_N(e)}})}
+    function Gmbrr(Eu){
+        $$('.Opts > div',Avo(Eu)).forEach(e=>{
+            if(Coten(Eu,'Atv')){(e.dataset.s??=e.style.cssText, e.style.cssText=e.getAttribute('name')||'') ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Grnd','Pecq'))}
+            else{(e.style.cssText=e.dataset.s || '', delete e.dataset.s)                                    ; $$('.Conteudo',Avo(Eu)).forEach(c=>Trc(c,'Pecq','Grnd'))}
+        })
+    }
+    
+    
     // Focados nos CANVAS
         function ORCnewID(tr){ // dar o NOVO id pra cada linha do ORC
             tr.classList.forEach(c=>c.startsWith('ORC_tr-') && tr.classList.remove(c))
@@ -544,7 +558,9 @@
         const bs = BS[Typ]
         const data = await SB_GETT(Typ,bs.Limit,'*',bs.Ordnn,null,Filt)
         fazJJJ(Typ,data)
-        Inn('#Div-Prod',tmplt_Prod())
+        Inn('.Div-Prod.ORCS',Tm_Prods(LISTPROD,'1'))
+        Inn('.Div-Prod.OFST',Tm_Prods(LISTOFST,'2'))
+        Inn('.Div-Prod.MANU',Tm_Prods(LISTMANU,'2'))
     }
 </script>
 
