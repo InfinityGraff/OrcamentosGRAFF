@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visual Taxonomy Builder</title>
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font:14px Arial}
+    body{display:grid;grid-template-columns:220px 1fr 260px;grid-template-rows:42px 1fr;height:100vh;overflow:hidden;background:#222;color:#fff}
+    #TopBar{grid-column:1/4;display:flex;gap:8px;align-items:center;padding:6px;background:#333;border-bottom:1px solid #555}
+    #TopBar button{padding:4px 10px;cursor:pointer}
+    #Animals{background:#2b2b2b;border-right:1px solid #555;overflow:auto;padding:8px}
+    #AnimalList{display:flex;flex-direction:column;gap:6px}
+    #AnimalList>*{padding:6px;background:#444;border-radius:4px;cursor:grab}
+    #View{position:relative;overflow:hidden;background:#1b1b1b}
+    #Canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+    #Panel{background:#2b2b2b;border-left:1px solid #555;padding:8px;overflow:auto}
+    #Panel h3{margin-bottom:8px}
+    #Panel label{display:block;margin:8px 0 2px}
+    #Panel input{width:100%;padding:5px}
+    #Chars{display:flex;flex-direction:column;gap:4px;margin:6px 0}
+    #Chars input{width:100%}
+    #AddChar{width:100%;padding:6px;margin-top:6px;cursor:pointer}
+    #Tree{margin-top:15px;font-size:13px}
+#Tree div{margin-left:12px;padding:3px}
+</style>
+
+</head>
+<body>
+
+<!-- Barra Superior -->
+<header id="TopBar">
+    <button id="BtSave">Salvar</button>
+    <button id="BtLoad">Carregar</button>
+    <input type="file" id="LoadFile" hidden accept=".json">
+</header>
+
+<!-- Lista de Animais -->
+<aside id="Animals">
+    <h3>Animais</h3>
+    <div id="AnimalList"></div>
+    <button id="NewAnimal">+ Animal</button>
+    <input id="Search" placeholder="Buscar...">
+</aside>
+
+<!-- Canvas -->
+<main id="View">
+    <canvas id="Canvas"></canvas>
+</main>
+<button id="NewGroup">+ Grupo</button>
+<!-- Painel do Grupo -->
+<aside id="Panel">
+    <h3>Grupo</h3>
+    <label>Nome</label>
+    <div id="Tree"></div>
+    <input id="GrpName">
+    <label>Características</label>
+    <div id="Chars"></div>
+    <button id="AddChar">+ Característica</button>
+</aside>
+
+</body>
+
+<script>
+    const C=Canvas,X=C.getContext('2d')
+    let W=innerWidth,H=innerHeight
+    let Cam={x:0,y:0,z:1},M={x:0,y:0},Drag=0
+    const Grid={}
+    const Cell=200
+    const Animals=[],Groups=[]
+    let SelMove=null
+    Animals.push({id:1,n:"Leão",x:0,y:0,chars:["Mamífero","Carnívoro","Pelos"]}) // Exemplo (depois você troca pelo seu objeto)
+
+    class Group{
+        constructor(a,b){
+            this.x=(a.x+b.x)/2
+            this.y=(a.y+b.y)/2
+            this.tx=this.x
+            this.ty=this.y
+            this.r=50
+            this.items=[a,b]
+            this.filhos=[]
+            this.pai=null
+            this.nome="Grupo"
+            this.chars=[]
+            this.specie=[]
+        }
+        static New(x,y){
+            let g=Object.create(Group.prototype)
+            g.x=x
+            g.y=y
+            g.tx=x
+            g.ty=y
+            g.r=60
+            g.items=[]
+            g.filhos=[]
+            g.chars=[]
+            g.nome="Novo Grupo"
+            g.pai=null
+            g.cor="#"+Math.floor(Math.random()*16777215).toString(16)
+            return g
+        }
+    }
+
+    NewGroup.onclick=()=>{let g=Group.New(Cam.x,Cam.y);Groups.push(g)}
+
+    Search.oninput=()=>{
+        let t=Search.value.toLowerCase()
+        let a=Animals.find(x=>x.n.toLowerCase().includes(t))
+        let g=Groups.find(x=>x.nome.toLowerCase().includes(t))
+        if(a)Focus(a)
+        if(g)Focus(g)
+    }
+
+    function GetGroup(x,y){return Groups.find(g=>Math.hypot(g.x-x,g.y-y)<g.r)}
+    function Focus(obj){Cam.x=obj.x ; Cam.y=obj.y ; Cam.z=2}
+    function AddAnimalList(a){
+        let d=document.createElement("div")
+        d.innerText=a.n
+        d.onclick=()=>{Focus(a) ; EditAnimal(a)}
+        AnimalList.append(d)
+    }
+
+    NewAnimal.onclick=()=>{
+
+    let a=new Animal(
+    Date.now(),
+    "Novo Animal",
+    Cam.x,
+    Cam.y
+    )
+
+    a.chars=[]
+
+    Animals.push(a)
+
+    AddAnimalList(a)
+
+    }
+
+class Animal{
+
+ constructor(id,n,x,y){
+
+  this.id=id
+  this.n=n
+  this.x=x
+  this.y=y
+
+  this.chars=[]
+
+ }
+
+}
+
+function DrawTreePanel(){
+
+ Tree.innerHTML=""
+
+ let raiz=document.createElement("div")
+ raiz.innerText="🌎 Taxonomia"
+
+ Tree.append(raiz)
+
+
+ Groups
+ .filter(g=>!g.pai)
+ .forEach(g=>{
+
+  AddTreeNode(g,Tree)
+
+ })
+
+}
+
+function AddTreeNode(g,el){
+
+ let d=document.createElement("div")
+
+ d.innerText="○ "+g.nome
+
+ d.onclick=()=>Focus(g)
+
+ el.append(d)
+
+
+ g.filhos.forEach(f=>{
+
+  AddTreeNode(f,d)
+
+ })
+
+
+ g.items.forEach(a=>{
+
+  let x=document.createElement("div")
+
+  x.innerText="• "+a.n
+
+  x.onclick=()=>Focus(a)
+
+  d.append(x)
+
+ })
+
+}
+
+function RefreshUI(){
+
+ DrawTreePanel()
+
+}
+
+function EditAnimal(a){
+
+ let n=prompt(
+  "Nome:",
+  a.n
+ )
+
+ if(n)
+  a.n=n
+
+}
+
+Animals.forEach(AddAnimalList)
+
+    function Size(){
+    C.width=View.clientWidth
+    C.height=View.clientHeight
+    }
+    onresize=Size
+    Size()
+
+    Canvas.onmousedown=e=>{
+    Drag=1
+    M.x=e.clientX
+    M.y=e.clientY
+    }
+
+    onmouseup=()=>Drag=0
+
+    onmousemove=e=>{
+    if(!Drag)return
+    Cam.x-=(e.clientX-M.x)/Cam.z
+    Cam.y-=(e.clientY-M.y)/Cam.z
+    M.x=e.clientX
+    M.y=e.clientY
+    }
+
+    Canvas.onwheel=e=>{
+    e.preventDefault()
+    Cam.z*=e.deltaY>0?.9:1.1
+    Cam.z=Math.max(.2,Math.min(5,Cam.z))
+    }
+
+    function Sx(x){return(x-Cam.x)*Cam.z+C.width/2}
+    function Sy(y){return(y-Cam.y)*Cam.z+C.height/2}
+
+    function Draw(){
+
+    X.clearRect(0,0,C.width,C.height)
+
+    X.strokeStyle="#333"
+
+    for(let i=-5000;i<=5000;i+=100){
+
+    X.beginPath()
+    X.moveTo(Sx(i),0)
+    X.lineTo(Sx(i),C.height)
+    X.stroke()
+
+    X.beginPath()
+    X.moveTo(0,Sy(i))
+    X.lineTo(C.width,Sy(i))
+    X.stroke()
+
+    }
+
+Groups.forEach(g=>{
+
+ X.beginPath()
+ X.strokeStyle="#f55"
+ X.lineWidth=3
+ X.arc(Sx(g.x),Sy(g.y),g.r*Cam.z,0,7)
+ X.stroke()
+
+X.fillStyle=AnimalColor(a)
+ X.fillText(
+  g.nome,
+  Sx(g.x)-20,
+  Sy(g.y)
+ )
+
+})
+    DetectGroups()
+    DetectSub()
+    CleanGroups()
+    UpdateGroups()
+    UpdateTraits()
+    DrawGroups()
+    DrawTree()
+    
+    requestAnimationFrame(Draw)
+
+    }
+
+    Draw()
+
+    let Sel=null
+
+function MousePos(e){
+ return {
+  x:(e.clientX-C.width/2)/Cam.z+Cam.x,
+  y:(e.clientY-C.height/2)/Cam.z+Cam.y
+ }
+}
+
+Canvas.onmousedown=e=>{
+
+ let p=MousePos(e)
+
+ Sel=Animals.find(a=>
+  Math.hypot(a.x-p.x,a.y-p.y)<15
+ )
+
+ if(!Sel){
+  Drag=1
+  M.x=e.clientX
+  M.y=e.clientY
+ }
+
+}
+Canvas.onmousedown=e=>{// Ou
+
+ let p=MousePos(e)
+
+ SelGrp=GetGroup(p.x,p.y)
+
+ if(SelGrp){
+
+  SelMove={
+   g:SelGrp,
+   x:p.x,
+   y:p.y
+  }
+
+  return
+ }
+
+ SelectGroup(e)
+
+}
+
+Canvas.onmousemove=e=>{
+
+    if(SelMove){
+
+ let p=MousePos(e)
+
+ let dx=p.x-SelMove.x
+ let dy=p.y-SelMove.y
+
+ let g=SelMove.g
+
+ g.x+=dx
+ g.y+=dy
+ g.tx+=dx
+ g.ty+=dy
+
+ g.items.forEach(a=>{
+  a.x+=dx
+  a.y+=dy
+ })
+
+ g.filhos.forEach(a=>{
+  a.x+=dx
+  a.y+=dy
+ })
+
+ SelMove.x=p.x
+ SelMove.y=p.y
+
+ return
+
+}
+
+SelMove=null
+
+ if(Sel){
+
+  let p=MousePos(e)
+Sel.x+=(p.x-Sel.x)*0.5
+Sel.y+=(p.y-Sel.y)*0.5
+
+ }else if(Drag){
+
+  Cam.x-=(e.clientX-M.x)/Cam.z
+  Cam.y-=(e.clientY-M.y)/Cam.z
+
+ }
+
+ M.x=e.clientX
+ M.y=e.clientY
+
+}
+
+Canvas.onmouseup=()=>{
+ Sel=null
+ Drag=0
+}
+
+const DistGrp=100
+
+class Group{
+ constructor(a,b){
+
+  this.x=(a.x+b.x)/2
+  this.y=(a.y+b.y)/2
+
+  this.tx=this.x
+  this.ty=this.y
+
+  this.r=50
+  this.items=[a,b]
+  this.filhos=[]
+  this.pai=null
+
+  this.nome="Grupo"
+  this.chars=[]
+  this.specie=[]
+
+  this.cor="#"+Math.floor(Math.random()*16777215).toString(16)
+
+ }
+}
+
+function JoinGroup(a,b){
+
+ let ga=Groups.find(g=>g.items.includes(a))
+ let gb=Groups.find(g=>g.items.includes(b))
+
+
+ if(ga&&gb&&ga!=gb){
+
+  MergeGroups(ga,gb)
+  return
+
+ }
+
+
+ if(ga){
+
+  if(!ga.items.includes(b))
+   ga.items.push(b)
+
+  return
+
+ }
+
+
+ if(gb){
+
+  if(!gb.items.includes(a))
+   gb.items.push(a)
+
+  return
+
+ }
+
+
+ Groups.push(
+  new Group(a,b)
+ )
+
+}
+
+function MergeGroups(a,b){
+
+ let g=a
+
+ b.items.forEach(x=>{
+
+  if(!g.items.includes(x))
+   g.items.push(x)
+
+ })
+
+
+ b.filhos.forEach(x=>{
+
+  g.filhos.push(x)
+  x.pai=g
+
+ })
+
+
+ Groups.splice(
+  Groups.indexOf(b),
+  1
+ )
+
+}
+
+function CleanGroups(){
+
+ Groups.forEach(g=>{
+
+  if(g.items.length==1 && !g.filhos.length){
+
+   Groups.splice(
+    Groups.indexOf(g),
+    1
+   )
+
+  }
+
+ })
+
+}
+
+function DetectGroups(){
+
+ BuildGrid()
+
+ for(let a of Animals)
+
+ for(let b of Near(a)){
+
+  if(a==b)continue
+
+  let d=Math.hypot(
+   a.x-b.x,
+   a.y-b.y
+  )
+
+  if(d<DistGrp)
+   JoinGroup(a,b)
+
+ }
+
+}
+
+function UpdateGroups(){
+
+ Groups.forEach(g=>{
+
+  let x=0,y=0,n=0
+
+
+  g.items.forEach(a=>{
+   x+=a.x
+   y+=a.y
+   n++
+  })
+
+
+  g.filhos.forEach(a=>{
+   x+=a.x
+   y+=a.y
+   n++
+  })
+
+
+  if(n){
+
+   g.tx=x/n
+   g.ty=y/n
+
+  }
+
+
+  g.x+=(g.tx-g.x)*0.05
+  g.y+=(g.ty-g.y)*0.05
+
+
+  g.r+=(40+n*15-g.r)*0.05
+
+
+ })
+
+}
+
+const DistSub=150
+
+function DetectSub(){
+
+ for(let a of Groups)
+ for(let b of Groups){
+
+  if(a==b)continue
+  if(a.pai||b.pai)continue
+
+  let d=Math.hypot(a.x-b.x,a.y-b.y)
+
+  if(d<DistSub){
+
+   a.filhos=a.filhos||[]
+   a.filhos.push(b)
+
+   b.pai=a
+
+  }
+
+ }
+
+}
+
+let SelGrp=null
+
+function SelectGroup(e){
+
+ let p=MousePos(e)
+
+ SelGrp=Groups.find(g=>
+  Math.hypot(g.x-p.x,g.y-p.y)<g.r
+ )
+
+ if(SelGrp)
+  LoadPanel()
+
+}
+
+
+function LoadPanel(){
+
+ GrpName.value=SelGrp.nome
+
+ Chars.innerHTML=""
+
+ SelGrp.chars.forEach((c,i)=>{
+
+  let inp=document.createElement("input")
+  inp.value=c
+
+  inp.onchange=()=>{
+   SelGrp.chars[i]=inp.value
+  }
+
+  Chars.append(inp)
+
+ })
+
+}
+
+GrpName.onchange=()=>{
+
+ if(SelGrp)
+  SelGrp.nome=GrpName.value
+
+}
+
+AddChar.onclick=()=>{
+
+ if(!SelGrp)return
+
+ SelGrp.chars.push("Nova característica")
+
+ LoadPanel()
+
+}
+
+
+function SaveJSON(){
+
+ let data={
+  Animals,
+  Groups
+ }
+
+ let file=new Blob(
+  [JSON.stringify(data)],
+  {type:"application/json"}
+ )
+
+ let a=document.createElement("a")
+ a.href=URL.createObjectURL(file)
+ a.download="taxonomy.json"
+ a.click()
+
+}
+
+BtSave.onclick=SaveJSON
+
+BtLoad.onclick=()=>LoadFile.click()
+
+
+LoadFile.onchange=e=>{
+
+ let r=new FileReader()
+
+ r.onload=()=>{
+
+  let d=JSON.parse(r.result)
+
+  Animals.length=0
+  Groups.length=0
+
+  d.Animals.forEach(a=>
+   Animals.push(a)
+  )
+
+  d.Groups.forEach(g=>{
+
+   g.filhos=g.filhos||[]
+   g.chars=g.chars||[]
+
+   Groups.push(g)
+
+  })
+
+ }
+
+ r.readAsText(e.target.files[0])
+
+}
+
+function BuildGrid(){
+
+ for(let k in Grid)
+  delete Grid[k]
+
+ Animals.forEach(a=>{
+
+  let x=Math.floor(a.x/Cell)
+  let y=Math.floor(a.y/Cell)
+  let id=x+"_"+y
+
+  if(!Grid[id])
+   Grid[id]=[]
+
+  Grid[id].push(a)
+
+ })
+
+}
+
+function Near(a){
+
+ let r=[]
+
+ let x=Math.floor(a.x/Cell)
+ let y=Math.floor(a.y/Cell)
+
+ for(let i=-1;i<=1;i++)
+ for(let j=-1;j<=1;j++){
+
+  let g=Grid[(x+i)+"_"+(y+j)]
+
+  if(g)
+   r.push(...g)
+
+ }
+
+ return r
+
+}
+
+function DrawTree(){
+
+ Groups.forEach(g=>{
+
+  g.filhos.forEach(f=>{
+
+   X.beginPath()
+   X.strokeStyle="#777"
+   X.lineWidth=2
+
+   X.moveTo(
+    Sx(g.x),
+    Sy(g.y)
+   )
+
+   X.lineTo(
+    Sx(f.x),
+    Sy(f.y)
+   )
+
+   X.stroke()
+
+  })
+
+
+  g.items.forEach(a=>{
+
+   X.beginPath()
+   X.strokeStyle="#555"
+
+   X.moveTo(
+    Sx(g.x),
+    Sy(g.y)
+   )
+
+   X.lineTo(
+    Sx(a.x),
+    Sy(a.y)
+   )
+
+   X.stroke()
+
+  })
+
+ })
+
+}
+
+function UpdateTraits(){
+
+ Groups.forEach(g=>{
+
+  let all=[]
+
+  g.items.forEach(a=>{
+   if(a.chars)
+    all.push(...a.chars)
+  })
+
+
+  g.filhos.forEach(a=>{
+   if(a.chars)
+    all.push(...a.chars)
+  })
+
+
+  g.chars=[
+   ...new Set(all)
+  ]
+
+ })
+
+}
+
+function DrawGroups(){
+
+ Groups.forEach(g=>{
+
+  X.beginPath()
+  X.fillStyle=g.cor+"33"
+  X.strokeStyle=g.cor
+  X.lineWidth=3
+
+  X.arc(
+   Sx(g.x),
+   Sy(g.y),
+   g.r*Cam.z,
+   0,
+   7
+  )
+
+  X.fill()
+  X.stroke()
+
+
+  X.fillStyle="#fff"
+
+  X.fillText(
+   g.nome,
+   Sx(g.x)-20,
+   Sy(g.y)
+  )
+
+
+ })
+
+}
+
+function AnimalColor(a){
+
+ let g=Groups.find(g=>
+  g.items.includes(a)
+ )
+
+ return g ? g.cor : "#3af"
+
+}
+</script>
+
+</html>
