@@ -747,8 +747,8 @@
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
-        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Julho') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
-                              Typ=='GRAD' ? ORR({Id:'B\\_%'})       : Filt
+        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Agosto') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
+                              Typ=='GRAD' ? ORR({Id:'G\\_%'})       : Filt
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
