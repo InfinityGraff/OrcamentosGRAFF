@@ -161,6 +161,7 @@
         if(op!='textSearch'){if(In){txt=`${busca}%`}else if(Ot){txt=`%${busca}`}else{txt=`%${busca}%`}}
         const Filt = cols.map(c=>`${c}.${op}.${txt}`).join(',')
         RodaTable(Typ,Filt,[busca,Aa,_C])
+        
     }
 
     function DOM_Pesq(Typ){
@@ -177,6 +178,7 @@
         const Res = J[Typ].filter(isMatch)
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Add_N(tr))
         Res.forEach(j=>{const tr = $(`#H_${Typ} > tbody > .tr-${j.Id}`) ; if(tr) Rmv_N(tr)})
+        Re_Foot(Typ)
     }
 
     // 💡 se ao Digitar eu escrever uma Acento então pode Ativar oa Acentos
@@ -277,6 +279,7 @@
         const Res = J[Typ].filter(isMatch)
         $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Add_N(tr)) // Limpar
         Res.forEach(j=>{const tr = $(`#H_${Typ} > tbody > .tr-${j.Id}`) ; if(tr) Rmv_N(tr)}) // Ocultar
+        Re_Foot(Typ)
     }
 
     function F_Clen(Typ){                   // ✔️ Limpa todos os Filtros
@@ -378,12 +381,13 @@
 
     function Re_Foot(Typ,All){
         setTimeout(()=>{
-            const Ids = J[Typ].map(e=>e.Id)
+            //const Ids = J[Typ].map(e=>e.Id)
             const Bs  = ObjEtr(BS[Typ].Json).map(([k,v])=>v.FOOT!=''?[k,v.FOOT]:null).filter(Boolean) // tem um desse igualzinho em COLOR (fazer Helper)
             Bs.forEach(([k,v])=>{
                 if(v=='--'){return}
                 const dbrev = BSJsn(Typ,k).COL||k
-                const All   = J[Typ].map(e=>e[k])
+                const _None = e=>!$(`#H_${Typ} tr.tr-${e}`).classList.contains('none')
+                const All   = J[Typ].filter(e=>_None(e.Id)).map(e=>e[k]) //const All   = J[Typ].map(e=>e[k])
                 const JsCOl = {Clnt:'Clnt',Serv:'Serv',Pgmt:'Valr'}
                 const all   = v=='UnJs' ? JJJ[AA(k)]?.map(e=>e[JsCOl[k]]).filter(Boolean) : ['']
                 const SUM   = {PgPX:0,PgAV:0}
@@ -748,7 +752,7 @@
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
         const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Agosto') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
-                              Typ=='GRAD' ? ORR({Id:'G\\_%'})       : Filt
+                              Typ=='GRAD' ? ORR({Id:'B\\_%'})       : Filt
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
