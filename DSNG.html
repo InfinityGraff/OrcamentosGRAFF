@@ -192,7 +192,7 @@
     </style>
 
     <header class="Bt w100" style="grid-area:A">
-        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" onclick=""><h1 class="PT" onclick=""></h1></div>
         <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
         <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
         <!-- Perfil --><div id="H_Login" class="Ct"> 
@@ -513,6 +513,7 @@
         O.Dsng = ListDSNGrs.map(e=>e.User) // Criar a Lista de Designers
         Load_Perfis($('#Todo_Dsng'),ListDSNGrs.reverse())
         Load_Perfis($("#List_Dsng"),ListDSNGrs.reverse(),'Rclh')
+        $('#Logo').src = U ? "./Img/Logo_Infinity.webp" : "./Img/Logo_Returns.webp"
     }
     
 </script>

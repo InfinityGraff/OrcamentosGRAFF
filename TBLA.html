@@ -729,6 +729,7 @@
             </div>
             <button onclick="ResumirTBLA('${Typ}')">Resumo</button>
             <select onchange="RodaTable('${Typ}',FiltMesS(this.value))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
+            ${Typ=='GRAD' ? `<input onchange="RodaTable('${Typ}',this.value)">` : ''}
             <button onclick="LOG('deve fazer a Requisição Novamente')">Recarregar</button>
             <button onclick="RenderBS('${Typ}')">BS</button>
             <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}</button>
