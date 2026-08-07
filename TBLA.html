@@ -733,15 +733,17 @@
             </div>
             <button onclick="ResumirTBLA('${Typ}')">Resumo</button>
             <select onchange="RodaTable('${Typ}',FiltMesS(this.value))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
-            ${Typ=='GRAD' ? `<input onchange="RodaTable('${Typ}',this.value)">` : ''}
+            ${Typ=='GRAD' ? `<select onchange="RodaTable('${Typ}',this.value)">${Tm_Opt(['Fornecedor','G','B','I','U','J','RR','W','WM'])}</select>` :  ''}
             <button onclick="LOG('deve fazer a Requisição Novamente')">Recarregar</button>
             <button onclick="RenderBS('${Typ}')">BS</button>
             <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}</button>
-        </div>   
+        </div>
         <div id="InfoBS_${Typ}" class="w90 none"></div>
         ${Typ=="GRD2" ? `<div class="Paizao w90 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w90')}
         <p>Soma: 00,00</p>`
     }
+
+
 
     // function GAMBIARRAA(Find){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
     //     Find.forEach(j=>{j.Serv.forEach(e=>{delete e['Clnt']})
@@ -753,7 +755,7 @@
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
         const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Agosto') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
-                              Typ=='GRAD' ? ORR({Id:'B\\_%'})       : Filt
+                              Typ=='GRAD' ? ORR({Id:`${Filt||'B'}\\_%`})  : Filt
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
