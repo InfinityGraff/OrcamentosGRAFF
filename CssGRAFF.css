@@ -148,6 +148,9 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   [data-Base="Infinity"] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{transform:scale(0.95)}
   [data-Base="Basic"   ] :is(button,.button,.Interup i,.Chek input:checked+a,.Switch i):active{background:yellow}
 
+  [data-Base="Infinity"] .Interup{border: var(--ChekOff) ; border-radius: 20px ; width: 80px;}
+  [data-Base="Infinity"] .Interup i{border-radius: 20px}
+
   button:focus,.FOC.Atv   {border:var(--FcusBrd); box-shadow:var(--FcusShw)}
   button.Block            {background: #797979 !important; border:1px solid #414141 !important; color: #313131 !important;pointer-events:none !important ; cursor:not-allowed !important;}
   button a                {width: 15px; height:  15px; fill: #ffffff} /*SVG de dentro dos Button*/
@@ -209,7 +212,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
 
 
 /*Table*/ 
-  .WrapTable  {max-height:90%;overflow:auto; border-radius: 20px;scrollbar-width:none}
+  .WrapTable  {max-height:90%;overflow:auto; border-radius: 20px ; z-index: 0;}
   .Slidde .WrapTable {max-height: 80%;}
   .WrapTable::-webkit-scrollbar{display:none}
 
@@ -496,8 +499,8 @@ td.GrifNot1 .grifoo{display:block ; background:#ff8800fd}
     #LgFoto      {background-size:cover ; height:100%; width:auto}
     #LgFoto img  {width:42px; height:42px}
 /*Mais*/
-    #MAIS             {background:#4e4e4e; width:250px; color:#ffffff ; top:55px; right:0px}
+    #MAIS             {background:#291d33; width:250px; color:#ffffff ; top:55px; right:0px ; border-radius: 0px 0px 20px 20px}
     #MAIS img         {height:25px; margin-right:10px}
     #MAIS div         {padding:10px; cursor:pointer; font-size:15px; width:100%}
     #MAIS p,#MAIS p a {font-size:10px}
-    #MAIS div:not(:last-child):hover{background:#808080; color:var(--Txt-Wit-Hover)}
+    #MAIS div:not(:last-child):hover{background:#412d53; color:var(--Txt-Wit-Hover)}

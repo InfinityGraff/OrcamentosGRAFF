@@ -75,14 +75,24 @@
                            : `${Cl(Typ,Ryp[Typ])||'*'},${f(Construc[Typ])}`
     }
 
+    const SVVG     = {
+        Rsumo:`<svg style="fill-rule:evenodd" viewBox="0 0 17.6 16.69"> <path class="fil0" d="M0.96 0l2.68 0c0.53,0 0.96,0.43 0.96,0.96l0 14.77c0,0.53 -0.43,0.96 -0.96,0.96l-2.68 0c-0.53,0 -0.96,-0.43 -0.96,-0.96l0 -14.77c0,-0.53 0.43,-0.96 0.96,-0.96zm13 0l2.68 0c0.53,0 0.96,0.43 0.96,0.96l0 14.77c0,0.53 -0.43,0.96 -0.96,0.96l-2.68 0c-0.53,0 -0.96,-0.43 -0.96,-0.96l0 -14.77c0,-0.53 0.43,-0.96 0.96,-0.96zm-6.5 0l2.68 0c0.53,0 0.96,0.43 0.96,0.96l0 14.77c0,0.53 -0.43,0.96 -0.96,0.96l-2.68 0c-0.53,0 -0.96,-0.43 -0.96,-0.96l0 -14.77c0,-0.53 0.43,-0.96 0.96,-0.96zm0.46 0.82l1.76 0c0.35,0 0.63,0.29 0.63,0.63l0 13.79c0,0.35 -0.29,0.63 -0.63,0.63l-1.76 0c-0.35,0 -0.63,-0.29 -0.63,-0.63l0 -13.79c0,-0.35 0.29,-0.63 0.63,-0.63z"/></svg>`,
+        Rload:`<svg viewBox="0 0 28.39 28.41"><path d="M20.62 7.28c-4.34,-4.02 -11.17,-3.08 -14.29,1.69 -2.21,3.38 0.5,2.89 -5.36,2.89 -0.49,0 -0.73,-0.37 -0.6,-0.91 1.98,-7.89 9.64,-12.48 17.28,-10.48 2.39,0.62 4.48,1.78 6.29,3.46 0.07,0.03 2.35,-2.4 2.69,-2.58 0.78,-0.41 1.75,0.14 1.74,1.09 0,0 0.04,8.25 -0.04,8.54 -0.14,0.5 -0.61,0.87 -1.15,0.87 -5.45,0 -8.2,0 -8.23,0 -0.82,0.01 -1.92,-0.99 -0.69,-2.22 1.02,-1.02 1.8,-1.8 2.34,-2.34l-0 -0.02zm-12.84 13.83l0 0.02c4.4,4.06 11.32,3.14 14.48,-2 0.81,-1.31 0.77,-2.56 1.53,-2.56 0.02,0 3.55,-0.04 3.74,0.04 0.32,0.13 0.43,0.42 0.34,0.78 -2.88,11.52 -16.13,14.22 -23.47,7.11 -0.14,-0.13 -2.16,2.59 -3.06,2.71 -0.73,0.1 -1.35,-0.46 -1.35,-1.2 0,-4.63 0,-7.39 0,-8.3 0,-0.59 0.54,-1.14 1.22,-1.14 3.1,0 5.84,0 8.21,0 1.05,-0 1.65,1.24 0.84,2.05 -1.11,1.1 -1.94,1.93 -2.49,2.48z"/></svg>`,
+        More: `<svg viewBox="0 0 1.61 7.46"><path class="fil0" d="M0.8 0c0.44,0 0.8,0.36 0.8,0.8 0,0.44 -0.36,0.8 -0.8,0.8 -0.44,0 -0.8,-0.36 -0.8,-0.8 0,-0.44 0.36,-0.8 0.8,-0.8zm0 5.85c0.44,0 0.8,0.36 0.8,0.8 0,0.44 -0.36,0.8 -0.8,0.8 -0.44,0 -0.8,-0.36 -0.8,-0.8 0,-0.44 0.36,-0.8 0.8,-0.8zm0 -2.93c0.44,0 0.8,0.36 0.8,0.8 0,0.44 -0.36,0.8 -0.8,0.8 -0.44,0 -0.8,-0.36 -0.8,-0.8 0,-0.44 0.36,-0.8 0.8,-0.8z"/></svg>`
+    }
+
 </script>
 
 <script> // Biblioteca
+    const Nav_N    =     (a,b)=>{Add_N(a);Rmv_N(b)}
+    const NAVPAG   =       Typ=>{NavPag(Typ);Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
     const Trim     =         e=>e.trim().replace(/\s+/g,' ')
-    const CtrlSoma =        Eu=>Tog(Eu,'SelectSoma');Inn('#Sommma',`Soma: ${RS(SOMA($$('.SelectSoma').map(e=>Nm(e))))}`)
     const ReszH    =       Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
-    const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w90');Tog($(`.Confy_${Typ}`),'w90');SaveConfig('a')}
-    const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}// Melhorar isso, apenas com CSS
+    const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w95');Tog($(`.Confy_${Typ}`),'w95');SaveConfig('a')}
+    const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}
+    const Rsumo    =       Typ=>BS[Typ].Resumo?.forEach(e=>Tog_N($$(`#H_${Typ} > :is(thead,tbody,tfoot) > tr > *:nth-child(${e})`)))
+    const CtrlSoma =        Eu=>{Tog(Eu,'SelectSoma') ; const R = d_r(Eu) ; Inn(`.Somaa_${R.Ty}_${R.Cl}`,`${RS(SOMA($$(`${Rx7(R.Ty,R.Cl)}.SelectSoma`).map(e=>Nm(e))))}`)}
+    const ClrSUMM  =(Eu,Typ,Col)=>{Inn(Eu,'') ; $$(`${Rx7(Typ,Col)}`).forEach(e=>Rmv(e,'SelectSoma'))}
     const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`)) ; RodaTable(Typ)}
     const CopyFone = (Fone,Eu)=>LOG(Fone)
     const ArrDif   = (Arr=[],Arr2=[])=>Arr.filter(v=>!Arr2.includes(v)) // remove todos itens os que estão Arr2
@@ -91,6 +101,7 @@
     function SaveConfig(e){LOG('SaveConfig')}
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
+
 </script>
 
 <style> /*O CSS Interno*/
@@ -113,8 +124,12 @@
     #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
 
     /*CSS do BS*/
-    .InfoBS p{color: #b300b3;}
-    .SB_ID  {background:#7d0088;color:#ffffff}
+    .InfoBS p   {color:#b300b3;}
+    .SB_ID      {background:#7d0088;color:#ffffff}
+    .IconSVG    {height:30px; width:30px; border-radius:10px; border:solid 1px gray}
+    .IconSVG svg{height:15px; width:auto; fill:white}
+    .MoreTable{width:200px; top:100%; right:0px; background:#22172c; padding:15px}
+    .w95{width: 95%;}
 </style>
 
 <script> // ----- GRIFO -----
@@ -396,7 +411,7 @@
                 if(v=='UnJs'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(all),dbrev))}
                 if(v=='AvPx'){Inn($(Rx8(Typ,'Foot',k)),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div><div class="Ct">${Tm_RS(SUM.PgAV)}Av </div></div>`)}
                 if(v=='Cont'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${All.length    }</div>`)}
-                if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}</div>`)} // Separação de Somas na Bandeija Interna
+                if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}<p class="Somaa_${Typ}_${k}" onclick="ClrSUMM(this,'${Typ}','${k}')"></p></div>`)} // Separação de Somas na Bandeija Interna
                 //if(v=='Stts'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(),dbrev))} // isso é pra as Etapas
             })
             // tentar Jogar Gráfico dentro disso!
@@ -469,7 +484,7 @@
                 return resut==0?'':resut // Pode Futuramente ser uma Bandeija
             }
              ,Deve:j=>j.Valr-SOMA_Obj(j.Pgmt,'Valr')
-             ,Lcro:j=>j.Valr-j.Cust
+             ,Lcro:j=>j.Cust?j.Valr-j.Cust:0
              ,Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
                        const Ed  = LALEL.SERV.Devendo()
                        const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
@@ -651,7 +666,14 @@
                 if(Find.length==0){return ''}
                 let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
                 if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')}               // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
-                return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>`
+                /*GAMBIARRA*/ const DATAA = `<p class="P-P Ct h100 Abslt" onclick="TrcFih2(this,$('input',Pai(this)))">${'Data'}</p><input type="date" class="Abslt NONE" onblur="Inn($('p',Pai(this)),this.value?YMD(this.value):'Data');TrcFih2(this,$('p',Pai(this)))">`
+                return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>
+                    <tfoot><tr style="height:0px">${Ths.map(t=>{
+                        return `<td class="Rltv" style="height:0px">${
+                            t=='Data' ? DATAA :
+                            t=='OK'   ? `<input class="Abslt" type="checkbox">` :
+                            t=='Entg' ? `<input class="Abslt" type="checkbox">` :
+                            t=='Detg' ? DATAA :''}</td>`}).join('')}</tr></tfoot>`
             }
             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
             Rmv_N($('.BNdj > table',Pai(Eu)))
@@ -692,13 +714,6 @@
         // Novo Id // Clona Cliente
     }
 
-    function ResumirTBLA(Typ){
-        ['4','5','6','7','8','9'].forEach(e=>{
-            Tog_N($$(`#H_${Typ} > thead > tr > th:nth-child(${e})`))
-            Tog_N($$(`#H_${Typ} > tbody > tr > td:nth-child(${e})`))
-        })
-    }
-
     function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
         Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))
@@ -716,39 +731,42 @@
     }
 
     function PrepTable(Typ){
-        const tabtab=(e,m)=>`
-        <div class="WrapTable CT ${m}">
-            <table id="H_${Typ}${e}" class="hMin Tbla w100">
-                <thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot>
-            </table>
-        </div>`
-        return `<div class="Bt Stky w90" style="height:40px">
-            ${Typ=='PGMT'||Typ=='SERV'?'':`<button onclick="SB_AddROW('${Typ}')">+ Nova Linha</button>`}
-            <h2 style="font-size:25px">Tabela de ${D_Brev[Typ]}</h2>
-            <div id="PagPesq_${Typ}" class="PagPEsq w40"></div>
-            <div id="COnf_${Typ}"    class="Configs CT">
-                ${Tm_Interup2(SVG.List,SVG.Card,`TrcTog($('#H_${Typ}'),'Tbla','Card');Tog_Card('${Typ}')`)}
-                ${Tm_Check2(SVG.RszH,'',`ReszH('${Typ}')`)}
-                ${Tm_Check2(SVG.RszW,'',`ReszW('${Typ}')`)}
+        const tabtab=(e,m)=>`<div class="WrapTable CT ${m}">
+                <table id="H_${Typ}${e}" class="hMin Tbla w100"><thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table>
+            </div>`
+        return `
+        <div class="Bt Stky w95 none" style="height:40px">
+            <a>.</a>
+            <div class="gap Ct">
+                <button>Falta Pagamento</button>
+                <button>Pendentes      </button>
+                <button>Concluídos     </button>
             </div>
-            <button onclick="ResumirTBLA('${Typ}')">Resumo</button>
+        </div>
+        <div class="Bt Stky w95" style="height:40px">
+            ${Typ=='SERV' || Typ=='PGMT' ? '' : `<button onclick="SB_AddROW('${Typ}')">+ Nova Linha</button>`}
+            <div id="PagPesq_${Typ}" class="PagPEsq w40"></div>
+            <div id="COnf_${Typ}"    class="Configs CT gap">
+                ${Tm_Interup2(SVG.List,SVG.Card,`TrcTog($('#H_${Typ}'),'Tbla','Card');Tog_Card('${Typ}')`)}
+                ${Tm_Check2(SVG.RszH  ,'',`ReszH('${Typ}')`)}
+                ${Tm_Check2(SVG.RszW  ,'',`ReszW('${Typ}')`)}
+                ${Tm_Check2(SVVG.Rsumo,'',`Rsumo('${Typ}')`)}
+            </div>
             <select onchange="RodaTable('${Typ}',FiltMesS(this.value))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
             ${Typ=='GRAD' ? `<select onchange="RodaTable('${Typ}',this.value)">${Tm_Opt(['Fornecedor','G','B','I','U','J','RR','W','WM'])}</select>` :  ''}
-            <button onclick="LOG('deve fazer a Requisição Novamente')">Recarregar</button>
-            <button onclick="RenderBS('${Typ}')">BS</button>
+            <button onclick="LOG('deve fazer a Requisição Novamente')">${SVVG.Rload.replace('HOV PT','')}</button>
             <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}</button>
+            <div class="IconSVG Ct Rltv" onclick="Tog_N($('.MoreTable',this))">${SVVG.More}
+                <div class="MoreTable Abslt Box1 none Cl">
+                    <button onclick="RenderBS('${Typ}')">Abrir o BS</button>
+                    ${Tm_Check2(SVG.Chek,'Exibir Atalhos',`Rsumo('${Typ}')`)}
+                </div>
+            </div>
         </div>
-        <div id="InfoBS_${Typ}" class="w90 none"></div>
-        ${Typ=="GRD2" ? `<div class="Paizao w90 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w90')}
-        <p>Soma: 00,00</p>`
+        <div id="InfoBS_${Typ}" class="w95 none"></div>
+        ${Typ=="GRD2" ? `<div class="Paizao w95 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w95')}
+        `
     }
-
-
-
-    // function GAMBIARRAA(Find){ // Gambiarra pra remover Clnt de todos Serv Bndj q está dentro de PDDS
-    //     Find.forEach(j=>{j.Serv.forEach(e=>{delete e['Clnt']})
-    //                      j.Pgmt.forEach(e=>{delete e['Clnt']}) })
-    // }
 
     async function RodaTable(Typ,Filt,Rgx){
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
@@ -773,47 +791,48 @@
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
 
     <header class="Bt w100" style="grid-area:A">
-        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-        <!-- Perfil --><div id="H_Login" class="Ct"> 
-            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
-            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-        </div>
+        <!-- Titulo --> <div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!-- Titulo2--> <h2 id="TitleTable" style="font-size:24px;color:white">Pedidos</h2>
+        <!--Pesquisa--> <div class="w30 none"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+        <!--   Nav  --> <div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+        <!--  Nav2  --> <div>
+                            <div class="SwithT Sw_PDDS none" onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PDDS','80px','ExecSwith')"></div>
+                            <div class="SwithT Sw_GRAD none" onload="Tm_Switch2(this,['GRAD','OS','UBER','GRD2'],'GRAD','55px','ExecSwith')"></div>
+                        </div>
+        <!-- Perfil --> <div id="H_Login" class="Ct"> 
+                            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+                            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+                            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NAVPAG('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+                            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+                        </div>
         <div id="MAIS" class="Abslt none bndj Ct">
-            <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+            <div class="Start" onclick="NAVPAG('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
             <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+            <div class="Start" onclick="NAVPAG('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+            <div class="Start" onclick="NAVPAG('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
             <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
             <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
         </div>
     </header>
 
     <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
-        <div id="Pag_HOME" class="none">
-            <select onload="Inn(this,Tm_Opt(meses))"></select>
-        </div>
+        <div id="Pag_HOME" class="none"></div>
         <div id="Pag_PDDS" class="none Cl TBLAA Gap p20">
-            <div onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PDDS','80px','ExecSwith')"></div>
-            <div class="Confy_PDDS Slidde w100 h100 Cl Gap     " onload="Inn(this,PrepTable('PDDS'))"></div> <style>#H_PDDS.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-            <div class="Confy_SERV Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('SERV'))"></div> <style>#H_SERV.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-            <div class="Confy_PGMT Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('PGMT'))"></div> <style>#H_PGMT.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_PDDS Slidde w100 h100 Cl gap     " onload="Inn(this,PrepTable('PDDS'))"></div> <style>#H_PDDS.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_SERV Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('SERV'))"></div> <style>#H_SERV.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_PGMT Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('PGMT'))"></div> <style>#H_PGMT.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
         </div>
         <div id="Pag_GRAD" class="none Cl TBLAA Gap p20">
-            <div onload="Tm_Switch2(this,['GRAD','OS','UBER','GRD2'],'GRAD','55px','ExecSwith')"></div>
-            <div class="Confy_GRAD Slidde w100 h100 Cl Gap     " onload="Inn(this,PrepTable('GRAD'))"></div> <style>#H_GRAD.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-            <div class="Confy_OS   Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('OS'  ))"></div> <style>#H_OS.Card   > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-            <div class="Confy_UBER Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('UBER'))"></div> <style>#H_UBER.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-            <div class="Confy_GRD2 Slidde w100 h100 Cl Gap none" onload="Inn(this,PrepTable('GRD2'))"></div> <style>#H_GRD2.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_GRAD Slidde w100 h100 Cl gap     " onload="Inn(this,PrepTable('GRAD'))"></div> <style>#H_GRAD.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_OS   Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('OS'  ))"></div> <style>#H_OS.Card   > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_UBER Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('UBER'))"></div> <style>#H_UBER.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_GRD2 Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('GRD2'))"></div> <style>#H_GRD2.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
         </div>
-        <div id="Pag_MPAG" class="none Cl TBLAA Gap p20"><div class="Confy_MPAG w100 h100 Cl Gap" onload="Inn(this,PrepTable('MPAG'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-        <div id="Pag_ARTE" class="none Cl TBLAA Gap p20"><div class="Confy_ARTE w100 h100 Cl Gap" onload="Inn(this,PrepTable('ARTE'))"></div></div> <style>#H_ARTE.Card > tbody > tr{grid:"A B E E E" auto "C C D D D" auto "F G H I I" auto "J K L M N" auto / 1fr 1fr 1fr 1fr 1fr}</style>
-        <div id="Pag_CLNT" class="none Cl TBLAA Gap p20"><div class="Confy_CLNT w100 h100 Cl Gap" onload="Inn(this,PrepTable('CLNT'))"></div></div> <style>#H_CLNT.Card > tbody > tr{grid:"A B B I" auto "D E C C" auto "F G H H" auto "J K L M" auto         / 1fr 1fr 1fr 1fr}</style>
-        <div id="Pag_PROD" class="none Cl TBLAA Gap p20"><div class="Confy_PROD w100 h100 Cl Gap" onload="Inn(this,PrepTable('PROD'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
-        <div id="Pag_MATR" class="none Cl TBLAA Gap p20"><div class="Confy_MATR w100 h100 Cl Gap" onload="Inn(this,PrepTable('MATR'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_MPAG" class="none Cl TBLAA Gap p20"><div class="Confy_MPAG w100 h100 Cl gap" onload="Inn(this,PrepTable('MPAG'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_ARTE" class="none Cl TBLAA Gap p20"><div class="Confy_ARTE w100 h100 Cl gap" onload="Inn(this,PrepTable('ARTE'))"></div></div> <style>#H_ARTE.Card > tbody > tr{grid:"A B E E E" auto "C C D D D" auto "F G H I I" auto "J K L M N" auto / 1fr 1fr 1fr 1fr 1fr}</style>
+        <div id="Pag_CLNT" class="none Cl TBLAA Gap p20"><div class="Confy_CLNT w100 h100 Cl gap" onload="Inn(this,PrepTable('CLNT'))"></div></div> <style>#H_CLNT.Card > tbody > tr{grid:"A B B I" auto "D E C C" auto "F G H H" auto "J K L M" auto         / 1fr 1fr 1fr 1fr}</style>
+        <div id="Pag_PROD" class="none Cl TBLAA Gap p20"><div class="Confy_PROD w100 h100 Cl gap" onload="Inn(this,PrepTable('PROD'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_MATR" class="none Cl TBLAA Gap p20"><div class="Confy_MATR w100 h100 Cl gap" onload="Inn(this,PrepTable('MATR'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
     </div>
 </body>
 
@@ -823,11 +842,11 @@
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
         await SB_GET_Clnt()
-        NavPag(Atual.Pag) ; RodaTable(Atual.Pag)
+        NAVPAG(Atual.Pag) ; RodaTable(Atual.Pag)
     }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
 </script>
@@ -840,7 +859,7 @@
         const Keys=ObjKey(Obj)
         Tog_N($(`#InfoBS_${Typ}`))
         Inn($(`#InfoBS_${Typ}`),`
-            <div class="InfoBS w90 Ct Gap">${
+            <div class="InfoBS w95 Ct Gap">${
                 ObjEtr(BS[Typ]).map(([k,v])=>{if(['Id','Tabela','Json'].includes(k)){return ''}
                 return `<div><p>${k}:</p><div contenteditable>${v}</div></div>`}).join('')}</div>
             <table class="w100">
