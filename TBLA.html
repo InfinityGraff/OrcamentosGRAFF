@@ -85,7 +85,7 @@
 
 <script> // Biblioteca
     const Nav_N    =     (a,b)=>{Add_N(a);Rmv_N(b)}
-    const NAVPAG   =       Typ=>{NavPag(Typ);Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
+    const NAVPAG   =       Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
     const Trim     =         e=>e.trim().replace(/\s+/g,' ')
     const ReszH    =       Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
     const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w95');Tog($(`.Confy_${Typ}`),'w95');SaveConfig('a')}
