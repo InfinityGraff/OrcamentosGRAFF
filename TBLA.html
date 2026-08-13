@@ -101,7 +101,6 @@
     function SaveConfig(e){LOG('SaveConfig')}
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
-
 </script>
 
 <style> /*O CSS Interno*/

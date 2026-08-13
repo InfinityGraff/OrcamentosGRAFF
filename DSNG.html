@@ -385,7 +385,7 @@
         return `${E.map(e=>`
         <div class="Resumo gap Cl Bt Hov Box2 Rltv ${Rclh} id_${e.Id}" data-Cor="${e.Stts}" onclick="(async()=>{MODAL(await Tm_Exib('${U.Nome}','${e.Id}','${U.Crgo}',event));RodarDrops()})()">
             ${e.Dsng ? `<img class="Pic Abslt" src="${Foto(e.Dsng)}">`:''}
-            <p class="CropTxt Mw80">${e.Clnt}</p><img class="LILI" src="${BASE_URL}Img/${e.Img}">
+            <p class="CropTxt Mw80">${e.Clnt}</p><img class="LILI" src="${BASE_URL}${e.Img}">
             <p>${e.Tipo}</p><div class="Cl Start2 NN"><b>${e.Nome}</b><p>${e.Tema} • ${TempoResta(e.Prazo)}</p></div>
             <div class="NN">${Tm_RS2(e.Valr)}</div>
         </div>`).join("")}`
