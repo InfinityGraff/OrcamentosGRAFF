@@ -103,7 +103,7 @@
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
 </script>
 
-<style> /*O CSS Interno*/
+<style>  /*O CSS Interno*/
     body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
     #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
     #PAGES > *{height:100% ; overflow-y:scroll}
@@ -413,6 +413,8 @@
                 if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}<p class="Somaa_${Typ}_${k}" onclick="ClrSUMM(this,'${Typ}','${k}')"></p></div>`)} // Separação de Somas na Bandeija Interna
                 //if(v=='Stts'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(),dbrev))} // isso é pra as Etapas
             })
+            Inn($('#Total_Allan'),'')
+            Inn($('#Total_Fexta'),'')
             // tentar Jogar Gráfico dentro disso!
             // Soma de M² de serviço, 
             // Contar quantas Imagens tem
@@ -631,7 +633,7 @@
 
 </script>
 
-<script>// ---- TABELAS ----
+<script> // ---- TABELA ----
     const ORR=o=>Object.entries(o).map(([k,v])=>`${k}.like.${v}`).join(',')
     const Acc_Bndj = {}
     const Tm_TT=(COL,Find,Typ,Col,R)=>{
@@ -655,7 +657,7 @@
         return {Tt,Nm,Img}
     }
 
-    const LoadBndj =(Eu,R,Btn)=>{ // Renderiza Bandeija
+    const LoadBndj=(Eu,R,Btn)=>{     // Renderiza Bandeija
         if(Coten($('.BNdj',Pai(Eu)),'none') || Btn=='Btn'){
             if(BjCarregado.includes(R) && Btn!='Btn'){return} ; BjCarregado.push(R)
             function LoadLinhasBndj(R){
@@ -679,7 +681,7 @@
         }
     }
 
-    function Tm_Bndj(R,Arr){ // Recebe Link ou Tabela Interna
+    function Tm_Bndj(R,Arr){         // Recebe Link ou Tabela Interna
         const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
         const Find  = isArr(Arr)?Arr:[]
         const TT    = Tm_TT(COL,Find,Typ,Col,R)
@@ -698,7 +700,7 @@
                 </div>`
     }
 
-    async function AddRowBdj(Eu,R){ // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
+    async function AddRowBdj(Eu,R){  // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
         const _R    = d_r(R) ; const COL = AA(_R.Cl)
         const Tabl = $('table',_td(Eu)) ; Rmv_N(Tabl)
         if(['SERV','PGMT'].includes(COL)){
@@ -713,7 +715,7 @@
         // Novo Id // Clona Cliente
     }
 
-    function Tm_Table(Typ){ // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
+    function Tm_Table(Typ){          // ISSO é o VERDADEIRO tm_Table o outro lá é um Tm_Trs esse deveria ser o 1°
         const Ordn = Typ=='GRD2' ? [X,`${X}_`] : BS[Typ].Orden
         Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))
         Inn($(`#H_${Typ} > thead`),`<tr>${Tm_thSort(Typ,ArrDif(BS[Typ].Orden,['Cbmt','VCbt']))}</tr>`)
@@ -764,6 +766,7 @@
         </div>
         <div id="InfoBS_${Typ}" class="w95 none"></div>
         ${Typ=="GRD2" ? `<div class="Paizao w95 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w95')}
+        ${Typ=="ARTE" ? `<div id="Total_Allan"></div><div id="Total_Fexta"></div>` : ''}
         `
     }
 
@@ -772,7 +775,8 @@
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
         const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Agosto') : //ORR({Clnt:['1801','4224','4266']}) // filtrar alguns Ids específicos
-                              Typ=='GRAD' ? ORR({Id:`${Filt||'B'}\\_%`})  : Filt
+                              Typ=='GRAD' ? ORR({  Id:`${Filt||'B'}\\_%`}) :
+                              Typ=='ARTE' ? ORR({Orgn:`RTN`             }) : Filt
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
@@ -791,7 +795,7 @@
 
     <header class="Bt w100" style="grid-area:A">
         <!-- Titulo --> <div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-        <!-- Titulo2--> <h2 id="TitleTable" style="font-size:24px;color:white">Pedidos</h2>
+        <!-- Titulo2--> <h2 id="TitleTable" style="font-size:24px;color:#ffffff">Pedidos</h2>
         <!--Pesquisa--> <div class="w30 none"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
         <!--   Nav  --> <div id="DivNav"><nav class="Ct H_Nav"></nav></div>
         <!--  Nav2  --> <div>
