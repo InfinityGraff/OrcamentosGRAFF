@@ -31,7 +31,7 @@
         Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'], // Tem que vir da TABELA de Produtos
         Form:['','Pix','Av','Card','QR'], // Fixo
         Pgmt:['','Pix','Av','Card','QR'], // Fixo
-        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--'], // TEM QUE SER DINÂMICO
+        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--',''], // TEM QUE SER DINÂMICO
         TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'], // TEM QUE SER DINÂMICO
         True:['true','false']
     }
@@ -129,6 +129,8 @@
     .IconSVG svg{height:15px; width:auto; fill:white}
     .MoreTable{width:200px; top:100%; right:0px; background:#22172c; padding:15px}
     .w95{width: 95%;}
+    :is(.DashDsng,.DashCDO) img{width: 80px; height: 80px;}
+    :is(.DashDsng,.DashCDO) i{color:#8dff57}
 </style>
 
 <script> // ----- GRIFO -----
@@ -393,6 +395,34 @@
         </div>
     </div>`
 
+    const DashDsng=Arr=>{
+        return Arr.map(U=>{
+            const Dt   = J['ARTE'].filter(e=>e.Dsng==U)
+            const Soma = SOMA_Obj(Dt,'Cust')
+            const Dias = Uniq(Dt.map(e=>e.Data)).length
+            return `<div class="DashDsng Ct Box1"><img src="${Foto(U)}">
+                <div class="Cl">
+                    <h2>${Dt.length} Artes</h2>
+                    <p>${Tm_RS2(Soma)}</p>
+                    <p>${Dias} Dias</p>
+                    <p>${RS(Soma/Dias)} por Dia</p>
+                </div></div>`
+        }).join('')
+    }
+
+    const DashCEO=()=>{
+        const Dt = J['ARTE']
+        const Soma = SOMA_Obj(Dt,'Lcro')
+        return `<div class="DashCDO Ct Box1">
+            <p>Lucro Total: ${Tm_RS2(Soma)}</p>
+            <div>
+                <p>20% Fundos:       <i>${RS(Soma*0.2)}</i></p>
+                <p>40% Sócio Fexta : <i>${RS(Soma*0.4)}</i></p>
+                <p>40% Sócio Allan : <i>${RS(Soma*0.4)}</i></p>
+            </div>
+        </div>`
+    }
+
     function Re_Foot(Typ,All){
         setTimeout(()=>{
             //const Ids = J[Typ].map(e=>e.Id)
@@ -409,12 +439,12 @@
                 if(v=='Uniq'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(All),dbrev))}
                 if(v=='UnJs'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(all),dbrev))}
                 if(v=='AvPx'){Inn($(Rx8(Typ,'Foot',k)),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div><div class="Ct">${Tm_RS(SUM.PgAV)}Av </div></div>`)}
-                if(v=='Cont'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${All.length    }</div>`)}
+                if(v=='Cont'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${  All.length  }</div>`)}
                 if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}<p class="Somaa_${Typ}_${k}" onclick="ClrSUMM(this,'${Typ}','${k}')"></p></div>`)} // Separação de Somas na Bandeija Interna
                 //if(v=='Stts'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(),dbrev))} // isso é pra as Etapas
             })
-            Inn($('#Total_Allan'),'')
-            Inn($('#Total_Fexta'),'')
+            Inn($('#Dash_Dsng'),DashDsng(['Allan','Fexta']))
+            Inn($('#Dash_CEO' ),DashCEO())
             // tentar Jogar Gráfico dentro disso!
             // Soma de M² de serviço, 
             // Contar quantas Imagens tem
@@ -539,7 +569,10 @@
              ,Cust:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Cust') : 0
              ,Lcro:j=>j.Cust==0 ? '' : j.Pdds ? SOMA_Obj(j.Pdds,'Lcro') : 0
             },
-        ARTE:{//Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
+        ARTE:{Cust:j=>j.Valr*0.7
+             ,Lcro:j=>j.Valr*0.3
+             
+            //Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
               //TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
             },
     }
@@ -766,7 +799,7 @@
         </div>
         <div id="InfoBS_${Typ}" class="w95 none"></div>
         ${Typ=="GRD2" ? `<div class="Paizao w95 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w95')}
-        ${Typ=="ARTE" ? `<div id="Total_Allan"></div><div id="Total_Fexta"></div>` : ''}
+        ${Typ=="ARTE" ? `<div class="w95 Ct"><div id="Dash_Dsng" class="Ct w50 Gap"></div><div id="Dash_CEO" class="Ct w50 Gap"></div></div>` : ''}
         `
     }
 
