@@ -6,10 +6,10 @@
     <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
     <title>Tabelas</title>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
-    <!--<link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">-->
-    <!--<script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>-->
-    <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
-    <script src="./Biblioteca/PreScript.js"></script>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <!--<link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="./Biblioteca/PreScript.js"></script>-->
     <link   href="./SB_Crud.css"  rel="stylesheet">
     <link   href="./CssGRAFF.css"  rel="stylesheet">
     <script src="./BaseGRAFF.js"></script>
@@ -21,7 +21,7 @@
 </head>
 
 <script> // BaseCRUD
-    const Atual    = {Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
+    const Atual    = {Pag:'MATR'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] // Acumuladores
     const Forns    = ['G','B','I','RR','U','J','W','T']
     const Dbbrev   = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
     const O = {
@@ -445,7 +445,7 @@
                 if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}<p class="Somaa_${Typ}_${k}" onclick="ClrSUMM(this,'${Typ}','${k}')"></p></div>`)} // Separação de Somas na Bandeija Interna
                 //if(v=='Stts'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(UniqAvnc(),dbrev))} // isso é pra as Etapas
             })
-            Inn($('#Dash_Dsng'),DashDsng(['Allan','Fexta']))
+            Inn($('#Dash_Dsng'),DashDsng(['Allan','Fexta','Landia']))
             Inn($('#Dash_CEO' ),DashCEO())
             // tentar Jogar Gráfico dentro disso!
             // Soma de M² de serviço, 
@@ -483,6 +483,13 @@
             Falta_Cont_VlrO:Mk('Falta','Yelw'),
             Falta_Data_Cont_VlrO:Mk('Zerado','Roxo','black'),
             OK:Mk('OK','Gren'),
+        },
+        ARTE:{
+            Data:c=>Mk('A_Data'   ,c),
+            Img :c=>Mk('Arte'     ,c),
+            Valr:c=>Mk('A_Valr'   ,c),
+            Entg:c=>Mk('Entregue' ,c),
+            Ok  :c=>Mk('Concluído',c),
         }
     }
     const ListasGRADES = {// Muita GAMBIARRA
@@ -573,6 +580,14 @@
             },
         ARTE:{Cust:j=>j.Valr*0.7
              ,Lcro:j=>j.Valr*0.3
+             ,Sttts:j=>{
+                const S     = j.Sttts
+                const Etp   = LALEL['ARTE'][Rmvact(S.Stts)](S.Cor)
+                const opc   = _0_1(S.True/S.Total)
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['ARTE']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+             }
              
             //Dsng:j=>j ? ['do Cliente','Ja Tinha','n Precisa'].includes(j.TArt)?['--']:FiM(O['Dsng']) : O['Dsng'], //Opt
               //TArt:j=>j ? Prod[j.Serv]?.Etpa.includes('Arte')?FiM(O['TArt']):['n Precisa'] : O['TArt'], //Opt
