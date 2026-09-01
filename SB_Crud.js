@@ -289,7 +289,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     async function SB_AddROW(Typ,obj={}){     // ⭐⭐⭐⭐⭐
         if(['PDDS','CLNT','ARTE'].includes(Typ)){ // essas são Int8
             const {data,error}=await supaBASE.rpc('add_row',{tbl:Typ,dados:obj})
-            LOG('datta',data)
+            LOG('datta',data,error)
             __NULL(data)
             AddRow_DOM(Typ,[data])
             RT_Add.add(`${Typ}_${data.Id}`) ; MyAlert(`SB_ADD(${Typ},${data.Id})`)
