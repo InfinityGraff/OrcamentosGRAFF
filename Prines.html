@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Imagens</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<style>
+    *{box-sizing:border-box}
+    body{font-family:Arial}
+    #Lista{display:flex;gap:10px;flex-wrap:wrap}
+    .Img{width:220px;padding:8px;border:2px dashed #aaa}
+    .Img.On{border-color:#168cff}
+    .Img canvas{width:100%;display:block;cursor:crosshair}
+    .Img button{margin-top:5px}
+</style>
+
+<body>
+    <button onclick="AddImg('Produtos')">+ Imagem</button>
+    <div id="Lista"></div>
+</body>
+
+<script>
+    const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)]
+    const Pai=(e,s)=>e.closest(s),Cv=()=>document.createElement('canvas'),Ctx=c=>c.getContext('2d')
+    const BlobC=(c,q=.7)=>new Promise(r=>c.toBlob(r,'image/webp',q))
+
+    const SB=supabase.createClient('https://SEU-PROJETO.supabase.co','SUA_ANON_KEY')
+    const BUCKET='imagens',Q=.7
+    let Atv,N=0
+
+    function AddImg(pasta='Produtos',nome=String(++N).padStart(3,'0')){Lista.insertAdjacentHTML('beforeend',`<div class="Img" data-pasta="${pasta}"><p>${nome}</p><canvas></canvas><button onclick="Crop(this)">Cortar</button><button onclick="Enviar(this)">Enviar</button></div>`)}
+
+    for(let i=0;i<5;i++)AddImg('Produtos')
+
+    document.addEventListener('click',e=>{
+        let d=Pai(e.target,'.Img');if(!d)return
+        $$('.Img').forEach(x=>x.classList.remove('On'));d.classList.add('On');Atv=d
+    })
+
+    document.addEventListener('paste',async e=>{
+        let f=[...e.clipboardData.items].find(x=>x.type.startsWith('image/'))?.getAsFile()
+        if(!Atv||!f)return
+        let im=await createImageBitmap(f),c=$('canvas',Atv),x=Ctx(c)
+        c.width=im.width;c.height=im.height;x.drawImage(im,0,0)
+        Atv._img=await createImageBitmap(await BlobC(c,1));Atv._crop=null;CropInit(Atv)
+    })
+
+    function Pos(e,c){
+        let r=c.getBoundingClientRect()
+        return{x:(e.clientX-r.left)*c.width/r.width,y:(e.clientY-r.top)*c.height/r.height}
+    }
+
+    function CropInit(d){
+        let c=$('canvas',d),a
+        c.onmousedown=e=>a=Pos(e,c)
+        c.onmousemove=e=>{
+        if(!a)return
+        let b=Pos(e,c)
+        d._crop={x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(b.x-a.x),h:Math.abs(b.y-a.y)}
+        Draw(d)
+        }
+        c.onmouseup=c.onmouseleave=()=>a=null
+    }
+
+    function Draw(d,box=1){
+        let c=$('canvas',d),x=Ctx(c),a=d._crop
+        x.clearRect(0,0,c.width,c.height);x.drawImage(d._img,0,0,c.width,c.height)
+        if(a&&box){x.strokeStyle='red';x.lineWidth=Math.max(2,c.width/500);x.strokeRect(a.x,a.y,a.w,a.h)}
+    }
+
+    async function Crop(b){
+        let d=Pai(b,'.Img'),a=d._crop,c=$('canvas',d)
+        if(!a||a.w<5||a.h<5)return
+        Draw(d,0)
+        let t=Cv(),x=Ctx(t);t.width=Math.round(a.w);t.height=Math.round(a.h)
+        x.drawImage(c,a.x,a.y,a.w,a.h,0,0,t.width,t.height)
+        d._img=await createImageBitmap(await BlobC(t,1));d._crop=null
+        c.width=t.width;c.height=t.height;Ctx(c).drawImage(d._img,0,0);CropInit(d)
+    }
+
+    async function Enviar(b){
+        let d=Pai(b,'.Img'),c=$('canvas',d);if(!d._img)return
+        Draw(d,0);b.disabled=true;b.textContent='...'
+        let [w,h]=await ResolucaoReal(c),t=Cv(),x=Ctx(t);t.width=w;t.height=h
+        x.imageSmoothingQuality='high';x.drawImage(c,0,0,w,h)
+        let arq=`${d.dataset.pasta}/${$('p',d).textContent.trim()}.webp`,
+            {error}=await SB.storage.from(BUCKET).upload(arq,await BlobC(t,Q),{contentType:'image/webp',upsert:true})
+        b.disabled=false;b.textContent=error?'Erro':'Enviado ✓'
+        if(error)console.error(error)
+    }
+
+    async function ResolucaoReal(im){
+        let w=im.width,h=im.height;if(Math.max(w,h)<=1000)return[w,h]
+        let ant=Detalhe(im,w,h)
+        while(Math.max(w,h)>500){
+        let W=Math.round(w*.85),H=Math.round(h*.85),a=Detalhe(im,W,H)
+        if((ant-a)/Math.max(ant,1)>.07)break
+        w=W;h=H;ant=a
+        }
+        return[w,h]
+    }
+
+    function Detalhe(im,w,h){
+        let s=Math.min(1,500/Math.max(w,h)),W=Math.max(2,Math.round(w*s)),H=Math.max(2,Math.round(h*s)),c=Cv(),x=Ctx(c)
+        c.width=W;c.height=H;x.imageSmoothingQuality='high';x.drawImage(im,0,0,im.width,im.height,0,0,W,H)
+        let d=x.getImageData(0,0,W,H).data,sum=0,n=0
+        for(let y=1;y<H;y++)for(let X=1;X<W;X++){
+        let i=(y*W+X)*4,l=i-4,t=i-W*4,a=(d[i]+d[i+1]+d[i+2])/3,b=(d[l]+d[l+1]+d[l+2])/3,z=(d[t]+d[t+1]+d[t+2])/3
+        sum+=Math.abs(a-b)+Math.abs(a-z);n+=2
+        }
+        return sum/n
+    }
+</script>
+
+</html>

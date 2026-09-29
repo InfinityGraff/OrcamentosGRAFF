@@ -269,6 +269,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     }
    
     async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Filt){
+        LOG(Filt)
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
              if(Uniq ){Q=Q.eq('Id',Uniq)}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
+    <title>Lombrisse</title>
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
+    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
+    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./DadosClientes.js"></script>   
+    <link href="./SB_Crud.css" rel="stylesheet">
+    <script src="./SB_Crud.js"      ></script>
+    <link  href="./CssGRAFF.css" rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+    <script src="./BiblGRAFF.js"></script>
+    <script src="./Gera3D.js"></script>   
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
+    <!--<script src="https://threejs.org/build/three.js"></script>-->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./supaBASE.js"></script>
+</head>
+
+<script> // aBase de Dados INFINITY GRAFF
+    const Atual = {Pag:'RASC'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
+    const HH={
+        CORES:{Vermelho:[255,0,0],Verde:[0,255,0],Azul:[0,0,255],Amarelo:[255,255,0],Ciano:[0,255,255],Magenta:[255,0,255],Preto:[0,0,0],Branco:[255,255,255]},
+        PVC:{'':0,'10mm':170,'5mm':80}
+    }
+</script>
+
+<body data-Tema="Dark" data-Base="Infinity" data-Cor="Roxo" onclick="/*NoneBndj()*/">
+
+    <header class="Bt w100" style="grid-area:A">
+      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+      <!-- Perfil --><div id="H_Login" class="Ct"> 
+          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+      </div>
+      <div id="MAIS" class="Abslt none bndj Ct Box1">
+          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+      </div>
+    </header>
+
+    <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
+        <div id="Pag_RASC" class="Cl Gap" style="overflow:scroll">
+            <div class="Box1 Cl Gap">
+                <style>.view svg{width:100px;height:auto}</style>
+                <p>Calcula Hora do Corte</p>
+                <div>
+                    <input type="file" accept=".svg">
+                    <button onclick="Calc_HORA($('input',Pai(this)))">Rodar</button>
+                </div>
+                <div id="Ml1">
+                    <div class="out"></div>
+                    <div class="view"></div>
+                </div>
+                
+                <script>
+                    function Calc_HORA(e){
+                        CalcHoraCorte(e)
+                        // joga aqui a parte do DOM, a parte que controla o HTML
+                    }
+                    async function CalcHoraCorte(e){ // esta função deve apenas Retornar os Resultados
+                        if(!e.files[0]) return
+                        const txt = await e.files[0].text()
+                        const doc = new DOMParser().parseFromString(txt,'image/svg+xml')
+                        const svg = doc.documentElement
+                        const vb  = svg.viewBox.baseVal
+                        let escala
+                        $('#Ml1 .view').innerHTML=''
+                        $('#Ml1 .view').append(svg)
+                        if(svg.width.baseVal.unitType==7) escala = svg.width.baseVal.value/vb.width // SVG em mm
+                        else escala = 25.4/96 // SVG em pixels (96 DPI)
+                        const Largura = vb.width/10
+                        const Altura  = vb.height/10
+                        let dist=0
+                        $$('path,line,polyline,polygon,rect,circle,ellipse',svg).forEach(e=>{if(e.getTotalLength) dist+=e.getTotalLength()})
+                        dist*=escala
+                        const VAL_M1 = 0.68 // Valor M¹ do Corte
+                        const Metro  = dist/1000
+                        const Valor  = Metro*VAL_M1
+                        $('#Ml1 .out').textContent =
+                           `Tamanho      : ${Largura.toFixed(1)}cm x ${Altura.toFixed(1)}cm
+                            Comprimento  : ${Metro.toFixed(2)}m
+                            Valor        : ${RS(Valor)}
+                            `
+                    }
+                </script>
+            </div>
+
+            <div class="Box1 Cl Gap">
+                <style>
+                    #Ml2 .view img{max-width:300px;max-height:300px;object-fit:contain}
+                    .CorBarra     {display:flex;border-radius:255px;height:30px;width:100%;background:#dddddd69;overflow:hidden}
+                    .CorBarra div {height:100%;font-size:11px;font-weight:bold;overflow:hidden}
+                    .ValCor       {display:flex;align-items:center;gap:6px}
+                    .Bolinha      {width:12px;height:12px;border-radius:50%}
+                    .INPUTES *    {width:33%}
+                </style>
+                <p>Calcular Porcentagem de Cores</p>
+                <input type="file" accept="image/*,.svg" onchange="Calc_COR(event)">
+                <div id="Ml2" class="Ct Gap">
+                    <div>
+                        <div class="INPUTES Ct" style="width:300px">
+                            <select class="Material" onchange="Calc_Valor_COR()" onload="Inn(this,Tm_Opt(ObjKey(HH.PVC)))"></select>
+                            <input type="number" class="Larg" placeholder="Largura" oninput="Calc_Valor_COR()">
+                            <input type="number" class="Alt" placeholder="Altura" oninput="Calc_Valor_COR()">
+                        </div>
+                        <div class="Inform none"></div>
+                        <input class="IptVal" type="number" oninput="Calc_Valor_COR()" placeholder="Valor de Corte">
+                        <div class="CustoPVC"></div>
+                        <div class="out Cl Gap" style="width:300px"></div>
+                        <div class="Valores Ct Gap"></div>
+                    </div>
+                    <div class="view"></div>
+                </div> 
+
+                <script> 
+                    async function Calc_COR(e){
+                        const [Cores,Img]=await Calc_Prcnt_COR(e)
+                        const Lista=Object.entries(Cores).sort((a,b)=>a[1]-b[1])
+                        const Lista2=Lista.filter(e=>e[0]!='Branco')
+                        const Dividir=(Cores.Branco||0)/Lista2.length
+                        ListCOR=Lista2.map(([c,v])=>[c,v+Dividir])
+                        const Barra=L=>'<div class="CorBarra">'+L.map(([Cor,val])=>{
+                            const RGB=HH.CORES[Cor],Txt=RGB[0]+RGB[1]+RGB[2]>400?'#000':'#fff'
+                            return `<div class="Ct" style="width:${val}%;background:rgb(${RGB});color:${Txt}">${val.toFixed(2)}%</div>`
+                        }).join('')+'</div>'
+                        $('#Ml2 .out').innerHTML=Barra(Lista)+Barra(ListCOR)
+                        Inn('#Ml2 .view','')
+                        $('#Ml2 .view').append(Img)
+                        Calc_Valor_COR(ListCOR)
+                    }
+
+                    function Calc_Valor_COR(ListCOR){
+                        const G=c=>$('#Ml2 '+c)
+                        const Material=G('.Material').value
+                        const Largura=+G('.Larg').value||0
+                        const Altura=+G('.Alt').value||0
+                        const Corte=+G('.IptVal').value||0
+                        const Chapa=HH.PVC[Material]||0
+                        const Metro=Chapa/(1.22*2.44)
+                        const PVC=Largura*Altura*Metro
+                        const Total=PVC+Corte
+                        G('.Inform'  ).innerHTML=`Chapa Inteira: ${RS(Chapa)}<br>Valor M²: ${RS(Metro)}<br>`
+                        G('.CustoPVC').innerHTML=`PVC: ${RS(PVC)}<br>Corte: ${RS(Corte)}<br>`
+                        G('.Tottal'  ).innerHTML=`<h2>Total: ${RS(Total)}</h2>`
+                        G('.Valores' ).innerHTML=ListCOR.map(([Cor,val])=>`<div class="ValCor"><span class="Bolinha" style="background:rgb(${HH.CORES[Cor]})"></span><span>${RS(Total*val/100)}</span></div>`).join('')
+                    }
+                </script>
+            </div>
+
+            <!-- <div class="Box1 none">
+                <div class="Cl none">                   
+                    <div class="Cl"><input id="Compmnt" type="text" placeholder="Comprimento" value="0"></div>
+                    <div class="Cl none"><button class="Ct" onclick="ValTogg('#BackCub','0','1')">Completar Cubo</button><input id="BackCub" class="none" value="0"></div>
+                    <button class="none" onclick="Gera3d($('#NewCanvas'))">Roda 3D</button>
+                </div>
+                <div onload="Inn(this,Tm_DataNatora())"></div>
+                <div class="Ct">
+                    <input id="valor" type="number" placeholder="Valor em R$" oninput="simular()">
+                    <button onclick="simular()">Simular</button>
+                    <table>
+                        <thead><tr><th>Parcelas</th><th>Taxa</th><th>Total (R$)</th><th>Parcela (R$)</th></tr></thead>
+                        <tbody id="res"></tbody>
+                    </table>
+                </div>
+                <script>
+                        function simular(){
+                            const v=+valor.value;if(!v)return alert("Digite um valor!")
+                            Inn(res,TaxaMpag.map((t,i)=>{const tot=v*(1+t),parc=tot/(i+1);return `<tr><td>${i+1}x</td><td>${(t*100).toFixed(2)}%</td><td>${tot.toFixed(2)}</td><td>${parc.toFixed(2)}</td></tr>`}).join(''))
+                        }
+                </script>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+<script>// Iniciação
+    // document.addEventListener('click',e=>{const targ = e.target
+    //     Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
+    //     if($('#ORC')?.contains(targ)){ATV(_tr(targ));ReloadDetalhes(_tr(targ))}
+    //     if(targ.closest('.Sugg')){return}{Add_N($$('#ORC tr:not(.Atv) .Sugg'))} // LINDO TREXO é uma Gambiarra mais ta BOM (Fazer a Cascata igual Bureal Usando este metodo aqui!)
+    //     // isso Deve virar Padão tipo algo genético, pra usar em varios
+    //     // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
+    // })
+    // document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
+    //     document.addEventListener('keydown',function(event){
+    //         if(event.key==='Escape'){
+    //             if(EShow($('.FModal'))){return}
+    //             else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
+    //         }// F_Clen(Atual.Pag) // se for outro botão
+    // })})
+
+    Onloads('body') ; Get_User()
+
+    async function PosLogin(U){
+        USUARIO = U  ; LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
+        await SB_GET_Clnt()
+        NavPag(Atual.Pag)
+        await RodaTable('PROD')
+        await RodaTable('MATR')
+    }
+
+    async function RodaTable(Typ,Filt,Rgx){
+        const bs = BS[Typ]
+        const data = await SB_GETT(Typ,bs.Limit,'*',bs.Ordnn,null,Filt)
+        fazJJJ(Typ,data)
+    }
+</script>
+
+</html>

@@ -234,8 +234,10 @@ h1,h2,h3,h4,h5,h6{font-weight:600;color:var(--CorPrin);fill:var(--CorPrin)}
   .TBLAA :is(select,input){padding: 0px !important}
 
 /*Outros Tabela*/
-  .TBLAA td          {height:37px}
-  .TBLAA td img      {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+  .TBLAA td           {height:37px}
+  .TBLAA td img       {max-width: 35px;max-height: 17px;width: auto;height: auto;object-fit: contain;}
+  .TBLAA td >div>a    {width: auto;height: 10px ; right:10px ; gap: 2px;}
+  .TBLAA td >div>a>svg{width:auto; height:100%} /*Flag*/
   .TBLAA td .svg-Lixo{height:17px;width:auto; fill:#ffbb00}
   .CSS1.Lite .TBLAA td.Foco{background:#c300ff2a}
   .CSS1.Dark .TBLAA td.Foco{background:#ffffff18}     

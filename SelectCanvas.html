@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<title>Seleção Canvas</title>
+
+Largura: <input type="number" id="W">
+Altura:  <input type="number" id="H">
+<button onclick="Rodar()">Rodar</button><br><br>
+<canvas id="C" style="border:1px solid"></canvas>
+<h3>Áreas Criadas:</h3>
+<div id="Info"></div>
+
+<script>
+    const $=x=>document.getElementById(x),C=$('C'),X=C.getContext('2d')
+    let A=[],S
+    function Rodar(){let w=+W.value,h=+H.value ; if(!w||!h)return alert('Valores inválidos') ; C.width=w;C.height=h;A=[];Info.innerHTML=''}
+    C.onmousedown=e=>S={x:e.offsetX,y:e.offsetY,w:0,h:0}
+    C.onmousemove=e=>{if(!S)return ; S.w=e.offsetX-S.x ; S.h=e.offsetY-S.y ; Draw()}
+    C.onmouseup=()=>{if(!S)return ; A.push(S);S=null;Draw() ; Info.innerHTML=A.map((a,i)=>`<p>Seleção ${i+1}: X:${a.x}, Y:${a.y}, L:${a.w}, A:${a.h}</p>`).join('')}
+    function Draw(){X.clearRect(0,0,C.width,C.height);[...A,...S?[S]:[]].forEach(a=>X.strokeRect(a.x,a.y,a.w,a.h))}
+</script>
