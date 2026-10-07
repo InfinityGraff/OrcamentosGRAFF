@@ -316,7 +316,7 @@
         Inn($('.Rang-Min',R),a) ; Inn($('.Rang-Max',R),b)
     }
     
-    function FiltMesS(mes){const arr = Meses2026[mes] ; return `Data.is.null,and(Data.gte.${arr[0]},Data.lt.${arr[1]})`}
+    function FiltMesS(meses){return ['Data.is.null',...meses.map(m=>{const [a,b]=Meses2026[m] ; return `and(Data.gte.${a},Data.lt.${b})`})].join(',')}
 
     async function SB_Filt(Typ,Fls,Modo='E'){
         let q=supaBASE.from(Typ).select('*')
@@ -811,7 +811,7 @@
             </div>
             <div class="Ct">
                 <p class="PT"><</p>
-                <select onchange="RodaTable('${Typ}',FiltMesS(this.value))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
+                <select onchange="RodaTable('${Typ}',FiltMesS([this.value]))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
                 <p class="PT">></p>
             </div>
             ${Typ=='GRAD' ? `<select onchange="RodaTable('${Typ}',this.value)">${Tm_Opt(['Fornecedor','G','B','I','U','J','RR','W','WM'])}</select>` :  ''}
@@ -834,8 +834,8 @@
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
-        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS('Setembro') : // Filt||ORR({Clnt:[4266]}) : // 624 | papacapym 490
-                              Typ=='GRAD' ? ORR({  Id:`${Filt||'B'}\\_%`}) :
+        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS(['Setembro','Outubro']) //  Filt||ORR({Clnt:[5143]}) //  : //  : //  : // Filt||ORR({Clnt:[4266]}) : // 624 | papacapym 490
+                            : Typ=='GRAD' ? ORR({  Id:`${Filt||'B'}\\_%`}) :
                               Typ=='ARTE' ? ORR({Orgn:`RTN`             }) : Filt
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
