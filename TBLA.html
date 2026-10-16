@@ -839,7 +839,7 @@
         const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS(['Setembro','Outubro']) // [] Filt||ORR({Clnt:[5143]}) //  : //  : //  : // Filt||ORR({Clnt:[4266]}) : // 624 | papacapym 490
                             : Typ=='GRAD' ? ORR({  Id:`${Filt||'B'}\\_%`}) :
                               Typ=='ARTE' ? ORR({Orgn:`RTN`             }) : Filt
-        const Grades = Typ=='PDDS' ? '_' : ''
+        const Grades = Typ=='PDDS' ? '' : ''
         const data = await SB_GETT(Typ,bs.Limit,selectStr,bs.Ordnn,null,Filtsiniciais,Grades) // esses Filtros Iniciais tem que ficar guardado em algum Lugar storage, pra usar Fixo
         fazJJJ(Typ,data) ; AutoCOMP(Typ) //; if(Typ=='PDDS'){GAMBIARRAA(J[Typ])}
         Typ=='GRD2' ? Forns.forEach(e=>Tm_Table4(Typ,e,FiltrarR(J[Typ],[e,`${e}_`]))) : Tm_Table(Typ)
