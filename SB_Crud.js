@@ -268,7 +268,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
     }
    
-    async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Filt){
+    async function SB_GETT_Old(Typ,Limit,Slct,Ordn,Uniq,Filt){
         LOG(Filt)
         let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
              if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
@@ -283,6 +283,57 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         MyAlert(`✔️ Get(${Typ})`)
         return All
     }
+
+
+
+
+
+
+
+function FiltGRAD(Q,Grad){
+    if(Grad==='')return Q
+
+    Q=Grad==='_' ? Q.is('Serv.Grad',null) : Q.eq('Serv.Grad',Grad)
+
+    return Q.not('Serv','is',null)
+}
+async function SB_GETT(Typ,Limit,Slct,Ordn,Uniq,Filt,Grad=''){
+    let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
+
+    if(Typ==='PDDS'){
+        Q=Q.order('Id',{ascending:false})
+        Q=FiltGRAD(Q,Grad)
+    }
+
+    if(Uniq)Q=Q.eq('Id',Uniq)
+    else if(Filt)Q=Q.or(Filt)
+
+    if(Limit)Q=Q.limit(Limit)
+
+    if(Uniq||Limit||Filt||Grad!==''){
+        const {data,error}=await Q
+        if(error)return LOG(error)
+        MyAlert(`✔️ Get(${Typ})`)
+        return data
+    }
+
+    let All=[],lim=1000,ofs=0,data
+
+    do{
+        const {data,error}=await Q.range(ofs,ofs+lim-1)
+        if(error)return LOG(error)
+        All.push(...data)
+        ofs+=lim
+    }while(data.length===lim)
+
+    MyAlert(`✔️ Get(${Typ})`)
+    return All
+}
+
+
+
+
+
 
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
     function RmvRow_DOM(Typ,Id   ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
