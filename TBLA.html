@@ -836,7 +836,7 @@
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const bs = BS[Typ]
         const selectStr = SB_CriaSlct(Typ)
-        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS(['Setembro','Outubro']) // [] Filt||ORR({Clnt:[5143]}) //  : //  : //  : // Filt||ORR({Clnt:[4266]}) : // 624 | papacapym 490
+        const Filtsiniciais = Typ=='PDDS' ? Filt||FiltMesS(['Outubro','Novembro']) // Filt||ORR({Clnt:[5039]}) [] Filt||ORR({Clnt:[5143]}) //  : //  : //  : // Filt||ORR({Clnt:[4266]}) : // 624 | papacapym 490
                             : Typ=='GRAD' ? ORR({  Id:`${Filt||'B'}\\_%`}) :
                               Typ=='ARTE' ? ORR({Orgn:`RTN`             }) : Filt
         const Grades = Typ=='PDDS' ? '' : ''
