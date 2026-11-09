@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
+    <title>Tabelas</title>
+    <link   href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="./Biblioteca/PreScript.js"></script>
+    <link   href="./CssGRAFF.css"                 rel="stylesheet">
+    <script src="./BaseGRAFF.js"></script>
+
+
+    <script src="./BiblGRAFF.js"    ></script>
+    <script src="./DadosClientes.js"></script>
+    <script src="./SB_Crud_New.js"      ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="./supaBASE.js"></script>
+</head>
+
+<script> // Biblioteca
+    const TRs      =       Typ=>$$(`#H_${Typ} > tbody > tr`)
+    const Nav_N    =     (a,b)=>{Add_N(a);Rmv_N(b)}
+    const NAVPAG   =       Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
+    const Trim     =         e=>e.trim().replace(/\s+/g,' ')
+    const ReszH    =       Typ=>{Tog($(`#H_${Typ}`),'hMin')                                            ;SaveConfig('a')}
+    const ReszW    =       Typ=>{Tog($(`.Confy_${Typ} .WrapTable`),'w95');Tog($(`.Confy_${Typ}`),'w95');SaveConfig('a')}
+    const Tog_Card =       Typ=>{const Card = Coten($(`#H_${Typ}`),'Card') ; TRs(Typ).forEach(tr=>{AddTrue(tr,'Box3',Card)})}
+    const Rsumo    =       Typ=>BS[Typ].Resumo?.forEach(e=>Tog_N($$(`#H_${Typ} > :is(thead,tbody,tfoot) > tr > *:nth-child(${e})`)))
+    const CtrlSoma =        Eu=>{Tog(Eu,'SelectSoma') ; const R = d_r(Eu) ; Inn(`.Somaa_${R.Ty}_${R.Cl}`,`${RS(SOMA($$(`${Rx7(R.Ty,R.Cl)}.SelectSoma`).map(e=>Nm(e))))}`)}
+    const ClrSUMM  =(Eu,Typ,Col)=>{Inn(Eu,'') ; $$(`${Rx7(Typ,Col)}`).forEach(e=>Rmv(e,'SelectSoma'))}
+    const ExecSwith= (Pag,Typ)=>{Add_N($$(`#Pag_${Pag} .Slidde`)) ; Rmv_N($(`#Pag_${Pag} .Confy_${Typ}`)) ; GetTable(Typ)}
+    const CopyFone = (Fone,Eu)=>LOG(Fone)
+    const ArrDif   = (Arr=[],Arr2=[])=>Arr.filter(v=>!Arr2.includes(v)) // remove todos itens os que estão Arr2
+    const ArrInt   = (Arr=[],Arr2=[])=>Arr.filter(v=>Arr2.includes(v))  // mantem apenas os que existe no Arr2
+    const RmvKeys  = (Obj,Arr)=>{const New={...Obj} ; Arr.forEach(Key=>{delete New[Key]}) ; return New}
+    function SaveConfig(e){LOG('SaveConfig')}
+    function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
+    function Mk(Stts,c,Texto='white'){return {Stts,Cor:COR1[c],Dark:COR2[c],Texto,TxPcy:CorPacyy(COR1[c])}}
+
+    async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
+    const ORR = o=>Object.entries(o).flatMap(([k,v])=>(Array.isArray(v)?v:[v]).map(v=>`${k}.${typeof v=='string'?'like':'eq'}.${v}`)).join(',')
+    //function FiltMesS(meses){return ['Data.is.null',...meses.map(m=>{const [a,b]=Meses2026[m] ; return `and(Data.gte.${a},Data.lt.${b})`})].join(',')}
+    function FiltMesS(meses){return {or:[{field:'Data',op:'isnull'},...meses.map(m=>{const [a,b]=Meses2026[m];return {and:[{field:'Data',op:'gte',value:a},{field:'Data',op:'lt',value:b}]};})]};}
+</script>
+
+<style>  /*O CSS Interno*/
+    body.grid {height:100vh;display:grid;grid:"A A" auto"B B" 1fr / 1fr}
+    #PAGES    {flex:1 ; height:100% ; overflow-y:hidden}
+    #PAGES > *{height:100% ; overflow-y:scroll}
+    #COLUN    {height:100% ; background:#1a1a1a}
+
+    .BndjTBL tbody td                            > div:not(.Sklt)      {width: 100% !important; height: 100% !important;} /*pra pegar as de dentro*/
+    .TBLAA   tbody     td:not([class*="-Bndj-"]) > div:not(.Sklt)      {width: 100% !important; height: 100% !important;} /*pra pegar as de Fora da Bndj*/
+    .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
+    .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
+    .BndjTBL tbody td p                                                {width: 100%;/*height:100%*/;padding:2px 6px; text-align:center}
+    .TBLAA   tbody >    tr:not([class*="Hoov"]):hover   {filter:saturate(1.6) brightness(1.05); z-index: 999999}
+    .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index:999999}
+
+    textarea{padding: 0px}
+    .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px}
+    .EtpSVG{height:25px ; width:25px ; pointer-events: none}
+    #H_PDDS > tbody > tr > td:nth-child(11)  svg{margin:0px 5px} /*Lixo*/
+
+    /*CSS do BS*/
+    .InfoBS p   {color:#b300b3;}
+    .SB_ID      {background:#7d0088;color:#ffffff}
+    .IconSVG    {height:30px; width:30px; border-radius:10px; border:solid 1px gray}
+    .IconSVG svg{height:15px; width:auto; fill:white}
+    .MoreTable{width:200px; top:100%; right:0px; background:#22172c; padding:15px}
+    .w95{width: 95%;}
+    :is(.DashDsng,.DashCDO) img{width: 80px; height: 80px;}
+    :is(.DashDsng,.DashCDO) i{color:#8dff57}
+</style>
+
+<script> // BASE
+    const Atual    ={Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
+    const FiltBase ={PDDS:FiltMesS(['Outubro'])}
+    const FiltsInc2={PDDS:{'Clnt.Clnt':'Kauanzinho Barbeiro'}}//{'Serv.Grad':'_'}//{'Clnt.Loja':'Weed','Serv.Cmnt':'Weed'}
+
+    const LALEL        = {
+        SERV:{
+            Orcamento:c=>Mk('Orçamento',c,'black'),
+            Arte     :c=>Mk('Arte'     ,c),
+            Impressao:c=>Mk('Impressão',c),
+            Pronto   :c=>Mk('Pronto'   ,c),
+            Entregue :c=>Mk('Entregue' ,c),
+            Devendo  :c=>Mk('Devendo'  ,'Redd'),
+            Concluido:c=>Mk('Concluído','YGrn')
+        },
+        GRAD:{// Muita GAMBIARRA
+            Falta_Data:Mk('Falta','Azul'),
+            Falta_Cont:Mk('Falta','Roxo'),
+            Falta_VlrO:Mk('Falta','Redd'),
+            Falta_Data_Cont:Mk('Falta','Yelw'),
+            Falta_Data_VlrO:Mk('Falta','Yelw'),
+            Falta_Cont_VlrO:Mk('Falta','Yelw'),
+            Falta_Data_Cont_VlrO:Mk('Zerado','Roxo','black'),
+            OK:Mk('OK','Gren'),
+        },
+        ARTE:{
+            Data:c=>Mk('A_Data'   ,c),
+            Img :c=>Mk('Arte'     ,c),
+            Valr:c=>Mk('A_Valr'   ,c),
+            Entg:c=>Mk('Entregue' ,c),
+            Ok  :c=>Mk('Concluído',c),
+        }
+    }
+    const ListasGRADES = {// Muita GAMBIARRA
+        Falta_Data:['Falta','Yelw'],
+        Falta_Cont:['Falta','Yelw'],
+        Falta_VlrO:['Falta','Yelw'],
+        Falta_Data_Cont:['Falta','Roxo'],
+        Falta_Data_VlrO:['Falta','Roxo'],
+        Falta_Cont_VlrO:['Falta','Roxo'],
+        Falta_Data_Cont_VlrO:['Zerado','Roxo'],
+        OK:['OK','Gren']
+    }
+</script>
+
+<script> // ----- GRIFO -----
+    const RmvGrifo=e=>{Inn(e,Inn(e).replace(/<strong[^>]*>(.*?)<\/strong>/gi,"$1")) ; Rmv(e,'Psq')}
+    const Grifar_Not=(tr,Typ,Val)=>{
+        const td = _td($(Rx7(Typ,Val[0]),tr))
+        Add(td,'GrifNot1')             // Div agora Possúi GrifNot do Tipo 1
+        Inn($('.grifoo i',td),Val[2])  // Atribuir o Valor pra dentro do GrifNot
+    }
+    function DOM_Grif(Typ,Regex){
+        TRs(Typ).forEach(tr=>{
+            $$('.GrifNot1',tr).forEach(e=>Rmv(e,'GrifNot1'))
+            $$('.P-P',tr).forEach(p=>{RmvGrifo(p) ; if(!Regex)return; if(["INPUT","SELECT"].includes(p.tagName)){Add(p,'Psq')}else{Inn(p,GrifTxt(Inn(p),Regex))}})
+        })
+    }
+</script>
+
+<script> // ---- PESQUISA ----
+    const oPesq = {Aa:'Aa',A_:'[]',In:'<',Ot:'>',_C:'~',Bj:'Bj'}
+
+    const Tm_Pesq=Typ=>
+    `<div class="pPesq Pesq_${Typ} hOv Rltv">
+        <input class="w100" placeholder="Pesquisar em ${D_Brev[Typ]}..." oninput="DOM_Pesq('${Typ}')" onkeydown="KeyEntr(()=>SB_Pesq('${Typ}'))">
+        <div class="Abslt Ct gap" style="top:8px;right:8px">
+            ${ObjKey(oPesq).map(e=>`<a class="AaAa Pesq-${e}" onclick="TOV(this);SB_Pesq('${Typ}')">${oPesq[e]}</a>`).join('')}
+            <img class="AaAa" style="width:17px" onclick="SB_Pesq('${Typ}')" src="./SVG/Icon_Lupa.svg">
+        </div>
+        <a class="AaAa Abslt PT" style="left:8px;top:8px" onclick="Tog_N(this);Tog($('.COL1',Avo(this)),'NONE')">▼</a>
+        <select class="COL1 Abslt NONE" style="top:0px;left:0px;width:70px">${Tm_Opt(BS[Typ].Orden)}</select>
+    </div>`
+
+    function DOM_Pesq(Typ){
+        const busca = Trim($(`.Pesq_${Typ} input`).value)
+        const [Aa,A_,In,Ot,_C,Bj] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${Typ} .Pesq-${e}.Atv`))
+        const getV = (j,c)=>{
+            if(!BS[Typ].FK?.includes(c)) return [String(j[c])]
+            return (j[c]||[]).map(x=>{let v = x[c] ; while(typeof v==='object'&&v!==null) v=Object.values(v)[0] ; return String(v)})
+        }
+        const isMatch=(j)=>{
+            for(const c in j){const vals = getV(j,c) ; if(vals.some(v=>String(v).toLowerCase().includes(busca.toLowerCase()))) return true}
+            return false
+        }
+        const Res = J[Typ].filter(isMatch)
+        $$(`#H_${Typ} > tbody > tr`).forEach(tr=>Add_N(tr))
+        Res.forEach(j=>{const tr = $(`#H_${Typ} > tbody > .tr-${j.Id}`) ; if(tr) Rmv_N(tr)})
+        DOM_Grif(Typ,busca?[busca.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),Aa,_C]:null)
+        Re_Foot(Typ)
+    }
+
+    async function SB_Pesq(Typ,Col){
+        const busca1=Trim($(`.Pesq_${Typ} input`).value)
+        const busca2= Col ? Trim($(`.PesqCol_${Typ}_${Col}`).value) : null
+        /*Gambiarra*/ const busca = Col ? busca2 : busca1
+        const [Aa,A_,In,Ot,_C,Bj] = ObjKey(oPesq).map(e=>!!$(`.Pesq_${Typ} .Pesq-${e}.Atv`))
+        const Filt = busca?{search:busca,...(Col?{column:Col}:{}),options:{Aa,A_,In,Ot,_C},filtrarInternos:Bj}:null
+        LOG('FINAL',Typ,Col,[Aa,A_,In,Ot,_C,Bj],Filt)
+        return GetTable(Typ,Filt||'Vazio')
+    }
+</script>
+
+<script> // ---- FILTER ----
+    const Tm_thSort=(Typ,Cols)=>{            // ✔️ Carrega Todos os Cabeçalhos (melhorar os CSS do input=[date])
+        return Cols.map((col,x)=>{
+        const bs = BSJsn(Typ,col) ; const Tem = bs?.TH=='--' ; const NOne = bs?.CLS.includes('none')?'none':''
+        const onck = Tem ? '' : `onclick="ShowBndj(Pai(this),'${Typ}');Tm_Filt(Pai(this),'${Typ}','${col}','${bs?.TH}')"`
+        return col=='Lixo'?`<th><p>${''}</p></th>`:
+        `<th class="ThFilt Rltv PT ${NOne}">
+            <p class="PT ${Tem?'':'tFbj'}" name="${col}" ${onck}>${Typ=="SERV"?col:bs?.COL||col /*GAMBIARRA pra remvoer o DbCol*/}</p>
+            <i onclick="Orden(this,event,'${x}')">▼</i>
+            ${Tem ? '' : 
+            `<b class="Ct none Atv">0</b><b class="Ct none Rtv">0</b>
+            <div class="BndjFLT BNdj Abslt none">
+                ${bs?.TH=='Num' ? Tm_RangNUM(Typ,col) :
+                `<div class="BjConf Stky Ev">
+                    <input placeholder="PEsquisa em ${col}..." class="PesqCol_${Typ}_${col}" onkeydown="KeyEntr(()=>SB_Pesq('${Typ}','${col}'))">
+                    <img class="HOV PT Ct" onclick="TOV(this); F_Rndn('${Typ}','${col}')" src="./SVG/Icon_Randomizar.svg">
+                    <img class="HOV PT Ct" onclick="TOV(this);Ex_Filt('${Typ}','${col}')" src="./SVG/Icon_Destacar.svg">
+                </div>
+                <span class="Sugg Cl">${col}</span>`}
+            </div>
+        `}</th>`}).join('')
+    }
+
+    async function Tm_Filt(Eu,Typ,col,Bs){   // ✔️ RENDERIZA FILT DOM Depende da Tabela Carregada
+        BSFIL[Typ]??={} ; if(BSFIL[Typ][col]==true){return} ; BSFIL[Typ][col]=true // evitar carrergar 2 vezes
+        const Onclk =e=>`onclick="F_Clik(this,'${Typ}','${col}','${e}');Ex_Filt('${Typ}','${col}','${Bs}')"`
+        const Tm_FList=(arr,Typ,col)=>arr.map(e=>`<div class="Ct w100"><a class="PT RD HOV" ${Onclk(e)}>-</a><p data-Typ="${Typ}" data-Col="${col}">${e}</p><a class="PT RD HOV" ${Onclk(e)}>+</a></div>`).join('')
+        
+        const Lista = //Typ=="PDDS" && col=='Stts' ? ListEtps.map(e=>`${e[0]} <a style="fill:rgb(${COR1[e[1]]})">${SVGEtapas[e[0]]}</a>`) :
+                      Bs == 'SB'        ? await SB_Uniq(Typ,col) :
+                      Bs =='J'          ? Uniq(J[Typ].map(E=>E[col])) :
+                      Bs.includes('J-') ? Uniq(J[Typ].flatMap(E=>Array.isArray(E.OS)?E.OS.map(x=>x[Bs.split('-')[1]]):[])) :
+                      Bs.includes('O-') ? O[Bs.split('-')[1]]         :
+                      Bs =='Date'       ? ''                          :
+                      'nada'
+        const NovoArry = Lista.map(e=>e===''?"'Vazio'":e).sort(e=>e==="'Vazio'"?-1:1)
+        Inn($('.Sugg',Eu),Tm_FList(NovoArry,Typ,col))
+    }
+    
+    function F_Clik(Eu,Typ,col,val){         // ✔️ Pinta o Filt com Ativo e Desativo
+        const [r,a]=['ThFilt_Rtv','ThFilt_Atv']
+        const PP = $('p',Pai(Eu)) // Valor Clicado
+        if(Inn(Eu)=='-'){if(Coten(PP,a)){Rmv(PP,a)}else{Tog(PP,r)}}
+        if(Inn(Eu)=='+'){if(Coten(PP,r)){Rmv(PP,r)}else{Tog(PP,a)}}
+        const Notifi=e=>{const l = $$(`.ThFilt_${e}`,_th(Eu)).length ; const n = $(`b.${e}`,_th(Eu)) ; if(l==0){None(n)}else{Show(n)} ; Inn(n,l) } // Atualiza Notificações + ou -
+        Notifi('Atv') ; Notifi('Rtv')
+    }
+    
+    function Ex_Filt(Typ){                   // ✔️ (Typ,col,Bs) 
+        const aTV=$$(`#H_${Typ} > thead .ThFilt_Atv`).map(e=>[e.dataset.col,Txt(e)]);
+        const rTV=$$(`#H_${Typ} > thead .ThFilt_Rtv`).map(e=>[e.dataset.col,Txt(e)]);
+        const Agrupar=Arr=>Object.groupBy(Arr,([col])=>col)
+        const Pos=Agrupar(aTV),Neg=Agrupar(rTV)
+        const Filtros=[]
+        for(const [col,pares] of Object.entries(Pos)) Filtros.push(     {field:col,op:'in',value:pares.map(e=>e[1])})
+        for(const [col,pares] of Object.entries(Neg)) Filtros.push({not:{field:col,op:'in',value:pares.map(e=>e[1])}})
+        const Filt = Filtros.length?{and:Filtros}:null
+        return GetTable(Typ,Filt)
+    }
+    
+    function F_Clen(Typ){                    // ✔️ Limpa todos os Filtros
+        //TRs(Typ).forEach(e=>{For(20).forEach(E=>Rmv(e,`n${E}`)) ; Bkg(e,'')}) // Exibe todas as Linhas e Limpa o Random
+        $$('.ThFilt b'  ).forEach(e=>None(e)) // Limpa Notifi dos Filter
+        const Class = ['ThFilt_Atv','ThFilt_Rtv','SelectSoma']
+        Class.forEach(e=>{$$(`.${e}`).forEach(E=>{Rmv(E,e)})})
+    }
+</script>
+
+<script> // ---- ORDEN ----
+    function Orden(e,ev,x,order=null){      // ✔️
+        const AllI    =(table,Atv=null)=>$$(`:scope > thead > tr > th ${Atv=='Atv'?'i.Atv':'i'}`,table)
+        function TogSeta(e,asc){AllI(_table(e)).forEach(i=>{DTV(i);i.textContent='▼'});const atu = SibQSl(e,'i') ; ATV(atu) ; atu.textContent = asc?'▼':'▲'}
+        const table = _table(e)
+        const cOl = $('p',_th(e))
+        const TBODY = $('tbody',table) // TBODYID ver se o melhor seria isso
+        const asc = order ? order === 'asc' : table.dataset.sortOrder !== "asc"
+        const Get=E=>$('.P-P',E.children[x])
+
+        const Ordn = [...TBODY.rows].sort((a,b)=>{                    
+            if(KeyCtrl(ev)){ // se tiver com Cntrl Selecionado faz o Filtro por Caracteres
+                const lenA = (VAL(Get(a)) || '').length
+                const lenB = (VAL(Get(b)) || '').length
+                return asc ? lenA - lenB : lenB - lenA
+            }
+            if(cOl=='Data'){
+                // 📅 Se ambos forem datas válidas (ex: "2024-12-03")
+                    const dateA = new Date(VAL(Get(a)).trim() || '2000-01-01')
+                    const dateB = new Date(VAL(Get(b)).trim() || '2000-01-01')           
+                    if(!isNaN(dateA) && !isNaN(dateB)){return asc ? dateA-dateB : dateB-dateA}
+            }
+            // Ordena se for Numeros
+                const valA = parseFloat(Txt(Get(a)).replace('R$',''))
+                const valB = parseFloat(Txt(Get(b)).replace('R$',''))
+                if(!isNaN(valA) && !isNaN(valB)){return asc ? valA-valB : valB-valA}
+                
+            // Ordena como texto se não forem números
+                const txtA = `${VAL(Get(a))}`.replace('R$','')
+                const txtB = `${VAL(Get(b))}`.replace('R$','')
+                return asc ? txtA.localeCompare(txtB) : txtB.localeCompare(txtA)
+        })
+        table.dataset.sortOrder = asc ? "asc" : "desc"
+        Ordn.forEach(r=>TBODY.appendChild(r))
+        TogSeta(e,asc)
+
+        // Voltar ordem ao Normal
+    }
+</script>
+
+<script> // ---- REFOOR ----
+    const Tm_BJFOOT=(Typ,OBjj,dbrev)=>`
+    <div class="Ct">
+        <p class="PT TTfot tFbj" onclick="ShowBndj(Pai(this),'${Typ}')">${SOMA(OBjj.map(j=>j.qnt))} - ${OBjj.length} ${dbrev}</p>
+        <div class="Abslt none Cl BndjFOT BNdj w80">
+            <span class="Sugg Cl w100">${OBjj.map(j=>`<a class="Start2 w100 PT">${j.qnt} - ${j.val}</a>`).join('')}</span>
+            <div class="BjConf Stky2 w100 Ct">${SOMA(OBjj.map(j=>j.qnt))} - ${OBjj.length} ${dbrev}</div><a class="flip">${SVG.Ponta}</a>
+        </div>
+    </div>`
+
+    function Re_Foot(Typ,All){
+        setTimeout(()=>{
+            //const Ids = J[Typ].map(e=>e.Id)
+            const Bs  = ObjEtr(BS[Typ].Json).map(([k,v])=>v.FOOT!=''?[k,v.FOOT]:null).filter(Boolean) // tem um desse igualzinho em COLOR (fazer Helper)
+            Bs.forEach(([k,v])=>{
+                if(v=='--'){return}
+                const dbrev = BSJsn(Typ,k).COL||k
+                const _None = e=>!$(`#H_${Typ} tr.tr-${e}`).classList.contains('none')
+                const All   = J[Typ].filter(e=>_None(e.Id)).map(e=>e[k]) //const All   = J[Typ].map(e=>e[k])
+                const JsCOl = {Clnt:'Clnt',Serv:'Serv',Pgmt:'Valr'}
+                const all   = v=='UnJs' ? JJJ[AA(k)]?.map(e=>e[JsCOl[k]]).filter(Boolean) : ['']
+                const SUM   = {PgPX:0,PgAV:0}
+                if(Typ=='PDDS' && k=='Pgmt'){JJJ['PGMT'].forEach(p=>{const v=p.Valr||0 ; if(p.Form=='Pix'){SUM.PgPX+=v} else if(p.Form=='Av' ){SUM.PgAV+=v}})}
+                if(v=='Uniq'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(Typ,UniqAvnc(All),dbrev))}
+                if(v=='UnJs'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(Typ,UniqAvnc(all),dbrev))}
+                if(v=='AvPx'){Inn($(Rx8(Typ,'Foot',k)),`<div class="Cl"><div class="Ct">${Tm_RS(SUM.PgPX)}Pix</div><div class="Ct">${Tm_RS(SUM.PgAV)}Av </div></div>`)}
+                if(v=='Cont'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${  All.length  }</div>`)}
+                if(v=='Soma'){Inn($(Rx8(Typ,'Foot',k)),`<div class="TTfot noslt" onclick="">${RS_(SOMA(All))}<p class="Somaa_${Typ}_${k}" onclick="ClrSUMM(this,'${Typ}','${k}')"></p></div>`)} // Separação de Somas na Bandeija Interna
+                //if(v=='Stts'){Inn($(Rx8(Typ,'Foot',k)),Tm_BJFOOT(Typ,UniqAvnc(),dbrev))} // isso é pra as Etapas
+            })
+            // Inn($('#Dash_Dsng'),DashDsng(['Allan','Fexta','Landia']))
+            // Inn($('#Dash_CEO' ),DashCEO())
+            // tentar Jogar Gráfico dentro disso!
+            // Soma de M² de serviço, 
+            // Contar quantas Imagens tem
+        },0)
+    }
+</script>
+
+<script> // ---- AUTOCOMP & COLOR ----
+    const Regra=v=>v==0 ? 0 : v < 10 ? 10 : v
+    const Menor=Arr=>isArr(Arr) && Arr.length ? Arr.reduce((a,b)=>a.Stts.Lv < b.Stts.Lv ? a : b) : null
+    
+    const COMP = {
+        PDDS:{
+            Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
+                    const Ed  = LALEL.SERV.Devendo()
+                    const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
+                    return E?.Stts=='Entregue' && j.Deve ? Dev : E}
+        },
+        SERV:{
+            Clnt:j=>{if(j.Pdds){return [j.Pdds[0]?.Clnt[0]]}},
+            Foto:j=>`Foto/${j.Id}.webp` ?? '',                  // OK
+            Stts:j=>{
+                const S     = j.Stts
+                const Etp   = LALEL['SERV'][Rmvact(S.Stts)](S.Cor)
+                const opc   = _0_1(S.True/S.Total)
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['SERV']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+            },
+        },
+        PGMT:{
+            Clnt:j=>{if(j.Pdds){return [j.Pdds[0]?.Clnt[0]]}},
+        },
+        GRAD:{ImgU:j=>`Grad/${j.Id}.webp` ?? ''                     // OK
+            ,ImgG:j=>`Grad/${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
+            ,Forn:j=>Dbbrev[j.Id.split('_')[0]]                    // OK
+            ,VlrO:j=>j.OS?.Valr || 0                               // OK
+            ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+            ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
+            ,Stts:j=>{ // Muita GAMBIARRA
+                const GData=+(j.Data!=='')
+                const GCont=+(j.Cont==j.Serv?.length)
+                const GVlrO=+(j.VlrO==j.Summ)
+                const faltas=[]
+                if(!GData) faltas.push('Data')
+                if(!GCont) faltas.push('Cont')
+                if(!GVlrO) faltas.push('VlrO')
+                const Result = faltas.length ? `Falta_${faltas.join('_')}` : 'OK'
+                const Oobj = {Cor:ListasGRADES[Result][1], Stts:Result, True : GData+GCont+GVlrO, Total:3}
+                const S     = Oobj
+                const Etp   = LALEL['GRAD'][Rmvact(S.Stts)]
+                const opc   = _0_1(S.True/S.Total)
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['GRAD']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+            }
+            },
+        OS  :{Oimg:j=>  `OS/${j.Id}.webp` ?? ''},                   // OK
+        UBER:{Img :j=>`Uber/${j.Id}.webp` ?? ''},                   // OK
+        CLNT:{Foto:j=>`Clnt/${j.Id}.webp` ?? ''
+            ,Soma:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Valr') : 0
+            ,Medi:j=>j.Soma/(j.Pdds?.length||1)
+            ,Cust:j=>j.Pdds ? SOMA_Obj(j.Pdds,'Cust') : 0
+            ,Lcro:j=>j.Cust==0 ? '' : j.Pdds ? SOMA_Obj(j.Pdds,'Lcro') : 0
+            },
+        ARTE:{Cust:j=>j.Valr*0.7
+            ,Lcro:j=>j.Valr*0.3
+            ,Sttts:j=>{
+                const S     = j.Sttts
+                const Etp   = LALEL['ARTE'][Rmvact(S.Stts)](S.Cor)
+                const opc   = _0_1(S.True/S.Total)
+                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
+                const Level = ObjKey(LALEL['ARTE']).indexOf(S.Stts)
+                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
+            }
+            },
+    }
+
+    function AutoCOMP(Typ,Arr=J[Typ]){
+        if(!isArr(Arr)) return
+        Arr.forEach(j=>{
+            ;(BS[Typ]?.FK||[]).forEach(fk=>{ // percorre FKs internas
+                const Key=AA(fk) ; const V=j[fk]||j[Key]
+                if(isArr(V)) AutoCOMP(Key,V)
+                else if(V && typeof V=='object') AutoCOMP(Key,[V])
+            })
+            ObjKey(COMP?.[Typ]||{}).forEach(c=>{ // aplica COMP na 1° Camada
+                const fn=COMP?.[Typ]?.[c] ; const V=fn?.(j) ?? ''  // Coleta o Valor
+                j[c]=V ; JJ?.[Typ]?.[j.Id] && (JJ[Typ][j.Id][c]=V) // Aplica os J e JJ
+            })
+        })  
+    }
+</script>
+
+<script> // ---- LINK ----
+    async function Tm_Sugg(Ipt,R){
+        const _R     = d_r(R),COL=AA(_R.Cl)
+        const g      = BS[COL]?.Sugg    // Config Sugg
+        const NRow   = BS[COL]?.New     // Pode criar Nova Linha
+        const I      = Trim(Ipt.value)  // Limpar exesso de Espaços
+        const RX     = new RegExp(I)
+        const div    = $('.Sugg',Pai(Ipt)) ; Show(div)
+        const Griff  = (e,Rgx)=>`${e}`.replace(Rgx,e=>`<b style="background:#8f007c; color:white">${e}</b>`)     
+
+        if(g.Tm=='List' ){
+            const Find = BS_CLNT.filter(e=>Object.values(e).some(v => RX.test(String(v))))
+            const tm_P = {CLNT:e=>`${e.Id} - ${e.Clnt}`}
+            Inn(div,Find.map(e=>`<a class="PT w100 Ct" onclick="SB_Link(this,'${e.Id}','${R}','Escape')"><p>${Griff(tm_P[COL](e),RX)}</p></a>`).join(''))}
+        if(g.Tm=='Table'){
+            const Find = await SB_Sugg(g.Sug,COL,_R.Ty)
+            LOG('Find',Find)
+            const Ths  = ArrInt(BS[COL].Orden,ObjKey(Find[0]||{})) // Limpa Colunas antes de Carregar os Th
+            Inn(div,`<table><thead class="Stky" style="z-index:510"><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody></table>`)}
+        if(g.Tm=='Card' ){}
+    }
+
+    async function SB_Sugg(Mod,COL,Typ){
+        if(Mod=='Uniq') // ['MPAG']             // Somente as que não tem Link
+            return GetTable(COL,null,'SemTM')
+        if(Mod=='OKAY') // ['GRAD','OS','UBER'] // Todas as que não estão OKAY
+            return GetTable(COL,null,'SemTM')
+        if(Mod=='Free') // ['ARTE','CLNT']      // Só os 50 mais recentes
+            return GetTable(COL,null,'SemTM')
+        return []
+    }
+
+    async function LinkaR(Eu,ID){
+        const P = $('.P-P',Eu.closest('.LnK')),_R = d_r(P) // td Ativo
+        await EditCell(P,ID)  // a Edição tem que ser Feita na tabela ATIVA
+        const {data,error}=await supaBASE.from(_R.Ty).select('*').eq('Id',_R.Id) // depois tem que usar as coisas de rodaTable() Limpesas de Select que ele traz os FK certinho
+        _tr(P).outerHTML = Tm_Tr(_R.Ty,data)
+    }
+
+    async function SB_Link(Eu,Val,R,Escape){
+        const [Typ,Id,Col] = R.split('-'),COL=AA(Col)
+        if(COL=='CLNT' && !Escape){
+            if(!confirm(`${COL} ${Val} não existe.\nCriar Cliente agora?`)) return
+            const NewID = await SB_AddROW(COL,{Clnt:Val})
+            await supaBASE.from(Typ).update({[Col]:NewID}).eq('Id',Id)
+            LOG('Adicionou Novo Cliente')
+        }else{
+            LOG('Analisa',COL)
+            const Exs = await supaBASE.from(COL).select('Id').eq('Id',Val).single() // Conferir se Existe
+            if(!Exs.data){
+                const TBLLA = {'GRAD':{Id:Val,OS:null,Uber:null}}
+                if(!confirm(`${COL} ${Val} não existe.\nCriar agora?`)) return
+                await supaBASE.from(COL).insert(TBLLA[COL]||{Id:Val})
+            }
+            await supaBASE.from(Typ).update({[Col]:Val}).eq('Id',Id)
+        }
+        Read_Tr(_tr(Eu),Typ,Id)
+    }
+
+    async function RmvLink(Eu,R){
+        const [Typ,Id,Col,Tm]=R.split('-')
+        await Sb_EDIT(Typ,Id,{[Col]:null})
+        Read_Tr(_tr(Eu),Typ,Id) // Melhor Passar R talvez
+    }
+</script>
+
+
+
+
+
+
+<script> // TABELA
+
+    const Acc_Bndj = {}
+    const Tm_TT=(COL,Find,Typ,Col,R)=>{
+        //const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
+        const AllImgs=(e,COLL)=>{
+            const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k)   // Pega todas as Colunas que Possuem TM == Imagens
+            return colimg.map(i=>Tm_Tm['Imgs'](e[i]||'',`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('') // Rodar isso pra cada Imagem desta Linha
+        }
+        const Vazio = ['SERV','PGMT'].includes(COL) ? `<button class="Mini" onclick="">+ NOVO</button>` : ''
+        const Ttl   = BS[COL]?.Title
+        const Join  = Find.map(e=>Ttl.map(E=>e?.[E]).join('#')).join('|')
+        const Tt    = Find.length==0 ? Vazio : Ttl ? BrevTitle(COL,Join) : 'Sem Titulo'
+        const Nm    = Col==='Pgmt'? SOMA_Obj(Find,'Valr') /*SunPix(Tt)*/ : Tt.includes('button') ? '-' : Tt // Ainda é uma Gambiarra
+        const Flags = `<a class="Abslt Ct">${SVVVGG['Flag']}${SVVVGG['Flag']}</a>`
+        const Img   = Find.map(e=>{
+                                     if(!e){return ''} // Gambiarra
+                                     if(Typ=='PDDS' && Col=='Clnt'){return e?.Cntt ? `<img class="HOV" loading="lazy" onclick="CopyFone('${e.Cntt}',this)"  src="./CrudSB/Fone.webp">`:''}
+                                else if(Typ=='PDDS' && Col=='Serv'){return e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('')+Flags : ''}
+                                else if(Typ=='GRAD' && Col=='Serv'){return ''} // e?.Arte ? e.Arte.map(E=>AllImgs(E,'ARTE')).join('') : ''}
+                                else{return AllImgs(e,COL)}
+                            }).join('')
+        return {Tt,Nm,Img}
+    }
+
+    const LoadBndj=(Eu,R,Btn)=>{     // Renderiza Bandeija
+        if(Coten($('.BNdj',Pai(Eu)),'none') || Btn=='Btn'){
+            if(BjCarregado.includes(R) && Btn!='Btn'){return} ; BjCarregado.push(R)
+            function LoadLinhasBndj(R){
+                const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
+                const COL   = AA(Col)
+                const Find  = [].concat(Acc_Bndj[`${Typ}-${Id}-${Col}`]??[])
+                if(Find.length==0){return ''}
+                let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
+                if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')}               // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
+                /*GAMBIARRA*/ const DATAA = `<p class="P-P Ct h100 Abslt" onclick="TrcFih2(this,$('input',Pai(this)))">${'Data'}</p><input type="date" class="Abslt NONE" onblur="Inn($('p',Pai(this)),this.value?YMD(this.value):'Data');TrcFih2(this,$('p',Pai(this)))">`
+                return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>
+                    <tfoot><tr style="height:0px">${Ths.map(t=>{
+                        return `<td class="Rltv" style="height:0px">${
+                            t=='Data' ? DATAA :
+                            t=='OK'   ? `<input class="Abslt" type="checkbox">` :
+                            t=='Entg' ? `<input class="Abslt" type="checkbox">` :
+                            t=='Detg' ? DATAA :''}</td>`}).join('')}</tr></tfoot>`
+            }
+             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
+            Rmv_N($('.BNdj > table',Pai(Eu)))
+        }
+    }
+
+    function Tm_Bndj(R,Arr){         // Recebe Link ou Tabela Internação
+        const [Typ,Id,Col,Tm]=R.split('-'),COL=AA(Col)
+        const Find  = isArr(Arr)?Arr:[]
+        const TT    = Tm_TT(COL,Find,Typ,Col,R)
+        Acc_Bndj[`${Typ}-${Id}-${Col}`]=Find
+        return `<div class="Ct" onclick="LoadBndj(this,'${R}');ShowBndj(Pai(this),'${Typ}')">
+                    <p data-R="${R}" class="P-P T-T Ct PT" name="${TT.Nm}">${TT.Tt}</p>${TT.Img}
+                    <i class="grifoo PT RD" onclick="Tog_N($('i',this))"><i class="GrifColr"></i></i>
+                </div>
+                <div class="Rltv w100">
+                    <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
+                        <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
+                        ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">  + Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
+                          Tm=='Link'?`<button class="Mini" onclick="  RmvLink(this,'${R}')">Deslinkar ${Col}</button>
+                                      <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
+                    </div>
+                </div>`
+    }
+
+    function PrepTable(Typ){
+        const tabtab=(e,m)=>`<div class="WrapTable CT ${m}"><table id="H_${Typ}${e}" class="hMin Tbla w100"><thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table></div>`
+        return `
+        <div class="Bt Stky w95" style="height:40px">
+            <a>.</a>
+            <div class="gap Ct">
+                <button>Falta Pagamento</button>
+                <button>Pendentes      </button>
+                <button>Concluídos     </button>
+            </div>
+        </div>
+        <div class="Bt Stky w95" style="height:40px">
+            ${Typ=='SERV' || Typ=='PGMT' ? '' : `<button onclick="SB_AddROW('${Typ}')">+ Nova Linha</button>`}
+            <div id="PagPesq_${Typ}" class="PagPEsq w40"></div>
+            <div id="COnf_${Typ}"    class="Configs CT gap">
+                ${Tm_Interup2(SVG.List,SVG.Card,`TrcTog($('#H_${Typ}'),'Tbla','Card');Tog_Card('${Typ}')`)}
+                ${Tm_Check2(SVG.RszH  ,'',`ReszH('${Typ}')`)}
+                ${Tm_Check2(SVG.RszW  ,'',`ReszW('${Typ}')`)}
+                ${Tm_Check2(SVG.Rsumo,'',`Rsumo('${Typ}')`)}
+            </div>
+            <div class="Ct">
+                <p class="PT"><</p>
+                <select onchange="GetTable('${Typ}',FiltMesS([this.value]))">${Tm_Opt(['Meses',...ObjKey(Meses2026)])}</select>
+                <p class="PT">></p>
+            </div>
+            ${Typ=='GRAD' ? `<select onchange="GetTable('${Typ}',this.value)">${Tm_Opt(['Fornecedor','G','B','I','U','J','RR','W','WM'])}</select>` :  ''}
+            <button onclick="LOG('deve fazer a Requisição Novamente')">${SVG.Rload.replace('HOV PT','')}</button>
+            <button onclick="   F_Clen('${Typ}')"> ${SVG.Cler.replace('HOV PT','')}</button>
+            <div class="IconSVG Ct Rltv" onclick="Tog_N($('.MoreTable',this))">${SVG.More}
+                <div class="MoreTable Abslt Box1 none Cl">
+                    <button onclick="RenderBS('${Typ}')">Abrir o BS</button>
+                    ${Tm_Check2(SVG.Chek,'Exibir Atalhos',`Rsumo('${Typ}')`)}
+                </div>
+            </div>
+        </div>
+        <div id="InfoBS_${Typ}" class="w95 none"></div>
+        ${Typ=="GRD2" ? `<div class="Paizao w95 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w95')}
+        ${Typ=="ARTE" ? `<div class="w95 Ct"><div id="Dash_Dsng" class="Ct w50 Gap"></div><div id="Dash_CEO" class="Ct w50 Gap"></div></div>` : ''}
+        `
+    }  
+
+    const Filtros={
+        Filt4:{ // Data + comentário OU serviço
+            and:[
+                {field:'Data',op:'gte',value:'2026-10-01'},
+                {or:[
+                    {field:'Cmnt',op:'ilike',value:'%Weed%'},
+                    {relation:'SERV',where:{field:'Grad',op:'eq',value:'Gato'}}
+                ]}
+            ]
+        }
+    }
+
+    // const Filt135={
+    //     relation:'SERV',
+    //     where:{field:'Tipo',op:'in',value:[]}
+    // };
+
+    const Filt135={
+        relation:'PGMT',
+        where:{field:'Form',op:'in',value:[""]}
+        
+    };
+
+    // const Filt135={field:'Form',op:'in',value:['']}; // quando a Tabela for PGMT continuar usando isso, pra Limpar os Pix e Av
+
+    
+
+    
+
+    const Serv = [
+        "Acrílico","Adesivo","Arte","Bandeira","Banner","Calção","Camisa",
+        "Capa Barber","Capa De Bujão","Cardápio","Cartão","Carteira","Cartela",
+        "Cavalete","Crachá","Display","DTF","Edição","Etiqueta","Extra",
+        "Fachada","Figurinha","Folder","Folha","Ímã","JAILSON","Juros",
+        "Letreiro","Lona","Panfleto","Perfurado","Placa","Plaqueta",
+        "Plotagem","Quadro","Recorte","Serigrafia","Sinalização","Tabela",
+        "Tag","Talão","Tanque","Tecido","Topo de Bolo","Toten",
+        "Transparente","Venda","Vinil","WindFlag"
+    ];
+
+    const Tipo = [
+        "01","03 Geladeira","08 Carro","1","1 Via","2","2 camada","2 Camada","2 Camadas",
+        '"2,50"',"3","3mm","5 x 9","A3","A4","ACM","Acrilico","Acrílico",
+        "Adesiso","Adesivo","Adulto","Aluminio","Amarelo","Aplicação",
+        "Arte","Artes","B.Local","Baby look","Baby Look","BabyLook",
+        "Banner","Blackout","Bola","Boneco","Boneco PVC","borda",
+        "branco","Branco","brilho","Brilho","Brilho Local",
+        "Brilho localizado","Brinho","Camisa","Camisas","Carro",
+        "Cartela","Cartela e figurinha","Cartela Holográfica",
+        "Chaveiro","Colado","Colchê","Colchê  300g","com ilhós",
+        "com Ilhós","Completo","Copo","Dourado","Duplo","espelhada",
+        "Espelhado","Etiqueta","F","F.Verso","Faca","Faixa","Fig",
+        "figurinha","Figurinha","Figurinhas","Foto","Frase","Frente",
+        "Frente Costa","Frente verso","FV","FV Brilho","G","G1",
+        "Geladeira","Gola","Grande","Helanca","HElanca","holografico",
+        "Holografico","Holográfico","Ihós","ilhós","Ilhós","Ilós",
+        "Infantil","Infantil 6","Kit"
+        ];
+
+
+
+    async function GetTable(Typ,Filt,Exessao){
+        function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
+        if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
+        const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
+        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
+        LOG(data)
+        if(Exessao=='SemTM'){return data}
+        fazJJJ(Typ,data) ; AutoCOMP(Typ)
+        Typ=='GRD2' ? Tm_GRD2(Typ,J[Typ]) : Tm_Table(Typ,J[Typ])
+        // Aqui em baixo Decidir o que vai fazer!
+        // 1 - Tm_Table(Typ,Dados,['Pesq','thead','tfoot','tbody'])
+        // 2 - Tm_Table(Typ,Dados,['tbody'])
+        // 3 - Tm_Table(Typ,Dados,['tr']) Carregar apenas uma Linha
+        // 4 - Carregar Tm_GRD2 // tentar Imbutir sua estrutura dentro do Tm_Table() pra Simplificar
+    }
+
+    async function SB_Download(Typ){
+        const dados=await SB_GETT_Old(Typ);
+        const blob=new Blob([JSON.stringify(dados,null,2)],{type:'application/json'});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement('a');
+
+        a.href=url;
+        a.download=`${Typ}.json`;
+        a.click();
+
+        URL.revokeObjectURL(url);
+    }
+
+    async function Read_Tr(Tr,Typ,Id){
+        const data = await SB_GETT(Typ,{field:'Id',op:'eq',value:Id})
+        fazJJJ(Typ,data,'Unico') ; AutoCOMP(Typ,data) ; __NULL(data[0])
+        LOG('read_Tr',data)
+        $(Tr).outerHTML = Tm_Tr(Typ,data)
+    }
+    
+    function Tm_Table(Typ,Dados,X){
+        /*GRD2*/ const TYP = X ? `${Typ}_${X}` : Typ
+        /*GRD2*/ const Ord = X ?  [X,`${X}_`]  : BS[Typ].Orden
+        if(!CarregadoPesq.includes(Typ)){Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))} ; CarregadoPesq.push(Typ)
+        if(!CarregadoTHad.includes(Typ)){Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(Typ,Ord)}</tr>`)} ; CarregadoTHad.push(Typ)
+        Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(Typ,Ord)}</tr>`)
+        Inn($(`#H_${TYP} > tbody`),Tm_Tr(Typ,Dados))
+        Re_Foot(Typ)
+    }
+
+    async function GetUnique(Typ,Col){
+        const {data,error}=await supaBASE.rpc('valores_unicos',{tabela:Typ,colunas:Col});
+        if(error)throw error;
+        LOG(data)
+        return data;
+    }
+    
+</script>
+
+<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
+
+    <header class="Bt w100" style="grid-area:A">
+        <!-- Titulo --> <div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
+        <!-- Titulo2--> <h2 id="TitleTable" style="font-size:24px;color:#ffffff">Pedidos</h2>
+        <!--Pesquisa--> <div class="w30 none"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
+        <!--   Nav  --> <div id="DivNav"><nav class="Ct H_Nav"></nav></div>
+        <!--  Nav2  --> <div>
+                            <div class="SwithT Sw_PDDS none" onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PDDS','80px','ExecSwith')"></div>
+                            <div class="SwithT Sw_GRAD none" onload="Tm_Switch2(this,['GRAD','OS','UBER','GRD2'],'GRAD','55px','ExecSwith')"></div>
+                        </div>
+        <!-- Perfil --> <div id="H_Login" class="Ct">
+                            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
+                            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
+                            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NAVPAG('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
+                            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
+                        </div>
+        <div id="MAIS" class="Abslt none bndj Ct">
+            <div class="Start" onclick="NAVPAG('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
+            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
+            <div class="Start" onclick="NAVPAG('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
+            <div class="Start" onclick="NAVPAG('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
+            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
+            <div class="p10"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
+        </div>
+    </header>
+
+    <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
+        <div id="Pag_HOME" class="none"></div>
+        <div id="Pag_PDDS" class="none Cl TBLAA Gap p20">
+            <div class="Confy_PDDS Slidde w100 h100 Cl gap     " onload="Inn(this,PrepTable('PDDS'))"></div> <style>#H_PDDS.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_SERV Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('SERV'))"></div> <style>#H_SERV.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_PGMT Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('PGMT'))"></div> <style>#H_PGMT.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        </div>
+        <div id="Pag_GRAD" class="none Cl TBLAA Gap p20">
+            <div class="Confy_GRAD Slidde w100 h100 Cl gap     " onload="Inn(this,PrepTable('GRAD'))"></div> <style>#H_GRAD.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_OS   Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('OS'  ))"></div> <style>#H_OS.Card   > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_UBER Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('UBER'))"></div> <style>#H_UBER.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+            <div class="Confy_GRD2 Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('GRD2'))"></div> <style>#H_GRD2.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        </div>
+        <div id="Pag_MPAG" class="none Cl TBLAA Gap p20"><div class="Confy_MPAG w100 h100 Cl gap" onload="Inn(this,PrepTable('MPAG'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_ARTE" class="none Cl TBLAA Gap p20"><div class="Confy_ARTE w100 h100 Cl gap" onload="Inn(this,PrepTable('ARTE'))"></div></div> <style>#H_ARTE.Card > tbody > tr{grid:"A B E E E" auto "C C D D D" auto "F G H I I" auto "J K L M N" auto / 1fr 1fr 1fr 1fr 1fr}</style>
+        <div id="Pag_CLNT" class="none Cl TBLAA Gap p20"><div class="Confy_CLNT w100 h100 Cl gap" onload="Inn(this,PrepTable('CLNT'))"></div></div> <style>#H_CLNT.Card > tbody > tr{grid:"A B B I" auto "D E C C" auto "F G H H" auto "J K L M" auto         / 1fr 1fr 1fr 1fr}</style>
+        <div id="Pag_PROD" class="none Cl TBLAA Gap p20"><div class="Confy_PROD w100 h100 Cl gap" onload="Inn(this,PrepTable('PROD'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+        <div id="Pag_MATR" class="none Cl TBLAA Gap p20"><div class="Confy_MATR w100 h100 Cl gap" onload="Inn(this,PrepTable('MATR'))"></div></div> <style>#H_MPAG.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
+    </div>
+</body>
+
+<script> // Int
+    Onloads('body') ; Get_User()
+    async function PosLogin(U){
+        USUARIO = U  ; LOG('✅ Perfil Logado!')
+        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        const data_bs = await SB_GETT_Old('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
+        Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
+        NAVPAG(Atual.Pag) ; GetTable(Atual.Pag,Filtros['Filt3'])}
+    supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
+
+    GetUnique('PDDS',['Cmnt'])
+</script>
+</html>
