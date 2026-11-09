@@ -45,7 +45,7 @@ h1{font-size:40px;font-family:var(--Bold)}
 
 
 body[data-Base="Infinity"]{
-  /*Header*/ --HeadBk:url(./SVG/Fundo.png);
+  /*Header*/ --HeadBk:url(../SVG/Fundo.png);
   /*Buttons*/ --BtnBk:linear-gradient(to right,#73008A 30%,#FF5900);--BtnSdw  :inset 0 0 4px #fdfdfd5b, 3px 3px 8px #00000025; --BtnBord: 0px solid #ffae0000;
   /*Btn,Ipt */--Radus    :255px;--BtIpHEI:30px; --Radus2: 8px;
   /*Scroll  */--ScrolBk  :#0000004f;--ScrllBrr:#463a4b7a;--ScrllBrrHV:#401c47a5;

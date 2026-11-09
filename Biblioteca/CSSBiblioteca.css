@@ -7,33 +7,29 @@
 input[type="number"]::-webkit-inner-spin-button,/*remover Spinner*/
 input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin: 0}
 
-:root{ /*Acho q isso é padrão da Gráfica não da Biblioteca CSS*/
-  --Lite:'Tommy_Ligth'  ,'Lexend Deca','Arial';
-  --Rglr:'Tommy_Regular','Lexend Deca','Arial';
-  --Bold:'Tommy_Bold'   ,'Lexend Deca','Arial';
-  --Medi:'Tommy_Medium' ,'Lexend Deca','Arial';
-}
 /*depois Remover a Fonte daqui e o tamanho da letra e tal*/
-*{margin:0px;padding:0px;box-sizing:border-box;border:none;text-decoration:none;font-family:var(--Rglr);font-size:12px;letter-spacing:0.7px;text-align:center;outline:none}
+*{margin:0px;padding:0px;box-sizing:border-box;border:none;text-decoration:none;font-size:12px;letter-spacing:0.7px;text-align:center;outline:none}
 .Grid  {display:grid}
 .Blok  {display:block}
-.Ct    {display:flex;flex-wrap:wrap  ;justify-content:center;align-items:center}
+
+.Ct    {display:flex;align-items:center;flex-wrap:wrap  ;justify-content:center}
 .CT    {display:flex;flex-wrap:nowrap}
-.Cl    {display:flex;flex-direction:column;align-items:center}
-.Wrp   {flex-wrap: nowrap}
-.End   {display:flex;justify-content:flex-end  ;align-items:center}
-.Start {display:flex;justify-content:flex-start;align-items:center}
-.Start2{display:flex;align-items:flex-start;flex-direction:column}
+.Cl    {display:flex;align-items:center;flex-direction:column}
 .Rw    {display:flex;flex-direction: row;flex-wrap:nowrap;overflow-x:scroll}
+.Start2{display:flex;align-items:flex-start;flex-direction:column}
+.End   {display:flex;align-items:center;justify-content:flex-end}
+.Start {display:flex;align-items:center;justify-content:flex-start}
 .Bt    {display:flex;align-items:center;justify-content:space-between}
 .Ev    {display:flex;align-items:center;justify-content:space-evenly}
-.Fx    {position:fixed;top:0;left:0} /*Tirar TOP LEFT*/
-.Hr    {border-bottom: 1px solid #606060}
+
+
+
 .rd    {border-radius: 10px;}.Rd{border-radius: 20px;}.RD{border-radius: 255px}
 .w100  {width:100%}.w90{width:90%;}.w80{width:80%;}.w50{width:50%;}.w40{width:40%;}.w30{width:30%;}.w20{width:20%;}.w10{width:10%;}.wAuto{width:auto;}.w0{width:0%}
 .WH30  {width:30px;height:30px;}.WH15{width:15px;height:15px;}.WH40{width:40px;height:40px;}
 .h100  {height: 100%};.h90{height: 90%}
 .p5    {padding:5px}.p10{padding:10px}.p15{padding:15px}.p20{padding:20px}.p25{padding:25px}.p30{padding:30px}.p35{padding:35px}.p40{padding:40px}.p45{padding:45px}.p50{padding:50px}
+
 .B     {font-weight: bold}
 .Br    {word-wrap: break-word}
 .Grn{background: #008000}
@@ -50,10 +46,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Mgrn-PX2{margin: 3px 3px}
 .Mg{margin-top:10px;margin-bottom:10px}
 .tc{text-align:center;}
-.FtLt{font-family: var(--Lite)}
-.FtRg{font-family: var(--Rglr)}
-.FtBd{font-family: var(--Bold)}
-.FtMd{font-family: var(--Medi)}
+
 .Rltv{position: relative}
 .Abslt{position: absolute}
 .Stky{position: sticky;top:0;z-index: 2}
@@ -72,7 +65,7 @@ input[type="number"]::-webkit-outer-spin-button{-webkit-appearance: none;margin:
 .Gap{gap:15px}
 .gap{gap:4px}
 
-h1{font-size:40px;font-family:var(--Bold)}
+
 
 .Dark hr{border: 1px solid #ffffff2e;margin:4px 0px;}
 .Lite hr{border: 1px solid #00000070;margin:4px 0px;}
@@ -103,3 +96,7 @@ textarea{overflow:hidden;resize:none}
 .Shdw{box-shadow: 0px 4px 6px #0000004d}
 
 .n0,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9,.n10,.n11,.n12,.n13,.n14,.n15,.n16,.n17,.n18,.n19,.n20,.n21,.n22,.n23,.n24,.n25,.n26{display:none}
+
+
+
+/*.Fx    {position:fixed;top:0;left:0} /*Tirar TOP LEFT*/

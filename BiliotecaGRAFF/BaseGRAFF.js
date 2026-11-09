@@ -1,7 +1,12 @@
 const StockjVinil = ["Holo","#000000","#FFFFFF","#808080","#FF0000","#FF00FF","#009400","#0000FF","#FFFF00"]
-const Fonts = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
-const D_Brev2 = {Clnt:'Cliente',Admn:'Administrador',Grnt:'Gerente',Atnd:'Atendente',DSgn:'Designer'}
-const meses = ["Todos","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
+const Fonts       = ["Arial", "Courier New", "Georgia", "Times New Roman", "Verdana", "Comic Sans MS", "Trebuchet MS", "Impact", "Lucida Console", "Tahoma", "Helvetica", "Palatino Linotype", "Frank Ruhl Libre", "Montserrat", "Open Sans"]
+const D_Brev2     = {Clnt:'Cliente',Admn:'Administrador',Grnt:'Gerente',Atnd:'Atendente',DSgn:'Designer'}
+const meses       = ["Todos","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"]
+const Forns       = ['G','B','I','RR','U','J','W','T']
+const Dbbrev      = {T:'Tatiane',G:'Grafit',B:'BPrint',I:'Inová',U:'Bureal',RR:'Barraca',W:'NovaPrint','-':'--'}// deve ter um desse em um BS diferente
+const COR1        = {YGrn:'125,228,99',Gren:'147,196,125',Yelw:'255,229,153',Roxo:'180,167,214',Azul:'164,194,244',Redd:'234,153,153',Opcy:'0,0,0,0'}
+const COR2        = {YGrn:'63,139,13' ,Gren:'39,80,12'   ,Yelw:'133,99,0'   ,Roxo:'80,0,146'   ,Azul:'0,54,146'   ,Redd:'134,0,0'    ,Opcy:'0,0,0,0'}
+
 
 // Abrev da Pesquisa Avancada  Bj:Interna | Aa:Maiúsculas | _C:Acento | A_:Fronteiras | In:Começa com | Ot:Termina com | Of:Vazios
 
@@ -419,3 +424,17 @@ const Prod = { // Adicionar pra todos eles a proporção do Desconto pela quanti
     const AllAll  = stg=>Object.fromEntries(EtrProd.map(([k,v])=>[k,v[stg]  ||[]]))
     const Vari    = e=>Prod[e] ? ObjKey(Prod[e].Tipos) : ''
     const FiltOn  = E=>Object.entries(Prod[E]?.Tipos||{}).flatMap(([n,o])=>(o.Table||[]).flatMap(([l,g,q])=>q.filter(e=>e[3]=='on').map(e=>[[...e,g],`${E}_${n}_${l}`.replace(/\./g,'')])))
+    
+    const O = {
+        Forn:['','Grafit','BPrint','Tatiane','Inová','Bureal','Stock','Arte','JLTal','Varyus','NovaImp','Barraca','Jailson','--'], // TEM QUE SER DINÂMICO
+        Serv:['',...AllProd],
+        SrvF:['',...new Set(Object.values(ValForn).flatMap(Object.keys))], // Tem que vir da TABELA de Produtos
+        Tipo:['','Recorte',...Uniq(AllProd.flatMap(e=>Vari(e)))],
+        Stts:['','Orçamento','Arte','Impressão','Acabamento','Pronto','Entregue','Devendo','Concluído'],
+        Cams:['','PP (Inf)','P (Inf)','M (Inf)','G (Inf)','PP','P','M','G','GG','XG','XXG'], // Tem que vir da TABELA de Produtos
+        Form:['','Pix','Av','Card','QR'], // Fixo
+        Pgmt:['','Pix','Av','Card','QR'], // Fixo
+        Dsng:['','Allan','Baby','Fexta','Italo','Euryk','Eurik','Canva','Karol','Landia','--',''], // TEM QUE SER DINÂMICO
+        TArt:['','Criação','Recriação','Vetorização','Digitação','Modificação','Adaptação','Restauração','Imagem','do Cliente','Ja Tinha','n Precisa'], // TEM QUE SER DINÂMICO
+        True:['true','false']
+    }

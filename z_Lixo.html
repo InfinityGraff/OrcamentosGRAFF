@@ -1,0 +1,60 @@
+<script> // DashBoard
+
+    function F_Rndn(Typ,col){     // ✔️ Randomiza parece q tbm n tem xDOM
+        const Colx    =(Typ,col)=>FIdx(BS[Typ].Orden,col)+1
+        const COLLLL  =(Typ,col)=>{if (!Typ || !col) return "";return `td:nth-child(${Colx(Typ, col)})`}
+
+        const noCopy       = true // impedir que pinte quando não tem cópias
+        const PermitOculta = true // opção pra ocultar quem n tem Randon
+        const QRY   = `#H_${Typ} > tbody > tr > ${COLLLL(Typ,col)} > div > .P-P`
+        const ObbjClnt=()=>$$(QRY).map(e=>Inn(e))
+        let NewObj = {}
+        const QntCores = Uniq(ObbjClnt()).length
+        const CoresEtr = ObjEtr(cRepet(ObbjClnt())).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{
+                    if(noCopy&&v===1   ){} // não faz nada caso seja apenas 1 ocorrência
+            else if(!k||k.trim()==''){} // n faz nada caso seja vazio
+            else{if(true){NewObj[k]=RandoCor()}  // cor Randon
+                    else{NewObj[k]=v}}               // do maior pra o menor
+        })
+        $$(QRY).forEach(e=>{Bkg(_tr(e),NewObj[Inn(e)])
+            if(PermitOculta && NewObj[Inn(e)]==undefined){Add(_tr(e),'none')} // tentar mudar pra UndfNull(NewObj[Inn(e)]) // pra usar a biblioteca
+        })
+        // pra melhorar o Randomize
+        // ele deveria Randomizar com um Limite de cores dentro de um intervalo específico
+        // e quando eu quser Pintar apenas o Td
+    }
+
+    const DashDsng=Arr=>{
+        return Arr.map(U=>{
+            const Dt   = J['ARTE'].filter(e=>e.Dsng==U)
+            const Soma = SOMA_Obj(Dt,'Cust')
+            const Dias = Uniq(Dt.map(e=>e.Data)).length
+            return `<div class="DashDsng Ct Box1"><img src="${Foto(U)}">
+                <div class="Cl">
+                    <h2>${Dt.length} Artes</h2>
+                    <p>${Tm_RS2(Soma)}</p>
+                    <p>${Dias} Dias</p>
+                    <p>${RS(Soma/Dias)} por Dia</p>
+                </div></div>`
+        }).join('')
+    }
+
+    const DashCEO=()=>{
+        const Dt = J['ARTE']
+        const Soma = SOMA_Obj(Dt,'Lcro')
+        return `<div class="DashCDO Ct Box1">
+            <p>Lucro Total: ${Tm_RS2(Soma)}</p>
+            <div>
+                <p>20% Fundos:       <i>${RS(Soma*0.2)}</i></p>
+                <p>40% Sócio Fexta : <i>${RS(Soma*0.4)}</i></p>
+                <p>40% Sócio Allan : <i>${RS(Soma*0.4)}</i></p>
+            </div>
+        </div>`
+    }
+
+    function SyncRangNum(e){
+        let R=Avo(e),a=Vll($('.R1',R)),b=Vll($('.R2',R)) ; if(a>b)[a,b]=[b,a]
+        Inn($('.Rang-Min',R),a) ; Inn($('.Rang-Max',R),b)
+    }
+
+</script>

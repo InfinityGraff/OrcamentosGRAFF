@@ -287,12 +287,15 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         MyAlert(`✔️ Get(${Typ})`)
         return All
     }
+    
 
     async function SB_GETT(Typ,Filt=null){
         const {data,error}=await supaBASE.rpc('sb_gett',{p_typ:Typ,p_filt:Filt});
         if(error){console.error(error);return []}
         return data||[]
     }
+
+    
 
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
     function RmvRow_DOM(Typ,Id   ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
