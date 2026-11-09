@@ -132,7 +132,8 @@ function LocAno(Email){
 
 const BrevTitle = (Typ,Stg)=>{
     if(Typ=='PDDS') return `${Stg.replace(/#/g,'').split('|').length}`
-    if(Typ!='SERV') return Stg.replace(/#/g,'')
+    if(Typ=='CLNT') return    (Stg.split('#')[0]+` (${Stg.split('#')[1]})`).replace(' \(\)','')
+    if(Typ!='SERV') return    Stg.replace(/#/g,'')
     try{const g={}
         Stg.split('|').forEach(s=>{
             let [Serv,Qnt,Lag,Alt,Desc]=s.split('#')
@@ -788,20 +789,88 @@ function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add
 
 // GRAFICOS VISUAIS de ANALISES
 
-function Load_Grfc(tipo,base,div){
-    const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
-    div.chartInstance?.destroy() // limpa gráfico anterior
-    div.chartInstance = new Chart(div,{
-        type: mapa[tipo], data: base,
-        options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
-            plugins: {
-            legend: { labels: { color: '#fff' } },
-            title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
-            scales: {
-            x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
-            y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
-    })
+// function Load_Grfc(tipo,base,div){
+//     const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
+//     div.chartInstance?.destroy() // limpa gráfico anterior
+//     div.chartInstance = new Chart(div,{
+//         type: mapa[tipo], data: base,
+//         options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
+//             plugins: {
+//             legend: { labels: { color: '#fff' } },
+//             title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
+//             scales: {
+//             x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
+//             y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
+//     })
+// }
+
+
+function Load_Grfc(tipo,div,base,Opt={}){
+    const mapa={Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'};
+    div.chartInstance?.destroy();
+
+    const pluginValor={
+        id:'valoresBarras',
+        afterDatasetsDraw(chart){
+            if(!Opt.valores)return;
+            const {ctx,chartArea}=chart;
+            ctx.save();
+            ctx.font='bold 12px Arial';
+            ctx.textBaseline='middle';
+            ctx.fillStyle='#fff';
+
+            chart.data.datasets.forEach((ds,i)=>{
+                chart.getDatasetMeta(i).data.forEach((barra,j)=>{
+                    const valor=ds.data[j];
+                    const txt=Opt.moeda
+                        ? Number(valor).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+                        : String(valor);
+
+                    ctx.textAlign='right';
+                    const largura=ctx.measureText(txt).width;
+                    if(barra.x-barra.base>largura+16){
+                        ctx.fillStyle='#fff';
+                        ctx.fillText(txt,barra.x-8,barra.y);
+                    }else{
+                        ctx.textAlign='left';
+                        ctx.fillStyle='#fff';
+                        ctx.fillText(txt,Math.min(barra.x+8,chartArea.right-largura-2),barra.y);
+                    }
+                });
+            });
+            ctx.restore();
+        }
+    };
+
+    div.chartInstance=new Chart(div,{
+        type:mapa[tipo],
+        data:base,
+        plugins:[pluginValor],
+        options:{
+            indexAxis:Opt.horizontal?'y':'x',
+            responsive:true,
+            maintainAspectRatio:false,
+            animation:{duration:1000,easing:'easeOutBounce'},
+            plugins:{
+                legend:{display:!Opt.horizontal,labels:{color:'#fff'}},
+                title:{display:true,text:`Gráfico de ${tipo}`,color:'#ff79c6'}
+            },
+            scales:{
+                x:{
+                    ticks:{color:'#c084fc'},
+                    grid:{color:'#2a2a40'},
+                    ...(Opt.horizontal?{grace:'25%'}:{})
+                },
+                y:{
+                    ticks:{color:'#f97316'},
+                    grid:{color:'#2a2a40'}
+                }
+            }
+        }
+    });
 }
+
+
 function Charte(labels,data,labelGrafico,cor='#c084fc'){ 
     return {labels,datasets: [{
             label: labelGrafico,
@@ -813,7 +882,6 @@ function Charte(labels,data,labelGrafico,cor='#c084fc'){
         }]
     }
 }
-
 const CharteGrup = (obj,labelGrafico,cores)=>{
     const labels = ObjKey(obj)
     const grupos = [...new Set(ObjVal(obj).flatMap(e=>ObjKey(e)))]
@@ -828,6 +896,17 @@ const CharteGrup = (obj,labelGrafico,cores)=>{
         }))
     }
 }
+
+
+
+
+
+
+// OUTROS------------------------------------------------------
+
+
+
+
 
 function BtnOff(btn,stg,Tru){AddTrue(btn,'BrnOff',Tru) ; btn.textContent=stg}
 
@@ -912,6 +991,15 @@ function Calc_Prcnt_COR(e){
     })
 }
 
+
+
+
+
+
+
+// Obssoletas mas Boas
+const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
+const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
 
 
 

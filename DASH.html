@@ -10,14 +10,21 @@
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
   <link  href="./CssGRAFF.css" rel="stylesheet">
-  <script src="./BaseGRAFF.js"></script>
-  <script src="./BiblGRAFF.js"></script>
-  <script src="./SB_Crud.js"      ></script>
+  <script src="./BaseGRAFF.js"  ></script>
+  <script src="./BiblGRAFF.js"  ></script>
+  <script src="./SB_Crud_New.js"></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="./supaBASE.js"></script>
+  <script src="./DadosClientes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body data-Tema="Dark" data-Base="Infinity" data-Cor="Rosa" onclick="NoneBndj()">
+<script> // Biblioteca
+    const Atual    ={Pag:'HOME'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
+    const NAVPAG   =       Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
+</script>
+
+<body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
 
     <header class="Bt w100" style="grid-area:A">
       <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
@@ -43,75 +50,56 @@
 
         <div id="Pag_HOME" class=""> <!--Dentro era pra ser Section-->
             <div class="Cl w100">
-                <div class="Cl w100" style="overflow: scroll;"> <!--GRAFICO-->
+                <div class="Cl w100 p20 Gap" style="overflow: scroll;"> <!--GRAFICO-->
                     <style>
-                        .Graficos {background:#1e1e2f; border-radius:20px; padding:20px; margin:10px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
-                        .Graficos{width: 40%;max-width: 40%; height: 300px; max-height: 300px;}
+                        .Grf   {background:#1e1e2f; border-radius:20px; padding:20px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
+                        .Grf50 {max-width:48% ;max-height:300px}
+                        .Grf100{max-width:100%;max-height:300px}
                     </style>
-                    
-                    <div class="Cl"><h1>Semana1</h1>
-                        <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana2</h1>
-                        <button onclick="RfreshGrafic(Pai(this),2)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana3</h1>
-                        <button onclick="RfreshGrafic(Pai(this),3)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
-
-                    <div class="Cl"><h1>Semana4</h1>
-                        <button onclick="RfreshGrafic(Pai(this),4)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
-                        <div class="Ct">
-                            <canvas class="Grfc_Ftura Graficos"></canvas> <!--Grafico de Fatura-->
-                            <canvas class="Grfc_Servs Graficos"></canvas> <!--Gráfico de Serviço mais Pedido-->
-                            <canvas class="Grfc_PixAv Graficos"></canvas> <!--Gráfico de Forma de Pagamento-->
-                            <canvas class="Grfc_Forne Graficos"></canvas> <!--Gráfico de Cliente mais Lucrativo-->
-                        </div>
-                    </div>
 
                     <script>
                         const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
-                        const IntrvlData=(arr,ini,fim)=>arr.filter(o=>{const d = o?.Data ; if(!d) return false ; const D = new Date(d) ; return !isNaN(D) && D >= new Date(ini) && D <= new Date(fim)})
-                        const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
+                        const Top3 = obj => Object.fromEntries(Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,4));
+                        function OrdDash(obj,desc=true){return Object.fromEntries(Object.entries(obj).sort((a,b)=>desc ? b[1]-a[1] : a[1]-b[1]));}
                         const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
                         const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
-                        const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
-                        const ContFrq2=(a,k)=>Object.fromEntries(Object.entries(a.reduce((o,e)=>(e?.[k]?.trim()&&(o[e[k].trim()]=(o[e[k].trim()]||0)+1),o),{})).sort(([,x],[,y])=>y-x))
-                        const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
 
-                        function RfreshGrafic(Div,Semn){ 
-                            const Filt=Typ=>IntrvlData(J[Typ],...Semana(Semn))
-                            LOG(ContForn(Filt('GRAD')))
+                        async function RfreshGrafic(Div,Semn){
+                            Load_Grfc('Barra',$('.Grfc_Servs',Div),gG(OrdDash(await Dash('SERV','Serv','ContUniq')),'Quantidade de Serviços'  ,1),{horizontal:false,valores:false,moeda:false})
+                            Load_Grfc('Pizza',$('.Grfc_PixAv',Div),gG(OrdDash(await Dash('PGMT','Form','ContUniq')),'Quantidade de Pagamentos',1),{horizontal:false,valores:false,moeda:false})
+                            Load_Grfc('Barra',$('.Grfc_VPxAv',Div),gG(Top3(OrdDash(await Dash('PGMT','Form','SomaUniq','Valr'))),'Quantidade de Serviços'  ,1),{horizontal:true,valores:true,moeda:true})
                             Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
-                            Load_Grfc('Barra', gG(ContFrq2(Filt('SERV'),'Serv'),'Quantidade de Serviços'  ,1),$('.Grfc_Servs',Div))
-                            Load_Grfc('Pizza', gG(ContFreq(Filt('PGMT'),'Form'),'Quantidade de Pagamentos',1),$('.Grfc_PixAv',Div))
-                            Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
                         }
+                        // até agora todos eles possuem Data serve pra fazer o Range
 
-                        // agora queros eparar o que foi Pagamentos de coisas da Semana Atual e Coisas da Semana Anteriro
-                        // as Grades que mais Demoraram, Pedidos que mais Demoraram
-                        // Mostrar mesmo quando tiver Zero
+
+                        // const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
+                        // const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
+                        // const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
+
+                        
+                        // Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
+                        //2 - Dash(Typ,Col,Modo) Modo = "ContRange" Retorna {dados:155}
+
+                        // quantas tem grade, quantas não tem
+                        // quantas tem arte quantas não tem
+                        // Total das Etapas Contagem
+                        // Soma de Entradas, Soma de Custos e Outros
+
+
                     </script>
+
+                    
+                    <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                    <div class="Ct Gap">
+                        <canvas class="Grfc_Servs Grf Grf100"></canvas> <!--Gráfico de Serviço mais Pedido "ContUniq"-->
+                        <canvas class="Grfc_PixAv Grf Grf50"></canvas> <!--Gráfico de Forma de Pagamento  "ContUniq"--> 
+                        <canvas class="Grfc_VPxAv Grf Grf50"></canvas> <!--Gráfico de Valor de Pagamento  "SomaUniq"--> 
+
+                        <canvas class="Grfc_Ftura Grf Grf50"></canvas> <!--Grafico de Fatura-->
+                        <canvas class="Grfc_Forne Grf Grf50"></canvas> <!--Gráfico de Cliente mais Lucrativo  --> 
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -119,44 +107,20 @@
 
 </body>
 
-<script>// Iniciação
-    document.addEventListener('click',e=>{const targ = e.target
-        Rmv($$('#ORC tr.Atv'),'Atv') // Remover todos Ativos
-        if($('#ORC').contains(targ)){ATV(_tr(targ));ReloadDetalhes(_tr(targ))}
-        if(targ.closest('.Sugg')){return}{Add_N($$('#ORC tr:not(.Atv) .Sugg'))} // LINDO TREXO é uma Gambiarra mais ta BOM (Fazer a Cascata igual Bureal Usando este metodo aqui!)
-        // isso Deve virar Padão tipo algo genético, pra usar em varios
-        // esta serve só pra ativar u desativar tr q estão dentro da tabela de ORC
-    })
-    document.addEventListener('DOMContentLoaded', function(){ // Função do Esc
-        document.addEventListener('keydown',function(event){
-            if(event.key==='Escape'){
-                if(EShow($('.FModal'))){return}
-                else{$$(`#Pag_${Atual.Pag} .BNdj, #Pag_${Atual.Pag} .BNfot`).forEach(e=>Add_N(e))}
-            }// F_Clen(Atual.Pag) // se for outro botão
-    })})
 
-    Onloads('body') ; Get_User() ; Check_W_Pag()
+<script>// Iniciação
+    Onloads('body') ; Get_User()
 
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-        const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
+        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
+        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
+        const data_bs = await SB_GETT_Old('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         await SB_GET_Clnt()
-        NavPag(Atual.Pag)
-        await RodaTable('PROD')
-        await RodaTable('MATR')
+        NAVPAG(Atual.Pag)
     }
 
-    async function RodaTable(Typ,Filt,Rgx){
-        const bs = BS[Typ]
-        const data = await SB_GETT(Typ,bs.Limit,'*',bs.Ordnn,null,Filt)
-        fazJJJ(Typ,data)
-        Inn('.Div-Prod.ORCS',Tm_Prods(LISTPROD,'1'))
-        Inn('.Div-Prod.OFST',Tm_Prods(LISTOFST,'2'))
-        Inn('.Div-Prod.MANU',Tm_Prods(LISTMANU,'2'))
-    }
 </script>
 
 </html>
