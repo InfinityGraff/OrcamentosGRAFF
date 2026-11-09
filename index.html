@@ -653,7 +653,7 @@
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-        const data_bs = await SB_GETT('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
         await SB_GET_Clnt()
         NavPag(Atual.Pag)

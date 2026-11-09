@@ -194,8 +194,8 @@
     TogCSSBody(U.Css.Base,U.Css.Tema,U.Css.Cor)
     Inn_Perfil(U)
     NavPag(Atual.Pag)
-    ;(await SB_GETT('BS',100)).forEach(e=>BS[e.Tabela]=e)
-    const data = await SB_GETT('STOK') ; fazJJJ('STOK',data)
+    ;(await SB_GETT_JS('BS')).forEach(e=>BS[e.Tabela]=e)
+    const data = await SB_GETT_JS('STOK') ; fazJJJ('STOK',data)
     Tm_Render('Rolo')
   }
 </script>

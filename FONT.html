@@ -206,8 +206,8 @@
     Onloads('body') ; Int()
 
     async function Int(){
-        ;(await SB_GETT('BS',100)).forEach(e=>BS[e.Tabela]=e)
-        const data  = await SB_GETT('FONT') ; fazJJJ('FONT',data)
+        ;(await SB_GETT_JS('BS')).forEach(e=>BS[e.Tabela]=e)
+        const data  = await SB_GETT_JS('FONT') ; fazJJJ('FONT',data)
     }
 </script>
 </html>

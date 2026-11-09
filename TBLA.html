@@ -14,6 +14,7 @@
     <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
     <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
     <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
+    <script src="./SB/SB_Login.js"></script>
     <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
 </head>
 
@@ -623,14 +624,21 @@
 
 
     const Serv = [
-        "Acrílico","Adesivo","Arte","Bandeira","Banner","Calção","Camisa",
-        "Capa Barber","Capa De Bujão","Cardápio","Cartão","Carteira","Cartela",
-        "Cavalete","Crachá","Display","DTF","Edição","Etiqueta","Extra",
-        "Fachada","Figurinha","Folder","Folha","Ímã","JAILSON","Juros",
-        "Letreiro","Lona","Panfleto","Perfurado","Placa","Plaqueta",
+        "Acrílico","Arte",
+        /*PRINTS*/ "Adesivo","Etiqueta","DTF","Perfurado",
+        /*TECIDO*/ "Bandeira","Calção","Camisa",
+        /*PRODUT*/ "Capa Barber","Capa De Bujão",
+        /*OFS*/    "Cardápio","Cartão","Carteira","Cartela","Crachá","Display","Folder","Folha",
+        /*OUTROS*/ 
+        "Cavalete","Edição","Extra",
+        "Fachada","Figurinha","Ímã","JAILSON","Juros",
+        "Letreiro","Lona","Panfleto","Placa","Plaqueta",
         "Plotagem","Quadro","Recorte","Serigrafia","Sinalização","Tabela",
         "Tag","Talão","Tanque","Tecido","Topo de Bolo","Toten",
-        "Transparente","Venda","Vinil","WindFlag"
+        "Transparente","Venda","Vinil","WindFlag",
+
+        // Trocar
+        "Banner",
     ];
 
     const Tipo = [
@@ -751,7 +759,7 @@
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-        const data_bs = await SB_GETT_Old('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
+        const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
         NAVPAG(Atual.Pag) ; GetTable(Atual.Pag,Filtros['Filt3'])}

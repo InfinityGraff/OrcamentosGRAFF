@@ -233,6 +233,19 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         }
     }
 
+    async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
+        let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
+        if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
+        else{LOG('✔️ Arquivo enviado!',nome)}
+    }
+
+    async function Sb_DELIMG(SB,nome){
+        const paths = ['Img','Med','Low'].map(p=>`${p}/${nome}`)
+        let {error} = await SB.storage.from('uploads').remove(paths)
+        if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
+        else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
+    }
+
     async function SB_RENAMEIMGS(){ // Renomear lista de imagens
         let offset=0, files=[];
         while(true){
@@ -266,28 +279,14 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Tog_N(el);GambiarraAdd(div)
         ClickForaa(el,div,()=>{Add_N(el);/*GambiarraRmv(div)*/}) // não remover a GAMBIARRA se a próxima bandeija estiver na msm tr
     }
-//===========================CRUD===========================
-    const getRG=df=>{                    // ⭐_ _ _ _ (Da Pra Melhorar)
-        const pc = GetPC() ; const Ag = AGORA().split(' ')
-        return [{'Rg':df.Id,'Data':Ag[0],'Hora':Ag[1],'User':Inn($('#LgNome')),'PC':pc.PC,'Navgd':pc.Navgd}]
+//===========================RETORNOS DE TABELAS===========================
+
+    async function SB_GETT_JS(Typ){
+        const {data,error}=await supaBASE.from(Typ).select('*').order('Id',{ascending:false});
+        if(error)return LOG(error);
+        MyAlert(`✔️ Get(${Typ})`);
+        return data;
     }
-
-    async function SB_GETT_Old(Typ,Limit,Slct,Ordn,Uniq,Filt){
-        LOG(Filt)
-        let Q=supaBASE.from(Typ).select(Slct||'*').order(Ordn||'Id',{ascending:false})
-             if(Typ=="PDDS"){Q.order('Id',{ascending:false})}
-             if(Uniq ){Q=Q.eq('Id',Uniq)}
-        else if(Filt ){Q=Q.or(Filt)}
-             if(Limit){Q=Q.limit(Limit)}
-
-        if(Uniq||Limit||Filt){const {data,error}=await Q ; if(error)return LOG(error) ; MyAlert(`✔️ Get(${Typ})`) ; return data}
-
-        let All=[],lim=1000,ofs=0,data
-        do{({data} = await Q.range(ofs,ofs+lim-1)) ; if(!data)return ERR('Erro') ; All.push(...data) ; ofs+=lim}while(data.length===lim)
-        MyAlert(`✔️ Get(${Typ})`)
-        return All
-    }
-    
 
     async function SB_GETT(Typ,Filt=null){
         const {data,error}=await supaBASE.rpc('sb_gett',{p_typ:Typ,p_filt:Filt});
@@ -295,7 +294,18 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         return data||[]
     }
 
+    async function SB_Uniq(Typ,Col){ // Retorna Valores Únicos de uma Coluna
+        const {data,error}=await supaBASE.rpc('sb_uniq',{p_typ:Typ,p_col:Col});
+        if(error){console.error(error);return []}
+        return data||[];
+    }
+
+    async function Dash(Typ,Col,Modo,Col2=null){ // Retorna Painel de Controle
+        const {data,error}=await supaBASE.rpc('dash',{typ:Typ,col:Col,modo:Modo,col2:Col2});
+        if(error)throw error; return data;
+    }
     
+    //===========================CRUD===========================
 
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
     function RmvRow_DOM(Typ,Id   ){$$(`#H_${Typ} .tr-${Id}`).forEach(tr=>{tr.remove()})}
@@ -352,101 +362,9 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             //RmvRow_DOM(Typ,New.Id,Cols)
         }
     }
-
     async function Sb_EDITJSON(tbl,uid,col,path,Valor){
         try{const {error}=await supaBASE.rpc('editar_json',{tbl,uid,col,path,valor:Valor})
             if(error){ERR('Erro ao atualizar:',error) ; MyAlert('Erro ao atualizar JSON')}
             else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
         }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
-    }
-    async function Sb_UPLOAD(SB,file,nome,Upst){ // Upst true e false Permitir ou n Subistituir Img
-        let {error} = await SB.storage.from('uploads').upload(nome,file,{upsert:Upst}) 
-        if  (error) {ERR("Erro no upload:", error.message) ; alert("Erro ao enviar: "+error.message)}
-        else{LOG('✔️ Arquivo enviado!',nome)}
-    }
-
-    // A linha se altera por completo quando eu não estou usando, e se eu tiver com ela Aberta espera até eu sair! assim que sair atualiza
-    function MesclaRow(Typ,bs){          // ⭐⭐⭐⭐_   isso vai pra o SQL
-        const SEL = $$(`#H_${Typ} tbody .SEL`) // pega todas as Células Selecionadas
-        const Fim = SEL.at(-1)                 // pega Ultimo Item do Array
-        const _Rf = d_r(Fim)                   // pega o _R do Ultimo
-        let    Jn = ObjValToArr(ClnObjs(JJ[Typ][_Rf.Id],bs)) // criar o Def
-        SEL.forEach(p=>{                       // pra cada Célula
-            const _R = d_r(p)                  // pega o _R de cada um
-            if(p!==Fim){                                                           // se for Diferente da Ultima
-                const Ids_PDDS = ContCLNT[_R.Id]?.List||[]                         // Pega a Lista de Pedidos
-                Ids_PDDS.forEach(ID=>{Sb_EDITy('PDDS',ID,Aa(Typ),_Rf.Id)}) // Editar PDDS
-                ObjEtr(ClnObjs(JJ[Typ][_R.Id],bs)).forEach(([k,v])=>Jn[k].push(v)) // Concatena as Informações
-            }else{ObjEtr(Jn).forEach(([k,v])=>{Sb_EDITy('CLNT',_Rf.Id,k,UniqSplit(v).join(' || '))})} // Editar o Ultimo
-        })
-    }
-    async function Sb_DELIMG(SB,nome){
-        const paths = ['Img','Med','Low'].map(p=>`${p}/${nome}`)
-        let {error} = await SB.storage.from('uploads').remove(paths)
-        if  (error) {ERR("Erro ao excluir:",error.message) ; alert("Erro ao excluir: "+error.message)}
-        else {LOG('🗑️ Arquivos excluído! Img,Med,Low',nome)}
-    }
-
-    async function SB_Uniq(Typ,Col){
-        const {data,error}=await supaBASE.rpc('sb_uniq',{p_typ:Typ,p_col:Col});
-        if(error){console.error(error);return []}
-        return data||[];
-    }
-
-// LOGIN--------------------------------------------------
-
-    async function Get_User(){
-        const { data:userData } = await supaBASE.auth.getUser()
-        if(!userData.user)return
-        const { data:User,error } = await supaBASE.from('USER').select('*').eq('Id',userData.user.id).single()
-        if(error)return console.log(error)
-        PosLogin(User)
-        MyAlert('DEUCERTO!')
-    }
-    async function SB_Cdstr(e,email,password,msg,nome){e.preventDefault()
-        const { error } = await supaBASE.auth.signUp({email,password})
-        msg.textContent = error ? error.message : 'Conta criada! Confirme seu email.'
-        MyAlert('DEUCERTO!')
-    }
-    async function SB_Login(e,email,password,msg,nome){e.preventDefault()
-        const { data, error } = await supaBASE.auth.signInWithPassword({email,password})
-        msg.textContent = error ? error.message : `Seja Bem-Vindo! ${data?.user?.email}`
-        MyAlert('DEUCERTO!')
-    }
-    async function SB_Reset(e,email,password,msg,nome){e.preventDefault()
-        const {error} = await supaBASE.auth.resetPasswordForEmail(email, {redirectTo:'https://www.infinitygraff.com.br/reset'})
-        msg.textContent = error ? error.message : 'Link Enviado! Verifique seu email.'
-        MyAlert('DEUCERTO!')
-    }
-    async function SB_LgOff(msg){
-        await supaBASE.auth.signOut() ; msg ? msg.textContent = 'Perfil Desconectado!' : null
-        MyAlert('DEUCERTO!')
-    }
-    async function Upload_Foto(File){
-        let {data:{user}}=await supaBASE.auth.getUser() ; if(!user)return
-        let Img=new Image(),Cnv=document.createElement('canvas'),Ctx=Cnv.getContext('2d')
-        Img.src=URL.createObjectURL(File)
-        await new Promise(ok=>Img.onload=ok)
-        Cnv.width=500 ; Cnv.height=500
-        Ctx.drawImage(Img,0,0,500,500)
-        let Blob=await new Promise(ok=>Cnv.toBlob(ok,'image/webp',0.8))
-        let Nome=`${user.id}.webp`
-        let {error}=await supaBASE.storage.from('uploads').upload(`User/${Nome}`,Blob,{upsert:true,contentType:'image/webp'})
-        if(error)return LOG(error)
-        MyAlert('Foto Upada com Sucesso!')
-        return Nome
-    }
-    async function GetDsngUsers(){
-        let {data,error}=await supaBASE.rpc('getdsngusers')
-        if(error){ERR('Erro:',error); return []}
-        LOG('✔️ Designers Carregadors')
-        return data
-    }
-
-
-// DASH--------------------------------------------------
-
-    async function Dash(Typ,Col,Modo,Col2=null){
-        const {data,error}=await supaBASE.rpc('dash',{typ:Typ,col:Col,modo:Modo,col2:Col2});
-        if(error)throw error; return data;
     }
