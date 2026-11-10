@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
     <title>Orcamento</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
     <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
     <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
@@ -12,16 +13,16 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="./DadosClientes.js"></script>   
-    <link href="./SB_Crud.css" rel="stylesheet">
-    <script src="./SB_Crud.js"      ></script>
-    <link  href="./CssGRAFF.css" rel="stylesheet">
-    <script src="./BaseGRAFF.js"></script>
-    <script src="./BiblGRAFF.js"></script>
-    <script src="./Gera3D.js"></script>   
+    <link href="./BiliotecaGRAFF/SB_Crud.css" rel="stylesheet">
+    <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
+    <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
+    <script src="./BiliotecaGRAFF/BaseGRAFF.js"></script>
+    <script src="./BiliotecaGRAFF/BiblGRAFF.js"></script>
+    <script src="./BiliotecaGRAFF/Gera3D.js"></script>   
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="./supaBASE.js"></script>
+    <script src="./SB/SB_Login.js"></script>
+    <script src="./BiliotecaGRAFF/supaBASE.js"></script>
 </head> 
 
 <script> // aBase de Dados INFINITY GRAFF
@@ -285,7 +286,7 @@
                         const Src  =(vV)=>Fora||`./Prod/${e}_${V}${vV?'_'+vV:''}.webp`
 
                         return `<div class="Box3 Conteudo Pecq ${TblA?'Table':''} Cl ${x===0?'':'none'}">
-                        ${P.Disp ? '' : `<div class="Ct Abslt offf">Indisponível no momento...</div>`}
+                        ${P.Disp ? '' : '' /*`<div class="Ct Abslt offf">Indisponível no momento...</div>`}*/}
                         <div class="KeyVari rgx">${V}</div>
                             ${TblA && e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[2])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${Brvv[s]||s}</a>`).join('')}</div>`:``}
                             ${TblA && e=='Camisa' ? `<div class="Variate2">${Uniq(novo(ON).map(b=>b.split('_')[3])).map(s=>`<a class="PT HOV" onclick="MudaArmzn(this,'${V}')" name="${s}">${s         }</a>`).join('')}</div>`:``}
@@ -654,16 +655,16 @@
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
-        await SB_GET_Clnt()
+        //async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
+        //await SB_GET_Clnt()
         NavPag(Atual.Pag)
         await RodaTable('PROD')
         await RodaTable('MATR')
     }
 
-    async function RodaTable(Typ,Filt,Rgx){
+    async function RodaTable(Typ){
         const bs = BS[Typ]
-        const data = await SB_GETT(Typ,bs.Limit,'*',bs.Ordnn,null,Filt)
+        const data = await SB_GETT(Typ)
         fazJJJ(Typ,data)
         Inn('.Div-Prod.ORCS',Tm_Prods(LISTPROD,'1'))
         Inn('.Div-Prod.OFST',Tm_Prods(LISTOFST,'2'))
