@@ -597,76 +597,151 @@
         `
     }  
 
-    const Filtros={
-        Filt4:{ // Data + comentário OU serviço
-            and:[
-                {field:'Data',op:'gte',value:'2026-10-01'},
-                {or:[
-                    {field:'Cmnt',op:'ilike',value:'%Weed%'},
-                    {relation:'SERV',where:{field:'Grad',op:'eq',value:'Gato'}}
-                ]}
-            ]
-        }
+    function FiltRel(Rel,Cols,Modo='and'){
+        const Conv=o=>{
+            if(Array.isArray(o))return o.map(Conv);
+
+            if(o&&typeof o==='object'){
+                if('relation'in o)return {relation:o.relation,where:Conv(o.where)};
+                if('not'in o)return {not:Conv(o.not)};
+                if('and'in o)return {and:o.and.map(Conv)};
+                if('or'in o)return {or:o.or.map(Conv)};
+
+                const filtros=Object.entries(o).map(([chave,v])=>{
+                    const [,neg,field,sufixo]=chave.match(/^(!)?(.+?)(>=|<=|!=|~~|>|<|~)?$/);
+                    const ops={'>=':'gte','<=':'lte','>':'gt','<':'lt','!=':'neq','~':'ilike','~~':'ilike'};
+                    const op=ops[sufixo]||(v===null?'isnull':Array.isArray(v)?'in':'eq');
+
+                    const value=sufixo==='~~'
+                        ? v
+                        : op==='ilike'
+                            ? `%${String(v).replace(/[\\%_]/g,'\\$&')}%`
+                            : v;
+
+                    const filtro={field,op,...(op==='isnull'?{}:{value})};
+                    return neg?{not:filtro}:filtro;
+                });
+
+                return filtros.length===1?filtros[0]:{[Modo]:filtros};
+            }
+            return o;
+        };
+
+        const where=Conv(Cols);
+        return Rel?{relation:Rel,where}:where;
     }
 
-    // const Filt135={
-    //     relation:'SERV',
-    //     where:{field:'Tipo',op:'in',value:[]}
-    // };
 
-    const Filt135={
-        relation:'PGMT',
-        where:{field:'Form',op:'in',value:[""]}
-        
-    };
-
-    // const Filt135={field:'Form',op:'in',value:['']}; // quando a Tabela for PGMT continuar usando isso, pra Limpar os Pix e Av
+    // FiltRel(null,{'Valr>=':100,'Valr<':500})      // Intervalo de valores
+    // FiltRel(null,{'Cmnt~':'Papel'})               // Pesquisa parcial (ILIKE)
+    // FiltRel('SERV',{Tipo:['Adesivo','Adesiv'],Serv:['Impressão','Print']}) // Vários valores (IN) e AND entre colunas
+    // FiltRel('SERV',{'!Grad':['Gato','Pendente']}) // Excluir valores (NOT IN)
+    // FiltRel('SERV',{Tipo:'Adesivo',Serv:'Impressão'},'or') // OR entre colunas
+    // FiltRel('SERV',{and:[{Tipo:'Adesivo'},{relation:'GRAD',where:{Id:'B_491_3'}}]}) // 6. Relacionamento aninhado
+    // FiltRel('SERV',{'Cmnt~~':'J\\_%\\_%'}) // pega B_123_1 ou B_15_4 mas não pega B_457
 
 
     const Serv = [
-        "Acrílico","Arte",
+        "Arte",
         /*PRINTS*/ "Adesivo","Etiqueta","DTF","Perfurado",
         /*TECIDO*/ "Bandeira","Calção","Camisa",
         /*PRODUT*/ "Capa Barber","Capa De Bujão",
-        /*OFS*/    "Cardápio","Cartão","Carteira","Cartela","Crachá","Display","Folder","Folha",
+        /*OFFSET*/ "Cardápio","Cartão","Carteira","Crachá","Display","Folder","Folha",
         /*OUTROS*/ 
+        /*PLACAS*/
+        /*STOCKS*/ "Cartela","Figurinha",
         "Cavalete","Edição","Extra",
-        "Fachada","Figurinha","Ímã","JAILSON","Juros",
+        "Fachada","Ímã","JAILSON","Juros",
         "Letreiro","Lona","Panfleto","Placa","Plaqueta",
         "Plotagem","Quadro","Recorte","Serigrafia","Sinalização","Tabela",
         "Tag","Talão","Tanque","Tecido","Topo de Bolo","Toten",
         "Transparente","Venda","Vinil","WindFlag",
 
         // Trocar
-        "Banner",
+        "Banner","Acrílico",
     ];
 
-    const Tipo = [
-        "01","03 Geladeira","08 Carro","1","1 Via","2","2 camada","2 Camada","2 Camadas",
-        '"2,50"',"3","3mm","5 x 9","A3","A4","ACM","Acrilico","Acrílico",
-        "Adesiso","Adesivo","Adulto","Aluminio","Amarelo","Aplicação",
-        "Arte","Artes","B.Local","Baby look","Baby Look","BabyLook",
-        "Banner","Blackout","Bola","Boneco","Boneco PVC","borda",
-        "branco","Branco","brilho","Brilho","Brilho Local",
-        "Brilho localizado","Brinho","Camisa","Camisas","Carro",
-        "Cartela","Cartela e figurinha","Cartela Holográfica",
-        "Chaveiro","Colado","Colchê","Colchê  300g","com ilhós",
-        "com Ilhós","Completo","Copo","Dourado","Duplo","espelhada",
-        "Espelhado","Etiqueta","F","F.Verso","Faca","Faixa","Fig",
-        "figurinha","Figurinha","Figurinhas","Foto","Frase","Frente",
-        "Frente Costa","Frente verso","FV","FV Brilho","G","G1",
-        "Geladeira","Gola","Grande","Helanca","HElanca","holografico",
-        "Holografico","Holográfico","Ihós","ilhós","Ilhós","Ilós",
-        "Infantil","Infantil 6","Kit"
-        ];
+    const Vigd = [
+        "Acrílico",
+        "Adesivo",
+        "Arte",
+        "Bandeira",
+        "Banner",
+        "Calção",
+        "Camisa",
+        "Capa Barber",
+        "Capa De Bujão",
+        "Cardápio",
+        "Cartão",
+        "Carteira",
+        "Cartela",
+        "Cavalete",
+        "Crachá",
+        "Display",
+        "DTF",
+        "Edição",
+        "Etiqreta",
+        "Etiqueta",
+        "Extra",
+        "Fachada",
+        "Folder",
+        "Folha",
+        "Ímã",
+        "Letreiro",
+        "Lona",
+        "Panfleto",
+        "Placa",
+        "Plaqueta",
+        "Plotagem",
+        "Quadro",
+        "Recorte",
+        "Serigrafia",
+        "Sinalização",
+        "Tabela",
+        "Tag",
+        "Talão",
+        "Tanque",
+        "Toten",
+        "Venda",
+        "WindFlag"
+    ]
+     
 
 
+    const Buxa = {
+        /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
+        /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
+        /*FOI*/ "Lona"    :["Faixa","Banner","Ilhós","Sem Acabamento"],
+        //... os debaixo falta Limpar
+        "Quadro"  :["PS 1mm","PS 2mm","PVC 10mm","PVC 2mm","PVC 3mm","PVC 5mm"],
+        "Ímã"     :["0,3mm","0,8mm"],
+        "Venda"   :["Tanque","Cartela","Cartela Holo.","Rodagem","Vinil","Figurinha","Recorte"],
+        "Recorte" :["Holográfico","Vinil","2 Camada"],
+        "Camisa"  :["M.Curta","M.Longa","Polo","Regata"],
+        "WindFlag":["Pena","Faca"],
+        "Cartão"  :["F.Verso","Frente"],
+        "Placa"   :["Rebite","ACM"],
+        "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
+        "Letreiro":["Acrílico"],
+        "DTF"     :["Textil"],
+        "Bandeira":["Oxford","Helanca"],
+        "Display" :["Virado","Colado"],
+    }
+
+
+    // SELECT DISTINCT "Tipo"
+    // FROM public."SERV"
+    // WHERE "Serv" = 'Etiqueta'
+    // AND "Tipo" IS NOT NULL
+    // AND TRIM("Tipo") <> ''
+    // ORDER BY "Tipo";
 
     async function GetTable(Typ,Filt,Exessao){
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
+        const FiltManual = FiltRel('SERV',{Serv:'Lona','!Tipo':["","Faixa","Banner","Ilhós","Sem Acabamento"]}) 
+        const data   = await SB_GETT(Typ,FiltManual) // Filtro Filt135
         LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
@@ -695,14 +770,7 @@
         Inn($(`#H_${TYP} > tbody`),Tm_Tr(Typ,Dados))
         Re_Foot(Typ)
     }
-
-    async function GetUnique(Typ,Col){
-        const {data,error}=await supaBASE.rpc('valores_unicos',{tabela:Typ,colunas:Col});
-        if(error)throw error;
-        LOG(data)
-        return data;
-    }
-    
+   
 </script>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
@@ -762,7 +830,7 @@
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
-        NAVPAG(Atual.Pag) ; GetTable(Atual.Pag,Filtros['Filt3'])}
+        NAVPAG(Atual.Pag) ; GetTable(Atual.Pag)}
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
 
     GetUnique('PDDS',['Cmnt'])

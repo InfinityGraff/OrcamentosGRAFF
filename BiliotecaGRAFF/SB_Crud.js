@@ -305,6 +305,13 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         if(error)throw error; return data;
     }
     
+    async function GetUnique(Typ,Col){
+        const {data,error}=await supaBASE.rpc('valores_unicos',{tabela:Typ,colunas:Col});
+        if(error)throw error;
+        LOG(data)
+        return data;
+    }
+
     //===========================CRUD===========================
 
     function EdtCel_DOM(Typ,Id,Cl){LOG('Editar várias colunas no DOM')}
