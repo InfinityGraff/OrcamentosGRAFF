@@ -712,10 +712,10 @@
         /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
         /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
         /*FOI*/ "Lona"    :["Faixa","Banner","Ilhós","Sem Acabamento"],
-        //... os debaixo falta Limpar
-        "Quadro"  :["PS 1mm","PS 2mm","PVC 10mm","PVC 2mm","PVC 3mm","PVC 5mm"],
-        "Ímã"     :["0,3mm","0,8mm"],
-        "Venda"   :["Tanque","Cartela","Cartela Holo.","Rodagem","Vinil","Figurinha","Recorte"],
+        /*FOI*/ "Quadro"  :["PS 1mm","PS 2mm","PVC 10mm","PVC 2mm","PVC 3mm","PVC 5mm"],
+        /*FOI*/ "Ímã"     :["0,3mm","0,8mm"],
+        /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
+
         "Recorte" :["Holográfico","Vinil","2 Camada"],
         "Camisa"  :["M.Curta","M.Longa","Polo","Regata"],
         "WindFlag":["Pena","Faca"],
@@ -740,7 +740,7 @@
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual = FiltRel('SERV',{Serv:'Lona','!Tipo':["","Faixa","Banner","Ilhós","Sem Acabamento"]}) 
+        const FiltManual = FiltRel('SERV',{Serv:'Venda','!Tipo':["","Tanque","Tanque Holo","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico"]}) 
         const data   = await SB_GETT(Typ,FiltManual) // Filtro Filt135
         LOG(data)
         if(Exessao=='SemTM'){return data}
