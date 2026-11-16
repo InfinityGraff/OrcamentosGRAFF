@@ -741,7 +741,7 @@
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
         const FiltManual = FiltRel('SERV',{Serv:'Venda','!Tipo':["","Tanque","Tanque Holo","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico"]}) 
-        const data   = await SB_GETT(Typ,FiltManual) // Filtro Filt135
+        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
         LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
