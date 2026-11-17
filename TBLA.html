@@ -642,85 +642,59 @@
 
 
     const Serv = [
-        "Arte",
-        /*PRINTS*/ "Adesivo","Etiqueta","DTF","Perfurado",
-        /*TECIDO*/ "Bandeira","Calção","Camisa",
+        /*PRINTS*/ "Adesivo","Etiqueta","Lona","DTF","Bandeira", // 1 Grade
+        /*CHAPAS*/ "Quadro","Ímã","Toten", // 2 Grades
+        /*OFFSET*/ "Cartão","Panfleto","Tag","Talão",
+        /*TECIDO*/ "Camisa","Calção",
+        /*STOCKS*/ "Recorte","Venda",
+	    /*FERROS*/ "Cavalete","Placa","Fachada", // 2 Grade (Impressão,Ferragem,Router)
+	    /*DIGITL*/ "Arte","Edição",
+
+        /*UNIDAD*/ "WindFlag","Display","Cardápio","Carteira","Crachá",
         /*PRODUT*/ "Capa Barber","Capa De Bujão",
-        /*OFFSET*/ "Cardápio","Cartão","Carteira","Crachá","Display","Folder","Folha",
-        /*OUTROS*/ 
-        /*PLACAS*/
-        /*STOCKS*/ "Cartela","Figurinha",
-        "Cavalete","Edição","Extra",
-        "Fachada","Ímã","JAILSON","Juros",
-        "Letreiro","Lona","Panfleto","Placa","Plaqueta",
-        "Plotagem","Quadro","Recorte","Serigrafia","Sinalização","Tabela",
-        "Tag","Talão","Tanque","Tecido","Topo de Bolo","Toten",
-        "Transparente","Venda","Vinil","WindFlag",
-
-        // Trocar
-        "Banner","Acrílico",
-    ];
-
-    const Vigd = [
-        "Arte",
-        "Edição",
-
-        "Capa Barber",
-        "Capa De Bujão",
-        "Calção",
-
-        "Cardápio",
-
-        "Carteira",
-
-        "Cavalete",
-
-        "Crachá",
+        /*OUTROS*/ "Folder","Folha","Extra","Serigrafia",
+        /*ROUTER*/ "Letreiro",
         
-        "Fachada",
-        
-        "Folder",
         
         "Plotagem",
+	    "Sinalização",
         
-        "Serigrafia",
-        
-        "Sinalização",
-        
-        "Toten",
-
-        "Extra",
     ]
 
     const Buxa = {
+        /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
+        /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
+        /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
+        /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
+
         /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
         /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
         /*FOI*/ "Lona"    :["Faixa","Banner","Ilhós","Sem Acabamento"],
         /*FOI*/ "Quadro"  :["PS 1mm","PS 2mm","PVC 2mm","PVC 3mm","PVC 5mm","PVC 10mm"],
         /*FOI*/ "Ímã"     :["0,3mm","0,8mm"],
-        /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
-        /*FOI*/ "Recorte" :["Holográfico","Vinil","2 Camada","Transparente","Dourado"],
-        /*FOI*/ "Camisa"  :["M.Curta","M.Longa","Polo","Regata"],
-        /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
-        /*FOI*/ "Cartão"  :["F.Verso","Frente"],
-        "Panfleto":[],
-        "Tag":[],
-        "Talão":[],
-        /*FOI*/ "Placa"   :["Ilhós","Rebite","ACM","Acrílico","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Bandeira":["Oxford","Helanca","Redonda"],
-        /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
-        /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
         /*FOI*/ "DTF"     :["Textil"],
-        /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
+        /*FOI*/ "Bandeira":["Oxford","Helanca","Redonda"],
+        /*FOI*/ "Toten"   :["PVC 3mm","PVC 5mm"],
+        /*FOI*/ "Cartão"  :["F.Verso","Frente"],
+        /*FOI*/ "Panfleto":["F.Verso","Frente"],
+        /*FOI*/ "Tag"     :["F.Verso","Frente"],
+        /*FOI*/ "Talão"   :[""],
+        /*FOI*/ "Camisa"  :["M.Curta","M.Longa","Polo","Regata"],
+        /*FOI*/ "Calção"  :["Masc","Femn"],
+        /*FOI*/ "Recorte" :["Holográfico","Vinil","2 Camada","Transparente","Dourado"],
+        /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
+        /*FOI*/ "Cavalete":["Ilhós","Rebite"],
+        /*FOI*/ "Placa"   :["Ilhós","Rebite","ACM","Acrílico","PVC 5mm","PVC 10mm"],
+        /*FOI*/ "Fachada" :["Ilhós","Rebite","ACM"],
     }
 
     async function GetTable(Typ,Filt,Exessao){
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual = FiltRel('SERV',{Serv:'Cartela'}) // '!Tipo':[""]
+        const FiltManual = FiltRel('SERV',{Serv:"Toten"}) // '!Tipo':["NADINHA"]
         const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
-        LOG(data)
+        //LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
         Typ=='GRD2' ? Tm_GRD2(Typ,J[Typ]) : Tm_Table(Typ,J[Typ])
