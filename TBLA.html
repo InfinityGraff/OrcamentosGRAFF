@@ -648,10 +648,10 @@
         /*TECIDO*/ "Camisa","Calção",
         /*STOCKS*/ "Recorte","Venda",
 	    /*FERROS*/ "Cavalete","Placa","Fachada", // 2 Grade (Impressão,Ferragem,Router)
+        /*UNIDAD*/ "WindFlag","Cardápio","Produto",
+        
 	    /*DIGITL*/ "Arte","Edição",
-
-        /*UNIDAD*/ "WindFlag","Display","Cardápio","Carteira","Crachá",
-        /*PRODUT*/ "Capa Barber","Capa De Bujão",
+        /*CHAPAS*/ "Display","Carteira","Crachá",
         /*OUTROS*/ "Folder","Folha","Extra","Serigrafia",
         /*ROUTER*/ "Letreiro",
         
@@ -662,8 +662,12 @@
     ]
 
     const Buxa = {
-        /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
+        
+        /*FOI*/ 
+
         /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
+        /*FOI*/ "Carteira":["F.Verso","Frente"],
+        /*FOI*/ "Crachá"  :["Acrílico","PS 1mm"],
         /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
         /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
 
@@ -686,14 +690,18 @@
         /*FOI*/ "Cavalete":["Ilhós","Rebite"],
         /*FOI*/ "Placa"   :["Ilhós","Rebite","ACM","Acrílico","PVC 5mm","PVC 10mm"],
         /*FOI*/ "Fachada" :["Ilhós","Rebite","ACM"],
+
+        /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
+        /*FOI*/ "Cardápio":["F.Verso","Frente"],
+        /*FOI*/ "Produto" :["Capa Barber","Capa De Bujão"],
     }
 
     async function GetTable(Typ,Filt,Exessao){
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual = FiltRel('SERV',{Serv:"Toten"}) // '!Tipo':["NADINHA"]
-        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
+        const FiltManual = FiltRel('SERV',{Serv:["Produto"]}) // '!Tipo':["Acrílico"]
+        const data   = await SB_GETT(Typ,FiltManual) // Filtro Filt135
         //LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
