@@ -735,17 +735,31 @@ const SavePDF = async (Div, Nome="download.pdf") => {
     });
 }
 
-function Selecty(Eu){const I = $('input',_td(Eu)) ; Vll(I,Eu.innerText) ; Dispinput(I) ; /*Add_N(Pai(Eu))*/}
+function Selecty(Eu){const I = $('input',_td(Eu)) ; Vll(I,Eu.innerText) ; Dispchange(I) ; /*Add_N(Pai(Eu))*/}
 
 // Fazer ele transitar com as SETAS
-const Tm_Select=(Eu,e,lista)=>{
+const Tm_Select=(Eu,e,lista,val)=>{
     Eu.classList.add('Rltv','MySelect','Rltv','w100')
     // Atualizar span Baseado na Lista
     const ExibSpan = `Rmv_N($('span',Pai(this)))`
-    Inn(Eu,`<input class="Stky" placeholder="${D_Brev[e]}" onfocus="${ExibSpan}" oninput="PesqOpt(this,'List')">
+    Inn(Eu,`<input class="Stky" placeholder="${D_Brev[e]}" onfocus="${ExibSpan}" value="${val}" oninput="PesqOpt(this,'List')">
         <span class="Abslt Cl Sugg" style="z-index:10">${Tm_MyOpts(lista,'List')}</span>`
     )
 }
+function ReadProx(inpt,Prox,R){
+    if(Prox==null){return}
+    const nR = R.replace('Serv',Prox)
+    LOG('ReadProx',nR,$(`.Myselt_${Prox}`,_tr(inpt)))
+    Inn(Pai($(`.Myselt_${Prox}`,_tr(inpt))),Tm_Select2("",nR,Buxa[inpt.value]||[""]))
+    
+}
+
+const Tm_Select2=(val,R,lista,Prox)=>{
+    const func = "Tog_N($('span',Pai(this)))"
+    return `<input class="P-P Ct Stky InptCrop Myselt_${d_r(R).Cl}" data-R="${R}" name="${val}" placeholder="${D_Brev[d_r(R).Cl]}" onclick="${func}" value="${val}" oninput="PesqOpt(this,'List')" onchange="${Prox ? `ReadProx(this,'${Prox}','${R}');` : ''}EditCell(this)">
+            <span class="Abslt Cl Sugg none" style="z-index:10">${Tm_MyOpts(lista,'List')}</span>`
+}
+
 const GetycCores = {
     'Preto'       : '#000000',
     'Branco'      : '#FFFFFF',
@@ -789,19 +803,19 @@ function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add
 
 // GRAFICOS VISUAIS de ANALISES
 
-// function Load_Grfc(tipo,base,div){
-//     const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
-//     div.chartInstance?.destroy() // limpa gráfico anterior
-//     div.chartInstance = new Chart(div,{
-//         type: mapa[tipo], data: base,
-//         options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
-//             plugins: {
-//             legend: { labels: { color: '#fff' } },
-//             title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
-//             scales: {
-//             x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
-//             y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
-//     })
+    // function Load_Grfc(tipo,base,div){
+    //     const mapa = {Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'}
+    //     div.chartInstance?.destroy() // limpa gráfico anterior
+    //     div.chartInstance = new Chart(div,{
+    //         type: mapa[tipo], data: base,
+    //         options:{responsive: true,animation: {duration: 1000,easing: 'easeOutBounce'},
+    //             plugins: {
+    //             legend: { labels: { color: '#fff' } },
+    //             title:  { display: true, text: `Gráfico de ${tipo}`, color: '#ff79c6' }},
+    //             scales: {
+    //             x: { ticks: { color: '#c084fc' }, grid: { color: '#2a2a40' } },
+    //             y: { ticks: { color: '#f97316' }, grid: { color: '#2a2a40' } }}}
+    //     })
 // }
 
 

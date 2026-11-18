@@ -133,6 +133,8 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}${e.replace('Arte/','LowSVG/').replace('.svg','.webp')}`:`${BASE_URL2}${e}${src20}`:`./CrudSB/Upld.webp`}" onclick="AbrirImg(this,'${R}','${e}')">`,
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
+        MySl:(e,R,Rgx   )=>`${Tm_Select2(e,R,ObjKey(Buxa),'Tipo')}`,
+        MySl3:(e,R,Rgx,j)=>`${Tm_Select2(e,R,Buxa[j.Serv]||[""])}`,
         Data:(e,R,Rgx  )=>`<p class="P-P Ct h100" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="Inn($('p',Pai(this)),YMD(this.value));TrcFih2(this,$('p',Pai(this)))">`,
         //Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         

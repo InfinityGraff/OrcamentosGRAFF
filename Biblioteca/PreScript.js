@@ -214,6 +214,7 @@ const RectR=e=>Rect(e).right
 const DisparoInpt = new Event('input',{bubbles:true})
 const DispClick=e=>e.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}))
 const Dispinput=e=>e.dispatchEvent(new Event('input',{bubbles:true}))
+const Dispchange=e=>e.dispatchEvent(new Event('change', {bubbles:true}))
 
 //Funções Conversor de Valores_________________________________________________________________________________________________
 const    Ared = e=> Math.floor(e)

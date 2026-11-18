@@ -55,8 +55,8 @@
     .TBLAA   tbody > td p:not([class*="-Bndj-"]):not([class*="-Auto-"]){height:100%; width: 100%}
     .TBLAA   tbody td p                                                {padding:2px 6px; text-align:center}
     .BndjTBL tbody td p                                                {width: 100%;/*height:100%*/;padding:2px 6px; text-align:center}
-    .TBLAA   tbody >    tr:not([class*="Hoov"]):hover   {filter:saturate(1.6) brightness(1.05); z-index: 999999}
-    .TBLAA   tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index:999999}
+    .TBLAA .Tbla > tbody >    tr:not([class*="Hoov"]):hover   {filter:saturate(1.6) brightness(1.05); z-index: 999999}
+    .TBLAA .Tbla > tbody > tr td:not([class*="Hoov"]):hover   {background:#7469713a;filter: saturate(1.6) brightness(0.8) ; z-index:999999}
 
     textarea{padding: 0px}
     .FModal textarea.P-P{padding: 5px; height: 500px; width: 800px}
@@ -477,6 +477,24 @@
     }
 </script>
 
+<style>
+    .Bdj_SERV.TblG_PRINT :is(td,th):nth-child(10){display:none} /*["Grd2","Grd3"]*/
+    .Bdj_SERV.TblG_STOCK :is(td,th):is(:nth-child(1),:nth-child(3),:nth-child(10),:nth-child(13),:nth-child(14),:nth-child(15),:nth-child(16),:nth-child(17)){display:none}
+    .Bdj_SERV.TblG_VENDA :is(td,th):is(:nth-child(1),:nth-child(2),:nth-child(3),:nth-child(10),:nth-child(12),:nth-child(13),:nth-child(14),:nth-child(15),:nth-child(16),:nth-child(17),:nth-child(18),:nth-child(19),:nth-child(20)){display:none}
+    /* 
+    .Bdj_SERV.TblG_CHAPA{}
+    .Bdj_SERV.TblG_OFSET{}
+    .Bdj_SERV.TblG_TECID{}
+    .Bdj_SERV.TblG_STOCK{}
+    .Bdj_SERV.TblG_VENDA{}//
+    .Bdj_SERV.TblG_FERRO{}
+    .Bdj_SERV.TblG_UNIDD{}
+    .Bdj_SERV.TblG_DIGTL{}
+    .Bdj_SERV.TblG_OUTRO{}
+    .Bdj_SERV.TblG_ROUTR{}
+    */
+</style>
+
 <script> // TABELA
 
     const Acc_Bndj = {}
@@ -506,23 +524,37 @@
         if(Coten($('.BNdj',Pai(Eu)),'none') || Btn=='Btn'){
             if(BjCarregado.includes(R) && Btn!='Btn'){return} ; BjCarregado.push(R)
             function LoadLinhasBndj(R){
+                function Agrupar(dados){return dados.reduce((g,o)=>{(g[o.Grup || 'Sem Grupo'] ??= []).push(o);return g;},{})}
                 const r     = d_r(R),[Typ,Id,Col,Tm]=[r.Ty,r.Id,r.Cl,r.Tm]
                 const COL   = AA(Col)
                 const Find  = [].concat(Acc_Bndj[`${Typ}-${Id}-${Col}`]??[])
+                const FIND  = Agrupar(Find)
                 if(Find.length==0){return ''}
                 let Ths     = ArrInt(BS[COL].Orden,ObjKey(Find[0])) // Limpa antes de Carregar os Th pra remover os que não vem no SB de propósito
                 if(COL=='PDDS'){Ths=ArrDif(Ths,'Id')}               // aqui é uma Gambiarra pra Remover o Id de Bandeijas de Pdds (pois uso Rg no Lugar)
-                /*GAMBIARRA*/ const DATAA = `<p class="P-P Ct h100 Abslt" onclick="TrcFih2(this,$('input',Pai(this)))">${'Data'}</p><input type="date" class="Abslt NONE" onblur="Inn($('p',Pai(this)),this.value?YMD(this.value):'Data');TrcFih2(this,$('p',Pai(this)))">`
-                return `<thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead><tbody>${Tm_Tr(COL,Find)}</tbody>
-                    <tfoot><tr style="height:0px">${Ths.map(t=>{
-                        return `<td class="Rltv" style="height:0px">${
-                            t=='Data' ? DATAA :
-                            t=='OK'   ? `<input class="Abslt" type="checkbox">` :
-                            t=='Entg' ? `<input class="Abslt" type="checkbox">` :
-                            t=='Detg' ? DATAA :''}</td>`}).join('')}</tr></tfoot>`
+                /*GAMBIARRA*/ const DATAA = `<p class="P-P Ct h100 Abslt" onclick="TrcFih2(this,$('input',Pai(this)))">${'Data'}</p><input type="date" class="Abslt NONE" onblur="Inn($('p',Pai(this)),this.value?YMD(this.value):'Data');TrcFih2(this,$('p',Pai(this)))">`          
+                // <tfoot><tr style="height:0px">${Ths.map(t=>{ // tava dentro do retorno da String, tirei por enquanto
+                //         return `<td class="Rltv" style="height:0px">${
+                //             t=='Data' ? DATAA : 
+                //             t=='OK'   ? `<input class="Abslt" type="checkbox">` : 
+                //             t=='Entg' ? `<input class="Abslt" type="checkbox">` : 
+                //             t=='Detg' ? DATAA :''}</td>`}).join('')}</tr></tfoot>
+
+                return  ObjEtr(FIND).map(([k,v])=>{
+                        return `<table class="Bdj_${COL} TblG_${k}">
+                            <thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                            <tbody>${Tm_Tr(COL,v)}</tbody>
+                        </table>
+                        `}).join('')
+                
             }
-             Inn($('.BNdj > table',Pai(Eu)),LoadLinhasBndj(R))
-            Rmv_N($('.BNdj > table',Pai(Eu)))
+            if(Btn=='Btn'){
+                  Inn($('.BNdj > .TblNew',Pai(Eu)),LoadLinhasBndj(R))
+                Rmv_N($('.BNdj > .TblNew',Pai(Eu)))
+            }else{
+                Inn($('.BNdj > .TabelasAQUI',Pai(Eu)),LoadLinhasBndj(R))
+              Rmv_N($('.BNdj > .TabelasAQUI',Pai(Eu)))
+            }
         }
     }
 
@@ -537,17 +569,19 @@
                 </div>
                 <div class="Rltv w100">
                     <div class="BndjTBL BNdj Abslt none Cl"><a>${SVG.Ponta}</a>
-                        <table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
+                        <table class="TblNew"></table>
+                        <div class="TabelasAQUI Cl Gap"></div>
                         ${Tm=='Bndj'?`<button class="Mini" onclick="AddRowBdj(this,'${R}')">  + Novo  ${RmvPlural(D_Brev[COL]||'NADA')}</button>`:
                           Tm=='Link'?`<button class="Mini" onclick="  RmvLink(this,'${R}')">Deslinkar ${Col}</button>
                                       <button class="Mini" onclick="Tog_N($('.TrcLINK',Pai(this)))">Trocar ${Col}</button><div class="TrcLINK none">${Tm_Tm['Link']('',R)}</div>`:''}
                     </div>
                 </div>`
     }
+    //<table class="Bdj_${COL} ${COL=='RG'?'':NoVazi(Find[0]?.Id)?'':'none'}"></table>
 
     async function AddRowBdj(Eu,R){  // ⭐⭐⭐⭐_ // Por enquanto só pra SERV e PGMT
         const _R   = d_r(R) ; const COL = AA(_R.Cl)
-        const Tabl = $('table',_td(Eu)) ; Rmv_N(Tabl)
+        const Tabl = $('.TblNew',_td(Eu)) ; LOG(Tabl) ; Rmv_N(Tabl)
         if(['SERV','PGMT'].includes(COL)){
             const {data,error} = await supaBASE.rpc('Add_NewBndj',{tbl:COL,pai:_R.Id,typ:Aa('PDDS'),dados:{}})
             const Find = __NULL(data)
@@ -631,7 +665,6 @@
         return Rel?{relation:Rel,where}:where;
     }
 
-
     // FiltRel(null,{'Valr>=':100,'Valr<':500})      // Intervalo de valores
     // FiltRel(null,{'Cmnt~':'Papel'})               // Pesquisa parcial (ILIKE)
     // FiltRel('SERV',{Tipo:['Adesivo','Adesiv'],Serv:['Impressão','Print']}) // Vários valores (IN) e AND entre colunas
@@ -640,45 +673,30 @@
     // FiltRel('SERV',{and:[{Tipo:'Adesivo'},{relation:'GRAD',where:{Id:'B_491_3'}}]}) // 6. Relacionamento aninhado
     // FiltRel('SERV',{'Cmnt~~':'J\\_%\\_%'}) // pega B_123_1 ou B_15_4 mas não pega B_457
 
-
-    const Serv = [
-        /*PRINTS*/ "Adesivo","Etiqueta","Lona","DTF","Bandeira", // 1 Grade
-        /*CHAPAS*/ "Quadro","Ímã","Toten", // 2 Grades
-        /*OFFSET*/ "Cartão","Panfleto","Tag","Talão",
-        /*TECIDO*/ "Camisa","Calção",
-        /*STOCKS*/ "Recorte","Venda",
-	    /*FERROS*/ "Cavalete","Placa","Fachada", // 2 Grade (Impressão,Ferragem,Router)
-        /*UNIDAD*/ "WindFlag","Cardápio","Produto",
-        
-	    /*DIGITL*/ "Arte","Edição",
-        /*CHAPAS*/ "Display","Carteira","Crachá",
-        /*OUTROS*/ "Folder","Folha","Extra","Serigrafia",
-        /*ROUTER*/ "Letreiro",
-        
-        
-        "Plotagem",
-	    "Sinalização",
-        
-    ]
+    const GRUPServ = {
+        PRINT:["Adesivo","Etiqueta","Lona","DTF","Bandeira"], // 1 Grade .TblG_PRINT ["Grd2","Grd3"]
+        CHAPA:["Quadro","Ímã","Toten","Carteira"],            // 2 Grade .TblG_CHAPA ["Grd3"]
+        OFSET:["Cartão","Panfleto","Tag","Talão"],            // 1 Grade .TblG_OFSET ["Grd2","Grd3"]
+        TECID:["Camisa","Calção"],                            // 1 Grade 
+        STOCK:["Recorte"],                                    // --
+        VENDA:["Venda"],                                      // --
+	    FERRO:["Placa","Fachada","Cavalete"],                 // 3 Grade
+        UNIDD:["WindFlag","Cardápio","Produto"],              // 1 Grade
+	    DIGTL:["Arte","Edição"],                              // --
+        OUTRO:["Folha","Plotagem"],                           // 1 Grade
+        ROUTR:["Letreiro","Display","Crachá"],                // 2 Grade
+    }
 
     const Buxa = {
-        
-        /*FOI*/ 
-
-        /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
-        /*FOI*/ "Carteira":["F.Verso","Frente"],
-        /*FOI*/ "Crachá"  :["Acrílico","PS 1mm"],
-        /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
-
         /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
         /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
         /*FOI*/ "Lona"    :["Faixa","Banner","Ilhós","Sem Acabamento"],
-        /*FOI*/ "Quadro"  :["PS 1mm","PS 2mm","PVC 2mm","PVC 3mm","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Ímã"     :["0,3mm","0,8mm"],
         /*FOI*/ "DTF"     :["Textil"],
         /*FOI*/ "Bandeira":["Oxford","Helanca","Redonda"],
+        /*FOI*/ "Quadro"  :["PS 1mm","PS 2mm","PVC 2mm","PVC 3mm","PVC 5mm","PVC 10mm"],
+        /*FOI*/ "Ímã"     :["0,3mm","0,8mm"],
         /*FOI*/ "Toten"   :["PVC 3mm","PVC 5mm"],
+        /*FOI*/ "Carteira":["PS 1mm"],
         /*FOI*/ "Cartão"  :["F.Verso","Frente"],
         /*FOI*/ "Panfleto":["F.Verso","Frente"],
         /*FOI*/ "Tag"     :["F.Verso","Frente"],
@@ -687,21 +705,28 @@
         /*FOI*/ "Calção"  :["Masc","Femn"],
         /*FOI*/ "Recorte" :["Holográfico","Vinil","2 Camada","Transparente","Dourado"],
         /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
-        /*FOI*/ "Cavalete":["Ilhós","Rebite"],
         /*FOI*/ "Placa"   :["Ilhós","Rebite","ACM","Acrílico","PVC 5mm","PVC 10mm"],
         /*FOI*/ "Fachada" :["Ilhós","Rebite","ACM"],
-
+        /*FOI*/ "Cavalete":["Ilhós","Rebite"],
         /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
         /*FOI*/ "Cardápio":["F.Verso","Frente"],
         /*FOI*/ "Produto" :["Capa Barber","Capa De Bujão"],
+        /*FOI*/ "Arte"    :[""],
+        /*FOI*/ "Edição"  :[""],
+        /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
+        /*FOI*/ "Plotagem":[""],
+        /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
+        /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
+        /*FOI*/ "Crachá"  :["Acrílico","PS 1mm"],
     }
 
     async function GetTable(Typ,Filt,Exessao){
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual = FiltRel('SERV',{Serv:["Produto"]}) // '!Tipo':["Acrílico"]
-        const data   = await SB_GETT(Typ,FiltManual) // Filtro Filt135
+        const FiltManual1 = FiltRel('SERV',{Serv:["Carteira"]}) // '!Tipo':[""]
+        const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
+        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
         //LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
@@ -783,6 +808,7 @@
 
 <script> // Int
     Onloads('body') ; Get_User()
+
     async function PosLogin(U){
         USUARIO = U  ; LOG('✅ Perfil Logado!')
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
