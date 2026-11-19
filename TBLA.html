@@ -37,6 +37,7 @@
     function SaveConfig(e){LOG('SaveConfig')}
     function __NULL(obj){for(const k in obj){obj[k] ??= ""} return obj}
     function Mk(Stts,c,Texto='white'){return {Stts,Cor:COR1[c],Dark:COR2[c],Texto,TxPcy:CorPacyy(COR1[c])}}
+    function NoneGrup(Col,Grup){return GrupNone[Grup]?.includes(Col) ? "none" : ""}
 
     async function SB_Get_Filt(Typ,col){const {data}=await supaBASE.rpc('get_unique_col',{t:Typ,c:col}) ; FF[`${Typ}${col}`]=data}
     const ORR = o=>Object.entries(o).flatMap(([k,v])=>(Array.isArray(v)?v:[v]).map(v=>`${k}.${typeof v=='string'?'like':'eq'}.${v}`)).join(',')
@@ -477,25 +478,21 @@
     }
 </script>
 
-<style>
-    .Bdj_SERV.TblG_PRINT :is(td,th):nth-child(10){display:none} /*["Grd2","Grd3"]*/
-    .Bdj_SERV.TblG_STOCK :is(td,th):is(:nth-child(1),:nth-child(3),:nth-child(10),:nth-child(13),:nth-child(14),:nth-child(15),:nth-child(16),:nth-child(17)){display:none}
-    .Bdj_SERV.TblG_VENDA :is(td,th):is(:nth-child(1),:nth-child(2),:nth-child(3),:nth-child(10),:nth-child(12),:nth-child(13),:nth-child(14),:nth-child(15),:nth-child(16),:nth-child(17),:nth-child(18),:nth-child(19),:nth-child(20)){display:none}
-    /* 
-    .Bdj_SERV.TblG_CHAPA{}
-    .Bdj_SERV.TblG_OFSET{}
-    .Bdj_SERV.TblG_TECID{}
-    .Bdj_SERV.TblG_STOCK{}
-    .Bdj_SERV.TblG_VENDA{}//
-    .Bdj_SERV.TblG_FERRO{}
-    .Bdj_SERV.TblG_UNIDD{}
-    .Bdj_SERV.TblG_DIGTL{}
-    .Bdj_SERV.TblG_OUTRO{}
-    .Bdj_SERV.TblG_ROUTR{}
-    */
-</style>
-
 <script> // TABELA
+
+    const GrupNone = {
+        PRINT:["Id",       "Clnt","Surg",            "Tamn",       "VArt",       "VGrd","Grd2","VGrd2",      ,"VCbt"                   ], // ("Adesivo","Etiqueta","Lona","DTF","Bandeira")
+        CHAPA:["Id",       "Clnt","Surg",            "Tamn",       "VArt",       "VGrd",       "VGrd2",      ,"VCbt"                   ], // ("Quadro","Ímã","Toten","Carteira")
+        OFSET:["Id",       "Clnt","Surg","Lag","Alt","Tamn",       "VArt",       "VGrd","Grd2","VGrd2","Cbmt","VCbt"                   ], // ("Cartão","Panfleto","Tag","Talão")
+        TECID:["Id",       "Clnt","Surg","Lag","Alt",              "VArt",       "VGrd","Grd2","VGrd2","Cbmt","VCbt"                   ], // ("Camisa","Calção")
+        VENDA:["Id","Data","Clnt","Surg",            "Tamn","Arte","VArt","Grad","VGrd","Grd2","VGrd2","Cbmt","VCbt","OK","Entg","Detg"], // ("Venda")
+        STOCK:["Id",       "Clnt","Surg",            "Tamn",       "VArt","Grad","VGrd","Grd2","VGrd2","Cbmt","VCbt"                   ], // ("Recorte")
+        UNIDD:["Id",      ,"Clnt","Surg",                          "VArt",       "VGrd","Grd2","VGrd2","Cbmt","VCbt"                   ], // ("WindFlag","Cardápio","Produto")
+	    DIGTL:["Id",      ,"Clnt","Surg","Lag","Alt","Tamn",       "VArt","Grad","VGrd","Grd2","VGrd2","Cbmt","VCbt"                   ], // ("Arte","Edição")
+        OUTRO:["Id",      ,"Clnt","Surg",], // ("Folha","Plotagem")
+	    FERRO:["Id",      ,"Clnt","Surg",], // ("Placa","Fachada","Cavalete")
+        ROUTR:["Id",      ,"Clnt","Surg",], // "Letreiro","Display","Crachá"
+    }
 
     const Acc_Bndj = {}
     const Tm_TT=(COL,Find,Typ,Col,R)=>{
@@ -539,10 +536,10 @@
                 //             t=='OK'   ? `<input class="Abslt" type="checkbox">` : 
                 //             t=='Entg' ? `<input class="Abslt" type="checkbox">` : 
                 //             t=='Detg' ? DATAA :''}</td>`}).join('')}</tr></tfoot>
-
+                    LOG('Novas',FIND)
                 return  ObjEtr(FIND).map(([k,v])=>{
                         return `<table class="Bdj_${COL} TblG_${k}">
-                            <thead><tr>${Ths.map(t=>`<th>${t}</th>`).join('')}</tr></thead>
+                            <thead><tr>${Ths.map(t=>`<th class="${NoneGrup(t,k)}">${t}</th>`).join('')}</tr></thead>
                             <tbody>${Tm_Tr(COL,v)}</tbody>
                         </table>
                         `}).join('')
@@ -673,20 +670,6 @@
     // FiltRel('SERV',{and:[{Tipo:'Adesivo'},{relation:'GRAD',where:{Id:'B_491_3'}}]}) // 6. Relacionamento aninhado
     // FiltRel('SERV',{'Cmnt~~':'J\\_%\\_%'}) // pega B_123_1 ou B_15_4 mas não pega B_457
 
-    const GRUPServ = {
-        PRINT:["Adesivo","Etiqueta","Lona","DTF","Bandeira"], // 1 Grade .TblG_PRINT ["Grd2","Grd3"]
-        CHAPA:["Quadro","Ímã","Toten","Carteira"],            // 2 Grade .TblG_CHAPA ["Grd3"]
-        OFSET:["Cartão","Panfleto","Tag","Talão"],            // 1 Grade .TblG_OFSET ["Grd2","Grd3"]
-        TECID:["Camisa","Calção"],                            // 1 Grade 
-        STOCK:["Recorte"],                                    // --
-        VENDA:["Venda"],                                      // --
-	    FERRO:["Placa","Fachada","Cavalete"],                 // 3 Grade
-        UNIDD:["WindFlag","Cardápio","Produto"],              // 1 Grade
-	    DIGTL:["Arte","Edição"],                              // --
-        OUTRO:["Folha","Plotagem"],                           // 1 Grade
-        ROUTR:["Letreiro","Display","Crachá"],                // 2 Grade
-    }
-
     const Buxa = {
         /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
         /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
@@ -701,7 +684,7 @@
         /*FOI*/ "Panfleto":["F.Verso","Frente"],
         /*FOI*/ "Tag"     :["F.Verso","Frente"],
         /*FOI*/ "Talão"   :[""],
-        /*FOI*/ "Camisa"  :["M.Curta","M.Longa","Polo","Regata"],
+        /*FOI*/ "Camisa"  :["M.Curta","M.Curta (V)","Raglã","M.Longa","Raglã.Longa","Polo","Regata"],
         /*FOI*/ "Calção"  :["Masc","Femn"],
         /*FOI*/ "Recorte" :["Holográfico","Vinil","2 Camada","Transparente","Dourado"],
         /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
@@ -724,7 +707,7 @@
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual1 = FiltRel('SERV',{Serv:["Carteira"]}) // '!Tipo':[""]
+        const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
         const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
         const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
         //LOG(data)
