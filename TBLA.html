@@ -478,6 +478,10 @@
     }
 </script>
 
+<style>
+    #H_SERV td.none{display: table-cell !important;}
+</style>
+
 <script> // TABELA
 
     const GrupNone = {
@@ -703,13 +707,16 @@
         /*FOI*/ "Crachá"  :["Acrílico","PS 1mm"],
     }
 
+
     async function GetTable(Typ,Filt,Exessao){
         function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
         const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
         const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
-        const data   = await SB_GETT(Typ,Filt) // Filtro Filt135
+        const FClnt       = Typ=="CLNT" && Filt==undefined ? {relation:'PDDS',where:{field:'Id',op:'notnull'}} : null
+        const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
+        const data   = await SB_GETT(Typ,FClnt ? FClnt : Filt) // Filtro Filt135
         //LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
@@ -797,7 +804,7 @@
         Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
         Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
+        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Loja').gte('Id',6233) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
         NAVPAG(Atual.Pag) ; GetTable(Atual.Pag)}
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
