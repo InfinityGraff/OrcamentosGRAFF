@@ -6,22 +6,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
   <title>Galeria</title>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
   <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-  <link  href="./CssGRAFF.css" rel="stylesheet">
-  <script src="./BaseGRAFF.js"  ></script>
-  <script src="./BiblGRAFF.js"  ></script>
-  <script src="./SB_Crud_New.js"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="./supaBASE.js"></script>
-  <script src="./DadosClientes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./BiliotecaGRAFF/DadosClientes.js"></script>
+  <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
+  <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
+  <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
+  <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
+  <script src="./SB/SB_Login.js"></script>
+  <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
 </head>
 
 <script> // Biblioteca
-    const Atual    ={Pag:'HOME'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
-    const NAVPAG   =       Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
+    const Atual    = {Pag:'HOME'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
+    const NAVPAG   = Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
 </script>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
