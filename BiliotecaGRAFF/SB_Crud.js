@@ -94,6 +94,30 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:rgb(${Etp.Dark})">${SVGEtapas[Etp.Stts]}</div>
                 <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
     }
+
+    const CorSttsGRAD = {
+        0: '#22c55e', // Verde
+        1: '#84cc16', // Verde-limão
+        2: '#eab308', // Amarelo
+        3: '#f59e0b', // Laranja claro
+        4: '#f97316', // Laranja
+        5: '#ef4444'  // Vermelho
+    };
+
+    const CorSttsGRAD2 = {
+        0: '#74ffa7', // Verde
+        1: '#cfff88', // Verde-limão
+        2: '#ffdd79', // Amarelo
+        3: '#ffc35b', // Laranja claro
+        4: '#ff9d57', // Laranja
+        5: '#ff6767'  // Vermelho
+    };
+
+    const IcnEtp2=Etp=>{
+        if(!Etp){return ''}
+        return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:${CorSttsGRAD[Etp.Resta]}">${SVGEtapas["OK"]}</div>
+                <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
+    }
     const GrifTxt=(t,Regex)=>{
         if(!Regex){return t} ; const [Rx,Aa,_C] = Regex
         const Rgx=new RegExp(_C?Rx:Acnto3(Rx),Aa?'':'i')
@@ -122,6 +146,7 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Lixo:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P PT HOV"  onclick="SB_RmvROW(this,'${d_r(R).Ty}','${d_r(R).Id}')" src="./CrudSB/Lixo.webp">`,
         Fixo:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" >${GrifTxt(e,Rgx)}</p>`,
         Ssvg:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp(e)}`,
+        Svg2:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" ></p>${IcnEtp2(e)}`,
         Auto:(e,R,Rgx,j)=>`<p        data-R="${R}" name="${e}" class="P-P Ct PT" onclick="CtrlSoma(this)" ${Destak(j,R)}>${GrifTxt(e?RS(e):'-',Rgx)}</p>`,
         
           RS:(e,R,Rgx,j)=>`<p        data-R="${R}" name="${e}" class="P-P Ct PT" onclick="CtrlSoma(this)" ${Destak(j,R)}>${GrifTxt(e==0?'-':RS(e),Rgx)}</p>`,
@@ -131,10 +156,13 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
         Mdds:(e,R,Rgx  )=>`<p        data-R="${R}" name="${e}" class="P-P Ct" contenteditable onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this);CurAll(this)" oninput="Mask.Num(this)">${GrifTxt(e?Cm(e):''    ,Rgx)}</p>`,
         Text:(e,R,Rgx  )=>`<textarea data-R="${R}" name="${e}" class="P-P Ct" onclick="!this.closest('.FModal') && MODAL(Inn(Pai(this)))" onkeydown="EntBlr(this)" onblur="DTV(this);EditCell(this)" oncontextmenu="SELE(event,this)" onfocus="ATV(this)">${e}</textarea>`, // só deve entrar no Modal TextArea se der 2 Clicks
         Imgs:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?e.includes('.svg')?`${BASE_URL}${e.replace('Arte/','LowSVG/').replace('.svg','.webp')}`:`${BASE_URL2}${e}${src20}`:`./CrudSB/Upld.webp`}" onclick="AbrirImg(this,'${R}','${e}')">`,
+        
+        ImgG:(e,R,Rgx  )=>`<img      data-R="${R}" name="${e}" class="P-P"    loading="lazy" draggable="false" src="${e?`${BASE_URL2}Grd2/${e}${src20}`:`./CrudSB/Upld.webp`}" onclick="AbrirImg(this,'${R}','${e}')">`,
+        
         Chek:(e,R,Rgx  )=>`<input    data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)" type="checkbox" ${ArrBolean(e)?'checked':Bool(e)?'checked':''}>`,
         Slct:(e,R,Rgx  )=>`<select   data-R="${R}" name="${e}" class="P-P Ct" onchange="EditCell(this)">${Tm_Opt(O[BsJs(d_r(R).Ty,d_r(R).Cl,'TH').split('-')[1]]||[],e)}</select>`,
         MySl:(e,R,Rgx   )=>`${Tm_Select2(e,R,ObjKey(Buxa),'Tipo')}`,
-        MySl3:(e,R,Rgx,j)=>`${Tm_Select2(e,R,Buxa[j.Serv]||[""])}`,
+        MySl3:(e,R,Rgx,j)=>`${Tm_Select2(e,R,Buxa[j.Serv]|| [""])}`,
         Data:(e,R,Rgx  )=>`<p class="P-P Ct h100" name="${e?YMD(e):e}" onclick="TrcFih2(this,$('input',Pai(this)))">${BrevData(e?DMY(e):e||'')}</p><input type="date" data-R="${R}" class="NONE" value="${e?YMD(e):e}" onchange="EditCell(this)" onblur="Inn($('p',Pai(this)),YMD(this.value));TrcFih2(this,$('p',Pai(this)))">`,
         //Data:(e,R,Rgx  )=>`<div class="Ct"><div class="Rltv"><input style="width:90px" placeholder="-" data-R="${R}" class="P-P"  name="${e}" value="${e?BrevData(DMY(e)):e}"  onchange="EditCell(this)" onclick="Calendario(this,$('.calendar',Pai(this)));ShowBndj(_td(this))"><div class="Box1 calendar BNdj Abslt Cl none"></div></div></div>`,
         
@@ -160,11 +188,12 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
     }
     const CSS_Stts  =e=>{if(TemKey(e,'Stts') && IsObj(e.Stts)){return `style="background:${e.Stts.BkPcy};color:${e.Stts.TxPcy}"`}else{return ''}}
     const CSS_Stts2 =e=>{if(TemKey(e,'Sttts') && IsObj(e.Sttts)){return `style="background:${e.Sttts.BkPcy};color:${e.Sttts.TxPcy}"`}else{return ''}} // GAMBIARRA
+    const CSS_Stts3 =e=>{return `style="background:${e};color:black"`} // GAMBIARRA
     
     const Tm_Sklt   =Typ=>For(16).map(()=>`<tr>${For(10).map(()=>`<td><div class="Sklt"></div></td>`).join('')}</tr>`).join('') // Esqueleto
     const Tm_R      =(Typ,Id,Col)=>`${Typ}-${Id}-${Col}-${BSJsn(Typ,Col)?.TM}-_-_` // esses 2 Ultimos _-_ acho q ja da pra remover
     const Tm_Td     =(Typ,Id,Col,Val,x,Rgx,j)=>{const _R=Tm_R(Typ,Id,Col) ; if(Id=='--'){return ''} ; return `<td class="${BSJsn(Typ,Col)?.CLS} Rltv ${NoneGrup(Col,j.Grup)}" style="grid-area:${ABC[x]}">${Tm_Tm[d_r(_R).Tm](Val,_R,Rgx,j)}</td>`}
-    const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${Typ=='ARTE'?CSS_Stts2(j):CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx,j)).join('')}</tr>`:'').join('')
+    const Tm_Tr     =(Typ,Arr,Rgx)=>Arr.map(j=> j ? `<tr class="tr-${j.Id}" ${Typ=='GRAD'?CSS_Stts3(CorSttsGRAD2[j.Stts.Resta]):Typ=='ARTE'?CSS_Stts2(j):CSS_Stts(j)}>${OrdCols(j,BS[Typ].Orden).map(([Col,Val],x)=>Tm_Td(Typ,j.Id,Col,Val,x,Rgx,j)).join('')}</tr>`:'').join('')
     const Tm_tdFoot =(Typ,Arr    )=>Arr.map(col=> `<td data-R="${Tm_R(Typ,'Foot',col)}" class="Rltv ${BSJsn(Typ,col)?.CLS.includes('none')?'none':''}"></td>`).join('')
     const Tm_tbody  =(Typ,Arr,Rgx)=>Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Arr||J[Typ],Rgx))
 

@@ -73,10 +73,11 @@
     .w95{width: 95%;}
     :is(.DashDsng,.DashCDO) img{width: 80px; height: 80px;}
     :is(.DashDsng,.DashCDO) i{color:#8dff57}
+    #H_SERV td.none{display: table-cell !important;}
 </style>
 
 <script> // BASE
-    const Atual    ={Pag:'PDDS'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
+    const Atual    ={Pag:'GRD2'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
     const FiltBase ={PDDS:FiltMesS(['Outubro'])}
     const FiltsInc2={PDDS:{'Clnt.Clnt':'Kauanzinho Barbeiro'}}//{'Serv.Grad':'_'}//{'Clnt.Loja':'Weed','Serv.Cmnt':'Weed'}
 
@@ -332,13 +333,14 @@
     const COMP = {
         PDDS:{
             Stts:j=>{const E   = Menor(j.Serv)?.Stts||''
-                    const Ed  = LALEL.SERV.Devendo()
-                    const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
-                    return E?.Stts=='Entregue' && j.Deve ? Dev : E}
+                     const Ed  = LALEL.SERV.Devendo()
+                     const Dev = {Opc:1,BkPcy:`rgb(${Ed.Cor})`,Lv:0,...Ed}
+                     return E?.Stts=='Entregue' && j.Deve ? Dev : E}
         },
         SERV:{
             Clnt:j=>{if(j.Pdds){return [j.Pdds[0]?.Clnt[0]]}},
             Foto:j=>`Foto/${j.Id}.webp` ?? '',                  // OK
+
             Stts:j=>{
                 const S     = j.Stts
                 const Etp   = LALEL['SERV'][Rmvact(S.Stts)](S.Cor)
@@ -353,28 +355,9 @@
         },
         GRAD:{ImgU:j=>`Grad/${j.Id}.webp` ?? ''                     // OK
             ,ImgG:j=>`Grad/${j.Id.replace(/_\d*$/,"")}.webp` ?? ''  // OK
-            ,Forn:j=>Dbbrev[j.Id.split('_')[0]]                     // OK
-            ,VlrO:j=>j.OS?.Valr || 0                                // OK
             ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
             ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
-            ,Stts:j=>{ // Muita GAMBIARRA
-                const GData=+(j.Data!=='')
-                const GCont=+(j.Cont==j.Serv?.length)
-                const GVlrO=+(j.VlrO==j.Summ)
-                const faltas=[]
-                if(!GData) faltas.push('Data')
-                if(!GCont) faltas.push('Cont')
-                if(!GVlrO) faltas.push('VlrO')
-                const Result = faltas.length ? `Falta_${faltas.join('_')}` : 'OK'
-                const Oobj = {Cor:ListasGRADES[Result][1], Stts:Result, True : GData+GCont+GVlrO, Total:3}
-                const S     = Oobj
-                const Etp   = LALEL['GRAD'][Rmvact(S.Stts)]
-                const opc   = _0_1(S.True/S.Total)
-                const BkPcy = `rgba(${Etp.Cor},${(opc).toFixed(2)})` // ver se faço Helper com isso!
-                const Level = ObjKey(LALEL['GRAD']).indexOf(S.Stts)
-                return {Opc:opc,BkPcy:BkPcy,Lv:Level,...Etp}
-            }
-            },
+        },
         OS  :{Oimg:j=>  `OS/${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`Uber/${j.Id}.webp` ?? ''},                   // OK
         CLNT:{Foto:j=>`Clnt/${j.Id}.webp` ?? ''
@@ -434,13 +417,10 @@
         if(g.Tm=='Card' ){}
     }
 
-    async function SB_Sugg(Mod,COL,Typ){
-        if(Mod=='Uniq') // ['MPAG']             // Somente as que não tem Link
-            return GetTable(COL,null,'SemTM')
-        if(Mod=='OKAY') // ['GRAD','OS','UBER'] // Todas as que não estão OKAY
-            return GetTable(COL,null,'SemTM')
-        if(Mod=='Free') // ['ARTE','CLNT']      // Só os 50 mais recentes
-            return GetTable(COL,null,'SemTM')
+    async function SB_Sugg(Mod,COL){
+        if(Mod=='Uniq') return GetTable(COL,null,'SemTM') // ['MPAG']             // Somente as que não tem Link
+        if(Mod=='OKAY') return GetTable(COL,null,'SemTM') // // ['GRAD','OS','UBER']  Todas as que não estão OKAY
+        if(Mod=='Free') return GetTable(COL,null,'SemTM') // ['ARTE','CLNT']      // Só os 50 mais recentes
         return []
     }
 
@@ -477,10 +457,6 @@
         Read_Tr(_tr(Eu),Typ,Id) // Melhor Passar R talvez
     }
 </script>
-
-<style>
-    #H_SERV td.none{display: table-cell !important;}
-</style>
 
 <script> // TABELA
 
@@ -592,7 +568,6 @@
     }
 
     function PrepTable(Typ){
-        const tabtab=(e,m)=>`<div class="WrapTable CT ${m}"><table id="H_${Typ}${e}" class="hMin Tbla w100"><thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table></div>`
         return `
         <div class="Bt Stky w95" style="height:40px">
             <a>.</a>
@@ -627,7 +602,7 @@
             </div>
         </div>
         <div id="InfoBS_${Typ}" class="w95 none"></div>
-        ${Typ=="GRD2" ? `<div class="Paizao w95 CT h80 Gap">${Forns.map(e=>tabtab(`_${e}`,'Grd2')).join('')}</div>` : tabtab('','w95')}
+        <div class="WrapTable CT w95"><table id="H_${Typ}" class="hMin Tbla w100"><thead class="Stky"></thead><tbody></tbody><tfoot class="Stky2"></tfoot></table></div>
         ${Typ=="ARTE" ? `<div class="w95 Ct"><div id="Dash_Dsng" class="Ct w50 Gap"></div><div id="Dash_CEO" class="Ct w50 Gap"></div></div>` : ''}
         `
     }  
@@ -709,7 +684,6 @@
 
 
     async function GetTable(Typ,Filt,Exessao){
-        function Tm_GRD2(Typ,Dado){Forns.forEach(e=>Tm_Table(Typ,FiltrarR(Dado,[e,`${e}_`]),e))}
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
         const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
@@ -717,10 +691,10 @@
         const FClnt       = Typ=="CLNT" && Filt==undefined ? {relation:'PDDS',where:{field:'Id',op:'notnull'}} : null
         const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
         const data   = await SB_GETT(Typ,FClnt ? FClnt : Filt) // Filtro Filt135
-        //LOG(data)
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
-        Typ=='GRD2' ? Tm_GRD2(Typ,J[Typ]) : Tm_Table(Typ,J[Typ])
+        Tm_Table(Typ,J[Typ])
+
         // Aqui em baixo Decidir o que vai fazer!
         // 1 - Tm_Table(Typ,Dados,['Pesq','thead','tfoot','tbody'])
         // 2 - Tm_Table(Typ,Dados,['tbody'])
@@ -737,12 +711,10 @@
     }
     
     function Tm_Table(Typ,Dados,X){
-        /*GRD2*/ const TYP = X ? `${Typ}_${X}` : Typ
-        /*GRD2*/ const Ord = X ?  [X,`${X}_`]  : BS[Typ].Orden
         if(!CarregadoPesq.includes(Typ)){Inn($(`#PagPesq_${Typ}`),Tm_Pesq(Typ))} ; CarregadoPesq.push(Typ)
-        if(!CarregadoTHad.includes(Typ)){Inn($(`#H_${TYP} > thead`),`<tr>${Tm_thSort(Typ,Ord)}</tr>`)} ; CarregadoTHad.push(Typ)
-        Inn($(`#H_${TYP} > tfoot`),`<tr>${Tm_tdFoot(Typ,Ord)}</tr>`)
-        Inn($(`#H_${TYP} > tbody`),Tm_Tr(Typ,Dados))
+        if(!CarregadoTHad.includes(Typ)){Inn($(`#H_${Typ} > thead`),`<tr>${Tm_thSort(Typ,BS[Typ].Orden)}</tr>`)} ; CarregadoTHad.push(Typ)
+        Inn($(`#H_${Typ} > tfoot`),`<tr>${Tm_tdFoot(Typ,BS[Typ].Orden)}</tr>`)
+        Inn($(`#H_${Typ} > tbody`),Tm_Tr(Typ,Dados))
         Re_Foot(Typ)
     }
    
@@ -806,7 +778,8 @@
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Loja').gte('Id',6233) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
-        NAVPAG(Atual.Pag) ; GetTable(Atual.Pag)}
+        NAVPAG(Atual.Pag) ; GetTable(Atual.Pag)
+    }
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
 
     GetUnique('PDDS',['Cmnt'])

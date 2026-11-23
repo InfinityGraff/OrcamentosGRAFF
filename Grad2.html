@@ -1,0 +1,182 @@
+
+<div id="Classificador">
+    <div id="Contador"></div>
+    <img id="ImagemAtual" alt="Imagem para classificar">
+    <div id="NomeArquivo"></div>
+    <div id="Mensagem">Pressione uma tecla de 1 a 9</div>
+</div>
+
+<style>
+#Classificador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 85vh;
+    font-family: Arial;
+    text-align: center;
+}
+#ImagemAtual {
+    max-width: 90vw;
+    max-height: 70vh;
+    object-fit: contain;
+    background: white;
+    border-radius: 8px;
+}
+#Contador { font-size: 24px; font-weight: bold; }
+#NomeArquivo { font-size: 16px; }
+#Mensagem { font-size: 20px; color: #a855f7; }
+</style>
+
+<script>
+async function IniciarClassificador(sb, Bucket, Pasta, Coluna) {
+
+    const Img = document.querySelector("#ImagemAtual");
+    const Nome = document.querySelector("#NomeArquivo");
+    const Contador = document.querySelector("#Contador");
+    const Mensagem = document.querySelector("#Mensagem");
+
+    let Arquivos = [];
+    let Atual = 0;
+    let Salvando = false;
+    let Token = 0;
+
+    // Busca todas as imagens (com paginação)
+    async function Buscar() {
+        let offset = 0;
+        const limit = 1000;
+        const lista = [];
+
+        while (true) {
+            const {data, error} = await sb.storage
+                .from(Bucket)
+                .list(Pasta, {
+                    limit,
+                    offset,
+                    sortBy: {column:"name", order:"asc"}
+                });
+
+            if (error) throw error;
+
+            lista.push(...data.filter(a =>
+                /\.(webp|png|jpg|jpeg)$/i.test(a.name) &&
+                /^G_\d+(?=[\s.-]|$)/i.test(a.name)
+            ));
+
+            if (data.length < limit) break;
+            offset += limit;
+        }
+
+        return lista.sort((a,b) =>
+            a.name.localeCompare(b.name, undefined, {numeric:true})
+        );
+    }
+
+    // Exibe a imagem atual
+    async function Mostrar() {
+        const meuToken = ++Token;
+
+        if (Atual >= Arquivos.length) {
+            Img.hidden = true;
+            Nome.textContent = "";
+            Contador.textContent = "Concluído!";
+            Mensagem.textContent = "Todas as imagens foram classificadas.";
+            return;
+        }
+
+        const arquivo = Arquivos[Atual];
+        const caminho = [Pasta, arquivo.name].filter(Boolean).join("/");
+
+        Contador.textContent = `${Atual+1} / ${Arquivos.length}`;
+        Nome.textContent = arquivo.name;
+        Mensagem.textContent = "Carregando imagem...";
+        Img.hidden = true;
+
+        const {data, error} = await sb.storage
+            .from(Bucket)
+            .createSignedUrl(caminho, 3600);
+
+        if (meuToken !== Token) return;
+
+        if (error) {
+            Mensagem.textContent = "Erro ao carregar: " + error.message;
+            return;
+        }
+
+        Img.onload = () => {
+            if (meuToken !== Token) return;
+            Img.hidden = false;
+            Mensagem.textContent = "Pressione 1 a 9";
+        };
+
+        Img.onerror = () => {
+            if (meuToken !== Token) return;
+            Mensagem.textContent = "Não foi possível abrir a imagem.";
+        };
+
+        Img.src = data.signedUrl;
+    }
+
+    // Salva a classificação
+    async function Salvar(Numero) {
+        if (Salvando || Atual >= Arquivos.length || Img.hidden) return;
+
+        Salvando = true;
+
+        const arquivo = Arquivos[Atual];
+        const Id = arquivo.name.match(/^G_\d+/i)?.[0];
+
+        if (!Id) {
+            Mensagem.textContent = "ID inválido";
+            Salvando = false;
+            return;
+        }
+
+        Mensagem.textContent = `Salvando ${Id} = ${Numero}...`;
+
+        try {
+            const {data, error} = await sb
+                .from("GRAD2")
+                .update({[Coluna]: Numero})
+                .eq("Id", Id)
+                .select("Id");
+
+            if (error) throw error;
+
+            if (!data?.length) {
+                throw new Error(`ID ${Id} não encontrado ou sem permissão`);
+            }
+
+            Atual++;
+            await Mostrar();
+
+        } catch (erro) {
+            Mensagem.textContent = "Erro ao salvar: " + erro.message;
+        } finally {
+            Salvando = false;
+        }
+    }
+
+    // Teclado: somente 1 até 9
+    const Teclado = e => {
+        if (/^[1-9]$/.test(e.key) && !e.repeat) {
+            e.preventDefault();
+            Salvar(Number(e.key));
+        }
+    };
+
+    document.addEventListener("keydown", Teclado);
+
+    try {
+        Mensagem.textContent = "Buscando imagens...";
+        Arquivos = await Buscar();
+        await Mostrar();
+    } catch (erro) {
+        Mensagem.textContent = "Erro: " + erro.message;
+    }
+
+    // Permite encerrar o classificador
+    return () => document.removeEventListener("keydown", Teclado);
+}
+</script>
