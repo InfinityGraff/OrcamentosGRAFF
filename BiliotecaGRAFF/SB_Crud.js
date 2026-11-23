@@ -95,24 +95,6 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
                 <div class="BndjTBL MySelect BNdj Abslt none Cl"><a>${SVG.Ponta}</a><span class="Cl"></span></div>`
     }
 
-    const CorSttsGRAD = {
-        0: '#22c55e', // Verde
-        1: '#84cc16', // Verde-limão
-        2: '#eab308', // Amarelo
-        3: '#f59e0b', // Laranja claro
-        4: '#f97316', // Laranja
-        5: '#ef4444'  // Vermelho
-    };
-
-    const CorSttsGRAD2 = {
-        0: '#74ffa7', // Verde
-        1: '#cfff88', // Verde-limão
-        2: '#ffdd79', // Amarelo
-        3: '#ffc35b', // Laranja claro
-        4: '#ff9d57', // Laranja
-        5: '#ff6767'  // Vermelho
-    };
-
     const IcnEtp2=Etp=>{
         if(!Etp){return ''}
         return `<div class="Rltv" onclick="ShowBndj(_td(this));RenderSVVG(_td(this))" style="fill:${CorSttsGRAD[Etp.Resta]}">${SVGEtapas["OK"]}</div>
