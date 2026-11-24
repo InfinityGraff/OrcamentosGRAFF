@@ -356,9 +356,9 @@
             Clnt:j=>{if(j.Pdds){return [j.Pdds[0]?.Clnt[0]]}},
         },
         GRAD:{ImgU:j=>`Grad/${j.Id}.webp` ?? ''                     // OK
-            ,ImgG:j=>`Grad/${j.Id.replace(/_\d*$/,"")}.webp` ?? ''  // OK
-            ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
-            ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
+             ,ImgG:j=>`Grad/${j.Id.replace(/_\d*$/,"")}.webp` ?? '' // OK
+             ,Valr:j=>j.Forn=='Barraca' ? j.Qnt * 120 : Regra(NAN(j.Lag * j.Alt * ValForn[j.Forn]?.[j.SrvF]?.[0]?.val)) * j.Qnt
+             ,VlrO:j=>SOMA_Obj(j.OS,'Valr')
         },
         OS  :{Oimg:j=>  `OS/${j.Id}.webp` ?? ''},                   // OK
         UBER:{Img :j=>`Uber/${j.Id}.webp` ?? ''},                   // OK
@@ -688,10 +688,11 @@
     async function GetTable(Typ,Filt,Exessao){
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
-        const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
+        //const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
+        //const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
+        //const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
         const FClnt       = Typ=="CLNT" && Filt==undefined ? {relation:'PDDS',where:{field:'Id',op:'notnull'}} : null
-        const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
+        LOG('Filtro',Filt)
         const data   = await SB_GETT(Typ,FClnt ? FClnt : Filt) // Filtro Filt135
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
@@ -821,11 +822,4 @@
     }
 </script>
 
-<script>
-    // deve existir várias formas de renderizar o T-T pois quando ele fica dentro de Grad, plmns, o Serv, fica muito grande // teria que diminuir ele pra apenas uma Contagem 1,2,3 ou '4 Serv' por exemplo!
-    // corrigir em MPAG as linhas
-    // Linha 654 (tinha 382_1 em Link)
-    // Linha 25  (tinha 55_2 em Link)
-    // 114 tinha 56_1
-</script>
 </html>

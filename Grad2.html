@@ -1,4 +1,24 @@
 
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
+    <title>NOVA</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <script src="./Biblioteca/PreScript.js"></script>
+
+    <script src="./BiliotecaGRAFF/DadosClientes.js"></script>
+    <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
+    <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
+    <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
+    <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
+    <script src="./SB/SB_Login.js"></script>
+    <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
+</head>
+
 <div id="Classificador">
     <div id="Contador"></div>
     <img id="ImagemAtual" alt="Imagem para classificar">
@@ -30,7 +50,7 @@
 </style>
 
 <script>
-async function IniciarClassificador(sb, Bucket, Pasta, Coluna) {
+    async function IniciarClassificador(sb, Bucket, Pasta, Coluna) {
 
     const Img = document.querySelector("#ImagemAtual");
     const Nome = document.querySelector("#NomeArquivo");
@@ -180,3 +200,5 @@ async function IniciarClassificador(sb, Bucket, Pasta, Coluna) {
     return () => document.removeEventListener("keydown", Teclado);
 }
 </script>
+
+</html>

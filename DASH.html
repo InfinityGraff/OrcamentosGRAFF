@@ -65,12 +65,20 @@
                         const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
                         const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
 
-                        async function RfreshGrafic(Div,Semn){
-                            Load_Grfc('Barra',$('.Grfc_Servs',Div),gG(OrdDash(await Dash('SERV','Serv','ContUniq')),'Quantidade de Serviços'  ,1),{horizontal:false,valores:false,moeda:false})
-                            Load_Grfc('Pizza',$('.Grfc_PixAv',Div),gG(OrdDash(await Dash('PGMT','Form','ContUniq')),'Quantidade de Pagamentos',1),{horizontal:false,valores:false,moeda:false})
-                            Load_Grfc('Barra',$('.Grfc_VPxAv',Div),gG(Top3(OrdDash(await Dash('PGMT','Form','SomaUniq','Valr'))),'Quantidade de Serviços'  ,1),{horizontal:true,valores:true,moeda:true})
-                            Load_Grfc('Barra', gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0),$('.Grfc_Ftura',Div)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+                        async function RfreshGrafic(){
+                            Load_Grfc('Barra',$('.Grfc_Servs'),gG(OrdDash(await Dash('SERV','Serv','ContUniq'             )),'Quantidade de Serviços'  ,1),{horizontal:false,valores:false,moeda:false})
+                            Load_Grfc('Barra',$('.Grfc_Serv2'),gG(OrdDash(await Dash('SERV','Serv','SomaUniq','Valr'      )),'Serviços Mais Apurado'   ,1),{horizontal:false,valores:false,moeda:false})
+                            Inn('.ListaSERV',['Todos',...ObjKey(OrdDash(await Dash('SERV','Serv','ContUniq')))].map(e=>`<p class="button PT" style="height:20px" onclick="RodaMes('${e}')">${e}</p>`).join(''))
+                            Load_Grfc('Barra',$('.Grfc_Meses'),gG(        await Dash('SERV','Serv','ContMes' ,'Todos'    ),'Cont Serv por mês'   ,0),{horizontal:false,valores:false,moeda:false}) // pode ser 'Todos'
+                            
+                            Load_Grfc('Pizza',$('.Grfc_PixAv'),gG(OrdDash(await Dash('PGMT','Form','ContUniq'             )),'Quantidade de Pagamentos',1),{horizontal:false,valores:false,moeda:false})
+                            Load_Grfc('Barra',$('.Grfc_VPxAv'),gG(Top3(OrdDash(await Dash('PGMT','Form','SomaUniq','Valr'))),'Quantidade de Serviços'  ,1),{horizontal:true ,valores:true ,moeda:true })
+                            Load_Grfc('Barra',$('.Grfc_Ftura'),gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
                         }
+                        async function RodaMes(e){
+                            Load_Grfc('Barra',$('.Grfc_Meses'),gG(        await Dash('SERV','Serv','ContMes' ,e),'Cont Serv por mês'   ,0),{horizontal:false,valores:false,moeda:false}) // pode ser 'Todos'
+                        }
+
                         // até agora todos eles possuem Data serve pra fazer o Range
 
 
@@ -91,9 +99,13 @@
                     </script>
 
                     
-                    <button onclick="RfreshGrafic(Pai(this),1)">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                    <button onclick="RfreshGrafic()">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
                     <div class="Ct Gap">
                         <canvas class="Grfc_Servs Grf Grf100"></canvas> <!--Gráfico de Serviço mais Pedido "ContUniq"-->
+                        <canvas class="Grfc_Serv2 Grf Grf100"></canvas> <!--Gráfico de Serviço mais Apurado "ContUniq"-->
+                        <div    class="ListaSERV w100 Ct gap"></div>
+                        <canvas class="Grfc_Meses Grf Grf100"></canvas> <!--Gráfico de Unique Serviço por Mês "ContUniq"-->
+                        
                         <canvas class="Grfc_PixAv Grf Grf50"></canvas> <!--Gráfico de Forma de Pagamento  "ContUniq"--> 
                         <canvas class="Grfc_VPxAv Grf Grf50"></canvas> <!--Gráfico de Valor de Pagamento  "SomaUniq"--> 
 
