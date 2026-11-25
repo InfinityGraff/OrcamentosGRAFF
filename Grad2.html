@@ -1,204 +1,118 @@
-
 <!DOCTYPE html>
-<html lang='pt-BR'>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
-    <title>NOVA</title>
+    <link rel="icon" href="Img/Fav_Infinity_2.png">
+    <title>GRD2</title>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+    <link href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
     <script src="./Biblioteca/PreScript.js"></script>
-
     <script src="./BiliotecaGRAFF/DadosClientes.js"></script>
-    <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
-    <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
-    <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
-    <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
+    <link href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
+    <script src="./BiliotecaGRAFF/BaseGRAFF.js"></script>
+    <script src="./BiliotecaGRAFF/BiblGRAFF.js"></script>
+    <script src="./BiliotecaGRAFF/SB_Crud.js"></script>
     <script src="./SB/SB_Login.js"></script>
-    <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
+    <script src="./BiliotecaGRAFF/supaBASE.js"></script>
 </head>
+<body>
 
 <div id="Classificador">
     <div id="Contador"></div>
-    <img id="ImagemAtual" alt="Imagem para classificar">
+    <img id="ImagemAtual" alt="Imagem para classificar" hidden>
     <div id="NomeArquivo"></div>
     <div id="Mensagem">Pressione uma tecla de 1 a 9</div>
 </div>
 
 <style>
-#Classificador {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    min-height: 85vh;
-    font-family: Arial;
-    text-align: center;
-}
-#ImagemAtual {
-    max-width: 90vw;
-    max-height: 70vh;
-    object-fit: contain;
-    background: white;
-    border-radius: 8px;
-}
-#Contador { font-size: 24px; font-weight: bold; }
-#NomeArquivo { font-size: 16px; }
-#Mensagem { font-size: 20px; color: #a855f7; }
+    #Classificador {display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; min-height:85vh; font-family:Arial; text-align:center;}
+    #ImagemAtual {max-width:90vw; max-height:70vh; object-fit:contain; background:white; border-radius:8px;}
+    #Contador {font-size:24px; font-weight:bold;}
+    #NomeArquivo {font-size:16px;}
+    #Mensagem {font-size:20px; color:#a855f7;}
 </style>
 
 <script>
-    async function IniciarClassificador(sb, Bucket, Pasta, Coluna) {
+    async function IniciarClassificador(sb,Bucket,Grupo="G"){
+        const [Img,Contador,Nome,Msg]=["ImagemAtual","Contador","NomeArquivo","Mensagem"].map(id=>document.getElementById(id));
+        const Storage=sb.storage.from(Bucket);
+        const Col=Grupo+"_", Foto="_"+Grupo;
+        const Linhas=[];
+        let Atual=0, Salvando=false;
 
-    const Img = document.querySelector("#ImagemAtual");
-    const Nome = document.querySelector("#NomeArquivo");
-    const Contador = document.querySelector("#Contador");
-    const Mensagem = document.querySelector("#Mensagem");
-
-    let Arquivos = [];
-    let Atual = 0;
-    let Salvando = false;
-    let Token = 0;
-
-    // Busca todas as imagens (com paginação)
-    async function Buscar() {
-        let offset = 0;
-        const limit = 1000;
-        const lista = [];
-
-        while (true) {
-            const {data, error} = await sb.storage
-                .from(Bucket)
-                .list(Pasta, {
-                    limit,
-                    offset,
-                    sortBy: {column:"name", order:"asc"}
-                });
-
-            if (error) throw error;
-
-            lista.push(...data.filter(a =>
-                /\.(webp|png|jpg|jpeg)$/i.test(a.name) &&
-                /^G_\d+(?=[\s.-]|$)/i.test(a.name)
-            ));
-
-            if (data.length < limit) break;
-            offset += limit;
+        // Buscar toda a tabela
+        for(let i=0;;i+=1000){
+            const {data,error}=await sb.from("GRD2").select("*").order("Id").range(i,i+999);
+            if(error){Msg.textContent=error.message;return}
+            Linhas.push(...data);
+            if(data.length<1000)break;
         }
 
-        return lista.sort((a,b) =>
-            a.name.localeCompare(b.name, undefined, {numeric:true})
+        // Separar os grupos de colunas
+        const Grupos=Object.fromEntries(
+            ["G","B","I","U","RR","W","J","T"].map(G=>[
+                G,Linhas.map(L=>({Id:L.Id,[G]:L[G],[G+"_"]:L[G+"_"],["_"+G]:L["_"+G]}))
+            ])
         );
-    }
 
-    // Exibe a imagem atual
-    async function Mostrar() {
-        const meuToken = ++Token;
+        // Filtrar somente imagens não classificadas
+        const Lista=Grupos[Grupo].filter(L=>
+            (L[Col]==null||L[Col]==="")&&L[Foto]
+        );
 
-        if (Atual >= Arquivos.length) {
-            Img.hidden = true;
-            Nome.textContent = "";
-            Contador.textContent = "Concluído!";
-            Mensagem.textContent = "Todas as imagens foram classificadas.";
-            return;
-        }
+        function Mostrar(){
+            Img.hidden=true;
+            const L=Lista[Atual];
 
-        const arquivo = Arquivos[Atual];
-        const caminho = [Pasta, arquivo.name].filter(Boolean).join("/");
-
-        Contador.textContent = `${Atual+1} / ${Arquivos.length}`;
-        Nome.textContent = arquivo.name;
-        Mensagem.textContent = "Carregando imagem...";
-        Img.hidden = true;
-
-        const {data, error} = await sb.storage
-            .from(Bucket)
-            .createSignedUrl(caminho, 3600);
-
-        if (meuToken !== Token) return;
-
-        if (error) {
-            Mensagem.textContent = "Erro ao carregar: " + error.message;
-            return;
-        }
-
-        Img.onload = () => {
-            if (meuToken !== Token) return;
-            Img.hidden = false;
-            Mensagem.textContent = "Pressione 1 a 9";
-        };
-
-        Img.onerror = () => {
-            if (meuToken !== Token) return;
-            Mensagem.textContent = "Não foi possível abrir a imagem.";
-        };
-
-        Img.src = data.signedUrl;
-    }
-
-    // Salva a classificação
-    async function Salvar(Numero) {
-        if (Salvando || Atual >= Arquivos.length || Img.hidden) return;
-
-        Salvando = true;
-
-        const arquivo = Arquivos[Atual];
-        const Id = arquivo.name.match(/^G_\d+/i)?.[0];
-
-        if (!Id) {
-            Mensagem.textContent = "ID inválido";
-            Salvando = false;
-            return;
-        }
-
-        Mensagem.textContent = `Salvando ${Id} = ${Numero}...`;
-
-        try {
-            const {data, error} = await sb
-                .from("GRAD2")
-                .update({[Coluna]: Numero})
-                .eq("Id", Id)
-                .select("Id");
-
-            if (error) throw error;
-
-            if (!data?.length) {
-                throw new Error(`ID ${Id} não encontrado ou sem permissão`);
+            if(!L){
+                Contador.textContent="Concluído!";
+                Nome.textContent="";
+                Msg.textContent="Todas as imagens foram classificadas.";
+                return;
             }
 
-            Atual++;
-            await Mostrar();
+            Contador.textContent=`${Atual+1} / ${Lista.length}`;
+            Nome.textContent=L[Grupo];
+            Msg.textContent="Carregando imagem...";
 
-        } catch (erro) {
-            Mensagem.textContent = "Erro ao salvar: " + erro.message;
-        } finally {
-            Salvando = false;
+            Img.onload=()=>{Img.hidden=false;Msg.textContent="Pressione 1 a 9"};
+            Img.onerror=()=>{Msg.textContent="Erro ao abrir imagem"};
+
+            Img.src=Storage.getPublicUrl("Grd2/"+L[Foto]).data.publicUrl;
         }
-    }
 
-    // Teclado: somente 1 até 9
-    const Teclado = e => {
-        if (/^[1-9]$/.test(e.key) && !e.repeat) {
+        async function Teclado(e){
+            if(!/^[1-9]$/.test(e.key)||e.repeat)return;
             e.preventDefault();
-            Salvar(Number(e.key));
+            if(Salvando||Img.hidden||!Lista[Atual])return;
+
+            Salvando=true;
+            const L=Lista[Atual];
+            Msg.textContent="Salvando...";
+
+            try{
+                const {data,error}=await sb.from("GRD2")
+                    .update({[Col]:Number(e.key)})
+                    .eq("Id",L.Id).select("Id");
+
+                if(error)throw error;
+                if(!data?.length)throw new Error("Linha não atualizada");
+
+                L[Col]=Number(e.key);
+                Atual++;
+                await Mostrar();
+            }catch(e){Msg.textContent=e.message}
+            finally{Salvando=false}
         }
-    };
 
-    document.addEventListener("keydown", Teclado);
-
-    try {
-        Mensagem.textContent = "Buscando imagens...";
-        Arquivos = await Buscar();
+        document.addEventListener("keydown",Teclado);
         await Mostrar();
-    } catch (erro) {
-        Mensagem.textContent = "Erro: " + erro.message;
+        return ()=>document.removeEventListener("keydown",Teclado);
     }
 
-    // Permite encerrar o classificador
-    return () => document.removeEventListener("keydown", Teclado);
-}
+    IniciarClassificador(supaBASE,"uploads","G");
 </script>
 
+</body>
 </html>
