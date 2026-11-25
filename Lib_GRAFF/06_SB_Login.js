@@ -5,7 +5,7 @@ async function Get_User(){
     if(!userData.user)return
     const { data:User,error } = await supaBASE.from('USER').select('*').eq('Id',userData.user.id).single()
     if(error)return console.log(error)
-    PosLogin(User)
+    PosHead(User);PosLogin(User)
     MyAlert('DEUCERTO!')
 }
 async function SB_Cdstr(e,email,password,msg,nome){e.preventDefault()

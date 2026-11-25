@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
     <title>Configurações</title>
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <link   href="./SB_Crud.css"  rel="stylesheet">
-    <link   href="./CssGRAFF.css"  rel="stylesheet">
-    <script src="./BaseGRAFF.js"></script>
-    <script src="./BiblGRAFF.js"></script>
-    <script src="./SB_Crud.js"  ></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="./supaBASE.js"></script>
+    <!--BASES-->
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+        <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="./Biblioteca/PreScript.js"></script>
+    <!--Lib_GRAFF-->
+        <link  href="./Lib_GRAFF/00_CssGRAFF.css" rel="stylesheet">
+        <script src="./Lib_GRAFF/01_BaseGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/02_BiblGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/03_MyTm.js"      ></script>
+        <script src="./Lib_GRAFF/04_Head.js"      ></script>
+        <script src="./Lib_GRAFF/05_SUPABASE.js"  ></script>
+        <script src="./Lib_GRAFF/06_SB_Login.js"  ></script>
+        <script src="./Lib_GRAFF/07_SB_Crud.js"   ></script>
 </head>
 
 <script> // Biblioteca
-    const Atual = {Pag:'CONF'} ; let USUARIO = ''
+    const Atual = {Pag:'CONF'}
     const Cs = ['Infinity','Rosa','FEXTA','Basic']
     const Dbrev = {Nome:'Nome de Usuário',Emal:'Email',Fone:'Contato',Lcal:'Endereço',Pix:'Chave Pix',Cmpt:'Nome Completo',Chav:'Tipo de Chave'}
     const Sv = {Serv:'Serviço',Arte:'Arte',EVid:'Edição de Video',Musc:'Produção Musical',Mo3D:'Modelagem 3D',AfEf:'After Effects',Codg:'Programação'}
@@ -63,25 +66,7 @@
             #COLUN    {height:100% ; background:#1a1a1a}
     </style>
 
-    <header class="Bt w100" style="grid-area:A">
-        <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-        <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-        <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-        <!-- Perfil --><div id="H_Login" class="Ct"> 
-            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('DSNG'):AbreLogin('Cdstr')">Cadastre-se</div>
-            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-        </div>
-        <div id="MAIS" class="Abslt none bndj Ct">
-            <div class="Start" onclick="NavPag('DSNG')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-            <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-            <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-            <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-        </div>
-    </header>
+    <header class="Bt w100" style="grid-area:A" onload="Inn(this,Tm_Head('CONF'))"></header>
 
     <aside id="COLUN" style="grid-area:B"> <div>Colunaa</div> </aside>
 
@@ -240,13 +225,6 @@
     Get_User()
 
     function PosLogin(U){
-        USUARIO = U
-        LOG('✅ Perfil Logado!')
-        TogCSSBody(U.Css.Base,U.Css.Tema,U.Css.Cor)
-        Inn($('#LgNome'),U.Nome)
-        Add_N($('#LgNNome'))
-        $('#LgFoto img').src= Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         NavPag(Atual.Pag)
         Load_Conf(U,'USER')
         SB_GETT_JS('BS')

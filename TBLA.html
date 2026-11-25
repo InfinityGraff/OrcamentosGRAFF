@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
-    <title>NOVA</title>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
-    <script src="./Biblioteca/PreScript.js"></script>
-
-    <script src="./BiliotecaGRAFF/DadosClientes.js"></script>
-    <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
-    <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
-    <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
-    <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
-    <script src="./SB/SB_Login.js"></script>
-    <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
+    <title>Tabela</title>
+    <!--BASES-->
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+        <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="./Biblioteca/PreScript.js"></script>
+    <!--Lib_GRAFF-->
+        <link  href="./Lib_GRAFF/00_CssGRAFF.css" rel="stylesheet">
+        <script src="./Lib_GRAFF/01_BaseGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/02_BiblGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/03_MyTm.js"      ></script>
+        <script src="./Lib_GRAFF/04_Head.js"      ></script>
+        <script src="./Lib_GRAFF/05_SUPABASE.js"  ></script>
+        <script src="./Lib_GRAFF/06_SB_Login.js"  ></script>
+        <script src="./Lib_GRAFF/07_SB_Crud.js"   ></script>
+    <!--CACHE-->
+        <script src="./Cache/Cache_CLNT.js"></script>
 </head>
 
 <script> // Biblioteca
@@ -77,9 +81,7 @@
 </style>
 
 <script> // BASE
-    const Atual    ={Pag:'GRD2'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
-    const FiltBase ={PDDS:FiltMesS(['Outubro'])}
-    const FiltsInc2={PDDS:{'Clnt.Clnt':'Kauanzinho Barbeiro'}}//{'Serv.Grad':'_'}//{'Clnt.Loja':'Weed','Serv.Cmnt':'Weed'}
+    const Atual     = {Pag:'GRD2'} ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
 
     const LALEL        = {
         SERV:{
@@ -119,7 +121,6 @@
         Falta_Data_Cont_VlrO:['Zerado','Roxo'],
         OK:['OK','Gren']
     }
-
 
 </script>
 
@@ -478,7 +479,6 @@
 
     const Acc_Bndj = {}
     const Tm_TT=(COL,Find,Typ,Col,R)=>{
-        //const SunPix = Stg=>Stg.split('|').map(p=>parseFloat(p.replace(/[^\d.,]/g,'').replace(',','.'))||0).reduce((sum,n)=>sum+n,0) // Ver se eu Consigo Eliminar isso!
         const AllImgs=(e,COLL)=>{
             const  colimg=ObjEtr(BS[COLL]?.Json||{}).filter(([k,v])=>v.TM=='Imgs').map(([k])=>k)   // Pega todas as Colunas que Possuem TM == Imagens
             return colimg.map(i=>Tm_Tm['Imgs'](e[i]||'',`${COLL}-${e.Id}-${i}-Imgs-_-_`)).join('') // Rodar isso pra cada Imagem desta Linha
@@ -574,9 +574,8 @@
         <div class="Bt Stky w95" style="height:40px">
             <a>.</a>
             <div class="gap Ct">
-                <button>Falta Pagamento</button>
-                <button>Pendentes      </button>
-                <button>Concluídos     </button>
+                <button onclick="">Falta Pagamento</button>
+                <button onclick="">Pendentes      </button>
             </div>
         </div>
         <div class="Bt Stky w95" style="height:40px">
@@ -584,8 +583,8 @@
             <div id="PagPesq_${Typ}" class="PagPEsq w40"></div>
             <div id="COnf_${Typ}"    class="Configs CT gap">
                 ${Tm_Interup2(SVG.List,SVG.Card,`TrcTog($('#H_${Typ}'),'Tbla','Card');Tog_Card('${Typ}')`)}
-                ${Tm_Check2(SVG.RszH  ,'',`ReszH('${Typ}')`)}
-                ${Tm_Check2(SVG.RszW  ,'',`ReszW('${Typ}')`)}
+                ${Tm_Check2(SVG.RszH ,'',`ReszH('${Typ}')`)}
+                ${Tm_Check2(SVG.RszW ,'',`ReszW('${Typ}')`)}
                 ${Tm_Check2(SVG.Rsumo,'',`Rsumo('${Typ}')`)}
             </div>
             <div class="Ct">
@@ -609,40 +608,6 @@
         `
     }  
 
-    function FiltRel(Rel,Cols,Modo='and'){
-        const Conv=o=>{
-            if(Array.isArray(o))return o.map(Conv);
-
-            if(o&&typeof o==='object'){
-                if('relation'in o)return {relation:o.relation,where:Conv(o.where)};
-                if('not'in o)return {not:Conv(o.not)};
-                if('and'in o)return {and:o.and.map(Conv)};
-                if('or'in o)return {or:o.or.map(Conv)};
-
-                const filtros=Object.entries(o).map(([chave,v])=>{
-                    const [,neg,field,sufixo]=chave.match(/^(!)?(.+?)(>=|<=|!=|~~|>|<|~)?$/);
-                    const ops={'>=':'gte','<=':'lte','>':'gt','<':'lt','!=':'neq','~':'ilike','~~':'ilike'};
-                    const op=ops[sufixo]||(v===null?'isnull':Array.isArray(v)?'in':'eq');
-
-                    const value=sufixo==='~~'
-                        ? v
-                        : op==='ilike'
-                            ? `%${String(v).replace(/[\\%_]/g,'\\$&')}%`
-                            : v;
-
-                    const filtro={field,op,...(op==='isnull'?{}:{value})};
-                    return neg?{not:filtro}:filtro;
-                });
-
-                return filtros.length===1?filtros[0]:{[Modo]:filtros};
-            }
-            return o;
-        };
-
-        const where=Conv(Cols);
-        return Rel?{relation:Rel,where}:where;
-    }
-
     // FiltRel(null,{'Valr>=':100,'Valr<':500})      // Intervalo de valores
     // FiltRel(null,{'Cmnt~':'Papel'})               // Pesquisa parcial (ILIKE)
     // FiltRel('SERV',{Tipo:['Adesivo','Adesiv'],Serv:['Impressão','Print']}) // Vários valores (IN) e AND entre colunas
@@ -651,42 +616,9 @@
     // FiltRel('SERV',{and:[{Tipo:'Adesivo'},{relation:'GRAD',where:{Id:'B_491_3'}}]}) // 6. Relacionamento aninhado
     // FiltRel('SERV',{'Cmnt~~':'J\\_%\\_%'}) // pega B_123_1 ou B_15_4 mas não pega B_457
 
-    const Buxa = {
-        /*FOI*/ "Adesivo" :["Blackout","Brilho","Espelhado","Transparente","Perfurado","UV","Laminado","Holográfico"],
-        /*FOI*/ "Etiqueta":["Personalizado","Redonda","Refilada"],
-        /*FOI*/ "Lona"    :["Faixa","Banner","Ilhós","Sem Acabamento"],
-        /*FOI*/ "DTF"     :["Textil"],
-        /*FOI*/ "Bandeira":["Oxford","Helanca","Redonda"],
-        /*FOI*/ "Quadro"  :["PS 1mm","PS 2mm","PVC 2mm","PVC 3mm","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Ímã"     :["0,3mm","0,8mm"],
-        /*FOI*/ "Toten"   :["PVC 3mm","PVC 5mm"],
-        /*FOI*/ "Carteira":["PS 1mm"],
-        /*FOI*/ "Cartão"  :["F.Verso","Frente"],
-        /*FOI*/ "Panfleto":["F.Verso","Frente"],
-        /*FOI*/ "Tag"     :["F.Verso","Frente"],
-        /*FOI*/ "Talão"   :[""],
-        /*FOI*/ "Camisa"  :["M.Curta","M.Curta (V)","Raglã","M.Longa","Raglã.Longa","Polo","Regata"],
-        /*FOI*/ "Calção"  :["Masc","Femn"],
-        /*FOI*/ "Recorte" :["Holográfico","Vinil","2 Camada","Transparente","Dourado"],
-        /*FOI*/ "Venda"   :["Tanque","Cartela","Cartela Holo","Rodagem","Vinil","Figurinha","Recorte","Acrílico","Tanque Holo"],
-        /*FOI*/ "Placa"   :["Ilhós","Rebite","ACM","Acrílico","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Fachada" :["Ilhós","Rebite","ACM"],
-        /*FOI*/ "Cavalete":["Ilhós","Rebite"],
-        /*FOI*/ "WindFlag":["Pena","Faca","Vela","Gota"],
-        /*FOI*/ "Cardápio":["F.Verso","Frente"],
-        /*FOI*/ "Produto" :["Capa Barber","Capa De Bujão"],
-        /*FOI*/ "Arte"    :[""],
-        /*FOI*/ "Edição"  :[""],
-        /*FOI*/ "Folha"   :["Triplex 300g","Colchê","Colchê 300g","Papel Foto","Oficil","T.Bolo"],
-        /*FOI*/ "Plotagem":[""],
-        /*FOI*/ "Letreiro":["Acrílico","PVC 5mm","PVC 10mm"],
-        /*FOI*/ "Display" :["Acrílico","PVC 10mm"],
-        /*FOI*/ "Crachá"  :["Acrílico","PS 1mm"],
-    }
-
-
     async function GetTable(Typ,Filt,Exessao){
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
+        const FiltBase  = {PDDS:FiltMesS(['Outubro'])}
         const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
         //const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
         //const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
@@ -725,33 +657,9 @@
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
 
-    <header class="Bt w100" style="grid-area:A">
-        <!-- Titulo --> <div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-        <!-- Titulo2--> <h2 id="TitleTable" style="font-size:24px;color:#ffffff">Pedidos</h2>
-        <!--Pesquisa--> <div class="w30 none"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-        <!--   Nav  --> <div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-        <!--  Nav2  --> <div>
-                            <div class="SwithT Sw_PDDS none" onload="Tm_Switch2(this,['PDDS','SERV','PGMT'],'PDDS','80px','ExecSwith')"></div>
-                            <div class="SwithT Sw_GRAD none" onload="Tm_Switch2(this,['GRAD','OS','UBER','GRD2'],'GRAD','55px','ExecSwith')"></div>
-                        </div>
-        <!-- Perfil --> <div id="H_Login" class="Ct">
-                            <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-                            <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-                            <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NAVPAG('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
-                            <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-                        </div>
-        <div id="MAIS" class="Abslt none bndj Ct">
-            <div class="Start" onclick="NAVPAG('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-            <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-            <div class="Start" onclick="NAVPAG('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-            <div class="Start" onclick="NAVPAG('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-            <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-            <div class="p10"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-        </div>
-    </header>
+    <header class="Bt w100" style="grid-area:A" onload="Inn(this,Tm_Head('TBLA'))"></header>
 
     <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
-        <div id="Pag_HOME" class="none"></div>
         <div id="Pag_PDDS" class="none Cl TBLAA Gap p20">
             <div class="Confy_PDDS Slidde w100 h100 Cl gap     " onload="Inn(this,PrepTable('PDDS'))"></div> <style>#H_PDDS.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
             <div class="Confy_SERV Slidde w100 h100 Cl gap none" onload="Inn(this,PrepTable('SERV'))"></div> <style>#H_SERV.Card > tbody > tr{grid:"A B C" "D E F" "G H I" "J K L" "M N O"}</style>
@@ -775,51 +683,15 @@
     Onloads('body') ; Get_User()
 
     async function PosLogin(U){
-        USUARIO = U  ; LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
         async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Loja').gte('Id',6233) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
         Atual.Pag = U.Crgo=='Dsng' ? 'ARTE' : 'PDDS'
         NAVPAG(Atual.Pag) ; GetTable(Atual.Pag)
     }
+
     supaBASE.channel('RT').on('postgres_changes',{event:'*',schema:'public',table:'*'},e=>Supa_RealTime(e.eventType,e.new,e.table,e.old)).subscribe()
 
-    GetUnique('PDDS',['Cmnt'])
-</script>
-
-<script> // Config BS
-    function RenderBS(Typ){
-        const List=['COL','TM','TH','FOOT','CLS','NONE','SRC'] // ['COL','TM','CLS','NONE','SRC','TH','LINK','LnkEX','FOOT','DPCK','COR','AUTO']
-        const Obj=BS[Typ].Json
-        const Edit=(k,k2)=>`contenteditable onblur="UpdateJSON('${Typ}','${k}','${k2}',this)"`
-        const Keys=ObjKey(Obj)
-        Tog_N($(`#InfoBS_${Typ}`))
-        Inn($(`#InfoBS_${Typ}`),`
-            <div class="InfoBS w95 Ct Gap">${
-                ObjEtr(BS[Typ]).map(([k,v])=>{if(['Id','Tabela','Json'].includes(k)){return ''}
-                return `<div><p>${k}:</p><div contenteditable>${v}</div></div>`}).join('')}</div>
-            <table class="w100">
-                <thead><tr><th>.</th>${Keys.map(k=>`<th ${Edit(k,'KEY')}>${k}</th>`).join('')}</tr></thead>
-                <tbody>${List.map(p=>`<tr><th class="SB_ID">${p}</th>${Keys.map(k=>`<td ${Edit(k,p)}>${Obj[k]?.[p]??''}</td>`).join('')}</tr>`).join('')}</tbody>
-            </table>`
-        )
-    }
-    function UpdateJSON(Typ,key,prop,el){
-        const Row=BS[Typ]
-        let val=el.innerText
-        const json=typeof Row.Json=='string'?JSON.parse(Row.Json):structuredClone(Row.Json)
-        if(prop=='KEY'){
-            val=val.trim()
-            if(!val || val==key || json[val]) return
-            json[val]=json[key]
-            delete json[key]
-        }else{
-            if(!json[key] || json[key][prop]==val) return
-            json[key][prop]=val
-        }
-        Sb_EDIT('BS',Row.Id,{Json:Row.Json=json})
-    }
+    // GetUnique('PDDS',['Cmnt']) só pra mostrar como usar o Unique
 </script>
 
 </html>

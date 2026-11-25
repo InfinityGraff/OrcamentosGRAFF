@@ -6,18 +6,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
   <title>Galeria</title>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/fontes.css"        rel="stylesheet">
-  <link  href="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/CSSBiblioteca.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/gh/InfinityGraff/MyBiblioteca@main/PreScript.js"      ></script>
-  <script src="./BiliotecaGRAFF/DadosClientes.js"></script>
-  <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
-  <script src="./BiliotecaGRAFF/BaseGRAFF.js"    ></script>
-  <script src="./BiliotecaGRAFF/BiblGRAFF.js"    ></script>
-  <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
-  <script src="./SB/SB_Login.js"></script>
-  <script src="./BiliotecaGRAFF/supaBASE.js"     ></script>
+    <!--BASES-->
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+        <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="./Biblioteca/PreScript.js"></script>
+    <!--Lib_GRAFF-->
+        <link  href="./Lib_GRAFF/00_CssGRAFF.css" rel="stylesheet">
+        <script src="./Lib_GRAFF/01_BaseGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/02_BiblGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/03_MyTm.js"      ></script>
+        <script src="./Lib_GRAFF/04_Head.js"      ></script>
+        <script src="./Lib_GRAFF/05_SUPABASE.js"  ></script>
+        <script src="./Lib_GRAFF/06_SB_Login.js"  ></script>
+        <script src="./Lib_GRAFF/07_SB_Crud.js"   ></script>
+    <!--EXTRAS-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <style>
@@ -38,31 +41,13 @@
 </style>
 
 <script> // Biblioteca
-    const Atual    = {Pag:'HOME'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
+    const Atual    = {Pag:'HOME'} ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
     const NAVPAG   = Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
 </script>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
 
-    <header class="Bt w100" style="grid-area:A">
-      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-      <!-- Perfil --><div id="H_Login" class="Ct"> 
-          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
-          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-      </div>
-      <div id="MAIS" class="Abslt none bndj Ct">
-          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-      </div>
-    </header>
+    <header class="Bt w100" style="grid-area:A" onload="Inn(this,Tm_Head('DASH'))"></header>
 
     <div id="PAGES" style="grid-area:B">
 

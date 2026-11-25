@@ -61,6 +61,25 @@
             (L[Col]==null||L[Col]==="")&&L[Foto]
         );
 
+        const Cache = new Map();
+            const PreLoad = 5;
+
+            function URLFoto(L){
+                return Storage.getPublicUrl("Grd2/"+L[Foto]).data.publicUrl;
+            }
+
+            function PreCarregar(){
+                for(let i=Atual;i<Math.min(Atual+PreLoad+1,Lista.length);i++){
+                    if(Cache.has(i))continue;
+                    const img=new Image();
+                    img.src=URLFoto(Lista[i]);
+                    Cache.set(i,img);
+                }
+                for(const i of Cache.keys()){
+                    if(i<Atual)Cache.delete(i);
+                }
+            }
+
         function Mostrar(){
             Img.hidden=true;
             const L=Lista[Atual];
@@ -79,7 +98,8 @@
             Img.onload=()=>{Img.hidden=false;Msg.textContent="Pressione 1 a 9"};
             Img.onerror=()=>{Msg.textContent="Erro ao abrir imagem"};
 
-            Img.src=Storage.getPublicUrl("Grd2/"+L[Foto]).data.publicUrl;
+            Img.src=URLFoto(L);
+            PreCarregar();
         }
 
         async function Teclado(e){

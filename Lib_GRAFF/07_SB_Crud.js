@@ -388,3 +388,71 @@ const J={},JJ={},JJJ={},BS={},ALL={},PreTbl={},RT_Add=new Set(),RT_Rmv=new Set()
             else     {LOG(`💾✏️ SB_EDITJSON(${tbl},${uid},${col})`) ; MyAlert(`"${path.at(-1)}" Editado!`)}
         }catch(err)  {ERR('Erro:',err) ; MyAlert('Erro ao atualizar JSON')}
     }
+
+
+    function RenderBS(Typ){
+        const List=['COL','TM','TH','FOOT','CLS','NONE','SRC'] // ['COL','TM','CLS','NONE','SRC','TH','LINK','LnkEX','FOOT','DPCK','COR','AUTO']
+        const Obj=BS[Typ].Json
+        const Edit=(k,k2)=>`contenteditable onblur="UpdateJSON('${Typ}','${k}','${k2}',this)"`
+        const Keys=ObjKey(Obj)
+        Tog_N($(`#InfoBS_${Typ}`))
+        Inn($(`#InfoBS_${Typ}`),`
+            <div class="InfoBS w95 Ct Gap">${
+                ObjEtr(BS[Typ]).map(([k,v])=>{if(['Id','Tabela','Json'].includes(k)){return ''}
+                return `<div><p>${k}:</p><div contenteditable>${v}</div></div>`}).join('')}</div>
+            <table class="w100">
+                <thead><tr><th>.</th>${Keys.map(k=>`<th ${Edit(k,'KEY')}>${k}</th>`).join('')}</tr></thead>
+                <tbody>${List.map(p=>`<tr><th class="SB_ID">${p}</th>${Keys.map(k=>`<td ${Edit(k,p)}>${Obj[k]?.[p]??''}</td>`).join('')}</tr>`).join('')}</tbody>
+            </table>`
+        )
+    }
+    function UpdateJSON(Typ,key,prop,el){
+        const Row=BS[Typ]
+        let val=el.innerText
+        const json=typeof Row.Json=='string'?JSON.parse(Row.Json):structuredClone(Row.Json)
+        if(prop=='KEY'){
+            val=val.trim()
+            if(!val || val==key || json[val]) return
+            json[val]=json[key]
+            delete json[key]
+        }else{
+            if(!json[key] || json[key][prop]==val) return
+            json[key][prop]=val
+        }
+        Sb_EDIT('BS',Row.Id,{Json:Row.Json=json})
+    }
+
+
+    function FiltRel(Rel,Cols,Modo='and'){
+        const Conv=o=>{
+            if(Array.isArray(o))return o.map(Conv);
+
+            if(o&&typeof o==='object'){
+                if('relation'in o)return {relation:o.relation,where:Conv(o.where)};
+                if('not'in o)return {not:Conv(o.not)};
+                if('and'in o)return {and:o.and.map(Conv)};
+                if('or'in o)return {or:o.or.map(Conv)};
+
+                const filtros=Object.entries(o).map(([chave,v])=>{
+                    const [,neg,field,sufixo]=chave.match(/^(!)?(.+?)(>=|<=|!=|~~|>|<|~)?$/);
+                    const ops={'>=':'gte','<=':'lte','>':'gt','<':'lt','!=':'neq','~':'ilike','~~':'ilike'};
+                    const op=ops[sufixo]||(v===null?'isnull':Array.isArray(v)?'in':'eq');
+
+                    const value=sufixo==='~~'
+                        ? v
+                        : op==='ilike'
+                            ? `%${String(v).replace(/[\\%_]/g,'\\$&')}%`
+                            : v;
+
+                    const filtro={field,op,...(op==='isnull'?{}:{value})};
+                    return neg?{not:filtro}:filtro;
+                });
+
+                return filtros.length===1?filtros[0]:{[Modo]:filtros};
+            }
+            return o;
+        };
+
+        const where=Conv(Cols);
+        return Rel?{relation:Rel,where}:where;
+    }

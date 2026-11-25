@@ -5,28 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="Img/Fav_Infinity_2.png">
     <title>Orcamento</title>
+    <!--BASES-->
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+        <link  href="./Biblioteca/CSSBiblioteca.css" rel="stylesheet">
+        <script src="./Biblioteca/PreScript.js"></script>
+    <!--Lib_GRAFF-->
+        <link  href="./Lib_GRAFF/00_CssGRAFF.css" rel="stylesheet">
+        <script src="./Lib_GRAFF/01_BaseGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/02_BiblGRAFF.js" ></script>
+        <script src="./Lib_GRAFF/03_MyTm.js"      ></script>
+        <script src="./Lib_GRAFF/04_Head.js"      ></script>
+        <script src="./Lib_GRAFF/05_SUPABASE.js"  ></script>
+        <script src="./Lib_GRAFF/06_SB_Login.js"  ></script>
+        <script src="./Lib_GRAFF/07_SB_Crud.js"   ></script>
+        <script src="./Lib_GRAFF/08_Gera3D.js"    ></script>
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>  -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script> -->
     <!--<script src="https://threejs.org/build/three.js"></script>-->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/fontes.css"        rel="stylesheet">
-    <link  href="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/CSSBiblioteca.css" rel="stylesheet">
-    <script src="https://raw.githack.com/InfinityGraff/MyBiblioteca/main/PreScript.js"      ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="./DadosClientes.js"></script>   
-    <link href="./BiliotecaGRAFF/SB_Crud.css" rel="stylesheet">
-    <script src="./BiliotecaGRAFF/SB_Crud.js"      ></script>
-    <link  href="./BiliotecaGRAFF/CssGRAFF.css" rel="stylesheet">
-    <script src="./BiliotecaGRAFF/BaseGRAFF.js"></script>
-    <script src="./BiliotecaGRAFF/BiblGRAFF.js"></script>
-    <script src="./BiliotecaGRAFF/Gera3D.js"></script>   
-    <script src="./SB/SB_Login.js"></script>
-    <script src="./BiliotecaGRAFF/supaBASE.js"></script>
 </head> 
 
 <script> // aBase de Dados INFINITY GRAFF
-    const Atual    = {Pag:'ORC'} ; let USUARIO = '' ; const FF = {} ; const BSFIL = {} // Acumuladores
+    const Atual    = {Pag:'ORC'} ; const FF = {} ; const BSFIL = {} // Acumuladores
     let SVG_FILES  = [] ; let OBJ_ORC = {} // esse é do de importar SVG pra calcular
     const TaxaMpag = [0,0.0964,0.1123,0.1136,0.1431,0.1432,0.1672,0.1673,0.1969,0.2065,0.2066,0.2066]
     const LISTPROD = ['Adesivo','Etiqueta',"Perfurado",'Lona','Quadro','ímã','Bandeira','DTF','Vinil','Recorte','Placa','Luminosa','Sinalização']
@@ -490,25 +491,7 @@
 
 <body data-Tema="Dark" data-Base="Infinity" data-Cor="Roxo" onclick="NoneBndj()">
 
-    <header class="Bt w100" style="grid-area:A">
-      <!-- Titulo --><div id="Title" class="Ct"><img id="Logo" draggable="false" src="./Img/Logo_Infinity.webp" onclick=""><h1 class="PT" onclick=""></h1></div>
-      <!--Pesquisa--><div class="w30"><div id="Div-Pesq" class="Rltv w100 hov"></div></div>
-      <!--   Nav  --><div id="DivNav"><nav class="Ct H_Nav"></nav></div>
-      <!-- Perfil --><div id="H_Login" class="Ct"> 
-          <img id="LgMORE" src="./SVG/More.svg" class="Hov none" style="width:18px" onclick="Tog_N($('#MAIS'))">
-          <div id="LgNNome" class="Ct PT"  onclick="AbreLogin('Login')">Login</div>
-          <div id="LgNome"  class="Ct PT"  onclick="USUARIO!=''?NavPag('PRFL'):AbreLogin('Cdstr')">Cadastre-se</div>
-          <div id="LgFoto"><img draggable="false" class="NObj" onclick="Tog_N($('#MAIS'))"></div>
-      </div>
-      <div id="MAIS" class="Abslt none bndj Ct Box1">
-          <div class="Start" onclick="NavPag('PRFL')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Edit.svg"><a> Ver Perfil       </a></div>
-          <div class="Start" onclick="AbreLogin('Login');Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Troc.svg"><a> Trocar de Conta  </a></div>
-          <div class="Start" onclick="NavPag('CONF')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Cnfg.svg"><a> Configurações    </a></div>
-          <div class="Start" onclick="NavPag('SPRT')    ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_Help.svg"><a> Central de Ajuda </a></div>
-          <div class="Start" onclick="SB_LgOff()        ;Tog_N($('#MAIS'))"><img draggable="false" src="./SVG/Mais_LOff.svg"><a> Sair             </a></div>
-          <div style="padding:10px"><p>Confira os <a class="Link">Termos de Serviço</a> e as <a class="Link">Política de Privacidade</a></p></div>
-      </div>
-    </header>
+    <header class="Bt w100" style="grid-area:A" onload="Inn(this,Tm_Head('ORC'))"></header>
 
     <div id="PAGES" style="grid-area:B"> <!--isso era pra ser main-->
         <div id="Pag_ORC" class="Cl" style="overflow: scroll;">
@@ -545,6 +528,7 @@
                         function Hdd_Cblh(Valid){if(Valid){Add($$(`#ORC thead`),'none')}else{Rmv($$(`#ORC thead`),'none')}}
                         function Hdd_Cust(){Tog($$(`[class^="ORC_CUST_"]`),'none') ; Tog($$(`[class^="ORC_CRCT_"]`),'none')}
                         document.addEventListener("keydown",function(e){if(e.key==="'"){Prvn();Hdd_Cust()}})
+                        function ValidOpts(){$$('#ORC select').forEach(e=>$$('option',e).length==1 ? Add(e,'sOFF') : Rmv(e,'sOFF'))}
                     </script>
                     <style>#CONFIG_Bdj{width: 150px; right: 0px; background: #363636; padding: 10px}</style>
                     <div id="CONFIG_Bdj" class="Abslt none Start2 bndj">
@@ -651,12 +635,7 @@
     Onloads('body') ; Get_User() ; Check_W_Pag()
 
     async function PosLogin(U){
-        USUARIO = U  ; LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src= Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NavPag('${e}');RodaTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
         const data_bs = await SB_GETT_JS('BS') ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        //async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; /*LOG('Clientes',data)*/ ; BS_CLNT.push(...data)}
-        //await SB_GET_Clnt()
         NavPag(Atual.Pag)
         await RodaTable('PROD')
         await RodaTable('MATR')
