@@ -23,27 +23,41 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
+<script> // BASE
+    const Atual = {Pag:'HOME'}
+</script>
+
 <style>
-    .CalBox{background:#1e1e2f;border-radius:18px;padding:20px;color:white;width:100%;box-sizing:border-box}
+    .Boxxyy{box-shadow: 0 0 30px #c864ff33, 0 0 50px #ff64961a}
+    .Grf   {background:#1e1e2f; border-radius:20px; padding:10px}
+    .Grf30 {max-width:30% ;max-height:300px}
+    .Grf50 {max-width:48% ;max-height:300px}
+    .Grf100{max-width:100%;max-height:300px}
+
+    .CalBox{background:#1e1e2f;border-radius:18px;padding:20px;color:#ffffff;width:100%;box-sizing:border-box}
     .CalTopo{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
     .CalTopo h2{margin:0 auto 0 0;color:#c084fc}
-    .CalTopo select,.CalTopo input,.CalTopo button{background:#303047;color:#fff;border:1px solid #484866;border-radius:8px;padding:8px}
+    .CalTopo select,.CalTopo input,.CalTopo button{background:#303047;color:#ffffff;border:1px solid #484866;border-radius:8px;padding:8px}
     .CalAno{width:80px}
-    .CalHeat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+    .CalHeat{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:15px}
     .CalMes{background:#29293b;padding:12px;border-radius:12px;min-width:0}
-    .CalMes h3{text-align:center;color:#c084fc;margin:0 0 12px;font-size:16px}
+    .CalMes h3{text-align:center;color:#c084fc;font-size:16px}
     .CalGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
-    .CalSemana{text-align:center;color:#a6a6b8;font-size:11px;padding:4px 0}
+    .CalSemana{text-align:center;color:#a6a6b8;font-size:11px;padding:3px 0}
     .CalDia{aspect-ratio:1;min-width:0;border-radius:5px;display:flex;align-items:center;justify-content:center;font:600 12px Arial;color:#182018;cursor:default}
     .CalDia:hover{outline:2px solid #c084fc;outline-offset:1px}
     @media(max-width:850px){.CalHeat{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:500px){.CalHeat{grid-template-columns:1fr}}
-</style>
 
-<script> // Biblioteca
-    const Atual    = {Pag:'HOME'} ; const FF = {} ; const BSFIL = {} ; const carregado= [] ; const BjCarregado=[] ; const CarregadoPesq = [] ; const CarregadoTHad=[]// Acumuladores
-    const NAVPAG   = Typ=>{NavPag(Typ) ; Inn('#TitleTable',`Tabela de ${D_Brev[Typ]||'Sem Nome'}`) ; if(!['PDDS','GRAD'].includes(Typ)){return} ; Nav_N($$('.SwithT'),$(`.SwithT.Sw_${Typ}`))}
-</script>
+    .DashMedias{display:flex;gap:15px;margin:15px 0;flex-wrap:wrap}
+    .DashMedias>div{flex:1;min-width:180px;display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:16px;background:linear-gradient(145deg,#303047,#222233);border:1px solid #45455f;color:#bcbcd0;font-size:14px;box-shadow:0 5px 20px #0003;transition:.25s}
+    .DashMedias>div:hover{transform:translateY(-4px);border-color:#c084fc;box-shadow:0 8px 25px #c084fc25}
+    .DashMedias b{font-size:30px;font-weight:700;color:#c084fc;line-height:1.2}
+    .DashMedias span{font-size:17px;font-weight:600;color:#4ade80}
+    .DashEtapa {padding:5px; border-radius:10px; width:100px; height:100px}
+    .DashEtapa svg{width: 50px; height: 50px;}
+    .DashEtapa b{display:block;font-size:22px}
+</style>
 
 <body data-Base="Infinity" data-Tema="Dark" data-Cor="Roxo" class="grid">
 
@@ -53,146 +67,135 @@
 
         <div id="Pag_HOME" class=""> <!--Dentro era pra ser Section-->
             <div class="Cl w100">
-                <div class="Cl w100 p20 Gap" style="overflow: scroll;"> <!--GRAFICO-->
-                    <style>
-                        .Grf   {background:#1e1e2f; border-radius:20px; padding:20px;box-shadow: 0 0 30px rgba(200, 100, 255, 0.2), 0 0 50px rgba(255, 100, 150, 0.1)}
-                        .Grf50 {max-width:48% ;max-height:300px}
-                        .Grf100{max-width:100%;max-height:300px}
-                    </style>
-
-                    <button onclick="RfreshGrafic()">Refresh</button> <!--CHAMAR isso ao clicar na PAGINA e não com este Botão-->
+                <div class="Cl w100 p20 Gap"> <!--GRAFICO-->
+                    <!--<button onclick="RfreshGrafic()">Refresh</button>-->
                     <div class="Ct Gap">
+                        <div class="DashEtapas Ct Gap"></div>
                         <canvas class="Grfc_Servs Grf Grf100"></canvas> <!--Gráfico de Serviço mais Pedido "ContUniq"-->
-                        <canvas class="Grfc_Serv2 Grf Grf100"></canvas> <!--Gráfico de Serviço mais Apurado "ContUniq"-->
+                        <canvas class="Grfc_PixAv Grf Grf30" ></canvas> <!--Gráfico de Forma de Pagamento  "ContUniq"--> 
+                        <canvas class="Grfc_VPxAv Grf Grf30" ></canvas> <!--Gráfico de Valor de Pagamento  "SomaUniq"--> 
+                        <div class="DashMedias Grf30">
+                            <div>Média Diária: <b class="MediaDia"></b><span class="ValorDia"></span></div>
+                            <div>Média Mensal: <b class="MediaMes"></b><span class="ValorMes"></span></div>
+                        </div>
                         <div    class="ListaSERV w100 Ct gap"></div>
                         <canvas class="Grfc_Meses Grf Grf100"></canvas> <!--Gráfico de Unique Serviço por Mês "ContUniq"-->
-                        <canvas class="Grfc_PixAv Grf Grf50"></canvas> <!--Gráfico de Forma de Pagamento  "ContUniq"--> 
-                        <canvas class="Grfc_VPxAv Grf Grf50"></canvas> <!--Gráfico de Valor de Pagamento  "SomaUniq"--> 
-                        <canvas class="Grfc_Ftura Grf Grf50"></canvas> <!--Grafico de Fatura-->
-                        <canvas class="Grfc_Forne Grf Grf50"></canvas> <!--Gráfico de Cliente mais Lucrativo  --> 
+                    </div>
+
+                    <div class="CalBox">
+                        <div class="CalTopo">
+                            <h2>Calendário de Serviços</h2>
+                            <select class="CalServ"><option>Todos</option><option>Adesivo</option><option>Lona</option><option>Recorte</option><option>Banner</option></select>
+                            <select class="CalAno" ><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option selected>2026</option></select>
+                            <button onclick="RefreshCal(Avo(this))">Atualizar</button>
+                        </div>
+                        <div class="CalHeat"></div>
+                    </div>
+
+                    <div class="DashResumo Gap w100">
+                        <div class="Ct gap w100">
+                            <canvas class="Grfc_Grad Grf Grf50"></canvas>
+                            <canvas class="Grfc_Arte Grf Grf50"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="CalBox">
-                <div class="CalTopo">
-                    <h2>Calendário de Serviços</h2>
-                    <select class="CalServ"><option>Todos</option><option>Adesivo</option><option>Lona</option><option>Recorte</option><option>Banner</option></select>
-                    <input class="CalAno" type="number" value="2026" min="2022" max="2100">
-                    <button onclick="RefreshCal(this.closest('.CalBox'))">Atualizar</button>
-                </div>
-                <div class="CalHeat"></div>
             </div>
         </div>
     </div>
 </body>
 
 <script>
-    const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
-    const Top3 = obj => Object.fromEntries(Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,4));
+    const Top3=obj=>Object.fromEntries(Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,4))
     function OrdDash(obj,desc=true){return Object.fromEntries(Object.entries(obj).sort((a,b)=>desc ? b[1]-a[1] : a[1]-b[1]));}
-    const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
-    const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
 
     async function RfreshGrafic(){
-        Load_Grfc('Barra',$('.Grfc_Servs'),gG(OrdDash(await Dash('SERV','Serv','ContUniq'             )),'Quantidade de Serviços'  ,1),{horizontal:false,valores:false,moeda:false})
-        Load_Grfc('Barra',$('.Grfc_Serv2'),gG(OrdDash(await Dash('SERV','Serv','SomaUniq','Valr'      )),'Serviços Mais Apurado'   ,1),{horizontal:false,valores:false,moeda:false})
-        Inn('.ListaSERV',['Todos',...ObjKey(OrdDash(await Dash('SERV','Serv','ContUniq')))].map(e=>`<p class="button PT" style="height:20px" onclick="RodaMes('${e}')">${e}</p>`).join(''))
-        Load_Grfc('Barra',$('.Grfc_Meses'),gG(        await Dash('SERV','Serv','ContMes' ,'Todos'    ),'Cont Serv por mês'         ,0),{horizontal:false,valores:false,moeda:false}) // pode ser 'Todos'
-        Load_Grfc('Pizza',$('.Grfc_PixAv'),gG(OrdDash(await Dash('PGMT','Form','ContUniq'             )),'Quantidade de Pagamentos',1),{horizontal:false,valores:false,moeda:false})
-        Load_Grfc('Barra',$('.Grfc_VPxAv'),gG(Top3(OrdDash(await Dash('PGMT','Form','SomaUniq','Valr'))),'Quantidade de Serviços'  ,1),{horizontal:true ,valores:true ,moeda:true })
-        Load_Grfc('Barra',$('.Grfc_Ftura'),gG(Soma_Dia(Filt('PGMT'),'Valr'),'Faturamento Diário (R$)' ,0)) // 0 e 1 siguinifica Randomizar cores ou 1 cor só
+        const [Cont,Soma]=await Promise.all([Dash('SERV','Serv','ContUniq'),Dash('SERV','Serv','SomaUniq','Valr')]);
+        const Dados=gGMix(OrdDash(Cont),Soma);
+        Load_Grfc('Barra',$('.Grfc_Servs'),Dados                                                                                ,'Rank de Serviço'   ,{horizontal:false,valores:false,moeda:false,misto:true })
+        Load_Grfc('Barra',$('.Grfc_Meses'),gG(             await Dash('SERV','Serv','ContMes' ,'Todos' ),'Cont Serv por mês' ,0),'Cont Serv por mês' ,{horizontal:false,valores:false,moeda:false,misto:false}) // pode ser 'Todos'
+        Load_Grfc('Pizza',$('.Grfc_PixAv'),gG(     OrdDash(await Dash('PGMT','Form','ContUniq'        )),'Tipos de Pagamento',1),'Tipos de Pagamento',{horizontal:false,valores:false,moeda:false,misto:false})
+        Load_Grfc('Barra',$('.Grfc_VPxAv'),gG(Top3(OrdDash(await Dash('PGMT','Form','SomaUniq','Valr'))),'Tipos de Pagamento',1),'Tipos de Pagamento',{horizontal:true ,valores:true ,moeda:true ,misto:false})
+        Inn('.ListaSERV',['Todos',...ObjKey(       OrdDash(await Dash('SERV','Serv','ContUniq'       )))].map(e=>`<p class="button PT" style="height:20px" onclick="RodaMes('${e}')">${e}</p>`).join(''))
     }
     async function RodaMes(e){
-        Load_Grfc('Barra',$('.Grfc_Meses'),gG(        await Dash('SERV','Serv','ContMes' ,e),'Cont Serv por mês'         ,0),{horizontal:false,valores:false,moeda:false}) // pode ser 'Todos'
+        Load_Grfc('Barra',$('.Grfc_Meses'),gG(        await Dash('SERV','Serv','ContMes' ,e),'Cont Serv por mês'         ,0),'Cont Serv por mês',{horizontal:false,valores:false,moeda:false,misto:false}) // pode ser 'Todos'
     }
+    async function RefreshResumo(Ano=2026){
+        const D=await Get_Resumo(Ano)
 
-    // até agora todos eles possuem Data serve pra fazer o Range
+        const BRL=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+        $('.MediaDia').textContent=Number(D.MediaDia).toLocaleString('pt-BR')
+        $('.MediaMes').textContent=Number(D.MediaMes).toLocaleString('pt-BR')
+        $('.ValorDia').textContent=BRL(D.ValorDia)
+        $('.ValorMes').textContent=BRL(D.ValorMes)
 
+        Load_Grfc('Pizza',$('.Grfc_Grad'),gG(D.Grad,'Com / Sem Grad',1))
+        Load_Grfc('Pizza',$('.Grfc_Arte'),gG(D.Arte,'Com / Sem Arte',1))
 
-    // const Semana=n=>{const ini = new Date(`2026-01-05`) ; ini.setDate(ini.getDate() + (n - 1) * 7) ; const fim = new Date(ini) ; fim.setDate(fim.getDate() + 6) ; const fmt = d => d.toISOString().slice(0,10) ; return [fmt(ini), fmt(fim)]}
-    // const Soma_Dia=(a,k)=>a.slice().sort((a,b)=> new Date(a.Data) - new Date(b.Data)).reduce((s,e)=>{if(e?.Data) s[DMY(e.Data)] = (s[DMY(e.Data)]||0) + (+e?.[k]||0) ; return s},{})
-    // const ContForn = a => a.reduce((o,e)=>(e?.Data && e?.Forn && ((o[DMY(e.Data)] ??= {})[e.Forn.trim()] = ((o[DMY(e.Data)]?.[e.Forn.trim()])||0) + (+e.Valr||0) + (+e.Val1||0)), o),{})
-
-    
-    // Load_Grfc('Barra',gGG(ContForn(Filt('GRAD')       ),'Forn'                    ,1),$('.Grfc_Forne',Div))
-    //2 - Dash(Typ,Col,Modo) Modo = "ContRange" Retorna {dados:155}
-
-    // quantas tem grade, quantas não tem
-    // quantas tem arte quantas não tem
-    // Total das Etapas Contagem
-    // Soma de Entradas, Soma de Custos e Outros
-
-
+        Inn('.DashEtapas',ObjEtr(D.Etapas).sort((a,b)=>b[1]-a[1]).map(([chave,q])=>{
+            const Split=chave.split('-')
+            const Svg=SVGEtapas[Split[0]]||''
+            const Bg=COR1[Split[1]]||'0,0,0'
+            const Cor=COR2[Split[1]]||'255,255,255'
+            return `<div class="DashEtapa Cl" style="background:rgba(${Bg});color:rgb(${Cor});fill:rgb(${Cor})">
+                ${Svg}<span>${Split[0]}</span><b>${q.toLocaleString('pt-BR')}</b></div>`
+        }).join(''))
+    }
 </script>
 
 <script>
-    const CalMeses  = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-    const CalSemana = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-
-    async function DashCal(Serv='Todos',Ano=new Date().getFullYear()){
-        const {data,error}=await supaBASE.rpc('dash_cal',{servico:Serv,ano:Ano});
+    async function Get_Calendar(Serv='Todos',Ano=2026){
+        const {data,error}=await supaBASE.rpc('dash_cal',{servico:Serv,ano:Ano}); if(error)throw error; return data||{};
+    }
+    async function Get_Resumo(Ano=2026){
+        const {data,error}=await supaBASE.rpc('dash_resumo',{ano:Ano});
         if(error)throw error;
-        return data||{};
+        return data;
     }
-
-    function CorCal(q,fds){
-        if(!q)return fds?'#454552':'#ffffff';
-        return ['','#dcfce7','#86efac','#4ade80','#16a34a','#166534'][Math.min(q,5)];
-    }
-
+    
     function RenderCalHeat(Div,Dados,Ano){
-        const heat=Div.querySelector('.CalHeat');
+        const CalMeses  = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+        const CalSemana = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']
+        function CorCal(q,max,fds){if(!q && fds)return '#454552'; return `rgba(192,132,252,${max ? q/max : 0})`;}
+        const Max=Math.max(0,...Object.values(Dados).map(Number));
         let html='';
-
         for(let m=0;m<12;m++){
             const primeiro=new Date(Ano,m,1).getDay();
             const total=new Date(Ano,m+1,0).getDate();
-
             html+=`<div class="CalMes">
                 <h3>${CalMeses[m]}</h3>
                 <div class="CalGrid">
                 ${CalSemana.map(d=>`<div class="CalSemana">${d}</div>`).join('')}
                 ${'<div></div>'.repeat(primeiro)}`;
-
             for(let dia=1;dia<=total;dia++){
                 const data=`${Ano}-${String(m+1).padStart(2,'0')}-${String(dia).padStart(2,'0')}`;
                 const q=Number(Dados[data])||0;
                 const fds=[0,6].includes(new Date(Ano,m,dia).getDay());
-
-                html+=`<div class="CalDia"
-                    style="background:${CorCal(q,fds)};color:${q>=4?'#fff':'#182018'}"
-                    title="${data} — ${q} serviços">${dia}</div>`;
+                html+=`<div class="CalDia" style="background:${CorCal(q,Max,fds)};color:#fff" title="${data} — ${q} serviços">${dia}</div>`;
             }
-
             html+='</div></div>';
         }
-        heat.innerHTML=html;
+        $('.CalHeat',Div).innerHTML=html;
     }
 
     async function RefreshCal(Div){
-        const Serv=Div.querySelector('.CalServ').value;
-        const Ano=Number(Div.querySelector('.CalAno').value);
-        const Dados=await DashCal(Serv,Ano);
-        RenderCalHeat(Div,Dados,Ano);
+        const Serv=       $('.CalServ',Div).value
+        const Ano =Number($('.CalAno' ,Div).value)
+        const Dados=await Get_Calendar(Serv,Ano)
+        RenderCalHeat(Div,Dados,Ano)
     }
 
-    RefreshCal(document.querySelector('.CalBox'));
 </script>
 
 <script>// Iniciação
     Onloads('body') ; Get_User()
 
     async function PosLogin(U){
-        USUARIO = U  ; LOG('✅ Perfil Logado!')
-        Inn($('#LgNome'),U.Nome)  ;  Add_N($('#LgNNome'))  ;  $('#LgFoto img').src = Foto(U.User)
-        Inn('.H_Nav',U.Nav.map(e=>`<div id="b1_HNVDv_${e=='|'?'LIN':e}" class="Ct PT HOV" onclick="NAVPAG('${e}');GetTable('${e}')"><img draggable="false" src="./SVG/${e=='|'?'LIN':e}.svg"><p>${D_Brev[e]}</p></div>`).join(''))
-        const data_bs = await SB_GETT_Old('BS',100) ; data_bs.forEach(e=>BS[e.Tabela]=e) // Carregar o BS
-        async function SB_GET_Clnt(){const {data} = await supaBASE.from('CLNT').select('Id,Clnt,Cmpt,Loja').gte('Id',5864) ; BS_CLNT.push(...data)} ; await SB_GET_Clnt()
-        await SB_GET_Clnt()
-        NAVPAG(Atual.Pag)
+        NavPag(Atual.Pag)
+        RfreshGrafic()
+        RefreshResumo(2026)
+        RefreshCal($('.CalBox'))
     }
-
 </script>
 
 </html>

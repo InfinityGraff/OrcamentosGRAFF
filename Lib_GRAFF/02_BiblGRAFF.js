@@ -557,7 +557,7 @@ const SavePDF2 = async (Div, Nome = "download.pdf") => {
 
 // GRAFICO------------------------------------------------------
 
-function Load_Grfc(tipo,div,base,Opt={}){
+function Load_Grfc(tipo,div,base,Title,Opt={}){
     const mapa={Barra:'bar',Linha:'line',Pizza:'pie',Rosca:'doughnut',Radar:'radar',Polar:'polarArea'};
     div.chartInstance?.destroy();
 
@@ -604,8 +604,8 @@ function Load_Grfc(tipo,div,base,Opt={}){
             maintainAspectRatio:false,
             animation:{duration:1000,easing:'easeOutBounce'},
             plugins:{
-                legend:{display:!Opt.horizontal,labels:{color:'#fff'}},
-                title:{display:true,text:`Gráfico de ${tipo}`,color:'#ff79c6'}
+                legend:{display:!!Opt.misto || !Opt.horizontal,labels:{color:'#fff'}},
+                title:{display:true,text:Title,color:'#ff79c6'}
             },
             scales:{
                 x:{
@@ -616,6 +616,16 @@ function Load_Grfc(tipo,div,base,Opt={}){
                 y:{
                     ticks:{color:'#f97316'},
                     grid:{color:'#2a2a40'}
+                },
+                y1:{
+                    type:'linear',
+                    position:'right',
+                    display:!!Opt.misto,
+                    grid:{drawOnChartArea:false},
+                    ticks:{
+                        color:'#fb7185',
+                        callback:v=>'R$ '+Number(v).toLocaleString('pt-BR')
+                    }
                 }
             }
         }
@@ -646,6 +656,35 @@ const CharteGrup = (obj,labelGrafico,cores)=>{
         }))
     }
 }
+function gGMix(Cont,Soma){
+    const labels=ObjKey(Cont);
+    return {
+        labels,
+        datasets:[
+            {
+                type:'bar',order:2,
+                label:'Quantidade de Serviços',
+                data:labels.map(k=>Cont[k]||0),
+                backgroundColor:'#c084fc',
+                yAxisID:'y'
+            },
+            {
+                type:'line',order:1,
+                label:'Faturamento (R$)',
+                data:labels.map(k=>Soma[k]||0),
+                borderColor:'#fb7185',
+                backgroundColor:'#fb7185',
+                borderWidth:3,
+                tension:0.35,
+                pointRadius:5,
+                yAxisID:'y1'
+            }
+        ]
+    };
+}
+const coresGrafic = ['#c084fc','#f97316','#fb7185','#a855f7','#9d00ff','#ff6fb5']
+const gG =(c,l,T)=>Charte(ObjKey(c),ObjVal(c),l,T?ObjKey(c).map((_,i)=>coresGrafic[i % coresGrafic.length]) : coresGrafic[0])
+const gGG=(c,l,T)=>CharteGrup(c,l,coresGrafic)
 
 // OUTROS------------------------------------------------------
 function BtnOff(btn,stg,Tru){AddTrue(btn,'BrnOff',Tru) ; btn.textContent=stg}

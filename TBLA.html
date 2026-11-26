@@ -615,17 +615,24 @@
     // FiltRel('SERV',{Tipo:'Adesivo',Serv:'Impressão'},'or') // OR entre colunas
     // FiltRel('SERV',{and:[{Tipo:'Adesivo'},{relation:'GRAD',where:{Id:'B_491_3'}}]}) // 6. Relacionamento aninhado
     // FiltRel('SERV',{'Cmnt~~':'J\\_%\\_%'}) // pega B_123_1 ou B_15_4 mas não pega B_457
+    //const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
+    //const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
+    //const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
+    // Apenas Cor      FiltRel('SERV',{'Stts.Cor':'Roxo'})
+    // Apenas Status   FiltRel('SERV',{'Stts.Stts':'Concluído'})
+    // Cor E Status    FiltRel('SERV',{'Stts.Cor':'Roxo','Stts.Stts':'Concluído'})
+    // Cor OU Status   FiltRel('SERV',{'Stts.Cor':'Roxo','Stts.Stts':'Concluído'},'or')
+    // Várias cores    FiltRel('SERV',{'Stts.Cor':['Roxo','YGrn']})
+    // Excluir uma cor FiltRel('SERV',{'!Stts.Cor':'Roxo'})
+
+    //
 
     async function GetTable(Typ,Filt,Exessao){
         if(carregado.includes(Typ) && Filt==null){return} ; carregado.push(Typ)
         const FiltBase  = {PDDS:FiltMesS(['Outubro'])}
-        const Filtro = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
-        //const FiltManual1 = FiltRel('SERV',{Grup:["FERRO"]}) // '!Tipo':[""]
-        //const FiltManual2 = {and:[FiltRel('SERV',{Serv:'Plotagem'}),FiltRel('CLNT',{'Clnt~':'Inspira'})]}
-        //const Fmanualisss = FiltRel(null,{'Cmnt~':'J_'})
-        const FClnt       = Typ=="CLNT" && Filt==undefined ? {relation:'PDDS',where:{field:'Id',op:'notnull'}} : null
-        LOG('Filtro',Filt)
-        const data   = await SB_GETT(Typ,FClnt ? FClnt : Filt) // Filtro Filt135
+        const Filtro    = Filt=='Vazio'|| !Filt ? FiltBase[Typ] : Filt
+        const FClnt     = Typ=="CLNT" && Filt==undefined ? {relation:'PDDS',where:{field:'Id',op:'notnull'}} : null
+        const data      = await SB_GETT(Typ,FClnt ? FClnt : Filt )
         if(Exessao=='SemTM'){return data}
         fazJJJ(Typ,data) ; AutoCOMP(Typ)
         Tm_Table(Typ,J[Typ])
